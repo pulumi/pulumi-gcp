@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
@@ -629,6 +630,12 @@ func (i *DatabaseInstance) ToDatabaseInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceOutput)
 }
 
+func (i *DatabaseInstance) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstance] {
+	return pulumix.Output[*DatabaseInstance]{
+		OutputState: i.ToDatabaseInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseInstanceArrayInput is an input type that accepts DatabaseInstanceArray and DatabaseInstanceArrayOutput values.
 // You can construct a concrete instance of `DatabaseInstanceArrayInput` via:
 //
@@ -652,6 +659,12 @@ func (i DatabaseInstanceArray) ToDatabaseInstanceArrayOutput() DatabaseInstanceA
 
 func (i DatabaseInstanceArray) ToDatabaseInstanceArrayOutputWithContext(ctx context.Context) DatabaseInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceArrayOutput)
+}
+
+func (i DatabaseInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseInstance] {
+	return pulumix.Output[[]*DatabaseInstance]{
+		OutputState: i.ToDatabaseInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseInstanceMapInput is an input type that accepts DatabaseInstanceMap and DatabaseInstanceMapOutput values.
@@ -679,6 +692,12 @@ func (i DatabaseInstanceMap) ToDatabaseInstanceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceMapOutput)
 }
 
+func (i DatabaseInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseInstance] {
+	return pulumix.Output[map[string]*DatabaseInstance]{
+		OutputState: i.ToDatabaseInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseInstanceOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceOutput) ElementType() reflect.Type {
@@ -691,6 +710,12 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutput() DatabaseInstanceOutpu
 
 func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput {
 	return o
+}
+
+func (o DatabaseInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstance] {
+	return pulumix.Output[*DatabaseInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of all maintenance versions applicable on the instance.
@@ -864,6 +889,12 @@ func (o DatabaseInstanceArrayOutput) ToDatabaseInstanceArrayOutputWithContext(ct
 	return o
 }
 
+func (o DatabaseInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseInstance] {
+	return pulumix.Output[[]*DatabaseInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseInstanceArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseInstance {
 		return vs[0].([]*DatabaseInstance)[vs[1].(int)]
@@ -882,6 +913,12 @@ func (o DatabaseInstanceMapOutput) ToDatabaseInstanceMapOutput() DatabaseInstanc
 
 func (o DatabaseInstanceMapOutput) ToDatabaseInstanceMapOutputWithContext(ctx context.Context) DatabaseInstanceMapOutput {
 	return o
+}
+
+func (o DatabaseInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseInstance] {
+	return pulumix.Output[map[string]*DatabaseInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseInstanceMapOutput) MapIndex(k pulumi.StringInput) DatabaseInstanceOutput {

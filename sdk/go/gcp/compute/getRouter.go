@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a router within GCE from its name and VPC.
@@ -122,6 +123,12 @@ func (o LookupRouterResultOutput) ToLookupRouterResultOutput() LookupRouterResul
 
 func (o LookupRouterResultOutput) ToLookupRouterResultOutputWithContext(ctx context.Context) LookupRouterResultOutput {
 	return o
+}
+
+func (o LookupRouterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRouterResult] {
+	return pulumix.Output[LookupRouterResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupRouterResultOutput) Bgps() GetRouterBgpArrayOutput {

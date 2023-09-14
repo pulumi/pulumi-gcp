@@ -194,7 +194,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="asyncPrimaryDisk", type=DiskAsyncPrimaryDisk.class, parameters={})
+    @Export(name="asyncPrimaryDisk", refs={DiskAsyncPrimaryDisk.class}, tree="[0]")
     private Output</* @Nullable */ DiskAsyncPrimaryDisk> asyncPrimaryDisk;
 
     /**
@@ -209,7 +209,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -224,7 +224,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * you create the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -248,7 +248,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="diskEncryptionKey", type=DiskDiskEncryptionKey.class, parameters={})
+    @Export(name="diskEncryptionKey", refs={DiskDiskEncryptionKey.class}, tree="[0]")
     private Output</* @Nullable */ DiskDiskEncryptionKey> diskEncryptionKey;
 
     /**
@@ -272,7 +272,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * required when setting to true
      * 
      */
-    @Export(name="enableConfidentialCompute", type=Boolean.class, parameters={})
+    @Export(name="enableConfidentialCompute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableConfidentialCompute;
 
     /**
@@ -289,7 +289,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="guestOsFeatures", type=List.class, parameters={DiskGuestOsFeature.class})
+    @Export(name="guestOsFeatures", refs={List.class,DiskGuestOsFeature.class}, tree="[0,1]")
     private Output<List<DiskGuestOsFeature>> guestOsFeatures;
 
     /**
@@ -313,7 +313,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * These images can be referred by family name here.
      * 
      */
-    @Export(name="image", type=String.class, parameters={})
+    @Export(name="image", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> image;
 
     /**
@@ -342,7 +342,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. */
-    @Export(name="interface", type=String.class, parameters={})
+    @Export(name="interface", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interface_;
 
     /**
@@ -360,7 +360,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * internally during updates.
      * 
      */
-    @Export(name="labelFingerprint", type=String.class, parameters={})
+    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
@@ -375,7 +375,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Labels to apply to this disk.  A list of key-&gt;value pairs.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -389,7 +389,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Last attach timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="lastAttachTimestamp", type=String.class, parameters={})
+    @Export(name="lastAttachTimestamp", refs={String.class}, tree="[0]")
     private Output<String> lastAttachTimestamp;
 
     /**
@@ -403,7 +403,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Last detach timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="lastDetachTimestamp", type=String.class, parameters={})
+    @Export(name="lastDetachTimestamp", refs={String.class}, tree="[0]")
     private Output<String> lastDetachTimestamp;
 
     /**
@@ -417,7 +417,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Any applicable license URI.
      * 
      */
-    @Export(name="licenses", type=List.class, parameters={String.class})
+    @Export(name="licenses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> licenses;
 
     /**
@@ -431,7 +431,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      * 
      */
-    @Export(name="multiWriter", type=Boolean.class, parameters={})
+    @Export(name="multiWriter", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multiWriter;
 
     /**
@@ -453,7 +453,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -479,7 +479,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * the supported values for the caller&#39;s project.
      * 
      */
-    @Export(name="physicalBlockSizeBytes", type=Integer.class, parameters={})
+    @Export(name="physicalBlockSizeBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> physicalBlockSizeBytes;
 
     /**
@@ -498,7 +498,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -515,7 +515,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
      * 
      */
-    @Export(name="provisionedIops", type=Integer.class, parameters={})
+    @Export(name="provisionedIops", refs={Integer.class}, tree="[0]")
     private Output<Integer> provisionedIops;
 
     /**
@@ -533,7 +533,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
      * 
      */
-    @Export(name="provisionedThroughput", type=Integer.class, parameters={})
+    @Export(name="provisionedThroughput", refs={Integer.class}, tree="[0]")
     private Output<Integer> provisionedThroughput;
 
     /**
@@ -554,7 +554,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * to allow for updating the resource policy attached to the disk.
      * 
      */
-    @Export(name="resourcePolicies", type=List.class, parameters={String.class})
+    @Export(name="resourcePolicies", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourcePolicies;
 
     /**
@@ -573,7 +573,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -597,7 +597,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * and recreating.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -624,7 +624,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
-    @Export(name="snapshot", type=String.class, parameters={})
+    @Export(name="snapshot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshot;
 
     /**
@@ -648,7 +648,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * * regions/{region}/disks/{disk}
      * 
      */
-    @Export(name="sourceDisk", type=String.class, parameters={})
+    @Export(name="sourceDisk", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceDisk;
 
     /**
@@ -671,7 +671,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * or a previous instance of a given disk name.
      * 
      */
-    @Export(name="sourceDiskId", type=String.class, parameters={})
+    @Export(name="sourceDiskId", refs={String.class}, tree="[0]")
     private Output<String> sourceDiskId;
 
     /**
@@ -689,7 +689,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sourceImageEncryptionKey", type=DiskSourceImageEncryptionKey.class, parameters={})
+    @Export(name="sourceImageEncryptionKey", refs={DiskSourceImageEncryptionKey.class}, tree="[0]")
     private Output</* @Nullable */ DiskSourceImageEncryptionKey> sourceImageEncryptionKey;
 
     /**
@@ -709,7 +709,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * image ID would identify the exact version of the image that was used.
      * 
      */
-    @Export(name="sourceImageId", type=String.class, parameters={})
+    @Export(name="sourceImageId", refs={String.class}, tree="[0]")
     private Output<String> sourceImageId;
 
     /**
@@ -730,7 +730,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sourceSnapshotEncryptionKey", type=DiskSourceSnapshotEncryptionKey.class, parameters={})
+    @Export(name="sourceSnapshotEncryptionKey", refs={DiskSourceSnapshotEncryptionKey.class}, tree="[0]")
     private Output</* @Nullable */ DiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKey;
 
     /**
@@ -752,7 +752,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * used.
      * 
      */
-    @Export(name="sourceSnapshotId", type=String.class, parameters={})
+    @Export(name="sourceSnapshotId", refs={String.class}, tree="[0]")
     private Output<String> sourceSnapshotId;
 
     /**
@@ -772,7 +772,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * create the disk. Provide this when creating the disk.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -788,7 +788,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * project/zones/zone/instances/instance
      * 
      */
-    @Export(name="users", type=List.class, parameters={String.class})
+    @Export(name="users", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> users;
 
     /**
@@ -803,7 +803,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * A reference to the zone where the disk resides.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

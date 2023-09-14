@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for zone
@@ -118,6 +119,12 @@ func (o LookupZoneIamPolicyResultOutput) ToLookupZoneIamPolicyResultOutput() Loo
 
 func (o LookupZoneIamPolicyResultOutput) ToLookupZoneIamPolicyResultOutputWithContext(ctx context.Context) LookupZoneIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupZoneIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupZoneIamPolicyResult] {
+	return pulumix.Output[LookupZoneIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupZoneIamPolicyResultOutput) DataplexZone() pulumi.StringOutput {

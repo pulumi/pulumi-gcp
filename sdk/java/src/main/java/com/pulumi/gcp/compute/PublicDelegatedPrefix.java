@@ -93,7 +93,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -109,7 +109,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="ipCidrRange", type=String.class, parameters={})
+    @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipCidrRange;
 
     /**
@@ -125,7 +125,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * If true, the prefix will be live migrated.
      * 
      */
-    @Export(name="isLiveMigration", type=Boolean.class, parameters={})
+    @Export(name="isLiveMigration", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isLiveMigration;
 
     /**
@@ -144,7 +144,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -163,7 +163,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
      * 
      */
-    @Export(name="parentPrefix", type=String.class, parameters={})
+    @Export(name="parentPrefix", refs={String.class}, tree="[0]")
     private Output<String> parentPrefix;
 
     /**
@@ -178,7 +178,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -193,7 +193,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * A region where the prefix will reside.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -207,7 +207,7 @@ public class PublicDelegatedPrefix extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**

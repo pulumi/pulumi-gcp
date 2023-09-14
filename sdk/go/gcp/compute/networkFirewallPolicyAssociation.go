@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Compute NetworkFirewallPolicyAssociation resource
@@ -204,6 +205,12 @@ func (i *NetworkFirewallPolicyAssociation) ToNetworkFirewallPolicyAssociationOut
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFirewallPolicyAssociationOutput)
 }
 
+func (i *NetworkFirewallPolicyAssociation) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicyAssociation] {
+	return pulumix.Output[*NetworkFirewallPolicyAssociation]{
+		OutputState: i.ToNetworkFirewallPolicyAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkFirewallPolicyAssociationArrayInput is an input type that accepts NetworkFirewallPolicyAssociationArray and NetworkFirewallPolicyAssociationArrayOutput values.
 // You can construct a concrete instance of `NetworkFirewallPolicyAssociationArrayInput` via:
 //
@@ -227,6 +234,12 @@ func (i NetworkFirewallPolicyAssociationArray) ToNetworkFirewallPolicyAssociatio
 
 func (i NetworkFirewallPolicyAssociationArray) ToNetworkFirewallPolicyAssociationArrayOutputWithContext(ctx context.Context) NetworkFirewallPolicyAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFirewallPolicyAssociationArrayOutput)
+}
+
+func (i NetworkFirewallPolicyAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkFirewallPolicyAssociation] {
+	return pulumix.Output[[]*NetworkFirewallPolicyAssociation]{
+		OutputState: i.ToNetworkFirewallPolicyAssociationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkFirewallPolicyAssociationMapInput is an input type that accepts NetworkFirewallPolicyAssociationMap and NetworkFirewallPolicyAssociationMapOutput values.
@@ -254,6 +267,12 @@ func (i NetworkFirewallPolicyAssociationMap) ToNetworkFirewallPolicyAssociationM
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFirewallPolicyAssociationMapOutput)
 }
 
+func (i NetworkFirewallPolicyAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkFirewallPolicyAssociation] {
+	return pulumix.Output[map[string]*NetworkFirewallPolicyAssociation]{
+		OutputState: i.ToNetworkFirewallPolicyAssociationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkFirewallPolicyAssociationOutput struct{ *pulumi.OutputState }
 
 func (NetworkFirewallPolicyAssociationOutput) ElementType() reflect.Type {
@@ -266,6 +285,12 @@ func (o NetworkFirewallPolicyAssociationOutput) ToNetworkFirewallPolicyAssociati
 
 func (o NetworkFirewallPolicyAssociationOutput) ToNetworkFirewallPolicyAssociationOutputWithContext(ctx context.Context) NetworkFirewallPolicyAssociationOutput {
 	return o
+}
+
+func (o NetworkFirewallPolicyAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFirewallPolicyAssociation] {
+	return pulumix.Output[*NetworkFirewallPolicyAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The target that the firewall policy is attached to.
@@ -309,6 +334,12 @@ func (o NetworkFirewallPolicyAssociationArrayOutput) ToNetworkFirewallPolicyAsso
 	return o
 }
 
+func (o NetworkFirewallPolicyAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkFirewallPolicyAssociation] {
+	return pulumix.Output[[]*NetworkFirewallPolicyAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkFirewallPolicyAssociationArrayOutput) Index(i pulumi.IntInput) NetworkFirewallPolicyAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkFirewallPolicyAssociation {
 		return vs[0].([]*NetworkFirewallPolicyAssociation)[vs[1].(int)]
@@ -327,6 +358,12 @@ func (o NetworkFirewallPolicyAssociationMapOutput) ToNetworkFirewallPolicyAssoci
 
 func (o NetworkFirewallPolicyAssociationMapOutput) ToNetworkFirewallPolicyAssociationMapOutputWithContext(ctx context.Context) NetworkFirewallPolicyAssociationMapOutput {
 	return o
+}
+
+func (o NetworkFirewallPolicyAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkFirewallPolicyAssociation] {
+	return pulumix.Output[map[string]*NetworkFirewallPolicyAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkFirewallPolicyAssociationMapOutput) MapIndex(k pulumi.StringInput) NetworkFirewallPolicyAssociationOutput {

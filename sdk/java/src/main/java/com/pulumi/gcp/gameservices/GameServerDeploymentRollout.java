@@ -131,7 +131,7 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * ***
      * 
      */
-    @Export(name="defaultGameServerConfig", type=String.class, parameters={})
+    @Export(name="defaultGameServerConfig", refs={String.class}, tree="[0]")
     private Output<String> defaultGameServerConfig;
 
     /**
@@ -149,7 +149,7 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
      * 
      */
-    @Export(name="deploymentId", type=String.class, parameters={})
+    @Export(name="deploymentId", refs={String.class}, tree="[0]")
     private Output<String> deploymentId;
 
     /**
@@ -167,7 +167,7 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * Structure is documented below.
      * 
      */
-    @Export(name="gameServerConfigOverrides", type=List.class, parameters={GameServerDeploymentRolloutGameServerConfigOverride.class})
+    @Export(name="gameServerConfigOverrides", refs={List.class,GameServerDeploymentRolloutGameServerConfigOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GameServerDeploymentRolloutGameServerConfigOverride>> gameServerConfigOverrides;
 
     /**
@@ -186,7 +186,7 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -202,7 +202,7 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

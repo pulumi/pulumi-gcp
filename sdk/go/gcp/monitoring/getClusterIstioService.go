@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Monitoring Service is the root resource under which operational aspects of a
@@ -160,6 +161,12 @@ func (o GetClusterIstioServiceResultOutput) ToGetClusterIstioServiceResultOutput
 
 func (o GetClusterIstioServiceResultOutput) ToGetClusterIstioServiceResultOutputWithContext(ctx context.Context) GetClusterIstioServiceResultOutput {
 	return o
+}
+
+func (o GetClusterIstioServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterIstioServiceResult] {
+	return pulumix.Output[GetClusterIstioServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClusterIstioServiceResultOutput) ClusterName() pulumi.StringOutput {

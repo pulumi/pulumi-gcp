@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -98,6 +99,12 @@ func (i AttestorAttestationAuthorityNoteArgs) ToAttestorAttestationAuthorityNote
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNoteOutput)
 }
 
+func (i AttestorAttestationAuthorityNoteArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorAttestationAuthorityNote] {
+	return pulumix.Output[AttestorAttestationAuthorityNote]{
+		OutputState: i.ToAttestorAttestationAuthorityNoteOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AttestorAttestationAuthorityNoteArgs) ToAttestorAttestationAuthorityNotePtrOutput() AttestorAttestationAuthorityNotePtrOutput {
 	return i.ToAttestorAttestationAuthorityNotePtrOutputWithContext(context.Background())
 }
@@ -139,6 +146,12 @@ func (i *attestorAttestationAuthorityNotePtrType) ToAttestorAttestationAuthority
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePtrOutput)
 }
 
+func (i *attestorAttestationAuthorityNotePtrType) ToOutput(ctx context.Context) pulumix.Output[*AttestorAttestationAuthorityNote] {
+	return pulumix.Output[*AttestorAttestationAuthorityNote]{
+		OutputState: i.ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestorAttestationAuthorityNoteOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNoteOutput) ElementType() reflect.Type {
@@ -161,6 +174,12 @@ func (o AttestorAttestationAuthorityNoteOutput) ToAttestorAttestationAuthorityNo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorAttestationAuthorityNote) *AttestorAttestationAuthorityNote {
 		return &v
 	}).(AttestorAttestationAuthorityNotePtrOutput)
+}
+
+func (o AttestorAttestationAuthorityNoteOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorAttestationAuthorityNote] {
+	return pulumix.Output[AttestorAttestationAuthorityNote]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -214,6 +233,12 @@ func (o AttestorAttestationAuthorityNotePtrOutput) ToAttestorAttestationAuthorit
 
 func (o AttestorAttestationAuthorityNotePtrOutput) ToAttestorAttestationAuthorityNotePtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePtrOutput {
 	return o
+}
+
+func (o AttestorAttestationAuthorityNotePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestorAttestationAuthorityNote] {
+	return pulumix.Output[*AttestorAttestationAuthorityNote]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorAttestationAuthorityNotePtrOutput) Elem() AttestorAttestationAuthorityNoteOutput {
@@ -359,6 +384,12 @@ func (i AttestorAttestationAuthorityNotePublicKeyArgs) ToAttestorAttestationAuth
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePublicKeyOutput)
 }
 
+func (i AttestorAttestationAuthorityNotePublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorAttestationAuthorityNotePublicKey] {
+	return pulumix.Output[AttestorAttestationAuthorityNotePublicKey]{
+		OutputState: i.ToAttestorAttestationAuthorityNotePublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AttestorAttestationAuthorityNotePublicKeyArrayInput is an input type that accepts AttestorAttestationAuthorityNotePublicKeyArray and AttestorAttestationAuthorityNotePublicKeyArrayOutput values.
 // You can construct a concrete instance of `AttestorAttestationAuthorityNotePublicKeyArrayInput` via:
 //
@@ -384,6 +415,12 @@ func (i AttestorAttestationAuthorityNotePublicKeyArray) ToAttestorAttestationAut
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePublicKeyArrayOutput)
 }
 
+func (i AttestorAttestationAuthorityNotePublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]AttestorAttestationAuthorityNotePublicKey] {
+	return pulumix.Output[[]AttestorAttestationAuthorityNotePublicKey]{
+		OutputState: i.ToAttestorAttestationAuthorityNotePublicKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestorAttestationAuthorityNotePublicKeyOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePublicKeyOutput) ElementType() reflect.Type {
@@ -396,6 +433,12 @@ func (o AttestorAttestationAuthorityNotePublicKeyOutput) ToAttestorAttestationAu
 
 func (o AttestorAttestationAuthorityNotePublicKeyOutput) ToAttestorAttestationAuthorityNotePublicKeyOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePublicKeyOutput {
 	return o
+}
+
+func (o AttestorAttestationAuthorityNotePublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorAttestationAuthorityNotePublicKey] {
+	return pulumix.Output[AttestorAttestationAuthorityNotePublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ASCII-armored representation of a PGP public key, as the
@@ -450,6 +493,12 @@ func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) ToAttestorAttestat
 
 func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) ToAttestorAttestationAuthorityNotePublicKeyArrayOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePublicKeyArrayOutput {
 	return o
+}
+
+func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestorAttestationAuthorityNotePublicKey] {
+	return pulumix.Output[[]AttestorAttestationAuthorityNotePublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyArrayOutput) Index(i pulumi.IntInput) AttestorAttestationAuthorityNotePublicKeyOutput {
@@ -509,6 +558,12 @@ func (i AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs) ToAttestorAt
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput)
 }
 
+func (i AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorAttestationAuthorityNotePublicKeyPkixPublicKey] {
+	return pulumix.Output[AttestorAttestationAuthorityNotePublicKeyPkixPublicKey]{
+		OutputState: i.ToAttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs) ToAttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput() AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput {
 	return i.ToAttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutputWithContext(context.Background())
 }
@@ -550,6 +605,12 @@ func (i *attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType) ToAttest
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
 }
 
+func (i *attestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AttestorAttestationAuthorityNotePublicKeyPkixPublicKey] {
+	return pulumix.Output[*AttestorAttestationAuthorityNotePublicKeyPkixPublicKey]{
+		OutputState: i.ToAttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ElementType() reflect.Type {
@@ -572,6 +633,12 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ToAttestor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
 		return &v
 	}).(AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput)
+}
+
+func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorAttestationAuthorityNotePublicKeyPkixPublicKey] {
+	return pulumix.Output[AttestorAttestationAuthorityNotePublicKeyPkixPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A PEM-encoded public key, as described in
@@ -603,6 +670,12 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) ToAttes
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) ToAttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutputWithContext(ctx context.Context) AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput {
 	return o
+}
+
+func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestorAttestationAuthorityNotePublicKeyPkixPublicKey] {
+	return pulumix.Output[*AttestorAttestationAuthorityNotePublicKeyPkixPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) Elem() AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput {
@@ -677,6 +750,12 @@ func (i AttestorIamBindingConditionArgs) ToAttestorIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingConditionOutput)
 }
 
+func (i AttestorIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorIamBindingCondition] {
+	return pulumix.Output[AttestorIamBindingCondition]{
+		OutputState: i.ToAttestorIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AttestorIamBindingConditionArgs) ToAttestorIamBindingConditionPtrOutput() AttestorIamBindingConditionPtrOutput {
 	return i.ToAttestorIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -718,6 +797,12 @@ func (i *attestorIamBindingConditionPtrType) ToAttestorIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingConditionPtrOutput)
 }
 
+func (i *attestorIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamBindingCondition] {
+	return pulumix.Output[*AttestorIamBindingCondition]{
+		OutputState: i.ToAttestorIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestorIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamBindingConditionOutput) ElementType() reflect.Type {
@@ -740,6 +825,12 @@ func (o AttestorIamBindingConditionOutput) ToAttestorIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamBindingCondition) *AttestorIamBindingCondition {
 		return &v
 	}).(AttestorIamBindingConditionPtrOutput)
+}
+
+func (o AttestorIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorIamBindingCondition] {
+	return pulumix.Output[AttestorIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -766,6 +857,12 @@ func (o AttestorIamBindingConditionPtrOutput) ToAttestorIamBindingConditionPtrOu
 
 func (o AttestorIamBindingConditionPtrOutput) ToAttestorIamBindingConditionPtrOutputWithContext(ctx context.Context) AttestorIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o AttestorIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamBindingCondition] {
+	return pulumix.Output[*AttestorIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorIamBindingConditionPtrOutput) Elem() AttestorIamBindingConditionOutput {
@@ -840,6 +937,12 @@ func (i AttestorIamMemberConditionArgs) ToAttestorIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberConditionOutput)
 }
 
+func (i AttestorIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AttestorIamMemberCondition] {
+	return pulumix.Output[AttestorIamMemberCondition]{
+		OutputState: i.ToAttestorIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AttestorIamMemberConditionArgs) ToAttestorIamMemberConditionPtrOutput() AttestorIamMemberConditionPtrOutput {
 	return i.ToAttestorIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -881,6 +984,12 @@ func (i *attestorIamMemberConditionPtrType) ToAttestorIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberConditionPtrOutput)
 }
 
+func (i *attestorIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamMemberCondition] {
+	return pulumix.Output[*AttestorIamMemberCondition]{
+		OutputState: i.ToAttestorIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttestorIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AttestorIamMemberConditionOutput) ElementType() reflect.Type {
@@ -903,6 +1012,12 @@ func (o AttestorIamMemberConditionOutput) ToAttestorIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttestorIamMemberCondition) *AttestorIamMemberCondition {
 		return &v
 	}).(AttestorIamMemberConditionPtrOutput)
+}
+
+func (o AttestorIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AttestorIamMemberCondition] {
+	return pulumix.Output[AttestorIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -929,6 +1044,12 @@ func (o AttestorIamMemberConditionPtrOutput) ToAttestorIamMemberConditionPtrOutp
 
 func (o AttestorIamMemberConditionPtrOutput) ToAttestorIamMemberConditionPtrOutputWithContext(ctx context.Context) AttestorIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o AttestorIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttestorIamMemberCondition] {
+	return pulumix.Output[*AttestorIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttestorIamMemberConditionPtrOutput) Elem() AttestorIamMemberConditionOutput {
@@ -1007,6 +1128,12 @@ func (i PolicyAdmissionWhitelistPatternArgs) ToPolicyAdmissionWhitelistPatternOu
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAdmissionWhitelistPatternOutput)
 }
 
+func (i PolicyAdmissionWhitelistPatternArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyAdmissionWhitelistPattern] {
+	return pulumix.Output[PolicyAdmissionWhitelistPattern]{
+		OutputState: i.ToPolicyAdmissionWhitelistPatternOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyAdmissionWhitelistPatternArrayInput is an input type that accepts PolicyAdmissionWhitelistPatternArray and PolicyAdmissionWhitelistPatternArrayOutput values.
 // You can construct a concrete instance of `PolicyAdmissionWhitelistPatternArrayInput` via:
 //
@@ -1032,6 +1159,12 @@ func (i PolicyAdmissionWhitelistPatternArray) ToPolicyAdmissionWhitelistPatternA
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAdmissionWhitelistPatternArrayOutput)
 }
 
+func (i PolicyAdmissionWhitelistPatternArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyAdmissionWhitelistPattern] {
+	return pulumix.Output[[]PolicyAdmissionWhitelistPattern]{
+		OutputState: i.ToPolicyAdmissionWhitelistPatternArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyAdmissionWhitelistPatternOutput struct{ *pulumi.OutputState }
 
 func (PolicyAdmissionWhitelistPatternOutput) ElementType() reflect.Type {
@@ -1044,6 +1177,12 @@ func (o PolicyAdmissionWhitelistPatternOutput) ToPolicyAdmissionWhitelistPattern
 
 func (o PolicyAdmissionWhitelistPatternOutput) ToPolicyAdmissionWhitelistPatternOutputWithContext(ctx context.Context) PolicyAdmissionWhitelistPatternOutput {
 	return o
+}
+
+func (o PolicyAdmissionWhitelistPatternOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAdmissionWhitelistPattern] {
+	return pulumix.Output[PolicyAdmissionWhitelistPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An image name pattern to whitelist, in the form
@@ -1066,6 +1205,12 @@ func (o PolicyAdmissionWhitelistPatternArrayOutput) ToPolicyAdmissionWhitelistPa
 
 func (o PolicyAdmissionWhitelistPatternArrayOutput) ToPolicyAdmissionWhitelistPatternArrayOutputWithContext(ctx context.Context) PolicyAdmissionWhitelistPatternArrayOutput {
 	return o
+}
+
+func (o PolicyAdmissionWhitelistPatternArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyAdmissionWhitelistPattern] {
+	return pulumix.Output[[]PolicyAdmissionWhitelistPattern]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyAdmissionWhitelistPatternArrayOutput) Index(i pulumi.IntInput) PolicyAdmissionWhitelistPatternOutput {
@@ -1137,6 +1282,12 @@ func (i PolicyClusterAdmissionRuleArgs) ToPolicyClusterAdmissionRuleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyClusterAdmissionRuleOutput)
 }
 
+func (i PolicyClusterAdmissionRuleArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyClusterAdmissionRule] {
+	return pulumix.Output[PolicyClusterAdmissionRule]{
+		OutputState: i.ToPolicyClusterAdmissionRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyClusterAdmissionRuleArrayInput is an input type that accepts PolicyClusterAdmissionRuleArray and PolicyClusterAdmissionRuleArrayOutput values.
 // You can construct a concrete instance of `PolicyClusterAdmissionRuleArrayInput` via:
 //
@@ -1162,6 +1313,12 @@ func (i PolicyClusterAdmissionRuleArray) ToPolicyClusterAdmissionRuleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyClusterAdmissionRuleArrayOutput)
 }
 
+func (i PolicyClusterAdmissionRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyClusterAdmissionRule] {
+	return pulumix.Output[[]PolicyClusterAdmissionRule]{
+		OutputState: i.ToPolicyClusterAdmissionRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyClusterAdmissionRuleOutput struct{ *pulumi.OutputState }
 
 func (PolicyClusterAdmissionRuleOutput) ElementType() reflect.Type {
@@ -1174,6 +1331,12 @@ func (o PolicyClusterAdmissionRuleOutput) ToPolicyClusterAdmissionRuleOutput() P
 
 func (o PolicyClusterAdmissionRuleOutput) ToPolicyClusterAdmissionRuleOutputWithContext(ctx context.Context) PolicyClusterAdmissionRuleOutput {
 	return o
+}
+
+func (o PolicyClusterAdmissionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyClusterAdmissionRule] {
+	return pulumix.Output[PolicyClusterAdmissionRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identifier for this object. Format specified above.
@@ -1217,6 +1380,12 @@ func (o PolicyClusterAdmissionRuleArrayOutput) ToPolicyClusterAdmissionRuleArray
 
 func (o PolicyClusterAdmissionRuleArrayOutput) ToPolicyClusterAdmissionRuleArrayOutputWithContext(ctx context.Context) PolicyClusterAdmissionRuleArrayOutput {
 	return o
+}
+
+func (o PolicyClusterAdmissionRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyClusterAdmissionRule] {
+	return pulumix.Output[[]PolicyClusterAdmissionRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyClusterAdmissionRuleArrayOutput) Index(i pulumi.IntInput) PolicyClusterAdmissionRuleOutput {
@@ -1288,6 +1457,12 @@ func (i PolicyDefaultAdmissionRuleArgs) ToPolicyDefaultAdmissionRuleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefaultAdmissionRuleOutput)
 }
 
+func (i PolicyDefaultAdmissionRuleArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyDefaultAdmissionRule] {
+	return pulumix.Output[PolicyDefaultAdmissionRule]{
+		OutputState: i.ToPolicyDefaultAdmissionRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PolicyDefaultAdmissionRuleArgs) ToPolicyDefaultAdmissionRulePtrOutput() PolicyDefaultAdmissionRulePtrOutput {
 	return i.ToPolicyDefaultAdmissionRulePtrOutputWithContext(context.Background())
 }
@@ -1329,6 +1504,12 @@ func (i *policyDefaultAdmissionRulePtrType) ToPolicyDefaultAdmissionRulePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefaultAdmissionRulePtrOutput)
 }
 
+func (i *policyDefaultAdmissionRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyDefaultAdmissionRule] {
+	return pulumix.Output[*PolicyDefaultAdmissionRule]{
+		OutputState: i.ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyDefaultAdmissionRuleOutput struct{ *pulumi.OutputState }
 
 func (PolicyDefaultAdmissionRuleOutput) ElementType() reflect.Type {
@@ -1351,6 +1532,12 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyDefaultAdmissionRule) *PolicyDefaultAdmissionRule {
 		return &v
 	}).(PolicyDefaultAdmissionRulePtrOutput)
+}
+
+func (o PolicyDefaultAdmissionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefaultAdmissionRule] {
+	return pulumix.Output[PolicyDefaultAdmissionRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action when a pod creation is denied by the admission rule.
@@ -1391,6 +1578,12 @@ func (o PolicyDefaultAdmissionRulePtrOutput) ToPolicyDefaultAdmissionRulePtrOutp
 
 func (o PolicyDefaultAdmissionRulePtrOutput) ToPolicyDefaultAdmissionRulePtrOutputWithContext(ctx context.Context) PolicyDefaultAdmissionRulePtrOutput {
 	return o
+}
+
+func (o PolicyDefaultAdmissionRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyDefaultAdmissionRule] {
+	return pulumix.Output[*PolicyDefaultAdmissionRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
@@ -145,6 +146,12 @@ func (o LookupGlobalAddressResultOutput) ToLookupGlobalAddressResultOutput() Loo
 
 func (o LookupGlobalAddressResultOutput) ToLookupGlobalAddressResultOutputWithContext(ctx context.Context) LookupGlobalAddressResultOutput {
 	return o
+}
+
+func (o LookupGlobalAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalAddressResult] {
+	return pulumix.Output[LookupGlobalAddressResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP of the created resource.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for bucket
@@ -102,6 +103,12 @@ func (o GetBucketIamPolicyResultOutput) ToGetBucketIamPolicyResultOutput() GetBu
 
 func (o GetBucketIamPolicyResultOutput) ToGetBucketIamPolicyResultOutputWithContext(ctx context.Context) GetBucketIamPolicyResultOutput {
 	return o
+}
+
+func (o GetBucketIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBucketIamPolicyResult] {
+	return pulumix.Output[GetBucketIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBucketIamPolicyResultOutput) Bucket() pulumi.StringOutput {

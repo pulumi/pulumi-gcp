@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
@@ -362,6 +363,12 @@ func (i *ZoneIamPolicy) ToZoneIamPolicyOutputWithContext(ctx context.Context) Zo
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamPolicyOutput)
 }
 
+func (i *ZoneIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ZoneIamPolicy] {
+	return pulumix.Output[*ZoneIamPolicy]{
+		OutputState: i.ToZoneIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneIamPolicyArrayInput is an input type that accepts ZoneIamPolicyArray and ZoneIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ZoneIamPolicyArrayInput` via:
 //
@@ -385,6 +392,12 @@ func (i ZoneIamPolicyArray) ToZoneIamPolicyArrayOutput() ZoneIamPolicyArrayOutpu
 
 func (i ZoneIamPolicyArray) ToZoneIamPolicyArrayOutputWithContext(ctx context.Context) ZoneIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamPolicyArrayOutput)
+}
+
+func (i ZoneIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneIamPolicy] {
+	return pulumix.Output[[]*ZoneIamPolicy]{
+		OutputState: i.ToZoneIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneIamPolicyMapInput is an input type that accepts ZoneIamPolicyMap and ZoneIamPolicyMapOutput values.
@@ -412,6 +425,12 @@ func (i ZoneIamPolicyMap) ToZoneIamPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamPolicyMapOutput)
 }
 
+func (i ZoneIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneIamPolicy] {
+	return pulumix.Output[map[string]*ZoneIamPolicy]{
+		OutputState: i.ToZoneIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ZoneIamPolicyOutput) ElementType() reflect.Type {
@@ -424,6 +443,12 @@ func (o ZoneIamPolicyOutput) ToZoneIamPolicyOutput() ZoneIamPolicyOutput {
 
 func (o ZoneIamPolicyOutput) ToZoneIamPolicyOutputWithContext(ctx context.Context) ZoneIamPolicyOutput {
 	return o
+}
+
+func (o ZoneIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneIamPolicy] {
+	return pulumix.Output[*ZoneIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -482,6 +507,12 @@ func (o ZoneIamPolicyArrayOutput) ToZoneIamPolicyArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ZoneIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneIamPolicy] {
+	return pulumix.Output[[]*ZoneIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneIamPolicyArrayOutput) Index(i pulumi.IntInput) ZoneIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneIamPolicy {
 		return vs[0].([]*ZoneIamPolicy)[vs[1].(int)]
@@ -500,6 +531,12 @@ func (o ZoneIamPolicyMapOutput) ToZoneIamPolicyMapOutput() ZoneIamPolicyMapOutpu
 
 func (o ZoneIamPolicyMapOutput) ToZoneIamPolicyMapOutputWithContext(ctx context.Context) ZoneIamPolicyMapOutput {
 	return o
+}
+
+func (o ZoneIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneIamPolicy] {
+	return pulumix.Output[map[string]*ZoneIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ZoneIamPolicyOutput {

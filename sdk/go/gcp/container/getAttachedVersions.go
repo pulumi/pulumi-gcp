@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to available platform versions in a location for a given project.
@@ -108,6 +109,12 @@ func (o GetAttachedVersionsResultOutput) ToGetAttachedVersionsResultOutput() Get
 
 func (o GetAttachedVersionsResultOutput) ToGetAttachedVersionsResultOutputWithContext(ctx context.Context) GetAttachedVersionsResultOutput {
 	return o
+}
+
+func (o GetAttachedVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAttachedVersionsResult] {
+	return pulumix.Output[GetAttachedVersionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

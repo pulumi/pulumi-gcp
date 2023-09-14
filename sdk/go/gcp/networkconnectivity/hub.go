@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkConnectivity Hub resource
@@ -219,6 +220,12 @@ func (i *Hub) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HubOutput)
 }
 
+func (i *Hub) ToOutput(ctx context.Context) pulumix.Output[*Hub] {
+	return pulumix.Output[*Hub]{
+		OutputState: i.ToHubOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HubArrayInput is an input type that accepts HubArray and HubArrayOutput values.
 // You can construct a concrete instance of `HubArrayInput` via:
 //
@@ -242,6 +249,12 @@ func (i HubArray) ToHubArrayOutput() HubArrayOutput {
 
 func (i HubArray) ToHubArrayOutputWithContext(ctx context.Context) HubArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HubArrayOutput)
+}
+
+func (i HubArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hub] {
+	return pulumix.Output[[]*Hub]{
+		OutputState: i.ToHubArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HubMapInput is an input type that accepts HubMap and HubMapOutput values.
@@ -269,6 +282,12 @@ func (i HubMap) ToHubMapOutputWithContext(ctx context.Context) HubMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HubMapOutput)
 }
 
+func (i HubMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hub] {
+	return pulumix.Output[map[string]*Hub]{
+		OutputState: i.ToHubMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HubOutput struct{ *pulumi.OutputState }
 
 func (HubOutput) ElementType() reflect.Type {
@@ -281,6 +300,12 @@ func (o HubOutput) ToHubOutput() HubOutput {
 
 func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return o
+}
+
+func (o HubOutput) ToOutput(ctx context.Context) pulumix.Output[*Hub] {
+	return pulumix.Output[*Hub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Output only. The time the hub was created.
@@ -344,6 +369,12 @@ func (o HubArrayOutput) ToHubArrayOutputWithContext(ctx context.Context) HubArra
 	return o
 }
 
+func (o HubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hub] {
+	return pulumix.Output[[]*Hub]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HubArrayOutput) Index(i pulumi.IntInput) HubOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hub {
 		return vs[0].([]*Hub)[vs[1].(int)]
@@ -362,6 +393,12 @@ func (o HubMapOutput) ToHubMapOutput() HubMapOutput {
 
 func (o HubMapOutput) ToHubMapOutputWithContext(ctx context.Context) HubMapOutput {
 	return o
+}
+
+func (o HubMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hub] {
+	return pulumix.Output[map[string]*Hub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubMapOutput) MapIndex(k pulumi.StringInput) HubOutput {

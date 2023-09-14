@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -243,6 +244,12 @@ func (i *AiFeatureStoreEntityTypeIamMember) ToAiFeatureStoreEntityTypeIamMemberO
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberOutput)
 }
 
+func (i *AiFeatureStoreEntityTypeIamMember) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamMember] {
+	return pulumix.Output[*AiFeatureStoreEntityTypeIamMember]{
+		OutputState: i.ToAiFeatureStoreEntityTypeIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AiFeatureStoreEntityTypeIamMemberArrayInput is an input type that accepts AiFeatureStoreEntityTypeIamMemberArray and AiFeatureStoreEntityTypeIamMemberArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeIamMemberArrayInput` via:
 //
@@ -266,6 +273,12 @@ func (i AiFeatureStoreEntityTypeIamMemberArray) ToAiFeatureStoreEntityTypeIamMem
 
 func (i AiFeatureStoreEntityTypeIamMemberArray) ToAiFeatureStoreEntityTypeIamMemberArrayOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberArrayOutput)
+}
+
+func (i AiFeatureStoreEntityTypeIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeIamMember] {
+	return pulumix.Output[[]*AiFeatureStoreEntityTypeIamMember]{
+		OutputState: i.ToAiFeatureStoreEntityTypeIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AiFeatureStoreEntityTypeIamMemberMapInput is an input type that accepts AiFeatureStoreEntityTypeIamMemberMap and AiFeatureStoreEntityTypeIamMemberMapOutput values.
@@ -293,6 +306,12 @@ func (i AiFeatureStoreEntityTypeIamMemberMap) ToAiFeatureStoreEntityTypeIamMembe
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamMemberMapOutput)
 }
 
+func (i AiFeatureStoreEntityTypeIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamMember] {
+	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamMember]{
+		OutputState: i.ToAiFeatureStoreEntityTypeIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AiFeatureStoreEntityTypeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeIamMemberOutput) ElementType() reflect.Type {
@@ -305,6 +324,12 @@ func (o AiFeatureStoreEntityTypeIamMemberOutput) ToAiFeatureStoreEntityTypeIamMe
 
 func (o AiFeatureStoreEntityTypeIamMemberOutput) ToAiFeatureStoreEntityTypeIamMemberOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberOutput {
 	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamMember] {
+	return pulumix.Output[*AiFeatureStoreEntityTypeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiFeatureStoreEntityTypeIamMemberOutput) Condition() AiFeatureStoreEntityTypeIamMemberConditionPtrOutput {
@@ -365,6 +390,12 @@ func (o AiFeatureStoreEntityTypeIamMemberArrayOutput) ToAiFeatureStoreEntityType
 	return o
 }
 
+func (o AiFeatureStoreEntityTypeIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeIamMember] {
+	return pulumix.Output[[]*AiFeatureStoreEntityTypeIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AiFeatureStoreEntityTypeIamMemberArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreEntityTypeIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStoreEntityTypeIamMember {
 		return vs[0].([]*AiFeatureStoreEntityTypeIamMember)[vs[1].(int)]
@@ -383,6 +414,12 @@ func (o AiFeatureStoreEntityTypeIamMemberMapOutput) ToAiFeatureStoreEntityTypeIa
 
 func (o AiFeatureStoreEntityTypeIamMemberMapOutput) ToAiFeatureStoreEntityTypeIamMemberMapOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamMemberMapOutput {
 	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamMember] {
+	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiFeatureStoreEntityTypeIamMemberMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreEntityTypeIamMemberOutput {

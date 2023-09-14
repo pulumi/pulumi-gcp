@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
@@ -343,6 +344,12 @@ func (i *TagKeyIamBinding) ToTagKeyIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingOutput)
 }
 
+func (i *TagKeyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamBinding] {
+	return pulumix.Output[*TagKeyIamBinding]{
+		OutputState: i.ToTagKeyIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TagKeyIamBindingArrayInput is an input type that accepts TagKeyIamBindingArray and TagKeyIamBindingArrayOutput values.
 // You can construct a concrete instance of `TagKeyIamBindingArrayInput` via:
 //
@@ -366,6 +373,12 @@ func (i TagKeyIamBindingArray) ToTagKeyIamBindingArrayOutput() TagKeyIamBindingA
 
 func (i TagKeyIamBindingArray) ToTagKeyIamBindingArrayOutputWithContext(ctx context.Context) TagKeyIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingArrayOutput)
+}
+
+func (i TagKeyIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagKeyIamBinding] {
+	return pulumix.Output[[]*TagKeyIamBinding]{
+		OutputState: i.ToTagKeyIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TagKeyIamBindingMapInput is an input type that accepts TagKeyIamBindingMap and TagKeyIamBindingMapOutput values.
@@ -393,6 +406,12 @@ func (i TagKeyIamBindingMap) ToTagKeyIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingMapOutput)
 }
 
+func (i TagKeyIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagKeyIamBinding] {
+	return pulumix.Output[map[string]*TagKeyIamBinding]{
+		OutputState: i.ToTagKeyIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagKeyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingOutput) ElementType() reflect.Type {
@@ -405,6 +424,12 @@ func (o TagKeyIamBindingOutput) ToTagKeyIamBindingOutput() TagKeyIamBindingOutpu
 
 func (o TagKeyIamBindingOutput) ToTagKeyIamBindingOutputWithContext(ctx context.Context) TagKeyIamBindingOutput {
 	return o
+}
+
+func (o TagKeyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamBinding] {
+	return pulumix.Output[*TagKeyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyIamBindingOutput) Condition() TagKeyIamBindingConditionPtrOutput {
@@ -458,6 +483,12 @@ func (o TagKeyIamBindingArrayOutput) ToTagKeyIamBindingArrayOutputWithContext(ct
 	return o
 }
 
+func (o TagKeyIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagKeyIamBinding] {
+	return pulumix.Output[[]*TagKeyIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagKeyIamBindingArrayOutput) Index(i pulumi.IntInput) TagKeyIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagKeyIamBinding {
 		return vs[0].([]*TagKeyIamBinding)[vs[1].(int)]
@@ -476,6 +507,12 @@ func (o TagKeyIamBindingMapOutput) ToTagKeyIamBindingMapOutput() TagKeyIamBindin
 
 func (o TagKeyIamBindingMapOutput) ToTagKeyIamBindingMapOutputWithContext(ctx context.Context) TagKeyIamBindingMapOutput {
 	return o
+}
+
+func (o TagKeyIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagKeyIamBinding] {
+	return pulumix.Output[map[string]*TagKeyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyIamBindingMapOutput) MapIndex(k pulumi.StringInput) TagKeyIamBindingOutput {

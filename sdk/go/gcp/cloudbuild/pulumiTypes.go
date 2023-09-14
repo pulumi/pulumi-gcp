@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i BitbucketServerConfigConnectedRepositoryArgs) ToBitbucketServerConfigCon
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigConnectedRepositoryOutput)
 }
 
+func (i BitbucketServerConfigConnectedRepositoryArgs) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerConfigConnectedRepository] {
+	return pulumix.Output[BitbucketServerConfigConnectedRepository]{
+		OutputState: i.ToBitbucketServerConfigConnectedRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BitbucketServerConfigConnectedRepositoryArrayInput is an input type that accepts BitbucketServerConfigConnectedRepositoryArray and BitbucketServerConfigConnectedRepositoryArrayOutput values.
 // You can construct a concrete instance of `BitbucketServerConfigConnectedRepositoryArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i BitbucketServerConfigConnectedRepositoryArray) ToBitbucketServerConfigCo
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigConnectedRepositoryArrayOutput)
 }
 
+func (i BitbucketServerConfigConnectedRepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]BitbucketServerConfigConnectedRepository] {
+	return pulumix.Output[[]BitbucketServerConfigConnectedRepository]{
+		OutputState: i.ToBitbucketServerConfigConnectedRepositoryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BitbucketServerConfigConnectedRepositoryOutput struct{ *pulumi.OutputState }
 
 func (BitbucketServerConfigConnectedRepositoryOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o BitbucketServerConfigConnectedRepositoryOutput) ToBitbucketServerConfigC
 
 func (o BitbucketServerConfigConnectedRepositoryOutput) ToBitbucketServerConfigConnectedRepositoryOutputWithContext(ctx context.Context) BitbucketServerConfigConnectedRepositoryOutput {
 	return o
+}
+
+func (o BitbucketServerConfigConnectedRepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerConfigConnectedRepository] {
+	return pulumix.Output[BitbucketServerConfigConnectedRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Identifier for the project storing the repository.
@@ -111,6 +130,12 @@ func (o BitbucketServerConfigConnectedRepositoryArrayOutput) ToBitbucketServerCo
 
 func (o BitbucketServerConfigConnectedRepositoryArrayOutput) ToBitbucketServerConfigConnectedRepositoryArrayOutputWithContext(ctx context.Context) BitbucketServerConfigConnectedRepositoryArrayOutput {
 	return o
+}
+
+func (o BitbucketServerConfigConnectedRepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BitbucketServerConfigConnectedRepository] {
+	return pulumix.Output[[]BitbucketServerConfigConnectedRepository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BitbucketServerConfigConnectedRepositoryArrayOutput) Index(i pulumi.IntInput) BitbucketServerConfigConnectedRepositoryOutput {
@@ -166,6 +191,12 @@ func (i BitbucketServerConfigSecretsArgs) ToBitbucketServerConfigSecretsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigSecretsOutput)
 }
 
+func (i BitbucketServerConfigSecretsArgs) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerConfigSecrets] {
+	return pulumix.Output[BitbucketServerConfigSecrets]{
+		OutputState: i.ToBitbucketServerConfigSecretsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BitbucketServerConfigSecretsArgs) ToBitbucketServerConfigSecretsPtrOutput() BitbucketServerConfigSecretsPtrOutput {
 	return i.ToBitbucketServerConfigSecretsPtrOutputWithContext(context.Background())
 }
@@ -207,6 +238,12 @@ func (i *bitbucketServerConfigSecretsPtrType) ToBitbucketServerConfigSecretsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BitbucketServerConfigSecretsPtrOutput)
 }
 
+func (i *bitbucketServerConfigSecretsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerConfigSecrets] {
+	return pulumix.Output[*BitbucketServerConfigSecrets]{
+		OutputState: i.ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BitbucketServerConfigSecretsOutput struct{ *pulumi.OutputState }
 
 func (BitbucketServerConfigSecretsOutput) ElementType() reflect.Type {
@@ -229,6 +266,12 @@ func (o BitbucketServerConfigSecretsOutput) ToBitbucketServerConfigSecretsPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BitbucketServerConfigSecrets) *BitbucketServerConfigSecrets {
 		return &v
 	}).(BitbucketServerConfigSecretsPtrOutput)
+}
+
+func (o BitbucketServerConfigSecretsOutput) ToOutput(ctx context.Context) pulumix.Output[BitbucketServerConfigSecrets] {
+	return pulumix.Output[BitbucketServerConfigSecrets]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name for the admin access token's secret version.
@@ -261,6 +304,12 @@ func (o BitbucketServerConfigSecretsPtrOutput) ToBitbucketServerConfigSecretsPtr
 
 func (o BitbucketServerConfigSecretsPtrOutput) ToBitbucketServerConfigSecretsPtrOutputWithContext(ctx context.Context) BitbucketServerConfigSecretsPtrOutput {
 	return o
+}
+
+func (o BitbucketServerConfigSecretsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BitbucketServerConfigSecrets] {
+	return pulumix.Output[*BitbucketServerConfigSecrets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BitbucketServerConfigSecretsPtrOutput) Elem() BitbucketServerConfigSecretsOutput {
@@ -341,6 +390,12 @@ func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerApprovalConfigOutput)
 }
 
+func (i TriggerApprovalConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerApprovalConfig] {
+	return pulumix.Output[TriggerApprovalConfig]{
+		OutputState: i.ToTriggerApprovalConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerApprovalConfigArgs) ToTriggerApprovalConfigPtrOutput() TriggerApprovalConfigPtrOutput {
 	return i.ToTriggerApprovalConfigPtrOutputWithContext(context.Background())
 }
@@ -382,6 +437,12 @@ func (i *triggerApprovalConfigPtrType) ToTriggerApprovalConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerApprovalConfigPtrOutput)
 }
 
+func (i *triggerApprovalConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerApprovalConfig] {
+	return pulumix.Output[*TriggerApprovalConfig]{
+		OutputState: i.ToTriggerApprovalConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerApprovalConfigOutput struct{ *pulumi.OutputState }
 
 func (TriggerApprovalConfigOutput) ElementType() reflect.Type {
@@ -406,6 +467,12 @@ func (o TriggerApprovalConfigOutput) ToTriggerApprovalConfigPtrOutputWithContext
 	}).(TriggerApprovalConfigPtrOutput)
 }
 
+func (o TriggerApprovalConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerApprovalConfig] {
+	return pulumix.Output[TriggerApprovalConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether or not approval is needed. If this is set on a build, it will become pending when run,
 // and will need to be explicitly approved to start.
 func (o TriggerApprovalConfigOutput) ApprovalRequired() pulumi.BoolPtrOutput {
@@ -424,6 +491,12 @@ func (o TriggerApprovalConfigPtrOutput) ToTriggerApprovalConfigPtrOutput() Trigg
 
 func (o TriggerApprovalConfigPtrOutput) ToTriggerApprovalConfigPtrOutputWithContext(ctx context.Context) TriggerApprovalConfigPtrOutput {
 	return o
+}
+
+func (o TriggerApprovalConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerApprovalConfig] {
+	return pulumix.Output[*TriggerApprovalConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerApprovalConfigPtrOutput) Elem() TriggerApprovalConfigOutput {
@@ -502,6 +575,12 @@ func (i TriggerBitbucketServerTriggerConfigArgs) ToTriggerBitbucketServerTrigger
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigOutput)
 }
 
+func (i TriggerBitbucketServerTriggerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[TriggerBitbucketServerTriggerConfig]{
+		OutputState: i.ToTriggerBitbucketServerTriggerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBitbucketServerTriggerConfigArgs) ToTriggerBitbucketServerTriggerConfigPtrOutput() TriggerBitbucketServerTriggerConfigPtrOutput {
 	return i.ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(context.Background())
 }
@@ -543,6 +622,12 @@ func (i *triggerBitbucketServerTriggerConfigPtrType) ToTriggerBitbucketServerTri
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPtrOutput)
 }
 
+func (i *triggerBitbucketServerTriggerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[*TriggerBitbucketServerTriggerConfig]{
+		OutputState: i.ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBitbucketServerTriggerConfigOutput struct{ *pulumi.OutputState }
 
 func (TriggerBitbucketServerTriggerConfigOutput) ElementType() reflect.Type {
@@ -565,6 +650,12 @@ func (o TriggerBitbucketServerTriggerConfigOutput) ToTriggerBitbucketServerTrigg
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBitbucketServerTriggerConfig) *TriggerBitbucketServerTriggerConfig {
 		return &v
 	}).(TriggerBitbucketServerTriggerConfigPtrOutput)
+}
+
+func (o TriggerBitbucketServerTriggerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[TriggerBitbucketServerTriggerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Bitbucket server config resource that this trigger config maps to.
@@ -609,6 +700,12 @@ func (o TriggerBitbucketServerTriggerConfigPtrOutput) ToTriggerBitbucketServerTr
 
 func (o TriggerBitbucketServerTriggerConfigPtrOutput) ToTriggerBitbucketServerTriggerConfigPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPtrOutput {
 	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[*TriggerBitbucketServerTriggerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBitbucketServerTriggerConfigPtrOutput) Elem() TriggerBitbucketServerTriggerConfigOutput {
@@ -719,6 +816,12 @@ func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToTriggerBitbucketSe
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPullRequestOutput)
 }
 
+func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[TriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: i.ToTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBitbucketServerTriggerConfigPullRequestArgs) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutput() TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
 	return i.ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(context.Background())
 }
@@ -760,6 +863,12 @@ func (i *triggerBitbucketServerTriggerConfigPullRequestPtrType) ToTriggerBitbuck
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput)
 }
 
+func (i *triggerBitbucketServerTriggerConfigPullRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[*TriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: i.ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBitbucketServerTriggerConfigPullRequestOutput struct{ *pulumi.OutputState }
 
 func (TriggerBitbucketServerTriggerConfigPullRequestOutput) ElementType() reflect.Type {
@@ -782,6 +891,12 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToTriggerBitbucket
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBitbucketServerTriggerConfigPullRequest) *TriggerBitbucketServerTriggerConfigPullRequest {
 		return &v
 	}).(TriggerBitbucketServerTriggerConfigPullRequestPtrOutput)
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[TriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex of branches to match.
@@ -813,6 +928,12 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) ToTriggerBitbuc
 
 func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) ToTriggerBitbucketServerTriggerConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPullRequestPtrOutput {
 	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[*TriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Elem() TriggerBitbucketServerTriggerConfigPullRequestOutput {
@@ -898,6 +1019,12 @@ func (i TriggerBitbucketServerTriggerConfigPushArgs) ToTriggerBitbucketServerTri
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPushOutput)
 }
 
+func (i TriggerBitbucketServerTriggerConfigPushArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[TriggerBitbucketServerTriggerConfigPush]{
+		OutputState: i.ToTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBitbucketServerTriggerConfigPushArgs) ToTriggerBitbucketServerTriggerConfigPushPtrOutput() TriggerBitbucketServerTriggerConfigPushPtrOutput {
 	return i.ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(context.Background())
 }
@@ -939,6 +1066,12 @@ func (i *triggerBitbucketServerTriggerConfigPushPtrType) ToTriggerBitbucketServe
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
 }
 
+func (i *triggerBitbucketServerTriggerConfigPushPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[*TriggerBitbucketServerTriggerConfigPush]{
+		OutputState: i.ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBitbucketServerTriggerConfigPushOutput struct{ *pulumi.OutputState }
 
 func (TriggerBitbucketServerTriggerConfigPushOutput) ElementType() reflect.Type {
@@ -961,6 +1094,12 @@ func (o TriggerBitbucketServerTriggerConfigPushOutput) ToTriggerBitbucketServerT
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBitbucketServerTriggerConfigPush) *TriggerBitbucketServerTriggerConfigPush {
 		return &v
 	}).(TriggerBitbucketServerTriggerConfigPushPtrOutput)
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[TriggerBitbucketServerTriggerConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex of branches to match.  Specify only one of branch or tag.
@@ -990,6 +1129,12 @@ func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) ToTriggerBitbucketServ
 
 func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) ToTriggerBitbucketServerTriggerConfigPushPtrOutputWithContext(ctx context.Context) TriggerBitbucketServerTriggerConfigPushPtrOutput {
 	return o
+}
+
+func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[*TriggerBitbucketServerTriggerConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBitbucketServerTriggerConfigPushPtrOutput) Elem() TriggerBitbucketServerTriggerConfigPushOutput {
@@ -1145,6 +1290,12 @@ func (i TriggerBuildArgs) ToTriggerBuildOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOutput)
 }
 
+func (i TriggerBuildArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuild] {
+	return pulumix.Output[TriggerBuild]{
+		OutputState: i.ToTriggerBuildOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildArgs) ToTriggerBuildPtrOutput() TriggerBuildPtrOutput {
 	return i.ToTriggerBuildPtrOutputWithContext(context.Background())
 }
@@ -1186,6 +1337,12 @@ func (i *triggerBuildPtrType) ToTriggerBuildPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildPtrOutput)
 }
 
+func (i *triggerBuildPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuild] {
+	return pulumix.Output[*TriggerBuild]{
+		OutputState: i.ToTriggerBuildPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildOutput) ElementType() reflect.Type {
@@ -1208,6 +1365,12 @@ func (o TriggerBuildOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuild) *TriggerBuild {
 		return &v
 	}).(TriggerBuildPtrOutput)
+}
+
+func (o TriggerBuildOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuild] {
+	return pulumix.Output[TriggerBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -1300,6 +1463,12 @@ func (o TriggerBuildPtrOutput) ToTriggerBuildPtrOutput() TriggerBuildPtrOutput {
 
 func (o TriggerBuildPtrOutput) ToTriggerBuildPtrOutputWithContext(ctx context.Context) TriggerBuildPtrOutput {
 	return o
+}
+
+func (o TriggerBuildPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuild] {
+	return pulumix.Output[*TriggerBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildPtrOutput) Elem() TriggerBuildOutput {
@@ -1503,6 +1672,12 @@ func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsOutput)
 }
 
+func (i TriggerBuildArtifactsArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildArtifacts] {
+	return pulumix.Output[TriggerBuildArtifacts]{
+		OutputState: i.ToTriggerBuildArtifactsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildArtifactsArgs) ToTriggerBuildArtifactsPtrOutput() TriggerBuildArtifactsPtrOutput {
 	return i.ToTriggerBuildArtifactsPtrOutputWithContext(context.Background())
 }
@@ -1544,6 +1719,12 @@ func (i *triggerBuildArtifactsPtrType) ToTriggerBuildArtifactsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsPtrOutput)
 }
 
+func (i *triggerBuildArtifactsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildArtifacts] {
+	return pulumix.Output[*TriggerBuildArtifacts]{
+		OutputState: i.ToTriggerBuildArtifactsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildArtifactsOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildArtifactsOutput) ElementType() reflect.Type {
@@ -1566,6 +1747,12 @@ func (o TriggerBuildArtifactsOutput) ToTriggerBuildArtifactsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildArtifacts) *TriggerBuildArtifacts {
 		return &v
 	}).(TriggerBuildArtifactsPtrOutput)
+}
+
+func (o TriggerBuildArtifactsOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildArtifacts] {
+	return pulumix.Output[TriggerBuildArtifacts]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of images to be pushed upon the successful completion of all build steps.
@@ -1598,6 +1785,12 @@ func (o TriggerBuildArtifactsPtrOutput) ToTriggerBuildArtifactsPtrOutput() Trigg
 
 func (o TriggerBuildArtifactsPtrOutput) ToTriggerBuildArtifactsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsPtrOutput {
 	return o
+}
+
+func (o TriggerBuildArtifactsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildArtifacts] {
+	return pulumix.Output[*TriggerBuildArtifacts]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildArtifactsPtrOutput) Elem() TriggerBuildArtifactsOutput {
@@ -1691,6 +1884,12 @@ func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsOutput)
 }
 
+func (i TriggerBuildArtifactsObjectsArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildArtifactsObjects] {
+	return pulumix.Output[TriggerBuildArtifactsObjects]{
+		OutputState: i.ToTriggerBuildArtifactsObjectsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildArtifactsObjectsArgs) ToTriggerBuildArtifactsObjectsPtrOutput() TriggerBuildArtifactsObjectsPtrOutput {
 	return i.ToTriggerBuildArtifactsObjectsPtrOutputWithContext(context.Background())
 }
@@ -1732,6 +1931,12 @@ func (i *triggerBuildArtifactsObjectsPtrType) ToTriggerBuildArtifactsObjectsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsPtrOutput)
 }
 
+func (i *triggerBuildArtifactsObjectsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildArtifactsObjects] {
+	return pulumix.Output[*TriggerBuildArtifactsObjects]{
+		OutputState: i.ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildArtifactsObjectsOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildArtifactsObjectsOutput) ElementType() reflect.Type {
@@ -1754,6 +1959,12 @@ func (o TriggerBuildArtifactsObjectsOutput) ToTriggerBuildArtifactsObjectsPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildArtifactsObjects) *TriggerBuildArtifactsObjects {
 		return &v
 	}).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+func (o TriggerBuildArtifactsObjectsOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildArtifactsObjects] {
+	return pulumix.Output[TriggerBuildArtifactsObjects]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
@@ -1789,6 +2000,12 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) ToTriggerBuildArtifactsObjectsPtr
 
 func (o TriggerBuildArtifactsObjectsPtrOutput) ToTriggerBuildArtifactsObjectsPtrOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsPtrOutput {
 	return o
+}
+
+func (o TriggerBuildArtifactsObjectsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildArtifactsObjects] {
+	return pulumix.Output[*TriggerBuildArtifactsObjects]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildArtifactsObjectsPtrOutput) Elem() TriggerBuildArtifactsObjectsOutput {
@@ -1882,6 +2099,12 @@ func (i TriggerBuildArtifactsObjectsTimingArgs) ToTriggerBuildArtifactsObjectsTi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingOutput)
 }
 
+func (i TriggerBuildArtifactsObjectsTimingArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildArtifactsObjectsTiming] {
+	return pulumix.Output[TriggerBuildArtifactsObjectsTiming]{
+		OutputState: i.ToTriggerBuildArtifactsObjectsTimingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBuildArtifactsObjectsTimingArrayInput is an input type that accepts TriggerBuildArtifactsObjectsTimingArray and TriggerBuildArtifactsObjectsTimingArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildArtifactsObjectsTimingArrayInput` via:
 //
@@ -1907,6 +2130,12 @@ func (i TriggerBuildArtifactsObjectsTimingArray) ToTriggerBuildArtifactsObjectsT
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsObjectsTimingArrayOutput)
 }
 
+func (i TriggerBuildArtifactsObjectsTimingArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildArtifactsObjectsTiming] {
+	return pulumix.Output[[]TriggerBuildArtifactsObjectsTiming]{
+		OutputState: i.ToTriggerBuildArtifactsObjectsTimingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildArtifactsObjectsTimingOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildArtifactsObjectsTimingOutput) ElementType() reflect.Type {
@@ -1919,6 +2148,12 @@ func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjects
 
 func (o TriggerBuildArtifactsObjectsTimingOutput) ToTriggerBuildArtifactsObjectsTimingOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingOutput {
 	return o
+}
+
+func (o TriggerBuildArtifactsObjectsTimingOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildArtifactsObjectsTiming] {
+	return pulumix.Output[TriggerBuildArtifactsObjectsTiming]{
+		OutputState: o.OutputState,
+	}
 }
 
 // End of time span.
@@ -1947,6 +2182,12 @@ func (o TriggerBuildArtifactsObjectsTimingArrayOutput) ToTriggerBuildArtifactsOb
 
 func (o TriggerBuildArtifactsObjectsTimingArrayOutput) ToTriggerBuildArtifactsObjectsTimingArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsObjectsTimingArrayOutput {
 	return o
+}
+
+func (o TriggerBuildArtifactsObjectsTimingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildArtifactsObjectsTiming] {
+	return pulumix.Output[[]TriggerBuildArtifactsObjectsTiming]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildArtifactsObjectsTimingArrayOutput) Index(i pulumi.IntInput) TriggerBuildArtifactsObjectsTimingOutput {
@@ -1990,6 +2231,12 @@ func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsOutput)
 }
 
+func (i TriggerBuildAvailableSecretsArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildAvailableSecrets] {
+	return pulumix.Output[TriggerBuildAvailableSecrets]{
+		OutputState: i.ToTriggerBuildAvailableSecretsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildAvailableSecretsArgs) ToTriggerBuildAvailableSecretsPtrOutput() TriggerBuildAvailableSecretsPtrOutput {
 	return i.ToTriggerBuildAvailableSecretsPtrOutputWithContext(context.Background())
 }
@@ -2031,6 +2278,12 @@ func (i *triggerBuildAvailableSecretsPtrType) ToTriggerBuildAvailableSecretsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsPtrOutput)
 }
 
+func (i *triggerBuildAvailableSecretsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildAvailableSecrets] {
+	return pulumix.Output[*TriggerBuildAvailableSecrets]{
+		OutputState: i.ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildAvailableSecretsOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildAvailableSecretsOutput) ElementType() reflect.Type {
@@ -2055,6 +2308,12 @@ func (o TriggerBuildAvailableSecretsOutput) ToTriggerBuildAvailableSecretsPtrOut
 	}).(TriggerBuildAvailableSecretsPtrOutput)
 }
 
+func (o TriggerBuildAvailableSecretsOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildAvailableSecrets] {
+	return pulumix.Output[TriggerBuildAvailableSecrets]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Pairs a secret environment variable with a SecretVersion in Secret Manager.
 // Structure is documented below.
 func (o TriggerBuildAvailableSecretsOutput) SecretManagers() TriggerBuildAvailableSecretsSecretManagerArrayOutput {
@@ -2075,6 +2334,12 @@ func (o TriggerBuildAvailableSecretsPtrOutput) ToTriggerBuildAvailableSecretsPtr
 
 func (o TriggerBuildAvailableSecretsPtrOutput) ToTriggerBuildAvailableSecretsPtrOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsPtrOutput {
 	return o
+}
+
+func (o TriggerBuildAvailableSecretsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildAvailableSecrets] {
+	return pulumix.Output[*TriggerBuildAvailableSecrets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildAvailableSecretsPtrOutput) Elem() TriggerBuildAvailableSecretsOutput {
@@ -2139,6 +2404,12 @@ func (i TriggerBuildAvailableSecretsSecretManagerArgs) ToTriggerBuildAvailableSe
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsSecretManagerOutput)
 }
 
+func (i TriggerBuildAvailableSecretsSecretManagerArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildAvailableSecretsSecretManager] {
+	return pulumix.Output[TriggerBuildAvailableSecretsSecretManager]{
+		OutputState: i.ToTriggerBuildAvailableSecretsSecretManagerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBuildAvailableSecretsSecretManagerArrayInput is an input type that accepts TriggerBuildAvailableSecretsSecretManagerArray and TriggerBuildAvailableSecretsSecretManagerArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildAvailableSecretsSecretManagerArrayInput` via:
 //
@@ -2164,6 +2435,12 @@ func (i TriggerBuildAvailableSecretsSecretManagerArray) ToTriggerBuildAvailableS
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildAvailableSecretsSecretManagerArrayOutput)
 }
 
+func (i TriggerBuildAvailableSecretsSecretManagerArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildAvailableSecretsSecretManager] {
+	return pulumix.Output[[]TriggerBuildAvailableSecretsSecretManager]{
+		OutputState: i.ToTriggerBuildAvailableSecretsSecretManagerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildAvailableSecretsSecretManagerOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildAvailableSecretsSecretManagerOutput) ElementType() reflect.Type {
@@ -2176,6 +2453,12 @@ func (o TriggerBuildAvailableSecretsSecretManagerOutput) ToTriggerBuildAvailable
 
 func (o TriggerBuildAvailableSecretsSecretManagerOutput) ToTriggerBuildAvailableSecretsSecretManagerOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsSecretManagerOutput {
 	return o
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildAvailableSecretsSecretManager] {
+	return pulumix.Output[TriggerBuildAvailableSecretsSecretManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Environment variable name to associate with the secret. Secret environment
@@ -2202,6 +2485,12 @@ func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) ToTriggerBuildAvai
 
 func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) ToTriggerBuildAvailableSecretsSecretManagerArrayOutputWithContext(ctx context.Context) TriggerBuildAvailableSecretsSecretManagerArrayOutput {
 	return o
+}
+
+func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildAvailableSecretsSecretManager] {
+	return pulumix.Output[[]TriggerBuildAvailableSecretsSecretManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildAvailableSecretsSecretManagerArrayOutput) Index(i pulumi.IntInput) TriggerBuildAvailableSecretsSecretManagerOutput {
@@ -2335,6 +2624,12 @@ func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsOutput)
 }
 
+func (i TriggerBuildOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildOptions] {
+	return pulumix.Output[TriggerBuildOptions]{
+		OutputState: i.ToTriggerBuildOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildOptionsArgs) ToTriggerBuildOptionsPtrOutput() TriggerBuildOptionsPtrOutput {
 	return i.ToTriggerBuildOptionsPtrOutputWithContext(context.Background())
 }
@@ -2376,6 +2671,12 @@ func (i *triggerBuildOptionsPtrType) ToTriggerBuildOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsPtrOutput)
 }
 
+func (i *triggerBuildOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildOptions] {
+	return pulumix.Output[*TriggerBuildOptions]{
+		OutputState: i.ToTriggerBuildOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildOptionsOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildOptionsOutput) ElementType() reflect.Type {
@@ -2398,6 +2699,12 @@ func (o TriggerBuildOptionsOutput) ToTriggerBuildOptionsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildOptions) *TriggerBuildOptions {
 		return &v
 	}).(TriggerBuildOptionsPtrOutput)
+}
+
+func (o TriggerBuildOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildOptions] {
+	return pulumix.Output[TriggerBuildOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
@@ -2496,6 +2803,12 @@ func (o TriggerBuildOptionsPtrOutput) ToTriggerBuildOptionsPtrOutput() TriggerBu
 
 func (o TriggerBuildOptionsPtrOutput) ToTriggerBuildOptionsPtrOutputWithContext(ctx context.Context) TriggerBuildOptionsPtrOutput {
 	return o
+}
+
+func (o TriggerBuildOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildOptions] {
+	return pulumix.Output[*TriggerBuildOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildOptionsPtrOutput) Elem() TriggerBuildOptionsOutput {
@@ -2697,6 +3010,12 @@ func (i TriggerBuildOptionsVolumeArgs) ToTriggerBuildOptionsVolumeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsVolumeOutput)
 }
 
+func (i TriggerBuildOptionsVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildOptionsVolume] {
+	return pulumix.Output[TriggerBuildOptionsVolume]{
+		OutputState: i.ToTriggerBuildOptionsVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBuildOptionsVolumeArrayInput is an input type that accepts TriggerBuildOptionsVolumeArray and TriggerBuildOptionsVolumeArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildOptionsVolumeArrayInput` via:
 //
@@ -2722,6 +3041,12 @@ func (i TriggerBuildOptionsVolumeArray) ToTriggerBuildOptionsVolumeArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildOptionsVolumeArrayOutput)
 }
 
+func (i TriggerBuildOptionsVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildOptionsVolume] {
+	return pulumix.Output[[]TriggerBuildOptionsVolume]{
+		OutputState: i.ToTriggerBuildOptionsVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildOptionsVolumeOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildOptionsVolumeOutput) ElementType() reflect.Type {
@@ -2734,6 +3059,12 @@ func (o TriggerBuildOptionsVolumeOutput) ToTriggerBuildOptionsVolumeOutput() Tri
 
 func (o TriggerBuildOptionsVolumeOutput) ToTriggerBuildOptionsVolumeOutputWithContext(ctx context.Context) TriggerBuildOptionsVolumeOutput {
 	return o
+}
+
+func (o TriggerBuildOptionsVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildOptionsVolume] {
+	return pulumix.Output[TriggerBuildOptionsVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the volume to mount.
@@ -2762,6 +3093,12 @@ func (o TriggerBuildOptionsVolumeArrayOutput) ToTriggerBuildOptionsVolumeArrayOu
 
 func (o TriggerBuildOptionsVolumeArrayOutput) ToTriggerBuildOptionsVolumeArrayOutputWithContext(ctx context.Context) TriggerBuildOptionsVolumeArrayOutput {
 	return o
+}
+
+func (o TriggerBuildOptionsVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildOptionsVolume] {
+	return pulumix.Output[[]TriggerBuildOptionsVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildOptionsVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuildOptionsVolumeOutput {
@@ -2813,6 +3150,12 @@ func (i TriggerBuildSecretArgs) ToTriggerBuildSecretOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSecretOutput)
 }
 
+func (i TriggerBuildSecretArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSecret] {
+	return pulumix.Output[TriggerBuildSecret]{
+		OutputState: i.ToTriggerBuildSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBuildSecretArrayInput is an input type that accepts TriggerBuildSecretArray and TriggerBuildSecretArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildSecretArrayInput` via:
 //
@@ -2838,6 +3181,12 @@ func (i TriggerBuildSecretArray) ToTriggerBuildSecretArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSecretArrayOutput)
 }
 
+func (i TriggerBuildSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildSecret] {
+	return pulumix.Output[[]TriggerBuildSecret]{
+		OutputState: i.ToTriggerBuildSecretArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildSecretOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildSecretOutput) ElementType() reflect.Type {
@@ -2850,6 +3199,12 @@ func (o TriggerBuildSecretOutput) ToTriggerBuildSecretOutput() TriggerBuildSecre
 
 func (o TriggerBuildSecretOutput) ToTriggerBuildSecretOutputWithContext(ctx context.Context) TriggerBuildSecretOutput {
 	return o
+}
+
+func (o TriggerBuildSecretOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSecret] {
+	return pulumix.Output[TriggerBuildSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud KMS key name to use to decrypt these envs.
@@ -2877,6 +3232,12 @@ func (o TriggerBuildSecretArrayOutput) ToTriggerBuildSecretArrayOutput() Trigger
 
 func (o TriggerBuildSecretArrayOutput) ToTriggerBuildSecretArrayOutputWithContext(ctx context.Context) TriggerBuildSecretArrayOutput {
 	return o
+}
+
+func (o TriggerBuildSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildSecret] {
+	return pulumix.Output[[]TriggerBuildSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildSecretArrayOutput) Index(i pulumi.IntInput) TriggerBuildSecretOutput {
@@ -2926,6 +3287,12 @@ func (i TriggerBuildSourceArgs) ToTriggerBuildSourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceOutput)
 }
 
+func (i TriggerBuildSourceArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSource] {
+	return pulumix.Output[TriggerBuildSource]{
+		OutputState: i.ToTriggerBuildSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildSourceArgs) ToTriggerBuildSourcePtrOutput() TriggerBuildSourcePtrOutput {
 	return i.ToTriggerBuildSourcePtrOutputWithContext(context.Background())
 }
@@ -2967,6 +3334,12 @@ func (i *triggerBuildSourcePtrType) ToTriggerBuildSourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourcePtrOutput)
 }
 
+func (i *triggerBuildSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildSource] {
+	return pulumix.Output[*TriggerBuildSource]{
+		OutputState: i.ToTriggerBuildSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildSourceOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildSourceOutput) ElementType() reflect.Type {
@@ -2989,6 +3362,12 @@ func (o TriggerBuildSourceOutput) ToTriggerBuildSourcePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildSource) *TriggerBuildSource {
 		return &v
 	}).(TriggerBuildSourcePtrOutput)
+}
+
+func (o TriggerBuildSourceOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSource] {
+	return pulumix.Output[TriggerBuildSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Location of the source in a Google Cloud Source Repository.
@@ -3015,6 +3394,12 @@ func (o TriggerBuildSourcePtrOutput) ToTriggerBuildSourcePtrOutput() TriggerBuil
 
 func (o TriggerBuildSourcePtrOutput) ToTriggerBuildSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourcePtrOutput {
 	return o
+}
+
+func (o TriggerBuildSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildSource] {
+	return pulumix.Output[*TriggerBuildSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildSourcePtrOutput) Elem() TriggerBuildSourceOutput {
@@ -3124,6 +3509,12 @@ func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceRepoSourceOutput)
 }
 
+func (i TriggerBuildSourceRepoSourceArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSourceRepoSource] {
+	return pulumix.Output[TriggerBuildSourceRepoSource]{
+		OutputState: i.ToTriggerBuildSourceRepoSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildSourceRepoSourceArgs) ToTriggerBuildSourceRepoSourcePtrOutput() TriggerBuildSourceRepoSourcePtrOutput {
 	return i.ToTriggerBuildSourceRepoSourcePtrOutputWithContext(context.Background())
 }
@@ -3165,6 +3556,12 @@ func (i *triggerBuildSourceRepoSourcePtrType) ToTriggerBuildSourceRepoSourcePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceRepoSourcePtrOutput)
 }
 
+func (i *triggerBuildSourceRepoSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildSourceRepoSource] {
+	return pulumix.Output[*TriggerBuildSourceRepoSource]{
+		OutputState: i.ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildSourceRepoSourceOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildSourceRepoSourceOutput) ElementType() reflect.Type {
@@ -3187,6 +3584,12 @@ func (o TriggerBuildSourceRepoSourceOutput) ToTriggerBuildSourceRepoSourcePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildSourceRepoSource) *TriggerBuildSourceRepoSource {
 		return &v
 	}).(TriggerBuildSourceRepoSourcePtrOutput)
+}
+
+func (o TriggerBuildSourceRepoSourceOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSourceRepoSource] {
+	return pulumix.Output[TriggerBuildSourceRepoSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
@@ -3248,6 +3651,12 @@ func (o TriggerBuildSourceRepoSourcePtrOutput) ToTriggerBuildSourceRepoSourcePtr
 
 func (o TriggerBuildSourceRepoSourcePtrOutput) ToTriggerBuildSourceRepoSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceRepoSourcePtrOutput {
 	return o
+}
+
+func (o TriggerBuildSourceRepoSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildSourceRepoSource] {
+	return pulumix.Output[*TriggerBuildSourceRepoSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildSourceRepoSourcePtrOutput) Elem() TriggerBuildSourceRepoSourceOutput {
@@ -3392,6 +3801,12 @@ func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourceOu
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceStorageSourceOutput)
 }
 
+func (i TriggerBuildSourceStorageSourceArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSourceStorageSource] {
+	return pulumix.Output[TriggerBuildSourceStorageSource]{
+		OutputState: i.ToTriggerBuildSourceStorageSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerBuildSourceStorageSourceArgs) ToTriggerBuildSourceStorageSourcePtrOutput() TriggerBuildSourceStorageSourcePtrOutput {
 	return i.ToTriggerBuildSourceStorageSourcePtrOutputWithContext(context.Background())
 }
@@ -3433,6 +3848,12 @@ func (i *triggerBuildSourceStorageSourcePtrType) ToTriggerBuildSourceStorageSour
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildSourceStorageSourcePtrOutput)
 }
 
+func (i *triggerBuildSourceStorageSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildSourceStorageSource] {
+	return pulumix.Output[*TriggerBuildSourceStorageSource]{
+		OutputState: i.ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildSourceStorageSourceOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildSourceStorageSourceOutput) ElementType() reflect.Type {
@@ -3455,6 +3876,12 @@ func (o TriggerBuildSourceStorageSourceOutput) ToTriggerBuildSourceStorageSource
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerBuildSourceStorageSource) *TriggerBuildSourceStorageSource {
 		return &v
 	}).(TriggerBuildSourceStorageSourcePtrOutput)
+}
+
+func (o TriggerBuildSourceStorageSourceOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildSourceStorageSource] {
+	return pulumix.Output[TriggerBuildSourceStorageSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Google Cloud Storage bucket containing the source.
@@ -3486,6 +3913,12 @@ func (o TriggerBuildSourceStorageSourcePtrOutput) ToTriggerBuildSourceStorageSou
 
 func (o TriggerBuildSourceStorageSourcePtrOutput) ToTriggerBuildSourceStorageSourcePtrOutputWithContext(ctx context.Context) TriggerBuildSourceStorageSourcePtrOutput {
 	return o
+}
+
+func (o TriggerBuildSourceStorageSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerBuildSourceStorageSource] {
+	return pulumix.Output[*TriggerBuildSourceStorageSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildSourceStorageSourcePtrOutput) Elem() TriggerBuildSourceStorageSourceOutput {
@@ -3723,6 +4156,12 @@ func (i TriggerBuildStepArgs) ToTriggerBuildStepOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildStepOutput)
 }
 
+func (i TriggerBuildStepArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildStep] {
+	return pulumix.Output[TriggerBuildStep]{
+		OutputState: i.ToTriggerBuildStepOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBuildStepArrayInput is an input type that accepts TriggerBuildStepArray and TriggerBuildStepArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildStepArrayInput` via:
 //
@@ -3748,6 +4187,12 @@ func (i TriggerBuildStepArray) ToTriggerBuildStepArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildStepArrayOutput)
 }
 
+func (i TriggerBuildStepArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildStep] {
+	return pulumix.Output[[]TriggerBuildStep]{
+		OutputState: i.ToTriggerBuildStepArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildStepOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildStepOutput) ElementType() reflect.Type {
@@ -3760,6 +4205,12 @@ func (o TriggerBuildStepOutput) ToTriggerBuildStepOutput() TriggerBuildStepOutpu
 
 func (o TriggerBuildStepOutput) ToTriggerBuildStepOutputWithContext(ctx context.Context) TriggerBuildStepOutput {
 	return o
+}
+
+func (o TriggerBuildStepOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildStep] {
+	return pulumix.Output[TriggerBuildStep]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allow this build step to fail without failing the entire build if and
@@ -3900,6 +4351,12 @@ func (o TriggerBuildStepArrayOutput) ToTriggerBuildStepArrayOutputWithContext(ct
 	return o
 }
 
+func (o TriggerBuildStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildStep] {
+	return pulumix.Output[[]TriggerBuildStep]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TriggerBuildStepArrayOutput) Index(i pulumi.IntInput) TriggerBuildStepOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildStep {
 		return vs[0].([]TriggerBuildStep)[vs[1].(int)]
@@ -3951,6 +4408,12 @@ func (i TriggerBuildStepVolumeArgs) ToTriggerBuildStepVolumeOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildStepVolumeOutput)
 }
 
+func (i TriggerBuildStepVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildStepVolume] {
+	return pulumix.Output[TriggerBuildStepVolume]{
+		OutputState: i.ToTriggerBuildStepVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerBuildStepVolumeArrayInput is an input type that accepts TriggerBuildStepVolumeArray and TriggerBuildStepVolumeArrayOutput values.
 // You can construct a concrete instance of `TriggerBuildStepVolumeArrayInput` via:
 //
@@ -3976,6 +4439,12 @@ func (i TriggerBuildStepVolumeArray) ToTriggerBuildStepVolumeArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildStepVolumeArrayOutput)
 }
 
+func (i TriggerBuildStepVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildStepVolume] {
+	return pulumix.Output[[]TriggerBuildStepVolume]{
+		OutputState: i.ToTriggerBuildStepVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerBuildStepVolumeOutput struct{ *pulumi.OutputState }
 
 func (TriggerBuildStepVolumeOutput) ElementType() reflect.Type {
@@ -3988,6 +4457,12 @@ func (o TriggerBuildStepVolumeOutput) ToTriggerBuildStepVolumeOutput() TriggerBu
 
 func (o TriggerBuildStepVolumeOutput) ToTriggerBuildStepVolumeOutputWithContext(ctx context.Context) TriggerBuildStepVolumeOutput {
 	return o
+}
+
+func (o TriggerBuildStepVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerBuildStepVolume] {
+	return pulumix.Output[TriggerBuildStepVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the volume to mount.
@@ -4016,6 +4491,12 @@ func (o TriggerBuildStepVolumeArrayOutput) ToTriggerBuildStepVolumeArrayOutput()
 
 func (o TriggerBuildStepVolumeArrayOutput) ToTriggerBuildStepVolumeArrayOutputWithContext(ctx context.Context) TriggerBuildStepVolumeArrayOutput {
 	return o
+}
+
+func (o TriggerBuildStepVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerBuildStepVolume] {
+	return pulumix.Output[[]TriggerBuildStepVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuildStepVolumeOutput {
@@ -4097,6 +4578,12 @@ func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGitFileSourceOutput)
 }
 
+func (i TriggerGitFileSourceArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerGitFileSource] {
+	return pulumix.Output[TriggerGitFileSource]{
+		OutputState: i.ToTriggerGitFileSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerGitFileSourceArgs) ToTriggerGitFileSourcePtrOutput() TriggerGitFileSourcePtrOutput {
 	return i.ToTriggerGitFileSourcePtrOutputWithContext(context.Background())
 }
@@ -4138,6 +4625,12 @@ func (i *triggerGitFileSourcePtrType) ToTriggerGitFileSourcePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGitFileSourcePtrOutput)
 }
 
+func (i *triggerGitFileSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerGitFileSource] {
+	return pulumix.Output[*TriggerGitFileSource]{
+		OutputState: i.ToTriggerGitFileSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerGitFileSourceOutput struct{ *pulumi.OutputState }
 
 func (TriggerGitFileSourceOutput) ElementType() reflect.Type {
@@ -4160,6 +4653,12 @@ func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourcePtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGitFileSource) *TriggerGitFileSource {
 		return &v
 	}).(TriggerGitFileSourcePtrOutput)
+}
+
+func (o TriggerGitFileSourceOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerGitFileSource] {
+	return pulumix.Output[TriggerGitFileSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full resource name of the bitbucket server config.
@@ -4217,6 +4716,12 @@ func (o TriggerGitFileSourcePtrOutput) ToTriggerGitFileSourcePtrOutput() Trigger
 
 func (o TriggerGitFileSourcePtrOutput) ToTriggerGitFileSourcePtrOutputWithContext(ctx context.Context) TriggerGitFileSourcePtrOutput {
 	return o
+}
+
+func (o TriggerGitFileSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerGitFileSource] {
+	return pulumix.Output[*TriggerGitFileSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerGitFileSourcePtrOutput) Elem() TriggerGitFileSourceOutput {
@@ -4366,6 +4871,12 @@ func (i TriggerGithubArgs) ToTriggerGithubOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubOutput)
 }
 
+func (i TriggerGithubArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerGithub] {
+	return pulumix.Output[TriggerGithub]{
+		OutputState: i.ToTriggerGithubOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerGithubArgs) ToTriggerGithubPtrOutput() TriggerGithubPtrOutput {
 	return i.ToTriggerGithubPtrOutputWithContext(context.Background())
 }
@@ -4407,6 +4918,12 @@ func (i *triggerGithubPtrType) ToTriggerGithubPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPtrOutput)
 }
 
+func (i *triggerGithubPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerGithub] {
+	return pulumix.Output[*TriggerGithub]{
+		OutputState: i.ToTriggerGithubPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerGithubOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubOutput) ElementType() reflect.Type {
@@ -4429,6 +4946,12 @@ func (o TriggerGithubOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGithub) *TriggerGithub {
 		return &v
 	}).(TriggerGithubPtrOutput)
+}
+
+func (o TriggerGithubOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerGithub] {
+	return pulumix.Output[TriggerGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name of the github enterprise config that should be applied to this installation.
@@ -4473,6 +4996,12 @@ func (o TriggerGithubPtrOutput) ToTriggerGithubPtrOutput() TriggerGithubPtrOutpu
 
 func (o TriggerGithubPtrOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Context) TriggerGithubPtrOutput {
 	return o
+}
+
+func (o TriggerGithubPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerGithub] {
+	return pulumix.Output[*TriggerGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerGithubPtrOutput) Elem() TriggerGithubOutput {
@@ -4585,6 +5114,12 @@ func (i TriggerGithubPullRequestArgs) ToTriggerGithubPullRequestOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPullRequestOutput)
 }
 
+func (i TriggerGithubPullRequestArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerGithubPullRequest] {
+	return pulumix.Output[TriggerGithubPullRequest]{
+		OutputState: i.ToTriggerGithubPullRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerGithubPullRequestArgs) ToTriggerGithubPullRequestPtrOutput() TriggerGithubPullRequestPtrOutput {
 	return i.ToTriggerGithubPullRequestPtrOutputWithContext(context.Background())
 }
@@ -4626,6 +5161,12 @@ func (i *triggerGithubPullRequestPtrType) ToTriggerGithubPullRequestPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPullRequestPtrOutput)
 }
 
+func (i *triggerGithubPullRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerGithubPullRequest] {
+	return pulumix.Output[*TriggerGithubPullRequest]{
+		OutputState: i.ToTriggerGithubPullRequestPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerGithubPullRequestOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPullRequestOutput) ElementType() reflect.Type {
@@ -4648,6 +5189,12 @@ func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGithubPullRequest) *TriggerGithubPullRequest {
 		return &v
 	}).(TriggerGithubPullRequestPtrOutput)
+}
+
+func (o TriggerGithubPullRequestOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerGithubPullRequest] {
+	return pulumix.Output[TriggerGithubPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex of branches to match.
@@ -4679,6 +5226,12 @@ func (o TriggerGithubPullRequestPtrOutput) ToTriggerGithubPullRequestPtrOutput()
 
 func (o TriggerGithubPullRequestPtrOutput) ToTriggerGithubPullRequestPtrOutputWithContext(ctx context.Context) TriggerGithubPullRequestPtrOutput {
 	return o
+}
+
+func (o TriggerGithubPullRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerGithubPullRequest] {
+	return pulumix.Output[*TriggerGithubPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerGithubPullRequestPtrOutput) Elem() TriggerGithubPullRequestOutput {
@@ -4764,6 +5317,12 @@ func (i TriggerGithubPushArgs) ToTriggerGithubPushOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPushOutput)
 }
 
+func (i TriggerGithubPushArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerGithubPush] {
+	return pulumix.Output[TriggerGithubPush]{
+		OutputState: i.ToTriggerGithubPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerGithubPushArgs) ToTriggerGithubPushPtrOutput() TriggerGithubPushPtrOutput {
 	return i.ToTriggerGithubPushPtrOutputWithContext(context.Background())
 }
@@ -4805,6 +5364,12 @@ func (i *triggerGithubPushPtrType) ToTriggerGithubPushPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerGithubPushPtrOutput)
 }
 
+func (i *triggerGithubPushPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerGithubPush] {
+	return pulumix.Output[*TriggerGithubPush]{
+		OutputState: i.ToTriggerGithubPushPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerGithubPushOutput struct{ *pulumi.OutputState }
 
 func (TriggerGithubPushOutput) ElementType() reflect.Type {
@@ -4827,6 +5392,12 @@ func (o TriggerGithubPushOutput) ToTriggerGithubPushPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerGithubPush) *TriggerGithubPush {
 		return &v
 	}).(TriggerGithubPushPtrOutput)
+}
+
+func (o TriggerGithubPushOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerGithubPush] {
+	return pulumix.Output[TriggerGithubPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex of branches to match.  Specify only one of branch or tag.
@@ -4856,6 +5427,12 @@ func (o TriggerGithubPushPtrOutput) ToTriggerGithubPushPtrOutput() TriggerGithub
 
 func (o TriggerGithubPushPtrOutput) ToTriggerGithubPushPtrOutputWithContext(ctx context.Context) TriggerGithubPushPtrOutput {
 	return o
+}
+
+func (o TriggerGithubPushPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerGithubPush] {
+	return pulumix.Output[*TriggerGithubPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerGithubPushPtrOutput) Elem() TriggerGithubPushOutput {
@@ -4949,6 +5526,12 @@ func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerPubsubConfigOutput)
 }
 
+func (i TriggerPubsubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerPubsubConfig] {
+	return pulumix.Output[TriggerPubsubConfig]{
+		OutputState: i.ToTriggerPubsubConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerPubsubConfigArgs) ToTriggerPubsubConfigPtrOutput() TriggerPubsubConfigPtrOutput {
 	return i.ToTriggerPubsubConfigPtrOutputWithContext(context.Background())
 }
@@ -4990,6 +5573,12 @@ func (i *triggerPubsubConfigPtrType) ToTriggerPubsubConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerPubsubConfigPtrOutput)
 }
 
+func (i *triggerPubsubConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerPubsubConfig] {
+	return pulumix.Output[*TriggerPubsubConfig]{
+		OutputState: i.ToTriggerPubsubConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerPubsubConfigOutput struct{ *pulumi.OutputState }
 
 func (TriggerPubsubConfigOutput) ElementType() reflect.Type {
@@ -5012,6 +5601,12 @@ func (o TriggerPubsubConfigOutput) ToTriggerPubsubConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerPubsubConfig) *TriggerPubsubConfig {
 		return &v
 	}).(TriggerPubsubConfigPtrOutput)
+}
+
+func (o TriggerPubsubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerPubsubConfig] {
+	return pulumix.Output[TriggerPubsubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Service account that will make the push request.
@@ -5049,6 +5644,12 @@ func (o TriggerPubsubConfigPtrOutput) ToTriggerPubsubConfigPtrOutput() TriggerPu
 
 func (o TriggerPubsubConfigPtrOutput) ToTriggerPubsubConfigPtrOutputWithContext(ctx context.Context) TriggerPubsubConfigPtrOutput {
 	return o
+}
+
+func (o TriggerPubsubConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerPubsubConfig] {
+	return pulumix.Output[*TriggerPubsubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerPubsubConfigPtrOutput) Elem() TriggerPubsubConfigOutput {
@@ -5149,6 +5750,12 @@ func (i TriggerRepositoryEventConfigArgs) ToTriggerRepositoryEventConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigOutput)
 }
 
+func (i TriggerRepositoryEventConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerRepositoryEventConfig] {
+	return pulumix.Output[TriggerRepositoryEventConfig]{
+		OutputState: i.ToTriggerRepositoryEventConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerRepositoryEventConfigArgs) ToTriggerRepositoryEventConfigPtrOutput() TriggerRepositoryEventConfigPtrOutput {
 	return i.ToTriggerRepositoryEventConfigPtrOutputWithContext(context.Background())
 }
@@ -5190,6 +5797,12 @@ func (i *triggerRepositoryEventConfigPtrType) ToTriggerRepositoryEventConfigPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPtrOutput)
 }
 
+func (i *triggerRepositoryEventConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerRepositoryEventConfig] {
+	return pulumix.Output[*TriggerRepositoryEventConfig]{
+		OutputState: i.ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerRepositoryEventConfigOutput struct{ *pulumi.OutputState }
 
 func (TriggerRepositoryEventConfigOutput) ElementType() reflect.Type {
@@ -5212,6 +5825,12 @@ func (o TriggerRepositoryEventConfigOutput) ToTriggerRepositoryEventConfigPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRepositoryEventConfig) *TriggerRepositoryEventConfig {
 		return &v
 	}).(TriggerRepositoryEventConfigPtrOutput)
+}
+
+func (o TriggerRepositoryEventConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerRepositoryEventConfig] {
+	return pulumix.Output[TriggerRepositoryEventConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Contains filter properties for matching Pull Requests.
@@ -5243,6 +5862,12 @@ func (o TriggerRepositoryEventConfigPtrOutput) ToTriggerRepositoryEventConfigPtr
 
 func (o TriggerRepositoryEventConfigPtrOutput) ToTriggerRepositoryEventConfigPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPtrOutput {
 	return o
+}
+
+func (o TriggerRepositoryEventConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerRepositoryEventConfig] {
+	return pulumix.Output[*TriggerRepositoryEventConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerRepositoryEventConfigPtrOutput) Elem() TriggerRepositoryEventConfigOutput {
@@ -5332,6 +5957,12 @@ func (i TriggerRepositoryEventConfigPullRequestArgs) ToTriggerRepositoryEventCon
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPullRequestOutput)
 }
 
+func (i TriggerRepositoryEventConfigPullRequestArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[TriggerRepositoryEventConfigPullRequest]{
+		OutputState: i.ToTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerRepositoryEventConfigPullRequestArgs) ToTriggerRepositoryEventConfigPullRequestPtrOutput() TriggerRepositoryEventConfigPullRequestPtrOutput {
 	return i.ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(context.Background())
 }
@@ -5373,6 +6004,12 @@ func (i *triggerRepositoryEventConfigPullRequestPtrType) ToTriggerRepositoryEven
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPullRequestPtrOutput)
 }
 
+func (i *triggerRepositoryEventConfigPullRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[*TriggerRepositoryEventConfigPullRequest]{
+		OutputState: i.ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerRepositoryEventConfigPullRequestOutput struct{ *pulumi.OutputState }
 
 func (TriggerRepositoryEventConfigPullRequestOutput) ElementType() reflect.Type {
@@ -5395,6 +6032,12 @@ func (o TriggerRepositoryEventConfigPullRequestOutput) ToTriggerRepositoryEventC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRepositoryEventConfigPullRequest) *TriggerRepositoryEventConfigPullRequest {
 		return &v
 	}).(TriggerRepositoryEventConfigPullRequestPtrOutput)
+}
+
+func (o TriggerRepositoryEventConfigPullRequestOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[TriggerRepositoryEventConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex of branches to match.
@@ -5426,6 +6069,12 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) ToTriggerRepositoryEve
 
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) ToTriggerRepositoryEventConfigPullRequestPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPullRequestPtrOutput {
 	return o
+}
+
+func (o TriggerRepositoryEventConfigPullRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[*TriggerRepositoryEventConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Elem() TriggerRepositoryEventConfigPullRequestOutput {
@@ -5511,6 +6160,12 @@ func (i TriggerRepositoryEventConfigPushArgs) ToTriggerRepositoryEventConfigPush
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPushOutput)
 }
 
+func (i TriggerRepositoryEventConfigPushArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerRepositoryEventConfigPush] {
+	return pulumix.Output[TriggerRepositoryEventConfigPush]{
+		OutputState: i.ToTriggerRepositoryEventConfigPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerRepositoryEventConfigPushArgs) ToTriggerRepositoryEventConfigPushPtrOutput() TriggerRepositoryEventConfigPushPtrOutput {
 	return i.ToTriggerRepositoryEventConfigPushPtrOutputWithContext(context.Background())
 }
@@ -5552,6 +6207,12 @@ func (i *triggerRepositoryEventConfigPushPtrType) ToTriggerRepositoryEventConfig
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerRepositoryEventConfigPushPtrOutput)
 }
 
+func (i *triggerRepositoryEventConfigPushPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerRepositoryEventConfigPush] {
+	return pulumix.Output[*TriggerRepositoryEventConfigPush]{
+		OutputState: i.ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerRepositoryEventConfigPushOutput struct{ *pulumi.OutputState }
 
 func (TriggerRepositoryEventConfigPushOutput) ElementType() reflect.Type {
@@ -5574,6 +6235,12 @@ func (o TriggerRepositoryEventConfigPushOutput) ToTriggerRepositoryEventConfigPu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerRepositoryEventConfigPush) *TriggerRepositoryEventConfigPush {
 		return &v
 	}).(TriggerRepositoryEventConfigPushPtrOutput)
+}
+
+func (o TriggerRepositoryEventConfigPushOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerRepositoryEventConfigPush] {
+	return pulumix.Output[TriggerRepositoryEventConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Regex of branches to match.  Specify only one of branch or tag.
@@ -5603,6 +6270,12 @@ func (o TriggerRepositoryEventConfigPushPtrOutput) ToTriggerRepositoryEventConfi
 
 func (o TriggerRepositoryEventConfigPushPtrOutput) ToTriggerRepositoryEventConfigPushPtrOutputWithContext(ctx context.Context) TriggerRepositoryEventConfigPushPtrOutput {
 	return o
+}
+
+func (o TriggerRepositoryEventConfigPushPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerRepositoryEventConfigPush] {
+	return pulumix.Output[*TriggerRepositoryEventConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerRepositoryEventConfigPushPtrOutput) Elem() TriggerRepositoryEventConfigPushOutput {
@@ -5708,6 +6381,12 @@ func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerSourceToBuildOutput)
 }
 
+func (i TriggerSourceToBuildArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerSourceToBuild] {
+	return pulumix.Output[TriggerSourceToBuild]{
+		OutputState: i.ToTriggerSourceToBuildOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerSourceToBuildArgs) ToTriggerSourceToBuildPtrOutput() TriggerSourceToBuildPtrOutput {
 	return i.ToTriggerSourceToBuildPtrOutputWithContext(context.Background())
 }
@@ -5749,6 +6428,12 @@ func (i *triggerSourceToBuildPtrType) ToTriggerSourceToBuildPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerSourceToBuildPtrOutput)
 }
 
+func (i *triggerSourceToBuildPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerSourceToBuild] {
+	return pulumix.Output[*TriggerSourceToBuild]{
+		OutputState: i.ToTriggerSourceToBuildPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerSourceToBuildOutput struct{ *pulumi.OutputState }
 
 func (TriggerSourceToBuildOutput) ElementType() reflect.Type {
@@ -5771,6 +6456,12 @@ func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerSourceToBuild) *TriggerSourceToBuild {
 		return &v
 	}).(TriggerSourceToBuildPtrOutput)
+}
+
+func (o TriggerSourceToBuildOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerSourceToBuild] {
+	return pulumix.Output[TriggerSourceToBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full resource name of the bitbucket server config.
@@ -5820,6 +6511,12 @@ func (o TriggerSourceToBuildPtrOutput) ToTriggerSourceToBuildPtrOutput() Trigger
 
 func (o TriggerSourceToBuildPtrOutput) ToTriggerSourceToBuildPtrOutputWithContext(ctx context.Context) TriggerSourceToBuildPtrOutput {
 	return o
+}
+
+func (o TriggerSourceToBuildPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerSourceToBuild] {
+	return pulumix.Output[*TriggerSourceToBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerSourceToBuildPtrOutput) Elem() TriggerSourceToBuildOutput {
@@ -5966,6 +6663,12 @@ func (i TriggerTriggerTemplateArgs) ToTriggerTriggerTemplateOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTriggerTemplateOutput)
 }
 
+func (i TriggerTriggerTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerTriggerTemplate] {
+	return pulumix.Output[TriggerTriggerTemplate]{
+		OutputState: i.ToTriggerTriggerTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerTriggerTemplateArgs) ToTriggerTriggerTemplatePtrOutput() TriggerTriggerTemplatePtrOutput {
 	return i.ToTriggerTriggerTemplatePtrOutputWithContext(context.Background())
 }
@@ -6007,6 +6710,12 @@ func (i *triggerTriggerTemplatePtrType) ToTriggerTriggerTemplatePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTriggerTemplatePtrOutput)
 }
 
+func (i *triggerTriggerTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerTriggerTemplate] {
+	return pulumix.Output[*TriggerTriggerTemplate]{
+		OutputState: i.ToTriggerTriggerTemplatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerTriggerTemplateOutput struct{ *pulumi.OutputState }
 
 func (TriggerTriggerTemplateOutput) ElementType() reflect.Type {
@@ -6029,6 +6738,12 @@ func (o TriggerTriggerTemplateOutput) ToTriggerTriggerTemplatePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerTriggerTemplate) *TriggerTriggerTemplate {
 		return &v
 	}).(TriggerTriggerTemplatePtrOutput)
+}
+
+func (o TriggerTriggerTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerTriggerTemplate] {
+	return pulumix.Output[TriggerTriggerTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
@@ -6084,6 +6799,12 @@ func (o TriggerTriggerTemplatePtrOutput) ToTriggerTriggerTemplatePtrOutput() Tri
 
 func (o TriggerTriggerTemplatePtrOutput) ToTriggerTriggerTemplatePtrOutputWithContext(ctx context.Context) TriggerTriggerTemplatePtrOutput {
 	return o
+}
+
+func (o TriggerTriggerTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerTriggerTemplate] {
+	return pulumix.Output[*TriggerTriggerTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerTriggerTemplatePtrOutput) Elem() TriggerTriggerTemplateOutput {
@@ -6213,6 +6934,12 @@ func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerWebhookConfigOutput)
 }
 
+func (i TriggerWebhookConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerWebhookConfig] {
+	return pulumix.Output[TriggerWebhookConfig]{
+		OutputState: i.ToTriggerWebhookConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerWebhookConfigArgs) ToTriggerWebhookConfigPtrOutput() TriggerWebhookConfigPtrOutput {
 	return i.ToTriggerWebhookConfigPtrOutputWithContext(context.Background())
 }
@@ -6254,6 +6981,12 @@ func (i *triggerWebhookConfigPtrType) ToTriggerWebhookConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerWebhookConfigPtrOutput)
 }
 
+func (i *triggerWebhookConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerWebhookConfig] {
+	return pulumix.Output[*TriggerWebhookConfig]{
+		OutputState: i.ToTriggerWebhookConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerWebhookConfigOutput struct{ *pulumi.OutputState }
 
 func (TriggerWebhookConfigOutput) ElementType() reflect.Type {
@@ -6276,6 +7009,12 @@ func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerWebhookConfig) *TriggerWebhookConfig {
 		return &v
 	}).(TriggerWebhookConfigPtrOutput)
+}
+
+func (o TriggerWebhookConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerWebhookConfig] {
+	return pulumix.Output[TriggerWebhookConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Resource name for the secret required as a URL parameter.
@@ -6302,6 +7041,12 @@ func (o TriggerWebhookConfigPtrOutput) ToTriggerWebhookConfigPtrOutput() Trigger
 
 func (o TriggerWebhookConfigPtrOutput) ToTriggerWebhookConfigPtrOutputWithContext(ctx context.Context) TriggerWebhookConfigPtrOutput {
 	return o
+}
+
+func (o TriggerWebhookConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerWebhookConfig] {
+	return pulumix.Output[*TriggerWebhookConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerWebhookConfigPtrOutput) Elem() TriggerWebhookConfigOutput {
@@ -6373,6 +7118,12 @@ func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolNetworkConfigOutput)
 }
 
+func (i WorkerPoolNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolNetworkConfig] {
+	return pulumix.Output[WorkerPoolNetworkConfig]{
+		OutputState: i.ToWorkerPoolNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkerPoolNetworkConfigArgs) ToWorkerPoolNetworkConfigPtrOutput() WorkerPoolNetworkConfigPtrOutput {
 	return i.ToWorkerPoolNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -6414,6 +7165,12 @@ func (i *workerPoolNetworkConfigPtrType) ToWorkerPoolNetworkConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolNetworkConfigPtrOutput)
 }
 
+func (i *workerPoolNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolNetworkConfig] {
+	return pulumix.Output[*WorkerPoolNetworkConfig]{
+		OutputState: i.ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkerPoolNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolNetworkConfigOutput) ElementType() reflect.Type {
@@ -6438,6 +7195,12 @@ func (o WorkerPoolNetworkConfigOutput) ToWorkerPoolNetworkConfigPtrOutputWithCon
 	}).(WorkerPoolNetworkConfigPtrOutput)
 }
 
+func (o WorkerPoolNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolNetworkConfig] {
+	return pulumix.Output[WorkerPoolNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See (https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
 func (o WorkerPoolNetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolNetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
@@ -6460,6 +7223,12 @@ func (o WorkerPoolNetworkConfigPtrOutput) ToWorkerPoolNetworkConfigPtrOutput() W
 
 func (o WorkerPoolNetworkConfigPtrOutput) ToWorkerPoolNetworkConfigPtrOutputWithContext(ctx context.Context) WorkerPoolNetworkConfigPtrOutput {
 	return o
+}
+
+func (o WorkerPoolNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolNetworkConfig] {
+	return pulumix.Output[*WorkerPoolNetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerPoolNetworkConfigPtrOutput) Elem() WorkerPoolNetworkConfigOutput {
@@ -6533,6 +7302,12 @@ func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolWorkerConfigOutput)
 }
 
+func (i WorkerPoolWorkerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolWorkerConfig] {
+	return pulumix.Output[WorkerPoolWorkerConfig]{
+		OutputState: i.ToWorkerPoolWorkerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkerPoolWorkerConfigArgs) ToWorkerPoolWorkerConfigPtrOutput() WorkerPoolWorkerConfigPtrOutput {
 	return i.ToWorkerPoolWorkerConfigPtrOutputWithContext(context.Background())
 }
@@ -6574,6 +7349,12 @@ func (i *workerPoolWorkerConfigPtrType) ToWorkerPoolWorkerConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolWorkerConfigPtrOutput)
 }
 
+func (i *workerPoolWorkerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolWorkerConfig] {
+	return pulumix.Output[*WorkerPoolWorkerConfig]{
+		OutputState: i.ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkerPoolWorkerConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkerPoolWorkerConfigOutput) ElementType() reflect.Type {
@@ -6596,6 +7377,12 @@ func (o WorkerPoolWorkerConfigOutput) ToWorkerPoolWorkerConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolWorkerConfig) *WorkerPoolWorkerConfig {
 		return &v
 	}).(WorkerPoolWorkerConfigPtrOutput)
+}
+
+func (o WorkerPoolWorkerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolWorkerConfig] {
+	return pulumix.Output[WorkerPoolWorkerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
@@ -6625,6 +7412,12 @@ func (o WorkerPoolWorkerConfigPtrOutput) ToWorkerPoolWorkerConfigPtrOutput() Wor
 
 func (o WorkerPoolWorkerConfigPtrOutput) ToWorkerPoolWorkerConfigPtrOutputWithContext(ctx context.Context) WorkerPoolWorkerConfigPtrOutput {
 	return o
+}
+
+func (o WorkerPoolWorkerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerPoolWorkerConfig] {
+	return pulumix.Output[*WorkerPoolWorkerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerPoolWorkerConfigPtrOutput) Elem() WorkerPoolWorkerConfigOutput {
@@ -6698,6 +7491,12 @@ func (i GetTriggerApprovalConfigArgs) ToGetTriggerApprovalConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerApprovalConfigOutput)
 }
 
+func (i GetTriggerApprovalConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerApprovalConfig] {
+	return pulumix.Output[GetTriggerApprovalConfig]{
+		OutputState: i.ToGetTriggerApprovalConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerApprovalConfigArrayInput is an input type that accepts GetTriggerApprovalConfigArray and GetTriggerApprovalConfigArrayOutput values.
 // You can construct a concrete instance of `GetTriggerApprovalConfigArrayInput` via:
 //
@@ -6723,6 +7522,12 @@ func (i GetTriggerApprovalConfigArray) ToGetTriggerApprovalConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerApprovalConfigArrayOutput)
 }
 
+func (i GetTriggerApprovalConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerApprovalConfig] {
+	return pulumix.Output[[]GetTriggerApprovalConfig]{
+		OutputState: i.ToGetTriggerApprovalConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerApprovalConfigOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerApprovalConfigOutput) ElementType() reflect.Type {
@@ -6735,6 +7540,12 @@ func (o GetTriggerApprovalConfigOutput) ToGetTriggerApprovalConfigOutput() GetTr
 
 func (o GetTriggerApprovalConfigOutput) ToGetTriggerApprovalConfigOutputWithContext(ctx context.Context) GetTriggerApprovalConfigOutput {
 	return o
+}
+
+func (o GetTriggerApprovalConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerApprovalConfig] {
+	return pulumix.Output[GetTriggerApprovalConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerApprovalConfigOutput) ApprovalRequired() pulumi.BoolOutput {
@@ -6753,6 +7564,12 @@ func (o GetTriggerApprovalConfigArrayOutput) ToGetTriggerApprovalConfigArrayOutp
 
 func (o GetTriggerApprovalConfigArrayOutput) ToGetTriggerApprovalConfigArrayOutputWithContext(ctx context.Context) GetTriggerApprovalConfigArrayOutput {
 	return o
+}
+
+func (o GetTriggerApprovalConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerApprovalConfig] {
+	return pulumix.Output[[]GetTriggerApprovalConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerApprovalConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerApprovalConfigOutput {
@@ -6800,6 +7617,12 @@ func (i GetTriggerBitbucketServerTriggerConfigArgs) ToGetTriggerBitbucketServerT
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigOutput)
 }
 
+func (i GetTriggerBitbucketServerTriggerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[GetTriggerBitbucketServerTriggerConfig]{
+		OutputState: i.ToGetTriggerBitbucketServerTriggerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBitbucketServerTriggerConfigArrayInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigArray and GetTriggerBitbucketServerTriggerConfigArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigArrayInput` via:
 //
@@ -6825,6 +7648,12 @@ func (i GetTriggerBitbucketServerTriggerConfigArray) ToGetTriggerBitbucketServer
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigArrayOutput)
 }
 
+func (i GetTriggerBitbucketServerTriggerConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[[]GetTriggerBitbucketServerTriggerConfig]{
+		OutputState: i.ToGetTriggerBitbucketServerTriggerConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBitbucketServerTriggerConfigOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBitbucketServerTriggerConfigOutput) ElementType() reflect.Type {
@@ -6837,6 +7666,12 @@ func (o GetTriggerBitbucketServerTriggerConfigOutput) ToGetTriggerBitbucketServe
 
 func (o GetTriggerBitbucketServerTriggerConfigOutput) ToGetTriggerBitbucketServerTriggerConfigOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigOutput {
 	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[GetTriggerBitbucketServerTriggerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBitbucketServerTriggerConfigOutput) BitbucketServerConfigResource() pulumi.StringOutput {
@@ -6875,6 +7710,12 @@ func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) ToGetTriggerBitbucket
 
 func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) ToGetTriggerBitbucketServerTriggerConfigArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigArrayOutput {
 	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBitbucketServerTriggerConfig] {
+	return pulumix.Output[[]GetTriggerBitbucketServerTriggerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBitbucketServerTriggerConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerBitbucketServerTriggerConfigOutput {
@@ -6918,6 +7759,12 @@ func (i GetTriggerBitbucketServerTriggerConfigPullRequestArgs) ToGetTriggerBitbu
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPullRequestOutput)
 }
 
+func (i GetTriggerBitbucketServerTriggerConfigPullRequestArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[GetTriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: i.ToGetTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigPullRequestArray and GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigPullRequestArrayInput` via:
 //
@@ -6943,6 +7790,12 @@ func (i GetTriggerBitbucketServerTriggerConfigPullRequestArray) ToGetTriggerBitb
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput)
 }
 
+func (i GetTriggerBitbucketServerTriggerConfigPullRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: i.ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBitbucketServerTriggerConfigPullRequestOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ElementType() reflect.Type {
@@ -6955,6 +7808,12 @@ func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ToGetTriggerBit
 
 func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ToGetTriggerBitbucketServerTriggerConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
 	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[GetTriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBitbucketServerTriggerConfigPullRequestOutput) Branch() pulumi.StringOutput {
@@ -6981,6 +7840,12 @@ func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) ToGetTrigg
 
 func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) ToGetTriggerBitbucketServerTriggerConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput {
 	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPullRequest] {
+	return pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBitbucketServerTriggerConfigPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerBitbucketServerTriggerConfigPullRequestOutput {
@@ -7024,6 +7889,12 @@ func (i GetTriggerBitbucketServerTriggerConfigPushArgs) ToGetTriggerBitbucketSer
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPushOutput)
 }
 
+func (i GetTriggerBitbucketServerTriggerConfigPushArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[GetTriggerBitbucketServerTriggerConfigPush]{
+		OutputState: i.ToGetTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBitbucketServerTriggerConfigPushArrayInput is an input type that accepts GetTriggerBitbucketServerTriggerConfigPushArray and GetTriggerBitbucketServerTriggerConfigPushArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBitbucketServerTriggerConfigPushArrayInput` via:
 //
@@ -7049,6 +7920,12 @@ func (i GetTriggerBitbucketServerTriggerConfigPushArray) ToGetTriggerBitbucketSe
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBitbucketServerTriggerConfigPushArrayOutput)
 }
 
+func (i GetTriggerBitbucketServerTriggerConfigPushArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPush]{
+		OutputState: i.ToGetTriggerBitbucketServerTriggerConfigPushArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBitbucketServerTriggerConfigPushOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBitbucketServerTriggerConfigPushOutput) ElementType() reflect.Type {
@@ -7061,6 +7938,12 @@ func (o GetTriggerBitbucketServerTriggerConfigPushOutput) ToGetTriggerBitbucketS
 
 func (o GetTriggerBitbucketServerTriggerConfigPushOutput) ToGetTriggerBitbucketServerTriggerConfigPushOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPushOutput {
 	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[GetTriggerBitbucketServerTriggerConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBitbucketServerTriggerConfigPushOutput) Branch() pulumi.StringOutput {
@@ -7087,6 +7970,12 @@ func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) ToGetTriggerBitbu
 
 func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) ToGetTriggerBitbucketServerTriggerConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerBitbucketServerTriggerConfigPushArrayOutput {
 	return o
+}
+
+func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPush] {
+	return pulumix.Output[[]GetTriggerBitbucketServerTriggerConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBitbucketServerTriggerConfigPushArrayOutput) Index(i pulumi.IntInput) GetTriggerBitbucketServerTriggerConfigPushOutput {
@@ -7148,6 +8037,12 @@ func (i GetTriggerBuildArgs) ToGetTriggerBuildOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOutput)
 }
 
+func (i GetTriggerBuildArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuild] {
+	return pulumix.Output[GetTriggerBuild]{
+		OutputState: i.ToGetTriggerBuildOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildArrayInput is an input type that accepts GetTriggerBuildArray and GetTriggerBuildArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildArrayInput` via:
 //
@@ -7173,6 +8068,12 @@ func (i GetTriggerBuildArray) ToGetTriggerBuildArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArrayOutput)
 }
 
+func (i GetTriggerBuildArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuild] {
+	return pulumix.Output[[]GetTriggerBuild]{
+		OutputState: i.ToGetTriggerBuildArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildOutput) ElementType() reflect.Type {
@@ -7185,6 +8086,12 @@ func (o GetTriggerBuildOutput) ToGetTriggerBuildOutput() GetTriggerBuildOutput {
 
 func (o GetTriggerBuildOutput) ToGetTriggerBuildOutputWithContext(ctx context.Context) GetTriggerBuildOutput {
 	return o
+}
+
+func (o GetTriggerBuildOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuild] {
+	return pulumix.Output[GetTriggerBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildOutput) Artifacts() GetTriggerBuildArtifactArrayOutput {
@@ -7249,6 +8156,12 @@ func (o GetTriggerBuildArrayOutput) ToGetTriggerBuildArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o GetTriggerBuildArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuild] {
+	return pulumix.Output[[]GetTriggerBuild]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTriggerBuildArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuild {
 		return vs[0].([]GetTriggerBuild)[vs[1].(int)]
@@ -7288,6 +8201,12 @@ func (i GetTriggerBuildArtifactArgs) ToGetTriggerBuildArtifactOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactOutput)
 }
 
+func (i GetTriggerBuildArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildArtifact] {
+	return pulumix.Output[GetTriggerBuildArtifact]{
+		OutputState: i.ToGetTriggerBuildArtifactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildArtifactArrayInput is an input type that accepts GetTriggerBuildArtifactArray and GetTriggerBuildArtifactArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildArtifactArrayInput` via:
 //
@@ -7313,6 +8232,12 @@ func (i GetTriggerBuildArtifactArray) ToGetTriggerBuildArtifactArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactArrayOutput)
 }
 
+func (i GetTriggerBuildArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildArtifact] {
+	return pulumix.Output[[]GetTriggerBuildArtifact]{
+		OutputState: i.ToGetTriggerBuildArtifactArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildArtifactOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildArtifactOutput) ElementType() reflect.Type {
@@ -7325,6 +8250,12 @@ func (o GetTriggerBuildArtifactOutput) ToGetTriggerBuildArtifactOutput() GetTrig
 
 func (o GetTriggerBuildArtifactOutput) ToGetTriggerBuildArtifactOutputWithContext(ctx context.Context) GetTriggerBuildArtifactOutput {
 	return o
+}
+
+func (o GetTriggerBuildArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildArtifact] {
+	return pulumix.Output[GetTriggerBuildArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildArtifactOutput) Images() pulumi.StringArrayOutput {
@@ -7347,6 +8278,12 @@ func (o GetTriggerBuildArtifactArrayOutput) ToGetTriggerBuildArtifactArrayOutput
 
 func (o GetTriggerBuildArtifactArrayOutput) ToGetTriggerBuildArtifactArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildArtifact] {
+	return pulumix.Output[[]GetTriggerBuildArtifact]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildArtifactArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactOutput {
@@ -7396,6 +8333,12 @@ func (i GetTriggerBuildArtifactObjectArgs) ToGetTriggerBuildArtifactObjectOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectOutput)
 }
 
+func (i GetTriggerBuildArtifactObjectArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildArtifactObject] {
+	return pulumix.Output[GetTriggerBuildArtifactObject]{
+		OutputState: i.ToGetTriggerBuildArtifactObjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildArtifactObjectArrayInput is an input type that accepts GetTriggerBuildArtifactObjectArray and GetTriggerBuildArtifactObjectArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildArtifactObjectArrayInput` via:
 //
@@ -7421,6 +8364,12 @@ func (i GetTriggerBuildArtifactObjectArray) ToGetTriggerBuildArtifactObjectArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectArrayOutput)
 }
 
+func (i GetTriggerBuildArtifactObjectArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildArtifactObject] {
+	return pulumix.Output[[]GetTriggerBuildArtifactObject]{
+		OutputState: i.ToGetTriggerBuildArtifactObjectArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildArtifactObjectOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildArtifactObjectOutput) ElementType() reflect.Type {
@@ -7433,6 +8382,12 @@ func (o GetTriggerBuildArtifactObjectOutput) ToGetTriggerBuildArtifactObjectOutp
 
 func (o GetTriggerBuildArtifactObjectOutput) ToGetTriggerBuildArtifactObjectOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectOutput {
 	return o
+}
+
+func (o GetTriggerBuildArtifactObjectOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildArtifactObject] {
+	return pulumix.Output[GetTriggerBuildArtifactObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Cloud Build location for the trigger.
@@ -7462,6 +8417,12 @@ func (o GetTriggerBuildArtifactObjectArrayOutput) ToGetTriggerBuildArtifactObjec
 
 func (o GetTriggerBuildArtifactObjectArrayOutput) ToGetTriggerBuildArtifactObjectArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildArtifactObjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildArtifactObject] {
+	return pulumix.Output[[]GetTriggerBuildArtifactObject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildArtifactObjectArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactObjectOutput {
@@ -7503,6 +8464,12 @@ func (i GetTriggerBuildArtifactObjectTimingArgs) ToGetTriggerBuildArtifactObject
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectTimingOutput)
 }
 
+func (i GetTriggerBuildArtifactObjectTimingArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildArtifactObjectTiming] {
+	return pulumix.Output[GetTriggerBuildArtifactObjectTiming]{
+		OutputState: i.ToGetTriggerBuildArtifactObjectTimingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildArtifactObjectTimingArrayInput is an input type that accepts GetTriggerBuildArtifactObjectTimingArray and GetTriggerBuildArtifactObjectTimingArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildArtifactObjectTimingArrayInput` via:
 //
@@ -7528,6 +8495,12 @@ func (i GetTriggerBuildArtifactObjectTimingArray) ToGetTriggerBuildArtifactObjec
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactObjectTimingArrayOutput)
 }
 
+func (i GetTriggerBuildArtifactObjectTimingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildArtifactObjectTiming] {
+	return pulumix.Output[[]GetTriggerBuildArtifactObjectTiming]{
+		OutputState: i.ToGetTriggerBuildArtifactObjectTimingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildArtifactObjectTimingOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildArtifactObjectTimingOutput) ElementType() reflect.Type {
@@ -7540,6 +8513,12 @@ func (o GetTriggerBuildArtifactObjectTimingOutput) ToGetTriggerBuildArtifactObje
 
 func (o GetTriggerBuildArtifactObjectTimingOutput) ToGetTriggerBuildArtifactObjectTimingOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectTimingOutput {
 	return o
+}
+
+func (o GetTriggerBuildArtifactObjectTimingOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildArtifactObjectTiming] {
+	return pulumix.Output[GetTriggerBuildArtifactObjectTiming]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildArtifactObjectTimingOutput) EndTime() pulumi.StringOutput {
@@ -7562,6 +8541,12 @@ func (o GetTriggerBuildArtifactObjectTimingArrayOutput) ToGetTriggerBuildArtifac
 
 func (o GetTriggerBuildArtifactObjectTimingArrayOutput) ToGetTriggerBuildArtifactObjectTimingArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactObjectTimingArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildArtifactObjectTimingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildArtifactObjectTiming] {
+	return pulumix.Output[[]GetTriggerBuildArtifactObjectTiming]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildArtifactObjectTimingArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactObjectTimingOutput {
@@ -7601,6 +8586,12 @@ func (i GetTriggerBuildAvailableSecretArgs) ToGetTriggerBuildAvailableSecretOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretOutput)
 }
 
+func (i GetTriggerBuildAvailableSecretArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildAvailableSecret] {
+	return pulumix.Output[GetTriggerBuildAvailableSecret]{
+		OutputState: i.ToGetTriggerBuildAvailableSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildAvailableSecretArrayInput is an input type that accepts GetTriggerBuildAvailableSecretArray and GetTriggerBuildAvailableSecretArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildAvailableSecretArrayInput` via:
 //
@@ -7626,6 +8617,12 @@ func (i GetTriggerBuildAvailableSecretArray) ToGetTriggerBuildAvailableSecretArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretArrayOutput)
 }
 
+func (i GetTriggerBuildAvailableSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildAvailableSecret] {
+	return pulumix.Output[[]GetTriggerBuildAvailableSecret]{
+		OutputState: i.ToGetTriggerBuildAvailableSecretArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildAvailableSecretOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildAvailableSecretOutput) ElementType() reflect.Type {
@@ -7638,6 +8635,12 @@ func (o GetTriggerBuildAvailableSecretOutput) ToGetTriggerBuildAvailableSecretOu
 
 func (o GetTriggerBuildAvailableSecretOutput) ToGetTriggerBuildAvailableSecretOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretOutput {
 	return o
+}
+
+func (o GetTriggerBuildAvailableSecretOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildAvailableSecret] {
+	return pulumix.Output[GetTriggerBuildAvailableSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildAvailableSecretOutput) SecretManagers() GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
@@ -7658,6 +8661,12 @@ func (o GetTriggerBuildAvailableSecretArrayOutput) ToGetTriggerBuildAvailableSec
 
 func (o GetTriggerBuildAvailableSecretArrayOutput) ToGetTriggerBuildAvailableSecretArrayOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildAvailableSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildAvailableSecret] {
+	return pulumix.Output[[]GetTriggerBuildAvailableSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildAvailableSecretArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildAvailableSecretOutput {
@@ -7699,6 +8708,12 @@ func (i GetTriggerBuildAvailableSecretSecretManagerArgs) ToGetTriggerBuildAvaila
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretSecretManagerOutput)
 }
 
+func (i GetTriggerBuildAvailableSecretSecretManagerArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildAvailableSecretSecretManager] {
+	return pulumix.Output[GetTriggerBuildAvailableSecretSecretManager]{
+		OutputState: i.ToGetTriggerBuildAvailableSecretSecretManagerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildAvailableSecretSecretManagerArrayInput is an input type that accepts GetTriggerBuildAvailableSecretSecretManagerArray and GetTriggerBuildAvailableSecretSecretManagerArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildAvailableSecretSecretManagerArrayInput` via:
 //
@@ -7724,6 +8739,12 @@ func (i GetTriggerBuildAvailableSecretSecretManagerArray) ToGetTriggerBuildAvail
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildAvailableSecretSecretManagerArrayOutput)
 }
 
+func (i GetTriggerBuildAvailableSecretSecretManagerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildAvailableSecretSecretManager] {
+	return pulumix.Output[[]GetTriggerBuildAvailableSecretSecretManager]{
+		OutputState: i.ToGetTriggerBuildAvailableSecretSecretManagerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildAvailableSecretSecretManagerOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildAvailableSecretSecretManagerOutput) ElementType() reflect.Type {
@@ -7736,6 +8757,12 @@ func (o GetTriggerBuildAvailableSecretSecretManagerOutput) ToGetTriggerBuildAvai
 
 func (o GetTriggerBuildAvailableSecretSecretManagerOutput) ToGetTriggerBuildAvailableSecretSecretManagerOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretSecretManagerOutput {
 	return o
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildAvailableSecretSecretManager] {
+	return pulumix.Output[GetTriggerBuildAvailableSecretSecretManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildAvailableSecretSecretManagerOutput) Env() pulumi.StringOutput {
@@ -7758,6 +8785,12 @@ func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) ToGetTriggerBuil
 
 func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) ToGetTriggerBuildAvailableSecretSecretManagerArrayOutputWithContext(ctx context.Context) GetTriggerBuildAvailableSecretSecretManagerArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildAvailableSecretSecretManager] {
+	return pulumix.Output[[]GetTriggerBuildAvailableSecretSecretManager]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildAvailableSecretSecretManagerArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildAvailableSecretSecretManagerOutput {
@@ -7819,6 +8852,12 @@ func (i GetTriggerBuildOptionArgs) ToGetTriggerBuildOptionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionOutput)
 }
 
+func (i GetTriggerBuildOptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildOption] {
+	return pulumix.Output[GetTriggerBuildOption]{
+		OutputState: i.ToGetTriggerBuildOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildOptionArrayInput is an input type that accepts GetTriggerBuildOptionArray and GetTriggerBuildOptionArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildOptionArrayInput` via:
 //
@@ -7844,6 +8883,12 @@ func (i GetTriggerBuildOptionArray) ToGetTriggerBuildOptionArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionArrayOutput)
 }
 
+func (i GetTriggerBuildOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildOption] {
+	return pulumix.Output[[]GetTriggerBuildOption]{
+		OutputState: i.ToGetTriggerBuildOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildOptionOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildOptionOutput) ElementType() reflect.Type {
@@ -7856,6 +8901,12 @@ func (o GetTriggerBuildOptionOutput) ToGetTriggerBuildOptionOutput() GetTriggerB
 
 func (o GetTriggerBuildOptionOutput) ToGetTriggerBuildOptionOutputWithContext(ctx context.Context) GetTriggerBuildOptionOutput {
 	return o
+}
+
+func (o GetTriggerBuildOptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildOption] {
+	return pulumix.Output[GetTriggerBuildOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildOptionOutput) DiskSizeGb() pulumi.IntOutput {
@@ -7920,6 +8971,12 @@ func (o GetTriggerBuildOptionArrayOutput) ToGetTriggerBuildOptionArrayOutputWith
 	return o
 }
 
+func (o GetTriggerBuildOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildOption] {
+	return pulumix.Output[[]GetTriggerBuildOption]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTriggerBuildOptionArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildOption {
 		return vs[0].([]GetTriggerBuildOption)[vs[1].(int)]
@@ -7959,6 +9016,12 @@ func (i GetTriggerBuildOptionVolumeArgs) ToGetTriggerBuildOptionVolumeOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionVolumeOutput)
 }
 
+func (i GetTriggerBuildOptionVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildOptionVolume] {
+	return pulumix.Output[GetTriggerBuildOptionVolume]{
+		OutputState: i.ToGetTriggerBuildOptionVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildOptionVolumeArrayInput is an input type that accepts GetTriggerBuildOptionVolumeArray and GetTriggerBuildOptionVolumeArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildOptionVolumeArrayInput` via:
 //
@@ -7984,6 +9047,12 @@ func (i GetTriggerBuildOptionVolumeArray) ToGetTriggerBuildOptionVolumeArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildOptionVolumeArrayOutput)
 }
 
+func (i GetTriggerBuildOptionVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildOptionVolume] {
+	return pulumix.Output[[]GetTriggerBuildOptionVolume]{
+		OutputState: i.ToGetTriggerBuildOptionVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildOptionVolumeOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildOptionVolumeOutput) ElementType() reflect.Type {
@@ -7996,6 +9065,12 @@ func (o GetTriggerBuildOptionVolumeOutput) ToGetTriggerBuildOptionVolumeOutput()
 
 func (o GetTriggerBuildOptionVolumeOutput) ToGetTriggerBuildOptionVolumeOutputWithContext(ctx context.Context) GetTriggerBuildOptionVolumeOutput {
 	return o
+}
+
+func (o GetTriggerBuildOptionVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildOptionVolume] {
+	return pulumix.Output[GetTriggerBuildOptionVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildOptionVolumeOutput) Name() pulumi.StringOutput {
@@ -8018,6 +9093,12 @@ func (o GetTriggerBuildOptionVolumeArrayOutput) ToGetTriggerBuildOptionVolumeArr
 
 func (o GetTriggerBuildOptionVolumeArrayOutput) ToGetTriggerBuildOptionVolumeArrayOutputWithContext(ctx context.Context) GetTriggerBuildOptionVolumeArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildOptionVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildOptionVolume] {
+	return pulumix.Output[[]GetTriggerBuildOptionVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildOptionVolumeArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOptionVolumeOutput {
@@ -8059,6 +9140,12 @@ func (i GetTriggerBuildSecretArgs) ToGetTriggerBuildSecretOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSecretOutput)
 }
 
+func (i GetTriggerBuildSecretArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSecret] {
+	return pulumix.Output[GetTriggerBuildSecret]{
+		OutputState: i.ToGetTriggerBuildSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildSecretArrayInput is an input type that accepts GetTriggerBuildSecretArray and GetTriggerBuildSecretArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildSecretArrayInput` via:
 //
@@ -8084,6 +9171,12 @@ func (i GetTriggerBuildSecretArray) ToGetTriggerBuildSecretArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSecretArrayOutput)
 }
 
+func (i GetTriggerBuildSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSecret] {
+	return pulumix.Output[[]GetTriggerBuildSecret]{
+		OutputState: i.ToGetTriggerBuildSecretArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildSecretOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildSecretOutput) ElementType() reflect.Type {
@@ -8096,6 +9189,12 @@ func (o GetTriggerBuildSecretOutput) ToGetTriggerBuildSecretOutput() GetTriggerB
 
 func (o GetTriggerBuildSecretOutput) ToGetTriggerBuildSecretOutputWithContext(ctx context.Context) GetTriggerBuildSecretOutput {
 	return o
+}
+
+func (o GetTriggerBuildSecretOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSecret] {
+	return pulumix.Output[GetTriggerBuildSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSecretOutput) KmsKeyName() pulumi.StringOutput {
@@ -8118,6 +9217,12 @@ func (o GetTriggerBuildSecretArrayOutput) ToGetTriggerBuildSecretArrayOutput() G
 
 func (o GetTriggerBuildSecretArrayOutput) ToGetTriggerBuildSecretArrayOutputWithContext(ctx context.Context) GetTriggerBuildSecretArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSecret] {
+	return pulumix.Output[[]GetTriggerBuildSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSecretArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSecretOutput {
@@ -8159,6 +9264,12 @@ func (i GetTriggerBuildSourceArgs) ToGetTriggerBuildSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceOutput)
 }
 
+func (i GetTriggerBuildSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSource] {
+	return pulumix.Output[GetTriggerBuildSource]{
+		OutputState: i.ToGetTriggerBuildSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildSourceArrayInput is an input type that accepts GetTriggerBuildSourceArray and GetTriggerBuildSourceArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildSourceArrayInput` via:
 //
@@ -8184,6 +9295,12 @@ func (i GetTriggerBuildSourceArray) ToGetTriggerBuildSourceArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceArrayOutput)
 }
 
+func (i GetTriggerBuildSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSource] {
+	return pulumix.Output[[]GetTriggerBuildSource]{
+		OutputState: i.ToGetTriggerBuildSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildSourceOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildSourceOutput) ElementType() reflect.Type {
@@ -8196,6 +9313,12 @@ func (o GetTriggerBuildSourceOutput) ToGetTriggerBuildSourceOutput() GetTriggerB
 
 func (o GetTriggerBuildSourceOutput) ToGetTriggerBuildSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceOutput {
 	return o
+}
+
+func (o GetTriggerBuildSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSource] {
+	return pulumix.Output[GetTriggerBuildSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSourceOutput) RepoSources() GetTriggerBuildSourceRepoSourceArrayOutput {
@@ -8218,6 +9341,12 @@ func (o GetTriggerBuildSourceArrayOutput) ToGetTriggerBuildSourceArrayOutput() G
 
 func (o GetTriggerBuildSourceArrayOutput) ToGetTriggerBuildSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSource] {
+	return pulumix.Output[[]GetTriggerBuildSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSourceOutput {
@@ -8271,6 +9400,12 @@ func (i GetTriggerBuildSourceRepoSourceArgs) ToGetTriggerBuildSourceRepoSourceOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceRepoSourceOutput)
 }
 
+func (i GetTriggerBuildSourceRepoSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSourceRepoSource] {
+	return pulumix.Output[GetTriggerBuildSourceRepoSource]{
+		OutputState: i.ToGetTriggerBuildSourceRepoSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildSourceRepoSourceArrayInput is an input type that accepts GetTriggerBuildSourceRepoSourceArray and GetTriggerBuildSourceRepoSourceArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildSourceRepoSourceArrayInput` via:
 //
@@ -8296,6 +9431,12 @@ func (i GetTriggerBuildSourceRepoSourceArray) ToGetTriggerBuildSourceRepoSourceA
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceRepoSourceArrayOutput)
 }
 
+func (i GetTriggerBuildSourceRepoSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSourceRepoSource] {
+	return pulumix.Output[[]GetTriggerBuildSourceRepoSource]{
+		OutputState: i.ToGetTriggerBuildSourceRepoSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildSourceRepoSourceOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildSourceRepoSourceOutput) ElementType() reflect.Type {
@@ -8308,6 +9449,12 @@ func (o GetTriggerBuildSourceRepoSourceOutput) ToGetTriggerBuildSourceRepoSource
 
 func (o GetTriggerBuildSourceRepoSourceOutput) ToGetTriggerBuildSourceRepoSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceRepoSourceOutput {
 	return o
+}
+
+func (o GetTriggerBuildSourceRepoSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSourceRepoSource] {
+	return pulumix.Output[GetTriggerBuildSourceRepoSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSourceRepoSourceOutput) BranchName() pulumi.StringOutput {
@@ -8356,6 +9503,12 @@ func (o GetTriggerBuildSourceRepoSourceArrayOutput) ToGetTriggerBuildSourceRepoS
 	return o
 }
 
+func (o GetTriggerBuildSourceRepoSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSourceRepoSource] {
+	return pulumix.Output[[]GetTriggerBuildSourceRepoSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTriggerBuildSourceRepoSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSourceRepoSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildSourceRepoSource {
 		return vs[0].([]GetTriggerBuildSourceRepoSource)[vs[1].(int)]
@@ -8397,6 +9550,12 @@ func (i GetTriggerBuildSourceStorageSourceArgs) ToGetTriggerBuildSourceStorageSo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceStorageSourceOutput)
 }
 
+func (i GetTriggerBuildSourceStorageSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSourceStorageSource] {
+	return pulumix.Output[GetTriggerBuildSourceStorageSource]{
+		OutputState: i.ToGetTriggerBuildSourceStorageSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildSourceStorageSourceArrayInput is an input type that accepts GetTriggerBuildSourceStorageSourceArray and GetTriggerBuildSourceStorageSourceArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildSourceStorageSourceArrayInput` via:
 //
@@ -8422,6 +9581,12 @@ func (i GetTriggerBuildSourceStorageSourceArray) ToGetTriggerBuildSourceStorageS
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildSourceStorageSourceArrayOutput)
 }
 
+func (i GetTriggerBuildSourceStorageSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSourceStorageSource] {
+	return pulumix.Output[[]GetTriggerBuildSourceStorageSource]{
+		OutputState: i.ToGetTriggerBuildSourceStorageSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildSourceStorageSourceOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildSourceStorageSourceOutput) ElementType() reflect.Type {
@@ -8434,6 +9599,12 @@ func (o GetTriggerBuildSourceStorageSourceOutput) ToGetTriggerBuildSourceStorage
 
 func (o GetTriggerBuildSourceStorageSourceOutput) ToGetTriggerBuildSourceStorageSourceOutputWithContext(ctx context.Context) GetTriggerBuildSourceStorageSourceOutput {
 	return o
+}
+
+func (o GetTriggerBuildSourceStorageSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildSourceStorageSource] {
+	return pulumix.Output[GetTriggerBuildSourceStorageSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSourceStorageSourceOutput) Bucket() pulumi.StringOutput {
@@ -8460,6 +9631,12 @@ func (o GetTriggerBuildSourceStorageSourceArrayOutput) ToGetTriggerBuildSourceSt
 
 func (o GetTriggerBuildSourceStorageSourceArrayOutput) ToGetTriggerBuildSourceStorageSourceArrayOutputWithContext(ctx context.Context) GetTriggerBuildSourceStorageSourceArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildSourceStorageSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildSourceStorageSource] {
+	return pulumix.Output[[]GetTriggerBuildSourceStorageSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildSourceStorageSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildSourceStorageSourceOutput {
@@ -8525,6 +9702,12 @@ func (i GetTriggerBuildStepArgs) ToGetTriggerBuildStepOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepOutput)
 }
 
+func (i GetTriggerBuildStepArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildStep] {
+	return pulumix.Output[GetTriggerBuildStep]{
+		OutputState: i.ToGetTriggerBuildStepOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildStepArrayInput is an input type that accepts GetTriggerBuildStepArray and GetTriggerBuildStepArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildStepArrayInput` via:
 //
@@ -8550,6 +9733,12 @@ func (i GetTriggerBuildStepArray) ToGetTriggerBuildStepArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepArrayOutput)
 }
 
+func (i GetTriggerBuildStepArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildStep] {
+	return pulumix.Output[[]GetTriggerBuildStep]{
+		OutputState: i.ToGetTriggerBuildStepArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildStepOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildStepOutput) ElementType() reflect.Type {
@@ -8562,6 +9751,12 @@ func (o GetTriggerBuildStepOutput) ToGetTriggerBuildStepOutput() GetTriggerBuild
 
 func (o GetTriggerBuildStepOutput) ToGetTriggerBuildStepOutputWithContext(ctx context.Context) GetTriggerBuildStepOutput {
 	return o
+}
+
+func (o GetTriggerBuildStepOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildStep] {
+	return pulumix.Output[GetTriggerBuildStep]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildStepOutput) AllowExitCodes() pulumi.IntArrayOutput {
@@ -8634,6 +9829,12 @@ func (o GetTriggerBuildStepArrayOutput) ToGetTriggerBuildStepArrayOutputWithCont
 	return o
 }
 
+func (o GetTriggerBuildStepArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildStep] {
+	return pulumix.Output[[]GetTriggerBuildStep]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTriggerBuildStepArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildStepOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildStep {
 		return vs[0].([]GetTriggerBuildStep)[vs[1].(int)]
@@ -8673,6 +9874,12 @@ func (i GetTriggerBuildStepVolumeArgs) ToGetTriggerBuildStepVolumeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepVolumeOutput)
 }
 
+func (i GetTriggerBuildStepVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildStepVolume] {
+	return pulumix.Output[GetTriggerBuildStepVolume]{
+		OutputState: i.ToGetTriggerBuildStepVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerBuildStepVolumeArrayInput is an input type that accepts GetTriggerBuildStepVolumeArray and GetTriggerBuildStepVolumeArrayOutput values.
 // You can construct a concrete instance of `GetTriggerBuildStepVolumeArrayInput` via:
 //
@@ -8698,6 +9905,12 @@ func (i GetTriggerBuildStepVolumeArray) ToGetTriggerBuildStepVolumeArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildStepVolumeArrayOutput)
 }
 
+func (i GetTriggerBuildStepVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildStepVolume] {
+	return pulumix.Output[[]GetTriggerBuildStepVolume]{
+		OutputState: i.ToGetTriggerBuildStepVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerBuildStepVolumeOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerBuildStepVolumeOutput) ElementType() reflect.Type {
@@ -8710,6 +9923,12 @@ func (o GetTriggerBuildStepVolumeOutput) ToGetTriggerBuildStepVolumeOutput() Get
 
 func (o GetTriggerBuildStepVolumeOutput) ToGetTriggerBuildStepVolumeOutputWithContext(ctx context.Context) GetTriggerBuildStepVolumeOutput {
 	return o
+}
+
+func (o GetTriggerBuildStepVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerBuildStepVolume] {
+	return pulumix.Output[GetTriggerBuildStepVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildStepVolumeOutput) Name() pulumi.StringOutput {
@@ -8732,6 +9951,12 @@ func (o GetTriggerBuildStepVolumeArrayOutput) ToGetTriggerBuildStepVolumeArrayOu
 
 func (o GetTriggerBuildStepVolumeArrayOutput) ToGetTriggerBuildStepVolumeArrayOutputWithContext(ctx context.Context) GetTriggerBuildStepVolumeArrayOutput {
 	return o
+}
+
+func (o GetTriggerBuildStepVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerBuildStepVolume] {
+	return pulumix.Output[[]GetTriggerBuildStepVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildStepVolumeOutput {
@@ -8783,6 +10008,12 @@ func (i GetTriggerGitFileSourceArgs) ToGetTriggerGitFileSourceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGitFileSourceOutput)
 }
 
+func (i GetTriggerGitFileSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGitFileSource] {
+	return pulumix.Output[GetTriggerGitFileSource]{
+		OutputState: i.ToGetTriggerGitFileSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerGitFileSourceArrayInput is an input type that accepts GetTriggerGitFileSourceArray and GetTriggerGitFileSourceArrayOutput values.
 // You can construct a concrete instance of `GetTriggerGitFileSourceArrayInput` via:
 //
@@ -8808,6 +10039,12 @@ func (i GetTriggerGitFileSourceArray) ToGetTriggerGitFileSourceArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGitFileSourceArrayOutput)
 }
 
+func (i GetTriggerGitFileSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGitFileSource] {
+	return pulumix.Output[[]GetTriggerGitFileSource]{
+		OutputState: i.ToGetTriggerGitFileSourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerGitFileSourceOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerGitFileSourceOutput) ElementType() reflect.Type {
@@ -8820,6 +10057,12 @@ func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutput() GetTrig
 
 func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutputWithContext(ctx context.Context) GetTriggerGitFileSourceOutput {
 	return o
+}
+
+func (o GetTriggerGitFileSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGitFileSource] {
+	return pulumix.Output[GetTriggerGitFileSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGitFileSourceOutput) BitbucketServerConfig() pulumi.StringOutput {
@@ -8862,6 +10105,12 @@ func (o GetTriggerGitFileSourceArrayOutput) ToGetTriggerGitFileSourceArrayOutput
 
 func (o GetTriggerGitFileSourceArrayOutput) ToGetTriggerGitFileSourceArrayOutputWithContext(ctx context.Context) GetTriggerGitFileSourceArrayOutput {
 	return o
+}
+
+func (o GetTriggerGitFileSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGitFileSource] {
+	return pulumix.Output[[]GetTriggerGitFileSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGitFileSourceArrayOutput) Index(i pulumi.IntInput) GetTriggerGitFileSourceOutput {
@@ -8909,6 +10158,12 @@ func (i GetTriggerGithubArgs) ToGetTriggerGithubOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubOutput)
 }
 
+func (i GetTriggerGithubArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGithub] {
+	return pulumix.Output[GetTriggerGithub]{
+		OutputState: i.ToGetTriggerGithubOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerGithubArrayInput is an input type that accepts GetTriggerGithubArray and GetTriggerGithubArrayOutput values.
 // You can construct a concrete instance of `GetTriggerGithubArrayInput` via:
 //
@@ -8934,6 +10189,12 @@ func (i GetTriggerGithubArray) ToGetTriggerGithubArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubArrayOutput)
 }
 
+func (i GetTriggerGithubArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGithub] {
+	return pulumix.Output[[]GetTriggerGithub]{
+		OutputState: i.ToGetTriggerGithubArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerGithubOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerGithubOutput) ElementType() reflect.Type {
@@ -8946,6 +10207,12 @@ func (o GetTriggerGithubOutput) ToGetTriggerGithubOutput() GetTriggerGithubOutpu
 
 func (o GetTriggerGithubOutput) ToGetTriggerGithubOutputWithContext(ctx context.Context) GetTriggerGithubOutput {
 	return o
+}
+
+func (o GetTriggerGithubOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGithub] {
+	return pulumix.Output[GetTriggerGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGithubOutput) EnterpriseConfigResourceName() pulumi.StringOutput {
@@ -8980,6 +10247,12 @@ func (o GetTriggerGithubArrayOutput) ToGetTriggerGithubArrayOutput() GetTriggerG
 
 func (o GetTriggerGithubArrayOutput) ToGetTriggerGithubArrayOutputWithContext(ctx context.Context) GetTriggerGithubArrayOutput {
 	return o
+}
+
+func (o GetTriggerGithubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGithub] {
+	return pulumix.Output[[]GetTriggerGithub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGithubArrayOutput) Index(i pulumi.IntInput) GetTriggerGithubOutput {
@@ -9023,6 +10296,12 @@ func (i GetTriggerGithubPullRequestArgs) ToGetTriggerGithubPullRequestOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPullRequestOutput)
 }
 
+func (i GetTriggerGithubPullRequestArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGithubPullRequest] {
+	return pulumix.Output[GetTriggerGithubPullRequest]{
+		OutputState: i.ToGetTriggerGithubPullRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerGithubPullRequestArrayInput is an input type that accepts GetTriggerGithubPullRequestArray and GetTriggerGithubPullRequestArrayOutput values.
 // You can construct a concrete instance of `GetTriggerGithubPullRequestArrayInput` via:
 //
@@ -9048,6 +10327,12 @@ func (i GetTriggerGithubPullRequestArray) ToGetTriggerGithubPullRequestArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPullRequestArrayOutput)
 }
 
+func (i GetTriggerGithubPullRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGithubPullRequest] {
+	return pulumix.Output[[]GetTriggerGithubPullRequest]{
+		OutputState: i.ToGetTriggerGithubPullRequestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerGithubPullRequestOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerGithubPullRequestOutput) ElementType() reflect.Type {
@@ -9060,6 +10345,12 @@ func (o GetTriggerGithubPullRequestOutput) ToGetTriggerGithubPullRequestOutput()
 
 func (o GetTriggerGithubPullRequestOutput) ToGetTriggerGithubPullRequestOutputWithContext(ctx context.Context) GetTriggerGithubPullRequestOutput {
 	return o
+}
+
+func (o GetTriggerGithubPullRequestOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGithubPullRequest] {
+	return pulumix.Output[GetTriggerGithubPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
@@ -9086,6 +10377,12 @@ func (o GetTriggerGithubPullRequestArrayOutput) ToGetTriggerGithubPullRequestArr
 
 func (o GetTriggerGithubPullRequestArrayOutput) ToGetTriggerGithubPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerGithubPullRequestArrayOutput {
 	return o
+}
+
+func (o GetTriggerGithubPullRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGithubPullRequest] {
+	return pulumix.Output[[]GetTriggerGithubPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGithubPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerGithubPullRequestOutput {
@@ -9129,6 +10426,12 @@ func (i GetTriggerGithubPushArgs) ToGetTriggerGithubPushOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPushOutput)
 }
 
+func (i GetTriggerGithubPushArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGithubPush] {
+	return pulumix.Output[GetTriggerGithubPush]{
+		OutputState: i.ToGetTriggerGithubPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerGithubPushArrayInput is an input type that accepts GetTriggerGithubPushArray and GetTriggerGithubPushArrayOutput values.
 // You can construct a concrete instance of `GetTriggerGithubPushArrayInput` via:
 //
@@ -9154,6 +10457,12 @@ func (i GetTriggerGithubPushArray) ToGetTriggerGithubPushArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerGithubPushArrayOutput)
 }
 
+func (i GetTriggerGithubPushArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGithubPush] {
+	return pulumix.Output[[]GetTriggerGithubPush]{
+		OutputState: i.ToGetTriggerGithubPushArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerGithubPushOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerGithubPushOutput) ElementType() reflect.Type {
@@ -9166,6 +10475,12 @@ func (o GetTriggerGithubPushOutput) ToGetTriggerGithubPushOutput() GetTriggerGit
 
 func (o GetTriggerGithubPushOutput) ToGetTriggerGithubPushOutputWithContext(ctx context.Context) GetTriggerGithubPushOutput {
 	return o
+}
+
+func (o GetTriggerGithubPushOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerGithubPush] {
+	return pulumix.Output[GetTriggerGithubPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGithubPushOutput) Branch() pulumi.StringOutput {
@@ -9192,6 +10507,12 @@ func (o GetTriggerGithubPushArrayOutput) ToGetTriggerGithubPushArrayOutput() Get
 
 func (o GetTriggerGithubPushArrayOutput) ToGetTriggerGithubPushArrayOutputWithContext(ctx context.Context) GetTriggerGithubPushArrayOutput {
 	return o
+}
+
+func (o GetTriggerGithubPushArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerGithubPush] {
+	return pulumix.Output[[]GetTriggerGithubPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerGithubPushArrayOutput) Index(i pulumi.IntInput) GetTriggerGithubPushOutput {
@@ -9237,6 +10558,12 @@ func (i GetTriggerPubsubConfigArgs) ToGetTriggerPubsubConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerPubsubConfigOutput)
 }
 
+func (i GetTriggerPubsubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerPubsubConfig] {
+	return pulumix.Output[GetTriggerPubsubConfig]{
+		OutputState: i.ToGetTriggerPubsubConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerPubsubConfigArrayInput is an input type that accepts GetTriggerPubsubConfigArray and GetTriggerPubsubConfigArrayOutput values.
 // You can construct a concrete instance of `GetTriggerPubsubConfigArrayInput` via:
 //
@@ -9262,6 +10589,12 @@ func (i GetTriggerPubsubConfigArray) ToGetTriggerPubsubConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerPubsubConfigArrayOutput)
 }
 
+func (i GetTriggerPubsubConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerPubsubConfig] {
+	return pulumix.Output[[]GetTriggerPubsubConfig]{
+		OutputState: i.ToGetTriggerPubsubConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerPubsubConfigOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerPubsubConfigOutput) ElementType() reflect.Type {
@@ -9274,6 +10607,12 @@ func (o GetTriggerPubsubConfigOutput) ToGetTriggerPubsubConfigOutput() GetTrigge
 
 func (o GetTriggerPubsubConfigOutput) ToGetTriggerPubsubConfigOutputWithContext(ctx context.Context) GetTriggerPubsubConfigOutput {
 	return o
+}
+
+func (o GetTriggerPubsubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerPubsubConfig] {
+	return pulumix.Output[GetTriggerPubsubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerPubsubConfigOutput) ServiceAccountEmail() pulumi.StringOutput {
@@ -9304,6 +10643,12 @@ func (o GetTriggerPubsubConfigArrayOutput) ToGetTriggerPubsubConfigArrayOutput()
 
 func (o GetTriggerPubsubConfigArrayOutput) ToGetTriggerPubsubConfigArrayOutputWithContext(ctx context.Context) GetTriggerPubsubConfigArrayOutput {
 	return o
+}
+
+func (o GetTriggerPubsubConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerPubsubConfig] {
+	return pulumix.Output[[]GetTriggerPubsubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerPubsubConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerPubsubConfigOutput {
@@ -9347,6 +10692,12 @@ func (i GetTriggerRepositoryEventConfigArgs) ToGetTriggerRepositoryEventConfigOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigOutput)
 }
 
+func (i GetTriggerRepositoryEventConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerRepositoryEventConfig] {
+	return pulumix.Output[GetTriggerRepositoryEventConfig]{
+		OutputState: i.ToGetTriggerRepositoryEventConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerRepositoryEventConfigArrayInput is an input type that accepts GetTriggerRepositoryEventConfigArray and GetTriggerRepositoryEventConfigArrayOutput values.
 // You can construct a concrete instance of `GetTriggerRepositoryEventConfigArrayInput` via:
 //
@@ -9372,6 +10723,12 @@ func (i GetTriggerRepositoryEventConfigArray) ToGetTriggerRepositoryEventConfigA
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigArrayOutput)
 }
 
+func (i GetTriggerRepositoryEventConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerRepositoryEventConfig] {
+	return pulumix.Output[[]GetTriggerRepositoryEventConfig]{
+		OutputState: i.ToGetTriggerRepositoryEventConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerRepositoryEventConfigOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerRepositoryEventConfigOutput) ElementType() reflect.Type {
@@ -9384,6 +10741,12 @@ func (o GetTriggerRepositoryEventConfigOutput) ToGetTriggerRepositoryEventConfig
 
 func (o GetTriggerRepositoryEventConfigOutput) ToGetTriggerRepositoryEventConfigOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigOutput {
 	return o
+}
+
+func (o GetTriggerRepositoryEventConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerRepositoryEventConfig] {
+	return pulumix.Output[GetTriggerRepositoryEventConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerRepositoryEventConfigOutput) PullRequests() GetTriggerRepositoryEventConfigPullRequestArrayOutput {
@@ -9412,6 +10775,12 @@ func (o GetTriggerRepositoryEventConfigArrayOutput) ToGetTriggerRepositoryEventC
 
 func (o GetTriggerRepositoryEventConfigArrayOutput) ToGetTriggerRepositoryEventConfigArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigArrayOutput {
 	return o
+}
+
+func (o GetTriggerRepositoryEventConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerRepositoryEventConfig] {
+	return pulumix.Output[[]GetTriggerRepositoryEventConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerRepositoryEventConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerRepositoryEventConfigOutput {
@@ -9455,6 +10824,12 @@ func (i GetTriggerRepositoryEventConfigPullRequestArgs) ToGetTriggerRepositoryEv
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPullRequestOutput)
 }
 
+func (i GetTriggerRepositoryEventConfigPullRequestArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[GetTriggerRepositoryEventConfigPullRequest]{
+		OutputState: i.ToGetTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerRepositoryEventConfigPullRequestArrayInput is an input type that accepts GetTriggerRepositoryEventConfigPullRequestArray and GetTriggerRepositoryEventConfigPullRequestArrayOutput values.
 // You can construct a concrete instance of `GetTriggerRepositoryEventConfigPullRequestArrayInput` via:
 //
@@ -9480,6 +10855,12 @@ func (i GetTriggerRepositoryEventConfigPullRequestArray) ToGetTriggerRepositoryE
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPullRequestArrayOutput)
 }
 
+func (i GetTriggerRepositoryEventConfigPullRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[[]GetTriggerRepositoryEventConfigPullRequest]{
+		OutputState: i.ToGetTriggerRepositoryEventConfigPullRequestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerRepositoryEventConfigPullRequestOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerRepositoryEventConfigPullRequestOutput) ElementType() reflect.Type {
@@ -9492,6 +10873,12 @@ func (o GetTriggerRepositoryEventConfigPullRequestOutput) ToGetTriggerRepository
 
 func (o GetTriggerRepositoryEventConfigPullRequestOutput) ToGetTriggerRepositoryEventConfigPullRequestOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPullRequestOutput {
 	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[GetTriggerRepositoryEventConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerRepositoryEventConfigPullRequestOutput) Branch() pulumi.StringOutput {
@@ -9518,6 +10905,12 @@ func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) ToGetTriggerRepos
 
 func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) ToGetTriggerRepositoryEventConfigPullRequestArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPullRequestArrayOutput {
 	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerRepositoryEventConfigPullRequest] {
+	return pulumix.Output[[]GetTriggerRepositoryEventConfigPullRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerRepositoryEventConfigPullRequestArrayOutput) Index(i pulumi.IntInput) GetTriggerRepositoryEventConfigPullRequestOutput {
@@ -9561,6 +10954,12 @@ func (i GetTriggerRepositoryEventConfigPushArgs) ToGetTriggerRepositoryEventConf
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPushOutput)
 }
 
+func (i GetTriggerRepositoryEventConfigPushArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerRepositoryEventConfigPush] {
+	return pulumix.Output[GetTriggerRepositoryEventConfigPush]{
+		OutputState: i.ToGetTriggerRepositoryEventConfigPushOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerRepositoryEventConfigPushArrayInput is an input type that accepts GetTriggerRepositoryEventConfigPushArray and GetTriggerRepositoryEventConfigPushArrayOutput values.
 // You can construct a concrete instance of `GetTriggerRepositoryEventConfigPushArrayInput` via:
 //
@@ -9586,6 +10985,12 @@ func (i GetTriggerRepositoryEventConfigPushArray) ToGetTriggerRepositoryEventCon
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerRepositoryEventConfigPushArrayOutput)
 }
 
+func (i GetTriggerRepositoryEventConfigPushArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerRepositoryEventConfigPush] {
+	return pulumix.Output[[]GetTriggerRepositoryEventConfigPush]{
+		OutputState: i.ToGetTriggerRepositoryEventConfigPushArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerRepositoryEventConfigPushOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerRepositoryEventConfigPushOutput) ElementType() reflect.Type {
@@ -9598,6 +11003,12 @@ func (o GetTriggerRepositoryEventConfigPushOutput) ToGetTriggerRepositoryEventCo
 
 func (o GetTriggerRepositoryEventConfigPushOutput) ToGetTriggerRepositoryEventConfigPushOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPushOutput {
 	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPushOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerRepositoryEventConfigPush] {
+	return pulumix.Output[GetTriggerRepositoryEventConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerRepositoryEventConfigPushOutput) Branch() pulumi.StringOutput {
@@ -9624,6 +11035,12 @@ func (o GetTriggerRepositoryEventConfigPushArrayOutput) ToGetTriggerRepositoryEv
 
 func (o GetTriggerRepositoryEventConfigPushArrayOutput) ToGetTriggerRepositoryEventConfigPushArrayOutputWithContext(ctx context.Context) GetTriggerRepositoryEventConfigPushArrayOutput {
 	return o
+}
+
+func (o GetTriggerRepositoryEventConfigPushArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerRepositoryEventConfigPush] {
+	return pulumix.Output[[]GetTriggerRepositoryEventConfigPush]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerRepositoryEventConfigPushArrayOutput) Index(i pulumi.IntInput) GetTriggerRepositoryEventConfigPushOutput {
@@ -9673,6 +11090,12 @@ func (i GetTriggerSourceToBuildArgs) ToGetTriggerSourceToBuildOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerSourceToBuildOutput)
 }
 
+func (i GetTriggerSourceToBuildArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerSourceToBuild] {
+	return pulumix.Output[GetTriggerSourceToBuild]{
+		OutputState: i.ToGetTriggerSourceToBuildOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerSourceToBuildArrayInput is an input type that accepts GetTriggerSourceToBuildArray and GetTriggerSourceToBuildArrayOutput values.
 // You can construct a concrete instance of `GetTriggerSourceToBuildArrayInput` via:
 //
@@ -9698,6 +11121,12 @@ func (i GetTriggerSourceToBuildArray) ToGetTriggerSourceToBuildArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerSourceToBuildArrayOutput)
 }
 
+func (i GetTriggerSourceToBuildArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerSourceToBuild] {
+	return pulumix.Output[[]GetTriggerSourceToBuild]{
+		OutputState: i.ToGetTriggerSourceToBuildArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerSourceToBuildOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerSourceToBuildOutput) ElementType() reflect.Type {
@@ -9710,6 +11139,12 @@ func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutput() GetTrig
 
 func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutputWithContext(ctx context.Context) GetTriggerSourceToBuildOutput {
 	return o
+}
+
+func (o GetTriggerSourceToBuildOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerSourceToBuild] {
+	return pulumix.Output[GetTriggerSourceToBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerSourceToBuildOutput) BitbucketServerConfig() pulumi.StringOutput {
@@ -9748,6 +11183,12 @@ func (o GetTriggerSourceToBuildArrayOutput) ToGetTriggerSourceToBuildArrayOutput
 
 func (o GetTriggerSourceToBuildArrayOutput) ToGetTriggerSourceToBuildArrayOutputWithContext(ctx context.Context) GetTriggerSourceToBuildArrayOutput {
 	return o
+}
+
+func (o GetTriggerSourceToBuildArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerSourceToBuild] {
+	return pulumix.Output[[]GetTriggerSourceToBuild]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerSourceToBuildArrayOutput) Index(i pulumi.IntInput) GetTriggerSourceToBuildOutput {
@@ -9799,6 +11240,12 @@ func (i GetTriggerTriggerTemplateArgs) ToGetTriggerTriggerTemplateOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerTriggerTemplateOutput)
 }
 
+func (i GetTriggerTriggerTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerTriggerTemplate] {
+	return pulumix.Output[GetTriggerTriggerTemplate]{
+		OutputState: i.ToGetTriggerTriggerTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerTriggerTemplateArrayInput is an input type that accepts GetTriggerTriggerTemplateArray and GetTriggerTriggerTemplateArrayOutput values.
 // You can construct a concrete instance of `GetTriggerTriggerTemplateArrayInput` via:
 //
@@ -9824,6 +11271,12 @@ func (i GetTriggerTriggerTemplateArray) ToGetTriggerTriggerTemplateArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerTriggerTemplateArrayOutput)
 }
 
+func (i GetTriggerTriggerTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerTriggerTemplate] {
+	return pulumix.Output[[]GetTriggerTriggerTemplate]{
+		OutputState: i.ToGetTriggerTriggerTemplateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerTriggerTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerTriggerTemplateOutput) ElementType() reflect.Type {
@@ -9836,6 +11289,12 @@ func (o GetTriggerTriggerTemplateOutput) ToGetTriggerTriggerTemplateOutput() Get
 
 func (o GetTriggerTriggerTemplateOutput) ToGetTriggerTriggerTemplateOutputWithContext(ctx context.Context) GetTriggerTriggerTemplateOutput {
 	return o
+}
+
+func (o GetTriggerTriggerTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerTriggerTemplate] {
+	return pulumix.Output[GetTriggerTriggerTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerTriggerTemplateOutput) BranchName() pulumi.StringOutput {
@@ -9880,6 +11339,12 @@ func (o GetTriggerTriggerTemplateArrayOutput) ToGetTriggerTriggerTemplateArrayOu
 	return o
 }
 
+func (o GetTriggerTriggerTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerTriggerTemplate] {
+	return pulumix.Output[[]GetTriggerTriggerTemplate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetTriggerTriggerTemplateArrayOutput) Index(i pulumi.IntInput) GetTriggerTriggerTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerTriggerTemplate {
 		return vs[0].([]GetTriggerTriggerTemplate)[vs[1].(int)]
@@ -9919,6 +11384,12 @@ func (i GetTriggerWebhookConfigArgs) ToGetTriggerWebhookConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerWebhookConfigOutput)
 }
 
+func (i GetTriggerWebhookConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetTriggerWebhookConfig] {
+	return pulumix.Output[GetTriggerWebhookConfig]{
+		OutputState: i.ToGetTriggerWebhookConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetTriggerWebhookConfigArrayInput is an input type that accepts GetTriggerWebhookConfigArray and GetTriggerWebhookConfigArrayOutput values.
 // You can construct a concrete instance of `GetTriggerWebhookConfigArrayInput` via:
 //
@@ -9944,6 +11415,12 @@ func (i GetTriggerWebhookConfigArray) ToGetTriggerWebhookConfigArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerWebhookConfigArrayOutput)
 }
 
+func (i GetTriggerWebhookConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerWebhookConfig] {
+	return pulumix.Output[[]GetTriggerWebhookConfig]{
+		OutputState: i.ToGetTriggerWebhookConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetTriggerWebhookConfigOutput struct{ *pulumi.OutputState }
 
 func (GetTriggerWebhookConfigOutput) ElementType() reflect.Type {
@@ -9956,6 +11433,12 @@ func (o GetTriggerWebhookConfigOutput) ToGetTriggerWebhookConfigOutput() GetTrig
 
 func (o GetTriggerWebhookConfigOutput) ToGetTriggerWebhookConfigOutputWithContext(ctx context.Context) GetTriggerWebhookConfigOutput {
 	return o
+}
+
+func (o GetTriggerWebhookConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerWebhookConfig] {
+	return pulumix.Output[GetTriggerWebhookConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerWebhookConfigOutput) Secret() pulumi.StringOutput {
@@ -9978,6 +11461,12 @@ func (o GetTriggerWebhookConfigArrayOutput) ToGetTriggerWebhookConfigArrayOutput
 
 func (o GetTriggerWebhookConfigArrayOutput) ToGetTriggerWebhookConfigArrayOutputWithContext(ctx context.Context) GetTriggerWebhookConfigArrayOutput {
 	return o
+}
+
+func (o GetTriggerWebhookConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTriggerWebhookConfig] {
+	return pulumix.Output[[]GetTriggerWebhookConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetTriggerWebhookConfigArrayOutput) Index(i pulumi.IntInput) GetTriggerWebhookConfigOutput {

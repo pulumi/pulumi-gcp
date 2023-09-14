@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Endpoints Service. Each of these resources serves a different use case:
@@ -260,6 +261,12 @@ func (i *ServiceIamPolicy) ToServiceIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamPolicyOutput)
 }
 
+func (i *ServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamPolicy] {
+	return pulumix.Output[*ServiceIamPolicy]{
+		OutputState: i.ToServiceIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceIamPolicyArrayInput is an input type that accepts ServiceIamPolicyArray and ServiceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ServiceIamPolicyArrayInput` via:
 //
@@ -283,6 +290,12 @@ func (i ServiceIamPolicyArray) ToServiceIamPolicyArrayOutput() ServiceIamPolicyA
 
 func (i ServiceIamPolicyArray) ToServiceIamPolicyArrayOutputWithContext(ctx context.Context) ServiceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamPolicyArrayOutput)
+}
+
+func (i ServiceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIamPolicy] {
+	return pulumix.Output[[]*ServiceIamPolicy]{
+		OutputState: i.ToServiceIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceIamPolicyMapInput is an input type that accepts ServiceIamPolicyMap and ServiceIamPolicyMapOutput values.
@@ -310,6 +323,12 @@ func (i ServiceIamPolicyMap) ToServiceIamPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamPolicyMapOutput)
 }
 
+func (i ServiceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIamPolicy] {
+	return pulumix.Output[map[string]*ServiceIamPolicy]{
+		OutputState: i.ToServiceIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -322,6 +341,12 @@ func (o ServiceIamPolicyOutput) ToServiceIamPolicyOutput() ServiceIamPolicyOutpu
 
 func (o ServiceIamPolicyOutput) ToServiceIamPolicyOutputWithContext(ctx context.Context) ServiceIamPolicyOutput {
 	return o
+}
+
+func (o ServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamPolicy] {
+	return pulumix.Output[*ServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -353,6 +378,12 @@ func (o ServiceIamPolicyArrayOutput) ToServiceIamPolicyArrayOutputWithContext(ct
 	return o
 }
 
+func (o ServiceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIamPolicy] {
+	return pulumix.Output[[]*ServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) ServiceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIamPolicy {
 		return vs[0].([]*ServiceIamPolicy)[vs[1].(int)]
@@ -371,6 +402,12 @@ func (o ServiceIamPolicyMapOutput) ToServiceIamPolicyMapOutput() ServiceIamPolic
 
 func (o ServiceIamPolicyMapOutput) ToServiceIamPolicyMapOutputWithContext(ctx context.Context) ServiceIamPolicyMapOutput {
 	return o
+}
+
+func (o ServiceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIamPolicy] {
+	return pulumix.Output[map[string]*ServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ServiceIamPolicyOutput {

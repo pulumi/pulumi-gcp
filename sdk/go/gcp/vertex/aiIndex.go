@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
@@ -399,6 +400,12 @@ func (i *AiIndex) ToAiIndexOutputWithContext(ctx context.Context) AiIndexOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexOutput)
 }
 
+func (i *AiIndex) ToOutput(ctx context.Context) pulumix.Output[*AiIndex] {
+	return pulumix.Output[*AiIndex]{
+		OutputState: i.ToAiIndexOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AiIndexArrayInput is an input type that accepts AiIndexArray and AiIndexArrayOutput values.
 // You can construct a concrete instance of `AiIndexArrayInput` via:
 //
@@ -422,6 +429,12 @@ func (i AiIndexArray) ToAiIndexArrayOutput() AiIndexArrayOutput {
 
 func (i AiIndexArray) ToAiIndexArrayOutputWithContext(ctx context.Context) AiIndexArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexArrayOutput)
+}
+
+func (i AiIndexArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiIndex] {
+	return pulumix.Output[[]*AiIndex]{
+		OutputState: i.ToAiIndexArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AiIndexMapInput is an input type that accepts AiIndexMap and AiIndexMapOutput values.
@@ -449,6 +462,12 @@ func (i AiIndexMap) ToAiIndexMapOutputWithContext(ctx context.Context) AiIndexMa
 	return pulumi.ToOutputWithContext(ctx, i).(AiIndexMapOutput)
 }
 
+func (i AiIndexMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiIndex] {
+	return pulumix.Output[map[string]*AiIndex]{
+		OutputState: i.ToAiIndexMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AiIndexOutput struct{ *pulumi.OutputState }
 
 func (AiIndexOutput) ElementType() reflect.Type {
@@ -461,6 +480,12 @@ func (o AiIndexOutput) ToAiIndexOutput() AiIndexOutput {
 
 func (o AiIndexOutput) ToAiIndexOutputWithContext(ctx context.Context) AiIndexOutput {
 	return o
+}
+
+func (o AiIndexOutput) ToOutput(ctx context.Context) pulumix.Output[*AiIndex] {
+	return pulumix.Output[*AiIndex]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -555,6 +580,12 @@ func (o AiIndexArrayOutput) ToAiIndexArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AiIndexArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiIndex] {
+	return pulumix.Output[[]*AiIndex]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AiIndexArrayOutput) Index(i pulumi.IntInput) AiIndexOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiIndex {
 		return vs[0].([]*AiIndex)[vs[1].(int)]
@@ -573,6 +604,12 @@ func (o AiIndexMapOutput) ToAiIndexMapOutput() AiIndexMapOutput {
 
 func (o AiIndexMapOutput) ToAiIndexMapOutputWithContext(ctx context.Context) AiIndexMapOutput {
 	return o
+}
+
+func (o AiIndexMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiIndex] {
+	return pulumix.Output[map[string]*AiIndex]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiIndexMapOutput) MapIndex(k pulumi.StringInput) AiIndexOutput {

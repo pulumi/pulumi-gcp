@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
@@ -379,6 +380,12 @@ func (i *DataExchangeIamBinding) ToDataExchangeIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamBindingOutput)
 }
 
+func (i *DataExchangeIamBinding) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamBinding] {
+	return pulumix.Output[*DataExchangeIamBinding]{
+		OutputState: i.ToDataExchangeIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataExchangeIamBindingArrayInput is an input type that accepts DataExchangeIamBindingArray and DataExchangeIamBindingArrayOutput values.
 // You can construct a concrete instance of `DataExchangeIamBindingArrayInput` via:
 //
@@ -402,6 +409,12 @@ func (i DataExchangeIamBindingArray) ToDataExchangeIamBindingArrayOutput() DataE
 
 func (i DataExchangeIamBindingArray) ToDataExchangeIamBindingArrayOutputWithContext(ctx context.Context) DataExchangeIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamBindingArrayOutput)
+}
+
+func (i DataExchangeIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchangeIamBinding] {
+	return pulumix.Output[[]*DataExchangeIamBinding]{
+		OutputState: i.ToDataExchangeIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DataExchangeIamBindingMapInput is an input type that accepts DataExchangeIamBindingMap and DataExchangeIamBindingMapOutput values.
@@ -429,6 +442,12 @@ func (i DataExchangeIamBindingMap) ToDataExchangeIamBindingMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamBindingMapOutput)
 }
 
+func (i DataExchangeIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchangeIamBinding] {
+	return pulumix.Output[map[string]*DataExchangeIamBinding]{
+		OutputState: i.ToDataExchangeIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataExchangeIamBindingOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeIamBindingOutput) ElementType() reflect.Type {
@@ -441,6 +460,12 @@ func (o DataExchangeIamBindingOutput) ToDataExchangeIamBindingOutput() DataExcha
 
 func (o DataExchangeIamBindingOutput) ToDataExchangeIamBindingOutputWithContext(ctx context.Context) DataExchangeIamBindingOutput {
 	return o
+}
+
+func (o DataExchangeIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamBinding] {
+	return pulumix.Output[*DataExchangeIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamBindingOutput) Condition() DataExchangeIamBindingConditionPtrOutput {
@@ -506,6 +531,12 @@ func (o DataExchangeIamBindingArrayOutput) ToDataExchangeIamBindingArrayOutputWi
 	return o
 }
 
+func (o DataExchangeIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchangeIamBinding] {
+	return pulumix.Output[[]*DataExchangeIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataExchangeIamBindingArrayOutput) Index(i pulumi.IntInput) DataExchangeIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataExchangeIamBinding {
 		return vs[0].([]*DataExchangeIamBinding)[vs[1].(int)]
@@ -524,6 +555,12 @@ func (o DataExchangeIamBindingMapOutput) ToDataExchangeIamBindingMapOutput() Dat
 
 func (o DataExchangeIamBindingMapOutput) ToDataExchangeIamBindingMapOutputWithContext(ctx context.Context) DataExchangeIamBindingMapOutput {
 	return o
+}
+
+func (o DataExchangeIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchangeIamBinding] {
+	return pulumix.Output[map[string]*DataExchangeIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamBindingMapOutput) MapIndex(k pulumi.StringInput) DataExchangeIamBindingOutput {

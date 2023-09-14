@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Warning:** `firebase.ProjectLocation` is deprecated in favor of explicitly configuring `appengine.Application` and `firestore.Database`. This resource will be removed in the next major release of the provider.
@@ -206,6 +207,12 @@ func (i *ProjectLocation) ToProjectLocationOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationOutput)
 }
 
+func (i *ProjectLocation) ToOutput(ctx context.Context) pulumix.Output[*ProjectLocation] {
+	return pulumix.Output[*ProjectLocation]{
+		OutputState: i.ToProjectLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectLocationArrayInput is an input type that accepts ProjectLocationArray and ProjectLocationArrayOutput values.
 // You can construct a concrete instance of `ProjectLocationArrayInput` via:
 //
@@ -229,6 +236,12 @@ func (i ProjectLocationArray) ToProjectLocationArrayOutput() ProjectLocationArra
 
 func (i ProjectLocationArray) ToProjectLocationArrayOutputWithContext(ctx context.Context) ProjectLocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationArrayOutput)
+}
+
+func (i ProjectLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectLocation] {
+	return pulumix.Output[[]*ProjectLocation]{
+		OutputState: i.ToProjectLocationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectLocationMapInput is an input type that accepts ProjectLocationMap and ProjectLocationMapOutput values.
@@ -256,6 +269,12 @@ func (i ProjectLocationMap) ToProjectLocationMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationMapOutput)
 }
 
+func (i ProjectLocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectLocation] {
+	return pulumix.Output[map[string]*ProjectLocation]{
+		OutputState: i.ToProjectLocationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectLocationOutput struct{ *pulumi.OutputState }
 
 func (ProjectLocationOutput) ElementType() reflect.Type {
@@ -268,6 +287,12 @@ func (o ProjectLocationOutput) ToProjectLocationOutput() ProjectLocationOutput {
 
 func (o ProjectLocationOutput) ToProjectLocationOutputWithContext(ctx context.Context) ProjectLocationOutput {
 	return o
+}
+
+func (o ProjectLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectLocation] {
+	return pulumix.Output[*ProjectLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the default GCP resource location for the Project. The location must be one of the available GCP
@@ -298,6 +323,12 @@ func (o ProjectLocationArrayOutput) ToProjectLocationArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ProjectLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectLocation] {
+	return pulumix.Output[[]*ProjectLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectLocationArrayOutput) Index(i pulumi.IntInput) ProjectLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectLocation {
 		return vs[0].([]*ProjectLocation)[vs[1].(int)]
@@ -316,6 +347,12 @@ func (o ProjectLocationMapOutput) ToProjectLocationMapOutput() ProjectLocationMa
 
 func (o ProjectLocationMapOutput) ToProjectLocationMapOutputWithContext(ctx context.Context) ProjectLocationMapOutput {
 	return o
+}
+
+func (o ProjectLocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectLocation] {
+	return pulumix.Output[map[string]*ProjectLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectLocationMapOutput) MapIndex(k pulumi.StringInput) ProjectLocationOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Billing Account.
@@ -101,6 +102,12 @@ func (o LookupAccountIamPolicyResultOutput) ToLookupAccountIamPolicyResultOutput
 
 func (o LookupAccountIamPolicyResultOutput) ToLookupAccountIamPolicyResultOutputWithContext(ctx context.Context) LookupAccountIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupAccountIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountIamPolicyResult] {
+	return pulumix.Output[LookupAccountIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupAccountIamPolicyResultOutput) BillingAccountId() pulumi.StringOutput {

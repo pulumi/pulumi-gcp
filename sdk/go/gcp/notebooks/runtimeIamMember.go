@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud AI Notebooks Runtime. Each of these resources serves a different use case:
@@ -374,6 +375,12 @@ func (i *RuntimeIamMember) ToRuntimeIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberOutput)
 }
 
+func (i *RuntimeIamMember) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamMember] {
+	return pulumix.Output[*RuntimeIamMember]{
+		OutputState: i.ToRuntimeIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuntimeIamMemberArrayInput is an input type that accepts RuntimeIamMemberArray and RuntimeIamMemberArrayOutput values.
 // You can construct a concrete instance of `RuntimeIamMemberArrayInput` via:
 //
@@ -397,6 +404,12 @@ func (i RuntimeIamMemberArray) ToRuntimeIamMemberArrayOutput() RuntimeIamMemberA
 
 func (i RuntimeIamMemberArray) ToRuntimeIamMemberArrayOutputWithContext(ctx context.Context) RuntimeIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberArrayOutput)
+}
+
+func (i RuntimeIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*RuntimeIamMember] {
+	return pulumix.Output[[]*RuntimeIamMember]{
+		OutputState: i.ToRuntimeIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RuntimeIamMemberMapInput is an input type that accepts RuntimeIamMemberMap and RuntimeIamMemberMapOutput values.
@@ -424,6 +437,12 @@ func (i RuntimeIamMemberMap) ToRuntimeIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberMapOutput)
 }
 
+func (i RuntimeIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuntimeIamMember] {
+	return pulumix.Output[map[string]*RuntimeIamMember]{
+		OutputState: i.ToRuntimeIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RuntimeIamMemberOutput) ElementType() reflect.Type {
@@ -436,6 +455,12 @@ func (o RuntimeIamMemberOutput) ToRuntimeIamMemberOutput() RuntimeIamMemberOutpu
 
 func (o RuntimeIamMemberOutput) ToRuntimeIamMemberOutputWithContext(ctx context.Context) RuntimeIamMemberOutput {
 	return o
+}
+
+func (o RuntimeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamMember] {
+	return pulumix.Output[*RuntimeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeIamMemberOutput) Condition() RuntimeIamMemberConditionPtrOutput {
@@ -500,6 +525,12 @@ func (o RuntimeIamMemberArrayOutput) ToRuntimeIamMemberArrayOutputWithContext(ct
 	return o
 }
 
+func (o RuntimeIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RuntimeIamMember] {
+	return pulumix.Output[[]*RuntimeIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RuntimeIamMemberArrayOutput) Index(i pulumi.IntInput) RuntimeIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RuntimeIamMember {
 		return vs[0].([]*RuntimeIamMember)[vs[1].(int)]
@@ -518,6 +549,12 @@ func (o RuntimeIamMemberMapOutput) ToRuntimeIamMemberMapOutput() RuntimeIamMembe
 
 func (o RuntimeIamMemberMapOutput) ToRuntimeIamMemberMapOutputWithContext(ctx context.Context) RuntimeIamMemberMapOutput {
 	return o
+}
+
+func (o RuntimeIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuntimeIamMember] {
+	return pulumix.Output[map[string]*RuntimeIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeIamMemberMapOutput) MapIndex(k pulumi.StringInput) RuntimeIamMemberOutput {

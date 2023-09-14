@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -293,6 +294,12 @@ func (i *Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VariableOutput)
 }
 
+func (i *Variable) ToOutput(ctx context.Context) pulumix.Output[*Variable] {
+	return pulumix.Output[*Variable]{
+		OutputState: i.ToVariableOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VariableArrayInput is an input type that accepts VariableArray and VariableArrayOutput values.
 // You can construct a concrete instance of `VariableArrayInput` via:
 //
@@ -316,6 +323,12 @@ func (i VariableArray) ToVariableArrayOutput() VariableArrayOutput {
 
 func (i VariableArray) ToVariableArrayOutputWithContext(ctx context.Context) VariableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VariableArrayOutput)
+}
+
+func (i VariableArray) ToOutput(ctx context.Context) pulumix.Output[[]*Variable] {
+	return pulumix.Output[[]*Variable]{
+		OutputState: i.ToVariableArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VariableMapInput is an input type that accepts VariableMap and VariableMapOutput values.
@@ -343,6 +356,12 @@ func (i VariableMap) ToVariableMapOutputWithContext(ctx context.Context) Variabl
 	return pulumi.ToOutputWithContext(ctx, i).(VariableMapOutput)
 }
 
+func (i VariableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Variable] {
+	return pulumix.Output[map[string]*Variable]{
+		OutputState: i.ToVariableMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VariableOutput struct{ *pulumi.OutputState }
 
 func (VariableOutput) ElementType() reflect.Type {
@@ -355,6 +374,12 @@ func (o VariableOutput) ToVariableOutput() VariableOutput {
 
 func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return o
+}
+
+func (o VariableOutput) ToOutput(ctx context.Context) pulumix.Output[*Variable] {
+	return pulumix.Output[*Variable]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the variable to manage. Note that variable
@@ -410,6 +435,12 @@ func (o VariableArrayOutput) ToVariableArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o VariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Variable] {
+	return pulumix.Output[[]*Variable]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VariableArrayOutput) Index(i pulumi.IntInput) VariableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Variable {
 		return vs[0].([]*Variable)[vs[1].(int)]
@@ -428,6 +459,12 @@ func (o VariableMapOutput) ToVariableMapOutput() VariableMapOutput {
 
 func (o VariableMapOutput) ToVariableMapOutputWithContext(ctx context.Context) VariableMapOutput {
 	return o
+}
+
+func (o VariableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Variable] {
+	return pulumix.Output[map[string]*Variable]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VariableMapOutput) MapIndex(k pulumi.StringInput) VariableOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud IoT Core DeviceRegistry. Each of these resources serves a different use case:
@@ -388,6 +389,12 @@ func (i *RegistryIamMember) ToRegistryIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberOutput)
 }
 
+func (i *RegistryIamMember) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamMember] {
+	return pulumix.Output[*RegistryIamMember]{
+		OutputState: i.ToRegistryIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegistryIamMemberArrayInput is an input type that accepts RegistryIamMemberArray and RegistryIamMemberArrayOutput values.
 // You can construct a concrete instance of `RegistryIamMemberArrayInput` via:
 //
@@ -411,6 +418,12 @@ func (i RegistryIamMemberArray) ToRegistryIamMemberArrayOutput() RegistryIamMemb
 
 func (i RegistryIamMemberArray) ToRegistryIamMemberArrayOutputWithContext(ctx context.Context) RegistryIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberArrayOutput)
+}
+
+func (i RegistryIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryIamMember] {
+	return pulumix.Output[[]*RegistryIamMember]{
+		OutputState: i.ToRegistryIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegistryIamMemberMapInput is an input type that accepts RegistryIamMemberMap and RegistryIamMemberMapOutput values.
@@ -438,6 +451,12 @@ func (i RegistryIamMemberMap) ToRegistryIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryIamMemberMapOutput)
 }
 
+func (i RegistryIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryIamMember] {
+	return pulumix.Output[map[string]*RegistryIamMember]{
+		OutputState: i.ToRegistryIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistryIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegistryIamMemberOutput) ElementType() reflect.Type {
@@ -450,6 +469,12 @@ func (o RegistryIamMemberOutput) ToRegistryIamMemberOutput() RegistryIamMemberOu
 
 func (o RegistryIamMemberOutput) ToRegistryIamMemberOutputWithContext(ctx context.Context) RegistryIamMemberOutput {
 	return o
+}
+
+func (o RegistryIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryIamMember] {
+	return pulumix.Output[*RegistryIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryIamMemberOutput) Condition() RegistryIamMemberConditionPtrOutput {
@@ -518,6 +543,12 @@ func (o RegistryIamMemberArrayOutput) ToRegistryIamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o RegistryIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegistryIamMember] {
+	return pulumix.Output[[]*RegistryIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegistryIamMemberArrayOutput) Index(i pulumi.IntInput) RegistryIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegistryIamMember {
 		return vs[0].([]*RegistryIamMember)[vs[1].(int)]
@@ -536,6 +567,12 @@ func (o RegistryIamMemberMapOutput) ToRegistryIamMemberMapOutput() RegistryIamMe
 
 func (o RegistryIamMemberMapOutput) ToRegistryIamMemberMapOutputWithContext(ctx context.Context) RegistryIamMemberMapOutput {
 	return o
+}
+
+func (o RegistryIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegistryIamMember] {
+	return pulumix.Output[map[string]*RegistryIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryIamMemberMapOutput) MapIndex(k pulumi.StringInput) RegistryIamMemberOutput {

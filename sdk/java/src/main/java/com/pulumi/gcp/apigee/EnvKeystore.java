@@ -42,7 +42,7 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * Aliases in this keystore.
      * 
      */
-    @Export(name="aliases", type=List.class, parameters={String.class})
+    @Export(name="aliases", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> aliases;
 
     /**
@@ -59,7 +59,7 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="envId", type=String.class, parameters={})
+    @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
@@ -76,7 +76,7 @@ public class EnvKeystore extends com.pulumi.resources.CustomResource {
      * The name of the newly created keystore.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

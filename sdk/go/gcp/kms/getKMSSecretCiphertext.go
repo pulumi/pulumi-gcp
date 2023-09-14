@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
@@ -93,6 +94,12 @@ func (o GetKMSSecretCiphertextResultOutput) ToGetKMSSecretCiphertextResultOutput
 
 func (o GetKMSSecretCiphertextResultOutput) ToGetKMSSecretCiphertextResultOutputWithContext(ctx context.Context) GetKMSSecretCiphertextResultOutput {
 	return o
+}
+
+func (o GetKMSSecretCiphertextResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSSecretCiphertextResult] {
+	return pulumix.Output[GetKMSSecretCiphertextResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Contains the result of encrypting the provided plaintext, encoded in base64.

@@ -50,7 +50,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
      * 
      */
-    @Export(name="assetNames", type=List.class, parameters={String.class})
+    @Export(name="assetNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> assetNames;
 
     /**
@@ -71,7 +71,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * supported asset types.
      * 
      */
-    @Export(name="assetTypes", type=List.class, parameters={String.class})
+    @Export(name="assetTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> assetTypes;
 
     /**
@@ -91,7 +91,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * enablement check, quota, and billing.
      * 
      */
-    @Export(name="billingProject", type=String.class, parameters={})
+    @Export(name="billingProject", refs={String.class}, tree="[0]")
     private Output<String> billingProject;
 
     /**
@@ -112,7 +112,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=FolderFeedCondition.class, parameters={})
+    @Export(name="condition", refs={FolderFeedCondition.class}, tree="[0]")
     private Output</* @Nullable */ FolderFeedCondition> condition;
 
     /**
@@ -132,7 +132,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     /**
@@ -147,7 +147,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
      * 
      */
-    @Export(name="feedId", type=String.class, parameters={})
+    @Export(name="feedId", refs={String.class}, tree="[0]")
     private Output<String> feedId;
 
     /**
@@ -162,7 +162,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="feedOutputConfig", type=FolderFeedFeedOutputConfig.class, parameters={})
+    @Export(name="feedOutputConfig", refs={FolderFeedFeedOutputConfig.class}, tree="[0]")
     private Output<FolderFeedFeedOutputConfig> feedOutputConfig;
 
     /**
@@ -177,7 +177,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * The folder this feed should be created in.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
@@ -192,7 +192,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * and folders/[FOLDER_NUMBER] are accepted.
      * 
      */
-    @Export(name="folderId", type=String.class, parameters={})
+    @Export(name="folderId", refs={String.class}, tree="[0]")
     private Output<String> folderId;
 
     /**
@@ -207,7 +207,7 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
      * The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

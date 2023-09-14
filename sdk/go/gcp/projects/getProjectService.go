@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
@@ -122,6 +123,12 @@ func (o GetProjectServiceResultOutput) ToGetProjectServiceResultOutput() GetProj
 
 func (o GetProjectServiceResultOutput) ToGetProjectServiceResultOutputWithContext(ctx context.Context) GetProjectServiceResultOutput {
 	return o
+}
+
+func (o GetProjectServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectServiceResult] {
+	return pulumix.Output[GetProjectServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetProjectServiceResultOutput) DisableDependentServices() pulumi.BoolOutput {

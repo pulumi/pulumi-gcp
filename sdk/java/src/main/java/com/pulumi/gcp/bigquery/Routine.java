@@ -201,7 +201,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="arguments", type=List.class, parameters={RoutineArgument.class})
+    @Export(name="arguments", refs={List.class,RoutineArgument.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RoutineArgument>> arguments;
 
     /**
@@ -217,7 +217,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * epoch.
      * 
      */
-    @Export(name="creationTime", type=Integer.class, parameters={})
+    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> creationTime;
 
     /**
@@ -232,7 +232,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * The ID of the dataset containing this routine
      * 
      */
-    @Export(name="datasetId", type=String.class, parameters={})
+    @Export(name="datasetId", refs={String.class}, tree="[0]")
     private Output<String> datasetId;
 
     /**
@@ -249,7 +249,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="definitionBody", type=String.class, parameters={})
+    @Export(name="definitionBody", refs={String.class}, tree="[0]")
     private Output<String> definitionBody;
 
     /**
@@ -266,7 +266,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * The description of the routine if defined.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -281,7 +281,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      * 
      */
-    @Export(name="determinismLevel", type=String.class, parameters={})
+    @Export(name="determinismLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> determinismLevel;
 
     /**
@@ -297,7 +297,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * imported JAVASCRIPT libraries.
      * 
      */
-    @Export(name="importedLibraries", type=List.class, parameters={String.class})
+    @Export(name="importedLibraries", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> importedLibraries;
 
     /**
@@ -313,7 +313,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * Possible values are: `SQL`, `JAVASCRIPT`.
      * 
      */
-    @Export(name="language", type=String.class, parameters={})
+    @Export(name="language", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> language;
 
     /**
@@ -329,7 +329,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * epoch.
      * 
      */
-    @Export(name="lastModifiedTime", type=Integer.class, parameters={})
+    @Export(name="lastModifiedTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastModifiedTime;
 
     /**
@@ -345,7 +345,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -363,7 +363,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * be cast to match the column types specificed in return table type, at query time.
      * 
      */
-    @Export(name="returnTableType", type=String.class, parameters={})
+    @Export(name="returnTableType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> returnTableType;
 
     /**
@@ -388,7 +388,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * the schema as returned by the API.
      * 
      */
-    @Export(name="returnType", type=String.class, parameters={})
+    @Export(name="returnType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> returnType;
 
     /**
@@ -410,7 +410,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
      * 
      */
-    @Export(name="routineId", type=String.class, parameters={})
+    @Export(name="routineId", refs={String.class}, tree="[0]")
     private Output<String> routineId;
 
     /**
@@ -425,7 +425,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
-    @Export(name="routineType", type=String.class, parameters={})
+    @Export(name="routineType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routineType;
 
     /**

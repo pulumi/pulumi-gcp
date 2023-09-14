@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -282,6 +283,12 @@ func (i *RegionBackendServiceIamBinding) ToRegionBackendServiceIamBindingOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamBindingOutput)
 }
 
+func (i *RegionBackendServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIamBinding] {
+	return pulumix.Output[*RegionBackendServiceIamBinding]{
+		OutputState: i.ToRegionBackendServiceIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionBackendServiceIamBindingArrayInput is an input type that accepts RegionBackendServiceIamBindingArray and RegionBackendServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `RegionBackendServiceIamBindingArrayInput` via:
 //
@@ -305,6 +312,12 @@ func (i RegionBackendServiceIamBindingArray) ToRegionBackendServiceIamBindingArr
 
 func (i RegionBackendServiceIamBindingArray) ToRegionBackendServiceIamBindingArrayOutputWithContext(ctx context.Context) RegionBackendServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamBindingArrayOutput)
+}
+
+func (i RegionBackendServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendServiceIamBinding] {
+	return pulumix.Output[[]*RegionBackendServiceIamBinding]{
+		OutputState: i.ToRegionBackendServiceIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionBackendServiceIamBindingMapInput is an input type that accepts RegionBackendServiceIamBindingMap and RegionBackendServiceIamBindingMapOutput values.
@@ -332,6 +345,12 @@ func (i RegionBackendServiceIamBindingMap) ToRegionBackendServiceIamBindingMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamBindingMapOutput)
 }
 
+func (i RegionBackendServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendServiceIamBinding] {
+	return pulumix.Output[map[string]*RegionBackendServiceIamBinding]{
+		OutputState: i.ToRegionBackendServiceIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionBackendServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceIamBindingOutput) ElementType() reflect.Type {
@@ -344,6 +363,12 @@ func (o RegionBackendServiceIamBindingOutput) ToRegionBackendServiceIamBindingOu
 
 func (o RegionBackendServiceIamBindingOutput) ToRegionBackendServiceIamBindingOutputWithContext(ctx context.Context) RegionBackendServiceIamBindingOutput {
 	return o
+}
+
+func (o RegionBackendServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIamBinding] {
+	return pulumix.Output[*RegionBackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -416,6 +441,12 @@ func (o RegionBackendServiceIamBindingArrayOutput) ToRegionBackendServiceIamBind
 	return o
 }
 
+func (o RegionBackendServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendServiceIamBinding] {
+	return pulumix.Output[[]*RegionBackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceIamBindingArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionBackendServiceIamBinding {
 		return vs[0].([]*RegionBackendServiceIamBinding)[vs[1].(int)]
@@ -434,6 +465,12 @@ func (o RegionBackendServiceIamBindingMapOutput) ToRegionBackendServiceIamBindin
 
 func (o RegionBackendServiceIamBindingMapOutput) ToRegionBackendServiceIamBindingMapOutputWithContext(ctx context.Context) RegionBackendServiceIamBindingMapOutput {
 	return o
+}
+
+func (o RegionBackendServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendServiceIamBinding] {
+	return pulumix.Output[map[string]*RegionBackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) RegionBackendServiceIamBindingOutput {

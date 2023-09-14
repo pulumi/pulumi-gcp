@@ -177,7 +177,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The structure is documented below.
      * 
      */
-    @Export(name="credentials", type=List.class, parameters={RegistryCredential.class})
+    @Export(name="credentials", refs={List.class,RegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RegistryCredential>> credentials;
 
     /**
@@ -194,7 +194,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="eventNotificationConfigs", type=List.class, parameters={RegistryEventNotificationConfigItem.class})
+    @Export(name="eventNotificationConfigs", refs={List.class,RegistryEventNotificationConfigItem.class}, tree="[0,1]")
     private Output<List<RegistryEventNotificationConfigItem>> eventNotificationConfigs;
 
     /**
@@ -211,7 +211,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The structure is documented below.
      * 
      */
-    @Export(name="httpConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="httpConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> httpConfig;
 
     /**
@@ -232,7 +232,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
-    @Export(name="logLevel", type=String.class, parameters={})
+    @Export(name="logLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logLevel;
 
     /**
@@ -253,7 +253,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The structure is documented below.
      * 
      */
-    @Export(name="mqttConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="mqttConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> mqttConfig;
 
     /**
@@ -270,7 +270,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -287,7 +287,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -303,7 +303,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -319,7 +319,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The structure is documented below.
      * 
      */
-    @Export(name="stateNotificationConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="stateNotificationConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> stateNotificationConfig;
 
     /**

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -255,6 +256,12 @@ func (i *HostingSite) ToHostingSiteOutputWithContext(ctx context.Context) Hostin
 	return pulumi.ToOutputWithContext(ctx, i).(HostingSiteOutput)
 }
 
+func (i *HostingSite) ToOutput(ctx context.Context) pulumix.Output[*HostingSite] {
+	return pulumix.Output[*HostingSite]{
+		OutputState: i.ToHostingSiteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostingSiteArrayInput is an input type that accepts HostingSiteArray and HostingSiteArrayOutput values.
 // You can construct a concrete instance of `HostingSiteArrayInput` via:
 //
@@ -278,6 +285,12 @@ func (i HostingSiteArray) ToHostingSiteArrayOutput() HostingSiteArrayOutput {
 
 func (i HostingSiteArray) ToHostingSiteArrayOutputWithContext(ctx context.Context) HostingSiteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostingSiteArrayOutput)
+}
+
+func (i HostingSiteArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostingSite] {
+	return pulumix.Output[[]*HostingSite]{
+		OutputState: i.ToHostingSiteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostingSiteMapInput is an input type that accepts HostingSiteMap and HostingSiteMapOutput values.
@@ -305,6 +318,12 @@ func (i HostingSiteMap) ToHostingSiteMapOutputWithContext(ctx context.Context) H
 	return pulumi.ToOutputWithContext(ctx, i).(HostingSiteMapOutput)
 }
 
+func (i HostingSiteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingSite] {
+	return pulumix.Output[map[string]*HostingSite]{
+		OutputState: i.ToHostingSiteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostingSiteOutput struct{ *pulumi.OutputState }
 
 func (HostingSiteOutput) ElementType() reflect.Type {
@@ -317,6 +336,12 @@ func (o HostingSiteOutput) ToHostingSiteOutput() HostingSiteOutput {
 
 func (o HostingSiteOutput) ToHostingSiteOutputWithContext(ctx context.Context) HostingSiteOutput {
 	return o
+}
+
+func (o HostingSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingSite] {
+	return pulumix.Output[*HostingSite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
@@ -368,6 +393,12 @@ func (o HostingSiteArrayOutput) ToHostingSiteArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o HostingSiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostingSite] {
+	return pulumix.Output[[]*HostingSite]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostingSiteArrayOutput) Index(i pulumi.IntInput) HostingSiteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostingSite {
 		return vs[0].([]*HostingSite)[vs[1].(int)]
@@ -386,6 +417,12 @@ func (o HostingSiteMapOutput) ToHostingSiteMapOutput() HostingSiteMapOutput {
 
 func (o HostingSiteMapOutput) ToHostingSiteMapOutputWithContext(ctx context.Context) HostingSiteMapOutput {
 	return o
+}
+
+func (o HostingSiteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostingSite] {
+	return pulumix.Output[map[string]*HostingSite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingSiteMapOutput) MapIndex(k pulumi.StringInput) HostingSiteOutput {

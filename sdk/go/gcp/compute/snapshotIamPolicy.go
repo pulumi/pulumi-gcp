@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Snapshot. Each of these resources serves a different use case:
@@ -337,6 +338,12 @@ func (i *SnapshotIamPolicy) ToSnapshotIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamPolicyOutput)
 }
 
+func (i *SnapshotIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*SnapshotIamPolicy] {
+	return pulumix.Output[*SnapshotIamPolicy]{
+		OutputState: i.ToSnapshotIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SnapshotIamPolicyArrayInput is an input type that accepts SnapshotIamPolicyArray and SnapshotIamPolicyArrayOutput values.
 // You can construct a concrete instance of `SnapshotIamPolicyArrayInput` via:
 //
@@ -360,6 +367,12 @@ func (i SnapshotIamPolicyArray) ToSnapshotIamPolicyArrayOutput() SnapshotIamPoli
 
 func (i SnapshotIamPolicyArray) ToSnapshotIamPolicyArrayOutputWithContext(ctx context.Context) SnapshotIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamPolicyArrayOutput)
+}
+
+func (i SnapshotIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SnapshotIamPolicy] {
+	return pulumix.Output[[]*SnapshotIamPolicy]{
+		OutputState: i.ToSnapshotIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SnapshotIamPolicyMapInput is an input type that accepts SnapshotIamPolicyMap and SnapshotIamPolicyMapOutput values.
@@ -387,6 +400,12 @@ func (i SnapshotIamPolicyMap) ToSnapshotIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamPolicyMapOutput)
 }
 
+func (i SnapshotIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnapshotIamPolicy] {
+	return pulumix.Output[map[string]*SnapshotIamPolicy]{
+		OutputState: i.ToSnapshotIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SnapshotIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (SnapshotIamPolicyOutput) ElementType() reflect.Type {
@@ -399,6 +418,12 @@ func (o SnapshotIamPolicyOutput) ToSnapshotIamPolicyOutput() SnapshotIamPolicyOu
 
 func (o SnapshotIamPolicyOutput) ToSnapshotIamPolicyOutputWithContext(ctx context.Context) SnapshotIamPolicyOutput {
 	return o
+}
+
+func (o SnapshotIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotIamPolicy] {
+	return pulumix.Output[*SnapshotIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -449,6 +474,12 @@ func (o SnapshotIamPolicyArrayOutput) ToSnapshotIamPolicyArrayOutputWithContext(
 	return o
 }
 
+func (o SnapshotIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SnapshotIamPolicy] {
+	return pulumix.Output[[]*SnapshotIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SnapshotIamPolicyArrayOutput) Index(i pulumi.IntInput) SnapshotIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SnapshotIamPolicy {
 		return vs[0].([]*SnapshotIamPolicy)[vs[1].(int)]
@@ -467,6 +498,12 @@ func (o SnapshotIamPolicyMapOutput) ToSnapshotIamPolicyMapOutput() SnapshotIamPo
 
 func (o SnapshotIamPolicyMapOutput) ToSnapshotIamPolicyMapOutputWithContext(ctx context.Context) SnapshotIamPolicyMapOutput {
 	return o
+}
+
+func (o SnapshotIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SnapshotIamPolicy] {
+	return pulumix.Output[map[string]*SnapshotIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SnapshotIamPolicyMapOutput) MapIndex(k pulumi.StringInput) SnapshotIamPolicyOutput {

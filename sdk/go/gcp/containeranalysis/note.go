@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Container Analysis note is a high-level piece of metadata that
@@ -345,6 +346,12 @@ func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
 }
 
+func (i *Note) ToOutput(ctx context.Context) pulumix.Output[*Note] {
+	return pulumix.Output[*Note]{
+		OutputState: i.ToNoteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NoteArrayInput is an input type that accepts NoteArray and NoteArrayOutput values.
 // You can construct a concrete instance of `NoteArrayInput` via:
 //
@@ -368,6 +375,12 @@ func (i NoteArray) ToNoteArrayOutput() NoteArrayOutput {
 
 func (i NoteArray) ToNoteArrayOutputWithContext(ctx context.Context) NoteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteArrayOutput)
+}
+
+func (i NoteArray) ToOutput(ctx context.Context) pulumix.Output[[]*Note] {
+	return pulumix.Output[[]*Note]{
+		OutputState: i.ToNoteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NoteMapInput is an input type that accepts NoteMap and NoteMapOutput values.
@@ -395,6 +408,12 @@ func (i NoteMap) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteMapOutput)
 }
 
+func (i NoteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Note] {
+	return pulumix.Output[map[string]*Note]{
+		OutputState: i.ToNoteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteOutput struct{ *pulumi.OutputState }
 
 func (NoteOutput) ElementType() reflect.Type {
@@ -407,6 +426,12 @@ func (o NoteOutput) ToNoteOutput() NoteOutput {
 
 func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return o
+}
+
+func (o NoteOutput) ToOutput(ctx context.Context) pulumix.Output[*Note] {
+	return pulumix.Output[*Note]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Note kind that represents a logical attestation "role" or "authority".
@@ -489,6 +514,12 @@ func (o NoteArrayOutput) ToNoteArrayOutputWithContext(ctx context.Context) NoteA
 	return o
 }
 
+func (o NoteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Note] {
+	return pulumix.Output[[]*Note]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NoteArrayOutput) Index(i pulumi.IntInput) NoteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Note {
 		return vs[0].([]*Note)[vs[1].(int)]
@@ -507,6 +538,12 @@ func (o NoteMapOutput) ToNoteMapOutput() NoteMapOutput {
 
 func (o NoteMapOutput) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOutput {
 	return o
+}
+
+func (o NoteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Note] {
+	return pulumix.Output[map[string]*Note]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteMapOutput) MapIndex(k pulumi.StringInput) NoteOutput {

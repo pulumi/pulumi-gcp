@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i HubRoutingVpcArgs) ToHubRoutingVpcOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HubRoutingVpcOutput)
 }
 
+func (i HubRoutingVpcArgs) ToOutput(ctx context.Context) pulumix.Output[HubRoutingVpc] {
+	return pulumix.Output[HubRoutingVpc]{
+		OutputState: i.ToHubRoutingVpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HubRoutingVpcArrayInput is an input type that accepts HubRoutingVpcArray and HubRoutingVpcArrayOutput values.
 // You can construct a concrete instance of `HubRoutingVpcArrayInput` via:
 //
@@ -69,6 +76,12 @@ func (i HubRoutingVpcArray) ToHubRoutingVpcArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HubRoutingVpcArrayOutput)
 }
 
+func (i HubRoutingVpcArray) ToOutput(ctx context.Context) pulumix.Output[[]HubRoutingVpc] {
+	return pulumix.Output[[]HubRoutingVpc]{
+		OutputState: i.ToHubRoutingVpcArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HubRoutingVpcOutput struct{ *pulumi.OutputState }
 
 func (HubRoutingVpcOutput) ElementType() reflect.Type {
@@ -81,6 +94,12 @@ func (o HubRoutingVpcOutput) ToHubRoutingVpcOutput() HubRoutingVpcOutput {
 
 func (o HubRoutingVpcOutput) ToHubRoutingVpcOutputWithContext(ctx context.Context) HubRoutingVpcOutput {
 	return o
+}
+
+func (o HubRoutingVpcOutput) ToOutput(ctx context.Context) pulumix.Output[HubRoutingVpc] {
+	return pulumix.Output[HubRoutingVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubRoutingVpcOutput) Uri() pulumi.StringPtrOutput {
@@ -99,6 +118,12 @@ func (o HubRoutingVpcArrayOutput) ToHubRoutingVpcArrayOutput() HubRoutingVpcArra
 
 func (o HubRoutingVpcArrayOutput) ToHubRoutingVpcArrayOutputWithContext(ctx context.Context) HubRoutingVpcArrayOutput {
 	return o
+}
+
+func (o HubRoutingVpcArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HubRoutingVpc] {
+	return pulumix.Output[[]HubRoutingVpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
@@ -144,6 +169,12 @@ func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigOutput)
 }
 
+func (i ServiceConnectionPolicyPscConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConfig] {
+	return pulumix.Output[ServiceConnectionPolicyPscConfig]{
+		OutputState: i.ToServiceConnectionPolicyPscConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput {
 	return i.ToServiceConnectionPolicyPscConfigPtrOutputWithContext(context.Background())
 }
@@ -185,6 +216,12 @@ func (i *serviceConnectionPolicyPscConfigPtrType) ToServiceConnectionPolicyPscCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigPtrOutput)
 }
 
+func (i *serviceConnectionPolicyPscConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConfig] {
+	return pulumix.Output[*ServiceConnectionPolicyPscConfig]{
+		OutputState: i.ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceConnectionPolicyPscConfigOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConfigOutput) ElementType() reflect.Type {
@@ -209,6 +246,12 @@ func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConf
 	}).(ServiceConnectionPolicyPscConfigPtrOutput)
 }
 
+func (o ServiceConnectionPolicyPscConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConfig] {
+	return pulumix.Output[ServiceConnectionPolicyPscConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Max number of PSC connections for this policy.
 func (o ServiceConnectionPolicyPscConfigOutput) Limit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
@@ -231,6 +274,12 @@ func (o ServiceConnectionPolicyPscConfigPtrOutput) ToServiceConnectionPolicyPscC
 
 func (o ServiceConnectionPolicyPscConfigPtrOutput) ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigPtrOutput {
 	return o
+}
+
+func (o ServiceConnectionPolicyPscConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConfig] {
+	return pulumix.Output[*ServiceConnectionPolicyPscConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceConnectionPolicyPscConfigPtrOutput) Elem() ServiceConnectionPolicyPscConfigOutput {
@@ -338,6 +387,12 @@ func (i ServiceConnectionPolicyPscConnectionArgs) ToServiceConnectionPolicyPscCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionOutput)
 }
 
+func (i ServiceConnectionPolicyPscConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnection] {
+	return pulumix.Output[ServiceConnectionPolicyPscConnection]{
+		OutputState: i.ToServiceConnectionPolicyPscConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceConnectionPolicyPscConnectionArrayInput is an input type that accepts ServiceConnectionPolicyPscConnectionArray and ServiceConnectionPolicyPscConnectionArrayOutput values.
 // You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionArrayInput` via:
 //
@@ -363,6 +418,12 @@ func (i ServiceConnectionPolicyPscConnectionArray) ToServiceConnectionPolicyPscC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionArrayOutput)
 }
 
+func (i ServiceConnectionPolicyPscConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceConnectionPolicyPscConnection] {
+	return pulumix.Output[[]ServiceConnectionPolicyPscConnection]{
+		OutputState: i.ToServiceConnectionPolicyPscConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceConnectionPolicyPscConnectionOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConnectionOutput) ElementType() reflect.Type {
@@ -375,6 +436,12 @@ func (o ServiceConnectionPolicyPscConnectionOutput) ToServiceConnectionPolicyPsc
 
 func (o ServiceConnectionPolicyPscConnectionOutput) ToServiceConnectionPolicyPscConnectionOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionOutput {
 	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnection] {
+	return pulumix.Output[ServiceConnectionPolicyPscConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource reference of the consumer address.
@@ -445,6 +512,12 @@ func (o ServiceConnectionPolicyPscConnectionArrayOutput) ToServiceConnectionPoli
 	return o
 }
 
+func (o ServiceConnectionPolicyPscConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceConnectionPolicyPscConnection] {
+	return pulumix.Output[[]ServiceConnectionPolicyPscConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceConnectionPolicyPscConnectionArrayOutput) Index(i pulumi.IntInput) ServiceConnectionPolicyPscConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceConnectionPolicyPscConnection {
 		return vs[0].([]ServiceConnectionPolicyPscConnection)[vs[1].(int)]
@@ -488,6 +561,12 @@ func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorOutput)
 }
 
+func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionError] {
+	return pulumix.Output[ServiceConnectionPolicyPscConnectionError]{
+		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
 	return i.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(context.Background())
 }
@@ -529,6 +608,12 @@ func (i *serviceConnectionPolicyPscConnectionErrorPtrType) ToServiceConnectionPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
 }
 
+func (i *serviceConnectionPolicyPscConnectionErrorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionError] {
+	return pulumix.Output[*ServiceConnectionPolicyPscConnectionError]{
+		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceConnectionPolicyPscConnectionErrorOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConnectionErrorOutput) ElementType() reflect.Type {
@@ -553,6 +638,12 @@ func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToServiceConnectionPoli
 	}).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
 }
 
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionError] {
+	return pulumix.Output[ServiceConnectionPolicyPscConnectionError]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The status code, which should be an enum value of [google.rpc.Code][].
 func (o ServiceConnectionPolicyPscConnectionErrorOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) *int { return v.Code }).(pulumi.IntPtrOutput)
@@ -575,6 +666,12 @@ func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToServiceConnectionP
 
 func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput {
 	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionError] {
+	return pulumix.Output[*ServiceConnectionPolicyPscConnectionError]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Elem() ServiceConnectionPolicyPscConnectionErrorOutput {
@@ -648,6 +745,12 @@ func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoOutput)
 }
 
+func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo] {
+	return pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo]{
+		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
 	return i.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(context.Background())
 }
@@ -689,6 +792,12 @@ func (i *serviceConnectionPolicyPscConnectionErrorInfoPtrType) ToServiceConnecti
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
 }
 
+func (i *serviceConnectionPolicyPscConnectionErrorInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo] {
+	return pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo]{
+		OutputState: i.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceConnectionPolicyPscConnectionErrorInfoOutput struct{ *pulumi.OutputState }
 
 func (ServiceConnectionPolicyPscConnectionErrorInfoOutput) ElementType() reflect.Type {
@@ -711,6 +820,12 @@ func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToServiceConnection
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConnectionPolicyPscConnectionErrorInfo) *ServiceConnectionPolicyPscConnectionErrorInfo {
 		return &v
 	}).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo] {
+	return pulumix.Output[ServiceConnectionPolicyPscConnectionErrorInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The logical grouping to which the "reason" belongs.
@@ -740,6 +855,12 @@ func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToServiceConnect
 
 func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
 	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo] {
+	return pulumix.Output[*ServiceConnectionPolicyPscConnectionErrorInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Elem() ServiceConnectionPolicyPscConnectionErrorInfoOutput {
@@ -819,6 +940,12 @@ func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachm
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsOutput)
 }
 
+func (i SpokeLinkedInterconnectAttachmentsArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedInterconnectAttachments] {
+	return pulumix.Output[SpokeLinkedInterconnectAttachments]{
+		OutputState: i.ToSpokeLinkedInterconnectAttachmentsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SpokeLinkedInterconnectAttachmentsArgs) ToSpokeLinkedInterconnectAttachmentsPtrOutput() SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return i.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(context.Background())
 }
@@ -860,6 +987,12 @@ func (i *spokeLinkedInterconnectAttachmentsPtrType) ToSpokeLinkedInterconnectAtt
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
+func (i *spokeLinkedInterconnectAttachmentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedInterconnectAttachments] {
+	return pulumix.Output[*SpokeLinkedInterconnectAttachments]{
+		OutputState: i.ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpokeLinkedInterconnectAttachmentsOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedInterconnectAttachmentsOutput) ElementType() reflect.Type {
@@ -884,6 +1017,12 @@ func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttac
 	}).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
+func (o SpokeLinkedInterconnectAttachmentsOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedInterconnectAttachments] {
+	return pulumix.Output[SpokeLinkedInterconnectAttachments]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -906,6 +1045,12 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToSpokeLinkedInterconnectAt
 
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToSpokeLinkedInterconnectAttachmentsPtrOutputWithContext(ctx context.Context) SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return o
+}
+
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedInterconnectAttachments] {
+	return pulumix.Output[*SpokeLinkedInterconnectAttachments]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Elem() SpokeLinkedInterconnectAttachmentsOutput {
@@ -975,6 +1120,12 @@ func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceIns
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesOutput)
 }
 
+func (i SpokeLinkedRouterApplianceInstancesArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstances] {
+	return pulumix.Output[SpokeLinkedRouterApplianceInstances]{
+		OutputState: i.ToSpokeLinkedRouterApplianceInstancesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SpokeLinkedRouterApplianceInstancesArgs) ToSpokeLinkedRouterApplianceInstancesPtrOutput() SpokeLinkedRouterApplianceInstancesPtrOutput {
 	return i.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(context.Background())
 }
@@ -1016,6 +1167,12 @@ func (i *spokeLinkedRouterApplianceInstancesPtrType) ToSpokeLinkedRouterApplianc
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesPtrOutput)
 }
 
+func (i *spokeLinkedRouterApplianceInstancesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedRouterApplianceInstances] {
+	return pulumix.Output[*SpokeLinkedRouterApplianceInstances]{
+		OutputState: i.ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpokeLinkedRouterApplianceInstancesOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedRouterApplianceInstancesOutput) ElementType() reflect.Type {
@@ -1038,6 +1195,12 @@ func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedRouterApplianceInstances) *SpokeLinkedRouterApplianceInstances {
 		return &v
 	}).(SpokeLinkedRouterApplianceInstancesPtrOutput)
+}
+
+func (o SpokeLinkedRouterApplianceInstancesOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstances] {
+	return pulumix.Output[SpokeLinkedRouterApplianceInstances]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of router appliance instances
@@ -1064,6 +1227,12 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToSpokeLinkedRouterApplian
 
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToSpokeLinkedRouterApplianceInstancesPtrOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesPtrOutput {
 	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedRouterApplianceInstances] {
+	return pulumix.Output[*SpokeLinkedRouterApplianceInstances]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterApplianceInstancesOutput {
@@ -1137,6 +1306,12 @@ func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToSpokeLinkedRouterAppl
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesInstanceOutput)
 }
 
+func (i SpokeLinkedRouterApplianceInstancesInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance] {
+	return pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance]{
+		OutputState: i.ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SpokeLinkedRouterApplianceInstancesInstanceArrayInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArray and SpokeLinkedRouterApplianceInstancesInstanceArrayOutput values.
 // You can construct a concrete instance of `SpokeLinkedRouterApplianceInstancesInstanceArrayInput` via:
 //
@@ -1162,6 +1337,12 @@ func (i SpokeLinkedRouterApplianceInstancesInstanceArray) ToSpokeLinkedRouterApp
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput)
 }
 
+func (i SpokeLinkedRouterApplianceInstancesInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance] {
+	return pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance]{
+		OutputState: i.ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpokeLinkedRouterApplianceInstancesInstanceOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedRouterApplianceInstancesInstanceOutput) ElementType() reflect.Type {
@@ -1174,6 +1355,12 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterAp
 
 func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterApplianceInstancesInstanceOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceOutput {
 	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance] {
+	return pulumix.Output[SpokeLinkedRouterApplianceInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address on the VM to use for peering.
@@ -1200,6 +1387,12 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToSpokeLinkedRou
 
 func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToSpokeLinkedRouterApplianceInstancesInstanceArrayOutputWithContext(ctx context.Context) SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
 	return o
+}
+
+func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance] {
+	return pulumix.Output[[]SpokeLinkedRouterApplianceInstancesInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) Index(i pulumi.IntInput) SpokeLinkedRouterApplianceInstancesInstanceOutput {
@@ -1245,6 +1438,12 @@ func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsOutput)
 }
 
+func (i SpokeLinkedVpnTunnelsArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpnTunnels] {
+	return pulumix.Output[SpokeLinkedVpnTunnels]{
+		OutputState: i.ToSpokeLinkedVpnTunnelsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SpokeLinkedVpnTunnelsArgs) ToSpokeLinkedVpnTunnelsPtrOutput() SpokeLinkedVpnTunnelsPtrOutput {
 	return i.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(context.Background())
 }
@@ -1286,6 +1485,12 @@ func (i *spokeLinkedVpnTunnelsPtrType) ToSpokeLinkedVpnTunnelsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
+func (i *spokeLinkedVpnTunnelsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpnTunnels] {
+	return pulumix.Output[*SpokeLinkedVpnTunnels]{
+		OutputState: i.ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpokeLinkedVpnTunnelsOutput struct{ *pulumi.OutputState }
 
 func (SpokeLinkedVpnTunnelsOutput) ElementType() reflect.Type {
@@ -1310,6 +1515,12 @@ func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext
 	}).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
+func (o SpokeLinkedVpnTunnelsOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpnTunnels] {
+	return pulumix.Output[SpokeLinkedVpnTunnels]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedVpnTunnelsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SpokeLinkedVpnTunnels) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1332,6 +1543,12 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) ToSpokeLinkedVpnTunnelsPtrOutput() Spoke
 
 func (o SpokeLinkedVpnTunnelsPtrOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext(ctx context.Context) SpokeLinkedVpnTunnelsPtrOutput {
 	return o
+}
+
+func (o SpokeLinkedVpnTunnelsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpnTunnels] {
+	return pulumix.Output[*SpokeLinkedVpnTunnels]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpokeLinkedVpnTunnelsPtrOutput) Elem() SpokeLinkedVpnTunnelsOutput {

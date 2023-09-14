@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog TagTemplate. Each of these resources serves a different use case:
@@ -363,6 +364,12 @@ func (i *TagTemplateIamMember) ToTagTemplateIamMemberOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberOutput)
 }
 
+func (i *TagTemplateIamMember) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamMember] {
+	return pulumix.Output[*TagTemplateIamMember]{
+		OutputState: i.ToTagTemplateIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TagTemplateIamMemberArrayInput is an input type that accepts TagTemplateIamMemberArray and TagTemplateIamMemberArrayOutput values.
 // You can construct a concrete instance of `TagTemplateIamMemberArrayInput` via:
 //
@@ -386,6 +393,12 @@ func (i TagTemplateIamMemberArray) ToTagTemplateIamMemberArrayOutput() TagTempla
 
 func (i TagTemplateIamMemberArray) ToTagTemplateIamMemberArrayOutputWithContext(ctx context.Context) TagTemplateIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberArrayOutput)
+}
+
+func (i TagTemplateIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagTemplateIamMember] {
+	return pulumix.Output[[]*TagTemplateIamMember]{
+		OutputState: i.ToTagTemplateIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TagTemplateIamMemberMapInput is an input type that accepts TagTemplateIamMemberMap and TagTemplateIamMemberMapOutput values.
@@ -413,6 +426,12 @@ func (i TagTemplateIamMemberMap) ToTagTemplateIamMemberMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberMapOutput)
 }
 
+func (i TagTemplateIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagTemplateIamMember] {
+	return pulumix.Output[map[string]*TagTemplateIamMember]{
+		OutputState: i.ToTagTemplateIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamMemberOutput) ElementType() reflect.Type {
@@ -425,6 +444,12 @@ func (o TagTemplateIamMemberOutput) ToTagTemplateIamMemberOutput() TagTemplateIa
 
 func (o TagTemplateIamMemberOutput) ToTagTemplateIamMemberOutputWithContext(ctx context.Context) TagTemplateIamMemberOutput {
 	return o
+}
+
+func (o TagTemplateIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamMember] {
+	return pulumix.Output[*TagTemplateIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateIamMemberOutput) Condition() TagTemplateIamMemberConditionPtrOutput {
@@ -488,6 +513,12 @@ func (o TagTemplateIamMemberArrayOutput) ToTagTemplateIamMemberArrayOutputWithCo
 	return o
 }
 
+func (o TagTemplateIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagTemplateIamMember] {
+	return pulumix.Output[[]*TagTemplateIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagTemplateIamMemberArrayOutput) Index(i pulumi.IntInput) TagTemplateIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagTemplateIamMember {
 		return vs[0].([]*TagTemplateIamMember)[vs[1].(int)]
@@ -506,6 +537,12 @@ func (o TagTemplateIamMemberMapOutput) ToTagTemplateIamMemberMapOutput() TagTemp
 
 func (o TagTemplateIamMemberMapOutput) ToTagTemplateIamMemberMapOutputWithContext(ctx context.Context) TagTemplateIamMemberMapOutput {
 	return o
+}
+
+func (o TagTemplateIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagTemplateIamMember] {
+	return pulumix.Output[map[string]*TagTemplateIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateIamMemberMapOutput) MapIndex(k pulumi.StringInput) TagTemplateIamMemberOutput {

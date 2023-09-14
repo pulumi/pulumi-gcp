@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Monitoring Service is the root resource under which operational aspects of a
@@ -174,6 +175,12 @@ func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutput() Get
 
 func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutputWithContext(ctx context.Context) GetAppEngineServiceResultOutput {
 	return o
+}
+
+func (o GetAppEngineServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppEngineServiceResult] {
+	return pulumix.Output[GetAppEngineServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name used for UI elements listing this (Monitoring) Service.

@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:spanner/databaseIAMMember:DatabaseIAMMember")
 public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=DatabaseIAMMemberCondition.class, parameters={})
+    @Export(name="condition", refs={DatabaseIAMMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseIAMMemberCondition> condition;
 
     public Output<Optional<DatabaseIAMMemberCondition>> condition() {
@@ -173,7 +173,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * The name of the Spanner database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -187,7 +187,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the database&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -210,7 +210,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
@@ -229,7 +229,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> instance() {
         return this.instance;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -240,7 +240,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -257,7 +257,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Logs-based metric can also be used to extract values from logs and create a a distribution
@@ -528,6 +529,12 @@ func (i *Metric) ToMetricOutputWithContext(ctx context.Context) MetricOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricOutput)
 }
 
+func (i *Metric) ToOutput(ctx context.Context) pulumix.Output[*Metric] {
+	return pulumix.Output[*Metric]{
+		OutputState: i.ToMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricArrayInput is an input type that accepts MetricArray and MetricArrayOutput values.
 // You can construct a concrete instance of `MetricArrayInput` via:
 //
@@ -551,6 +558,12 @@ func (i MetricArray) ToMetricArrayOutput() MetricArrayOutput {
 
 func (i MetricArray) ToMetricArrayOutputWithContext(ctx context.Context) MetricArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricArrayOutput)
+}
+
+func (i MetricArray) ToOutput(ctx context.Context) pulumix.Output[[]*Metric] {
+	return pulumix.Output[[]*Metric]{
+		OutputState: i.ToMetricArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetricMapInput is an input type that accepts MetricMap and MetricMapOutput values.
@@ -578,6 +591,12 @@ func (i MetricMap) ToMetricMapOutputWithContext(ctx context.Context) MetricMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(MetricMapOutput)
 }
 
+func (i MetricMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Metric] {
+	return pulumix.Output[map[string]*Metric]{
+		OutputState: i.ToMetricMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricOutput struct{ *pulumi.OutputState }
 
 func (MetricOutput) ElementType() reflect.Type {
@@ -590,6 +609,12 @@ func (o MetricOutput) ToMetricOutput() MetricOutput {
 
 func (o MetricOutput) ToMetricOutputWithContext(ctx context.Context) MetricOutput {
 	return o
+}
+
+func (o MetricOutput) ToOutput(ctx context.Context) pulumix.Output[*Metric] {
+	return pulumix.Output[*Metric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
@@ -681,6 +706,12 @@ func (o MetricArrayOutput) ToMetricArrayOutputWithContext(ctx context.Context) M
 	return o
 }
 
+func (o MetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Metric] {
+	return pulumix.Output[[]*Metric]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricArrayOutput) Index(i pulumi.IntInput) MetricOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Metric {
 		return vs[0].([]*Metric)[vs[1].(int)]
@@ -699,6 +730,12 @@ func (o MetricMapOutput) ToMetricMapOutput() MetricMapOutput {
 
 func (o MetricMapOutput) ToMetricMapOutputWithContext(ctx context.Context) MetricMapOutput {
 	return o
+}
+
+func (o MetricMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Metric] {
+	return pulumix.Output[map[string]*Metric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricMapOutput) MapIndex(k pulumi.StringInput) MetricOutput {

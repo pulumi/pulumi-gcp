@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A rule for the OrganizationSecurityPolicy.
@@ -342,6 +343,12 @@ func (i *OrganizationSecurityPolicyRule) ToOrganizationSecurityPolicyRuleOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleOutput)
 }
 
+func (i *OrganizationSecurityPolicyRule) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyRule] {
+	return pulumix.Output[*OrganizationSecurityPolicyRule]{
+		OutputState: i.ToOrganizationSecurityPolicyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationSecurityPolicyRuleArrayInput is an input type that accepts OrganizationSecurityPolicyRuleArray and OrganizationSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyRuleArrayInput` via:
 //
@@ -365,6 +372,12 @@ func (i OrganizationSecurityPolicyRuleArray) ToOrganizationSecurityPolicyRuleArr
 
 func (i OrganizationSecurityPolicyRuleArray) ToOrganizationSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleArrayOutput)
+}
+
+func (i OrganizationSecurityPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicyRule] {
+	return pulumix.Output[[]*OrganizationSecurityPolicyRule]{
+		OutputState: i.ToOrganizationSecurityPolicyRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrganizationSecurityPolicyRuleMapInput is an input type that accepts OrganizationSecurityPolicyRuleMap and OrganizationSecurityPolicyRuleMapOutput values.
@@ -392,6 +405,12 @@ func (i OrganizationSecurityPolicyRuleMap) ToOrganizationSecurityPolicyRuleMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleMapOutput)
 }
 
+func (i OrganizationSecurityPolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicyRule] {
+	return pulumix.Output[map[string]*OrganizationSecurityPolicyRule]{
+		OutputState: i.ToOrganizationSecurityPolicyRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationSecurityPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityPolicyRuleOutput) ElementType() reflect.Type {
@@ -404,6 +423,12 @@ func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOu
 
 func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleOutput {
 	return o
+}
+
+func (o OrganizationSecurityPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyRule] {
+	return pulumix.Output[*OrganizationSecurityPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Action to perform when the client connection triggers the rule. Can currently be either
@@ -484,6 +509,12 @@ func (o OrganizationSecurityPolicyRuleArrayOutput) ToOrganizationSecurityPolicyR
 	return o
 }
 
+func (o OrganizationSecurityPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicyRule] {
+	return pulumix.Output[[]*OrganizationSecurityPolicyRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationSecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) OrganizationSecurityPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationSecurityPolicyRule {
 		return vs[0].([]*OrganizationSecurityPolicyRule)[vs[1].(int)]
@@ -502,6 +533,12 @@ func (o OrganizationSecurityPolicyRuleMapOutput) ToOrganizationSecurityPolicyRul
 
 func (o OrganizationSecurityPolicyRuleMapOutput) ToOrganizationSecurityPolicyRuleMapOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleMapOutput {
 	return o
+}
+
+func (o OrganizationSecurityPolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicyRule] {
+	return pulumix.Output[map[string]*OrganizationSecurityPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationSecurityPolicyRuleMapOutput) MapIndex(k pulumi.StringInput) OrganizationSecurityPolicyRuleOutput {

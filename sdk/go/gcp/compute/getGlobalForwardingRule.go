@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a global forwarding rule within GCE from its name.
@@ -127,6 +128,12 @@ func (o LookupGlobalForwardingRuleResultOutput) ToLookupGlobalForwardingRuleResu
 
 func (o LookupGlobalForwardingRuleResultOutput) ToLookupGlobalForwardingRuleResultOutputWithContext(ctx context.Context) LookupGlobalForwardingRuleResultOutput {
 	return o
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalForwardingRuleResult] {
+	return pulumix.Output[LookupGlobalForwardingRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupGlobalForwardingRuleResultOutput) AllowPscGlobalAccess() pulumi.BoolOutput {

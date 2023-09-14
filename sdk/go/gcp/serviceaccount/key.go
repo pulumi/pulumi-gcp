@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -309,6 +310,12 @@ func (i *Key) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyOutput)
 }
 
+func (i *Key) ToOutput(ctx context.Context) pulumix.Output[*Key] {
+	return pulumix.Output[*Key]{
+		OutputState: i.ToKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyArrayInput is an input type that accepts KeyArray and KeyArrayOutput values.
 // You can construct a concrete instance of `KeyArrayInput` via:
 //
@@ -332,6 +339,12 @@ func (i KeyArray) ToKeyArrayOutput() KeyArrayOutput {
 
 func (i KeyArray) ToKeyArrayOutputWithContext(ctx context.Context) KeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyArrayOutput)
+}
+
+func (i KeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Key] {
+	return pulumix.Output[[]*Key]{
+		OutputState: i.ToKeyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeyMapInput is an input type that accepts KeyMap and KeyMapOutput values.
@@ -359,6 +372,12 @@ func (i KeyMap) ToKeyMapOutputWithContext(ctx context.Context) KeyMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyMapOutput)
 }
 
+func (i KeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Key] {
+	return pulumix.Output[map[string]*Key]{
+		OutputState: i.ToKeyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyOutput struct{ *pulumi.OutputState }
 
 func (KeyOutput) ElementType() reflect.Type {
@@ -371,6 +390,12 @@ func (o KeyOutput) ToKeyOutput() KeyOutput {
 
 func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
+}
+
+func (o KeyOutput) ToOutput(ctx context.Context) pulumix.Output[*Key] {
+	return pulumix.Output[*Key]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arbitrary map of values that, when changed, will trigger a new key to be generated.
@@ -452,6 +477,12 @@ func (o KeyArrayOutput) ToKeyArrayOutputWithContext(ctx context.Context) KeyArra
 	return o
 }
 
+func (o KeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Key] {
+	return pulumix.Output[[]*Key]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyArrayOutput) Index(i pulumi.IntInput) KeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Key {
 		return vs[0].([]*Key)[vs[1].(int)]
@@ -470,6 +501,12 @@ func (o KeyMapOutput) ToKeyMapOutput() KeyMapOutput {
 
 func (o KeyMapOutput) ToKeyMapOutputWithContext(ctx context.Context) KeyMapOutput {
 	return o
+}
+
+func (o KeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Key] {
+	return pulumix.Output[map[string]*Key]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyMapOutput) MapIndex(k pulumi.StringInput) KeyOutput {

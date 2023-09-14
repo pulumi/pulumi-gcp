@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -354,6 +355,12 @@ func (i *EnvironmentIamBinding) ToEnvironmentIamBindingOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingOutput)
 }
 
+func (i *EnvironmentIamBinding) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamBinding] {
+	return pulumix.Output[*EnvironmentIamBinding]{
+		OutputState: i.ToEnvironmentIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnvironmentIamBindingArrayInput is an input type that accepts EnvironmentIamBindingArray and EnvironmentIamBindingArrayOutput values.
 // You can construct a concrete instance of `EnvironmentIamBindingArrayInput` via:
 //
@@ -377,6 +384,12 @@ func (i EnvironmentIamBindingArray) ToEnvironmentIamBindingArrayOutput() Environ
 
 func (i EnvironmentIamBindingArray) ToEnvironmentIamBindingArrayOutputWithContext(ctx context.Context) EnvironmentIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingArrayOutput)
+}
+
+func (i EnvironmentIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnvironmentIamBinding] {
+	return pulumix.Output[[]*EnvironmentIamBinding]{
+		OutputState: i.ToEnvironmentIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EnvironmentIamBindingMapInput is an input type that accepts EnvironmentIamBindingMap and EnvironmentIamBindingMapOutput values.
@@ -404,6 +417,12 @@ func (i EnvironmentIamBindingMap) ToEnvironmentIamBindingMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingMapOutput)
 }
 
+func (i EnvironmentIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvironmentIamBinding] {
+	return pulumix.Output[map[string]*EnvironmentIamBinding]{
+		OutputState: i.ToEnvironmentIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentIamBindingOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamBindingOutput) ElementType() reflect.Type {
@@ -416,6 +435,12 @@ func (o EnvironmentIamBindingOutput) ToEnvironmentIamBindingOutput() Environment
 
 func (o EnvironmentIamBindingOutput) ToEnvironmentIamBindingOutputWithContext(ctx context.Context) EnvironmentIamBindingOutput {
 	return o
+}
+
+func (o EnvironmentIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamBinding] {
+	return pulumix.Output[*EnvironmentIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentIamBindingOutput) Condition() EnvironmentIamBindingConditionPtrOutput {
@@ -473,6 +498,12 @@ func (o EnvironmentIamBindingArrayOutput) ToEnvironmentIamBindingArrayOutputWith
 	return o
 }
 
+func (o EnvironmentIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnvironmentIamBinding] {
+	return pulumix.Output[[]*EnvironmentIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnvironmentIamBindingArrayOutput) Index(i pulumi.IntInput) EnvironmentIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnvironmentIamBinding {
 		return vs[0].([]*EnvironmentIamBinding)[vs[1].(int)]
@@ -491,6 +522,12 @@ func (o EnvironmentIamBindingMapOutput) ToEnvironmentIamBindingMapOutput() Envir
 
 func (o EnvironmentIamBindingMapOutput) ToEnvironmentIamBindingMapOutputWithContext(ctx context.Context) EnvironmentIamBindingMapOutput {
 	return o
+}
+
+func (o EnvironmentIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnvironmentIamBinding] {
+	return pulumix.Output[map[string]*EnvironmentIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentIamBindingMapOutput) MapIndex(k pulumi.StringInput) EnvironmentIamBindingOutput {

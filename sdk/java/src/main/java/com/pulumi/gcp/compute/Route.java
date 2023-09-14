@@ -308,7 +308,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * when you create the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -324,7 +324,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * Only IPv4 is supported.
      * 
      */
-    @Export(name="destRange", type=String.class, parameters={})
+    @Export(name="destRange", refs={String.class}, tree="[0]")
     private Output<String> destRange;
 
     /**
@@ -345,7 +345,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -367,7 +367,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -389,7 +389,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * * The string `default-internet-gateway`.
      * 
      */
-    @Export(name="nextHopGateway", type=String.class, parameters={})
+    @Export(name="nextHopGateway", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nextHopGateway;
 
     /**
@@ -421,7 +421,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      *   a public (non-RFC 1918) IP CIDR range.
      * 
      */
-    @Export(name="nextHopIlb", type=String.class, parameters={})
+    @Export(name="nextHopIlb", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nextHopIlb;
 
     /**
@@ -452,7 +452,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * * Just the instance name, with the zone in `next_hop_instance_zone`.
      * 
      */
-    @Export(name="nextHopInstance", type=String.class, parameters={})
+    @Export(name="nextHopInstance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nextHopInstance;
 
     /**
@@ -474,7 +474,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * a URL.
      * 
      */
-    @Export(name="nextHopInstanceZone", type=String.class, parameters={})
+    @Export(name="nextHopInstanceZone", refs={String.class}, tree="[0]")
     private Output<String> nextHopInstanceZone;
 
     /**
@@ -491,7 +491,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * Network IP address of an instance that should handle matching packets.
      * 
      */
-    @Export(name="nextHopIp", type=String.class, parameters={})
+    @Export(name="nextHopIp", refs={String.class}, tree="[0]")
     private Output<String> nextHopIp;
 
     /**
@@ -505,7 +505,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * URL to a Network that should handle matching packets.
      * 
      */
-    @Export(name="nextHopNetwork", type=String.class, parameters={})
+    @Export(name="nextHopNetwork", refs={String.class}, tree="[0]")
     private Output<String> nextHopNetwork;
 
     /**
@@ -519,7 +519,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * URL to a VpnTunnel that should handle matching packets.
      * 
      */
-    @Export(name="nextHopVpnTunnel", type=String.class, parameters={})
+    @Export(name="nextHopVpnTunnel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nextHopVpnTunnel;
 
     /**
@@ -537,7 +537,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * Default value is 1000. Valid range is 0 through 65535.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -556,7 +556,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -571,7 +571,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -585,7 +585,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * A list of instance tags to which this route applies.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

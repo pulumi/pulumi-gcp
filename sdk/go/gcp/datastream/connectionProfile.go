@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A set of reusable connection configurations to be used as a source or destination for a stream.
@@ -508,6 +509,12 @@ func (i *ConnectionProfile) ToConnectionProfileOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileOutput)
 }
 
+func (i *ConnectionProfile) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfile] {
+	return pulumix.Output[*ConnectionProfile]{
+		OutputState: i.ToConnectionProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionProfileArrayInput is an input type that accepts ConnectionProfileArray and ConnectionProfileArrayOutput values.
 // You can construct a concrete instance of `ConnectionProfileArrayInput` via:
 //
@@ -531,6 +538,12 @@ func (i ConnectionProfileArray) ToConnectionProfileArrayOutput() ConnectionProfi
 
 func (i ConnectionProfileArray) ToConnectionProfileArrayOutputWithContext(ctx context.Context) ConnectionProfileArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileArrayOutput)
+}
+
+func (i ConnectionProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionProfile] {
+	return pulumix.Output[[]*ConnectionProfile]{
+		OutputState: i.ToConnectionProfileArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConnectionProfileMapInput is an input type that accepts ConnectionProfileMap and ConnectionProfileMapOutput values.
@@ -558,6 +571,12 @@ func (i ConnectionProfileMap) ToConnectionProfileMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionProfileMapOutput)
 }
 
+func (i ConnectionProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionProfile] {
+	return pulumix.Output[map[string]*ConnectionProfile]{
+		OutputState: i.ToConnectionProfileMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionProfileOutput struct{ *pulumi.OutputState }
 
 func (ConnectionProfileOutput) ElementType() reflect.Type {
@@ -570,6 +589,12 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOu
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx context.Context) ConnectionProfileOutput {
 	return o
+}
+
+func (o ConnectionProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionProfile] {
+	return pulumix.Output[*ConnectionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // BigQuery warehouse profile.
@@ -662,6 +687,12 @@ func (o ConnectionProfileArrayOutput) ToConnectionProfileArrayOutputWithContext(
 	return o
 }
 
+func (o ConnectionProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionProfile] {
+	return pulumix.Output[[]*ConnectionProfile]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionProfileArrayOutput) Index(i pulumi.IntInput) ConnectionProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionProfile {
 		return vs[0].([]*ConnectionProfile)[vs[1].(int)]
@@ -680,6 +711,12 @@ func (o ConnectionProfileMapOutput) ToConnectionProfileMapOutput() ConnectionPro
 
 func (o ConnectionProfileMapOutput) ToConnectionProfileMapOutputWithContext(ctx context.Context) ConnectionProfileMapOutput {
 	return o
+}
+
+func (o ConnectionProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionProfile] {
+	return pulumix.Output[map[string]*ConnectionProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionProfileMapOutput) MapIndex(k pulumi.StringInput) ConnectionProfileOutput {

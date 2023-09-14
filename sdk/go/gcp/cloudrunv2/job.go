@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud Run Job resource that references a container image which is run to completion.
@@ -813,6 +814,12 @@ func (i *Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
 }
 
+func (i *Job) ToOutput(ctx context.Context) pulumix.Output[*Job] {
+	return pulumix.Output[*Job]{
+		OutputState: i.ToJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobArrayInput is an input type that accepts JobArray and JobArrayOutput values.
 // You can construct a concrete instance of `JobArrayInput` via:
 //
@@ -836,6 +843,12 @@ func (i JobArray) ToJobArrayOutput() JobArrayOutput {
 
 func (i JobArray) ToJobArrayOutputWithContext(ctx context.Context) JobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobArrayOutput)
+}
+
+func (i JobArray) ToOutput(ctx context.Context) pulumix.Output[[]*Job] {
+	return pulumix.Output[[]*Job]{
+		OutputState: i.ToJobArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // JobMapInput is an input type that accepts JobMap and JobMapOutput values.
@@ -863,6 +876,12 @@ func (i JobMap) ToJobMapOutputWithContext(ctx context.Context) JobMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobMapOutput)
 }
 
+func (i JobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Job] {
+	return pulumix.Output[map[string]*Job]{
+		OutputState: i.ToJobMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobOutput struct{ *pulumi.OutputState }
 
 func (JobOutput) ElementType() reflect.Type {
@@ -875,6 +894,12 @@ func (o JobOutput) ToJobOutput() JobOutput {
 
 func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
+}
+
+func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
+	return pulumix.Output[*Job]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -1049,6 +1074,12 @@ func (o JobArrayOutput) ToJobArrayOutputWithContext(ctx context.Context) JobArra
 	return o
 }
 
+func (o JobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Job] {
+	return pulumix.Output[[]*Job]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobArrayOutput) Index(i pulumi.IntInput) JobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Job {
 		return vs[0].([]*Job)[vs[1].(int)]
@@ -1067,6 +1098,12 @@ func (o JobMapOutput) ToJobMapOutput() JobMapOutput {
 
 func (o JobMapOutput) ToJobMapOutputWithContext(ctx context.Context) JobMapOutput {
 	return o
+}
+
+func (o JobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Job] {
+	return pulumix.Output[map[string]*Job]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobMapOutput) MapIndex(k pulumi.StringInput) JobOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Billing information for a project.
@@ -159,6 +160,12 @@ func (i *ProjectInfo) ToProjectInfoOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectInfoOutput)
 }
 
+func (i *ProjectInfo) ToOutput(ctx context.Context) pulumix.Output[*ProjectInfo] {
+	return pulumix.Output[*ProjectInfo]{
+		OutputState: i.ToProjectInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectInfoArrayInput is an input type that accepts ProjectInfoArray and ProjectInfoArrayOutput values.
 // You can construct a concrete instance of `ProjectInfoArrayInput` via:
 //
@@ -182,6 +189,12 @@ func (i ProjectInfoArray) ToProjectInfoArrayOutput() ProjectInfoArrayOutput {
 
 func (i ProjectInfoArray) ToProjectInfoArrayOutputWithContext(ctx context.Context) ProjectInfoArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectInfoArrayOutput)
+}
+
+func (i ProjectInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectInfo] {
+	return pulumix.Output[[]*ProjectInfo]{
+		OutputState: i.ToProjectInfoArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectInfoMapInput is an input type that accepts ProjectInfoMap and ProjectInfoMapOutput values.
@@ -209,6 +222,12 @@ func (i ProjectInfoMap) ToProjectInfoMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectInfoMapOutput)
 }
 
+func (i ProjectInfoMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectInfo] {
+	return pulumix.Output[map[string]*ProjectInfo]{
+		OutputState: i.ToProjectInfoMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectInfoOutput struct{ *pulumi.OutputState }
 
 func (ProjectInfoOutput) ElementType() reflect.Type {
@@ -221,6 +240,12 @@ func (o ProjectInfoOutput) ToProjectInfoOutput() ProjectInfoOutput {
 
 func (o ProjectInfoOutput) ToProjectInfoOutputWithContext(ctx context.Context) ProjectInfoOutput {
 	return o
+}
+
+func (o ProjectInfoOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectInfo] {
+	return pulumix.Output[*ProjectInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the billing account associated with the project, if
@@ -252,6 +277,12 @@ func (o ProjectInfoArrayOutput) ToProjectInfoArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ProjectInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectInfo] {
+	return pulumix.Output[[]*ProjectInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectInfoArrayOutput) Index(i pulumi.IntInput) ProjectInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectInfo {
 		return vs[0].([]*ProjectInfo)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o ProjectInfoMapOutput) ToProjectInfoMapOutput() ProjectInfoMapOutput {
 
 func (o ProjectInfoMapOutput) ToProjectInfoMapOutputWithContext(ctx context.Context) ProjectInfoMapOutput {
 	return o
+}
+
+func (o ProjectInfoMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectInfo] {
+	return pulumix.Output[map[string]*ProjectInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectInfoMapOutput) MapIndex(k pulumi.StringInput) ProjectInfoOutput {

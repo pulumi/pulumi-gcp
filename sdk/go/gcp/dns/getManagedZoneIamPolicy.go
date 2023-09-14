@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for managedzone
@@ -110,6 +111,12 @@ func (o GetManagedZoneIamPolicyResultOutput) ToGetManagedZoneIamPolicyResultOutp
 
 func (o GetManagedZoneIamPolicyResultOutput) ToGetManagedZoneIamPolicyResultOutputWithContext(ctx context.Context) GetManagedZoneIamPolicyResultOutput {
 	return o
+}
+
+func (o GetManagedZoneIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetManagedZoneIamPolicyResult] {
+	return pulumix.Output[GetManagedZoneIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.

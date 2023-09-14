@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i ClusterNodeTypeConfigArgs) ToClusterNodeTypeConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeConfigOutput)
 }
 
+func (i ClusterNodeTypeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeTypeConfig] {
+	return pulumix.Output[ClusterNodeTypeConfig]{
+		OutputState: i.ToClusterNodeTypeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterNodeTypeConfigArrayInput is an input type that accepts ClusterNodeTypeConfigArray and ClusterNodeTypeConfigArrayOutput values.
 // You can construct a concrete instance of `ClusterNodeTypeConfigArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i ClusterNodeTypeConfigArray) ToClusterNodeTypeConfigArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeConfigArrayOutput)
 }
 
+func (i ClusterNodeTypeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodeTypeConfig] {
+	return pulumix.Output[[]ClusterNodeTypeConfig]{
+		OutputState: i.ToClusterNodeTypeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
 
 func (ClusterNodeTypeConfigOutput) ElementType() reflect.Type {
@@ -97,6 +110,12 @@ func (o ClusterNodeTypeConfigOutput) ToClusterNodeTypeConfigOutput() ClusterNode
 
 func (o ClusterNodeTypeConfigOutput) ToClusterNodeTypeConfigOutputWithContext(ctx context.Context) ClusterNodeTypeConfigOutput {
 	return o
+}
+
+func (o ClusterNodeTypeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeTypeConfig] {
+	return pulumix.Output[ClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Customized number of cores available to each node of the type.
@@ -129,6 +148,12 @@ func (o ClusterNodeTypeConfigArrayOutput) ToClusterNodeTypeConfigArrayOutput() C
 
 func (o ClusterNodeTypeConfigArrayOutput) ToClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) ClusterNodeTypeConfigArrayOutput {
 	return o
+}
+
+func (o ClusterNodeTypeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodeTypeConfig] {
+	return pulumix.Output[[]ClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTypeConfigOutput {
@@ -180,6 +205,12 @@ func (i NetworkVpcNetworkArgs) ToNetworkVpcNetworkOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkVpcNetworkOutput)
 }
 
+func (i NetworkVpcNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkVpcNetwork] {
+	return pulumix.Output[NetworkVpcNetwork]{
+		OutputState: i.ToNetworkVpcNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkVpcNetworkArrayInput is an input type that accepts NetworkVpcNetworkArray and NetworkVpcNetworkArrayOutput values.
 // You can construct a concrete instance of `NetworkVpcNetworkArrayInput` via:
 //
@@ -205,6 +236,12 @@ func (i NetworkVpcNetworkArray) ToNetworkVpcNetworkArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkVpcNetworkArrayOutput)
 }
 
+func (i NetworkVpcNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkVpcNetwork] {
+	return pulumix.Output[[]NetworkVpcNetwork]{
+		OutputState: i.ToNetworkVpcNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkVpcNetworkOutput struct{ *pulumi.OutputState }
 
 func (NetworkVpcNetworkOutput) ElementType() reflect.Type {
@@ -217,6 +254,12 @@ func (o NetworkVpcNetworkOutput) ToNetworkVpcNetworkOutput() NetworkVpcNetworkOu
 
 func (o NetworkVpcNetworkOutput) ToNetworkVpcNetworkOutputWithContext(ctx context.Context) NetworkVpcNetworkOutput {
 	return o
+}
+
+func (o NetworkVpcNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkVpcNetwork] {
+	return pulumix.Output[NetworkVpcNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -244,6 +287,12 @@ func (o NetworkVpcNetworkArrayOutput) ToNetworkVpcNetworkArrayOutput() NetworkVp
 
 func (o NetworkVpcNetworkArrayOutput) ToNetworkVpcNetworkArrayOutputWithContext(ctx context.Context) NetworkVpcNetworkArrayOutput {
 	return o
+}
+
+func (o NetworkVpcNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkVpcNetwork] {
+	return pulumix.Output[[]NetworkVpcNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkVpcNetworkArrayOutput) Index(i pulumi.IntInput) NetworkVpcNetworkOutput {
@@ -299,6 +348,12 @@ func (i PrivateCloudHcxArgs) ToPrivateCloudHcxOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudHcxOutput)
 }
 
+func (i PrivateCloudHcxArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudHcx] {
+	return pulumix.Output[PrivateCloudHcx]{
+		OutputState: i.ToPrivateCloudHcxOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateCloudHcxArrayInput is an input type that accepts PrivateCloudHcxArray and PrivateCloudHcxArrayOutput values.
 // You can construct a concrete instance of `PrivateCloudHcxArrayInput` via:
 //
@@ -324,6 +379,12 @@ func (i PrivateCloudHcxArray) ToPrivateCloudHcxArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudHcxArrayOutput)
 }
 
+func (i PrivateCloudHcxArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudHcx] {
+	return pulumix.Output[[]PrivateCloudHcx]{
+		OutputState: i.ToPrivateCloudHcxArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudHcxOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudHcxOutput) ElementType() reflect.Type {
@@ -336,6 +397,12 @@ func (o PrivateCloudHcxOutput) ToPrivateCloudHcxOutput() PrivateCloudHcxOutput {
 
 func (o PrivateCloudHcxOutput) ToPrivateCloudHcxOutputWithContext(ctx context.Context) PrivateCloudHcxOutput {
 	return o
+}
+
+func (o PrivateCloudHcxOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudHcx] {
+	return pulumix.Output[PrivateCloudHcx]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified domain name of the appliance.
@@ -371,6 +438,12 @@ func (o PrivateCloudHcxArrayOutput) ToPrivateCloudHcxArrayOutput() PrivateCloudH
 
 func (o PrivateCloudHcxArrayOutput) ToPrivateCloudHcxArrayOutputWithContext(ctx context.Context) PrivateCloudHcxArrayOutput {
 	return o
+}
+
+func (o PrivateCloudHcxArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudHcx] {
+	return pulumix.Output[[]PrivateCloudHcx]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) PrivateCloudHcxOutput {
@@ -430,6 +503,12 @@ func (i PrivateCloudManagementClusterArgs) ToPrivateCloudManagementClusterOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterOutput)
 }
 
+func (i PrivateCloudManagementClusterArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudManagementCluster] {
+	return pulumix.Output[PrivateCloudManagementCluster]{
+		OutputState: i.ToPrivateCloudManagementClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateCloudManagementClusterArgs) ToPrivateCloudManagementClusterPtrOutput() PrivateCloudManagementClusterPtrOutput {
 	return i.ToPrivateCloudManagementClusterPtrOutputWithContext(context.Background())
 }
@@ -471,6 +550,12 @@ func (i *privateCloudManagementClusterPtrType) ToPrivateCloudManagementClusterPt
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterPtrOutput)
 }
 
+func (i *privateCloudManagementClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudManagementCluster] {
+	return pulumix.Output[*PrivateCloudManagementCluster]{
+		OutputState: i.ToPrivateCloudManagementClusterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudManagementClusterOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudManagementClusterOutput) ElementType() reflect.Type {
@@ -493,6 +578,12 @@ func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementCluster) *PrivateCloudManagementCluster {
 		return &v
 	}).(PrivateCloudManagementClusterPtrOutput)
+}
+
+func (o PrivateCloudManagementClusterOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudManagementCluster] {
+	return pulumix.Output[PrivateCloudManagementCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
@@ -526,6 +617,12 @@ func (o PrivateCloudManagementClusterPtrOutput) ToPrivateCloudManagementClusterP
 
 func (o PrivateCloudManagementClusterPtrOutput) ToPrivateCloudManagementClusterPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterPtrOutput {
 	return o
+}
+
+func (o PrivateCloudManagementClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudManagementCluster] {
+	return pulumix.Output[*PrivateCloudManagementCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateCloudManagementClusterPtrOutput) Elem() PrivateCloudManagementClusterOutput {
@@ -616,6 +713,12 @@ func (i PrivateCloudManagementClusterNodeTypeConfigArgs) ToPrivateCloudManagemen
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterNodeTypeConfigOutput)
 }
 
+func (i PrivateCloudManagementClusterNodeTypeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[PrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: i.ToPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateCloudManagementClusterNodeTypeConfigArrayInput is an input type that accepts PrivateCloudManagementClusterNodeTypeConfigArray and PrivateCloudManagementClusterNodeTypeConfigArrayOutput values.
 // You can construct a concrete instance of `PrivateCloudManagementClusterNodeTypeConfigArrayInput` via:
 //
@@ -641,6 +744,12 @@ func (i PrivateCloudManagementClusterNodeTypeConfigArray) ToPrivateCloudManageme
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterNodeTypeConfigArrayOutput)
 }
 
+func (i PrivateCloudManagementClusterNodeTypeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[[]PrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: i.ToPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudManagementClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudManagementClusterNodeTypeConfigOutput) ElementType() reflect.Type {
@@ -653,6 +762,12 @@ func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToPrivateCloudManagem
 
 func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx context.Context) PrivateCloudManagementClusterNodeTypeConfigOutput {
 	return o
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[PrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Customized number of cores available to each node of the type.
@@ -687,6 +802,12 @@ func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToPrivateCloudMa
 
 func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
 	return o
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[[]PrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) PrivateCloudManagementClusterNodeTypeConfigOutput {
@@ -760,6 +881,12 @@ func (i PrivateCloudNetworkConfigArgs) ToPrivateCloudNetworkConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNetworkConfigOutput)
 }
 
+func (i PrivateCloudNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudNetworkConfig] {
+	return pulumix.Output[PrivateCloudNetworkConfig]{
+		OutputState: i.ToPrivateCloudNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PrivateCloudNetworkConfigArgs) ToPrivateCloudNetworkConfigPtrOutput() PrivateCloudNetworkConfigPtrOutput {
 	return i.ToPrivateCloudNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -801,6 +928,12 @@ func (i *privateCloudNetworkConfigPtrType) ToPrivateCloudNetworkConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNetworkConfigPtrOutput)
 }
 
+func (i *privateCloudNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudNetworkConfig] {
+	return pulumix.Output[*PrivateCloudNetworkConfig]{
+		OutputState: i.ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudNetworkConfigOutput) ElementType() reflect.Type {
@@ -823,6 +956,12 @@ func (o PrivateCloudNetworkConfigOutput) ToPrivateCloudNetworkConfigPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudNetworkConfig) *PrivateCloudNetworkConfig {
 		return &v
 	}).(PrivateCloudNetworkConfigPtrOutput)
+}
+
+func (o PrivateCloudNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudNetworkConfig] {
+	return pulumix.Output[PrivateCloudNetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Management CIDR used by VMware management appliances.
@@ -867,6 +1006,12 @@ func (o PrivateCloudNetworkConfigPtrOutput) ToPrivateCloudNetworkConfigPtrOutput
 
 func (o PrivateCloudNetworkConfigPtrOutput) ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigPtrOutput {
 	return o
+}
+
+func (o PrivateCloudNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloudNetworkConfig] {
+	return pulumix.Output[*PrivateCloudNetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateCloudNetworkConfigPtrOutput) Elem() PrivateCloudNetworkConfigOutput {
@@ -976,6 +1121,12 @@ func (i PrivateCloudNsxArgs) ToPrivateCloudNsxOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNsxOutput)
 }
 
+func (i PrivateCloudNsxArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudNsx] {
+	return pulumix.Output[PrivateCloudNsx]{
+		OutputState: i.ToPrivateCloudNsxOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateCloudNsxArrayInput is an input type that accepts PrivateCloudNsxArray and PrivateCloudNsxArrayOutput values.
 // You can construct a concrete instance of `PrivateCloudNsxArrayInput` via:
 //
@@ -1001,6 +1152,12 @@ func (i PrivateCloudNsxArray) ToPrivateCloudNsxArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNsxArrayOutput)
 }
 
+func (i PrivateCloudNsxArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudNsx] {
+	return pulumix.Output[[]PrivateCloudNsx]{
+		OutputState: i.ToPrivateCloudNsxArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudNsxOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudNsxOutput) ElementType() reflect.Type {
@@ -1013,6 +1170,12 @@ func (o PrivateCloudNsxOutput) ToPrivateCloudNsxOutput() PrivateCloudNsxOutput {
 
 func (o PrivateCloudNsxOutput) ToPrivateCloudNsxOutputWithContext(ctx context.Context) PrivateCloudNsxOutput {
 	return o
+}
+
+func (o PrivateCloudNsxOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudNsx] {
+	return pulumix.Output[PrivateCloudNsx]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified domain name of the appliance.
@@ -1048,6 +1211,12 @@ func (o PrivateCloudNsxArrayOutput) ToPrivateCloudNsxArrayOutput() PrivateCloudN
 
 func (o PrivateCloudNsxArrayOutput) ToPrivateCloudNsxArrayOutputWithContext(ctx context.Context) PrivateCloudNsxArrayOutput {
 	return o
+}
+
+func (o PrivateCloudNsxArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudNsx] {
+	return pulumix.Output[[]PrivateCloudNsx]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateCloudNsxArrayOutput) Index(i pulumi.IntInput) PrivateCloudNsxOutput {
@@ -1103,6 +1272,12 @@ func (i PrivateCloudVcenterArgs) ToPrivateCloudVcenterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudVcenterOutput)
 }
 
+func (i PrivateCloudVcenterArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudVcenter] {
+	return pulumix.Output[PrivateCloudVcenter]{
+		OutputState: i.ToPrivateCloudVcenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PrivateCloudVcenterArrayInput is an input type that accepts PrivateCloudVcenterArray and PrivateCloudVcenterArrayOutput values.
 // You can construct a concrete instance of `PrivateCloudVcenterArrayInput` via:
 //
@@ -1128,6 +1303,12 @@ func (i PrivateCloudVcenterArray) ToPrivateCloudVcenterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudVcenterArrayOutput)
 }
 
+func (i PrivateCloudVcenterArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudVcenter] {
+	return pulumix.Output[[]PrivateCloudVcenter]{
+		OutputState: i.ToPrivateCloudVcenterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PrivateCloudVcenterOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudVcenterOutput) ElementType() reflect.Type {
@@ -1140,6 +1321,12 @@ func (o PrivateCloudVcenterOutput) ToPrivateCloudVcenterOutput() PrivateCloudVce
 
 func (o PrivateCloudVcenterOutput) ToPrivateCloudVcenterOutputWithContext(ctx context.Context) PrivateCloudVcenterOutput {
 	return o
+}
+
+func (o PrivateCloudVcenterOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateCloudVcenter] {
+	return pulumix.Output[PrivateCloudVcenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fully qualified domain name of the appliance.
@@ -1175,6 +1362,12 @@ func (o PrivateCloudVcenterArrayOutput) ToPrivateCloudVcenterArrayOutput() Priva
 
 func (o PrivateCloudVcenterArrayOutput) ToPrivateCloudVcenterArrayOutputWithContext(ctx context.Context) PrivateCloudVcenterArrayOutput {
 	return o
+}
+
+func (o PrivateCloudVcenterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateCloudVcenter] {
+	return pulumix.Output[[]PrivateCloudVcenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) PrivateCloudVcenterOutput {
@@ -1218,6 +1411,12 @@ func (i GetClusterNodeTypeConfigArgs) ToGetClusterNodeTypeConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeTypeConfigOutput)
 }
 
+func (i GetClusterNodeTypeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodeTypeConfig] {
+	return pulumix.Output[GetClusterNodeTypeConfig]{
+		OutputState: i.ToGetClusterNodeTypeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetClusterNodeTypeConfigArrayInput is an input type that accepts GetClusterNodeTypeConfigArray and GetClusterNodeTypeConfigArrayOutput values.
 // You can construct a concrete instance of `GetClusterNodeTypeConfigArrayInput` via:
 //
@@ -1243,6 +1442,12 @@ func (i GetClusterNodeTypeConfigArray) ToGetClusterNodeTypeConfigArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeTypeConfigArrayOutput)
 }
 
+func (i GetClusterNodeTypeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodeTypeConfig] {
+	return pulumix.Output[[]GetClusterNodeTypeConfig]{
+		OutputState: i.ToGetClusterNodeTypeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetClusterNodeTypeConfigOutput) ElementType() reflect.Type {
@@ -1255,6 +1460,12 @@ func (o GetClusterNodeTypeConfigOutput) ToGetClusterNodeTypeConfigOutput() GetCl
 
 func (o GetClusterNodeTypeConfigOutput) ToGetClusterNodeTypeConfigOutputWithContext(ctx context.Context) GetClusterNodeTypeConfigOutput {
 	return o
+}
+
+func (o GetClusterNodeTypeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodeTypeConfig] {
+	return pulumix.Output[GetClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntOutput {
@@ -1281,6 +1492,12 @@ func (o GetClusterNodeTypeConfigArrayOutput) ToGetClusterNodeTypeConfigArrayOutp
 
 func (o GetClusterNodeTypeConfigArrayOutput) ToGetClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeTypeConfigArrayOutput {
 	return o
+}
+
+func (o GetClusterNodeTypeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodeTypeConfig] {
+	return pulumix.Output[[]GetClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeTypeConfigOutput {
@@ -1322,6 +1539,12 @@ func (i GetNetworkVpcNetworkArgs) ToGetNetworkVpcNetworkOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkVpcNetworkOutput)
 }
 
+func (i GetNetworkVpcNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetNetworkVpcNetwork] {
+	return pulumix.Output[GetNetworkVpcNetwork]{
+		OutputState: i.ToGetNetworkVpcNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNetworkVpcNetworkArrayInput is an input type that accepts GetNetworkVpcNetworkArray and GetNetworkVpcNetworkArrayOutput values.
 // You can construct a concrete instance of `GetNetworkVpcNetworkArrayInput` via:
 //
@@ -1347,6 +1570,12 @@ func (i GetNetworkVpcNetworkArray) ToGetNetworkVpcNetworkArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkVpcNetworkArrayOutput)
 }
 
+func (i GetNetworkVpcNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworkVpcNetwork] {
+	return pulumix.Output[[]GetNetworkVpcNetwork]{
+		OutputState: i.ToGetNetworkVpcNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNetworkVpcNetworkOutput struct{ *pulumi.OutputState }
 
 func (GetNetworkVpcNetworkOutput) ElementType() reflect.Type {
@@ -1359,6 +1588,12 @@ func (o GetNetworkVpcNetworkOutput) ToGetNetworkVpcNetworkOutput() GetNetworkVpc
 
 func (o GetNetworkVpcNetworkOutput) ToGetNetworkVpcNetworkOutputWithContext(ctx context.Context) GetNetworkVpcNetworkOutput {
 	return o
+}
+
+func (o GetNetworkVpcNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkVpcNetwork] {
+	return pulumix.Output[GetNetworkVpcNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNetworkVpcNetworkOutput) Network() pulumi.StringOutput {
@@ -1381,6 +1616,12 @@ func (o GetNetworkVpcNetworkArrayOutput) ToGetNetworkVpcNetworkArrayOutput() Get
 
 func (o GetNetworkVpcNetworkArrayOutput) ToGetNetworkVpcNetworkArrayOutputWithContext(ctx context.Context) GetNetworkVpcNetworkArrayOutput {
 	return o
+}
+
+func (o GetNetworkVpcNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworkVpcNetwork] {
+	return pulumix.Output[[]GetNetworkVpcNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNetworkVpcNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworkVpcNetworkOutput {
@@ -1426,6 +1667,12 @@ func (i GetPrivateCloudHcxArgs) ToGetPrivateCloudHcxOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudHcxOutput)
 }
 
+func (i GetPrivateCloudHcxArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudHcx] {
+	return pulumix.Output[GetPrivateCloudHcx]{
+		OutputState: i.ToGetPrivateCloudHcxOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateCloudHcxArrayInput is an input type that accepts GetPrivateCloudHcxArray and GetPrivateCloudHcxArrayOutput values.
 // You can construct a concrete instance of `GetPrivateCloudHcxArrayInput` via:
 //
@@ -1451,6 +1698,12 @@ func (i GetPrivateCloudHcxArray) ToGetPrivateCloudHcxArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudHcxArrayOutput)
 }
 
+func (i GetPrivateCloudHcxArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudHcx] {
+	return pulumix.Output[[]GetPrivateCloudHcx]{
+		OutputState: i.ToGetPrivateCloudHcxArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateCloudHcxOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateCloudHcxOutput) ElementType() reflect.Type {
@@ -1463,6 +1716,12 @@ func (o GetPrivateCloudHcxOutput) ToGetPrivateCloudHcxOutput() GetPrivateCloudHc
 
 func (o GetPrivateCloudHcxOutput) ToGetPrivateCloudHcxOutputWithContext(ctx context.Context) GetPrivateCloudHcxOutput {
 	return o
+}
+
+func (o GetPrivateCloudHcxOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudHcx] {
+	return pulumix.Output[GetPrivateCloudHcx]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudHcxOutput) Fqdn() pulumi.StringOutput {
@@ -1493,6 +1752,12 @@ func (o GetPrivateCloudHcxArrayOutput) ToGetPrivateCloudHcxArrayOutput() GetPriv
 
 func (o GetPrivateCloudHcxArrayOutput) ToGetPrivateCloudHcxArrayOutputWithContext(ctx context.Context) GetPrivateCloudHcxArrayOutput {
 	return o
+}
+
+func (o GetPrivateCloudHcxArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudHcx] {
+	return pulumix.Output[[]GetPrivateCloudHcx]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudHcxOutput {
@@ -1534,6 +1799,12 @@ func (i GetPrivateCloudManagementClusterArgs) ToGetPrivateCloudManagementCluster
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterOutput)
 }
 
+func (i GetPrivateCloudManagementClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudManagementCluster] {
+	return pulumix.Output[GetPrivateCloudManagementCluster]{
+		OutputState: i.ToGetPrivateCloudManagementClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateCloudManagementClusterArrayInput is an input type that accepts GetPrivateCloudManagementClusterArray and GetPrivateCloudManagementClusterArrayOutput values.
 // You can construct a concrete instance of `GetPrivateCloudManagementClusterArrayInput` via:
 //
@@ -1559,6 +1830,12 @@ func (i GetPrivateCloudManagementClusterArray) ToGetPrivateCloudManagementCluste
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterArrayOutput)
 }
 
+func (i GetPrivateCloudManagementClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudManagementCluster] {
+	return pulumix.Output[[]GetPrivateCloudManagementCluster]{
+		OutputState: i.ToGetPrivateCloudManagementClusterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateCloudManagementClusterOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateCloudManagementClusterOutput) ElementType() reflect.Type {
@@ -1571,6 +1848,12 @@ func (o GetPrivateCloudManagementClusterOutput) ToGetPrivateCloudManagementClust
 
 func (o GetPrivateCloudManagementClusterOutput) ToGetPrivateCloudManagementClusterOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterOutput {
 	return o
+}
+
+func (o GetPrivateCloudManagementClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudManagementCluster] {
+	return pulumix.Output[GetPrivateCloudManagementCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudManagementClusterOutput) ClusterId() pulumi.StringOutput {
@@ -1595,6 +1878,12 @@ func (o GetPrivateCloudManagementClusterArrayOutput) ToGetPrivateCloudManagement
 
 func (o GetPrivateCloudManagementClusterArrayOutput) ToGetPrivateCloudManagementClusterArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterArrayOutput {
 	return o
+}
+
+func (o GetPrivateCloudManagementClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudManagementCluster] {
+	return pulumix.Output[[]GetPrivateCloudManagementCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudManagementClusterArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterOutput {
@@ -1638,6 +1927,12 @@ func (i GetPrivateCloudManagementClusterNodeTypeConfigArgs) ToGetPrivateCloudMan
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterNodeTypeConfigOutput)
 }
 
+func (i GetPrivateCloudManagementClusterNodeTypeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[GetPrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: i.ToGetPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateCloudManagementClusterNodeTypeConfigArrayInput is an input type that accepts GetPrivateCloudManagementClusterNodeTypeConfigArray and GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput values.
 // You can construct a concrete instance of `GetPrivateCloudManagementClusterNodeTypeConfigArrayInput` via:
 //
@@ -1663,6 +1958,12 @@ func (i GetPrivateCloudManagementClusterNodeTypeConfigArray) ToGetPrivateCloudMa
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput)
 }
 
+func (i GetPrivateCloudManagementClusterNodeTypeConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[[]GetPrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: i.ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateCloudManagementClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateCloudManagementClusterNodeTypeConfigOutput) ElementType() reflect.Type {
@@ -1675,6 +1976,12 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) ToGetPrivateCloudM
 
 func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) ToGetPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterNodeTypeConfigOutput {
 	return o
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[GetPrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntOutput {
@@ -1701,6 +2008,12 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToGetPrivateC
 
 func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
 	return o
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudManagementClusterNodeTypeConfig] {
+	return pulumix.Output[[]GetPrivateCloudManagementClusterNodeTypeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterNodeTypeConfigOutput {
@@ -1746,6 +2059,12 @@ func (i GetPrivateCloudNetworkConfigArgs) ToGetPrivateCloudNetworkConfigOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNetworkConfigOutput)
 }
 
+func (i GetPrivateCloudNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudNetworkConfig] {
+	return pulumix.Output[GetPrivateCloudNetworkConfig]{
+		OutputState: i.ToGetPrivateCloudNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateCloudNetworkConfigArrayInput is an input type that accepts GetPrivateCloudNetworkConfigArray and GetPrivateCloudNetworkConfigArrayOutput values.
 // You can construct a concrete instance of `GetPrivateCloudNetworkConfigArrayInput` via:
 //
@@ -1771,6 +2090,12 @@ func (i GetPrivateCloudNetworkConfigArray) ToGetPrivateCloudNetworkConfigArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNetworkConfigArrayOutput)
 }
 
+func (i GetPrivateCloudNetworkConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudNetworkConfig] {
+	return pulumix.Output[[]GetPrivateCloudNetworkConfig]{
+		OutputState: i.ToGetPrivateCloudNetworkConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateCloudNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateCloudNetworkConfigOutput) ElementType() reflect.Type {
@@ -1783,6 +2108,12 @@ func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutput
 
 func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigOutput {
 	return o
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudNetworkConfig] {
+	return pulumix.Output[GetPrivateCloudNetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudNetworkConfigOutput) ManagementCidr() pulumi.StringOutput {
@@ -1813,6 +2144,12 @@ func (o GetPrivateCloudNetworkConfigArrayOutput) ToGetPrivateCloudNetworkConfigA
 
 func (o GetPrivateCloudNetworkConfigArrayOutput) ToGetPrivateCloudNetworkConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigArrayOutput {
 	return o
+}
+
+func (o GetPrivateCloudNetworkConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudNetworkConfig] {
+	return pulumix.Output[[]GetPrivateCloudNetworkConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudNetworkConfigOutput {
@@ -1858,6 +2195,12 @@ func (i GetPrivateCloudNsxArgs) ToGetPrivateCloudNsxOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNsxOutput)
 }
 
+func (i GetPrivateCloudNsxArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudNsx] {
+	return pulumix.Output[GetPrivateCloudNsx]{
+		OutputState: i.ToGetPrivateCloudNsxOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateCloudNsxArrayInput is an input type that accepts GetPrivateCloudNsxArray and GetPrivateCloudNsxArrayOutput values.
 // You can construct a concrete instance of `GetPrivateCloudNsxArrayInput` via:
 //
@@ -1883,6 +2226,12 @@ func (i GetPrivateCloudNsxArray) ToGetPrivateCloudNsxArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNsxArrayOutput)
 }
 
+func (i GetPrivateCloudNsxArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudNsx] {
+	return pulumix.Output[[]GetPrivateCloudNsx]{
+		OutputState: i.ToGetPrivateCloudNsxArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateCloudNsxOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateCloudNsxOutput) ElementType() reflect.Type {
@@ -1895,6 +2244,12 @@ func (o GetPrivateCloudNsxOutput) ToGetPrivateCloudNsxOutput() GetPrivateCloudNs
 
 func (o GetPrivateCloudNsxOutput) ToGetPrivateCloudNsxOutputWithContext(ctx context.Context) GetPrivateCloudNsxOutput {
 	return o
+}
+
+func (o GetPrivateCloudNsxOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudNsx] {
+	return pulumix.Output[GetPrivateCloudNsx]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudNsxOutput) Fqdn() pulumi.StringOutput {
@@ -1925,6 +2280,12 @@ func (o GetPrivateCloudNsxArrayOutput) ToGetPrivateCloudNsxArrayOutput() GetPriv
 
 func (o GetPrivateCloudNsxArrayOutput) ToGetPrivateCloudNsxArrayOutputWithContext(ctx context.Context) GetPrivateCloudNsxArrayOutput {
 	return o
+}
+
+func (o GetPrivateCloudNsxArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudNsx] {
+	return pulumix.Output[[]GetPrivateCloudNsx]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudNsxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudNsxOutput {
@@ -1970,6 +2331,12 @@ func (i GetPrivateCloudVcenterArgs) ToGetPrivateCloudVcenterOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudVcenterOutput)
 }
 
+func (i GetPrivateCloudVcenterArgs) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudVcenter] {
+	return pulumix.Output[GetPrivateCloudVcenter]{
+		OutputState: i.ToGetPrivateCloudVcenterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPrivateCloudVcenterArrayInput is an input type that accepts GetPrivateCloudVcenterArray and GetPrivateCloudVcenterArrayOutput values.
 // You can construct a concrete instance of `GetPrivateCloudVcenterArrayInput` via:
 //
@@ -1995,6 +2362,12 @@ func (i GetPrivateCloudVcenterArray) ToGetPrivateCloudVcenterArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudVcenterArrayOutput)
 }
 
+func (i GetPrivateCloudVcenterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudVcenter] {
+	return pulumix.Output[[]GetPrivateCloudVcenter]{
+		OutputState: i.ToGetPrivateCloudVcenterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPrivateCloudVcenterOutput struct{ *pulumi.OutputState }
 
 func (GetPrivateCloudVcenterOutput) ElementType() reflect.Type {
@@ -2007,6 +2380,12 @@ func (o GetPrivateCloudVcenterOutput) ToGetPrivateCloudVcenterOutput() GetPrivat
 
 func (o GetPrivateCloudVcenterOutput) ToGetPrivateCloudVcenterOutputWithContext(ctx context.Context) GetPrivateCloudVcenterOutput {
 	return o
+}
+
+func (o GetPrivateCloudVcenterOutput) ToOutput(ctx context.Context) pulumix.Output[GetPrivateCloudVcenter] {
+	return pulumix.Output[GetPrivateCloudVcenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudVcenterOutput) Fqdn() pulumi.StringOutput {
@@ -2037,6 +2416,12 @@ func (o GetPrivateCloudVcenterArrayOutput) ToGetPrivateCloudVcenterArrayOutput()
 
 func (o GetPrivateCloudVcenterArrayOutput) ToGetPrivateCloudVcenterArrayOutputWithContext(ctx context.Context) GetPrivateCloudVcenterArrayOutput {
 	return o
+}
+
+func (o GetPrivateCloudVcenterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPrivateCloudVcenter] {
+	return pulumix.Output[[]GetPrivateCloudVcenter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudVcenterOutput {

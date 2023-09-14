@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
@@ -361,6 +362,12 @@ func (i *DataExchangeIamPolicy) ToDataExchangeIamPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamPolicyOutput)
 }
 
+func (i *DataExchangeIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamPolicy] {
+	return pulumix.Output[*DataExchangeIamPolicy]{
+		OutputState: i.ToDataExchangeIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataExchangeIamPolicyArrayInput is an input type that accepts DataExchangeIamPolicyArray and DataExchangeIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DataExchangeIamPolicyArrayInput` via:
 //
@@ -384,6 +391,12 @@ func (i DataExchangeIamPolicyArray) ToDataExchangeIamPolicyArrayOutput() DataExc
 
 func (i DataExchangeIamPolicyArray) ToDataExchangeIamPolicyArrayOutputWithContext(ctx context.Context) DataExchangeIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamPolicyArrayOutput)
+}
+
+func (i DataExchangeIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchangeIamPolicy] {
+	return pulumix.Output[[]*DataExchangeIamPolicy]{
+		OutputState: i.ToDataExchangeIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DataExchangeIamPolicyMapInput is an input type that accepts DataExchangeIamPolicyMap and DataExchangeIamPolicyMapOutput values.
@@ -411,6 +424,12 @@ func (i DataExchangeIamPolicyMap) ToDataExchangeIamPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamPolicyMapOutput)
 }
 
+func (i DataExchangeIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchangeIamPolicy] {
+	return pulumix.Output[map[string]*DataExchangeIamPolicy]{
+		OutputState: i.ToDataExchangeIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataExchangeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeIamPolicyOutput) ElementType() reflect.Type {
@@ -423,6 +442,12 @@ func (o DataExchangeIamPolicyOutput) ToDataExchangeIamPolicyOutput() DataExchang
 
 func (o DataExchangeIamPolicyOutput) ToDataExchangeIamPolicyOutputWithContext(ctx context.Context) DataExchangeIamPolicyOutput {
 	return o
+}
+
+func (o DataExchangeIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamPolicy] {
+	return pulumix.Output[*DataExchangeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
@@ -479,6 +504,12 @@ func (o DataExchangeIamPolicyArrayOutput) ToDataExchangeIamPolicyArrayOutputWith
 	return o
 }
 
+func (o DataExchangeIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchangeIamPolicy] {
+	return pulumix.Output[[]*DataExchangeIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataExchangeIamPolicyArrayOutput) Index(i pulumi.IntInput) DataExchangeIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataExchangeIamPolicy {
 		return vs[0].([]*DataExchangeIamPolicy)[vs[1].(int)]
@@ -497,6 +528,12 @@ func (o DataExchangeIamPolicyMapOutput) ToDataExchangeIamPolicyMapOutput() DataE
 
 func (o DataExchangeIamPolicyMapOutput) ToDataExchangeIamPolicyMapOutputWithContext(ctx context.Context) DataExchangeIamPolicyMapOutput {
 	return o
+}
+
+func (o DataExchangeIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchangeIamPolicy] {
+	return pulumix.Output[map[string]*DataExchangeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DataExchangeIamPolicyOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
@@ -395,6 +396,12 @@ func (i *TaskIamMember) ToTaskIamMemberOutputWithContext(ctx context.Context) Ta
 	return pulumi.ToOutputWithContext(ctx, i).(TaskIamMemberOutput)
 }
 
+func (i *TaskIamMember) ToOutput(ctx context.Context) pulumix.Output[*TaskIamMember] {
+	return pulumix.Output[*TaskIamMember]{
+		OutputState: i.ToTaskIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TaskIamMemberArrayInput is an input type that accepts TaskIamMemberArray and TaskIamMemberArrayOutput values.
 // You can construct a concrete instance of `TaskIamMemberArrayInput` via:
 //
@@ -418,6 +425,12 @@ func (i TaskIamMemberArray) ToTaskIamMemberArrayOutput() TaskIamMemberArrayOutpu
 
 func (i TaskIamMemberArray) ToTaskIamMemberArrayOutputWithContext(ctx context.Context) TaskIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaskIamMemberArrayOutput)
+}
+
+func (i TaskIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*TaskIamMember] {
+	return pulumix.Output[[]*TaskIamMember]{
+		OutputState: i.ToTaskIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TaskIamMemberMapInput is an input type that accepts TaskIamMemberMap and TaskIamMemberMapOutput values.
@@ -445,6 +458,12 @@ func (i TaskIamMemberMap) ToTaskIamMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TaskIamMemberMapOutput)
 }
 
+func (i TaskIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaskIamMember] {
+	return pulumix.Output[map[string]*TaskIamMember]{
+		OutputState: i.ToTaskIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaskIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TaskIamMemberOutput) ElementType() reflect.Type {
@@ -457,6 +476,12 @@ func (o TaskIamMemberOutput) ToTaskIamMemberOutput() TaskIamMemberOutput {
 
 func (o TaskIamMemberOutput) ToTaskIamMemberOutputWithContext(ctx context.Context) TaskIamMemberOutput {
 	return o
+}
+
+func (o TaskIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TaskIamMember] {
+	return pulumix.Output[*TaskIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaskIamMemberOutput) Condition() TaskIamMemberConditionPtrOutput {
@@ -527,6 +552,12 @@ func (o TaskIamMemberArrayOutput) ToTaskIamMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o TaskIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TaskIamMember] {
+	return pulumix.Output[[]*TaskIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaskIamMemberArrayOutput) Index(i pulumi.IntInput) TaskIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaskIamMember {
 		return vs[0].([]*TaskIamMember)[vs[1].(int)]
@@ -545,6 +576,12 @@ func (o TaskIamMemberMapOutput) ToTaskIamMemberMapOutput() TaskIamMemberMapOutpu
 
 func (o TaskIamMemberMapOutput) ToTaskIamMemberMapOutputWithContext(ctx context.Context) TaskIamMemberMapOutput {
 	return o
+}
+
+func (o TaskIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaskIamMember] {
+	return pulumix.Output[map[string]*TaskIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaskIamMemberMapOutput) MapIndex(k pulumi.StringInput) TaskIamMemberOutput {

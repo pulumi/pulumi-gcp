@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AccessPolicy is a container for AccessLevels (which define the necessary
@@ -254,6 +255,12 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
 }
 
+func (i *AccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
+	return pulumix.Output[*AccessPolicy]{
+		OutputState: i.ToAccessPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessPolicyArrayInput is an input type that accepts AccessPolicyArray and AccessPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessPolicyArrayInput` via:
 //
@@ -277,6 +284,12 @@ func (i AccessPolicyArray) ToAccessPolicyArrayOutput() AccessPolicyArrayOutput {
 
 func (i AccessPolicyArray) ToAccessPolicyArrayOutputWithContext(ctx context.Context) AccessPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyArrayOutput)
+}
+
+func (i AccessPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPolicy] {
+	return pulumix.Output[[]*AccessPolicy]{
+		OutputState: i.ToAccessPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessPolicyMapInput is an input type that accepts AccessPolicyMap and AccessPolicyMapOutput values.
@@ -304,6 +317,12 @@ func (i AccessPolicyMap) ToAccessPolicyMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyMapOutput)
 }
 
+func (i AccessPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPolicy] {
+	return pulumix.Output[map[string]*AccessPolicy]{
+		OutputState: i.ToAccessPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyOutput) ElementType() reflect.Type {
@@ -316,6 +335,12 @@ func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
 
 func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
 	return o
+}
+
+func (o AccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicy] {
+	return pulumix.Output[*AccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time the AccessPolicy was created in UTC.
@@ -366,6 +391,12 @@ func (o AccessPolicyArrayOutput) ToAccessPolicyArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o AccessPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPolicy] {
+	return pulumix.Output[[]*AccessPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPolicyArrayOutput) Index(i pulumi.IntInput) AccessPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPolicy {
 		return vs[0].([]*AccessPolicy)[vs[1].(int)]
@@ -384,6 +415,12 @@ func (o AccessPolicyMapOutput) ToAccessPolicyMapOutput() AccessPolicyMapOutput {
 
 func (o AccessPolicyMapOutput) ToAccessPolicyMapOutputWithContext(ctx context.Context) AccessPolicyMapOutput {
 	return o
+}
+
+func (o AccessPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPolicy] {
+	return pulumix.Output[map[string]*AccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPolicyMapOutput) MapIndex(k pulumi.StringInput) AccessPolicyOutput {

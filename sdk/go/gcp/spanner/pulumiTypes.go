@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigOutput() Databas
 
 func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigOutputWithContext(ctx context.Context) DatabaseEncryptionConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigOutput)
+}
+
+func (i DatabaseEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseEncryptionConfig] {
+	return pulumix.Output[DatabaseEncryptionConfig]{
+		OutputState: i.ToDatabaseEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DatabaseEncryptionConfigArgs) ToDatabaseEncryptionConfigPtrOutput() DatabaseEncryptionConfigPtrOutput {
@@ -89,6 +96,12 @@ func (i *databaseEncryptionConfigPtrType) ToDatabaseEncryptionConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEncryptionConfigPtrOutput)
 }
 
+func (i *databaseEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEncryptionConfig] {
+	return pulumix.Output[*DatabaseEncryptionConfig]{
+		OutputState: i.ToDatabaseEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseEncryptionConfigOutput) ElementType() reflect.Type {
@@ -113,6 +126,12 @@ func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutputWithC
 	}).(DatabaseEncryptionConfigPtrOutput)
 }
 
+func (o DatabaseEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseEncryptionConfig] {
+	return pulumix.Output[DatabaseEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 // in the same location as the Spanner Database.
 func (o DatabaseEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
@@ -131,6 +150,12 @@ func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutput()
 
 func (o DatabaseEncryptionConfigPtrOutput) ToDatabaseEncryptionConfigPtrOutputWithContext(ctx context.Context) DatabaseEncryptionConfigPtrOutput {
 	return o
+}
+
+func (o DatabaseEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEncryptionConfig] {
+	return pulumix.Output[*DatabaseEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseEncryptionConfigPtrOutput) Elem() DatabaseEncryptionConfigOutput {
@@ -189,6 +214,12 @@ func (i DatabaseIAMBindingConditionArgs) ToDatabaseIAMBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingConditionOutput)
 }
 
+func (i DatabaseIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMBindingCondition] {
+	return pulumix.Output[DatabaseIAMBindingCondition]{
+		OutputState: i.ToDatabaseIAMBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabaseIAMBindingConditionArgs) ToDatabaseIAMBindingConditionPtrOutput() DatabaseIAMBindingConditionPtrOutput {
 	return i.ToDatabaseIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -230,6 +261,12 @@ func (i *databaseIAMBindingConditionPtrType) ToDatabaseIAMBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingConditionPtrOutput)
 }
 
+func (i *databaseIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMBindingCondition] {
+	return pulumix.Output[*DatabaseIAMBindingCondition]{
+		OutputState: i.ToDatabaseIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -252,6 +289,12 @@ func (o DatabaseIAMBindingConditionOutput) ToDatabaseIAMBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMBindingCondition) *DatabaseIAMBindingCondition {
 		return &v
 	}).(DatabaseIAMBindingConditionPtrOutput)
+}
+
+func (o DatabaseIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMBindingCondition] {
+	return pulumix.Output[DatabaseIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -278,6 +321,12 @@ func (o DatabaseIAMBindingConditionPtrOutput) ToDatabaseIAMBindingConditionPtrOu
 
 func (o DatabaseIAMBindingConditionPtrOutput) ToDatabaseIAMBindingConditionPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingConditionPtrOutput {
 	return o
+}
+
+func (o DatabaseIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMBindingCondition] {
+	return pulumix.Output[*DatabaseIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseIAMBindingConditionPtrOutput) Elem() DatabaseIAMBindingConditionOutput {
@@ -352,6 +401,12 @@ func (i DatabaseIAMMemberConditionArgs) ToDatabaseIAMMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberConditionOutput)
 }
 
+func (i DatabaseIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMMemberCondition] {
+	return pulumix.Output[DatabaseIAMMemberCondition]{
+		OutputState: i.ToDatabaseIAMMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabaseIAMMemberConditionArgs) ToDatabaseIAMMemberConditionPtrOutput() DatabaseIAMMemberConditionPtrOutput {
 	return i.ToDatabaseIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -393,6 +448,12 @@ func (i *databaseIAMMemberConditionPtrType) ToDatabaseIAMMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberConditionPtrOutput)
 }
 
+func (i *databaseIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMMemberCondition] {
+	return pulumix.Output[*DatabaseIAMMemberCondition]{
+		OutputState: i.ToDatabaseIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -415,6 +476,12 @@ func (o DatabaseIAMMemberConditionOutput) ToDatabaseIAMMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseIAMMemberCondition) *DatabaseIAMMemberCondition {
 		return &v
 	}).(DatabaseIAMMemberConditionPtrOutput)
+}
+
+func (o DatabaseIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseIAMMemberCondition] {
+	return pulumix.Output[DatabaseIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -441,6 +508,12 @@ func (o DatabaseIAMMemberConditionPtrOutput) ToDatabaseIAMMemberConditionPtrOutp
 
 func (o DatabaseIAMMemberConditionPtrOutput) ToDatabaseIAMMemberConditionPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberConditionPtrOutput {
 	return o
+}
+
+func (o DatabaseIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMMemberCondition] {
+	return pulumix.Output[*DatabaseIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseIAMMemberConditionPtrOutput) Elem() DatabaseIAMMemberConditionOutput {
@@ -515,6 +588,12 @@ func (i InstanceIAMBindingConditionArgs) ToInstanceIAMBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingConditionOutput)
 }
 
+func (i InstanceIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMBindingCondition] {
+	return pulumix.Output[InstanceIAMBindingCondition]{
+		OutputState: i.ToInstanceIAMBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceIAMBindingConditionArgs) ToInstanceIAMBindingConditionPtrOutput() InstanceIAMBindingConditionPtrOutput {
 	return i.ToInstanceIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -556,6 +635,12 @@ func (i *instanceIAMBindingConditionPtrType) ToInstanceIAMBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingConditionPtrOutput)
 }
 
+func (i *instanceIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMBindingCondition] {
+	return pulumix.Output[*InstanceIAMBindingCondition]{
+		OutputState: i.ToInstanceIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -578,6 +663,12 @@ func (o InstanceIAMBindingConditionOutput) ToInstanceIAMBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMBindingCondition) *InstanceIAMBindingCondition {
 		return &v
 	}).(InstanceIAMBindingConditionPtrOutput)
+}
+
+func (o InstanceIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMBindingCondition] {
+	return pulumix.Output[InstanceIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -604,6 +695,12 @@ func (o InstanceIAMBindingConditionPtrOutput) ToInstanceIAMBindingConditionPtrOu
 
 func (o InstanceIAMBindingConditionPtrOutput) ToInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIAMBindingConditionPtrOutput {
 	return o
+}
+
+func (o InstanceIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMBindingCondition] {
+	return pulumix.Output[*InstanceIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIAMBindingConditionPtrOutput) Elem() InstanceIAMBindingConditionOutput {
@@ -678,6 +775,12 @@ func (i InstanceIAMMemberConditionArgs) ToInstanceIAMMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberConditionOutput)
 }
 
+func (i InstanceIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMMemberCondition] {
+	return pulumix.Output[InstanceIAMMemberCondition]{
+		OutputState: i.ToInstanceIAMMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceIAMMemberConditionArgs) ToInstanceIAMMemberConditionPtrOutput() InstanceIAMMemberConditionPtrOutput {
 	return i.ToInstanceIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -719,6 +822,12 @@ func (i *instanceIAMMemberConditionPtrType) ToInstanceIAMMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberConditionPtrOutput)
 }
 
+func (i *instanceIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMMemberCondition] {
+	return pulumix.Output[*InstanceIAMMemberCondition]{
+		OutputState: i.ToInstanceIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -741,6 +850,12 @@ func (o InstanceIAMMemberConditionOutput) ToInstanceIAMMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIAMMemberCondition) *InstanceIAMMemberCondition {
 		return &v
 	}).(InstanceIAMMemberConditionPtrOutput)
+}
+
+func (o InstanceIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIAMMemberCondition] {
+	return pulumix.Output[InstanceIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -767,6 +882,12 @@ func (o InstanceIAMMemberConditionPtrOutput) ToInstanceIAMMemberConditionPtrOutp
 
 func (o InstanceIAMMemberConditionPtrOutput) ToInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIAMMemberConditionPtrOutput {
 	return o
+}
+
+func (o InstanceIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIAMMemberCondition] {
+	return pulumix.Output[*InstanceIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIAMMemberConditionPtrOutput) Elem() InstanceIAMMemberConditionOutput {

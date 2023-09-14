@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generate service identity for a service.
@@ -191,6 +192,12 @@ func (i *ServiceIdentity) ToServiceIdentityOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput)
 }
 
+func (i *ServiceIdentity) ToOutput(ctx context.Context) pulumix.Output[*ServiceIdentity] {
+	return pulumix.Output[*ServiceIdentity]{
+		OutputState: i.ToServiceIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceIdentityArrayInput is an input type that accepts ServiceIdentityArray and ServiceIdentityArrayOutput values.
 // You can construct a concrete instance of `ServiceIdentityArrayInput` via:
 //
@@ -214,6 +221,12 @@ func (i ServiceIdentityArray) ToServiceIdentityArrayOutput() ServiceIdentityArra
 
 func (i ServiceIdentityArray) ToServiceIdentityArrayOutputWithContext(ctx context.Context) ServiceIdentityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityArrayOutput)
+}
+
+func (i ServiceIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIdentity] {
+	return pulumix.Output[[]*ServiceIdentity]{
+		OutputState: i.ToServiceIdentityArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceIdentityMapInput is an input type that accepts ServiceIdentityMap and ServiceIdentityMapOutput values.
@@ -241,6 +254,12 @@ func (i ServiceIdentityMap) ToServiceIdentityMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityMapOutput)
 }
 
+func (i ServiceIdentityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIdentity] {
+	return pulumix.Output[map[string]*ServiceIdentity]{
+		OutputState: i.ToServiceIdentityMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIdentityOutput struct{ *pulumi.OutputState }
 
 func (ServiceIdentityOutput) ElementType() reflect.Type {
@@ -253,6 +272,12 @@ func (o ServiceIdentityOutput) ToServiceIdentityOutput() ServiceIdentityOutput {
 
 func (o ServiceIdentityOutput) ToServiceIdentityOutputWithContext(ctx context.Context) ServiceIdentityOutput {
 	return o
+}
+
+func (o ServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIdentity] {
+	return pulumix.Output[*ServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The email address of the Google managed service account.
@@ -287,6 +312,12 @@ func (o ServiceIdentityArrayOutput) ToServiceIdentityArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ServiceIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIdentity] {
+	return pulumix.Output[[]*ServiceIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceIdentityArrayOutput) Index(i pulumi.IntInput) ServiceIdentityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIdentity {
 		return vs[0].([]*ServiceIdentity)[vs[1].(int)]
@@ -305,6 +336,12 @@ func (o ServiceIdentityMapOutput) ToServiceIdentityMapOutput() ServiceIdentityMa
 
 func (o ServiceIdentityMapOutput) ToServiceIdentityMapOutputWithContext(ctx context.Context) ServiceIdentityMapOutput {
 	return o
+}
+
+func (o ServiceIdentityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIdentity] {
+	return pulumix.Output[map[string]*ServiceIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIdentityMapOutput) MapIndex(k pulumi.StringInput) ServiceIdentityOutput {

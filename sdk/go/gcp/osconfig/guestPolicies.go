@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An OS Config resource representing a guest configuration policy. These policies represent
@@ -551,6 +552,12 @@ func (i *GuestPolicies) ToGuestPoliciesOutputWithContext(ctx context.Context) Gu
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesOutput)
 }
 
+func (i *GuestPolicies) ToOutput(ctx context.Context) pulumix.Output[*GuestPolicies] {
+	return pulumix.Output[*GuestPolicies]{
+		OutputState: i.ToGuestPoliciesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GuestPoliciesArrayInput is an input type that accepts GuestPoliciesArray and GuestPoliciesArrayOutput values.
 // You can construct a concrete instance of `GuestPoliciesArrayInput` via:
 //
@@ -574,6 +581,12 @@ func (i GuestPoliciesArray) ToGuestPoliciesArrayOutput() GuestPoliciesArrayOutpu
 
 func (i GuestPoliciesArray) ToGuestPoliciesArrayOutputWithContext(ctx context.Context) GuestPoliciesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesArrayOutput)
+}
+
+func (i GuestPoliciesArray) ToOutput(ctx context.Context) pulumix.Output[[]*GuestPolicies] {
+	return pulumix.Output[[]*GuestPolicies]{
+		OutputState: i.ToGuestPoliciesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GuestPoliciesMapInput is an input type that accepts GuestPoliciesMap and GuestPoliciesMapOutput values.
@@ -601,6 +614,12 @@ func (i GuestPoliciesMap) ToGuestPoliciesMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesMapOutput)
 }
 
+func (i GuestPoliciesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GuestPolicies] {
+	return pulumix.Output[map[string]*GuestPolicies]{
+		OutputState: i.ToGuestPoliciesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GuestPoliciesOutput struct{ *pulumi.OutputState }
 
 func (GuestPoliciesOutput) ElementType() reflect.Type {
@@ -613,6 +632,12 @@ func (o GuestPoliciesOutput) ToGuestPoliciesOutput() GuestPoliciesOutput {
 
 func (o GuestPoliciesOutput) ToGuestPoliciesOutputWithContext(ctx context.Context) GuestPoliciesOutput {
 	return o
+}
+
+func (o GuestPoliciesOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestPolicies] {
+	return pulumix.Output[*GuestPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the VM instances that are assigned to this policy. This allows you to target sets
@@ -714,6 +739,12 @@ func (o GuestPoliciesArrayOutput) ToGuestPoliciesArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o GuestPoliciesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GuestPolicies] {
+	return pulumix.Output[[]*GuestPolicies]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GuestPoliciesArrayOutput) Index(i pulumi.IntInput) GuestPoliciesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GuestPolicies {
 		return vs[0].([]*GuestPolicies)[vs[1].(int)]
@@ -732,6 +763,12 @@ func (o GuestPoliciesMapOutput) ToGuestPoliciesMapOutput() GuestPoliciesMapOutpu
 
 func (o GuestPoliciesMapOutput) ToGuestPoliciesMapOutputWithContext(ctx context.Context) GuestPoliciesMapOutput {
 	return o
+}
+
+func (o GuestPoliciesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GuestPolicies] {
+	return pulumix.Output[map[string]*GuestPolicies]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GuestPoliciesMapOutput) MapIndex(k pulumi.StringInput) GuestPoliciesOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
@@ -123,6 +124,12 @@ func (o GetDatabaseInstancesResultOutput) ToGetDatabaseInstancesResultOutput() G
 
 func (o GetDatabaseInstancesResultOutput) ToGetDatabaseInstancesResultOutputWithContext(ctx context.Context) GetDatabaseInstancesResultOutput {
 	return o
+}
+
+func (o GetDatabaseInstancesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstancesResult] {
+	return pulumix.Output[GetDatabaseInstancesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDatabaseInstancesResultOutput) DatabaseVersion() pulumi.StringPtrOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare HL7v2 store. Each of these resources serves a different use case:
@@ -341,6 +342,12 @@ func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberOutput)
 }
 
+func (i *Hl7StoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamMember] {
+	return pulumix.Output[*Hl7StoreIamMember]{
+		OutputState: i.ToHl7StoreIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Hl7StoreIamMemberArrayInput is an input type that accepts Hl7StoreIamMemberArray and Hl7StoreIamMemberArrayOutput values.
 // You can construct a concrete instance of `Hl7StoreIamMemberArrayInput` via:
 //
@@ -364,6 +371,12 @@ func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemb
 
 func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutputWithContext(ctx context.Context) Hl7StoreIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberArrayOutput)
+}
+
+func (i Hl7StoreIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamMember] {
+	return pulumix.Output[[]*Hl7StoreIamMember]{
+		OutputState: i.ToHl7StoreIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Hl7StoreIamMemberMapInput is an input type that accepts Hl7StoreIamMemberMap and Hl7StoreIamMemberMapOutput values.
@@ -391,6 +404,12 @@ func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberMapOutput)
 }
 
+func (i Hl7StoreIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamMember] {
+	return pulumix.Output[map[string]*Hl7StoreIamMember]{
+		OutputState: i.ToHl7StoreIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Hl7StoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (Hl7StoreIamMemberOutput) ElementType() reflect.Type {
@@ -403,6 +422,12 @@ func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOu
 
 func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
 	return o
+}
+
+func (o Hl7StoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*Hl7StoreIamMember] {
+	return pulumix.Output[*Hl7StoreIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Hl7StoreIamMemberOutput) Condition() Hl7StoreIamMemberConditionPtrOutput {
@@ -456,6 +481,12 @@ func (o Hl7StoreIamMemberArrayOutput) ToHl7StoreIamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o Hl7StoreIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Hl7StoreIamMember] {
+	return pulumix.Output[[]*Hl7StoreIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o Hl7StoreIamMemberArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Hl7StoreIamMember {
 		return vs[0].([]*Hl7StoreIamMember)[vs[1].(int)]
@@ -474,6 +505,12 @@ func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutput() Hl7StoreIamMe
 
 func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutputWithContext(ctx context.Context) Hl7StoreIamMemberMapOutput {
 	return o
+}
+
+func (o Hl7StoreIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Hl7StoreIamMember] {
+	return pulumix.Output[map[string]*Hl7StoreIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Hl7StoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamMemberOutput {

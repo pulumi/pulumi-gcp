@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -60,6 +61,12 @@ func (i WorkstationClusterConditionArgs) ToWorkstationClusterConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterConditionOutput)
 }
 
+func (i WorkstationClusterConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationClusterCondition] {
+	return pulumix.Output[WorkstationClusterCondition]{
+		OutputState: i.ToWorkstationClusterConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkstationClusterConditionArrayInput is an input type that accepts WorkstationClusterConditionArray and WorkstationClusterConditionArrayOutput values.
 // You can construct a concrete instance of `WorkstationClusterConditionArrayInput` via:
 //
@@ -85,6 +92,12 @@ func (i WorkstationClusterConditionArray) ToWorkstationClusterConditionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterConditionArrayOutput)
 }
 
+func (i WorkstationClusterConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationClusterCondition] {
+	return pulumix.Output[[]WorkstationClusterCondition]{
+		OutputState: i.ToWorkstationClusterConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationClusterConditionOutput struct{ *pulumi.OutputState }
 
 func (WorkstationClusterConditionOutput) ElementType() reflect.Type {
@@ -97,6 +110,12 @@ func (o WorkstationClusterConditionOutput) ToWorkstationClusterConditionOutput()
 
 func (o WorkstationClusterConditionOutput) ToWorkstationClusterConditionOutputWithContext(ctx context.Context) WorkstationClusterConditionOutput {
 	return o
+}
+
+func (o WorkstationClusterConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationClusterCondition] {
+	return pulumix.Output[WorkstationClusterCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -129,6 +148,12 @@ func (o WorkstationClusterConditionArrayOutput) ToWorkstationClusterConditionArr
 
 func (o WorkstationClusterConditionArrayOutput) ToWorkstationClusterConditionArrayOutputWithContext(ctx context.Context) WorkstationClusterConditionArrayOutput {
 	return o
+}
+
+func (o WorkstationClusterConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationClusterCondition] {
+	return pulumix.Output[[]WorkstationClusterCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationClusterConditionArrayOutput) Index(i pulumi.IntInput) WorkstationClusterConditionOutput {
@@ -196,6 +221,12 @@ func (i WorkstationClusterPrivateClusterConfigArgs) ToWorkstationClusterPrivateC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterPrivateClusterConfigOutput)
 }
 
+func (i WorkstationClusterPrivateClusterConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationClusterPrivateClusterConfig] {
+	return pulumix.Output[WorkstationClusterPrivateClusterConfig]{
+		OutputState: i.ToWorkstationClusterPrivateClusterConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationClusterPrivateClusterConfigArgs) ToWorkstationClusterPrivateClusterConfigPtrOutput() WorkstationClusterPrivateClusterConfigPtrOutput {
 	return i.ToWorkstationClusterPrivateClusterConfigPtrOutputWithContext(context.Background())
 }
@@ -237,6 +268,12 @@ func (i *workstationClusterPrivateClusterConfigPtrType) ToWorkstationClusterPriv
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationClusterPrivateClusterConfigPtrOutput)
 }
 
+func (i *workstationClusterPrivateClusterConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationClusterPrivateClusterConfig] {
+	return pulumix.Output[*WorkstationClusterPrivateClusterConfig]{
+		OutputState: i.ToWorkstationClusterPrivateClusterConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationClusterPrivateClusterConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkstationClusterPrivateClusterConfigOutput) ElementType() reflect.Type {
@@ -259,6 +296,12 @@ func (o WorkstationClusterPrivateClusterConfigOutput) ToWorkstationClusterPrivat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationClusterPrivateClusterConfig) *WorkstationClusterPrivateClusterConfig {
 		return &v
 	}).(WorkstationClusterPrivateClusterConfigPtrOutput)
+}
+
+func (o WorkstationClusterPrivateClusterConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationClusterPrivateClusterConfig] {
+	return pulumix.Output[WorkstationClusterPrivateClusterConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
@@ -300,6 +343,12 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) ToWorkstationClusterPri
 
 func (o WorkstationClusterPrivateClusterConfigPtrOutput) ToWorkstationClusterPrivateClusterConfigPtrOutputWithContext(ctx context.Context) WorkstationClusterPrivateClusterConfigPtrOutput {
 	return o
+}
+
+func (o WorkstationClusterPrivateClusterConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationClusterPrivateClusterConfig] {
+	return pulumix.Output[*WorkstationClusterPrivateClusterConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationClusterPrivateClusterConfigPtrOutput) Elem() WorkstationClusterPrivateClusterConfigOutput {
@@ -406,6 +455,12 @@ func (i WorkstationConfigConditionArgs) ToWorkstationConfigConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigConditionOutput)
 }
 
+func (i WorkstationConfigConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigCondition] {
+	return pulumix.Output[WorkstationConfigCondition]{
+		OutputState: i.ToWorkstationConfigConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkstationConfigConditionArrayInput is an input type that accepts WorkstationConfigConditionArray and WorkstationConfigConditionArrayOutput values.
 // You can construct a concrete instance of `WorkstationConfigConditionArrayInput` via:
 //
@@ -431,6 +486,12 @@ func (i WorkstationConfigConditionArray) ToWorkstationConfigConditionArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigConditionArrayOutput)
 }
 
+func (i WorkstationConfigConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationConfigCondition] {
+	return pulumix.Output[[]WorkstationConfigCondition]{
+		OutputState: i.ToWorkstationConfigConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigConditionOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigConditionOutput) ElementType() reflect.Type {
@@ -443,6 +504,12 @@ func (o WorkstationConfigConditionOutput) ToWorkstationConfigConditionOutput() W
 
 func (o WorkstationConfigConditionOutput) ToWorkstationConfigConditionOutputWithContext(ctx context.Context) WorkstationConfigConditionOutput {
 	return o
+}
+
+func (o WorkstationConfigConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigCondition] {
+	return pulumix.Output[WorkstationConfigCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -475,6 +542,12 @@ func (o WorkstationConfigConditionArrayOutput) ToWorkstationConfigConditionArray
 
 func (o WorkstationConfigConditionArrayOutput) ToWorkstationConfigConditionArrayOutputWithContext(ctx context.Context) WorkstationConfigConditionArrayOutput {
 	return o
+}
+
+func (o WorkstationConfigConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationConfigCondition] {
+	return pulumix.Output[[]WorkstationConfigCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigConditionArrayOutput) Index(i pulumi.IntInput) WorkstationConfigConditionOutput {
@@ -538,6 +611,12 @@ func (i WorkstationConfigContainerArgs) ToWorkstationConfigContainerOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigContainerOutput)
 }
 
+func (i WorkstationConfigContainerArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigContainer] {
+	return pulumix.Output[WorkstationConfigContainer]{
+		OutputState: i.ToWorkstationConfigContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigContainerArgs) ToWorkstationConfigContainerPtrOutput() WorkstationConfigContainerPtrOutput {
 	return i.ToWorkstationConfigContainerPtrOutputWithContext(context.Background())
 }
@@ -579,6 +658,12 @@ func (i *workstationConfigContainerPtrType) ToWorkstationConfigContainerPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigContainerPtrOutput)
 }
 
+func (i *workstationConfigContainerPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigContainer] {
+	return pulumix.Output[*WorkstationConfigContainer]{
+		OutputState: i.ToWorkstationConfigContainerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigContainerOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigContainerOutput) ElementType() reflect.Type {
@@ -601,6 +686,12 @@ func (o WorkstationConfigContainerOutput) ToWorkstationConfigContainerPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigContainer) *WorkstationConfigContainer {
 		return &v
 	}).(WorkstationConfigContainerPtrOutput)
+}
+
+func (o WorkstationConfigContainerOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigContainer] {
+	return pulumix.Output[WorkstationConfigContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arguments passed to the entrypoint.
@@ -646,6 +737,12 @@ func (o WorkstationConfigContainerPtrOutput) ToWorkstationConfigContainerPtrOutp
 
 func (o WorkstationConfigContainerPtrOutput) ToWorkstationConfigContainerPtrOutputWithContext(ctx context.Context) WorkstationConfigContainerPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigContainerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigContainer] {
+	return pulumix.Output[*WorkstationConfigContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigContainerPtrOutput) Elem() WorkstationConfigContainerOutput {
@@ -756,6 +853,12 @@ func (i WorkstationConfigEncryptionKeyArgs) ToWorkstationConfigEncryptionKeyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEncryptionKeyOutput)
 }
 
+func (i WorkstationConfigEncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigEncryptionKey] {
+	return pulumix.Output[WorkstationConfigEncryptionKey]{
+		OutputState: i.ToWorkstationConfigEncryptionKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigEncryptionKeyArgs) ToWorkstationConfigEncryptionKeyPtrOutput() WorkstationConfigEncryptionKeyPtrOutput {
 	return i.ToWorkstationConfigEncryptionKeyPtrOutputWithContext(context.Background())
 }
@@ -797,6 +900,12 @@ func (i *workstationConfigEncryptionKeyPtrType) ToWorkstationConfigEncryptionKey
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigEncryptionKeyPtrOutput)
 }
 
+func (i *workstationConfigEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigEncryptionKey] {
+	return pulumix.Output[*WorkstationConfigEncryptionKey]{
+		OutputState: i.ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigEncryptionKeyOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigEncryptionKeyOutput) ElementType() reflect.Type {
@@ -821,6 +930,12 @@ func (o WorkstationConfigEncryptionKeyOutput) ToWorkstationConfigEncryptionKeyPt
 	}).(WorkstationConfigEncryptionKeyPtrOutput)
 }
 
+func (o WorkstationConfigEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigEncryptionKey] {
+	return pulumix.Output[WorkstationConfigEncryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the Google Cloud KMS encryption key.
 func (o WorkstationConfigEncryptionKeyOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkstationConfigEncryptionKey) string { return v.KmsKey }).(pulumi.StringOutput)
@@ -843,6 +958,12 @@ func (o WorkstationConfigEncryptionKeyPtrOutput) ToWorkstationConfigEncryptionKe
 
 func (o WorkstationConfigEncryptionKeyPtrOutput) ToWorkstationConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) WorkstationConfigEncryptionKeyPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigEncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigEncryptionKey] {
+	return pulumix.Output[*WorkstationConfigEncryptionKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigEncryptionKeyPtrOutput) Elem() WorkstationConfigEncryptionKeyOutput {
@@ -910,6 +1031,12 @@ func (i WorkstationConfigHostArgs) ToWorkstationConfigHostOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostOutput)
 }
 
+func (i WorkstationConfigHostArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHost] {
+	return pulumix.Output[WorkstationConfigHost]{
+		OutputState: i.ToWorkstationConfigHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigHostArgs) ToWorkstationConfigHostPtrOutput() WorkstationConfigHostPtrOutput {
 	return i.ToWorkstationConfigHostPtrOutputWithContext(context.Background())
 }
@@ -951,6 +1078,12 @@ func (i *workstationConfigHostPtrType) ToWorkstationConfigHostPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostPtrOutput)
 }
 
+func (i *workstationConfigHostPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHost] {
+	return pulumix.Output[*WorkstationConfigHost]{
+		OutputState: i.ToWorkstationConfigHostPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigHostOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigHostOutput) ElementType() reflect.Type {
@@ -975,6 +1108,12 @@ func (o WorkstationConfigHostOutput) ToWorkstationConfigHostPtrOutputWithContext
 	}).(WorkstationConfigHostPtrOutput)
 }
 
+func (o WorkstationConfigHostOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHost] {
+	return pulumix.Output[WorkstationConfigHost]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A runtime using a Compute Engine instance.
 // Structure is documented below.
 func (o WorkstationConfigHostOutput) GceInstance() WorkstationConfigHostGceInstancePtrOutput {
@@ -993,6 +1132,12 @@ func (o WorkstationConfigHostPtrOutput) ToWorkstationConfigHostPtrOutput() Works
 
 func (o WorkstationConfigHostPtrOutput) ToWorkstationConfigHostPtrOutputWithContext(ctx context.Context) WorkstationConfigHostPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigHostPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHost] {
+	return pulumix.Output[*WorkstationConfigHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigHostPtrOutput) Elem() WorkstationConfigHostOutput {
@@ -1093,6 +1238,12 @@ func (i WorkstationConfigHostGceInstanceArgs) ToWorkstationConfigHostGceInstance
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceOutput)
 }
 
+func (i WorkstationConfigHostGceInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstance] {
+	return pulumix.Output[WorkstationConfigHostGceInstance]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigHostGceInstanceArgs) ToWorkstationConfigHostGceInstancePtrOutput() WorkstationConfigHostGceInstancePtrOutput {
 	return i.ToWorkstationConfigHostGceInstancePtrOutputWithContext(context.Background())
 }
@@ -1134,6 +1285,12 @@ func (i *workstationConfigHostGceInstancePtrType) ToWorkstationConfigHostGceInst
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstancePtrOutput)
 }
 
+func (i *workstationConfigHostGceInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHostGceInstance] {
+	return pulumix.Output[*WorkstationConfigHostGceInstance]{
+		OutputState: i.ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigHostGceInstanceOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigHostGceInstanceOutput) ElementType() reflect.Type {
@@ -1156,6 +1313,12 @@ func (o WorkstationConfigHostGceInstanceOutput) ToWorkstationConfigHostGceInstan
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstance) *WorkstationConfigHostGceInstance {
 		return &v
 	}).(WorkstationConfigHostGceInstancePtrOutput)
+}
+
+func (o WorkstationConfigHostGceInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstance] {
+	return pulumix.Output[WorkstationConfigHostGceInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An accelerator card attached to the instance.
@@ -1230,6 +1393,12 @@ func (o WorkstationConfigHostGceInstancePtrOutput) ToWorkstationConfigHostGceIns
 
 func (o WorkstationConfigHostGceInstancePtrOutput) ToWorkstationConfigHostGceInstancePtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstancePtrOutput {
 	return o
+}
+
+func (o WorkstationConfigHostGceInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHostGceInstance] {
+	return pulumix.Output[*WorkstationConfigHostGceInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigHostGceInstancePtrOutput) Elem() WorkstationConfigHostGceInstanceOutput {
@@ -1383,6 +1552,12 @@ func (i WorkstationConfigHostGceInstanceAcceleratorArgs) ToWorkstationConfigHost
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceAcceleratorOutput)
 }
 
+func (i WorkstationConfigHostGceInstanceAcceleratorArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstanceAccelerator] {
+	return pulumix.Output[WorkstationConfigHostGceInstanceAccelerator]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceAcceleratorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkstationConfigHostGceInstanceAcceleratorArrayInput is an input type that accepts WorkstationConfigHostGceInstanceAcceleratorArray and WorkstationConfigHostGceInstanceAcceleratorArrayOutput values.
 // You can construct a concrete instance of `WorkstationConfigHostGceInstanceAcceleratorArrayInput` via:
 //
@@ -1408,6 +1583,12 @@ func (i WorkstationConfigHostGceInstanceAcceleratorArray) ToWorkstationConfigHos
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceAcceleratorArrayOutput)
 }
 
+func (i WorkstationConfigHostGceInstanceAcceleratorArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationConfigHostGceInstanceAccelerator] {
+	return pulumix.Output[[]WorkstationConfigHostGceInstanceAccelerator]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceAcceleratorArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigHostGceInstanceAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigHostGceInstanceAcceleratorOutput) ElementType() reflect.Type {
@@ -1420,6 +1601,12 @@ func (o WorkstationConfigHostGceInstanceAcceleratorOutput) ToWorkstationConfigHo
 
 func (o WorkstationConfigHostGceInstanceAcceleratorOutput) ToWorkstationConfigHostGceInstanceAcceleratorOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceAcceleratorOutput {
 	return o
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstanceAccelerator] {
+	return pulumix.Output[WorkstationConfigHostGceInstanceAccelerator]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of accelerator cards exposed to the instance.
@@ -1444,6 +1631,12 @@ func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) ToWorkstationCon
 
 func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) ToWorkstationConfigHostGceInstanceAcceleratorArrayOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
 	return o
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationConfigHostGceInstanceAccelerator] {
+	return pulumix.Output[[]WorkstationConfigHostGceInstanceAccelerator]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkstationConfigHostGceInstanceAcceleratorOutput {
@@ -1483,6 +1676,12 @@ func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkst
 
 func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput)
+}
+
+func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstanceConfidentialInstanceConfig] {
+	return pulumix.Output[WorkstationConfigHostGceInstanceConfidentialInstanceConfig]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
@@ -1526,6 +1725,12 @@ func (i *workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType) ToWo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput)
 }
 
+func (i *workstationConfigHostGceInstanceConfidentialInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHostGceInstanceConfidentialInstanceConfig] {
+	return pulumix.Output[*WorkstationConfigHostGceInstanceConfidentialInstanceConfig]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ElementType() reflect.Type {
@@ -1550,6 +1755,12 @@ func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ToWork
 	}).(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput)
 }
 
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstanceConfidentialInstanceConfig] {
+	return pulumix.Output[WorkstationConfigHostGceInstanceConfidentialInstanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether the instance has confidential compute enabled.
 func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstanceConfidentialInstanceConfig) *bool {
@@ -1569,6 +1780,12 @@ func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) ToW
 
 func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) ToWorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHostGceInstanceConfidentialInstanceConfig] {
+	return pulumix.Output[*WorkstationConfigHostGceInstanceConfidentialInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput) Elem() WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput {
@@ -1632,6 +1849,12 @@ func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToWorkstatio
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput)
 }
 
+func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstanceShieldedInstanceConfig] {
+	return pulumix.Output[WorkstationConfigHostGceInstanceShieldedInstanceConfig]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
 	return i.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -1673,6 +1896,12 @@ func (i *workstationConfigHostGceInstanceShieldedInstanceConfigPtrType) ToWorkst
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput)
 }
 
+func (i *workstationConfigHostGceInstanceShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHostGceInstanceShieldedInstanceConfig] {
+	return pulumix.Output[*WorkstationConfigHostGceInstanceShieldedInstanceConfig]{
+		OutputState: i.ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -1695,6 +1924,12 @@ func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ToWorkstat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigHostGceInstanceShieldedInstanceConfig) *WorkstationConfigHostGceInstanceShieldedInstanceConfig {
 		return &v
 	}).(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput)
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigHostGceInstanceShieldedInstanceConfig] {
+	return pulumix.Output[WorkstationConfigHostGceInstanceShieldedInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the instance has integrity monitoring enabled.
@@ -1726,6 +1961,12 @@ func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) ToWorks
 
 func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) ToWorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigHostGceInstanceShieldedInstanceConfig] {
+	return pulumix.Output[*WorkstationConfigHostGceInstanceShieldedInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) Elem() WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput {
@@ -1803,6 +2044,12 @@ func (i WorkstationConfigIamBindingConditionArgs) ToWorkstationConfigIamBindingC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingConditionOutput)
 }
 
+func (i WorkstationConfigIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigIamBindingCondition] {
+	return pulumix.Output[WorkstationConfigIamBindingCondition]{
+		OutputState: i.ToWorkstationConfigIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigIamBindingConditionArgs) ToWorkstationConfigIamBindingConditionPtrOutput() WorkstationConfigIamBindingConditionPtrOutput {
 	return i.ToWorkstationConfigIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1844,6 +2091,12 @@ func (i *workstationConfigIamBindingConditionPtrType) ToWorkstationConfigIamBind
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingConditionPtrOutput)
 }
 
+func (i *workstationConfigIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamBindingCondition] {
+	return pulumix.Output[*WorkstationConfigIamBindingCondition]{
+		OutputState: i.ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1866,6 +2119,12 @@ func (o WorkstationConfigIamBindingConditionOutput) ToWorkstationConfigIamBindin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigIamBindingCondition) *WorkstationConfigIamBindingCondition {
 		return &v
 	}).(WorkstationConfigIamBindingConditionPtrOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigIamBindingCondition] {
+	return pulumix.Output[WorkstationConfigIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1892,6 +2151,12 @@ func (o WorkstationConfigIamBindingConditionPtrOutput) ToWorkstationConfigIamBin
 
 func (o WorkstationConfigIamBindingConditionPtrOutput) ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamBindingCondition] {
+	return pulumix.Output[*WorkstationConfigIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigIamBindingConditionPtrOutput) Elem() WorkstationConfigIamBindingConditionOutput {
@@ -1966,6 +2231,12 @@ func (i WorkstationConfigIamMemberConditionArgs) ToWorkstationConfigIamMemberCon
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamMemberConditionOutput)
 }
 
+func (i WorkstationConfigIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigIamMemberCondition] {
+	return pulumix.Output[WorkstationConfigIamMemberCondition]{
+		OutputState: i.ToWorkstationConfigIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigIamMemberConditionArgs) ToWorkstationConfigIamMemberConditionPtrOutput() WorkstationConfigIamMemberConditionPtrOutput {
 	return i.ToWorkstationConfigIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2007,6 +2278,12 @@ func (i *workstationConfigIamMemberConditionPtrType) ToWorkstationConfigIamMembe
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamMemberConditionPtrOutput)
 }
 
+func (i *workstationConfigIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamMemberCondition] {
+	return pulumix.Output[*WorkstationConfigIamMemberCondition]{
+		OutputState: i.ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2029,6 +2306,12 @@ func (o WorkstationConfigIamMemberConditionOutput) ToWorkstationConfigIamMemberC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigIamMemberCondition) *WorkstationConfigIamMemberCondition {
 		return &v
 	}).(WorkstationConfigIamMemberConditionPtrOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigIamMemberCondition] {
+	return pulumix.Output[WorkstationConfigIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2055,6 +2338,12 @@ func (o WorkstationConfigIamMemberConditionPtrOutput) ToWorkstationConfigIamMemb
 
 func (o WorkstationConfigIamMemberConditionPtrOutput) ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamMemberCondition] {
+	return pulumix.Output[*WorkstationConfigIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigIamMemberConditionPtrOutput) Elem() WorkstationConfigIamMemberConditionOutput {
@@ -2133,6 +2422,12 @@ func (i WorkstationConfigPersistentDirectoryArgs) ToWorkstationConfigPersistentD
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryOutput)
 }
 
+func (i WorkstationConfigPersistentDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigPersistentDirectory] {
+	return pulumix.Output[WorkstationConfigPersistentDirectory]{
+		OutputState: i.ToWorkstationConfigPersistentDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkstationConfigPersistentDirectoryArrayInput is an input type that accepts WorkstationConfigPersistentDirectoryArray and WorkstationConfigPersistentDirectoryArrayOutput values.
 // You can construct a concrete instance of `WorkstationConfigPersistentDirectoryArrayInput` via:
 //
@@ -2158,6 +2453,12 @@ func (i WorkstationConfigPersistentDirectoryArray) ToWorkstationConfigPersistent
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryArrayOutput)
 }
 
+func (i WorkstationConfigPersistentDirectoryArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationConfigPersistentDirectory] {
+	return pulumix.Output[[]WorkstationConfigPersistentDirectory]{
+		OutputState: i.ToWorkstationConfigPersistentDirectoryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigPersistentDirectoryOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigPersistentDirectoryOutput) ElementType() reflect.Type {
@@ -2170,6 +2471,12 @@ func (o WorkstationConfigPersistentDirectoryOutput) ToWorkstationConfigPersisten
 
 func (o WorkstationConfigPersistentDirectoryOutput) ToWorkstationConfigPersistentDirectoryOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryOutput {
 	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigPersistentDirectory] {
+	return pulumix.Output[WorkstationConfigPersistentDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
@@ -2197,6 +2504,12 @@ func (o WorkstationConfigPersistentDirectoryArrayOutput) ToWorkstationConfigPers
 
 func (o WorkstationConfigPersistentDirectoryArrayOutput) ToWorkstationConfigPersistentDirectoryArrayOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryArrayOutput {
 	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkstationConfigPersistentDirectory] {
+	return pulumix.Output[[]WorkstationConfigPersistentDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigPersistentDirectoryArrayOutput) Index(i pulumi.IntInput) WorkstationConfigPersistentDirectoryOutput {
@@ -2258,6 +2571,12 @@ func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToWorkstationConfigPersis
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGcePdOutput)
 }
 
+func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigPersistentDirectoryGcePd] {
+	return pulumix.Output[WorkstationConfigPersistentDirectoryGcePd]{
+		OutputState: i.ToWorkstationConfigPersistentDirectoryGcePdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationConfigPersistentDirectoryGcePdArgs) ToWorkstationConfigPersistentDirectoryGcePdPtrOutput() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
 	return i.ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(context.Background())
 }
@@ -2299,6 +2618,12 @@ func (i *workstationConfigPersistentDirectoryGcePdPtrType) ToWorkstationConfigPe
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
 }
 
+func (i *workstationConfigPersistentDirectoryGcePdPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigPersistentDirectoryGcePd] {
+	return pulumix.Output[*WorkstationConfigPersistentDirectoryGcePd]{
+		OutputState: i.ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigPersistentDirectoryGcePdOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigPersistentDirectoryGcePdOutput) ElementType() reflect.Type {
@@ -2321,6 +2646,12 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPers
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigPersistentDirectoryGcePd) *WorkstationConfigPersistentDirectoryGcePd {
 		return &v
 	}).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationConfigPersistentDirectoryGcePd] {
+	return pulumix.Output[WorkstationConfigPersistentDirectoryGcePd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the persistent disk for the home directory. Defaults to `pd-standard`.
@@ -2362,6 +2693,12 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ToWorkstationConfigP
 
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ToWorkstationConfigPersistentDirectoryGcePdPtrOutputWithContext(ctx context.Context) WorkstationConfigPersistentDirectoryGcePdPtrOutput {
 	return o
+}
+
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigPersistentDirectoryGcePd] {
+	return pulumix.Output[*WorkstationConfigPersistentDirectoryGcePd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) Elem() WorkstationConfigPersistentDirectoryGcePdOutput {
@@ -2461,6 +2798,12 @@ func (i WorkstationIamBindingConditionArgs) ToWorkstationIamBindingConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamBindingConditionOutput)
 }
 
+func (i WorkstationIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationIamBindingCondition] {
+	return pulumix.Output[WorkstationIamBindingCondition]{
+		OutputState: i.ToWorkstationIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationIamBindingConditionArgs) ToWorkstationIamBindingConditionPtrOutput() WorkstationIamBindingConditionPtrOutput {
 	return i.ToWorkstationIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -2502,6 +2845,12 @@ func (i *workstationIamBindingConditionPtrType) ToWorkstationIamBindingCondition
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamBindingConditionPtrOutput)
 }
 
+func (i *workstationIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationIamBindingCondition] {
+	return pulumix.Output[*WorkstationIamBindingCondition]{
+		OutputState: i.ToWorkstationIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (WorkstationIamBindingConditionOutput) ElementType() reflect.Type {
@@ -2524,6 +2873,12 @@ func (o WorkstationIamBindingConditionOutput) ToWorkstationIamBindingConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationIamBindingCondition) *WorkstationIamBindingCondition {
 		return &v
 	}).(WorkstationIamBindingConditionPtrOutput)
+}
+
+func (o WorkstationIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationIamBindingCondition] {
+	return pulumix.Output[WorkstationIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2550,6 +2905,12 @@ func (o WorkstationIamBindingConditionPtrOutput) ToWorkstationIamBindingConditio
 
 func (o WorkstationIamBindingConditionPtrOutput) ToWorkstationIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationIamBindingCondition] {
+	return pulumix.Output[*WorkstationIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationIamBindingConditionPtrOutput) Elem() WorkstationIamBindingConditionOutput {
@@ -2624,6 +2985,12 @@ func (i WorkstationIamMemberConditionArgs) ToWorkstationIamMemberConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberConditionOutput)
 }
 
+func (i WorkstationIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[WorkstationIamMemberCondition] {
+	return pulumix.Output[WorkstationIamMemberCondition]{
+		OutputState: i.ToWorkstationIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i WorkstationIamMemberConditionArgs) ToWorkstationIamMemberConditionPtrOutput() WorkstationIamMemberConditionPtrOutput {
 	return i.ToWorkstationIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2665,6 +3032,12 @@ func (i *workstationIamMemberConditionPtrType) ToWorkstationIamMemberConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberConditionPtrOutput)
 }
 
+func (i *workstationIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*WorkstationIamMemberCondition] {
+	return pulumix.Output[*WorkstationIamMemberCondition]{
+		OutputState: i.ToWorkstationIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (WorkstationIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2687,6 +3060,12 @@ func (o WorkstationIamMemberConditionOutput) ToWorkstationIamMemberConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationIamMemberCondition) *WorkstationIamMemberCondition {
 		return &v
 	}).(WorkstationIamMemberConditionPtrOutput)
+}
+
+func (o WorkstationIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[WorkstationIamMemberCondition] {
+	return pulumix.Output[WorkstationIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2713,6 +3092,12 @@ func (o WorkstationIamMemberConditionPtrOutput) ToWorkstationIamMemberConditionP
 
 func (o WorkstationIamMemberConditionPtrOutput) ToWorkstationIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationIamMemberCondition] {
+	return pulumix.Output[*WorkstationIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationIamMemberConditionPtrOutput) Elem() WorkstationIamMemberConditionOutput {

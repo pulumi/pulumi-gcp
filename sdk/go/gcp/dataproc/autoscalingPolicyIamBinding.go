@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
@@ -399,6 +400,12 @@ func (i *AutoscalingPolicyIamBinding) ToAutoscalingPolicyIamBindingOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingOutput)
 }
 
+func (i *AutoscalingPolicyIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamBinding] {
+	return pulumix.Output[*AutoscalingPolicyIamBinding]{
+		OutputState: i.ToAutoscalingPolicyIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoscalingPolicyIamBindingArrayInput is an input type that accepts AutoscalingPolicyIamBindingArray and AutoscalingPolicyIamBindingArrayOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyIamBindingArrayInput` via:
 //
@@ -422,6 +429,12 @@ func (i AutoscalingPolicyIamBindingArray) ToAutoscalingPolicyIamBindingArrayOutp
 
 func (i AutoscalingPolicyIamBindingArray) ToAutoscalingPolicyIamBindingArrayOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingArrayOutput)
+}
+
+func (i AutoscalingPolicyIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicyIamBinding] {
+	return pulumix.Output[[]*AutoscalingPolicyIamBinding]{
+		OutputState: i.ToAutoscalingPolicyIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AutoscalingPolicyIamBindingMapInput is an input type that accepts AutoscalingPolicyIamBindingMap and AutoscalingPolicyIamBindingMapOutput values.
@@ -449,6 +462,12 @@ func (i AutoscalingPolicyIamBindingMap) ToAutoscalingPolicyIamBindingMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamBindingMapOutput)
 }
 
+func (i AutoscalingPolicyIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicyIamBinding] {
+	return pulumix.Output[map[string]*AutoscalingPolicyIamBinding]{
+		OutputState: i.ToAutoscalingPolicyIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutoscalingPolicyIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamBindingOutput) ElementType() reflect.Type {
@@ -461,6 +480,12 @@ func (o AutoscalingPolicyIamBindingOutput) ToAutoscalingPolicyIamBindingOutput()
 
 func (o AutoscalingPolicyIamBindingOutput) ToAutoscalingPolicyIamBindingOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingOutput {
 	return o
+}
+
+func (o AutoscalingPolicyIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamBinding] {
+	return pulumix.Output[*AutoscalingPolicyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingPolicyIamBindingOutput) Condition() AutoscalingPolicyIamBindingConditionPtrOutput {
@@ -530,6 +555,12 @@ func (o AutoscalingPolicyIamBindingArrayOutput) ToAutoscalingPolicyIamBindingArr
 	return o
 }
 
+func (o AutoscalingPolicyIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicyIamBinding] {
+	return pulumix.Output[[]*AutoscalingPolicyIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingPolicyIamBindingArrayOutput) Index(i pulumi.IntInput) AutoscalingPolicyIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoscalingPolicyIamBinding {
 		return vs[0].([]*AutoscalingPolicyIamBinding)[vs[1].(int)]
@@ -548,6 +579,12 @@ func (o AutoscalingPolicyIamBindingMapOutput) ToAutoscalingPolicyIamBindingMapOu
 
 func (o AutoscalingPolicyIamBindingMapOutput) ToAutoscalingPolicyIamBindingMapOutputWithContext(ctx context.Context) AutoscalingPolicyIamBindingMapOutput {
 	return o
+}
+
+func (o AutoscalingPolicyIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicyIamBinding] {
+	return pulumix.Output[map[string]*AutoscalingPolicyIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingPolicyIamBindingMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyIamBindingOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Entities are extracted from user input and represent parameters that are meaningful to your application.
@@ -360,6 +361,12 @@ func (i *CxEntityType) ToCxEntityTypeOutputWithContext(ctx context.Context) CxEn
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeOutput)
 }
 
+func (i *CxEntityType) ToOutput(ctx context.Context) pulumix.Output[*CxEntityType] {
+	return pulumix.Output[*CxEntityType]{
+		OutputState: i.ToCxEntityTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxEntityTypeArrayInput is an input type that accepts CxEntityTypeArray and CxEntityTypeArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeArrayInput` via:
 //
@@ -383,6 +390,12 @@ func (i CxEntityTypeArray) ToCxEntityTypeArrayOutput() CxEntityTypeArrayOutput {
 
 func (i CxEntityTypeArray) ToCxEntityTypeArrayOutputWithContext(ctx context.Context) CxEntityTypeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeArrayOutput)
+}
+
+func (i CxEntityTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]*CxEntityType] {
+	return pulumix.Output[[]*CxEntityType]{
+		OutputState: i.ToCxEntityTypeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CxEntityTypeMapInput is an input type that accepts CxEntityTypeMap and CxEntityTypeMapOutput values.
@@ -410,6 +423,12 @@ func (i CxEntityTypeMap) ToCxEntityTypeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeMapOutput)
 }
 
+func (i CxEntityTypeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxEntityType] {
+	return pulumix.Output[map[string]*CxEntityType]{
+		OutputState: i.ToCxEntityTypeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypeOutput) ElementType() reflect.Type {
@@ -422,6 +441,12 @@ func (o CxEntityTypeOutput) ToCxEntityTypeOutput() CxEntityTypeOutput {
 
 func (o CxEntityTypeOutput) ToCxEntityTypeOutputWithContext(ctx context.Context) CxEntityTypeOutput {
 	return o
+}
+
+func (o CxEntityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*CxEntityType] {
+	return pulumix.Output[*CxEntityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents kinds of entities.
@@ -504,6 +529,12 @@ func (o CxEntityTypeArrayOutput) ToCxEntityTypeArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o CxEntityTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CxEntityType] {
+	return pulumix.Output[[]*CxEntityType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxEntityTypeArrayOutput) Index(i pulumi.IntInput) CxEntityTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CxEntityType {
 		return vs[0].([]*CxEntityType)[vs[1].(int)]
@@ -522,6 +553,12 @@ func (o CxEntityTypeMapOutput) ToCxEntityTypeMapOutput() CxEntityTypeMapOutput {
 
 func (o CxEntityTypeMapOutput) ToCxEntityTypeMapOutputWithContext(ctx context.Context) CxEntityTypeMapOutput {
 	return o
+}
+
+func (o CxEntityTypeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CxEntityType] {
+	return pulumix.Output[map[string]*CxEntityType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxEntityTypeMapOutput) MapIndex(k pulumi.StringInput) CxEntityTypeOutput {

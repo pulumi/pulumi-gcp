@@ -43,7 +43,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
      * 
      */
-    @Export(name="continueOnError", type=Boolean.class, parameters={})
+    @Export(name="continueOnError", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> continueOnError;
 
     /**
@@ -57,7 +57,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * Description of the flow hook.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -71,7 +71,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * The resource ID of the environment.
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -85,7 +85,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
      * 
      */
-    @Export(name="flowHookPoint", type=String.class, parameters={})
+    @Export(name="flowHookPoint", refs={String.class}, tree="[0]")
     private Output<String> flowHookPoint;
 
     /**
@@ -99,7 +99,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * The Apigee Organization associated with the environment
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -113,7 +113,7 @@ public class Flowhook extends com.pulumi.resources.CustomResource {
      * Id of the Sharedflow attaching to a flowhook point.
      * 
      */
-    @Export(name="sharedflow", type=String.class, parameters={})
+    @Export(name="sharedflow", refs={String.class}, tree="[0]")
     private Output<String> sharedflow;
 
     /**

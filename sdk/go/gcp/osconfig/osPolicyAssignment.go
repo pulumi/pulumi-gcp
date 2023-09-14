@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // OS policy assignment is an API resource that is used to apply a set of OS
@@ -463,6 +464,12 @@ func (i *OsPolicyAssignment) ToOsPolicyAssignmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentOutput)
 }
 
+func (i *OsPolicyAssignment) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignment] {
+	return pulumix.Output[*OsPolicyAssignment]{
+		OutputState: i.ToOsPolicyAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OsPolicyAssignmentArrayInput is an input type that accepts OsPolicyAssignmentArray and OsPolicyAssignmentArrayOutput values.
 // You can construct a concrete instance of `OsPolicyAssignmentArrayInput` via:
 //
@@ -486,6 +493,12 @@ func (i OsPolicyAssignmentArray) ToOsPolicyAssignmentArrayOutput() OsPolicyAssig
 
 func (i OsPolicyAssignmentArray) ToOsPolicyAssignmentArrayOutputWithContext(ctx context.Context) OsPolicyAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentArrayOutput)
+}
+
+func (i OsPolicyAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*OsPolicyAssignment] {
+	return pulumix.Output[[]*OsPolicyAssignment]{
+		OutputState: i.ToOsPolicyAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OsPolicyAssignmentMapInput is an input type that accepts OsPolicyAssignmentMap and OsPolicyAssignmentMapOutput values.
@@ -513,6 +526,12 @@ func (i OsPolicyAssignmentMap) ToOsPolicyAssignmentMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OsPolicyAssignmentMapOutput)
 }
 
+func (i OsPolicyAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OsPolicyAssignment] {
+	return pulumix.Output[map[string]*OsPolicyAssignment]{
+		OutputState: i.ToOsPolicyAssignmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OsPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (OsPolicyAssignmentOutput) ElementType() reflect.Type {
@@ -525,6 +544,12 @@ func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutput() OsPolicyAssignmen
 
 func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutputWithContext(ctx context.Context) OsPolicyAssignmentOutput {
 	return o
+}
+
+func (o OsPolicyAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*OsPolicyAssignment] {
+	return pulumix.Output[*OsPolicyAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Output only. Indicates that this revision has been successfully
@@ -641,6 +666,12 @@ func (o OsPolicyAssignmentArrayOutput) ToOsPolicyAssignmentArrayOutputWithContex
 	return o
 }
 
+func (o OsPolicyAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OsPolicyAssignment] {
+	return pulumix.Output[[]*OsPolicyAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OsPolicyAssignmentArrayOutput) Index(i pulumi.IntInput) OsPolicyAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OsPolicyAssignment {
 		return vs[0].([]*OsPolicyAssignment)[vs[1].(int)]
@@ -659,6 +690,12 @@ func (o OsPolicyAssignmentMapOutput) ToOsPolicyAssignmentMapOutput() OsPolicyAss
 
 func (o OsPolicyAssignmentMapOutput) ToOsPolicyAssignmentMapOutputWithContext(ctx context.Context) OsPolicyAssignmentMapOutput {
 	return o
+}
+
+func (o OsPolicyAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OsPolicyAssignment] {
+	return pulumix.Output[map[string]*OsPolicyAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OsPolicyAssignmentMapOutput) MapIndex(k pulumi.StringInput) OsPolicyAssignmentOutput {

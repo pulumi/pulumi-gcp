@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -52,6 +53,12 @@ func (i EnvironmentContainerImageArgs) ToEnvironmentContainerImageOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentContainerImageOutput)
 }
 
+func (i EnvironmentContainerImageArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentContainerImage] {
+	return pulumix.Output[EnvironmentContainerImage]{
+		OutputState: i.ToEnvironmentContainerImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvironmentContainerImageArgs) ToEnvironmentContainerImagePtrOutput() EnvironmentContainerImagePtrOutput {
 	return i.ToEnvironmentContainerImagePtrOutputWithContext(context.Background())
 }
@@ -93,6 +100,12 @@ func (i *environmentContainerImagePtrType) ToEnvironmentContainerImagePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentContainerImagePtrOutput)
 }
 
+func (i *environmentContainerImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentContainerImage] {
+	return pulumix.Output[*EnvironmentContainerImage]{
+		OutputState: i.ToEnvironmentContainerImagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentContainerImageOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentContainerImageOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o EnvironmentContainerImageOutput) ToEnvironmentContainerImagePtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentContainerImage) *EnvironmentContainerImage {
 		return &v
 	}).(EnvironmentContainerImagePtrOutput)
+}
+
+func (o EnvironmentContainerImageOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentContainerImage] {
+	return pulumix.Output[EnvironmentContainerImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path to the container image repository.
@@ -140,6 +159,12 @@ func (o EnvironmentContainerImagePtrOutput) ToEnvironmentContainerImagePtrOutput
 
 func (o EnvironmentContainerImagePtrOutput) ToEnvironmentContainerImagePtrOutputWithContext(ctx context.Context) EnvironmentContainerImagePtrOutput {
 	return o
+}
+
+func (o EnvironmentContainerImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentContainerImage] {
+	return pulumix.Output[*EnvironmentContainerImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentContainerImagePtrOutput) Elem() EnvironmentContainerImageOutput {
@@ -216,6 +241,12 @@ func (i EnvironmentVmImageArgs) ToEnvironmentVmImageOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVmImageOutput)
 }
 
+func (i EnvironmentVmImageArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVmImage] {
+	return pulumix.Output[EnvironmentVmImage]{
+		OutputState: i.ToEnvironmentVmImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvironmentVmImageArgs) ToEnvironmentVmImagePtrOutput() EnvironmentVmImagePtrOutput {
 	return i.ToEnvironmentVmImagePtrOutputWithContext(context.Background())
 }
@@ -257,6 +288,12 @@ func (i *environmentVmImagePtrType) ToEnvironmentVmImagePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVmImagePtrOutput)
 }
 
+func (i *environmentVmImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentVmImage] {
+	return pulumix.Output[*EnvironmentVmImage]{
+		OutputState: i.ToEnvironmentVmImagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentVmImageOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentVmImageOutput) ElementType() reflect.Type {
@@ -279,6 +316,12 @@ func (o EnvironmentVmImageOutput) ToEnvironmentVmImagePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentVmImage) *EnvironmentVmImage {
 		return &v
 	}).(EnvironmentVmImagePtrOutput)
+}
+
+func (o EnvironmentVmImageOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVmImage] {
+	return pulumix.Output[EnvironmentVmImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Use this VM image family to find the image; the newest image in this family will be used.
@@ -309,6 +352,12 @@ func (o EnvironmentVmImagePtrOutput) ToEnvironmentVmImagePtrOutput() Environment
 
 func (o EnvironmentVmImagePtrOutput) ToEnvironmentVmImagePtrOutputWithContext(ctx context.Context) EnvironmentVmImagePtrOutput {
 	return o
+}
+
+func (o EnvironmentVmImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentVmImage] {
+	return pulumix.Output[*EnvironmentVmImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentVmImagePtrOutput) Elem() EnvironmentVmImageOutput {
@@ -391,6 +440,12 @@ func (i InstanceAcceleratorConfigArgs) ToInstanceAcceleratorConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAcceleratorConfigOutput)
 }
 
+func (i InstanceAcceleratorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceAcceleratorConfig] {
+	return pulumix.Output[InstanceAcceleratorConfig]{
+		OutputState: i.ToInstanceAcceleratorConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceAcceleratorConfigArgs) ToInstanceAcceleratorConfigPtrOutput() InstanceAcceleratorConfigPtrOutput {
 	return i.ToInstanceAcceleratorConfigPtrOutputWithContext(context.Background())
 }
@@ -432,6 +487,12 @@ func (i *instanceAcceleratorConfigPtrType) ToInstanceAcceleratorConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAcceleratorConfigPtrOutput)
 }
 
+func (i *instanceAcceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceAcceleratorConfig] {
+	return pulumix.Output[*InstanceAcceleratorConfig]{
+		OutputState: i.ToInstanceAcceleratorConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceAcceleratorConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceAcceleratorConfigOutput) ElementType() reflect.Type {
@@ -454,6 +515,12 @@ func (o InstanceAcceleratorConfigOutput) ToInstanceAcceleratorConfigPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceAcceleratorConfig) *InstanceAcceleratorConfig {
 		return &v
 	}).(InstanceAcceleratorConfigPtrOutput)
+}
+
+func (o InstanceAcceleratorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceAcceleratorConfig] {
+	return pulumix.Output[InstanceAcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Count of cores of this accelerator.
@@ -479,6 +546,12 @@ func (o InstanceAcceleratorConfigPtrOutput) ToInstanceAcceleratorConfigPtrOutput
 
 func (o InstanceAcceleratorConfigPtrOutput) ToInstanceAcceleratorConfigPtrOutputWithContext(ctx context.Context) InstanceAcceleratorConfigPtrOutput {
 	return o
+}
+
+func (o InstanceAcceleratorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceAcceleratorConfig] {
+	return pulumix.Output[*InstanceAcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceAcceleratorConfigPtrOutput) Elem() InstanceAcceleratorConfigOutput {
@@ -551,6 +624,12 @@ func (i InstanceContainerImageArgs) ToInstanceContainerImageOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerImageOutput)
 }
 
+func (i InstanceContainerImageArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceContainerImage] {
+	return pulumix.Output[InstanceContainerImage]{
+		OutputState: i.ToInstanceContainerImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceContainerImageArgs) ToInstanceContainerImagePtrOutput() InstanceContainerImagePtrOutput {
 	return i.ToInstanceContainerImagePtrOutputWithContext(context.Background())
 }
@@ -592,6 +671,12 @@ func (i *instanceContainerImagePtrType) ToInstanceContainerImagePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceContainerImagePtrOutput)
 }
 
+func (i *instanceContainerImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceContainerImage] {
+	return pulumix.Output[*InstanceContainerImage]{
+		OutputState: i.ToInstanceContainerImagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceContainerImageOutput struct{ *pulumi.OutputState }
 
 func (InstanceContainerImageOutput) ElementType() reflect.Type {
@@ -614,6 +699,12 @@ func (o InstanceContainerImageOutput) ToInstanceContainerImagePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceContainerImage) *InstanceContainerImage {
 		return &v
 	}).(InstanceContainerImagePtrOutput)
+}
+
+func (o InstanceContainerImageOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceContainerImage] {
+	return pulumix.Output[InstanceContainerImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path to the container image repository.
@@ -639,6 +730,12 @@ func (o InstanceContainerImagePtrOutput) ToInstanceContainerImagePtrOutput() Ins
 
 func (o InstanceContainerImagePtrOutput) ToInstanceContainerImagePtrOutputWithContext(ctx context.Context) InstanceContainerImagePtrOutput {
 	return o
+}
+
+func (o InstanceContainerImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceContainerImage] {
+	return pulumix.Output[*InstanceContainerImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceContainerImagePtrOutput) Elem() InstanceContainerImageOutput {
@@ -707,6 +804,12 @@ func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionOutput)
 }
 
+func (i InstanceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
+	return pulumix.Output[InstanceIamBindingCondition]{
+		OutputState: i.ToInstanceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
 	return i.ToInstanceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -748,6 +851,12 @@ func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionPtrOutput)
 }
 
+func (i *instanceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
+	return pulumix.Output[*InstanceIamBindingCondition]{
+		OutputState: i.ToInstanceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -770,6 +879,12 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamBindingCondition) *InstanceIamBindingCondition {
 		return &v
 	}).(InstanceIamBindingConditionPtrOutput)
+}
+
+func (o InstanceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
+	return pulumix.Output[InstanceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -796,6 +911,12 @@ func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOu
 
 func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o InstanceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
+	return pulumix.Output[*InstanceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
@@ -870,6 +991,12 @@ func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionOutput)
 }
 
+func (i InstanceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
+	return pulumix.Output[InstanceIamMemberCondition]{
+		OutputState: i.ToInstanceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
 	return i.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -911,6 +1038,12 @@ func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionPtrOutput)
 }
 
+func (i *instanceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
+	return pulumix.Output[*InstanceIamMemberCondition]{
+		OutputState: i.ToInstanceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -933,6 +1066,12 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMemberCondition) *InstanceIamMemberCondition {
 		return &v
 	}).(InstanceIamMemberConditionPtrOutput)
+}
+
+func (o InstanceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
+	return pulumix.Output[InstanceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -959,6 +1098,12 @@ func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutp
 
 func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o InstanceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
+	return pulumix.Output[*InstanceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
@@ -1041,6 +1186,12 @@ func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityOutput)
 }
 
+func (i InstanceReservationAffinityArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceReservationAffinity] {
+	return pulumix.Output[InstanceReservationAffinity]{
+		OutputState: i.ToInstanceReservationAffinityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceReservationAffinityArgs) ToInstanceReservationAffinityPtrOutput() InstanceReservationAffinityPtrOutput {
 	return i.ToInstanceReservationAffinityPtrOutputWithContext(context.Background())
 }
@@ -1082,6 +1233,12 @@ func (i *instanceReservationAffinityPtrType) ToInstanceReservationAffinityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceReservationAffinityPtrOutput)
 }
 
+func (i *instanceReservationAffinityPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceReservationAffinity] {
+	return pulumix.Output[*InstanceReservationAffinity]{
+		OutputState: i.ToInstanceReservationAffinityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceReservationAffinityOutput struct{ *pulumi.OutputState }
 
 func (InstanceReservationAffinityOutput) ElementType() reflect.Type {
@@ -1104,6 +1261,12 @@ func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceReservationAffinity) *InstanceReservationAffinity {
 		return &v
 	}).(InstanceReservationAffinityPtrOutput)
+}
+
+func (o InstanceReservationAffinityOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceReservationAffinity] {
+	return pulumix.Output[InstanceReservationAffinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of Compute Reservation.
@@ -1134,6 +1297,12 @@ func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOu
 
 func (o InstanceReservationAffinityPtrOutput) ToInstanceReservationAffinityPtrOutputWithContext(ctx context.Context) InstanceReservationAffinityPtrOutput {
 	return o
+}
+
+func (o InstanceReservationAffinityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceReservationAffinity] {
+	return pulumix.Output[*InstanceReservationAffinity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceReservationAffinityPtrOutput) Elem() InstanceReservationAffinityOutput {
@@ -1232,6 +1401,12 @@ func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigOutp
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceShieldedInstanceConfigOutput)
 }
 
+func (i InstanceShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceShieldedInstanceConfig] {
+	return pulumix.Output[InstanceShieldedInstanceConfig]{
+		OutputState: i.ToInstanceShieldedInstanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigPtrOutput() InstanceShieldedInstanceConfigPtrOutput {
 	return i.ToInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -1273,6 +1448,12 @@ func (i *instanceShieldedInstanceConfigPtrType) ToInstanceShieldedInstanceConfig
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceShieldedInstanceConfigPtrOutput)
 }
 
+func (i *instanceShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceShieldedInstanceConfig] {
+	return pulumix.Output[*InstanceShieldedInstanceConfig]{
+		OutputState: i.ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -1295,6 +1476,12 @@ func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceShieldedInstanceConfig) *InstanceShieldedInstanceConfig {
 		return &v
 	}).(InstanceShieldedInstanceConfigPtrOutput)
+}
+
+func (o InstanceShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceShieldedInstanceConfig] {
+	return pulumix.Output[InstanceShieldedInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
@@ -1331,6 +1518,12 @@ func (o InstanceShieldedInstanceConfigPtrOutput) ToInstanceShieldedInstanceConfi
 
 func (o InstanceShieldedInstanceConfigPtrOutput) ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigPtrOutput {
 	return o
+}
+
+func (o InstanceShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceShieldedInstanceConfig] {
+	return pulumix.Output[*InstanceShieldedInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceShieldedInstanceConfigPtrOutput) Elem() InstanceShieldedInstanceConfigOutput {
@@ -1423,6 +1616,12 @@ func (i InstanceVmImageArgs) ToInstanceVmImageOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVmImageOutput)
 }
 
+func (i InstanceVmImageArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceVmImage] {
+	return pulumix.Output[InstanceVmImage]{
+		OutputState: i.ToInstanceVmImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceVmImageArgs) ToInstanceVmImagePtrOutput() InstanceVmImagePtrOutput {
 	return i.ToInstanceVmImagePtrOutputWithContext(context.Background())
 }
@@ -1464,6 +1663,12 @@ func (i *instanceVmImagePtrType) ToInstanceVmImagePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVmImagePtrOutput)
 }
 
+func (i *instanceVmImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceVmImage] {
+	return pulumix.Output[*InstanceVmImage]{
+		OutputState: i.ToInstanceVmImagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceVmImageOutput struct{ *pulumi.OutputState }
 
 func (InstanceVmImageOutput) ElementType() reflect.Type {
@@ -1486,6 +1691,12 @@ func (o InstanceVmImageOutput) ToInstanceVmImagePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVmImage) *InstanceVmImage {
 		return &v
 	}).(InstanceVmImagePtrOutput)
+}
+
+func (o InstanceVmImageOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceVmImage] {
+	return pulumix.Output[InstanceVmImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Use this VM image family to find the image; the newest image in this family will be used.
@@ -1516,6 +1727,12 @@ func (o InstanceVmImagePtrOutput) ToInstanceVmImagePtrOutput() InstanceVmImagePt
 
 func (o InstanceVmImagePtrOutput) ToInstanceVmImagePtrOutputWithContext(ctx context.Context) InstanceVmImagePtrOutput {
 	return o
+}
+
+func (o InstanceVmImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceVmImage] {
+	return pulumix.Output[*InstanceVmImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceVmImagePtrOutput) Elem() InstanceVmImageOutput {
@@ -1608,6 +1825,12 @@ func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeAccessConfigOutput)
 }
 
+func (i RuntimeAccessConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeAccessConfig] {
+	return pulumix.Output[RuntimeAccessConfig]{
+		OutputState: i.ToRuntimeAccessConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeAccessConfigArgs) ToRuntimeAccessConfigPtrOutput() RuntimeAccessConfigPtrOutput {
 	return i.ToRuntimeAccessConfigPtrOutputWithContext(context.Background())
 }
@@ -1649,6 +1872,12 @@ func (i *runtimeAccessConfigPtrType) ToRuntimeAccessConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeAccessConfigPtrOutput)
 }
 
+func (i *runtimeAccessConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAccessConfig] {
+	return pulumix.Output[*RuntimeAccessConfig]{
+		OutputState: i.ToRuntimeAccessConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeAccessConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeAccessConfigOutput) ElementType() reflect.Type {
@@ -1671,6 +1900,12 @@ func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeAccessConfig) *RuntimeAccessConfig {
 		return &v
 	}).(RuntimeAccessConfigPtrOutput)
+}
+
+func (o RuntimeAccessConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeAccessConfig] {
+	return pulumix.Output[RuntimeAccessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of access mode this instance. For valid values, see
@@ -1704,6 +1939,12 @@ func (o RuntimeAccessConfigPtrOutput) ToRuntimeAccessConfigPtrOutput() RuntimeAc
 
 func (o RuntimeAccessConfigPtrOutput) ToRuntimeAccessConfigPtrOutputWithContext(ctx context.Context) RuntimeAccessConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeAccessConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeAccessConfig] {
+	return pulumix.Output[*RuntimeAccessConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeAccessConfigPtrOutput) Elem() RuntimeAccessConfigOutput {
@@ -1785,6 +2026,12 @@ func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingConditionOutput)
 }
 
+func (i RuntimeIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeIamBindingCondition] {
+	return pulumix.Output[RuntimeIamBindingCondition]{
+		OutputState: i.ToRuntimeIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeIamBindingConditionArgs) ToRuntimeIamBindingConditionPtrOutput() RuntimeIamBindingConditionPtrOutput {
 	return i.ToRuntimeIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1826,6 +2073,12 @@ func (i *runtimeIamBindingConditionPtrType) ToRuntimeIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamBindingConditionPtrOutput)
 }
 
+func (i *runtimeIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamBindingCondition] {
+	return pulumix.Output[*RuntimeIamBindingCondition]{
+		OutputState: i.ToRuntimeIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (RuntimeIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1848,6 +2101,12 @@ func (o RuntimeIamBindingConditionOutput) ToRuntimeIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeIamBindingCondition) *RuntimeIamBindingCondition {
 		return &v
 	}).(RuntimeIamBindingConditionPtrOutput)
+}
+
+func (o RuntimeIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeIamBindingCondition] {
+	return pulumix.Output[RuntimeIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1874,6 +2133,12 @@ func (o RuntimeIamBindingConditionPtrOutput) ToRuntimeIamBindingConditionPtrOutp
 
 func (o RuntimeIamBindingConditionPtrOutput) ToRuntimeIamBindingConditionPtrOutputWithContext(ctx context.Context) RuntimeIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o RuntimeIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamBindingCondition] {
+	return pulumix.Output[*RuntimeIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeIamBindingConditionPtrOutput) Elem() RuntimeIamBindingConditionOutput {
@@ -1948,6 +2213,12 @@ func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberConditionOutput)
 }
 
+func (i RuntimeIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeIamMemberCondition] {
+	return pulumix.Output[RuntimeIamMemberCondition]{
+		OutputState: i.ToRuntimeIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeIamMemberConditionArgs) ToRuntimeIamMemberConditionPtrOutput() RuntimeIamMemberConditionPtrOutput {
 	return i.ToRuntimeIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1989,6 +2260,12 @@ func (i *runtimeIamMemberConditionPtrType) ToRuntimeIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeIamMemberConditionPtrOutput)
 }
 
+func (i *runtimeIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamMemberCondition] {
+	return pulumix.Output[*RuntimeIamMemberCondition]{
+		OutputState: i.ToRuntimeIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (RuntimeIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2011,6 +2288,12 @@ func (o RuntimeIamMemberConditionOutput) ToRuntimeIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeIamMemberCondition) *RuntimeIamMemberCondition {
 		return &v
 	}).(RuntimeIamMemberConditionPtrOutput)
+}
+
+func (o RuntimeIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeIamMemberCondition] {
+	return pulumix.Output[RuntimeIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2037,6 +2320,12 @@ func (o RuntimeIamMemberConditionPtrOutput) ToRuntimeIamMemberConditionPtrOutput
 
 func (o RuntimeIamMemberConditionPtrOutput) ToRuntimeIamMemberConditionPtrOutputWithContext(ctx context.Context) RuntimeIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o RuntimeIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeIamMemberCondition] {
+	return pulumix.Output[*RuntimeIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeIamMemberConditionPtrOutput) Elem() RuntimeIamMemberConditionOutput {
@@ -2113,6 +2402,12 @@ func (i RuntimeMetricArgs) ToRuntimeMetricOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetricOutput)
 }
 
+func (i RuntimeMetricArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeMetric] {
+	return pulumix.Output[RuntimeMetric]{
+		OutputState: i.ToRuntimeMetricOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuntimeMetricArrayInput is an input type that accepts RuntimeMetricArray and RuntimeMetricArrayOutput values.
 // You can construct a concrete instance of `RuntimeMetricArrayInput` via:
 //
@@ -2138,6 +2433,12 @@ func (i RuntimeMetricArray) ToRuntimeMetricArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeMetricArrayOutput)
 }
 
+func (i RuntimeMetricArray) ToOutput(ctx context.Context) pulumix.Output[[]RuntimeMetric] {
+	return pulumix.Output[[]RuntimeMetric]{
+		OutputState: i.ToRuntimeMetricArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeMetricOutput struct{ *pulumi.OutputState }
 
 func (RuntimeMetricOutput) ElementType() reflect.Type {
@@ -2150,6 +2451,12 @@ func (o RuntimeMetricOutput) ToRuntimeMetricOutput() RuntimeMetricOutput {
 
 func (o RuntimeMetricOutput) ToRuntimeMetricOutputWithContext(ctx context.Context) RuntimeMetricOutput {
 	return o
+}
+
+func (o RuntimeMetricOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeMetric] {
+	return pulumix.Output[RuntimeMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2171,6 +2478,12 @@ func (o RuntimeMetricArrayOutput) ToRuntimeMetricArrayOutput() RuntimeMetricArra
 
 func (o RuntimeMetricArrayOutput) ToRuntimeMetricArrayOutputWithContext(ctx context.Context) RuntimeMetricArrayOutput {
 	return o
+}
+
+func (o RuntimeMetricArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuntimeMetric] {
+	return pulumix.Output[[]RuntimeMetric]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeMetricArrayOutput) Index(i pulumi.IntInput) RuntimeMetricOutput {
@@ -2266,6 +2579,12 @@ func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigOutput)
 }
 
+func (i RuntimeSoftwareConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeSoftwareConfig] {
+	return pulumix.Output[RuntimeSoftwareConfig]{
+		OutputState: i.ToRuntimeSoftwareConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeSoftwareConfigArgs) ToRuntimeSoftwareConfigPtrOutput() RuntimeSoftwareConfigPtrOutput {
 	return i.ToRuntimeSoftwareConfigPtrOutputWithContext(context.Background())
 }
@@ -2307,6 +2626,12 @@ func (i *runtimeSoftwareConfigPtrType) ToRuntimeSoftwareConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigPtrOutput)
 }
 
+func (i *runtimeSoftwareConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeSoftwareConfig] {
+	return pulumix.Output[*RuntimeSoftwareConfig]{
+		OutputState: i.ToRuntimeSoftwareConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeSoftwareConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigOutput) ElementType() reflect.Type {
@@ -2329,6 +2654,12 @@ func (o RuntimeSoftwareConfigOutput) ToRuntimeSoftwareConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeSoftwareConfig) *RuntimeSoftwareConfig {
 		return &v
 	}).(RuntimeSoftwareConfigPtrOutput)
+}
+
+func (o RuntimeSoftwareConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeSoftwareConfig] {
+	return pulumix.Output[RuntimeSoftwareConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify a custom Cloud Storage path where the GPU driver is stored.
@@ -2402,6 +2733,12 @@ func (o RuntimeSoftwareConfigPtrOutput) ToRuntimeSoftwareConfigPtrOutput() Runti
 
 func (o RuntimeSoftwareConfigPtrOutput) ToRuntimeSoftwareConfigPtrOutputWithContext(ctx context.Context) RuntimeSoftwareConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeSoftwareConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeSoftwareConfig] {
+	return pulumix.Output[*RuntimeSoftwareConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeSoftwareConfigPtrOutput) Elem() RuntimeSoftwareConfigOutput {
@@ -2562,6 +2899,12 @@ func (i RuntimeSoftwareConfigKernelArgs) ToRuntimeSoftwareConfigKernelOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigKernelOutput)
 }
 
+func (i RuntimeSoftwareConfigKernelArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeSoftwareConfigKernel] {
+	return pulumix.Output[RuntimeSoftwareConfigKernel]{
+		OutputState: i.ToRuntimeSoftwareConfigKernelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuntimeSoftwareConfigKernelArrayInput is an input type that accepts RuntimeSoftwareConfigKernelArray and RuntimeSoftwareConfigKernelArrayOutput values.
 // You can construct a concrete instance of `RuntimeSoftwareConfigKernelArrayInput` via:
 //
@@ -2587,6 +2930,12 @@ func (i RuntimeSoftwareConfigKernelArray) ToRuntimeSoftwareConfigKernelArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeSoftwareConfigKernelArrayOutput)
 }
 
+func (i RuntimeSoftwareConfigKernelArray) ToOutput(ctx context.Context) pulumix.Output[[]RuntimeSoftwareConfigKernel] {
+	return pulumix.Output[[]RuntimeSoftwareConfigKernel]{
+		OutputState: i.ToRuntimeSoftwareConfigKernelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeSoftwareConfigKernelOutput struct{ *pulumi.OutputState }
 
 func (RuntimeSoftwareConfigKernelOutput) ElementType() reflect.Type {
@@ -2599,6 +2948,12 @@ func (o RuntimeSoftwareConfigKernelOutput) ToRuntimeSoftwareConfigKernelOutput()
 
 func (o RuntimeSoftwareConfigKernelOutput) ToRuntimeSoftwareConfigKernelOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelOutput {
 	return o
+}
+
+func (o RuntimeSoftwareConfigKernelOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeSoftwareConfigKernel] {
+	return pulumix.Output[RuntimeSoftwareConfigKernel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path to the container image repository.
@@ -2624,6 +2979,12 @@ func (o RuntimeSoftwareConfigKernelArrayOutput) ToRuntimeSoftwareConfigKernelArr
 
 func (o RuntimeSoftwareConfigKernelArrayOutput) ToRuntimeSoftwareConfigKernelArrayOutputWithContext(ctx context.Context) RuntimeSoftwareConfigKernelArrayOutput {
 	return o
+}
+
+func (o RuntimeSoftwareConfigKernelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuntimeSoftwareConfigKernel] {
+	return pulumix.Output[[]RuntimeSoftwareConfigKernel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeSoftwareConfigKernelArrayOutput) Index(i pulumi.IntInput) RuntimeSoftwareConfigKernelOutput {
@@ -2679,6 +3040,12 @@ func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachineOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineOutput)
 }
 
+func (i RuntimeVirtualMachineArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachine] {
+	return pulumix.Output[RuntimeVirtualMachine]{
+		OutputState: i.ToRuntimeVirtualMachineOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineArgs) ToRuntimeVirtualMachinePtrOutput() RuntimeVirtualMachinePtrOutput {
 	return i.ToRuntimeVirtualMachinePtrOutputWithContext(context.Background())
 }
@@ -2720,6 +3087,12 @@ func (i *runtimeVirtualMachinePtrType) ToRuntimeVirtualMachinePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachinePtrOutput)
 }
 
+func (i *runtimeVirtualMachinePtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachine] {
+	return pulumix.Output[*RuntimeVirtualMachine]{
+		OutputState: i.ToRuntimeVirtualMachinePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineOutput) ElementType() reflect.Type {
@@ -2742,6 +3115,12 @@ func (o RuntimeVirtualMachineOutput) ToRuntimeVirtualMachinePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachine) *RuntimeVirtualMachine {
 		return &v
 	}).(RuntimeVirtualMachinePtrOutput)
+}
+
+func (o RuntimeVirtualMachineOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachine] {
+	return pulumix.Output[RuntimeVirtualMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2776,6 +3155,12 @@ func (o RuntimeVirtualMachinePtrOutput) ToRuntimeVirtualMachinePtrOutput() Runti
 
 func (o RuntimeVirtualMachinePtrOutput) ToRuntimeVirtualMachinePtrOutputWithContext(ctx context.Context) RuntimeVirtualMachinePtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachinePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachine] {
+	return pulumix.Output[*RuntimeVirtualMachine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachinePtrOutput) Elem() RuntimeVirtualMachineOutput {
@@ -3004,6 +3389,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVi
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineVirtualMachineConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
 	return i.ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(context.Background())
 }
@@ -3045,6 +3436,12 @@ func (i *runtimeVirtualMachineVirtualMachineConfigPtrType) ToRuntimeVirtualMachi
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigPtrOutput)
 }
 
+func (i *runtimeVirtualMachineVirtualMachineConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigOutput) ElementType() reflect.Type {
@@ -3067,6 +3464,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ToRuntimeVirtualMachine
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfig) *RuntimeVirtualMachineVirtualMachineConfig {
 		return &v
 	}).(RuntimeVirtualMachineVirtualMachineConfigPtrOutput)
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Compute Engine accelerator configuration for this runtime.
@@ -3216,6 +3619,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ToRuntimeVirtualMach
 
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigOutput {
@@ -3474,6 +3883,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntim
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
 	return i.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(context.Background())
 }
@@ -3515,6 +3930,12 @@ func (i *runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType) ToRu
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput)
 }
 
+func (i *runtimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ElementType() reflect.Type {
@@ -3537,6 +3958,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ToRunt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig) *RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
 		return &v
 	}).(RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput)
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Count of cores of this accelerator.
@@ -3563,6 +3990,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) ToR
 
 func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigOutput {
@@ -3636,6 +4069,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs) ToRuntimeVi
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigContainerImage] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigContainerImage]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput is an input type that accepts RuntimeVirtualMachineVirtualMachineConfigContainerImageArray and RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput values.
 // You can construct a concrete instance of `RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayInput` via:
 //
@@ -3661,6 +4100,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArray) ToRuntimeV
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigContainerImageArray) ToOutput(ctx context.Context) pulumix.Output[[]RuntimeVirtualMachineVirtualMachineConfigContainerImage] {
+	return pulumix.Output[[]RuntimeVirtualMachineVirtualMachineConfigContainerImage]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ElementType() reflect.Type {
@@ -3673,6 +4118,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ToRuntime
 
 func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigContainerImage] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigContainerImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path to the container image repository.
@@ -3698,6 +4149,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) ToRu
 
 func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) ToRuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuntimeVirtualMachineVirtualMachineConfigContainerImage] {
+	return pulumix.Output[[]RuntimeVirtualMachineVirtualMachineConfigContainerImage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) Index(i pulumi.IntInput) RuntimeVirtualMachineVirtualMachineConfigContainerImageOutput {
@@ -3865,6 +4322,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualM
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDisk] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDisk]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
 	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(context.Background())
 }
@@ -3906,6 +4369,12 @@ func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType) ToRuntimeVirt
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput)
 }
 
+func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDisk] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDisk]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ElementType() reflect.Type {
@@ -3928,6 +4397,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToRuntimeVirtua
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *RuntimeVirtualMachineVirtualMachineConfigDataDisk {
 		return &v
 	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput)
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDisk] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4045,6 +4520,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) ToRuntimeVir
 
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDisk] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDisk]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput {
@@ -4289,6 +4770,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
 	return i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(context.Background())
 }
@@ -4330,6 +4817,12 @@ func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput)
 }
 
+func (i *runtimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ElementType() reflect.Type {
@@ -4352,6 +4845,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput)
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams) *RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
 		return &v
 	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput)
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Provide this property when creating the disk.
@@ -4406,6 +4905,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutp
 
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsOutput {
@@ -4520,6 +5025,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntime
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
 	return i.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -4561,6 +5072,12 @@ func (i *runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType) ToRun
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
 }
 
+func (i *runtimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ElementType() reflect.Type {
@@ -4585,6 +5102,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ToRunti
 	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
 }
 
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Cloud KMS resource identifier of the customer-managed
 // encryption key used to protect a resource, such as a disks.
 // It has the following format:
@@ -4606,6 +5129,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) ToRu
 
 func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigOutput {
@@ -4693,6 +5222,12 @@ func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToR
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput)
 }
 
+func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
 	return i.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -4734,6 +5269,12 @@ func (i *runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput)
 }
 
+func (i *runtimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig]{
+		OutputState: i.ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ElementType() reflect.Type {
@@ -4756,6 +5297,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig) *RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig {
 		return &v
 	}).(RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput)
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig] {
+	return pulumix.Output[RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Defines whether the instance has integrity monitoring enabled.
@@ -4799,6 +5346,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput
 
 func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) ToRuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput {
 	return o
+}
+
+func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig] {
+	return pulumix.Output[*RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigPtrOutput) Elem() RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigOutput {

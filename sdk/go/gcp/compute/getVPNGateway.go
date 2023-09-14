@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a VPN gateway within GCE from its name.
@@ -122,6 +123,12 @@ func (o LookupVPNGatewayResultOutput) ToLookupVPNGatewayResultOutput() LookupVPN
 
 func (o LookupVPNGatewayResultOutput) ToLookupVPNGatewayResultOutputWithContext(ctx context.Context) LookupVPNGatewayResultOutput {
 	return o
+}
+
+func (o LookupVPNGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVPNGatewayResult] {
+	return pulumix.Output[LookupVPNGatewayResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of this VPN gateway.

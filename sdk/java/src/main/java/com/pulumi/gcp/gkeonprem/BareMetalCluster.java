@@ -454,7 +454,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * This is the full resource name of the Admin Cluster&#39;s hub membership.
      * 
      */
-    @Export(name="adminClusterMembership", type=String.class, parameters={})
+    @Export(name="adminClusterMembership", refs={String.class}, tree="[0]")
     private Output<String> adminClusterMembership;
 
     /**
@@ -476,7 +476,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> annotations;
 
     /**
@@ -497,7 +497,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * A human readable description of this Bare Metal User Cluster.
      * 
      */
-    @Export(name="bareMetalVersion", type=String.class, parameters={})
+    @Export(name="bareMetalVersion", refs={String.class}, tree="[0]")
     private Output<String> bareMetalVersion;
 
     /**
@@ -512,7 +512,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="clusterOperations", type=BareMetalClusterClusterOperations.class, parameters={})
+    @Export(name="clusterOperations", refs={BareMetalClusterClusterOperations.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterClusterOperations> clusterOperations;
 
     /**
@@ -528,7 +528,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="controlPlane", type=BareMetalClusterControlPlane.class, parameters={})
+    @Export(name="controlPlane", refs={BareMetalClusterControlPlane.class}, tree="[0]")
     private Output<BareMetalClusterControlPlane> controlPlane;
 
     /**
@@ -543,7 +543,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The time the cluster was created, in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -557,7 +557,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The time the cluster was deleted, in RFC3339 text format.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -571,7 +571,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * A human readable description of this Bare Metal User Cluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -585,7 +585,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The IP address name of Bare Metal User Cluster&#39;s API server.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -603,7 +603,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * through optimistic concurrency control.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -627,7 +627,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fleets", type=List.class, parameters={BareMetalClusterFleet.class})
+    @Export(name="fleets", refs={List.class,BareMetalClusterFleet.class}, tree="[0,1]")
     private Output<List<BareMetalClusterFleet>> fleets;
 
     /**
@@ -648,7 +648,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="loadBalancer", type=BareMetalClusterLoadBalancer.class, parameters={})
+    @Export(name="loadBalancer", refs={BareMetalClusterLoadBalancer.class}, tree="[0]")
     private Output<BareMetalClusterLoadBalancer> loadBalancer;
 
     /**
@@ -672,7 +672,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * cluster controller logs.
      * 
      */
-    @Export(name="localName", type=String.class, parameters={})
+    @Export(name="localName", refs={String.class}, tree="[0]")
     private Output<String> localName;
 
     /**
@@ -695,7 +695,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The location of the resource.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -710,7 +710,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenanceConfig", type=BareMetalClusterMaintenanceConfig.class, parameters={})
+    @Export(name="maintenanceConfig", refs={BareMetalClusterMaintenanceConfig.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterMaintenanceConfig> maintenanceConfig;
 
     /**
@@ -725,7 +725,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The bare metal cluster name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -740,7 +740,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkConfig", type=BareMetalClusterNetworkConfig.class, parameters={})
+    @Export(name="networkConfig", refs={BareMetalClusterNetworkConfig.class}, tree="[0]")
     private Output<BareMetalClusterNetworkConfig> networkConfig;
 
     /**
@@ -756,7 +756,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeAccessConfig", type=BareMetalClusterNodeAccessConfig.class, parameters={})
+    @Export(name="nodeAccessConfig", refs={BareMetalClusterNodeAccessConfig.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterNodeAccessConfig> nodeAccessConfig;
 
     /**
@@ -772,7 +772,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeConfig", type=BareMetalClusterNodeConfig.class, parameters={})
+    @Export(name="nodeConfig", refs={BareMetalClusterNodeConfig.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterNodeConfig> nodeConfig;
 
     /**
@@ -788,7 +788,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="osEnvironmentConfig", type=BareMetalClusterOsEnvironmentConfig.class, parameters={})
+    @Export(name="osEnvironmentConfig", refs={BareMetalClusterOsEnvironmentConfig.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterOsEnvironmentConfig> osEnvironmentConfig;
 
     /**
@@ -804,7 +804,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -820,7 +820,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="proxy", type=BareMetalClusterProxy.class, parameters={})
+    @Export(name="proxy", refs={BareMetalClusterProxy.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterProxy> proxy;
 
     /**
@@ -835,7 +835,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * If set, there are currently changes in flight to the Bare Metal User Cluster.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -850,7 +850,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="securityConfig", type=BareMetalClusterSecurityConfig.class, parameters={})
+    @Export(name="securityConfig", refs={BareMetalClusterSecurityConfig.class}, tree="[0]")
     private Output</* @Nullable */ BareMetalClusterSecurityConfig> securityConfig;
 
     /**
@@ -866,7 +866,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The lifecycle state of the condition.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -883,7 +883,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="statuses", type=List.class, parameters={BareMetalClusterStatus.class})
+    @Export(name="statuses", refs={List.class,BareMetalClusterStatus.class}, tree="[0,1]")
     private Output<List<BareMetalClusterStatus>> statuses;
 
     /**
@@ -900,7 +900,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="storage", type=BareMetalClusterStorage.class, parameters={})
+    @Export(name="storage", refs={BareMetalClusterStorage.class}, tree="[0]")
     private Output<BareMetalClusterStorage> storage;
 
     /**
@@ -915,7 +915,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The unique identifier of the Bare Metal User Cluster.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -929,7 +929,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * The time the cluster was last updated, in RFC3339 text format.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -944,7 +944,7 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="validationChecks", type=List.class, parameters={BareMetalClusterValidationCheck.class})
+    @Export(name="validationChecks", refs={List.class,BareMetalClusterValidationCheck.class}, tree="[0,1]")
     private Output<List<BareMetalClusterValidationCheck>> validationChecks;
 
     /**

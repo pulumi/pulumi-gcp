@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a collection of external workforces. Provides namespaces for
@@ -339,6 +340,12 @@ func (i *WorkforcePool) ToWorkforcePoolOutputWithContext(ctx context.Context) Wo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolOutput)
 }
 
+func (i *WorkforcePool) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePool] {
+	return pulumix.Output[*WorkforcePool]{
+		OutputState: i.ToWorkforcePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkforcePoolArrayInput is an input type that accepts WorkforcePoolArray and WorkforcePoolArrayOutput values.
 // You can construct a concrete instance of `WorkforcePoolArrayInput` via:
 //
@@ -362,6 +369,12 @@ func (i WorkforcePoolArray) ToWorkforcePoolArrayOutput() WorkforcePoolArrayOutpu
 
 func (i WorkforcePoolArray) ToWorkforcePoolArrayOutputWithContext(ctx context.Context) WorkforcePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolArrayOutput)
+}
+
+func (i WorkforcePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkforcePool] {
+	return pulumix.Output[[]*WorkforcePool]{
+		OutputState: i.ToWorkforcePoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkforcePoolMapInput is an input type that accepts WorkforcePoolMap and WorkforcePoolMapOutput values.
@@ -389,6 +402,12 @@ func (i WorkforcePoolMap) ToWorkforcePoolMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolMapOutput)
 }
 
+func (i WorkforcePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkforcePool] {
+	return pulumix.Output[map[string]*WorkforcePool]{
+		OutputState: i.ToWorkforcePoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkforcePoolOutput struct{ *pulumi.OutputState }
 
 func (WorkforcePoolOutput) ElementType() reflect.Type {
@@ -401,6 +420,12 @@ func (o WorkforcePoolOutput) ToWorkforcePoolOutput() WorkforcePoolOutput {
 
 func (o WorkforcePoolOutput) ToWorkforcePoolOutputWithContext(ctx context.Context) WorkforcePoolOutput {
 	return o
+}
+
+func (o WorkforcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkforcePool] {
+	return pulumix.Output[*WorkforcePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A user-specified description of the pool. Cannot exceed 256 characters.
@@ -481,6 +506,12 @@ func (o WorkforcePoolArrayOutput) ToWorkforcePoolArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o WorkforcePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkforcePool] {
+	return pulumix.Output[[]*WorkforcePool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkforcePoolArrayOutput) Index(i pulumi.IntInput) WorkforcePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkforcePool {
 		return vs[0].([]*WorkforcePool)[vs[1].(int)]
@@ -499,6 +530,12 @@ func (o WorkforcePoolMapOutput) ToWorkforcePoolMapOutput() WorkforcePoolMapOutpu
 
 func (o WorkforcePoolMapOutput) ToWorkforcePoolMapOutputWithContext(ctx context.Context) WorkforcePoolMapOutput {
 	return o
+}
+
+func (o WorkforcePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkforcePool] {
+	return pulumix.Output[map[string]*WorkforcePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkforcePoolMapOutput) MapIndex(k pulumi.StringInput) WorkforcePoolOutput {

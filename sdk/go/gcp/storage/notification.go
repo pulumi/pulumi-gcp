@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
@@ -284,6 +285,12 @@ func (i *Notification) ToNotificationOutputWithContext(ctx context.Context) Noti
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
+func (i *Notification) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
+	return pulumix.Output[*Notification]{
+		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationArrayInput is an input type that accepts NotificationArray and NotificationArrayOutput values.
 // You can construct a concrete instance of `NotificationArrayInput` via:
 //
@@ -307,6 +314,12 @@ func (i NotificationArray) ToNotificationArrayOutput() NotificationArrayOutput {
 
 func (i NotificationArray) ToNotificationArrayOutputWithContext(ctx context.Context) NotificationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationArrayOutput)
+}
+
+func (i NotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Notification] {
+	return pulumix.Output[[]*Notification]{
+		OutputState: i.ToNotificationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
@@ -334,6 +347,12 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
+func (i NotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notification] {
+	return pulumix.Output[map[string]*Notification]{
+		OutputState: i.ToNotificationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationOutput struct{ *pulumi.OutputState }
 
 func (NotificationOutput) ElementType() reflect.Type {
@@ -346,6 +365,12 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[*Notification] {
+	return pulumix.Output[*Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bucket.
@@ -407,6 +432,12 @@ func (o NotificationArrayOutput) ToNotificationArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o NotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Notification] {
+	return pulumix.Output[[]*Notification]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationArrayOutput) Index(i pulumi.IntInput) NotificationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Notification {
 		return vs[0].([]*Notification)[vs[1].(int)]
@@ -425,6 +456,12 @@ func (o NotificationMapOutput) ToNotificationMapOutput() NotificationMapOutput {
 
 func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Context) NotificationMapOutput {
 	return o
+}
+
+func (o NotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Notification] {
+	return pulumix.Output[map[string]*Notification]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {

@@ -400,7 +400,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * reside.
      * 
      */
-    @Export(name="managedZone", type=String.class, parameters={})
+    @Export(name="managedZone", refs={String.class}, tree="[0]")
     private Output<String> managedZone;
 
     /**
@@ -415,7 +415,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * The DNS name this record set will apply to.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -430,7 +430,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -447,7 +447,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="routingPolicy", type=RecordSetRoutingPolicy.class, parameters={})
+    @Export(name="routingPolicy", refs={RecordSetRoutingPolicy.class}, tree="[0]")
     private Output</* @Nullable */ RecordSetRoutingPolicy> routingPolicy;
 
     /**
@@ -466,7 +466,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * string (e.g. &#34;first255characters\&#34;\&#34;morecharacters&#34;).
      * 
      */
-    @Export(name="rrdatas", type=List.class, parameters={String.class})
+    @Export(name="rrdatas", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rrdatas;
 
     /**
@@ -483,7 +483,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * The time-to-live of this record set (seconds).
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**
@@ -499,7 +499,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

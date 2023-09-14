@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a HealthCheck.
@@ -123,6 +124,12 @@ func (o LookupHealthCheckResultOutput) ToLookupHealthCheckResultOutput() LookupH
 
 func (o LookupHealthCheckResultOutput) ToLookupHealthCheckResultOutputWithContext(ctx context.Context) LookupHealthCheckResultOutput {
 	return o
+}
+
+func (o LookupHealthCheckResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHealthCheckResult] {
+	return pulumix.Output[LookupHealthCheckResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupHealthCheckResultOutput) CheckIntervalSec() pulumi.IntOutput {

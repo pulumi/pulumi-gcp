@@ -130,7 +130,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bigqueryDatasets", type=List.class, parameters={LinkedDatasetBigqueryDataset.class})
+    @Export(name="bigqueryDatasets", refs={List.class,LinkedDatasetBigqueryDataset.class}, tree="[0,1]")
     private Output<List<LinkedDatasetBigqueryDataset>> bigqueryDatasets;
 
     /**
@@ -149,7 +149,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -167,7 +167,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -183,7 +183,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * Describes this link. The maximum length of the description is 8000 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -197,7 +197,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * Output only. The linked dataset lifecycle state.
      * 
      */
-    @Export(name="lifecycleState", type=String.class, parameters={})
+    @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
     /**
@@ -211,7 +211,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * The id of the linked dataset.
      * 
      */
-    @Export(name="linkId", type=String.class, parameters={})
+    @Export(name="linkId", refs={String.class}, tree="[0]")
     private Output<String> linkId;
 
     /**
@@ -225,7 +225,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * The location of the linked dataset.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -240,7 +240,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * (at the end of the link name) must only have alphanumeric characters and underscores within it.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -255,7 +255,7 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
      * The parent of the linked dataset.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**

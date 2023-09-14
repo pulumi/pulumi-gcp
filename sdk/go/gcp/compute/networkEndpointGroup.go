@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network endpoint groups (NEGs) are zonal resources that represent
@@ -418,6 +419,12 @@ func (i *NetworkEndpointGroup) ToNetworkEndpointGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupOutput)
 }
 
+func (i *NetworkEndpointGroup) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroup] {
+	return pulumix.Output[*NetworkEndpointGroup]{
+		OutputState: i.ToNetworkEndpointGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkEndpointGroupArrayInput is an input type that accepts NetworkEndpointGroupArray and NetworkEndpointGroupArrayOutput values.
 // You can construct a concrete instance of `NetworkEndpointGroupArrayInput` via:
 //
@@ -441,6 +448,12 @@ func (i NetworkEndpointGroupArray) ToNetworkEndpointGroupArrayOutput() NetworkEn
 
 func (i NetworkEndpointGroupArray) ToNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) NetworkEndpointGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupArrayOutput)
+}
+
+func (i NetworkEndpointGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEndpointGroup] {
+	return pulumix.Output[[]*NetworkEndpointGroup]{
+		OutputState: i.ToNetworkEndpointGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkEndpointGroupMapInput is an input type that accepts NetworkEndpointGroupMap and NetworkEndpointGroupMapOutput values.
@@ -468,6 +481,12 @@ func (i NetworkEndpointGroupMap) ToNetworkEndpointGroupMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupMapOutput)
 }
 
+func (i NetworkEndpointGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEndpointGroup] {
+	return pulumix.Output[map[string]*NetworkEndpointGroup]{
+		OutputState: i.ToNetworkEndpointGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkEndpointGroupOutput) ElementType() reflect.Type {
@@ -480,6 +499,12 @@ func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutput() NetworkEndpoi
 
 func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupOutput {
 	return o
+}
+
+func (o NetworkEndpointGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkEndpointGroup] {
+	return pulumix.Output[*NetworkEndpointGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default port used if the port number is not specified in the
@@ -567,6 +592,12 @@ func (o NetworkEndpointGroupArrayOutput) ToNetworkEndpointGroupArrayOutputWithCo
 	return o
 }
 
+func (o NetworkEndpointGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkEndpointGroup] {
+	return pulumix.Output[[]*NetworkEndpointGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) NetworkEndpointGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkEndpointGroup {
 		return vs[0].([]*NetworkEndpointGroup)[vs[1].(int)]
@@ -585,6 +616,12 @@ func (o NetworkEndpointGroupMapOutput) ToNetworkEndpointGroupMapOutput() Network
 
 func (o NetworkEndpointGroupMapOutput) ToNetworkEndpointGroupMapOutputWithContext(ctx context.Context) NetworkEndpointGroupMapOutput {
 	return o
+}
+
+func (o NetworkEndpointGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkEndpointGroup] {
+	return pulumix.Output[map[string]*NetworkEndpointGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) NetworkEndpointGroupOutput {

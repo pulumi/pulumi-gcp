@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i TagKeyIamBindingConditionArgs) ToTagKeyIamBindingConditionOutput() TagKe
 
 func (i TagKeyIamBindingConditionArgs) ToTagKeyIamBindingConditionOutputWithContext(ctx context.Context) TagKeyIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingConditionOutput)
+}
+
+func (i TagKeyIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TagKeyIamBindingCondition] {
+	return pulumix.Output[TagKeyIamBindingCondition]{
+		OutputState: i.ToTagKeyIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i TagKeyIamBindingConditionArgs) ToTagKeyIamBindingConditionPtrOutput() TagKeyIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *tagKeyIamBindingConditionPtrType) ToTagKeyIamBindingConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamBindingConditionPtrOutput)
 }
 
+func (i *tagKeyIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamBindingCondition] {
+	return pulumix.Output[*TagKeyIamBindingCondition]{
+		OutputState: i.ToTagKeyIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagKeyIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o TagKeyIamBindingConditionOutput) ToTagKeyIamBindingConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyIamBindingCondition) *TagKeyIamBindingCondition {
 		return &v
 	}).(TagKeyIamBindingConditionPtrOutput)
+}
+
+func (o TagKeyIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TagKeyIamBindingCondition] {
+	return pulumix.Output[TagKeyIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o TagKeyIamBindingConditionPtrOutput) ToTagKeyIamBindingConditionPtrOutput
 
 func (o TagKeyIamBindingConditionPtrOutput) ToTagKeyIamBindingConditionPtrOutputWithContext(ctx context.Context) TagKeyIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o TagKeyIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamBindingCondition] {
+	return pulumix.Output[*TagKeyIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyIamBindingConditionPtrOutput) Elem() TagKeyIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i TagKeyIamMemberConditionArgs) ToTagKeyIamMemberConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamMemberConditionOutput)
 }
 
+func (i TagKeyIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TagKeyIamMemberCondition] {
+	return pulumix.Output[TagKeyIamMemberCondition]{
+		OutputState: i.ToTagKeyIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TagKeyIamMemberConditionArgs) ToTagKeyIamMemberConditionPtrOutput() TagKeyIamMemberConditionPtrOutput {
 	return i.ToTagKeyIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *tagKeyIamMemberConditionPtrType) ToTagKeyIamMemberConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TagKeyIamMemberConditionPtrOutput)
 }
 
+func (i *tagKeyIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamMemberCondition] {
+	return pulumix.Output[*TagKeyIamMemberCondition]{
+		OutputState: i.ToTagKeyIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagKeyIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TagKeyIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o TagKeyIamMemberConditionOutput) ToTagKeyIamMemberConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagKeyIamMemberCondition) *TagKeyIamMemberCondition {
 		return &v
 	}).(TagKeyIamMemberConditionPtrOutput)
+}
+
+func (o TagKeyIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TagKeyIamMemberCondition] {
+	return pulumix.Output[TagKeyIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o TagKeyIamMemberConditionPtrOutput) ToTagKeyIamMemberConditionPtrOutput()
 
 func (o TagKeyIamMemberConditionPtrOutput) ToTagKeyIamMemberConditionPtrOutputWithContext(ctx context.Context) TagKeyIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o TagKeyIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagKeyIamMemberCondition] {
+	return pulumix.Output[*TagKeyIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagKeyIamMemberConditionPtrOutput) Elem() TagKeyIamMemberConditionOutput {
@@ -374,6 +423,12 @@ func (i TagValueIamBindingConditionArgs) ToTagValueIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamBindingConditionOutput)
 }
 
+func (i TagValueIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TagValueIamBindingCondition] {
+	return pulumix.Output[TagValueIamBindingCondition]{
+		OutputState: i.ToTagValueIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TagValueIamBindingConditionArgs) ToTagValueIamBindingConditionPtrOutput() TagValueIamBindingConditionPtrOutput {
 	return i.ToTagValueIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -415,6 +470,12 @@ func (i *tagValueIamBindingConditionPtrType) ToTagValueIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamBindingConditionPtrOutput)
 }
 
+func (i *tagValueIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamBindingCondition] {
+	return pulumix.Output[*TagValueIamBindingCondition]{
+		OutputState: i.ToTagValueIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagValueIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TagValueIamBindingConditionOutput) ElementType() reflect.Type {
@@ -437,6 +498,12 @@ func (o TagValueIamBindingConditionOutput) ToTagValueIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagValueIamBindingCondition) *TagValueIamBindingCondition {
 		return &v
 	}).(TagValueIamBindingConditionPtrOutput)
+}
+
+func (o TagValueIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TagValueIamBindingCondition] {
+	return pulumix.Output[TagValueIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagValueIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -463,6 +530,12 @@ func (o TagValueIamBindingConditionPtrOutput) ToTagValueIamBindingConditionPtrOu
 
 func (o TagValueIamBindingConditionPtrOutput) ToTagValueIamBindingConditionPtrOutputWithContext(ctx context.Context) TagValueIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o TagValueIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamBindingCondition] {
+	return pulumix.Output[*TagValueIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagValueIamBindingConditionPtrOutput) Elem() TagValueIamBindingConditionOutput {
@@ -537,6 +610,12 @@ func (i TagValueIamMemberConditionArgs) ToTagValueIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamMemberConditionOutput)
 }
 
+func (i TagValueIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TagValueIamMemberCondition] {
+	return pulumix.Output[TagValueIamMemberCondition]{
+		OutputState: i.ToTagValueIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TagValueIamMemberConditionArgs) ToTagValueIamMemberConditionPtrOutput() TagValueIamMemberConditionPtrOutput {
 	return i.ToTagValueIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -578,6 +657,12 @@ func (i *tagValueIamMemberConditionPtrType) ToTagValueIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TagValueIamMemberConditionPtrOutput)
 }
 
+func (i *tagValueIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamMemberCondition] {
+	return pulumix.Output[*TagValueIamMemberCondition]{
+		OutputState: i.ToTagValueIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagValueIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TagValueIamMemberConditionOutput) ElementType() reflect.Type {
@@ -600,6 +685,12 @@ func (o TagValueIamMemberConditionOutput) ToTagValueIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagValueIamMemberCondition) *TagValueIamMemberCondition {
 		return &v
 	}).(TagValueIamMemberConditionPtrOutput)
+}
+
+func (o TagValueIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TagValueIamMemberCondition] {
+	return pulumix.Output[TagValueIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagValueIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -626,6 +717,12 @@ func (o TagValueIamMemberConditionPtrOutput) ToTagValueIamMemberConditionPtrOutp
 
 func (o TagValueIamMemberConditionPtrOutput) ToTagValueIamMemberConditionPtrOutputWithContext(ctx context.Context) TagValueIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o TagValueIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagValueIamMemberCondition] {
+	return pulumix.Output[*TagValueIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagValueIamMemberConditionPtrOutput) Elem() TagValueIamMemberConditionOutput {

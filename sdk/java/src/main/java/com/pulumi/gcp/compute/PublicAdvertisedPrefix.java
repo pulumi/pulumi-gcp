@@ -79,7 +79,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -93,7 +93,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * The IPv4 address to be used for reverse DNS verification.
      * 
      */
-    @Export(name="dnsVerificationIp", type=String.class, parameters={})
+    @Export(name="dnsVerificationIp", refs={String.class}, tree="[0]")
     private Output<String> dnsVerificationIp;
 
     /**
@@ -109,7 +109,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * ***
      * 
      */
-    @Export(name="ipCidrRange", type=String.class, parameters={})
+    @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipCidrRange;
 
     /**
@@ -130,7 +130,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -150,7 +150,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -165,7 +165,7 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**

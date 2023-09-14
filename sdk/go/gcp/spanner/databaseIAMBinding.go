@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
@@ -358,6 +359,12 @@ func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingOutput)
 }
 
+func (i *DatabaseIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMBinding] {
+	return pulumix.Output[*DatabaseIAMBinding]{
+		OutputState: i.ToDatabaseIAMBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseIAMBindingArrayInput is an input type that accepts DatabaseIAMBindingArray and DatabaseIAMBindingArrayOutput values.
 // You can construct a concrete instance of `DatabaseIAMBindingArrayInput` via:
 //
@@ -381,6 +388,12 @@ func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBi
 
 func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutputWithContext(ctx context.Context) DatabaseIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingArrayOutput)
+}
+
+func (i DatabaseIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseIAMBinding] {
+	return pulumix.Output[[]*DatabaseIAMBinding]{
+		OutputState: i.ToDatabaseIAMBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseIAMBindingMapInput is an input type that accepts DatabaseIAMBindingMap and DatabaseIAMBindingMapOutput values.
@@ -408,6 +421,12 @@ func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingMapOutput)
 }
 
+func (i DatabaseIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseIAMBinding] {
+	return pulumix.Output[map[string]*DatabaseIAMBinding]{
+		OutputState: i.ToDatabaseIAMBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (DatabaseIAMBindingOutput) ElementType() reflect.Type {
@@ -420,6 +439,12 @@ func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutput() DatabaseIAMBindin
 
 func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput {
 	return o
+}
+
+func (o DatabaseIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIAMBinding] {
+	return pulumix.Output[*DatabaseIAMBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseIAMBindingOutput) Condition() DatabaseIAMBindingConditionPtrOutput {
@@ -481,6 +506,12 @@ func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutputWithContex
 	return o
 }
 
+func (o DatabaseIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatabaseIAMBinding] {
+	return pulumix.Output[[]*DatabaseIAMBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseIAMBindingArrayOutput) Index(i pulumi.IntInput) DatabaseIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMBinding {
 		return vs[0].([]*DatabaseIAMBinding)[vs[1].(int)]
@@ -499,6 +530,12 @@ func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutput() DatabaseIAM
 
 func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutputWithContext(ctx context.Context) DatabaseIAMBindingMapOutput {
 	return o
+}
+
+func (o DatabaseIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatabaseIAMBinding] {
+	return pulumix.Output[map[string]*DatabaseIAMBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseIAMBindingMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMBindingOutput {

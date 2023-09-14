@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
@@ -349,6 +350,12 @@ func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyOutput)
 }
 
+func (i *ClusterIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMPolicy] {
+	return pulumix.Output[*ClusterIAMPolicy]{
+		OutputState: i.ToClusterIAMPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ClusterIAMPolicyArrayInput is an input type that accepts ClusterIAMPolicyArray and ClusterIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `ClusterIAMPolicyArrayInput` via:
 //
@@ -372,6 +379,12 @@ func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyA
 
 func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutputWithContext(ctx context.Context) ClusterIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyArrayOutput)
+}
+
+func (i ClusterIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterIAMPolicy] {
+	return pulumix.Output[[]*ClusterIAMPolicy]{
+		OutputState: i.ToClusterIAMPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ClusterIAMPolicyMapInput is an input type that accepts ClusterIAMPolicyMap and ClusterIAMPolicyMapOutput values.
@@ -399,6 +412,12 @@ func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyMapOutput)
 }
 
+func (i ClusterIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterIAMPolicy] {
+	return pulumix.Output[map[string]*ClusterIAMPolicy]{
+		OutputState: i.ToClusterIAMPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ClusterIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClusterIAMPolicyOutput) ElementType() reflect.Type {
@@ -411,6 +430,12 @@ func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutpu
 
 func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutputWithContext(ctx context.Context) ClusterIAMPolicyOutput {
 	return o
+}
+
+func (o ClusterIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterIAMPolicy] {
+	return pulumix.Output[*ClusterIAMPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
@@ -467,6 +492,12 @@ func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutputWithContext(ct
 	return o
 }
 
+func (o ClusterIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterIAMPolicy] {
+	return pulumix.Output[[]*ClusterIAMPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ClusterIAMPolicyArrayOutput) Index(i pulumi.IntInput) ClusterIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMPolicy {
 		return vs[0].([]*ClusterIAMPolicy)[vs[1].(int)]
@@ -485,6 +516,12 @@ func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutput() ClusterIAMPolic
 
 func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutputWithContext(ctx context.Context) ClusterIAMPolicyMapOutput {
 	return o
+}
+
+func (o ClusterIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterIAMPolicy] {
+	return pulumix.Output[map[string]*ClusterIAMPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ClusterIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMPolicyOutput {

@@ -154,7 +154,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="allows", type=List.class, parameters={FirewallAllow.class})
+    @Export(name="allows", refs={List.class,FirewallAllow.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallAllow>> allows;
 
     /**
@@ -171,7 +171,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -187,7 +187,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="denies", type=List.class, parameters={FirewallDeny.class})
+    @Export(name="denies", refs={List.class,FirewallDeny.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallDeny>> denies;
 
     /**
@@ -204,7 +204,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * you create the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -221,7 +221,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      * 
      */
-    @Export(name="destinationRanges", type=List.class, parameters={String.class})
+    @Export(name="destinationRanges", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> destinationRanges;
 
     /**
@@ -240,7 +240,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
@@ -260,7 +260,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * is unspecified, the firewall rule will be enabled.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -282,7 +282,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated in favor of log_config */
-    @Export(name="enableLogging", type=Boolean.class, parameters={})
+    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableLogging;
 
     /**
@@ -299,7 +299,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="logConfig", type=FirewallLogConfig.class, parameters={})
+    @Export(name="logConfig", refs={FirewallLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ FirewallLogConfig> logConfig;
 
     /**
@@ -321,7 +321,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -343,7 +343,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -364,7 +364,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * precedence over ALLOW rules having equal priority.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -384,7 +384,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -399,7 +399,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -421,7 +421,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * `source_ranges`, `source_tags` or `source_service_accounts` is required.
      * 
      */
-    @Export(name="sourceRanges", type=List.class, parameters={String.class})
+    @Export(name="sourceRanges", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceRanges;
 
     /**
@@ -454,7 +454,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
      * 
      */
-    @Export(name="sourceServiceAccounts", type=List.class, parameters={String.class})
+    @Export(name="sourceServiceAccounts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceServiceAccounts;
 
     /**
@@ -488,7 +488,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
      * 
      */
-    @Export(name="sourceTags", type=List.class, parameters={String.class})
+    @Export(name="sourceTags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceTags;
 
     /**
@@ -516,7 +516,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * network.
      * 
      */
-    @Export(name="targetServiceAccounts", type=List.class, parameters={String.class})
+    @Export(name="targetServiceAccounts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetServiceAccounts;
 
     /**
@@ -538,7 +538,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * instances on the specified network.
      * 
      */
-    @Export(name="targetTags", type=List.class, parameters={String.class})
+    @Export(name="targetTags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetTags;
 
     /**

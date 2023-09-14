@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A repository for storing artifacts
@@ -667,6 +668,12 @@ func (i *Repository) ToRepositoryOutputWithContext(ctx context.Context) Reposito
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
 }
 
+func (i *Repository) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
+	return pulumix.Output[*Repository]{
+		OutputState: i.ToRepositoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RepositoryArrayInput is an input type that accepts RepositoryArray and RepositoryArrayOutput values.
 // You can construct a concrete instance of `RepositoryArrayInput` via:
 //
@@ -690,6 +697,12 @@ func (i RepositoryArray) ToRepositoryArrayOutput() RepositoryArrayOutput {
 
 func (i RepositoryArray) ToRepositoryArrayOutputWithContext(ctx context.Context) RepositoryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryArrayOutput)
+}
+
+func (i RepositoryArray) ToOutput(ctx context.Context) pulumix.Output[[]*Repository] {
+	return pulumix.Output[[]*Repository]{
+		OutputState: i.ToRepositoryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RepositoryMapInput is an input type that accepts RepositoryMap and RepositoryMapOutput values.
@@ -717,6 +730,12 @@ func (i RepositoryMap) ToRepositoryMapOutputWithContext(ctx context.Context) Rep
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryMapOutput)
 }
 
+func (i RepositoryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repository] {
+	return pulumix.Output[map[string]*Repository]{
+		OutputState: i.ToRepositoryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RepositoryOutput struct{ *pulumi.OutputState }
 
 func (RepositoryOutput) ElementType() reflect.Type {
@@ -729,6 +748,12 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
+}
+
+func (o RepositoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Repository] {
+	return pulumix.Output[*Repository]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
@@ -855,6 +880,12 @@ func (o RepositoryArrayOutput) ToRepositoryArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o RepositoryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Repository] {
+	return pulumix.Output[[]*Repository]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RepositoryArrayOutput) Index(i pulumi.IntInput) RepositoryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Repository {
 		return vs[0].([]*Repository)[vs[1].(int)]
@@ -873,6 +904,12 @@ func (o RepositoryMapOutput) ToRepositoryMapOutput() RepositoryMapOutput {
 
 func (o RepositoryMapOutput) ToRepositoryMapOutputWithContext(ctx context.Context) RepositoryMapOutput {
 	return o
+}
+
+func (o RepositoryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Repository] {
+	return pulumix.Output[map[string]*Repository]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepositoryMapOutput) MapIndex(k pulumi.StringInput) RepositoryOutput {

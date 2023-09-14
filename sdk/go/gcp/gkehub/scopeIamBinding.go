@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Scope. Each of these resources serves a different use case:
@@ -356,6 +357,12 @@ func (i *ScopeIamBinding) ToScopeIamBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingOutput)
 }
 
+func (i *ScopeIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamBinding] {
+	return pulumix.Output[*ScopeIamBinding]{
+		OutputState: i.ToScopeIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScopeIamBindingArrayInput is an input type that accepts ScopeIamBindingArray and ScopeIamBindingArrayOutput values.
 // You can construct a concrete instance of `ScopeIamBindingArrayInput` via:
 //
@@ -379,6 +386,12 @@ func (i ScopeIamBindingArray) ToScopeIamBindingArrayOutput() ScopeIamBindingArra
 
 func (i ScopeIamBindingArray) ToScopeIamBindingArrayOutputWithContext(ctx context.Context) ScopeIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingArrayOutput)
+}
+
+func (i ScopeIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScopeIamBinding] {
+	return pulumix.Output[[]*ScopeIamBinding]{
+		OutputState: i.ToScopeIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ScopeIamBindingMapInput is an input type that accepts ScopeIamBindingMap and ScopeIamBindingMapOutput values.
@@ -406,6 +419,12 @@ func (i ScopeIamBindingMap) ToScopeIamBindingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingMapOutput)
 }
 
+func (i ScopeIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScopeIamBinding] {
+	return pulumix.Output[map[string]*ScopeIamBinding]{
+		OutputState: i.ToScopeIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ScopeIamBindingOutput) ElementType() reflect.Type {
@@ -418,6 +437,12 @@ func (o ScopeIamBindingOutput) ToScopeIamBindingOutput() ScopeIamBindingOutput {
 
 func (o ScopeIamBindingOutput) ToScopeIamBindingOutputWithContext(ctx context.Context) ScopeIamBindingOutput {
 	return o
+}
+
+func (o ScopeIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamBinding] {
+	return pulumix.Output[*ScopeIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeIamBindingOutput) Condition() ScopeIamBindingConditionPtrOutput {
@@ -476,6 +501,12 @@ func (o ScopeIamBindingArrayOutput) ToScopeIamBindingArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ScopeIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScopeIamBinding] {
+	return pulumix.Output[[]*ScopeIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ScopeIamBindingArrayOutput) Index(i pulumi.IntInput) ScopeIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScopeIamBinding {
 		return vs[0].([]*ScopeIamBinding)[vs[1].(int)]
@@ -494,6 +525,12 @@ func (o ScopeIamBindingMapOutput) ToScopeIamBindingMapOutput() ScopeIamBindingMa
 
 func (o ScopeIamBindingMapOutput) ToScopeIamBindingMapOutputWithContext(ctx context.Context) ScopeIamBindingMapOutput {
 	return o
+}
+
+func (o ScopeIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScopeIamBinding] {
+	return pulumix.Output[map[string]*ScopeIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeIamBindingMapOutput) MapIndex(k pulumi.StringInput) ScopeIamBindingOutput {

@@ -157,7 +157,7 @@ public class EnvGroupAttachment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="envgroupId", type=String.class, parameters={})
+    @Export(name="envgroupId", refs={String.class}, tree="[0]")
     private Output<String> envgroupId;
 
     /**
@@ -174,7 +174,7 @@ public class EnvGroupAttachment extends com.pulumi.resources.CustomResource {
      * The resource ID of the environment.
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -188,7 +188,7 @@ public class EnvGroupAttachment extends com.pulumi.resources.CustomResource {
      * The name of the newly created  attachment (output parameter).
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

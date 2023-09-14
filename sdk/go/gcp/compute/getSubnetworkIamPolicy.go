@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for subnetwork
@@ -122,6 +123,12 @@ func (o GetSubnetworkIamPolicyResultOutput) ToGetSubnetworkIamPolicyResultOutput
 
 func (o GetSubnetworkIamPolicyResultOutput) ToGetSubnetworkIamPolicyResultOutputWithContext(ctx context.Context) GetSubnetworkIamPolicyResultOutput {
 	return o
+}
+
+func (o GetSubnetworkIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubnetworkIamPolicyResult] {
+	return pulumix.Output[GetSubnetworkIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.

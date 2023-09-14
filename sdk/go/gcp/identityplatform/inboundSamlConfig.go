@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Inbound SAML configuration for a Identity Toolkit project.
@@ -263,6 +264,12 @@ func (i *InboundSamlConfig) ToInboundSamlConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigOutput)
 }
 
+func (i *InboundSamlConfig) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlConfig] {
+	return pulumix.Output[*InboundSamlConfig]{
+		OutputState: i.ToInboundSamlConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InboundSamlConfigArrayInput is an input type that accepts InboundSamlConfigArray and InboundSamlConfigArrayOutput values.
 // You can construct a concrete instance of `InboundSamlConfigArrayInput` via:
 //
@@ -286,6 +293,12 @@ func (i InboundSamlConfigArray) ToInboundSamlConfigArrayOutput() InboundSamlConf
 
 func (i InboundSamlConfigArray) ToInboundSamlConfigArrayOutputWithContext(ctx context.Context) InboundSamlConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigArrayOutput)
+}
+
+func (i InboundSamlConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*InboundSamlConfig] {
+	return pulumix.Output[[]*InboundSamlConfig]{
+		OutputState: i.ToInboundSamlConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InboundSamlConfigMapInput is an input type that accepts InboundSamlConfigMap and InboundSamlConfigMapOutput values.
@@ -313,6 +326,12 @@ func (i InboundSamlConfigMap) ToInboundSamlConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InboundSamlConfigMapOutput)
 }
 
+func (i InboundSamlConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InboundSamlConfig] {
+	return pulumix.Output[map[string]*InboundSamlConfig]{
+		OutputState: i.ToInboundSamlConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InboundSamlConfigOutput struct{ *pulumi.OutputState }
 
 func (InboundSamlConfigOutput) ElementType() reflect.Type {
@@ -325,6 +344,12 @@ func (o InboundSamlConfigOutput) ToInboundSamlConfigOutput() InboundSamlConfigOu
 
 func (o InboundSamlConfigOutput) ToInboundSamlConfigOutputWithContext(ctx context.Context) InboundSamlConfigOutput {
 	return o
+}
+
+func (o InboundSamlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*InboundSamlConfig] {
+	return pulumix.Output[*InboundSamlConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Human friendly display name.
@@ -377,6 +402,12 @@ func (o InboundSamlConfigArrayOutput) ToInboundSamlConfigArrayOutputWithContext(
 	return o
 }
 
+func (o InboundSamlConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InboundSamlConfig] {
+	return pulumix.Output[[]*InboundSamlConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InboundSamlConfigArrayOutput) Index(i pulumi.IntInput) InboundSamlConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InboundSamlConfig {
 		return vs[0].([]*InboundSamlConfig)[vs[1].(int)]
@@ -395,6 +426,12 @@ func (o InboundSamlConfigMapOutput) ToInboundSamlConfigMapOutput() InboundSamlCo
 
 func (o InboundSamlConfigMapOutput) ToInboundSamlConfigMapOutputWithContext(ctx context.Context) InboundSamlConfigMapOutput {
 	return o
+}
+
+func (o InboundSamlConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InboundSamlConfig] {
+	return pulumix.Output[map[string]*InboundSamlConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InboundSamlConfigMapOutput) MapIndex(k pulumi.StringInput) InboundSamlConfigOutput {

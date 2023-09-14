@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
@@ -487,6 +488,12 @@ func (i *MachineImageIamMember) ToMachineImageIamMemberOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberOutput)
 }
 
+func (i *MachineImageIamMember) ToOutput(ctx context.Context) pulumix.Output[*MachineImageIamMember] {
+	return pulumix.Output[*MachineImageIamMember]{
+		OutputState: i.ToMachineImageIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MachineImageIamMemberArrayInput is an input type that accepts MachineImageIamMemberArray and MachineImageIamMemberArrayOutput values.
 // You can construct a concrete instance of `MachineImageIamMemberArrayInput` via:
 //
@@ -510,6 +517,12 @@ func (i MachineImageIamMemberArray) ToMachineImageIamMemberArrayOutput() Machine
 
 func (i MachineImageIamMemberArray) ToMachineImageIamMemberArrayOutputWithContext(ctx context.Context) MachineImageIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberArrayOutput)
+}
+
+func (i MachineImageIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*MachineImageIamMember] {
+	return pulumix.Output[[]*MachineImageIamMember]{
+		OutputState: i.ToMachineImageIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MachineImageIamMemberMapInput is an input type that accepts MachineImageIamMemberMap and MachineImageIamMemberMapOutput values.
@@ -537,6 +550,12 @@ func (i MachineImageIamMemberMap) ToMachineImageIamMemberMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberMapOutput)
 }
 
+func (i MachineImageIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineImageIamMember] {
+	return pulumix.Output[map[string]*MachineImageIamMember]{
+		OutputState: i.ToMachineImageIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MachineImageIamMemberOutput struct{ *pulumi.OutputState }
 
 func (MachineImageIamMemberOutput) ElementType() reflect.Type {
@@ -549,6 +568,12 @@ func (o MachineImageIamMemberOutput) ToMachineImageIamMemberOutput() MachineImag
 
 func (o MachineImageIamMemberOutput) ToMachineImageIamMemberOutputWithContext(ctx context.Context) MachineImageIamMemberOutput {
 	return o
+}
+
+func (o MachineImageIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineImageIamMember] {
+	return pulumix.Output[*MachineImageIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -610,6 +635,12 @@ func (o MachineImageIamMemberArrayOutput) ToMachineImageIamMemberArrayOutputWith
 	return o
 }
 
+func (o MachineImageIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MachineImageIamMember] {
+	return pulumix.Output[[]*MachineImageIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MachineImageIamMemberArrayOutput) Index(i pulumi.IntInput) MachineImageIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineImageIamMember {
 		return vs[0].([]*MachineImageIamMember)[vs[1].(int)]
@@ -628,6 +659,12 @@ func (o MachineImageIamMemberMapOutput) ToMachineImageIamMemberMapOutput() Machi
 
 func (o MachineImageIamMemberMapOutput) ToMachineImageIamMemberMapOutputWithContext(ctx context.Context) MachineImageIamMemberMapOutput {
 	return o
+}
+
+func (o MachineImageIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineImageIamMember] {
+	return pulumix.Output[map[string]*MachineImageIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MachineImageIamMemberMapOutput) MapIndex(k pulumi.StringInput) MachineImageIamMemberOutput {

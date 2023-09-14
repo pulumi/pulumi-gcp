@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a RegionTargetHttpsProxy resource, which is used by one or more
@@ -293,6 +294,12 @@ func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyOutput)
 }
 
+func (i *RegionTargetHttpsProxy) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxy] {
+	return pulumix.Output[*RegionTargetHttpsProxy]{
+		OutputState: i.ToRegionTargetHttpsProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionTargetHttpsProxyArrayInput is an input type that accepts RegionTargetHttpsProxyArray and RegionTargetHttpsProxyArrayOutput values.
 // You can construct a concrete instance of `RegionTargetHttpsProxyArrayInput` via:
 //
@@ -316,6 +323,12 @@ func (i RegionTargetHttpsProxyArray) ToRegionTargetHttpsProxyArrayOutput() Regio
 
 func (i RegionTargetHttpsProxyArray) ToRegionTargetHttpsProxyArrayOutputWithContext(ctx context.Context) RegionTargetHttpsProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyArrayOutput)
+}
+
+func (i RegionTargetHttpsProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionTargetHttpsProxy] {
+	return pulumix.Output[[]*RegionTargetHttpsProxy]{
+		OutputState: i.ToRegionTargetHttpsProxyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionTargetHttpsProxyMapInput is an input type that accepts RegionTargetHttpsProxyMap and RegionTargetHttpsProxyMapOutput values.
@@ -343,6 +356,12 @@ func (i RegionTargetHttpsProxyMap) ToRegionTargetHttpsProxyMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyMapOutput)
 }
 
+func (i RegionTargetHttpsProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionTargetHttpsProxy] {
+	return pulumix.Output[map[string]*RegionTargetHttpsProxy]{
+		OutputState: i.ToRegionTargetHttpsProxyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionTargetHttpsProxyOutput struct{ *pulumi.OutputState }
 
 func (RegionTargetHttpsProxyOutput) ElementType() reflect.Type {
@@ -355,6 +374,12 @@ func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyOutput() RegionTar
 
 func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyOutputWithContext(ctx context.Context) RegionTargetHttpsProxyOutput {
 	return o
+}
+
+func (o RegionTargetHttpsProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionTargetHttpsProxy] {
+	return pulumix.Output[*RegionTargetHttpsProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -436,6 +461,12 @@ func (o RegionTargetHttpsProxyArrayOutput) ToRegionTargetHttpsProxyArrayOutputWi
 	return o
 }
 
+func (o RegionTargetHttpsProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionTargetHttpsProxy] {
+	return pulumix.Output[[]*RegionTargetHttpsProxy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionTargetHttpsProxyArrayOutput) Index(i pulumi.IntInput) RegionTargetHttpsProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionTargetHttpsProxy {
 		return vs[0].([]*RegionTargetHttpsProxy)[vs[1].(int)]
@@ -454,6 +485,12 @@ func (o RegionTargetHttpsProxyMapOutput) ToRegionTargetHttpsProxyMapOutput() Reg
 
 func (o RegionTargetHttpsProxyMapOutput) ToRegionTargetHttpsProxyMapOutputWithContext(ctx context.Context) RegionTargetHttpsProxyMapOutput {
 	return o
+}
+
+func (o RegionTargetHttpsProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionTargetHttpsProxy] {
+	return pulumix.Output[map[string]*RegionTargetHttpsProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionTargetHttpsProxyMapOutput) MapIndex(k pulumi.StringInput) RegionTargetHttpsProxyOutput {

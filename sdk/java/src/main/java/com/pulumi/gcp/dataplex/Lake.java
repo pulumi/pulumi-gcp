@@ -81,7 +81,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. Aggregated status of the underlying assets of the lake.
      * 
      */
-    @Export(name="assetStatuses", type=List.class, parameters={LakeAssetStatus.class})
+    @Export(name="assetStatuses", refs={List.class,LakeAssetStatus.class}, tree="[0,1]")
     private Output<List<LakeAssetStatus>> assetStatuses;
 
     /**
@@ -95,7 +95,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. The time when the lake was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -109,7 +109,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Optional. Description of the lake.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -123,7 +123,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Optional. User friendly display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -137,7 +137,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Optional. User-defined labels for the lake.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -151,7 +151,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -165,7 +165,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Optional. Settings to manage lake and Dataproc Metastore service instance association.
      * 
      */
-    @Export(name="metastore", type=LakeMetastore.class, parameters={})
+    @Export(name="metastore", refs={LakeMetastore.class}, tree="[0]")
     private Output</* @Nullable */ LakeMetastore> metastore;
 
     /**
@@ -179,7 +179,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. Metastore status of the lake.
      * 
      */
-    @Export(name="metastoreStatuses", type=List.class, parameters={LakeMetastoreStatus.class})
+    @Export(name="metastoreStatuses", refs={List.class,LakeMetastoreStatus.class}, tree="[0,1]")
     private Output<List<LakeMetastoreStatus>> metastoreStatuses;
 
     /**
@@ -195,7 +195,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -211,7 +211,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -225,7 +225,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output<String> serviceAccount;
 
     /**
@@ -239,7 +239,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -253,7 +253,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -267,7 +267,7 @@ public class Lake extends com.pulumi.resources.CustomResource {
      * Output only. The time when the lake was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

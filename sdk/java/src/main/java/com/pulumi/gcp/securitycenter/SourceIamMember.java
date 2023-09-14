@@ -75,19 +75,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:securitycenter/sourceIamMember:SourceIamMember")
 public class SourceIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=SourceIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={SourceIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ SourceIamMemberCondition> condition;
 
     public Output<Optional<SourceIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -100,7 +100,7 @@ public class SourceIamMember extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="organization", type=String.class, parameters={})
+    @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
@@ -113,13 +113,13 @@ public class SourceIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> organization() {
         return this.organization;
     }
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     public Output<String> source() {

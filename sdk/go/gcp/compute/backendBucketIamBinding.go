@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -242,6 +243,12 @@ func (i *BackendBucketIamBinding) ToBackendBucketIamBindingOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketIamBindingOutput)
 }
 
+func (i *BackendBucketIamBinding) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketIamBinding] {
+	return pulumix.Output[*BackendBucketIamBinding]{
+		OutputState: i.ToBackendBucketIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackendBucketIamBindingArrayInput is an input type that accepts BackendBucketIamBindingArray and BackendBucketIamBindingArrayOutput values.
 // You can construct a concrete instance of `BackendBucketIamBindingArrayInput` via:
 //
@@ -265,6 +272,12 @@ func (i BackendBucketIamBindingArray) ToBackendBucketIamBindingArrayOutput() Bac
 
 func (i BackendBucketIamBindingArray) ToBackendBucketIamBindingArrayOutputWithContext(ctx context.Context) BackendBucketIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketIamBindingArrayOutput)
+}
+
+func (i BackendBucketIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucketIamBinding] {
+	return pulumix.Output[[]*BackendBucketIamBinding]{
+		OutputState: i.ToBackendBucketIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackendBucketIamBindingMapInput is an input type that accepts BackendBucketIamBindingMap and BackendBucketIamBindingMapOutput values.
@@ -292,6 +305,12 @@ func (i BackendBucketIamBindingMap) ToBackendBucketIamBindingMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketIamBindingMapOutput)
 }
 
+func (i BackendBucketIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucketIamBinding] {
+	return pulumix.Output[map[string]*BackendBucketIamBinding]{
+		OutputState: i.ToBackendBucketIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackendBucketIamBindingOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketIamBindingOutput) ElementType() reflect.Type {
@@ -304,6 +323,12 @@ func (o BackendBucketIamBindingOutput) ToBackendBucketIamBindingOutput() Backend
 
 func (o BackendBucketIamBindingOutput) ToBackendBucketIamBindingOutputWithContext(ctx context.Context) BackendBucketIamBindingOutput {
 	return o
+}
+
+func (o BackendBucketIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketIamBinding] {
+	return pulumix.Output[*BackendBucketIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBucketIamBindingOutput) Condition() BackendBucketIamBindingConditionPtrOutput {
@@ -363,6 +388,12 @@ func (o BackendBucketIamBindingArrayOutput) ToBackendBucketIamBindingArrayOutput
 	return o
 }
 
+func (o BackendBucketIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucketIamBinding] {
+	return pulumix.Output[[]*BackendBucketIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendBucketIamBindingArrayOutput) Index(i pulumi.IntInput) BackendBucketIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendBucketIamBinding {
 		return vs[0].([]*BackendBucketIamBinding)[vs[1].(int)]
@@ -381,6 +412,12 @@ func (o BackendBucketIamBindingMapOutput) ToBackendBucketIamBindingMapOutput() B
 
 func (o BackendBucketIamBindingMapOutput) ToBackendBucketIamBindingMapOutputWithContext(ctx context.Context) BackendBucketIamBindingMapOutput {
 	return o
+}
+
+func (o BackendBucketIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucketIamBinding] {
+	return pulumix.Output[map[string]*BackendBucketIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBucketIamBindingMapOutput) MapIndex(k pulumi.StringInput) BackendBucketIamBindingOutput {

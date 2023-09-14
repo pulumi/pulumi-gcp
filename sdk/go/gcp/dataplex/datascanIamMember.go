@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Datascan. Each of these resources serves a different use case:
@@ -374,6 +375,12 @@ func (i *DatascanIamMember) ToDatascanIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamMemberOutput)
 }
 
+func (i *DatascanIamMember) ToOutput(ctx context.Context) pulumix.Output[*DatascanIamMember] {
+	return pulumix.Output[*DatascanIamMember]{
+		OutputState: i.ToDatascanIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatascanIamMemberArrayInput is an input type that accepts DatascanIamMemberArray and DatascanIamMemberArrayOutput values.
 // You can construct a concrete instance of `DatascanIamMemberArrayInput` via:
 //
@@ -397,6 +404,12 @@ func (i DatascanIamMemberArray) ToDatascanIamMemberArrayOutput() DatascanIamMemb
 
 func (i DatascanIamMemberArray) ToDatascanIamMemberArrayOutputWithContext(ctx context.Context) DatascanIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamMemberArrayOutput)
+}
+
+func (i DatascanIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatascanIamMember] {
+	return pulumix.Output[[]*DatascanIamMember]{
+		OutputState: i.ToDatascanIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatascanIamMemberMapInput is an input type that accepts DatascanIamMemberMap and DatascanIamMemberMapOutput values.
@@ -424,6 +437,12 @@ func (i DatascanIamMemberMap) ToDatascanIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamMemberMapOutput)
 }
 
+func (i DatascanIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatascanIamMember] {
+	return pulumix.Output[map[string]*DatascanIamMember]{
+		OutputState: i.ToDatascanIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatascanIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DatascanIamMemberOutput) ElementType() reflect.Type {
@@ -436,6 +455,12 @@ func (o DatascanIamMemberOutput) ToDatascanIamMemberOutput() DatascanIamMemberOu
 
 func (o DatascanIamMemberOutput) ToDatascanIamMemberOutputWithContext(ctx context.Context) DatascanIamMemberOutput {
 	return o
+}
+
+func (o DatascanIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DatascanIamMember] {
+	return pulumix.Output[*DatascanIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatascanIamMemberOutput) Condition() DatascanIamMemberConditionPtrOutput {
@@ -500,6 +525,12 @@ func (o DatascanIamMemberArrayOutput) ToDatascanIamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o DatascanIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatascanIamMember] {
+	return pulumix.Output[[]*DatascanIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatascanIamMemberArrayOutput) Index(i pulumi.IntInput) DatascanIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatascanIamMember {
 		return vs[0].([]*DatascanIamMember)[vs[1].(int)]
@@ -518,6 +549,12 @@ func (o DatascanIamMemberMapOutput) ToDatascanIamMemberMapOutput() DatascanIamMe
 
 func (o DatascanIamMemberMapOutput) ToDatascanIamMemberMapOutputWithContext(ctx context.Context) DatascanIamMemberMapOutput {
 	return o
+}
+
+func (o DatascanIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatascanIamMember] {
+	return pulumix.Output[map[string]*DatascanIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatascanIamMemberMapOutput) MapIndex(k pulumi.StringInput) DatascanIamMemberOutput {

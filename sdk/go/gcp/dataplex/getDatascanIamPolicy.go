@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for datascan
@@ -116,6 +117,12 @@ func (o LookupDatascanIamPolicyResultOutput) ToLookupDatascanIamPolicyResultOutp
 
 func (o LookupDatascanIamPolicyResultOutput) ToLookupDatascanIamPolicyResultOutputWithContext(ctx context.Context) LookupDatascanIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupDatascanIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatascanIamPolicyResult] {
+	return pulumix.Output[LookupDatascanIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupDatascanIamPolicyResultOutput) DataScanId() pulumi.StringOutput {

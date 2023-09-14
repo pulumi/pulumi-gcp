@@ -165,7 +165,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * a value of `true` for this field.
      * 
      */
-    @Export(name="baseline", type=Boolean.class, parameters={})
+    @Export(name="baseline", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> baseline;
 
     /**
@@ -183,7 +183,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * assignment.
      * 
      */
-    @Export(name="deleted", type=Boolean.class, parameters={})
+    @Export(name="deleted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleted;
 
     /**
@@ -201,7 +201,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * description is limited to 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -219,7 +219,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * update, it must match the server&#39;s etag.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -235,7 +235,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * documented below.
      * 
      */
-    @Export(name="instanceFilter", type=OsPolicyAssignmentInstanceFilter.class, parameters={})
+    @Export(name="instanceFilter", refs={OsPolicyAssignmentInstanceFilter.class}, tree="[0]")
     private Output<OsPolicyAssignmentInstanceFilter> instanceFilter;
 
     /**
@@ -250,7 +250,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -264,7 +264,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * Resource name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -279,7 +279,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="osPolicies", type=List.class, parameters={OsPolicyAssignmentOsPolicy.class})
+    @Export(name="osPolicies", refs={List.class,OsPolicyAssignmentOsPolicy.class}, tree="[0,1]")
     private Output<List<OsPolicyAssignmentOsPolicy>> osPolicies;
 
     /**
@@ -295,7 +295,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -311,7 +311,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * for the revision. This value is `true` when the `rollout_state` is one of:
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -327,7 +327,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * created.
      * 
      */
-    @Export(name="revisionCreateTime", type=String.class, parameters={})
+    @Export(name="revisionCreateTime", refs={String.class}, tree="[0]")
     private Output<String> revisionCreateTime;
 
     /**
@@ -343,7 +343,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
-    @Export(name="revisionId", type=String.class, parameters={})
+    @Export(name="revisionId", refs={String.class}, tree="[0]")
     private Output<String> revisionId;
 
     /**
@@ -362,7 +362,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * is deleted. Structure is documented below.
      * 
      */
-    @Export(name="rollout", type=OsPolicyAssignmentRollout.class, parameters={})
+    @Export(name="rollout", refs={OsPolicyAssignmentRollout.class}, tree="[0]")
     private Output<OsPolicyAssignmentRollout> rollout;
 
     /**
@@ -380,7 +380,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * Output only. OS policy assignment rollout state
      * 
      */
-    @Export(name="rolloutState", type=String.class, parameters={})
+    @Export(name="rolloutState", refs={String.class}, tree="[0]")
     private Output<String> rolloutState;
 
     /**
@@ -395,7 +395,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * during resource creation and update.
      * 
      */
-    @Export(name="skipAwaitRollout", type=Boolean.class, parameters={})
+    @Export(name="skipAwaitRollout", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipAwaitRollout;
 
     /**
@@ -411,7 +411,7 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
      * resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**

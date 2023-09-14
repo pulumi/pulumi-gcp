@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for instance
@@ -122,6 +123,12 @@ func (o GetInstanceIamPolicyResultOutput) ToGetInstanceIamPolicyResultOutput() G
 
 func (o GetInstanceIamPolicyResultOutput) ToGetInstanceIamPolicyResultOutputWithContext(ctx context.Context) GetInstanceIamPolicyResultOutput {
 	return o
+}
+
+func (o GetInstanceIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceIamPolicyResult] {
+	return pulumix.Output[GetInstanceIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.

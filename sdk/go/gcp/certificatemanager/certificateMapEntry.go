@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CertificateMapEntry is a list of certificate configurations,
@@ -358,6 +359,12 @@ func (i *CertificateMapEntry) ToCertificateMapEntryOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapEntryOutput)
 }
 
+func (i *CertificateMapEntry) ToOutput(ctx context.Context) pulumix.Output[*CertificateMapEntry] {
+	return pulumix.Output[*CertificateMapEntry]{
+		OutputState: i.ToCertificateMapEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertificateMapEntryArrayInput is an input type that accepts CertificateMapEntryArray and CertificateMapEntryArrayOutput values.
 // You can construct a concrete instance of `CertificateMapEntryArrayInput` via:
 //
@@ -381,6 +388,12 @@ func (i CertificateMapEntryArray) ToCertificateMapEntryArrayOutput() Certificate
 
 func (i CertificateMapEntryArray) ToCertificateMapEntryArrayOutputWithContext(ctx context.Context) CertificateMapEntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapEntryArrayOutput)
+}
+
+func (i CertificateMapEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateMapEntry] {
+	return pulumix.Output[[]*CertificateMapEntry]{
+		OutputState: i.ToCertificateMapEntryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CertificateMapEntryMapInput is an input type that accepts CertificateMapEntryMap and CertificateMapEntryMapOutput values.
@@ -408,6 +421,12 @@ func (i CertificateMapEntryMap) ToCertificateMapEntryMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateMapEntryMapOutput)
 }
 
+func (i CertificateMapEntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateMapEntry] {
+	return pulumix.Output[map[string]*CertificateMapEntry]{
+		OutputState: i.ToCertificateMapEntryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateMapEntryOutput struct{ *pulumi.OutputState }
 
 func (CertificateMapEntryOutput) ElementType() reflect.Type {
@@ -420,6 +439,12 @@ func (o CertificateMapEntryOutput) ToCertificateMapEntryOutput() CertificateMapE
 
 func (o CertificateMapEntryOutput) ToCertificateMapEntryOutputWithContext(ctx context.Context) CertificateMapEntryOutput {
 	return o
+}
+
+func (o CertificateMapEntryOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateMapEntry] {
+	return pulumix.Output[*CertificateMapEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A set of Certificates defines for the given hostname.
@@ -506,6 +531,12 @@ func (o CertificateMapEntryArrayOutput) ToCertificateMapEntryArrayOutputWithCont
 	return o
 }
 
+func (o CertificateMapEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateMapEntry] {
+	return pulumix.Output[[]*CertificateMapEntry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificateMapEntryArrayOutput) Index(i pulumi.IntInput) CertificateMapEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateMapEntry {
 		return vs[0].([]*CertificateMapEntry)[vs[1].(int)]
@@ -524,6 +555,12 @@ func (o CertificateMapEntryMapOutput) ToCertificateMapEntryMapOutput() Certifica
 
 func (o CertificateMapEntryMapOutput) ToCertificateMapEntryMapOutputWithContext(ctx context.Context) CertificateMapEntryMapOutput {
 	return o
+}
+
+func (o CertificateMapEntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateMapEntry] {
+	return pulumix.Output[map[string]*CertificateMapEntry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateMapEntryMapOutput) MapIndex(k pulumi.StringInput) CertificateMapEntryOutput {

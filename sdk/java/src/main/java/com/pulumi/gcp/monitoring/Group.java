@@ -111,7 +111,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * purposes.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -129,7 +129,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="filter", type=String.class, parameters={})
+    @Export(name="filter", refs={String.class}, tree="[0]")
     private Output<String> filter;
 
     /**
@@ -148,7 +148,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * groups that are clusters.
      * 
      */
-    @Export(name="isCluster", type=Boolean.class, parameters={})
+    @Export(name="isCluster", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isCluster;
 
     /**
@@ -165,7 +165,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * groups with no parent, parentName is the empty string, &#34;&#34;.
      * 
      */
-    @Export(name="parentName", type=String.class, parameters={})
+    @Export(name="parentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentName;
 
     /**
@@ -199,7 +199,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

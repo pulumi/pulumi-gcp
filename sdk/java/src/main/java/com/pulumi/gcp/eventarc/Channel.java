@@ -104,7 +104,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      * 
      */
-    @Export(name="activationToken", type=String.class, parameters={})
+    @Export(name="activationToken", refs={String.class}, tree="[0]")
     private Output<String> activationToken;
 
     /**
@@ -118,7 +118,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Output only. The creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -132,7 +132,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
      * 
      */
-    @Export(name="cryptoKeyName", type=String.class, parameters={})
+    @Export(name="cryptoKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cryptoKeyName;
 
     /**
@@ -146,7 +146,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -162,7 +162,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -178,7 +178,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -192,7 +192,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      * 
      */
-    @Export(name="pubsubTopic", type=String.class, parameters={})
+    @Export(name="pubsubTopic", refs={String.class}, tree="[0]")
     private Output<String> pubsubTopic;
 
     /**
@@ -206,7 +206,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -220,7 +220,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
      * 
      */
-    @Export(name="thirdPartyProvider", type=String.class, parameters={})
+    @Export(name="thirdPartyProvider", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> thirdPartyProvider;
 
     /**
@@ -234,7 +234,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -248,7 +248,7 @@ public class Channel extends com.pulumi.resources.CustomResource {
      * Output only. The last-modified time.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

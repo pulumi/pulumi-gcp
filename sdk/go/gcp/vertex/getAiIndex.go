@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
@@ -96,6 +97,12 @@ func (o LookupAiIndexResultOutput) ToLookupAiIndexResultOutput() LookupAiIndexRe
 
 func (o LookupAiIndexResultOutput) ToLookupAiIndexResultOutputWithContext(ctx context.Context) LookupAiIndexResultOutput {
 	return o
+}
+
+func (o LookupAiIndexResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAiIndexResult] {
+	return pulumix.Output[LookupAiIndexResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupAiIndexResultOutput) CreateTime() pulumi.StringOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A source representation instance is a Cloud SQL instance that represents
@@ -349,6 +350,12 @@ func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceOutput)
 }
 
+func (i *SourceRepresentationInstance) ToOutput(ctx context.Context) pulumix.Output[*SourceRepresentationInstance] {
+	return pulumix.Output[*SourceRepresentationInstance]{
+		OutputState: i.ToSourceRepresentationInstanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SourceRepresentationInstanceArrayInput is an input type that accepts SourceRepresentationInstanceArray and SourceRepresentationInstanceArrayOutput values.
 // You can construct a concrete instance of `SourceRepresentationInstanceArrayInput` via:
 //
@@ -372,6 +379,12 @@ func (i SourceRepresentationInstanceArray) ToSourceRepresentationInstanceArrayOu
 
 func (i SourceRepresentationInstanceArray) ToSourceRepresentationInstanceArrayOutputWithContext(ctx context.Context) SourceRepresentationInstanceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceArrayOutput)
+}
+
+func (i SourceRepresentationInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]*SourceRepresentationInstance] {
+	return pulumix.Output[[]*SourceRepresentationInstance]{
+		OutputState: i.ToSourceRepresentationInstanceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SourceRepresentationInstanceMapInput is an input type that accepts SourceRepresentationInstanceMap and SourceRepresentationInstanceMapOutput values.
@@ -399,6 +412,12 @@ func (i SourceRepresentationInstanceMap) ToSourceRepresentationInstanceMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceMapOutput)
 }
 
+func (i SourceRepresentationInstanceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceRepresentationInstance] {
+	return pulumix.Output[map[string]*SourceRepresentationInstance]{
+		OutputState: i.ToSourceRepresentationInstanceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SourceRepresentationInstanceOutput struct{ *pulumi.OutputState }
 
 func (SourceRepresentationInstanceOutput) ElementType() reflect.Type {
@@ -411,6 +430,12 @@ func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput
 
 func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
 	return o
+}
+
+func (o SourceRepresentationInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceRepresentationInstance] {
+	return pulumix.Output[*SourceRepresentationInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
@@ -494,6 +519,12 @@ func (o SourceRepresentationInstanceArrayOutput) ToSourceRepresentationInstanceA
 	return o
 }
 
+func (o SourceRepresentationInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SourceRepresentationInstance] {
+	return pulumix.Output[[]*SourceRepresentationInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SourceRepresentationInstanceArrayOutput) Index(i pulumi.IntInput) SourceRepresentationInstanceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SourceRepresentationInstance {
 		return vs[0].([]*SourceRepresentationInstance)[vs[1].(int)]
@@ -512,6 +543,12 @@ func (o SourceRepresentationInstanceMapOutput) ToSourceRepresentationInstanceMap
 
 func (o SourceRepresentationInstanceMapOutput) ToSourceRepresentationInstanceMapOutputWithContext(ctx context.Context) SourceRepresentationInstanceMapOutput {
 	return o
+}
+
+func (o SourceRepresentationInstanceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SourceRepresentationInstance] {
+	return pulumix.Output[map[string]*SourceRepresentationInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceRepresentationInstanceMapOutput) MapIndex(k pulumi.StringInput) SourceRepresentationInstanceOutput {

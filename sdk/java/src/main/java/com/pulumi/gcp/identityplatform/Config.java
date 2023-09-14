@@ -130,7 +130,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * List of domains authorized for OAuth redirects.
      * 
      */
-    @Export(name="authorizedDomains", type=List.class, parameters={String.class})
+    @Export(name="authorizedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> authorizedDomains;
 
     /**
@@ -144,7 +144,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * Whether anonymous users will be auto-deleted after a period of 30 days
      * 
      */
-    @Export(name="autodeleteAnonymousUsers", type=Boolean.class, parameters={})
+    @Export(name="autodeleteAnonymousUsers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autodeleteAnonymousUsers;
 
     /**
@@ -159,7 +159,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="blockingFunctions", type=ConfigBlockingFunctions.class, parameters={})
+    @Export(name="blockingFunctions", refs={ConfigBlockingFunctions.class}, tree="[0]")
     private Output</* @Nullable */ ConfigBlockingFunctions> blockingFunctions;
 
     /**
@@ -174,7 +174,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * The name of the Config resource
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -189,7 +189,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -205,7 +205,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="quota", type=ConfigQuota.class, parameters={})
+    @Export(name="quota", refs={ConfigQuota.class}, tree="[0]")
     private Output</* @Nullable */ ConfigQuota> quota;
 
     /**

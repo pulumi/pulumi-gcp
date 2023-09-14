@@ -84,7 +84,7 @@ public class CustomService extends com.pulumi.resources.CustomResource {
      * Name used for UI elements listing this Service.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -99,7 +99,7 @@ public class CustomService extends com.pulumi.resources.CustomResource {
      * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class CustomService extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -131,7 +131,7 @@ public class CustomService extends com.pulumi.resources.CustomResource {
      * service ID.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
@@ -147,7 +147,7 @@ public class CustomService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="telemetry", type=CustomServiceTelemetry.class, parameters={})
+    @Export(name="telemetry", refs={CustomServiceTelemetry.class}, tree="[0]")
     private Output</* @Nullable */ CustomServiceTelemetry> telemetry;
 
     /**
@@ -167,7 +167,7 @@ public class CustomService extends com.pulumi.resources.CustomResource {
      * the empty string may be supplied for the label value.
      * 
      */
-    @Export(name="userLabels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="userLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> userLabels;
 
     /**

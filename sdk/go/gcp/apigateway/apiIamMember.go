@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
@@ -356,6 +357,12 @@ func (i *ApiIamMember) ToApiIamMemberOutputWithContext(ctx context.Context) ApiI
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberOutput)
 }
 
+func (i *ApiIamMember) ToOutput(ctx context.Context) pulumix.Output[*ApiIamMember] {
+	return pulumix.Output[*ApiIamMember]{
+		OutputState: i.ToApiIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApiIamMemberArrayInput is an input type that accepts ApiIamMemberArray and ApiIamMemberArrayOutput values.
 // You can construct a concrete instance of `ApiIamMemberArrayInput` via:
 //
@@ -379,6 +386,12 @@ func (i ApiIamMemberArray) ToApiIamMemberArrayOutput() ApiIamMemberArrayOutput {
 
 func (i ApiIamMemberArray) ToApiIamMemberArrayOutputWithContext(ctx context.Context) ApiIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberArrayOutput)
+}
+
+func (i ApiIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiIamMember] {
+	return pulumix.Output[[]*ApiIamMember]{
+		OutputState: i.ToApiIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ApiIamMemberMapInput is an input type that accepts ApiIamMemberMap and ApiIamMemberMapOutput values.
@@ -406,6 +419,12 @@ func (i ApiIamMemberMap) ToApiIamMemberMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberMapOutput)
 }
 
+func (i ApiIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiIamMember] {
+	return pulumix.Output[map[string]*ApiIamMember]{
+		OutputState: i.ToApiIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ApiIamMemberOutput) ElementType() reflect.Type {
@@ -418,6 +437,12 @@ func (o ApiIamMemberOutput) ToApiIamMemberOutput() ApiIamMemberOutput {
 
 func (o ApiIamMemberOutput) ToApiIamMemberOutputWithContext(ctx context.Context) ApiIamMemberOutput {
 	return o
+}
+
+func (o ApiIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiIamMember] {
+	return pulumix.Output[*ApiIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiIamMemberOutput) Api() pulumi.StringOutput {
@@ -476,6 +501,12 @@ func (o ApiIamMemberArrayOutput) ToApiIamMemberArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ApiIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiIamMember] {
+	return pulumix.Output[[]*ApiIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApiIamMemberArrayOutput) Index(i pulumi.IntInput) ApiIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiIamMember {
 		return vs[0].([]*ApiIamMember)[vs[1].(int)]
@@ -494,6 +525,12 @@ func (o ApiIamMemberMapOutput) ToApiIamMemberMapOutput() ApiIamMemberMapOutput {
 
 func (o ApiIamMemberMapOutput) ToApiIamMemberMapOutputWithContext(ctx context.Context) ApiIamMemberMapOutput {
 	return o
+}
+
+func (o ApiIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiIamMember] {
+	return pulumix.Output[map[string]*ApiIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiIamMemberMapOutput) MapIndex(k pulumi.StringInput) ApiIamMemberOutput {

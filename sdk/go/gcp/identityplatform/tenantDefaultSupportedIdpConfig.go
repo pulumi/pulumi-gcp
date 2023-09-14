@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configurations options for the tenant for authenticating with a the standard set of Identity Toolkit-trusted IDPs.
@@ -293,6 +294,12 @@ func (i *TenantDefaultSupportedIdpConfig) ToTenantDefaultSupportedIdpConfigOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultSupportedIdpConfigOutput)
 }
 
+func (i *TenantDefaultSupportedIdpConfig) ToOutput(ctx context.Context) pulumix.Output[*TenantDefaultSupportedIdpConfig] {
+	return pulumix.Output[*TenantDefaultSupportedIdpConfig]{
+		OutputState: i.ToTenantDefaultSupportedIdpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TenantDefaultSupportedIdpConfigArrayInput is an input type that accepts TenantDefaultSupportedIdpConfigArray and TenantDefaultSupportedIdpConfigArrayOutput values.
 // You can construct a concrete instance of `TenantDefaultSupportedIdpConfigArrayInput` via:
 //
@@ -316,6 +323,12 @@ func (i TenantDefaultSupportedIdpConfigArray) ToTenantDefaultSupportedIdpConfigA
 
 func (i TenantDefaultSupportedIdpConfigArray) ToTenantDefaultSupportedIdpConfigArrayOutputWithContext(ctx context.Context) TenantDefaultSupportedIdpConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultSupportedIdpConfigArrayOutput)
+}
+
+func (i TenantDefaultSupportedIdpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*TenantDefaultSupportedIdpConfig] {
+	return pulumix.Output[[]*TenantDefaultSupportedIdpConfig]{
+		OutputState: i.ToTenantDefaultSupportedIdpConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TenantDefaultSupportedIdpConfigMapInput is an input type that accepts TenantDefaultSupportedIdpConfigMap and TenantDefaultSupportedIdpConfigMapOutput values.
@@ -343,6 +356,12 @@ func (i TenantDefaultSupportedIdpConfigMap) ToTenantDefaultSupportedIdpConfigMap
 	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultSupportedIdpConfigMapOutput)
 }
 
+func (i TenantDefaultSupportedIdpConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TenantDefaultSupportedIdpConfig] {
+	return pulumix.Output[map[string]*TenantDefaultSupportedIdpConfig]{
+		OutputState: i.ToTenantDefaultSupportedIdpConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TenantDefaultSupportedIdpConfigOutput struct{ *pulumi.OutputState }
 
 func (TenantDefaultSupportedIdpConfigOutput) ElementType() reflect.Type {
@@ -355,6 +374,12 @@ func (o TenantDefaultSupportedIdpConfigOutput) ToTenantDefaultSupportedIdpConfig
 
 func (o TenantDefaultSupportedIdpConfigOutput) ToTenantDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) TenantDefaultSupportedIdpConfigOutput {
 	return o
+}
+
+func (o TenantDefaultSupportedIdpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantDefaultSupportedIdpConfig] {
+	return pulumix.Output[*TenantDefaultSupportedIdpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // OAuth client ID
@@ -419,6 +444,12 @@ func (o TenantDefaultSupportedIdpConfigArrayOutput) ToTenantDefaultSupportedIdpC
 	return o
 }
 
+func (o TenantDefaultSupportedIdpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TenantDefaultSupportedIdpConfig] {
+	return pulumix.Output[[]*TenantDefaultSupportedIdpConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TenantDefaultSupportedIdpConfigArrayOutput) Index(i pulumi.IntInput) TenantDefaultSupportedIdpConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TenantDefaultSupportedIdpConfig {
 		return vs[0].([]*TenantDefaultSupportedIdpConfig)[vs[1].(int)]
@@ -437,6 +468,12 @@ func (o TenantDefaultSupportedIdpConfigMapOutput) ToTenantDefaultSupportedIdpCon
 
 func (o TenantDefaultSupportedIdpConfigMapOutput) ToTenantDefaultSupportedIdpConfigMapOutputWithContext(ctx context.Context) TenantDefaultSupportedIdpConfigMapOutput {
 	return o
+}
+
+func (o TenantDefaultSupportedIdpConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TenantDefaultSupportedIdpConfig] {
+	return pulumix.Output[map[string]*TenantDefaultSupportedIdpConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TenantDefaultSupportedIdpConfigMapOutput) MapIndex(k pulumi.StringInput) TenantDefaultSupportedIdpConfigOutput {

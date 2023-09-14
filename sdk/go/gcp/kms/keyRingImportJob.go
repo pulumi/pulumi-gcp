@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A `KeyRingImportJob` can be used to create `CryptoKeys` and `CryptoKeyVersions` using pre-existing
@@ -239,6 +240,12 @@ func (i *KeyRingImportJob) ToKeyRingImportJobOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobOutput)
 }
 
+func (i *KeyRingImportJob) ToOutput(ctx context.Context) pulumix.Output[*KeyRingImportJob] {
+	return pulumix.Output[*KeyRingImportJob]{
+		OutputState: i.ToKeyRingImportJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyRingImportJobArrayInput is an input type that accepts KeyRingImportJobArray and KeyRingImportJobArrayOutput values.
 // You can construct a concrete instance of `KeyRingImportJobArrayInput` via:
 //
@@ -262,6 +269,12 @@ func (i KeyRingImportJobArray) ToKeyRingImportJobArrayOutput() KeyRingImportJobA
 
 func (i KeyRingImportJobArray) ToKeyRingImportJobArrayOutputWithContext(ctx context.Context) KeyRingImportJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobArrayOutput)
+}
+
+func (i KeyRingImportJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRingImportJob] {
+	return pulumix.Output[[]*KeyRingImportJob]{
+		OutputState: i.ToKeyRingImportJobArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeyRingImportJobMapInput is an input type that accepts KeyRingImportJobMap and KeyRingImportJobMapOutput values.
@@ -289,6 +302,12 @@ func (i KeyRingImportJobMap) ToKeyRingImportJobMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobMapOutput)
 }
 
+func (i KeyRingImportJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRingImportJob] {
+	return pulumix.Output[map[string]*KeyRingImportJob]{
+		OutputState: i.ToKeyRingImportJobMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingImportJobOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobOutput) ElementType() reflect.Type {
@@ -301,6 +320,12 @@ func (o KeyRingImportJobOutput) ToKeyRingImportJobOutput() KeyRingImportJobOutpu
 
 func (o KeyRingImportJobOutput) ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput {
 	return o
+}
+
+func (o KeyRingImportJobOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingImportJob] {
+	return pulumix.Output[*KeyRingImportJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
@@ -373,6 +398,12 @@ func (o KeyRingImportJobArrayOutput) ToKeyRingImportJobArrayOutputWithContext(ct
 	return o
 }
 
+func (o KeyRingImportJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRingImportJob] {
+	return pulumix.Output[[]*KeyRingImportJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyRingImportJobArrayOutput) Index(i pulumi.IntInput) KeyRingImportJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingImportJob {
 		return vs[0].([]*KeyRingImportJob)[vs[1].(int)]
@@ -391,6 +422,12 @@ func (o KeyRingImportJobMapOutput) ToKeyRingImportJobMapOutput() KeyRingImportJo
 
 func (o KeyRingImportJobMapOutput) ToKeyRingImportJobMapOutputWithContext(ctx context.Context) KeyRingImportJobMapOutput {
 	return o
+}
+
+func (o KeyRingImportJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRingImportJob] {
+	return pulumix.Output[map[string]*KeyRingImportJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRingImportJobMapOutput) MapIndex(k pulumi.StringInput) KeyRingImportJobOutput {

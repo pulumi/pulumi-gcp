@@ -178,7 +178,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="dashboardJson", type=String.class, parameters={})
+    @Export(name="dashboardJson", refs={String.class}, tree="[0]")
     private Output<String> dashboardJson;
 
     /**
@@ -196,7 +196,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

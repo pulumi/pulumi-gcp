@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
@@ -366,6 +367,12 @@ func (i *GatewayIamPolicy) ToGatewayIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyOutput)
 }
 
+func (i *GatewayIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamPolicy] {
+	return pulumix.Output[*GatewayIamPolicy]{
+		OutputState: i.ToGatewayIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GatewayIamPolicyArrayInput is an input type that accepts GatewayIamPolicyArray and GatewayIamPolicyArrayOutput values.
 // You can construct a concrete instance of `GatewayIamPolicyArrayInput` via:
 //
@@ -389,6 +396,12 @@ func (i GatewayIamPolicyArray) ToGatewayIamPolicyArrayOutput() GatewayIamPolicyA
 
 func (i GatewayIamPolicyArray) ToGatewayIamPolicyArrayOutputWithContext(ctx context.Context) GatewayIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyArrayOutput)
+}
+
+func (i GatewayIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayIamPolicy] {
+	return pulumix.Output[[]*GatewayIamPolicy]{
+		OutputState: i.ToGatewayIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GatewayIamPolicyMapInput is an input type that accepts GatewayIamPolicyMap and GatewayIamPolicyMapOutput values.
@@ -416,6 +429,12 @@ func (i GatewayIamPolicyMap) ToGatewayIamPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyMapOutput)
 }
 
+func (i GatewayIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayIamPolicy] {
+	return pulumix.Output[map[string]*GatewayIamPolicy]{
+		OutputState: i.ToGatewayIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GatewayIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamPolicyOutput) ElementType() reflect.Type {
@@ -428,6 +447,12 @@ func (o GatewayIamPolicyOutput) ToGatewayIamPolicyOutput() GatewayIamPolicyOutpu
 
 func (o GatewayIamPolicyOutput) ToGatewayIamPolicyOutputWithContext(ctx context.Context) GatewayIamPolicyOutput {
 	return o
+}
+
+func (o GatewayIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamPolicy] {
+	return pulumix.Output[*GatewayIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -485,6 +510,12 @@ func (o GatewayIamPolicyArrayOutput) ToGatewayIamPolicyArrayOutputWithContext(ct
 	return o
 }
 
+func (o GatewayIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayIamPolicy] {
+	return pulumix.Output[[]*GatewayIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GatewayIamPolicyArrayOutput) Index(i pulumi.IntInput) GatewayIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayIamPolicy {
 		return vs[0].([]*GatewayIamPolicy)[vs[1].(int)]
@@ -503,6 +534,12 @@ func (o GatewayIamPolicyMapOutput) ToGatewayIamPolicyMapOutput() GatewayIamPolic
 
 func (o GatewayIamPolicyMapOutput) ToGatewayIamPolicyMapOutputWithContext(ctx context.Context) GatewayIamPolicyMapOutput {
 	return o
+}
+
+func (o GatewayIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayIamPolicy] {
+	return pulumix.Output[map[string]*GatewayIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GatewayIamPolicyMapOutput) MapIndex(k pulumi.StringInput) GatewayIamPolicyOutput {

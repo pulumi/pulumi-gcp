@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -72,6 +73,12 @@ func (i AddonsConfigAddonsConfigArgs) ToAddonsConfigAddonsConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigOutput)
 }
 
+func (i AddonsConfigAddonsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddonsConfigAddonsConfigArgs) ToAddonsConfigAddonsConfigPtrOutput() AddonsConfigAddonsConfigPtrOutput {
 	return i.ToAddonsConfigAddonsConfigPtrOutputWithContext(context.Background())
 }
@@ -113,6 +120,12 @@ func (i *addonsConfigAddonsConfigPtrType) ToAddonsConfigAddonsConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigPtrOutput)
 }
 
+func (i *addonsConfigAddonsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonsConfigAddonsConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigAddonsConfigOutput) ElementType() reflect.Type {
@@ -135,6 +148,12 @@ func (o AddonsConfigAddonsConfigOutput) ToAddonsConfigAddonsConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfig) *AddonsConfigAddonsConfig {
 		return &v
 	}).(AddonsConfigAddonsConfigPtrOutput)
+}
+
+func (o AddonsConfigAddonsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configuration for the Monetization add-on.
@@ -189,6 +208,12 @@ func (o AddonsConfigAddonsConfigPtrOutput) ToAddonsConfigAddonsConfigPtrOutput()
 
 func (o AddonsConfigAddonsConfigPtrOutput) ToAddonsConfigAddonsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigPtrOutput {
 	return o
+}
+
+func (o AddonsConfigAddonsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddonsConfigAddonsConfigPtrOutput) Elem() AddonsConfigAddonsConfigOutput {
@@ -289,6 +314,12 @@ func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToAddonsConfigAddonsCo
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput)
 }
 
+func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigAdvancedApiOpsConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigAdvancedApiOpsConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput() AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
 	return i.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(context.Background())
 }
@@ -330,6 +361,12 @@ func (i *addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType) ToAddonsConfigAddo
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
 }
 
+func (i *addonsConfigAddonsConfigAdvancedApiOpsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigAdvancedApiOpsConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigAdvancedApiOpsConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ElementType() reflect.Type {
@@ -354,6 +391,12 @@ func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ToAddonsConfigAddons
 	}).(AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput)
 }
 
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigAdvancedApiOpsConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigAdvancedApiOpsConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigAdvancedApiOpsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -371,6 +414,12 @@ func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) ToAddonsConfigAdd
 
 func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) ToAddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput {
 	return o
+}
+
+func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigAdvancedApiOpsConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigAdvancedApiOpsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddonsConfigAddonsConfigAdvancedApiOpsConfigPtrOutput) Elem() AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput {
@@ -432,6 +481,12 @@ func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToAddonsConfigAddonsConfi
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigApiSecurityConfigOutput)
 }
 
+func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigApiSecurityConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigApiSecurityConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigApiSecurityConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddonsConfigAddonsConfigApiSecurityConfigArgs) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutput() AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
 	return i.ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(context.Background())
 }
@@ -473,6 +528,12 @@ func (i *addonsConfigAddonsConfigApiSecurityConfigPtrType) ToAddonsConfigAddonsC
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
 }
 
+func (i *addonsConfigAddonsConfigApiSecurityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigApiSecurityConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigApiSecurityConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonsConfigAddonsConfigApiSecurityConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigAddonsConfigApiSecurityConfigOutput) ElementType() reflect.Type {
@@ -495,6 +556,12 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToAddonsConfigAddonsCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigApiSecurityConfig) *AddonsConfigAddonsConfigApiSecurityConfig {
 		return &v
 	}).(AddonsConfigAddonsConfigApiSecurityConfigPtrOutput)
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigApiSecurityConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigApiSecurityConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -520,6 +587,12 @@ func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ToAddonsConfigAddons
 
 func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ToAddonsConfigAddonsConfigApiSecurityConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigApiSecurityConfigPtrOutput {
 	return o
+}
+
+func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigApiSecurityConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigApiSecurityConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddonsConfigAddonsConfigApiSecurityConfigPtrOutput) Elem() AddonsConfigAddonsConfigApiSecurityConfigOutput {
@@ -592,6 +665,12 @@ func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToAddonsConfigAddo
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigConnectorsPlatformConfigOutput)
 }
 
+func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigConnectorsPlatformConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigConnectorsPlatformConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigConnectorsPlatformConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddonsConfigAddonsConfigConnectorsPlatformConfigArgs) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput() AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
 	return i.ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(context.Background())
 }
@@ -633,6 +712,12 @@ func (i *addonsConfigAddonsConfigConnectorsPlatformConfigPtrType) ToAddonsConfig
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
 }
 
+func (i *addonsConfigAddonsConfigConnectorsPlatformConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigConnectorsPlatformConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigConnectorsPlatformConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonsConfigAddonsConfigConnectorsPlatformConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ElementType() reflect.Type {
@@ -655,6 +740,12 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToAddonsConfigAd
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddonsConfigAddonsConfigConnectorsPlatformConfig) *AddonsConfigAddonsConfigConnectorsPlatformConfig {
 		return &v
 	}).(AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput)
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigConnectorsPlatformConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigConnectorsPlatformConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -680,6 +771,12 @@ func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ToAddonsConfi
 
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ToAddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput {
 	return o
+}
+
+func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigConnectorsPlatformConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigConnectorsPlatformConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddonsConfigAddonsConfigConnectorsPlatformConfigPtrOutput) Elem() AddonsConfigAddonsConfigConnectorsPlatformConfigOutput {
@@ -746,6 +843,12 @@ func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToAddonsConfigAddonsConfi
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigIntegrationConfigOutput)
 }
 
+func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigIntegrationConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigIntegrationConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigIntegrationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddonsConfigAddonsConfigIntegrationConfigArgs) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutput() AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
 	return i.ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(context.Background())
 }
@@ -787,6 +890,12 @@ func (i *addonsConfigAddonsConfigIntegrationConfigPtrType) ToAddonsConfigAddonsC
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
 }
 
+func (i *addonsConfigAddonsConfigIntegrationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigIntegrationConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigIntegrationConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonsConfigAddonsConfigIntegrationConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigAddonsConfigIntegrationConfigOutput) ElementType() reflect.Type {
@@ -811,6 +920,12 @@ func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToAddonsConfigAddonsCon
 	}).(AddonsConfigAddonsConfigIntegrationConfigPtrOutput)
 }
 
+func (o AddonsConfigAddonsConfigIntegrationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigIntegrationConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigIntegrationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigIntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigIntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -828,6 +943,12 @@ func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) ToAddonsConfigAddons
 
 func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) ToAddonsConfigAddonsConfigIntegrationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigIntegrationConfigPtrOutput {
 	return o
+}
+
+func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigIntegrationConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigIntegrationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddonsConfigAddonsConfigIntegrationConfigPtrOutput) Elem() AddonsConfigAddonsConfigIntegrationConfigOutput {
@@ -883,6 +1004,12 @@ func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToAddonsConfigAddonsConf
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigMonetizationConfigOutput)
 }
 
+func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigMonetizationConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigMonetizationConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigMonetizationConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AddonsConfigAddonsConfigMonetizationConfigArgs) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutput() AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
 	return i.ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(context.Background())
 }
@@ -924,6 +1051,12 @@ func (i *addonsConfigAddonsConfigMonetizationConfigPtrType) ToAddonsConfigAddons
 	return pulumi.ToOutputWithContext(ctx, i).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
 }
 
+func (i *addonsConfigAddonsConfigMonetizationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigMonetizationConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigMonetizationConfig]{
+		OutputState: i.ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddonsConfigAddonsConfigMonetizationConfigOutput struct{ *pulumi.OutputState }
 
 func (AddonsConfigAddonsConfigMonetizationConfigOutput) ElementType() reflect.Type {
@@ -948,6 +1081,12 @@ func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToAddonsConfigAddonsCo
 	}).(AddonsConfigAddonsConfigMonetizationConfigPtrOutput)
 }
 
+func (o AddonsConfigAddonsConfigMonetizationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AddonsConfigAddonsConfigMonetizationConfig] {
+	return pulumix.Output[AddonsConfigAddonsConfigMonetizationConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Flag that specifies whether the Advanced API Ops add-on is enabled.
 func (o AddonsConfigAddonsConfigMonetizationConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AddonsConfigAddonsConfigMonetizationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -965,6 +1104,12 @@ func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) ToAddonsConfigAddon
 
 func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) ToAddonsConfigAddonsConfigMonetizationConfigPtrOutputWithContext(ctx context.Context) AddonsConfigAddonsConfigMonetizationConfigPtrOutput {
 	return o
+}
+
+func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddonsConfigAddonsConfigMonetizationConfig] {
+	return pulumix.Output[*AddonsConfigAddonsConfigMonetizationConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Elem() AddonsConfigAddonsConfigMonetizationConfigOutput {
@@ -1022,6 +1167,12 @@ func (i EnvironmentIamBindingConditionArgs) ToEnvironmentIamBindingConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingConditionOutput)
 }
 
+func (i EnvironmentIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentIamBindingCondition] {
+	return pulumix.Output[EnvironmentIamBindingCondition]{
+		OutputState: i.ToEnvironmentIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvironmentIamBindingConditionArgs) ToEnvironmentIamBindingConditionPtrOutput() EnvironmentIamBindingConditionPtrOutput {
 	return i.ToEnvironmentIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1063,6 +1214,12 @@ func (i *environmentIamBindingConditionPtrType) ToEnvironmentIamBindingCondition
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamBindingConditionPtrOutput)
 }
 
+func (i *environmentIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamBindingCondition] {
+	return pulumix.Output[*EnvironmentIamBindingCondition]{
+		OutputState: i.ToEnvironmentIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1085,6 +1242,12 @@ func (o EnvironmentIamBindingConditionOutput) ToEnvironmentIamBindingConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentIamBindingCondition) *EnvironmentIamBindingCondition {
 		return &v
 	}).(EnvironmentIamBindingConditionPtrOutput)
+}
+
+func (o EnvironmentIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentIamBindingCondition] {
+	return pulumix.Output[EnvironmentIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1111,6 +1274,12 @@ func (o EnvironmentIamBindingConditionPtrOutput) ToEnvironmentIamBindingConditio
 
 func (o EnvironmentIamBindingConditionPtrOutput) ToEnvironmentIamBindingConditionPtrOutputWithContext(ctx context.Context) EnvironmentIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o EnvironmentIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamBindingCondition] {
+	return pulumix.Output[*EnvironmentIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentIamBindingConditionPtrOutput) Elem() EnvironmentIamBindingConditionOutput {
@@ -1185,6 +1354,12 @@ func (i EnvironmentIamMemberConditionArgs) ToEnvironmentIamMemberConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamMemberConditionOutput)
 }
 
+func (i EnvironmentIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentIamMemberCondition] {
+	return pulumix.Output[EnvironmentIamMemberCondition]{
+		OutputState: i.ToEnvironmentIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvironmentIamMemberConditionArgs) ToEnvironmentIamMemberConditionPtrOutput() EnvironmentIamMemberConditionPtrOutput {
 	return i.ToEnvironmentIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1226,6 +1401,12 @@ func (i *environmentIamMemberConditionPtrType) ToEnvironmentIamMemberConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentIamMemberConditionPtrOutput)
 }
 
+func (i *environmentIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamMemberCondition] {
+	return pulumix.Output[*EnvironmentIamMemberCondition]{
+		OutputState: i.ToEnvironmentIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1248,6 +1429,12 @@ func (o EnvironmentIamMemberConditionOutput) ToEnvironmentIamMemberConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentIamMemberCondition) *EnvironmentIamMemberCondition {
 		return &v
 	}).(EnvironmentIamMemberConditionPtrOutput)
+}
+
+func (o EnvironmentIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentIamMemberCondition] {
+	return pulumix.Output[EnvironmentIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1274,6 +1461,12 @@ func (o EnvironmentIamMemberConditionPtrOutput) ToEnvironmentIamMemberConditionP
 
 func (o EnvironmentIamMemberConditionPtrOutput) ToEnvironmentIamMemberConditionPtrOutputWithContext(ctx context.Context) EnvironmentIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o EnvironmentIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentIamMemberCondition] {
+	return pulumix.Output[*EnvironmentIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentIamMemberConditionPtrOutput) Elem() EnvironmentIamMemberConditionOutput {
@@ -1366,6 +1559,12 @@ func (i EnvironmentNodeConfigArgs) ToEnvironmentNodeConfigOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentNodeConfigOutput)
 }
 
+func (i EnvironmentNodeConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentNodeConfig] {
+	return pulumix.Output[EnvironmentNodeConfig]{
+		OutputState: i.ToEnvironmentNodeConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnvironmentNodeConfigArgs) ToEnvironmentNodeConfigPtrOutput() EnvironmentNodeConfigPtrOutput {
 	return i.ToEnvironmentNodeConfigPtrOutputWithContext(context.Background())
 }
@@ -1407,6 +1606,12 @@ func (i *environmentNodeConfigPtrType) ToEnvironmentNodeConfigPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentNodeConfigPtrOutput)
 }
 
+func (i *environmentNodeConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentNodeConfig] {
+	return pulumix.Output[*EnvironmentNodeConfig]{
+		OutputState: i.ToEnvironmentNodeConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnvironmentNodeConfigOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentNodeConfigOutput) ElementType() reflect.Type {
@@ -1429,6 +1634,12 @@ func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentNodeConfig) *EnvironmentNodeConfig {
 		return &v
 	}).(EnvironmentNodeConfigPtrOutput)
+}
+
+func (o EnvironmentNodeConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentNodeConfig] {
+	return pulumix.Output[EnvironmentNodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1464,6 +1675,12 @@ func (o EnvironmentNodeConfigPtrOutput) ToEnvironmentNodeConfigPtrOutput() Envir
 
 func (o EnvironmentNodeConfigPtrOutput) ToEnvironmentNodeConfigPtrOutputWithContext(ctx context.Context) EnvironmentNodeConfigPtrOutput {
 	return o
+}
+
+func (o EnvironmentNodeConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentNodeConfig] {
+	return pulumix.Output[*EnvironmentNodeConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnvironmentNodeConfigPtrOutput) Elem() EnvironmentNodeConfigOutput {
@@ -1549,6 +1766,12 @@ func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileC
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoOutput)
 }
 
+func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesKeyCertFileCertsInfo] {
+	return pulumix.Output[KeystoresAliasesKeyCertFileCertsInfo]{
+		OutputState: i.ToKeystoresAliasesKeyCertFileCertsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
 	return i.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
 }
@@ -1590,6 +1813,12 @@ func (i *keystoresAliasesKeyCertFileCertsInfoPtrType) ToKeystoresAliasesKeyCertF
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
 }
 
+func (i *keystoresAliasesKeyCertFileCertsInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesKeyCertFileCertsInfo] {
+	return pulumix.Output[*KeystoresAliasesKeyCertFileCertsInfo]{
+		OutputState: i.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesKeyCertFileCertsInfoOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesKeyCertFileCertsInfoOutput) ElementType() reflect.Type {
@@ -1614,6 +1843,12 @@ func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFil
 	}).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
 }
 
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesKeyCertFileCertsInfo] {
+	return pulumix.Output[KeystoresAliasesKeyCertFileCertsInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // (Output)
 // List of all properties in the object.
 // Structure is documented below.
@@ -1635,6 +1870,12 @@ func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToKeystoresAliasesKeyCert
 
 func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
 	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesKeyCertFileCertsInfo] {
+	return pulumix.Output[*KeystoresAliasesKeyCertFileCertsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) Elem() KeystoresAliasesKeyCertFileCertsInfoOutput {
@@ -1756,6 +1997,12 @@ func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ToKeystoresAliasesKeyC
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput)
 }
 
+func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesKeyCertFileCertsInfoCertInfo] {
+	return pulumix.Output[KeystoresAliasesKeyCertFileCertsInfoCertInfo]{
+		OutputState: i.ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoCertInfoArray and KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput` via:
 //
@@ -1781,6 +2028,12 @@ func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ToKeystoresAliasesKey
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
 }
 
+func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesKeyCertFileCertsInfoCertInfo] {
+	return pulumix.Output[[]KeystoresAliasesKeyCertFileCertsInfoCertInfo]{
+		OutputState: i.ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ElementType() reflect.Type {
@@ -1793,6 +2046,12 @@ func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKe
 
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
 	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesKeyCertFileCertsInfoCertInfo] {
+	return pulumix.Output[KeystoresAliasesKeyCertFileCertsInfoCertInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1876,6 +2135,12 @@ func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ToKeystoresAlia
 	return o
 }
 
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesKeyCertFileCertsInfoCertInfo] {
+	return pulumix.Output[[]KeystoresAliasesKeyCertFileCertsInfoCertInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesKeyCertFileCertsInfoCertInfo {
 		return vs[0].([]KeystoresAliasesKeyCertFileCertsInfoCertInfo)[vs[1].(int)]
@@ -1919,6 +2184,12 @@ func (i KeystoresAliasesPkcs12CertsInfoArgs) ToKeystoresAliasesPkcs12CertsInfoOu
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoOutput)
 }
 
+func (i KeystoresAliasesPkcs12CertsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesPkcs12CertsInfo] {
+	return pulumix.Output[KeystoresAliasesPkcs12CertsInfo]{
+		OutputState: i.ToKeystoresAliasesPkcs12CertsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeystoresAliasesPkcs12CertsInfoArrayInput is an input type that accepts KeystoresAliasesPkcs12CertsInfoArray and KeystoresAliasesPkcs12CertsInfoArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesPkcs12CertsInfoArrayInput` via:
 //
@@ -1944,6 +2215,12 @@ func (i KeystoresAliasesPkcs12CertsInfoArray) ToKeystoresAliasesPkcs12CertsInfoA
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoArrayOutput)
 }
 
+func (i KeystoresAliasesPkcs12CertsInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesPkcs12CertsInfo] {
+	return pulumix.Output[[]KeystoresAliasesPkcs12CertsInfo]{
+		OutputState: i.ToKeystoresAliasesPkcs12CertsInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesPkcs12CertsInfoOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesPkcs12CertsInfoOutput) ElementType() reflect.Type {
@@ -1956,6 +2233,12 @@ func (o KeystoresAliasesPkcs12CertsInfoOutput) ToKeystoresAliasesPkcs12CertsInfo
 
 func (o KeystoresAliasesPkcs12CertsInfoOutput) ToKeystoresAliasesPkcs12CertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoOutput {
 	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesPkcs12CertsInfo] {
+	return pulumix.Output[KeystoresAliasesPkcs12CertsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1977,6 +2260,12 @@ func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) ToKeystoresAliasesPkcs12Cert
 
 func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) ToKeystoresAliasesPkcs12CertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoArrayOutput {
 	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesPkcs12CertsInfo] {
+	return pulumix.Output[[]KeystoresAliasesPkcs12CertsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesPkcs12CertsInfoOutput {
@@ -2082,6 +2371,12 @@ func (i KeystoresAliasesPkcs12CertsInfoCertInfoArgs) ToKeystoresAliasesPkcs12Cer
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoCertInfoOutput)
 }
 
+func (i KeystoresAliasesPkcs12CertsInfoCertInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesPkcs12CertsInfoCertInfo] {
+	return pulumix.Output[KeystoresAliasesPkcs12CertsInfoCertInfo]{
+		OutputState: i.ToKeystoresAliasesPkcs12CertsInfoCertInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesPkcs12CertsInfoCertInfoArray and KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput` via:
 //
@@ -2107,6 +2402,12 @@ func (i KeystoresAliasesPkcs12CertsInfoCertInfoArray) ToKeystoresAliasesPkcs12Ce
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput)
 }
 
+func (i KeystoresAliasesPkcs12CertsInfoCertInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesPkcs12CertsInfoCertInfo] {
+	return pulumix.Output[[]KeystoresAliasesPkcs12CertsInfoCertInfo]{
+		OutputState: i.ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesPkcs12CertsInfoCertInfoOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ElementType() reflect.Type {
@@ -2119,6 +2420,12 @@ func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ToKeystoresAliasesPkcs12C
 
 func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ToKeystoresAliasesPkcs12CertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
 	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesPkcs12CertsInfoCertInfo] {
+	return pulumix.Output[KeystoresAliasesPkcs12CertsInfoCertInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2202,6 +2509,12 @@ func (o KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) ToKeystoresAliasesPk
 	return o
 }
 
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesPkcs12CertsInfoCertInfo] {
+	return pulumix.Output[[]KeystoresAliasesPkcs12CertsInfoCertInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesPkcs12CertsInfoCertInfo {
 		return vs[0].([]KeystoresAliasesPkcs12CertsInfoCertInfo)[vs[1].(int)]
@@ -2245,6 +2558,12 @@ func (i KeystoresAliasesSelfSignedCertCertsInfoArgs) ToKeystoresAliasesSelfSigne
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertCertsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfo] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfo]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertCertsInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeystoresAliasesSelfSignedCertCertsInfoArrayInput is an input type that accepts KeystoresAliasesSelfSignedCertCertsInfoArray and KeystoresAliasesSelfSignedCertCertsInfoArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesSelfSignedCertCertsInfoArrayInput` via:
 //
@@ -2270,6 +2589,12 @@ func (i KeystoresAliasesSelfSignedCertCertsInfoArray) ToKeystoresAliasesSelfSign
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoArrayOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertCertsInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfo] {
+	return pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfo]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesSelfSignedCertCertsInfoOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesSelfSignedCertCertsInfoOutput) ElementType() reflect.Type {
@@ -2282,6 +2607,12 @@ func (o KeystoresAliasesSelfSignedCertCertsInfoOutput) ToKeystoresAliasesSelfSig
 
 func (o KeystoresAliasesSelfSignedCertCertsInfoOutput) ToKeystoresAliasesSelfSignedCertCertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfo] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2305,6 +2636,12 @@ func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) ToKeystoresAliasesSe
 
 func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoArrayOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfo] {
+	return pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesSelfSignedCertCertsInfoOutput {
@@ -2410,6 +2747,12 @@ func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs) ToKeystoresAliasesS
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfoCertInfo] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfoCertInfo]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray and KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput` via:
 //
@@ -2435,6 +2778,12 @@ func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray) ToKeystoresAliases
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfoCertInfo] {
+	return pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfoCertInfo]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ElementType() reflect.Type {
@@ -2447,6 +2796,12 @@ func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ToKeystoresAliase
 
 func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfoCertInfo] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertCertsInfoCertInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2530,6 +2885,12 @@ func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) ToKeystoresA
 	return o
 }
 
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfoCertInfo] {
+	return pulumix.Output[[]KeystoresAliasesSelfSignedCertCertsInfoCertInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
 		return vs[0].([]KeystoresAliasesSelfSignedCertCertsInfoCertInfo)[vs[1].(int)]
@@ -2597,6 +2958,12 @@ func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToKeystoresAliasesSelfSignedC
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertSubject] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertSubject]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertSubjectOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToKeystoresAliasesSelfSignedCertSubjectPtrOutput() KeystoresAliasesSelfSignedCertSubjectPtrOutput {
 	return i.ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(context.Background())
 }
@@ -2638,6 +3005,12 @@ func (i *keystoresAliasesSelfSignedCertSubjectPtrType) ToKeystoresAliasesSelfSig
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectPtrOutput)
 }
 
+func (i *keystoresAliasesSelfSignedCertSubjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesSelfSignedCertSubject] {
+	return pulumix.Output[*KeystoresAliasesSelfSignedCertSubject]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesSelfSignedCertSubjectOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesSelfSignedCertSubjectOutput) ElementType() reflect.Type {
@@ -2660,6 +3033,12 @@ func (o KeystoresAliasesSelfSignedCertSubjectOutput) ToKeystoresAliasesSelfSigne
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeystoresAliasesSelfSignedCertSubject) *KeystoresAliasesSelfSignedCertSubject {
 		return &v
 	}).(KeystoresAliasesSelfSignedCertSubjectPtrOutput)
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertSubject] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertSubject]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Common name of the organization. Maximum length is 64 characters.
@@ -2711,6 +3090,12 @@ func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) ToKeystoresAliasesSelfSi
 
 func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectPtrOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesSelfSignedCertSubject] {
+	return pulumix.Output[*KeystoresAliasesSelfSignedCertSubject]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Elem() KeystoresAliasesSelfSignedCertSubjectOutput {
@@ -2828,6 +3213,12 @@ func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToKeystore
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
 	return i.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(context.Background())
 }
@@ -2869,6 +3260,12 @@ func (i *keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType) ToKeys
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput)
 }
 
+func (i *keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames] {
+	return pulumix.Output[*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ElementType() reflect.Type {
@@ -2893,6 +3290,12 @@ func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ToKeysto
 	}).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput)
 }
 
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ToOutput(ctx context.Context) pulumix.Output[KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames] {
+	return pulumix.Output[KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Subject Alternative Name
 func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) SubjectAlternativeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames) *string {
@@ -2912,6 +3315,12 @@ func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) ToKey
 
 func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames] {
+	return pulumix.Output[*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) Elem() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput {
@@ -2969,6 +3378,12 @@ func (i OrganizationPropertiesArgs) ToOrganizationPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesOutput)
 }
 
+func (i OrganizationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationProperties] {
+	return pulumix.Output[OrganizationProperties]{
+		OutputState: i.ToOrganizationPropertiesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OrganizationPropertiesArgs) ToOrganizationPropertiesPtrOutput() OrganizationPropertiesPtrOutput {
 	return i.ToOrganizationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -3010,6 +3425,12 @@ func (i *organizationPropertiesPtrType) ToOrganizationPropertiesPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesPtrOutput)
 }
 
+func (i *organizationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationProperties] {
+	return pulumix.Output[*OrganizationProperties]{
+		OutputState: i.ToOrganizationPropertiesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPropertiesOutput) ElementType() reflect.Type {
@@ -3034,6 +3455,12 @@ func (o OrganizationPropertiesOutput) ToOrganizationPropertiesPtrOutputWithConte
 	}).(OrganizationPropertiesPtrOutput)
 }
 
+func (o OrganizationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationProperties] {
+	return pulumix.Output[OrganizationProperties]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of all properties in the object.
 // Structure is documented below.
 func (o OrganizationPropertiesOutput) Properties() OrganizationPropertiesPropertyArrayOutput {
@@ -3052,6 +3479,12 @@ func (o OrganizationPropertiesPtrOutput) ToOrganizationPropertiesPtrOutput() Org
 
 func (o OrganizationPropertiesPtrOutput) ToOrganizationPropertiesPtrOutputWithContext(ctx context.Context) OrganizationPropertiesPtrOutput {
 	return o
+}
+
+func (o OrganizationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationProperties] {
+	return pulumix.Output[*OrganizationProperties]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationPropertiesPtrOutput) Elem() OrganizationPropertiesOutput {
@@ -3112,6 +3545,12 @@ func (i OrganizationPropertiesPropertyArgs) ToOrganizationPropertiesPropertyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesPropertyOutput)
 }
 
+func (i OrganizationPropertiesPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationPropertiesProperty] {
+	return pulumix.Output[OrganizationPropertiesProperty]{
+		OutputState: i.ToOrganizationPropertiesPropertyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationPropertiesPropertyArrayInput is an input type that accepts OrganizationPropertiesPropertyArray and OrganizationPropertiesPropertyArrayOutput values.
 // You can construct a concrete instance of `OrganizationPropertiesPropertyArrayInput` via:
 //
@@ -3137,6 +3576,12 @@ func (i OrganizationPropertiesPropertyArray) ToOrganizationPropertiesPropertyArr
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPropertiesPropertyArrayOutput)
 }
 
+func (i OrganizationPropertiesPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationPropertiesProperty] {
+	return pulumix.Output[[]OrganizationPropertiesProperty]{
+		OutputState: i.ToOrganizationPropertiesPropertyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationPropertiesPropertyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPropertiesPropertyOutput) ElementType() reflect.Type {
@@ -3149,6 +3594,12 @@ func (o OrganizationPropertiesPropertyOutput) ToOrganizationPropertiesPropertyOu
 
 func (o OrganizationPropertiesPropertyOutput) ToOrganizationPropertiesPropertyOutputWithContext(ctx context.Context) OrganizationPropertiesPropertyOutput {
 	return o
+}
+
+func (o OrganizationPropertiesPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationPropertiesProperty] {
+	return pulumix.Output[OrganizationPropertiesProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the property.
@@ -3173,6 +3624,12 @@ func (o OrganizationPropertiesPropertyArrayOutput) ToOrganizationPropertiesPrope
 
 func (o OrganizationPropertiesPropertyArrayOutput) ToOrganizationPropertiesPropertyArrayOutputWithContext(ctx context.Context) OrganizationPropertiesPropertyArrayOutput {
 	return o
+}
+
+func (o OrganizationPropertiesPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OrganizationPropertiesProperty] {
+	return pulumix.Output[[]OrganizationPropertiesProperty]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) OrganizationPropertiesPropertyOutput {
@@ -3222,6 +3679,12 @@ func (i SharedflowMetaDataArgs) ToSharedflowMetaDataOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowMetaDataOutput)
 }
 
+func (i SharedflowMetaDataArgs) ToOutput(ctx context.Context) pulumix.Output[SharedflowMetaData] {
+	return pulumix.Output[SharedflowMetaData]{
+		OutputState: i.ToSharedflowMetaDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SharedflowMetaDataArrayInput is an input type that accepts SharedflowMetaDataArray and SharedflowMetaDataArrayOutput values.
 // You can construct a concrete instance of `SharedflowMetaDataArrayInput` via:
 //
@@ -3247,6 +3710,12 @@ func (i SharedflowMetaDataArray) ToSharedflowMetaDataArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowMetaDataArrayOutput)
 }
 
+func (i SharedflowMetaDataArray) ToOutput(ctx context.Context) pulumix.Output[[]SharedflowMetaData] {
+	return pulumix.Output[[]SharedflowMetaData]{
+		OutputState: i.ToSharedflowMetaDataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SharedflowMetaDataOutput struct{ *pulumi.OutputState }
 
 func (SharedflowMetaDataOutput) ElementType() reflect.Type {
@@ -3259,6 +3728,12 @@ func (o SharedflowMetaDataOutput) ToSharedflowMetaDataOutput() SharedflowMetaDat
 
 func (o SharedflowMetaDataOutput) ToSharedflowMetaDataOutputWithContext(ctx context.Context) SharedflowMetaDataOutput {
 	return o
+}
+
+func (o SharedflowMetaDataOutput) ToOutput(ctx context.Context) pulumix.Output[SharedflowMetaData] {
+	return pulumix.Output[SharedflowMetaData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time at which the API proxy was created, in milliseconds since epoch.
@@ -3288,6 +3763,12 @@ func (o SharedflowMetaDataArrayOutput) ToSharedflowMetaDataArrayOutput() Sharedf
 
 func (o SharedflowMetaDataArrayOutput) ToSharedflowMetaDataArrayOutputWithContext(ctx context.Context) SharedflowMetaDataArrayOutput {
 	return o
+}
+
+func (o SharedflowMetaDataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedflowMetaData] {
+	return pulumix.Output[[]SharedflowMetaData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedflowMetaDataArrayOutput) Index(i pulumi.IntInput) SharedflowMetaDataOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -282,6 +283,12 @@ func (i *RegionBackendServiceIamMember) ToRegionBackendServiceIamMemberOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamMemberOutput)
 }
 
+func (i *RegionBackendServiceIamMember) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIamMember] {
+	return pulumix.Output[*RegionBackendServiceIamMember]{
+		OutputState: i.ToRegionBackendServiceIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionBackendServiceIamMemberArrayInput is an input type that accepts RegionBackendServiceIamMemberArray and RegionBackendServiceIamMemberArrayOutput values.
 // You can construct a concrete instance of `RegionBackendServiceIamMemberArrayInput` via:
 //
@@ -305,6 +312,12 @@ func (i RegionBackendServiceIamMemberArray) ToRegionBackendServiceIamMemberArray
 
 func (i RegionBackendServiceIamMemberArray) ToRegionBackendServiceIamMemberArrayOutputWithContext(ctx context.Context) RegionBackendServiceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamMemberArrayOutput)
+}
+
+func (i RegionBackendServiceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendServiceIamMember] {
+	return pulumix.Output[[]*RegionBackendServiceIamMember]{
+		OutputState: i.ToRegionBackendServiceIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionBackendServiceIamMemberMapInput is an input type that accepts RegionBackendServiceIamMemberMap and RegionBackendServiceIamMemberMapOutput values.
@@ -332,6 +345,12 @@ func (i RegionBackendServiceIamMemberMap) ToRegionBackendServiceIamMemberMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamMemberMapOutput)
 }
 
+func (i RegionBackendServiceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendServiceIamMember] {
+	return pulumix.Output[map[string]*RegionBackendServiceIamMember]{
+		OutputState: i.ToRegionBackendServiceIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionBackendServiceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceIamMemberOutput) ElementType() reflect.Type {
@@ -344,6 +363,12 @@ func (o RegionBackendServiceIamMemberOutput) ToRegionBackendServiceIamMemberOutp
 
 func (o RegionBackendServiceIamMemberOutput) ToRegionBackendServiceIamMemberOutputWithContext(ctx context.Context) RegionBackendServiceIamMemberOutput {
 	return o
+}
+
+func (o RegionBackendServiceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIamMember] {
+	return pulumix.Output[*RegionBackendServiceIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -416,6 +441,12 @@ func (o RegionBackendServiceIamMemberArrayOutput) ToRegionBackendServiceIamMembe
 	return o
 }
 
+func (o RegionBackendServiceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendServiceIamMember] {
+	return pulumix.Output[[]*RegionBackendServiceIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceIamMemberArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionBackendServiceIamMember {
 		return vs[0].([]*RegionBackendServiceIamMember)[vs[1].(int)]
@@ -434,6 +465,12 @@ func (o RegionBackendServiceIamMemberMapOutput) ToRegionBackendServiceIamMemberM
 
 func (o RegionBackendServiceIamMemberMapOutput) ToRegionBackendServiceIamMemberMapOutputWithContext(ctx context.Context) RegionBackendServiceIamMemberMapOutput {
 	return o
+}
+
+func (o RegionBackendServiceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendServiceIamMember] {
+	return pulumix.Output[map[string]*RegionBackendServiceIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) RegionBackendServiceIamMemberOutput {

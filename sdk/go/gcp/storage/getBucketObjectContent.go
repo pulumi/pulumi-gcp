@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
@@ -135,6 +136,12 @@ func (o GetBucketObjectContentResultOutput) ToGetBucketObjectContentResultOutput
 
 func (o GetBucketObjectContentResultOutput) ToGetBucketObjectContentResultOutputWithContext(ctx context.Context) GetBucketObjectContentResultOutput {
 	return o
+}
+
+func (o GetBucketObjectContentResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBucketObjectContentResult] {
+	return pulumix.Output[GetBucketObjectContentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetBucketObjectContentResultOutput) Bucket() pulumi.StringOutput {

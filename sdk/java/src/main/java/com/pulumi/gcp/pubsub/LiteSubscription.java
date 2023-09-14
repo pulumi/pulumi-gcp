@@ -111,7 +111,7 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="deliveryConfig", type=LiteSubscriptionDeliveryConfig.class, parameters={})
+    @Export(name="deliveryConfig", refs={LiteSubscriptionDeliveryConfig.class}, tree="[0]")
     private Output</* @Nullable */ LiteSubscriptionDeliveryConfig> deliveryConfig;
 
     /**
@@ -128,7 +128,7 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -145,7 +145,7 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -160,7 +160,7 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * The region of the pubsub lite topic.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -174,7 +174,7 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * A reference to a Topic resource.
      * 
      */
-    @Export(name="topic", type=String.class, parameters={})
+    @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
@@ -188,7 +188,7 @@ public class LiteSubscription extends com.pulumi.resources.CustomResource {
      * The zone of the pubsub lite topic.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zone;
 
     /**

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingConditionOutput)
 }
 
+func (i CryptoKeyIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyIAMBindingCondition] {
+	return pulumix.Output[CryptoKeyIAMBindingCondition]{
+		OutputState: i.ToCryptoKeyIAMBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionPtrOutput() CryptoKeyIAMBindingConditionPtrOutput {
 	return i.ToCryptoKeyIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -103,6 +110,12 @@ func (i *cryptoKeyIAMBindingConditionPtrType) ToCryptoKeyIAMBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingConditionPtrOutput)
 }
 
+func (i *cryptoKeyIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMBindingCondition] {
+	return pulumix.Output[*CryptoKeyIAMBindingCondition]{
+		OutputState: i.ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -125,6 +138,12 @@ func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMBindingCondition) *CryptoKeyIAMBindingCondition {
 		return &v
 	}).(CryptoKeyIAMBindingConditionPtrOutput)
+}
+
+func (o CryptoKeyIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyIAMBindingCondition] {
+	return pulumix.Output[CryptoKeyIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -158,6 +177,12 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) ToCryptoKeyIAMBindingConditionPtr
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionPtrOutput {
 	return o
+}
+
+func (o CryptoKeyIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMBindingCondition] {
+	return pulumix.Output[*CryptoKeyIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditionOutput {
@@ -253,6 +278,12 @@ func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberConditionOutput)
 }
 
+func (i CryptoKeyIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyIAMMemberCondition] {
+	return pulumix.Output[CryptoKeyIAMMemberCondition]{
+		OutputState: i.ToCryptoKeyIAMMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionPtrOutput() CryptoKeyIAMMemberConditionPtrOutput {
 	return i.ToCryptoKeyIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -294,6 +325,12 @@ func (i *cryptoKeyIAMMemberConditionPtrType) ToCryptoKeyIAMMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberConditionPtrOutput)
 }
 
+func (i *cryptoKeyIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMMemberCondition] {
+	return pulumix.Output[*CryptoKeyIAMMemberCondition]{
+		OutputState: i.ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -316,6 +353,12 @@ func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMMemberCondition) *CryptoKeyIAMMemberCondition {
 		return &v
 	}).(CryptoKeyIAMMemberConditionPtrOutput)
+}
+
+func (o CryptoKeyIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyIAMMemberCondition] {
+	return pulumix.Output[CryptoKeyIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -349,6 +392,12 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) ToCryptoKeyIAMMemberConditionPtrOu
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionPtrOutput {
 	return o
+}
+
+func (o CryptoKeyIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMMemberCondition] {
+	return pulumix.Output[*CryptoKeyIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberConditionOutput {
@@ -448,6 +497,12 @@ func (i CryptoKeyVersionAttestationArgs) ToCryptoKeyVersionAttestationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationOutput)
 }
 
+func (i CryptoKeyVersionAttestationArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionAttestation] {
+	return pulumix.Output[CryptoKeyVersionAttestation]{
+		OutputState: i.ToCryptoKeyVersionAttestationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CryptoKeyVersionAttestationArrayInput is an input type that accepts CryptoKeyVersionAttestationArray and CryptoKeyVersionAttestationArrayOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionAttestationArrayInput` via:
 //
@@ -473,6 +528,12 @@ func (i CryptoKeyVersionAttestationArray) ToCryptoKeyVersionAttestationArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationArrayOutput)
 }
 
+func (i CryptoKeyVersionAttestationArray) ToOutput(ctx context.Context) pulumix.Output[[]CryptoKeyVersionAttestation] {
+	return pulumix.Output[[]CryptoKeyVersionAttestation]{
+		OutputState: i.ToCryptoKeyVersionAttestationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyVersionAttestationOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionAttestationOutput) ElementType() reflect.Type {
@@ -485,6 +546,12 @@ func (o CryptoKeyVersionAttestationOutput) ToCryptoKeyVersionAttestationOutput()
 
 func (o CryptoKeyVersionAttestationOutput) ToCryptoKeyVersionAttestationOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationOutput {
 	return o
+}
+
+func (o CryptoKeyVersionAttestationOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionAttestation] {
+	return pulumix.Output[CryptoKeyVersionAttestation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The certificate chains needed to validate the attestation
@@ -525,6 +592,12 @@ func (o CryptoKeyVersionAttestationArrayOutput) ToCryptoKeyVersionAttestationArr
 
 func (o CryptoKeyVersionAttestationArrayOutput) ToCryptoKeyVersionAttestationArrayOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationArrayOutput {
 	return o
+}
+
+func (o CryptoKeyVersionAttestationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CryptoKeyVersionAttestation] {
+	return pulumix.Output[[]CryptoKeyVersionAttestation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionAttestationArrayOutput) Index(i pulumi.IntInput) CryptoKeyVersionAttestationOutput {
@@ -574,6 +647,12 @@ func (i CryptoKeyVersionAttestationCertChainsArgs) ToCryptoKeyVersionAttestation
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationCertChainsOutput)
 }
 
+func (i CryptoKeyVersionAttestationCertChainsArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionAttestationCertChains] {
+	return pulumix.Output[CryptoKeyVersionAttestationCertChains]{
+		OutputState: i.ToCryptoKeyVersionAttestationCertChainsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CryptoKeyVersionAttestationCertChainsArgs) ToCryptoKeyVersionAttestationCertChainsPtrOutput() CryptoKeyVersionAttestationCertChainsPtrOutput {
 	return i.ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(context.Background())
 }
@@ -615,6 +694,12 @@ func (i *cryptoKeyVersionAttestationCertChainsPtrType) ToCryptoKeyVersionAttesta
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationCertChainsPtrOutput)
 }
 
+func (i *cryptoKeyVersionAttestationCertChainsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionAttestationCertChains] {
+	return pulumix.Output[*CryptoKeyVersionAttestationCertChains]{
+		OutputState: i.ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyVersionAttestationCertChainsOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionAttestationCertChainsOutput) ElementType() reflect.Type {
@@ -637,6 +722,12 @@ func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionAttestationCertChains) *CryptoKeyVersionAttestationCertChains {
 		return &v
 	}).(CryptoKeyVersionAttestationCertChainsPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationCertChainsOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionAttestationCertChains] {
+	return pulumix.Output[CryptoKeyVersionAttestationCertChains]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cavium certificate chain corresponding to the attestation.
@@ -666,6 +757,12 @@ func (o CryptoKeyVersionAttestationCertChainsPtrOutput) ToCryptoKeyVersionAttest
 
 func (o CryptoKeyVersionAttestationCertChainsPtrOutput) ToCryptoKeyVersionAttestationCertChainsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationCertChainsPtrOutput {
 	return o
+}
+
+func (o CryptoKeyVersionAttestationCertChainsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionAttestationCertChains] {
+	return pulumix.Output[*CryptoKeyVersionAttestationCertChains]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionAttestationCertChainsPtrOutput) Elem() CryptoKeyVersionAttestationCertChainsOutput {
@@ -745,6 +842,12 @@ func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToCryptoK
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput)
 }
 
+func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionAttestationExternalProtectionLevelOptions] {
+	return pulumix.Output[CryptoKeyVersionAttestationExternalProtectionLevelOptions]{
+		OutputState: i.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
 	return i.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(context.Background())
 }
@@ -786,6 +889,12 @@ func (i *cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType) ToCry
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
 }
 
+func (i *cryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionAttestationExternalProtectionLevelOptions] {
+	return pulumix.Output[*CryptoKeyVersionAttestationExternalProtectionLevelOptions]{
+		OutputState: i.ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ElementType() reflect.Type {
@@ -808,6 +917,12 @@ func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToCrypt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionAttestationExternalProtectionLevelOptions) *CryptoKeyVersionAttestationExternalProtectionLevelOptions {
 		return &v
 	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionAttestationExternalProtectionLevelOptions] {
+	return pulumix.Output[CryptoKeyVersionAttestationExternalProtectionLevelOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
@@ -834,6 +949,12 @@ func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ToCr
 
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ToCryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutputWithContext(ctx context.Context) CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
 	return o
+}
+
+func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionAttestationExternalProtectionLevelOptions] {
+	return pulumix.Output[*CryptoKeyVersionAttestationExternalProtectionLevelOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) Elem() CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput {
@@ -905,6 +1026,12 @@ func (i CryptoKeyVersionTemplateArgs) ToCryptoKeyVersionTemplateOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplateOutput)
 }
 
+func (i CryptoKeyVersionTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplate] {
+	return pulumix.Output[CryptoKeyVersionTemplate]{
+		OutputState: i.ToCryptoKeyVersionTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CryptoKeyVersionTemplateArgs) ToCryptoKeyVersionTemplatePtrOutput() CryptoKeyVersionTemplatePtrOutput {
 	return i.ToCryptoKeyVersionTemplatePtrOutputWithContext(context.Background())
 }
@@ -946,6 +1073,12 @@ func (i *cryptoKeyVersionTemplatePtrType) ToCryptoKeyVersionTemplatePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionTemplatePtrOutput)
 }
 
+func (i *cryptoKeyVersionTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplate] {
+	return pulumix.Output[*CryptoKeyVersionTemplate]{
+		OutputState: i.ToCryptoKeyVersionTemplatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyVersionTemplateOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionTemplateOutput) ElementType() reflect.Type {
@@ -968,6 +1101,12 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplate) *CryptoKeyVersionTemplate {
 		return &v
 	}).(CryptoKeyVersionTemplatePtrOutput)
+}
+
+func (o CryptoKeyVersionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[CryptoKeyVersionTemplate] {
+	return pulumix.Output[CryptoKeyVersionTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm to use when creating a version based on this template.
@@ -993,6 +1132,12 @@ func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutput()
 
 func (o CryptoKeyVersionTemplatePtrOutput) ToCryptoKeyVersionTemplatePtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplatePtrOutput {
 	return o
+}
+
+func (o CryptoKeyVersionTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersionTemplate] {
+	return pulumix.Output[*CryptoKeyVersionTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput {
@@ -1075,6 +1220,12 @@ func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMBindingConditionOutput)
 }
 
+func (i KeyRingIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[KeyRingIAMBindingCondition] {
+	return pulumix.Output[KeyRingIAMBindingCondition]{
+		OutputState: i.ToKeyRingIAMBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionPtrOutput() KeyRingIAMBindingConditionPtrOutput {
 	return i.ToKeyRingIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1116,6 +1267,12 @@ func (i *keyRingIAMBindingConditionPtrType) ToKeyRingIAMBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMBindingConditionPtrOutput)
 }
 
+func (i *keyRingIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMBindingCondition] {
+	return pulumix.Output[*KeyRingIAMBindingCondition]{
+		OutputState: i.ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -1138,6 +1295,12 @@ func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMBindingCondition) *KeyRingIAMBindingCondition {
 		return &v
 	}).(KeyRingIAMBindingConditionPtrOutput)
+}
+
+func (o KeyRingIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[KeyRingIAMBindingCondition] {
+	return pulumix.Output[KeyRingIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1171,6 +1334,12 @@ func (o KeyRingIAMBindingConditionPtrOutput) ToKeyRingIAMBindingConditionPtrOutp
 
 func (o KeyRingIAMBindingConditionPtrOutput) ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionPtrOutput {
 	return o
+}
+
+func (o KeyRingIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMBindingCondition] {
+	return pulumix.Output[*KeyRingIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOutput {
@@ -1266,6 +1435,12 @@ func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberConditionOutput)
 }
 
+func (i KeyRingIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[KeyRingIAMMemberCondition] {
+	return pulumix.Output[KeyRingIAMMemberCondition]{
+		OutputState: i.ToKeyRingIAMMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionPtrOutput() KeyRingIAMMemberConditionPtrOutput {
 	return i.ToKeyRingIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1307,6 +1482,12 @@ func (i *keyRingIAMMemberConditionPtrType) ToKeyRingIAMMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberConditionPtrOutput)
 }
 
+func (i *keyRingIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMMemberCondition] {
+	return pulumix.Output[*KeyRingIAMMemberCondition]{
+		OutputState: i.ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (KeyRingIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -1329,6 +1510,12 @@ func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMMemberCondition) *KeyRingIAMMemberCondition {
 		return &v
 	}).(KeyRingIAMMemberConditionPtrOutput)
+}
+
+func (o KeyRingIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[KeyRingIAMMemberCondition] {
+	return pulumix.Output[KeyRingIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1362,6 +1549,12 @@ func (o KeyRingIAMMemberConditionPtrOutput) ToKeyRingIAMMemberConditionPtrOutput
 
 func (o KeyRingIAMMemberConditionPtrOutput) ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionPtrOutput {
 	return o
+}
+
+func (o KeyRingIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRingIAMMemberCondition] {
+	return pulumix.Output[*KeyRingIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutput {
@@ -1451,6 +1644,12 @@ func (i KeyRingImportJobAttestationArgs) ToKeyRingImportJobAttestationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationOutput)
 }
 
+func (i KeyRingImportJobAttestationArgs) ToOutput(ctx context.Context) pulumix.Output[KeyRingImportJobAttestation] {
+	return pulumix.Output[KeyRingImportJobAttestation]{
+		OutputState: i.ToKeyRingImportJobAttestationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyRingImportJobAttestationArrayInput is an input type that accepts KeyRingImportJobAttestationArray and KeyRingImportJobAttestationArrayOutput values.
 // You can construct a concrete instance of `KeyRingImportJobAttestationArrayInput` via:
 //
@@ -1476,6 +1675,12 @@ func (i KeyRingImportJobAttestationArray) ToKeyRingImportJobAttestationArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobAttestationArrayOutput)
 }
 
+func (i KeyRingImportJobAttestationArray) ToOutput(ctx context.Context) pulumix.Output[[]KeyRingImportJobAttestation] {
+	return pulumix.Output[[]KeyRingImportJobAttestation]{
+		OutputState: i.ToKeyRingImportJobAttestationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingImportJobAttestationOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobAttestationOutput) ElementType() reflect.Type {
@@ -1488,6 +1693,12 @@ func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationOutput()
 
 func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationOutputWithContext(ctx context.Context) KeyRingImportJobAttestationOutput {
 	return o
+}
+
+func (o KeyRingImportJobAttestationOutput) ToOutput(ctx context.Context) pulumix.Output[KeyRingImportJobAttestation] {
+	return pulumix.Output[KeyRingImportJobAttestation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1515,6 +1726,12 @@ func (o KeyRingImportJobAttestationArrayOutput) ToKeyRingImportJobAttestationArr
 
 func (o KeyRingImportJobAttestationArrayOutput) ToKeyRingImportJobAttestationArrayOutputWithContext(ctx context.Context) KeyRingImportJobAttestationArrayOutput {
 	return o
+}
+
+func (o KeyRingImportJobAttestationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyRingImportJobAttestation] {
+	return pulumix.Output[[]KeyRingImportJobAttestation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRingImportJobAttestationArrayOutput) Index(i pulumi.IntInput) KeyRingImportJobAttestationOutput {
@@ -1560,6 +1777,12 @@ func (i KeyRingImportJobPublicKeyArgs) ToKeyRingImportJobPublicKeyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyOutput)
 }
 
+func (i KeyRingImportJobPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[KeyRingImportJobPublicKey] {
+	return pulumix.Output[KeyRingImportJobPublicKey]{
+		OutputState: i.ToKeyRingImportJobPublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyRingImportJobPublicKeyArrayInput is an input type that accepts KeyRingImportJobPublicKeyArray and KeyRingImportJobPublicKeyArrayOutput values.
 // You can construct a concrete instance of `KeyRingImportJobPublicKeyArrayInput` via:
 //
@@ -1585,6 +1808,12 @@ func (i KeyRingImportJobPublicKeyArray) ToKeyRingImportJobPublicKeyArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobPublicKeyArrayOutput)
 }
 
+func (i KeyRingImportJobPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]KeyRingImportJobPublicKey] {
+	return pulumix.Output[[]KeyRingImportJobPublicKey]{
+		OutputState: i.ToKeyRingImportJobPublicKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingImportJobPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (KeyRingImportJobPublicKeyOutput) ElementType() reflect.Type {
@@ -1597,6 +1826,12 @@ func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyOutput() Key
 
 func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyOutput {
 	return o
+}
+
+func (o KeyRingImportJobPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[KeyRingImportJobPublicKey] {
+	return pulumix.Output[KeyRingImportJobPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1618,6 +1853,12 @@ func (o KeyRingImportJobPublicKeyArrayOutput) ToKeyRingImportJobPublicKeyArrayOu
 
 func (o KeyRingImportJobPublicKeyArrayOutput) ToKeyRingImportJobPublicKeyArrayOutputWithContext(ctx context.Context) KeyRingImportJobPublicKeyArrayOutput {
 	return o
+}
+
+func (o KeyRingImportJobPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyRingImportJobPublicKey] {
+	return pulumix.Output[[]KeyRingImportJobPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingImportJobPublicKeyOutput {
@@ -1659,6 +1900,12 @@ func (i RegistryCredentialArgs) ToRegistryCredentialOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialOutput)
 }
 
+func (i RegistryCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[RegistryCredential] {
+	return pulumix.Output[RegistryCredential]{
+		OutputState: i.ToRegistryCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegistryCredentialArrayInput is an input type that accepts RegistryCredentialArray and RegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `RegistryCredentialArrayInput` via:
 //
@@ -1684,6 +1931,12 @@ func (i RegistryCredentialArray) ToRegistryCredentialArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryCredentialArrayOutput)
 }
 
+func (i RegistryCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]RegistryCredential] {
+	return pulumix.Output[[]RegistryCredential]{
+		OutputState: i.ToRegistryCredentialArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistryCredentialOutput struct{ *pulumi.OutputState }
 
 func (RegistryCredentialOutput) ElementType() reflect.Type {
@@ -1696,6 +1949,12 @@ func (o RegistryCredentialOutput) ToRegistryCredentialOutput() RegistryCredentia
 
 func (o RegistryCredentialOutput) ToRegistryCredentialOutputWithContext(ctx context.Context) RegistryCredentialOutput {
 	return o
+}
+
+func (o RegistryCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryCredential] {
+	return pulumix.Output[RegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A public key certificate format and data.
@@ -1715,6 +1974,12 @@ func (o RegistryCredentialArrayOutput) ToRegistryCredentialArrayOutput() Registr
 
 func (o RegistryCredentialArrayOutput) ToRegistryCredentialArrayOutputWithContext(ctx context.Context) RegistryCredentialArrayOutput {
 	return o
+}
+
+func (o RegistryCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistryCredential] {
+	return pulumix.Output[[]RegistryCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryCredentialArrayOutput) Index(i pulumi.IntInput) RegistryCredentialOutput {
@@ -1768,6 +2033,12 @@ func (i RegistryEventNotificationConfigItemArgs) ToRegistryEventNotificationConf
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEventNotificationConfigItemOutput)
 }
 
+func (i RegistryEventNotificationConfigItemArgs) ToOutput(ctx context.Context) pulumix.Output[RegistryEventNotificationConfigItem] {
+	return pulumix.Output[RegistryEventNotificationConfigItem]{
+		OutputState: i.ToRegistryEventNotificationConfigItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegistryEventNotificationConfigItemArrayInput is an input type that accepts RegistryEventNotificationConfigItemArray and RegistryEventNotificationConfigItemArrayOutput values.
 // You can construct a concrete instance of `RegistryEventNotificationConfigItemArrayInput` via:
 //
@@ -1793,6 +2064,12 @@ func (i RegistryEventNotificationConfigItemArray) ToRegistryEventNotificationCon
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEventNotificationConfigItemArrayOutput)
 }
 
+func (i RegistryEventNotificationConfigItemArray) ToOutput(ctx context.Context) pulumix.Output[[]RegistryEventNotificationConfigItem] {
+	return pulumix.Output[[]RegistryEventNotificationConfigItem]{
+		OutputState: i.ToRegistryEventNotificationConfigItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegistryEventNotificationConfigItemOutput struct{ *pulumi.OutputState }
 
 func (RegistryEventNotificationConfigItemOutput) ElementType() reflect.Type {
@@ -1805,6 +2082,12 @@ func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationCo
 
 func (o RegistryEventNotificationConfigItemOutput) ToRegistryEventNotificationConfigItemOutputWithContext(ctx context.Context) RegistryEventNotificationConfigItemOutput {
 	return o
+}
+
+func (o RegistryEventNotificationConfigItemOutput) ToOutput(ctx context.Context) pulumix.Output[RegistryEventNotificationConfigItem] {
+	return pulumix.Output[RegistryEventNotificationConfigItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // PubSub topic name to publish device events.
@@ -1833,6 +2116,12 @@ func (o RegistryEventNotificationConfigItemArrayOutput) ToRegistryEventNotificat
 
 func (o RegistryEventNotificationConfigItemArrayOutput) ToRegistryEventNotificationConfigItemArrayOutputWithContext(ctx context.Context) RegistryEventNotificationConfigItemArrayOutput {
 	return o
+}
+
+func (o RegistryEventNotificationConfigItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RegistryEventNotificationConfigItem] {
+	return pulumix.Output[[]RegistryEventNotificationConfigItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegistryEventNotificationConfigItemArrayOutput) Index(i pulumi.IntInput) RegistryEventNotificationConfigItemOutput {
@@ -1878,6 +2167,12 @@ func (i GetKMSCryptoKeyVersionPublicKeyArgs) ToGetKMSCryptoKeyVersionPublicKeyOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionPublicKeyOutput)
 }
 
+func (i GetKMSCryptoKeyVersionPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetKMSCryptoKeyVersionPublicKey] {
+	return pulumix.Output[GetKMSCryptoKeyVersionPublicKey]{
+		OutputState: i.ToGetKMSCryptoKeyVersionPublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKMSCryptoKeyVersionPublicKeyArrayInput is an input type that accepts GetKMSCryptoKeyVersionPublicKeyArray and GetKMSCryptoKeyVersionPublicKeyArrayOutput values.
 // You can construct a concrete instance of `GetKMSCryptoKeyVersionPublicKeyArrayInput` via:
 //
@@ -1903,6 +2198,12 @@ func (i GetKMSCryptoKeyVersionPublicKeyArray) ToGetKMSCryptoKeyVersionPublicKeyA
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionPublicKeyArrayOutput)
 }
 
+func (i GetKMSCryptoKeyVersionPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKMSCryptoKeyVersionPublicKey] {
+	return pulumix.Output[[]GetKMSCryptoKeyVersionPublicKey]{
+		OutputState: i.ToGetKMSCryptoKeyVersionPublicKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKMSCryptoKeyVersionPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKMSCryptoKeyVersionPublicKeyOutput) ElementType() reflect.Type {
@@ -1915,6 +2216,12 @@ func (o GetKMSCryptoKeyVersionPublicKeyOutput) ToGetKMSCryptoKeyVersionPublicKey
 
 func (o GetKMSCryptoKeyVersionPublicKeyOutput) ToGetKMSCryptoKeyVersionPublicKeyOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionPublicKeyOutput {
 	return o
+}
+
+func (o GetKMSCryptoKeyVersionPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSCryptoKeyVersionPublicKey] {
+	return pulumix.Output[GetKMSCryptoKeyVersionPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -1939,6 +2246,12 @@ func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) ToGetKMSCryptoKeyVersionPubl
 
 func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) ToGetKMSCryptoKeyVersionPublicKeyArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionPublicKeyArrayOutput {
 	return o
+}
+
+func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKMSCryptoKeyVersionPublicKey] {
+	return pulumix.Output[[]GetKMSCryptoKeyVersionPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) Index(i pulumi.IntInput) GetKMSCryptoKeyVersionPublicKeyOutput {
@@ -1980,6 +2293,12 @@ func (i GetKMSCryptoKeyVersionTemplateArgs) ToGetKMSCryptoKeyVersionTemplateOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionTemplateOutput)
 }
 
+func (i GetKMSCryptoKeyVersionTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[GetKMSCryptoKeyVersionTemplate] {
+	return pulumix.Output[GetKMSCryptoKeyVersionTemplate]{
+		OutputState: i.ToGetKMSCryptoKeyVersionTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKMSCryptoKeyVersionTemplateArrayInput is an input type that accepts GetKMSCryptoKeyVersionTemplateArray and GetKMSCryptoKeyVersionTemplateArrayOutput values.
 // You can construct a concrete instance of `GetKMSCryptoKeyVersionTemplateArrayInput` via:
 //
@@ -2005,6 +2324,12 @@ func (i GetKMSCryptoKeyVersionTemplateArray) ToGetKMSCryptoKeyVersionTemplateArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyVersionTemplateArrayOutput)
 }
 
+func (i GetKMSCryptoKeyVersionTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKMSCryptoKeyVersionTemplate] {
+	return pulumix.Output[[]GetKMSCryptoKeyVersionTemplate]{
+		OutputState: i.ToGetKMSCryptoKeyVersionTemplateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKMSCryptoKeyVersionTemplateOutput struct{ *pulumi.OutputState }
 
 func (GetKMSCryptoKeyVersionTemplateOutput) ElementType() reflect.Type {
@@ -2017,6 +2342,12 @@ func (o GetKMSCryptoKeyVersionTemplateOutput) ToGetKMSCryptoKeyVersionTemplateOu
 
 func (o GetKMSCryptoKeyVersionTemplateOutput) ToGetKMSCryptoKeyVersionTemplateOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionTemplateOutput {
 	return o
+}
+
+func (o GetKMSCryptoKeyVersionTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSCryptoKeyVersionTemplate] {
+	return pulumix.Output[GetKMSCryptoKeyVersionTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKMSCryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
@@ -2039,6 +2370,12 @@ func (o GetKMSCryptoKeyVersionTemplateArrayOutput) ToGetKMSCryptoKeyVersionTempl
 
 func (o GetKMSCryptoKeyVersionTemplateArrayOutput) ToGetKMSCryptoKeyVersionTemplateArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyVersionTemplateArrayOutput {
 	return o
+}
+
+func (o GetKMSCryptoKeyVersionTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKMSCryptoKeyVersionTemplate] {
+	return pulumix.Output[[]GetKMSCryptoKeyVersionTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKMSCryptoKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) GetKMSCryptoKeyVersionTemplateOutput {

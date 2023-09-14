@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An occurrence is an instance of a Note, or type of analysis that
@@ -272,6 +273,12 @@ func (i *Occurence) ToOccurenceOutputWithContext(ctx context.Context) OccurenceO
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceOutput)
 }
 
+func (i *Occurence) ToOutput(ctx context.Context) pulumix.Output[*Occurence] {
+	return pulumix.Output[*Occurence]{
+		OutputState: i.ToOccurenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OccurenceArrayInput is an input type that accepts OccurenceArray and OccurenceArrayOutput values.
 // You can construct a concrete instance of `OccurenceArrayInput` via:
 //
@@ -295,6 +302,12 @@ func (i OccurenceArray) ToOccurenceArrayOutput() OccurenceArrayOutput {
 
 func (i OccurenceArray) ToOccurenceArrayOutputWithContext(ctx context.Context) OccurenceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceArrayOutput)
+}
+
+func (i OccurenceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Occurence] {
+	return pulumix.Output[[]*Occurence]{
+		OutputState: i.ToOccurenceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OccurenceMapInput is an input type that accepts OccurenceMap and OccurenceMapOutput values.
@@ -322,6 +335,12 @@ func (i OccurenceMap) ToOccurenceMapOutputWithContext(ctx context.Context) Occur
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceMapOutput)
 }
 
+func (i OccurenceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Occurence] {
+	return pulumix.Output[map[string]*Occurence]{
+		OutputState: i.ToOccurenceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OccurenceOutput struct{ *pulumi.OutputState }
 
 func (OccurenceOutput) ElementType() reflect.Type {
@@ -334,6 +353,12 @@ func (o OccurenceOutput) ToOccurenceOutput() OccurenceOutput {
 
 func (o OccurenceOutput) ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput {
 	return o
+}
+
+func (o OccurenceOutput) ToOutput(ctx context.Context) pulumix.Output[*Occurence] {
+	return pulumix.Output[*Occurence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Occurrence that represents a single "attestation". The authenticity
@@ -410,6 +435,12 @@ func (o OccurenceArrayOutput) ToOccurenceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o OccurenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Occurence] {
+	return pulumix.Output[[]*Occurence]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OccurenceArrayOutput) Index(i pulumi.IntInput) OccurenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Occurence {
 		return vs[0].([]*Occurence)[vs[1].(int)]
@@ -428,6 +459,12 @@ func (o OccurenceMapOutput) ToOccurenceMapOutput() OccurenceMapOutput {
 
 func (o OccurenceMapOutput) ToOccurenceMapOutputWithContext(ctx context.Context) OccurenceMapOutput {
 	return o
+}
+
+func (o OccurenceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Occurence] {
+	return pulumix.Output[map[string]*Occurence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OccurenceMapOutput) MapIndex(k pulumi.StringInput) OccurenceOutput {

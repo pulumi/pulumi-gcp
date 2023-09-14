@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
@@ -356,6 +357,12 @@ func (i *SecretIamBinding) ToSecretIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingOutput)
 }
 
+func (i *SecretIamBinding) ToOutput(ctx context.Context) pulumix.Output[*SecretIamBinding] {
+	return pulumix.Output[*SecretIamBinding]{
+		OutputState: i.ToSecretIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecretIamBindingArrayInput is an input type that accepts SecretIamBindingArray and SecretIamBindingArrayOutput values.
 // You can construct a concrete instance of `SecretIamBindingArrayInput` via:
 //
@@ -379,6 +386,12 @@ func (i SecretIamBindingArray) ToSecretIamBindingArrayOutput() SecretIamBindingA
 
 func (i SecretIamBindingArray) ToSecretIamBindingArrayOutputWithContext(ctx context.Context) SecretIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingArrayOutput)
+}
+
+func (i SecretIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecretIamBinding] {
+	return pulumix.Output[[]*SecretIamBinding]{
+		OutputState: i.ToSecretIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecretIamBindingMapInput is an input type that accepts SecretIamBindingMap and SecretIamBindingMapOutput values.
@@ -406,6 +419,12 @@ func (i SecretIamBindingMap) ToSecretIamBindingMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingMapOutput)
 }
 
+func (i SecretIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretIamBinding] {
+	return pulumix.Output[map[string]*SecretIamBinding]{
+		OutputState: i.ToSecretIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretIamBindingOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingOutput) ElementType() reflect.Type {
@@ -418,6 +437,12 @@ func (o SecretIamBindingOutput) ToSecretIamBindingOutput() SecretIamBindingOutpu
 
 func (o SecretIamBindingOutput) ToSecretIamBindingOutputWithContext(ctx context.Context) SecretIamBindingOutput {
 	return o
+}
+
+func (o SecretIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamBinding] {
+	return pulumix.Output[*SecretIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretIamBindingOutput) Condition() SecretIamBindingConditionPtrOutput {
@@ -476,6 +501,12 @@ func (o SecretIamBindingArrayOutput) ToSecretIamBindingArrayOutputWithContext(ct
 	return o
 }
 
+func (o SecretIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretIamBinding] {
+	return pulumix.Output[[]*SecretIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecretIamBindingArrayOutput) Index(i pulumi.IntInput) SecretIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretIamBinding {
 		return vs[0].([]*SecretIamBinding)[vs[1].(int)]
@@ -494,6 +525,12 @@ func (o SecretIamBindingMapOutput) ToSecretIamBindingMapOutput() SecretIamBindin
 
 func (o SecretIamBindingMapOutput) ToSecretIamBindingMapOutputWithContext(ctx context.Context) SecretIamBindingMapOutput {
 	return o
+}
+
+func (o SecretIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretIamBinding] {
+	return pulumix.Output[map[string]*SecretIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretIamBindingMapOutput) MapIndex(k pulumi.StringInput) SecretIamBindingOutput {

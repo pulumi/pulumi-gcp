@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the list of IP addresses that Datastream connects from. For more information see
@@ -107,6 +108,12 @@ func (o GetStaticIpsResultOutput) ToGetStaticIpsResultOutput() GetStaticIpsResul
 
 func (o GetStaticIpsResultOutput) ToGetStaticIpsResultOutputWithContext(ctx context.Context) GetStaticIpsResultOutput {
 	return o
+}
+
+func (o GetStaticIpsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetStaticIpsResult] {
+	return pulumix.Output[GetStaticIpsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

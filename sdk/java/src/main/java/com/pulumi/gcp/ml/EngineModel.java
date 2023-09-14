@@ -119,7 +119,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="defaultVersion", type=EngineModelDefaultVersion.class, parameters={})
+    @Export(name="defaultVersion", refs={EngineModelDefaultVersion.class}, tree="[0]")
     private Output</* @Nullable */ EngineModelDefaultVersion> defaultVersion;
 
     /**
@@ -135,7 +135,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * The description specified for the model when it was created.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -149,7 +149,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * One or more labels that you can add, to organize your models.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -165,7 +165,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -181,7 +181,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
      * 
      */
-    @Export(name="onlinePredictionConsoleLogging", type=Boolean.class, parameters={})
+    @Export(name="onlinePredictionConsoleLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> onlinePredictionConsoleLogging;
 
     /**
@@ -195,7 +195,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * If true, online prediction access logs are sent to StackDriver Logging.
      * 
      */
-    @Export(name="onlinePredictionLogging", type=Boolean.class, parameters={})
+    @Export(name="onlinePredictionLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> onlinePredictionLogging;
 
     /**
@@ -210,7 +210,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -226,7 +226,7 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
      * Currently only one region per model is supported
      * 
      */
-    @Export(name="regions", type=String.class, parameters={})
+    @Export(name="regions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> regions;
 
     /**

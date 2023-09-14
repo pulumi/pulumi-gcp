@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a subnetwork within GCE from its name and region.
@@ -138,6 +139,12 @@ func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutput() LookupSub
 
 func (o LookupSubnetworkResultOutput) ToLookupSubnetworkResultOutputWithContext(ctx context.Context) LookupSubnetworkResultOutput {
 	return o
+}
+
+func (o LookupSubnetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubnetworkResult] {
+	return pulumix.Output[LookupSubnetworkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of this subnetwork.

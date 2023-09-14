@@ -122,7 +122,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
      * 
      */
-    @Export(name="caCertificate", type=String.class, parameters={})
+    @Export(name="caCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCertificate;
 
     /**
@@ -136,7 +136,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      * 
      */
-    @Export(name="clientCertificate", type=String.class, parameters={})
+    @Export(name="clientCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertificate;
 
     /**
@@ -150,7 +150,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
@@ -165,7 +165,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      * 
      */
-    @Export(name="databaseVersion", type=String.class, parameters={})
+    @Export(name="databaseVersion", refs={String.class}, tree="[0]")
     private Output<String> databaseVersion;
 
     /**
@@ -180,7 +180,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * A file in the bucket that contains the data from the external server.
      * 
      */
-    @Export(name="dumpFilePath", type=String.class, parameters={})
+    @Export(name="dumpFilePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dumpFilePath;
 
     /**
@@ -196,7 +196,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * ***
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -212,7 +212,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * The name of the source representation instance. Use any valid Cloud SQL instance name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -227,7 +227,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -243,7 +243,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * Defaults to 3306.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -259,7 +259,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -275,7 +275,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -290,7 +290,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
      * The replication user account on the external server.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**

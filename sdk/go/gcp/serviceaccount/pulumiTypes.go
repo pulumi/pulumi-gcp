@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i IAMBindingConditionArgs) ToIAMBindingConditionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionOutput)
 }
 
+func (i IAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[IAMBindingCondition] {
+	return pulumix.Output[IAMBindingCondition]{
+		OutputState: i.ToIAMBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
 	return i.ToIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -103,6 +110,12 @@ func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionPtrOutput)
 }
 
+func (i *iambindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMBindingCondition] {
+	return pulumix.Output[*IAMBindingCondition]{
+		OutputState: i.ToIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMBindingConditionOutput) ElementType() reflect.Type {
@@ -125,6 +138,12 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
 		return &v
 	}).(IAMBindingConditionPtrOutput)
+}
+
+func (o IAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[IAMBindingCondition] {
+	return pulumix.Output[IAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -158,6 +177,12 @@ func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutput() IAMBindin
 
 func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
 	return o
+}
+
+func (o IAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMBindingCondition] {
+	return pulumix.Output[*IAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
@@ -253,6 +278,12 @@ func (i IAMMemberConditionArgs) ToIAMMemberConditionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionOutput)
 }
 
+func (i IAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[IAMMemberCondition] {
+	return pulumix.Output[IAMMemberCondition]{
+		OutputState: i.ToIAMMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
 	return i.ToIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -294,6 +325,12 @@ func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionPtrOutput)
 }
 
+func (i *iammemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*IAMMemberCondition] {
+	return pulumix.Output[*IAMMemberCondition]{
+		OutputState: i.ToIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (IAMMemberConditionOutput) ElementType() reflect.Type {
@@ -316,6 +353,12 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
 		return &v
 	}).(IAMMemberConditionPtrOutput)
+}
+
+func (o IAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[IAMMemberCondition] {
+	return pulumix.Output[IAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -349,6 +392,12 @@ func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutput() IAMMemberCo
 
 func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
 	return o
+}
+
+func (o IAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IAMMemberCondition] {
+	return pulumix.Output[*IAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {

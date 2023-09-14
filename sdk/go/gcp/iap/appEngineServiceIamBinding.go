@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
@@ -507,6 +508,12 @@ func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingOutput)
 }
 
+func (i *AppEngineServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*AppEngineServiceIamBinding] {
+	return pulumix.Output[*AppEngineServiceIamBinding]{
+		OutputState: i.ToAppEngineServiceIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AppEngineServiceIamBindingArrayInput is an input type that accepts AppEngineServiceIamBindingArray and AppEngineServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `AppEngineServiceIamBindingArrayInput` via:
 //
@@ -530,6 +537,12 @@ func (i AppEngineServiceIamBindingArray) ToAppEngineServiceIamBindingArrayOutput
 
 func (i AppEngineServiceIamBindingArray) ToAppEngineServiceIamBindingArrayOutputWithContext(ctx context.Context) AppEngineServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingArrayOutput)
+}
+
+func (i AppEngineServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineServiceIamBinding] {
+	return pulumix.Output[[]*AppEngineServiceIamBinding]{
+		OutputState: i.ToAppEngineServiceIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AppEngineServiceIamBindingMapInput is an input type that accepts AppEngineServiceIamBindingMap and AppEngineServiceIamBindingMapOutput values.
@@ -557,6 +570,12 @@ func (i AppEngineServiceIamBindingMap) ToAppEngineServiceIamBindingMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingMapOutput)
 }
 
+func (i AppEngineServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineServiceIamBinding] {
+	return pulumix.Output[map[string]*AppEngineServiceIamBinding]{
+		OutputState: i.ToAppEngineServiceIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEngineServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamBindingOutput) ElementType() reflect.Type {
@@ -569,6 +588,12 @@ func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingOutput() A
 
 func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingOutputWithContext(ctx context.Context) AppEngineServiceIamBindingOutput {
 	return o
+}
+
+func (o AppEngineServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineServiceIamBinding] {
+	return pulumix.Output[*AppEngineServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -635,6 +660,12 @@ func (o AppEngineServiceIamBindingArrayOutput) ToAppEngineServiceIamBindingArray
 	return o
 }
 
+func (o AppEngineServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineServiceIamBinding] {
+	return pulumix.Output[[]*AppEngineServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEngineServiceIamBindingArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineServiceIamBinding {
 		return vs[0].([]*AppEngineServiceIamBinding)[vs[1].(int)]
@@ -653,6 +684,12 @@ func (o AppEngineServiceIamBindingMapOutput) ToAppEngineServiceIamBindingMapOutp
 
 func (o AppEngineServiceIamBindingMapOutput) ToAppEngineServiceIamBindingMapOutputWithContext(ctx context.Context) AppEngineServiceIamBindingMapOutput {
 	return o
+}
+
+func (o AppEngineServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineServiceIamBinding] {
+	return pulumix.Output[map[string]*AppEngineServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEngineServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamBindingOutput {

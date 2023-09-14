@@ -350,7 +350,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      * 
      */
-    @Export(name="auditLogConfigs", type=List.class, parameters={IamAuditConfigAuditLogConfig.class})
+    @Export(name="auditLogConfigs", refs={List.class,IamAuditConfigAuditLogConfig.class}, tree="[0,1]")
     private Output<List<IamAuditConfigAuditLogConfig>> auditLogConfigs;
 
     /**
@@ -364,7 +364,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the folder&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -378,7 +378,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
@@ -392,7 +392,7 @@ public class IamAuditConfig extends com.pulumi.resources.CustomResource {
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_folder\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**

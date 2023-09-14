@@ -127,7 +127,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="channelId", type=String.class, parameters={})
+    @Export(name="channelId", refs={String.class}, tree="[0]")
     private Output<String> channelId;
 
     /**
@@ -145,7 +145,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * set directly or via the `ttl` field.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -161,7 +161,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * Text labels used for extra metadata and/or filtering
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -176,7 +176,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * sites/SITE_ID/channels/CHANNEL_ID
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -192,7 +192,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      * 
      */
-    @Export(name="retainedReleaseCount", type=Integer.class, parameters={})
+    @Export(name="retainedReleaseCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> retainedReleaseCount;
 
     /**
@@ -207,7 +207,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * Required. The ID of the site in which to create this channel.
      * 
      */
-    @Export(name="siteId", type=String.class, parameters={})
+    @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
@@ -223,7 +223,7 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
      * 
      */
-    @Export(name="ttl", type=String.class, parameters={})
+    @Export(name="ttl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ttl;
 
     /**

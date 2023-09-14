@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
@@ -185,6 +186,12 @@ func (o GetNetblockIPRangesResultOutput) ToGetNetblockIPRangesResultOutput() Get
 
 func (o GetNetblockIPRangesResultOutput) ToGetNetblockIPRangesResultOutputWithContext(ctx context.Context) GetNetblockIPRangesResultOutput {
 	return o
+}
+
+func (o GetNetblockIPRangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetblockIPRangesResult] {
+	return pulumix.Output[GetNetblockIPRangesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Retrieve list of all CIDR blocks.

@@ -361,7 +361,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * The time when the scan was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -376,7 +376,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="data", type=DatascanData.class, parameters={})
+    @Export(name="data", refs={DatascanData.class}, tree="[0]")
     private Output<DatascanData> data;
 
     /**
@@ -397,7 +397,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-    @Export(name="dataProfileResults", type=List.class, parameters={DatascanDataProfileResult.class})
+    @Export(name="dataProfileResults", refs={List.class,DatascanDataProfileResult.class}, tree="[0,1]")
     private Output<List<DatascanDataProfileResult>> dataProfileResults;
 
     /**
@@ -414,7 +414,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dataProfileSpec", type=DatascanDataProfileSpec.class, parameters={})
+    @Export(name="dataProfileSpec", refs={DatascanDataProfileSpec.class}, tree="[0]")
     private Output</* @Nullable */ DatascanDataProfileSpec> dataProfileSpec;
 
     /**
@@ -435,7 +435,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-    @Export(name="dataQualityResults", type=List.class, parameters={DatascanDataQualityResult.class})
+    @Export(name="dataQualityResults", refs={List.class,DatascanDataQualityResult.class}, tree="[0,1]")
     private Output<List<DatascanDataQualityResult>> dataQualityResults;
 
     /**
@@ -452,7 +452,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dataQualitySpec", type=DatascanDataQualitySpec.class, parameters={})
+    @Export(name="dataQualitySpec", refs={DatascanDataQualitySpec.class}, tree="[0]")
     private Output</* @Nullable */ DatascanDataQualitySpec> dataQualitySpec;
 
     /**
@@ -467,7 +467,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
      * 
      */
-    @Export(name="dataScanId", type=String.class, parameters={})
+    @Export(name="dataScanId", refs={String.class}, tree="[0]")
     private Output<String> dataScanId;
 
     /**
@@ -485,7 +485,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * The maximum length is 1,024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -503,7 +503,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * User friendly display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -518,7 +518,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="executionSpec", type=DatascanExecutionSpec.class, parameters={})
+    @Export(name="executionSpec", refs={DatascanExecutionSpec.class}, tree="[0]")
     private Output<DatascanExecutionSpec> executionSpec;
 
     /**
@@ -534,7 +534,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="executionStatuses", type=List.class, parameters={DatascanExecutionStatus.class})
+    @Export(name="executionStatuses", refs={List.class,DatascanExecutionStatus.class}, tree="[0,1]")
     private Output<List<DatascanExecutionStatus>> executionStatuses;
 
     /**
@@ -549,7 +549,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * User-defined labels for the scan. A list of key-&gt;value pairs.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -563,7 +563,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * The location where the data scan should reside.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -581,7 +581,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Must end with a number or a letter.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -600,7 +600,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -615,7 +615,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * Current state of the DataScan.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -629,7 +629,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * The field data type.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -643,7 +643,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -657,7 +657,7 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      * The time when the scan was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

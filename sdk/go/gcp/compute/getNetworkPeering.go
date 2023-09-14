@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information of a specified compute network peering. For more information see
@@ -137,6 +138,12 @@ func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutput() L
 
 func (o LookupNetworkPeeringResultOutput) ToLookupNetworkPeeringResultOutputWithContext(ctx context.Context) LookupNetworkPeeringResultOutput {
 	return o
+}
+
+func (o LookupNetworkPeeringResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkPeeringResult] {
+	return pulumix.Output[LookupNetworkPeeringResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupNetworkPeeringResultOutput) ExportCustomRoutes() pulumi.BoolOutput {

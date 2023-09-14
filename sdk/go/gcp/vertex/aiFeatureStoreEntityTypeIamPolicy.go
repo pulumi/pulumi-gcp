@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -225,6 +226,12 @@ func (i *AiFeatureStoreEntityTypeIamPolicy) ToAiFeatureStoreEntityTypeIamPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamPolicyOutput)
 }
 
+func (i *AiFeatureStoreEntityTypeIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamPolicy] {
+	return pulumix.Output[*AiFeatureStoreEntityTypeIamPolicy]{
+		OutputState: i.ToAiFeatureStoreEntityTypeIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AiFeatureStoreEntityTypeIamPolicyArrayInput is an input type that accepts AiFeatureStoreEntityTypeIamPolicyArray and AiFeatureStoreEntityTypeIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreEntityTypeIamPolicyArrayInput` via:
 //
@@ -248,6 +255,12 @@ func (i AiFeatureStoreEntityTypeIamPolicyArray) ToAiFeatureStoreEntityTypeIamPol
 
 func (i AiFeatureStoreEntityTypeIamPolicyArray) ToAiFeatureStoreEntityTypeIamPolicyArrayOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamPolicyArrayOutput)
+}
+
+func (i AiFeatureStoreEntityTypeIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeIamPolicy] {
+	return pulumix.Output[[]*AiFeatureStoreEntityTypeIamPolicy]{
+		OutputState: i.ToAiFeatureStoreEntityTypeIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AiFeatureStoreEntityTypeIamPolicyMapInput is an input type that accepts AiFeatureStoreEntityTypeIamPolicyMap and AiFeatureStoreEntityTypeIamPolicyMapOutput values.
@@ -275,6 +288,12 @@ func (i AiFeatureStoreEntityTypeIamPolicyMap) ToAiFeatureStoreEntityTypeIamPolic
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreEntityTypeIamPolicyMapOutput)
 }
 
+func (i AiFeatureStoreEntityTypeIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamPolicy] {
+	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamPolicy]{
+		OutputState: i.ToAiFeatureStoreEntityTypeIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AiFeatureStoreEntityTypeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreEntityTypeIamPolicyOutput) ElementType() reflect.Type {
@@ -287,6 +306,12 @@ func (o AiFeatureStoreEntityTypeIamPolicyOutput) ToAiFeatureStoreEntityTypeIamPo
 
 func (o AiFeatureStoreEntityTypeIamPolicyOutput) ToAiFeatureStoreEntityTypeIamPolicyOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamPolicyOutput {
 	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreEntityTypeIamPolicy] {
+	return pulumix.Output[*AiFeatureStoreEntityTypeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -336,6 +361,12 @@ func (o AiFeatureStoreEntityTypeIamPolicyArrayOutput) ToAiFeatureStoreEntityType
 	return o
 }
 
+func (o AiFeatureStoreEntityTypeIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreEntityTypeIamPolicy] {
+	return pulumix.Output[[]*AiFeatureStoreEntityTypeIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AiFeatureStoreEntityTypeIamPolicyArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreEntityTypeIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStoreEntityTypeIamPolicy {
 		return vs[0].([]*AiFeatureStoreEntityTypeIamPolicy)[vs[1].(int)]
@@ -354,6 +385,12 @@ func (o AiFeatureStoreEntityTypeIamPolicyMapOutput) ToAiFeatureStoreEntityTypeIa
 
 func (o AiFeatureStoreEntityTypeIamPolicyMapOutput) ToAiFeatureStoreEntityTypeIamPolicyMapOutputWithContext(ctx context.Context) AiFeatureStoreEntityTypeIamPolicyMapOutput {
 	return o
+}
+
+func (o AiFeatureStoreEntityTypeIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamPolicy] {
+	return pulumix.Output[map[string]*AiFeatureStoreEntityTypeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiFeatureStoreEntityTypeIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreEntityTypeIamPolicyOutput {

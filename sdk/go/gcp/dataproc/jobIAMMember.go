@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
@@ -312,6 +313,12 @@ func (i *JobIAMMember) ToJobIAMMemberOutputWithContext(ctx context.Context) JobI
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberOutput)
 }
 
+func (i *JobIAMMember) ToOutput(ctx context.Context) pulumix.Output[*JobIAMMember] {
+	return pulumix.Output[*JobIAMMember]{
+		OutputState: i.ToJobIAMMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobIAMMemberArrayInput is an input type that accepts JobIAMMemberArray and JobIAMMemberArrayOutput values.
 // You can construct a concrete instance of `JobIAMMemberArrayInput` via:
 //
@@ -335,6 +342,12 @@ func (i JobIAMMemberArray) ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput {
 
 func (i JobIAMMemberArray) ToJobIAMMemberArrayOutputWithContext(ctx context.Context) JobIAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberArrayOutput)
+}
+
+func (i JobIAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*JobIAMMember] {
+	return pulumix.Output[[]*JobIAMMember]{
+		OutputState: i.ToJobIAMMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // JobIAMMemberMapInput is an input type that accepts JobIAMMemberMap and JobIAMMemberMapOutput values.
@@ -362,6 +375,12 @@ func (i JobIAMMemberMap) ToJobIAMMemberMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberMapOutput)
 }
 
+func (i JobIAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobIAMMember] {
+	return pulumix.Output[map[string]*JobIAMMember]{
+		OutputState: i.ToJobIAMMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (JobIAMMemberOutput) ElementType() reflect.Type {
@@ -374,6 +393,12 @@ func (o JobIAMMemberOutput) ToJobIAMMemberOutput() JobIAMMemberOutput {
 
 func (o JobIAMMemberOutput) ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput {
 	return o
+}
+
+func (o JobIAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIAMMember] {
+	return pulumix.Output[*JobIAMMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIAMMemberOutput) Condition() JobIAMMemberConditionPtrOutput {
@@ -428,6 +453,12 @@ func (o JobIAMMemberArrayOutput) ToJobIAMMemberArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o JobIAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*JobIAMMember] {
+	return pulumix.Output[[]*JobIAMMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobIAMMemberArrayOutput) Index(i pulumi.IntInput) JobIAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIAMMember {
 		return vs[0].([]*JobIAMMember)[vs[1].(int)]
@@ -446,6 +477,12 @@ func (o JobIAMMemberMapOutput) ToJobIAMMemberMapOutput() JobIAMMemberMapOutput {
 
 func (o JobIAMMemberMapOutput) ToJobIAMMemberMapOutputWithContext(ctx context.Context) JobIAMMemberMapOutput {
 	return o
+}
+
+func (o JobIAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobIAMMember] {
+	return pulumix.Output[map[string]*JobIAMMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIAMMemberMapOutput) MapIndex(k pulumi.StringInput) JobIAMMemberOutput {

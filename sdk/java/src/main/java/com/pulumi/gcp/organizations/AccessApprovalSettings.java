@@ -169,7 +169,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * Empty active_key_version indicates that a Google-managed key should be used for signing.
      * 
      */
-    @Export(name="activeKeyVersion", type=String.class, parameters={})
+    @Export(name="activeKeyVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activeKeyVersion;
 
     /**
@@ -184,7 +184,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * This field will always be unset for the organization since organizations do not have ancestors.
      * 
      */
-    @Export(name="ancestorHasActiveKeyVersion", type=Boolean.class, parameters={})
+    @Export(name="ancestorHasActiveKeyVersion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ancestorHasActiveKeyVersion;
 
     /**
@@ -198,7 +198,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * This field will always be unset for the organization since organizations do not have ancestors.
      * 
      */
-    @Export(name="enrolledAncestor", type=Boolean.class, parameters={})
+    @Export(name="enrolledAncestor", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enrolledAncestor;
 
     /**
@@ -216,7 +216,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * Structure is documented below.
      * 
      */
-    @Export(name="enrolledServices", type=List.class, parameters={AccessApprovalSettingsEnrolledService.class})
+    @Export(name="enrolledServices", refs={List.class,AccessApprovalSettingsEnrolledService.class}, tree="[0,1]")
     private Output<List<AccessApprovalSettingsEnrolledService>> enrolledServices;
 
     /**
@@ -236,7 +236,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * correct permissions on it, etc.).
      * 
      */
-    @Export(name="invalidKeyVersion", type=Boolean.class, parameters={})
+    @Export(name="invalidKeyVersion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> invalidKeyVersion;
 
     /**
@@ -252,7 +252,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * The resource name of the settings. Format is &#34;organizations/{organization_id}/accessApprovalSettings&#34;
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -268,7 +268,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * resources of that resource. A maximum of 50 email addresses are allowed.
      * 
      */
-    @Export(name="notificationEmails", type=List.class, parameters={String.class})
+    @Export(name="notificationEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> notificationEmails;
 
     /**
@@ -284,7 +284,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * ID of the organization of the access approval settings.
      * 
      */
-    @Export(name="organizationId", type=String.class, parameters={})
+    @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**

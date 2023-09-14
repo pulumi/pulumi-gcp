@@ -111,7 +111,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
      * &#39;bypassResponsePolicy&#39;
      * 
      */
-    @Export(name="behavior", type=String.class, parameters={})
+    @Export(name="behavior", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> behavior;
 
     /**
@@ -126,7 +126,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      * 
      */
-    @Export(name="dnsName", type=String.class, parameters={})
+    @Export(name="dnsName", refs={String.class}, tree="[0]")
     private Output<String> dnsName;
 
     /**
@@ -142,7 +142,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="localData", type=ResponsePolicyRuleLocalData.class, parameters={})
+    @Export(name="localData", refs={ResponsePolicyRuleLocalData.class}, tree="[0]")
     private Output</* @Nullable */ ResponsePolicyRuleLocalData> localData;
 
     /**
@@ -159,7 +159,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -176,7 +176,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="responsePolicy", type=String.class, parameters={})
+    @Export(name="responsePolicy", refs={String.class}, tree="[0]")
     private Output<String> responsePolicy;
 
     /**
@@ -192,7 +192,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**

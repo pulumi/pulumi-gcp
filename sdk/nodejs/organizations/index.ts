@@ -27,11 +27,13 @@ utilities.lazyLoad(exports, ["getBillingAccount","getBillingAccountOutput"], () 
 
 export { GetClientConfigResult } from "./getClientConfig";
 export const getClientConfig: typeof import("./getClientConfig").getClientConfig = null as any;
-utilities.lazyLoad(exports, ["getClientConfig"], () => require("./getClientConfig"));
+export const getClientConfigOutput: typeof import("./getClientConfig").getClientConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getClientConfig","getClientConfigOutput"], () => require("./getClientConfig"));
 
 export { GetClientOpenIdUserInfoResult } from "./getClientOpenIdUserInfo";
 export const getClientOpenIdUserInfo: typeof import("./getClientOpenIdUserInfo").getClientOpenIdUserInfo = null as any;
-utilities.lazyLoad(exports, ["getClientOpenIdUserInfo"], () => require("./getClientOpenIdUserInfo"));
+export const getClientOpenIdUserInfoOutput: typeof import("./getClientOpenIdUserInfo").getClientOpenIdUserInfoOutput = null as any;
+utilities.lazyLoad(exports, ["getClientOpenIdUserInfo","getClientOpenIdUserInfoOutput"], () => require("./getClientOpenIdUserInfo"));
 
 export { GetFolderArgs, GetFolderResult, GetFolderOutputArgs } from "./getFolder";
 export const getFolder: typeof import("./getFolder").getFolder = null as any;

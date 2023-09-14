@@ -122,7 +122,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
      * 
      */
-    @Export(name="channel", type=String.class, parameters={})
+    @Export(name="channel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channel;
 
     /**
@@ -136,7 +136,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Output only. The reason(s) why a trigger is in FAILED state.
      * 
      */
-    @Export(name="conditions", type=Map.class, parameters={String.class, String.class})
+    @Export(name="conditions", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> conditions;
 
     /**
@@ -150,7 +150,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Output only. The creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -164,7 +164,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Required. Destination specifies where the events should be sent to.
      * 
      */
-    @Export(name="destination", type=TriggerDestination.class, parameters={})
+    @Export(name="destination", refs={TriggerDestination.class}, tree="[0]")
     private Output<TriggerDestination> destination;
 
     /**
@@ -178,7 +178,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -192,7 +192,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      * 
      */
-    @Export(name="eventDataContentType", type=String.class, parameters={})
+    @Export(name="eventDataContentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eventDataContentType;
 
     /**
@@ -206,7 +206,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Optional. User labels attached to the triggers that can be used to group resources.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -220,7 +220,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -234,7 +234,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      * 
      */
-    @Export(name="matchingCriterias", type=List.class, parameters={TriggerMatchingCriteria.class})
+    @Export(name="matchingCriterias", refs={List.class,TriggerMatchingCriteria.class}, tree="[0,1]")
     private Output<List<TriggerMatchingCriteria>> matchingCriterias;
 
     /**
@@ -248,7 +248,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Required. The resource name of the trigger. Must be unique within the location on the project.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -262,7 +262,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -276,7 +276,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
@@ -290,7 +290,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    @Export(name="transports", type=List.class, parameters={TriggerTransport.class})
+    @Export(name="transports", refs={List.class,TriggerTransport.class}, tree="[0,1]")
     private Output<List<TriggerTransport>> transports;
 
     /**
@@ -304,7 +304,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -318,7 +318,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Output only. The last-modified time.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

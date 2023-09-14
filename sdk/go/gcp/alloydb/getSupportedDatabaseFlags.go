@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about the supported alloydb database flags in a location.
@@ -104,6 +105,12 @@ func (o GetSupportedDatabaseFlagsResultOutput) ToGetSupportedDatabaseFlagsResult
 
 func (o GetSupportedDatabaseFlagsResultOutput) ToGetSupportedDatabaseFlagsResultOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsResultOutput {
 	return o
+}
+
+func (o GetSupportedDatabaseFlagsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSupportedDatabaseFlagsResult] {
+	return pulumix.Output[GetSupportedDatabaseFlagsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

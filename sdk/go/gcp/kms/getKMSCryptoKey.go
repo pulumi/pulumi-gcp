@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
@@ -129,6 +130,12 @@ func (o GetKMSCryptoKeyResultOutput) ToGetKMSCryptoKeyResultOutput() GetKMSCrypt
 
 func (o GetKMSCryptoKeyResultOutput) ToGetKMSCryptoKeyResultOutputWithContext(ctx context.Context) GetKMSCryptoKeyResultOutput {
 	return o
+}
+
+func (o GetKMSCryptoKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSCryptoKeyResult] {
+	return pulumix.Output[GetKMSCryptoKeyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKMSCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOutput {

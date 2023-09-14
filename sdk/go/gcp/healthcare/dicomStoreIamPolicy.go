@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare DICOM store. Each of these resources serves a different use case:
@@ -323,6 +324,12 @@ func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyOutput)
 }
 
+func (i *DicomStoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamPolicy] {
+	return pulumix.Output[*DicomStoreIamPolicy]{
+		OutputState: i.ToDicomStoreIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DicomStoreIamPolicyArrayInput is an input type that accepts DicomStoreIamPolicyArray and DicomStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DicomStoreIamPolicyArrayInput` via:
 //
@@ -346,6 +353,12 @@ func (i DicomStoreIamPolicyArray) ToDicomStoreIamPolicyArrayOutput() DicomStoreI
 
 func (i DicomStoreIamPolicyArray) ToDicomStoreIamPolicyArrayOutputWithContext(ctx context.Context) DicomStoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyArrayOutput)
+}
+
+func (i DicomStoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamPolicy] {
+	return pulumix.Output[[]*DicomStoreIamPolicy]{
+		OutputState: i.ToDicomStoreIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DicomStoreIamPolicyMapInput is an input type that accepts DicomStoreIamPolicyMap and DicomStoreIamPolicyMapOutput values.
@@ -373,6 +386,12 @@ func (i DicomStoreIamPolicyMap) ToDicomStoreIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyMapOutput)
 }
 
+func (i DicomStoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamPolicy] {
+	return pulumix.Output[map[string]*DicomStoreIamPolicy]{
+		OutputState: i.ToDicomStoreIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DicomStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DicomStoreIamPolicyOutput) ElementType() reflect.Type {
@@ -385,6 +404,12 @@ func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutput() DicomStoreIamPo
 
 func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutputWithContext(ctx context.Context) DicomStoreIamPolicyOutput {
 	return o
+}
+
+func (o DicomStoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomStoreIamPolicy] {
+	return pulumix.Output[*DicomStoreIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The DICOM store ID, in the form
@@ -429,6 +454,12 @@ func (o DicomStoreIamPolicyArrayOutput) ToDicomStoreIamPolicyArrayOutputWithCont
 	return o
 }
 
+func (o DicomStoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DicomStoreIamPolicy] {
+	return pulumix.Output[[]*DicomStoreIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DicomStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) DicomStoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DicomStoreIamPolicy {
 		return vs[0].([]*DicomStoreIamPolicy)[vs[1].(int)]
@@ -447,6 +478,12 @@ func (o DicomStoreIamPolicyMapOutput) ToDicomStoreIamPolicyMapOutput() DicomStor
 
 func (o DicomStoreIamPolicyMapOutput) ToDicomStoreIamPolicyMapOutputWithContext(ctx context.Context) DicomStoreIamPolicyMapOutput {
 	return o
+}
+
+func (o DicomStoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DicomStoreIamPolicy] {
+	return pulumix.Output[map[string]*DicomStoreIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DicomStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DicomStoreIamPolicyOutput {

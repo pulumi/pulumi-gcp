@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Run (v2 API) Job. Each of these resources serves a different use case:
@@ -368,6 +369,12 @@ func (i *JobIamBinding) ToJobIamBindingOutputWithContext(ctx context.Context) Jo
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingOutput)
 }
 
+func (i *JobIamBinding) ToOutput(ctx context.Context) pulumix.Output[*JobIamBinding] {
+	return pulumix.Output[*JobIamBinding]{
+		OutputState: i.ToJobIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobIamBindingArrayInput is an input type that accepts JobIamBindingArray and JobIamBindingArrayOutput values.
 // You can construct a concrete instance of `JobIamBindingArrayInput` via:
 //
@@ -391,6 +398,12 @@ func (i JobIamBindingArray) ToJobIamBindingArrayOutput() JobIamBindingArrayOutpu
 
 func (i JobIamBindingArray) ToJobIamBindingArrayOutputWithContext(ctx context.Context) JobIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingArrayOutput)
+}
+
+func (i JobIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*JobIamBinding] {
+	return pulumix.Output[[]*JobIamBinding]{
+		OutputState: i.ToJobIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // JobIamBindingMapInput is an input type that accepts JobIamBindingMap and JobIamBindingMapOutput values.
@@ -418,6 +431,12 @@ func (i JobIamBindingMap) ToJobIamBindingMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingMapOutput)
 }
 
+func (i JobIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobIamBinding] {
+	return pulumix.Output[map[string]*JobIamBinding]{
+		OutputState: i.ToJobIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobIamBindingOutput struct{ *pulumi.OutputState }
 
 func (JobIamBindingOutput) ElementType() reflect.Type {
@@ -430,6 +449,12 @@ func (o JobIamBindingOutput) ToJobIamBindingOutput() JobIamBindingOutput {
 
 func (o JobIamBindingOutput) ToJobIamBindingOutputWithContext(ctx context.Context) JobIamBindingOutput {
 	return o
+}
+
+func (o JobIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamBinding] {
+	return pulumix.Output[*JobIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIamBindingOutput) Condition() JobIamBindingConditionPtrOutput {
@@ -494,6 +519,12 @@ func (o JobIamBindingArrayOutput) ToJobIamBindingArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o JobIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*JobIamBinding] {
+	return pulumix.Output[[]*JobIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobIamBindingArrayOutput) Index(i pulumi.IntInput) JobIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIamBinding {
 		return vs[0].([]*JobIamBinding)[vs[1].(int)]
@@ -512,6 +543,12 @@ func (o JobIamBindingMapOutput) ToJobIamBindingMapOutput() JobIamBindingMapOutpu
 
 func (o JobIamBindingMapOutput) ToJobIamBindingMapOutputWithContext(ctx context.Context) JobIamBindingMapOutput {
 	return o
+}
+
+func (o JobIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*JobIamBinding] {
+	return pulumix.Output[map[string]*JobIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIamBindingMapOutput) MapIndex(k pulumi.StringInput) JobIamBindingOutput {

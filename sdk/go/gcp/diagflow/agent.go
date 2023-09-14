@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Dialogflow agent is a virtual agent that handles conversations with your end-users. It is a natural language
@@ -420,6 +421,12 @@ func (i *Agent) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentOutput)
 }
 
+func (i *Agent) ToOutput(ctx context.Context) pulumix.Output[*Agent] {
+	return pulumix.Output[*Agent]{
+		OutputState: i.ToAgentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AgentArrayInput is an input type that accepts AgentArray and AgentArrayOutput values.
 // You can construct a concrete instance of `AgentArrayInput` via:
 //
@@ -443,6 +450,12 @@ func (i AgentArray) ToAgentArrayOutput() AgentArrayOutput {
 
 func (i AgentArray) ToAgentArrayOutputWithContext(ctx context.Context) AgentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentArrayOutput)
+}
+
+func (i AgentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Agent] {
+	return pulumix.Output[[]*Agent]{
+		OutputState: i.ToAgentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AgentMapInput is an input type that accepts AgentMap and AgentMapOutput values.
@@ -470,6 +483,12 @@ func (i AgentMap) ToAgentMapOutputWithContext(ctx context.Context) AgentMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AgentMapOutput)
 }
 
+func (i AgentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Agent] {
+	return pulumix.Output[map[string]*Agent]{
+		OutputState: i.ToAgentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AgentOutput struct{ *pulumi.OutputState }
 
 func (AgentOutput) ElementType() reflect.Type {
@@ -482,6 +501,12 @@ func (o AgentOutput) ToAgentOutput() AgentOutput {
 
 func (o AgentOutput) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return o
+}
+
+func (o AgentOutput) ToOutput(ctx context.Context) pulumix.Output[*Agent] {
+	return pulumix.Output[*Agent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // API version displayed in Dialogflow console. If not specified, V2 API is assumed. Clients are free to query
@@ -591,6 +616,12 @@ func (o AgentArrayOutput) ToAgentArrayOutputWithContext(ctx context.Context) Age
 	return o
 }
 
+func (o AgentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Agent] {
+	return pulumix.Output[[]*Agent]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AgentArrayOutput) Index(i pulumi.IntInput) AgentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Agent {
 		return vs[0].([]*Agent)[vs[1].(int)]
@@ -609,6 +640,12 @@ func (o AgentMapOutput) ToAgentMapOutput() AgentMapOutput {
 
 func (o AgentMapOutput) ToAgentMapOutputWithContext(ctx context.Context) AgentMapOutput {
 	return o
+}
+
+func (o AgentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Agent] {
+	return pulumix.Output[map[string]*Agent]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AgentMapOutput) MapIndex(k pulumi.StringInput) AgentOutput {

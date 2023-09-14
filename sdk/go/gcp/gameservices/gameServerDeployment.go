@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A game server deployment resource.
@@ -231,6 +232,12 @@ func (i *GameServerDeployment) ToGameServerDeploymentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentOutput)
 }
 
+func (i *GameServerDeployment) ToOutput(ctx context.Context) pulumix.Output[*GameServerDeployment] {
+	return pulumix.Output[*GameServerDeployment]{
+		OutputState: i.ToGameServerDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GameServerDeploymentArrayInput is an input type that accepts GameServerDeploymentArray and GameServerDeploymentArrayOutput values.
 // You can construct a concrete instance of `GameServerDeploymentArrayInput` via:
 //
@@ -254,6 +261,12 @@ func (i GameServerDeploymentArray) ToGameServerDeploymentArrayOutput() GameServe
 
 func (i GameServerDeploymentArray) ToGameServerDeploymentArrayOutputWithContext(ctx context.Context) GameServerDeploymentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentArrayOutput)
+}
+
+func (i GameServerDeploymentArray) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerDeployment] {
+	return pulumix.Output[[]*GameServerDeployment]{
+		OutputState: i.ToGameServerDeploymentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GameServerDeploymentMapInput is an input type that accepts GameServerDeploymentMap and GameServerDeploymentMapOutput values.
@@ -281,6 +294,12 @@ func (i GameServerDeploymentMap) ToGameServerDeploymentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentMapOutput)
 }
 
+func (i GameServerDeploymentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerDeployment] {
+	return pulumix.Output[map[string]*GameServerDeployment]{
+		OutputState: i.ToGameServerDeploymentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GameServerDeploymentOutput struct{ *pulumi.OutputState }
 
 func (GameServerDeploymentOutput) ElementType() reflect.Type {
@@ -293,6 +312,12 @@ func (o GameServerDeploymentOutput) ToGameServerDeploymentOutput() GameServerDep
 
 func (o GameServerDeploymentOutput) ToGameServerDeploymentOutputWithContext(ctx context.Context) GameServerDeploymentOutput {
 	return o
+}
+
+func (o GameServerDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerDeployment] {
+	return pulumix.Output[*GameServerDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A unique id for the deployment.
@@ -346,6 +371,12 @@ func (o GameServerDeploymentArrayOutput) ToGameServerDeploymentArrayOutputWithCo
 	return o
 }
 
+func (o GameServerDeploymentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerDeployment] {
+	return pulumix.Output[[]*GameServerDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GameServerDeploymentArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GameServerDeployment {
 		return vs[0].([]*GameServerDeployment)[vs[1].(int)]
@@ -364,6 +395,12 @@ func (o GameServerDeploymentMapOutput) ToGameServerDeploymentMapOutput() GameSer
 
 func (o GameServerDeploymentMapOutput) ToGameServerDeploymentMapOutputWithContext(ctx context.Context) GameServerDeploymentMapOutput {
 	return o
+}
+
+func (o GameServerDeploymentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerDeployment] {
+	return pulumix.Output[map[string]*GameServerDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GameServerDeploymentMapOutput) MapIndex(k pulumi.StringInput) GameServerDeploymentOutput {

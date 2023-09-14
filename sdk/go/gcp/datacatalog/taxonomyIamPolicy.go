@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
@@ -345,6 +346,12 @@ func (i *TaxonomyIamPolicy) ToTaxonomyIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyOutput)
 }
 
+func (i *TaxonomyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamPolicy] {
+	return pulumix.Output[*TaxonomyIamPolicy]{
+		OutputState: i.ToTaxonomyIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TaxonomyIamPolicyArrayInput is an input type that accepts TaxonomyIamPolicyArray and TaxonomyIamPolicyArrayOutput values.
 // You can construct a concrete instance of `TaxonomyIamPolicyArrayInput` via:
 //
@@ -368,6 +375,12 @@ func (i TaxonomyIamPolicyArray) ToTaxonomyIamPolicyArrayOutput() TaxonomyIamPoli
 
 func (i TaxonomyIamPolicyArray) ToTaxonomyIamPolicyArrayOutputWithContext(ctx context.Context) TaxonomyIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyArrayOutput)
+}
+
+func (i TaxonomyIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TaxonomyIamPolicy] {
+	return pulumix.Output[[]*TaxonomyIamPolicy]{
+		OutputState: i.ToTaxonomyIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TaxonomyIamPolicyMapInput is an input type that accepts TaxonomyIamPolicyMap and TaxonomyIamPolicyMapOutput values.
@@ -395,6 +408,12 @@ func (i TaxonomyIamPolicyMap) ToTaxonomyIamPolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyMapOutput)
 }
 
+func (i TaxonomyIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaxonomyIamPolicy] {
+	return pulumix.Output[map[string]*TaxonomyIamPolicy]{
+		OutputState: i.ToTaxonomyIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamPolicyOutput) ElementType() reflect.Type {
@@ -407,6 +426,12 @@ func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyOutput() TaxonomyIamPolicyOu
 
 func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyOutputWithContext(ctx context.Context) TaxonomyIamPolicyOutput {
 	return o
+}
+
+func (o TaxonomyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamPolicy] {
+	return pulumix.Output[*TaxonomyIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -461,6 +486,12 @@ func (o TaxonomyIamPolicyArrayOutput) ToTaxonomyIamPolicyArrayOutputWithContext(
 	return o
 }
 
+func (o TaxonomyIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TaxonomyIamPolicy] {
+	return pulumix.Output[[]*TaxonomyIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaxonomyIamPolicyArrayOutput) Index(i pulumi.IntInput) TaxonomyIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaxonomyIamPolicy {
 		return vs[0].([]*TaxonomyIamPolicy)[vs[1].(int)]
@@ -479,6 +510,12 @@ func (o TaxonomyIamPolicyMapOutput) ToTaxonomyIamPolicyMapOutput() TaxonomyIamPo
 
 func (o TaxonomyIamPolicyMapOutput) ToTaxonomyIamPolicyMapOutputWithContext(ctx context.Context) TaxonomyIamPolicyMapOutput {
 	return o
+}
+
+func (o TaxonomyIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaxonomyIamPolicy] {
+	return pulumix.Output[map[string]*TaxonomyIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamPolicyOutput {

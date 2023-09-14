@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A collection of DataItems and Annotations on them.
@@ -230,6 +231,12 @@ func (i *AiDataset) ToAiDatasetOutputWithContext(ctx context.Context) AiDatasetO
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetOutput)
 }
 
+func (i *AiDataset) ToOutput(ctx context.Context) pulumix.Output[*AiDataset] {
+	return pulumix.Output[*AiDataset]{
+		OutputState: i.ToAiDatasetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AiDatasetArrayInput is an input type that accepts AiDatasetArray and AiDatasetArrayOutput values.
 // You can construct a concrete instance of `AiDatasetArrayInput` via:
 //
@@ -253,6 +260,12 @@ func (i AiDatasetArray) ToAiDatasetArrayOutput() AiDatasetArrayOutput {
 
 func (i AiDatasetArray) ToAiDatasetArrayOutputWithContext(ctx context.Context) AiDatasetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetArrayOutput)
+}
+
+func (i AiDatasetArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiDataset] {
+	return pulumix.Output[[]*AiDataset]{
+		OutputState: i.ToAiDatasetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AiDatasetMapInput is an input type that accepts AiDatasetMap and AiDatasetMapOutput values.
@@ -280,6 +293,12 @@ func (i AiDatasetMap) ToAiDatasetMapOutputWithContext(ctx context.Context) AiDat
 	return pulumi.ToOutputWithContext(ctx, i).(AiDatasetMapOutput)
 }
 
+func (i AiDatasetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiDataset] {
+	return pulumix.Output[map[string]*AiDataset]{
+		OutputState: i.ToAiDatasetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AiDatasetOutput struct{ *pulumi.OutputState }
 
 func (AiDatasetOutput) ElementType() reflect.Type {
@@ -292,6 +311,12 @@ func (o AiDatasetOutput) ToAiDatasetOutput() AiDatasetOutput {
 
 func (o AiDatasetOutput) ToAiDatasetOutputWithContext(ctx context.Context) AiDatasetOutput {
 	return o
+}
+
+func (o AiDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[*AiDataset] {
+	return pulumix.Output[*AiDataset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -357,6 +382,12 @@ func (o AiDatasetArrayOutput) ToAiDatasetArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AiDatasetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiDataset] {
+	return pulumix.Output[[]*AiDataset]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AiDatasetArrayOutput) Index(i pulumi.IntInput) AiDatasetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiDataset {
 		return vs[0].([]*AiDataset)[vs[1].(int)]
@@ -375,6 +406,12 @@ func (o AiDatasetMapOutput) ToAiDatasetMapOutput() AiDatasetMapOutput {
 
 func (o AiDatasetMapOutput) ToAiDatasetMapOutputWithContext(ctx context.Context) AiDatasetMapOutput {
 	return o
+}
+
+func (o AiDatasetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiDataset] {
+	return pulumix.Output[map[string]*AiDataset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiDatasetMapOutput) MapIndex(k pulumi.StringInput) AiDatasetOutput {

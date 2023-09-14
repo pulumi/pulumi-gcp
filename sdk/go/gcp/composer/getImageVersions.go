@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to available Cloud Composer versions in a region for a given project.
@@ -117,6 +118,12 @@ func (o GetImageVersionsResultOutput) ToGetImageVersionsResultOutput() GetImageV
 
 func (o GetImageVersionsResultOutput) ToGetImageVersionsResultOutputWithContext(ctx context.Context) GetImageVersionsResultOutput {
 	return o
+}
+
+func (o GetImageVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageVersionsResult] {
+	return pulumix.Output[GetImageVersionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -247,6 +248,12 @@ func (i *AiFeatureStoreIamPolicy) ToAiFeatureStoreIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamPolicyOutput)
 }
 
+func (i *AiFeatureStoreIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreIamPolicy] {
+	return pulumix.Output[*AiFeatureStoreIamPolicy]{
+		OutputState: i.ToAiFeatureStoreIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AiFeatureStoreIamPolicyArrayInput is an input type that accepts AiFeatureStoreIamPolicyArray and AiFeatureStoreIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AiFeatureStoreIamPolicyArrayInput` via:
 //
@@ -270,6 +277,12 @@ func (i AiFeatureStoreIamPolicyArray) ToAiFeatureStoreIamPolicyArrayOutput() AiF
 
 func (i AiFeatureStoreIamPolicyArray) ToAiFeatureStoreIamPolicyArrayOutputWithContext(ctx context.Context) AiFeatureStoreIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamPolicyArrayOutput)
+}
+
+func (i AiFeatureStoreIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreIamPolicy] {
+	return pulumix.Output[[]*AiFeatureStoreIamPolicy]{
+		OutputState: i.ToAiFeatureStoreIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AiFeatureStoreIamPolicyMapInput is an input type that accepts AiFeatureStoreIamPolicyMap and AiFeatureStoreIamPolicyMapOutput values.
@@ -297,6 +310,12 @@ func (i AiFeatureStoreIamPolicyMap) ToAiFeatureStoreIamPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureStoreIamPolicyMapOutput)
 }
 
+func (i AiFeatureStoreIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreIamPolicy] {
+	return pulumix.Output[map[string]*AiFeatureStoreIamPolicy]{
+		OutputState: i.ToAiFeatureStoreIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AiFeatureStoreIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AiFeatureStoreIamPolicyOutput) ElementType() reflect.Type {
@@ -309,6 +328,12 @@ func (o AiFeatureStoreIamPolicyOutput) ToAiFeatureStoreIamPolicyOutput() AiFeatu
 
 func (o AiFeatureStoreIamPolicyOutput) ToAiFeatureStoreIamPolicyOutputWithContext(ctx context.Context) AiFeatureStoreIamPolicyOutput {
 	return o
+}
+
+func (o AiFeatureStoreIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AiFeatureStoreIamPolicy] {
+	return pulumix.Output[*AiFeatureStoreIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -366,6 +391,12 @@ func (o AiFeatureStoreIamPolicyArrayOutput) ToAiFeatureStoreIamPolicyArrayOutput
 	return o
 }
 
+func (o AiFeatureStoreIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiFeatureStoreIamPolicy] {
+	return pulumix.Output[[]*AiFeatureStoreIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AiFeatureStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) AiFeatureStoreIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiFeatureStoreIamPolicy {
 		return vs[0].([]*AiFeatureStoreIamPolicy)[vs[1].(int)]
@@ -384,6 +415,12 @@ func (o AiFeatureStoreIamPolicyMapOutput) ToAiFeatureStoreIamPolicyMapOutput() A
 
 func (o AiFeatureStoreIamPolicyMapOutput) ToAiFeatureStoreIamPolicyMapOutputWithContext(ctx context.Context) AiFeatureStoreIamPolicyMapOutput {
 	return o
+}
+
+func (o AiFeatureStoreIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiFeatureStoreIamPolicy] {
+	return pulumix.Output[map[string]*AiFeatureStoreIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiFeatureStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AiFeatureStoreIamPolicyOutput {

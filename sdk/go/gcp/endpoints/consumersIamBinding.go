@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Endpoints ServiceConsumers. Each of these resources serves a different use case:
@@ -187,6 +188,12 @@ func (i *ConsumersIamBinding) ToConsumersIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingOutput)
 }
 
+func (i *ConsumersIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamBinding] {
+	return pulumix.Output[*ConsumersIamBinding]{
+		OutputState: i.ToConsumersIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConsumersIamBindingArrayInput is an input type that accepts ConsumersIamBindingArray and ConsumersIamBindingArrayOutput values.
 // You can construct a concrete instance of `ConsumersIamBindingArrayInput` via:
 //
@@ -210,6 +217,12 @@ func (i ConsumersIamBindingArray) ToConsumersIamBindingArrayOutput() ConsumersIa
 
 func (i ConsumersIamBindingArray) ToConsumersIamBindingArrayOutputWithContext(ctx context.Context) ConsumersIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingArrayOutput)
+}
+
+func (i ConsumersIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumersIamBinding] {
+	return pulumix.Output[[]*ConsumersIamBinding]{
+		OutputState: i.ToConsumersIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConsumersIamBindingMapInput is an input type that accepts ConsumersIamBindingMap and ConsumersIamBindingMapOutput values.
@@ -237,6 +250,12 @@ func (i ConsumersIamBindingMap) ToConsumersIamBindingMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingMapOutput)
 }
 
+func (i ConsumersIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumersIamBinding] {
+	return pulumix.Output[map[string]*ConsumersIamBinding]{
+		OutputState: i.ToConsumersIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsumersIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ConsumersIamBindingOutput) ElementType() reflect.Type {
@@ -249,6 +268,12 @@ func (o ConsumersIamBindingOutput) ToConsumersIamBindingOutput() ConsumersIamBin
 
 func (o ConsumersIamBindingOutput) ToConsumersIamBindingOutputWithContext(ctx context.Context) ConsumersIamBindingOutput {
 	return o
+}
+
+func (o ConsumersIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamBinding] {
+	return pulumix.Output[*ConsumersIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumersIamBindingOutput) Condition() ConsumersIamBindingConditionPtrOutput {
@@ -293,6 +318,12 @@ func (o ConsumersIamBindingArrayOutput) ToConsumersIamBindingArrayOutputWithCont
 	return o
 }
 
+func (o ConsumersIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsumersIamBinding] {
+	return pulumix.Output[[]*ConsumersIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConsumersIamBindingArrayOutput) Index(i pulumi.IntInput) ConsumersIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsumersIamBinding {
 		return vs[0].([]*ConsumersIamBinding)[vs[1].(int)]
@@ -311,6 +342,12 @@ func (o ConsumersIamBindingMapOutput) ToConsumersIamBindingMapOutput() Consumers
 
 func (o ConsumersIamBindingMapOutput) ToConsumersIamBindingMapOutputWithContext(ctx context.Context) ConsumersIamBindingMapOutput {
 	return o
+}
+
+func (o ConsumersIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsumersIamBinding] {
+	return pulumix.Output[map[string]*ConsumersIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumersIamBindingMapOutput) MapIndex(k pulumi.StringInput) ConsumersIamBindingOutput {

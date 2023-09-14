@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Deploys a revision of a sharedflow.
@@ -181,6 +182,12 @@ func (i *SharedflowDeployment) ToSharedflowDeploymentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowDeploymentOutput)
 }
 
+func (i *SharedflowDeployment) ToOutput(ctx context.Context) pulumix.Output[*SharedflowDeployment] {
+	return pulumix.Output[*SharedflowDeployment]{
+		OutputState: i.ToSharedflowDeploymentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SharedflowDeploymentArrayInput is an input type that accepts SharedflowDeploymentArray and SharedflowDeploymentArrayOutput values.
 // You can construct a concrete instance of `SharedflowDeploymentArrayInput` via:
 //
@@ -204,6 +211,12 @@ func (i SharedflowDeploymentArray) ToSharedflowDeploymentArrayOutput() Sharedflo
 
 func (i SharedflowDeploymentArray) ToSharedflowDeploymentArrayOutputWithContext(ctx context.Context) SharedflowDeploymentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowDeploymentArrayOutput)
+}
+
+func (i SharedflowDeploymentArray) ToOutput(ctx context.Context) pulumix.Output[[]*SharedflowDeployment] {
+	return pulumix.Output[[]*SharedflowDeployment]{
+		OutputState: i.ToSharedflowDeploymentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SharedflowDeploymentMapInput is an input type that accepts SharedflowDeploymentMap and SharedflowDeploymentMapOutput values.
@@ -231,6 +244,12 @@ func (i SharedflowDeploymentMap) ToSharedflowDeploymentMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SharedflowDeploymentMapOutput)
 }
 
+func (i SharedflowDeploymentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedflowDeployment] {
+	return pulumix.Output[map[string]*SharedflowDeployment]{
+		OutputState: i.ToSharedflowDeploymentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SharedflowDeploymentOutput struct{ *pulumi.OutputState }
 
 func (SharedflowDeploymentOutput) ElementType() reflect.Type {
@@ -243,6 +262,12 @@ func (o SharedflowDeploymentOutput) ToSharedflowDeploymentOutput() SharedflowDep
 
 func (o SharedflowDeploymentOutput) ToSharedflowDeploymentOutputWithContext(ctx context.Context) SharedflowDeploymentOutput {
 	return o
+}
+
+func (o SharedflowDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedflowDeployment] {
+	return pulumix.Output[*SharedflowDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource ID of the environment.
@@ -286,6 +311,12 @@ func (o SharedflowDeploymentArrayOutput) ToSharedflowDeploymentArrayOutputWithCo
 	return o
 }
 
+func (o SharedflowDeploymentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SharedflowDeployment] {
+	return pulumix.Output[[]*SharedflowDeployment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SharedflowDeploymentArrayOutput) Index(i pulumi.IntInput) SharedflowDeploymentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SharedflowDeployment {
 		return vs[0].([]*SharedflowDeployment)[vs[1].(int)]
@@ -304,6 +335,12 @@ func (o SharedflowDeploymentMapOutput) ToSharedflowDeploymentMapOutput() Sharedf
 
 func (o SharedflowDeploymentMapOutput) ToSharedflowDeploymentMapOutputWithContext(ctx context.Context) SharedflowDeploymentMapOutput {
 	return o
+}
+
+func (o SharedflowDeploymentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SharedflowDeployment] {
+	return pulumix.Output[map[string]*SharedflowDeployment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SharedflowDeploymentMapOutput) MapIndex(k pulumi.StringInput) SharedflowDeploymentOutput {

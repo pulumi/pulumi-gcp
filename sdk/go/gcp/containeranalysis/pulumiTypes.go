@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i NoteAttestationAuthorityArgs) ToNoteAttestationAuthorityOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityOutput)
 }
 
+func (i NoteAttestationAuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[NoteAttestationAuthority] {
+	return pulumix.Output[NoteAttestationAuthority]{
+		OutputState: i.ToNoteAttestationAuthorityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NoteAttestationAuthorityArgs) ToNoteAttestationAuthorityPtrOutput() NoteAttestationAuthorityPtrOutput {
 	return i.ToNoteAttestationAuthorityPtrOutputWithContext(context.Background())
 }
@@ -103,6 +110,12 @@ func (i *noteAttestationAuthorityPtrType) ToNoteAttestationAuthorityPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityPtrOutput)
 }
 
+func (i *noteAttestationAuthorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoteAttestationAuthority] {
+	return pulumix.Output[*NoteAttestationAuthority]{
+		OutputState: i.ToNoteAttestationAuthorityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteAttestationAuthorityOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityOutput) ElementType() reflect.Type {
@@ -125,6 +138,12 @@ func (o NoteAttestationAuthorityOutput) ToNoteAttestationAuthorityPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteAttestationAuthority) *NoteAttestationAuthority {
 		return &v
 	}).(NoteAttestationAuthorityPtrOutput)
+}
+
+func (o NoteAttestationAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[NoteAttestationAuthority] {
+	return pulumix.Output[NoteAttestationAuthority]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This submessage provides human-readable hints about the purpose of
@@ -152,6 +171,12 @@ func (o NoteAttestationAuthorityPtrOutput) ToNoteAttestationAuthorityPtrOutput()
 
 func (o NoteAttestationAuthorityPtrOutput) ToNoteAttestationAuthorityPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityPtrOutput {
 	return o
+}
+
+func (o NoteAttestationAuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteAttestationAuthority] {
+	return pulumix.Output[*NoteAttestationAuthority]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteAttestationAuthorityPtrOutput) Elem() NoteAttestationAuthorityOutput {
@@ -221,6 +246,12 @@ func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintOutput)
 }
 
+func (i NoteAttestationAuthorityHintArgs) ToOutput(ctx context.Context) pulumix.Output[NoteAttestationAuthorityHint] {
+	return pulumix.Output[NoteAttestationAuthorityHint]{
+		OutputState: i.ToNoteAttestationAuthorityHintOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NoteAttestationAuthorityHintArgs) ToNoteAttestationAuthorityHintPtrOutput() NoteAttestationAuthorityHintPtrOutput {
 	return i.ToNoteAttestationAuthorityHintPtrOutputWithContext(context.Background())
 }
@@ -262,6 +293,12 @@ func (i *noteAttestationAuthorityHintPtrType) ToNoteAttestationAuthorityHintPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(NoteAttestationAuthorityHintPtrOutput)
 }
 
+func (i *noteAttestationAuthorityHintPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoteAttestationAuthorityHint] {
+	return pulumix.Output[*NoteAttestationAuthorityHint]{
+		OutputState: i.ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteAttestationAuthorityHintOutput struct{ *pulumi.OutputState }
 
 func (NoteAttestationAuthorityHintOutput) ElementType() reflect.Type {
@@ -286,6 +323,12 @@ func (o NoteAttestationAuthorityHintOutput) ToNoteAttestationAuthorityHintPtrOut
 	}).(NoteAttestationAuthorityHintPtrOutput)
 }
 
+func (o NoteAttestationAuthorityHintOutput) ToOutput(ctx context.Context) pulumix.Output[NoteAttestationAuthorityHint] {
+	return pulumix.Output[NoteAttestationAuthorityHint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The human readable name of this Attestation Authority, for
 // example "qa".
 //
@@ -306,6 +349,12 @@ func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtr
 
 func (o NoteAttestationAuthorityHintPtrOutput) ToNoteAttestationAuthorityHintPtrOutputWithContext(ctx context.Context) NoteAttestationAuthorityHintPtrOutput {
 	return o
+}
+
+func (o NoteAttestationAuthorityHintPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteAttestationAuthorityHint] {
+	return pulumix.Output[*NoteAttestationAuthorityHint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteAttestationAuthorityHintPtrOutput) Elem() NoteAttestationAuthorityHintOutput {
@@ -366,6 +415,12 @@ func (i NoteIamBindingConditionArgs) ToNoteIamBindingConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingConditionOutput)
 }
 
+func (i NoteIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[NoteIamBindingCondition] {
+	return pulumix.Output[NoteIamBindingCondition]{
+		OutputState: i.ToNoteIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NoteIamBindingConditionArgs) ToNoteIamBindingConditionPtrOutput() NoteIamBindingConditionPtrOutput {
 	return i.ToNoteIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -407,6 +462,12 @@ func (i *noteIamBindingConditionPtrType) ToNoteIamBindingConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingConditionPtrOutput)
 }
 
+func (i *noteIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoteIamBindingCondition] {
+	return pulumix.Output[*NoteIamBindingCondition]{
+		OutputState: i.ToNoteIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (NoteIamBindingConditionOutput) ElementType() reflect.Type {
@@ -429,6 +490,12 @@ func (o NoteIamBindingConditionOutput) ToNoteIamBindingConditionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteIamBindingCondition) *NoteIamBindingCondition {
 		return &v
 	}).(NoteIamBindingConditionPtrOutput)
+}
+
+func (o NoteIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[NoteIamBindingCondition] {
+	return pulumix.Output[NoteIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -455,6 +522,12 @@ func (o NoteIamBindingConditionPtrOutput) ToNoteIamBindingConditionPtrOutput() N
 
 func (o NoteIamBindingConditionPtrOutput) ToNoteIamBindingConditionPtrOutputWithContext(ctx context.Context) NoteIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o NoteIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteIamBindingCondition] {
+	return pulumix.Output[*NoteIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteIamBindingConditionPtrOutput) Elem() NoteIamBindingConditionOutput {
@@ -529,6 +602,12 @@ func (i NoteIamMemberConditionArgs) ToNoteIamMemberConditionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberConditionOutput)
 }
 
+func (i NoteIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[NoteIamMemberCondition] {
+	return pulumix.Output[NoteIamMemberCondition]{
+		OutputState: i.ToNoteIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NoteIamMemberConditionArgs) ToNoteIamMemberConditionPtrOutput() NoteIamMemberConditionPtrOutput {
 	return i.ToNoteIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -570,6 +649,12 @@ func (i *noteIamMemberConditionPtrType) ToNoteIamMemberConditionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberConditionPtrOutput)
 }
 
+func (i *noteIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*NoteIamMemberCondition] {
+	return pulumix.Output[*NoteIamMemberCondition]{
+		OutputState: i.ToNoteIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (NoteIamMemberConditionOutput) ElementType() reflect.Type {
@@ -592,6 +677,12 @@ func (o NoteIamMemberConditionOutput) ToNoteIamMemberConditionPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteIamMemberCondition) *NoteIamMemberCondition {
 		return &v
 	}).(NoteIamMemberConditionPtrOutput)
+}
+
+func (o NoteIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[NoteIamMemberCondition] {
+	return pulumix.Output[NoteIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -618,6 +709,12 @@ func (o NoteIamMemberConditionPtrOutput) ToNoteIamMemberConditionPtrOutput() Not
 
 func (o NoteIamMemberConditionPtrOutput) ToNoteIamMemberConditionPtrOutputWithContext(ctx context.Context) NoteIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o NoteIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteIamMemberCondition] {
+	return pulumix.Output[*NoteIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteIamMemberConditionPtrOutput) Elem() NoteIamMemberConditionOutput {
@@ -694,6 +791,12 @@ func (i NoteRelatedUrlArgs) ToNoteRelatedUrlOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NoteRelatedUrlOutput)
 }
 
+func (i NoteRelatedUrlArgs) ToOutput(ctx context.Context) pulumix.Output[NoteRelatedUrl] {
+	return pulumix.Output[NoteRelatedUrl]{
+		OutputState: i.ToNoteRelatedUrlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NoteRelatedUrlArrayInput is an input type that accepts NoteRelatedUrlArray and NoteRelatedUrlArrayOutput values.
 // You can construct a concrete instance of `NoteRelatedUrlArrayInput` via:
 //
@@ -719,6 +822,12 @@ func (i NoteRelatedUrlArray) ToNoteRelatedUrlArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NoteRelatedUrlArrayOutput)
 }
 
+func (i NoteRelatedUrlArray) ToOutput(ctx context.Context) pulumix.Output[[]NoteRelatedUrl] {
+	return pulumix.Output[[]NoteRelatedUrl]{
+		OutputState: i.ToNoteRelatedUrlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteRelatedUrlOutput struct{ *pulumi.OutputState }
 
 func (NoteRelatedUrlOutput) ElementType() reflect.Type {
@@ -731,6 +840,12 @@ func (o NoteRelatedUrlOutput) ToNoteRelatedUrlOutput() NoteRelatedUrlOutput {
 
 func (o NoteRelatedUrlOutput) ToNoteRelatedUrlOutputWithContext(ctx context.Context) NoteRelatedUrlOutput {
 	return o
+}
+
+func (o NoteRelatedUrlOutput) ToOutput(ctx context.Context) pulumix.Output[NoteRelatedUrl] {
+	return pulumix.Output[NoteRelatedUrl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Label to describe usage of the URL
@@ -755,6 +870,12 @@ func (o NoteRelatedUrlArrayOutput) ToNoteRelatedUrlArrayOutput() NoteRelatedUrlA
 
 func (o NoteRelatedUrlArrayOutput) ToNoteRelatedUrlArrayOutputWithContext(ctx context.Context) NoteRelatedUrlArrayOutput {
 	return o
+}
+
+func (o NoteRelatedUrlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NoteRelatedUrl] {
+	return pulumix.Output[[]NoteRelatedUrl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteRelatedUrlArrayOutput) Index(i pulumi.IntInput) NoteRelatedUrlOutput {
@@ -812,6 +933,12 @@ func (i OccurenceAttestationArgs) ToOccurenceAttestationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationOutput)
 }
 
+func (i OccurenceAttestationArgs) ToOutput(ctx context.Context) pulumix.Output[OccurenceAttestation] {
+	return pulumix.Output[OccurenceAttestation]{
+		OutputState: i.ToOccurenceAttestationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OccurenceAttestationArgs) ToOccurenceAttestationPtrOutput() OccurenceAttestationPtrOutput {
 	return i.ToOccurenceAttestationPtrOutputWithContext(context.Background())
 }
@@ -853,6 +980,12 @@ func (i *occurenceAttestationPtrType) ToOccurenceAttestationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationPtrOutput)
 }
 
+func (i *occurenceAttestationPtrType) ToOutput(ctx context.Context) pulumix.Output[*OccurenceAttestation] {
+	return pulumix.Output[*OccurenceAttestation]{
+		OutputState: i.ToOccurenceAttestationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OccurenceAttestationOutput struct{ *pulumi.OutputState }
 
 func (OccurenceAttestationOutput) ElementType() reflect.Type {
@@ -875,6 +1008,12 @@ func (o OccurenceAttestationOutput) ToOccurenceAttestationPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OccurenceAttestation) *OccurenceAttestation {
 		return &v
 	}).(OccurenceAttestationPtrOutput)
+}
+
+func (o OccurenceAttestationOutput) ToOutput(ctx context.Context) pulumix.Output[OccurenceAttestation] {
+	return pulumix.Output[OccurenceAttestation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The serialized payload that is verified by one or
@@ -905,6 +1044,12 @@ func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutput() Occuren
 
 func (o OccurenceAttestationPtrOutput) ToOccurenceAttestationPtrOutputWithContext(ctx context.Context) OccurenceAttestationPtrOutput {
 	return o
+}
+
+func (o OccurenceAttestationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OccurenceAttestation] {
+	return pulumix.Output[*OccurenceAttestation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OccurenceAttestationPtrOutput) Elem() OccurenceAttestationOutput {
@@ -1014,6 +1159,12 @@ func (i OccurenceAttestationSignatureArgs) ToOccurenceAttestationSignatureOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationSignatureOutput)
 }
 
+func (i OccurenceAttestationSignatureArgs) ToOutput(ctx context.Context) pulumix.Output[OccurenceAttestationSignature] {
+	return pulumix.Output[OccurenceAttestationSignature]{
+		OutputState: i.ToOccurenceAttestationSignatureOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OccurenceAttestationSignatureArrayInput is an input type that accepts OccurenceAttestationSignatureArray and OccurenceAttestationSignatureArrayOutput values.
 // You can construct a concrete instance of `OccurenceAttestationSignatureArrayInput` via:
 //
@@ -1039,6 +1190,12 @@ func (i OccurenceAttestationSignatureArray) ToOccurenceAttestationSignatureArray
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceAttestationSignatureArrayOutput)
 }
 
+func (i OccurenceAttestationSignatureArray) ToOutput(ctx context.Context) pulumix.Output[[]OccurenceAttestationSignature] {
+	return pulumix.Output[[]OccurenceAttestationSignature]{
+		OutputState: i.ToOccurenceAttestationSignatureArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OccurenceAttestationSignatureOutput struct{ *pulumi.OutputState }
 
 func (OccurenceAttestationSignatureOutput) ElementType() reflect.Type {
@@ -1051,6 +1208,12 @@ func (o OccurenceAttestationSignatureOutput) ToOccurenceAttestationSignatureOutp
 
 func (o OccurenceAttestationSignatureOutput) ToOccurenceAttestationSignatureOutputWithContext(ctx context.Context) OccurenceAttestationSignatureOutput {
 	return o
+}
+
+func (o OccurenceAttestationSignatureOutput) ToOutput(ctx context.Context) pulumix.Output[OccurenceAttestationSignature] {
+	return pulumix.Output[OccurenceAttestationSignature]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The identifier for the public key that verifies this
@@ -1092,6 +1255,12 @@ func (o OccurenceAttestationSignatureArrayOutput) ToOccurenceAttestationSignatur
 
 func (o OccurenceAttestationSignatureArrayOutput) ToOccurenceAttestationSignatureArrayOutputWithContext(ctx context.Context) OccurenceAttestationSignatureArrayOutput {
 	return o
+}
+
+func (o OccurenceAttestationSignatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OccurenceAttestationSignature] {
+	return pulumix.Output[[]OccurenceAttestationSignature]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OccurenceAttestationSignatureArrayOutput) Index(i pulumi.IntInput) OccurenceAttestationSignatureOutput {

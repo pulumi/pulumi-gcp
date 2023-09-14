@@ -99,7 +99,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The name of the bucket.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -113,7 +113,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The domain associated with the entity.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -127,7 +127,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The email address associated with the entity.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -149,7 +149,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * * allAuthenticatedUsers
      * 
      */
-    @Export(name="entity", type=String.class, parameters={})
+    @Export(name="entity", refs={String.class}, tree="[0]")
     private Output<String> entity;
 
     /**
@@ -171,7 +171,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The ID for the entity
      * 
      */
-    @Export(name="entityId", type=String.class, parameters={})
+    @Export(name="entityId", refs={String.class}, tree="[0]")
     private Output<String> entityId;
 
     /**
@@ -185,7 +185,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The content generation of the object, if applied to an object.
      * 
      */
-    @Export(name="generation", type=Integer.class, parameters={})
+    @Export(name="generation", refs={Integer.class}, tree="[0]")
     private Output<Integer> generation;
 
     /**
@@ -199,7 +199,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The name of the object to apply the access control to.
      * 
      */
-    @Export(name="object", type=String.class, parameters={})
+    @Export(name="object", refs={String.class}, tree="[0]")
     private Output<String> object;
 
     /**
@@ -214,7 +214,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="projectTeams", type=List.class, parameters={ObjectAccessControlProjectTeam.class})
+    @Export(name="projectTeams", refs={List.class,ObjectAccessControlProjectTeam.class}, tree="[0,1]")
     private Output<List<ObjectAccessControlProjectTeam>> projectTeams;
 
     /**
@@ -232,7 +232,7 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

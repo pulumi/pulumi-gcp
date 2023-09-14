@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authorize the Synchronizer to download environment data from the control plane.
@@ -248,6 +249,12 @@ func (i *SyncAuthorization) ToSyncAuthorizationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SyncAuthorizationOutput)
 }
 
+func (i *SyncAuthorization) ToOutput(ctx context.Context) pulumix.Output[*SyncAuthorization] {
+	return pulumix.Output[*SyncAuthorization]{
+		OutputState: i.ToSyncAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SyncAuthorizationArrayInput is an input type that accepts SyncAuthorizationArray and SyncAuthorizationArrayOutput values.
 // You can construct a concrete instance of `SyncAuthorizationArrayInput` via:
 //
@@ -271,6 +278,12 @@ func (i SyncAuthorizationArray) ToSyncAuthorizationArrayOutput() SyncAuthorizati
 
 func (i SyncAuthorizationArray) ToSyncAuthorizationArrayOutputWithContext(ctx context.Context) SyncAuthorizationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SyncAuthorizationArrayOutput)
+}
+
+func (i SyncAuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]*SyncAuthorization] {
+	return pulumix.Output[[]*SyncAuthorization]{
+		OutputState: i.ToSyncAuthorizationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SyncAuthorizationMapInput is an input type that accepts SyncAuthorizationMap and SyncAuthorizationMapOutput values.
@@ -298,6 +311,12 @@ func (i SyncAuthorizationMap) ToSyncAuthorizationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SyncAuthorizationMapOutput)
 }
 
+func (i SyncAuthorizationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SyncAuthorization] {
+	return pulumix.Output[map[string]*SyncAuthorization]{
+		OutputState: i.ToSyncAuthorizationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SyncAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (SyncAuthorizationOutput) ElementType() reflect.Type {
@@ -310,6 +329,12 @@ func (o SyncAuthorizationOutput) ToSyncAuthorizationOutput() SyncAuthorizationOu
 
 func (o SyncAuthorizationOutput) ToSyncAuthorizationOutputWithContext(ctx context.Context) SyncAuthorizationOutput {
 	return o
+}
+
+func (o SyncAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[*SyncAuthorization] {
+	return pulumix.Output[*SyncAuthorization]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
@@ -347,6 +372,12 @@ func (o SyncAuthorizationArrayOutput) ToSyncAuthorizationArrayOutputWithContext(
 	return o
 }
 
+func (o SyncAuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SyncAuthorization] {
+	return pulumix.Output[[]*SyncAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SyncAuthorizationArrayOutput) Index(i pulumi.IntInput) SyncAuthorizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SyncAuthorization {
 		return vs[0].([]*SyncAuthorization)[vs[1].(int)]
@@ -365,6 +396,12 @@ func (o SyncAuthorizationMapOutput) ToSyncAuthorizationMapOutput() SyncAuthoriza
 
 func (o SyncAuthorizationMapOutput) ToSyncAuthorizationMapOutputWithContext(ctx context.Context) SyncAuthorizationMapOutput {
 	return o
+}
+
+func (o SyncAuthorizationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SyncAuthorization] {
+	return pulumix.Output[map[string]*SyncAuthorization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SyncAuthorizationMapOutput) MapIndex(k pulumi.StringInput) SyncAuthorizationOutput {

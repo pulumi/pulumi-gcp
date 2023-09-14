@@ -330,7 +330,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Time the TcpRoute was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -344,7 +344,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -359,7 +359,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
-    @Export(name="gateways", type=List.class, parameters={String.class})
+    @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> gateways;
 
     /**
@@ -374,7 +374,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the TcpRoute resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -390,7 +390,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * The attached Mesh should be of a type SIDECAR
      * 
      */
-    @Export(name="meshes", type=List.class, parameters={String.class})
+    @Export(name="meshes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> meshes;
 
     /**
@@ -406,7 +406,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Name of the TcpRoute resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -421,7 +421,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -438,7 +438,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={TcpRouteRule.class})
+    @Export(name="rules", refs={List.class,TcpRouteRule.class}, tree="[0,1]")
     private Output<List<TcpRouteRule>> rules;
 
     /**
@@ -454,7 +454,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Server-defined URL of this resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -468,7 +468,7 @@ public class TcpRoute extends com.pulumi.resources.CustomResource {
      * Time the TcpRoute was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

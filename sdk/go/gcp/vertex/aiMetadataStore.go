@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -221,6 +222,12 @@ func (i *AiMetadataStore) ToAiMetadataStoreOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreOutput)
 }
 
+func (i *AiMetadataStore) ToOutput(ctx context.Context) pulumix.Output[*AiMetadataStore] {
+	return pulumix.Output[*AiMetadataStore]{
+		OutputState: i.ToAiMetadataStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AiMetadataStoreArrayInput is an input type that accepts AiMetadataStoreArray and AiMetadataStoreArrayOutput values.
 // You can construct a concrete instance of `AiMetadataStoreArrayInput` via:
 //
@@ -244,6 +251,12 @@ func (i AiMetadataStoreArray) ToAiMetadataStoreArrayOutput() AiMetadataStoreArra
 
 func (i AiMetadataStoreArray) ToAiMetadataStoreArrayOutputWithContext(ctx context.Context) AiMetadataStoreArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreArrayOutput)
+}
+
+func (i AiMetadataStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]*AiMetadataStore] {
+	return pulumix.Output[[]*AiMetadataStore]{
+		OutputState: i.ToAiMetadataStoreArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AiMetadataStoreMapInput is an input type that accepts AiMetadataStoreMap and AiMetadataStoreMapOutput values.
@@ -271,6 +284,12 @@ func (i AiMetadataStoreMap) ToAiMetadataStoreMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AiMetadataStoreMapOutput)
 }
 
+func (i AiMetadataStoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiMetadataStore] {
+	return pulumix.Output[map[string]*AiMetadataStore]{
+		OutputState: i.ToAiMetadataStoreMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AiMetadataStoreOutput struct{ *pulumi.OutputState }
 
 func (AiMetadataStoreOutput) ElementType() reflect.Type {
@@ -283,6 +302,12 @@ func (o AiMetadataStoreOutput) ToAiMetadataStoreOutput() AiMetadataStoreOutput {
 
 func (o AiMetadataStoreOutput) ToAiMetadataStoreOutputWithContext(ctx context.Context) AiMetadataStoreOutput {
 	return o
+}
+
+func (o AiMetadataStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*AiMetadataStore] {
+	return pulumix.Output[*AiMetadataStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -342,6 +367,12 @@ func (o AiMetadataStoreArrayOutput) ToAiMetadataStoreArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o AiMetadataStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AiMetadataStore] {
+	return pulumix.Output[[]*AiMetadataStore]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AiMetadataStoreArrayOutput) Index(i pulumi.IntInput) AiMetadataStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AiMetadataStore {
 		return vs[0].([]*AiMetadataStore)[vs[1].(int)]
@@ -360,6 +391,12 @@ func (o AiMetadataStoreMapOutput) ToAiMetadataStoreMapOutput() AiMetadataStoreMa
 
 func (o AiMetadataStoreMapOutput) ToAiMetadataStoreMapOutputWithContext(ctx context.Context) AiMetadataStoreMapOutput {
 	return o
+}
+
+func (o AiMetadataStoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AiMetadataStore] {
+	return pulumix.Output[map[string]*AiMetadataStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AiMetadataStoreMapOutput) MapIndex(k pulumi.StringInput) AiMetadataStoreOutput {

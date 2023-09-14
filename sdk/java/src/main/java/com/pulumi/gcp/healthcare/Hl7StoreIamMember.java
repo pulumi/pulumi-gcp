@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember")
 public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=Hl7StoreIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={Hl7StoreIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ Hl7StoreIamMemberCondition> condition;
 
     public Output<Optional<Hl7StoreIamMemberCondition>> condition() {
@@ -169,7 +169,7 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the HL7v2 store&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -195,7 +195,7 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="hl7V2StoreId", type=String.class, parameters={})
+    @Export(name="hl7V2StoreId", refs={String.class}, tree="[0]")
     private Output<String> hl7V2StoreId;
 
     /**
@@ -217,7 +217,7 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> hl7V2StoreId() {
         return this.hl7V2StoreId;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -229,7 +229,7 @@ public class Hl7StoreIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

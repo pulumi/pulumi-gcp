@@ -37,8 +37,8 @@ namespace Pulumi.Gcp.Sql
         /// 
         ///     var allAvailableTiers = .Select(v =&gt; 
         ///     {
-        ///         return  v.Tier;
-        ///     });
+        ///         return v.Tier;
+        ///     }).ToList();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -78,8 +78,8 @@ namespace Pulumi.Gcp.Sql
         /// 
         ///     var allAvailableTiers = .Select(v =&gt; 
         ///     {
-        ///         return  v.Tier;
-        ///     });
+        ///         return v.Tier;
+        ///     }).ToList();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

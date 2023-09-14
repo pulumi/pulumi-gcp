@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A collection of policy tags that classify data along a common axis.
@@ -246,6 +247,12 @@ func (i *Taxonomy) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyOutput)
 }
 
+func (i *Taxonomy) ToOutput(ctx context.Context) pulumix.Output[*Taxonomy] {
+	return pulumix.Output[*Taxonomy]{
+		OutputState: i.ToTaxonomyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TaxonomyArrayInput is an input type that accepts TaxonomyArray and TaxonomyArrayOutput values.
 // You can construct a concrete instance of `TaxonomyArrayInput` via:
 //
@@ -269,6 +276,12 @@ func (i TaxonomyArray) ToTaxonomyArrayOutput() TaxonomyArrayOutput {
 
 func (i TaxonomyArray) ToTaxonomyArrayOutputWithContext(ctx context.Context) TaxonomyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyArrayOutput)
+}
+
+func (i TaxonomyArray) ToOutput(ctx context.Context) pulumix.Output[[]*Taxonomy] {
+	return pulumix.Output[[]*Taxonomy]{
+		OutputState: i.ToTaxonomyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TaxonomyMapInput is an input type that accepts TaxonomyMap and TaxonomyMapOutput values.
@@ -296,6 +309,12 @@ func (i TaxonomyMap) ToTaxonomyMapOutputWithContext(ctx context.Context) Taxonom
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyMapOutput)
 }
 
+func (i TaxonomyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Taxonomy] {
+	return pulumix.Output[map[string]*Taxonomy]{
+		OutputState: i.ToTaxonomyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyOutput) ElementType() reflect.Type {
@@ -308,6 +327,12 @@ func (o TaxonomyOutput) ToTaxonomyOutput() TaxonomyOutput {
 
 func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutput {
 	return o
+}
+
+func (o TaxonomyOutput) ToOutput(ctx context.Context) pulumix.Output[*Taxonomy] {
+	return pulumix.Output[*Taxonomy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of policy types that are activated for this taxonomy. If not set,
@@ -365,6 +390,12 @@ func (o TaxonomyArrayOutput) ToTaxonomyArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o TaxonomyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Taxonomy] {
+	return pulumix.Output[[]*Taxonomy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaxonomyArrayOutput) Index(i pulumi.IntInput) TaxonomyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Taxonomy {
 		return vs[0].([]*Taxonomy)[vs[1].(int)]
@@ -383,6 +414,12 @@ func (o TaxonomyMapOutput) ToTaxonomyMapOutput() TaxonomyMapOutput {
 
 func (o TaxonomyMapOutput) ToTaxonomyMapOutputWithContext(ctx context.Context) TaxonomyMapOutput {
 	return o
+}
+
+func (o TaxonomyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Taxonomy] {
+	return pulumix.Output[map[string]*Taxonomy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyMapOutput) MapIndex(k pulumi.StringInput) TaxonomyOutput {

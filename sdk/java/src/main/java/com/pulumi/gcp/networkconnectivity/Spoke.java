@@ -130,7 +130,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Output only. The time the spoke was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -144,7 +144,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * An optional description of the spoke.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -158,7 +158,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Immutable. The URI of the hub that this spoke is attached to.
      * 
      */
-    @Export(name="hub", type=String.class, parameters={})
+    @Export(name="hub", refs={String.class}, tree="[0]")
     private Output<String> hub;
 
     /**
@@ -172,7 +172,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -186,7 +186,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
      * 
      */
-    @Export(name="linkedInterconnectAttachments", type=SpokeLinkedInterconnectAttachments.class, parameters={})
+    @Export(name="linkedInterconnectAttachments", refs={SpokeLinkedInterconnectAttachments.class}, tree="[0]")
     private Output</* @Nullable */ SpokeLinkedInterconnectAttachments> linkedInterconnectAttachments;
 
     /**
@@ -200,7 +200,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * The URIs of linked Router appliance resources
      * 
      */
-    @Export(name="linkedRouterApplianceInstances", type=SpokeLinkedRouterApplianceInstances.class, parameters={})
+    @Export(name="linkedRouterApplianceInstances", refs={SpokeLinkedRouterApplianceInstances.class}, tree="[0]")
     private Output</* @Nullable */ SpokeLinkedRouterApplianceInstances> linkedRouterApplianceInstances;
 
     /**
@@ -214,7 +214,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * The URIs of linked VPN tunnel resources
      * 
      */
-    @Export(name="linkedVpnTunnels", type=SpokeLinkedVpnTunnels.class, parameters={})
+    @Export(name="linkedVpnTunnels", refs={SpokeLinkedVpnTunnels.class}, tree="[0]")
     private Output</* @Nullable */ SpokeLinkedVpnTunnels> linkedVpnTunnels;
 
     /**
@@ -228,7 +228,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -242,7 +242,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Immutable. The name of the spoke. Spoke names must be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -256,7 +256,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -270,7 +270,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -284,7 +284,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      * 
      */
-    @Export(name="uniqueId", type=String.class, parameters={})
+    @Export(name="uniqueId", refs={String.class}, tree="[0]")
     private Output<String> uniqueId;
 
     /**
@@ -298,7 +298,7 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      * Output only. The time the spoke was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

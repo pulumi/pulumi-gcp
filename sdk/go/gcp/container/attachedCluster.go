@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Anthos cluster running on customer owned infrastructure.
@@ -554,6 +555,12 @@ func (i *AttachedCluster) ToAttachedClusterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterOutput)
 }
 
+func (i *AttachedCluster) ToOutput(ctx context.Context) pulumix.Output[*AttachedCluster] {
+	return pulumix.Output[*AttachedCluster]{
+		OutputState: i.ToAttachedClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AttachedClusterArrayInput is an input type that accepts AttachedClusterArray and AttachedClusterArrayOutput values.
 // You can construct a concrete instance of `AttachedClusterArrayInput` via:
 //
@@ -577,6 +584,12 @@ func (i AttachedClusterArray) ToAttachedClusterArrayOutput() AttachedClusterArra
 
 func (i AttachedClusterArray) ToAttachedClusterArrayOutputWithContext(ctx context.Context) AttachedClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterArrayOutput)
+}
+
+func (i AttachedClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*AttachedCluster] {
+	return pulumix.Output[[]*AttachedCluster]{
+		OutputState: i.ToAttachedClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AttachedClusterMapInput is an input type that accepts AttachedClusterMap and AttachedClusterMapOutput values.
@@ -604,6 +617,12 @@ func (i AttachedClusterMap) ToAttachedClusterMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterMapOutput)
 }
 
+func (i AttachedClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttachedCluster] {
+	return pulumix.Output[map[string]*AttachedCluster]{
+		OutputState: i.ToAttachedClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AttachedClusterOutput struct{ *pulumi.OutputState }
 
 func (AttachedClusterOutput) ElementType() reflect.Type {
@@ -616,6 +635,12 @@ func (o AttachedClusterOutput) ToAttachedClusterOutput() AttachedClusterOutput {
 
 func (o AttachedClusterOutput) ToAttachedClusterOutputWithContext(ctx context.Context) AttachedClusterOutput {
 	return o
+}
+
+func (o AttachedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedCluster] {
+	return pulumix.Output[*AttachedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Annotations on the cluster. This field has the same
@@ -774,6 +799,12 @@ func (o AttachedClusterArrayOutput) ToAttachedClusterArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o AttachedClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AttachedCluster] {
+	return pulumix.Output[[]*AttachedCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AttachedClusterArrayOutput) Index(i pulumi.IntInput) AttachedClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AttachedCluster {
 		return vs[0].([]*AttachedCluster)[vs[1].(int)]
@@ -792,6 +823,12 @@ func (o AttachedClusterMapOutput) ToAttachedClusterMapOutput() AttachedClusterMa
 
 func (o AttachedClusterMapOutput) ToAttachedClusterMapOutputWithContext(ctx context.Context) AttachedClusterMapOutput {
 	return o
+}
+
+func (o AttachedClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AttachedCluster] {
+	return pulumix.Output[map[string]*AttachedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AttachedClusterMapOutput) MapIndex(k pulumi.StringInput) AttachedClusterOutput {

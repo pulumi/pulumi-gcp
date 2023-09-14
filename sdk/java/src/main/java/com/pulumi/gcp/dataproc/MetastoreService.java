@@ -287,7 +287,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
      * 
      */
-    @Export(name="artifactGcsUri", type=String.class, parameters={})
+    @Export(name="artifactGcsUri", refs={String.class}, tree="[0]")
     private Output<String> artifactGcsUri;
 
     /**
@@ -303,7 +303,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Possible values are: `MYSQL`, `SPANNER`.
      * 
      */
-    @Export(name="databaseType", type=String.class, parameters={})
+    @Export(name="databaseType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> databaseType;
 
     /**
@@ -321,7 +321,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionConfig", type=MetastoreServiceEncryptionConfig.class, parameters={})
+    @Export(name="encryptionConfig", refs={MetastoreServiceEncryptionConfig.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreServiceEncryptionConfig> encryptionConfig;
 
     /**
@@ -338,7 +338,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The URI of the endpoint used to access the metastore service.
      * 
      */
-    @Export(name="endpointUri", type=String.class, parameters={})
+    @Export(name="endpointUri", refs={String.class}, tree="[0]")
     private Output<String> endpointUri;
 
     /**
@@ -354,7 +354,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="hiveMetastoreConfig", type=MetastoreServiceHiveMetastoreConfig.class, parameters={})
+    @Export(name="hiveMetastoreConfig", refs={MetastoreServiceHiveMetastoreConfig.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreServiceHiveMetastoreConfig> hiveMetastoreConfig;
 
     /**
@@ -369,7 +369,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * User-defined labels for the metastore service.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -384,7 +384,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -402,7 +402,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenanceWindow", type=MetastoreServiceMaintenanceWindow.class, parameters={})
+    @Export(name="maintenanceWindow", refs={MetastoreServiceMaintenanceWindow.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreServiceMaintenanceWindow> maintenanceWindow;
 
     /**
@@ -419,7 +419,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      * 
      */
-    @Export(name="metadataIntegration", type=MetastoreServiceMetadataIntegration.class, parameters={})
+    @Export(name="metadataIntegration", refs={MetastoreServiceMetadataIntegration.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreServiceMetadataIntegration> metadataIntegration;
 
     /**
@@ -433,7 +433,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The relative resource name of the metastore service.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -448,7 +448,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -464,7 +464,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkConfig", type=MetastoreServiceNetworkConfig.class, parameters={})
+    @Export(name="networkConfig", refs={MetastoreServiceNetworkConfig.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreServiceNetworkConfig> networkConfig;
 
     /**
@@ -479,7 +479,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The TCP port at which the metastore service is reached. Default: 9083.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -494,7 +494,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -511,7 +511,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Possible values are: `CANARY`, `STABLE`.
      * 
      */
-    @Export(name="releaseChannel", type=String.class, parameters={})
+    @Export(name="releaseChannel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> releaseChannel;
 
     /**
@@ -528,7 +528,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="scalingConfig", type=MetastoreServiceScalingConfig.class, parameters={})
+    @Export(name="scalingConfig", refs={MetastoreServiceScalingConfig.class}, tree="[0]")
     private Output</* @Nullable */ MetastoreServiceScalingConfig> scalingConfig;
 
     /**
@@ -547,7 +547,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
@@ -565,7 +565,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The current state of the metastore service.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -579,7 +579,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Additional information about the current state of the metastore service, if available.
      * 
      */
-    @Export(name="stateMessage", type=String.class, parameters={})
+    @Export(name="stateMessage", refs={String.class}, tree="[0]")
     private Output<String> stateMessage;
 
     /**
@@ -594,7 +594,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="telemetryConfig", type=MetastoreServiceTelemetryConfig.class, parameters={})
+    @Export(name="telemetryConfig", refs={MetastoreServiceTelemetryConfig.class}, tree="[0]")
     private Output<MetastoreServiceTelemetryConfig> telemetryConfig;
 
     /**
@@ -610,7 +610,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
      */
-    @Export(name="tier", type=String.class, parameters={})
+    @Export(name="tier", refs={String.class}, tree="[0]")
     private Output<String> tier;
 
     /**
@@ -625,7 +625,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      * The globally unique resource identifier of the metastore service.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**

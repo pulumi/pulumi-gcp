@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Bigquery Analytics Hub data exchange
@@ -270,6 +271,12 @@ func (i *DataExchange) ToDataExchangeOutputWithContext(ctx context.Context) Data
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeOutput)
 }
 
+func (i *DataExchange) ToOutput(ctx context.Context) pulumix.Output[*DataExchange] {
+	return pulumix.Output[*DataExchange]{
+		OutputState: i.ToDataExchangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataExchangeArrayInput is an input type that accepts DataExchangeArray and DataExchangeArrayOutput values.
 // You can construct a concrete instance of `DataExchangeArrayInput` via:
 //
@@ -293,6 +300,12 @@ func (i DataExchangeArray) ToDataExchangeArrayOutput() DataExchangeArrayOutput {
 
 func (i DataExchangeArray) ToDataExchangeArrayOutputWithContext(ctx context.Context) DataExchangeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeArrayOutput)
+}
+
+func (i DataExchangeArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchange] {
+	return pulumix.Output[[]*DataExchange]{
+		OutputState: i.ToDataExchangeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DataExchangeMapInput is an input type that accepts DataExchangeMap and DataExchangeMapOutput values.
@@ -320,6 +333,12 @@ func (i DataExchangeMap) ToDataExchangeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeMapOutput)
 }
 
+func (i DataExchangeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchange] {
+	return pulumix.Output[map[string]*DataExchange]{
+		OutputState: i.ToDataExchangeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataExchangeOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeOutput) ElementType() reflect.Type {
@@ -332,6 +351,12 @@ func (o DataExchangeOutput) ToDataExchangeOutput() DataExchangeOutput {
 
 func (o DataExchangeOutput) ToDataExchangeOutputWithContext(ctx context.Context) DataExchangeOutput {
 	return o
+}
+
+func (o DataExchangeOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchange] {
+	return pulumix.Output[*DataExchange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -402,6 +427,12 @@ func (o DataExchangeArrayOutput) ToDataExchangeArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o DataExchangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchange] {
+	return pulumix.Output[[]*DataExchange]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataExchangeArrayOutput) Index(i pulumi.IntInput) DataExchangeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataExchange {
 		return vs[0].([]*DataExchange)[vs[1].(int)]
@@ -420,6 +451,12 @@ func (o DataExchangeMapOutput) ToDataExchangeMapOutput() DataExchangeMapOutput {
 
 func (o DataExchangeMapOutput) ToDataExchangeMapOutputWithContext(ctx context.Context) DataExchangeMapOutput {
 	return o
+}
+
+func (o DataExchangeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchange] {
+	return pulumix.Output[map[string]*DataExchange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeMapOutput) MapIndex(k pulumi.StringInput) DataExchangeOutput {

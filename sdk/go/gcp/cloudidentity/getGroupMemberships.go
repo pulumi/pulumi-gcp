@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
@@ -101,6 +102,12 @@ func (o GetGroupMembershipsResultOutput) ToGetGroupMembershipsResultOutput() Get
 
 func (o GetGroupMembershipsResultOutput) ToGetGroupMembershipsResultOutputWithContext(ctx context.Context) GetGroupMembershipsResultOutput {
 	return o
+}
+
+func (o GetGroupMembershipsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupMembershipsResult] {
+	return pulumix.Output[GetGroupMembershipsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupMembershipsResultOutput) Group() pulumi.StringOutput {

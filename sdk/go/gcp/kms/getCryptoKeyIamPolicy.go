@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
@@ -101,6 +102,12 @@ func (o GetCryptoKeyIamPolicyResultOutput) ToGetCryptoKeyIamPolicyResultOutput()
 
 func (o GetCryptoKeyIamPolicyResultOutput) ToGetCryptoKeyIamPolicyResultOutputWithContext(ctx context.Context) GetCryptoKeyIamPolicyResultOutput {
 	return o
+}
+
+func (o GetCryptoKeyIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCryptoKeyIamPolicyResult] {
+	return pulumix.Output[GetCryptoKeyIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetCryptoKeyIamPolicyResultOutput) CryptoKeyId() pulumi.StringOutput {

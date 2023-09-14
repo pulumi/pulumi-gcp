@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
@@ -299,6 +300,12 @@ func (i *BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkOutput)
 }
 
+func (i *BillingAccountSink) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountSink] {
+	return pulumix.Output[*BillingAccountSink]{
+		OutputState: i.ToBillingAccountSinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BillingAccountSinkArrayInput is an input type that accepts BillingAccountSinkArray and BillingAccountSinkArrayOutput values.
 // You can construct a concrete instance of `BillingAccountSinkArrayInput` via:
 //
@@ -322,6 +329,12 @@ func (i BillingAccountSinkArray) ToBillingAccountSinkArrayOutput() BillingAccoun
 
 func (i BillingAccountSinkArray) ToBillingAccountSinkArrayOutputWithContext(ctx context.Context) BillingAccountSinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkArrayOutput)
+}
+
+func (i BillingAccountSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*BillingAccountSink] {
+	return pulumix.Output[[]*BillingAccountSink]{
+		OutputState: i.ToBillingAccountSinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BillingAccountSinkMapInput is an input type that accepts BillingAccountSinkMap and BillingAccountSinkMapOutput values.
@@ -349,6 +362,12 @@ func (i BillingAccountSinkMap) ToBillingAccountSinkMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkMapOutput)
 }
 
+func (i BillingAccountSinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingAccountSink] {
+	return pulumix.Output[map[string]*BillingAccountSink]{
+		OutputState: i.ToBillingAccountSinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BillingAccountSinkOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountSinkOutput) ElementType() reflect.Type {
@@ -361,6 +380,12 @@ func (o BillingAccountSinkOutput) ToBillingAccountSinkOutput() BillingAccountSin
 
 func (o BillingAccountSinkOutput) ToBillingAccountSinkOutputWithContext(ctx context.Context) BillingAccountSinkOutput {
 	return o
+}
+
+func (o BillingAccountSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountSink] {
+	return pulumix.Output[*BillingAccountSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -433,6 +458,12 @@ func (o BillingAccountSinkArrayOutput) ToBillingAccountSinkArrayOutputWithContex
 	return o
 }
 
+func (o BillingAccountSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BillingAccountSink] {
+	return pulumix.Output[[]*BillingAccountSink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingAccountSinkArrayOutput) Index(i pulumi.IntInput) BillingAccountSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BillingAccountSink {
 		return vs[0].([]*BillingAccountSink)[vs[1].(int)]
@@ -451,6 +482,12 @@ func (o BillingAccountSinkMapOutput) ToBillingAccountSinkMapOutput() BillingAcco
 
 func (o BillingAccountSinkMapOutput) ToBillingAccountSinkMapOutputWithContext(ctx context.Context) BillingAccountSinkMapOutput {
 	return o
+}
+
+func (o BillingAccountSinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingAccountSink] {
+	return pulumix.Output[map[string]*BillingAccountSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingAccountSinkMapOutput) MapIndex(k pulumi.StringInput) BillingAccountSinkOutput {

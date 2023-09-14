@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Entry Metadata. A Data Catalog Entry resource represents another resource in Google Cloud Platform
@@ -503,6 +504,12 @@ func (i *Entry) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryOutput)
 }
 
+func (i *Entry) ToOutput(ctx context.Context) pulumix.Output[*Entry] {
+	return pulumix.Output[*Entry]{
+		OutputState: i.ToEntryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryArrayInput is an input type that accepts EntryArray and EntryArrayOutput values.
 // You can construct a concrete instance of `EntryArrayInput` via:
 //
@@ -526,6 +533,12 @@ func (i EntryArray) ToEntryArrayOutput() EntryArrayOutput {
 
 func (i EntryArray) ToEntryArrayOutputWithContext(ctx context.Context) EntryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryArrayOutput)
+}
+
+func (i EntryArray) ToOutput(ctx context.Context) pulumix.Output[[]*Entry] {
+	return pulumix.Output[[]*Entry]{
+		OutputState: i.ToEntryArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EntryMapInput is an input type that accepts EntryMap and EntryMapOutput values.
@@ -553,6 +566,12 @@ func (i EntryMap) ToEntryMapOutputWithContext(ctx context.Context) EntryMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(EntryMapOutput)
 }
 
+func (i EntryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Entry] {
+	return pulumix.Output[map[string]*Entry]{
+		OutputState: i.ToEntryMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryOutput struct{ *pulumi.OutputState }
 
 func (EntryOutput) ElementType() reflect.Type {
@@ -565,6 +584,12 @@ func (o EntryOutput) ToEntryOutput() EntryOutput {
 
 func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return o
+}
+
+func (o EntryOutput) ToOutput(ctx context.Context) pulumix.Output[*Entry] {
+	return pulumix.Output[*Entry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
@@ -676,6 +701,12 @@ func (o EntryArrayOutput) ToEntryArrayOutputWithContext(ctx context.Context) Ent
 	return o
 }
 
+func (o EntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Entry] {
+	return pulumix.Output[[]*Entry]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntryArrayOutput) Index(i pulumi.IntInput) EntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Entry {
 		return vs[0].([]*Entry)[vs[1].(int)]
@@ -694,6 +725,12 @@ func (o EntryMapOutput) ToEntryMapOutput() EntryMapOutput {
 
 func (o EntryMapOutput) ToEntryMapOutputWithContext(ctx context.Context) EntryMapOutput {
 	return o
+}
+
+func (o EntryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Entry] {
+	return pulumix.Output[map[string]*Entry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryMapOutput) MapIndex(k pulumi.StringInput) EntryOutput {

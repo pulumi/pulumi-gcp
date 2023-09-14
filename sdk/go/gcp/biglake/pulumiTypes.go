@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i DatabaseHiveOptionsArgs) ToDatabaseHiveOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseHiveOptionsOutput)
 }
 
+func (i DatabaseHiveOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseHiveOptions] {
+	return pulumix.Output[DatabaseHiveOptions]{
+		OutputState: i.ToDatabaseHiveOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DatabaseHiveOptionsArgs) ToDatabaseHiveOptionsPtrOutput() DatabaseHiveOptionsPtrOutput {
 	return i.ToDatabaseHiveOptionsPtrOutputWithContext(context.Background())
 }
@@ -99,6 +106,12 @@ func (i *databaseHiveOptionsPtrType) ToDatabaseHiveOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseHiveOptionsPtrOutput)
 }
 
+func (i *databaseHiveOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseHiveOptions] {
+	return pulumix.Output[*DatabaseHiveOptions]{
+		OutputState: i.ToDatabaseHiveOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseHiveOptionsOutput struct{ *pulumi.OutputState }
 
 func (DatabaseHiveOptionsOutput) ElementType() reflect.Type {
@@ -121,6 +134,12 @@ func (o DatabaseHiveOptionsOutput) ToDatabaseHiveOptionsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseHiveOptions) *DatabaseHiveOptions {
 		return &v
 	}).(DatabaseHiveOptionsPtrOutput)
+}
+
+func (o DatabaseHiveOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseHiveOptions] {
+	return pulumix.Output[DatabaseHiveOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud Storage folder URI where the database data is stored, starting with "gs://".
@@ -149,6 +168,12 @@ func (o DatabaseHiveOptionsPtrOutput) ToDatabaseHiveOptionsPtrOutput() DatabaseH
 
 func (o DatabaseHiveOptionsPtrOutput) ToDatabaseHiveOptionsPtrOutputWithContext(ctx context.Context) DatabaseHiveOptionsPtrOutput {
 	return o
+}
+
+func (o DatabaseHiveOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseHiveOptions] {
+	return pulumix.Output[*DatabaseHiveOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseHiveOptionsPtrOutput) Elem() DatabaseHiveOptionsOutput {

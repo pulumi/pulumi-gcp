@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelInstance. Each of these resources serves a different use case:
@@ -499,6 +500,12 @@ func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingOutput)
 }
 
+func (i *TunnelInstanceIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*TunnelInstanceIAMBinding] {
+	return pulumix.Output[*TunnelInstanceIAMBinding]{
+		OutputState: i.ToTunnelInstanceIAMBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TunnelInstanceIAMBindingArrayInput is an input type that accepts TunnelInstanceIAMBindingArray and TunnelInstanceIAMBindingArrayOutput values.
 // You can construct a concrete instance of `TunnelInstanceIAMBindingArrayInput` via:
 //
@@ -522,6 +529,12 @@ func (i TunnelInstanceIAMBindingArray) ToTunnelInstanceIAMBindingArrayOutput() T
 
 func (i TunnelInstanceIAMBindingArray) ToTunnelInstanceIAMBindingArrayOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingArrayOutput)
+}
+
+func (i TunnelInstanceIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelInstanceIAMBinding] {
+	return pulumix.Output[[]*TunnelInstanceIAMBinding]{
+		OutputState: i.ToTunnelInstanceIAMBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TunnelInstanceIAMBindingMapInput is an input type that accepts TunnelInstanceIAMBindingMap and TunnelInstanceIAMBindingMapOutput values.
@@ -549,6 +562,12 @@ func (i TunnelInstanceIAMBindingMap) ToTunnelInstanceIAMBindingMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingMapOutput)
 }
 
+func (i TunnelInstanceIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelInstanceIAMBinding] {
+	return pulumix.Output[map[string]*TunnelInstanceIAMBinding]{
+		OutputState: i.ToTunnelInstanceIAMBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TunnelInstanceIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (TunnelInstanceIAMBindingOutput) ElementType() reflect.Type {
@@ -561,6 +580,12 @@ func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingOutput() Tunne
 
 func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingOutput {
 	return o
+}
+
+func (o TunnelInstanceIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TunnelInstanceIAMBinding] {
+	return pulumix.Output[*TunnelInstanceIAMBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -626,6 +651,12 @@ func (o TunnelInstanceIAMBindingArrayOutput) ToTunnelInstanceIAMBindingArrayOutp
 	return o
 }
 
+func (o TunnelInstanceIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelInstanceIAMBinding] {
+	return pulumix.Output[[]*TunnelInstanceIAMBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TunnelInstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) TunnelInstanceIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelInstanceIAMBinding {
 		return vs[0].([]*TunnelInstanceIAMBinding)[vs[1].(int)]
@@ -644,6 +675,12 @@ func (o TunnelInstanceIAMBindingMapOutput) ToTunnelInstanceIAMBindingMapOutput()
 
 func (o TunnelInstanceIAMBindingMapOutput) ToTunnelInstanceIAMBindingMapOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingMapOutput {
 	return o
+}
+
+func (o TunnelInstanceIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelInstanceIAMBinding] {
+	return pulumix.Output[map[string]*TunnelInstanceIAMBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TunnelInstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) TunnelInstanceIAMBindingOutput {

@@ -115,7 +115,7 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * names can be hierarchical using slashes (e.g. &#34;prod-variables/hostname&#34;).
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -131,7 +131,7 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * variable.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -147,7 +147,7 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -167,7 +167,7 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="text", type=String.class, parameters={})
+    @Export(name="text", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> text;
 
     /**
@@ -188,7 +188,7 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * Example: &#34;2016-10-09T12:33:37.578138407Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -200,7 +200,7 @@ public class Variable extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;
 
     public Output<Optional<String>> value() {

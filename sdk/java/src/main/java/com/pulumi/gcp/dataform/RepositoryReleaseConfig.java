@@ -143,7 +143,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="codeCompilationConfig", type=RepositoryReleaseConfigCodeCompilationConfig.class, parameters={})
+    @Export(name="codeCompilationConfig", refs={RepositoryReleaseConfigCodeCompilationConfig.class}, tree="[0]")
     private Output</* @Nullable */ RepositoryReleaseConfigCodeCompilationConfig> codeCompilationConfig;
 
     /**
@@ -158,7 +158,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      * 
      */
-    @Export(name="cronSchedule", type=String.class, parameters={})
+    @Export(name="cronSchedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cronSchedule;
 
     /**
@@ -174,7 +174,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * ***
      * 
      */
-    @Export(name="gitCommitish", type=String.class, parameters={})
+    @Export(name="gitCommitish", refs={String.class}, tree="[0]")
     private Output<String> gitCommitish;
 
     /**
@@ -190,7 +190,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * The release&#39;s name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -205,7 +205,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -221,7 +221,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="recentScheduledReleaseRecords", type=List.class, parameters={RepositoryReleaseConfigRecentScheduledReleaseRecord.class})
+    @Export(name="recentScheduledReleaseRecords", refs={List.class,RepositoryReleaseConfigRecentScheduledReleaseRecord.class}, tree="[0,1]")
     private Output<List<RepositoryReleaseConfigRecentScheduledReleaseRecord>> recentScheduledReleaseRecords;
 
     /**
@@ -236,7 +236,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * A reference to the region
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -250,7 +250,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * A reference to the Dataform repository
      * 
      */
-    @Export(name="repository", type=String.class, parameters={})
+    @Export(name="repository", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repository;
 
     /**
@@ -264,7 +264,7 @@ public class RepositoryReleaseConfig extends com.pulumi.resources.CustomResource
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      * 
      */
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeZone;
 
     /**

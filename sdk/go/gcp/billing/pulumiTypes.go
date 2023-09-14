@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i AccountIamBindingConditionArgs) ToAccountIamBindingConditionOutput() Acc
 
 func (i AccountIamBindingConditionArgs) ToAccountIamBindingConditionOutputWithContext(ctx context.Context) AccountIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingConditionOutput)
+}
+
+func (i AccountIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AccountIamBindingCondition] {
+	return pulumix.Output[AccountIamBindingCondition]{
+		OutputState: i.ToAccountIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AccountIamBindingConditionArgs) ToAccountIamBindingConditionPtrOutput() AccountIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *accountIamBindingConditionPtrType) ToAccountIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingConditionPtrOutput)
 }
 
+func (i *accountIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccountIamBindingCondition] {
+	return pulumix.Output[*AccountIamBindingCondition]{
+		OutputState: i.ToAccountIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (AccountIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o AccountIamBindingConditionOutput) ToAccountIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountIamBindingCondition) *AccountIamBindingCondition {
 		return &v
 	}).(AccountIamBindingConditionPtrOutput)
+}
+
+func (o AccountIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AccountIamBindingCondition] {
+	return pulumix.Output[AccountIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o AccountIamBindingConditionPtrOutput) ToAccountIamBindingConditionPtrOutp
 
 func (o AccountIamBindingConditionPtrOutput) ToAccountIamBindingConditionPtrOutputWithContext(ctx context.Context) AccountIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o AccountIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountIamBindingCondition] {
+	return pulumix.Output[*AccountIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIamBindingConditionPtrOutput) Elem() AccountIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i AccountIamMemberConditionArgs) ToAccountIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberConditionOutput)
 }
 
+func (i AccountIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AccountIamMemberCondition] {
+	return pulumix.Output[AccountIamMemberCondition]{
+		OutputState: i.ToAccountIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AccountIamMemberConditionArgs) ToAccountIamMemberConditionPtrOutput() AccountIamMemberConditionPtrOutput {
 	return i.ToAccountIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *accountIamMemberConditionPtrType) ToAccountIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberConditionPtrOutput)
 }
 
+func (i *accountIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccountIamMemberCondition] {
+	return pulumix.Output[*AccountIamMemberCondition]{
+		OutputState: i.ToAccountIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (AccountIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o AccountIamMemberConditionOutput) ToAccountIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountIamMemberCondition) *AccountIamMemberCondition {
 		return &v
 	}).(AccountIamMemberConditionPtrOutput)
+}
+
+func (o AccountIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AccountIamMemberCondition] {
+	return pulumix.Output[AccountIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o AccountIamMemberConditionPtrOutput) ToAccountIamMemberConditionPtrOutput
 
 func (o AccountIamMemberConditionPtrOutput) ToAccountIamMemberConditionPtrOutputWithContext(ctx context.Context) AccountIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o AccountIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountIamMemberCondition] {
+	return pulumix.Output[*AccountIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIamMemberConditionPtrOutput) Elem() AccountIamMemberConditionOutput {
@@ -406,6 +455,12 @@ func (i BudgetAllUpdatesRuleArgs) ToBudgetAllUpdatesRuleOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAllUpdatesRuleOutput)
 }
 
+func (i BudgetAllUpdatesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetAllUpdatesRule] {
+	return pulumix.Output[BudgetAllUpdatesRule]{
+		OutputState: i.ToBudgetAllUpdatesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetAllUpdatesRuleArgs) ToBudgetAllUpdatesRulePtrOutput() BudgetAllUpdatesRulePtrOutput {
 	return i.ToBudgetAllUpdatesRulePtrOutputWithContext(context.Background())
 }
@@ -447,6 +502,12 @@ func (i *budgetAllUpdatesRulePtrType) ToBudgetAllUpdatesRulePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAllUpdatesRulePtrOutput)
 }
 
+func (i *budgetAllUpdatesRulePtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetAllUpdatesRule] {
+	return pulumix.Output[*BudgetAllUpdatesRule]{
+		OutputState: i.ToBudgetAllUpdatesRulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetAllUpdatesRuleOutput struct{ *pulumi.OutputState }
 
 func (BudgetAllUpdatesRuleOutput) ElementType() reflect.Type {
@@ -469,6 +530,12 @@ func (o BudgetAllUpdatesRuleOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAllUpdatesRule) *BudgetAllUpdatesRule {
 		return &v
 	}).(BudgetAllUpdatesRulePtrOutput)
+}
+
+func (o BudgetAllUpdatesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetAllUpdatesRule] {
+	return pulumix.Output[BudgetAllUpdatesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Boolean. When set to true, disables default notifications sent
@@ -514,6 +581,12 @@ func (o BudgetAllUpdatesRulePtrOutput) ToBudgetAllUpdatesRulePtrOutput() BudgetA
 
 func (o BudgetAllUpdatesRulePtrOutput) ToBudgetAllUpdatesRulePtrOutputWithContext(ctx context.Context) BudgetAllUpdatesRulePtrOutput {
 	return o
+}
+
+func (o BudgetAllUpdatesRulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetAllUpdatesRule] {
+	return pulumix.Output[*BudgetAllUpdatesRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetAllUpdatesRulePtrOutput) Elem() BudgetAllUpdatesRuleOutput {
@@ -626,6 +699,12 @@ func (i BudgetAmountArgs) ToBudgetAmountOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountOutput)
 }
 
+func (i BudgetAmountArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetAmount] {
+	return pulumix.Output[BudgetAmount]{
+		OutputState: i.ToBudgetAmountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetAmountArgs) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
 	return i.ToBudgetAmountPtrOutputWithContext(context.Background())
 }
@@ -667,6 +746,12 @@ func (i *budgetAmountPtrType) ToBudgetAmountPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountPtrOutput)
 }
 
+func (i *budgetAmountPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetAmount] {
+	return pulumix.Output[*BudgetAmount]{
+		OutputState: i.ToBudgetAmountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetAmountOutput struct{ *pulumi.OutputState }
 
 func (BudgetAmountOutput) ElementType() reflect.Type {
@@ -689,6 +774,12 @@ func (o BudgetAmountOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAmount) *BudgetAmount {
 		return &v
 	}).(BudgetAmountPtrOutput)
+}
+
+func (o BudgetAmountOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetAmount] {
+	return pulumix.Output[BudgetAmount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Configures a budget amount that is automatically set to 100% of
@@ -719,6 +810,12 @@ func (o BudgetAmountPtrOutput) ToBudgetAmountPtrOutput() BudgetAmountPtrOutput {
 
 func (o BudgetAmountPtrOutput) ToBudgetAmountPtrOutputWithContext(ctx context.Context) BudgetAmountPtrOutput {
 	return o
+}
+
+func (o BudgetAmountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetAmount] {
+	return pulumix.Output[*BudgetAmount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetAmountPtrOutput) Elem() BudgetAmountOutput {
@@ -816,6 +913,12 @@ func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountSpecifiedAmountOutput)
 }
 
+func (i BudgetAmountSpecifiedAmountArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetAmountSpecifiedAmount] {
+	return pulumix.Output[BudgetAmountSpecifiedAmount]{
+		OutputState: i.ToBudgetAmountSpecifiedAmountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetAmountSpecifiedAmountArgs) ToBudgetAmountSpecifiedAmountPtrOutput() BudgetAmountSpecifiedAmountPtrOutput {
 	return i.ToBudgetAmountSpecifiedAmountPtrOutputWithContext(context.Background())
 }
@@ -857,6 +960,12 @@ func (i *budgetAmountSpecifiedAmountPtrType) ToBudgetAmountSpecifiedAmountPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetAmountSpecifiedAmountPtrOutput)
 }
 
+func (i *budgetAmountSpecifiedAmountPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetAmountSpecifiedAmount] {
+	return pulumix.Output[*BudgetAmountSpecifiedAmount]{
+		OutputState: i.ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetAmountSpecifiedAmountOutput struct{ *pulumi.OutputState }
 
 func (BudgetAmountSpecifiedAmountOutput) ElementType() reflect.Type {
@@ -879,6 +988,12 @@ func (o BudgetAmountSpecifiedAmountOutput) ToBudgetAmountSpecifiedAmountPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetAmountSpecifiedAmount) *BudgetAmountSpecifiedAmount {
 		return &v
 	}).(BudgetAmountSpecifiedAmountPtrOutput)
+}
+
+func (o BudgetAmountSpecifiedAmountOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetAmountSpecifiedAmount] {
+	return pulumix.Output[BudgetAmountSpecifiedAmount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The 3-letter currency code defined in ISO 4217.
@@ -917,6 +1032,12 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) ToBudgetAmountSpecifiedAmountPtrOu
 
 func (o BudgetAmountSpecifiedAmountPtrOutput) ToBudgetAmountSpecifiedAmountPtrOutputWithContext(ctx context.Context) BudgetAmountSpecifiedAmountPtrOutput {
 	return o
+}
+
+func (o BudgetAmountSpecifiedAmountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetAmountSpecifiedAmount] {
+	return pulumix.Output[*BudgetAmountSpecifiedAmount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetAmountSpecifiedAmountPtrOutput) Elem() BudgetAmountSpecifiedAmountOutput {
@@ -1097,6 +1218,12 @@ func (i BudgetBudgetFilterArgs) ToBudgetBudgetFilterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterOutput)
 }
 
+func (i BudgetBudgetFilterArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilter] {
+	return pulumix.Output[BudgetBudgetFilter]{
+		OutputState: i.ToBudgetBudgetFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetBudgetFilterArgs) ToBudgetBudgetFilterPtrOutput() BudgetBudgetFilterPtrOutput {
 	return i.ToBudgetBudgetFilterPtrOutputWithContext(context.Background())
 }
@@ -1138,6 +1265,12 @@ func (i *budgetBudgetFilterPtrType) ToBudgetBudgetFilterPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterPtrOutput)
 }
 
+func (i *budgetBudgetFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilter] {
+	return pulumix.Output[*BudgetBudgetFilter]{
+		OutputState: i.ToBudgetBudgetFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetBudgetFilterOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterOutput) ElementType() reflect.Type {
@@ -1160,6 +1293,12 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilter) *BudgetBudgetFilter {
 		return &v
 	}).(BudgetBudgetFilterPtrOutput)
+}
+
+func (o BudgetBudgetFilterOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilter] {
+	return pulumix.Output[BudgetBudgetFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A CalendarPeriod represents the abstract concept of a recurring time period that has a
@@ -1251,6 +1390,12 @@ func (o BudgetBudgetFilterPtrOutput) ToBudgetBudgetFilterPtrOutput() BudgetBudge
 
 func (o BudgetBudgetFilterPtrOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterPtrOutput {
 	return o
+}
+
+func (o BudgetBudgetFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilter] {
+	return pulumix.Output[*BudgetBudgetFilter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
@@ -1428,6 +1573,12 @@ func (i BudgetBudgetFilterCustomPeriodArgs) ToBudgetBudgetFilterCustomPeriodOutp
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodOutput)
 }
 
+func (i BudgetBudgetFilterCustomPeriodArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilterCustomPeriod] {
+	return pulumix.Output[BudgetBudgetFilterCustomPeriod]{
+		OutputState: i.ToBudgetBudgetFilterCustomPeriodOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetBudgetFilterCustomPeriodArgs) ToBudgetBudgetFilterCustomPeriodPtrOutput() BudgetBudgetFilterCustomPeriodPtrOutput {
 	return i.ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(context.Background())
 }
@@ -1469,6 +1620,12 @@ func (i *budgetBudgetFilterCustomPeriodPtrType) ToBudgetBudgetFilterCustomPeriod
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodPtrOutput)
 }
 
+func (i *budgetBudgetFilterCustomPeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilterCustomPeriod] {
+	return pulumix.Output[*BudgetBudgetFilterCustomPeriod]{
+		OutputState: i.ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetBudgetFilterCustomPeriodOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterCustomPeriodOutput) ElementType() reflect.Type {
@@ -1491,6 +1648,12 @@ func (o BudgetBudgetFilterCustomPeriodOutput) ToBudgetBudgetFilterCustomPeriodPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilterCustomPeriod) *BudgetBudgetFilterCustomPeriod {
 		return &v
 	}).(BudgetBudgetFilterCustomPeriodPtrOutput)
+}
+
+func (o BudgetBudgetFilterCustomPeriodOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilterCustomPeriod] {
+	return pulumix.Output[BudgetBudgetFilterCustomPeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
@@ -1518,6 +1681,12 @@ func (o BudgetBudgetFilterCustomPeriodPtrOutput) ToBudgetBudgetFilterCustomPerio
 
 func (o BudgetBudgetFilterCustomPeriodPtrOutput) ToBudgetBudgetFilterCustomPeriodPtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodPtrOutput {
 	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilterCustomPeriod] {
+	return pulumix.Output[*BudgetBudgetFilterCustomPeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetBudgetFilterCustomPeriodPtrOutput) Elem() BudgetBudgetFilterCustomPeriodOutput {
@@ -1594,6 +1763,12 @@ func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToBudgetBudgetFilterCustomPer
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodEndDateOutput)
 }
 
+func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilterCustomPeriodEndDate] {
+	return pulumix.Output[BudgetBudgetFilterCustomPeriodEndDate]{
+		OutputState: i.ToBudgetBudgetFilterCustomPeriodEndDateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetBudgetFilterCustomPeriodEndDateArgs) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutput() BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
 	return i.ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(context.Background())
 }
@@ -1635,6 +1810,12 @@ func (i *budgetBudgetFilterCustomPeriodEndDatePtrType) ToBudgetBudgetFilterCusto
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodEndDatePtrOutput)
 }
 
+func (i *budgetBudgetFilterCustomPeriodEndDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilterCustomPeriodEndDate] {
+	return pulumix.Output[*BudgetBudgetFilterCustomPeriodEndDate]{
+		OutputState: i.ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetBudgetFilterCustomPeriodEndDateOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterCustomPeriodEndDateOutput) ElementType() reflect.Type {
@@ -1657,6 +1838,12 @@ func (o BudgetBudgetFilterCustomPeriodEndDateOutput) ToBudgetBudgetFilterCustomP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilterCustomPeriodEndDate) *BudgetBudgetFilterCustomPeriodEndDate {
 		return &v
 	}).(BudgetBudgetFilterCustomPeriodEndDatePtrOutput)
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDateOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilterCustomPeriodEndDate] {
+	return pulumix.Output[BudgetBudgetFilterCustomPeriodEndDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month.
@@ -1686,6 +1873,12 @@ func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) ToBudgetBudgetFilterCust
 
 func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) ToBudgetBudgetFilterCustomPeriodEndDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodEndDatePtrOutput {
 	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilterCustomPeriodEndDate] {
+	return pulumix.Output[*BudgetBudgetFilterCustomPeriodEndDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetBudgetFilterCustomPeriodEndDatePtrOutput) Elem() BudgetBudgetFilterCustomPeriodEndDateOutput {
@@ -1769,6 +1962,12 @@ func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToBudgetBudgetFilterCustomP
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodStartDateOutput)
 }
 
+func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilterCustomPeriodStartDate] {
+	return pulumix.Output[BudgetBudgetFilterCustomPeriodStartDate]{
+		OutputState: i.ToBudgetBudgetFilterCustomPeriodStartDateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BudgetBudgetFilterCustomPeriodStartDateArgs) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutput() BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
 	return i.ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(context.Background())
 }
@@ -1810,6 +2009,12 @@ func (i *budgetBudgetFilterCustomPeriodStartDatePtrType) ToBudgetBudgetFilterCus
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetBudgetFilterCustomPeriodStartDatePtrOutput)
 }
 
+func (i *budgetBudgetFilterCustomPeriodStartDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilterCustomPeriodStartDate] {
+	return pulumix.Output[*BudgetBudgetFilterCustomPeriodStartDate]{
+		OutputState: i.ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetBudgetFilterCustomPeriodStartDateOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterCustomPeriodStartDateOutput) ElementType() reflect.Type {
@@ -1832,6 +2037,12 @@ func (o BudgetBudgetFilterCustomPeriodStartDateOutput) ToBudgetBudgetFilterCusto
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetBudgetFilterCustomPeriodStartDate) *BudgetBudgetFilterCustomPeriodStartDate {
 		return &v
 	}).(BudgetBudgetFilterCustomPeriodStartDatePtrOutput)
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDateOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetBudgetFilterCustomPeriodStartDate] {
+	return pulumix.Output[BudgetBudgetFilterCustomPeriodStartDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month.
@@ -1861,6 +2072,12 @@ func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) ToBudgetBudgetFilterCu
 
 func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) ToBudgetBudgetFilterCustomPeriodStartDatePtrOutputWithContext(ctx context.Context) BudgetBudgetFilterCustomPeriodStartDatePtrOutput {
 	return o
+}
+
+func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetBudgetFilterCustomPeriodStartDate] {
+	return pulumix.Output[*BudgetBudgetFilterCustomPeriodStartDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetBudgetFilterCustomPeriodStartDatePtrOutput) Elem() BudgetBudgetFilterCustomPeriodStartDateOutput {
@@ -1948,6 +2165,12 @@ func (i BudgetThresholdRuleArgs) ToBudgetThresholdRuleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetThresholdRuleOutput)
 }
 
+func (i BudgetThresholdRuleArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetThresholdRule] {
+	return pulumix.Output[BudgetThresholdRule]{
+		OutputState: i.ToBudgetThresholdRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BudgetThresholdRuleArrayInput is an input type that accepts BudgetThresholdRuleArray and BudgetThresholdRuleArrayOutput values.
 // You can construct a concrete instance of `BudgetThresholdRuleArrayInput` via:
 //
@@ -1973,6 +2196,12 @@ func (i BudgetThresholdRuleArray) ToBudgetThresholdRuleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetThresholdRuleArrayOutput)
 }
 
+func (i BudgetThresholdRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]BudgetThresholdRule] {
+	return pulumix.Output[[]BudgetThresholdRule]{
+		OutputState: i.ToBudgetThresholdRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BudgetThresholdRuleOutput struct{ *pulumi.OutputState }
 
 func (BudgetThresholdRuleOutput) ElementType() reflect.Type {
@@ -1985,6 +2214,12 @@ func (o BudgetThresholdRuleOutput) ToBudgetThresholdRuleOutput() BudgetThreshold
 
 func (o BudgetThresholdRuleOutput) ToBudgetThresholdRuleOutputWithContext(ctx context.Context) BudgetThresholdRuleOutput {
 	return o
+}
+
+func (o BudgetThresholdRuleOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetThresholdRule] {
+	return pulumix.Output[BudgetThresholdRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of basis used to determine if spend has passed
@@ -2013,6 +2248,12 @@ func (o BudgetThresholdRuleArrayOutput) ToBudgetThresholdRuleArrayOutput() Budge
 
 func (o BudgetThresholdRuleArrayOutput) ToBudgetThresholdRuleArrayOutputWithContext(ctx context.Context) BudgetThresholdRuleArrayOutput {
 	return o
+}
+
+func (o BudgetThresholdRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BudgetThresholdRule] {
+	return pulumix.Output[[]BudgetThresholdRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BudgetThresholdRuleArrayOutput) Index(i pulumi.IntInput) BudgetThresholdRuleOutput {

@@ -92,7 +92,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The name of the bucket.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -106,7 +106,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The domain associated with the entity.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -120,7 +120,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The email address associated with the entity.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -142,7 +142,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * * allAuthenticatedUsers
      * 
      */
-    @Export(name="entity", type=String.class, parameters={})
+    @Export(name="entity", refs={String.class}, tree="[0]")
     private Output<String> entity;
 
     /**
@@ -164,7 +164,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The ID for the entity
      * 
      */
-    @Export(name="entityId", type=String.class, parameters={})
+    @Export(name="entityId", refs={String.class}, tree="[0]")
     private Output<String> entityId;
 
     /**
@@ -178,7 +178,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The content generation of the object, if applied to an object.
      * 
      */
-    @Export(name="generation", type=Integer.class, parameters={})
+    @Export(name="generation", refs={Integer.class}, tree="[0]")
     private Output<Integer> generation;
 
     /**
@@ -192,7 +192,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * The name of the object, if applied to an object.
      * 
      */
-    @Export(name="object", type=String.class, parameters={})
+    @Export(name="object", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> object;
 
     /**
@@ -207,7 +207,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    @Export(name="projectTeams", type=List.class, parameters={DefaultObjectAccessControlProjectTeam.class})
+    @Export(name="projectTeams", refs={List.class,DefaultObjectAccessControlProjectTeam.class}, tree="[0,1]")
     private Output<List<DefaultObjectAccessControlProjectTeam>> projectTeams;
 
     /**
@@ -225,7 +225,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

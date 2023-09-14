@@ -169,7 +169,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * resource, this field is visible only if it has a non-empty value.
      * 
      */
-    @Export(name="chainName", type=String.class, parameters={})
+    @Export(name="chainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chainName;
 
     /**
@@ -188,7 +188,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -202,7 +202,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -216,7 +216,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Size of the snapshot, specified in GB.
      * 
      */
-    @Export(name="diskSizeGb", type=Integer.class, parameters={})
+    @Export(name="diskSizeGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> diskSizeGb;
 
     /**
@@ -231,7 +231,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * internally during updates.
      * 
      */
-    @Export(name="labelFingerprint", type=String.class, parameters={})
+    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
@@ -246,7 +246,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Labels to apply to this Snapshot.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -263,7 +263,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * snapshot using a customer-supplied encryption key.
      * 
      */
-    @Export(name="licenses", type=List.class, parameters={String.class})
+    @Export(name="licenses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> licenses;
 
     /**
@@ -286,7 +286,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -307,7 +307,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -322,7 +322,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -346,7 +346,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="snapshotEncryptionKey", type=SnapshotSnapshotEncryptionKey.class, parameters={})
+    @Export(name="snapshotEncryptionKey", refs={SnapshotSnapshotEncryptionKey.class}, tree="[0]")
     private Output</* @Nullable */ SnapshotSnapshotEncryptionKey> snapshotEncryptionKey;
 
     /**
@@ -370,7 +370,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="snapshotId", type=Integer.class, parameters={})
+    @Export(name="snapshotId", refs={Integer.class}, tree="[0]")
     private Output<Integer> snapshotId;
 
     /**
@@ -386,7 +386,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="sourceDisk", type=String.class, parameters={})
+    @Export(name="sourceDisk", refs={String.class}, tree="[0]")
     private Output<String> sourceDisk;
 
     /**
@@ -405,7 +405,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sourceDiskEncryptionKey", type=SnapshotSourceDiskEncryptionKey.class, parameters={})
+    @Export(name="sourceDiskEncryptionKey", refs={SnapshotSourceDiskEncryptionKey.class}, tree="[0]")
     private Output</* @Nullable */ SnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKey;
 
     /**
@@ -424,7 +424,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * creation/deletion.
      * 
      */
-    @Export(name="storageBytes", type=Integer.class, parameters={})
+    @Export(name="storageBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> storageBytes;
 
     /**
@@ -440,7 +440,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
      * 
      */
-    @Export(name="storageLocations", type=List.class, parameters={String.class})
+    @Export(name="storageLocations", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> storageLocations;
 
     /**
@@ -454,7 +454,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * A reference to the zone where the disk is hosted.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

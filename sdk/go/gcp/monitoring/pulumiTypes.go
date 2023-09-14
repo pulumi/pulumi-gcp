@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyOutput)
 }
 
+func (i AlertPolicyAlertStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyAlertStrategy] {
+	return pulumix.Output[AlertPolicyAlertStrategy]{
+		OutputState: i.ToAlertPolicyAlertStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyAlertStrategyArgs) ToAlertPolicyAlertStrategyPtrOutput() AlertPolicyAlertStrategyPtrOutput {
 	return i.ToAlertPolicyAlertStrategyPtrOutputWithContext(context.Background())
 }
@@ -103,6 +110,12 @@ func (i *alertPolicyAlertStrategyPtrType) ToAlertPolicyAlertStrategyPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyPtrOutput)
 }
 
+func (i *alertPolicyAlertStrategyPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyAlertStrategy] {
+	return pulumix.Output[*AlertPolicyAlertStrategy]{
+		OutputState: i.ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyAlertStrategyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyAlertStrategyOutput) ElementType() reflect.Type {
@@ -125,6 +138,12 @@ func (o AlertPolicyAlertStrategyOutput) ToAlertPolicyAlertStrategyPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyAlertStrategy) *AlertPolicyAlertStrategy {
 		return &v
 	}).(AlertPolicyAlertStrategyPtrOutput)
+}
+
+func (o AlertPolicyAlertStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyAlertStrategy] {
+	return pulumix.Output[AlertPolicyAlertStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If an alert policy that was active has no data for this long, any open incidents will close.
@@ -162,6 +181,12 @@ func (o AlertPolicyAlertStrategyPtrOutput) ToAlertPolicyAlertStrategyPtrOutput()
 
 func (o AlertPolicyAlertStrategyPtrOutput) ToAlertPolicyAlertStrategyPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyPtrOutput {
 	return o
+}
+
+func (o AlertPolicyAlertStrategyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyAlertStrategy] {
+	return pulumix.Output[*AlertPolicyAlertStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyAlertStrategyPtrOutput) Elem() AlertPolicyAlertStrategyOutput {
@@ -251,6 +276,12 @@ func (i AlertPolicyAlertStrategyNotificationChannelStrategyArgs) ToAlertPolicyAl
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationChannelStrategyOutput)
 }
 
+func (i AlertPolicyAlertStrategyNotificationChannelStrategyArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyAlertStrategyNotificationChannelStrategy] {
+	return pulumix.Output[AlertPolicyAlertStrategyNotificationChannelStrategy]{
+		OutputState: i.ToAlertPolicyAlertStrategyNotificationChannelStrategyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput is an input type that accepts AlertPolicyAlertStrategyNotificationChannelStrategyArray and AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput` via:
 //
@@ -276,6 +307,12 @@ func (i AlertPolicyAlertStrategyNotificationChannelStrategyArray) ToAlertPolicyA
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput)
 }
 
+func (i AlertPolicyAlertStrategyNotificationChannelStrategyArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyAlertStrategyNotificationChannelStrategy] {
+	return pulumix.Output[[]AlertPolicyAlertStrategyNotificationChannelStrategy]{
+		OutputState: i.ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyAlertStrategyNotificationChannelStrategyOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ElementType() reflect.Type {
@@ -288,6 +325,12 @@ func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ToAlertPolicy
 
 func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ToAlertPolicyAlertStrategyNotificationChannelStrategyOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
 	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyAlertStrategyNotificationChannelStrategy] {
+	return pulumix.Output[AlertPolicyAlertStrategyNotificationChannelStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The notification channels that these settings apply to. Each of these
@@ -317,6 +360,12 @@ func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) ToAlertP
 
 func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
 	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyAlertStrategyNotificationChannelStrategy] {
+	return pulumix.Output[[]AlertPolicyAlertStrategyNotificationChannelStrategy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) Index(i pulumi.IntInput) AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
@@ -356,6 +405,12 @@ func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStr
 
 func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStrategyNotificationRateLimitOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationRateLimitOutput)
+}
+
+func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyAlertStrategyNotificationRateLimit] {
+	return pulumix.Output[AlertPolicyAlertStrategyNotificationRateLimit]{
+		OutputState: i.ToAlertPolicyAlertStrategyNotificationRateLimitOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i AlertPolicyAlertStrategyNotificationRateLimitArgs) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutput() AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
@@ -399,6 +454,12 @@ func (i *alertPolicyAlertStrategyNotificationRateLimitPtrType) ToAlertPolicyAler
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
 }
 
+func (i *alertPolicyAlertStrategyNotificationRateLimitPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyAlertStrategyNotificationRateLimit] {
+	return pulumix.Output[*AlertPolicyAlertStrategyNotificationRateLimit]{
+		OutputState: i.ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyAlertStrategyNotificationRateLimitOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyAlertStrategyNotificationRateLimitOutput) ElementType() reflect.Type {
@@ -423,6 +484,12 @@ func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToAlertPolicyAlertS
 	}).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
 }
 
+func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyAlertStrategyNotificationRateLimit] {
+	return pulumix.Output[AlertPolicyAlertStrategyNotificationRateLimit]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Not more than one notification per period.
 func (o AlertPolicyAlertStrategyNotificationRateLimitOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyAlertStrategyNotificationRateLimit) *string { return v.Period }).(pulumi.StringPtrOutput)
@@ -440,6 +507,12 @@ func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) ToAlertPolicyAle
 
 func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) ToAlertPolicyAlertStrategyNotificationRateLimitPtrOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationRateLimitPtrOutput {
 	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyAlertStrategyNotificationRateLimit] {
+	return pulumix.Output[*AlertPolicyAlertStrategyNotificationRateLimit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyAlertStrategyNotificationRateLimitPtrOutput) Elem() AlertPolicyAlertStrategyNotificationRateLimitOutput {
@@ -563,6 +636,12 @@ func (i AlertPolicyConditionArgs) ToAlertPolicyConditionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionOutput)
 }
 
+func (i AlertPolicyConditionArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyCondition] {
+	return pulumix.Output[AlertPolicyCondition]{
+		OutputState: i.ToAlertPolicyConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertPolicyConditionArrayInput is an input type that accepts AlertPolicyConditionArray and AlertPolicyConditionArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionArrayInput` via:
 //
@@ -588,6 +667,12 @@ func (i AlertPolicyConditionArray) ToAlertPolicyConditionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionArrayOutput)
 }
 
+func (i AlertPolicyConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyCondition] {
+	return pulumix.Output[[]AlertPolicyCondition]{
+		OutputState: i.ToAlertPolicyConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionOutput) ElementType() reflect.Type {
@@ -600,6 +685,12 @@ func (o AlertPolicyConditionOutput) ToAlertPolicyConditionOutput() AlertPolicyCo
 
 func (o AlertPolicyConditionOutput) ToAlertPolicyConditionOutputWithContext(ctx context.Context) AlertPolicyConditionOutput {
 	return o
+}
+
+func (o AlertPolicyConditionOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyCondition] {
+	return pulumix.Output[AlertPolicyCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A condition that checks that a time series
@@ -675,6 +766,12 @@ func (o AlertPolicyConditionArrayOutput) ToAlertPolicyConditionArrayOutput() Ale
 
 func (o AlertPolicyConditionArrayOutput) ToAlertPolicyConditionArrayOutputWithContext(ctx context.Context) AlertPolicyConditionArrayOutput {
 	return o
+}
+
+func (o AlertPolicyConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyCondition] {
+	return pulumix.Output[[]AlertPolicyCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionOutput {
@@ -788,6 +885,12 @@ func (i AlertPolicyConditionConditionAbsentArgs) ToAlertPolicyConditionCondition
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentOutput)
 }
 
+func (i AlertPolicyConditionConditionAbsentArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionAbsent] {
+	return pulumix.Output[AlertPolicyConditionConditionAbsent]{
+		OutputState: i.ToAlertPolicyConditionConditionAbsentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionAbsentArgs) ToAlertPolicyConditionConditionAbsentPtrOutput() AlertPolicyConditionConditionAbsentPtrOutput {
 	return i.ToAlertPolicyConditionConditionAbsentPtrOutputWithContext(context.Background())
 }
@@ -829,6 +932,12 @@ func (i *alertPolicyConditionConditionAbsentPtrType) ToAlertPolicyConditionCondi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionAbsentPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionAbsent] {
+	return pulumix.Output[*AlertPolicyConditionConditionAbsent]{
+		OutputState: i.ToAlertPolicyConditionConditionAbsentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionAbsentOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentOutput) ElementType() reflect.Type {
@@ -851,6 +960,12 @@ func (o AlertPolicyConditionConditionAbsentOutput) ToAlertPolicyConditionConditi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsent {
 		return &v
 	}).(AlertPolicyConditionConditionAbsentPtrOutput)
+}
+
+func (o AlertPolicyConditionConditionAbsentOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionAbsent] {
+	return pulumix.Output[AlertPolicyConditionConditionAbsent]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the alignment of data points in
@@ -919,6 +1034,12 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) ToAlertPolicyConditionCond
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) ToAlertPolicyConditionConditionAbsentPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionAbsentPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionAbsentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionAbsent] {
+	return pulumix.Output[*AlertPolicyConditionConditionAbsent]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Elem() AlertPolicyConditionConditionAbsentOutput {
@@ -1188,6 +1309,12 @@ func (i AlertPolicyConditionConditionAbsentAggregationArgs) ToAlertPolicyConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentAggregationOutput)
 }
 
+func (i AlertPolicyConditionConditionAbsentAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionAbsentAggregation] {
+	return pulumix.Output[AlertPolicyConditionConditionAbsentAggregation]{
+		OutputState: i.ToAlertPolicyConditionConditionAbsentAggregationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertPolicyConditionConditionAbsentAggregationArrayInput is an input type that accepts AlertPolicyConditionConditionAbsentAggregationArray and AlertPolicyConditionConditionAbsentAggregationArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionAbsentAggregationArrayInput` via:
 //
@@ -1213,6 +1340,12 @@ func (i AlertPolicyConditionConditionAbsentAggregationArray) ToAlertPolicyCondit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentAggregationArrayOutput)
 }
 
+func (i AlertPolicyConditionConditionAbsentAggregationArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyConditionConditionAbsentAggregation] {
+	return pulumix.Output[[]AlertPolicyConditionConditionAbsentAggregation]{
+		OutputState: i.ToAlertPolicyConditionConditionAbsentAggregationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionAbsentAggregationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentAggregationOutput) ElementType() reflect.Type {
@@ -1225,6 +1358,12 @@ func (o AlertPolicyConditionConditionAbsentAggregationOutput) ToAlertPolicyCondi
 
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) ToAlertPolicyConditionConditionAbsentAggregationOutputWithContext(ctx context.Context) AlertPolicyConditionConditionAbsentAggregationOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionAbsentAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionAbsentAggregation] {
+	return pulumix.Output[AlertPolicyConditionConditionAbsentAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alignment period for per-time
@@ -1332,6 +1471,12 @@ func (o AlertPolicyConditionConditionAbsentAggregationArrayOutput) ToAlertPolicy
 	return o
 }
 
+func (o AlertPolicyConditionConditionAbsentAggregationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyConditionConditionAbsentAggregation] {
+	return pulumix.Output[[]AlertPolicyConditionConditionAbsentAggregation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlertPolicyConditionConditionAbsentAggregationArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionConditionAbsentAggregationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyConditionConditionAbsentAggregation {
 		return vs[0].([]AlertPolicyConditionConditionAbsentAggregation)[vs[1].(int)]
@@ -1383,6 +1528,12 @@ func (i AlertPolicyConditionConditionAbsentTriggerArgs) ToAlertPolicyConditionCo
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentTriggerOutput)
 }
 
+func (i AlertPolicyConditionConditionAbsentTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionAbsentTrigger] {
+	return pulumix.Output[AlertPolicyConditionConditionAbsentTrigger]{
+		OutputState: i.ToAlertPolicyConditionConditionAbsentTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionAbsentTriggerArgs) ToAlertPolicyConditionConditionAbsentTriggerPtrOutput() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
 	return i.ToAlertPolicyConditionConditionAbsentTriggerPtrOutputWithContext(context.Background())
 }
@@ -1424,6 +1575,12 @@ func (i *alertPolicyConditionConditionAbsentTriggerPtrType) ToAlertPolicyConditi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionAbsentTriggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionAbsentTrigger] {
+	return pulumix.Output[*AlertPolicyConditionConditionAbsentTrigger]{
+		OutputState: i.ToAlertPolicyConditionConditionAbsentTriggerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionAbsentTriggerOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionAbsentTriggerOutput) ElementType() reflect.Type {
@@ -1446,6 +1603,12 @@ func (o AlertPolicyConditionConditionAbsentTriggerOutput) ToAlertPolicyCondition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionAbsentTrigger) *AlertPolicyConditionConditionAbsentTrigger {
 		return &v
 	}).(AlertPolicyConditionConditionAbsentTriggerPtrOutput)
+}
+
+func (o AlertPolicyConditionConditionAbsentTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionAbsentTrigger] {
+	return pulumix.Output[AlertPolicyConditionConditionAbsentTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The absolute number of time series
@@ -1474,6 +1637,12 @@ func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) ToAlertPolicyCondit
 
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) ToAlertPolicyConditionConditionAbsentTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionAbsentTriggerPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionAbsentTrigger] {
+	return pulumix.Output[*AlertPolicyConditionConditionAbsentTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionAbsentTriggerPtrOutput) Elem() AlertPolicyConditionConditionAbsentTriggerOutput {
@@ -1559,6 +1728,12 @@ func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionCondi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMatchedLogOutput)
 }
 
+func (i AlertPolicyConditionConditionMatchedLogArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionMatchedLog] {
+	return pulumix.Output[AlertPolicyConditionConditionMatchedLog]{
+		OutputState: i.ToAlertPolicyConditionConditionMatchedLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionMatchedLogArgs) ToAlertPolicyConditionConditionMatchedLogPtrOutput() AlertPolicyConditionConditionMatchedLogPtrOutput {
 	return i.ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(context.Background())
 }
@@ -1600,6 +1775,12 @@ func (i *alertPolicyConditionConditionMatchedLogPtrType) ToAlertPolicyConditionC
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMatchedLogPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionMatchedLogPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionMatchedLog] {
+	return pulumix.Output[*AlertPolicyConditionConditionMatchedLog]{
+		OutputState: i.ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionMatchedLogOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionMatchedLogOutput) ElementType() reflect.Type {
@@ -1622,6 +1803,12 @@ func (o AlertPolicyConditionConditionMatchedLogOutput) ToAlertPolicyConditionCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionMatchedLog) *AlertPolicyConditionConditionMatchedLog {
 		return &v
 	}).(AlertPolicyConditionConditionMatchedLogPtrOutput)
+}
+
+func (o AlertPolicyConditionConditionMatchedLogOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionMatchedLog] {
+	return pulumix.Output[AlertPolicyConditionConditionMatchedLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A logs-based filter.
@@ -1652,6 +1839,12 @@ func (o AlertPolicyConditionConditionMatchedLogPtrOutput) ToAlertPolicyCondition
 
 func (o AlertPolicyConditionConditionMatchedLogPtrOutput) ToAlertPolicyConditionConditionMatchedLogPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMatchedLogPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionMatchedLogPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionMatchedLog] {
+	return pulumix.Output[*AlertPolicyConditionConditionMatchedLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionMatchedLogPtrOutput) Elem() AlertPolicyConditionConditionMatchedLogOutput {
@@ -1785,6 +1978,12 @@ func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyC
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageOutput)
 }
 
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguage] {
+	return pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguage]{
+		OutputState: i.ToAlertPolicyConditionConditionMonitoringQueryLanguageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionMonitoringQueryLanguageArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
 	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(context.Background())
 }
@@ -1826,6 +2025,12 @@ func (i *alertPolicyConditionConditionMonitoringQueryLanguagePtrType) ToAlertPol
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput)
 }
 
+func (i *alertPolicyConditionConditionMonitoringQueryLanguagePtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguage] {
+	return pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguage]{
+		OutputState: i.ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionMonitoringQueryLanguageOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ElementType() reflect.Type {
@@ -1848,6 +2053,12 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToAlertPolic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionMonitoringQueryLanguage) *AlertPolicyConditionConditionMonitoringQueryLanguage {
 		return &v
 	}).(AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput)
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguage] {
+	return pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The amount of time that a time series must
@@ -1909,6 +2120,12 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ToAlertPo
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguage] {
+	return pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Elem() AlertPolicyConditionConditionMonitoringQueryLanguageOutput {
@@ -2031,6 +2248,12 @@ func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlert
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput)
 }
 
+func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguageTrigger] {
+	return pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguageTrigger]{
+		OutputState: i.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
 	return i.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(context.Background())
 }
@@ -2072,6 +2295,12 @@ func (i *alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType) ToA
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguageTrigger] {
+	return pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguageTrigger]{
+		OutputState: i.ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ElementType() reflect.Type {
@@ -2094,6 +2323,12 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToAle
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionMonitoringQueryLanguageTrigger) *AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
 		return &v
 	}).(AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput)
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguageTrigger] {
+	return pulumix.Output[AlertPolicyConditionConditionMonitoringQueryLanguageTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The absolute number of time series
@@ -2122,6 +2357,12 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) To
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) ToAlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguageTrigger] {
+	return pulumix.Output[*AlertPolicyConditionConditionMonitoringQueryLanguageTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageTriggerPtrOutput) Elem() AlertPolicyConditionConditionMonitoringQueryLanguageTriggerOutput {
@@ -2275,6 +2516,12 @@ func (i AlertPolicyConditionConditionPrometheusQueryLanguageArgs) ToAlertPolicyC
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionPrometheusQueryLanguageOutput)
 }
 
+func (i AlertPolicyConditionConditionPrometheusQueryLanguageArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionPrometheusQueryLanguage] {
+	return pulumix.Output[AlertPolicyConditionConditionPrometheusQueryLanguage]{
+		OutputState: i.ToAlertPolicyConditionConditionPrometheusQueryLanguageOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionPrometheusQueryLanguageArgs) ToAlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput() AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput {
 	return i.ToAlertPolicyConditionConditionPrometheusQueryLanguagePtrOutputWithContext(context.Background())
 }
@@ -2316,6 +2563,12 @@ func (i *alertPolicyConditionConditionPrometheusQueryLanguagePtrType) ToAlertPol
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput)
 }
 
+func (i *alertPolicyConditionConditionPrometheusQueryLanguagePtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionPrometheusQueryLanguage] {
+	return pulumix.Output[*AlertPolicyConditionConditionPrometheusQueryLanguage]{
+		OutputState: i.ToAlertPolicyConditionConditionPrometheusQueryLanguagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionPrometheusQueryLanguageOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionPrometheusQueryLanguageOutput) ElementType() reflect.Type {
@@ -2338,6 +2591,12 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) ToAlertPolic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionPrometheusQueryLanguage) *AlertPolicyConditionConditionPrometheusQueryLanguage {
 		return &v
 	}).(AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput)
+}
+
+func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionPrometheusQueryLanguage] {
+	return pulumix.Output[AlertPolicyConditionConditionPrometheusQueryLanguage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alerting rule name of this alert in the corresponding Prometheus
@@ -2414,6 +2673,12 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) ToAlertPo
 
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) ToAlertPolicyConditionConditionPrometheusQueryLanguagePtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionPrometheusQueryLanguage] {
+	return pulumix.Output[*AlertPolicyConditionConditionPrometheusQueryLanguage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Elem() AlertPolicyConditionConditionPrometheusQueryLanguageOutput {
@@ -2775,6 +3040,12 @@ func (i AlertPolicyConditionConditionThresholdArgs) ToAlertPolicyConditionCondit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThreshold] {
+	return pulumix.Output[AlertPolicyConditionConditionThreshold]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionThresholdArgs) ToAlertPolicyConditionConditionThresholdPtrOutput() AlertPolicyConditionConditionThresholdPtrOutput {
 	return i.ToAlertPolicyConditionConditionThresholdPtrOutputWithContext(context.Background())
 }
@@ -2816,6 +3087,12 @@ func (i *alertPolicyConditionConditionThresholdPtrType) ToAlertPolicyConditionCo
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionThresholdPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionThreshold] {
+	return pulumix.Output[*AlertPolicyConditionConditionThreshold]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionThresholdOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdOutput) ElementType() reflect.Type {
@@ -2838,6 +3115,12 @@ func (o AlertPolicyConditionConditionThresholdOutput) ToAlertPolicyConditionCond
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThreshold {
 		return &v
 	}).(AlertPolicyConditionConditionThresholdPtrOutput)
+}
+
+func (o AlertPolicyConditionConditionThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThreshold] {
+	return pulumix.Output[AlertPolicyConditionConditionThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the alignment of data points in
@@ -3004,6 +3287,12 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) ToAlertPolicyConditionC
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) ToAlertPolicyConditionConditionThresholdPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionThreshold] {
+	return pulumix.Output[*AlertPolicyConditionConditionThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Elem() AlertPolicyConditionConditionThresholdOutput {
@@ -3397,6 +3686,12 @@ func (i AlertPolicyConditionConditionThresholdAggregationArgs) ToAlertPolicyCond
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdAggregationOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdAggregation] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdAggregation]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdAggregationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertPolicyConditionConditionThresholdAggregationArrayInput is an input type that accepts AlertPolicyConditionConditionThresholdAggregationArray and AlertPolicyConditionConditionThresholdAggregationArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdAggregationArrayInput` via:
 //
@@ -3422,6 +3717,12 @@ func (i AlertPolicyConditionConditionThresholdAggregationArray) ToAlertPolicyCon
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdAggregationArrayOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdAggregationArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyConditionConditionThresholdAggregation] {
+	return pulumix.Output[[]AlertPolicyConditionConditionThresholdAggregation]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdAggregationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionThresholdAggregationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdAggregationOutput) ElementType() reflect.Type {
@@ -3434,6 +3735,12 @@ func (o AlertPolicyConditionConditionThresholdAggregationOutput) ToAlertPolicyCo
 
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) ToAlertPolicyConditionConditionThresholdAggregationOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdAggregationOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdAggregation] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alignment period for per-time
@@ -3539,6 +3846,12 @@ func (o AlertPolicyConditionConditionThresholdAggregationArrayOutput) ToAlertPol
 
 func (o AlertPolicyConditionConditionThresholdAggregationArrayOutput) ToAlertPolicyConditionConditionThresholdAggregationArrayOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdAggregationArrayOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdAggregationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyConditionConditionThresholdAggregation] {
+	return pulumix.Output[[]AlertPolicyConditionConditionThresholdAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionThresholdAggregationArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionConditionThresholdAggregationOutput {
@@ -3734,6 +4047,12 @@ func (i AlertPolicyConditionConditionThresholdDenominatorAggregationArgs) ToAler
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdDenominatorAggregationOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdDenominatorAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdDenominatorAggregation] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdDenominatorAggregation]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdDenominatorAggregationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput is an input type that accepts AlertPolicyConditionConditionThresholdDenominatorAggregationArray and AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput` via:
 //
@@ -3759,6 +4078,12 @@ func (i AlertPolicyConditionConditionThresholdDenominatorAggregationArray) ToAle
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdDenominatorAggregationArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyConditionConditionThresholdDenominatorAggregation] {
+	return pulumix.Output[[]AlertPolicyConditionConditionThresholdDenominatorAggregation]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionThresholdDenominatorAggregationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ElementType() reflect.Type {
@@ -3771,6 +4096,12 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ToAl
 
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ToAlertPolicyConditionConditionThresholdDenominatorAggregationOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdDenominatorAggregationOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdDenominatorAggregation] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdDenominatorAggregation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The alignment period for per-time
@@ -3882,6 +4213,12 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 	return o
 }
 
+func (o AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyConditionConditionThresholdDenominatorAggregation] {
+	return pulumix.Output[[]AlertPolicyConditionConditionThresholdDenominatorAggregation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput) Index(i pulumi.IntInput) AlertPolicyConditionConditionThresholdDenominatorAggregationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyConditionConditionThresholdDenominatorAggregation {
 		return vs[0].([]AlertPolicyConditionConditionThresholdDenominatorAggregation)[vs[1].(int)]
@@ -3931,6 +4268,12 @@ func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToAlertPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdForecastOptionsOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdForecastOptions] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdForecastOptions]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdForecastOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutput() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
 	return i.ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(context.Background())
 }
@@ -3972,6 +4315,12 @@ func (i *alertPolicyConditionConditionThresholdForecastOptionsPtrType) ToAlertPo
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionThresholdForecastOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionThresholdForecastOptions] {
+	return pulumix.Output[*AlertPolicyConditionConditionThresholdForecastOptions]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionThresholdForecastOptionsOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdForecastOptionsOutput) ElementType() reflect.Type {
@@ -3996,6 +4345,12 @@ func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ToAlertPoli
 	}).(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput)
 }
 
+func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdForecastOptions] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdForecastOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The length of time into the future to forecast
 // whether a timeseries will violate the threshold.
 // If the predicted value is found to violate the
@@ -4018,6 +4373,12 @@ func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ToAlertP
 
 func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionThresholdForecastOptions] {
+	return pulumix.Output[*AlertPolicyConditionConditionThresholdForecastOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) Elem() AlertPolicyConditionConditionThresholdForecastOptionsOutput {
@@ -4090,6 +4451,12 @@ func (i AlertPolicyConditionConditionThresholdTriggerArgs) ToAlertPolicyConditio
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdTriggerOutput)
 }
 
+func (i AlertPolicyConditionConditionThresholdTriggerArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdTrigger] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdTrigger]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyConditionConditionThresholdTriggerArgs) ToAlertPolicyConditionConditionThresholdTriggerPtrOutput() AlertPolicyConditionConditionThresholdTriggerPtrOutput {
 	return i.ToAlertPolicyConditionConditionThresholdTriggerPtrOutputWithContext(context.Background())
 }
@@ -4131,6 +4498,12 @@ func (i *alertPolicyConditionConditionThresholdTriggerPtrType) ToAlertPolicyCond
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
 }
 
+func (i *alertPolicyConditionConditionThresholdTriggerPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionThresholdTrigger] {
+	return pulumix.Output[*AlertPolicyConditionConditionThresholdTrigger]{
+		OutputState: i.ToAlertPolicyConditionConditionThresholdTriggerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyConditionConditionThresholdTriggerOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyConditionConditionThresholdTriggerOutput) ElementType() reflect.Type {
@@ -4153,6 +4526,12 @@ func (o AlertPolicyConditionConditionThresholdTriggerOutput) ToAlertPolicyCondit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionThresholdTrigger) *AlertPolicyConditionConditionThresholdTrigger {
 		return &v
 	}).(AlertPolicyConditionConditionThresholdTriggerPtrOutput)
+}
+
+func (o AlertPolicyConditionConditionThresholdTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyConditionConditionThresholdTrigger] {
+	return pulumix.Output[AlertPolicyConditionConditionThresholdTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The absolute number of time series
@@ -4181,6 +4560,12 @@ func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) ToAlertPolicyCon
 
 func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) ToAlertPolicyConditionConditionThresholdTriggerPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdTriggerPtrOutput {
 	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyConditionConditionThresholdTrigger] {
+	return pulumix.Output[*AlertPolicyConditionConditionThresholdTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Elem() AlertPolicyConditionConditionThresholdTriggerOutput {
@@ -4258,6 +4643,12 @@ func (i AlertPolicyCreationRecordArgs) ToAlertPolicyCreationRecordOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordOutput)
 }
 
+func (i AlertPolicyCreationRecordArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyCreationRecord] {
+	return pulumix.Output[AlertPolicyCreationRecord]{
+		OutputState: i.ToAlertPolicyCreationRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AlertPolicyCreationRecordArrayInput is an input type that accepts AlertPolicyCreationRecordArray and AlertPolicyCreationRecordArrayOutput values.
 // You can construct a concrete instance of `AlertPolicyCreationRecordArrayInput` via:
 //
@@ -4283,6 +4674,12 @@ func (i AlertPolicyCreationRecordArray) ToAlertPolicyCreationRecordArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyCreationRecordArrayOutput)
 }
 
+func (i AlertPolicyCreationRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyCreationRecord] {
+	return pulumix.Output[[]AlertPolicyCreationRecord]{
+		OutputState: i.ToAlertPolicyCreationRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyCreationRecordOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyCreationRecordOutput) ElementType() reflect.Type {
@@ -4295,6 +4692,12 @@ func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordOutput() Ale
 
 func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordOutputWithContext(ctx context.Context) AlertPolicyCreationRecordOutput {
 	return o
+}
+
+func (o AlertPolicyCreationRecordOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyCreationRecord] {
+	return pulumix.Output[AlertPolicyCreationRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4321,6 +4724,12 @@ func (o AlertPolicyCreationRecordArrayOutput) ToAlertPolicyCreationRecordArrayOu
 
 func (o AlertPolicyCreationRecordArrayOutput) ToAlertPolicyCreationRecordArrayOutputWithContext(ctx context.Context) AlertPolicyCreationRecordArrayOutput {
 	return o
+}
+
+func (o AlertPolicyCreationRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertPolicyCreationRecord] {
+	return pulumix.Output[[]AlertPolicyCreationRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyCreationRecordArrayOutput) Index(i pulumi.IntInput) AlertPolicyCreationRecordOutput {
@@ -4374,6 +4783,12 @@ func (i AlertPolicyDocumentationArgs) ToAlertPolicyDocumentationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyDocumentationOutput)
 }
 
+func (i AlertPolicyDocumentationArgs) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyDocumentation] {
+	return pulumix.Output[AlertPolicyDocumentation]{
+		OutputState: i.ToAlertPolicyDocumentationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AlertPolicyDocumentationArgs) ToAlertPolicyDocumentationPtrOutput() AlertPolicyDocumentationPtrOutput {
 	return i.ToAlertPolicyDocumentationPtrOutputWithContext(context.Background())
 }
@@ -4415,6 +4830,12 @@ func (i *alertPolicyDocumentationPtrType) ToAlertPolicyDocumentationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyDocumentationPtrOutput)
 }
 
+func (i *alertPolicyDocumentationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyDocumentation] {
+	return pulumix.Output[*AlertPolicyDocumentation]{
+		OutputState: i.ToAlertPolicyDocumentationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AlertPolicyDocumentationOutput struct{ *pulumi.OutputState }
 
 func (AlertPolicyDocumentationOutput) ElementType() reflect.Type {
@@ -4437,6 +4858,12 @@ func (o AlertPolicyDocumentationOutput) ToAlertPolicyDocumentationPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyDocumentation) *AlertPolicyDocumentation {
 		return &v
 	}).(AlertPolicyDocumentationPtrOutput)
+}
+
+func (o AlertPolicyDocumentationOutput) ToOutput(ctx context.Context) pulumix.Output[AlertPolicyDocumentation] {
+	return pulumix.Output[AlertPolicyDocumentation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The text of the documentation, interpreted according to mimeType.
@@ -4465,6 +4892,12 @@ func (o AlertPolicyDocumentationPtrOutput) ToAlertPolicyDocumentationPtrOutput()
 
 func (o AlertPolicyDocumentationPtrOutput) ToAlertPolicyDocumentationPtrOutputWithContext(ctx context.Context) AlertPolicyDocumentationPtrOutput {
 	return o
+}
+
+func (o AlertPolicyDocumentationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertPolicyDocumentation] {
+	return pulumix.Output[*AlertPolicyDocumentation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AlertPolicyDocumentationPtrOutput) Elem() AlertPolicyDocumentationOutput {
@@ -4538,6 +4971,12 @@ func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceTelemetryOutput)
 }
 
+func (i CustomServiceTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[CustomServiceTelemetry] {
+	return pulumix.Output[CustomServiceTelemetry]{
+		OutputState: i.ToCustomServiceTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CustomServiceTelemetryArgs) ToCustomServiceTelemetryPtrOutput() CustomServiceTelemetryPtrOutput {
 	return i.ToCustomServiceTelemetryPtrOutputWithContext(context.Background())
 }
@@ -4579,6 +5018,12 @@ func (i *customServiceTelemetryPtrType) ToCustomServiceTelemetryPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceTelemetryPtrOutput)
 }
 
+func (i *customServiceTelemetryPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomServiceTelemetry] {
+	return pulumix.Output[*CustomServiceTelemetry]{
+		OutputState: i.ToCustomServiceTelemetryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomServiceTelemetryOutput struct{ *pulumi.OutputState }
 
 func (CustomServiceTelemetryOutput) ElementType() reflect.Type {
@@ -4603,6 +5048,12 @@ func (o CustomServiceTelemetryOutput) ToCustomServiceTelemetryPtrOutputWithConte
 	}).(CustomServiceTelemetryPtrOutput)
 }
 
+func (o CustomServiceTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[CustomServiceTelemetry] {
+	return pulumix.Output[CustomServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The full name of the resource that defines this service.
 // Formatted as described in
 // https://cloud.google.com/apis/design/resource_names.
@@ -4622,6 +5073,12 @@ func (o CustomServiceTelemetryPtrOutput) ToCustomServiceTelemetryPtrOutput() Cus
 
 func (o CustomServiceTelemetryPtrOutput) ToCustomServiceTelemetryPtrOutputWithContext(ctx context.Context) CustomServiceTelemetryPtrOutput {
 	return o
+}
+
+func (o CustomServiceTelemetryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomServiceTelemetry] {
+	return pulumix.Output[*CustomServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomServiceTelemetryPtrOutput) Elem() CustomServiceTelemetryOutput {
@@ -4687,6 +5144,12 @@ func (i GenericServiceBasicServiceArgs) ToGenericServiceBasicServiceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceBasicServiceOutput)
 }
 
+func (i GenericServiceBasicServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GenericServiceBasicService] {
+	return pulumix.Output[GenericServiceBasicService]{
+		OutputState: i.ToGenericServiceBasicServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GenericServiceBasicServiceArgs) ToGenericServiceBasicServicePtrOutput() GenericServiceBasicServicePtrOutput {
 	return i.ToGenericServiceBasicServicePtrOutputWithContext(context.Background())
 }
@@ -4728,6 +5191,12 @@ func (i *genericServiceBasicServicePtrType) ToGenericServiceBasicServicePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceBasicServicePtrOutput)
 }
 
+func (i *genericServiceBasicServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*GenericServiceBasicService] {
+	return pulumix.Output[*GenericServiceBasicService]{
+		OutputState: i.ToGenericServiceBasicServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GenericServiceBasicServiceOutput struct{ *pulumi.OutputState }
 
 func (GenericServiceBasicServiceOutput) ElementType() reflect.Type {
@@ -4750,6 +5219,12 @@ func (o GenericServiceBasicServiceOutput) ToGenericServiceBasicServicePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenericServiceBasicService) *GenericServiceBasicService {
 		return &v
 	}).(GenericServiceBasicServicePtrOutput)
+}
+
+func (o GenericServiceBasicServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GenericServiceBasicService] {
+	return pulumix.Output[GenericServiceBasicService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Labels that specify the resource that emits the monitoring data
@@ -4776,6 +5251,12 @@ func (o GenericServiceBasicServicePtrOutput) ToGenericServiceBasicServicePtrOutp
 
 func (o GenericServiceBasicServicePtrOutput) ToGenericServiceBasicServicePtrOutputWithContext(ctx context.Context) GenericServiceBasicServicePtrOutput {
 	return o
+}
+
+func (o GenericServiceBasicServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GenericServiceBasicService] {
+	return pulumix.Output[*GenericServiceBasicService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GenericServiceBasicServicePtrOutput) Elem() GenericServiceBasicServiceOutput {
@@ -4847,6 +5328,12 @@ func (i GenericServiceTelemetryArgs) ToGenericServiceTelemetryOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceTelemetryOutput)
 }
 
+func (i GenericServiceTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[GenericServiceTelemetry] {
+	return pulumix.Output[GenericServiceTelemetry]{
+		OutputState: i.ToGenericServiceTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GenericServiceTelemetryArrayInput is an input type that accepts GenericServiceTelemetryArray and GenericServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GenericServiceTelemetryArrayInput` via:
 //
@@ -4872,6 +5359,12 @@ func (i GenericServiceTelemetryArray) ToGenericServiceTelemetryArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GenericServiceTelemetryArrayOutput)
 }
 
+func (i GenericServiceTelemetryArray) ToOutput(ctx context.Context) pulumix.Output[[]GenericServiceTelemetry] {
+	return pulumix.Output[[]GenericServiceTelemetry]{
+		OutputState: i.ToGenericServiceTelemetryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GenericServiceTelemetryOutput struct{ *pulumi.OutputState }
 
 func (GenericServiceTelemetryOutput) ElementType() reflect.Type {
@@ -4884,6 +5377,12 @@ func (o GenericServiceTelemetryOutput) ToGenericServiceTelemetryOutput() Generic
 
 func (o GenericServiceTelemetryOutput) ToGenericServiceTelemetryOutputWithContext(ctx context.Context) GenericServiceTelemetryOutput {
 	return o
+}
+
+func (o GenericServiceTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[GenericServiceTelemetry] {
+	return pulumix.Output[GenericServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full name of the resource that defines this service.
@@ -4905,6 +5404,12 @@ func (o GenericServiceTelemetryArrayOutput) ToGenericServiceTelemetryArrayOutput
 
 func (o GenericServiceTelemetryArrayOutput) ToGenericServiceTelemetryArrayOutputWithContext(ctx context.Context) GenericServiceTelemetryArrayOutput {
 	return o
+}
+
+func (o GenericServiceTelemetryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GenericServiceTelemetry] {
+	return pulumix.Output[[]GenericServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GenericServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GenericServiceTelemetryOutput {
@@ -4958,6 +5463,12 @@ func (i MetricDescriptorLabelArgs) ToMetricDescriptorLabelOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorLabelOutput)
 }
 
+func (i MetricDescriptorLabelArgs) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorLabel] {
+	return pulumix.Output[MetricDescriptorLabel]{
+		OutputState: i.ToMetricDescriptorLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricDescriptorLabelArrayInput is an input type that accepts MetricDescriptorLabelArray and MetricDescriptorLabelArrayOutput values.
 // You can construct a concrete instance of `MetricDescriptorLabelArrayInput` via:
 //
@@ -4983,6 +5494,12 @@ func (i MetricDescriptorLabelArray) ToMetricDescriptorLabelArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorLabelArrayOutput)
 }
 
+func (i MetricDescriptorLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricDescriptorLabel] {
+	return pulumix.Output[[]MetricDescriptorLabel]{
+		OutputState: i.ToMetricDescriptorLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricDescriptorLabelOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorLabelOutput) ElementType() reflect.Type {
@@ -4995,6 +5512,12 @@ func (o MetricDescriptorLabelOutput) ToMetricDescriptorLabelOutput() MetricDescr
 
 func (o MetricDescriptorLabelOutput) ToMetricDescriptorLabelOutputWithContext(ctx context.Context) MetricDescriptorLabelOutput {
 	return o
+}
+
+func (o MetricDescriptorLabelOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorLabel] {
+	return pulumix.Output[MetricDescriptorLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A human-readable description for the label.
@@ -5026,6 +5549,12 @@ func (o MetricDescriptorLabelArrayOutput) ToMetricDescriptorLabelArrayOutput() M
 
 func (o MetricDescriptorLabelArrayOutput) ToMetricDescriptorLabelArrayOutputWithContext(ctx context.Context) MetricDescriptorLabelArrayOutput {
 	return o
+}
+
+func (o MetricDescriptorLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricDescriptorLabel] {
+	return pulumix.Output[[]MetricDescriptorLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorLabelArrayOutput) Index(i pulumi.IntInput) MetricDescriptorLabelOutput {
@@ -5071,6 +5600,12 @@ func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataOutput)
 }
 
+func (i MetricDescriptorMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadata] {
+	return pulumix.Output[MetricDescriptorMetadata]{
+		OutputState: i.ToMetricDescriptorMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutput() MetricDescriptorMetadataPtrOutput {
 	return i.ToMetricDescriptorMetadataPtrOutputWithContext(context.Background())
 }
@@ -5112,6 +5647,12 @@ func (i *metricDescriptorMetadataPtrType) ToMetricDescriptorMetadataPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMetadataPtrOutput)
 }
 
+func (i *metricDescriptorMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadata] {
+	return pulumix.Output[*MetricDescriptorMetadata]{
+		OutputState: i.ToMetricDescriptorMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricDescriptorMetadataOutput struct{ *pulumi.OutputState }
 
 func (MetricDescriptorMetadataOutput) ElementType() reflect.Type {
@@ -5136,6 +5677,12 @@ func (o MetricDescriptorMetadataOutput) ToMetricDescriptorMetadataPtrOutputWithC
 	}).(MetricDescriptorMetadataPtrOutput)
 }
 
+func (o MetricDescriptorMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[MetricDescriptorMetadata] {
+	return pulumix.Output[MetricDescriptorMetadata]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. In `[duration format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf?&_ga=2.264881487.1507873253.1593446723-935052455.1591817775#google.protobuf.Duration)`.
 func (o MetricDescriptorMetadataOutput) IngestDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.IngestDelay }).(pulumi.StringPtrOutput)
@@ -5158,6 +5705,12 @@ func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutput()
 
 func (o MetricDescriptorMetadataPtrOutput) ToMetricDescriptorMetadataPtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataPtrOutput {
 	return o
+}
+
+func (o MetricDescriptorMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricDescriptorMetadata] {
+	return pulumix.Output[*MetricDescriptorMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricDescriptorMetadataPtrOutput) Elem() MetricDescriptorMetadataOutput {
@@ -5237,6 +5790,12 @@ func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLa
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelSensitiveLabelsOutput)
 }
 
+func (i NotificationChannelSensitiveLabelsArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationChannelSensitiveLabels] {
+	return pulumix.Output[NotificationChannelSensitiveLabels]{
+		OutputState: i.ToNotificationChannelSensitiveLabelsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NotificationChannelSensitiveLabelsArgs) ToNotificationChannelSensitiveLabelsPtrOutput() NotificationChannelSensitiveLabelsPtrOutput {
 	return i.ToNotificationChannelSensitiveLabelsPtrOutputWithContext(context.Background())
 }
@@ -5278,6 +5837,12 @@ func (i *notificationChannelSensitiveLabelsPtrType) ToNotificationChannelSensiti
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelSensitiveLabelsPtrOutput)
 }
 
+func (i *notificationChannelSensitiveLabelsPtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannelSensitiveLabels] {
+	return pulumix.Output[*NotificationChannelSensitiveLabels]{
+		OutputState: i.ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationChannelSensitiveLabelsOutput struct{ *pulumi.OutputState }
 
 func (NotificationChannelSensitiveLabelsOutput) ElementType() reflect.Type {
@@ -5300,6 +5865,12 @@ func (o NotificationChannelSensitiveLabelsOutput) ToNotificationChannelSensitive
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationChannelSensitiveLabels) *NotificationChannelSensitiveLabels {
 		return &v
 	}).(NotificationChannelSensitiveLabelsPtrOutput)
+}
+
+func (o NotificationChannelSensitiveLabelsOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationChannelSensitiveLabels] {
+	return pulumix.Output[NotificationChannelSensitiveLabels]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An authorization token for a notification channel. Channel types that support this field include: slack
@@ -5332,6 +5903,12 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) ToNotificationChannelSensit
 
 func (o NotificationChannelSensitiveLabelsPtrOutput) ToNotificationChannelSensitiveLabelsPtrOutputWithContext(ctx context.Context) NotificationChannelSensitiveLabelsPtrOutput {
 	return o
+}
+
+func (o NotificationChannelSensitiveLabelsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannelSensitiveLabels] {
+	return pulumix.Output[*NotificationChannelSensitiveLabels]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationChannelSensitiveLabelsPtrOutput) Elem() NotificationChannelSensitiveLabelsOutput {
@@ -5460,6 +6037,12 @@ func (i SloBasicSliArgs) ToSloBasicSliOutputWithContext(ctx context.Context) Slo
 	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliOutput)
 }
 
+func (i SloBasicSliArgs) ToOutput(ctx context.Context) pulumix.Output[SloBasicSli] {
+	return pulumix.Output[SloBasicSli]{
+		OutputState: i.ToSloBasicSliOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloBasicSliArgs) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
 	return i.ToSloBasicSliPtrOutputWithContext(context.Background())
 }
@@ -5501,6 +6084,12 @@ func (i *sloBasicSliPtrType) ToSloBasicSliPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliPtrOutput)
 }
 
+func (i *sloBasicSliPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloBasicSli] {
+	return pulumix.Output[*SloBasicSli]{
+		OutputState: i.ToSloBasicSliPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloBasicSliOutput struct{ *pulumi.OutputState }
 
 func (SloBasicSliOutput) ElementType() reflect.Type {
@@ -5523,6 +6112,12 @@ func (o SloBasicSliOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloBasicSli) *SloBasicSli {
 		return &v
 	}).(SloBasicSliPtrOutput)
+}
+
+func (o SloBasicSliOutput) ToOutput(ctx context.Context) pulumix.Output[SloBasicSli] {
+	return pulumix.Output[SloBasicSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Availability based SLI, dervied from count of requests made to this service that return successfully.
@@ -5579,6 +6174,12 @@ func (o SloBasicSliPtrOutput) ToSloBasicSliPtrOutput() SloBasicSliPtrOutput {
 
 func (o SloBasicSliPtrOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context) SloBasicSliPtrOutput {
 	return o
+}
+
+func (o SloBasicSliPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloBasicSli] {
+	return pulumix.Output[*SloBasicSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloBasicSliPtrOutput) Elem() SloBasicSliOutput {
@@ -5691,6 +6292,12 @@ func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliAvailabilityOutput)
 }
 
+func (i SloBasicSliAvailabilityArgs) ToOutput(ctx context.Context) pulumix.Output[SloBasicSliAvailability] {
+	return pulumix.Output[SloBasicSliAvailability]{
+		OutputState: i.ToSloBasicSliAvailabilityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityPtrOutput() SloBasicSliAvailabilityPtrOutput {
 	return i.ToSloBasicSliAvailabilityPtrOutputWithContext(context.Background())
 }
@@ -5732,6 +6339,12 @@ func (i *sloBasicSliAvailabilityPtrType) ToSloBasicSliAvailabilityPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliAvailabilityPtrOutput)
 }
 
+func (i *sloBasicSliAvailabilityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloBasicSliAvailability] {
+	return pulumix.Output[*SloBasicSliAvailability]{
+		OutputState: i.ToSloBasicSliAvailabilityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloBasicSliAvailabilityOutput struct{ *pulumi.OutputState }
 
 func (SloBasicSliAvailabilityOutput) ElementType() reflect.Type {
@@ -5756,6 +6369,12 @@ func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityPtrOutputWithCon
 	}).(SloBasicSliAvailabilityPtrOutput)
 }
 
+func (o SloBasicSliAvailabilityOutput) ToOutput(ctx context.Context) pulumix.Output[SloBasicSliAvailability] {
+	return pulumix.Output[SloBasicSliAvailability]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
 func (o SloBasicSliAvailabilityOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SloBasicSliAvailability) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -5773,6 +6392,12 @@ func (o SloBasicSliAvailabilityPtrOutput) ToSloBasicSliAvailabilityPtrOutput() S
 
 func (o SloBasicSliAvailabilityPtrOutput) ToSloBasicSliAvailabilityPtrOutputWithContext(ctx context.Context) SloBasicSliAvailabilityPtrOutput {
 	return o
+}
+
+func (o SloBasicSliAvailabilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloBasicSliAvailability] {
+	return pulumix.Output[*SloBasicSliAvailability]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloBasicSliAvailabilityPtrOutput) Elem() SloBasicSliAvailabilityOutput {
@@ -5832,6 +6457,12 @@ func (i SloBasicSliLatencyArgs) ToSloBasicSliLatencyOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliLatencyOutput)
 }
 
+func (i SloBasicSliLatencyArgs) ToOutput(ctx context.Context) pulumix.Output[SloBasicSliLatency] {
+	return pulumix.Output[SloBasicSliLatency]{
+		OutputState: i.ToSloBasicSliLatencyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloBasicSliLatencyArgs) ToSloBasicSliLatencyPtrOutput() SloBasicSliLatencyPtrOutput {
 	return i.ToSloBasicSliLatencyPtrOutputWithContext(context.Background())
 }
@@ -5873,6 +6504,12 @@ func (i *sloBasicSliLatencyPtrType) ToSloBasicSliLatencyPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliLatencyPtrOutput)
 }
 
+func (i *sloBasicSliLatencyPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloBasicSliLatency] {
+	return pulumix.Output[*SloBasicSliLatency]{
+		OutputState: i.ToSloBasicSliLatencyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloBasicSliLatencyOutput struct{ *pulumi.OutputState }
 
 func (SloBasicSliLatencyOutput) ElementType() reflect.Type {
@@ -5897,6 +6534,12 @@ func (o SloBasicSliLatencyOutput) ToSloBasicSliLatencyPtrOutputWithContext(ctx c
 	}).(SloBasicSliLatencyPtrOutput)
 }
 
+func (o SloBasicSliLatencyOutput) ToOutput(ctx context.Context) pulumix.Output[SloBasicSliLatency] {
+	return pulumix.Output[SloBasicSliLatency]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A duration string, e.g. 10s.
 // Good service is defined to be the count of requests made to
 // this service that return in no more than threshold.
@@ -5916,6 +6559,12 @@ func (o SloBasicSliLatencyPtrOutput) ToSloBasicSliLatencyPtrOutput() SloBasicSli
 
 func (o SloBasicSliLatencyPtrOutput) ToSloBasicSliLatencyPtrOutputWithContext(ctx context.Context) SloBasicSliLatencyPtrOutput {
 	return o
+}
+
+func (o SloBasicSliLatencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloBasicSliLatency] {
+	return pulumix.Output[*SloBasicSliLatency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloBasicSliLatencyPtrOutput) Elem() SloBasicSliLatencyOutput {
@@ -6001,6 +6650,12 @@ func (i SloRequestBasedSliArgs) ToSloRequestBasedSliOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliOutput)
 }
 
+func (i SloRequestBasedSliArgs) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSli] {
+	return pulumix.Output[SloRequestBasedSli]{
+		OutputState: i.ToSloRequestBasedSliOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloRequestBasedSliArgs) ToSloRequestBasedSliPtrOutput() SloRequestBasedSliPtrOutput {
 	return i.ToSloRequestBasedSliPtrOutputWithContext(context.Background())
 }
@@ -6042,6 +6697,12 @@ func (i *sloRequestBasedSliPtrType) ToSloRequestBasedSliPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliPtrOutput)
 }
 
+func (i *sloRequestBasedSliPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSli] {
+	return pulumix.Output[*SloRequestBasedSli]{
+		OutputState: i.ToSloRequestBasedSliPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloRequestBasedSliOutput struct{ *pulumi.OutputState }
 
 func (SloRequestBasedSliOutput) ElementType() reflect.Type {
@@ -6064,6 +6725,12 @@ func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSli) *SloRequestBasedSli {
 		return &v
 	}).(SloRequestBasedSliPtrOutput)
+}
+
+func (o SloRequestBasedSliOutput) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSli] {
+	return pulumix.Output[SloRequestBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used when goodService is defined by a count of values aggregated in a
@@ -6100,6 +6767,12 @@ func (o SloRequestBasedSliPtrOutput) ToSloRequestBasedSliPtrOutput() SloRequestB
 
 func (o SloRequestBasedSliPtrOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx context.Context) SloRequestBasedSliPtrOutput {
 	return o
+}
+
+func (o SloRequestBasedSliPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSli] {
+	return pulumix.Output[*SloRequestBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloRequestBasedSliPtrOutput) Elem() SloRequestBasedSliOutput {
@@ -6197,6 +6870,12 @@ func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionC
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutOutput)
 }
 
+func (i SloRequestBasedSliDistributionCutArgs) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSliDistributionCut] {
+	return pulumix.Output[SloRequestBasedSliDistributionCut]{
+		OutputState: i.ToSloRequestBasedSliDistributionCutOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloRequestBasedSliDistributionCutArgs) ToSloRequestBasedSliDistributionCutPtrOutput() SloRequestBasedSliDistributionCutPtrOutput {
 	return i.ToSloRequestBasedSliDistributionCutPtrOutputWithContext(context.Background())
 }
@@ -6238,6 +6917,12 @@ func (i *sloRequestBasedSliDistributionCutPtrType) ToSloRequestBasedSliDistribut
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutPtrOutput)
 }
 
+func (i *sloRequestBasedSliDistributionCutPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSliDistributionCut] {
+	return pulumix.Output[*SloRequestBasedSliDistributionCut]{
+		OutputState: i.ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloRequestBasedSliDistributionCutOutput struct{ *pulumi.OutputState }
 
 func (SloRequestBasedSliDistributionCutOutput) ElementType() reflect.Type {
@@ -6260,6 +6945,12 @@ func (o SloRequestBasedSliDistributionCutOutput) ToSloRequestBasedSliDistributio
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCut {
 		return &v
 	}).(SloRequestBasedSliDistributionCutPtrOutput)
+}
+
+func (o SloRequestBasedSliDistributionCutOutput) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSliDistributionCut] {
+	return pulumix.Output[SloRequestBasedSliDistributionCut]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -6292,6 +6983,12 @@ func (o SloRequestBasedSliDistributionCutPtrOutput) ToSloRequestBasedSliDistribu
 
 func (o SloRequestBasedSliDistributionCutPtrOutput) ToSloRequestBasedSliDistributionCutPtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutPtrOutput {
 	return o
+}
+
+func (o SloRequestBasedSliDistributionCutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSliDistributionCut] {
+	return pulumix.Output[*SloRequestBasedSliDistributionCut]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloRequestBasedSliDistributionCutPtrOutput) Elem() SloRequestBasedSliDistributionCutOutput {
@@ -6377,6 +7074,12 @@ func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistribu
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutRangeOutput)
 }
 
+func (i SloRequestBasedSliDistributionCutRangeArgs) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSliDistributionCutRange] {
+	return pulumix.Output[SloRequestBasedSliDistributionCutRange]{
+		OutputState: i.ToSloRequestBasedSliDistributionCutRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloRequestBasedSliDistributionCutRangeArgs) ToSloRequestBasedSliDistributionCutRangePtrOutput() SloRequestBasedSliDistributionCutRangePtrOutput {
 	return i.ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(context.Background())
 }
@@ -6418,6 +7121,12 @@ func (i *sloRequestBasedSliDistributionCutRangePtrType) ToSloRequestBasedSliDist
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliDistributionCutRangePtrOutput)
 }
 
+func (i *sloRequestBasedSliDistributionCutRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSliDistributionCutRange] {
+	return pulumix.Output[*SloRequestBasedSliDistributionCutRange]{
+		OutputState: i.ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloRequestBasedSliDistributionCutRangeOutput struct{ *pulumi.OutputState }
 
 func (SloRequestBasedSliDistributionCutRangeOutput) ElementType() reflect.Type {
@@ -6440,6 +7149,12 @@ func (o SloRequestBasedSliDistributionCutRangeOutput) ToSloRequestBasedSliDistri
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSliDistributionCutRange) *SloRequestBasedSliDistributionCutRange {
 		return &v
 	}).(SloRequestBasedSliDistributionCutRangePtrOutput)
+}
+
+func (o SloRequestBasedSliDistributionCutRangeOutput) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSliDistributionCutRange] {
+	return pulumix.Output[SloRequestBasedSliDistributionCutRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // max value for the range (inclusive). If not given,
@@ -6468,6 +7183,12 @@ func (o SloRequestBasedSliDistributionCutRangePtrOutput) ToSloRequestBasedSliDis
 
 func (o SloRequestBasedSliDistributionCutRangePtrOutput) ToSloRequestBasedSliDistributionCutRangePtrOutputWithContext(ctx context.Context) SloRequestBasedSliDistributionCutRangePtrOutput {
 	return o
+}
+
+func (o SloRequestBasedSliDistributionCutRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSliDistributionCutRange] {
+	return pulumix.Output[*SloRequestBasedSliDistributionCutRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloRequestBasedSliDistributionCutRangePtrOutput) Elem() SloRequestBasedSliDistributionCutRangeOutput {
@@ -6579,6 +7300,12 @@ func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatio
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliGoodTotalRatioOutput)
 }
 
+func (i SloRequestBasedSliGoodTotalRatioArgs) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSliGoodTotalRatio] {
+	return pulumix.Output[SloRequestBasedSliGoodTotalRatio]{
+		OutputState: i.ToSloRequestBasedSliGoodTotalRatioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloRequestBasedSliGoodTotalRatioArgs) ToSloRequestBasedSliGoodTotalRatioPtrOutput() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return i.ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(context.Background())
 }
@@ -6620,6 +7347,12 @@ func (i *sloRequestBasedSliGoodTotalRatioPtrType) ToSloRequestBasedSliGoodTotalR
 	return pulumi.ToOutputWithContext(ctx, i).(SloRequestBasedSliGoodTotalRatioPtrOutput)
 }
 
+func (i *sloRequestBasedSliGoodTotalRatioPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSliGoodTotalRatio] {
+	return pulumix.Output[*SloRequestBasedSliGoodTotalRatio]{
+		OutputState: i.ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloRequestBasedSliGoodTotalRatioOutput struct{ *pulumi.OutputState }
 
 func (SloRequestBasedSliGoodTotalRatioOutput) ElementType() reflect.Type {
@@ -6642,6 +7375,12 @@ func (o SloRequestBasedSliGoodTotalRatioOutput) ToSloRequestBasedSliGoodTotalRat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloRequestBasedSliGoodTotalRatio) *SloRequestBasedSliGoodTotalRatio {
 		return &v
 	}).(SloRequestBasedSliGoodTotalRatioPtrOutput)
+}
+
+func (o SloRequestBasedSliGoodTotalRatioOutput) ToOutput(ctx context.Context) pulumix.Output[SloRequestBasedSliGoodTotalRatio] {
+	return pulumix.Output[SloRequestBasedSliGoodTotalRatio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -6688,6 +7427,12 @@ func (o SloRequestBasedSliGoodTotalRatioPtrOutput) ToSloRequestBasedSliGoodTotal
 
 func (o SloRequestBasedSliGoodTotalRatioPtrOutput) ToSloRequestBasedSliGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o
+}
+
+func (o SloRequestBasedSliGoodTotalRatioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloRequestBasedSliGoodTotalRatio] {
+	return pulumix.Output[*SloRequestBasedSliGoodTotalRatio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloRequestBasedSliGoodTotalRatioPtrOutput) Elem() SloRequestBasedSliGoodTotalRatioOutput {
@@ -6844,6 +7589,12 @@ func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliOutput)
 }
 
+func (i SloWindowsBasedSliArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSli] {
+	return pulumix.Output[SloWindowsBasedSli]{
+		OutputState: i.ToSloWindowsBasedSliOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliArgs) ToSloWindowsBasedSliPtrOutput() SloWindowsBasedSliPtrOutput {
 	return i.ToSloWindowsBasedSliPtrOutputWithContext(context.Background())
 }
@@ -6885,6 +7636,12 @@ func (i *sloWindowsBasedSliPtrType) ToSloWindowsBasedSliPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliPtrOutput)
 }
 
+func (i *sloWindowsBasedSliPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSli] {
+	return pulumix.Output[*SloWindowsBasedSli]{
+		OutputState: i.ToSloWindowsBasedSliPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliOutput) ElementType() reflect.Type {
@@ -6907,6 +7664,12 @@ func (o SloWindowsBasedSliOutput) ToSloWindowsBasedSliPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSli) *SloWindowsBasedSli {
 		return &v
 	}).(SloWindowsBasedSliPtrOutput)
+}
+
+func (o SloWindowsBasedSliOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSli] {
+	return pulumix.Output[SloWindowsBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -6972,6 +7735,12 @@ func (o SloWindowsBasedSliPtrOutput) ToSloWindowsBasedSliPtrOutput() SloWindowsB
 
 func (o SloWindowsBasedSliPtrOutput) ToSloWindowsBasedSliPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliPtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSli] {
+	return pulumix.Output[*SloWindowsBasedSli]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliPtrOutput) Elem() SloWindowsBasedSliOutput {
@@ -7105,6 +7874,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodT
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThreshold] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThreshold]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(context.Background())
 }
@@ -7146,6 +7921,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdPtrType) ToSloWindowsBasedSliG
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThreshold] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThreshold]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdOutput) ElementType() reflect.Type {
@@ -7168,6 +7949,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToSloWindowsBasedSliGoo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThreshold) *SloWindowsBasedSliGoodTotalRatioThreshold {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput)
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThreshold] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Basic SLI to evaluate to judge window quality.
@@ -7204,6 +7991,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ToSloWindowsBasedSli
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThreshold] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThreshold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdOutput {
@@ -7332,6 +8125,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloW
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(context.Background())
 }
@@ -7373,6 +8172,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ElementType() reflect.Type {
@@ -7395,6 +8200,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Availability based SLI, dervied from count of requests made to this service that return successfully.
@@ -7455,6 +8266,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) T
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput {
@@ -7567,6 +8384,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(context.Background())
 }
@@ -7608,6 +8431,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilit
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ElementType() reflect.Type {
@@ -7632,6 +8461,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
 }
 
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) *bool {
@@ -7651,6 +8486,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
@@ -7710,6 +8551,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(context.Background())
 }
@@ -7751,6 +8598,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ElementType() reflect.Type {
@@ -7775,6 +8628,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutpu
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
 }
 
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A duration string, e.g. 10s.
 // Good service is defined to be the count of requests made to
 // this service that return in no more than threshold.
@@ -7794,6 +8653,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOu
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
@@ -7875,6 +8740,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBa
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformance] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformance]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(context.Background())
 }
@@ -7916,6 +8787,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType) ToSloWindo
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformance] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformance]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ElementType() reflect.Type {
@@ -7938,6 +8815,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToSloWindows
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformance] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformance]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used when goodService is defined by a count of values aggregated in a
@@ -7976,6 +8859,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ToSloWind
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformance] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput {
@@ -8071,6 +8960,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(context.Background())
 }
@@ -8112,6 +9007,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ElementType() reflect.Type {
@@ -8134,6 +9035,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput)
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -8170,6 +9077,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOu
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput {
@@ -8255,6 +9168,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(context.Background())
 }
@@ -8296,6 +9215,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRang
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ElementType() reflect.Type {
@@ -8318,6 +9243,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput)
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // max value for the range (inclusive). If not given,
@@ -8350,6 +9281,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
@@ -8461,6 +9398,12 @@ func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput)
 }
 
+func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
 	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(context.Background())
 }
@@ -8502,6 +9445,12 @@ func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
 }
 
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio]{
+		OutputState: i.ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ElementType() reflect.Type {
@@ -8524,6 +9473,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio {
 		return &v
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput)
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio] {
+	return pulumix.Output[SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
@@ -8576,6 +9531,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOut
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio] {
+	return pulumix.Output[*SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioOutput {
@@ -8696,6 +9657,12 @@ func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanI
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeOutput)
 }
 
+func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricMeanInRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricMeanInRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricMeanInRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliMetricMeanInRangeArgs) ToSloWindowsBasedSliMetricMeanInRangePtrOutput() SloWindowsBasedSliMetricMeanInRangePtrOutput {
 	return i.ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(context.Background())
 }
@@ -8737,6 +9704,12 @@ func (i *sloWindowsBasedSliMetricMeanInRangePtrType) ToSloWindowsBasedSliMetricM
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
 }
 
+func (i *sloWindowsBasedSliMetricMeanInRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricMeanInRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricMeanInRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliMetricMeanInRangeOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliMetricMeanInRangeOutput) ElementType() reflect.Type {
@@ -8759,6 +9732,12 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMea
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRange {
 		return &v
 	}).(SloWindowsBasedSliMetricMeanInRangePtrOutput)
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricMeanInRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricMeanInRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Range of numerical values. The computed goodService
@@ -8795,6 +9774,12 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) ToSloWindowsBasedSliMetric
 
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) ToSloWindowsBasedSliMetricMeanInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricMeanInRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricMeanInRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Elem() SloWindowsBasedSliMetricMeanInRangeOutput {
@@ -8884,6 +9869,12 @@ func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetric
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
 }
 
+func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricMeanInRangeRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricMeanInRangeRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricMeanInRangeRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliMetricMeanInRangeRangeArgs) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutput() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
 	return i.ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(context.Background())
 }
@@ -8925,6 +9916,12 @@ func (i *sloWindowsBasedSliMetricMeanInRangeRangePtrType) ToSloWindowsBasedSliMe
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput)
 }
 
+func (i *sloWindowsBasedSliMetricMeanInRangeRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricMeanInRangeRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricMeanInRangeRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliMetricMeanInRangeRangeOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliMetricMeanInRangeRangeOutput) ElementType() reflect.Type {
@@ -8947,6 +9944,12 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToSloWindowsBasedSliMetr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricMeanInRangeRange) *SloWindowsBasedSliMetricMeanInRangeRange {
 		return &v
 	}).(SloWindowsBasedSliMetricMeanInRangeRangePtrOutput)
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangeOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricMeanInRangeRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricMeanInRangeRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // max value for the range (inclusive). If not given,
@@ -8975,6 +9978,12 @@ func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ToSloWindowsBasedSliM
 
 func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ToSloWindowsBasedSliMetricMeanInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricMeanInRangeRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricMeanInRangeRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliMetricMeanInRangeRangePtrOutput) Elem() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
@@ -9072,6 +10081,12 @@ func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInR
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeOutput)
 }
 
+func (i SloWindowsBasedSliMetricSumInRangeArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricSumInRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricSumInRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricSumInRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliMetricSumInRangeArgs) ToSloWindowsBasedSliMetricSumInRangePtrOutput() SloWindowsBasedSliMetricSumInRangePtrOutput {
 	return i.ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(context.Background())
 }
@@ -9113,6 +10128,12 @@ func (i *sloWindowsBasedSliMetricSumInRangePtrType) ToSloWindowsBasedSliMetricSu
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangePtrOutput)
 }
 
+func (i *sloWindowsBasedSliMetricSumInRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricSumInRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricSumInRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliMetricSumInRangeOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliMetricSumInRangeOutput) ElementType() reflect.Type {
@@ -9135,6 +10156,12 @@ func (o SloWindowsBasedSliMetricSumInRangeOutput) ToSloWindowsBasedSliMetricSumI
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricSumInRange) *SloWindowsBasedSliMetricSumInRange {
 		return &v
 	}).(SloWindowsBasedSliMetricSumInRangePtrOutput)
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricSumInRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricSumInRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Range of numerical values. The computed goodService
@@ -9171,6 +10198,12 @@ func (o SloWindowsBasedSliMetricSumInRangePtrOutput) ToSloWindowsBasedSliMetricS
 
 func (o SloWindowsBasedSliMetricSumInRangePtrOutput) ToSloWindowsBasedSliMetricSumInRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricSumInRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricSumInRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliMetricSumInRangePtrOutput) Elem() SloWindowsBasedSliMetricSumInRangeOutput {
@@ -9260,6 +10293,12 @@ func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricS
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeRangeOutput)
 }
 
+func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricSumInRangeRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricSumInRangeRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricSumInRangeRangeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SloWindowsBasedSliMetricSumInRangeRangeArgs) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutput() SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
 	return i.ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(context.Background())
 }
@@ -9301,6 +10340,12 @@ func (i *sloWindowsBasedSliMetricSumInRangeRangePtrType) ToSloWindowsBasedSliMet
 	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliMetricSumInRangeRangePtrOutput)
 }
 
+func (i *sloWindowsBasedSliMetricSumInRangeRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricSumInRangeRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricSumInRangeRange]{
+		OutputState: i.ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SloWindowsBasedSliMetricSumInRangeRangeOutput struct{ *pulumi.OutputState }
 
 func (SloWindowsBasedSliMetricSumInRangeRangeOutput) ElementType() reflect.Type {
@@ -9323,6 +10368,12 @@ func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToSloWindowsBasedSliMetri
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloWindowsBasedSliMetricSumInRangeRange) *SloWindowsBasedSliMetricSumInRangeRange {
 		return &v
 	}).(SloWindowsBasedSliMetricSumInRangeRangePtrOutput)
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangeOutput) ToOutput(ctx context.Context) pulumix.Output[SloWindowsBasedSliMetricSumInRangeRange] {
+	return pulumix.Output[SloWindowsBasedSliMetricSumInRangeRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 // max value for the range (inclusive). If not given,
@@ -9351,6 +10402,12 @@ func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ToSloWindowsBasedSliMe
 
 func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ToSloWindowsBasedSliMetricSumInRangeRangePtrOutputWithContext(ctx context.Context) SloWindowsBasedSliMetricSumInRangeRangePtrOutput {
 	return o
+}
+
+func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SloWindowsBasedSliMetricSumInRangeRange] {
+	return pulumix.Output[*SloWindowsBasedSliMetricSumInRangeRange]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SloWindowsBasedSliMetricSumInRangeRangePtrOutput) Elem() SloWindowsBasedSliMetricSumInRangeRangeOutput {
@@ -9434,6 +10491,12 @@ func (i UptimeCheckConfigContentMatcherArgs) ToUptimeCheckConfigContentMatcherOu
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherOutput)
 }
 
+func (i UptimeCheckConfigContentMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigContentMatcher] {
+	return pulumix.Output[UptimeCheckConfigContentMatcher]{
+		OutputState: i.ToUptimeCheckConfigContentMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UptimeCheckConfigContentMatcherArrayInput is an input type that accepts UptimeCheckConfigContentMatcherArray and UptimeCheckConfigContentMatcherArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigContentMatcherArrayInput` via:
 //
@@ -9459,6 +10522,12 @@ func (i UptimeCheckConfigContentMatcherArray) ToUptimeCheckConfigContentMatcherA
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherArrayOutput)
 }
 
+func (i UptimeCheckConfigContentMatcherArray) ToOutput(ctx context.Context) pulumix.Output[[]UptimeCheckConfigContentMatcher] {
+	return pulumix.Output[[]UptimeCheckConfigContentMatcher]{
+		OutputState: i.ToUptimeCheckConfigContentMatcherArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigContentMatcherOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigContentMatcherOutput) ElementType() reflect.Type {
@@ -9471,6 +10540,12 @@ func (o UptimeCheckConfigContentMatcherOutput) ToUptimeCheckConfigContentMatcher
 
 func (o UptimeCheckConfigContentMatcherOutput) ToUptimeCheckConfigContentMatcherOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherOutput {
 	return o
+}
+
+func (o UptimeCheckConfigContentMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigContentMatcher] {
+	return pulumix.Output[UptimeCheckConfigContentMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 // String or regex content to match (max 1024 bytes)
@@ -9505,6 +10580,12 @@ func (o UptimeCheckConfigContentMatcherArrayOutput) ToUptimeCheckConfigContentMa
 
 func (o UptimeCheckConfigContentMatcherArrayOutput) ToUptimeCheckConfigContentMatcherArrayOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherArrayOutput {
 	return o
+}
+
+func (o UptimeCheckConfigContentMatcherArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UptimeCheckConfigContentMatcher] {
+	return pulumix.Output[[]UptimeCheckConfigContentMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigContentMatcherArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigContentMatcherOutput {
@@ -9554,6 +10635,12 @@ func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigC
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherJsonPathMatcherOutput)
 }
 
+func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigContentMatcherJsonPathMatcher] {
+	return pulumix.Output[UptimeCheckConfigContentMatcherJsonPathMatcher]{
+		OutputState: i.ToUptimeCheckConfigContentMatcherJsonPathMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigContentMatcherJsonPathMatcherArgs) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput() UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
 	return i.ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(context.Background())
 }
@@ -9595,6 +10682,12 @@ func (i *uptimeCheckConfigContentMatcherJsonPathMatcherPtrType) ToUptimeCheckCon
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput)
 }
 
+func (i *uptimeCheckConfigContentMatcherJsonPathMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigContentMatcherJsonPathMatcher] {
+	return pulumix.Output[*UptimeCheckConfigContentMatcherJsonPathMatcher]{
+		OutputState: i.ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigContentMatcherJsonPathMatcherOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ElementType() reflect.Type {
@@ -9617,6 +10710,12 @@ func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToUptimeCheckConfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigContentMatcherJsonPathMatcher) *UptimeCheckConfigContentMatcherJsonPathMatcher {
 		return &v
 	}).(UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput)
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigContentMatcherJsonPathMatcher] {
+	return pulumix.Output[UptimeCheckConfigContentMatcherJsonPathMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Options to perform JSONPath content matching.
@@ -9643,6 +10742,12 @@ func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) ToUptimeCheckCo
 
 func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) ToUptimeCheckConfigContentMatcherJsonPathMatcherPtrOutputWithContext(ctx context.Context) UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigContentMatcherJsonPathMatcher] {
+	return pulumix.Output[*UptimeCheckConfigContentMatcherJsonPathMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) Elem() UptimeCheckConfigContentMatcherJsonPathMatcherOutput {
@@ -9760,6 +10865,12 @@ func (i UptimeCheckConfigHttpCheckArgs) ToUptimeCheckConfigHttpCheckOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckOutput)
 }
 
+func (i UptimeCheckConfigHttpCheckArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigHttpCheck] {
+	return pulumix.Output[UptimeCheckConfigHttpCheck]{
+		OutputState: i.ToUptimeCheckConfigHttpCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigHttpCheckArgs) ToUptimeCheckConfigHttpCheckPtrOutput() UptimeCheckConfigHttpCheckPtrOutput {
 	return i.ToUptimeCheckConfigHttpCheckPtrOutputWithContext(context.Background())
 }
@@ -9801,6 +10912,12 @@ func (i *uptimeCheckConfigHttpCheckPtrType) ToUptimeCheckConfigHttpCheckPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 
+func (i *uptimeCheckConfigHttpCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigHttpCheck] {
+	return pulumix.Output[*UptimeCheckConfigHttpCheck]{
+		OutputState: i.ToUptimeCheckConfigHttpCheckPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigHttpCheckOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckOutput) ElementType() reflect.Type {
@@ -9823,6 +10940,12 @@ func (o UptimeCheckConfigHttpCheckOutput) ToUptimeCheckConfigHttpCheckPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheck {
 		return &v
 	}).(UptimeCheckConfigHttpCheckPtrOutput)
+}
+
+func (o UptimeCheckConfigHttpCheckOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigHttpCheck] {
+	return pulumix.Output[UptimeCheckConfigHttpCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
@@ -9899,6 +11022,12 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ToUptimeCheckConfigHttpCheckPtrOutp
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) ToUptimeCheckConfigHttpCheckPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigHttpCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigHttpCheck] {
+	return pulumix.Output[*UptimeCheckConfigHttpCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigHttpCheckPtrOutput) Elem() UptimeCheckConfigHttpCheckOutput {
@@ -10065,6 +11194,12 @@ func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs) ToUptimeCheckC
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput)
 }
 
+func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigHttpCheckAcceptedResponseStatusCode] {
+	return pulumix.Output[UptimeCheckConfigHttpCheckAcceptedResponseStatusCode]{
+		OutputState: i.ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput is an input type that accepts UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray and UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayInput` via:
 //
@@ -10090,6 +11225,12 @@ func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray) ToUptimeCheck
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput)
 }
 
+func (i UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArray) ToOutput(ctx context.Context) pulumix.Output[[]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode] {
+	return pulumix.Output[[]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode]{
+		OutputState: i.ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ElementType() reflect.Type {
@@ -10102,6 +11243,12 @@ func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ToUptimeChec
 
 func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
 	return o
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigHttpCheckAcceptedResponseStatusCode] {
+	return pulumix.Output[UptimeCheckConfigHttpCheckAcceptedResponseStatusCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A class of status codes to accept.
@@ -10127,6 +11274,12 @@ func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) ToUptim
 
 func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) ToUptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput {
 	return o
+}
+
+func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode] {
+	return pulumix.Output[[]UptimeCheckConfigHttpCheckAcceptedResponseStatusCode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput {
@@ -10174,6 +11327,12 @@ func (i UptimeCheckConfigHttpCheckAuthInfoArgs) ToUptimeCheckConfigHttpCheckAuth
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAuthInfoOutput)
 }
 
+func (i UptimeCheckConfigHttpCheckAuthInfoArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigHttpCheckAuthInfo] {
+	return pulumix.Output[UptimeCheckConfigHttpCheckAuthInfo]{
+		OutputState: i.ToUptimeCheckConfigHttpCheckAuthInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigHttpCheckAuthInfoArgs) ToUptimeCheckConfigHttpCheckAuthInfoPtrOutput() UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
 	return i.ToUptimeCheckConfigHttpCheckAuthInfoPtrOutputWithContext(context.Background())
 }
@@ -10215,6 +11374,12 @@ func (i *uptimeCheckConfigHttpCheckAuthInfoPtrType) ToUptimeCheckConfigHttpCheck
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
+func (i *uptimeCheckConfigHttpCheckAuthInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigHttpCheckAuthInfo] {
+	return pulumix.Output[*UptimeCheckConfigHttpCheckAuthInfo]{
+		OutputState: i.ToUptimeCheckConfigHttpCheckAuthInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigHttpCheckAuthInfoOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigHttpCheckAuthInfoOutput) ElementType() reflect.Type {
@@ -10237,6 +11402,12 @@ func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToUptimeCheckConfigHttpCheckAu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigHttpCheckAuthInfo) *UptimeCheckConfigHttpCheckAuthInfo {
 		return &v
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
+}
+
+func (o UptimeCheckConfigHttpCheckAuthInfoOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigHttpCheckAuthInfo] {
+	return pulumix.Output[UptimeCheckConfigHttpCheckAuthInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password to authenticate.
@@ -10262,6 +11433,12 @@ func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) ToUptimeCheckConfigHttpChec
 
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) ToUptimeCheckConfigHttpCheckAuthInfoPtrOutputWithContext(ctx context.Context) UptimeCheckConfigHttpCheckAuthInfoPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigHttpCheckAuthInfo] {
+	return pulumix.Output[*UptimeCheckConfigHttpCheckAuthInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigHttpCheckAuthInfoPtrOutput) Elem() UptimeCheckConfigHttpCheckAuthInfoOutput {
@@ -10332,6 +11509,12 @@ func (i UptimeCheckConfigMonitoredResourceArgs) ToUptimeCheckConfigMonitoredReso
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigMonitoredResourceOutput)
 }
 
+func (i UptimeCheckConfigMonitoredResourceArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigMonitoredResource] {
+	return pulumix.Output[UptimeCheckConfigMonitoredResource]{
+		OutputState: i.ToUptimeCheckConfigMonitoredResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigMonitoredResourceArgs) ToUptimeCheckConfigMonitoredResourcePtrOutput() UptimeCheckConfigMonitoredResourcePtrOutput {
 	return i.ToUptimeCheckConfigMonitoredResourcePtrOutputWithContext(context.Background())
 }
@@ -10373,6 +11556,12 @@ func (i *uptimeCheckConfigMonitoredResourcePtrType) ToUptimeCheckConfigMonitored
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
+func (i *uptimeCheckConfigMonitoredResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigMonitoredResource] {
+	return pulumix.Output[*UptimeCheckConfigMonitoredResource]{
+		OutputState: i.ToUptimeCheckConfigMonitoredResourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigMonitoredResourceOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigMonitoredResourceOutput) ElementType() reflect.Type {
@@ -10397,6 +11586,12 @@ func (o UptimeCheckConfigMonitoredResourceOutput) ToUptimeCheckConfigMonitoredRe
 	}).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
+func (o UptimeCheckConfigMonitoredResourceOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigMonitoredResource] {
+	return pulumix.Output[UptimeCheckConfigMonitoredResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
 func (o UptimeCheckConfigMonitoredResourceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -10419,6 +11614,12 @@ func (o UptimeCheckConfigMonitoredResourcePtrOutput) ToUptimeCheckConfigMonitore
 
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) ToUptimeCheckConfigMonitoredResourcePtrOutputWithContext(ctx context.Context) UptimeCheckConfigMonitoredResourcePtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigMonitoredResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigMonitoredResource] {
+	return pulumix.Output[*UptimeCheckConfigMonitoredResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Elem() UptimeCheckConfigMonitoredResourceOutput {
@@ -10490,6 +11691,12 @@ func (i UptimeCheckConfigResourceGroupArgs) ToUptimeCheckConfigResourceGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigResourceGroupOutput)
 }
 
+func (i UptimeCheckConfigResourceGroupArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigResourceGroup] {
+	return pulumix.Output[UptimeCheckConfigResourceGroup]{
+		OutputState: i.ToUptimeCheckConfigResourceGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigResourceGroupArgs) ToUptimeCheckConfigResourceGroupPtrOutput() UptimeCheckConfigResourceGroupPtrOutput {
 	return i.ToUptimeCheckConfigResourceGroupPtrOutputWithContext(context.Background())
 }
@@ -10531,6 +11738,12 @@ func (i *uptimeCheckConfigResourceGroupPtrType) ToUptimeCheckConfigResourceGroup
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigResourceGroupPtrOutput)
 }
 
+func (i *uptimeCheckConfigResourceGroupPtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigResourceGroup] {
+	return pulumix.Output[*UptimeCheckConfigResourceGroup]{
+		OutputState: i.ToUptimeCheckConfigResourceGroupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigResourceGroupOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigResourceGroupOutput) ElementType() reflect.Type {
@@ -10553,6 +11766,12 @@ func (o UptimeCheckConfigResourceGroupOutput) ToUptimeCheckConfigResourceGroupPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigResourceGroup) *UptimeCheckConfigResourceGroup {
 		return &v
 	}).(UptimeCheckConfigResourceGroupPtrOutput)
+}
+
+func (o UptimeCheckConfigResourceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigResourceGroup] {
+	return pulumix.Output[UptimeCheckConfigResourceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The group of resources being monitored. Should be the `name` of a group
@@ -10578,6 +11797,12 @@ func (o UptimeCheckConfigResourceGroupPtrOutput) ToUptimeCheckConfigResourceGrou
 
 func (o UptimeCheckConfigResourceGroupPtrOutput) ToUptimeCheckConfigResourceGroupPtrOutputWithContext(ctx context.Context) UptimeCheckConfigResourceGroupPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigResourceGroupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigResourceGroup] {
+	return pulumix.Output[*UptimeCheckConfigResourceGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigResourceGroupPtrOutput) Elem() UptimeCheckConfigResourceGroupOutput {
@@ -10650,6 +11875,12 @@ func (i UptimeCheckConfigSyntheticMonitorArgs) ToUptimeCheckConfigSyntheticMonit
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorOutput)
 }
 
+func (i UptimeCheckConfigSyntheticMonitorArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigSyntheticMonitor] {
+	return pulumix.Output[UptimeCheckConfigSyntheticMonitor]{
+		OutputState: i.ToUptimeCheckConfigSyntheticMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigSyntheticMonitorArgs) ToUptimeCheckConfigSyntheticMonitorPtrOutput() UptimeCheckConfigSyntheticMonitorPtrOutput {
 	return i.ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(context.Background())
 }
@@ -10691,6 +11922,12 @@ func (i *uptimeCheckConfigSyntheticMonitorPtrType) ToUptimeCheckConfigSyntheticM
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorPtrOutput)
 }
 
+func (i *uptimeCheckConfigSyntheticMonitorPtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigSyntheticMonitor] {
+	return pulumix.Output[*UptimeCheckConfigSyntheticMonitor]{
+		OutputState: i.ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigSyntheticMonitorOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigSyntheticMonitorOutput) ElementType() reflect.Type {
@@ -10715,6 +11952,12 @@ func (o UptimeCheckConfigSyntheticMonitorOutput) ToUptimeCheckConfigSyntheticMon
 	}).(UptimeCheckConfigSyntheticMonitorPtrOutput)
 }
 
+func (o UptimeCheckConfigSyntheticMonitorOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigSyntheticMonitor] {
+	return pulumix.Output[UptimeCheckConfigSyntheticMonitor]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Target a Synthetic Monitor GCFv2 Instance
 // Structure is documented below.
 //
@@ -10737,6 +11980,12 @@ func (o UptimeCheckConfigSyntheticMonitorPtrOutput) ToUptimeCheckConfigSynthetic
 
 func (o UptimeCheckConfigSyntheticMonitorPtrOutput) ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigSyntheticMonitor] {
+	return pulumix.Output[*UptimeCheckConfigSyntheticMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigSyntheticMonitorPtrOutput) Elem() UptimeCheckConfigSyntheticMonitorOutput {
@@ -10795,6 +12044,12 @@ func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToUptimeCheckConfi
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output)
 }
 
+func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigSyntheticMonitorCloudFunctionV2] {
+	return pulumix.Output[UptimeCheckConfigSyntheticMonitorCloudFunctionV2]{
+		OutputState: i.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
 	return i.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(context.Background())
 }
@@ -10836,6 +12091,12 @@ func (i *uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType) ToUptimeCheckC
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput)
 }
 
+func (i *uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigSyntheticMonitorCloudFunctionV2] {
+	return pulumix.Output[*UptimeCheckConfigSyntheticMonitorCloudFunctionV2]{
+		OutputState: i.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ElementType() reflect.Type {
@@ -10860,6 +12121,12 @@ func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToUptimeCheckCon
 	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput)
 }
 
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigSyntheticMonitorCloudFunctionV2] {
+	return pulumix.Output[UptimeCheckConfigSyntheticMonitorCloudFunctionV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified name of the cloud function resource.
 func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigSyntheticMonitorCloudFunctionV2) string { return v.Name }).(pulumi.StringOutput)
@@ -10877,6 +12144,12 @@ func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) ToUptimeCheck
 
 func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigSyntheticMonitorCloudFunctionV2] {
+	return pulumix.Output[*UptimeCheckConfigSyntheticMonitorCloudFunctionV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) Elem() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
@@ -10932,6 +12205,12 @@ func (i UptimeCheckConfigTcpCheckArgs) ToUptimeCheckConfigTcpCheckOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigTcpCheckOutput)
 }
 
+func (i UptimeCheckConfigTcpCheckArgs) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigTcpCheck] {
+	return pulumix.Output[UptimeCheckConfigTcpCheck]{
+		OutputState: i.ToUptimeCheckConfigTcpCheckOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i UptimeCheckConfigTcpCheckArgs) ToUptimeCheckConfigTcpCheckPtrOutput() UptimeCheckConfigTcpCheckPtrOutput {
 	return i.ToUptimeCheckConfigTcpCheckPtrOutputWithContext(context.Background())
 }
@@ -10973,6 +12252,12 @@ func (i *uptimeCheckConfigTcpCheckPtrType) ToUptimeCheckConfigTcpCheckPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigTcpCheckPtrOutput)
 }
 
+func (i *uptimeCheckConfigTcpCheckPtrType) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigTcpCheck] {
+	return pulumix.Output[*UptimeCheckConfigTcpCheck]{
+		OutputState: i.ToUptimeCheckConfigTcpCheckPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UptimeCheckConfigTcpCheckOutput struct{ *pulumi.OutputState }
 
 func (UptimeCheckConfigTcpCheckOutput) ElementType() reflect.Type {
@@ -10997,6 +12282,12 @@ func (o UptimeCheckConfigTcpCheckOutput) ToUptimeCheckConfigTcpCheckPtrOutputWit
 	}).(UptimeCheckConfigTcpCheckPtrOutput)
 }
 
+func (o UptimeCheckConfigTcpCheckOutput) ToOutput(ctx context.Context) pulumix.Output[UptimeCheckConfigTcpCheck] {
+	return pulumix.Output[UptimeCheckConfigTcpCheck]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 func (o UptimeCheckConfigTcpCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
@@ -11014,6 +12305,12 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) ToUptimeCheckConfigTcpCheckPtrOutput
 
 func (o UptimeCheckConfigTcpCheckPtrOutput) ToUptimeCheckConfigTcpCheckPtrOutputWithContext(ctx context.Context) UptimeCheckConfigTcpCheckPtrOutput {
 	return o
+}
+
+func (o UptimeCheckConfigTcpCheckPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UptimeCheckConfigTcpCheck] {
+	return pulumix.Output[*UptimeCheckConfigTcpCheck]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UptimeCheckConfigTcpCheckPtrOutput) Elem() UptimeCheckConfigTcpCheckOutput {
@@ -11073,6 +12370,12 @@ func (i GetAppEngineServiceTelemetryArgs) ToGetAppEngineServiceTelemetryOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppEngineServiceTelemetryOutput)
 }
 
+func (i GetAppEngineServiceTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppEngineServiceTelemetry] {
+	return pulumix.Output[GetAppEngineServiceTelemetry]{
+		OutputState: i.ToGetAppEngineServiceTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppEngineServiceTelemetryArrayInput is an input type that accepts GetAppEngineServiceTelemetryArray and GetAppEngineServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetAppEngineServiceTelemetryArrayInput` via:
 //
@@ -11098,6 +12401,12 @@ func (i GetAppEngineServiceTelemetryArray) ToGetAppEngineServiceTelemetryArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppEngineServiceTelemetryArrayOutput)
 }
 
+func (i GetAppEngineServiceTelemetryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppEngineServiceTelemetry] {
+	return pulumix.Output[[]GetAppEngineServiceTelemetry]{
+		OutputState: i.ToGetAppEngineServiceTelemetryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppEngineServiceTelemetryOutput struct{ *pulumi.OutputState }
 
 func (GetAppEngineServiceTelemetryOutput) ElementType() reflect.Type {
@@ -11110,6 +12419,12 @@ func (o GetAppEngineServiceTelemetryOutput) ToGetAppEngineServiceTelemetryOutput
 
 func (o GetAppEngineServiceTelemetryOutput) ToGetAppEngineServiceTelemetryOutputWithContext(ctx context.Context) GetAppEngineServiceTelemetryOutput {
 	return o
+}
+
+func (o GetAppEngineServiceTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppEngineServiceTelemetry] {
+	return pulumix.Output[GetAppEngineServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full name of the resource that defines this service.
@@ -11131,6 +12446,12 @@ func (o GetAppEngineServiceTelemetryArrayOutput) ToGetAppEngineServiceTelemetryA
 
 func (o GetAppEngineServiceTelemetryArrayOutput) ToGetAppEngineServiceTelemetryArrayOutputWithContext(ctx context.Context) GetAppEngineServiceTelemetryArrayOutput {
 	return o
+}
+
+func (o GetAppEngineServiceTelemetryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppEngineServiceTelemetry] {
+	return pulumix.Output[[]GetAppEngineServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppEngineServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetAppEngineServiceTelemetryOutput {
@@ -11176,6 +12497,12 @@ func (i GetClusterIstioServiceTelemetryArgs) ToGetClusterIstioServiceTelemetryOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIstioServiceTelemetryOutput)
 }
 
+func (i GetClusterIstioServiceTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[GetClusterIstioServiceTelemetry] {
+	return pulumix.Output[GetClusterIstioServiceTelemetry]{
+		OutputState: i.ToGetClusterIstioServiceTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetClusterIstioServiceTelemetryArrayInput is an input type that accepts GetClusterIstioServiceTelemetryArray and GetClusterIstioServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetClusterIstioServiceTelemetryArrayInput` via:
 //
@@ -11201,6 +12528,12 @@ func (i GetClusterIstioServiceTelemetryArray) ToGetClusterIstioServiceTelemetryA
 	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIstioServiceTelemetryArrayOutput)
 }
 
+func (i GetClusterIstioServiceTelemetryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterIstioServiceTelemetry] {
+	return pulumix.Output[[]GetClusterIstioServiceTelemetry]{
+		OutputState: i.ToGetClusterIstioServiceTelemetryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetClusterIstioServiceTelemetryOutput struct{ *pulumi.OutputState }
 
 func (GetClusterIstioServiceTelemetryOutput) ElementType() reflect.Type {
@@ -11213,6 +12546,12 @@ func (o GetClusterIstioServiceTelemetryOutput) ToGetClusterIstioServiceTelemetry
 
 func (o GetClusterIstioServiceTelemetryOutput) ToGetClusterIstioServiceTelemetryOutputWithContext(ctx context.Context) GetClusterIstioServiceTelemetryOutput {
 	return o
+}
+
+func (o GetClusterIstioServiceTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterIstioServiceTelemetry] {
+	return pulumix.Output[GetClusterIstioServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full name of the resource that defines this service.
@@ -11234,6 +12573,12 @@ func (o GetClusterIstioServiceTelemetryArrayOutput) ToGetClusterIstioServiceTele
 
 func (o GetClusterIstioServiceTelemetryArrayOutput) ToGetClusterIstioServiceTelemetryArrayOutputWithContext(ctx context.Context) GetClusterIstioServiceTelemetryArrayOutput {
 	return o
+}
+
+func (o GetClusterIstioServiceTelemetryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterIstioServiceTelemetry] {
+	return pulumix.Output[[]GetClusterIstioServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClusterIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetClusterIstioServiceTelemetryOutput {
@@ -11279,6 +12624,12 @@ func (i GetIstioCanonicalServiceTelemetryArgs) ToGetIstioCanonicalServiceTelemet
 	return pulumi.ToOutputWithContext(ctx, i).(GetIstioCanonicalServiceTelemetryOutput)
 }
 
+func (i GetIstioCanonicalServiceTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[GetIstioCanonicalServiceTelemetry] {
+	return pulumix.Output[GetIstioCanonicalServiceTelemetry]{
+		OutputState: i.ToGetIstioCanonicalServiceTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIstioCanonicalServiceTelemetryArrayInput is an input type that accepts GetIstioCanonicalServiceTelemetryArray and GetIstioCanonicalServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetIstioCanonicalServiceTelemetryArrayInput` via:
 //
@@ -11304,6 +12655,12 @@ func (i GetIstioCanonicalServiceTelemetryArray) ToGetIstioCanonicalServiceTeleme
 	return pulumi.ToOutputWithContext(ctx, i).(GetIstioCanonicalServiceTelemetryArrayOutput)
 }
 
+func (i GetIstioCanonicalServiceTelemetryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIstioCanonicalServiceTelemetry] {
+	return pulumix.Output[[]GetIstioCanonicalServiceTelemetry]{
+		OutputState: i.ToGetIstioCanonicalServiceTelemetryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIstioCanonicalServiceTelemetryOutput struct{ *pulumi.OutputState }
 
 func (GetIstioCanonicalServiceTelemetryOutput) ElementType() reflect.Type {
@@ -11316,6 +12673,12 @@ func (o GetIstioCanonicalServiceTelemetryOutput) ToGetIstioCanonicalServiceTelem
 
 func (o GetIstioCanonicalServiceTelemetryOutput) ToGetIstioCanonicalServiceTelemetryOutputWithContext(ctx context.Context) GetIstioCanonicalServiceTelemetryOutput {
 	return o
+}
+
+func (o GetIstioCanonicalServiceTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[GetIstioCanonicalServiceTelemetry] {
+	return pulumix.Output[GetIstioCanonicalServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full name of the resource that defines this service.
@@ -11337,6 +12700,12 @@ func (o GetIstioCanonicalServiceTelemetryArrayOutput) ToGetIstioCanonicalService
 
 func (o GetIstioCanonicalServiceTelemetryArrayOutput) ToGetIstioCanonicalServiceTelemetryArrayOutputWithContext(ctx context.Context) GetIstioCanonicalServiceTelemetryArrayOutput {
 	return o
+}
+
+func (o GetIstioCanonicalServiceTelemetryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIstioCanonicalServiceTelemetry] {
+	return pulumix.Output[[]GetIstioCanonicalServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIstioCanonicalServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetIstioCanonicalServiceTelemetryOutput {
@@ -11382,6 +12751,12 @@ func (i GetMeshIstioServiceTelemetryArgs) ToGetMeshIstioServiceTelemetryOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetMeshIstioServiceTelemetryOutput)
 }
 
+func (i GetMeshIstioServiceTelemetryArgs) ToOutput(ctx context.Context) pulumix.Output[GetMeshIstioServiceTelemetry] {
+	return pulumix.Output[GetMeshIstioServiceTelemetry]{
+		OutputState: i.ToGetMeshIstioServiceTelemetryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetMeshIstioServiceTelemetryArrayInput is an input type that accepts GetMeshIstioServiceTelemetryArray and GetMeshIstioServiceTelemetryArrayOutput values.
 // You can construct a concrete instance of `GetMeshIstioServiceTelemetryArrayInput` via:
 //
@@ -11407,6 +12782,12 @@ func (i GetMeshIstioServiceTelemetryArray) ToGetMeshIstioServiceTelemetryArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetMeshIstioServiceTelemetryArrayOutput)
 }
 
+func (i GetMeshIstioServiceTelemetryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetMeshIstioServiceTelemetry] {
+	return pulumix.Output[[]GetMeshIstioServiceTelemetry]{
+		OutputState: i.ToGetMeshIstioServiceTelemetryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetMeshIstioServiceTelemetryOutput struct{ *pulumi.OutputState }
 
 func (GetMeshIstioServiceTelemetryOutput) ElementType() reflect.Type {
@@ -11419,6 +12800,12 @@ func (o GetMeshIstioServiceTelemetryOutput) ToGetMeshIstioServiceTelemetryOutput
 
 func (o GetMeshIstioServiceTelemetryOutput) ToGetMeshIstioServiceTelemetryOutputWithContext(ctx context.Context) GetMeshIstioServiceTelemetryOutput {
 	return o
+}
+
+func (o GetMeshIstioServiceTelemetryOutput) ToOutput(ctx context.Context) pulumix.Output[GetMeshIstioServiceTelemetry] {
+	return pulumix.Output[GetMeshIstioServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The full name of the resource that defines this service.
@@ -11440,6 +12827,12 @@ func (o GetMeshIstioServiceTelemetryArrayOutput) ToGetMeshIstioServiceTelemetryA
 
 func (o GetMeshIstioServiceTelemetryArrayOutput) ToGetMeshIstioServiceTelemetryArrayOutputWithContext(ctx context.Context) GetMeshIstioServiceTelemetryArrayOutput {
 	return o
+}
+
+func (o GetMeshIstioServiceTelemetryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetMeshIstioServiceTelemetry] {
+	return pulumix.Output[[]GetMeshIstioServiceTelemetry]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetMeshIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetMeshIstioServiceTelemetryOutput {
@@ -11483,6 +12876,12 @@ func (i GetNotificationChannelSensitiveLabelArgs) ToGetNotificationChannelSensit
 	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationChannelSensitiveLabelOutput)
 }
 
+func (i GetNotificationChannelSensitiveLabelArgs) ToOutput(ctx context.Context) pulumix.Output[GetNotificationChannelSensitiveLabel] {
+	return pulumix.Output[GetNotificationChannelSensitiveLabel]{
+		OutputState: i.ToGetNotificationChannelSensitiveLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNotificationChannelSensitiveLabelArrayInput is an input type that accepts GetNotificationChannelSensitiveLabelArray and GetNotificationChannelSensitiveLabelArrayOutput values.
 // You can construct a concrete instance of `GetNotificationChannelSensitiveLabelArrayInput` via:
 //
@@ -11508,6 +12907,12 @@ func (i GetNotificationChannelSensitiveLabelArray) ToGetNotificationChannelSensi
 	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationChannelSensitiveLabelArrayOutput)
 }
 
+func (i GetNotificationChannelSensitiveLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNotificationChannelSensitiveLabel] {
+	return pulumix.Output[[]GetNotificationChannelSensitiveLabel]{
+		OutputState: i.ToGetNotificationChannelSensitiveLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNotificationChannelSensitiveLabelOutput struct{ *pulumi.OutputState }
 
 func (GetNotificationChannelSensitiveLabelOutput) ElementType() reflect.Type {
@@ -11520,6 +12925,12 @@ func (o GetNotificationChannelSensitiveLabelOutput) ToGetNotificationChannelSens
 
 func (o GetNotificationChannelSensitiveLabelOutput) ToGetNotificationChannelSensitiveLabelOutputWithContext(ctx context.Context) GetNotificationChannelSensitiveLabelOutput {
 	return o
+}
+
+func (o GetNotificationChannelSensitiveLabelOutput) ToOutput(ctx context.Context) pulumix.Output[GetNotificationChannelSensitiveLabel] {
+	return pulumix.Output[GetNotificationChannelSensitiveLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNotificationChannelSensitiveLabelOutput) AuthToken() pulumi.StringOutput {
@@ -11546,6 +12957,12 @@ func (o GetNotificationChannelSensitiveLabelArrayOutput) ToGetNotificationChanne
 
 func (o GetNotificationChannelSensitiveLabelArrayOutput) ToGetNotificationChannelSensitiveLabelArrayOutputWithContext(ctx context.Context) GetNotificationChannelSensitiveLabelArrayOutput {
 	return o
+}
+
+func (o GetNotificationChannelSensitiveLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNotificationChannelSensitiveLabel] {
+	return pulumix.Output[[]GetNotificationChannelSensitiveLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNotificationChannelSensitiveLabelArrayOutput) Index(i pulumi.IntInput) GetNotificationChannelSensitiveLabelOutput {
@@ -11603,6 +13020,12 @@ func (i GetUptimeCheckIPsUptimeCheckIpArgs) ToGetUptimeCheckIPsUptimeCheckIpOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetUptimeCheckIPsUptimeCheckIpOutput)
 }
 
+func (i GetUptimeCheckIPsUptimeCheckIpArgs) ToOutput(ctx context.Context) pulumix.Output[GetUptimeCheckIPsUptimeCheckIp] {
+	return pulumix.Output[GetUptimeCheckIPsUptimeCheckIp]{
+		OutputState: i.ToGetUptimeCheckIPsUptimeCheckIpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetUptimeCheckIPsUptimeCheckIpArrayInput is an input type that accepts GetUptimeCheckIPsUptimeCheckIpArray and GetUptimeCheckIPsUptimeCheckIpArrayOutput values.
 // You can construct a concrete instance of `GetUptimeCheckIPsUptimeCheckIpArrayInput` via:
 //
@@ -11628,6 +13051,12 @@ func (i GetUptimeCheckIPsUptimeCheckIpArray) ToGetUptimeCheckIPsUptimeCheckIpArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetUptimeCheckIPsUptimeCheckIpArrayOutput)
 }
 
+func (i GetUptimeCheckIPsUptimeCheckIpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetUptimeCheckIPsUptimeCheckIp] {
+	return pulumix.Output[[]GetUptimeCheckIPsUptimeCheckIp]{
+		OutputState: i.ToGetUptimeCheckIPsUptimeCheckIpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetUptimeCheckIPsUptimeCheckIpOutput struct{ *pulumi.OutputState }
 
 func (GetUptimeCheckIPsUptimeCheckIpOutput) ElementType() reflect.Type {
@@ -11640,6 +13069,12 @@ func (o GetUptimeCheckIPsUptimeCheckIpOutput) ToGetUptimeCheckIPsUptimeCheckIpOu
 
 func (o GetUptimeCheckIPsUptimeCheckIpOutput) ToGetUptimeCheckIPsUptimeCheckIpOutputWithContext(ctx context.Context) GetUptimeCheckIPsUptimeCheckIpOutput {
 	return o
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpOutput) ToOutput(ctx context.Context) pulumix.Output[GetUptimeCheckIPsUptimeCheckIp] {
+	return pulumix.Output[GetUptimeCheckIPsUptimeCheckIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address from which the Uptime check originates. This is a fully specified IP address
@@ -11673,6 +13108,12 @@ func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) ToGetUptimeCheckIPsUptimeChec
 
 func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) ToGetUptimeCheckIPsUptimeCheckIpArrayOutputWithContext(ctx context.Context) GetUptimeCheckIPsUptimeCheckIpArrayOutput {
 	return o
+}
+
+func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetUptimeCheckIPsUptimeCheckIp] {
+	return pulumix.Output[[]GetUptimeCheckIPsUptimeCheckIp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) Index(i pulumi.IntInput) GetUptimeCheckIPsUptimeCheckIpOutput {

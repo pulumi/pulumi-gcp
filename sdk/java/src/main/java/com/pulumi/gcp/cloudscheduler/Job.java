@@ -201,7 +201,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="appEngineHttpTarget", type=JobAppEngineHttpTarget.class, parameters={})
+    @Export(name="appEngineHttpTarget", refs={JobAppEngineHttpTarget.class}, tree="[0]")
     private Output</* @Nullable */ JobAppEngineHttpTarget> appEngineHttpTarget;
 
     /**
@@ -225,7 +225,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      *   A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
      * 
      */
-    @Export(name="attemptDeadline", type=String.class, parameters={})
+    @Export(name="attemptDeadline", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> attemptDeadline;
 
     /**
@@ -247,7 +247,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * This string must not contain more than 500 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -265,7 +265,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="httpTarget", type=JobHttpTarget.class, parameters={})
+    @Export(name="httpTarget", refs={JobHttpTarget.class}, tree="[0]")
     private Output</* @Nullable */ JobHttpTarget> httpTarget;
 
     /**
@@ -284,7 +284,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -300,7 +300,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Sets the job to a paused state. Jobs default to being enabled when this property is not set.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> paused;
 
     /**
@@ -315,7 +315,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -333,7 +333,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pubsubTarget", type=JobPubsubTarget.class, parameters={})
+    @Export(name="pubsubTarget", refs={JobPubsubTarget.class}, tree="[0]")
     private Output</* @Nullable */ JobPubsubTarget> pubsubTarget;
 
     /**
@@ -350,7 +350,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -367,7 +367,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="retryConfig", type=JobRetryConfig.class, parameters={})
+    @Export(name="retryConfig", refs={JobRetryConfig.class}, tree="[0]")
     private Output</* @Nullable */ JobRetryConfig> retryConfig;
 
     /**
@@ -384,7 +384,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Describes the schedule on which the job will be executed.
      * 
      */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
@@ -398,7 +398,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * State of the job.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -413,7 +413,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The value of this field must be a time zone name from the tz database.
      * 
      */
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeZone;
 
     /**

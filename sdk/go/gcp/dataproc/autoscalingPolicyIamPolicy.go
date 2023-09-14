@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataproc AutoscalingPolicy. Each of these resources serves a different use case:
@@ -381,6 +382,12 @@ func (i *AutoscalingPolicyIamPolicy) ToAutoscalingPolicyIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamPolicyOutput)
 }
 
+func (i *AutoscalingPolicyIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamPolicy] {
+	return pulumix.Output[*AutoscalingPolicyIamPolicy]{
+		OutputState: i.ToAutoscalingPolicyIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AutoscalingPolicyIamPolicyArrayInput is an input type that accepts AutoscalingPolicyIamPolicyArray and AutoscalingPolicyIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyIamPolicyArrayInput` via:
 //
@@ -404,6 +411,12 @@ func (i AutoscalingPolicyIamPolicyArray) ToAutoscalingPolicyIamPolicyArrayOutput
 
 func (i AutoscalingPolicyIamPolicyArray) ToAutoscalingPolicyIamPolicyArrayOutputWithContext(ctx context.Context) AutoscalingPolicyIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamPolicyArrayOutput)
+}
+
+func (i AutoscalingPolicyIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicyIamPolicy] {
+	return pulumix.Output[[]*AutoscalingPolicyIamPolicy]{
+		OutputState: i.ToAutoscalingPolicyIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AutoscalingPolicyIamPolicyMapInput is an input type that accepts AutoscalingPolicyIamPolicyMap and AutoscalingPolicyIamPolicyMapOutput values.
@@ -431,6 +444,12 @@ func (i AutoscalingPolicyIamPolicyMap) ToAutoscalingPolicyIamPolicyMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyIamPolicyMapOutput)
 }
 
+func (i AutoscalingPolicyIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicyIamPolicy] {
+	return pulumix.Output[map[string]*AutoscalingPolicyIamPolicy]{
+		OutputState: i.ToAutoscalingPolicyIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AutoscalingPolicyIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AutoscalingPolicyIamPolicyOutput) ElementType() reflect.Type {
@@ -443,6 +462,12 @@ func (o AutoscalingPolicyIamPolicyOutput) ToAutoscalingPolicyIamPolicyOutput() A
 
 func (o AutoscalingPolicyIamPolicyOutput) ToAutoscalingPolicyIamPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyIamPolicyOutput {
 	return o
+}
+
+func (o AutoscalingPolicyIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscalingPolicyIamPolicy] {
+	return pulumix.Output[*AutoscalingPolicyIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -503,6 +528,12 @@ func (o AutoscalingPolicyIamPolicyArrayOutput) ToAutoscalingPolicyIamPolicyArray
 	return o
 }
 
+func (o AutoscalingPolicyIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AutoscalingPolicyIamPolicy] {
+	return pulumix.Output[[]*AutoscalingPolicyIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AutoscalingPolicyIamPolicyArrayOutput) Index(i pulumi.IntInput) AutoscalingPolicyIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AutoscalingPolicyIamPolicy {
 		return vs[0].([]*AutoscalingPolicyIamPolicy)[vs[1].(int)]
@@ -521,6 +552,12 @@ func (o AutoscalingPolicyIamPolicyMapOutput) ToAutoscalingPolicyIamPolicyMapOutp
 
 func (o AutoscalingPolicyIamPolicyMapOutput) ToAutoscalingPolicyIamPolicyMapOutputWithContext(ctx context.Context) AutoscalingPolicyIamPolicyMapOutput {
 	return o
+}
+
+func (o AutoscalingPolicyIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AutoscalingPolicyIamPolicy] {
+	return pulumix.Output[map[string]*AutoscalingPolicyIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AutoscalingPolicyIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AutoscalingPolicyIamPolicyOutput {

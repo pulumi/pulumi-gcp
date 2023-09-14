@@ -81,7 +81,7 @@ public class DefaultObjectACL extends com.pulumi.resources.CustomResource {
      * The name of the bucket it applies to.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -97,7 +97,7 @@ public class DefaultObjectACL extends com.pulumi.resources.CustomResource {
      * Omitting the field is the same as providing an empty list.
      * 
      */
-    @Export(name="roleEntities", type=List.class, parameters={String.class})
+    @Export(name="roleEntities", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roleEntities;
 
     /**

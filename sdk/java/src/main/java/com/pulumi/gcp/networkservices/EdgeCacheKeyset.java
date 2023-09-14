@@ -150,7 +150,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * A human-readable description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -164,7 +164,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the EdgeCache resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -182,7 +182,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -201,7 +201,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -222,7 +222,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="publicKeys", type=List.class, parameters={EdgeCacheKeysetPublicKey.class})
+    @Export(name="publicKeys", refs={List.class,EdgeCacheKeysetPublicKey.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EdgeCacheKeysetPublicKey>> publicKeys;
 
     /**
@@ -246,7 +246,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="validationSharedKeys", type=List.class, parameters={EdgeCacheKeysetValidationSharedKey.class})
+    @Export(name="validationSharedKeys", refs={List.class,EdgeCacheKeysetValidationSharedKey.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EdgeCacheKeysetValidationSharedKey>> validationSharedKeys;
 
     /**

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
@@ -327,6 +328,12 @@ func (i *SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyOutput)
 }
 
+func (i *SubscriptionIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionIAMPolicy] {
+	return pulumix.Output[*SubscriptionIAMPolicy]{
+		OutputState: i.ToSubscriptionIAMPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubscriptionIAMPolicyArrayInput is an input type that accepts SubscriptionIAMPolicyArray and SubscriptionIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `SubscriptionIAMPolicyArrayInput` via:
 //
@@ -350,6 +357,12 @@ func (i SubscriptionIAMPolicyArray) ToSubscriptionIAMPolicyArrayOutput() Subscri
 
 func (i SubscriptionIAMPolicyArray) ToSubscriptionIAMPolicyArrayOutputWithContext(ctx context.Context) SubscriptionIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyArrayOutput)
+}
+
+func (i SubscriptionIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubscriptionIAMPolicy] {
+	return pulumix.Output[[]*SubscriptionIAMPolicy]{
+		OutputState: i.ToSubscriptionIAMPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SubscriptionIAMPolicyMapInput is an input type that accepts SubscriptionIAMPolicyMap and SubscriptionIAMPolicyMapOutput values.
@@ -377,6 +390,12 @@ func (i SubscriptionIAMPolicyMap) ToSubscriptionIAMPolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyMapOutput)
 }
 
+func (i SubscriptionIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubscriptionIAMPolicy] {
+	return pulumix.Output[map[string]*SubscriptionIAMPolicy]{
+		OutputState: i.ToSubscriptionIAMPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubscriptionIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIAMPolicyOutput) ElementType() reflect.Type {
@@ -389,6 +408,12 @@ func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyOutput() Subscriptio
 
 func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput {
 	return o
+}
+
+func (o SubscriptionIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionIAMPolicy] {
+	return pulumix.Output[*SubscriptionIAMPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the subscription's IAM policy.
@@ -438,6 +463,12 @@ func (o SubscriptionIAMPolicyArrayOutput) ToSubscriptionIAMPolicyArrayOutputWith
 	return o
 }
 
+func (o SubscriptionIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubscriptionIAMPolicy] {
+	return pulumix.Output[[]*SubscriptionIAMPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubscriptionIAMPolicyArrayOutput) Index(i pulumi.IntInput) SubscriptionIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionIAMPolicy {
 		return vs[0].([]*SubscriptionIAMPolicy)[vs[1].(int)]
@@ -456,6 +487,12 @@ func (o SubscriptionIAMPolicyMapOutput) ToSubscriptionIAMPolicyMapOutput() Subsc
 
 func (o SubscriptionIAMPolicyMapOutput) ToSubscriptionIAMPolicyMapOutputWithContext(ctx context.Context) SubscriptionIAMPolicyMapOutput {
 	return o
+}
+
+func (o SubscriptionIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubscriptionIAMPolicy] {
+	return pulumix.Output[map[string]*SubscriptionIAMPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubscriptionIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIAMPolicyOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Dataproc cluster.
@@ -108,6 +109,12 @@ func (o GetClusterIamPolicyResultOutput) ToGetClusterIamPolicyResultOutput() Get
 
 func (o GetClusterIamPolicyResultOutput) ToGetClusterIamPolicyResultOutputWithContext(ctx context.Context) GetClusterIamPolicyResultOutput {
 	return o
+}
+
+func (o GetClusterIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterIamPolicyResult] {
+	return pulumix.Output[GetClusterIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetClusterIamPolicyResultOutput) Cluster() pulumi.StringOutput {

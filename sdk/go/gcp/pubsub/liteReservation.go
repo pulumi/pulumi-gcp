@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A named resource representing a shared pool of capacity.
@@ -222,6 +223,12 @@ func (i *LiteReservation) ToLiteReservationOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(LiteReservationOutput)
 }
 
+func (i *LiteReservation) ToOutput(ctx context.Context) pulumix.Output[*LiteReservation] {
+	return pulumix.Output[*LiteReservation]{
+		OutputState: i.ToLiteReservationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LiteReservationArrayInput is an input type that accepts LiteReservationArray and LiteReservationArrayOutput values.
 // You can construct a concrete instance of `LiteReservationArrayInput` via:
 //
@@ -245,6 +252,12 @@ func (i LiteReservationArray) ToLiteReservationArrayOutput() LiteReservationArra
 
 func (i LiteReservationArray) ToLiteReservationArrayOutputWithContext(ctx context.Context) LiteReservationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteReservationArrayOutput)
+}
+
+func (i LiteReservationArray) ToOutput(ctx context.Context) pulumix.Output[[]*LiteReservation] {
+	return pulumix.Output[[]*LiteReservation]{
+		OutputState: i.ToLiteReservationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LiteReservationMapInput is an input type that accepts LiteReservationMap and LiteReservationMapOutput values.
@@ -272,6 +285,12 @@ func (i LiteReservationMap) ToLiteReservationMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LiteReservationMapOutput)
 }
 
+func (i LiteReservationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LiteReservation] {
+	return pulumix.Output[map[string]*LiteReservation]{
+		OutputState: i.ToLiteReservationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LiteReservationOutput struct{ *pulumi.OutputState }
 
 func (LiteReservationOutput) ElementType() reflect.Type {
@@ -284,6 +303,12 @@ func (o LiteReservationOutput) ToLiteReservationOutput() LiteReservationOutput {
 
 func (o LiteReservationOutput) ToLiteReservationOutputWithContext(ctx context.Context) LiteReservationOutput {
 	return o
+}
+
+func (o LiteReservationOutput) ToOutput(ctx context.Context) pulumix.Output[*LiteReservation] {
+	return pulumix.Output[*LiteReservation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the reservation.
@@ -325,6 +350,12 @@ func (o LiteReservationArrayOutput) ToLiteReservationArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o LiteReservationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LiteReservation] {
+	return pulumix.Output[[]*LiteReservation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LiteReservationArrayOutput) Index(i pulumi.IntInput) LiteReservationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LiteReservation {
 		return vs[0].([]*LiteReservation)[vs[1].(int)]
@@ -343,6 +374,12 @@ func (o LiteReservationMapOutput) ToLiteReservationMapOutput() LiteReservationMa
 
 func (o LiteReservationMapOutput) ToLiteReservationMapOutputWithContext(ctx context.Context) LiteReservationMapOutput {
 	return o
+}
+
+func (o LiteReservationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LiteReservation] {
+	return pulumix.Output[map[string]*LiteReservation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LiteReservationMapOutput) MapIndex(k pulumi.StringInput) LiteReservationOutput {

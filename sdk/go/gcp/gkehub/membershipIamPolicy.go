@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for GKEHub Membership. Each of these resources serves a different use case:
@@ -338,6 +339,12 @@ func (i *MembershipIamPolicy) ToMembershipIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamPolicyOutput)
 }
 
+func (i *MembershipIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamPolicy] {
+	return pulumix.Output[*MembershipIamPolicy]{
+		OutputState: i.ToMembershipIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MembershipIamPolicyArrayInput is an input type that accepts MembershipIamPolicyArray and MembershipIamPolicyArrayOutput values.
 // You can construct a concrete instance of `MembershipIamPolicyArrayInput` via:
 //
@@ -361,6 +368,12 @@ func (i MembershipIamPolicyArray) ToMembershipIamPolicyArrayOutput() MembershipI
 
 func (i MembershipIamPolicyArray) ToMembershipIamPolicyArrayOutputWithContext(ctx context.Context) MembershipIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamPolicyArrayOutput)
+}
+
+func (i MembershipIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipIamPolicy] {
+	return pulumix.Output[[]*MembershipIamPolicy]{
+		OutputState: i.ToMembershipIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MembershipIamPolicyMapInput is an input type that accepts MembershipIamPolicyMap and MembershipIamPolicyMapOutput values.
@@ -388,6 +401,12 @@ func (i MembershipIamPolicyMap) ToMembershipIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamPolicyMapOutput)
 }
 
+func (i MembershipIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipIamPolicy] {
+	return pulumix.Output[map[string]*MembershipIamPolicy]{
+		OutputState: i.ToMembershipIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamPolicyOutput) ElementType() reflect.Type {
@@ -400,6 +419,12 @@ func (o MembershipIamPolicyOutput) ToMembershipIamPolicyOutput() MembershipIamPo
 
 func (o MembershipIamPolicyOutput) ToMembershipIamPolicyOutputWithContext(ctx context.Context) MembershipIamPolicyOutput {
 	return o
+}
+
+func (o MembershipIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamPolicy] {
+	return pulumix.Output[*MembershipIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -449,6 +474,12 @@ func (o MembershipIamPolicyArrayOutput) ToMembershipIamPolicyArrayOutputWithCont
 	return o
 }
 
+func (o MembershipIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipIamPolicy] {
+	return pulumix.Output[[]*MembershipIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MembershipIamPolicyArrayOutput) Index(i pulumi.IntInput) MembershipIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MembershipIamPolicy {
 		return vs[0].([]*MembershipIamPolicy)[vs[1].(int)]
@@ -467,6 +498,12 @@ func (o MembershipIamPolicyMapOutput) ToMembershipIamPolicyMapOutput() Membershi
 
 func (o MembershipIamPolicyMapOutput) ToMembershipIamPolicyMapOutputWithContext(ctx context.Context) MembershipIamPolicyMapOutput {
 	return o
+}
+
+func (o MembershipIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipIamPolicy] {
+	return pulumix.Output[map[string]*MembershipIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipIamPolicyMapOutput) MapIndex(k pulumi.StringInput) MembershipIamPolicyOutput {

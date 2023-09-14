@@ -206,7 +206,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="autoscalingPolicy", type=NodeGroupAutoscalingPolicy.class, parameters={})
+    @Export(name="autoscalingPolicy", refs={NodeGroupAutoscalingPolicy.class}, tree="[0]")
     private Output<NodeGroupAutoscalingPolicy> autoscalingPolicy;
 
     /**
@@ -222,7 +222,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -236,7 +236,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * An optional textual description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -250,7 +250,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
      * 
      */
-    @Export(name="initialSize", type=Integer.class, parameters={})
+    @Export(name="initialSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> initialSize;
 
     /**
@@ -264,7 +264,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
      * 
      */
-    @Export(name="maintenancePolicy", type=String.class, parameters={})
+    @Export(name="maintenancePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maintenancePolicy;
 
     /**
@@ -279,7 +279,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenanceWindow", type=NodeGroupMaintenanceWindow.class, parameters={})
+    @Export(name="maintenanceWindow", refs={NodeGroupMaintenanceWindow.class}, tree="[0]")
     private Output</* @Nullable */ NodeGroupMaintenanceWindow> maintenanceWindow;
 
     /**
@@ -294,7 +294,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -310,7 +310,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="nodeTemplate", type=String.class, parameters={})
+    @Export(name="nodeTemplate", refs={String.class}, tree="[0]")
     private Output<String> nodeTemplate;
 
     /**
@@ -327,7 +327,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -342,7 +342,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -357,7 +357,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="shareSettings", type=NodeGroupShareSettings.class, parameters={})
+    @Export(name="shareSettings", refs={NodeGroupShareSettings.class}, tree="[0]")
     private Output<NodeGroupShareSettings> shareSettings;
 
     /**
@@ -372,7 +372,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -386,7 +386,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Zone where this node group is located
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

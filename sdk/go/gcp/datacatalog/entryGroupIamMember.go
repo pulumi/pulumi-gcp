@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog EntryGroup. Each of these resources serves a different use case:
@@ -363,6 +364,12 @@ func (i *EntryGroupIamMember) ToEntryGroupIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberOutput)
 }
 
+func (i *EntryGroupIamMember) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamMember] {
+	return pulumix.Output[*EntryGroupIamMember]{
+		OutputState: i.ToEntryGroupIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryGroupIamMemberArrayInput is an input type that accepts EntryGroupIamMemberArray and EntryGroupIamMemberArrayOutput values.
 // You can construct a concrete instance of `EntryGroupIamMemberArrayInput` via:
 //
@@ -386,6 +393,12 @@ func (i EntryGroupIamMemberArray) ToEntryGroupIamMemberArrayOutput() EntryGroupI
 
 func (i EntryGroupIamMemberArray) ToEntryGroupIamMemberArrayOutputWithContext(ctx context.Context) EntryGroupIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberArrayOutput)
+}
+
+func (i EntryGroupIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroupIamMember] {
+	return pulumix.Output[[]*EntryGroupIamMember]{
+		OutputState: i.ToEntryGroupIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EntryGroupIamMemberMapInput is an input type that accepts EntryGroupIamMemberMap and EntryGroupIamMemberMapOutput values.
@@ -413,6 +426,12 @@ func (i EntryGroupIamMemberMap) ToEntryGroupIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberMapOutput)
 }
 
+func (i EntryGroupIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroupIamMember] {
+	return pulumix.Output[map[string]*EntryGroupIamMember]{
+		OutputState: i.ToEntryGroupIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryGroupIamMemberOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamMemberOutput) ElementType() reflect.Type {
@@ -425,6 +444,12 @@ func (o EntryGroupIamMemberOutput) ToEntryGroupIamMemberOutput() EntryGroupIamMe
 
 func (o EntryGroupIamMemberOutput) ToEntryGroupIamMemberOutputWithContext(ctx context.Context) EntryGroupIamMemberOutput {
 	return o
+}
+
+func (o EntryGroupIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamMember] {
+	return pulumix.Output[*EntryGroupIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGroupIamMemberOutput) Condition() EntryGroupIamMemberConditionPtrOutput {
@@ -488,6 +513,12 @@ func (o EntryGroupIamMemberArrayOutput) ToEntryGroupIamMemberArrayOutputWithCont
 	return o
 }
 
+func (o EntryGroupIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EntryGroupIamMember] {
+	return pulumix.Output[[]*EntryGroupIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EntryGroupIamMemberArrayOutput) Index(i pulumi.IntInput) EntryGroupIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EntryGroupIamMember {
 		return vs[0].([]*EntryGroupIamMember)[vs[1].(int)]
@@ -506,6 +537,12 @@ func (o EntryGroupIamMemberMapOutput) ToEntryGroupIamMemberMapOutput() EntryGrou
 
 func (o EntryGroupIamMemberMapOutput) ToEntryGroupIamMemberMapOutputWithContext(ctx context.Context) EntryGroupIamMemberMapOutput {
 	return o
+}
+
+func (o EntryGroupIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EntryGroupIamMember] {
+	return pulumix.Output[map[string]*EntryGroupIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGroupIamMemberMapOutput) MapIndex(k pulumi.StringInput) EntryGroupIamMemberOutput {

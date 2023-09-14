@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Mange the named ports setting for a managed instance group without
@@ -269,6 +270,12 @@ func (i *InstanceGroupNamedPort) ToInstanceGroupNamedPortOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortOutput)
 }
 
+func (i *InstanceGroupNamedPort) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupNamedPort] {
+	return pulumix.Output[*InstanceGroupNamedPort]{
+		OutputState: i.ToInstanceGroupNamedPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceGroupNamedPortArrayInput is an input type that accepts InstanceGroupNamedPortArray and InstanceGroupNamedPortArrayOutput values.
 // You can construct a concrete instance of `InstanceGroupNamedPortArrayInput` via:
 //
@@ -292,6 +299,12 @@ func (i InstanceGroupNamedPortArray) ToInstanceGroupNamedPortArrayOutput() Insta
 
 func (i InstanceGroupNamedPortArray) ToInstanceGroupNamedPortArrayOutputWithContext(ctx context.Context) InstanceGroupNamedPortArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortArrayOutput)
+}
+
+func (i InstanceGroupNamedPortArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroupNamedPort] {
+	return pulumix.Output[[]*InstanceGroupNamedPort]{
+		OutputState: i.ToInstanceGroupNamedPortArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstanceGroupNamedPortMapInput is an input type that accepts InstanceGroupNamedPortMap and InstanceGroupNamedPortMapOutput values.
@@ -319,6 +332,12 @@ func (i InstanceGroupNamedPortMap) ToInstanceGroupNamedPortMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupNamedPortMapOutput)
 }
 
+func (i InstanceGroupNamedPortMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroupNamedPort] {
+	return pulumix.Output[map[string]*InstanceGroupNamedPort]{
+		OutputState: i.ToInstanceGroupNamedPortMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceGroupNamedPortOutput struct{ *pulumi.OutputState }
 
 func (InstanceGroupNamedPortOutput) ElementType() reflect.Type {
@@ -331,6 +350,12 @@ func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutput() InstanceG
 
 func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutputWithContext(ctx context.Context) InstanceGroupNamedPortOutput {
 	return o
+}
+
+func (o InstanceGroupNamedPortOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceGroupNamedPort] {
+	return pulumix.Output[*InstanceGroupNamedPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the instance group.
@@ -376,6 +401,12 @@ func (o InstanceGroupNamedPortArrayOutput) ToInstanceGroupNamedPortArrayOutputWi
 	return o
 }
 
+func (o InstanceGroupNamedPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceGroupNamedPort] {
+	return pulumix.Output[[]*InstanceGroupNamedPort]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceGroupNamedPortArrayOutput) Index(i pulumi.IntInput) InstanceGroupNamedPortOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceGroupNamedPort {
 		return vs[0].([]*InstanceGroupNamedPort)[vs[1].(int)]
@@ -394,6 +425,12 @@ func (o InstanceGroupNamedPortMapOutput) ToInstanceGroupNamedPortMapOutput() Ins
 
 func (o InstanceGroupNamedPortMapOutput) ToInstanceGroupNamedPortMapOutputWithContext(ctx context.Context) InstanceGroupNamedPortMapOutput {
 	return o
+}
+
+func (o InstanceGroupNamedPortMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceGroupNamedPort] {
+	return pulumix.Output[map[string]*InstanceGroupNamedPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceGroupNamedPortMapOutput) MapIndex(k pulumi.StringInput) InstanceGroupNamedPortOutput {

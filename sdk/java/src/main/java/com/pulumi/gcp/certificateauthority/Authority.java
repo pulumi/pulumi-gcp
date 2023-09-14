@@ -371,7 +371,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="accessUrls", type=List.class, parameters={AuthorityAccessUrl.class})
+    @Export(name="accessUrls", refs={List.class,AuthorityAccessUrl.class}, tree="[0,1]")
     private Output<List<AuthorityAccessUrl>> accessUrls;
 
     /**
@@ -386,7 +386,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * The user provided Resource ID for this Certificate Authority.
      * 
      */
-    @Export(name="certificateAuthorityId", type=String.class, parameters={})
+    @Export(name="certificateAuthorityId", refs={String.class}, tree="[0]")
     private Output<String> certificateAuthorityId;
 
     /**
@@ -401,7 +401,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="config", type=AuthorityConfig.class, parameters={})
+    @Export(name="config", refs={AuthorityConfig.class}, tree="[0]")
     private Output<AuthorityConfig> config;
 
     /**
@@ -418,7 +418,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -435,7 +435,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * state, a &#39;terraform destroy&#39; or &#39;terraform apply&#39; that would delete the instance will fail.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -450,7 +450,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
      * 
      */
-    @Export(name="desiredState", type=String.class, parameters={})
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
@@ -468,7 +468,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * created.
      * 
      */
-    @Export(name="gcsBucket", type=String.class, parameters={})
+    @Export(name="gcsBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gcsBucket;
 
     /**
@@ -487,7 +487,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Use with care. Defaults to `false`.
      * 
      */
-    @Export(name="ignoreActiveCertificatesOnDeletion", type=Boolean.class, parameters={})
+    @Export(name="ignoreActiveCertificatesOnDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ignoreActiveCertificatesOnDeletion;
 
     /**
@@ -505,7 +505,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="keySpec", type=AuthorityKeySpec.class, parameters={})
+    @Export(name="keySpec", refs={AuthorityKeySpec.class}, tree="[0]")
     private Output<AuthorityKeySpec> keySpec;
 
     /**
@@ -524,7 +524,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -542,7 +542,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="lifetime", type=String.class, parameters={})
+    @Export(name="lifetime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lifetime;
 
     /**
@@ -559,7 +559,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * running `gcloud privateca locations list`.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -575,7 +575,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -590,7 +590,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * The signed CA certificate issued from the subordinated CA&#39;s CSR. This is needed when activating the subordiante CA with a third party issuer.
      * 
      */
-    @Export(name="pemCaCertificate", type=String.class, parameters={})
+    @Export(name="pemCaCertificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pemCaCertificate;
 
     /**
@@ -607,7 +607,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * CertificateAuthority&#39;s certificate.
      * 
      */
-    @Export(name="pemCaCertificates", type=List.class, parameters={String.class})
+    @Export(name="pemCaCertificates", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> pemCaCertificates;
 
     /**
@@ -624,7 +624,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * The name of the CaPool this Certificate Authority belongs to.
      * 
      */
-    @Export(name="pool", type=String.class, parameters={})
+    @Export(name="pool", refs={String.class}, tree="[0]")
     private Output<String> pool;
 
     /**
@@ -639,7 +639,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -657,7 +657,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Use with care. Defaults to `false`.
      * 
      */
-    @Export(name="skipGracePeriod", type=Boolean.class, parameters={})
+    @Export(name="skipGracePeriod", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipGracePeriod;
 
     /**
@@ -674,7 +674,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * The State for this CertificateAuthority.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -690,7 +690,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="subordinateConfig", type=AuthoritySubordinateConfig.class, parameters={})
+    @Export(name="subordinateConfig", refs={AuthoritySubordinateConfig.class}, tree="[0]")
     private Output</* @Nullable */ AuthoritySubordinateConfig> subordinateConfig;
 
     /**
@@ -710,7 +710,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -730,7 +730,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -82,6 +83,12 @@ func (i JobAppEngineHttpTargetArgs) ToJobAppEngineHttpTargetOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(JobAppEngineHttpTargetOutput)
 }
 
+func (i JobAppEngineHttpTargetArgs) ToOutput(ctx context.Context) pulumix.Output[JobAppEngineHttpTarget] {
+	return pulumix.Output[JobAppEngineHttpTarget]{
+		OutputState: i.ToJobAppEngineHttpTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobAppEngineHttpTargetArgs) ToJobAppEngineHttpTargetPtrOutput() JobAppEngineHttpTargetPtrOutput {
 	return i.ToJobAppEngineHttpTargetPtrOutputWithContext(context.Background())
 }
@@ -123,6 +130,12 @@ func (i *jobAppEngineHttpTargetPtrType) ToJobAppEngineHttpTargetPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobAppEngineHttpTargetPtrOutput)
 }
 
+func (i *jobAppEngineHttpTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobAppEngineHttpTarget] {
+	return pulumix.Output[*JobAppEngineHttpTarget]{
+		OutputState: i.ToJobAppEngineHttpTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobAppEngineHttpTargetOutput struct{ *pulumi.OutputState }
 
 func (JobAppEngineHttpTargetOutput) ElementType() reflect.Type {
@@ -145,6 +158,12 @@ func (o JobAppEngineHttpTargetOutput) ToJobAppEngineHttpTargetPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobAppEngineHttpTarget) *JobAppEngineHttpTarget {
 		return &v
 	}).(JobAppEngineHttpTargetPtrOutput)
+}
+
+func (o JobAppEngineHttpTargetOutput) ToOutput(ctx context.Context) pulumix.Output[JobAppEngineHttpTarget] {
+	return pulumix.Output[JobAppEngineHttpTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // App Engine Routing setting for the job.
@@ -194,6 +213,12 @@ func (o JobAppEngineHttpTargetPtrOutput) ToJobAppEngineHttpTargetPtrOutput() Job
 
 func (o JobAppEngineHttpTargetPtrOutput) ToJobAppEngineHttpTargetPtrOutputWithContext(ctx context.Context) JobAppEngineHttpTargetPtrOutput {
 	return o
+}
+
+func (o JobAppEngineHttpTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobAppEngineHttpTarget] {
+	return pulumix.Output[*JobAppEngineHttpTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobAppEngineHttpTargetPtrOutput) Elem() JobAppEngineHttpTargetOutput {
@@ -313,6 +338,12 @@ func (i JobAppEngineHttpTargetAppEngineRoutingArgs) ToJobAppEngineHttpTargetAppE
 	return pulumi.ToOutputWithContext(ctx, i).(JobAppEngineHttpTargetAppEngineRoutingOutput)
 }
 
+func (i JobAppEngineHttpTargetAppEngineRoutingArgs) ToOutput(ctx context.Context) pulumix.Output[JobAppEngineHttpTargetAppEngineRouting] {
+	return pulumix.Output[JobAppEngineHttpTargetAppEngineRouting]{
+		OutputState: i.ToJobAppEngineHttpTargetAppEngineRoutingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobAppEngineHttpTargetAppEngineRoutingArgs) ToJobAppEngineHttpTargetAppEngineRoutingPtrOutput() JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
 	return i.ToJobAppEngineHttpTargetAppEngineRoutingPtrOutputWithContext(context.Background())
 }
@@ -354,6 +385,12 @@ func (i *jobAppEngineHttpTargetAppEngineRoutingPtrType) ToJobAppEngineHttpTarget
 	return pulumi.ToOutputWithContext(ctx, i).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
 }
 
+func (i *jobAppEngineHttpTargetAppEngineRoutingPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobAppEngineHttpTargetAppEngineRouting] {
+	return pulumix.Output[*JobAppEngineHttpTargetAppEngineRouting]{
+		OutputState: i.ToJobAppEngineHttpTargetAppEngineRoutingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobAppEngineHttpTargetAppEngineRoutingOutput struct{ *pulumi.OutputState }
 
 func (JobAppEngineHttpTargetAppEngineRoutingOutput) ElementType() reflect.Type {
@@ -376,6 +413,12 @@ func (o JobAppEngineHttpTargetAppEngineRoutingOutput) ToJobAppEngineHttpTargetAp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobAppEngineHttpTargetAppEngineRouting) *JobAppEngineHttpTargetAppEngineRouting {
 		return &v
 	}).(JobAppEngineHttpTargetAppEngineRoutingPtrOutput)
+}
+
+func (o JobAppEngineHttpTargetAppEngineRoutingOutput) ToOutput(ctx context.Context) pulumix.Output[JobAppEngineHttpTargetAppEngineRouting] {
+	return pulumix.Output[JobAppEngineHttpTargetAppEngineRouting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // App instance.
@@ -408,6 +451,12 @@ func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) ToJobAppEngineHttpTarge
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) ToJobAppEngineHttpTargetAppEngineRoutingPtrOutputWithContext(ctx context.Context) JobAppEngineHttpTargetAppEngineRoutingPtrOutput {
 	return o
+}
+
+func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobAppEngineHttpTargetAppEngineRouting] {
+	return pulumix.Output[*JobAppEngineHttpTargetAppEngineRouting]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobAppEngineHttpTargetAppEngineRoutingPtrOutput) Elem() JobAppEngineHttpTargetAppEngineRoutingOutput {
@@ -522,6 +571,12 @@ func (i JobHttpTargetArgs) ToJobHttpTargetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOutput)
 }
 
+func (i JobHttpTargetArgs) ToOutput(ctx context.Context) pulumix.Output[JobHttpTarget] {
+	return pulumix.Output[JobHttpTarget]{
+		OutputState: i.ToJobHttpTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobHttpTargetArgs) ToJobHttpTargetPtrOutput() JobHttpTargetPtrOutput {
 	return i.ToJobHttpTargetPtrOutputWithContext(context.Background())
 }
@@ -563,6 +618,12 @@ func (i *jobHttpTargetPtrType) ToJobHttpTargetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetPtrOutput)
 }
 
+func (i *jobHttpTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobHttpTarget] {
+	return pulumix.Output[*JobHttpTarget]{
+		OutputState: i.ToJobHttpTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobHttpTargetOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOutput) ElementType() reflect.Type {
@@ -585,6 +646,12 @@ func (o JobHttpTargetOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHttpTarget) *JobHttpTarget {
 		return &v
 	}).(JobHttpTargetPtrOutput)
+}
+
+func (o JobHttpTargetOutput) ToOutput(ctx context.Context) pulumix.Output[JobHttpTarget] {
+	return pulumix.Output[JobHttpTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // HTTP request body.
@@ -637,6 +704,12 @@ func (o JobHttpTargetPtrOutput) ToJobHttpTargetPtrOutput() JobHttpTargetPtrOutpu
 
 func (o JobHttpTargetPtrOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.Context) JobHttpTargetPtrOutput {
 	return o
+}
+
+func (o JobHttpTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobHttpTarget] {
+	return pulumix.Output[*JobHttpTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobHttpTargetPtrOutput) Elem() JobHttpTargetOutput {
@@ -758,6 +831,12 @@ func (i JobHttpTargetOauthTokenArgs) ToJobHttpTargetOauthTokenOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOauthTokenOutput)
 }
 
+func (i JobHttpTargetOauthTokenArgs) ToOutput(ctx context.Context) pulumix.Output[JobHttpTargetOauthToken] {
+	return pulumix.Output[JobHttpTargetOauthToken]{
+		OutputState: i.ToJobHttpTargetOauthTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobHttpTargetOauthTokenArgs) ToJobHttpTargetOauthTokenPtrOutput() JobHttpTargetOauthTokenPtrOutput {
 	return i.ToJobHttpTargetOauthTokenPtrOutputWithContext(context.Background())
 }
@@ -799,6 +878,12 @@ func (i *jobHttpTargetOauthTokenPtrType) ToJobHttpTargetOauthTokenPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOauthTokenPtrOutput)
 }
 
+func (i *jobHttpTargetOauthTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobHttpTargetOauthToken] {
+	return pulumix.Output[*JobHttpTargetOauthToken]{
+		OutputState: i.ToJobHttpTargetOauthTokenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobHttpTargetOauthTokenOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOauthTokenOutput) ElementType() reflect.Type {
@@ -821,6 +906,12 @@ func (o JobHttpTargetOauthTokenOutput) ToJobHttpTargetOauthTokenPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHttpTargetOauthToken) *JobHttpTargetOauthToken {
 		return &v
 	}).(JobHttpTargetOauthTokenPtrOutput)
+}
+
+func (o JobHttpTargetOauthTokenOutput) ToOutput(ctx context.Context) pulumix.Output[JobHttpTargetOauthToken] {
+	return pulumix.Output[JobHttpTargetOauthToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // OAuth scope to be used for generating OAuth access token. If not specified,
@@ -847,6 +938,12 @@ func (o JobHttpTargetOauthTokenPtrOutput) ToJobHttpTargetOauthTokenPtrOutput() J
 
 func (o JobHttpTargetOauthTokenPtrOutput) ToJobHttpTargetOauthTokenPtrOutputWithContext(ctx context.Context) JobHttpTargetOauthTokenPtrOutput {
 	return o
+}
+
+func (o JobHttpTargetOauthTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobHttpTargetOauthToken] {
+	return pulumix.Output[*JobHttpTargetOauthToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobHttpTargetOauthTokenPtrOutput) Elem() JobHttpTargetOauthTokenOutput {
@@ -922,6 +1019,12 @@ func (i JobHttpTargetOidcTokenArgs) ToJobHttpTargetOidcTokenOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOidcTokenOutput)
 }
 
+func (i JobHttpTargetOidcTokenArgs) ToOutput(ctx context.Context) pulumix.Output[JobHttpTargetOidcToken] {
+	return pulumix.Output[JobHttpTargetOidcToken]{
+		OutputState: i.ToJobHttpTargetOidcTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobHttpTargetOidcTokenArgs) ToJobHttpTargetOidcTokenPtrOutput() JobHttpTargetOidcTokenPtrOutput {
 	return i.ToJobHttpTargetOidcTokenPtrOutputWithContext(context.Background())
 }
@@ -963,6 +1066,12 @@ func (i *jobHttpTargetOidcTokenPtrType) ToJobHttpTargetOidcTokenPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobHttpTargetOidcTokenPtrOutput)
 }
 
+func (i *jobHttpTargetOidcTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobHttpTargetOidcToken] {
+	return pulumix.Output[*JobHttpTargetOidcToken]{
+		OutputState: i.ToJobHttpTargetOidcTokenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobHttpTargetOidcTokenOutput struct{ *pulumi.OutputState }
 
 func (JobHttpTargetOidcTokenOutput) ElementType() reflect.Type {
@@ -985,6 +1094,12 @@ func (o JobHttpTargetOidcTokenOutput) ToJobHttpTargetOidcTokenPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobHttpTargetOidcToken) *JobHttpTargetOidcToken {
 		return &v
 	}).(JobHttpTargetOidcTokenPtrOutput)
+}
+
+func (o JobHttpTargetOidcTokenOutput) ToOutput(ctx context.Context) pulumix.Output[JobHttpTargetOidcToken] {
+	return pulumix.Output[JobHttpTargetOidcToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Audience to be used when generating OIDC token. If not specified,
@@ -1011,6 +1126,12 @@ func (o JobHttpTargetOidcTokenPtrOutput) ToJobHttpTargetOidcTokenPtrOutput() Job
 
 func (o JobHttpTargetOidcTokenPtrOutput) ToJobHttpTargetOidcTokenPtrOutputWithContext(ctx context.Context) JobHttpTargetOidcTokenPtrOutput {
 	return o
+}
+
+func (o JobHttpTargetOidcTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobHttpTargetOidcToken] {
+	return pulumix.Output[*JobHttpTargetOidcToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobHttpTargetOidcTokenPtrOutput) Elem() JobHttpTargetOidcTokenOutput {
@@ -1098,6 +1219,12 @@ func (i JobPubsubTargetArgs) ToJobPubsubTargetOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobPubsubTargetOutput)
 }
 
+func (i JobPubsubTargetArgs) ToOutput(ctx context.Context) pulumix.Output[JobPubsubTarget] {
+	return pulumix.Output[JobPubsubTarget]{
+		OutputState: i.ToJobPubsubTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobPubsubTargetArgs) ToJobPubsubTargetPtrOutput() JobPubsubTargetPtrOutput {
 	return i.ToJobPubsubTargetPtrOutputWithContext(context.Background())
 }
@@ -1139,6 +1266,12 @@ func (i *jobPubsubTargetPtrType) ToJobPubsubTargetPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobPubsubTargetPtrOutput)
 }
 
+func (i *jobPubsubTargetPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobPubsubTarget] {
+	return pulumix.Output[*JobPubsubTarget]{
+		OutputState: i.ToJobPubsubTargetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobPubsubTargetOutput struct{ *pulumi.OutputState }
 
 func (JobPubsubTargetOutput) ElementType() reflect.Type {
@@ -1161,6 +1294,12 @@ func (o JobPubsubTargetOutput) ToJobPubsubTargetPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPubsubTarget) *JobPubsubTarget {
 		return &v
 	}).(JobPubsubTargetPtrOutput)
+}
+
+func (o JobPubsubTargetOutput) ToOutput(ctx context.Context) pulumix.Output[JobPubsubTarget] {
+	return pulumix.Output[JobPubsubTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Attributes for PubsubMessage.
@@ -1196,6 +1335,12 @@ func (o JobPubsubTargetPtrOutput) ToJobPubsubTargetPtrOutput() JobPubsubTargetPt
 
 func (o JobPubsubTargetPtrOutput) ToJobPubsubTargetPtrOutputWithContext(ctx context.Context) JobPubsubTargetPtrOutput {
 	return o
+}
+
+func (o JobPubsubTargetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPubsubTarget] {
+	return pulumix.Output[*JobPubsubTarget]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobPubsubTargetPtrOutput) Elem() JobPubsubTargetOutput {
@@ -1311,6 +1456,12 @@ func (i JobRetryConfigArgs) ToJobRetryConfigOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobRetryConfigOutput)
 }
 
+func (i JobRetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[JobRetryConfig] {
+	return pulumix.Output[JobRetryConfig]{
+		OutputState: i.ToJobRetryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobRetryConfigArgs) ToJobRetryConfigPtrOutput() JobRetryConfigPtrOutput {
 	return i.ToJobRetryConfigPtrOutputWithContext(context.Background())
 }
@@ -1352,6 +1503,12 @@ func (i *jobRetryConfigPtrType) ToJobRetryConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(JobRetryConfigPtrOutput)
 }
 
+func (i *jobRetryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobRetryConfig] {
+	return pulumix.Output[*JobRetryConfig]{
+		OutputState: i.ToJobRetryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobRetryConfigOutput struct{ *pulumi.OutputState }
 
 func (JobRetryConfigOutput) ElementType() reflect.Type {
@@ -1374,6 +1531,12 @@ func (o JobRetryConfigOutput) ToJobRetryConfigPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRetryConfig) *JobRetryConfig {
 		return &v
 	}).(JobRetryConfigPtrOutput)
+}
+
+func (o JobRetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[JobRetryConfig] {
+	return pulumix.Output[JobRetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum amount of time to wait before retrying a job after it fails.
@@ -1422,6 +1585,12 @@ func (o JobRetryConfigPtrOutput) ToJobRetryConfigPtrOutput() JobRetryConfigPtrOu
 
 func (o JobRetryConfigPtrOutput) ToJobRetryConfigPtrOutputWithContext(ctx context.Context) JobRetryConfigPtrOutput {
 	return o
+}
+
+func (o JobRetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobRetryConfig] {
+	return pulumix.Output[*JobRetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobRetryConfigPtrOutput) Elem() JobRetryConfigOutput {

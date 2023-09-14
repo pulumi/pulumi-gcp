@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Google Cloud Firebase web application instance
@@ -357,6 +358,12 @@ func (i *WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppOutput)
 }
 
+func (i *WebApp) ToOutput(ctx context.Context) pulumix.Output[*WebApp] {
+	return pulumix.Output[*WebApp]{
+		OutputState: i.ToWebAppOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebAppArrayInput is an input type that accepts WebAppArray and WebAppArrayOutput values.
 // You can construct a concrete instance of `WebAppArrayInput` via:
 //
@@ -380,6 +387,12 @@ func (i WebAppArray) ToWebAppArrayOutput() WebAppArrayOutput {
 
 func (i WebAppArray) ToWebAppArrayOutputWithContext(ctx context.Context) WebAppArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppArrayOutput)
+}
+
+func (i WebAppArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebApp] {
+	return pulumix.Output[[]*WebApp]{
+		OutputState: i.ToWebAppArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebAppMapInput is an input type that accepts WebAppMap and WebAppMapOutput values.
@@ -407,6 +420,12 @@ func (i WebAppMap) ToWebAppMapOutputWithContext(ctx context.Context) WebAppMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppMapOutput)
 }
 
+func (i WebAppMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebApp] {
+	return pulumix.Output[map[string]*WebApp]{
+		OutputState: i.ToWebAppMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAppOutput struct{ *pulumi.OutputState }
 
 func (WebAppOutput) ElementType() reflect.Type {
@@ -419,6 +438,12 @@ func (o WebAppOutput) ToWebAppOutput() WebAppOutput {
 
 func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return o
+}
+
+func (o WebAppOutput) ToOutput(ctx context.Context) pulumix.Output[*WebApp] {
+	return pulumix.Output[*WebApp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
@@ -478,6 +503,12 @@ func (o WebAppArrayOutput) ToWebAppArrayOutputWithContext(ctx context.Context) W
 	return o
 }
 
+func (o WebAppArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebApp] {
+	return pulumix.Output[[]*WebApp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebAppArrayOutput) Index(i pulumi.IntInput) WebAppOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebApp {
 		return vs[0].([]*WebApp)[vs[1].(int)]
@@ -496,6 +527,12 @@ func (o WebAppMapOutput) ToWebAppMapOutput() WebAppMapOutput {
 
 func (o WebAppMapOutput) ToWebAppMapOutputWithContext(ctx context.Context) WebAppMapOutput {
 	return o
+}
+
+func (o WebAppMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebApp] {
+	return pulumix.Output[map[string]*WebApp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebAppMapOutput) MapIndex(k pulumi.StringInput) WebAppOutput {

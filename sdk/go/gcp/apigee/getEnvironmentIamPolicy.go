@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for environment
@@ -106,6 +107,12 @@ func (o LookupEnvironmentIamPolicyResultOutput) ToLookupEnvironmentIamPolicyResu
 
 func (o LookupEnvironmentIamPolicyResultOutput) ToLookupEnvironmentIamPolicyResultOutputWithContext(ctx context.Context) LookupEnvironmentIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupEnvironmentIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvironmentIamPolicyResult] {
+	return pulumix.Output[LookupEnvironmentIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupEnvironmentIamPolicyResultOutput) EnvId() pulumi.StringOutput {

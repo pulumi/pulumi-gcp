@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -64,6 +65,12 @@ func (i EntryBigqueryDateShardedSpecArgs) ToEntryBigqueryDateShardedSpecOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryDateShardedSpecOutput)
 }
 
+func (i EntryBigqueryDateShardedSpecArgs) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryDateShardedSpec] {
+	return pulumix.Output[EntryBigqueryDateShardedSpec]{
+		OutputState: i.ToEntryBigqueryDateShardedSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryBigqueryDateShardedSpecArrayInput is an input type that accepts EntryBigqueryDateShardedSpecArray and EntryBigqueryDateShardedSpecArrayOutput values.
 // You can construct a concrete instance of `EntryBigqueryDateShardedSpecArrayInput` via:
 //
@@ -89,6 +96,12 @@ func (i EntryBigqueryDateShardedSpecArray) ToEntryBigqueryDateShardedSpecArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryDateShardedSpecArrayOutput)
 }
 
+func (i EntryBigqueryDateShardedSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryDateShardedSpec] {
+	return pulumix.Output[[]EntryBigqueryDateShardedSpec]{
+		OutputState: i.ToEntryBigqueryDateShardedSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryBigqueryDateShardedSpecOutput struct{ *pulumi.OutputState }
 
 func (EntryBigqueryDateShardedSpecOutput) ElementType() reflect.Type {
@@ -101,6 +114,12 @@ func (o EntryBigqueryDateShardedSpecOutput) ToEntryBigqueryDateShardedSpecOutput
 
 func (o EntryBigqueryDateShardedSpecOutput) ToEntryBigqueryDateShardedSpecOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecOutput {
 	return o
+}
+
+func (o EntryBigqueryDateShardedSpecOutput) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryDateShardedSpec] {
+	return pulumix.Output[EntryBigqueryDateShardedSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -135,6 +154,12 @@ func (o EntryBigqueryDateShardedSpecArrayOutput) ToEntryBigqueryDateShardedSpecA
 
 func (o EntryBigqueryDateShardedSpecArrayOutput) ToEntryBigqueryDateShardedSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryDateShardedSpecArrayOutput {
 	return o
+}
+
+func (o EntryBigqueryDateShardedSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryDateShardedSpec] {
+	return pulumix.Output[[]EntryBigqueryDateShardedSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryBigqueryDateShardedSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryDateShardedSpecOutput {
@@ -194,6 +219,12 @@ func (i EntryBigqueryTableSpecArgs) ToEntryBigqueryTableSpecOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecOutput)
 }
 
+func (i EntryBigqueryTableSpecArgs) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryTableSpec] {
+	return pulumix.Output[EntryBigqueryTableSpec]{
+		OutputState: i.ToEntryBigqueryTableSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryBigqueryTableSpecArrayInput is an input type that accepts EntryBigqueryTableSpecArray and EntryBigqueryTableSpecArrayOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecArrayInput` via:
 //
@@ -219,6 +250,12 @@ func (i EntryBigqueryTableSpecArray) ToEntryBigqueryTableSpecArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecArrayOutput)
 }
 
+func (i EntryBigqueryTableSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryTableSpec] {
+	return pulumix.Output[[]EntryBigqueryTableSpec]{
+		OutputState: i.ToEntryBigqueryTableSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryBigqueryTableSpecOutput struct{ *pulumi.OutputState }
 
 func (EntryBigqueryTableSpecOutput) ElementType() reflect.Type {
@@ -231,6 +268,12 @@ func (o EntryBigqueryTableSpecOutput) ToEntryBigqueryTableSpecOutput() EntryBigq
 
 func (o EntryBigqueryTableSpecOutput) ToEntryBigqueryTableSpecOutputWithContext(ctx context.Context) EntryBigqueryTableSpecOutput {
 	return o
+}
+
+func (o EntryBigqueryTableSpecOutput) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryTableSpec] {
+	return pulumix.Output[EntryBigqueryTableSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -265,6 +308,12 @@ func (o EntryBigqueryTableSpecArrayOutput) ToEntryBigqueryTableSpecArrayOutput()
 
 func (o EntryBigqueryTableSpecArrayOutput) ToEntryBigqueryTableSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecArrayOutput {
 	return o
+}
+
+func (o EntryBigqueryTableSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryTableSpec] {
+	return pulumix.Output[[]EntryBigqueryTableSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryBigqueryTableSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryTableSpecOutput {
@@ -314,6 +363,12 @@ func (i EntryBigqueryTableSpecTableSpecArgs) ToEntryBigqueryTableSpecTableSpecOu
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecTableSpecOutput)
 }
 
+func (i EntryBigqueryTableSpecTableSpecArgs) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryTableSpecTableSpec] {
+	return pulumix.Output[EntryBigqueryTableSpecTableSpec]{
+		OutputState: i.ToEntryBigqueryTableSpecTableSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryBigqueryTableSpecTableSpecArrayInput is an input type that accepts EntryBigqueryTableSpecTableSpecArray and EntryBigqueryTableSpecTableSpecArrayOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecTableSpecArrayInput` via:
 //
@@ -339,6 +394,12 @@ func (i EntryBigqueryTableSpecTableSpecArray) ToEntryBigqueryTableSpecTableSpecA
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecTableSpecArrayOutput)
 }
 
+func (i EntryBigqueryTableSpecTableSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryTableSpecTableSpec] {
+	return pulumix.Output[[]EntryBigqueryTableSpecTableSpec]{
+		OutputState: i.ToEntryBigqueryTableSpecTableSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryBigqueryTableSpecTableSpecOutput struct{ *pulumi.OutputState }
 
 func (EntryBigqueryTableSpecTableSpecOutput) ElementType() reflect.Type {
@@ -351,6 +412,12 @@ func (o EntryBigqueryTableSpecTableSpecOutput) ToEntryBigqueryTableSpecTableSpec
 
 func (o EntryBigqueryTableSpecTableSpecOutput) ToEntryBigqueryTableSpecTableSpecOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecOutput {
 	return o
+}
+
+func (o EntryBigqueryTableSpecTableSpecOutput) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryTableSpecTableSpec] {
+	return pulumix.Output[EntryBigqueryTableSpecTableSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -374,6 +441,12 @@ func (o EntryBigqueryTableSpecTableSpecArrayOutput) ToEntryBigqueryTableSpecTabl
 
 func (o EntryBigqueryTableSpecTableSpecArrayOutput) ToEntryBigqueryTableSpecTableSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecTableSpecArrayOutput {
 	return o
+}
+
+func (o EntryBigqueryTableSpecTableSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryTableSpecTableSpec] {
+	return pulumix.Output[[]EntryBigqueryTableSpecTableSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryBigqueryTableSpecTableSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryTableSpecTableSpecOutput {
@@ -417,6 +490,12 @@ func (i EntryBigqueryTableSpecViewSpecArgs) ToEntryBigqueryTableSpecViewSpecOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecViewSpecOutput)
 }
 
+func (i EntryBigqueryTableSpecViewSpecArgs) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryTableSpecViewSpec] {
+	return pulumix.Output[EntryBigqueryTableSpecViewSpec]{
+		OutputState: i.ToEntryBigqueryTableSpecViewSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryBigqueryTableSpecViewSpecArrayInput is an input type that accepts EntryBigqueryTableSpecViewSpecArray and EntryBigqueryTableSpecViewSpecArrayOutput values.
 // You can construct a concrete instance of `EntryBigqueryTableSpecViewSpecArrayInput` via:
 //
@@ -442,6 +521,12 @@ func (i EntryBigqueryTableSpecViewSpecArray) ToEntryBigqueryTableSpecViewSpecArr
 	return pulumi.ToOutputWithContext(ctx, i).(EntryBigqueryTableSpecViewSpecArrayOutput)
 }
 
+func (i EntryBigqueryTableSpecViewSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryTableSpecViewSpec] {
+	return pulumix.Output[[]EntryBigqueryTableSpecViewSpec]{
+		OutputState: i.ToEntryBigqueryTableSpecViewSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryBigqueryTableSpecViewSpecOutput struct{ *pulumi.OutputState }
 
 func (EntryBigqueryTableSpecViewSpecOutput) ElementType() reflect.Type {
@@ -454,6 +539,12 @@ func (o EntryBigqueryTableSpecViewSpecOutput) ToEntryBigqueryTableSpecViewSpecOu
 
 func (o EntryBigqueryTableSpecViewSpecOutput) ToEntryBigqueryTableSpecViewSpecOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecOutput {
 	return o
+}
+
+func (o EntryBigqueryTableSpecViewSpecOutput) ToOutput(ctx context.Context) pulumix.Output[EntryBigqueryTableSpecViewSpec] {
+	return pulumix.Output[EntryBigqueryTableSpecViewSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -474,6 +565,12 @@ func (o EntryBigqueryTableSpecViewSpecArrayOutput) ToEntryBigqueryTableSpecViewS
 
 func (o EntryBigqueryTableSpecViewSpecArrayOutput) ToEntryBigqueryTableSpecViewSpecArrayOutputWithContext(ctx context.Context) EntryBigqueryTableSpecViewSpecArrayOutput {
 	return o
+}
+
+func (o EntryBigqueryTableSpecViewSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntryBigqueryTableSpecViewSpec] {
+	return pulumix.Output[[]EntryBigqueryTableSpecViewSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryBigqueryTableSpecViewSpecArrayOutput) Index(i pulumi.IntInput) EntryBigqueryTableSpecViewSpecOutput {
@@ -547,6 +644,12 @@ func (i EntryGcsFilesetSpecArgs) ToEntryGcsFilesetSpecOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGcsFilesetSpecOutput)
 }
 
+func (i EntryGcsFilesetSpecArgs) ToOutput(ctx context.Context) pulumix.Output[EntryGcsFilesetSpec] {
+	return pulumix.Output[EntryGcsFilesetSpec]{
+		OutputState: i.ToEntryGcsFilesetSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EntryGcsFilesetSpecArgs) ToEntryGcsFilesetSpecPtrOutput() EntryGcsFilesetSpecPtrOutput {
 	return i.ToEntryGcsFilesetSpecPtrOutputWithContext(context.Background())
 }
@@ -588,6 +691,12 @@ func (i *entryGcsFilesetSpecPtrType) ToEntryGcsFilesetSpecPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGcsFilesetSpecPtrOutput)
 }
 
+func (i *entryGcsFilesetSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntryGcsFilesetSpec] {
+	return pulumix.Output[*EntryGcsFilesetSpec]{
+		OutputState: i.ToEntryGcsFilesetSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryGcsFilesetSpecOutput struct{ *pulumi.OutputState }
 
 func (EntryGcsFilesetSpecOutput) ElementType() reflect.Type {
@@ -610,6 +719,12 @@ func (o EntryGcsFilesetSpecOutput) ToEntryGcsFilesetSpecPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGcsFilesetSpec) *EntryGcsFilesetSpec {
 		return &v
 	}).(EntryGcsFilesetSpecPtrOutput)
+}
+
+func (o EntryGcsFilesetSpecOutput) ToOutput(ctx context.Context) pulumix.Output[EntryGcsFilesetSpec] {
+	return pulumix.Output[EntryGcsFilesetSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Patterns to identify a set of files in Google Cloud Storage.
@@ -648,6 +763,12 @@ func (o EntryGcsFilesetSpecPtrOutput) ToEntryGcsFilesetSpecPtrOutput() EntryGcsF
 
 func (o EntryGcsFilesetSpecPtrOutput) ToEntryGcsFilesetSpecPtrOutputWithContext(ctx context.Context) EntryGcsFilesetSpecPtrOutput {
 	return o
+}
+
+func (o EntryGcsFilesetSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGcsFilesetSpec] {
+	return pulumix.Output[*EntryGcsFilesetSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGcsFilesetSpecPtrOutput) Elem() EntryGcsFilesetSpecOutput {
@@ -735,6 +856,12 @@ func (i EntryGcsFilesetSpecSampleGcsFileSpecArgs) ToEntryGcsFilesetSpecSampleGcs
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGcsFilesetSpecSampleGcsFileSpecOutput)
 }
 
+func (i EntryGcsFilesetSpecSampleGcsFileSpecArgs) ToOutput(ctx context.Context) pulumix.Output[EntryGcsFilesetSpecSampleGcsFileSpec] {
+	return pulumix.Output[EntryGcsFilesetSpecSampleGcsFileSpec]{
+		OutputState: i.ToEntryGcsFilesetSpecSampleGcsFileSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntryGcsFilesetSpecSampleGcsFileSpecArrayInput is an input type that accepts EntryGcsFilesetSpecSampleGcsFileSpecArray and EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput values.
 // You can construct a concrete instance of `EntryGcsFilesetSpecSampleGcsFileSpecArrayInput` via:
 //
@@ -760,6 +887,12 @@ func (i EntryGcsFilesetSpecSampleGcsFileSpecArray) ToEntryGcsFilesetSpecSampleGc
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput)
 }
 
+func (i EntryGcsFilesetSpecSampleGcsFileSpecArray) ToOutput(ctx context.Context) pulumix.Output[[]EntryGcsFilesetSpecSampleGcsFileSpec] {
+	return pulumix.Output[[]EntryGcsFilesetSpecSampleGcsFileSpec]{
+		OutputState: i.ToEntryGcsFilesetSpecSampleGcsFileSpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryGcsFilesetSpecSampleGcsFileSpecOutput struct{ *pulumi.OutputState }
 
 func (EntryGcsFilesetSpecSampleGcsFileSpecOutput) ElementType() reflect.Type {
@@ -772,6 +905,12 @@ func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) ToEntryGcsFilesetSpecSampleG
 
 func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) ToEntryGcsFilesetSpecSampleGcsFileSpecOutputWithContext(ctx context.Context) EntryGcsFilesetSpecSampleGcsFileSpecOutput {
 	return o
+}
+
+func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) ToOutput(ctx context.Context) pulumix.Output[EntryGcsFilesetSpecSampleGcsFileSpec] {
+	return pulumix.Output[EntryGcsFilesetSpecSampleGcsFileSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -798,6 +937,12 @@ func (o EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput) ToEntryGcsFilesetSpecSa
 
 func (o EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput) ToEntryGcsFilesetSpecSampleGcsFileSpecArrayOutputWithContext(ctx context.Context) EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o
+}
+
+func (o EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntryGcsFilesetSpecSampleGcsFileSpec] {
+	return pulumix.Output[[]EntryGcsFilesetSpecSampleGcsFileSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput) Index(i pulumi.IntInput) EntryGcsFilesetSpecSampleGcsFileSpecOutput {
@@ -841,6 +986,12 @@ func (i EntryGroupIamBindingConditionArgs) ToEntryGroupIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingConditionOutput)
 }
 
+func (i EntryGroupIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EntryGroupIamBindingCondition] {
+	return pulumix.Output[EntryGroupIamBindingCondition]{
+		OutputState: i.ToEntryGroupIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EntryGroupIamBindingConditionArgs) ToEntryGroupIamBindingConditionPtrOutput() EntryGroupIamBindingConditionPtrOutput {
 	return i.ToEntryGroupIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -882,6 +1033,12 @@ func (i *entryGroupIamBindingConditionPtrType) ToEntryGroupIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingConditionPtrOutput)
 }
 
+func (i *entryGroupIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamBindingCondition] {
+	return pulumix.Output[*EntryGroupIamBindingCondition]{
+		OutputState: i.ToEntryGroupIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryGroupIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamBindingConditionOutput) ElementType() reflect.Type {
@@ -904,6 +1061,12 @@ func (o EntryGroupIamBindingConditionOutput) ToEntryGroupIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroupIamBindingCondition) *EntryGroupIamBindingCondition {
 		return &v
 	}).(EntryGroupIamBindingConditionPtrOutput)
+}
+
+func (o EntryGroupIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EntryGroupIamBindingCondition] {
+	return pulumix.Output[EntryGroupIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGroupIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -930,6 +1093,12 @@ func (o EntryGroupIamBindingConditionPtrOutput) ToEntryGroupIamBindingConditionP
 
 func (o EntryGroupIamBindingConditionPtrOutput) ToEntryGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o EntryGroupIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamBindingCondition] {
+	return pulumix.Output[*EntryGroupIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGroupIamBindingConditionPtrOutput) Elem() EntryGroupIamBindingConditionOutput {
@@ -1004,6 +1173,12 @@ func (i EntryGroupIamMemberConditionArgs) ToEntryGroupIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberConditionOutput)
 }
 
+func (i EntryGroupIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[EntryGroupIamMemberCondition] {
+	return pulumix.Output[EntryGroupIamMemberCondition]{
+		OutputState: i.ToEntryGroupIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EntryGroupIamMemberConditionArgs) ToEntryGroupIamMemberConditionPtrOutput() EntryGroupIamMemberConditionPtrOutput {
 	return i.ToEntryGroupIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1045,6 +1220,12 @@ func (i *entryGroupIamMemberConditionPtrType) ToEntryGroupIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberConditionPtrOutput)
 }
 
+func (i *entryGroupIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamMemberCondition] {
+	return pulumix.Output[*EntryGroupIamMemberCondition]{
+		OutputState: i.ToEntryGroupIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntryGroupIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (EntryGroupIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1067,6 +1248,12 @@ func (o EntryGroupIamMemberConditionOutput) ToEntryGroupIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryGroupIamMemberCondition) *EntryGroupIamMemberCondition {
 		return &v
 	}).(EntryGroupIamMemberConditionPtrOutput)
+}
+
+func (o EntryGroupIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[EntryGroupIamMemberCondition] {
+	return pulumix.Output[EntryGroupIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGroupIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1093,6 +1280,12 @@ func (o EntryGroupIamMemberConditionPtrOutput) ToEntryGroupIamMemberConditionPtr
 
 func (o EntryGroupIamMemberConditionPtrOutput) ToEntryGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o EntryGroupIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntryGroupIamMemberCondition] {
+	return pulumix.Output[*EntryGroupIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntryGroupIamMemberConditionPtrOutput) Elem() EntryGroupIamMemberConditionOutput {
@@ -1167,6 +1360,12 @@ func (i PolicyTagIamBindingConditionArgs) ToPolicyTagIamBindingConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingConditionOutput)
 }
 
+func (i PolicyTagIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyTagIamBindingCondition] {
+	return pulumix.Output[PolicyTagIamBindingCondition]{
+		OutputState: i.ToPolicyTagIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PolicyTagIamBindingConditionArgs) ToPolicyTagIamBindingConditionPtrOutput() PolicyTagIamBindingConditionPtrOutput {
 	return i.ToPolicyTagIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1208,6 +1407,12 @@ func (i *policyTagIamBindingConditionPtrType) ToPolicyTagIamBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingConditionPtrOutput)
 }
 
+func (i *policyTagIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyTagIamBindingCondition] {
+	return pulumix.Output[*PolicyTagIamBindingCondition]{
+		OutputState: i.ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyTagIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1230,6 +1435,12 @@ func (o PolicyTagIamBindingConditionOutput) ToPolicyTagIamBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamBindingCondition) *PolicyTagIamBindingCondition {
 		return &v
 	}).(PolicyTagIamBindingConditionPtrOutput)
+}
+
+func (o PolicyTagIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyTagIamBindingCondition] {
+	return pulumix.Output[PolicyTagIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyTagIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1256,6 +1467,12 @@ func (o PolicyTagIamBindingConditionPtrOutput) ToPolicyTagIamBindingConditionPtr
 
 func (o PolicyTagIamBindingConditionPtrOutput) ToPolicyTagIamBindingConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o PolicyTagIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyTagIamBindingCondition] {
+	return pulumix.Output[*PolicyTagIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyTagIamBindingConditionPtrOutput) Elem() PolicyTagIamBindingConditionOutput {
@@ -1330,6 +1547,12 @@ func (i PolicyTagIamMemberConditionArgs) ToPolicyTagIamMemberConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberConditionOutput)
 }
 
+func (i PolicyTagIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyTagIamMemberCondition] {
+	return pulumix.Output[PolicyTagIamMemberCondition]{
+		OutputState: i.ToPolicyTagIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PolicyTagIamMemberConditionArgs) ToPolicyTagIamMemberConditionPtrOutput() PolicyTagIamMemberConditionPtrOutput {
 	return i.ToPolicyTagIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1371,6 +1594,12 @@ func (i *policyTagIamMemberConditionPtrType) ToPolicyTagIamMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberConditionPtrOutput)
 }
 
+func (i *policyTagIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyTagIamMemberCondition] {
+	return pulumix.Output[*PolicyTagIamMemberCondition]{
+		OutputState: i.ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyTagIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1393,6 +1622,12 @@ func (o PolicyTagIamMemberConditionOutput) ToPolicyTagIamMemberConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyTagIamMemberCondition) *PolicyTagIamMemberCondition {
 		return &v
 	}).(PolicyTagIamMemberConditionPtrOutput)
+}
+
+func (o PolicyTagIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyTagIamMemberCondition] {
+	return pulumix.Output[PolicyTagIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyTagIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1419,6 +1654,12 @@ func (o PolicyTagIamMemberConditionPtrOutput) ToPolicyTagIamMemberConditionPtrOu
 
 func (o PolicyTagIamMemberConditionPtrOutput) ToPolicyTagIamMemberConditionPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o PolicyTagIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyTagIamMemberCondition] {
+	return pulumix.Output[*PolicyTagIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyTagIamMemberConditionPtrOutput) Elem() PolicyTagIamMemberConditionOutput {
@@ -1531,6 +1772,12 @@ func (i TagFieldArgs) ToTagFieldOutputWithContext(ctx context.Context) TagFieldO
 	return pulumi.ToOutputWithContext(ctx, i).(TagFieldOutput)
 }
 
+func (i TagFieldArgs) ToOutput(ctx context.Context) pulumix.Output[TagField] {
+	return pulumix.Output[TagField]{
+		OutputState: i.ToTagFieldOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TagFieldArrayInput is an input type that accepts TagFieldArray and TagFieldArrayOutput values.
 // You can construct a concrete instance of `TagFieldArrayInput` via:
 //
@@ -1556,6 +1803,12 @@ func (i TagFieldArray) ToTagFieldArrayOutputWithContext(ctx context.Context) Tag
 	return pulumi.ToOutputWithContext(ctx, i).(TagFieldArrayOutput)
 }
 
+func (i TagFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]TagField] {
+	return pulumix.Output[[]TagField]{
+		OutputState: i.ToTagFieldArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagFieldOutput struct{ *pulumi.OutputState }
 
 func (TagFieldOutput) ElementType() reflect.Type {
@@ -1568,6 +1821,12 @@ func (o TagFieldOutput) ToTagFieldOutput() TagFieldOutput {
 
 func (o TagFieldOutput) ToTagFieldOutputWithContext(ctx context.Context) TagFieldOutput {
 	return o
+}
+
+func (o TagFieldOutput) ToOutput(ctx context.Context) pulumix.Output[TagField] {
+	return pulumix.Output[TagField]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Holds the value for a tag field with boolean type.
@@ -1628,6 +1887,12 @@ func (o TagFieldArrayOutput) ToTagFieldArrayOutput() TagFieldArrayOutput {
 
 func (o TagFieldArrayOutput) ToTagFieldArrayOutputWithContext(ctx context.Context) TagFieldArrayOutput {
 	return o
+}
+
+func (o TagFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TagField] {
+	return pulumix.Output[[]TagField]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagFieldArrayOutput) Index(i pulumi.IntInput) TagFieldOutput {
@@ -1701,6 +1966,12 @@ func (i TagTemplateFieldArgs) ToTagTemplateFieldOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldOutput)
 }
 
+func (i TagTemplateFieldArgs) ToOutput(ctx context.Context) pulumix.Output[TagTemplateField] {
+	return pulumix.Output[TagTemplateField]{
+		OutputState: i.ToTagTemplateFieldOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TagTemplateFieldArrayInput is an input type that accepts TagTemplateFieldArray and TagTemplateFieldArrayOutput values.
 // You can construct a concrete instance of `TagTemplateFieldArrayInput` via:
 //
@@ -1726,6 +1997,12 @@ func (i TagTemplateFieldArray) ToTagTemplateFieldArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldArrayOutput)
 }
 
+func (i TagTemplateFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]TagTemplateField] {
+	return pulumix.Output[[]TagTemplateField]{
+		OutputState: i.ToTagTemplateFieldArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateFieldOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateFieldOutput) ElementType() reflect.Type {
@@ -1738,6 +2015,12 @@ func (o TagTemplateFieldOutput) ToTagTemplateFieldOutput() TagTemplateFieldOutpu
 
 func (o TagTemplateFieldOutput) ToTagTemplateFieldOutputWithContext(ctx context.Context) TagTemplateFieldOutput {
 	return o
+}
+
+func (o TagTemplateFieldOutput) ToOutput(ctx context.Context) pulumix.Output[TagTemplateField] {
+	return pulumix.Output[TagTemplateField]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description for this field.
@@ -1793,6 +2076,12 @@ func (o TagTemplateFieldArrayOutput) ToTagTemplateFieldArrayOutputWithContext(ct
 	return o
 }
 
+func (o TagTemplateFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TagTemplateField] {
+	return pulumix.Output[[]TagTemplateField]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TagTemplateFieldArrayOutput) Index(i pulumi.IntInput) TagTemplateFieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagTemplateField {
 		return vs[0].([]TagTemplateField)[vs[1].(int)]
@@ -1844,6 +2133,12 @@ func (i TagTemplateFieldTypeArgs) ToTagTemplateFieldTypeOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeOutput)
 }
 
+func (i TagTemplateFieldTypeArgs) ToOutput(ctx context.Context) pulumix.Output[TagTemplateFieldType] {
+	return pulumix.Output[TagTemplateFieldType]{
+		OutputState: i.ToTagTemplateFieldTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateFieldTypeOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateFieldTypeOutput) ElementType() reflect.Type {
@@ -1856,6 +2151,12 @@ func (o TagTemplateFieldTypeOutput) ToTagTemplateFieldTypeOutput() TagTemplateFi
 
 func (o TagTemplateFieldTypeOutput) ToTagTemplateFieldTypeOutputWithContext(ctx context.Context) TagTemplateFieldTypeOutput {
 	return o
+}
+
+func (o TagTemplateFieldTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TagTemplateFieldType] {
+	return pulumix.Output[TagTemplateFieldType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Represents an enum type.
@@ -1915,6 +2216,12 @@ func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeOutput)
 }
 
+func (i TagTemplateFieldTypeEnumTypeArgs) ToOutput(ctx context.Context) pulumix.Output[TagTemplateFieldTypeEnumType] {
+	return pulumix.Output[TagTemplateFieldTypeEnumType]{
+		OutputState: i.ToTagTemplateFieldTypeEnumTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TagTemplateFieldTypeEnumTypeArgs) ToTagTemplateFieldTypeEnumTypePtrOutput() TagTemplateFieldTypeEnumTypePtrOutput {
 	return i.ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(context.Background())
 }
@@ -1956,6 +2263,12 @@ func (i *tagTemplateFieldTypeEnumTypePtrType) ToTagTemplateFieldTypeEnumTypePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypePtrOutput)
 }
 
+func (i *tagTemplateFieldTypeEnumTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateFieldTypeEnumType] {
+	return pulumix.Output[*TagTemplateFieldTypeEnumType]{
+		OutputState: i.ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateFieldTypeEnumTypeOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateFieldTypeEnumTypeOutput) ElementType() reflect.Type {
@@ -1978,6 +2291,12 @@ func (o TagTemplateFieldTypeEnumTypeOutput) ToTagTemplateFieldTypeEnumTypePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateFieldTypeEnumType) *TagTemplateFieldTypeEnumType {
 		return &v
 	}).(TagTemplateFieldTypeEnumTypePtrOutput)
+}
+
+func (o TagTemplateFieldTypeEnumTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TagTemplateFieldTypeEnumType] {
+	return pulumix.Output[TagTemplateFieldTypeEnumType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The set of allowed values for this enum. The display names of the
@@ -2004,6 +2323,12 @@ func (o TagTemplateFieldTypeEnumTypePtrOutput) ToTagTemplateFieldTypeEnumTypePtr
 
 func (o TagTemplateFieldTypeEnumTypePtrOutput) ToTagTemplateFieldTypeEnumTypePtrOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypePtrOutput {
 	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateFieldTypeEnumType] {
+	return pulumix.Output[*TagTemplateFieldTypeEnumType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateFieldTypeEnumTypePtrOutput) Elem() TagTemplateFieldTypeEnumTypeOutput {
@@ -2064,6 +2389,12 @@ func (i TagTemplateFieldTypeEnumTypeAllowedValueArgs) ToTagTemplateFieldTypeEnum
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeAllowedValueOutput)
 }
 
+func (i TagTemplateFieldTypeEnumTypeAllowedValueArgs) ToOutput(ctx context.Context) pulumix.Output[TagTemplateFieldTypeEnumTypeAllowedValue] {
+	return pulumix.Output[TagTemplateFieldTypeEnumTypeAllowedValue]{
+		OutputState: i.ToTagTemplateFieldTypeEnumTypeAllowedValueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TagTemplateFieldTypeEnumTypeAllowedValueArrayInput is an input type that accepts TagTemplateFieldTypeEnumTypeAllowedValueArray and TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput values.
 // You can construct a concrete instance of `TagTemplateFieldTypeEnumTypeAllowedValueArrayInput` via:
 //
@@ -2089,6 +2420,12 @@ func (i TagTemplateFieldTypeEnumTypeAllowedValueArray) ToTagTemplateFieldTypeEnu
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput)
 }
 
+func (i TagTemplateFieldTypeEnumTypeAllowedValueArray) ToOutput(ctx context.Context) pulumix.Output[[]TagTemplateFieldTypeEnumTypeAllowedValue] {
+	return pulumix.Output[[]TagTemplateFieldTypeEnumTypeAllowedValue]{
+		OutputState: i.ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateFieldTypeEnumTypeAllowedValueOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateFieldTypeEnumTypeAllowedValueOutput) ElementType() reflect.Type {
@@ -2101,6 +2438,12 @@ func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) ToTagTemplateFieldTypeEn
 
 func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) ToTagTemplateFieldTypeEnumTypeAllowedValueOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeAllowedValueOutput {
 	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueOutput) ToOutput(ctx context.Context) pulumix.Output[TagTemplateFieldTypeEnumTypeAllowedValue] {
+	return pulumix.Output[TagTemplateFieldTypeEnumTypeAllowedValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The display name for this template.
@@ -2120,6 +2463,12 @@ func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) ToTagTemplateFieldT
 
 func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) ToTagTemplateFieldTypeEnumTypeAllowedValueArrayOutputWithContext(ctx context.Context) TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput {
 	return o
+}
+
+func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TagTemplateFieldTypeEnumTypeAllowedValue] {
+	return pulumix.Output[[]TagTemplateFieldTypeEnumTypeAllowedValue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) Index(i pulumi.IntInput) TagTemplateFieldTypeEnumTypeAllowedValueOutput {
@@ -2163,6 +2512,12 @@ func (i TagTemplateIamBindingConditionArgs) ToTagTemplateIamBindingConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamBindingConditionOutput)
 }
 
+func (i TagTemplateIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TagTemplateIamBindingCondition] {
+	return pulumix.Output[TagTemplateIamBindingCondition]{
+		OutputState: i.ToTagTemplateIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TagTemplateIamBindingConditionArgs) ToTagTemplateIamBindingConditionPtrOutput() TagTemplateIamBindingConditionPtrOutput {
 	return i.ToTagTemplateIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -2204,6 +2559,12 @@ func (i *tagTemplateIamBindingConditionPtrType) ToTagTemplateIamBindingCondition
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamBindingConditionPtrOutput)
 }
 
+func (i *tagTemplateIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamBindingCondition] {
+	return pulumix.Output[*TagTemplateIamBindingCondition]{
+		OutputState: i.ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamBindingConditionOutput) ElementType() reflect.Type {
@@ -2226,6 +2587,12 @@ func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateIamBindingCondition) *TagTemplateIamBindingCondition {
 		return &v
 	}).(TagTemplateIamBindingConditionPtrOutput)
+}
+
+func (o TagTemplateIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TagTemplateIamBindingCondition] {
+	return pulumix.Output[TagTemplateIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2252,6 +2619,12 @@ func (o TagTemplateIamBindingConditionPtrOutput) ToTagTemplateIamBindingConditio
 
 func (o TagTemplateIamBindingConditionPtrOutput) ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamBindingCondition] {
+	return pulumix.Output[*TagTemplateIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateIamBindingConditionPtrOutput) Elem() TagTemplateIamBindingConditionOutput {
@@ -2326,6 +2699,12 @@ func (i TagTemplateIamMemberConditionArgs) ToTagTemplateIamMemberConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberConditionOutput)
 }
 
+func (i TagTemplateIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TagTemplateIamMemberCondition] {
+	return pulumix.Output[TagTemplateIamMemberCondition]{
+		OutputState: i.ToTagTemplateIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TagTemplateIamMemberConditionArgs) ToTagTemplateIamMemberConditionPtrOutput() TagTemplateIamMemberConditionPtrOutput {
 	return i.ToTagTemplateIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2367,6 +2746,12 @@ func (i *tagTemplateIamMemberConditionPtrType) ToTagTemplateIamMemberConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberConditionPtrOutput)
 }
 
+func (i *tagTemplateIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamMemberCondition] {
+	return pulumix.Output[*TagTemplateIamMemberCondition]{
+		OutputState: i.ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TagTemplateIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2389,6 +2774,12 @@ func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TagTemplateIamMemberCondition) *TagTemplateIamMemberCondition {
 		return &v
 	}).(TagTemplateIamMemberConditionPtrOutput)
+}
+
+func (o TagTemplateIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TagTemplateIamMemberCondition] {
+	return pulumix.Output[TagTemplateIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2415,6 +2806,12 @@ func (o TagTemplateIamMemberConditionPtrOutput) ToTagTemplateIamMemberConditionP
 
 func (o TagTemplateIamMemberConditionPtrOutput) ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplateIamMemberCondition] {
+	return pulumix.Output[*TagTemplateIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TagTemplateIamMemberConditionPtrOutput) Elem() TagTemplateIamMemberConditionOutput {
@@ -2489,6 +2886,12 @@ func (i TaxonomyIamBindingConditionArgs) ToTaxonomyIamBindingConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingConditionOutput)
 }
 
+func (i TaxonomyIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TaxonomyIamBindingCondition] {
+	return pulumix.Output[TaxonomyIamBindingCondition]{
+		OutputState: i.ToTaxonomyIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TaxonomyIamBindingConditionArgs) ToTaxonomyIamBindingConditionPtrOutput() TaxonomyIamBindingConditionPtrOutput {
 	return i.ToTaxonomyIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -2530,6 +2933,12 @@ func (i *taxonomyIamBindingConditionPtrType) ToTaxonomyIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingConditionPtrOutput)
 }
 
+func (i *taxonomyIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamBindingCondition] {
+	return pulumix.Output[*TaxonomyIamBindingCondition]{
+		OutputState: i.ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamBindingConditionOutput) ElementType() reflect.Type {
@@ -2552,6 +2961,12 @@ func (o TaxonomyIamBindingConditionOutput) ToTaxonomyIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamBindingCondition) *TaxonomyIamBindingCondition {
 		return &v
 	}).(TaxonomyIamBindingConditionPtrOutput)
+}
+
+func (o TaxonomyIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TaxonomyIamBindingCondition] {
+	return pulumix.Output[TaxonomyIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2578,6 +2993,12 @@ func (o TaxonomyIamBindingConditionPtrOutput) ToTaxonomyIamBindingConditionPtrOu
 
 func (o TaxonomyIamBindingConditionPtrOutput) ToTaxonomyIamBindingConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o TaxonomyIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamBindingCondition] {
+	return pulumix.Output[*TaxonomyIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamBindingConditionPtrOutput) Elem() TaxonomyIamBindingConditionOutput {
@@ -2652,6 +3073,12 @@ func (i TaxonomyIamMemberConditionArgs) ToTaxonomyIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberConditionOutput)
 }
 
+func (i TaxonomyIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[TaxonomyIamMemberCondition] {
+	return pulumix.Output[TaxonomyIamMemberCondition]{
+		OutputState: i.ToTaxonomyIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TaxonomyIamMemberConditionArgs) ToTaxonomyIamMemberConditionPtrOutput() TaxonomyIamMemberConditionPtrOutput {
 	return i.ToTaxonomyIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2693,6 +3120,12 @@ func (i *taxonomyIamMemberConditionPtrType) ToTaxonomyIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberConditionPtrOutput)
 }
 
+func (i *taxonomyIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamMemberCondition] {
+	return pulumix.Output[*TaxonomyIamMemberCondition]{
+		OutputState: i.ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2715,6 +3148,12 @@ func (o TaxonomyIamMemberConditionOutput) ToTaxonomyIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyIamMemberCondition) *TaxonomyIamMemberCondition {
 		return &v
 	}).(TaxonomyIamMemberConditionPtrOutput)
+}
+
+func (o TaxonomyIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[TaxonomyIamMemberCondition] {
+	return pulumix.Output[TaxonomyIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2741,6 +3180,12 @@ func (o TaxonomyIamMemberConditionPtrOutput) ToTaxonomyIamMemberConditionPtrOutp
 
 func (o TaxonomyIamMemberConditionPtrOutput) ToTaxonomyIamMemberConditionPtrOutputWithContext(ctx context.Context) TaxonomyIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o TaxonomyIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamMemberCondition] {
+	return pulumix.Output[*TaxonomyIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamMemberConditionPtrOutput) Elem() TaxonomyIamMemberConditionOutput {

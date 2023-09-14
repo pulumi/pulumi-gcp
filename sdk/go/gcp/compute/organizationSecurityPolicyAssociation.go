@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An association for the OrganizationSecurityPolicy.
@@ -227,6 +228,12 @@ func (i *OrganizationSecurityPolicyAssociation) ToOrganizationSecurityPolicyAsso
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyAssociationOutput)
 }
 
+func (i *OrganizationSecurityPolicyAssociation) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyAssociation] {
+	return pulumix.Output[*OrganizationSecurityPolicyAssociation]{
+		OutputState: i.ToOrganizationSecurityPolicyAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationSecurityPolicyAssociationArrayInput is an input type that accepts OrganizationSecurityPolicyAssociationArray and OrganizationSecurityPolicyAssociationArrayOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyAssociationArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i OrganizationSecurityPolicyAssociationArray) ToOrganizationSecurityPolicy
 
 func (i OrganizationSecurityPolicyAssociationArray) ToOrganizationSecurityPolicyAssociationArrayOutputWithContext(ctx context.Context) OrganizationSecurityPolicyAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyAssociationArrayOutput)
+}
+
+func (i OrganizationSecurityPolicyAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicyAssociation] {
+	return pulumix.Output[[]*OrganizationSecurityPolicyAssociation]{
+		OutputState: i.ToOrganizationSecurityPolicyAssociationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrganizationSecurityPolicyAssociationMapInput is an input type that accepts OrganizationSecurityPolicyAssociationMap and OrganizationSecurityPolicyAssociationMapOutput values.
@@ -277,6 +290,12 @@ func (i OrganizationSecurityPolicyAssociationMap) ToOrganizationSecurityPolicyAs
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyAssociationMapOutput)
 }
 
+func (i OrganizationSecurityPolicyAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicyAssociation] {
+	return pulumix.Output[map[string]*OrganizationSecurityPolicyAssociation]{
+		OutputState: i.ToOrganizationSecurityPolicyAssociationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationSecurityPolicyAssociationOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSecurityPolicyAssociationOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o OrganizationSecurityPolicyAssociationOutput) ToOrganizationSecurityPolic
 
 func (o OrganizationSecurityPolicyAssociationOutput) ToOrganizationSecurityPolicyAssociationOutputWithContext(ctx context.Context) OrganizationSecurityPolicyAssociationOutput {
 	return o
+}
+
+func (o OrganizationSecurityPolicyAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSecurityPolicyAssociation] {
+	return pulumix.Output[*OrganizationSecurityPolicyAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource that the security policy is attached to.
@@ -327,6 +352,12 @@ func (o OrganizationSecurityPolicyAssociationArrayOutput) ToOrganizationSecurity
 	return o
 }
 
+func (o OrganizationSecurityPolicyAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSecurityPolicyAssociation] {
+	return pulumix.Output[[]*OrganizationSecurityPolicyAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationSecurityPolicyAssociationArrayOutput) Index(i pulumi.IntInput) OrganizationSecurityPolicyAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationSecurityPolicyAssociation {
 		return vs[0].([]*OrganizationSecurityPolicyAssociation)[vs[1].(int)]
@@ -345,6 +376,12 @@ func (o OrganizationSecurityPolicyAssociationMapOutput) ToOrganizationSecurityPo
 
 func (o OrganizationSecurityPolicyAssociationMapOutput) ToOrganizationSecurityPolicyAssociationMapOutputWithContext(ctx context.Context) OrganizationSecurityPolicyAssociationMapOutput {
 	return o
+}
+
+func (o OrganizationSecurityPolicyAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSecurityPolicyAssociation] {
+	return pulumix.Output[map[string]*OrganizationSecurityPolicyAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationSecurityPolicyAssociationMapOutput) MapIndex(k pulumi.StringInput) OrganizationSecurityPolicyAssociationOutput {

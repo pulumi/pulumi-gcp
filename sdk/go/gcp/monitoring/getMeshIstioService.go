@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Monitoring Service is the root resource under which operational aspects of a
@@ -152,6 +153,12 @@ func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutput() Get
 
 func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutputWithContext(ctx context.Context) GetMeshIstioServiceResultOutput {
 	return o
+}
+
+func (o GetMeshIstioServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMeshIstioServiceResult] {
+	return pulumix.Output[GetMeshIstioServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name used for UI elements listing this (Monitoring) Service.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a Google BeyondCorp App Gateway.
@@ -122,6 +123,12 @@ func (o LookupAppGatewayResultOutput) ToLookupAppGatewayResultOutput() LookupApp
 
 func (o LookupAppGatewayResultOutput) ToLookupAppGatewayResultOutputWithContext(ctx context.Context) LookupAppGatewayResultOutput {
 	return o
+}
+
+func (o LookupAppGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppGatewayResult] {
+	return pulumix.Output[LookupAppGatewayResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupAppGatewayResultOutput) AllocatedConnections() GetAppGatewayAllocatedConnectionArrayOutput {

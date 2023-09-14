@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionBackendService. Each of these resources serves a different use case:
@@ -499,6 +500,12 @@ func (i *WebRegionBackendServiceIamBinding) ToWebRegionBackendServiceIamBindingO
 	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamBindingOutput)
 }
 
+func (i *WebRegionBackendServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*WebRegionBackendServiceIamBinding] {
+	return pulumix.Output[*WebRegionBackendServiceIamBinding]{
+		OutputState: i.ToWebRegionBackendServiceIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebRegionBackendServiceIamBindingArrayInput is an input type that accepts WebRegionBackendServiceIamBindingArray and WebRegionBackendServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `WebRegionBackendServiceIamBindingArrayInput` via:
 //
@@ -522,6 +529,12 @@ func (i WebRegionBackendServiceIamBindingArray) ToWebRegionBackendServiceIamBind
 
 func (i WebRegionBackendServiceIamBindingArray) ToWebRegionBackendServiceIamBindingArrayOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamBindingArrayOutput)
+}
+
+func (i WebRegionBackendServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebRegionBackendServiceIamBinding] {
+	return pulumix.Output[[]*WebRegionBackendServiceIamBinding]{
+		OutputState: i.ToWebRegionBackendServiceIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebRegionBackendServiceIamBindingMapInput is an input type that accepts WebRegionBackendServiceIamBindingMap and WebRegionBackendServiceIamBindingMapOutput values.
@@ -549,6 +562,12 @@ func (i WebRegionBackendServiceIamBindingMap) ToWebRegionBackendServiceIamBindin
 	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamBindingMapOutput)
 }
 
+func (i WebRegionBackendServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebRegionBackendServiceIamBinding] {
+	return pulumix.Output[map[string]*WebRegionBackendServiceIamBinding]{
+		OutputState: i.ToWebRegionBackendServiceIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebRegionBackendServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WebRegionBackendServiceIamBindingOutput) ElementType() reflect.Type {
@@ -561,6 +580,12 @@ func (o WebRegionBackendServiceIamBindingOutput) ToWebRegionBackendServiceIamBin
 
 func (o WebRegionBackendServiceIamBindingOutput) ToWebRegionBackendServiceIamBindingOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingOutput {
 	return o
+}
+
+func (o WebRegionBackendServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*WebRegionBackendServiceIamBinding] {
+	return pulumix.Output[*WebRegionBackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -628,6 +653,12 @@ func (o WebRegionBackendServiceIamBindingArrayOutput) ToWebRegionBackendServiceI
 	return o
 }
 
+func (o WebRegionBackendServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebRegionBackendServiceIamBinding] {
+	return pulumix.Output[[]*WebRegionBackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebRegionBackendServiceIamBindingArrayOutput) Index(i pulumi.IntInput) WebRegionBackendServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebRegionBackendServiceIamBinding {
 		return vs[0].([]*WebRegionBackendServiceIamBinding)[vs[1].(int)]
@@ -646,6 +677,12 @@ func (o WebRegionBackendServiceIamBindingMapOutput) ToWebRegionBackendServiceIam
 
 func (o WebRegionBackendServiceIamBindingMapOutput) ToWebRegionBackendServiceIamBindingMapOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingMapOutput {
 	return o
+}
+
+func (o WebRegionBackendServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebRegionBackendServiceIamBinding] {
+	return pulumix.Output[map[string]*WebRegionBackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebRegionBackendServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebRegionBackendServiceIamBindingOutput {

@@ -83,7 +83,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * (Optional) The current deleted state of the role.
      * 
      */
-    @Export(name="deleted", type=Boolean.class, parameters={})
+    @Export(name="deleted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleted;
 
     /**
@@ -97,7 +97,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * A human-readable description for the role.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -111,7 +111,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -125,7 +125,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * The numeric ID of the organization in which you want to create a custom role.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -139,7 +139,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={String.class})
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissions;
 
     /**
@@ -153,7 +153,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * The role id to use for this role.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -169,7 +169,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      * 
      */
-    @Export(name="stage", type=String.class, parameters={})
+    @Export(name="stage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stage;
 
     /**
@@ -185,7 +185,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * A human-readable title for the role.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Service is a discrete, autonomous, and network-accessible unit,
@@ -240,6 +241,12 @@ func (i *CustomService) ToCustomServiceOutputWithContext(ctx context.Context) Cu
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceOutput)
 }
 
+func (i *CustomService) ToOutput(ctx context.Context) pulumix.Output[*CustomService] {
+	return pulumix.Output[*CustomService]{
+		OutputState: i.ToCustomServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomServiceArrayInput is an input type that accepts CustomServiceArray and CustomServiceArrayOutput values.
 // You can construct a concrete instance of `CustomServiceArrayInput` via:
 //
@@ -263,6 +270,12 @@ func (i CustomServiceArray) ToCustomServiceArrayOutput() CustomServiceArrayOutpu
 
 func (i CustomServiceArray) ToCustomServiceArrayOutputWithContext(ctx context.Context) CustomServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceArrayOutput)
+}
+
+func (i CustomServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomService] {
+	return pulumix.Output[[]*CustomService]{
+		OutputState: i.ToCustomServiceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomServiceMapInput is an input type that accepts CustomServiceMap and CustomServiceMapOutput values.
@@ -290,6 +303,12 @@ func (i CustomServiceMap) ToCustomServiceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceMapOutput)
 }
 
+func (i CustomServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomService] {
+	return pulumix.Output[map[string]*CustomService]{
+		OutputState: i.ToCustomServiceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomServiceOutput struct{ *pulumi.OutputState }
 
 func (CustomServiceOutput) ElementType() reflect.Type {
@@ -302,6 +321,12 @@ func (o CustomServiceOutput) ToCustomServiceOutput() CustomServiceOutput {
 
 func (o CustomServiceOutput) ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput {
 	return o
+}
+
+func (o CustomServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomService] {
+	return pulumix.Output[*CustomService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name used for UI elements listing this Service.
@@ -357,6 +382,12 @@ func (o CustomServiceArrayOutput) ToCustomServiceArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o CustomServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomService] {
+	return pulumix.Output[[]*CustomService]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomServiceArrayOutput) Index(i pulumi.IntInput) CustomServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomService {
 		return vs[0].([]*CustomService)[vs[1].(int)]
@@ -375,6 +406,12 @@ func (o CustomServiceMapOutput) ToCustomServiceMapOutput() CustomServiceMapOutpu
 
 func (o CustomServiceMapOutput) ToCustomServiceMapOutputWithContext(ctx context.Context) CustomServiceMapOutput {
 	return o
+}
+
+func (o CustomServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomService] {
+	return pulumix.Output[map[string]*CustomService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomServiceMapOutput) MapIndex(k pulumi.StringInput) CustomServiceOutput {

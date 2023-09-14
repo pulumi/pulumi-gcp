@@ -233,7 +233,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="addonsConfig", type=ClusterAddonsConfig.class, parameters={})
+    @Export(name="addonsConfig", refs={ClusterAddonsConfig.class}, tree="[0]")
     private Output<ClusterAddonsConfig> addonsConfig;
 
     /**
@@ -250,7 +250,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * set to `true`).
      * 
      */
-    @Export(name="allowNetAdmin", type=Boolean.class, parameters={})
+    @Export(name="allowNetAdmin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowNetAdmin;
 
     /**
@@ -268,7 +268,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="authenticatorGroupsConfig", type=ClusterAuthenticatorGroupsConfig.class, parameters={})
+    @Export(name="authenticatorGroupsConfig", refs={ClusterAuthenticatorGroupsConfig.class}, tree="[0]")
     private Output<ClusterAuthenticatorGroupsConfig> authenticatorGroupsConfig;
 
     /**
@@ -285,7 +285,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Authorization feature. Structure is documented below.
      * 
      */
-    @Export(name="binaryAuthorization", type=ClusterBinaryAuthorization.class, parameters={})
+    @Export(name="binaryAuthorization", refs={ClusterBinaryAuthorization.class}, tree="[0]")
     private Output</* @Nullable */ ClusterBinaryAuthorization> binaryAuthorization;
 
     /**
@@ -304,7 +304,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * for more details. Structure is documented below.
      * 
      */
-    @Export(name="clusterAutoscaling", type=ClusterClusterAutoscaling.class, parameters={})
+    @Export(name="clusterAutoscaling", refs={ClusterClusterAutoscaling.class}, tree="[0]")
     private Output<ClusterClusterAutoscaling> clusterAutoscaling;
 
     /**
@@ -325,7 +325,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * only work for routes-based clusters, where `ip_allocation_policy` is not defined.
      * 
      */
-    @Export(name="clusterIpv4Cidr", type=String.class, parameters={})
+    @Export(name="clusterIpv4Cidr", refs={String.class}, tree="[0]")
     private Output<String> clusterIpv4Cidr;
 
     /**
@@ -344,7 +344,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="clusterTelemetry", type=ClusterClusterTelemetry.class, parameters={})
+    @Export(name="clusterTelemetry", refs={ClusterClusterTelemetry.class}, tree="[0]")
     private Output<ClusterClusterTelemetry> clusterTelemetry;
 
     /**
@@ -360,7 +360,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      * 
      */
-    @Export(name="confidentialNodes", type=ClusterConfidentialNodes.class, parameters={})
+    @Export(name="confidentialNodes", refs={ClusterConfidentialNodes.class}, tree="[0]")
     private Output<ClusterConfidentialNodes> confidentialNodes;
 
     /**
@@ -376,7 +376,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="costManagementConfig", type=ClusterCostManagementConfig.class, parameters={})
+    @Export(name="costManagementConfig", refs={ClusterCostManagementConfig.class}, tree="[0]")
     private Output<ClusterCostManagementConfig> costManagementConfig;
 
     /**
@@ -392,7 +392,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="databaseEncryption", type=ClusterDatabaseEncryption.class, parameters={})
+    @Export(name="databaseEncryption", refs={ClusterDatabaseEncryption.class}, tree="[0]")
     private Output<ClusterDatabaseEncryption> databaseEncryption;
 
     /**
@@ -406,7 +406,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      * 
      */
-    @Export(name="datapathProvider", type=String.class, parameters={})
+    @Export(name="datapathProvider", refs={String.class}, tree="[0]")
     private Output<String> datapathProvider;
 
     /**
@@ -423,7 +423,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * for more information.
      * 
      */
-    @Export(name="defaultMaxPodsPerNode", type=Integer.class, parameters={})
+    @Export(name="defaultMaxPodsPerNode", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultMaxPodsPerNode;
 
     /**
@@ -440,7 +440,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      * 
      */
-    @Export(name="defaultSnatStatus", type=ClusterDefaultSnatStatus.class, parameters={})
+    @Export(name="defaultSnatStatus", refs={ClusterDefaultSnatStatus.class}, tree="[0]")
     private Output<ClusterDefaultSnatStatus> defaultSnatStatus;
 
     /**
@@ -454,7 +454,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Description of the cluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -468,7 +468,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
      * 
      */
-    @Export(name="dnsConfig", type=ClusterDnsConfig.class, parameters={})
+    @Export(name="dnsConfig", refs={ClusterDnsConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterDnsConfig> dnsConfig;
 
     /**
@@ -485,7 +485,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * for available features.
      * 
      */
-    @Export(name="enableAutopilot", type=Boolean.class, parameters={})
+    @Export(name="enableAutopilot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableAutopilot;
 
     /**
@@ -508,7 +508,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated in favor of binary_authorization. */
-    @Export(name="enableBinaryAuthorization", type=Boolean.class, parameters={})
+    @Export(name="enableBinaryAuthorization", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableBinaryAuthorization;
 
     /**
@@ -525,7 +525,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
-    @Export(name="enableFqdnNetworkPolicy", type=Boolean.class, parameters={})
+    @Export(name="enableFqdnNetworkPolicy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableFqdnNetworkPolicy;
 
     /**
@@ -540,7 +540,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      * 
      */
-    @Export(name="enableIntranodeVisibility", type=Boolean.class, parameters={})
+    @Export(name="enableIntranodeVisibility", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableIntranodeVisibility;
 
     /**
@@ -555,7 +555,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="enableK8sBetaApis", type=ClusterEnableK8sBetaApis.class, parameters={})
+    @Export(name="enableK8sBetaApis", refs={ClusterEnableK8sBetaApis.class}, tree="[0]")
     private Output</* @Nullable */ ClusterEnableK8sBetaApis> enableK8sBetaApis;
 
     /**
@@ -572,7 +572,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * and will be automatically deleted after 30 days.
      * 
      */
-    @Export(name="enableKubernetesAlpha", type=Boolean.class, parameters={})
+    @Export(name="enableKubernetesAlpha", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableKubernetesAlpha;
 
     /**
@@ -588,7 +588,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Whether L4ILB Subsetting is enabled for this cluster.
      * 
      */
-    @Export(name="enableL4IlbSubsetting", type=Boolean.class, parameters={})
+    @Export(name="enableL4IlbSubsetting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableL4IlbSubsetting;
 
     /**
@@ -605,7 +605,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Defaults to `false`
      * 
      */
-    @Export(name="enableLegacyAbac", type=Boolean.class, parameters={})
+    @Export(name="enableLegacyAbac", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLegacyAbac;
 
     /**
@@ -623,7 +623,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Whether multi-networking is enabled for this cluster.
      * 
      */
-    @Export(name="enableMultiNetworking", type=Boolean.class, parameters={})
+    @Export(name="enableMultiNetworking", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableMultiNetworking;
 
     /**
@@ -638,7 +638,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      * 
      */
-    @Export(name="enableShieldedNodes", type=Boolean.class, parameters={})
+    @Export(name="enableShieldedNodes", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableShieldedNodes;
 
     /**
@@ -653,7 +653,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      * 
      */
-    @Export(name="enableTpu", type=Boolean.class, parameters={})
+    @Export(name="enableTpu", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableTpu;
 
     /**
@@ -668,7 +668,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The IP address of this cluster&#39;s Kubernetes master.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -682,7 +682,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      * 
      */
-    @Export(name="gatewayApiConfig", type=ClusterGatewayApiConfig.class, parameters={})
+    @Export(name="gatewayApiConfig", refs={ClusterGatewayApiConfig.class}, tree="[0]")
     private Output<ClusterGatewayApiConfig> gatewayApiConfig;
 
     /**
@@ -696,7 +696,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * . Structure is documented below.
      * 
      */
-    @Export(name="identityServiceConfig", type=ClusterIdentityServiceConfig.class, parameters={})
+    @Export(name="identityServiceConfig", refs={ClusterIdentityServiceConfig.class}, tree="[0]")
     private Output<ClusterIdentityServiceConfig> identityServiceConfig;
 
     /**
@@ -715,7 +715,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * `remove_default_node_pool` to `true`.
      * 
      */
-    @Export(name="initialNodeCount", type=Integer.class, parameters={})
+    @Export(name="initialNodeCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> initialNodeCount;
 
     /**
@@ -737,7 +737,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * below.
      * 
      */
-    @Export(name="ipAllocationPolicy", type=ClusterIpAllocationPolicy.class, parameters={})
+    @Export(name="ipAllocationPolicy", refs={ClusterIpAllocationPolicy.class}, tree="[0]")
     private Output<ClusterIpAllocationPolicy> ipAllocationPolicy;
 
     /**
@@ -754,7 +754,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The fingerprint of the set of labels for this cluster.
      * 
      */
-    @Export(name="labelFingerprint", type=String.class, parameters={})
+    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
@@ -773,7 +773,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * the region, and with default node locations in those zones as well
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -793,7 +793,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="loggingConfig", type=ClusterLoggingConfig.class, parameters={})
+    @Export(name="loggingConfig", refs={ClusterLoggingConfig.class}, tree="[0]")
     private Output<ClusterLoggingConfig> loggingConfig;
 
     /**
@@ -810,7 +810,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
      * 
      */
-    @Export(name="loggingService", type=String.class, parameters={})
+    @Export(name="loggingService", refs={String.class}, tree="[0]")
     private Output<String> loggingService;
 
     /**
@@ -827,7 +827,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * documented below.
      * 
      */
-    @Export(name="maintenancePolicy", type=ClusterMaintenancePolicy.class, parameters={})
+    @Export(name="maintenancePolicy", refs={ClusterMaintenancePolicy.class}, tree="[0]")
     private Output</* @Nullable */ ClusterMaintenancePolicy> maintenancePolicy;
 
     /**
@@ -847,7 +847,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="masterAuth", type=ClusterMasterAuth.class, parameters={})
+    @Export(name="masterAuth", refs={ClusterMasterAuth.class}, tree="[0]")
     private Output<ClusterMasterAuth> masterAuth;
 
     /**
@@ -870,7 +870,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="masterAuthorizedNetworksConfig", type=ClusterMasterAuthorizedNetworksConfig.class, parameters={})
+    @Export(name="masterAuthorizedNetworksConfig", refs={ClusterMasterAuthorizedNetworksConfig.class}, tree="[0]")
     private Output<ClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig;
 
     /**
@@ -890,7 +890,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * has been updated by GKE.
      * 
      */
-    @Export(name="masterVersion", type=String.class, parameters={})
+    @Export(name="masterVersion", refs={String.class}, tree="[0]")
     private Output<String> masterVersion;
 
     /**
@@ -906,7 +906,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="meshCertificates", type=ClusterMeshCertificates.class, parameters={})
+    @Export(name="meshCertificates", refs={ClusterMeshCertificates.class}, tree="[0]")
     private Output<ClusterMeshCertificates> meshCertificates;
 
     /**
@@ -932,7 +932,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * region are guaranteed to support the same version.
      * 
      */
-    @Export(name="minMasterVersion", type=String.class, parameters={})
+    @Export(name="minMasterVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minMasterVersion;
 
     /**
@@ -959,7 +959,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="monitoringConfig", type=ClusterMonitoringConfig.class, parameters={})
+    @Export(name="monitoringConfig", refs={ClusterMonitoringConfig.class}, tree="[0]")
     private Output<ClusterMonitoringConfig> monitoringConfig;
 
     /**
@@ -980,7 +980,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Defaults to `monitoring.googleapis.com/kubernetes`
      * 
      */
-    @Export(name="monitoringService", type=String.class, parameters={})
+    @Export(name="monitoringService", refs={String.class}, tree="[0]")
     private Output<String> monitoringService;
 
     /**
@@ -1003,7 +1003,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -1022,7 +1022,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * shared network.
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> network;
 
     /**
@@ -1040,7 +1040,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * feature. Structure is documented below.
      * 
      */
-    @Export(name="networkPolicy", type=ClusterNetworkPolicy.class, parameters={})
+    @Export(name="networkPolicy", refs={ClusterNetworkPolicy.class}, tree="[0]")
     private Output</* @Nullable */ ClusterNetworkPolicy> networkPolicy;
 
     /**
@@ -1058,7 +1058,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * and requires the `ip_allocation_policy` block to be defined. By default, when this field is unspecified and no `ip_allocation_policy` blocks are set, GKE will create a `ROUTES`-based cluster.
      * 
      */
-    @Export(name="networkingMode", type=String.class, parameters={})
+    @Export(name="networkingMode", refs={String.class}, tree="[0]")
     private Output<String> networkingMode;
 
     /**
@@ -1078,7 +1078,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeConfig", type=ClusterNodeConfig.class, parameters={})
+    @Export(name="nodeConfig", refs={ClusterNodeConfig.class}, tree="[0]")
     private Output<ClusterNodeConfig> nodeConfig;
 
     /**
@@ -1106,7 +1106,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * preferred.
      * 
      */
-    @Export(name="nodeLocations", type=List.class, parameters={String.class})
+    @Export(name="nodeLocations", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nodeLocations;
 
     /**
@@ -1132,7 +1132,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      * 
      */
-    @Export(name="nodePoolAutoConfig", type=ClusterNodePoolAutoConfig.class, parameters={})
+    @Export(name="nodePoolAutoConfig", refs={ClusterNodePoolAutoConfig.class}, tree="[0]")
     private Output<ClusterNodePoolAutoConfig> nodePoolAutoConfig;
 
     /**
@@ -1148,7 +1148,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
      * 
      */
-    @Export(name="nodePoolDefaults", type=ClusterNodePoolDefaults.class, parameters={})
+    @Export(name="nodePoolDefaults", refs={ClusterNodePoolDefaults.class}, tree="[0]")
     private Output<ClusterNodePoolDefaults> nodePoolDefaults;
 
     /**
@@ -1167,7 +1167,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * gcp.container.NodePool resource instead of this property.
      * 
      */
-    @Export(name="nodePools", type=List.class, parameters={ClusterNodePool.class})
+    @Export(name="nodePools", refs={List.class,ClusterNodePool.class}, tree="[0,1]")
     private Output<List<ClusterNodePool>> nodePools;
 
     /**
@@ -1193,7 +1193,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * To update nodes in other node pools, use the `version` attribute on the node pool.
      * 
      */
-    @Export(name="nodeVersion", type=String.class, parameters={})
+    @Export(name="nodeVersion", refs={String.class}, tree="[0]")
     private Output<String> nodeVersion;
 
     /**
@@ -1214,7 +1214,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
      * 
      */
-    @Export(name="notificationConfig", type=ClusterNotificationConfig.class, parameters={})
+    @Export(name="notificationConfig", refs={ClusterNotificationConfig.class}, tree="[0]")
     private Output<ClusterNotificationConfig> notificationConfig;
 
     /**
@@ -1224,7 +1224,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<ClusterNotificationConfig> notificationConfig() {
         return this.notificationConfig;
     }
-    @Export(name="operation", type=String.class, parameters={})
+    @Export(name="operation", refs={String.class}, tree="[0]")
     private Output<String> operation;
 
     public Output<String> operation() {
@@ -1236,7 +1236,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="podSecurityPolicyConfig", type=ClusterPodSecurityPolicyConfig.class, parameters={})
+    @Export(name="podSecurityPolicyConfig", refs={ClusterPodSecurityPolicyConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterPodSecurityPolicyConfig> podSecurityPolicyConfig;
 
     /**
@@ -1253,7 +1253,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * clusters with private nodes. Structure is documented below.
      * 
      */
-    @Export(name="privateClusterConfig", type=ClusterPrivateClusterConfig.class, parameters={})
+    @Export(name="privateClusterConfig", refs={ClusterPrivateClusterConfig.class}, tree="[0]")
     private Output<ClusterPrivateClusterConfig> privateClusterConfig;
 
     /**
@@ -1268,7 +1268,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
      * 
      */
-    @Export(name="privateIpv6GoogleAccess", type=String.class, parameters={})
+    @Export(name="privateIpv6GoogleAccess", refs={String.class}, tree="[0]")
     private Output<String> privateIpv6GoogleAccess;
 
     /**
@@ -1283,7 +1283,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -1299,7 +1299,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
-    @Export(name="protectConfig", type=ClusterProtectConfig.class, parameters={})
+    @Export(name="protectConfig", refs={ClusterProtectConfig.class}, tree="[0]")
     private Output<ClusterProtectConfig> protectConfig;
 
     /**
@@ -1322,7 +1322,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * channel. Structure is documented below.
      * 
      */
-    @Export(name="releaseChannel", type=ClusterReleaseChannel.class, parameters={})
+    @Export(name="releaseChannel", refs={ClusterReleaseChannel.class}, tree="[0]")
     private Output<ClusterReleaseChannel> releaseChannel;
 
     /**
@@ -1347,7 +1347,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * setting `initial_node_count` to at least `1`.
      * 
      */
-    @Export(name="removeDefaultNodePool", type=Boolean.class, parameters={})
+    @Export(name="removeDefaultNodePool", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> removeDefaultNodePool;
 
     /**
@@ -1364,7 +1364,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      * 
      */
-    @Export(name="resourceLabels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="resourceLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> resourceLabels;
 
     /**
@@ -1380,7 +1380,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="resourceUsageExportConfig", type=ClusterResourceUsageExportConfig.class, parameters={})
+    @Export(name="resourceUsageExportConfig", refs={ClusterResourceUsageExportConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterResourceUsageExportConfig> resourceUsageExportConfig;
 
     /**
@@ -1398,7 +1398,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
-    @Export(name="securityPostureConfig", type=ClusterSecurityPostureConfig.class, parameters={})
+    @Export(name="securityPostureConfig", refs={ClusterSecurityPostureConfig.class}, tree="[0]")
     private Output<ClusterSecurityPostureConfig> securityPostureConfig;
 
     /**
@@ -1414,7 +1414,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The server-defined URL for the resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -1428,7 +1428,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serviceExternalIpsConfig", type=ClusterServiceExternalIpsConfig.class, parameters={})
+    @Export(name="serviceExternalIpsConfig", refs={ClusterServiceExternalIpsConfig.class}, tree="[0]")
     private Output<ClusterServiceExternalIpsConfig> serviceExternalIpsConfig;
 
     /**
@@ -1445,7 +1445,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * `/16` from the container CIDR.
      * 
      */
-    @Export(name="servicesIpv4Cidr", type=String.class, parameters={})
+    @Export(name="servicesIpv4Cidr", refs={String.class}, tree="[0]")
     private Output<String> servicesIpv4Cidr;
 
     /**
@@ -1463,7 +1463,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * subnetwork in which the cluster&#39;s instances are launched.
      * 
      */
-    @Export(name="subnetwork", type=String.class, parameters={})
+    @Export(name="subnetwork", refs={String.class}, tree="[0]")
     private Output<String> subnetwork;
 
     /**
@@ -1478,7 +1478,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * TPU configuration for the cluster.
      * 
      */
-    @Export(name="tpuConfig", type=ClusterTpuConfig.class, parameters={})
+    @Export(name="tpuConfig", refs={ClusterTpuConfig.class}, tree="[0]")
     private Output<ClusterTpuConfig> tpuConfig;
 
     /**
@@ -1494,7 +1494,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * notation (e.g. `1.2.3.4/29`).
      * 
      */
-    @Export(name="tpuIpv4CidrBlock", type=String.class, parameters={})
+    @Export(name="tpuIpv4CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> tpuIpv4CidrBlock;
 
     /**
@@ -1511,7 +1511,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="verticalPodAutoscaling", type=ClusterVerticalPodAutoscaling.class, parameters={})
+    @Export(name="verticalPodAutoscaling", refs={ClusterVerticalPodAutoscaling.class}, tree="[0]")
     private Output<ClusterVerticalPodAutoscaling> verticalPodAutoscaling;
 
     /**
@@ -1528,7 +1528,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="workloadIdentityConfig", type=ClusterWorkloadIdentityConfig.class, parameters={})
+    @Export(name="workloadIdentityConfig", refs={ClusterWorkloadIdentityConfig.class}, tree="[0]")
     private Output<ClusterWorkloadIdentityConfig> workloadIdentityConfig;
 
     /**

@@ -83,7 +83,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="apiId", type=String.class, parameters={})
+    @Export(name="apiId", refs={String.class}, tree="[0]")
     private Output<String> apiId;
 
     /**
@@ -99,7 +99,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -113,7 +113,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * A user-visible name for the API.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -127,7 +127,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -142,7 +142,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * If not specified, a new Service will automatically be created in the same project as this API.
      * 
      */
-    @Export(name="managedService", type=String.class, parameters={})
+    @Export(name="managedService", refs={String.class}, tree="[0]")
     private Output<String> managedService;
 
     /**
@@ -157,7 +157,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

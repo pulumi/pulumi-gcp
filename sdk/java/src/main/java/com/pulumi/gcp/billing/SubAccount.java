@@ -64,7 +64,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * The billing account id.
      * 
      */
-    @Export(name="billingAccountId", type=String.class, parameters={})
+    @Export(name="billingAccountId", refs={String.class}, tree="[0]")
     private Output<String> billingAccountId;
 
     /**
@@ -80,7 +80,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * Default is &#34;&#34;.
      * 
      */
-    @Export(name="deletionPolicy", type=String.class, parameters={})
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -96,7 +96,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * The display name of the billing account.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -111,7 +111,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
      * 
      */
-    @Export(name="masterBillingAccount", type=String.class, parameters={})
+    @Export(name="masterBillingAccount", refs={String.class}, tree="[0]")
     private Output<String> masterBillingAccount;
 
     /**
@@ -126,7 +126,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
      * `true` if the billing account is open, `false` if the billing account is closed.
      * 
      */
-    @Export(name="open", type=Boolean.class, parameters={})
+    @Export(name="open", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> open;
 
     /**

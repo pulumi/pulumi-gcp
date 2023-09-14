@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Certificate represents a HTTP-reachable backend for a Certificate.
@@ -376,6 +377,12 @@ func (i *CertificateIssuanceConfig) ToCertificateIssuanceConfigOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigOutput)
 }
 
+func (i *CertificateIssuanceConfig) ToOutput(ctx context.Context) pulumix.Output[*CertificateIssuanceConfig] {
+	return pulumix.Output[*CertificateIssuanceConfig]{
+		OutputState: i.ToCertificateIssuanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertificateIssuanceConfigArrayInput is an input type that accepts CertificateIssuanceConfigArray and CertificateIssuanceConfigArrayOutput values.
 // You can construct a concrete instance of `CertificateIssuanceConfigArrayInput` via:
 //
@@ -399,6 +406,12 @@ func (i CertificateIssuanceConfigArray) ToCertificateIssuanceConfigArrayOutput()
 
 func (i CertificateIssuanceConfigArray) ToCertificateIssuanceConfigArrayOutputWithContext(ctx context.Context) CertificateIssuanceConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigArrayOutput)
+}
+
+func (i CertificateIssuanceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateIssuanceConfig] {
+	return pulumix.Output[[]*CertificateIssuanceConfig]{
+		OutputState: i.ToCertificateIssuanceConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CertificateIssuanceConfigMapInput is an input type that accepts CertificateIssuanceConfigMap and CertificateIssuanceConfigMapOutput values.
@@ -426,6 +439,12 @@ func (i CertificateIssuanceConfigMap) ToCertificateIssuanceConfigMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigMapOutput)
 }
 
+func (i CertificateIssuanceConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateIssuanceConfig] {
+	return pulumix.Output[map[string]*CertificateIssuanceConfig]{
+		OutputState: i.ToCertificateIssuanceConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateIssuanceConfigOutput struct{ *pulumi.OutputState }
 
 func (CertificateIssuanceConfigOutput) ElementType() reflect.Type {
@@ -438,6 +457,12 @@ func (o CertificateIssuanceConfigOutput) ToCertificateIssuanceConfigOutput() Cer
 
 func (o CertificateIssuanceConfigOutput) ToCertificateIssuanceConfigOutputWithContext(ctx context.Context) CertificateIssuanceConfigOutput {
 	return o
+}
+
+func (o CertificateIssuanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateIssuanceConfig] {
+	return pulumix.Output[*CertificateIssuanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
@@ -524,6 +549,12 @@ func (o CertificateIssuanceConfigArrayOutput) ToCertificateIssuanceConfigArrayOu
 	return o
 }
 
+func (o CertificateIssuanceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateIssuanceConfig] {
+	return pulumix.Output[[]*CertificateIssuanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificateIssuanceConfigArrayOutput) Index(i pulumi.IntInput) CertificateIssuanceConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateIssuanceConfig {
 		return vs[0].([]*CertificateIssuanceConfig)[vs[1].(int)]
@@ -542,6 +573,12 @@ func (o CertificateIssuanceConfigMapOutput) ToCertificateIssuanceConfigMapOutput
 
 func (o CertificateIssuanceConfigMapOutput) ToCertificateIssuanceConfigMapOutputWithContext(ctx context.Context) CertificateIssuanceConfigMapOutput {
 	return o
+}
+
+func (o CertificateIssuanceConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateIssuanceConfig] {
+	return pulumix.Output[map[string]*CertificateIssuanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateIssuanceConfigMapOutput) MapIndex(k pulumi.StringInput) CertificateIssuanceConfigOutput {

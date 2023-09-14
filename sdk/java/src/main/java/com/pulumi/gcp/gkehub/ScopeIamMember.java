@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gkehub/scopeIamMember:ScopeIamMember")
 public class ScopeIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=ScopeIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={ScopeIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ ScopeIamMemberCondition> condition;
 
     public Output<Optional<ScopeIamMemberCondition>> condition() {
@@ -174,7 +174,7 @@ public class ScopeIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -184,7 +184,7 @@ public class ScopeIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -207,7 +207,7 @@ public class ScopeIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -236,7 +236,7 @@ public class ScopeIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -248,7 +248,7 @@ public class ScopeIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="scopeId", type=String.class, parameters={})
+    @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     public Output<String> scopeId() {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Cloud Asset Inventory feed used to to listen to asset updates.
@@ -298,6 +299,12 @@ func (i *FolderFeed) ToFolderFeedOutputWithContext(ctx context.Context) FolderFe
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedOutput)
 }
 
+func (i *FolderFeed) ToOutput(ctx context.Context) pulumix.Output[*FolderFeed] {
+	return pulumix.Output[*FolderFeed]{
+		OutputState: i.ToFolderFeedOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FolderFeedArrayInput is an input type that accepts FolderFeedArray and FolderFeedArrayOutput values.
 // You can construct a concrete instance of `FolderFeedArrayInput` via:
 //
@@ -321,6 +328,12 @@ func (i FolderFeedArray) ToFolderFeedArrayOutput() FolderFeedArrayOutput {
 
 func (i FolderFeedArray) ToFolderFeedArrayOutputWithContext(ctx context.Context) FolderFeedArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedArrayOutput)
+}
+
+func (i FolderFeedArray) ToOutput(ctx context.Context) pulumix.Output[[]*FolderFeed] {
+	return pulumix.Output[[]*FolderFeed]{
+		OutputState: i.ToFolderFeedArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FolderFeedMapInput is an input type that accepts FolderFeedMap and FolderFeedMapOutput values.
@@ -348,6 +361,12 @@ func (i FolderFeedMap) ToFolderFeedMapOutputWithContext(ctx context.Context) Fol
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedMapOutput)
 }
 
+func (i FolderFeedMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderFeed] {
+	return pulumix.Output[map[string]*FolderFeed]{
+		OutputState: i.ToFolderFeedMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FolderFeedOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedOutput) ElementType() reflect.Type {
@@ -360,6 +379,12 @@ func (o FolderFeedOutput) ToFolderFeedOutput() FolderFeedOutput {
 
 func (o FolderFeedOutput) ToFolderFeedOutputWithContext(ctx context.Context) FolderFeedOutput {
 	return o
+}
+
+func (o FolderFeedOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderFeed] {
+	return pulumix.Output[*FolderFeed]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of the full names of the assets to receive updates. You must specify either or both of
@@ -443,6 +468,12 @@ func (o FolderFeedArrayOutput) ToFolderFeedArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FolderFeedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FolderFeed] {
+	return pulumix.Output[[]*FolderFeed]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FolderFeedArrayOutput) Index(i pulumi.IntInput) FolderFeedOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FolderFeed {
 		return vs[0].([]*FolderFeed)[vs[1].(int)]
@@ -461,6 +492,12 @@ func (o FolderFeedMapOutput) ToFolderFeedMapOutput() FolderFeedMapOutput {
 
 func (o FolderFeedMapOutput) ToFolderFeedMapOutputWithContext(ctx context.Context) FolderFeedMapOutput {
 	return o
+}
+
+func (o FolderFeedMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FolderFeed] {
+	return pulumix.Output[map[string]*FolderFeed]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FolderFeedMapOutput) MapIndex(k pulumi.StringInput) FolderFeedOutput {

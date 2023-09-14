@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -916,6 +917,12 @@ func (i *BareMetalCluster) ToBareMetalClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterOutput)
 }
 
+func (i *BareMetalCluster) ToOutput(ctx context.Context) pulumix.Output[*BareMetalCluster] {
+	return pulumix.Output[*BareMetalCluster]{
+		OutputState: i.ToBareMetalClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BareMetalClusterArrayInput is an input type that accepts BareMetalClusterArray and BareMetalClusterArrayOutput values.
 // You can construct a concrete instance of `BareMetalClusterArrayInput` via:
 //
@@ -939,6 +946,12 @@ func (i BareMetalClusterArray) ToBareMetalClusterArrayOutput() BareMetalClusterA
 
 func (i BareMetalClusterArray) ToBareMetalClusterArrayOutputWithContext(ctx context.Context) BareMetalClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterArrayOutput)
+}
+
+func (i BareMetalClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*BareMetalCluster] {
+	return pulumix.Output[[]*BareMetalCluster]{
+		OutputState: i.ToBareMetalClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BareMetalClusterMapInput is an input type that accepts BareMetalClusterMap and BareMetalClusterMapOutput values.
@@ -966,6 +979,12 @@ func (i BareMetalClusterMap) ToBareMetalClusterMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterMapOutput)
 }
 
+func (i BareMetalClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BareMetalCluster] {
+	return pulumix.Output[map[string]*BareMetalCluster]{
+		OutputState: i.ToBareMetalClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BareMetalClusterOutput struct{ *pulumi.OutputState }
 
 func (BareMetalClusterOutput) ElementType() reflect.Type {
@@ -978,6 +997,12 @@ func (o BareMetalClusterOutput) ToBareMetalClusterOutput() BareMetalClusterOutpu
 
 func (o BareMetalClusterOutput) ToBareMetalClusterOutputWithContext(ctx context.Context) BareMetalClusterOutput {
 	return o
+}
+
+func (o BareMetalClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalCluster] {
+	return pulumix.Output[*BareMetalCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Admin Cluster this Bare Metal User Cluster belongs to.
@@ -1187,6 +1212,12 @@ func (o BareMetalClusterArrayOutput) ToBareMetalClusterArrayOutputWithContext(ct
 	return o
 }
 
+func (o BareMetalClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BareMetalCluster] {
+	return pulumix.Output[[]*BareMetalCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BareMetalClusterArrayOutput) Index(i pulumi.IntInput) BareMetalClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BareMetalCluster {
 		return vs[0].([]*BareMetalCluster)[vs[1].(int)]
@@ -1205,6 +1236,12 @@ func (o BareMetalClusterMapOutput) ToBareMetalClusterMapOutput() BareMetalCluste
 
 func (o BareMetalClusterMapOutput) ToBareMetalClusterMapOutputWithContext(ctx context.Context) BareMetalClusterMapOutput {
 	return o
+}
+
+func (o BareMetalClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BareMetalCluster] {
+	return pulumix.Output[map[string]*BareMetalCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BareMetalClusterMapOutput) MapIndex(k pulumi.StringInput) BareMetalClusterOutput {
