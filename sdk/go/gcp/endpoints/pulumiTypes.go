@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionOutput()
 
 func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionOutputWithContext(ctx context.Context) ConsumersIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingConditionOutput)
+}
+
+func (i ConsumersIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ConsumersIamBindingCondition] {
+	return pulumix.Output[ConsumersIamBindingCondition]{
+		OutputState: i.ToConsumersIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ConsumersIamBindingConditionArgs) ToConsumersIamBindingConditionPtrOutput() ConsumersIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *consumersIamBindingConditionPtrType) ToConsumersIamBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamBindingConditionPtrOutput)
 }
 
+func (i *consumersIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamBindingCondition] {
+	return pulumix.Output[*ConsumersIamBindingCondition]{
+		OutputState: i.ToConsumersIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsumersIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ConsumersIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o ConsumersIamBindingConditionOutput) ToConsumersIamBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumersIamBindingCondition) *ConsumersIamBindingCondition {
 		return &v
 	}).(ConsumersIamBindingConditionPtrOutput)
+}
+
+func (o ConsumersIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ConsumersIamBindingCondition] {
+	return pulumix.Output[ConsumersIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumersIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o ConsumersIamBindingConditionPtrOutput) ToConsumersIamBindingConditionPtr
 
 func (o ConsumersIamBindingConditionPtrOutput) ToConsumersIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsumersIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o ConsumersIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamBindingCondition] {
+	return pulumix.Output[*ConsumersIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumersIamBindingConditionPtrOutput) Elem() ConsumersIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i ConsumersIamMemberConditionArgs) ToConsumersIamMemberConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberConditionOutput)
 }
 
+func (i ConsumersIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ConsumersIamMemberCondition] {
+	return pulumix.Output[ConsumersIamMemberCondition]{
+		OutputState: i.ToConsumersIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConsumersIamMemberConditionArgs) ToConsumersIamMemberConditionPtrOutput() ConsumersIamMemberConditionPtrOutput {
 	return i.ToConsumersIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *consumersIamMemberConditionPtrType) ToConsumersIamMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumersIamMemberConditionPtrOutput)
 }
 
+func (i *consumersIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamMemberCondition] {
+	return pulumix.Output[*ConsumersIamMemberCondition]{
+		OutputState: i.ToConsumersIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsumersIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ConsumersIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o ConsumersIamMemberConditionOutput) ToConsumersIamMemberConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsumersIamMemberCondition) *ConsumersIamMemberCondition {
 		return &v
 	}).(ConsumersIamMemberConditionPtrOutput)
+}
+
+func (o ConsumersIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ConsumersIamMemberCondition] {
+	return pulumix.Output[ConsumersIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumersIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o ConsumersIamMemberConditionPtrOutput) ToConsumersIamMemberConditionPtrOu
 
 func (o ConsumersIamMemberConditionPtrOutput) ToConsumersIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsumersIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o ConsumersIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumersIamMemberCondition] {
+	return pulumix.Output[*ConsumersIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsumersIamMemberConditionPtrOutput) Elem() ConsumersIamMemberConditionOutput {
@@ -384,6 +433,12 @@ func (i ServiceApiArgs) ToServiceApiOutputWithContext(ctx context.Context) Servi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceApiOutput)
 }
 
+func (i ServiceApiArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceApi] {
+	return pulumix.Output[ServiceApi]{
+		OutputState: i.ToServiceApiOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceApiArrayInput is an input type that accepts ServiceApiArray and ServiceApiArrayOutput values.
 // You can construct a concrete instance of `ServiceApiArrayInput` via:
 //
@@ -409,6 +464,12 @@ func (i ServiceApiArray) ToServiceApiArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceApiArrayOutput)
 }
 
+func (i ServiceApiArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceApi] {
+	return pulumix.Output[[]ServiceApi]{
+		OutputState: i.ToServiceApiArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceApiOutput struct{ *pulumi.OutputState }
 
 func (ServiceApiOutput) ElementType() reflect.Type {
@@ -421,6 +482,12 @@ func (o ServiceApiOutput) ToServiceApiOutput() ServiceApiOutput {
 
 func (o ServiceApiOutput) ToServiceApiOutputWithContext(ctx context.Context) ServiceApiOutput {
 	return o
+}
+
+func (o ServiceApiOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceApi] {
+	return pulumix.Output[ServiceApi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of Method objects; structure is documented below.
@@ -455,6 +522,12 @@ func (o ServiceApiArrayOutput) ToServiceApiArrayOutput() ServiceApiArrayOutput {
 
 func (o ServiceApiArrayOutput) ToServiceApiArrayOutputWithContext(ctx context.Context) ServiceApiArrayOutput {
 	return o
+}
+
+func (o ServiceApiArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceApi] {
+	return pulumix.Output[[]ServiceApi]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceApiArrayOutput) Index(i pulumi.IntInput) ServiceApiOutput {
@@ -508,6 +581,12 @@ func (i ServiceApiMethodArgs) ToServiceApiMethodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceApiMethodOutput)
 }
 
+func (i ServiceApiMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceApiMethod] {
+	return pulumix.Output[ServiceApiMethod]{
+		OutputState: i.ToServiceApiMethodOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceApiMethodArrayInput is an input type that accepts ServiceApiMethodArray and ServiceApiMethodArrayOutput values.
 // You can construct a concrete instance of `ServiceApiMethodArrayInput` via:
 //
@@ -533,6 +612,12 @@ func (i ServiceApiMethodArray) ToServiceApiMethodArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceApiMethodArrayOutput)
 }
 
+func (i ServiceApiMethodArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceApiMethod] {
+	return pulumix.Output[[]ServiceApiMethod]{
+		OutputState: i.ToServiceApiMethodArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceApiMethodOutput struct{ *pulumi.OutputState }
 
 func (ServiceApiMethodOutput) ElementType() reflect.Type {
@@ -545,6 +630,12 @@ func (o ServiceApiMethodOutput) ToServiceApiMethodOutput() ServiceApiMethodOutpu
 
 func (o ServiceApiMethodOutput) ToServiceApiMethodOutputWithContext(ctx context.Context) ServiceApiMethodOutput {
 	return o
+}
+
+func (o ServiceApiMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceApiMethod] {
+	return pulumix.Output[ServiceApiMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The simple name of the endpoint as described in the config.
@@ -579,6 +670,12 @@ func (o ServiceApiMethodArrayOutput) ToServiceApiMethodArrayOutput() ServiceApiM
 
 func (o ServiceApiMethodArrayOutput) ToServiceApiMethodArrayOutputWithContext(ctx context.Context) ServiceApiMethodArrayOutput {
 	return o
+}
+
+func (o ServiceApiMethodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceApiMethod] {
+	return pulumix.Output[[]ServiceApiMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceApiMethodArrayOutput) Index(i pulumi.IntInput) ServiceApiMethodOutput {
@@ -624,6 +721,12 @@ func (i ServiceEndpointArgs) ToServiceEndpointOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceEndpointOutput)
 }
 
+func (i ServiceEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceEndpoint] {
+	return pulumix.Output[ServiceEndpoint]{
+		OutputState: i.ToServiceEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceEndpointArrayInput is an input type that accepts ServiceEndpointArray and ServiceEndpointArrayOutput values.
 // You can construct a concrete instance of `ServiceEndpointArrayInput` via:
 //
@@ -649,6 +752,12 @@ func (i ServiceEndpointArray) ToServiceEndpointArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceEndpointArrayOutput)
 }
 
+func (i ServiceEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceEndpoint] {
+	return pulumix.Output[[]ServiceEndpoint]{
+		OutputState: i.ToServiceEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServiceEndpointOutput) ElementType() reflect.Type {
@@ -661,6 +770,12 @@ func (o ServiceEndpointOutput) ToServiceEndpointOutput() ServiceEndpointOutput {
 
 func (o ServiceEndpointOutput) ToServiceEndpointOutputWithContext(ctx context.Context) ServiceEndpointOutput {
 	return o
+}
+
+func (o ServiceEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceEndpoint] {
+	return pulumix.Output[ServiceEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The FQDN of the endpoint as described in the config.
@@ -685,6 +800,12 @@ func (o ServiceEndpointArrayOutput) ToServiceEndpointArrayOutput() ServiceEndpoi
 
 func (o ServiceEndpointArrayOutput) ToServiceEndpointArrayOutputWithContext(ctx context.Context) ServiceEndpointArrayOutput {
 	return o
+}
+
+func (o ServiceEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceEndpoint] {
+	return pulumix.Output[[]ServiceEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceEndpointArrayOutput) Index(i pulumi.IntInput) ServiceEndpointOutput {
@@ -728,6 +849,12 @@ func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput)
 }
 
+func (i ServiceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
+	return pulumix.Output[ServiceIamBindingCondition]{
+		OutputState: i.ToServiceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
 	return i.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -769,6 +896,12 @@ func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionPtrOutput)
 }
 
+func (i *serviceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
+	return pulumix.Output[*ServiceIamBindingCondition]{
+		OutputState: i.ToServiceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -791,6 +924,12 @@ func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBindingCondition) *ServiceIamBindingCondition {
 		return &v
 	}).(ServiceIamBindingConditionPtrOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
+	return pulumix.Output[ServiceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -817,6 +956,12 @@ func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutp
 
 func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
+	return pulumix.Output[*ServiceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
@@ -891,6 +1036,12 @@ func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput)
 }
 
+func (i ServiceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
+	return pulumix.Output[ServiceIamMemberCondition]{
+		OutputState: i.ToServiceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
 	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -932,6 +1083,12 @@ func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionPtrOutput)
 }
 
+func (i *serviceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
+	return pulumix.Output[*ServiceIamMemberCondition]{
+		OutputState: i.ToServiceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -954,6 +1111,12 @@ func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMemberCondition) *ServiceIamMemberCondition {
 		return &v
 	}).(ServiceIamMemberConditionPtrOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
+	return pulumix.Output[ServiceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -980,6 +1143,12 @@ func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput
 
 func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
+	return pulumix.Output[*ServiceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {

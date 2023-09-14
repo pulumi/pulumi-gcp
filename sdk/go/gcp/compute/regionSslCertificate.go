@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A RegionSslCertificate resource, used for HTTPS load balancing. This resource
@@ -423,6 +424,12 @@ func (i *RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateOutput)
 }
 
+func (i *RegionSslCertificate) ToOutput(ctx context.Context) pulumix.Output[*RegionSslCertificate] {
+	return pulumix.Output[*RegionSslCertificate]{
+		OutputState: i.ToRegionSslCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionSslCertificateArrayInput is an input type that accepts RegionSslCertificateArray and RegionSslCertificateArrayOutput values.
 // You can construct a concrete instance of `RegionSslCertificateArrayInput` via:
 //
@@ -446,6 +453,12 @@ func (i RegionSslCertificateArray) ToRegionSslCertificateArrayOutput() RegionSsl
 
 func (i RegionSslCertificateArray) ToRegionSslCertificateArrayOutputWithContext(ctx context.Context) RegionSslCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateArrayOutput)
+}
+
+func (i RegionSslCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSslCertificate] {
+	return pulumix.Output[[]*RegionSslCertificate]{
+		OutputState: i.ToRegionSslCertificateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionSslCertificateMapInput is an input type that accepts RegionSslCertificateMap and RegionSslCertificateMapOutput values.
@@ -473,6 +486,12 @@ func (i RegionSslCertificateMap) ToRegionSslCertificateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateMapOutput)
 }
 
+func (i RegionSslCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSslCertificate] {
+	return pulumix.Output[map[string]*RegionSslCertificate]{
+		OutputState: i.ToRegionSslCertificateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionSslCertificateOutput struct{ *pulumi.OutputState }
 
 func (RegionSslCertificateOutput) ElementType() reflect.Type {
@@ -485,6 +504,12 @@ func (o RegionSslCertificateOutput) ToRegionSslCertificateOutput() RegionSslCert
 
 func (o RegionSslCertificateOutput) ToRegionSslCertificateOutputWithContext(ctx context.Context) RegionSslCertificateOutput {
 	return o
+}
+
+func (o RegionSslCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSslCertificate] {
+	return pulumix.Output[*RegionSslCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The certificate in PEM format.
@@ -573,6 +598,12 @@ func (o RegionSslCertificateArrayOutput) ToRegionSslCertificateArrayOutputWithCo
 	return o
 }
 
+func (o RegionSslCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSslCertificate] {
+	return pulumix.Output[[]*RegionSslCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionSslCertificateArrayOutput) Index(i pulumi.IntInput) RegionSslCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionSslCertificate {
 		return vs[0].([]*RegionSslCertificate)[vs[1].(int)]
@@ -591,6 +622,12 @@ func (o RegionSslCertificateMapOutput) ToRegionSslCertificateMapOutput() RegionS
 
 func (o RegionSslCertificateMapOutput) ToRegionSslCertificateMapOutputWithContext(ctx context.Context) RegionSslCertificateMapOutput {
 	return o
+}
+
+func (o RegionSslCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSslCertificate] {
+	return pulumix.Output[map[string]*RegionSslCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionSslCertificateMapOutput) MapIndex(k pulumi.StringInput) RegionSslCertificateOutput {

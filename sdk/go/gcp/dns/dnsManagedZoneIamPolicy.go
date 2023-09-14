@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
@@ -343,6 +344,12 @@ func (i *DnsManagedZoneIamPolicy) ToDnsManagedZoneIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamPolicyOutput)
 }
 
+func (i *DnsManagedZoneIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamPolicy] {
+	return pulumix.Output[*DnsManagedZoneIamPolicy]{
+		OutputState: i.ToDnsManagedZoneIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DnsManagedZoneIamPolicyArrayInput is an input type that accepts DnsManagedZoneIamPolicyArray and DnsManagedZoneIamPolicyArrayOutput values.
 // You can construct a concrete instance of `DnsManagedZoneIamPolicyArrayInput` via:
 //
@@ -366,6 +373,12 @@ func (i DnsManagedZoneIamPolicyArray) ToDnsManagedZoneIamPolicyArrayOutput() Dns
 
 func (i DnsManagedZoneIamPolicyArray) ToDnsManagedZoneIamPolicyArrayOutputWithContext(ctx context.Context) DnsManagedZoneIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamPolicyArrayOutput)
+}
+
+func (i DnsManagedZoneIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DnsManagedZoneIamPolicy] {
+	return pulumix.Output[[]*DnsManagedZoneIamPolicy]{
+		OutputState: i.ToDnsManagedZoneIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DnsManagedZoneIamPolicyMapInput is an input type that accepts DnsManagedZoneIamPolicyMap and DnsManagedZoneIamPolicyMapOutput values.
@@ -393,6 +406,12 @@ func (i DnsManagedZoneIamPolicyMap) ToDnsManagedZoneIamPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamPolicyMapOutput)
 }
 
+func (i DnsManagedZoneIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsManagedZoneIamPolicy] {
+	return pulumix.Output[map[string]*DnsManagedZoneIamPolicy]{
+		OutputState: i.ToDnsManagedZoneIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DnsManagedZoneIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (DnsManagedZoneIamPolicyOutput) ElementType() reflect.Type {
@@ -405,6 +424,12 @@ func (o DnsManagedZoneIamPolicyOutput) ToDnsManagedZoneIamPolicyOutput() DnsMana
 
 func (o DnsManagedZoneIamPolicyOutput) ToDnsManagedZoneIamPolicyOutputWithContext(ctx context.Context) DnsManagedZoneIamPolicyOutput {
 	return o
+}
+
+func (o DnsManagedZoneIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamPolicy] {
+	return pulumix.Output[*DnsManagedZoneIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -455,6 +480,12 @@ func (o DnsManagedZoneIamPolicyArrayOutput) ToDnsManagedZoneIamPolicyArrayOutput
 	return o
 }
 
+func (o DnsManagedZoneIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DnsManagedZoneIamPolicy] {
+	return pulumix.Output[[]*DnsManagedZoneIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DnsManagedZoneIamPolicyArrayOutput) Index(i pulumi.IntInput) DnsManagedZoneIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DnsManagedZoneIamPolicy {
 		return vs[0].([]*DnsManagedZoneIamPolicy)[vs[1].(int)]
@@ -473,6 +504,12 @@ func (o DnsManagedZoneIamPolicyMapOutput) ToDnsManagedZoneIamPolicyMapOutput() D
 
 func (o DnsManagedZoneIamPolicyMapOutput) ToDnsManagedZoneIamPolicyMapOutputWithContext(ctx context.Context) DnsManagedZoneIamPolicyMapOutput {
 	return o
+}
+
+func (o DnsManagedZoneIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DnsManagedZoneIamPolicy] {
+	return pulumix.Output[map[string]*DnsManagedZoneIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsManagedZoneIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DnsManagedZoneIamPolicyOutput {

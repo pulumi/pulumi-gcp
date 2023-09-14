@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source allows you to use data encrypted with Google Cloud KMS
@@ -96,6 +97,12 @@ func (o GetKMSSecretResultOutput) ToGetKMSSecretResultOutput() GetKMSSecretResul
 
 func (o GetKMSSecretResultOutput) ToGetKMSSecretResultOutputWithContext(ctx context.Context) GetKMSSecretResultOutput {
 	return o
+}
+
+func (o GetKMSSecretResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKMSSecretResult] {
+	return pulumix.Output[GetKMSSecretResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKMSSecretResultOutput) AdditionalAuthenticatedData() pulumi.StringPtrOutput {

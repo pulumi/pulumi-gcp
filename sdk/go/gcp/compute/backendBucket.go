@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Backend buckets allow you to use Google Cloud Storage buckets with HTTP(S)
@@ -446,6 +447,12 @@ func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) Ba
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketOutput)
 }
 
+func (i *BackendBucket) ToOutput(ctx context.Context) pulumix.Output[*BackendBucket] {
+	return pulumix.Output[*BackendBucket]{
+		OutputState: i.ToBackendBucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackendBucketArrayInput is an input type that accepts BackendBucketArray and BackendBucketArrayOutput values.
 // You can construct a concrete instance of `BackendBucketArrayInput` via:
 //
@@ -469,6 +476,12 @@ func (i BackendBucketArray) ToBackendBucketArrayOutput() BackendBucketArrayOutpu
 
 func (i BackendBucketArray) ToBackendBucketArrayOutputWithContext(ctx context.Context) BackendBucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketArrayOutput)
+}
+
+func (i BackendBucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucket] {
+	return pulumix.Output[[]*BackendBucket]{
+		OutputState: i.ToBackendBucketArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackendBucketMapInput is an input type that accepts BackendBucketMap and BackendBucketMapOutput values.
@@ -496,6 +509,12 @@ func (i BackendBucketMap) ToBackendBucketMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketMapOutput)
 }
 
+func (i BackendBucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucket] {
+	return pulumix.Output[map[string]*BackendBucket]{
+		OutputState: i.ToBackendBucketMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackendBucketOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketOutput) ElementType() reflect.Type {
@@ -508,6 +527,12 @@ func (o BackendBucketOutput) ToBackendBucketOutput() BackendBucketOutput {
 
 func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput {
 	return o
+}
+
+func (o BackendBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucket] {
+	return pulumix.Output[*BackendBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Cloud Storage bucket name.
@@ -591,6 +616,12 @@ func (o BackendBucketArrayOutput) ToBackendBucketArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o BackendBucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucket] {
+	return pulumix.Output[[]*BackendBucket]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendBucketArrayOutput) Index(i pulumi.IntInput) BackendBucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendBucket {
 		return vs[0].([]*BackendBucket)[vs[1].(int)]
@@ -609,6 +640,12 @@ func (o BackendBucketMapOutput) ToBackendBucketMapOutput() BackendBucketMapOutpu
 
 func (o BackendBucketMapOutput) ToBackendBucketMapOutputWithContext(ctx context.Context) BackendBucketMapOutput {
 	return o
+}
+
+func (o BackendBucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucket] {
+	return pulumix.Output[map[string]*BackendBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBucketMapOutput) MapIndex(k pulumi.StringInput) BackendBucketOutput {

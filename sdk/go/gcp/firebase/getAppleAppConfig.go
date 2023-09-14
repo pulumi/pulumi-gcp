@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAppleAppConfig(ctx *pulumi.Context, args *GetAppleAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAppleAppConfigResult, error) {
@@ -84,6 +85,12 @@ func (o GetAppleAppConfigResultOutput) ToGetAppleAppConfigResultOutput() GetAppl
 
 func (o GetAppleAppConfigResultOutput) ToGetAppleAppConfigResultOutputWithContext(ctx context.Context) GetAppleAppConfigResultOutput {
 	return o
+}
+
+func (o GetAppleAppConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppleAppConfigResult] {
+	return pulumix.Output[GetAppleAppConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppleAppConfigResultOutput) AppId() pulumi.StringOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about a database in a Cloud SQL instance.
@@ -112,6 +113,12 @@ func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutput() LookupDatabas
 
 func (o LookupDatabaseResultOutput) ToLookupDatabaseResultOutputWithContext(ctx context.Context) LookupDatabaseResultOutput {
 	return o
+}
+
+func (o LookupDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseResult] {
+	return pulumix.Output[LookupDatabaseResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupDatabaseResultOutput) Charset() pulumi.StringOutput {

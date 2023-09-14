@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows management of Organization Policies for a Google Cloud Folder.
@@ -358,6 +359,12 @@ func (i *OrganizationPolicy) ToOrganizationPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyOutput)
 }
 
+func (i *OrganizationPolicy) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPolicy] {
+	return pulumix.Output[*OrganizationPolicy]{
+		OutputState: i.ToOrganizationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationPolicyArrayInput is an input type that accepts OrganizationPolicyArray and OrganizationPolicyArrayOutput values.
 // You can construct a concrete instance of `OrganizationPolicyArrayInput` via:
 //
@@ -381,6 +388,12 @@ func (i OrganizationPolicyArray) ToOrganizationPolicyArrayOutput() OrganizationP
 
 func (i OrganizationPolicyArray) ToOrganizationPolicyArrayOutputWithContext(ctx context.Context) OrganizationPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyArrayOutput)
+}
+
+func (i OrganizationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationPolicy] {
+	return pulumix.Output[[]*OrganizationPolicy]{
+		OutputState: i.ToOrganizationPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrganizationPolicyMapInput is an input type that accepts OrganizationPolicyMap and OrganizationPolicyMapOutput values.
@@ -408,6 +421,12 @@ func (i OrganizationPolicyMap) ToOrganizationPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyMapOutput)
 }
 
+func (i OrganizationPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationPolicy] {
+	return pulumix.Output[map[string]*OrganizationPolicy]{
+		OutputState: i.ToOrganizationPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationPolicyOutput struct{ *pulumi.OutputState }
 
 func (OrganizationPolicyOutput) ElementType() reflect.Type {
@@ -420,6 +439,12 @@ func (o OrganizationPolicyOutput) ToOrganizationPolicyOutput() OrganizationPolic
 
 func (o OrganizationPolicyOutput) ToOrganizationPolicyOutputWithContext(ctx context.Context) OrganizationPolicyOutput {
 	return o
+}
+
+func (o OrganizationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationPolicy] {
+	return pulumix.Output[*OrganizationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A boolean policy is a constraint that is either enforced or not. Structure is documented below.
@@ -484,6 +509,12 @@ func (o OrganizationPolicyArrayOutput) ToOrganizationPolicyArrayOutputWithContex
 	return o
 }
 
+func (o OrganizationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationPolicy] {
+	return pulumix.Output[[]*OrganizationPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationPolicyArrayOutput) Index(i pulumi.IntInput) OrganizationPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationPolicy {
 		return vs[0].([]*OrganizationPolicy)[vs[1].(int)]
@@ -502,6 +533,12 @@ func (o OrganizationPolicyMapOutput) ToOrganizationPolicyMapOutput() Organizatio
 
 func (o OrganizationPolicyMapOutput) ToOrganizationPolicyMapOutputWithContext(ctx context.Context) OrganizationPolicyMapOutput {
 	return o
+}
+
+func (o OrganizationPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationPolicy] {
+	return pulumix.Output[map[string]*OrganizationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationPolicyMapOutput) MapIndex(k pulumi.StringInput) OrganizationPolicyOutput {

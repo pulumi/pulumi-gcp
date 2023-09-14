@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Bigquery Analytics Hub Listing. Each of these resources serves a different use case:
@@ -395,6 +396,12 @@ func (i *ListingIamMember) ToListingIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberOutput)
 }
 
+func (i *ListingIamMember) ToOutput(ctx context.Context) pulumix.Output[*ListingIamMember] {
+	return pulumix.Output[*ListingIamMember]{
+		OutputState: i.ToListingIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListingIamMemberArrayInput is an input type that accepts ListingIamMemberArray and ListingIamMemberArrayOutput values.
 // You can construct a concrete instance of `ListingIamMemberArrayInput` via:
 //
@@ -418,6 +425,12 @@ func (i ListingIamMemberArray) ToListingIamMemberArrayOutput() ListingIamMemberA
 
 func (i ListingIamMemberArray) ToListingIamMemberArrayOutputWithContext(ctx context.Context) ListingIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberArrayOutput)
+}
+
+func (i ListingIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListingIamMember] {
+	return pulumix.Output[[]*ListingIamMember]{
+		OutputState: i.ToListingIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ListingIamMemberMapInput is an input type that accepts ListingIamMemberMap and ListingIamMemberMapOutput values.
@@ -445,6 +458,12 @@ func (i ListingIamMemberMap) ToListingIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberMapOutput)
 }
 
+func (i ListingIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListingIamMember] {
+	return pulumix.Output[map[string]*ListingIamMember]{
+		OutputState: i.ToListingIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ListingIamMemberOutput) ElementType() reflect.Type {
@@ -457,6 +476,12 @@ func (o ListingIamMemberOutput) ToListingIamMemberOutput() ListingIamMemberOutpu
 
 func (o ListingIamMemberOutput) ToListingIamMemberOutputWithContext(ctx context.Context) ListingIamMemberOutput {
 	return o
+}
+
+func (o ListingIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingIamMember] {
+	return pulumix.Output[*ListingIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamMemberOutput) Condition() ListingIamMemberConditionPtrOutput {
@@ -527,6 +552,12 @@ func (o ListingIamMemberArrayOutput) ToListingIamMemberArrayOutputWithContext(ct
 	return o
 }
 
+func (o ListingIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListingIamMember] {
+	return pulumix.Output[[]*ListingIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ListingIamMemberArrayOutput) Index(i pulumi.IntInput) ListingIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListingIamMember {
 		return vs[0].([]*ListingIamMember)[vs[1].(int)]
@@ -545,6 +576,12 @@ func (o ListingIamMemberMapOutput) ToListingIamMemberMapOutput() ListingIamMembe
 
 func (o ListingIamMemberMapOutput) ToListingIamMemberMapOutputWithContext(ctx context.Context) ListingIamMemberMapOutput {
 	return o
+}
+
+func (o ListingIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListingIamMember] {
+	return pulumix.Output[map[string]*ListingIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamMemberMapOutput) MapIndex(k pulumi.StringInput) ListingIamMemberOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Image. Each of these resources serves a different use case:
@@ -460,6 +461,12 @@ func (i *ImageIamPolicy) ToImageIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamPolicyOutput)
 }
 
+func (i *ImageIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ImageIamPolicy] {
+	return pulumix.Output[*ImageIamPolicy]{
+		OutputState: i.ToImageIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageIamPolicyArrayInput is an input type that accepts ImageIamPolicyArray and ImageIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ImageIamPolicyArrayInput` via:
 //
@@ -483,6 +490,12 @@ func (i ImageIamPolicyArray) ToImageIamPolicyArrayOutput() ImageIamPolicyArrayOu
 
 func (i ImageIamPolicyArray) ToImageIamPolicyArrayOutputWithContext(ctx context.Context) ImageIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamPolicyArrayOutput)
+}
+
+func (i ImageIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageIamPolicy] {
+	return pulumix.Output[[]*ImageIamPolicy]{
+		OutputState: i.ToImageIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageIamPolicyMapInput is an input type that accepts ImageIamPolicyMap and ImageIamPolicyMapOutput values.
@@ -510,6 +523,12 @@ func (i ImageIamPolicyMap) ToImageIamPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamPolicyMapOutput)
 }
 
+func (i ImageIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageIamPolicy] {
+	return pulumix.Output[map[string]*ImageIamPolicy]{
+		OutputState: i.ToImageIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ImageIamPolicyOutput) ElementType() reflect.Type {
@@ -522,6 +541,12 @@ func (o ImageIamPolicyOutput) ToImageIamPolicyOutput() ImageIamPolicyOutput {
 
 func (o ImageIamPolicyOutput) ToImageIamPolicyOutputWithContext(ctx context.Context) ImageIamPolicyOutput {
 	return o
+}
+
+func (o ImageIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageIamPolicy] {
+	return pulumix.Output[*ImageIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -572,6 +597,12 @@ func (o ImageIamPolicyArrayOutput) ToImageIamPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ImageIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageIamPolicy] {
+	return pulumix.Output[[]*ImageIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageIamPolicyArrayOutput) Index(i pulumi.IntInput) ImageIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageIamPolicy {
 		return vs[0].([]*ImageIamPolicy)[vs[1].(int)]
@@ -590,6 +621,12 @@ func (o ImageIamPolicyMapOutput) ToImageIamPolicyMapOutput() ImageIamPolicyMapOu
 
 func (o ImageIamPolicyMapOutput) ToImageIamPolicyMapOutputWithContext(ctx context.Context) ImageIamPolicyMapOutput {
 	return o
+}
+
+func (o ImageIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageIamPolicy] {
+	return pulumix.Output[map[string]*ImageIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ImageIamPolicyOutput {

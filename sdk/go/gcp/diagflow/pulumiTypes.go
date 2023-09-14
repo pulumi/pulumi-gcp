@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsOutput() C
 
 func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsOutput)
+}
+
+func (i CxAgentSpeechToTextSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxAgentSpeechToTextSettings] {
+	return pulumix.Output[CxAgentSpeechToTextSettings]{
+		OutputState: i.ToCxAgentSpeechToTextSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxAgentSpeechToTextSettingsArgs) ToCxAgentSpeechToTextSettingsPtrOutput() CxAgentSpeechToTextSettingsPtrOutput {
@@ -87,6 +94,12 @@ func (i *cxAgentSpeechToTextSettingsPtrType) ToCxAgentSpeechToTextSettingsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CxAgentSpeechToTextSettingsPtrOutput)
 }
 
+func (i *cxAgentSpeechToTextSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxAgentSpeechToTextSettings] {
+	return pulumix.Output[*CxAgentSpeechToTextSettings]{
+		OutputState: i.ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxAgentSpeechToTextSettingsOutput struct{ *pulumi.OutputState }
 
 func (CxAgentSpeechToTextSettingsOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o CxAgentSpeechToTextSettingsOutput) ToCxAgentSpeechToTextSettingsPtrOutpu
 	}).(CxAgentSpeechToTextSettingsPtrOutput)
 }
 
+func (o CxAgentSpeechToTextSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxAgentSpeechToTextSettings] {
+	return pulumix.Output[CxAgentSpeechToTextSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether to use speech adaptation for speech recognition.
 func (o CxAgentSpeechToTextSettingsOutput) EnableSpeechAdaptation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxAgentSpeechToTextSettings) *bool { return v.EnableSpeechAdaptation }).(pulumi.BoolPtrOutput)
@@ -128,6 +147,12 @@ func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOu
 
 func (o CxAgentSpeechToTextSettingsPtrOutput) ToCxAgentSpeechToTextSettingsPtrOutputWithContext(ctx context.Context) CxAgentSpeechToTextSettingsPtrOutput {
 	return o
+}
+
+func (o CxAgentSpeechToTextSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxAgentSpeechToTextSettings] {
+	return pulumix.Output[*CxAgentSpeechToTextSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxAgentSpeechToTextSettingsPtrOutput) Elem() CxAgentSpeechToTextSettingsOutput {
@@ -197,6 +222,12 @@ func (i CxEntityTypeEntityArgs) ToCxEntityTypeEntityOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeEntityOutput)
 }
 
+func (i CxEntityTypeEntityArgs) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeEntity] {
+	return pulumix.Output[CxEntityTypeEntity]{
+		OutputState: i.ToCxEntityTypeEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxEntityTypeEntityArrayInput is an input type that accepts CxEntityTypeEntityArray and CxEntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeEntityArrayInput` via:
 //
@@ -222,6 +253,12 @@ func (i CxEntityTypeEntityArray) ToCxEntityTypeEntityArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeEntityArrayOutput)
 }
 
+func (i CxEntityTypeEntityArray) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeEntity] {
+	return pulumix.Output[[]CxEntityTypeEntity]{
+		OutputState: i.ToCxEntityTypeEntityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxEntityTypeEntityOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypeEntityOutput) ElementType() reflect.Type {
@@ -234,6 +271,12 @@ func (o CxEntityTypeEntityOutput) ToCxEntityTypeEntityOutput() CxEntityTypeEntit
 
 func (o CxEntityTypeEntityOutput) ToCxEntityTypeEntityOutputWithContext(ctx context.Context) CxEntityTypeEntityOutput {
 	return o
+}
+
+func (o CxEntityTypeEntityOutput) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeEntity] {
+	return pulumix.Output[CxEntityTypeEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
@@ -263,6 +306,12 @@ func (o CxEntityTypeEntityArrayOutput) ToCxEntityTypeEntityArrayOutput() CxEntit
 
 func (o CxEntityTypeEntityArrayOutput) ToCxEntityTypeEntityArrayOutputWithContext(ctx context.Context) CxEntityTypeEntityArrayOutput {
 	return o
+}
+
+func (o CxEntityTypeEntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeEntity] {
+	return pulumix.Output[[]CxEntityTypeEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxEntityTypeEntityArrayOutput) Index(i pulumi.IntInput) CxEntityTypeEntityOutput {
@@ -304,6 +353,12 @@ func (i CxEntityTypeExcludedPhraseArgs) ToCxEntityTypeExcludedPhraseOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeExcludedPhraseOutput)
 }
 
+func (i CxEntityTypeExcludedPhraseArgs) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeExcludedPhrase] {
+	return pulumix.Output[CxEntityTypeExcludedPhrase]{
+		OutputState: i.ToCxEntityTypeExcludedPhraseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxEntityTypeExcludedPhraseArrayInput is an input type that accepts CxEntityTypeExcludedPhraseArray and CxEntityTypeExcludedPhraseArrayOutput values.
 // You can construct a concrete instance of `CxEntityTypeExcludedPhraseArrayInput` via:
 //
@@ -329,6 +384,12 @@ func (i CxEntityTypeExcludedPhraseArray) ToCxEntityTypeExcludedPhraseArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxEntityTypeExcludedPhraseArrayOutput)
 }
 
+func (i CxEntityTypeExcludedPhraseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeExcludedPhrase] {
+	return pulumix.Output[[]CxEntityTypeExcludedPhrase]{
+		OutputState: i.ToCxEntityTypeExcludedPhraseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxEntityTypeExcludedPhraseOutput struct{ *pulumi.OutputState }
 
 func (CxEntityTypeExcludedPhraseOutput) ElementType() reflect.Type {
@@ -341,6 +402,12 @@ func (o CxEntityTypeExcludedPhraseOutput) ToCxEntityTypeExcludedPhraseOutput() C
 
 func (o CxEntityTypeExcludedPhraseOutput) ToCxEntityTypeExcludedPhraseOutputWithContext(ctx context.Context) CxEntityTypeExcludedPhraseOutput {
 	return o
+}
+
+func (o CxEntityTypeExcludedPhraseOutput) ToOutput(ctx context.Context) pulumix.Output[CxEntityTypeExcludedPhrase] {
+	return pulumix.Output[CxEntityTypeExcludedPhrase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The word or phrase to be excluded.
@@ -360,6 +427,12 @@ func (o CxEntityTypeExcludedPhraseArrayOutput) ToCxEntityTypeExcludedPhraseArray
 
 func (o CxEntityTypeExcludedPhraseArrayOutput) ToCxEntityTypeExcludedPhraseArrayOutputWithContext(ctx context.Context) CxEntityTypeExcludedPhraseArrayOutput {
 	return o
+}
+
+func (o CxEntityTypeExcludedPhraseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxEntityTypeExcludedPhrase] {
+	return pulumix.Output[[]CxEntityTypeExcludedPhrase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxEntityTypeExcludedPhraseArrayOutput) Index(i pulumi.IntInput) CxEntityTypeExcludedPhraseOutput {
@@ -405,6 +478,12 @@ func (i CxEnvironmentVersionConfigArgs) ToCxEnvironmentVersionConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentVersionConfigOutput)
 }
 
+func (i CxEnvironmentVersionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CxEnvironmentVersionConfig] {
+	return pulumix.Output[CxEnvironmentVersionConfig]{
+		OutputState: i.ToCxEnvironmentVersionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxEnvironmentVersionConfigArrayInput is an input type that accepts CxEnvironmentVersionConfigArray and CxEnvironmentVersionConfigArrayOutput values.
 // You can construct a concrete instance of `CxEnvironmentVersionConfigArrayInput` via:
 //
@@ -430,6 +509,12 @@ func (i CxEnvironmentVersionConfigArray) ToCxEnvironmentVersionConfigArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxEnvironmentVersionConfigArrayOutput)
 }
 
+func (i CxEnvironmentVersionConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]CxEnvironmentVersionConfig] {
+	return pulumix.Output[[]CxEnvironmentVersionConfig]{
+		OutputState: i.ToCxEnvironmentVersionConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxEnvironmentVersionConfigOutput struct{ *pulumi.OutputState }
 
 func (CxEnvironmentVersionConfigOutput) ElementType() reflect.Type {
@@ -442,6 +527,12 @@ func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutput() C
 
 func (o CxEnvironmentVersionConfigOutput) ToCxEnvironmentVersionConfigOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigOutput {
 	return o
+}
+
+func (o CxEnvironmentVersionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CxEnvironmentVersionConfig] {
+	return pulumix.Output[CxEnvironmentVersionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
@@ -463,6 +554,12 @@ func (o CxEnvironmentVersionConfigArrayOutput) ToCxEnvironmentVersionConfigArray
 
 func (o CxEnvironmentVersionConfigArrayOutput) ToCxEnvironmentVersionConfigArrayOutputWithContext(ctx context.Context) CxEnvironmentVersionConfigArrayOutput {
 	return o
+}
+
+func (o CxEnvironmentVersionConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxEnvironmentVersionConfig] {
+	return pulumix.Output[[]CxEnvironmentVersionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxEnvironmentVersionConfigArrayOutput) Index(i pulumi.IntInput) CxEnvironmentVersionConfigOutput {
@@ -528,6 +625,12 @@ func (i CxFlowEventHandlerArgs) ToCxFlowEventHandlerOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerOutput)
 }
 
+func (i CxFlowEventHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandler] {
+	return pulumix.Output[CxFlowEventHandler]{
+		OutputState: i.ToCxFlowEventHandlerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowEventHandlerArrayInput is an input type that accepts CxFlowEventHandlerArray and CxFlowEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerArrayInput` via:
 //
@@ -553,6 +656,12 @@ func (i CxFlowEventHandlerArray) ToCxFlowEventHandlerArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerArrayOutput)
 }
 
+func (i CxFlowEventHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandler] {
+	return pulumix.Output[[]CxFlowEventHandler]{
+		OutputState: i.ToCxFlowEventHandlerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerOutput) ElementType() reflect.Type {
@@ -565,6 +674,12 @@ func (o CxFlowEventHandlerOutput) ToCxFlowEventHandlerOutput() CxFlowEventHandle
 
 func (o CxFlowEventHandlerOutput) ToCxFlowEventHandlerOutputWithContext(ctx context.Context) CxFlowEventHandlerOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandler] {
+	return pulumix.Output[CxFlowEventHandler]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the event to handle.
@@ -608,6 +723,12 @@ func (o CxFlowEventHandlerArrayOutput) ToCxFlowEventHandlerArrayOutput() CxFlowE
 
 func (o CxFlowEventHandlerArrayOutput) ToCxFlowEventHandlerArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerArrayOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandler] {
+	return pulumix.Output[[]CxFlowEventHandler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerOutput {
@@ -675,6 +796,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFul
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillment] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillment]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowEventHandlerTriggerFulfillmentArgs) ToCxFlowEventHandlerTriggerFulfillmentPtrOutput() CxFlowEventHandlerTriggerFulfillmentPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -716,6 +843,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentPtrType) ToCxFlowEventHandlerTrigge
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillment] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillment]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -738,6 +871,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerF
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillment) *CxFlowEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillment] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -791,6 +930,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTrigg
 
 func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillment] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentOutput {
@@ -901,6 +1046,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxFlowEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray and CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -926,6 +1077,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxFlowEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -938,6 +1095,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxFlowEvent
 
 func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -958,6 +1121,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlow
 
 func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
@@ -1055,6 +1224,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToCxFlowEventHandlerTri
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageArray and CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
@@ -1080,6 +1255,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageArray) ToCxFlowEventHandlerTr
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -1092,6 +1273,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerT
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -1174,6 +1361,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxFlowEventHan
 	return o
 }
 
+func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
@@ -1211,6 +1404,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCx
 
 func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -1254,6 +1453,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -1278,6 +1483,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) To
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -1295,6 +1506,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
@@ -1350,6 +1567,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlo
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -1391,6 +1614,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -1415,6 +1644,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxF
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -1432,6 +1667,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) To
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -1497,6 +1738,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlow
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -1538,6 +1785,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -1560,6 +1813,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFl
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1592,6 +1851,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToC
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -1674,6 +1939,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -1715,6 +1986,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowEv
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -1737,6 +2014,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEven
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1762,6 +2045,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowE
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
@@ -1828,6 +2117,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -1869,6 +2164,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -1893,6 +2194,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) 
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
@@ -1910,6 +2217,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutpu
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -1971,6 +2284,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandle
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowEventHandlerTriggerFulfillmentMessageTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -2012,6 +2331,12 @@ func (i *cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxFlowEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -2034,6 +2359,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToCxFlowEventHand
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageText) *CxFlowEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2059,6 +2390,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventH
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxFlowEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTextOutput {
@@ -2129,6 +2466,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxFlowEven
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray and CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -2154,6 +2497,12 @@ func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxFlowEve
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -2166,6 +2515,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxFlowEv
 
 func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -2190,6 +2545,12 @@ func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxF
 
 func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
@@ -2253,6 +2614,12 @@ func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsOutput)
 }
 
+func (i CxFlowNluSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowNluSettings] {
+	return pulumix.Output[CxFlowNluSettings]{
+		OutputState: i.ToCxFlowNluSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowNluSettingsArgs) ToCxFlowNluSettingsPtrOutput() CxFlowNluSettingsPtrOutput {
 	return i.ToCxFlowNluSettingsPtrOutputWithContext(context.Background())
 }
@@ -2294,6 +2661,12 @@ func (i *cxFlowNluSettingsPtrType) ToCxFlowNluSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowNluSettingsPtrOutput)
 }
 
+func (i *cxFlowNluSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowNluSettings] {
+	return pulumix.Output[*CxFlowNluSettings]{
+		OutputState: i.ToCxFlowNluSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowNluSettingsOutput struct{ *pulumi.OutputState }
 
 func (CxFlowNluSettingsOutput) ElementType() reflect.Type {
@@ -2316,6 +2689,12 @@ func (o CxFlowNluSettingsOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowNluSettings) *CxFlowNluSettings {
 		return &v
 	}).(CxFlowNluSettingsPtrOutput)
+}
+
+func (o CxFlowNluSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowNluSettings] {
+	return pulumix.Output[CxFlowNluSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
@@ -2352,6 +2731,12 @@ func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutput() CxFlowNluSett
 
 func (o CxFlowNluSettingsPtrOutput) ToCxFlowNluSettingsPtrOutputWithContext(ctx context.Context) CxFlowNluSettingsPtrOutput {
 	return o
+}
+
+func (o CxFlowNluSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowNluSettings] {
+	return pulumix.Output[*CxFlowNluSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowNluSettingsPtrOutput) Elem() CxFlowNluSettingsOutput {
@@ -2466,6 +2851,12 @@ func (i CxFlowTransitionRouteArgs) ToCxFlowTransitionRouteOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteOutput)
 }
 
+func (i CxFlowTransitionRouteArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRoute] {
+	return pulumix.Output[CxFlowTransitionRoute]{
+		OutputState: i.ToCxFlowTransitionRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowTransitionRouteArrayInput is an input type that accepts CxFlowTransitionRouteArray and CxFlowTransitionRouteArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteArrayInput` via:
 //
@@ -2491,6 +2882,12 @@ func (i CxFlowTransitionRouteArray) ToCxFlowTransitionRouteArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteArrayOutput)
 }
 
+func (i CxFlowTransitionRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRoute] {
+	return pulumix.Output[[]CxFlowTransitionRoute]{
+		OutputState: i.ToCxFlowTransitionRouteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteOutput) ElementType() reflect.Type {
@@ -2503,6 +2900,12 @@ func (o CxFlowTransitionRouteOutput) ToCxFlowTransitionRouteOutput() CxFlowTrans
 
 func (o CxFlowTransitionRouteOutput) ToCxFlowTransitionRouteOutputWithContext(ctx context.Context) CxFlowTransitionRouteOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRoute] {
+	return pulumix.Output[CxFlowTransitionRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition to evaluate against form parameters or session parameters.
@@ -2553,6 +2956,12 @@ func (o CxFlowTransitionRouteArrayOutput) ToCxFlowTransitionRouteArrayOutput() C
 
 func (o CxFlowTransitionRouteArrayOutput) ToCxFlowTransitionRouteArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteArrayOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRoute] {
+	return pulumix.Output[[]CxFlowTransitionRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteOutput {
@@ -2620,6 +3029,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTrig
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillment]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowTransitionRouteTriggerFulfillmentArgs) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutput() CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -2661,6 +3076,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentPtrType) ToCxFlowTransitionRoute
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -2683,6 +3104,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillment) *CxFlowTransitionRouteTriggerFulfillment {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -2736,6 +3163,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRout
 
 func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentOutput {
@@ -2846,6 +3279,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxFlowTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray and CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -2871,6 +3310,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxFlowTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -2883,6 +3328,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxFlowTr
 
 func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -2903,6 +3354,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxF
 
 func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
@@ -3000,6 +3457,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToCxFlowTransitionRo
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageArray and CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput` via:
 //
@@ -3025,6 +3488,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageArray) ToCxFlowTransitionR
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -3037,6 +3506,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransition
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -3119,6 +3594,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ToCxFlowTrans
 	return o
 }
 
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRouteTriggerFulfillmentMessage {
 		return vs[0].([]CxFlowTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
@@ -3156,6 +3637,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) T
 
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -3199,6 +3686,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -3223,6 +3716,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -3240,6 +3739,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutp
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
@@ -3295,6 +3800,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -3336,6 +3847,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -3360,6 +3877,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) To
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -3377,6 +3900,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -3442,6 +3971,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxF
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -3483,6 +4018,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -3505,6 +4046,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -3537,6 +4084,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -3619,6 +4172,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -3660,6 +4219,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlo
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -3682,6 +4247,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowT
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -3709,6 +4280,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFl
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
@@ -3775,6 +4352,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -3816,6 +4399,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -3840,6 +4429,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutpu
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) string {
@@ -3859,6 +4454,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOu
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -3920,6 +4521,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransiti
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -3961,6 +4568,12 @@ func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ToCxFlowTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -3983,6 +4596,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxFlowTransi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageText) *CxFlowTransitionRouteTriggerFulfillmentMessageText {
 		return &v
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4008,6 +4627,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTra
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxFlowTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput {
@@ -4078,6 +4703,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxFlowT
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray and CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -4103,6 +4734,12 @@ func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxFlow
 	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -4115,6 +4752,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxFlo
 
 func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -4139,6 +4782,12 @@ func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) To
 
 func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
@@ -4196,6 +4845,12 @@ func (i CxIntentParameterArgs) ToCxIntentParameterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentParameterOutput)
 }
 
+func (i CxIntentParameterArgs) ToOutput(ctx context.Context) pulumix.Output[CxIntentParameter] {
+	return pulumix.Output[CxIntentParameter]{
+		OutputState: i.ToCxIntentParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxIntentParameterArrayInput is an input type that accepts CxIntentParameterArray and CxIntentParameterArrayOutput values.
 // You can construct a concrete instance of `CxIntentParameterArrayInput` via:
 //
@@ -4221,6 +4876,12 @@ func (i CxIntentParameterArray) ToCxIntentParameterArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentParameterArrayOutput)
 }
 
+func (i CxIntentParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentParameter] {
+	return pulumix.Output[[]CxIntentParameter]{
+		OutputState: i.ToCxIntentParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxIntentParameterOutput struct{ *pulumi.OutputState }
 
 func (CxIntentParameterOutput) ElementType() reflect.Type {
@@ -4233,6 +4894,12 @@ func (o CxIntentParameterOutput) ToCxIntentParameterOutput() CxIntentParameterOu
 
 func (o CxIntentParameterOutput) ToCxIntentParameterOutputWithContext(ctx context.Context) CxIntentParameterOutput {
 	return o
+}
+
+func (o CxIntentParameterOutput) ToOutput(ctx context.Context) pulumix.Output[CxIntentParameter] {
+	return pulumix.Output[CxIntentParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The entity type of the parameter.
@@ -4269,6 +4936,12 @@ func (o CxIntentParameterArrayOutput) ToCxIntentParameterArrayOutput() CxIntentP
 
 func (o CxIntentParameterArrayOutput) ToCxIntentParameterArrayOutputWithContext(ctx context.Context) CxIntentParameterArrayOutput {
 	return o
+}
+
+func (o CxIntentParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentParameter] {
+	return pulumix.Output[[]CxIntentParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxIntentParameterArrayOutput) Index(i pulumi.IntInput) CxIntentParameterOutput {
@@ -4334,6 +5007,12 @@ func (i CxIntentTrainingPhraseArgs) ToCxIntentTrainingPhraseOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhraseOutput)
 }
 
+func (i CxIntentTrainingPhraseArgs) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrase] {
+	return pulumix.Output[CxIntentTrainingPhrase]{
+		OutputState: i.ToCxIntentTrainingPhraseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxIntentTrainingPhraseArrayInput is an input type that accepts CxIntentTrainingPhraseArray and CxIntentTrainingPhraseArrayOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhraseArrayInput` via:
 //
@@ -4359,6 +5038,12 @@ func (i CxIntentTrainingPhraseArray) ToCxIntentTrainingPhraseArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhraseArrayOutput)
 }
 
+func (i CxIntentTrainingPhraseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrase] {
+	return pulumix.Output[[]CxIntentTrainingPhrase]{
+		OutputState: i.ToCxIntentTrainingPhraseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxIntentTrainingPhraseOutput struct{ *pulumi.OutputState }
 
 func (CxIntentTrainingPhraseOutput) ElementType() reflect.Type {
@@ -4371,6 +5056,12 @@ func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutput() CxIntentT
 
 func (o CxIntentTrainingPhraseOutput) ToCxIntentTrainingPhraseOutputWithContext(ctx context.Context) CxIntentTrainingPhraseOutput {
 	return o
+}
+
+func (o CxIntentTrainingPhraseOutput) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrase] {
+	return pulumix.Output[CxIntentTrainingPhrase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4408,6 +5099,12 @@ func (o CxIntentTrainingPhraseArrayOutput) ToCxIntentTrainingPhraseArrayOutput()
 
 func (o CxIntentTrainingPhraseArrayOutput) ToCxIntentTrainingPhraseArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhraseArrayOutput {
 	return o
+}
+
+func (o CxIntentTrainingPhraseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrase] {
+	return pulumix.Output[[]CxIntentTrainingPhrase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxIntentTrainingPhraseArrayOutput) Index(i pulumi.IntInput) CxIntentTrainingPhraseOutput {
@@ -4453,6 +5150,12 @@ func (i CxIntentTrainingPhrasePartArgs) ToCxIntentTrainingPhrasePartOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhrasePartOutput)
 }
 
+func (i CxIntentTrainingPhrasePartArgs) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrasePart] {
+	return pulumix.Output[CxIntentTrainingPhrasePart]{
+		OutputState: i.ToCxIntentTrainingPhrasePartOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxIntentTrainingPhrasePartArrayInput is an input type that accepts CxIntentTrainingPhrasePartArray and CxIntentTrainingPhrasePartArrayOutput values.
 // You can construct a concrete instance of `CxIntentTrainingPhrasePartArrayInput` via:
 //
@@ -4478,6 +5181,12 @@ func (i CxIntentTrainingPhrasePartArray) ToCxIntentTrainingPhrasePartArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxIntentTrainingPhrasePartArrayOutput)
 }
 
+func (i CxIntentTrainingPhrasePartArray) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrasePart] {
+	return pulumix.Output[[]CxIntentTrainingPhrasePart]{
+		OutputState: i.ToCxIntentTrainingPhrasePartArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxIntentTrainingPhrasePartOutput struct{ *pulumi.OutputState }
 
 func (CxIntentTrainingPhrasePartOutput) ElementType() reflect.Type {
@@ -4490,6 +5199,12 @@ func (o CxIntentTrainingPhrasePartOutput) ToCxIntentTrainingPhrasePartOutput() C
 
 func (o CxIntentTrainingPhrasePartOutput) ToCxIntentTrainingPhrasePartOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartOutput {
 	return o
+}
+
+func (o CxIntentTrainingPhrasePartOutput) ToOutput(ctx context.Context) pulumix.Output[CxIntentTrainingPhrasePart] {
+	return pulumix.Output[CxIntentTrainingPhrasePart]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
@@ -4514,6 +5229,12 @@ func (o CxIntentTrainingPhrasePartArrayOutput) ToCxIntentTrainingPhrasePartArray
 
 func (o CxIntentTrainingPhrasePartArrayOutput) ToCxIntentTrainingPhrasePartArrayOutputWithContext(ctx context.Context) CxIntentTrainingPhrasePartArrayOutput {
 	return o
+}
+
+func (o CxIntentTrainingPhrasePartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxIntentTrainingPhrasePart] {
+	return pulumix.Output[[]CxIntentTrainingPhrasePart]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxIntentTrainingPhrasePartArrayOutput) Index(i pulumi.IntInput) CxIntentTrainingPhrasePartOutput {
@@ -4581,6 +5302,12 @@ func (i CxPageEntryFulfillmentArgs) ToCxPageEntryFulfillmentOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentOutput)
 }
 
+func (i CxPageEntryFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillment] {
+	return pulumix.Output[CxPageEntryFulfillment]{
+		OutputState: i.ToCxPageEntryFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEntryFulfillmentArgs) ToCxPageEntryFulfillmentPtrOutput() CxPageEntryFulfillmentPtrOutput {
 	return i.ToCxPageEntryFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -4622,6 +5349,12 @@ func (i *cxPageEntryFulfillmentPtrType) ToCxPageEntryFulfillmentPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillment] {
+	return pulumix.Output[*CxPageEntryFulfillment]{
+		OutputState: i.ToCxPageEntryFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentOutput) ElementType() reflect.Type {
@@ -4644,6 +5377,12 @@ func (o CxPageEntryFulfillmentOutput) ToCxPageEntryFulfillmentPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillment) *CxPageEntryFulfillment {
 		return &v
 	}).(CxPageEntryFulfillmentPtrOutput)
+}
+
+func (o CxPageEntryFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillment] {
+	return pulumix.Output[CxPageEntryFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -4693,6 +5432,12 @@ func (o CxPageEntryFulfillmentPtrOutput) ToCxPageEntryFulfillmentPtrOutput() CxP
 
 func (o CxPageEntryFulfillmentPtrOutput) ToCxPageEntryFulfillmentPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillment] {
+	return pulumix.Output[*CxPageEntryFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentPtrOutput) Elem() CxPageEntryFulfillmentOutput {
@@ -4803,6 +5548,12 @@ func (i CxPageEntryFulfillmentConditionalCaseArgs) ToCxPageEntryFulfillmentCondi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentConditionalCaseOutput)
 }
 
+func (i CxPageEntryFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageEntryFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEntryFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageEntryFulfillmentConditionalCaseArray and CxPageEntryFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentConditionalCaseArrayInput` via:
 //
@@ -4828,6 +5579,12 @@ func (i CxPageEntryFulfillmentConditionalCaseArray) ToCxPageEntryFulfillmentCond
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxPageEntryFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageEntryFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -4840,6 +5597,12 @@ func (o CxPageEntryFulfillmentConditionalCaseOutput) ToCxPageEntryFulfillmentCon
 
 func (o CxPageEntryFulfillmentConditionalCaseOutput) ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageEntryFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -4860,6 +5623,12 @@ func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToCxPageEntryFulfillme
 
 func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageEntryFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentConditionalCaseOutput {
@@ -4957,6 +5726,12 @@ func (i CxPageEntryFulfillmentMessageArgs) ToCxPageEntryFulfillmentMessageOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutput)
 }
 
+func (i CxPageEntryFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessage] {
+	return pulumix.Output[CxPageEntryFulfillmentMessage]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEntryFulfillmentMessageArrayInput is an input type that accepts CxPageEntryFulfillmentMessageArray and CxPageEntryFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentMessageArrayInput` via:
 //
@@ -4982,6 +5757,12 @@ func (i CxPageEntryFulfillmentMessageArray) ToCxPageEntryFulfillmentMessageArray
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageArrayOutput)
 }
 
+func (i CxPageEntryFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentMessage] {
+	return pulumix.Output[[]CxPageEntryFulfillmentMessage]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -4994,6 +5775,12 @@ func (o CxPageEntryFulfillmentMessageOutput) ToCxPageEntryFulfillmentMessageOutp
 
 func (o CxPageEntryFulfillmentMessageOutput) ToCxPageEntryFulfillmentMessageOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessage] {
+	return pulumix.Output[CxPageEntryFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -5072,6 +5859,12 @@ func (o CxPageEntryFulfillmentMessageArrayOutput) ToCxPageEntryFulfillmentMessag
 	return o
 }
 
+func (o CxPageEntryFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentMessage] {
+	return pulumix.Output[[]CxPageEntryFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxPageEntryFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEntryFulfillmentMessage {
 		return vs[0].([]CxPageEntryFulfillmentMessage)[vs[1].(int)]
@@ -5109,6 +5902,12 @@ func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfi
 
 func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
@@ -5152,6 +5951,12 @@ func (i *cxPageEntryFulfillmentMessageConversationSuccessPtrType) ToCxPageEntryF
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -5176,6 +5981,12 @@ func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToCxPageEntryFul
 	}).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -5193,6 +6004,12 @@ func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEntry
 
 func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageEntryFulfillmentMessageConversationSuccessOutput {
@@ -5248,6 +6065,12 @@ func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillm
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -5289,6 +6112,12 @@ func (i *cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageEntryFulf
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -5313,6 +6142,12 @@ func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEntryFulfil
 	}).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -5330,6 +6165,12 @@ func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEntryFul
 
 func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
@@ -5395,6 +6236,12 @@ func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillme
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -5436,6 +6283,12 @@ func (i *cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ToCxPageEntryFulfi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -5458,6 +6311,12 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToCxPageEntryFulfill
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageOutputAudioText) *CxPageEntryFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -5488,6 +6347,12 @@ func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEntryFulf
 
 func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageEntryFulfillmentMessageOutputAudioTextOutput {
@@ -5570,6 +6435,12 @@ func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMess
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageEntryFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -5611,6 +6482,12 @@ func (i *cxPageEntryFulfillmentMessagePlayAudioPtrType) ToCxPageEntryFulfillment
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -5633,6 +6510,12 @@ func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessagePlayAudio) *CxPageEntryFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageEntryFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -5658,6 +6541,12 @@ func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToCxPageEntryFulfillmen
 
 func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEntryFulfillmentMessagePlayAudioOutput {
@@ -5724,6 +6613,12 @@ func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFul
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -5765,6 +6660,12 @@ func (i *cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageEntr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -5789,6 +6690,12 @@ func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEntryF
 	}).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
@@ -5806,6 +6713,12 @@ func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEnt
 
 func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
@@ -5867,6 +6780,12 @@ func (i CxPageEntryFulfillmentMessageTextArgs) ToCxPageEntryFulfillmentMessageTe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTextOutput)
 }
 
+func (i CxPageEntryFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageText] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageText]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEntryFulfillmentMessageTextArgs) ToCxPageEntryFulfillmentMessageTextPtrOutput() CxPageEntryFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -5908,6 +6827,12 @@ func (i *cxPageEntryFulfillmentMessageTextPtrType) ToCxPageEntryFulfillmentMessa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxPageEntryFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageText] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageText]{
+		OutputState: i.ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -5930,6 +6855,12 @@ func (o CxPageEntryFulfillmentMessageTextOutput) ToCxPageEntryFulfillmentMessage
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageText) *CxPageEntryFulfillmentMessageText {
 		return &v
 	}).(CxPageEntryFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxPageEntryFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentMessageText] {
+	return pulumix.Output[CxPageEntryFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -5955,6 +6886,12 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToCxPageEntryFulfillmentMess
 
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToCxPageEntryFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEntryFulfillmentMessageText] {
+	return pulumix.Output[*CxPageEntryFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentMessageTextPtrOutput) Elem() CxPageEntryFulfillmentMessageTextOutput {
@@ -6025,6 +6962,12 @@ func (i CxPageEntryFulfillmentSetParameterActionArgs) ToCxPageEntryFulfillmentSe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentSetParameterActionOutput)
 }
 
+func (i CxPageEntryFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageEntryFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEntryFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageEntryFulfillmentSetParameterActionArray and CxPageEntryFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageEntryFulfillmentSetParameterActionArrayInput` via:
 //
@@ -6050,6 +6993,12 @@ func (i CxPageEntryFulfillmentSetParameterActionArray) ToCxPageEntryFulfillmentS
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxPageEntryFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEntryFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageEntryFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -6062,6 +7011,12 @@ func (o CxPageEntryFulfillmentSetParameterActionOutput) ToCxPageEntryFulfillment
 
 func (o CxPageEntryFulfillmentSetParameterActionOutput) ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEntryFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageEntryFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -6086,6 +7041,12 @@ func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToCxPageEntryFulfil
 
 func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageEntryFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentSetParameterActionOutput {
@@ -6151,6 +7112,12 @@ func (i CxPageEventHandlerArgs) ToCxPageEventHandlerOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerOutput)
 }
 
+func (i CxPageEventHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandler] {
+	return pulumix.Output[CxPageEventHandler]{
+		OutputState: i.ToCxPageEventHandlerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEventHandlerArrayInput is an input type that accepts CxPageEventHandlerArray and CxPageEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerArrayInput` via:
 //
@@ -6176,6 +7143,12 @@ func (i CxPageEventHandlerArray) ToCxPageEventHandlerArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerArrayOutput)
 }
 
+func (i CxPageEventHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandler] {
+	return pulumix.Output[[]CxPageEventHandler]{
+		OutputState: i.ToCxPageEventHandlerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerOutput) ElementType() reflect.Type {
@@ -6188,6 +7161,12 @@ func (o CxPageEventHandlerOutput) ToCxPageEventHandlerOutput() CxPageEventHandle
 
 func (o CxPageEventHandlerOutput) ToCxPageEventHandlerOutputWithContext(ctx context.Context) CxPageEventHandlerOutput {
 	return o
+}
+
+func (o CxPageEventHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandler] {
+	return pulumix.Output[CxPageEventHandler]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the event to handle.
@@ -6231,6 +7210,12 @@ func (o CxPageEventHandlerArrayOutput) ToCxPageEventHandlerArrayOutput() CxPageE
 
 func (o CxPageEventHandlerArrayOutput) ToCxPageEventHandlerArrayOutputWithContext(ctx context.Context) CxPageEventHandlerArrayOutput {
 	return o
+}
+
+func (o CxPageEventHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandler] {
+	return pulumix.Output[[]CxPageEventHandler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerOutput {
@@ -6298,6 +7283,12 @@ func (i CxPageEventHandlerTriggerFulfillmentArgs) ToCxPageEventHandlerTriggerFul
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillment] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillment]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEventHandlerTriggerFulfillmentArgs) ToCxPageEventHandlerTriggerFulfillmentPtrOutput() CxPageEventHandlerTriggerFulfillmentPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -6339,6 +7330,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentPtrType) ToCxPageEventHandlerTrigge
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillment] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillment]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -6361,6 +7358,12 @@ func (o CxPageEventHandlerTriggerFulfillmentOutput) ToCxPageEventHandlerTriggerF
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillment) *CxPageEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillment] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -6414,6 +7417,12 @@ func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToCxPageEventHandlerTrigg
 
 func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToCxPageEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillment] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentOutput {
@@ -6524,6 +7533,12 @@ func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxPageEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentConditionalCaseArray and CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -6549,6 +7564,12 @@ func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxPageEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -6561,6 +7582,12 @@ func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageEvent
 
 func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -6581,6 +7608,12 @@ func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPage
 
 func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
@@ -6678,6 +7711,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageArgs) ToCxPageEventHandlerTri
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageArray and CxPageEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
@@ -6703,6 +7742,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageArray) ToCxPageEventHandlerTr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageArrayOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -6715,6 +7760,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToCxPageEventHandlerT
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -6797,6 +7848,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxPageEventHan
 	return o
 }
 
+func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxPageEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
@@ -6834,6 +7891,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCx
 
 func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -6877,6 +7940,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -6901,6 +7970,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) To
 	}).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -6918,6 +7993,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
@@ -6973,6 +8054,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -7014,6 +8101,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -7038,6 +8131,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxP
 	}).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -7055,6 +8154,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) To
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -7120,6 +8225,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPage
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -7161,6 +8272,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -7183,6 +8300,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPa
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -7215,6 +8338,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToC
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -7297,6 +8426,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventH
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -7338,6 +8473,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageEv
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -7360,6 +8501,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEven
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -7385,6 +8532,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageE
 
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
@@ -7451,6 +8604,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -7492,6 +8651,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -7516,6 +8681,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) 
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
@@ -7533,6 +8704,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutpu
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -7594,6 +8771,12 @@ func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageEventHandle
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -7635,6 +8818,12 @@ func (i *cxPageEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxPageEventHa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxPageEventHandlerTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -7657,6 +8846,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageEventHand
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageText) *CxPageEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -7682,6 +8877,12 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageEventH
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxPageEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageTextOutput {
@@ -7752,6 +8953,12 @@ func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxPageEven
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentSetParameterActionArray and CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -7777,6 +8984,12 @@ func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxPageEve
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -7789,6 +9002,12 @@ func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageEv
 
 func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -7813,6 +9032,12 @@ func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxP
 
 func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
@@ -7856,6 +9081,12 @@ func (i CxPageFormArgs) ToCxPageFormOutputWithContext(ctx context.Context) CxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormOutput)
 }
 
+func (i CxPageFormArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageForm] {
+	return pulumix.Output[CxPageForm]{
+		OutputState: i.ToCxPageFormOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormArgs) ToCxPageFormPtrOutput() CxPageFormPtrOutput {
 	return i.ToCxPageFormPtrOutputWithContext(context.Background())
 }
@@ -7897,6 +9128,12 @@ func (i *cxPageFormPtrType) ToCxPageFormPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormPtrOutput)
 }
 
+func (i *cxPageFormPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageForm] {
+	return pulumix.Output[*CxPageForm]{
+		OutputState: i.ToCxPageFormPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormOutput) ElementType() reflect.Type {
@@ -7921,6 +9158,12 @@ func (o CxPageFormOutput) ToCxPageFormPtrOutputWithContext(ctx context.Context) 
 	}).(CxPageFormPtrOutput)
 }
 
+func (o CxPageFormOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageForm] {
+	return pulumix.Output[CxPageForm]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Parameters to collect from the user.
 // Structure is documented below.
 func (o CxPageFormOutput) Parameters() CxPageFormParameterArrayOutput {
@@ -7939,6 +9182,12 @@ func (o CxPageFormPtrOutput) ToCxPageFormPtrOutput() CxPageFormPtrOutput {
 
 func (o CxPageFormPtrOutput) ToCxPageFormPtrOutputWithContext(ctx context.Context) CxPageFormPtrOutput {
 	return o
+}
+
+func (o CxPageFormPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageForm] {
+	return pulumix.Output[*CxPageForm]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormPtrOutput) Elem() CxPageFormOutput {
@@ -8027,6 +9276,12 @@ func (i CxPageFormParameterArgs) ToCxPageFormParameterOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterOutput)
 }
 
+func (i CxPageFormParameterArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameter] {
+	return pulumix.Output[CxPageFormParameter]{
+		OutputState: i.ToCxPageFormParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterArrayInput is an input type that accepts CxPageFormParameterArray and CxPageFormParameterArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterArrayInput` via:
 //
@@ -8052,6 +9307,12 @@ func (i CxPageFormParameterArray) ToCxPageFormParameterArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterArrayOutput)
 }
 
+func (i CxPageFormParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameter] {
+	return pulumix.Output[[]CxPageFormParameter]{
+		OutputState: i.ToCxPageFormParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterOutput) ElementType() reflect.Type {
@@ -8064,6 +9325,12 @@ func (o CxPageFormParameterOutput) ToCxPageFormParameterOutput() CxPageFormParam
 
 func (o CxPageFormParameterOutput) ToCxPageFormParameterOutputWithContext(ctx context.Context) CxPageFormParameterOutput {
 	return o
+}
+
+func (o CxPageFormParameterOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameter] {
+	return pulumix.Output[CxPageFormParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default value of an optional parameter. If the parameter is required, the default value will be ignored.
@@ -8117,6 +9384,12 @@ func (o CxPageFormParameterArrayOutput) ToCxPageFormParameterArrayOutput() CxPag
 
 func (o CxPageFormParameterArrayOutput) ToCxPageFormParameterArrayOutputWithContext(ctx context.Context) CxPageFormParameterArrayOutput {
 	return o
+}
+
+func (o CxPageFormParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameter] {
+	return pulumix.Output[[]CxPageFormParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterOutput {
@@ -8186,6 +9459,12 @@ func (i CxPageFormParameterFillBehaviorArgs) ToCxPageFormParameterFillBehaviorOu
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehavior] {
+	return pulumix.Output[CxPageFormParameterFillBehavior]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorArgs) ToCxPageFormParameterFillBehaviorPtrOutput() CxPageFormParameterFillBehaviorPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorPtrOutputWithContext(context.Background())
 }
@@ -8227,6 +9506,12 @@ func (i *cxPageFormParameterFillBehaviorPtrType) ToCxPageFormParameterFillBehavi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehavior] {
+	return pulumix.Output[*CxPageFormParameterFillBehavior]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorOutput) ElementType() reflect.Type {
@@ -8249,6 +9534,12 @@ func (o CxPageFormParameterFillBehaviorOutput) ToCxPageFormParameterFillBehavior
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehavior) *CxPageFormParameterFillBehavior {
 		return &v
 	}).(CxPageFormParameterFillBehaviorPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehavior] {
+	return pulumix.Output[CxPageFormParameterFillBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
@@ -8289,6 +9580,12 @@ func (o CxPageFormParameterFillBehaviorPtrOutput) ToCxPageFormParameterFillBehav
 
 func (o CxPageFormParameterFillBehaviorPtrOutput) ToCxPageFormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehavior] {
+	return pulumix.Output[*CxPageFormParameterFillBehavior]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorPtrOutput) Elem() CxPageFormParameterFillBehaviorOutput {
@@ -8392,6 +9689,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToCxPageFor
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -8433,6 +9736,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrType) ToCxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ElementType() reflect.Type {
@@ -8455,6 +9764,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToCxPageF
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillment) *CxPageFormParameterFillBehaviorInitialPromptFulfillment {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -8508,6 +9823,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToCxPa
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput {
@@ -8618,6 +9939,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseAr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput` via:
 //
@@ -8643,6 +9970,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseAr
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -8655,6 +9988,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOu
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -8675,6 +10014,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseAr
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
@@ -8772,6 +10117,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput` via:
 //
@@ -8797,6 +10148,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray) ToC
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -8809,6 +10166,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) To
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -8891,6 +10254,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutpu
 	return o
 }
 
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
 		return vs[0].([]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage)[vs[1].(int)]
@@ -8928,6 +10297,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversati
 
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
@@ -8971,6 +10346,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversat
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -8995,6 +10376,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversati
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess) *string {
@@ -9014,6 +10401,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversati
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
@@ -9069,6 +10462,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentH
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -9110,6 +10509,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgent
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -9134,6 +10539,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentH
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff) *string {
@@ -9153,6 +10564,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentH
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
@@ -9218,6 +10635,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -9259,6 +10682,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAud
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -9281,6 +10710,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -9317,6 +10752,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudi
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
@@ -9399,6 +10840,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioA
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -9440,6 +10887,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -9462,6 +10915,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -9491,6 +10950,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioP
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
@@ -9557,6 +11022,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyT
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -9598,6 +11069,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephony
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -9622,6 +11099,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyT
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall) string {
@@ -9641,6 +11124,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyT
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
@@ -9702,6 +11191,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -9743,6 +11238,12 @@ func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -9765,6 +11266,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -9792,6 +11299,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOut
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput {
@@ -9862,6 +11375,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput` via:
 //
@@ -9887,6 +11406,12 @@ func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -9899,6 +11424,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -9927,6 +11458,12 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActio
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
@@ -9992,6 +11529,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ToCxPageFormPar
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerArray and CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput` via:
 //
@@ -10017,6 +11560,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ToCxPageFormPa
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ElementType() reflect.Type {
@@ -10029,6 +11578,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToCxPageFormP
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandler]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the event to handle.
@@ -10074,6 +11629,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToCxPage
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandler]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
@@ -10141,6 +11702,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArg
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -10182,6 +11749,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPt
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -10204,6 +11777,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -10261,6 +11840,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtr
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
@@ -10371,6 +11956,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -10396,6 +11987,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -10408,6 +12005,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -10430,6 +12033,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCon
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
@@ -10527,6 +12136,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput` via:
 //
@@ -10552,6 +12167,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -10564,6 +12185,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -10650,6 +12277,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o
 }
 
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
@@ -10687,6 +12320,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -10730,6 +12369,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -10754,6 +12399,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess) *string {
@@ -10773,6 +12424,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
@@ -10828,6 +12485,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -10869,6 +12532,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -10893,6 +12562,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string {
@@ -10912,6 +12587,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -10977,6 +12658,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -11018,6 +12705,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -11040,6 +12733,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -11076,6 +12775,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -11158,6 +12863,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -11199,6 +12910,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -11221,6 +12938,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -11250,6 +12973,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
@@ -11316,6 +13045,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -11357,6 +13092,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -11381,6 +13122,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string {
@@ -11400,6 +13147,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -11461,6 +13214,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -11502,6 +13261,12 @@ func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMe
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -11524,6 +13289,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -11553,6 +13324,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMes
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
@@ -11623,6 +13400,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -11648,6 +13431,12 @@ func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -11660,6 +13449,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -11688,6 +13483,12 @@ func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSet
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
@@ -11761,6 +13562,12 @@ func (i CxPageTransitionRouteArgs) ToCxPageTransitionRouteOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteOutput)
 }
 
+func (i CxPageTransitionRouteArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRoute] {
+	return pulumix.Output[CxPageTransitionRoute]{
+		OutputState: i.ToCxPageTransitionRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageTransitionRouteArrayInput is an input type that accepts CxPageTransitionRouteArray and CxPageTransitionRouteArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteArrayInput` via:
 //
@@ -11786,6 +13593,12 @@ func (i CxPageTransitionRouteArray) ToCxPageTransitionRouteArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteArrayOutput)
 }
 
+func (i CxPageTransitionRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRoute] {
+	return pulumix.Output[[]CxPageTransitionRoute]{
+		OutputState: i.ToCxPageTransitionRouteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteOutput) ElementType() reflect.Type {
@@ -11798,6 +13611,12 @@ func (o CxPageTransitionRouteOutput) ToCxPageTransitionRouteOutput() CxPageTrans
 
 func (o CxPageTransitionRouteOutput) ToCxPageTransitionRouteOutputWithContext(ctx context.Context) CxPageTransitionRouteOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRoute] {
+	return pulumix.Output[CxPageTransitionRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The condition to evaluate against form parameters or session parameters.
@@ -11848,6 +13667,12 @@ func (o CxPageTransitionRouteArrayOutput) ToCxPageTransitionRouteArrayOutput() C
 
 func (o CxPageTransitionRouteArrayOutput) ToCxPageTransitionRouteArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteArrayOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRoute] {
+	return pulumix.Output[[]CxPageTransitionRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteOutput {
@@ -11915,6 +13740,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToCxPageTransitionRouteTrig
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillment]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageTransitionRouteTriggerFulfillmentArgs) ToCxPageTransitionRouteTriggerFulfillmentPtrOutput() CxPageTransitionRouteTriggerFulfillmentPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(context.Background())
 }
@@ -11956,6 +13787,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentPtrType) ToCxPageTransitionRoute
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillment]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentOutput) ElementType() reflect.Type {
@@ -11978,6 +13815,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToCxPageTransitionRouteTr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillment) *CxPageTransitionRouteTriggerFulfillment {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Conditional cases for this fulfillment.
@@ -12031,6 +13874,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToCxPageTransitionRout
 
 func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillment] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentOutput {
@@ -12141,6 +13990,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxPageTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray and CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput` via:
 //
@@ -12166,6 +14021,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxPageTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
@@ -12178,6 +14039,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxPageTr
 
 func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
@@ -12198,6 +14065,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxP
 
 func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase] {
+	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentConditionalCase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
@@ -12295,6 +14168,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageArgs) ToCxPageTransitionRo
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessageArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageTransitionRouteTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageArray and CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageArrayInput` via:
 //
@@ -12320,6 +14199,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageArray) ToCxPageTransitionR
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
@@ -12332,6 +14217,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToCxPageTransition
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -12414,6 +14305,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) ToCxPageTrans
 	return o
 }
 
+func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage] {
+	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentMessage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentMessageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageTransitionRouteTriggerFulfillmentMessage {
 		return vs[0].([]CxPageTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
@@ -12451,6 +14348,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) T
 
 func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
@@ -12494,6 +14397,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrTyp
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
@@ -12518,6 +14427,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
 }
 
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -12535,6 +14450,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutp
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
@@ -12590,6 +14511,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCx
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
 }
@@ -12631,6 +14558,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
@@ -12655,6 +14588,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) To
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 }
 
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Custom metadata. Dialogflow doesn't impose any structure on this.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
@@ -12672,6 +14611,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
@@ -12737,6 +14682,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxP
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
 }
@@ -12778,6 +14729,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) T
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
@@ -12800,6 +14757,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -12832,6 +14795,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) 
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
@@ -12914,6 +14883,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTra
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
 }
@@ -12955,6 +14930,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxPag
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
@@ -12977,6 +14958,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageT
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -13004,6 +14991,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPa
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
@@ -13070,6 +15063,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs)
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
 }
@@ -13111,6 +15110,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrT
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
@@ -13135,6 +15140,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutpu
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
 }
 
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Transfer the call to a phone number in E.164 format.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) string {
@@ -13154,6 +15165,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOu
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
@@ -13215,6 +15232,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxPageTransiti
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTextOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTextOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxPageTransitionRouteTriggerFulfillmentMessageTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
 }
@@ -13256,6 +15279,12 @@ func (i *cxPageTransitionRouteTriggerFulfillmentMessageTextPtrType) ToCxPageTran
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
 }
 
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
@@ -13278,6 +15307,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToCxPageTransi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageText) *CxPageTransitionRouteTriggerFulfillmentMessageText {
 		return &v
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput)
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -13303,6 +15338,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxPageTra
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText] {
+	return pulumix.Output[*CxPageTransitionRouteTriggerFulfillmentMessageText]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageTextOutput {
@@ -13373,6 +15414,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxPageT
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray and CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput` via:
 //
@@ -13398,6 +15445,12 @@ func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxPage
 	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
+func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: i.ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
 
 func (CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
@@ -13410,6 +15463,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxPag
 
 func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToOutput(ctx context.Context) pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Display name of the parameter.
@@ -13434,6 +15493,12 @@ func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) To
 
 func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
 	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction] {
+	return pulumix.Output[[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
@@ -13497,6 +15562,12 @@ func (i CxVersionNluSettingArgs) ToCxVersionNluSettingOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionNluSettingOutput)
 }
 
+func (i CxVersionNluSettingArgs) ToOutput(ctx context.Context) pulumix.Output[CxVersionNluSetting] {
+	return pulumix.Output[CxVersionNluSetting]{
+		OutputState: i.ToCxVersionNluSettingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CxVersionNluSettingArrayInput is an input type that accepts CxVersionNluSettingArray and CxVersionNluSettingArrayOutput values.
 // You can construct a concrete instance of `CxVersionNluSettingArrayInput` via:
 //
@@ -13522,6 +15593,12 @@ func (i CxVersionNluSettingArray) ToCxVersionNluSettingArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CxVersionNluSettingArrayOutput)
 }
 
+func (i CxVersionNluSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]CxVersionNluSetting] {
+	return pulumix.Output[[]CxVersionNluSetting]{
+		OutputState: i.ToCxVersionNluSettingArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxVersionNluSettingOutput struct{ *pulumi.OutputState }
 
 func (CxVersionNluSettingOutput) ElementType() reflect.Type {
@@ -13534,6 +15611,12 @@ func (o CxVersionNluSettingOutput) ToCxVersionNluSettingOutput() CxVersionNluSet
 
 func (o CxVersionNluSettingOutput) ToCxVersionNluSettingOutputWithContext(ctx context.Context) CxVersionNluSettingOutput {
 	return o
+}
+
+func (o CxVersionNluSettingOutput) ToOutput(ctx context.Context) pulumix.Output[CxVersionNluSetting] {
+	return pulumix.Output[CxVersionNluSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
@@ -13570,6 +15653,12 @@ func (o CxVersionNluSettingArrayOutput) ToCxVersionNluSettingArrayOutput() CxVer
 
 func (o CxVersionNluSettingArrayOutput) ToCxVersionNluSettingArrayOutputWithContext(ctx context.Context) CxVersionNluSettingArrayOutput {
 	return o
+}
+
+func (o CxVersionNluSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxVersionNluSetting] {
+	return pulumix.Output[[]CxVersionNluSetting]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxVersionNluSettingArrayOutput) Index(i pulumi.IntInput) CxVersionNluSettingOutput {
@@ -13619,6 +15708,12 @@ func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServiceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServiceOutput)
 }
 
+func (i CxWebhookGenericWebServiceArgs) ToOutput(ctx context.Context) pulumix.Output[CxWebhookGenericWebService] {
+	return pulumix.Output[CxWebhookGenericWebService]{
+		OutputState: i.ToCxWebhookGenericWebServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxWebhookGenericWebServiceArgs) ToCxWebhookGenericWebServicePtrOutput() CxWebhookGenericWebServicePtrOutput {
 	return i.ToCxWebhookGenericWebServicePtrOutputWithContext(context.Background())
 }
@@ -13660,6 +15755,12 @@ func (i *cxWebhookGenericWebServicePtrType) ToCxWebhookGenericWebServicePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookGenericWebServicePtrOutput)
 }
 
+func (i *cxWebhookGenericWebServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookGenericWebService] {
+	return pulumix.Output[*CxWebhookGenericWebService]{
+		OutputState: i.ToCxWebhookGenericWebServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxWebhookGenericWebServiceOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookGenericWebServiceOutput) ElementType() reflect.Type {
@@ -13682,6 +15783,12 @@ func (o CxWebhookGenericWebServiceOutput) ToCxWebhookGenericWebServicePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookGenericWebService) *CxWebhookGenericWebService {
 		return &v
 	}).(CxWebhookGenericWebServicePtrOutput)
+}
+
+func (o CxWebhookGenericWebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[CxWebhookGenericWebService] {
+	return pulumix.Output[CxWebhookGenericWebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
@@ -13711,6 +15818,12 @@ func (o CxWebhookGenericWebServicePtrOutput) ToCxWebhookGenericWebServicePtrOutp
 
 func (o CxWebhookGenericWebServicePtrOutput) ToCxWebhookGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookGenericWebServicePtrOutput {
 	return o
+}
+
+func (o CxWebhookGenericWebServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookGenericWebService] {
+	return pulumix.Output[*CxWebhookGenericWebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxWebhookGenericWebServicePtrOutput) Elem() CxWebhookGenericWebServiceOutput {
@@ -13792,6 +15905,12 @@ func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryOutput)
 }
 
+func (i CxWebhookServiceDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectory] {
+	return pulumix.Output[CxWebhookServiceDirectory]{
+		OutputState: i.ToCxWebhookServiceDirectoryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxWebhookServiceDirectoryArgs) ToCxWebhookServiceDirectoryPtrOutput() CxWebhookServiceDirectoryPtrOutput {
 	return i.ToCxWebhookServiceDirectoryPtrOutputWithContext(context.Background())
 }
@@ -13833,6 +15952,12 @@ func (i *cxWebhookServiceDirectoryPtrType) ToCxWebhookServiceDirectoryPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryPtrOutput)
 }
 
+func (i *cxWebhookServiceDirectoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectory] {
+	return pulumix.Output[*CxWebhookServiceDirectory]{
+		OutputState: i.ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxWebhookServiceDirectoryOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookServiceDirectoryOutput) ElementType() reflect.Type {
@@ -13855,6 +15980,12 @@ func (o CxWebhookServiceDirectoryOutput) ToCxWebhookServiceDirectoryPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectory) *CxWebhookServiceDirectory {
 		return &v
 	}).(CxWebhookServiceDirectoryPtrOutput)
+}
+
+func (o CxWebhookServiceDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectory] {
+	return pulumix.Output[CxWebhookServiceDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of Service Directory service.
@@ -13882,6 +16013,12 @@ func (o CxWebhookServiceDirectoryPtrOutput) ToCxWebhookServiceDirectoryPtrOutput
 
 func (o CxWebhookServiceDirectoryPtrOutput) ToCxWebhookServiceDirectoryPtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryPtrOutput {
 	return o
+}
+
+func (o CxWebhookServiceDirectoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectory] {
+	return pulumix.Output[*CxWebhookServiceDirectory]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxWebhookServiceDirectoryPtrOutput) Elem() CxWebhookServiceDirectoryOutput {
@@ -13956,6 +16093,12 @@ func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirect
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServiceOutput)
 }
 
+func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectoryGenericWebService] {
+	return pulumix.Output[CxWebhookServiceDirectoryGenericWebService]{
+		OutputState: i.ToCxWebhookServiceDirectoryGenericWebServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i CxWebhookServiceDirectoryGenericWebServiceArgs) ToCxWebhookServiceDirectoryGenericWebServicePtrOutput() CxWebhookServiceDirectoryGenericWebServicePtrOutput {
 	return i.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(context.Background())
 }
@@ -13997,6 +16140,12 @@ func (i *cxWebhookServiceDirectoryGenericWebServicePtrType) ToCxWebhookServiceDi
 	return pulumi.ToOutputWithContext(ctx, i).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
 }
 
+func (i *cxWebhookServiceDirectoryGenericWebServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectoryGenericWebService] {
+	return pulumix.Output[*CxWebhookServiceDirectoryGenericWebService]{
+		OutputState: i.ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CxWebhookServiceDirectoryGenericWebServiceOutput struct{ *pulumi.OutputState }
 
 func (CxWebhookServiceDirectoryGenericWebServiceOutput) ElementType() reflect.Type {
@@ -14019,6 +16168,12 @@ func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToCxWebhookServiceDire
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxWebhookServiceDirectoryGenericWebService) *CxWebhookServiceDirectoryGenericWebService {
 		return &v
 	}).(CxWebhookServiceDirectoryGenericWebServicePtrOutput)
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[CxWebhookServiceDirectoryGenericWebService] {
+	return pulumix.Output[CxWebhookServiceDirectoryGenericWebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification.
@@ -14048,6 +16203,12 @@ func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToCxWebhookServiceD
 
 func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToCxWebhookServiceDirectoryGenericWebServicePtrOutputWithContext(ctx context.Context) CxWebhookServiceDirectoryGenericWebServicePtrOutput {
 	return o
+}
+
+func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxWebhookServiceDirectoryGenericWebService] {
+	return pulumix.Output[*CxWebhookServiceDirectoryGenericWebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CxWebhookServiceDirectoryGenericWebServicePtrOutput) Elem() CxWebhookServiceDirectoryGenericWebServiceOutput {
@@ -14143,6 +16304,12 @@ func (i EntityTypeEntityArgs) ToEntityTypeEntityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeEntityOutput)
 }
 
+func (i EntityTypeEntityArgs) ToOutput(ctx context.Context) pulumix.Output[EntityTypeEntity] {
+	return pulumix.Output[EntityTypeEntity]{
+		OutputState: i.ToEntityTypeEntityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EntityTypeEntityArrayInput is an input type that accepts EntityTypeEntityArray and EntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `EntityTypeEntityArrayInput` via:
 //
@@ -14168,6 +16335,12 @@ func (i EntityTypeEntityArray) ToEntityTypeEntityArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeEntityArrayOutput)
 }
 
+func (i EntityTypeEntityArray) ToOutput(ctx context.Context) pulumix.Output[[]EntityTypeEntity] {
+	return pulumix.Output[[]EntityTypeEntity]{
+		OutputState: i.ToEntityTypeEntityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EntityTypeEntityOutput struct{ *pulumi.OutputState }
 
 func (EntityTypeEntityOutput) ElementType() reflect.Type {
@@ -14180,6 +16353,12 @@ func (o EntityTypeEntityOutput) ToEntityTypeEntityOutput() EntityTypeEntityOutpu
 
 func (o EntityTypeEntityOutput) ToEntityTypeEntityOutputWithContext(ctx context.Context) EntityTypeEntityOutput {
 	return o
+}
+
+func (o EntityTypeEntityOutput) ToOutput(ctx context.Context) pulumix.Output[EntityTypeEntity] {
+	return pulumix.Output[EntityTypeEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
@@ -14212,6 +16391,12 @@ func (o EntityTypeEntityArrayOutput) ToEntityTypeEntityArrayOutput() EntityTypeE
 
 func (o EntityTypeEntityArrayOutput) ToEntityTypeEntityArrayOutputWithContext(ctx context.Context) EntityTypeEntityArrayOutput {
 	return o
+}
+
+func (o EntityTypeEntityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityTypeEntity] {
+	return pulumix.Output[[]EntityTypeEntity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EntityTypeEntityArrayOutput) Index(i pulumi.IntInput) EntityTypeEntityOutput {
@@ -14257,6 +16442,12 @@ func (i FulfillmentFeatureArgs) ToFulfillmentFeatureOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentFeatureOutput)
 }
 
+func (i FulfillmentFeatureArgs) ToOutput(ctx context.Context) pulumix.Output[FulfillmentFeature] {
+	return pulumix.Output[FulfillmentFeature]{
+		OutputState: i.ToFulfillmentFeatureOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FulfillmentFeatureArrayInput is an input type that accepts FulfillmentFeatureArray and FulfillmentFeatureArrayOutput values.
 // You can construct a concrete instance of `FulfillmentFeatureArrayInput` via:
 //
@@ -14282,6 +16473,12 @@ func (i FulfillmentFeatureArray) ToFulfillmentFeatureArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentFeatureArrayOutput)
 }
 
+func (i FulfillmentFeatureArray) ToOutput(ctx context.Context) pulumix.Output[[]FulfillmentFeature] {
+	return pulumix.Output[[]FulfillmentFeature]{
+		OutputState: i.ToFulfillmentFeatureArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FulfillmentFeatureOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentFeatureOutput) ElementType() reflect.Type {
@@ -14294,6 +16491,12 @@ func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutput() FulfillmentFeatur
 
 func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutputWithContext(ctx context.Context) FulfillmentFeatureOutput {
 	return o
+}
+
+func (o FulfillmentFeatureOutput) ToOutput(ctx context.Context) pulumix.Output[FulfillmentFeature] {
+	return pulumix.Output[FulfillmentFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The type of the feature that enabled for fulfillment.
@@ -14315,6 +16518,12 @@ func (o FulfillmentFeatureArrayOutput) ToFulfillmentFeatureArrayOutput() Fulfill
 
 func (o FulfillmentFeatureArrayOutput) ToFulfillmentFeatureArrayOutputWithContext(ctx context.Context) FulfillmentFeatureArrayOutput {
 	return o
+}
+
+func (o FulfillmentFeatureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FulfillmentFeature] {
+	return pulumix.Output[[]FulfillmentFeature]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FulfillmentFeatureArrayOutput) Index(i pulumi.IntInput) FulfillmentFeatureOutput {
@@ -14368,6 +16577,12 @@ func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServiceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServiceOutput)
 }
 
+func (i FulfillmentGenericWebServiceArgs) ToOutput(ctx context.Context) pulumix.Output[FulfillmentGenericWebService] {
+	return pulumix.Output[FulfillmentGenericWebService]{
+		OutputState: i.ToFulfillmentGenericWebServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FulfillmentGenericWebServiceArgs) ToFulfillmentGenericWebServicePtrOutput() FulfillmentGenericWebServicePtrOutput {
 	return i.ToFulfillmentGenericWebServicePtrOutputWithContext(context.Background())
 }
@@ -14409,6 +16624,12 @@ func (i *fulfillmentGenericWebServicePtrType) ToFulfillmentGenericWebServicePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FulfillmentGenericWebServicePtrOutput)
 }
 
+func (i *fulfillmentGenericWebServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*FulfillmentGenericWebService] {
+	return pulumix.Output[*FulfillmentGenericWebService]{
+		OutputState: i.ToFulfillmentGenericWebServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FulfillmentGenericWebServiceOutput struct{ *pulumi.OutputState }
 
 func (FulfillmentGenericWebServiceOutput) ElementType() reflect.Type {
@@ -14431,6 +16652,12 @@ func (o FulfillmentGenericWebServiceOutput) ToFulfillmentGenericWebServicePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FulfillmentGenericWebService) *FulfillmentGenericWebService {
 		return &v
 	}).(FulfillmentGenericWebServicePtrOutput)
+}
+
+func (o FulfillmentGenericWebServiceOutput) ToOutput(ctx context.Context) pulumix.Output[FulfillmentGenericWebService] {
+	return pulumix.Output[FulfillmentGenericWebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The password for HTTP Basic authentication.
@@ -14465,6 +16692,12 @@ func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtr
 
 func (o FulfillmentGenericWebServicePtrOutput) ToFulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) FulfillmentGenericWebServicePtrOutput {
 	return o
+}
+
+func (o FulfillmentGenericWebServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FulfillmentGenericWebService] {
+	return pulumix.Output[*FulfillmentGenericWebService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FulfillmentGenericWebServicePtrOutput) Elem() FulfillmentGenericWebServiceOutput {
@@ -14558,6 +16791,12 @@ func (i IntentFollowupIntentInfoArgs) ToIntentFollowupIntentInfoOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowupIntentInfoOutput)
 }
 
+func (i IntentFollowupIntentInfoArgs) ToOutput(ctx context.Context) pulumix.Output[IntentFollowupIntentInfo] {
+	return pulumix.Output[IntentFollowupIntentInfo]{
+		OutputState: i.ToIntentFollowupIntentInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntentFollowupIntentInfoArrayInput is an input type that accepts IntentFollowupIntentInfoArray and IntentFollowupIntentInfoArrayOutput values.
 // You can construct a concrete instance of `IntentFollowupIntentInfoArrayInput` via:
 //
@@ -14583,6 +16822,12 @@ func (i IntentFollowupIntentInfoArray) ToIntentFollowupIntentInfoArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(IntentFollowupIntentInfoArrayOutput)
 }
 
+func (i IntentFollowupIntentInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]IntentFollowupIntentInfo] {
+	return pulumix.Output[[]IntentFollowupIntentInfo]{
+		OutputState: i.ToIntentFollowupIntentInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntentFollowupIntentInfoOutput struct{ *pulumi.OutputState }
 
 func (IntentFollowupIntentInfoOutput) ElementType() reflect.Type {
@@ -14595,6 +16840,12 @@ func (o IntentFollowupIntentInfoOutput) ToIntentFollowupIntentInfoOutput() Inten
 
 func (o IntentFollowupIntentInfoOutput) ToIntentFollowupIntentInfoOutputWithContext(ctx context.Context) IntentFollowupIntentInfoOutput {
 	return o
+}
+
+func (o IntentFollowupIntentInfoOutput) ToOutput(ctx context.Context) pulumix.Output[IntentFollowupIntentInfo] {
+	return pulumix.Output[IntentFollowupIntentInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique identifier of the followup intent.
@@ -14621,6 +16872,12 @@ func (o IntentFollowupIntentInfoArrayOutput) ToIntentFollowupIntentInfoArrayOutp
 
 func (o IntentFollowupIntentInfoArrayOutput) ToIntentFollowupIntentInfoArrayOutputWithContext(ctx context.Context) IntentFollowupIntentInfoArrayOutput {
 	return o
+}
+
+func (o IntentFollowupIntentInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntentFollowupIntentInfo] {
+	return pulumix.Output[[]IntentFollowupIntentInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntentFollowupIntentInfoArrayOutput) Index(i pulumi.IntInput) IntentFollowupIntentInfoOutput {

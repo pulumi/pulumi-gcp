@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Cloud Asset Inventory feed used to to listen to asset updates.
@@ -289,6 +290,12 @@ func (i *OrganizationFeed) ToOrganizationFeedOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedOutput)
 }
 
+func (i *OrganizationFeed) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeed] {
+	return pulumix.Output[*OrganizationFeed]{
+		OutputState: i.ToOrganizationFeedOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationFeedArrayInput is an input type that accepts OrganizationFeedArray and OrganizationFeedArrayOutput values.
 // You can construct a concrete instance of `OrganizationFeedArrayInput` via:
 //
@@ -312,6 +319,12 @@ func (i OrganizationFeedArray) ToOrganizationFeedArrayOutput() OrganizationFeedA
 
 func (i OrganizationFeedArray) ToOrganizationFeedArrayOutputWithContext(ctx context.Context) OrganizationFeedArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedArrayOutput)
+}
+
+func (i OrganizationFeedArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationFeed] {
+	return pulumix.Output[[]*OrganizationFeed]{
+		OutputState: i.ToOrganizationFeedArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrganizationFeedMapInput is an input type that accepts OrganizationFeedMap and OrganizationFeedMapOutput values.
@@ -339,6 +352,12 @@ func (i OrganizationFeedMap) ToOrganizationFeedMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedMapOutput)
 }
 
+func (i OrganizationFeedMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationFeed] {
+	return pulumix.Output[map[string]*OrganizationFeed]{
+		OutputState: i.ToOrganizationFeedMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationFeedOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedOutput) ElementType() reflect.Type {
@@ -351,6 +370,12 @@ func (o OrganizationFeedOutput) ToOrganizationFeedOutput() OrganizationFeedOutpu
 
 func (o OrganizationFeedOutput) ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput {
 	return o
+}
+
+func (o OrganizationFeedOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeed] {
+	return pulumix.Output[*OrganizationFeed]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of the full names of the assets to receive updates. You must specify either or both of
@@ -428,6 +453,12 @@ func (o OrganizationFeedArrayOutput) ToOrganizationFeedArrayOutputWithContext(ct
 	return o
 }
 
+func (o OrganizationFeedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationFeed] {
+	return pulumix.Output[[]*OrganizationFeed]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationFeedArrayOutput) Index(i pulumi.IntInput) OrganizationFeedOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationFeed {
 		return vs[0].([]*OrganizationFeed)[vs[1].(int)]
@@ -446,6 +477,12 @@ func (o OrganizationFeedMapOutput) ToOrganizationFeedMapOutput() OrganizationFee
 
 func (o OrganizationFeedMapOutput) ToOrganizationFeedMapOutputWithContext(ctx context.Context) OrganizationFeedMapOutput {
 	return o
+}
+
+func (o OrganizationFeedMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationFeed] {
+	return pulumix.Output[map[string]*OrganizationFeed]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationFeedMapOutput) MapIndex(k pulumi.StringInput) OrganizationFeedOutput {

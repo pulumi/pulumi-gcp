@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // There is no persistent data associated with this resource.
@@ -192,6 +193,12 @@ func (i *ProjectDefaultConfig) ToProjectDefaultConfigOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigOutput)
 }
 
+func (i *ProjectDefaultConfig) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfig] {
+	return pulumix.Output[*ProjectDefaultConfig]{
+		OutputState: i.ToProjectDefaultConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectDefaultConfigArrayInput is an input type that accepts ProjectDefaultConfigArray and ProjectDefaultConfigArrayOutput values.
 // You can construct a concrete instance of `ProjectDefaultConfigArrayInput` via:
 //
@@ -215,6 +222,12 @@ func (i ProjectDefaultConfigArray) ToProjectDefaultConfigArrayOutput() ProjectDe
 
 func (i ProjectDefaultConfigArray) ToProjectDefaultConfigArrayOutputWithContext(ctx context.Context) ProjectDefaultConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigArrayOutput)
+}
+
+func (i ProjectDefaultConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectDefaultConfig] {
+	return pulumix.Output[[]*ProjectDefaultConfig]{
+		OutputState: i.ToProjectDefaultConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectDefaultConfigMapInput is an input type that accepts ProjectDefaultConfigMap and ProjectDefaultConfigMapOutput values.
@@ -242,6 +255,12 @@ func (i ProjectDefaultConfigMap) ToProjectDefaultConfigMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultConfigMapOutput)
 }
 
+func (i ProjectDefaultConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectDefaultConfig] {
+	return pulumix.Output[map[string]*ProjectDefaultConfig]{
+		OutputState: i.ToProjectDefaultConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectDefaultConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectDefaultConfigOutput) ElementType() reflect.Type {
@@ -254,6 +273,12 @@ func (o ProjectDefaultConfigOutput) ToProjectDefaultConfigOutput() ProjectDefaul
 
 func (o ProjectDefaultConfigOutput) ToProjectDefaultConfigOutputWithContext(ctx context.Context) ProjectDefaultConfigOutput {
 	return o
+}
+
+func (o ProjectDefaultConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectDefaultConfig] {
+	return pulumix.Output[*ProjectDefaultConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the Config resource. Example: "projects/my-awesome-project/config"
@@ -287,6 +312,12 @@ func (o ProjectDefaultConfigArrayOutput) ToProjectDefaultConfigArrayOutputWithCo
 	return o
 }
 
+func (o ProjectDefaultConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectDefaultConfig] {
+	return pulumix.Output[[]*ProjectDefaultConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectDefaultConfigArrayOutput) Index(i pulumi.IntInput) ProjectDefaultConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectDefaultConfig {
 		return vs[0].([]*ProjectDefaultConfig)[vs[1].(int)]
@@ -305,6 +336,12 @@ func (o ProjectDefaultConfigMapOutput) ToProjectDefaultConfigMapOutput() Project
 
 func (o ProjectDefaultConfigMapOutput) ToProjectDefaultConfigMapOutputWithContext(ctx context.Context) ProjectDefaultConfigMapOutput {
 	return o
+}
+
+func (o ProjectDefaultConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectDefaultConfig] {
+	return pulumix.Output[map[string]*ProjectDefaultConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectDefaultConfigMapOutput) MapIndex(k pulumi.StringInput) ProjectDefaultConfigOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Run (v2 API) Service. Each of these resources serves a different use case:
@@ -368,6 +369,12 @@ func (i *ServiceIamBinding) ToServiceIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingOutput)
 }
 
+func (i *ServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBinding] {
+	return pulumix.Output[*ServiceIamBinding]{
+		OutputState: i.ToServiceIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceIamBindingArrayInput is an input type that accepts ServiceIamBindingArray and ServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `ServiceIamBindingArrayInput` via:
 //
@@ -391,6 +398,12 @@ func (i ServiceIamBindingArray) ToServiceIamBindingArrayOutput() ServiceIamBindi
 
 func (i ServiceIamBindingArray) ToServiceIamBindingArrayOutputWithContext(ctx context.Context) ServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingArrayOutput)
+}
+
+func (i ServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIamBinding] {
+	return pulumix.Output[[]*ServiceIamBinding]{
+		OutputState: i.ToServiceIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServiceIamBindingMapInput is an input type that accepts ServiceIamBindingMap and ServiceIamBindingMapOutput values.
@@ -418,6 +431,12 @@ func (i ServiceIamBindingMap) ToServiceIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingMapOutput)
 }
 
+func (i ServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIamBinding] {
+	return pulumix.Output[map[string]*ServiceIamBinding]{
+		OutputState: i.ToServiceIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingOutput) ElementType() reflect.Type {
@@ -430,6 +449,12 @@ func (o ServiceIamBindingOutput) ToServiceIamBindingOutput() ServiceIamBindingOu
 
 func (o ServiceIamBindingOutput) ToServiceIamBindingOutputWithContext(ctx context.Context) ServiceIamBindingOutput {
 	return o
+}
+
+func (o ServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBinding] {
+	return pulumix.Output[*ServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingOutput) Condition() ServiceIamBindingConditionPtrOutput {
@@ -494,6 +519,12 @@ func (o ServiceIamBindingArrayOutput) ToServiceIamBindingArrayOutputWithContext(
 	return o
 }
 
+func (o ServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceIamBinding] {
+	return pulumix.Output[[]*ServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceIamBindingArrayOutput) Index(i pulumi.IntInput) ServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceIamBinding {
 		return vs[0].([]*ServiceIamBinding)[vs[1].(int)]
@@ -512,6 +543,12 @@ func (o ServiceIamBindingMapOutput) ToServiceIamBindingMapOutput() ServiceIamBin
 
 func (o ServiceIamBindingMapOutput) ToServiceIamBindingMapOutputWithContext(ctx context.Context) ServiceIamBindingMapOutput {
 	return o
+}
+
+func (o ServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceIamBinding] {
+	return pulumix.Output[map[string]*ServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) ServiceIamBindingOutput {

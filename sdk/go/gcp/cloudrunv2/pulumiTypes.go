@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i JobBinaryAuthorizationArgs) ToJobBinaryAuthorizationOutput() JobBinaryAu
 
 func (i JobBinaryAuthorizationArgs) ToJobBinaryAuthorizationOutputWithContext(ctx context.Context) JobBinaryAuthorizationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobBinaryAuthorizationOutput)
+}
+
+func (i JobBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[JobBinaryAuthorization] {
+	return pulumix.Output[JobBinaryAuthorization]{
+		OutputState: i.ToJobBinaryAuthorizationOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i JobBinaryAuthorizationArgs) ToJobBinaryAuthorizationPtrOutput() JobBinaryAuthorizationPtrOutput {
@@ -91,6 +98,12 @@ func (i *jobBinaryAuthorizationPtrType) ToJobBinaryAuthorizationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobBinaryAuthorizationPtrOutput)
 }
 
+func (i *jobBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobBinaryAuthorization] {
+	return pulumix.Output[*JobBinaryAuthorization]{
+		OutputState: i.ToJobBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobBinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (JobBinaryAuthorizationOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o JobBinaryAuthorizationOutput) ToJobBinaryAuthorizationPtrOutputWithConte
 	}).(JobBinaryAuthorizationPtrOutput)
 }
 
+func (o JobBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[JobBinaryAuthorization] {
+	return pulumix.Output[JobBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o JobBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobBinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
@@ -137,6 +156,12 @@ func (o JobBinaryAuthorizationPtrOutput) ToJobBinaryAuthorizationPtrOutput() Job
 
 func (o JobBinaryAuthorizationPtrOutput) ToJobBinaryAuthorizationPtrOutputWithContext(ctx context.Context) JobBinaryAuthorizationPtrOutput {
 	return o
+}
+
+func (o JobBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobBinaryAuthorization] {
+	return pulumix.Output[*JobBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobBinaryAuthorizationPtrOutput) Elem() JobBinaryAuthorizationOutput {
@@ -248,6 +273,12 @@ func (i JobConditionArgs) ToJobConditionOutputWithContext(ctx context.Context) J
 	return pulumi.ToOutputWithContext(ctx, i).(JobConditionOutput)
 }
 
+func (i JobConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobCondition] {
+	return pulumix.Output[JobCondition]{
+		OutputState: i.ToJobConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobConditionArrayInput is an input type that accepts JobConditionArray and JobConditionArrayOutput values.
 // You can construct a concrete instance of `JobConditionArrayInput` via:
 //
@@ -273,6 +304,12 @@ func (i JobConditionArray) ToJobConditionArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobConditionArrayOutput)
 }
 
+func (i JobConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]JobCondition] {
+	return pulumix.Output[[]JobCondition]{
+		OutputState: i.ToJobConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobConditionOutput struct{ *pulumi.OutputState }
 
 func (JobConditionOutput) ElementType() reflect.Type {
@@ -285,6 +322,12 @@ func (o JobConditionOutput) ToJobConditionOutput() JobConditionOutput {
 
 func (o JobConditionOutput) ToJobConditionOutputWithContext(ctx context.Context) JobConditionOutput {
 	return o
+}
+
+func (o JobConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobCondition] {
+	return pulumix.Output[JobCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -350,6 +393,12 @@ func (o JobConditionArrayOutput) ToJobConditionArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o JobConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobCondition] {
+	return pulumix.Output[[]JobCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobConditionArrayOutput) Index(i pulumi.IntInput) JobConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobCondition {
 		return vs[0].([]JobCondition)[vs[1].(int)]
@@ -389,6 +438,12 @@ func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutput() JobIamBindi
 
 func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutputWithContext(ctx context.Context) JobIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionOutput)
+}
+
+func (i JobIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobIamBindingCondition] {
+	return pulumix.Output[JobIamBindingCondition]{
+		OutputState: i.ToJobIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i JobIamBindingConditionArgs) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
@@ -432,6 +487,12 @@ func (i *jobIamBindingConditionPtrType) ToJobIamBindingConditionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionPtrOutput)
 }
 
+func (i *jobIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobIamBindingCondition] {
+	return pulumix.Output[*JobIamBindingCondition]{
+		OutputState: i.ToJobIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (JobIamBindingConditionOutput) ElementType() reflect.Type {
@@ -454,6 +515,12 @@ func (o JobIamBindingConditionOutput) ToJobIamBindingConditionPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamBindingCondition) *JobIamBindingCondition {
 		return &v
 	}).(JobIamBindingConditionPtrOutput)
+}
+
+func (o JobIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobIamBindingCondition] {
+	return pulumix.Output[JobIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -480,6 +547,12 @@ func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutput() Job
 
 func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o JobIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamBindingCondition] {
+	return pulumix.Output[*JobIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIamBindingConditionPtrOutput) Elem() JobIamBindingConditionOutput {
@@ -554,6 +627,12 @@ func (i JobIamMemberConditionArgs) ToJobIamMemberConditionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionOutput)
 }
 
+func (i JobIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobIamMemberCondition] {
+	return pulumix.Output[JobIamMemberCondition]{
+		OutputState: i.ToJobIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobIamMemberConditionArgs) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
 	return i.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -595,6 +674,12 @@ func (i *jobIamMemberConditionPtrType) ToJobIamMemberConditionPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionPtrOutput)
 }
 
+func (i *jobIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobIamMemberCondition] {
+	return pulumix.Output[*JobIamMemberCondition]{
+		OutputState: i.ToJobIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (JobIamMemberConditionOutput) ElementType() reflect.Type {
@@ -617,6 +702,12 @@ func (o JobIamMemberConditionOutput) ToJobIamMemberConditionPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamMemberCondition) *JobIamMemberCondition {
 		return &v
 	}).(JobIamMemberConditionPtrOutput)
+}
+
+func (o JobIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobIamMemberCondition] {
+	return pulumix.Output[JobIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -643,6 +734,12 @@ func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutput() JobIa
 
 func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o JobIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobIamMemberCondition] {
+	return pulumix.Output[*JobIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobIamMemberConditionPtrOutput) Elem() JobIamMemberConditionOutput {
@@ -731,6 +828,12 @@ func (i JobLatestCreatedExecutionArgs) ToJobLatestCreatedExecutionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobLatestCreatedExecutionOutput)
 }
 
+func (i JobLatestCreatedExecutionArgs) ToOutput(ctx context.Context) pulumix.Output[JobLatestCreatedExecution] {
+	return pulumix.Output[JobLatestCreatedExecution]{
+		OutputState: i.ToJobLatestCreatedExecutionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobLatestCreatedExecutionArrayInput is an input type that accepts JobLatestCreatedExecutionArray and JobLatestCreatedExecutionArrayOutput values.
 // You can construct a concrete instance of `JobLatestCreatedExecutionArrayInput` via:
 //
@@ -756,6 +859,12 @@ func (i JobLatestCreatedExecutionArray) ToJobLatestCreatedExecutionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobLatestCreatedExecutionArrayOutput)
 }
 
+func (i JobLatestCreatedExecutionArray) ToOutput(ctx context.Context) pulumix.Output[[]JobLatestCreatedExecution] {
+	return pulumix.Output[[]JobLatestCreatedExecution]{
+		OutputState: i.ToJobLatestCreatedExecutionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobLatestCreatedExecutionOutput struct{ *pulumi.OutputState }
 
 func (JobLatestCreatedExecutionOutput) ElementType() reflect.Type {
@@ -768,6 +877,12 @@ func (o JobLatestCreatedExecutionOutput) ToJobLatestCreatedExecutionOutput() Job
 
 func (o JobLatestCreatedExecutionOutput) ToJobLatestCreatedExecutionOutputWithContext(ctx context.Context) JobLatestCreatedExecutionOutput {
 	return o
+}
+
+func (o JobLatestCreatedExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[JobLatestCreatedExecution] {
+	return pulumix.Output[JobLatestCreatedExecution]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -801,6 +916,12 @@ func (o JobLatestCreatedExecutionArrayOutput) ToJobLatestCreatedExecutionArrayOu
 
 func (o JobLatestCreatedExecutionArrayOutput) ToJobLatestCreatedExecutionArrayOutputWithContext(ctx context.Context) JobLatestCreatedExecutionArrayOutput {
 	return o
+}
+
+func (o JobLatestCreatedExecutionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobLatestCreatedExecution] {
+	return pulumix.Output[[]JobLatestCreatedExecution]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobLatestCreatedExecutionArrayOutput) Index(i pulumi.IntInput) JobLatestCreatedExecutionOutput {
@@ -874,6 +995,12 @@ func (i JobTemplateArgs) ToJobTemplateOutputWithContext(ctx context.Context) Job
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateOutput)
 }
 
+func (i JobTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplate] {
+	return pulumix.Output[JobTemplate]{
+		OutputState: i.ToJobTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateArgs) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
 	return i.ToJobTemplatePtrOutputWithContext(context.Background())
 }
@@ -915,6 +1042,12 @@ func (i *jobTemplatePtrType) ToJobTemplatePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplatePtrOutput)
 }
 
+func (i *jobTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplate] {
+	return pulumix.Output[*JobTemplate]{
+		OutputState: i.ToJobTemplatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateOutput) ElementType() reflect.Type {
@@ -937,6 +1070,12 @@ func (o JobTemplateOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplate) *JobTemplate {
 		return &v
 	}).(JobTemplatePtrOutput)
+}
+
+func (o JobTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplate] {
+	return pulumix.Output[JobTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -984,6 +1123,12 @@ func (o JobTemplatePtrOutput) ToJobTemplatePtrOutput() JobTemplatePtrOutput {
 
 func (o JobTemplatePtrOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context) JobTemplatePtrOutput {
 	return o
+}
+
+func (o JobTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplate] {
+	return pulumix.Output[*JobTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplatePtrOutput) Elem() JobTemplateOutput {
@@ -1125,6 +1270,12 @@ func (i JobTemplateTemplateArgs) ToJobTemplateTemplateOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateOutput)
 }
 
+func (i JobTemplateTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplate] {
+	return pulumix.Output[JobTemplateTemplate]{
+		OutputState: i.ToJobTemplateTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateArgs) ToJobTemplateTemplatePtrOutput() JobTemplateTemplatePtrOutput {
 	return i.ToJobTemplateTemplatePtrOutputWithContext(context.Background())
 }
@@ -1166,6 +1317,12 @@ func (i *jobTemplateTemplatePtrType) ToJobTemplateTemplatePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplatePtrOutput)
 }
 
+func (i *jobTemplateTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplate] {
+	return pulumix.Output[*JobTemplateTemplate]{
+		OutputState: i.ToJobTemplateTemplatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateOutput) ElementType() reflect.Type {
@@ -1188,6 +1345,12 @@ func (o JobTemplateTemplateOutput) ToJobTemplateTemplatePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplate) *JobTemplateTemplate {
 		return &v
 	}).(JobTemplateTemplatePtrOutput)
+}
+
+func (o JobTemplateTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplate] {
+	return pulumix.Output[JobTemplateTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Holds the single container that defines the unit of execution for this task.
@@ -1247,6 +1410,12 @@ func (o JobTemplateTemplatePtrOutput) ToJobTemplateTemplatePtrOutput() JobTempla
 
 func (o JobTemplateTemplatePtrOutput) ToJobTemplateTemplatePtrOutputWithContext(ctx context.Context) JobTemplateTemplatePtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplate] {
+	return pulumix.Output[*JobTemplateTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplatePtrOutput) Elem() JobTemplateTemplateOutput {
@@ -1455,6 +1624,12 @@ func (i JobTemplateTemplateContainerArgs) ToJobTemplateTemplateContainerOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerOutput)
 }
 
+func (i JobTemplateTemplateContainerArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainer] {
+	return pulumix.Output[JobTemplateTemplateContainer]{
+		OutputState: i.ToJobTemplateTemplateContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateContainerArrayInput is an input type that accepts JobTemplateTemplateContainerArray and JobTemplateTemplateContainerArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerArrayInput` via:
 //
@@ -1480,6 +1655,12 @@ func (i JobTemplateTemplateContainerArray) ToJobTemplateTemplateContainerArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerArrayOutput)
 }
 
+func (i JobTemplateTemplateContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainer] {
+	return pulumix.Output[[]JobTemplateTemplateContainer]{
+		OutputState: i.ToJobTemplateTemplateContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerOutput) ElementType() reflect.Type {
@@ -1492,6 +1673,12 @@ func (o JobTemplateTemplateContainerOutput) ToJobTemplateTemplateContainerOutput
 
 func (o JobTemplateTemplateContainerOutput) ToJobTemplateTemplateContainerOutputWithContext(ctx context.Context) JobTemplateTemplateContainerOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainer] {
+	return pulumix.Output[JobTemplateTemplateContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -1584,6 +1771,12 @@ func (o JobTemplateTemplateContainerArrayOutput) ToJobTemplateTemplateContainerA
 	return o
 }
 
+func (o JobTemplateTemplateContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainer] {
+	return pulumix.Output[[]JobTemplateTemplateContainer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateContainer {
 		return vs[0].([]JobTemplateTemplateContainer)[vs[1].(int)]
@@ -1633,6 +1826,12 @@ func (i JobTemplateTemplateContainerEnvArgs) ToJobTemplateTemplateContainerEnvOu
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvOutput)
 }
 
+func (i JobTemplateTemplateContainerEnvArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnv] {
+	return pulumix.Output[JobTemplateTemplateContainerEnv]{
+		OutputState: i.ToJobTemplateTemplateContainerEnvOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateContainerEnvArrayInput is an input type that accepts JobTemplateTemplateContainerEnvArray and JobTemplateTemplateContainerEnvArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerEnvArrayInput` via:
 //
@@ -1658,6 +1857,12 @@ func (i JobTemplateTemplateContainerEnvArray) ToJobTemplateTemplateContainerEnvA
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvArrayOutput)
 }
 
+func (i JobTemplateTemplateContainerEnvArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerEnv] {
+	return pulumix.Output[[]JobTemplateTemplateContainerEnv]{
+		OutputState: i.ToJobTemplateTemplateContainerEnvArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerEnvOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerEnvOutput) ElementType() reflect.Type {
@@ -1670,6 +1875,12 @@ func (o JobTemplateTemplateContainerEnvOutput) ToJobTemplateTemplateContainerEnv
 
 func (o JobTemplateTemplateContainerEnvOutput) ToJobTemplateTemplateContainerEnvOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerEnvOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnv] {
+	return pulumix.Output[JobTemplateTemplateContainerEnv]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -1702,6 +1913,12 @@ func (o JobTemplateTemplateContainerEnvArrayOutput) ToJobTemplateTemplateContain
 
 func (o JobTemplateTemplateContainerEnvArrayOutput) ToJobTemplateTemplateContainerEnvArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvArrayOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerEnvArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerEnv] {
+	return pulumix.Output[[]JobTemplateTemplateContainerEnv]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerEnvOutput {
@@ -1745,6 +1962,12 @@ func (i JobTemplateTemplateContainerEnvValueSourceArgs) ToJobTemplateTemplateCon
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourceOutput)
 }
 
+func (i JobTemplateTemplateContainerEnvValueSourceArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSource] {
+	return pulumix.Output[JobTemplateTemplateContainerEnvValueSource]{
+		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateContainerEnvValueSourceArgs) ToJobTemplateTemplateContainerEnvValueSourcePtrOutput() JobTemplateTemplateContainerEnvValueSourcePtrOutput {
 	return i.ToJobTemplateTemplateContainerEnvValueSourcePtrOutputWithContext(context.Background())
 }
@@ -1786,6 +2009,12 @@ func (i *jobTemplateTemplateContainerEnvValueSourcePtrType) ToJobTemplateTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourcePtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerEnvValueSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSource] {
+	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSource]{
+		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerEnvValueSourceOutput) ElementType() reflect.Type {
@@ -1810,6 +2039,12 @@ func (o JobTemplateTemplateContainerEnvValueSourceOutput) ToJobTemplateTemplateC
 	}).(JobTemplateTemplateContainerEnvValueSourcePtrOutput)
 }
 
+func (o JobTemplateTemplateContainerEnvValueSourceOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSource] {
+	return pulumix.Output[JobTemplateTemplateContainerEnvValueSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Selects a secret and a specific version from Cloud Secret Manager.
 // Structure is documented below.
 func (o JobTemplateTemplateContainerEnvValueSourceOutput) SecretKeyRef() JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
@@ -1830,6 +2065,12 @@ func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) ToJobTemplateTempla
 
 func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) ToJobTemplateTemplateContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvValueSourcePtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSource] {
+	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) Elem() JobTemplateTemplateContainerEnvValueSourceOutput {
@@ -1890,6 +2131,12 @@ func (i JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToJobTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
+func (i JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs) ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput() JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return i.ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
 }
@@ -1931,6 +2178,12 @@ func (i *jobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToJobTem
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: i.ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
@@ -1955,6 +2208,12 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToJobTempl
 	}).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
+func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
@@ -1977,6 +2236,12 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToJobTe
 
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToJobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[*JobTemplateTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput {
@@ -2066,6 +2331,12 @@ func (i JobTemplateTemplateContainerLivenessProbeArgs) ToJobTemplateTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeOutput)
 }
 
+func (i JobTemplateTemplateContainerLivenessProbeArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbe] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbe]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateContainerLivenessProbeArgs) ToJobTemplateTemplateContainerLivenessProbePtrOutput() JobTemplateTemplateContainerLivenessProbePtrOutput {
 	return i.ToJobTemplateTemplateContainerLivenessProbePtrOutputWithContext(context.Background())
 }
@@ -2107,6 +2378,12 @@ func (i *jobTemplateTemplateContainerLivenessProbePtrType) ToJobTemplateTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbePtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerLivenessProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerLivenessProbe] {
+	return pulumix.Output[*JobTemplateTemplateContainerLivenessProbe]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerLivenessProbeOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerLivenessProbeOutput) ElementType() reflect.Type {
@@ -2129,6 +2406,12 @@ func (o JobTemplateTemplateContainerLivenessProbeOutput) ToJobTemplateTemplateCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerLivenessProbe) *JobTemplateTemplateContainerLivenessProbe {
 		return &v
 	}).(JobTemplateTemplateContainerLivenessProbePtrOutput)
+}
+
+func (o JobTemplateTemplateContainerLivenessProbeOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbe] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -2179,6 +2462,12 @@ func (o JobTemplateTemplateContainerLivenessProbePtrOutput) ToJobTemplateTemplat
 
 func (o JobTemplateTemplateContainerLivenessProbePtrOutput) ToJobTemplateTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerLivenessProbePtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerLivenessProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerLivenessProbe] {
+	return pulumix.Output[*JobTemplateTemplateContainerLivenessProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerLivenessProbePtrOutput) Elem() JobTemplateTemplateContainerLivenessProbeOutput {
@@ -2292,6 +2581,12 @@ func (i JobTemplateTemplateContainerLivenessProbeHttpGetArgs) ToJobTemplateTempl
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeHttpGetOutput)
 }
 
+func (i JobTemplateTemplateContainerLivenessProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGet]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateContainerLivenessProbeHttpGetArgs) ToJobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput() JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return i.ToJobTemplateTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
 }
@@ -2333,6 +2628,12 @@ func (i *jobTemplateTemplateContainerLivenessProbeHttpGetPtrType) ToJobTemplateT
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerLivenessProbeHttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[*JobTemplateTemplateContainerLivenessProbeHttpGet]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
@@ -2355,6 +2656,12 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetOutput) ToJobTemplateTem
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerLivenessProbeHttpGet) *JobTemplateTemplateContainerLivenessProbeHttpGet {
 		return &v
 	}).(JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput)
+}
+
+func (o JobTemplateTemplateContainerLivenessProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -2382,6 +2689,12 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) ToJobTemplate
 
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) ToJobTemplateTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[*JobTemplateTemplateContainerLivenessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) Elem() JobTemplateTemplateContainerLivenessProbeHttpGetOutput {
@@ -2452,6 +2765,12 @@ func (i JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToJobTem
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
+func (i JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArray and JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
 //
@@ -2477,6 +2796,12 @@ func (i JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToJobTe
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
+func (i JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
@@ -2489,6 +2814,12 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToJobT
 
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToJobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The header field name
@@ -2513,6 +2844,12 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) T
 
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToJobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
@@ -2552,6 +2889,12 @@ func (i JobTemplateTemplateContainerLivenessProbeTcpSocketArgs) ToJobTemplateTem
 
 func (i JobTemplateTemplateContainerLivenessProbeTcpSocketArgs) ToJobTemplateTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) JobTemplateTemplateContainerLivenessProbeTcpSocketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+func (i JobTemplateTemplateContainerLivenessProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i JobTemplateTemplateContainerLivenessProbeTcpSocketArgs) ToJobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput() JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput {
@@ -2595,6 +2938,12 @@ func (i *jobTemplateTemplateContainerLivenessProbeTcpSocketPtrType) ToJobTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerLivenessProbeTcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[*JobTemplateTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: i.ToJobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -2619,6 +2968,12 @@ func (o JobTemplateTemplateContainerLivenessProbeTcpSocketOutput) ToJobTemplateT
 	}).(JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
+func (o JobTemplateTemplateContainerLivenessProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[JobTemplateTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 func (o JobTemplateTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerLivenessProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -2636,6 +2991,12 @@ func (o JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput) ToJobTempla
 
 func (o JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput) ToJobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[*JobTemplateTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput) Elem() JobTemplateTemplateContainerLivenessProbeTcpSocketOutput {
@@ -2695,6 +3056,12 @@ func (i JobTemplateTemplateContainerPortArgs) ToJobTemplateTemplateContainerPort
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerPortOutput)
 }
 
+func (i JobTemplateTemplateContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerPort] {
+	return pulumix.Output[JobTemplateTemplateContainerPort]{
+		OutputState: i.ToJobTemplateTemplateContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateContainerPortArrayInput is an input type that accepts JobTemplateTemplateContainerPortArray and JobTemplateTemplateContainerPortArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerPortArrayInput` via:
 //
@@ -2720,6 +3087,12 @@ func (i JobTemplateTemplateContainerPortArray) ToJobTemplateTemplateContainerPor
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerPortArrayOutput)
 }
 
+func (i JobTemplateTemplateContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerPort] {
+	return pulumix.Output[[]JobTemplateTemplateContainerPort]{
+		OutputState: i.ToJobTemplateTemplateContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerPortOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerPortOutput) ElementType() reflect.Type {
@@ -2732,6 +3105,12 @@ func (o JobTemplateTemplateContainerPortOutput) ToJobTemplateTemplateContainerPo
 
 func (o JobTemplateTemplateContainerPortOutput) ToJobTemplateTemplateContainerPortOutputWithContext(ctx context.Context) JobTemplateTemplateContainerPortOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerPort] {
+	return pulumix.Output[JobTemplateTemplateContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -2756,6 +3135,12 @@ func (o JobTemplateTemplateContainerPortArrayOutput) ToJobTemplateTemplateContai
 
 func (o JobTemplateTemplateContainerPortArrayOutput) ToJobTemplateTemplateContainerPortArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerPortArrayOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerPort] {
+	return pulumix.Output[[]JobTemplateTemplateContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerPortOutput {
@@ -2795,6 +3180,12 @@ func (i JobTemplateTemplateContainerResourcesArgs) ToJobTemplateTemplateContaine
 
 func (i JobTemplateTemplateContainerResourcesArgs) ToJobTemplateTemplateContainerResourcesOutputWithContext(ctx context.Context) JobTemplateTemplateContainerResourcesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerResourcesOutput)
+}
+
+func (i JobTemplateTemplateContainerResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerResources] {
+	return pulumix.Output[JobTemplateTemplateContainerResources]{
+		OutputState: i.ToJobTemplateTemplateContainerResourcesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i JobTemplateTemplateContainerResourcesArgs) ToJobTemplateTemplateContainerResourcesPtrOutput() JobTemplateTemplateContainerResourcesPtrOutput {
@@ -2838,6 +3229,12 @@ func (i *jobTemplateTemplateContainerResourcesPtrType) ToJobTemplateTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerResources] {
+	return pulumix.Output[*JobTemplateTemplateContainerResources]{
+		OutputState: i.ToJobTemplateTemplateContainerResourcesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerResourcesOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerResourcesOutput) ElementType() reflect.Type {
@@ -2862,6 +3259,12 @@ func (o JobTemplateTemplateContainerResourcesOutput) ToJobTemplateTemplateContai
 	}).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
+func (o JobTemplateTemplateContainerResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerResources] {
+	return pulumix.Output[JobTemplateTemplateContainerResources]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o JobTemplateTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
@@ -2879,6 +3282,12 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) ToJobTemplateTemplateCon
 
 func (o JobTemplateTemplateContainerResourcesPtrOutput) ToJobTemplateTemplateContainerResourcesPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerResourcesPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerResources] {
+	return pulumix.Output[*JobTemplateTemplateContainerResources]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerResourcesPtrOutput) Elem() JobTemplateTemplateContainerResourcesOutput {
@@ -2958,6 +3367,12 @@ func (i JobTemplateTemplateContainerStartupProbeArgs) ToJobTemplateTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeOutput)
 }
 
+func (i JobTemplateTemplateContainerStartupProbeArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbe] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbe]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateContainerStartupProbeArgs) ToJobTemplateTemplateContainerStartupProbePtrOutput() JobTemplateTemplateContainerStartupProbePtrOutput {
 	return i.ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(context.Background())
 }
@@ -2999,6 +3414,12 @@ func (i *jobTemplateTemplateContainerStartupProbePtrType) ToJobTemplateTemplateC
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbePtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerStartupProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerStartupProbe] {
+	return pulumix.Output[*JobTemplateTemplateContainerStartupProbe]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
@@ -3021,6 +3442,12 @@ func (o JobTemplateTemplateContainerStartupProbeOutput) ToJobTemplateTemplateCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerStartupProbe) *JobTemplateTemplateContainerStartupProbe {
 		return &v
 	}).(JobTemplateTemplateContainerStartupProbePtrOutput)
+}
+
+func (o JobTemplateTemplateContainerStartupProbeOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbe] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -3071,6 +3498,12 @@ func (o JobTemplateTemplateContainerStartupProbePtrOutput) ToJobTemplateTemplate
 
 func (o JobTemplateTemplateContainerStartupProbePtrOutput) ToJobTemplateTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbePtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerStartupProbe] {
+	return pulumix.Output[*JobTemplateTemplateContainerStartupProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerStartupProbePtrOutput) Elem() JobTemplateTemplateContainerStartupProbeOutput {
@@ -3184,6 +3617,12 @@ func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToJobTemplateTempla
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetOutput)
 }
 
+func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGet]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateContainerStartupProbeHttpGetArgs) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutput() JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
 	return i.ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
 }
@@ -3225,6 +3664,12 @@ func (i *jobTemplateTemplateContainerStartupProbeHttpGetPtrType) ToJobTemplateTe
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerStartupProbeHttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[*JobTemplateTemplateContainerStartupProbeHttpGet]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
@@ -3247,6 +3692,12 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) ToJobTemplateTemp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateContainerStartupProbeHttpGet) *JobTemplateTemplateContainerStartupProbeHttpGet {
 		return &v
 	}).(JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -3274,6 +3725,12 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) ToJobTemplateT
 
 func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[*JobTemplateTemplateContainerStartupProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) Elem() JobTemplateTemplateContainerStartupProbeHttpGetOutput {
@@ -3344,6 +3801,12 @@ func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToJobTemp
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
+func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray and JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
 //
@@ -3369,6 +3832,12 @@ func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToJobTem
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
+func (i JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
@@ -3381,6 +3850,12 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToJobTe
 
 func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The header field name
@@ -3405,6 +3880,12 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) To
 
 func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToJobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
@@ -3444,6 +3925,12 @@ func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemp
 
 func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeTcpSocketOutput)
+}
+
+func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbeTcpSocket]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i JobTemplateTemplateContainerStartupProbeTcpSocketArgs) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput() JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
@@ -3487,6 +3974,12 @@ func (i *jobTemplateTemplateContainerStartupProbeTcpSocketPtrType) ToJobTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
+func (i *jobTemplateTemplateContainerStartupProbeTcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[*JobTemplateTemplateContainerStartupProbeTcpSocket]{
+		OutputState: i.ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -3511,6 +4004,12 @@ func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToJobTemplateTe
 	}).(JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[JobTemplateTemplateContainerStartupProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
 func (o JobTemplateTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -3528,6 +4027,12 @@ func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) ToJobTemplat
 
 func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) ToJobTemplateTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[*JobTemplateTemplateContainerStartupProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) Elem() JobTemplateTemplateContainerStartupProbeTcpSocketOutput {
@@ -3587,6 +4092,12 @@ func (i JobTemplateTemplateContainerVolumeMountArgs) ToJobTemplateTemplateContai
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerVolumeMountOutput)
 }
 
+func (i JobTemplateTemplateContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerVolumeMount] {
+	return pulumix.Output[JobTemplateTemplateContainerVolumeMount]{
+		OutputState: i.ToJobTemplateTemplateContainerVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateContainerVolumeMountArrayInput is an input type that accepts JobTemplateTemplateContainerVolumeMountArray and JobTemplateTemplateContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateContainerVolumeMountArrayInput` via:
 //
@@ -3612,6 +4123,12 @@ func (i JobTemplateTemplateContainerVolumeMountArray) ToJobTemplateTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateContainerVolumeMountArrayOutput)
 }
 
+func (i JobTemplateTemplateContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerVolumeMount] {
+	return pulumix.Output[[]JobTemplateTemplateContainerVolumeMount]{
+		OutputState: i.ToJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -3624,6 +4141,12 @@ func (o JobTemplateTemplateContainerVolumeMountOutput) ToJobTemplateTemplateCont
 
 func (o JobTemplateTemplateContainerVolumeMountOutput) ToJobTemplateTemplateContainerVolumeMountOutputWithContext(ctx context.Context) JobTemplateTemplateContainerVolumeMountOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateContainerVolumeMount] {
+	return pulumix.Output[JobTemplateTemplateContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
@@ -3648,6 +4171,12 @@ func (o JobTemplateTemplateContainerVolumeMountArrayOutput) ToJobTemplateTemplat
 
 func (o JobTemplateTemplateContainerVolumeMountArrayOutput) ToJobTemplateTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) JobTemplateTemplateContainerVolumeMountArrayOutput {
 	return o
+}
+
+func (o JobTemplateTemplateContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateContainerVolumeMount] {
+	return pulumix.Output[[]JobTemplateTemplateContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateContainerVolumeMountOutput {
@@ -3703,6 +4232,12 @@ func (i JobTemplateTemplateVolumeArgs) ToJobTemplateTemplateVolumeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeOutput)
 }
 
+func (i JobTemplateTemplateVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolume] {
+	return pulumix.Output[JobTemplateTemplateVolume]{
+		OutputState: i.ToJobTemplateTemplateVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateVolumeArrayInput is an input type that accepts JobTemplateTemplateVolumeArray and JobTemplateTemplateVolumeArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateVolumeArrayInput` via:
 //
@@ -3728,6 +4263,12 @@ func (i JobTemplateTemplateVolumeArray) ToJobTemplateTemplateVolumeArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeArrayOutput)
 }
 
+func (i JobTemplateTemplateVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolume] {
+	return pulumix.Output[[]JobTemplateTemplateVolume]{
+		OutputState: i.ToJobTemplateTemplateVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateVolumeOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeOutput) ElementType() reflect.Type {
@@ -3740,6 +4281,12 @@ func (o JobTemplateTemplateVolumeOutput) ToJobTemplateTemplateVolumeOutput() Job
 
 func (o JobTemplateTemplateVolumeOutput) ToJobTemplateTemplateVolumeOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolume] {
+	return pulumix.Output[JobTemplateTemplateVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -3779,6 +4326,12 @@ func (o JobTemplateTemplateVolumeArrayOutput) ToJobTemplateTemplateVolumeArrayOu
 	return o
 }
 
+func (o JobTemplateTemplateVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolume] {
+	return pulumix.Output[[]JobTemplateTemplateVolume]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobTemplateTemplateVolumeArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateVolumeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateVolume {
 		return vs[0].([]JobTemplateTemplateVolume)[vs[1].(int)]
@@ -3816,6 +4369,12 @@ func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToJobTemplateTemplateVolu
 
 func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeCloudSqlInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeCloudSqlInstanceOutput)
+}
+
+func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance]{
+		OutputState: i.ToJobTemplateTemplateVolumeCloudSqlInstanceOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i JobTemplateTemplateVolumeCloudSqlInstanceArgs) ToJobTemplateTemplateVolumeCloudSqlInstancePtrOutput() JobTemplateTemplateVolumeCloudSqlInstancePtrOutput {
@@ -3859,6 +4418,12 @@ func (i *jobTemplateTemplateVolumeCloudSqlInstancePtrType) ToJobTemplateTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+func (i *jobTemplateTemplateVolumeCloudSqlInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance]{
+		OutputState: i.ToJobTemplateTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
@@ -3883,6 +4448,12 @@ func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) ToJobTemplateTemplateVo
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[JobTemplateTemplateVolumeCloudSqlInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o JobTemplateTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
@@ -3900,6 +4471,12 @@ func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) ToJobTemplateTemplat
 
 func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) ToJobTemplateTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeCloudSqlInstancePtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[*JobTemplateTemplateVolumeCloudSqlInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) Elem() JobTemplateTemplateVolumeCloudSqlInstanceOutput {
@@ -3963,6 +4540,12 @@ func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyD
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirOutput)
 }
 
+func (i JobTemplateTemplateVolumeEmptyDirArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeEmptyDir] {
+	return pulumix.Output[JobTemplateTemplateVolumeEmptyDir]{
+		OutputState: i.ToJobTemplateTemplateVolumeEmptyDirOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return i.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
 }
@@ -4004,6 +4587,12 @@ func (i *jobTemplateTemplateVolumeEmptyDirPtrType) ToJobTemplateTemplateVolumeEm
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
 }
 
+func (i *jobTemplateTemplateVolumeEmptyDirPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeEmptyDir] {
+	return pulumix.Output[*JobTemplateTemplateVolumeEmptyDir]{
+		OutputState: i.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
@@ -4026,6 +4615,12 @@ func (o JobTemplateTemplateVolumeEmptyDirOutput) ToJobTemplateTemplateVolumeEmpt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeEmptyDir) *JobTemplateTemplateVolumeEmptyDir {
 		return &v
 	}).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeEmptyDir] {
+	return pulumix.Output[JobTemplateTemplateVolumeEmptyDir]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The different types of medium supported for EmptyDir.
@@ -4052,6 +4647,12 @@ func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToJobTemplateTemplateVolumeE
 
 func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeEmptyDir] {
+	return pulumix.Output[*JobTemplateTemplateVolumeEmptyDir]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) Elem() JobTemplateTemplateVolumeEmptyDirOutput {
@@ -4129,6 +4730,12 @@ func (i JobTemplateTemplateVolumeSecretArgs) ToJobTemplateTemplateVolumeSecretOu
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretOutput)
 }
 
+func (i JobTemplateTemplateVolumeSecretArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecret] {
+	return pulumix.Output[JobTemplateTemplateVolumeSecret]{
+		OutputState: i.ToJobTemplateTemplateVolumeSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateVolumeSecretArgs) ToJobTemplateTemplateVolumeSecretPtrOutput() JobTemplateTemplateVolumeSecretPtrOutput {
 	return i.ToJobTemplateTemplateVolumeSecretPtrOutputWithContext(context.Background())
 }
@@ -4170,6 +4777,12 @@ func (i *jobTemplateTemplateVolumeSecretPtrType) ToJobTemplateTemplateVolumeSecr
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretPtrOutput)
 }
 
+func (i *jobTemplateTemplateVolumeSecretPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeSecret] {
+	return pulumix.Output[*JobTemplateTemplateVolumeSecret]{
+		OutputState: i.ToJobTemplateTemplateVolumeSecretPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateVolumeSecretOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeSecretOutput) ElementType() reflect.Type {
@@ -4192,6 +4805,12 @@ func (o JobTemplateTemplateVolumeSecretOutput) ToJobTemplateTemplateVolumeSecret
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeSecret) *JobTemplateTemplateVolumeSecret {
 		return &v
 	}).(JobTemplateTemplateVolumeSecretPtrOutput)
+}
+
+func (o JobTemplateTemplateVolumeSecretOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecret] {
+	return pulumix.Output[JobTemplateTemplateVolumeSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -4222,6 +4841,12 @@ func (o JobTemplateTemplateVolumeSecretPtrOutput) ToJobTemplateTemplateVolumeSec
 
 func (o JobTemplateTemplateVolumeSecretPtrOutput) ToJobTemplateTemplateVolumeSecretPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeSecretPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVolumeSecretPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVolumeSecret] {
+	return pulumix.Output[*JobTemplateTemplateVolumeSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateVolumeSecretPtrOutput) Elem() JobTemplateTemplateVolumeSecretOutput {
@@ -4306,6 +4931,12 @@ func (i JobTemplateTemplateVolumeSecretItemArgs) ToJobTemplateTemplateVolumeSecr
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretItemOutput)
 }
 
+func (i JobTemplateTemplateVolumeSecretItemArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecretItem] {
+	return pulumix.Output[JobTemplateTemplateVolumeSecretItem]{
+		OutputState: i.ToJobTemplateTemplateVolumeSecretItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTemplateTemplateVolumeSecretItemArrayInput is an input type that accepts JobTemplateTemplateVolumeSecretItemArray and JobTemplateTemplateVolumeSecretItemArrayOutput values.
 // You can construct a concrete instance of `JobTemplateTemplateVolumeSecretItemArrayInput` via:
 //
@@ -4331,6 +4962,12 @@ func (i JobTemplateTemplateVolumeSecretItemArray) ToJobTemplateTemplateVolumeSec
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeSecretItemArrayOutput)
 }
 
+func (i JobTemplateTemplateVolumeSecretItemArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolumeSecretItem] {
+	return pulumix.Output[[]JobTemplateTemplateVolumeSecretItem]{
+		OutputState: i.ToJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateVolumeSecretItemOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVolumeSecretItemOutput) ElementType() reflect.Type {
@@ -4343,6 +4980,12 @@ func (o JobTemplateTemplateVolumeSecretItemOutput) ToJobTemplateTemplateVolumeSe
 
 func (o JobTemplateTemplateVolumeSecretItemOutput) ToJobTemplateTemplateVolumeSecretItemOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeSecretItemOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVolumeSecretItemOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVolumeSecretItem] {
+	return pulumix.Output[JobTemplateTemplateVolumeSecretItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
@@ -4372,6 +5015,12 @@ func (o JobTemplateTemplateVolumeSecretItemArrayOutput) ToJobTemplateTemplateVol
 
 func (o JobTemplateTemplateVolumeSecretItemArrayOutput) ToJobTemplateTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeSecretItemArrayOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVolumeSecretItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVolumeSecretItem] {
+	return pulumix.Output[[]JobTemplateTemplateVolumeSecretItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateVolumeSecretItemOutput {
@@ -4423,6 +5072,12 @@ func (i JobTemplateTemplateVpcAccessArgs) ToJobTemplateTemplateVpcAccessOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessOutput)
 }
 
+func (i JobTemplateTemplateVpcAccessArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccess] {
+	return pulumix.Output[JobTemplateTemplateVpcAccess]{
+		OutputState: i.ToJobTemplateTemplateVpcAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i JobTemplateTemplateVpcAccessArgs) ToJobTemplateTemplateVpcAccessPtrOutput() JobTemplateTemplateVpcAccessPtrOutput {
 	return i.ToJobTemplateTemplateVpcAccessPtrOutputWithContext(context.Background())
 }
@@ -4464,6 +5119,12 @@ func (i *jobTemplateTemplateVpcAccessPtrType) ToJobTemplateTemplateVpcAccessPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessPtrOutput)
 }
 
+func (i *jobTemplateTemplateVpcAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVpcAccess] {
+	return pulumix.Output[*JobTemplateTemplateVpcAccess]{
+		OutputState: i.ToJobTemplateTemplateVpcAccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTemplateTemplateVpcAccessOutput struct{ *pulumi.OutputState }
 
 func (JobTemplateTemplateVpcAccessOutput) ElementType() reflect.Type {
@@ -4486,6 +5147,12 @@ func (o JobTemplateTemplateVpcAccessOutput) ToJobTemplateTemplateVpcAccessPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVpcAccess) *JobTemplateTemplateVpcAccess {
 		return &v
 	}).(JobTemplateTemplateVpcAccessPtrOutput)
+}
+
+func (o JobTemplateTemplateVpcAccessOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccess] {
+	return pulumix.Output[JobTemplateTemplateVpcAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
@@ -4513,6 +5180,12 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) ToJobTemplateTemplateVpcAccessPtr
 
 func (o JobTemplateTemplateVpcAccessPtrOutput) ToJobTemplateTemplateVpcAccessPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessPtrOutput {
 	return o
+}
+
+func (o JobTemplateTemplateVpcAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTemplateTemplateVpcAccess] {
+	return pulumix.Output[*JobTemplateTemplateVpcAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o JobTemplateTemplateVpcAccessPtrOutput) Elem() JobTemplateTemplateVpcAccessOutput {
@@ -4627,6 +5300,12 @@ func (i JobTerminalConditionArgs) ToJobTerminalConditionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(JobTerminalConditionOutput)
 }
 
+func (i JobTerminalConditionArgs) ToOutput(ctx context.Context) pulumix.Output[JobTerminalCondition] {
+	return pulumix.Output[JobTerminalCondition]{
+		OutputState: i.ToJobTerminalConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // JobTerminalConditionArrayInput is an input type that accepts JobTerminalConditionArray and JobTerminalConditionArrayOutput values.
 // You can construct a concrete instance of `JobTerminalConditionArrayInput` via:
 //
@@ -4652,6 +5331,12 @@ func (i JobTerminalConditionArray) ToJobTerminalConditionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(JobTerminalConditionArrayOutput)
 }
 
+func (i JobTerminalConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTerminalCondition] {
+	return pulumix.Output[[]JobTerminalCondition]{
+		OutputState: i.ToJobTerminalConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type JobTerminalConditionOutput struct{ *pulumi.OutputState }
 
 func (JobTerminalConditionOutput) ElementType() reflect.Type {
@@ -4664,6 +5349,12 @@ func (o JobTerminalConditionOutput) ToJobTerminalConditionOutput() JobTerminalCo
 
 func (o JobTerminalConditionOutput) ToJobTerminalConditionOutputWithContext(ctx context.Context) JobTerminalConditionOutput {
 	return o
+}
+
+func (o JobTerminalConditionOutput) ToOutput(ctx context.Context) pulumix.Output[JobTerminalCondition] {
+	return pulumix.Output[JobTerminalCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4729,6 +5420,12 @@ func (o JobTerminalConditionArrayOutput) ToJobTerminalConditionArrayOutputWithCo
 	return o
 }
 
+func (o JobTerminalConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTerminalCondition] {
+	return pulumix.Output[[]JobTerminalCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o JobTerminalConditionArrayOutput) Index(i pulumi.IntInput) JobTerminalConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTerminalCondition {
 		return vs[0].([]JobTerminalCondition)[vs[1].(int)]
@@ -4772,6 +5469,12 @@ func (i ServiceBinaryAuthorizationArgs) ToServiceBinaryAuthorizationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBinaryAuthorizationOutput)
 }
 
+func (i ServiceBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceBinaryAuthorization] {
+	return pulumix.Output[ServiceBinaryAuthorization]{
+		OutputState: i.ToServiceBinaryAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceBinaryAuthorizationArgs) ToServiceBinaryAuthorizationPtrOutput() ServiceBinaryAuthorizationPtrOutput {
 	return i.ToServiceBinaryAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -4813,6 +5516,12 @@ func (i *serviceBinaryAuthorizationPtrType) ToServiceBinaryAuthorizationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceBinaryAuthorizationPtrOutput)
 }
 
+func (i *serviceBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinaryAuthorization] {
+	return pulumix.Output[*ServiceBinaryAuthorization]{
+		OutputState: i.ToServiceBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceBinaryAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (ServiceBinaryAuthorizationOutput) ElementType() reflect.Type {
@@ -4837,6 +5546,12 @@ func (o ServiceBinaryAuthorizationOutput) ToServiceBinaryAuthorizationPtrOutputW
 	}).(ServiceBinaryAuthorizationPtrOutput)
 }
 
+func (o ServiceBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceBinaryAuthorization] {
+	return pulumix.Output[ServiceBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o ServiceBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceBinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
@@ -4859,6 +5574,12 @@ func (o ServiceBinaryAuthorizationPtrOutput) ToServiceBinaryAuthorizationPtrOutp
 
 func (o ServiceBinaryAuthorizationPtrOutput) ToServiceBinaryAuthorizationPtrOutputWithContext(ctx context.Context) ServiceBinaryAuthorizationPtrOutput {
 	return o
+}
+
+func (o ServiceBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceBinaryAuthorization] {
+	return pulumix.Output[*ServiceBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceBinaryAuthorizationPtrOutput) Elem() ServiceBinaryAuthorizationOutput {
@@ -4970,6 +5691,12 @@ func (i ServiceConditionArgs) ToServiceConditionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConditionOutput)
 }
 
+func (i ServiceConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceCondition] {
+	return pulumix.Output[ServiceCondition]{
+		OutputState: i.ToServiceConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceConditionArrayInput is an input type that accepts ServiceConditionArray and ServiceConditionArrayOutput values.
 // You can construct a concrete instance of `ServiceConditionArrayInput` via:
 //
@@ -4995,6 +5722,12 @@ func (i ServiceConditionArray) ToServiceConditionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConditionArrayOutput)
 }
 
+func (i ServiceConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceCondition] {
+	return pulumix.Output[[]ServiceCondition]{
+		OutputState: i.ToServiceConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceConditionOutput) ElementType() reflect.Type {
@@ -5007,6 +5740,12 @@ func (o ServiceConditionOutput) ToServiceConditionOutput() ServiceConditionOutpu
 
 func (o ServiceConditionOutput) ToServiceConditionOutputWithContext(ctx context.Context) ServiceConditionOutput {
 	return o
+}
+
+func (o ServiceConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceCondition] {
+	return pulumix.Output[ServiceCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -5072,6 +5811,12 @@ func (o ServiceConditionArrayOutput) ToServiceConditionArrayOutputWithContext(ct
 	return o
 }
 
+func (o ServiceConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceCondition] {
+	return pulumix.Output[[]ServiceCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceConditionArrayOutput) Index(i pulumi.IntInput) ServiceConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCondition {
 		return vs[0].([]ServiceCondition)[vs[1].(int)]
@@ -5111,6 +5856,12 @@ func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutput() Ser
 
 func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutputWithContext(ctx context.Context) ServiceIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput)
+}
+
+func (i ServiceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
+	return pulumix.Output[ServiceIamBindingCondition]{
+		OutputState: i.ToServiceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
@@ -5154,6 +5905,12 @@ func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionPtrOutput)
 }
 
+func (i *serviceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
+	return pulumix.Output[*ServiceIamBindingCondition]{
+		OutputState: i.ToServiceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -5176,6 +5933,12 @@ func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBindingCondition) *ServiceIamBindingCondition {
 		return &v
 	}).(ServiceIamBindingConditionPtrOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
+	return pulumix.Output[ServiceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -5202,6 +5965,12 @@ func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutp
 
 func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
+	return pulumix.Output[*ServiceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
@@ -5276,6 +6045,12 @@ func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput)
 }
 
+func (i ServiceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
+	return pulumix.Output[ServiceIamMemberCondition]{
+		OutputState: i.ToServiceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
 	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -5317,6 +6092,12 @@ func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionPtrOutput)
 }
 
+func (i *serviceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
+	return pulumix.Output[*ServiceIamMemberCondition]{
+		OutputState: i.ToServiceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -5339,6 +6120,12 @@ func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMemberCondition) *ServiceIamMemberCondition {
 		return &v
 	}).(ServiceIamMemberConditionPtrOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
+	return pulumix.Output[ServiceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -5365,6 +6152,12 @@ func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput
 
 func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
+	return pulumix.Output[*ServiceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {
@@ -5509,6 +6302,12 @@ func (i ServiceTemplateArgs) ToServiceTemplateOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateOutput)
 }
 
+func (i ServiceTemplateArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplate] {
+	return pulumix.Output[ServiceTemplate]{
+		OutputState: i.ToServiceTemplateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateArgs) ToServiceTemplatePtrOutput() ServiceTemplatePtrOutput {
 	return i.ToServiceTemplatePtrOutputWithContext(context.Background())
 }
@@ -5550,6 +6349,12 @@ func (i *serviceTemplatePtrType) ToServiceTemplatePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplatePtrOutput)
 }
 
+func (i *serviceTemplatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplate] {
+	return pulumix.Output[*ServiceTemplate]{
+		OutputState: i.ToServiceTemplatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateOutput) ElementType() reflect.Type {
@@ -5572,6 +6377,12 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplate) *ServiceTemplate {
 		return &v
 	}).(ServiceTemplatePtrOutput)
+}
+
+func (o ServiceTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplate] {
+	return pulumix.Output[ServiceTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -5663,6 +6474,12 @@ func (o ServiceTemplatePtrOutput) ToServiceTemplatePtrOutput() ServiceTemplatePt
 
 func (o ServiceTemplatePtrOutput) ToServiceTemplatePtrOutputWithContext(ctx context.Context) ServiceTemplatePtrOutput {
 	return o
+}
+
+func (o ServiceTemplatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplate] {
+	return pulumix.Output[*ServiceTemplate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
@@ -5906,6 +6723,12 @@ func (i ServiceTemplateContainerArgs) ToServiceTemplateContainerOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerOutput)
 }
 
+func (i ServiceTemplateContainerArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainer] {
+	return pulumix.Output[ServiceTemplateContainer]{
+		OutputState: i.ToServiceTemplateContainerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateContainerArrayInput is an input type that accepts ServiceTemplateContainerArray and ServiceTemplateContainerArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerArrayInput` via:
 //
@@ -5931,6 +6754,12 @@ func (i ServiceTemplateContainerArray) ToServiceTemplateContainerArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerArrayOutput)
 }
 
+func (i ServiceTemplateContainerArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainer] {
+	return pulumix.Output[[]ServiceTemplateContainer]{
+		OutputState: i.ToServiceTemplateContainerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerOutput) ElementType() reflect.Type {
@@ -5943,6 +6772,12 @@ func (o ServiceTemplateContainerOutput) ToServiceTemplateContainerOutput() Servi
 
 func (o ServiceTemplateContainerOutput) ToServiceTemplateContainerOutputWithContext(ctx context.Context) ServiceTemplateContainerOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainer] {
+	return pulumix.Output[ServiceTemplateContainer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
@@ -6025,6 +6860,12 @@ func (o ServiceTemplateContainerArrayOutput) ToServiceTemplateContainerArrayOutp
 	return o
 }
 
+func (o ServiceTemplateContainerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainer] {
+	return pulumix.Output[[]ServiceTemplateContainer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateContainer {
 		return vs[0].([]ServiceTemplateContainer)[vs[1].(int)]
@@ -6074,6 +6915,12 @@ func (i ServiceTemplateContainerEnvArgs) ToServiceTemplateContainerEnvOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvOutput)
 }
 
+func (i ServiceTemplateContainerEnvArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnv] {
+	return pulumix.Output[ServiceTemplateContainerEnv]{
+		OutputState: i.ToServiceTemplateContainerEnvOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateContainerEnvArrayInput is an input type that accepts ServiceTemplateContainerEnvArray and ServiceTemplateContainerEnvArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerEnvArrayInput` via:
 //
@@ -6099,6 +6946,12 @@ func (i ServiceTemplateContainerEnvArray) ToServiceTemplateContainerEnvArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvArrayOutput)
 }
 
+func (i ServiceTemplateContainerEnvArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerEnv] {
+	return pulumix.Output[[]ServiceTemplateContainerEnv]{
+		OutputState: i.ToServiceTemplateContainerEnvArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerEnvOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerEnvOutput) ElementType() reflect.Type {
@@ -6111,6 +6964,12 @@ func (o ServiceTemplateContainerEnvOutput) ToServiceTemplateContainerEnvOutput()
 
 func (o ServiceTemplateContainerEnvOutput) ToServiceTemplateContainerEnvOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerEnvOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnv] {
+	return pulumix.Output[ServiceTemplateContainerEnv]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -6141,6 +7000,12 @@ func (o ServiceTemplateContainerEnvArrayOutput) ToServiceTemplateContainerEnvArr
 
 func (o ServiceTemplateContainerEnvArrayOutput) ToServiceTemplateContainerEnvArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerEnvArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerEnv] {
+	return pulumix.Output[[]ServiceTemplateContainerEnv]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerEnvOutput {
@@ -6184,6 +7049,12 @@ func (i ServiceTemplateContainerEnvValueSourceArgs) ToServiceTemplateContainerEn
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourceOutput)
 }
 
+func (i ServiceTemplateContainerEnvValueSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSource] {
+	return pulumix.Output[ServiceTemplateContainerEnvValueSource]{
+		OutputState: i.ToServiceTemplateContainerEnvValueSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerEnvValueSourceArgs) ToServiceTemplateContainerEnvValueSourcePtrOutput() ServiceTemplateContainerEnvValueSourcePtrOutput {
 	return i.ToServiceTemplateContainerEnvValueSourcePtrOutputWithContext(context.Background())
 }
@@ -6225,6 +7096,12 @@ func (i *serviceTemplateContainerEnvValueSourcePtrType) ToServiceTemplateContain
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourcePtrOutput)
 }
 
+func (i *serviceTemplateContainerEnvValueSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSource] {
+	return pulumix.Output[*ServiceTemplateContainerEnvValueSource]{
+		OutputState: i.ToServiceTemplateContainerEnvValueSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerEnvValueSourceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerEnvValueSourceOutput) ElementType() reflect.Type {
@@ -6249,6 +7126,12 @@ func (o ServiceTemplateContainerEnvValueSourceOutput) ToServiceTemplateContainer
 	}).(ServiceTemplateContainerEnvValueSourcePtrOutput)
 }
 
+func (o ServiceTemplateContainerEnvValueSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSource] {
+	return pulumix.Output[ServiceTemplateContainerEnvValueSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Selects a secret and a specific version from Cloud Secret Manager.
 // Structure is documented below.
 func (o ServiceTemplateContainerEnvValueSourceOutput) SecretKeyRef() ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
@@ -6269,6 +7152,12 @@ func (o ServiceTemplateContainerEnvValueSourcePtrOutput) ToServiceTemplateContai
 
 func (o ServiceTemplateContainerEnvValueSourcePtrOutput) ToServiceTemplateContainerEnvValueSourcePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvValueSourcePtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerEnvValueSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSource] {
+	return pulumix.Output[*ServiceTemplateContainerEnvValueSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerEnvValueSourcePtrOutput) Elem() ServiceTemplateContainerEnvValueSourceOutput {
@@ -6329,6 +7218,12 @@ func (i ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToServiceTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
+func (i ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: i.ToServiceTemplateContainerEnvValueSourceSecretKeyRefOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs) ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput() ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return i.ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(context.Background())
 }
@@ -6370,6 +7265,12 @@ func (i *serviceTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToServiceTem
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
+func (i *serviceTemplateContainerEnvValueSourceSecretKeyRefPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: i.ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ElementType() reflect.Type {
@@ -6394,6 +7295,12 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToServiceTempl
 	}).(ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
+func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
@@ -6416,6 +7323,12 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToServiceTe
 
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef] {
+	return pulumix.Output[*ServiceTemplateContainerEnvValueSourceSecretKeyRef]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput {
@@ -6521,6 +7434,12 @@ func (i ServiceTemplateContainerLivenessProbeArgs) ToServiceTemplateContainerLiv
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeOutput)
 }
 
+func (i ServiceTemplateContainerLivenessProbeArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbe] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbe]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerLivenessProbeArgs) ToServiceTemplateContainerLivenessProbePtrOutput() ServiceTemplateContainerLivenessProbePtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbePtrOutputWithContext(context.Background())
 }
@@ -6562,6 +7481,12 @@ func (i *serviceTemplateContainerLivenessProbePtrType) ToServiceTemplateContaine
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbePtrOutput)
 }
 
+func (i *serviceTemplateContainerLivenessProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbe] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbe]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerLivenessProbeOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeOutput) ElementType() reflect.Type {
@@ -6584,6 +7509,12 @@ func (o ServiceTemplateContainerLivenessProbeOutput) ToServiceTemplateContainerL
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbe {
 		return &v
 	}).(ServiceTemplateContainerLivenessProbePtrOutput)
+}
+
+func (o ServiceTemplateContainerLivenessProbeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbe] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -6647,6 +7578,12 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) ToServiceTemplateContain
 
 func (o ServiceTemplateContainerLivenessProbePtrOutput) ToServiceTemplateContainerLivenessProbePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbePtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbe] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerLivenessProbePtrOutput) Elem() ServiceTemplateContainerLivenessProbeOutput {
@@ -6780,6 +7717,12 @@ func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContaine
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcOutput)
 }
 
+func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeGrpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerLivenessProbeGrpcArgs) ToServiceTemplateContainerLivenessProbeGrpcPtrOutput() ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(context.Background())
 }
@@ -6821,6 +7764,12 @@ func (i *serviceTemplateContainerLivenessProbeGrpcPtrType) ToServiceTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
 }
 
+func (i *serviceTemplateContainerLivenessProbeGrpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerLivenessProbeGrpcOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeGrpcOutput) ElementType() reflect.Type {
@@ -6843,6 +7792,12 @@ func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContai
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbeGrpc) *ServiceTemplateContainerLivenessProbeGrpc {
 		return &v
 	}).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeGrpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
@@ -6870,6 +7825,12 @@ func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToServiceTemplateCon
 
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToServiceTemplateContainerLivenessProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeGrpcPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbeGrpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Elem() ServiceTemplateContainerLivenessProbeGrpcOutput {
@@ -6950,6 +7911,12 @@ func (i ServiceTemplateContainerLivenessProbeHttpGetArgs) ToServiceTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetOutput)
 }
 
+func (i ServiceTemplateContainerLivenessProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerLivenessProbeHttpGetArgs) ToServiceTemplateContainerLivenessProbeHttpGetPtrOutput() ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(context.Background())
 }
@@ -6991,6 +7958,12 @@ func (i *serviceTemplateContainerLivenessProbeHttpGetPtrType) ToServiceTemplateC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput)
 }
 
+func (i *serviceTemplateContainerLivenessProbeHttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerLivenessProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeHttpGetOutput) ElementType() reflect.Type {
@@ -7013,6 +7986,12 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) ToServiceTemplateCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbeHttpGet) *ServiceTemplateContainerLivenessProbeHttpGet {
 		return &v
 	}).(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput)
+}
+
+func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -7046,6 +8025,12 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ToServiceTemplate
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ToServiceTemplateContainerLivenessProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeHttpGetPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) Elem() ServiceTemplateContainerLivenessProbeHttpGetOutput {
@@ -7127,6 +8112,12 @@ func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToServiceTem
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
 }
 
+func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput is an input type that accepts ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray and ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput` via:
 //
@@ -7152,6 +8143,12 @@ func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToServiceTe
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
+func (i ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
@@ -7164,6 +8161,12 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToServiceT
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The header field name
@@ -7188,6 +8191,12 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToSer
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput {
@@ -7231,6 +8240,12 @@ func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToServiceTemplateCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeTcpSocketOutput)
 }
 
+func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutput() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return i.ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
 }
@@ -7272,6 +8287,12 @@ func (i *serviceTemplateContainerLivenessProbeTcpSocketPtrType) ToServiceTemplat
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
+func (i *serviceTemplateContainerLivenessProbeTcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: i.ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -7296,6 +8317,12 @@ func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToServiceTemplateC
 	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
+func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[ServiceTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Port number to access on the container. Must be in the range 1 to 65535.
 // If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
@@ -7314,6 +8341,12 @@ func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) ToServiceTempla
 
 func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerLivenessProbeTcpSocket] {
+	return pulumix.Output[*ServiceTemplateContainerLivenessProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Elem() ServiceTemplateContainerLivenessProbeTcpSocketOutput {
@@ -7374,6 +8407,12 @@ func (i ServiceTemplateContainerPortArgs) ToServiceTemplateContainerPortOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortOutput)
 }
 
+func (i ServiceTemplateContainerPortArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerPort] {
+	return pulumix.Output[ServiceTemplateContainerPort]{
+		OutputState: i.ToServiceTemplateContainerPortOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateContainerPortArrayInput is an input type that accepts ServiceTemplateContainerPortArray and ServiceTemplateContainerPortArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerPortArrayInput` via:
 //
@@ -7399,6 +8438,12 @@ func (i ServiceTemplateContainerPortArray) ToServiceTemplateContainerPortArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerPortArrayOutput)
 }
 
+func (i ServiceTemplateContainerPortArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerPort] {
+	return pulumix.Output[[]ServiceTemplateContainerPort]{
+		OutputState: i.ToServiceTemplateContainerPortArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerPortOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerPortOutput) ElementType() reflect.Type {
@@ -7411,6 +8456,12 @@ func (o ServiceTemplateContainerPortOutput) ToServiceTemplateContainerPortOutput
 
 func (o ServiceTemplateContainerPortOutput) ToServiceTemplateContainerPortOutputWithContext(ctx context.Context) ServiceTemplateContainerPortOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerPortOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerPort] {
+	return pulumix.Output[ServiceTemplateContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
@@ -7435,6 +8486,12 @@ func (o ServiceTemplateContainerPortArrayOutput) ToServiceTemplateContainerPortA
 
 func (o ServiceTemplateContainerPortArrayOutput) ToServiceTemplateContainerPortArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerPortArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerPort] {
+	return pulumix.Output[[]ServiceTemplateContainerPort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerPortOutput {
@@ -7484,6 +8541,12 @@ func (i ServiceTemplateContainerResourcesArgs) ToServiceTemplateContainerResourc
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerResourcesOutput)
 }
 
+func (i ServiceTemplateContainerResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerResources] {
+	return pulumix.Output[ServiceTemplateContainerResources]{
+		OutputState: i.ToServiceTemplateContainerResourcesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerResourcesArgs) ToServiceTemplateContainerResourcesPtrOutput() ServiceTemplateContainerResourcesPtrOutput {
 	return i.ToServiceTemplateContainerResourcesPtrOutputWithContext(context.Background())
 }
@@ -7525,6 +8588,12 @@ func (i *serviceTemplateContainerResourcesPtrType) ToServiceTemplateContainerRes
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerResourcesPtrOutput)
 }
 
+func (i *serviceTemplateContainerResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerResources] {
+	return pulumix.Output[*ServiceTemplateContainerResources]{
+		OutputState: i.ToServiceTemplateContainerResourcesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerResourcesOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerResourcesOutput) ElementType() reflect.Type {
@@ -7547,6 +8616,12 @@ func (o ServiceTemplateContainerResourcesOutput) ToServiceTemplateContainerResou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerResources) *ServiceTemplateContainerResources {
 		return &v
 	}).(ServiceTemplateContainerResourcesPtrOutput)
+}
+
+func (o ServiceTemplateContainerResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerResources] {
+	return pulumix.Output[ServiceTemplateContainerResources]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Determines whether CPU should be throttled or not outside of requests.
@@ -7576,6 +8651,12 @@ func (o ServiceTemplateContainerResourcesPtrOutput) ToServiceTemplateContainerRe
 
 func (o ServiceTemplateContainerResourcesPtrOutput) ToServiceTemplateContainerResourcesPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerResourcesPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerResources] {
+	return pulumix.Output[*ServiceTemplateContainerResources]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerResourcesPtrOutput) Elem() ServiceTemplateContainerResourcesOutput {
@@ -7681,6 +8762,12 @@ func (i ServiceTemplateContainerStartupProbeArgs) ToServiceTemplateContainerStar
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeOutput)
 }
 
+func (i ServiceTemplateContainerStartupProbeArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbe] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbe]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerStartupProbeArgs) ToServiceTemplateContainerStartupProbePtrOutput() ServiceTemplateContainerStartupProbePtrOutput {
 	return i.ToServiceTemplateContainerStartupProbePtrOutputWithContext(context.Background())
 }
@@ -7722,6 +8809,12 @@ func (i *serviceTemplateContainerStartupProbePtrType) ToServiceTemplateContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbePtrOutput)
 }
 
+func (i *serviceTemplateContainerStartupProbePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbe] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbe]{
+		OutputState: i.ToServiceTemplateContainerStartupProbePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerStartupProbeOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeOutput) ElementType() reflect.Type {
@@ -7744,6 +8837,12 @@ func (o ServiceTemplateContainerStartupProbeOutput) ToServiceTemplateContainerSt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbe) *ServiceTemplateContainerStartupProbe {
 		return &v
 	}).(ServiceTemplateContainerStartupProbePtrOutput)
+}
+
+func (o ServiceTemplateContainerStartupProbeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbe] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -7800,6 +8899,12 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) ToServiceTemplateContaine
 
 func (o ServiceTemplateContainerStartupProbePtrOutput) ToServiceTemplateContainerStartupProbePtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbePtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerStartupProbePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbe] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbe]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerStartupProbePtrOutput) Elem() ServiceTemplateContainerStartupProbeOutput {
@@ -7928,6 +9033,12 @@ func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainer
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcOutput)
 }
 
+func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeGrpc] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeGrpc]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeGrpcOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerStartupProbeGrpcArgs) ToServiceTemplateContainerStartupProbeGrpcPtrOutput() ServiceTemplateContainerStartupProbeGrpcPtrOutput {
 	return i.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(context.Background())
 }
@@ -7969,6 +9080,12 @@ func (i *serviceTemplateContainerStartupProbeGrpcPtrType) ToServiceTemplateConta
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
 }
 
+func (i *serviceTemplateContainerStartupProbeGrpcPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerStartupProbeGrpcOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeGrpcOutput) ElementType() reflect.Type {
@@ -7991,6 +9108,12 @@ func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContain
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbeGrpc) *ServiceTemplateContainerStartupProbeGrpc {
 		return &v
 	}).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeGrpc] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeGrpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
@@ -8018,6 +9141,12 @@ func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToServiceTemplateCont
 
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToServiceTemplateContainerStartupProbeGrpcPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeGrpcPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbeGrpc]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Elem() ServiceTemplateContainerStartupProbeGrpcOutput {
@@ -8098,6 +9227,12 @@ func (i ServiceTemplateContainerStartupProbeHttpGetArgs) ToServiceTemplateContai
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetOutput)
 }
 
+func (i ServiceTemplateContainerStartupProbeHttpGetArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerStartupProbeHttpGetArgs) ToServiceTemplateContainerStartupProbeHttpGetPtrOutput() ServiceTemplateContainerStartupProbeHttpGetPtrOutput {
 	return i.ToServiceTemplateContainerStartupProbeHttpGetPtrOutputWithContext(context.Background())
 }
@@ -8139,6 +9274,12 @@ func (i *serviceTemplateContainerStartupProbeHttpGetPtrType) ToServiceTemplateCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetPtrOutput)
 }
 
+func (i *serviceTemplateContainerStartupProbeHttpGetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerStartupProbeHttpGetOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeHttpGetOutput) ElementType() reflect.Type {
@@ -8161,6 +9302,12 @@ func (o ServiceTemplateContainerStartupProbeHttpGetOutput) ToServiceTemplateCont
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerStartupProbeHttpGet) *ServiceTemplateContainerStartupProbeHttpGet {
 		return &v
 	}).(ServiceTemplateContainerStartupProbeHttpGetPtrOutput)
+}
+
+func (o ServiceTemplateContainerStartupProbeHttpGetOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Custom headers to set in the request. HTTP allows repeated headers.
@@ -8194,6 +9341,12 @@ func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ToServiceTemplateC
 
 func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ToServiceTemplateContainerStartupProbeHttpGetPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeHttpGetPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbeHttpGet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) Elem() ServiceTemplateContainerStartupProbeHttpGetOutput {
@@ -8275,6 +9428,12 @@ func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToServiceTemp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput)
 }
 
+func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput is an input type that accepts ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray and ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput` via:
 //
@@ -8300,6 +9459,12 @@ func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToServiceTem
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
+func (i ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ElementType() reflect.Type {
@@ -8312,6 +9477,12 @@ func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTe
 
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The header field name
@@ -8336,6 +9507,12 @@ func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToServ
 
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader] {
+	return pulumix.Output[[]ServiceTemplateContainerStartupProbeHttpGetHttpHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput {
@@ -8379,6 +9556,12 @@ func (i ServiceTemplateContainerStartupProbeTcpSocketArgs) ToServiceTemplateCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeTcpSocketOutput)
 }
 
+func (i ServiceTemplateContainerStartupProbeTcpSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeTcpSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateContainerStartupProbeTcpSocketArgs) ToServiceTemplateContainerStartupProbeTcpSocketPtrOutput() ServiceTemplateContainerStartupProbeTcpSocketPtrOutput {
 	return i.ToServiceTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(context.Background())
 }
@@ -8420,6 +9603,12 @@ func (i *serviceTemplateContainerStartupProbeTcpSocketPtrType) ToServiceTemplate
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
+func (i *serviceTemplateContainerStartupProbeTcpSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket]{
+		OutputState: i.ToServiceTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerStartupProbeTcpSocketOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeTcpSocketOutput) ElementType() reflect.Type {
@@ -8444,6 +9633,12 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) ToServiceTemplateCo
 	}).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
+func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[ServiceTemplateContainerStartupProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Port number to access on the container. Must be in the range 1 to 65535.
 // If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
@@ -8462,6 +9657,12 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) ToServiceTemplat
 
 func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) ToServiceTemplateContainerStartupProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerStartupProbeTcpSocketPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket] {
+	return pulumix.Output[*ServiceTemplateContainerStartupProbeTcpSocket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) Elem() ServiceTemplateContainerStartupProbeTcpSocketOutput {
@@ -8522,6 +9723,12 @@ func (i ServiceTemplateContainerVolumeMountArgs) ToServiceTemplateContainerVolum
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerVolumeMountOutput)
 }
 
+func (i ServiceTemplateContainerVolumeMountArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerVolumeMount] {
+	return pulumix.Output[ServiceTemplateContainerVolumeMount]{
+		OutputState: i.ToServiceTemplateContainerVolumeMountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateContainerVolumeMountArrayInput is an input type that accepts ServiceTemplateContainerVolumeMountArray and ServiceTemplateContainerVolumeMountArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateContainerVolumeMountArrayInput` via:
 //
@@ -8547,6 +9754,12 @@ func (i ServiceTemplateContainerVolumeMountArray) ToServiceTemplateContainerVolu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerVolumeMountArrayOutput)
 }
 
+func (i ServiceTemplateContainerVolumeMountArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerVolumeMount] {
+	return pulumix.Output[[]ServiceTemplateContainerVolumeMount]{
+		OutputState: i.ToServiceTemplateContainerVolumeMountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateContainerVolumeMountOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerVolumeMountOutput) ElementType() reflect.Type {
@@ -8559,6 +9772,12 @@ func (o ServiceTemplateContainerVolumeMountOutput) ToServiceTemplateContainerVol
 
 func (o ServiceTemplateContainerVolumeMountOutput) ToServiceTemplateContainerVolumeMountOutputWithContext(ctx context.Context) ServiceTemplateContainerVolumeMountOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerVolumeMountOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateContainerVolumeMount] {
+	return pulumix.Output[ServiceTemplateContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
@@ -8583,6 +9802,12 @@ func (o ServiceTemplateContainerVolumeMountArrayOutput) ToServiceTemplateContain
 
 func (o ServiceTemplateContainerVolumeMountArrayOutput) ToServiceTemplateContainerVolumeMountArrayOutputWithContext(ctx context.Context) ServiceTemplateContainerVolumeMountArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateContainerVolumeMountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateContainerVolumeMount] {
+	return pulumix.Output[[]ServiceTemplateContainerVolumeMount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput) ServiceTemplateContainerVolumeMountOutput {
@@ -8628,6 +9853,12 @@ func (i ServiceTemplateScalingArgs) ToServiceTemplateScalingOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateScalingOutput)
 }
 
+func (i ServiceTemplateScalingArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateScaling] {
+	return pulumix.Output[ServiceTemplateScaling]{
+		OutputState: i.ToServiceTemplateScalingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateScalingArgs) ToServiceTemplateScalingPtrOutput() ServiceTemplateScalingPtrOutput {
 	return i.ToServiceTemplateScalingPtrOutputWithContext(context.Background())
 }
@@ -8669,6 +9900,12 @@ func (i *serviceTemplateScalingPtrType) ToServiceTemplateScalingPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateScalingPtrOutput)
 }
 
+func (i *serviceTemplateScalingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateScaling] {
+	return pulumix.Output[*ServiceTemplateScaling]{
+		OutputState: i.ToServiceTemplateScalingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateScalingOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateScalingOutput) ElementType() reflect.Type {
@@ -8693,6 +9930,12 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
+func (o ServiceTemplateScalingOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateScaling] {
+	return pulumix.Output[ServiceTemplateScaling]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Maximum number of serving instances that this resource should have.
 func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
@@ -8715,6 +9958,12 @@ func (o ServiceTemplateScalingPtrOutput) ToServiceTemplateScalingPtrOutput() Ser
 
 func (o ServiceTemplateScalingPtrOutput) ToServiceTemplateScalingPtrOutputWithContext(ctx context.Context) ServiceTemplateScalingPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateScalingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateScaling] {
+	return pulumix.Output[*ServiceTemplateScaling]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
@@ -8794,6 +10043,12 @@ func (i ServiceTemplateVolumeArgs) ToServiceTemplateVolumeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeOutput)
 }
 
+func (i ServiceTemplateVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolume] {
+	return pulumix.Output[ServiceTemplateVolume]{
+		OutputState: i.ToServiceTemplateVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateVolumeArrayInput is an input type that accepts ServiceTemplateVolumeArray and ServiceTemplateVolumeArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateVolumeArrayInput` via:
 //
@@ -8819,6 +10074,12 @@ func (i ServiceTemplateVolumeArray) ToServiceTemplateVolumeArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeArrayOutput)
 }
 
+func (i ServiceTemplateVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolume] {
+	return pulumix.Output[[]ServiceTemplateVolume]{
+		OutputState: i.ToServiceTemplateVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateVolumeOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeOutput) ElementType() reflect.Type {
@@ -8831,6 +10092,12 @@ func (o ServiceTemplateVolumeOutput) ToServiceTemplateVolumeOutput() ServiceTemp
 
 func (o ServiceTemplateVolumeOutput) ToServiceTemplateVolumeOutputWithContext(ctx context.Context) ServiceTemplateVolumeOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolume] {
+	return pulumix.Output[ServiceTemplateVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -8866,6 +10133,12 @@ func (o ServiceTemplateVolumeArrayOutput) ToServiceTemplateVolumeArrayOutput() S
 
 func (o ServiceTemplateVolumeArrayOutput) ToServiceTemplateVolumeArrayOutputWithContext(ctx context.Context) ServiceTemplateVolumeArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolume] {
+	return pulumix.Output[[]ServiceTemplateVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTemplateVolumeOutput {
@@ -8905,6 +10178,12 @@ func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToServiceTemplateVolumeCloudS
 
 func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToServiceTemplateVolumeCloudSqlInstanceOutputWithContext(ctx context.Context) ServiceTemplateVolumeCloudSqlInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeCloudSqlInstanceOutput)
+}
+
+func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[ServiceTemplateVolumeCloudSqlInstance]{
+		OutputState: i.ToServiceTemplateVolumeCloudSqlInstanceOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ServiceTemplateVolumeCloudSqlInstanceArgs) ToServiceTemplateVolumeCloudSqlInstancePtrOutput() ServiceTemplateVolumeCloudSqlInstancePtrOutput {
@@ -8948,6 +10227,12 @@ func (i *serviceTemplateVolumeCloudSqlInstancePtrType) ToServiceTemplateVolumeCl
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+func (i *serviceTemplateVolumeCloudSqlInstancePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance]{
+		OutputState: i.ToServiceTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateVolumeCloudSqlInstanceOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeCloudSqlInstanceOutput) ElementType() reflect.Type {
@@ -8972,6 +10257,12 @@ func (o ServiceTemplateVolumeCloudSqlInstanceOutput) ToServiceTemplateVolumeClou
 	}).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+func (o ServiceTemplateVolumeCloudSqlInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[ServiceTemplateVolumeCloudSqlInstance]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o ServiceTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
@@ -8989,6 +10280,12 @@ func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) ToServiceTemplateVolumeC
 
 func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) ToServiceTemplateVolumeCloudSqlInstancePtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeCloudSqlInstancePtrOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance] {
+	return pulumix.Output[*ServiceTemplateVolumeCloudSqlInstance]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Elem() ServiceTemplateVolumeCloudSqlInstanceOutput {
@@ -9056,6 +10353,12 @@ func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirOutput)
 }
 
+func (i ServiceTemplateVolumeEmptyDirArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeEmptyDir] {
+	return pulumix.Output[ServiceTemplateVolumeEmptyDir]{
+		OutputState: i.ToServiceTemplateVolumeEmptyDirOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput {
 	return i.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
 }
@@ -9097,6 +10400,12 @@ func (i *serviceTemplateVolumeEmptyDirPtrType) ToServiceTemplateVolumeEmptyDirPt
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
 
+func (i *serviceTemplateVolumeEmptyDirPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeEmptyDir] {
+	return pulumix.Output[*ServiceTemplateVolumeEmptyDir]{
+		OutputState: i.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
@@ -9119,6 +10428,12 @@ func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeEmptyDir) *ServiceTemplateVolumeEmptyDir {
 		return &v
 	}).(ServiceTemplateVolumeEmptyDirPtrOutput)
+}
+
+func (o ServiceTemplateVolumeEmptyDirOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeEmptyDir] {
+	return pulumix.Output[ServiceTemplateVolumeEmptyDir]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The different types of medium supported for EmptyDir.
@@ -9147,6 +10462,12 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToServiceTemplateVolumeEmptyDirP
 
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeEmptyDir] {
+	return pulumix.Output[*ServiceTemplateVolumeEmptyDir]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) Elem() ServiceTemplateVolumeEmptyDirOutput {
@@ -9226,6 +10547,12 @@ func (i ServiceTemplateVolumeSecretArgs) ToServiceTemplateVolumeSecretOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretOutput)
 }
 
+func (i ServiceTemplateVolumeSecretArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecret] {
+	return pulumix.Output[ServiceTemplateVolumeSecret]{
+		OutputState: i.ToServiceTemplateVolumeSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateVolumeSecretArgs) ToServiceTemplateVolumeSecretPtrOutput() ServiceTemplateVolumeSecretPtrOutput {
 	return i.ToServiceTemplateVolumeSecretPtrOutputWithContext(context.Background())
 }
@@ -9267,6 +10594,12 @@ func (i *serviceTemplateVolumeSecretPtrType) ToServiceTemplateVolumeSecretPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretPtrOutput)
 }
 
+func (i *serviceTemplateVolumeSecretPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeSecret] {
+	return pulumix.Output[*ServiceTemplateVolumeSecret]{
+		OutputState: i.ToServiceTemplateVolumeSecretPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateVolumeSecretOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeSecretOutput) ElementType() reflect.Type {
@@ -9289,6 +10622,12 @@ func (o ServiceTemplateVolumeSecretOutput) ToServiceTemplateVolumeSecretPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeSecret) *ServiceTemplateVolumeSecret {
 		return &v
 	}).(ServiceTemplateVolumeSecretPtrOutput)
+}
+
+func (o ServiceTemplateVolumeSecretOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecret] {
+	return pulumix.Output[ServiceTemplateVolumeSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
@@ -9319,6 +10658,12 @@ func (o ServiceTemplateVolumeSecretPtrOutput) ToServiceTemplateVolumeSecretPtrOu
 
 func (o ServiceTemplateVolumeSecretPtrOutput) ToServiceTemplateVolumeSecretPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeSecretPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeSecretPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVolumeSecret] {
+	return pulumix.Output[*ServiceTemplateVolumeSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateVolumeSecretPtrOutput) Elem() ServiceTemplateVolumeSecretOutput {
@@ -9403,6 +10748,12 @@ func (i ServiceTemplateVolumeSecretItemArgs) ToServiceTemplateVolumeSecretItemOu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretItemOutput)
 }
 
+func (i ServiceTemplateVolumeSecretItemArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecretItem] {
+	return pulumix.Output[ServiceTemplateVolumeSecretItem]{
+		OutputState: i.ToServiceTemplateVolumeSecretItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTemplateVolumeSecretItemArrayInput is an input type that accepts ServiceTemplateVolumeSecretItemArray and ServiceTemplateVolumeSecretItemArrayOutput values.
 // You can construct a concrete instance of `ServiceTemplateVolumeSecretItemArrayInput` via:
 //
@@ -9428,6 +10779,12 @@ func (i ServiceTemplateVolumeSecretItemArray) ToServiceTemplateVolumeSecretItemA
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeSecretItemArrayOutput)
 }
 
+func (i ServiceTemplateVolumeSecretItemArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolumeSecretItem] {
+	return pulumix.Output[[]ServiceTemplateVolumeSecretItem]{
+		OutputState: i.ToServiceTemplateVolumeSecretItemArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateVolumeSecretItemOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVolumeSecretItemOutput) ElementType() reflect.Type {
@@ -9440,6 +10797,12 @@ func (o ServiceTemplateVolumeSecretItemOutput) ToServiceTemplateVolumeSecretItem
 
 func (o ServiceTemplateVolumeSecretItemOutput) ToServiceTemplateVolumeSecretItemOutputWithContext(ctx context.Context) ServiceTemplateVolumeSecretItemOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeSecretItemOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVolumeSecretItem] {
+	return pulumix.Output[ServiceTemplateVolumeSecretItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
@@ -9469,6 +10832,12 @@ func (o ServiceTemplateVolumeSecretItemArrayOutput) ToServiceTemplateVolumeSecre
 
 func (o ServiceTemplateVolumeSecretItemArrayOutput) ToServiceTemplateVolumeSecretItemArrayOutputWithContext(ctx context.Context) ServiceTemplateVolumeSecretItemArrayOutput {
 	return o
+}
+
+func (o ServiceTemplateVolumeSecretItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVolumeSecretItem] {
+	return pulumix.Output[[]ServiceTemplateVolumeSecretItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) ServiceTemplateVolumeSecretItemOutput {
@@ -9516,6 +10885,12 @@ func (i ServiceTemplateVpcAccessArgs) ToServiceTemplateVpcAccessOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessOutput)
 }
 
+func (i ServiceTemplateVpcAccessArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccess] {
+	return pulumix.Output[ServiceTemplateVpcAccess]{
+		OutputState: i.ToServiceTemplateVpcAccessOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceTemplateVpcAccessArgs) ToServiceTemplateVpcAccessPtrOutput() ServiceTemplateVpcAccessPtrOutput {
 	return i.ToServiceTemplateVpcAccessPtrOutputWithContext(context.Background())
 }
@@ -9557,6 +10932,12 @@ func (i *serviceTemplateVpcAccessPtrType) ToServiceTemplateVpcAccessPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessPtrOutput)
 }
 
+func (i *serviceTemplateVpcAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVpcAccess] {
+	return pulumix.Output[*ServiceTemplateVpcAccess]{
+		OutputState: i.ToServiceTemplateVpcAccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTemplateVpcAccessOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVpcAccessOutput) ElementType() reflect.Type {
@@ -9579,6 +10960,12 @@ func (o ServiceTemplateVpcAccessOutput) ToServiceTemplateVpcAccessPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVpcAccess) *ServiceTemplateVpcAccess {
 		return &v
 	}).(ServiceTemplateVpcAccessPtrOutput)
+}
+
+func (o ServiceTemplateVpcAccessOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccess] {
+	return pulumix.Output[ServiceTemplateVpcAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 // VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
@@ -9604,6 +10991,12 @@ func (o ServiceTemplateVpcAccessPtrOutput) ToServiceTemplateVpcAccessPtrOutput()
 
 func (o ServiceTemplateVpcAccessPtrOutput) ToServiceTemplateVpcAccessPtrOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessPtrOutput {
 	return o
+}
+
+func (o ServiceTemplateVpcAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTemplateVpcAccess] {
+	return pulumix.Output[*ServiceTemplateVpcAccess]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTemplateVpcAccessPtrOutput) Elem() ServiceTemplateVpcAccessOutput {
@@ -9716,6 +11109,12 @@ func (i ServiceTerminalConditionArgs) ToServiceTerminalConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTerminalConditionOutput)
 }
 
+func (i ServiceTerminalConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTerminalCondition] {
+	return pulumix.Output[ServiceTerminalCondition]{
+		OutputState: i.ToServiceTerminalConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTerminalConditionArrayInput is an input type that accepts ServiceTerminalConditionArray and ServiceTerminalConditionArrayOutput values.
 // You can construct a concrete instance of `ServiceTerminalConditionArrayInput` via:
 //
@@ -9741,6 +11140,12 @@ func (i ServiceTerminalConditionArray) ToServiceTerminalConditionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTerminalConditionArrayOutput)
 }
 
+func (i ServiceTerminalConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTerminalCondition] {
+	return pulumix.Output[[]ServiceTerminalCondition]{
+		OutputState: i.ToServiceTerminalConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTerminalConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceTerminalConditionOutput) ElementType() reflect.Type {
@@ -9753,6 +11158,12 @@ func (o ServiceTerminalConditionOutput) ToServiceTerminalConditionOutput() Servi
 
 func (o ServiceTerminalConditionOutput) ToServiceTerminalConditionOutputWithContext(ctx context.Context) ServiceTerminalConditionOutput {
 	return o
+}
+
+func (o ServiceTerminalConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTerminalCondition] {
+	return pulumix.Output[ServiceTerminalCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -9818,6 +11229,12 @@ func (o ServiceTerminalConditionArrayOutput) ToServiceTerminalConditionArrayOutp
 	return o
 }
 
+func (o ServiceTerminalConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTerminalCondition] {
+	return pulumix.Output[[]ServiceTerminalCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServiceTerminalConditionArrayOutput) Index(i pulumi.IntInput) ServiceTerminalConditionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTerminalCondition {
 		return vs[0].([]ServiceTerminalCondition)[vs[1].(int)]
@@ -9871,6 +11288,12 @@ func (i ServiceTrafficArgs) ToServiceTrafficOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficOutput)
 }
 
+func (i ServiceTrafficArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTraffic] {
+	return pulumix.Output[ServiceTraffic]{
+		OutputState: i.ToServiceTrafficOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTrafficArrayInput is an input type that accepts ServiceTrafficArray and ServiceTrafficArrayOutput values.
 // You can construct a concrete instance of `ServiceTrafficArrayInput` via:
 //
@@ -9896,6 +11319,12 @@ func (i ServiceTrafficArray) ToServiceTrafficArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficArrayOutput)
 }
 
+func (i ServiceTrafficArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTraffic] {
+	return pulumix.Output[[]ServiceTraffic]{
+		OutputState: i.ToServiceTrafficArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTrafficOutput struct{ *pulumi.OutputState }
 
 func (ServiceTrafficOutput) ElementType() reflect.Type {
@@ -9908,6 +11337,12 @@ func (o ServiceTrafficOutput) ToServiceTrafficOutput() ServiceTrafficOutput {
 
 func (o ServiceTrafficOutput) ToServiceTrafficOutputWithContext(ctx context.Context) ServiceTrafficOutput {
 	return o
+}
+
+func (o ServiceTrafficOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTraffic] {
+	return pulumix.Output[ServiceTraffic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -9943,6 +11378,12 @@ func (o ServiceTrafficArrayOutput) ToServiceTrafficArrayOutput() ServiceTrafficA
 
 func (o ServiceTrafficArrayOutput) ToServiceTrafficArrayOutputWithContext(ctx context.Context) ServiceTrafficArrayOutput {
 	return o
+}
+
+func (o ServiceTrafficArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTraffic] {
+	return pulumix.Output[[]ServiceTraffic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTrafficArrayOutput) Index(i pulumi.IntInput) ServiceTrafficOutput {
@@ -10010,6 +11451,12 @@ func (i ServiceTrafficStatusArgs) ToServiceTrafficStatusOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficStatusOutput)
 }
 
+func (i ServiceTrafficStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTrafficStatus] {
+	return pulumix.Output[ServiceTrafficStatus]{
+		OutputState: i.ToServiceTrafficStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServiceTrafficStatusArrayInput is an input type that accepts ServiceTrafficStatusArray and ServiceTrafficStatusArrayOutput values.
 // You can construct a concrete instance of `ServiceTrafficStatusArrayInput` via:
 //
@@ -10035,6 +11482,12 @@ func (i ServiceTrafficStatusArray) ToServiceTrafficStatusArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTrafficStatusArrayOutput)
 }
 
+func (i ServiceTrafficStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTrafficStatus] {
+	return pulumix.Output[[]ServiceTrafficStatus]{
+		OutputState: i.ToServiceTrafficStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceTrafficStatusOutput struct{ *pulumi.OutputState }
 
 func (ServiceTrafficStatusOutput) ElementType() reflect.Type {
@@ -10047,6 +11500,12 @@ func (o ServiceTrafficStatusOutput) ToServiceTrafficStatusOutput() ServiceTraffi
 
 func (o ServiceTrafficStatusOutput) ToServiceTrafficStatusOutputWithContext(ctx context.Context) ServiceTrafficStatusOutput {
 	return o
+}
+
+func (o ServiceTrafficStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTrafficStatus] {
+	return pulumix.Output[ServiceTrafficStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -10091,6 +11550,12 @@ func (o ServiceTrafficStatusArrayOutput) ToServiceTrafficStatusArrayOutput() Ser
 
 func (o ServiceTrafficStatusArrayOutput) ToServiceTrafficStatusArrayOutputWithContext(ctx context.Context) ServiceTrafficStatusArrayOutput {
 	return o
+}
+
+func (o ServiceTrafficStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTrafficStatus] {
+	return pulumix.Output[[]ServiceTrafficStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceTrafficStatusArrayOutput) Index(i pulumi.IntInput) ServiceTrafficStatusOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -86,6 +87,12 @@ func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestDestinationOutput)
 }
 
+func (i ConnectivityTestDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectivityTestDestination] {
+	return pulumix.Output[ConnectivityTestDestination]{
+		OutputState: i.ToConnectivityTestDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectivityTestDestinationArgs) ToConnectivityTestDestinationPtrOutput() ConnectivityTestDestinationPtrOutput {
 	return i.ToConnectivityTestDestinationPtrOutputWithContext(context.Background())
 }
@@ -127,6 +134,12 @@ func (i *connectivityTestDestinationPtrType) ToConnectivityTestDestinationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestDestinationPtrOutput)
 }
 
+func (i *connectivityTestDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTestDestination] {
+	return pulumix.Output[*ConnectivityTestDestination]{
+		OutputState: i.ToConnectivityTestDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectivityTestDestinationOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestDestinationOutput) ElementType() reflect.Type {
@@ -149,6 +162,12 @@ func (o ConnectivityTestDestinationOutput) ToConnectivityTestDestinationPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestDestination) *ConnectivityTestDestination {
 		return &v
 	}).(ConnectivityTestDestinationPtrOutput)
+}
+
+func (o ConnectivityTestDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectivityTestDestination] {
+	return pulumix.Output[ConnectivityTestDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Compute Engine instance URI.
@@ -200,6 +219,12 @@ func (o ConnectivityTestDestinationPtrOutput) ToConnectivityTestDestinationPtrOu
 
 func (o ConnectivityTestDestinationPtrOutput) ToConnectivityTestDestinationPtrOutputWithContext(ctx context.Context) ConnectivityTestDestinationPtrOutput {
 	return o
+}
+
+func (o ConnectivityTestDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTestDestination] {
+	return pulumix.Output[*ConnectivityTestDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectivityTestDestinationPtrOutput) Elem() ConnectivityTestDestinationOutput {
@@ -351,6 +376,12 @@ func (i ConnectivityTestSourceArgs) ToConnectivityTestSourceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourceOutput)
 }
 
+func (i ConnectivityTestSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectivityTestSource] {
+	return pulumix.Output[ConnectivityTestSource]{
+		OutputState: i.ToConnectivityTestSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectivityTestSourceArgs) ToConnectivityTestSourcePtrOutput() ConnectivityTestSourcePtrOutput {
 	return i.ToConnectivityTestSourcePtrOutputWithContext(context.Background())
 }
@@ -392,6 +423,12 @@ func (i *connectivityTestSourcePtrType) ToConnectivityTestSourcePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestSourcePtrOutput)
 }
 
+func (i *connectivityTestSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTestSource] {
+	return pulumix.Output[*ConnectivityTestSource]{
+		OutputState: i.ToConnectivityTestSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectivityTestSourceOutput struct{ *pulumi.OutputState }
 
 func (ConnectivityTestSourceOutput) ElementType() reflect.Type {
@@ -414,6 +451,12 @@ func (o ConnectivityTestSourceOutput) ToConnectivityTestSourcePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectivityTestSource) *ConnectivityTestSource {
 		return &v
 	}).(ConnectivityTestSourcePtrOutput)
+}
+
+func (o ConnectivityTestSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectivityTestSource] {
+	return pulumix.Output[ConnectivityTestSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A Compute Engine instance URI.
@@ -470,6 +513,12 @@ func (o ConnectivityTestSourcePtrOutput) ToConnectivityTestSourcePtrOutput() Con
 
 func (o ConnectivityTestSourcePtrOutput) ToConnectivityTestSourcePtrOutputWithContext(ctx context.Context) ConnectivityTestSourcePtrOutput {
 	return o
+}
+
+func (o ConnectivityTestSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTestSource] {
+	return pulumix.Output[*ConnectivityTestSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectivityTestSourcePtrOutput) Elem() ConnectivityTestSourceOutput {

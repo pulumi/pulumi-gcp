@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows creation of custom info types.
@@ -405,6 +406,12 @@ func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypeOutput)
 }
 
+func (i *PreventionStoredInfoType) ToOutput(ctx context.Context) pulumix.Output[*PreventionStoredInfoType] {
+	return pulumix.Output[*PreventionStoredInfoType]{
+		OutputState: i.ToPreventionStoredInfoTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PreventionStoredInfoTypeArrayInput is an input type that accepts PreventionStoredInfoTypeArray and PreventionStoredInfoTypeArrayOutput values.
 // You can construct a concrete instance of `PreventionStoredInfoTypeArrayInput` via:
 //
@@ -428,6 +435,12 @@ func (i PreventionStoredInfoTypeArray) ToPreventionStoredInfoTypeArrayOutput() P
 
 func (i PreventionStoredInfoTypeArray) ToPreventionStoredInfoTypeArrayOutputWithContext(ctx context.Context) PreventionStoredInfoTypeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypeArrayOutput)
+}
+
+func (i PreventionStoredInfoTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionStoredInfoType] {
+	return pulumix.Output[[]*PreventionStoredInfoType]{
+		OutputState: i.ToPreventionStoredInfoTypeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PreventionStoredInfoTypeMapInput is an input type that accepts PreventionStoredInfoTypeMap and PreventionStoredInfoTypeMapOutput values.
@@ -455,6 +468,12 @@ func (i PreventionStoredInfoTypeMap) ToPreventionStoredInfoTypeMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypeMapOutput)
 }
 
+func (i PreventionStoredInfoTypeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionStoredInfoType] {
+	return pulumix.Output[map[string]*PreventionStoredInfoType]{
+		OutputState: i.ToPreventionStoredInfoTypeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PreventionStoredInfoTypeOutput struct{ *pulumi.OutputState }
 
 func (PreventionStoredInfoTypeOutput) ElementType() reflect.Type {
@@ -467,6 +486,12 @@ func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutput() Preve
 
 func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
 	return o
+}
+
+func (o PreventionStoredInfoTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*PreventionStoredInfoType] {
+	return pulumix.Output[*PreventionStoredInfoType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of the info type.
@@ -536,6 +561,12 @@ func (o PreventionStoredInfoTypeArrayOutput) ToPreventionStoredInfoTypeArrayOutp
 	return o
 }
 
+func (o PreventionStoredInfoTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionStoredInfoType] {
+	return pulumix.Output[[]*PreventionStoredInfoType]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PreventionStoredInfoTypeArrayOutput) Index(i pulumi.IntInput) PreventionStoredInfoTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreventionStoredInfoType {
 		return vs[0].([]*PreventionStoredInfoType)[vs[1].(int)]
@@ -554,6 +585,12 @@ func (o PreventionStoredInfoTypeMapOutput) ToPreventionStoredInfoTypeMapOutput()
 
 func (o PreventionStoredInfoTypeMapOutput) ToPreventionStoredInfoTypeMapOutputWithContext(ctx context.Context) PreventionStoredInfoTypeMapOutput {
 	return o
+}
+
+func (o PreventionStoredInfoTypeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionStoredInfoType] {
+	return pulumix.Output[map[string]*PreventionStoredInfoType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PreventionStoredInfoTypeMapOutput) MapIndex(k pulumi.StringInput) PreventionStoredInfoTypeOutput {

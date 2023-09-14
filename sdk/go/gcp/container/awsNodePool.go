@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Anthos node pool running on AWS.
@@ -742,6 +743,12 @@ func (i *AwsNodePool) ToAwsNodePoolOutputWithContext(ctx context.Context) AwsNod
 	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolOutput)
 }
 
+func (i *AwsNodePool) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePool] {
+	return pulumix.Output[*AwsNodePool]{
+		OutputState: i.ToAwsNodePoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AwsNodePoolArrayInput is an input type that accepts AwsNodePoolArray and AwsNodePoolArrayOutput values.
 // You can construct a concrete instance of `AwsNodePoolArrayInput` via:
 //
@@ -765,6 +772,12 @@ func (i AwsNodePoolArray) ToAwsNodePoolArrayOutput() AwsNodePoolArrayOutput {
 
 func (i AwsNodePoolArray) ToAwsNodePoolArrayOutputWithContext(ctx context.Context) AwsNodePoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolArrayOutput)
+}
+
+func (i AwsNodePoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*AwsNodePool] {
+	return pulumix.Output[[]*AwsNodePool]{
+		OutputState: i.ToAwsNodePoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AwsNodePoolMapInput is an input type that accepts AwsNodePoolMap and AwsNodePoolMapOutput values.
@@ -792,6 +805,12 @@ func (i AwsNodePoolMap) ToAwsNodePoolMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolMapOutput)
 }
 
+func (i AwsNodePoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsNodePool] {
+	return pulumix.Output[map[string]*AwsNodePool]{
+		OutputState: i.ToAwsNodePoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AwsNodePoolOutput struct{ *pulumi.OutputState }
 
 func (AwsNodePoolOutput) ElementType() reflect.Type {
@@ -804,6 +823,12 @@ func (o AwsNodePoolOutput) ToAwsNodePoolOutput() AwsNodePoolOutput {
 
 func (o AwsNodePoolOutput) ToAwsNodePoolOutputWithContext(ctx context.Context) AwsNodePoolOutput {
 	return o
+}
+
+func (o AwsNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePool] {
+	return pulumix.Output[*AwsNodePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -900,6 +925,12 @@ func (o AwsNodePoolArrayOutput) ToAwsNodePoolArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o AwsNodePoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AwsNodePool] {
+	return pulumix.Output[[]*AwsNodePool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AwsNodePoolArrayOutput) Index(i pulumi.IntInput) AwsNodePoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsNodePool {
 		return vs[0].([]*AwsNodePool)[vs[1].(int)]
@@ -918,6 +949,12 @@ func (o AwsNodePoolMapOutput) ToAwsNodePoolMapOutput() AwsNodePoolMapOutput {
 
 func (o AwsNodePoolMapOutput) ToAwsNodePoolMapOutputWithContext(ctx context.Context) AwsNodePoolMapOutput {
 	return o
+}
+
+func (o AwsNodePoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsNodePool] {
+	return pulumix.Output[map[string]*AwsNodePool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AwsNodePoolMapOutput) MapIndex(k pulumi.StringInput) AwsNodePoolOutput {

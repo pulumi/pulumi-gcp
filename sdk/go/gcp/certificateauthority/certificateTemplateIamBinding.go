@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Certificate Authority Service CertificateTemplate. Each of these resources serves a different use case:
@@ -487,6 +488,12 @@ func (i *CertificateTemplateIamBinding) ToCertificateTemplateIamBindingOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamBindingOutput)
 }
 
+func (i *CertificateTemplateIamBinding) ToOutput(ctx context.Context) pulumix.Output[*CertificateTemplateIamBinding] {
+	return pulumix.Output[*CertificateTemplateIamBinding]{
+		OutputState: i.ToCertificateTemplateIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertificateTemplateIamBindingArrayInput is an input type that accepts CertificateTemplateIamBindingArray and CertificateTemplateIamBindingArrayOutput values.
 // You can construct a concrete instance of `CertificateTemplateIamBindingArrayInput` via:
 //
@@ -510,6 +517,12 @@ func (i CertificateTemplateIamBindingArray) ToCertificateTemplateIamBindingArray
 
 func (i CertificateTemplateIamBindingArray) ToCertificateTemplateIamBindingArrayOutputWithContext(ctx context.Context) CertificateTemplateIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamBindingArrayOutput)
+}
+
+func (i CertificateTemplateIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateTemplateIamBinding] {
+	return pulumix.Output[[]*CertificateTemplateIamBinding]{
+		OutputState: i.ToCertificateTemplateIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CertificateTemplateIamBindingMapInput is an input type that accepts CertificateTemplateIamBindingMap and CertificateTemplateIamBindingMapOutput values.
@@ -537,6 +550,12 @@ func (i CertificateTemplateIamBindingMap) ToCertificateTemplateIamBindingMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(CertificateTemplateIamBindingMapOutput)
 }
 
+func (i CertificateTemplateIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateTemplateIamBinding] {
+	return pulumix.Output[map[string]*CertificateTemplateIamBinding]{
+		OutputState: i.ToCertificateTemplateIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificateTemplateIamBindingOutput struct{ *pulumi.OutputState }
 
 func (CertificateTemplateIamBindingOutput) ElementType() reflect.Type {
@@ -549,6 +568,12 @@ func (o CertificateTemplateIamBindingOutput) ToCertificateTemplateIamBindingOutp
 
 func (o CertificateTemplateIamBindingOutput) ToCertificateTemplateIamBindingOutputWithContext(ctx context.Context) CertificateTemplateIamBindingOutput {
 	return o
+}
+
+func (o CertificateTemplateIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateTemplateIamBinding] {
+	return pulumix.Output[*CertificateTemplateIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -616,6 +641,12 @@ func (o CertificateTemplateIamBindingArrayOutput) ToCertificateTemplateIamBindin
 	return o
 }
 
+func (o CertificateTemplateIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CertificateTemplateIamBinding] {
+	return pulumix.Output[[]*CertificateTemplateIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificateTemplateIamBindingArrayOutput) Index(i pulumi.IntInput) CertificateTemplateIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificateTemplateIamBinding {
 		return vs[0].([]*CertificateTemplateIamBinding)[vs[1].(int)]
@@ -634,6 +665,12 @@ func (o CertificateTemplateIamBindingMapOutput) ToCertificateTemplateIamBindingM
 
 func (o CertificateTemplateIamBindingMapOutput) ToCertificateTemplateIamBindingMapOutputWithContext(ctx context.Context) CertificateTemplateIamBindingMapOutput {
 	return o
+}
+
+func (o CertificateTemplateIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificateTemplateIamBinding] {
+	return pulumix.Output[map[string]*CertificateTemplateIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificateTemplateIamBindingMapOutput) MapIndex(k pulumi.StringInput) CertificateTemplateIamBindingOutput {

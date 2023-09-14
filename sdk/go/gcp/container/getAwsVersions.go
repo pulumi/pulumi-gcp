@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to available Kubernetes versions in a location for a given project.
@@ -110,6 +111,12 @@ func (o GetAwsVersionsResultOutput) ToGetAwsVersionsResultOutput() GetAwsVersion
 
 func (o GetAwsVersionsResultOutput) ToGetAwsVersionsResultOutputWithContext(ctx context.Context) GetAwsVersionsResultOutput {
 	return o
+}
+
+func (o GetAwsVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAwsVersionsResult] {
+	return pulumix.Output[GetAwsVersionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

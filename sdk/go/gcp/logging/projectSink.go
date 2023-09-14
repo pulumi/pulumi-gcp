@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -272,6 +273,12 @@ func (i *ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkOutput)
 }
 
+func (i *ProjectSink) ToOutput(ctx context.Context) pulumix.Output[*ProjectSink] {
+	return pulumix.Output[*ProjectSink]{
+		OutputState: i.ToProjectSinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectSinkArrayInput is an input type that accepts ProjectSinkArray and ProjectSinkArrayOutput values.
 // You can construct a concrete instance of `ProjectSinkArrayInput` via:
 //
@@ -295,6 +302,12 @@ func (i ProjectSinkArray) ToProjectSinkArrayOutput() ProjectSinkArrayOutput {
 
 func (i ProjectSinkArray) ToProjectSinkArrayOutputWithContext(ctx context.Context) ProjectSinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkArrayOutput)
+}
+
+func (i ProjectSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectSink] {
+	return pulumix.Output[[]*ProjectSink]{
+		OutputState: i.ToProjectSinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectSinkMapInput is an input type that accepts ProjectSinkMap and ProjectSinkMapOutput values.
@@ -322,6 +335,12 @@ func (i ProjectSinkMap) ToProjectSinkMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkMapOutput)
 }
 
+func (i ProjectSinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectSink] {
+	return pulumix.Output[map[string]*ProjectSink]{
+		OutputState: i.ToProjectSinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectSinkOutput struct{ *pulumi.OutputState }
 
 func (ProjectSinkOutput) ElementType() reflect.Type {
@@ -334,6 +353,12 @@ func (o ProjectSinkOutput) ToProjectSinkOutput() ProjectSinkOutput {
 
 func (o ProjectSinkOutput) ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput {
 	return o
+}
+
+func (o ProjectSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectSink] {
+	return pulumix.Output[*ProjectSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -416,6 +441,12 @@ func (o ProjectSinkArrayOutput) ToProjectSinkArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ProjectSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectSink] {
+	return pulumix.Output[[]*ProjectSink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectSinkArrayOutput) Index(i pulumi.IntInput) ProjectSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectSink {
 		return vs[0].([]*ProjectSink)[vs[1].(int)]
@@ -434,6 +465,12 @@ func (o ProjectSinkMapOutput) ToProjectSinkMapOutput() ProjectSinkMapOutput {
 
 func (o ProjectSinkMapOutput) ToProjectSinkMapOutputWithContext(ctx context.Context) ProjectSinkMapOutput {
 	return o
+}
+
+func (o ProjectSinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectSink] {
+	return pulumix.Output[map[string]*ProjectSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectSinkMapOutput) MapIndex(k pulumi.StringInput) ProjectSinkOutput {

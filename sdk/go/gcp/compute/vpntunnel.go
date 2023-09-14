@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // VPN tunnel resource.
@@ -631,6 +632,12 @@ func (i *VPNTunnel) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelO
 	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelOutput)
 }
 
+func (i *VPNTunnel) ToOutput(ctx context.Context) pulumix.Output[*VPNTunnel] {
+	return pulumix.Output[*VPNTunnel]{
+		OutputState: i.ToVPNTunnelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VPNTunnelArrayInput is an input type that accepts VPNTunnelArray and VPNTunnelArrayOutput values.
 // You can construct a concrete instance of `VPNTunnelArrayInput` via:
 //
@@ -654,6 +661,12 @@ func (i VPNTunnelArray) ToVPNTunnelArrayOutput() VPNTunnelArrayOutput {
 
 func (i VPNTunnelArray) ToVPNTunnelArrayOutputWithContext(ctx context.Context) VPNTunnelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelArrayOutput)
+}
+
+func (i VPNTunnelArray) ToOutput(ctx context.Context) pulumix.Output[[]*VPNTunnel] {
+	return pulumix.Output[[]*VPNTunnel]{
+		OutputState: i.ToVPNTunnelArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VPNTunnelMapInput is an input type that accepts VPNTunnelMap and VPNTunnelMapOutput values.
@@ -681,6 +694,12 @@ func (i VPNTunnelMap) ToVPNTunnelMapOutputWithContext(ctx context.Context) VPNTu
 	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelMapOutput)
 }
 
+func (i VPNTunnelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VPNTunnel] {
+	return pulumix.Output[map[string]*VPNTunnel]{
+		OutputState: i.ToVPNTunnelMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VPNTunnelOutput struct{ *pulumi.OutputState }
 
 func (VPNTunnelOutput) ElementType() reflect.Type {
@@ -693,6 +712,12 @@ func (o VPNTunnelOutput) ToVPNTunnelOutput() VPNTunnelOutput {
 
 func (o VPNTunnelOutput) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
 	return o
+}
+
+func (o VPNTunnelOutput) ToOutput(ctx context.Context) pulumix.Output[*VPNTunnel] {
+	return pulumix.Output[*VPNTunnel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -849,6 +874,12 @@ func (o VPNTunnelArrayOutput) ToVPNTunnelArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o VPNTunnelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VPNTunnel] {
+	return pulumix.Output[[]*VPNTunnel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VPNTunnelArrayOutput) Index(i pulumi.IntInput) VPNTunnelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VPNTunnel {
 		return vs[0].([]*VPNTunnel)[vs[1].(int)]
@@ -867,6 +898,12 @@ func (o VPNTunnelMapOutput) ToVPNTunnelMapOutput() VPNTunnelMapOutput {
 
 func (o VPNTunnelMapOutput) ToVPNTunnelMapOutputWithContext(ctx context.Context) VPNTunnelMapOutput {
 	return o
+}
+
+func (o VPNTunnelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VPNTunnel] {
+	return pulumix.Output[map[string]*VPNTunnel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VPNTunnelMapOutput) MapIndex(k pulumi.StringInput) VPNTunnelOutput {

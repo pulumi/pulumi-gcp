@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Bigquery Analytics Hub Listing. Each of these resources serves a different use case:
@@ -377,6 +378,12 @@ func (i *ListingIamPolicy) ToListingIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamPolicyOutput)
 }
 
+func (i *ListingIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ListingIamPolicy] {
+	return pulumix.Output[*ListingIamPolicy]{
+		OutputState: i.ToListingIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListingIamPolicyArrayInput is an input type that accepts ListingIamPolicyArray and ListingIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ListingIamPolicyArrayInput` via:
 //
@@ -400,6 +407,12 @@ func (i ListingIamPolicyArray) ToListingIamPolicyArrayOutput() ListingIamPolicyA
 
 func (i ListingIamPolicyArray) ToListingIamPolicyArrayOutputWithContext(ctx context.Context) ListingIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamPolicyArrayOutput)
+}
+
+func (i ListingIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListingIamPolicy] {
+	return pulumix.Output[[]*ListingIamPolicy]{
+		OutputState: i.ToListingIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ListingIamPolicyMapInput is an input type that accepts ListingIamPolicyMap and ListingIamPolicyMapOutput values.
@@ -427,6 +440,12 @@ func (i ListingIamPolicyMap) ToListingIamPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamPolicyMapOutput)
 }
 
+func (i ListingIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListingIamPolicy] {
+	return pulumix.Output[map[string]*ListingIamPolicy]{
+		OutputState: i.ToListingIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ListingIamPolicyOutput) ElementType() reflect.Type {
@@ -439,6 +458,12 @@ func (o ListingIamPolicyOutput) ToListingIamPolicyOutput() ListingIamPolicyOutpu
 
 func (o ListingIamPolicyOutput) ToListingIamPolicyOutputWithContext(ctx context.Context) ListingIamPolicyOutput {
 	return o
+}
+
+func (o ListingIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingIamPolicy] {
+	return pulumix.Output[*ListingIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
@@ -500,6 +525,12 @@ func (o ListingIamPolicyArrayOutput) ToListingIamPolicyArrayOutputWithContext(ct
 	return o
 }
 
+func (o ListingIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListingIamPolicy] {
+	return pulumix.Output[[]*ListingIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ListingIamPolicyArrayOutput) Index(i pulumi.IntInput) ListingIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListingIamPolicy {
 		return vs[0].([]*ListingIamPolicy)[vs[1].(int)]
@@ -518,6 +549,12 @@ func (o ListingIamPolicyMapOutput) ToListingIamPolicyMapOutput() ListingIamPolic
 
 func (o ListingIamPolicyMapOutput) ToListingIamPolicyMapOutputWithContext(ctx context.Context) ListingIamPolicyMapOutput {
 	return o
+}
+
+func (o ListingIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListingIamPolicy] {
+	return pulumix.Output[map[string]*ListingIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ListingIamPolicyOutput {

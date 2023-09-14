@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare dataset. Each of these resources serves a different use case:
@@ -345,6 +346,12 @@ func (i *DatasetIamMember) ToDatasetIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberOutput)
 }
 
+func (i *DatasetIamMember) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamMember] {
+	return pulumix.Output[*DatasetIamMember]{
+		OutputState: i.ToDatasetIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatasetIamMemberArrayInput is an input type that accepts DatasetIamMemberArray and DatasetIamMemberArrayOutput values.
 // You can construct a concrete instance of `DatasetIamMemberArrayInput` via:
 //
@@ -368,6 +375,12 @@ func (i DatasetIamMemberArray) ToDatasetIamMemberArrayOutput() DatasetIamMemberA
 
 func (i DatasetIamMemberArray) ToDatasetIamMemberArrayOutputWithContext(ctx context.Context) DatasetIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberArrayOutput)
+}
+
+func (i DatasetIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DatasetIamMember] {
+	return pulumix.Output[[]*DatasetIamMember]{
+		OutputState: i.ToDatasetIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatasetIamMemberMapInput is an input type that accepts DatasetIamMemberMap and DatasetIamMemberMapOutput values.
@@ -395,6 +408,12 @@ func (i DatasetIamMemberMap) ToDatasetIamMemberMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberMapOutput)
 }
 
+func (i DatasetIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatasetIamMember] {
+	return pulumix.Output[map[string]*DatasetIamMember]{
+		OutputState: i.ToDatasetIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatasetIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DatasetIamMemberOutput) ElementType() reflect.Type {
@@ -407,6 +426,12 @@ func (o DatasetIamMemberOutput) ToDatasetIamMemberOutput() DatasetIamMemberOutpu
 
 func (o DatasetIamMemberOutput) ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput {
 	return o
+}
+
+func (o DatasetIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetIamMember] {
+	return pulumix.Output[*DatasetIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatasetIamMemberOutput) Condition() DatasetIamMemberConditionPtrOutput {
@@ -460,6 +485,12 @@ func (o DatasetIamMemberArrayOutput) ToDatasetIamMemberArrayOutputWithContext(ct
 	return o
 }
 
+func (o DatasetIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DatasetIamMember] {
+	return pulumix.Output[[]*DatasetIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatasetIamMemberArrayOutput) Index(i pulumi.IntInput) DatasetIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatasetIamMember {
 		return vs[0].([]*DatasetIamMember)[vs[1].(int)]
@@ -478,6 +509,12 @@ func (o DatasetIamMemberMapOutput) ToDatasetIamMemberMapOutput() DatasetIamMembe
 
 func (o DatasetIamMemberMapOutput) ToDatasetIamMemberMapOutputWithContext(ctx context.Context) DatasetIamMemberMapOutput {
 	return o
+}
+
+func (o DatasetIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DatasetIamMember] {
+	return pulumix.Output[map[string]*DatasetIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatasetIamMemberMapOutput) MapIndex(k pulumi.StringInput) DatasetIamMemberOutput {

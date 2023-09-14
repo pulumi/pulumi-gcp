@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
@@ -351,6 +352,12 @@ func (i *LakeIamPolicy) ToLakeIamPolicyOutputWithContext(ctx context.Context) La
 	return pulumi.ToOutputWithContext(ctx, i).(LakeIamPolicyOutput)
 }
 
+func (i *LakeIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*LakeIamPolicy] {
+	return pulumix.Output[*LakeIamPolicy]{
+		OutputState: i.ToLakeIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LakeIamPolicyArrayInput is an input type that accepts LakeIamPolicyArray and LakeIamPolicyArrayOutput values.
 // You can construct a concrete instance of `LakeIamPolicyArrayInput` via:
 //
@@ -374,6 +381,12 @@ func (i LakeIamPolicyArray) ToLakeIamPolicyArrayOutput() LakeIamPolicyArrayOutpu
 
 func (i LakeIamPolicyArray) ToLakeIamPolicyArrayOutputWithContext(ctx context.Context) LakeIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LakeIamPolicyArrayOutput)
+}
+
+func (i LakeIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*LakeIamPolicy] {
+	return pulumix.Output[[]*LakeIamPolicy]{
+		OutputState: i.ToLakeIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LakeIamPolicyMapInput is an input type that accepts LakeIamPolicyMap and LakeIamPolicyMapOutput values.
@@ -401,6 +414,12 @@ func (i LakeIamPolicyMap) ToLakeIamPolicyMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LakeIamPolicyMapOutput)
 }
 
+func (i LakeIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LakeIamPolicy] {
+	return pulumix.Output[map[string]*LakeIamPolicy]{
+		OutputState: i.ToLakeIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LakeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (LakeIamPolicyOutput) ElementType() reflect.Type {
@@ -413,6 +432,12 @@ func (o LakeIamPolicyOutput) ToLakeIamPolicyOutput() LakeIamPolicyOutput {
 
 func (o LakeIamPolicyOutput) ToLakeIamPolicyOutputWithContext(ctx context.Context) LakeIamPolicyOutput {
 	return o
+}
+
+func (o LakeIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*LakeIamPolicy] {
+	return pulumix.Output[*LakeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -467,6 +492,12 @@ func (o LakeIamPolicyArrayOutput) ToLakeIamPolicyArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o LakeIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LakeIamPolicy] {
+	return pulumix.Output[[]*LakeIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LakeIamPolicyArrayOutput) Index(i pulumi.IntInput) LakeIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LakeIamPolicy {
 		return vs[0].([]*LakeIamPolicy)[vs[1].(int)]
@@ -485,6 +516,12 @@ func (o LakeIamPolicyMapOutput) ToLakeIamPolicyMapOutput() LakeIamPolicyMapOutpu
 
 func (o LakeIamPolicyMapOutput) ToLakeIamPolicyMapOutputWithContext(ctx context.Context) LakeIamPolicyMapOutput {
 	return o
+}
+
+func (o LakeIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LakeIamPolicy] {
+	return pulumix.Output[map[string]*LakeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LakeIamPolicyMapOutput) MapIndex(k pulumi.StringInput) LakeIamPolicyOutput {

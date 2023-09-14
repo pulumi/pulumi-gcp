@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A job trigger configuration.
@@ -902,6 +903,12 @@ func (i *PreventionJobTrigger) ToPreventionJobTriggerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerOutput)
 }
 
+func (i *PreventionJobTrigger) ToOutput(ctx context.Context) pulumix.Output[*PreventionJobTrigger] {
+	return pulumix.Output[*PreventionJobTrigger]{
+		OutputState: i.ToPreventionJobTriggerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PreventionJobTriggerArrayInput is an input type that accepts PreventionJobTriggerArray and PreventionJobTriggerArrayOutput values.
 // You can construct a concrete instance of `PreventionJobTriggerArrayInput` via:
 //
@@ -925,6 +932,12 @@ func (i PreventionJobTriggerArray) ToPreventionJobTriggerArrayOutput() Preventio
 
 func (i PreventionJobTriggerArray) ToPreventionJobTriggerArrayOutputWithContext(ctx context.Context) PreventionJobTriggerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerArrayOutput)
+}
+
+func (i PreventionJobTriggerArray) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionJobTrigger] {
+	return pulumix.Output[[]*PreventionJobTrigger]{
+		OutputState: i.ToPreventionJobTriggerArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PreventionJobTriggerMapInput is an input type that accepts PreventionJobTriggerMap and PreventionJobTriggerMapOutput values.
@@ -952,6 +965,12 @@ func (i PreventionJobTriggerMap) ToPreventionJobTriggerMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerMapOutput)
 }
 
+func (i PreventionJobTriggerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionJobTrigger] {
+	return pulumix.Output[map[string]*PreventionJobTrigger]{
+		OutputState: i.ToPreventionJobTriggerMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PreventionJobTriggerOutput struct{ *pulumi.OutputState }
 
 func (PreventionJobTriggerOutput) ElementType() reflect.Type {
@@ -964,6 +983,12 @@ func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutput() PreventionJob
 
 func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput {
 	return o
+}
+
+func (o PreventionJobTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*PreventionJobTrigger] {
+	return pulumix.Output[*PreventionJobTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -1090,6 +1115,12 @@ func (o PreventionJobTriggerArrayOutput) ToPreventionJobTriggerArrayOutputWithCo
 	return o
 }
 
+func (o PreventionJobTriggerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PreventionJobTrigger] {
+	return pulumix.Output[[]*PreventionJobTrigger]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PreventionJobTriggerArrayOutput) Index(i pulumi.IntInput) PreventionJobTriggerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PreventionJobTrigger {
 		return vs[0].([]*PreventionJobTrigger)[vs[1].(int)]
@@ -1108,6 +1139,12 @@ func (o PreventionJobTriggerMapOutput) ToPreventionJobTriggerMapOutput() Prevent
 
 func (o PreventionJobTriggerMapOutput) ToPreventionJobTriggerMapOutputWithContext(ctx context.Context) PreventionJobTriggerMapOutput {
 	return o
+}
+
+func (o PreventionJobTriggerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PreventionJobTrigger] {
+	return pulumix.Output[map[string]*PreventionJobTrigger]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PreventionJobTriggerMapOutput) MapIndex(k pulumi.StringInput) PreventionJobTriggerOutput {

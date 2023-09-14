@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeCompute. Each of these resources serves a different use case:
@@ -441,6 +442,12 @@ func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyOutput)
 }
 
+func (i *WebTypeComputeIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*WebTypeComputeIamPolicy] {
+	return pulumix.Output[*WebTypeComputeIamPolicy]{
+		OutputState: i.ToWebTypeComputeIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebTypeComputeIamPolicyArrayInput is an input type that accepts WebTypeComputeIamPolicyArray and WebTypeComputeIamPolicyArrayOutput values.
 // You can construct a concrete instance of `WebTypeComputeIamPolicyArrayInput` via:
 //
@@ -464,6 +471,12 @@ func (i WebTypeComputeIamPolicyArray) ToWebTypeComputeIamPolicyArrayOutput() Web
 
 func (i WebTypeComputeIamPolicyArray) ToWebTypeComputeIamPolicyArrayOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyArrayOutput)
+}
+
+func (i WebTypeComputeIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeComputeIamPolicy] {
+	return pulumix.Output[[]*WebTypeComputeIamPolicy]{
+		OutputState: i.ToWebTypeComputeIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebTypeComputeIamPolicyMapInput is an input type that accepts WebTypeComputeIamPolicyMap and WebTypeComputeIamPolicyMapOutput values.
@@ -491,6 +504,12 @@ func (i WebTypeComputeIamPolicyMap) ToWebTypeComputeIamPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyMapOutput)
 }
 
+func (i WebTypeComputeIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeComputeIamPolicy] {
+	return pulumix.Output[map[string]*WebTypeComputeIamPolicy]{
+		OutputState: i.ToWebTypeComputeIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebTypeComputeIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamPolicyOutput) ElementType() reflect.Type {
@@ -503,6 +522,12 @@ func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyOutput() WebType
 
 func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyOutput {
 	return o
+}
+
+func (o WebTypeComputeIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTypeComputeIamPolicy] {
+	return pulumix.Output[*WebTypeComputeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -548,6 +573,12 @@ func (o WebTypeComputeIamPolicyArrayOutput) ToWebTypeComputeIamPolicyArrayOutput
 	return o
 }
 
+func (o WebTypeComputeIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeComputeIamPolicy] {
+	return pulumix.Output[[]*WebTypeComputeIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebTypeComputeIamPolicyArrayOutput) Index(i pulumi.IntInput) WebTypeComputeIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeComputeIamPolicy {
 		return vs[0].([]*WebTypeComputeIamPolicy)[vs[1].(int)]
@@ -566,6 +597,12 @@ func (o WebTypeComputeIamPolicyMapOutput) ToWebTypeComputeIamPolicyMapOutput() W
 
 func (o WebTypeComputeIamPolicyMapOutput) ToWebTypeComputeIamPolicyMapOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyMapOutput {
 	return o
+}
+
+func (o WebTypeComputeIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeComputeIamPolicy] {
+	return pulumix.Output[map[string]*WebTypeComputeIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebTypeComputeIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebTypeComputeIamPolicyOutput {

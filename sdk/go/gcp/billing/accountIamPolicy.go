@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
@@ -307,6 +308,12 @@ func (i *AccountIamPolicy) ToAccountIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamPolicyOutput)
 }
 
+func (i *AccountIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccountIamPolicy] {
+	return pulumix.Output[*AccountIamPolicy]{
+		OutputState: i.ToAccountIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccountIamPolicyArrayInput is an input type that accepts AccountIamPolicyArray and AccountIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AccountIamPolicyArrayInput` via:
 //
@@ -330,6 +337,12 @@ func (i AccountIamPolicyArray) ToAccountIamPolicyArrayOutput() AccountIamPolicyA
 
 func (i AccountIamPolicyArray) ToAccountIamPolicyArrayOutputWithContext(ctx context.Context) AccountIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamPolicyArrayOutput)
+}
+
+func (i AccountIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountIamPolicy] {
+	return pulumix.Output[[]*AccountIamPolicy]{
+		OutputState: i.ToAccountIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccountIamPolicyMapInput is an input type that accepts AccountIamPolicyMap and AccountIamPolicyMapOutput values.
@@ -357,6 +370,12 @@ func (i AccountIamPolicyMap) ToAccountIamPolicyMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamPolicyMapOutput)
 }
 
+func (i AccountIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountIamPolicy] {
+	return pulumix.Output[map[string]*AccountIamPolicy]{
+		OutputState: i.ToAccountIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccountIamPolicyOutput) ElementType() reflect.Type {
@@ -369,6 +388,12 @@ func (o AccountIamPolicyOutput) ToAccountIamPolicyOutput() AccountIamPolicyOutpu
 
 func (o AccountIamPolicyOutput) ToAccountIamPolicyOutputWithContext(ctx context.Context) AccountIamPolicyOutput {
 	return o
+}
+
+func (o AccountIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountIamPolicy] {
+	return pulumix.Output[*AccountIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The billing account id.
@@ -411,6 +436,12 @@ func (o AccountIamPolicyArrayOutput) ToAccountIamPolicyArrayOutputWithContext(ct
 	return o
 }
 
+func (o AccountIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountIamPolicy] {
+	return pulumix.Output[[]*AccountIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccountIamPolicyArrayOutput) Index(i pulumi.IntInput) AccountIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountIamPolicy {
 		return vs[0].([]*AccountIamPolicy)[vs[1].(int)]
@@ -429,6 +460,12 @@ func (o AccountIamPolicyMapOutput) ToAccountIamPolicyMapOutput() AccountIamPolic
 
 func (o AccountIamPolicyMapOutput) ToAccountIamPolicyMapOutputWithContext(ctx context.Context) AccountIamPolicyMapOutput {
 	return o
+}
+
+func (o AccountIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountIamPolicy] {
+	return pulumix.Output[map[string]*AccountIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AccountIamPolicyOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A location is used to initialize a project.
@@ -251,6 +252,12 @@ func (i *DocumentAiWarehouseLocation) ToDocumentAiWarehouseLocationOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseLocationOutput)
 }
 
+func (i *DocumentAiWarehouseLocation) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseLocation] {
+	return pulumix.Output[*DocumentAiWarehouseLocation]{
+		OutputState: i.ToDocumentAiWarehouseLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DocumentAiWarehouseLocationArrayInput is an input type that accepts DocumentAiWarehouseLocationArray and DocumentAiWarehouseLocationArrayOutput values.
 // You can construct a concrete instance of `DocumentAiWarehouseLocationArrayInput` via:
 //
@@ -274,6 +281,12 @@ func (i DocumentAiWarehouseLocationArray) ToDocumentAiWarehouseLocationArrayOutp
 
 func (i DocumentAiWarehouseLocationArray) ToDocumentAiWarehouseLocationArrayOutputWithContext(ctx context.Context) DocumentAiWarehouseLocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseLocationArrayOutput)
+}
+
+func (i DocumentAiWarehouseLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*DocumentAiWarehouseLocation] {
+	return pulumix.Output[[]*DocumentAiWarehouseLocation]{
+		OutputState: i.ToDocumentAiWarehouseLocationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DocumentAiWarehouseLocationMapInput is an input type that accepts DocumentAiWarehouseLocationMap and DocumentAiWarehouseLocationMapOutput values.
@@ -301,6 +314,12 @@ func (i DocumentAiWarehouseLocationMap) ToDocumentAiWarehouseLocationMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiWarehouseLocationMapOutput)
 }
 
+func (i DocumentAiWarehouseLocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DocumentAiWarehouseLocation] {
+	return pulumix.Output[map[string]*DocumentAiWarehouseLocation]{
+		OutputState: i.ToDocumentAiWarehouseLocationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DocumentAiWarehouseLocationOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiWarehouseLocationOutput) ElementType() reflect.Type {
@@ -313,6 +332,12 @@ func (o DocumentAiWarehouseLocationOutput) ToDocumentAiWarehouseLocationOutput()
 
 func (o DocumentAiWarehouseLocationOutput) ToDocumentAiWarehouseLocationOutputWithContext(ctx context.Context) DocumentAiWarehouseLocationOutput {
 	return o
+}
+
+func (o DocumentAiWarehouseLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiWarehouseLocation] {
+	return pulumix.Output[*DocumentAiWarehouseLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access control mode for accessing the customer data.
@@ -368,6 +393,12 @@ func (o DocumentAiWarehouseLocationArrayOutput) ToDocumentAiWarehouseLocationArr
 	return o
 }
 
+func (o DocumentAiWarehouseLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DocumentAiWarehouseLocation] {
+	return pulumix.Output[[]*DocumentAiWarehouseLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DocumentAiWarehouseLocationArrayOutput) Index(i pulumi.IntInput) DocumentAiWarehouseLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DocumentAiWarehouseLocation {
 		return vs[0].([]*DocumentAiWarehouseLocation)[vs[1].(int)]
@@ -386,6 +417,12 @@ func (o DocumentAiWarehouseLocationMapOutput) ToDocumentAiWarehouseLocationMapOu
 
 func (o DocumentAiWarehouseLocationMapOutput) ToDocumentAiWarehouseLocationMapOutputWithContext(ctx context.Context) DocumentAiWarehouseLocationMapOutput {
 	return o
+}
+
+func (o DocumentAiWarehouseLocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DocumentAiWarehouseLocation] {
+	return pulumix.Output[map[string]*DocumentAiWarehouseLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DocumentAiWarehouseLocationMapOutput) MapIndex(k pulumi.StringInput) DocumentAiWarehouseLocationOutput {

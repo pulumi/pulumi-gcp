@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authoritatively manages a bucket's ACLs in Google cloud storage service (GCS). For more information see
@@ -191,6 +192,12 @@ func (i *BucketACL) ToBucketACLOutputWithContext(ctx context.Context) BucketACLO
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLOutput)
 }
 
+func (i *BucketACL) ToOutput(ctx context.Context) pulumix.Output[*BucketACL] {
+	return pulumix.Output[*BucketACL]{
+		OutputState: i.ToBucketACLOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BucketACLArrayInput is an input type that accepts BucketACLArray and BucketACLArrayOutput values.
 // You can construct a concrete instance of `BucketACLArrayInput` via:
 //
@@ -214,6 +221,12 @@ func (i BucketACLArray) ToBucketACLArrayOutput() BucketACLArrayOutput {
 
 func (i BucketACLArray) ToBucketACLArrayOutputWithContext(ctx context.Context) BucketACLArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLArrayOutput)
+}
+
+func (i BucketACLArray) ToOutput(ctx context.Context) pulumix.Output[[]*BucketACL] {
+	return pulumix.Output[[]*BucketACL]{
+		OutputState: i.ToBucketACLArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BucketACLMapInput is an input type that accepts BucketACLMap and BucketACLMapOutput values.
@@ -241,6 +254,12 @@ func (i BucketACLMap) ToBucketACLMapOutputWithContext(ctx context.Context) Bucke
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLMapOutput)
 }
 
+func (i BucketACLMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketACL] {
+	return pulumix.Output[map[string]*BucketACL]{
+		OutputState: i.ToBucketACLMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BucketACLOutput struct{ *pulumi.OutputState }
 
 func (BucketACLOutput) ElementType() reflect.Type {
@@ -253,6 +272,12 @@ func (o BucketACLOutput) ToBucketACLOutput() BucketACLOutput {
 
 func (o BucketACLOutput) ToBucketACLOutputWithContext(ctx context.Context) BucketACLOutput {
 	return o
+}
+
+func (o BucketACLOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketACL] {
+	return pulumix.Output[*BucketACL]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bucket it applies to.
@@ -291,6 +316,12 @@ func (o BucketACLArrayOutput) ToBucketACLArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o BucketACLArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BucketACL] {
+	return pulumix.Output[[]*BucketACL]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BucketACLArrayOutput) Index(i pulumi.IntInput) BucketACLOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketACL {
 		return vs[0].([]*BucketACL)[vs[1].(int)]
@@ -309,6 +340,12 @@ func (o BucketACLMapOutput) ToBucketACLMapOutput() BucketACLMapOutput {
 
 func (o BucketACLMapOutput) ToBucketACLMapOutputWithContext(ctx context.Context) BucketACLMapOutput {
 	return o
+}
+
+func (o BucketACLMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketACL] {
+	return pulumix.Output[map[string]*BucketACL]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BucketACLMapOutput) MapIndex(k pulumi.StringInput) BucketACLOutput {

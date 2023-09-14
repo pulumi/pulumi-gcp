@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -173,6 +174,12 @@ func (i *StorageBucket) ToStorageBucketOutputWithContext(ctx context.Context) St
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketOutput)
 }
 
+func (i *StorageBucket) ToOutput(ctx context.Context) pulumix.Output[*StorageBucket] {
+	return pulumix.Output[*StorageBucket]{
+		OutputState: i.ToStorageBucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StorageBucketArrayInput is an input type that accepts StorageBucketArray and StorageBucketArrayOutput values.
 // You can construct a concrete instance of `StorageBucketArrayInput` via:
 //
@@ -196,6 +203,12 @@ func (i StorageBucketArray) ToStorageBucketArrayOutput() StorageBucketArrayOutpu
 
 func (i StorageBucketArray) ToStorageBucketArrayOutputWithContext(ctx context.Context) StorageBucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketArrayOutput)
+}
+
+func (i StorageBucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*StorageBucket] {
+	return pulumix.Output[[]*StorageBucket]{
+		OutputState: i.ToStorageBucketArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StorageBucketMapInput is an input type that accepts StorageBucketMap and StorageBucketMapOutput values.
@@ -223,6 +236,12 @@ func (i StorageBucketMap) ToStorageBucketMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBucketMapOutput)
 }
 
+func (i StorageBucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageBucket] {
+	return pulumix.Output[map[string]*StorageBucket]{
+		OutputState: i.ToStorageBucketMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StorageBucketOutput struct{ *pulumi.OutputState }
 
 func (StorageBucketOutput) ElementType() reflect.Type {
@@ -235,6 +254,12 @@ func (o StorageBucketOutput) ToStorageBucketOutput() StorageBucketOutput {
 
 func (o StorageBucketOutput) ToStorageBucketOutputWithContext(ctx context.Context) StorageBucketOutput {
 	return o
+}
+
+func (o StorageBucketOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageBucket] {
+	return pulumix.Output[*StorageBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Immutable. The ID of the underlying Google Cloud Storage bucket
@@ -267,6 +292,12 @@ func (o StorageBucketArrayOutput) ToStorageBucketArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o StorageBucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StorageBucket] {
+	return pulumix.Output[[]*StorageBucket]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StorageBucketArrayOutput) Index(i pulumi.IntInput) StorageBucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StorageBucket {
 		return vs[0].([]*StorageBucket)[vs[1].(int)]
@@ -285,6 +316,12 @@ func (o StorageBucketMapOutput) ToStorageBucketMapOutput() StorageBucketMapOutpu
 
 func (o StorageBucketMapOutput) ToStorageBucketMapOutputWithContext(ctx context.Context) StorageBucketMapOutput {
 	return o
+}
+
+func (o StorageBucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StorageBucket] {
+	return pulumix.Output[map[string]*StorageBucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StorageBucketMapOutput) MapIndex(k pulumi.StringInput) StorageBucketOutput {

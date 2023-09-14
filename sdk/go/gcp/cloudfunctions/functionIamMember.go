@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Functions CloudFunction. Each of these resources serves a different use case:
@@ -384,6 +385,12 @@ func (i *FunctionIamMember) ToFunctionIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberOutput)
 }
 
+func (i *FunctionIamMember) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamMember] {
+	return pulumix.Output[*FunctionIamMember]{
+		OutputState: i.ToFunctionIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FunctionIamMemberArrayInput is an input type that accepts FunctionIamMemberArray and FunctionIamMemberArrayOutput values.
 // You can construct a concrete instance of `FunctionIamMemberArrayInput` via:
 //
@@ -407,6 +414,12 @@ func (i FunctionIamMemberArray) ToFunctionIamMemberArrayOutput() FunctionIamMemb
 
 func (i FunctionIamMemberArray) ToFunctionIamMemberArrayOutputWithContext(ctx context.Context) FunctionIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberArrayOutput)
+}
+
+func (i FunctionIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionIamMember] {
+	return pulumix.Output[[]*FunctionIamMember]{
+		OutputState: i.ToFunctionIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FunctionIamMemberMapInput is an input type that accepts FunctionIamMemberMap and FunctionIamMemberMapOutput values.
@@ -434,6 +447,12 @@ func (i FunctionIamMemberMap) ToFunctionIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberMapOutput)
 }
 
+func (i FunctionIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionIamMember] {
+	return pulumix.Output[map[string]*FunctionIamMember]{
+		OutputState: i.ToFunctionIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FunctionIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FunctionIamMemberOutput) ElementType() reflect.Type {
@@ -446,6 +465,12 @@ func (o FunctionIamMemberOutput) ToFunctionIamMemberOutput() FunctionIamMemberOu
 
 func (o FunctionIamMemberOutput) ToFunctionIamMemberOutputWithContext(ctx context.Context) FunctionIamMemberOutput {
 	return o
+}
+
+func (o FunctionIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionIamMember] {
+	return pulumix.Output[*FunctionIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -512,6 +537,12 @@ func (o FunctionIamMemberArrayOutput) ToFunctionIamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o FunctionIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionIamMember] {
+	return pulumix.Output[[]*FunctionIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FunctionIamMemberArrayOutput) Index(i pulumi.IntInput) FunctionIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FunctionIamMember {
 		return vs[0].([]*FunctionIamMember)[vs[1].(int)]
@@ -530,6 +561,12 @@ func (o FunctionIamMemberMapOutput) ToFunctionIamMemberMapOutput() FunctionIamMe
 
 func (o FunctionIamMemberMapOutput) ToFunctionIamMemberMapOutputWithContext(ctx context.Context) FunctionIamMemberMapOutput {
 	return o
+}
+
+func (o FunctionIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionIamMember] {
+	return pulumix.Output[map[string]*FunctionIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FunctionIamMemberMapOutput) MapIndex(k pulumi.StringInput) FunctionIamMemberOutput {

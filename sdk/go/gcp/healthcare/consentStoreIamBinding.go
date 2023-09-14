@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Healthcare ConsentStore. Each of these resources serves a different use case:
@@ -369,6 +370,12 @@ func (i *ConsentStoreIamBinding) ToConsentStoreIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingOutput)
 }
 
+func (i *ConsentStoreIamBinding) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamBinding] {
+	return pulumix.Output[*ConsentStoreIamBinding]{
+		OutputState: i.ToConsentStoreIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConsentStoreIamBindingArrayInput is an input type that accepts ConsentStoreIamBindingArray and ConsentStoreIamBindingArrayOutput values.
 // You can construct a concrete instance of `ConsentStoreIamBindingArrayInput` via:
 //
@@ -392,6 +399,12 @@ func (i ConsentStoreIamBindingArray) ToConsentStoreIamBindingArrayOutput() Conse
 
 func (i ConsentStoreIamBindingArray) ToConsentStoreIamBindingArrayOutputWithContext(ctx context.Context) ConsentStoreIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingArrayOutput)
+}
+
+func (i ConsentStoreIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConsentStoreIamBinding] {
+	return pulumix.Output[[]*ConsentStoreIamBinding]{
+		OutputState: i.ToConsentStoreIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConsentStoreIamBindingMapInput is an input type that accepts ConsentStoreIamBindingMap and ConsentStoreIamBindingMapOutput values.
@@ -419,6 +432,12 @@ func (i ConsentStoreIamBindingMap) ToConsentStoreIamBindingMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingMapOutput)
 }
 
+func (i ConsentStoreIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsentStoreIamBinding] {
+	return pulumix.Output[map[string]*ConsentStoreIamBinding]{
+		OutputState: i.ToConsentStoreIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConsentStoreIamBindingOutput struct{ *pulumi.OutputState }
 
 func (ConsentStoreIamBindingOutput) ElementType() reflect.Type {
@@ -431,6 +450,12 @@ func (o ConsentStoreIamBindingOutput) ToConsentStoreIamBindingOutput() ConsentSt
 
 func (o ConsentStoreIamBindingOutput) ToConsentStoreIamBindingOutputWithContext(ctx context.Context) ConsentStoreIamBindingOutput {
 	return o
+}
+
+func (o ConsentStoreIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsentStoreIamBinding] {
+	return pulumix.Output[*ConsentStoreIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsentStoreIamBindingOutput) Condition() ConsentStoreIamBindingConditionPtrOutput {
@@ -491,6 +516,12 @@ func (o ConsentStoreIamBindingArrayOutput) ToConsentStoreIamBindingArrayOutputWi
 	return o
 }
 
+func (o ConsentStoreIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConsentStoreIamBinding] {
+	return pulumix.Output[[]*ConsentStoreIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConsentStoreIamBindingArrayOutput) Index(i pulumi.IntInput) ConsentStoreIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConsentStoreIamBinding {
 		return vs[0].([]*ConsentStoreIamBinding)[vs[1].(int)]
@@ -509,6 +540,12 @@ func (o ConsentStoreIamBindingMapOutput) ToConsentStoreIamBindingMapOutput() Con
 
 func (o ConsentStoreIamBindingMapOutput) ToConsentStoreIamBindingMapOutputWithContext(ctx context.Context) ConsentStoreIamBindingMapOutput {
 	return o
+}
+
+func (o ConsentStoreIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConsentStoreIamBinding] {
+	return pulumix.Output[map[string]*ConsentStoreIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConsentStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreIamBindingOutput {

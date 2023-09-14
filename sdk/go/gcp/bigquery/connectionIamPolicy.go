@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for BigQuery Connection Connection. Each of these resources serves a different use case:
@@ -391,6 +392,12 @@ func (i *ConnectionIamPolicy) ToConnectionIamPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamPolicyOutput)
 }
 
+func (i *ConnectionIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIamPolicy] {
+	return pulumix.Output[*ConnectionIamPolicy]{
+		OutputState: i.ToConnectionIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionIamPolicyArrayInput is an input type that accepts ConnectionIamPolicyArray and ConnectionIamPolicyArrayOutput values.
 // You can construct a concrete instance of `ConnectionIamPolicyArrayInput` via:
 //
@@ -414,6 +421,12 @@ func (i ConnectionIamPolicyArray) ToConnectionIamPolicyArrayOutput() ConnectionI
 
 func (i ConnectionIamPolicyArray) ToConnectionIamPolicyArrayOutputWithContext(ctx context.Context) ConnectionIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamPolicyArrayOutput)
+}
+
+func (i ConnectionIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionIamPolicy] {
+	return pulumix.Output[[]*ConnectionIamPolicy]{
+		OutputState: i.ToConnectionIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConnectionIamPolicyMapInput is an input type that accepts ConnectionIamPolicyMap and ConnectionIamPolicyMapOutput values.
@@ -441,6 +454,12 @@ func (i ConnectionIamPolicyMap) ToConnectionIamPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamPolicyMapOutput)
 }
 
+func (i ConnectionIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionIamPolicy] {
+	return pulumix.Output[map[string]*ConnectionIamPolicy]{
+		OutputState: i.ToConnectionIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIamPolicyOutput) ElementType() reflect.Type {
@@ -453,6 +472,12 @@ func (o ConnectionIamPolicyOutput) ToConnectionIamPolicyOutput() ConnectionIamPo
 
 func (o ConnectionIamPolicyOutput) ToConnectionIamPolicyOutputWithContext(ctx context.Context) ConnectionIamPolicyOutput {
 	return o
+}
+
+func (o ConnectionIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIamPolicy] {
+	return pulumix.Output[*ConnectionIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional connection id that should be assigned to the created connection.
@@ -515,6 +540,12 @@ func (o ConnectionIamPolicyArrayOutput) ToConnectionIamPolicyArrayOutputWithCont
 	return o
 }
 
+func (o ConnectionIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectionIamPolicy] {
+	return pulumix.Output[[]*ConnectionIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConnectionIamPolicyArrayOutput) Index(i pulumi.IntInput) ConnectionIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIamPolicy {
 		return vs[0].([]*ConnectionIamPolicy)[vs[1].(int)]
@@ -533,6 +564,12 @@ func (o ConnectionIamPolicyMapOutput) ToConnectionIamPolicyMapOutput() Connectio
 
 func (o ConnectionIamPolicyMapOutput) ToConnectionIamPolicyMapOutputWithContext(ctx context.Context) ConnectionIamPolicyMapOutput {
 	return o
+}
+
+func (o ConnectionIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectionIamPolicy] {
+	return pulumix.Output[map[string]*ConnectionIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ConnectionIamPolicyOutput {

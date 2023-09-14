@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a SSL policy. SSL policies give you the ability to control the
@@ -387,6 +388,12 @@ func (i *SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyOutput)
 }
 
+func (i *SSLPolicy) ToOutput(ctx context.Context) pulumix.Output[*SSLPolicy] {
+	return pulumix.Output[*SSLPolicy]{
+		OutputState: i.ToSSLPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SSLPolicyArrayInput is an input type that accepts SSLPolicyArray and SSLPolicyArrayOutput values.
 // You can construct a concrete instance of `SSLPolicyArrayInput` via:
 //
@@ -410,6 +417,12 @@ func (i SSLPolicyArray) ToSSLPolicyArrayOutput() SSLPolicyArrayOutput {
 
 func (i SSLPolicyArray) ToSSLPolicyArrayOutputWithContext(ctx context.Context) SSLPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyArrayOutput)
+}
+
+func (i SSLPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*SSLPolicy] {
+	return pulumix.Output[[]*SSLPolicy]{
+		OutputState: i.ToSSLPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SSLPolicyMapInput is an input type that accepts SSLPolicyMap and SSLPolicyMapOutput values.
@@ -437,6 +450,12 @@ func (i SSLPolicyMap) ToSSLPolicyMapOutputWithContext(ctx context.Context) SSLPo
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyMapOutput)
 }
 
+func (i SSLPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSLPolicy] {
+	return pulumix.Output[map[string]*SSLPolicy]{
+		OutputState: i.ToSSLPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SSLPolicyOutput struct{ *pulumi.OutputState }
 
 func (SSLPolicyOutput) ElementType() reflect.Type {
@@ -449,6 +468,12 @@ func (o SSLPolicyOutput) ToSSLPolicyOutput() SSLPolicyOutput {
 
 func (o SSLPolicyOutput) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput {
 	return o
+}
+
+func (o SSLPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SSLPolicy] {
+	return pulumix.Output[*SSLPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -544,6 +569,12 @@ func (o SSLPolicyArrayOutput) ToSSLPolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SSLPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SSLPolicy] {
+	return pulumix.Output[[]*SSLPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SSLPolicyArrayOutput) Index(i pulumi.IntInput) SSLPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SSLPolicy {
 		return vs[0].([]*SSLPolicy)[vs[1].(int)]
@@ -562,6 +593,12 @@ func (o SSLPolicyMapOutput) ToSSLPolicyMapOutput() SSLPolicyMapOutput {
 
 func (o SSLPolicyMapOutput) ToSSLPolicyMapOutputWithContext(ctx context.Context) SSLPolicyMapOutput {
 	return o
+}
+
+func (o SSLPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SSLPolicy] {
+	return pulumix.Output[map[string]*SSLPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SSLPolicyMapOutput) MapIndex(k pulumi.StringInput) SSLPolicyOutput {

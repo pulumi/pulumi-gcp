@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Environment Keystore Alias for Self Signed Certificate Format in Apigee
@@ -384,6 +385,12 @@ func (i *KeystoresAliasesSelfSignedCert) ToKeystoresAliasesSelfSignedCertOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertOutput)
 }
 
+func (i *KeystoresAliasesSelfSignedCert) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesSelfSignedCert] {
+	return pulumix.Output[*KeystoresAliasesSelfSignedCert]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeystoresAliasesSelfSignedCertArrayInput is an input type that accepts KeystoresAliasesSelfSignedCertArray and KeystoresAliasesSelfSignedCertArrayOutput values.
 // You can construct a concrete instance of `KeystoresAliasesSelfSignedCertArrayInput` via:
 //
@@ -407,6 +414,12 @@ func (i KeystoresAliasesSelfSignedCertArray) ToKeystoresAliasesSelfSignedCertArr
 
 func (i KeystoresAliasesSelfSignedCertArray) ToKeystoresAliasesSelfSignedCertArrayOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertArrayOutput)
+}
+
+func (i KeystoresAliasesSelfSignedCertArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeystoresAliasesSelfSignedCert] {
+	return pulumix.Output[[]*KeystoresAliasesSelfSignedCert]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeystoresAliasesSelfSignedCertMapInput is an input type that accepts KeystoresAliasesSelfSignedCertMap and KeystoresAliasesSelfSignedCertMapOutput values.
@@ -434,6 +447,12 @@ func (i KeystoresAliasesSelfSignedCertMap) ToKeystoresAliasesSelfSignedCertMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertMapOutput)
 }
 
+func (i KeystoresAliasesSelfSignedCertMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeystoresAliasesSelfSignedCert] {
+	return pulumix.Output[map[string]*KeystoresAliasesSelfSignedCert]{
+		OutputState: i.ToKeystoresAliasesSelfSignedCertMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeystoresAliasesSelfSignedCertOutput struct{ *pulumi.OutputState }
 
 func (KeystoresAliasesSelfSignedCertOutput) ElementType() reflect.Type {
@@ -446,6 +465,12 @@ func (o KeystoresAliasesSelfSignedCertOutput) ToKeystoresAliasesSelfSignedCertOu
 
 func (o KeystoresAliasesSelfSignedCertOutput) ToKeystoresAliasesSelfSignedCertOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertOutput) ToOutput(ctx context.Context) pulumix.Output[*KeystoresAliasesSelfSignedCert] {
+	return pulumix.Output[*KeystoresAliasesSelfSignedCert]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
@@ -526,6 +551,12 @@ func (o KeystoresAliasesSelfSignedCertArrayOutput) ToKeystoresAliasesSelfSignedC
 	return o
 }
 
+func (o KeystoresAliasesSelfSignedCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeystoresAliasesSelfSignedCert] {
+	return pulumix.Output[[]*KeystoresAliasesSelfSignedCert]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeystoresAliasesSelfSignedCertArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesSelfSignedCertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeystoresAliasesSelfSignedCert {
 		return vs[0].([]*KeystoresAliasesSelfSignedCert)[vs[1].(int)]
@@ -544,6 +575,12 @@ func (o KeystoresAliasesSelfSignedCertMapOutput) ToKeystoresAliasesSelfSignedCer
 
 func (o KeystoresAliasesSelfSignedCertMapOutput) ToKeystoresAliasesSelfSignedCertMapOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertMapOutput {
 	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeystoresAliasesSelfSignedCert] {
+	return pulumix.Output[map[string]*KeystoresAliasesSelfSignedCert]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeystoresAliasesSelfSignedCertMapOutput) MapIndex(k pulumi.StringInput) KeystoresAliasesSelfSignedCertOutput {

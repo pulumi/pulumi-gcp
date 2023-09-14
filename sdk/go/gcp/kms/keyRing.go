@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
@@ -199,6 +200,12 @@ func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingOutput)
 }
 
+func (i *KeyRing) ToOutput(ctx context.Context) pulumix.Output[*KeyRing] {
+	return pulumix.Output[*KeyRing]{
+		OutputState: i.ToKeyRingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeyRingArrayInput is an input type that accepts KeyRingArray and KeyRingArrayOutput values.
 // You can construct a concrete instance of `KeyRingArrayInput` via:
 //
@@ -222,6 +229,12 @@ func (i KeyRingArray) ToKeyRingArrayOutput() KeyRingArrayOutput {
 
 func (i KeyRingArray) ToKeyRingArrayOutputWithContext(ctx context.Context) KeyRingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingArrayOutput)
+}
+
+func (i KeyRingArray) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRing] {
+	return pulumix.Output[[]*KeyRing]{
+		OutputState: i.ToKeyRingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeyRingMapInput is an input type that accepts KeyRingMap and KeyRingMapOutput values.
@@ -249,6 +262,12 @@ func (i KeyRingMap) ToKeyRingMapOutputWithContext(ctx context.Context) KeyRingMa
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingMapOutput)
 }
 
+func (i KeyRingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRing] {
+	return pulumix.Output[map[string]*KeyRing]{
+		OutputState: i.ToKeyRingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeyRingOutput struct{ *pulumi.OutputState }
 
 func (KeyRingOutput) ElementType() reflect.Type {
@@ -261,6 +280,12 @@ func (o KeyRingOutput) ToKeyRingOutput() KeyRingOutput {
 
 func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput {
 	return o
+}
+
+func (o KeyRingOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRing] {
+	return pulumix.Output[*KeyRing]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The location for the KeyRing.
@@ -296,6 +321,12 @@ func (o KeyRingArrayOutput) ToKeyRingArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o KeyRingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KeyRing] {
+	return pulumix.Output[[]*KeyRing]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeyRingArrayOutput) Index(i pulumi.IntInput) KeyRingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRing {
 		return vs[0].([]*KeyRing)[vs[1].(int)]
@@ -314,6 +345,12 @@ func (o KeyRingMapOutput) ToKeyRingMapOutput() KeyRingMapOutput {
 
 func (o KeyRingMapOutput) ToKeyRingMapOutputWithContext(ctx context.Context) KeyRingMapOutput {
 	return o
+}
+
+func (o KeyRingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KeyRing] {
+	return pulumix.Output[map[string]*KeyRing]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeyRingMapOutput) MapIndex(k pulumi.StringInput) KeyRingOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy WebTypeCompute. Each of these resources serves a different use case:
@@ -469,6 +470,12 @@ func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingOutput)
 }
 
+func (i *WebTypeComputeIamBinding) ToOutput(ctx context.Context) pulumix.Output[*WebTypeComputeIamBinding] {
+	return pulumix.Output[*WebTypeComputeIamBinding]{
+		OutputState: i.ToWebTypeComputeIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebTypeComputeIamBindingArrayInput is an input type that accepts WebTypeComputeIamBindingArray and WebTypeComputeIamBindingArrayOutput values.
 // You can construct a concrete instance of `WebTypeComputeIamBindingArrayInput` via:
 //
@@ -492,6 +499,12 @@ func (i WebTypeComputeIamBindingArray) ToWebTypeComputeIamBindingArrayOutput() W
 
 func (i WebTypeComputeIamBindingArray) ToWebTypeComputeIamBindingArrayOutputWithContext(ctx context.Context) WebTypeComputeIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingArrayOutput)
+}
+
+func (i WebTypeComputeIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeComputeIamBinding] {
+	return pulumix.Output[[]*WebTypeComputeIamBinding]{
+		OutputState: i.ToWebTypeComputeIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebTypeComputeIamBindingMapInput is an input type that accepts WebTypeComputeIamBindingMap and WebTypeComputeIamBindingMapOutput values.
@@ -519,6 +532,12 @@ func (i WebTypeComputeIamBindingMap) ToWebTypeComputeIamBindingMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingMapOutput)
 }
 
+func (i WebTypeComputeIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeComputeIamBinding] {
+	return pulumix.Output[map[string]*WebTypeComputeIamBinding]{
+		OutputState: i.ToWebTypeComputeIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebTypeComputeIamBindingOutput struct{ *pulumi.OutputState }
 
 func (WebTypeComputeIamBindingOutput) ElementType() reflect.Type {
@@ -531,6 +550,12 @@ func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingOutput() WebTy
 
 func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingOutputWithContext(ctx context.Context) WebTypeComputeIamBindingOutput {
 	return o
+}
+
+func (o WebTypeComputeIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTypeComputeIamBinding] {
+	return pulumix.Output[*WebTypeComputeIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -587,6 +612,12 @@ func (o WebTypeComputeIamBindingArrayOutput) ToWebTypeComputeIamBindingArrayOutp
 	return o
 }
 
+func (o WebTypeComputeIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebTypeComputeIamBinding] {
+	return pulumix.Output[[]*WebTypeComputeIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebTypeComputeIamBindingArrayOutput) Index(i pulumi.IntInput) WebTypeComputeIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebTypeComputeIamBinding {
 		return vs[0].([]*WebTypeComputeIamBinding)[vs[1].(int)]
@@ -605,6 +636,12 @@ func (o WebTypeComputeIamBindingMapOutput) ToWebTypeComputeIamBindingMapOutput()
 
 func (o WebTypeComputeIamBindingMapOutput) ToWebTypeComputeIamBindingMapOutputWithContext(ctx context.Context) WebTypeComputeIamBindingMapOutput {
 	return o
+}
+
+func (o WebTypeComputeIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebTypeComputeIamBinding] {
+	return pulumix.Output[map[string]*WebTypeComputeIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebTypeComputeIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebTypeComputeIamBindingOutput {

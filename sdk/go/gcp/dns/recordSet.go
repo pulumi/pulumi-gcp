@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -606,6 +607,12 @@ func (i *RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetO
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
 }
 
+func (i *RecordSet) ToOutput(ctx context.Context) pulumix.Output[*RecordSet] {
+	return pulumix.Output[*RecordSet]{
+		OutputState: i.ToRecordSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetArrayInput is an input type that accepts RecordSetArray and RecordSetArrayOutput values.
 // You can construct a concrete instance of `RecordSetArrayInput` via:
 //
@@ -629,6 +636,12 @@ func (i RecordSetArray) ToRecordSetArrayOutput() RecordSetArrayOutput {
 
 func (i RecordSetArray) ToRecordSetArrayOutputWithContext(ctx context.Context) RecordSetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetArrayOutput)
+}
+
+func (i RecordSetArray) ToOutput(ctx context.Context) pulumix.Output[[]*RecordSet] {
+	return pulumix.Output[[]*RecordSet]{
+		OutputState: i.ToRecordSetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RecordSetMapInput is an input type that accepts RecordSetMap and RecordSetMapOutput values.
@@ -656,6 +669,12 @@ func (i RecordSetMap) ToRecordSetMapOutputWithContext(ctx context.Context) Recor
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetMapOutput)
 }
 
+func (i RecordSetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RecordSet] {
+	return pulumix.Output[map[string]*RecordSet]{
+		OutputState: i.ToRecordSetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetOutput struct{ *pulumi.OutputState }
 
 func (RecordSetOutput) ElementType() reflect.Type {
@@ -668,6 +687,12 @@ func (o RecordSetOutput) ToRecordSetOutput() RecordSetOutput {
 
 func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) RecordSetOutput {
 	return o
+}
+
+func (o RecordSetOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSet] {
+	return pulumix.Output[*RecordSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the zone in which this record set will
@@ -728,6 +753,12 @@ func (o RecordSetArrayOutput) ToRecordSetArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o RecordSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RecordSet] {
+	return pulumix.Output[[]*RecordSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecordSetArrayOutput) Index(i pulumi.IntInput) RecordSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RecordSet {
 		return vs[0].([]*RecordSet)[vs[1].(int)]
@@ -746,6 +777,12 @@ func (o RecordSetMapOutput) ToRecordSetMapOutput() RecordSetMapOutput {
 
 func (o RecordSetMapOutput) ToRecordSetMapOutputWithContext(ctx context.Context) RecordSetMapOutput {
 	return o
+}
+
+func (o RecordSetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RecordSet] {
+	return pulumix.Output[map[string]*RecordSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetMapOutput) MapIndex(k pulumi.StringInput) RecordSetOutput {

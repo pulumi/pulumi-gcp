@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a organization-level logging sink. For more information see:
@@ -309,6 +310,12 @@ func (i *OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkOutput)
 }
 
+func (i *OrganizationSink) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSink] {
+	return pulumix.Output[*OrganizationSink]{
+		OutputState: i.ToOrganizationSinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrganizationSinkArrayInput is an input type that accepts OrganizationSinkArray and OrganizationSinkArrayOutput values.
 // You can construct a concrete instance of `OrganizationSinkArrayInput` via:
 //
@@ -332,6 +339,12 @@ func (i OrganizationSinkArray) ToOrganizationSinkArrayOutput() OrganizationSinkA
 
 func (i OrganizationSinkArray) ToOrganizationSinkArrayOutputWithContext(ctx context.Context) OrganizationSinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkArrayOutput)
+}
+
+func (i OrganizationSinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSink] {
+	return pulumix.Output[[]*OrganizationSink]{
+		OutputState: i.ToOrganizationSinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrganizationSinkMapInput is an input type that accepts OrganizationSinkMap and OrganizationSinkMapOutput values.
@@ -359,6 +372,12 @@ func (i OrganizationSinkMap) ToOrganizationSinkMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkMapOutput)
 }
 
+func (i OrganizationSinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSink] {
+	return pulumix.Output[map[string]*OrganizationSink]{
+		OutputState: i.ToOrganizationSinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrganizationSinkOutput struct{ *pulumi.OutputState }
 
 func (OrganizationSinkOutput) ElementType() reflect.Type {
@@ -371,6 +390,12 @@ func (o OrganizationSinkOutput) ToOrganizationSinkOutput() OrganizationSinkOutpu
 
 func (o OrganizationSinkOutput) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
 	return o
+}
+
+func (o OrganizationSinkOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationSink] {
+	return pulumix.Output[*OrganizationSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -449,6 +474,12 @@ func (o OrganizationSinkArrayOutput) ToOrganizationSinkArrayOutputWithContext(ct
 	return o
 }
 
+func (o OrganizationSinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrganizationSink] {
+	return pulumix.Output[[]*OrganizationSink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrganizationSinkArrayOutput) Index(i pulumi.IntInput) OrganizationSinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrganizationSink {
 		return vs[0].([]*OrganizationSink)[vs[1].(int)]
@@ -467,6 +498,12 @@ func (o OrganizationSinkMapOutput) ToOrganizationSinkMapOutput() OrganizationSin
 
 func (o OrganizationSinkMapOutput) ToOrganizationSinkMapOutputWithContext(ctx context.Context) OrganizationSinkMapOutput {
 	return o
+}
+
+func (o OrganizationSinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrganizationSink] {
+	return pulumix.Output[map[string]*OrganizationSink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrganizationSinkMapOutput) MapIndex(k pulumi.StringInput) OrganizationSinkOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -68,6 +69,12 @@ func (i InstanceFileSharesArgs) ToInstanceFileSharesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesOutput)
 }
 
+func (i InstanceFileSharesArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceFileShares] {
+	return pulumix.Output[InstanceFileShares]{
+		OutputState: i.ToInstanceFileSharesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceFileSharesArgs) ToInstanceFileSharesPtrOutput() InstanceFileSharesPtrOutput {
 	return i.ToInstanceFileSharesPtrOutputWithContext(context.Background())
 }
@@ -109,6 +116,12 @@ func (i *instanceFileSharesPtrType) ToInstanceFileSharesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesPtrOutput)
 }
 
+func (i *instanceFileSharesPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceFileShares] {
+	return pulumix.Output[*InstanceFileShares]{
+		OutputState: i.ToInstanceFileSharesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceFileSharesOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesOutput) ElementType() reflect.Type {
@@ -131,6 +144,12 @@ func (o InstanceFileSharesOutput) ToInstanceFileSharesPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceFileShares) *InstanceFileShares {
 		return &v
 	}).(InstanceFileSharesPtrOutput)
+}
+
+func (o InstanceFileSharesOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceFileShares] {
+	return pulumix.Output[InstanceFileShares]{
+		OutputState: o.OutputState,
+	}
 }
 
 // File share capacity in GiB. This must be at least 1024 GiB
@@ -170,6 +189,12 @@ func (o InstanceFileSharesPtrOutput) ToInstanceFileSharesPtrOutput() InstanceFil
 
 func (o InstanceFileSharesPtrOutput) ToInstanceFileSharesPtrOutputWithContext(ctx context.Context) InstanceFileSharesPtrOutput {
 	return o
+}
+
+func (o InstanceFileSharesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceFileShares] {
+	return pulumix.Output[*InstanceFileShares]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceFileSharesPtrOutput) Elem() InstanceFileSharesOutput {
@@ -300,6 +325,12 @@ func (i InstanceFileSharesNfsExportOptionArgs) ToInstanceFileSharesNfsExportOpti
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesNfsExportOptionOutput)
 }
 
+func (i InstanceFileSharesNfsExportOptionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceFileSharesNfsExportOption] {
+	return pulumix.Output[InstanceFileSharesNfsExportOption]{
+		OutputState: i.ToInstanceFileSharesNfsExportOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceFileSharesNfsExportOptionArrayInput is an input type that accepts InstanceFileSharesNfsExportOptionArray and InstanceFileSharesNfsExportOptionArrayOutput values.
 // You can construct a concrete instance of `InstanceFileSharesNfsExportOptionArrayInput` via:
 //
@@ -325,6 +356,12 @@ func (i InstanceFileSharesNfsExportOptionArray) ToInstanceFileSharesNfsExportOpt
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
+func (i InstanceFileSharesNfsExportOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceFileSharesNfsExportOption] {
+	return pulumix.Output[[]InstanceFileSharesNfsExportOption]{
+		OutputState: i.ToInstanceFileSharesNfsExportOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceFileSharesNfsExportOptionOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesNfsExportOptionOutput) ElementType() reflect.Type {
@@ -337,6 +374,12 @@ func (o InstanceFileSharesNfsExportOptionOutput) ToInstanceFileSharesNfsExportOp
 
 func (o InstanceFileSharesNfsExportOptionOutput) ToInstanceFileSharesNfsExportOptionOutputWithContext(ctx context.Context) InstanceFileSharesNfsExportOptionOutput {
 	return o
+}
+
+func (o InstanceFileSharesNfsExportOptionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceFileSharesNfsExportOption] {
+	return pulumix.Output[InstanceFileSharesNfsExportOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Either READ_ONLY, for allowing only read requests on the exported directory,
@@ -388,6 +431,12 @@ func (o InstanceFileSharesNfsExportOptionArrayOutput) ToInstanceFileSharesNfsExp
 
 func (o InstanceFileSharesNfsExportOptionArrayOutput) ToInstanceFileSharesNfsExportOptionArrayOutputWithContext(ctx context.Context) InstanceFileSharesNfsExportOptionArrayOutput {
 	return o
+}
+
+func (o InstanceFileSharesNfsExportOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceFileSharesNfsExportOption] {
+	return pulumix.Output[[]InstanceFileSharesNfsExportOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceFileSharesNfsExportOptionArrayOutput) Index(i pulumi.IntInput) InstanceFileSharesNfsExportOptionOutput {
@@ -467,6 +516,12 @@ func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkOutput)
 }
 
+func (i InstanceNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceNetwork] {
+	return pulumix.Output[InstanceNetwork]{
+		OutputState: i.ToInstanceNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceNetworkArrayInput is an input type that accepts InstanceNetworkArray and InstanceNetworkArrayOutput values.
 // You can construct a concrete instance of `InstanceNetworkArrayInput` via:
 //
@@ -492,6 +547,12 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
+func (i InstanceNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceNetwork] {
+	return pulumix.Output[[]InstanceNetwork]{
+		OutputState: i.ToInstanceNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
@@ -504,6 +565,12 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutput() InstanceNetworkOutput {
 
 func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Context) InstanceNetworkOutput {
 	return o
+}
+
+func (o InstanceNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceNetwork] {
+	return pulumix.Output[InstanceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The network connect mode of the Filestore instance.
@@ -554,6 +621,12 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutput() InstanceNetwo
 
 func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx context.Context) InstanceNetworkArrayOutput {
 	return o
+}
+
+func (o InstanceNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceNetwork] {
+	return pulumix.Output[[]InstanceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {

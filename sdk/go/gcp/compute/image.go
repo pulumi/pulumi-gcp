@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an Image resource.
@@ -573,6 +574,12 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageOutput)
 }
 
+func (i *Image) ToOutput(ctx context.Context) pulumix.Output[*Image] {
+	return pulumix.Output[*Image]{
+		OutputState: i.ToImageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
@@ -596,6 +603,12 @@ func (i ImageArray) ToImageArrayOutput() ImageArrayOutput {
 
 func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageArrayOutput)
+}
+
+func (i ImageArray) ToOutput(ctx context.Context) pulumix.Output[[]*Image] {
+	return pulumix.Output[[]*Image]{
+		OutputState: i.ToImageArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
@@ -623,6 +636,12 @@ func (i ImageMap) ToImageMapOutputWithContext(ctx context.Context) ImageMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ImageMapOutput)
 }
 
+func (i ImageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Image] {
+	return pulumix.Output[map[string]*Image]{
+		OutputState: i.ToImageMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageOutput struct{ *pulumi.OutputState }
 
 func (ImageOutput) ElementType() reflect.Type {
@@ -635,6 +654,12 @@ func (o ImageOutput) ToImageOutput() ImageOutput {
 
 func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
+}
+
+func (o ImageOutput) ToOutput(ctx context.Context) pulumix.Output[*Image] {
+	return pulumix.Output[*Image]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Size of the image tar.gz archive stored in Google Cloud Storage (in
@@ -779,6 +804,12 @@ func (o ImageArrayOutput) ToImageArrayOutputWithContext(ctx context.Context) Ima
 	return o
 }
 
+func (o ImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Image] {
+	return pulumix.Output[[]*Image]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageArrayOutput) Index(i pulumi.IntInput) ImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Image {
 		return vs[0].([]*Image)[vs[1].(int)]
@@ -797,6 +828,12 @@ func (o ImageMapOutput) ToImageMapOutput() ImageMapOutput {
 
 func (o ImageMapOutput) ToImageMapOutputWithContext(ctx context.Context) ImageMapOutput {
 	return o
+}
+
+func (o ImageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Image] {
+	return pulumix.Output[map[string]*Image]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageMapOutput) MapIndex(k pulumi.StringInput) ImageOutput {

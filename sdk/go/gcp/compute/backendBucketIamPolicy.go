@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -224,6 +225,12 @@ func (i *BackendBucketIamPolicy) ToBackendBucketIamPolicyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketIamPolicyOutput)
 }
 
+func (i *BackendBucketIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketIamPolicy] {
+	return pulumix.Output[*BackendBucketIamPolicy]{
+		OutputState: i.ToBackendBucketIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackendBucketIamPolicyArrayInput is an input type that accepts BackendBucketIamPolicyArray and BackendBucketIamPolicyArrayOutput values.
 // You can construct a concrete instance of `BackendBucketIamPolicyArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i BackendBucketIamPolicyArray) ToBackendBucketIamPolicyArrayOutput() Backe
 
 func (i BackendBucketIamPolicyArray) ToBackendBucketIamPolicyArrayOutputWithContext(ctx context.Context) BackendBucketIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketIamPolicyArrayOutput)
+}
+
+func (i BackendBucketIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucketIamPolicy] {
+	return pulumix.Output[[]*BackendBucketIamPolicy]{
+		OutputState: i.ToBackendBucketIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackendBucketIamPolicyMapInput is an input type that accepts BackendBucketIamPolicyMap and BackendBucketIamPolicyMapOutput values.
@@ -274,6 +287,12 @@ func (i BackendBucketIamPolicyMap) ToBackendBucketIamPolicyMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketIamPolicyMapOutput)
 }
 
+func (i BackendBucketIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucketIamPolicy] {
+	return pulumix.Output[map[string]*BackendBucketIamPolicy]{
+		OutputState: i.ToBackendBucketIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackendBucketIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackendBucketIamPolicyOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o BackendBucketIamPolicyOutput) ToBackendBucketIamPolicyOutput() BackendBu
 
 func (o BackendBucketIamPolicyOutput) ToBackendBucketIamPolicyOutputWithContext(ctx context.Context) BackendBucketIamPolicyOutput {
 	return o
+}
+
+func (o BackendBucketIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendBucketIamPolicy] {
+	return pulumix.Output[*BackendBucketIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -336,6 +361,12 @@ func (o BackendBucketIamPolicyArrayOutput) ToBackendBucketIamPolicyArrayOutputWi
 	return o
 }
 
+func (o BackendBucketIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendBucketIamPolicy] {
+	return pulumix.Output[[]*BackendBucketIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendBucketIamPolicyArrayOutput) Index(i pulumi.IntInput) BackendBucketIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendBucketIamPolicy {
 		return vs[0].([]*BackendBucketIamPolicy)[vs[1].(int)]
@@ -354,6 +385,12 @@ func (o BackendBucketIamPolicyMapOutput) ToBackendBucketIamPolicyMapOutput() Bac
 
 func (o BackendBucketIamPolicyMapOutput) ToBackendBucketIamPolicyMapOutputWithContext(ctx context.Context) BackendBucketIamPolicyMapOutput {
 	return o
+}
+
+func (o BackendBucketIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendBucketIamPolicy] {
+	return pulumix.Output[map[string]*BackendBucketIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendBucketIamPolicyMapOutput) MapIndex(k pulumi.StringInput) BackendBucketIamPolicyOutput {

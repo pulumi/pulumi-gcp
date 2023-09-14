@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A global network endpoint group contains endpoints that reside outside of Google Cloud.
@@ -293,6 +294,12 @@ func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupOutput)
 }
 
+func (i *GlobalNetworkEndpointGroup) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroup] {
+	return pulumix.Output[*GlobalNetworkEndpointGroup]{
+		OutputState: i.ToGlobalNetworkEndpointGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GlobalNetworkEndpointGroupArrayInput is an input type that accepts GlobalNetworkEndpointGroupArray and GlobalNetworkEndpointGroupArrayOutput values.
 // You can construct a concrete instance of `GlobalNetworkEndpointGroupArrayInput` via:
 //
@@ -316,6 +323,12 @@ func (i GlobalNetworkEndpointGroupArray) ToGlobalNetworkEndpointGroupArrayOutput
 
 func (i GlobalNetworkEndpointGroupArray) ToGlobalNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupArrayOutput)
+}
+
+func (i GlobalNetworkEndpointGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalNetworkEndpointGroup] {
+	return pulumix.Output[[]*GlobalNetworkEndpointGroup]{
+		OutputState: i.ToGlobalNetworkEndpointGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GlobalNetworkEndpointGroupMapInput is an input type that accepts GlobalNetworkEndpointGroupMap and GlobalNetworkEndpointGroupMapOutput values.
@@ -343,6 +356,12 @@ func (i GlobalNetworkEndpointGroupMap) ToGlobalNetworkEndpointGroupMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupMapOutput)
 }
 
+func (i GlobalNetworkEndpointGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalNetworkEndpointGroup] {
+	return pulumix.Output[map[string]*GlobalNetworkEndpointGroup]{
+		OutputState: i.ToGlobalNetworkEndpointGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GlobalNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (GlobalNetworkEndpointGroupOutput) ElementType() reflect.Type {
@@ -355,6 +374,12 @@ func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutput() G
 
 func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupOutput {
 	return o
+}
+
+func (o GlobalNetworkEndpointGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalNetworkEndpointGroup] {
+	return pulumix.Output[*GlobalNetworkEndpointGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The default port used if the port number is not specified in the
@@ -413,6 +438,12 @@ func (o GlobalNetworkEndpointGroupArrayOutput) ToGlobalNetworkEndpointGroupArray
 	return o
 }
 
+func (o GlobalNetworkEndpointGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GlobalNetworkEndpointGroup] {
+	return pulumix.Output[[]*GlobalNetworkEndpointGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GlobalNetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) GlobalNetworkEndpointGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GlobalNetworkEndpointGroup {
 		return vs[0].([]*GlobalNetworkEndpointGroup)[vs[1].(int)]
@@ -431,6 +462,12 @@ func (o GlobalNetworkEndpointGroupMapOutput) ToGlobalNetworkEndpointGroupMapOutp
 
 func (o GlobalNetworkEndpointGroupMapOutput) ToGlobalNetworkEndpointGroupMapOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupMapOutput {
 	return o
+}
+
+func (o GlobalNetworkEndpointGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GlobalNetworkEndpointGroup] {
+	return pulumix.Output[map[string]*GlobalNetworkEndpointGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GlobalNetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) GlobalNetworkEndpointGroupOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A contact that will receive notifications from Google Cloud.
@@ -214,6 +215,12 @@ func (i *Contact) ToContactOutputWithContext(ctx context.Context) ContactOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
 }
 
+func (i *Contact) ToOutput(ctx context.Context) pulumix.Output[*Contact] {
+	return pulumix.Output[*Contact]{
+		OutputState: i.ToContactOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContactArrayInput is an input type that accepts ContactArray and ContactArrayOutput values.
 // You can construct a concrete instance of `ContactArrayInput` via:
 //
@@ -237,6 +244,12 @@ func (i ContactArray) ToContactArrayOutput() ContactArrayOutput {
 
 func (i ContactArray) ToContactArrayOutputWithContext(ctx context.Context) ContactArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContactArrayOutput)
+}
+
+func (i ContactArray) ToOutput(ctx context.Context) pulumix.Output[[]*Contact] {
+	return pulumix.Output[[]*Contact]{
+		OutputState: i.ToContactArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContactMapInput is an input type that accepts ContactMap and ContactMapOutput values.
@@ -264,6 +277,12 @@ func (i ContactMap) ToContactMapOutputWithContext(ctx context.Context) ContactMa
 	return pulumi.ToOutputWithContext(ctx, i).(ContactMapOutput)
 }
 
+func (i ContactMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Contact] {
+	return pulumix.Output[map[string]*Contact]{
+		OutputState: i.ToContactMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContactOutput struct{ *pulumi.OutputState }
 
 func (ContactOutput) ElementType() reflect.Type {
@@ -276,6 +295,12 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
+}
+
+func (o ContactOutput) ToOutput(ctx context.Context) pulumix.Output[*Contact] {
+	return pulumix.Output[*Contact]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The email address to send notifications to. This does not need to be a Google account.
@@ -319,6 +344,12 @@ func (o ContactArrayOutput) ToContactArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ContactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Contact] {
+	return pulumix.Output[[]*Contact]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContactArrayOutput) Index(i pulumi.IntInput) ContactOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Contact {
 		return vs[0].([]*Contact)[vs[1].(int)]
@@ -337,6 +368,12 @@ func (o ContactMapOutput) ToContactMapOutput() ContactMapOutput {
 
 func (o ContactMapOutput) ToContactMapOutputWithContext(ctx context.Context) ContactMapOutput {
 	return o
+}
+
+func (o ContactMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Contact] {
+	return pulumix.Output[map[string]*Contact]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContactMapOutput) MapIndex(k pulumi.StringInput) ContactOutput {

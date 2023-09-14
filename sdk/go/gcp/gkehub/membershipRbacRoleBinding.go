@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -248,6 +249,12 @@ func (i *MembershipRbacRoleBinding) ToMembershipRbacRoleBindingOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingOutput)
 }
 
+func (i *MembershipRbacRoleBinding) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBinding] {
+	return pulumix.Output[*MembershipRbacRoleBinding]{
+		OutputState: i.ToMembershipRbacRoleBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MembershipRbacRoleBindingArrayInput is an input type that accepts MembershipRbacRoleBindingArray and MembershipRbacRoleBindingArrayOutput values.
 // You can construct a concrete instance of `MembershipRbacRoleBindingArrayInput` via:
 //
@@ -271,6 +278,12 @@ func (i MembershipRbacRoleBindingArray) ToMembershipRbacRoleBindingArrayOutput()
 
 func (i MembershipRbacRoleBindingArray) ToMembershipRbacRoleBindingArrayOutputWithContext(ctx context.Context) MembershipRbacRoleBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingArrayOutput)
+}
+
+func (i MembershipRbacRoleBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipRbacRoleBinding] {
+	return pulumix.Output[[]*MembershipRbacRoleBinding]{
+		OutputState: i.ToMembershipRbacRoleBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MembershipRbacRoleBindingMapInput is an input type that accepts MembershipRbacRoleBindingMap and MembershipRbacRoleBindingMapOutput values.
@@ -298,6 +311,12 @@ func (i MembershipRbacRoleBindingMap) ToMembershipRbacRoleBindingMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingMapOutput)
 }
 
+func (i MembershipRbacRoleBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipRbacRoleBinding] {
+	return pulumix.Output[map[string]*MembershipRbacRoleBinding]{
+		OutputState: i.ToMembershipRbacRoleBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipRbacRoleBindingOutput struct{ *pulumi.OutputState }
 
 func (MembershipRbacRoleBindingOutput) ElementType() reflect.Type {
@@ -310,6 +329,12 @@ func (o MembershipRbacRoleBindingOutput) ToMembershipRbacRoleBindingOutput() Mem
 
 func (o MembershipRbacRoleBindingOutput) ToMembershipRbacRoleBindingOutputWithContext(ctx context.Context) MembershipRbacRoleBindingOutput {
 	return o
+}
+
+func (o MembershipRbacRoleBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBinding] {
+	return pulumix.Output[*MembershipRbacRoleBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time the RBAC Role Binding was created in UTC.
@@ -392,6 +417,12 @@ func (o MembershipRbacRoleBindingArrayOutput) ToMembershipRbacRoleBindingArrayOu
 	return o
 }
 
+func (o MembershipRbacRoleBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MembershipRbacRoleBinding] {
+	return pulumix.Output[[]*MembershipRbacRoleBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MembershipRbacRoleBindingArrayOutput) Index(i pulumi.IntInput) MembershipRbacRoleBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MembershipRbacRoleBinding {
 		return vs[0].([]*MembershipRbacRoleBinding)[vs[1].(int)]
@@ -410,6 +441,12 @@ func (o MembershipRbacRoleBindingMapOutput) ToMembershipRbacRoleBindingMapOutput
 
 func (o MembershipRbacRoleBindingMapOutput) ToMembershipRbacRoleBindingMapOutputWithContext(ctx context.Context) MembershipRbacRoleBindingMapOutput {
 	return o
+}
+
+func (o MembershipRbacRoleBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MembershipRbacRoleBinding] {
+	return pulumix.Output[map[string]*MembershipRbacRoleBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipRbacRoleBindingMapOutput) MapIndex(k pulumi.StringInput) MembershipRbacRoleBindingOutput {

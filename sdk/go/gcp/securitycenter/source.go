@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -221,6 +222,12 @@ func (i *Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
+func (i *Source) ToOutput(ctx context.Context) pulumix.Output[*Source] {
+	return pulumix.Output[*Source]{
+		OutputState: i.ToSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SourceArrayInput is an input type that accepts SourceArray and SourceArrayOutput values.
 // You can construct a concrete instance of `SourceArrayInput` via:
 //
@@ -244,6 +251,12 @@ func (i SourceArray) ToSourceArrayOutput() SourceArrayOutput {
 
 func (i SourceArray) ToSourceArrayOutputWithContext(ctx context.Context) SourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceArrayOutput)
+}
+
+func (i SourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Source] {
+	return pulumix.Output[[]*Source]{
+		OutputState: i.ToSourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SourceMapInput is an input type that accepts SourceMap and SourceMapOutput values.
@@ -271,6 +284,12 @@ func (i SourceMap) ToSourceMapOutputWithContext(ctx context.Context) SourceMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(SourceMapOutput)
 }
 
+func (i SourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Source] {
+	return pulumix.Output[map[string]*Source]{
+		OutputState: i.ToSourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SourceOutput struct{ *pulumi.OutputState }
 
 func (SourceOutput) ElementType() reflect.Type {
@@ -283,6 +302,12 @@ func (o SourceOutput) ToSourceOutput() SourceOutput {
 
 func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return o
+}
+
+func (o SourceOutput) ToOutput(ctx context.Context) pulumix.Output[*Source] {
+	return pulumix.Output[*Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the source (max of 1024 characters).
@@ -327,6 +352,12 @@ func (o SourceArrayOutput) ToSourceArrayOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Source] {
+	return pulumix.Output[[]*Source]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SourceArrayOutput) Index(i pulumi.IntInput) SourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Source {
 		return vs[0].([]*Source)[vs[1].(int)]
@@ -345,6 +376,12 @@ func (o SourceMapOutput) ToSourceMapOutput() SourceMapOutput {
 
 func (o SourceMapOutput) ToSourceMapOutputWithContext(ctx context.Context) SourceMapOutput {
 	return o
+}
+
+func (o SourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Source] {
+	return pulumix.Output[map[string]*Source]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceMapOutput) MapIndex(k pulumi.StringInput) SourceOutput {

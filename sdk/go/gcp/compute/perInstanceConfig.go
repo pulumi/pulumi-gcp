@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A config defined for a single managed instance that belongs to an instance group manager. It preserves the instance name
@@ -387,6 +388,12 @@ func (i *PerInstanceConfig) ToPerInstanceConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigOutput)
 }
 
+func (i *PerInstanceConfig) ToOutput(ctx context.Context) pulumix.Output[*PerInstanceConfig] {
+	return pulumix.Output[*PerInstanceConfig]{
+		OutputState: i.ToPerInstanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PerInstanceConfigArrayInput is an input type that accepts PerInstanceConfigArray and PerInstanceConfigArrayOutput values.
 // You can construct a concrete instance of `PerInstanceConfigArrayInput` via:
 //
@@ -410,6 +417,12 @@ func (i PerInstanceConfigArray) ToPerInstanceConfigArrayOutput() PerInstanceConf
 
 func (i PerInstanceConfigArray) ToPerInstanceConfigArrayOutputWithContext(ctx context.Context) PerInstanceConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigArrayOutput)
+}
+
+func (i PerInstanceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*PerInstanceConfig] {
+	return pulumix.Output[[]*PerInstanceConfig]{
+		OutputState: i.ToPerInstanceConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PerInstanceConfigMapInput is an input type that accepts PerInstanceConfigMap and PerInstanceConfigMapOutput values.
@@ -437,6 +450,12 @@ func (i PerInstanceConfigMap) ToPerInstanceConfigMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigMapOutput)
 }
 
+func (i PerInstanceConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PerInstanceConfig] {
+	return pulumix.Output[map[string]*PerInstanceConfig]{
+		OutputState: i.ToPerInstanceConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PerInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (PerInstanceConfigOutput) ElementType() reflect.Type {
@@ -449,6 +468,12 @@ func (o PerInstanceConfigOutput) ToPerInstanceConfigOutput() PerInstanceConfigOu
 
 func (o PerInstanceConfigOutput) ToPerInstanceConfigOutputWithContext(ctx context.Context) PerInstanceConfigOutput {
 	return o
+}
+
+func (o PerInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*PerInstanceConfig] {
+	return pulumix.Output[*PerInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The instance group manager this instance config is part of.
@@ -521,6 +546,12 @@ func (o PerInstanceConfigArrayOutput) ToPerInstanceConfigArrayOutputWithContext(
 	return o
 }
 
+func (o PerInstanceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PerInstanceConfig] {
+	return pulumix.Output[[]*PerInstanceConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PerInstanceConfigArrayOutput) Index(i pulumi.IntInput) PerInstanceConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PerInstanceConfig {
 		return vs[0].([]*PerInstanceConfig)[vs[1].(int)]
@@ -539,6 +570,12 @@ func (o PerInstanceConfigMapOutput) ToPerInstanceConfigMapOutput() PerInstanceCo
 
 func (o PerInstanceConfigMapOutput) ToPerInstanceConfigMapOutputWithContext(ctx context.Context) PerInstanceConfigMapOutput {
 	return o
+}
+
+func (o PerInstanceConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PerInstanceConfig] {
+	return pulumix.Output[map[string]*PerInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PerInstanceConfigMapOutput) MapIndex(k pulumi.StringInput) PerInstanceConfigOutput {

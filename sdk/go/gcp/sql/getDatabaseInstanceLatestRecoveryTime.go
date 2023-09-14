@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Latest Recovery Time for a given instance. For more information see the
@@ -110,6 +111,12 @@ func (o GetDatabaseInstanceLatestRecoveryTimeResultOutput) ToGetDatabaseInstance
 
 func (o GetDatabaseInstanceLatestRecoveryTimeResultOutput) ToGetDatabaseInstanceLatestRecoveryTimeResultOutputWithContext(ctx context.Context) GetDatabaseInstanceLatestRecoveryTimeResultOutput {
 	return o
+}
+
+func (o GetDatabaseInstanceLatestRecoveryTimeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDatabaseInstanceLatestRecoveryTimeResult] {
+	return pulumix.Output[GetDatabaseInstanceLatestRecoveryTimeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

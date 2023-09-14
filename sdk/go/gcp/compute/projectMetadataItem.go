@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single key/value pair on metadata common to all instances for
@@ -178,6 +179,12 @@ func (i *ProjectMetadataItem) ToProjectMetadataItemOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemOutput)
 }
 
+func (i *ProjectMetadataItem) ToOutput(ctx context.Context) pulumix.Output[*ProjectMetadataItem] {
+	return pulumix.Output[*ProjectMetadataItem]{
+		OutputState: i.ToProjectMetadataItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectMetadataItemArrayInput is an input type that accepts ProjectMetadataItemArray and ProjectMetadataItemArrayOutput values.
 // You can construct a concrete instance of `ProjectMetadataItemArrayInput` via:
 //
@@ -201,6 +208,12 @@ func (i ProjectMetadataItemArray) ToProjectMetadataItemArrayOutput() ProjectMeta
 
 func (i ProjectMetadataItemArray) ToProjectMetadataItemArrayOutputWithContext(ctx context.Context) ProjectMetadataItemArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemArrayOutput)
+}
+
+func (i ProjectMetadataItemArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMetadataItem] {
+	return pulumix.Output[[]*ProjectMetadataItem]{
+		OutputState: i.ToProjectMetadataItemArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectMetadataItemMapInput is an input type that accepts ProjectMetadataItemMap and ProjectMetadataItemMapOutput values.
@@ -228,6 +241,12 @@ func (i ProjectMetadataItemMap) ToProjectMetadataItemMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemMapOutput)
 }
 
+func (i ProjectMetadataItemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMetadataItem] {
+	return pulumix.Output[map[string]*ProjectMetadataItem]{
+		OutputState: i.ToProjectMetadataItemMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectMetadataItemOutput struct{ *pulumi.OutputState }
 
 func (ProjectMetadataItemOutput) ElementType() reflect.Type {
@@ -240,6 +259,12 @@ func (o ProjectMetadataItemOutput) ToProjectMetadataItemOutput() ProjectMetadata
 
 func (o ProjectMetadataItemOutput) ToProjectMetadataItemOutputWithContext(ctx context.Context) ProjectMetadataItemOutput {
 	return o
+}
+
+func (o ProjectMetadataItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectMetadataItem] {
+	return pulumix.Output[*ProjectMetadataItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The metadata key to set.
@@ -274,6 +299,12 @@ func (o ProjectMetadataItemArrayOutput) ToProjectMetadataItemArrayOutputWithCont
 	return o
 }
 
+func (o ProjectMetadataItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMetadataItem] {
+	return pulumix.Output[[]*ProjectMetadataItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectMetadataItemArrayOutput) Index(i pulumi.IntInput) ProjectMetadataItemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMetadataItem {
 		return vs[0].([]*ProjectMetadataItem)[vs[1].(int)]
@@ -292,6 +323,12 @@ func (o ProjectMetadataItemMapOutput) ToProjectMetadataItemMapOutput() ProjectMe
 
 func (o ProjectMetadataItemMapOutput) ToProjectMetadataItemMapOutputWithContext(ctx context.Context) ProjectMetadataItemMapOutput {
 	return o
+}
+
+func (o ProjectMetadataItemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMetadataItem] {
+	return pulumix.Output[map[string]*ProjectMetadataItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMetadataItemMapOutput) MapIndex(k pulumi.StringInput) ProjectMetadataItemOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Compute Instance Group Manager within GCE.
@@ -141,6 +142,12 @@ func (o LookupInstanceGroupManagerResultOutput) ToLookupInstanceGroupManagerResu
 
 func (o LookupInstanceGroupManagerResultOutput) ToLookupInstanceGroupManagerResultOutputWithContext(ctx context.Context) LookupInstanceGroupManagerResultOutput {
 	return o
+}
+
+func (o LookupInstanceGroupManagerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInstanceGroupManagerResult] {
+	return pulumix.Output[LookupInstanceGroupManagerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupInstanceGroupManagerResultOutput) AllInstancesConfigs() GetInstanceGroupManagerAllInstancesConfigArrayOutput {

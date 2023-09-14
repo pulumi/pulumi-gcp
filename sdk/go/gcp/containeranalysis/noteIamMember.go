@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
@@ -361,6 +362,12 @@ func (i *NoteIamMember) ToNoteIamMemberOutputWithContext(ctx context.Context) No
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberOutput)
 }
 
+func (i *NoteIamMember) ToOutput(ctx context.Context) pulumix.Output[*NoteIamMember] {
+	return pulumix.Output[*NoteIamMember]{
+		OutputState: i.ToNoteIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NoteIamMemberArrayInput is an input type that accepts NoteIamMemberArray and NoteIamMemberArrayOutput values.
 // You can construct a concrete instance of `NoteIamMemberArrayInput` via:
 //
@@ -384,6 +391,12 @@ func (i NoteIamMemberArray) ToNoteIamMemberArrayOutput() NoteIamMemberArrayOutpu
 
 func (i NoteIamMemberArray) ToNoteIamMemberArrayOutputWithContext(ctx context.Context) NoteIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberArrayOutput)
+}
+
+func (i NoteIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*NoteIamMember] {
+	return pulumix.Output[[]*NoteIamMember]{
+		OutputState: i.ToNoteIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NoteIamMemberMapInput is an input type that accepts NoteIamMemberMap and NoteIamMemberMapOutput values.
@@ -411,6 +424,12 @@ func (i NoteIamMemberMap) ToNoteIamMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberMapOutput)
 }
 
+func (i NoteIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NoteIamMember] {
+	return pulumix.Output[map[string]*NoteIamMember]{
+		OutputState: i.ToNoteIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NoteIamMemberOutput struct{ *pulumi.OutputState }
 
 func (NoteIamMemberOutput) ElementType() reflect.Type {
@@ -423,6 +442,12 @@ func (o NoteIamMemberOutput) ToNoteIamMemberOutput() NoteIamMemberOutput {
 
 func (o NoteIamMemberOutput) ToNoteIamMemberOutputWithContext(ctx context.Context) NoteIamMemberOutput {
 	return o
+}
+
+func (o NoteIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*NoteIamMember] {
+	return pulumix.Output[*NoteIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteIamMemberOutput) Condition() NoteIamMemberConditionPtrOutput {
@@ -482,6 +507,12 @@ func (o NoteIamMemberArrayOutput) ToNoteIamMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o NoteIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NoteIamMember] {
+	return pulumix.Output[[]*NoteIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NoteIamMemberArrayOutput) Index(i pulumi.IntInput) NoteIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NoteIamMember {
 		return vs[0].([]*NoteIamMember)[vs[1].(int)]
@@ -500,6 +531,12 @@ func (o NoteIamMemberMapOutput) ToNoteIamMemberMapOutput() NoteIamMemberMapOutpu
 
 func (o NoteIamMemberMapOutput) ToNoteIamMemberMapOutputWithContext(ctx context.Context) NoteIamMemberMapOutput {
 	return o
+}
+
+func (o NoteIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NoteIamMember] {
+	return pulumix.Output[map[string]*NoteIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NoteIamMemberMapOutput) MapIndex(k pulumi.StringInput) NoteIamMemberOutput {

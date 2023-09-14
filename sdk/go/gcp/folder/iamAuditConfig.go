@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -455,6 +456,12 @@ func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigOutput)
 }
 
+func (i *IamAuditConfig) ToOutput(ctx context.Context) pulumix.Output[*IamAuditConfig] {
+	return pulumix.Output[*IamAuditConfig]{
+		OutputState: i.ToIamAuditConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IamAuditConfigArrayInput is an input type that accepts IamAuditConfigArray and IamAuditConfigArrayOutput values.
 // You can construct a concrete instance of `IamAuditConfigArrayInput` via:
 //
@@ -478,6 +485,12 @@ func (i IamAuditConfigArray) ToIamAuditConfigArrayOutput() IamAuditConfigArrayOu
 
 func (i IamAuditConfigArray) ToIamAuditConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigArrayOutput)
+}
+
+func (i IamAuditConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamAuditConfig] {
+	return pulumix.Output[[]*IamAuditConfig]{
+		OutputState: i.ToIamAuditConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IamAuditConfigMapInput is an input type that accepts IamAuditConfigMap and IamAuditConfigMapOutput values.
@@ -505,6 +518,12 @@ func (i IamAuditConfigMap) ToIamAuditConfigMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigMapOutput)
 }
 
+func (i IamAuditConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamAuditConfig] {
+	return pulumix.Output[map[string]*IamAuditConfig]{
+		OutputState: i.ToIamAuditConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IamAuditConfigOutput struct{ *pulumi.OutputState }
 
 func (IamAuditConfigOutput) ElementType() reflect.Type {
@@ -517,6 +536,12 @@ func (o IamAuditConfigOutput) ToIamAuditConfigOutput() IamAuditConfigOutput {
 
 func (o IamAuditConfigOutput) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
 	return o
+}
+
+func (o IamAuditConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*IamAuditConfig] {
+	return pulumix.Output[*IamAuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
@@ -553,6 +578,12 @@ func (o IamAuditConfigArrayOutput) ToIamAuditConfigArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o IamAuditConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamAuditConfig] {
+	return pulumix.Output[[]*IamAuditConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IamAuditConfigArrayOutput) Index(i pulumi.IntInput) IamAuditConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamAuditConfig {
 		return vs[0].([]*IamAuditConfig)[vs[1].(int)]
@@ -571,6 +602,12 @@ func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutput() IamAuditConfigMapOu
 
 func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutputWithContext(ctx context.Context) IamAuditConfigMapOutput {
 	return o
+}
+
+func (o IamAuditConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamAuditConfig] {
+	return pulumix.Output[map[string]*IamAuditConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IamAuditConfigOutput {

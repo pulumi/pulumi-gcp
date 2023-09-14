@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Target gRPC Proxy resource. A target gRPC proxy is a component
@@ -311,6 +312,12 @@ func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyOutput)
 }
 
+func (i *TargetGrpcProxy) ToOutput(ctx context.Context) pulumix.Output[*TargetGrpcProxy] {
+	return pulumix.Output[*TargetGrpcProxy]{
+		OutputState: i.ToTargetGrpcProxyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TargetGrpcProxyArrayInput is an input type that accepts TargetGrpcProxyArray and TargetGrpcProxyArrayOutput values.
 // You can construct a concrete instance of `TargetGrpcProxyArrayInput` via:
 //
@@ -334,6 +341,12 @@ func (i TargetGrpcProxyArray) ToTargetGrpcProxyArrayOutput() TargetGrpcProxyArra
 
 func (i TargetGrpcProxyArray) ToTargetGrpcProxyArrayOutputWithContext(ctx context.Context) TargetGrpcProxyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyArrayOutput)
+}
+
+func (i TargetGrpcProxyArray) ToOutput(ctx context.Context) pulumix.Output[[]*TargetGrpcProxy] {
+	return pulumix.Output[[]*TargetGrpcProxy]{
+		OutputState: i.ToTargetGrpcProxyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TargetGrpcProxyMapInput is an input type that accepts TargetGrpcProxyMap and TargetGrpcProxyMapOutput values.
@@ -361,6 +374,12 @@ func (i TargetGrpcProxyMap) ToTargetGrpcProxyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyMapOutput)
 }
 
+func (i TargetGrpcProxyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetGrpcProxy] {
+	return pulumix.Output[map[string]*TargetGrpcProxy]{
+		OutputState: i.ToTargetGrpcProxyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TargetGrpcProxyOutput struct{ *pulumi.OutputState }
 
 func (TargetGrpcProxyOutput) ElementType() reflect.Type {
@@ -373,6 +392,12 @@ func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {
 
 func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutputWithContext(ctx context.Context) TargetGrpcProxyOutput {
 	return o
+}
+
+func (o TargetGrpcProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetGrpcProxy] {
+	return pulumix.Output[*TargetGrpcProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -460,6 +485,12 @@ func (o TargetGrpcProxyArrayOutput) ToTargetGrpcProxyArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o TargetGrpcProxyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TargetGrpcProxy] {
+	return pulumix.Output[[]*TargetGrpcProxy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TargetGrpcProxyArrayOutput) Index(i pulumi.IntInput) TargetGrpcProxyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TargetGrpcProxy {
 		return vs[0].([]*TargetGrpcProxy)[vs[1].(int)]
@@ -478,6 +509,12 @@ func (o TargetGrpcProxyMapOutput) ToTargetGrpcProxyMapOutput() TargetGrpcProxyMa
 
 func (o TargetGrpcProxyMapOutput) ToTargetGrpcProxyMapOutputWithContext(ctx context.Context) TargetGrpcProxyMapOutput {
 	return o
+}
+
+func (o TargetGrpcProxyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TargetGrpcProxy] {
+	return pulumix.Output[map[string]*TargetGrpcProxy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TargetGrpcProxyMapOutput) MapIndex(k pulumi.StringInput) TargetGrpcProxyOutput {

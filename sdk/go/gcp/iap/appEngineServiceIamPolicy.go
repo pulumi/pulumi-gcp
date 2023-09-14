@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
@@ -479,6 +480,12 @@ func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyOutput)
 }
 
+func (i *AppEngineServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AppEngineServiceIamPolicy] {
+	return pulumix.Output[*AppEngineServiceIamPolicy]{
+		OutputState: i.ToAppEngineServiceIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AppEngineServiceIamPolicyArrayInput is an input type that accepts AppEngineServiceIamPolicyArray and AppEngineServiceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AppEngineServiceIamPolicyArrayInput` via:
 //
@@ -502,6 +509,12 @@ func (i AppEngineServiceIamPolicyArray) ToAppEngineServiceIamPolicyArrayOutput()
 
 func (i AppEngineServiceIamPolicyArray) ToAppEngineServiceIamPolicyArrayOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyArrayOutput)
+}
+
+func (i AppEngineServiceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineServiceIamPolicy] {
+	return pulumix.Output[[]*AppEngineServiceIamPolicy]{
+		OutputState: i.ToAppEngineServiceIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AppEngineServiceIamPolicyMapInput is an input type that accepts AppEngineServiceIamPolicyMap and AppEngineServiceIamPolicyMapOutput values.
@@ -529,6 +542,12 @@ func (i AppEngineServiceIamPolicyMap) ToAppEngineServiceIamPolicyMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyMapOutput)
 }
 
+func (i AppEngineServiceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineServiceIamPolicy] {
+	return pulumix.Output[map[string]*AppEngineServiceIamPolicy]{
+		OutputState: i.ToAppEngineServiceIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEngineServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AppEngineServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -541,6 +560,12 @@ func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutput() App
 
 func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput {
 	return o
+}
+
+func (o AppEngineServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineServiceIamPolicy] {
+	return pulumix.Output[*AppEngineServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -596,6 +621,12 @@ func (o AppEngineServiceIamPolicyArrayOutput) ToAppEngineServiceIamPolicyArrayOu
 	return o
 }
 
+func (o AppEngineServiceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineServiceIamPolicy] {
+	return pulumix.Output[[]*AppEngineServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEngineServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineServiceIamPolicy {
 		return vs[0].([]*AppEngineServiceIamPolicy)[vs[1].(int)]
@@ -614,6 +645,12 @@ func (o AppEngineServiceIamPolicyMapOutput) ToAppEngineServiceIamPolicyMapOutput
 
 func (o AppEngineServiceIamPolicyMapOutput) ToAppEngineServiceIamPolicyMapOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyMapOutput {
 	return o
+}
+
+func (o AppEngineServiceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineServiceIamPolicy] {
+	return pulumix.Output[map[string]*AppEngineServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEngineServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamPolicyOutput {

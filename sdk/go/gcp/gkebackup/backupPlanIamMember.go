@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
@@ -373,6 +374,12 @@ func (i *BackupPlanIamMember) ToBackupPlanIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberOutput)
 }
 
+func (i *BackupPlanIamMember) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamMember] {
+	return pulumix.Output[*BackupPlanIamMember]{
+		OutputState: i.ToBackupPlanIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackupPlanIamMemberArrayInput is an input type that accepts BackupPlanIamMemberArray and BackupPlanIamMemberArrayOutput values.
 // You can construct a concrete instance of `BackupPlanIamMemberArrayInput` via:
 //
@@ -396,6 +403,12 @@ func (i BackupPlanIamMemberArray) ToBackupPlanIamMemberArrayOutput() BackupPlanI
 
 func (i BackupPlanIamMemberArray) ToBackupPlanIamMemberArrayOutputWithContext(ctx context.Context) BackupPlanIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberArrayOutput)
+}
+
+func (i BackupPlanIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlanIamMember] {
+	return pulumix.Output[[]*BackupPlanIamMember]{
+		OutputState: i.ToBackupPlanIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackupPlanIamMemberMapInput is an input type that accepts BackupPlanIamMemberMap and BackupPlanIamMemberMapOutput values.
@@ -423,6 +436,12 @@ func (i BackupPlanIamMemberMap) ToBackupPlanIamMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberMapOutput)
 }
 
+func (i BackupPlanIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlanIamMember] {
+	return pulumix.Output[map[string]*BackupPlanIamMember]{
+		OutputState: i.ToBackupPlanIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanIamMemberOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanIamMemberOutput) ElementType() reflect.Type {
@@ -435,6 +454,12 @@ func (o BackupPlanIamMemberOutput) ToBackupPlanIamMemberOutput() BackupPlanIamMe
 
 func (o BackupPlanIamMemberOutput) ToBackupPlanIamMemberOutputWithContext(ctx context.Context) BackupPlanIamMemberOutput {
 	return o
+}
+
+func (o BackupPlanIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamMember] {
+	return pulumix.Output[*BackupPlanIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanIamMemberOutput) Condition() BackupPlanIamMemberConditionPtrOutput {
@@ -500,6 +525,12 @@ func (o BackupPlanIamMemberArrayOutput) ToBackupPlanIamMemberArrayOutputWithCont
 	return o
 }
 
+func (o BackupPlanIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackupPlanIamMember] {
+	return pulumix.Output[[]*BackupPlanIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackupPlanIamMemberArrayOutput) Index(i pulumi.IntInput) BackupPlanIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackupPlanIamMember {
 		return vs[0].([]*BackupPlanIamMember)[vs[1].(int)]
@@ -518,6 +549,12 @@ func (o BackupPlanIamMemberMapOutput) ToBackupPlanIamMemberMapOutput() BackupPla
 
 func (o BackupPlanIamMemberMapOutput) ToBackupPlanIamMemberMapOutputWithContext(ctx context.Context) BackupPlanIamMemberMapOutput {
 	return o
+}
+
+func (o BackupPlanIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackupPlanIamMember] {
+	return pulumix.Output[map[string]*BackupPlanIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanIamMemberMapOutput) MapIndex(k pulumi.StringInput) BackupPlanIamMemberOutput {

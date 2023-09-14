@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -510,6 +511,12 @@ func (i *RegionSecurityPolicyRule) ToRegionSecurityPolicyRuleOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyRuleOutput)
 }
 
+func (i *RegionSecurityPolicyRule) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicyRule] {
+	return pulumix.Output[*RegionSecurityPolicyRule]{
+		OutputState: i.ToRegionSecurityPolicyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionSecurityPolicyRuleArrayInput is an input type that accepts RegionSecurityPolicyRuleArray and RegionSecurityPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `RegionSecurityPolicyRuleArrayInput` via:
 //
@@ -533,6 +540,12 @@ func (i RegionSecurityPolicyRuleArray) ToRegionSecurityPolicyRuleArrayOutput() R
 
 func (i RegionSecurityPolicyRuleArray) ToRegionSecurityPolicyRuleArrayOutputWithContext(ctx context.Context) RegionSecurityPolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyRuleArrayOutput)
+}
+
+func (i RegionSecurityPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSecurityPolicyRule] {
+	return pulumix.Output[[]*RegionSecurityPolicyRule]{
+		OutputState: i.ToRegionSecurityPolicyRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionSecurityPolicyRuleMapInput is an input type that accepts RegionSecurityPolicyRuleMap and RegionSecurityPolicyRuleMapOutput values.
@@ -560,6 +573,12 @@ func (i RegionSecurityPolicyRuleMap) ToRegionSecurityPolicyRuleMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSecurityPolicyRuleMapOutput)
 }
 
+func (i RegionSecurityPolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSecurityPolicyRule] {
+	return pulumix.Output[map[string]*RegionSecurityPolicyRule]{
+		OutputState: i.ToRegionSecurityPolicyRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionSecurityPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (RegionSecurityPolicyRuleOutput) ElementType() reflect.Type {
@@ -572,6 +591,12 @@ func (o RegionSecurityPolicyRuleOutput) ToRegionSecurityPolicyRuleOutput() Regio
 
 func (o RegionSecurityPolicyRuleOutput) ToRegionSecurityPolicyRuleOutputWithContext(ctx context.Context) RegionSecurityPolicyRuleOutput {
 	return o
+}
+
+func (o RegionSecurityPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionSecurityPolicyRule] {
+	return pulumix.Output[*RegionSecurityPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Action to perform when the rule is matched. The following are the valid actions:
@@ -653,6 +678,12 @@ func (o RegionSecurityPolicyRuleArrayOutput) ToRegionSecurityPolicyRuleArrayOutp
 	return o
 }
 
+func (o RegionSecurityPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionSecurityPolicyRule] {
+	return pulumix.Output[[]*RegionSecurityPolicyRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionSecurityPolicyRuleArrayOutput) Index(i pulumi.IntInput) RegionSecurityPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionSecurityPolicyRule {
 		return vs[0].([]*RegionSecurityPolicyRule)[vs[1].(int)]
@@ -671,6 +702,12 @@ func (o RegionSecurityPolicyRuleMapOutput) ToRegionSecurityPolicyRuleMapOutput()
 
 func (o RegionSecurityPolicyRuleMapOutput) ToRegionSecurityPolicyRuleMapOutputWithContext(ctx context.Context) RegionSecurityPolicyRuleMapOutput {
 	return o
+}
+
+func (o RegionSecurityPolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionSecurityPolicyRule] {
+	return pulumix.Output[map[string]*RegionSecurityPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionSecurityPolicyRuleMapOutput) MapIndex(k pulumi.StringInput) RegionSecurityPolicyRuleOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i AppConnectionApplicationEndpointArgs) ToAppConnectionApplicationEndpoint
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionApplicationEndpointOutput)
 }
 
+func (i AppConnectionApplicationEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[AppConnectionApplicationEndpoint] {
+	return pulumix.Output[AppConnectionApplicationEndpoint]{
+		OutputState: i.ToAppConnectionApplicationEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppConnectionApplicationEndpointArgs) ToAppConnectionApplicationEndpointPtrOutput() AppConnectionApplicationEndpointPtrOutput {
 	return i.ToAppConnectionApplicationEndpointPtrOutputWithContext(context.Background())
 }
@@ -95,6 +102,12 @@ func (i *appConnectionApplicationEndpointPtrType) ToAppConnectionApplicationEndp
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionApplicationEndpointPtrOutput)
 }
 
+func (i *appConnectionApplicationEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionApplicationEndpoint] {
+	return pulumix.Output[*AppConnectionApplicationEndpoint]{
+		OutputState: i.ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppConnectionApplicationEndpointOutput struct{ *pulumi.OutputState }
 
 func (AppConnectionApplicationEndpointOutput) ElementType() reflect.Type {
@@ -117,6 +130,12 @@ func (o AppConnectionApplicationEndpointOutput) ToAppConnectionApplicationEndpoi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppConnectionApplicationEndpoint) *AppConnectionApplicationEndpoint {
 		return &v
 	}).(AppConnectionApplicationEndpointPtrOutput)
+}
+
+func (o AppConnectionApplicationEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[AppConnectionApplicationEndpoint] {
+	return pulumix.Output[AppConnectionApplicationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hostname or IP address of the remote application endpoint.
@@ -143,6 +162,12 @@ func (o AppConnectionApplicationEndpointPtrOutput) ToAppConnectionApplicationEnd
 
 func (o AppConnectionApplicationEndpointPtrOutput) ToAppConnectionApplicationEndpointPtrOutputWithContext(ctx context.Context) AppConnectionApplicationEndpointPtrOutput {
 	return o
+}
+
+func (o AppConnectionApplicationEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionApplicationEndpoint] {
+	return pulumix.Output[*AppConnectionApplicationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConnectionApplicationEndpointPtrOutput) Elem() AppConnectionApplicationEndpointOutput {
@@ -230,6 +255,12 @@ func (i AppConnectionGatewayArgs) ToAppConnectionGatewayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionGatewayOutput)
 }
 
+func (i AppConnectionGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[AppConnectionGateway] {
+	return pulumix.Output[AppConnectionGateway]{
+		OutputState: i.ToAppConnectionGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppConnectionGatewayArgs) ToAppConnectionGatewayPtrOutput() AppConnectionGatewayPtrOutput {
 	return i.ToAppConnectionGatewayPtrOutputWithContext(context.Background())
 }
@@ -271,6 +302,12 @@ func (i *appConnectionGatewayPtrType) ToAppConnectionGatewayPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectionGatewayPtrOutput)
 }
 
+func (i *appConnectionGatewayPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionGateway] {
+	return pulumix.Output[*AppConnectionGateway]{
+		OutputState: i.ToAppConnectionGatewayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppConnectionGatewayOutput struct{ *pulumi.OutputState }
 
 func (AppConnectionGatewayOutput) ElementType() reflect.Type {
@@ -293,6 +330,12 @@ func (o AppConnectionGatewayOutput) ToAppConnectionGatewayPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppConnectionGateway) *AppConnectionGateway {
 		return &v
 	}).(AppConnectionGatewayPtrOutput)
+}
+
+func (o AppConnectionGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[AppConnectionGateway] {
+	return pulumix.Output[AppConnectionGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
@@ -331,6 +374,12 @@ func (o AppConnectionGatewayPtrOutput) ToAppConnectionGatewayPtrOutput() AppConn
 
 func (o AppConnectionGatewayPtrOutput) ToAppConnectionGatewayPtrOutputWithContext(ctx context.Context) AppConnectionGatewayPtrOutput {
 	return o
+}
+
+func (o AppConnectionGatewayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnectionGateway] {
+	return pulumix.Output[*AppConnectionGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConnectionGatewayPtrOutput) Elem() AppConnectionGatewayOutput {
@@ -422,6 +471,12 @@ func (i AppConnectorPrincipalInfoArgs) ToAppConnectorPrincipalInfoOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorPrincipalInfoOutput)
 }
 
+func (i AppConnectorPrincipalInfoArgs) ToOutput(ctx context.Context) pulumix.Output[AppConnectorPrincipalInfo] {
+	return pulumix.Output[AppConnectorPrincipalInfo]{
+		OutputState: i.ToAppConnectorPrincipalInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppConnectorPrincipalInfoArgs) ToAppConnectorPrincipalInfoPtrOutput() AppConnectorPrincipalInfoPtrOutput {
 	return i.ToAppConnectorPrincipalInfoPtrOutputWithContext(context.Background())
 }
@@ -463,6 +518,12 @@ func (i *appConnectorPrincipalInfoPtrType) ToAppConnectorPrincipalInfoPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorPrincipalInfoPtrOutput)
 }
 
+func (i *appConnectorPrincipalInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppConnectorPrincipalInfo] {
+	return pulumix.Output[*AppConnectorPrincipalInfo]{
+		OutputState: i.ToAppConnectorPrincipalInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppConnectorPrincipalInfoOutput struct{ *pulumi.OutputState }
 
 func (AppConnectorPrincipalInfoOutput) ElementType() reflect.Type {
@@ -487,6 +548,12 @@ func (o AppConnectorPrincipalInfoOutput) ToAppConnectorPrincipalInfoPtrOutputWit
 	}).(AppConnectorPrincipalInfoPtrOutput)
 }
 
+func (o AppConnectorPrincipalInfoOutput) ToOutput(ctx context.Context) pulumix.Output[AppConnectorPrincipalInfo] {
+	return pulumix.Output[AppConnectorPrincipalInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
 // ServiceAccount represents a GCP service account.
 // Structure is documented below.
 func (o AppConnectorPrincipalInfoOutput) ServiceAccount() AppConnectorPrincipalInfoServiceAccountOutput {
@@ -505,6 +572,12 @@ func (o AppConnectorPrincipalInfoPtrOutput) ToAppConnectorPrincipalInfoPtrOutput
 
 func (o AppConnectorPrincipalInfoPtrOutput) ToAppConnectorPrincipalInfoPtrOutputWithContext(ctx context.Context) AppConnectorPrincipalInfoPtrOutput {
 	return o
+}
+
+func (o AppConnectorPrincipalInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnectorPrincipalInfo] {
+	return pulumix.Output[*AppConnectorPrincipalInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConnectorPrincipalInfoPtrOutput) Elem() AppConnectorPrincipalInfoOutput {
@@ -565,6 +638,12 @@ func (i AppConnectorPrincipalInfoServiceAccountArgs) ToAppConnectorPrincipalInfo
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorPrincipalInfoServiceAccountOutput)
 }
 
+func (i AppConnectorPrincipalInfoServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[AppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[AppConnectorPrincipalInfoServiceAccount]{
+		OutputState: i.ToAppConnectorPrincipalInfoServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AppConnectorPrincipalInfoServiceAccountArgs) ToAppConnectorPrincipalInfoServiceAccountPtrOutput() AppConnectorPrincipalInfoServiceAccountPtrOutput {
 	return i.ToAppConnectorPrincipalInfoServiceAccountPtrOutputWithContext(context.Background())
 }
@@ -606,6 +685,12 @@ func (i *appConnectorPrincipalInfoServiceAccountPtrType) ToAppConnectorPrincipal
 	return pulumi.ToOutputWithContext(ctx, i).(AppConnectorPrincipalInfoServiceAccountPtrOutput)
 }
 
+func (i *appConnectorPrincipalInfoServiceAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[*AppConnectorPrincipalInfoServiceAccount]{
+		OutputState: i.ToAppConnectorPrincipalInfoServiceAccountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppConnectorPrincipalInfoServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (AppConnectorPrincipalInfoServiceAccountOutput) ElementType() reflect.Type {
@@ -630,6 +715,12 @@ func (o AppConnectorPrincipalInfoServiceAccountOutput) ToAppConnectorPrincipalIn
 	}).(AppConnectorPrincipalInfoServiceAccountPtrOutput)
 }
 
+func (o AppConnectorPrincipalInfoServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[AppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[AppConnectorPrincipalInfoServiceAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Email address of the service account.
 //
 // ***
@@ -649,6 +740,12 @@ func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) ToAppConnectorPrincipa
 
 func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) ToAppConnectorPrincipalInfoServiceAccountPtrOutputWithContext(ctx context.Context) AppConnectorPrincipalInfoServiceAccountPtrOutput {
 	return o
+}
+
+func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[*AppConnectorPrincipalInfoServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Elem() AppConnectorPrincipalInfoServiceAccountOutput {
@@ -710,6 +807,12 @@ func (i AppGatewayAllocatedConnectionArgs) ToAppGatewayAllocatedConnectionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AppGatewayAllocatedConnectionOutput)
 }
 
+func (i AppGatewayAllocatedConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[AppGatewayAllocatedConnection] {
+	return pulumix.Output[AppGatewayAllocatedConnection]{
+		OutputState: i.ToAppGatewayAllocatedConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AppGatewayAllocatedConnectionArrayInput is an input type that accepts AppGatewayAllocatedConnectionArray and AppGatewayAllocatedConnectionArrayOutput values.
 // You can construct a concrete instance of `AppGatewayAllocatedConnectionArrayInput` via:
 //
@@ -735,6 +838,12 @@ func (i AppGatewayAllocatedConnectionArray) ToAppGatewayAllocatedConnectionArray
 	return pulumi.ToOutputWithContext(ctx, i).(AppGatewayAllocatedConnectionArrayOutput)
 }
 
+func (i AppGatewayAllocatedConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]AppGatewayAllocatedConnection] {
+	return pulumix.Output[[]AppGatewayAllocatedConnection]{
+		OutputState: i.ToAppGatewayAllocatedConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppGatewayAllocatedConnectionOutput struct{ *pulumi.OutputState }
 
 func (AppGatewayAllocatedConnectionOutput) ElementType() reflect.Type {
@@ -747,6 +856,12 @@ func (o AppGatewayAllocatedConnectionOutput) ToAppGatewayAllocatedConnectionOutp
 
 func (o AppGatewayAllocatedConnectionOutput) ToAppGatewayAllocatedConnectionOutputWithContext(ctx context.Context) AppGatewayAllocatedConnectionOutput {
 	return o
+}
+
+func (o AppGatewayAllocatedConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[AppGatewayAllocatedConnection] {
+	return pulumix.Output[AppGatewayAllocatedConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ingress port of an allocated connection.
@@ -771,6 +886,12 @@ func (o AppGatewayAllocatedConnectionArrayOutput) ToAppGatewayAllocatedConnectio
 
 func (o AppGatewayAllocatedConnectionArrayOutput) ToAppGatewayAllocatedConnectionArrayOutputWithContext(ctx context.Context) AppGatewayAllocatedConnectionArrayOutput {
 	return o
+}
+
+func (o AppGatewayAllocatedConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AppGatewayAllocatedConnection] {
+	return pulumix.Output[[]AppGatewayAllocatedConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) AppGatewayAllocatedConnectionOutput {
@@ -812,6 +933,12 @@ func (i GetAppConnectionApplicationEndpointArgs) ToGetAppConnectionApplicationEn
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionApplicationEndpointOutput)
 }
 
+func (i GetAppConnectionApplicationEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectionApplicationEndpoint] {
+	return pulumix.Output[GetAppConnectionApplicationEndpoint]{
+		OutputState: i.ToGetAppConnectionApplicationEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppConnectionApplicationEndpointArrayInput is an input type that accepts GetAppConnectionApplicationEndpointArray and GetAppConnectionApplicationEndpointArrayOutput values.
 // You can construct a concrete instance of `GetAppConnectionApplicationEndpointArrayInput` via:
 //
@@ -837,6 +964,12 @@ func (i GetAppConnectionApplicationEndpointArray) ToGetAppConnectionApplicationE
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionApplicationEndpointArrayOutput)
 }
 
+func (i GetAppConnectionApplicationEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectionApplicationEndpoint] {
+	return pulumix.Output[[]GetAppConnectionApplicationEndpoint]{
+		OutputState: i.ToGetAppConnectionApplicationEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppConnectionApplicationEndpointOutput struct{ *pulumi.OutputState }
 
 func (GetAppConnectionApplicationEndpointOutput) ElementType() reflect.Type {
@@ -849,6 +982,12 @@ func (o GetAppConnectionApplicationEndpointOutput) ToGetAppConnectionApplication
 
 func (o GetAppConnectionApplicationEndpointOutput) ToGetAppConnectionApplicationEndpointOutputWithContext(ctx context.Context) GetAppConnectionApplicationEndpointOutput {
 	return o
+}
+
+func (o GetAppConnectionApplicationEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectionApplicationEndpoint] {
+	return pulumix.Output[GetAppConnectionApplicationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
@@ -871,6 +1010,12 @@ func (o GetAppConnectionApplicationEndpointArrayOutput) ToGetAppConnectionApplic
 
 func (o GetAppConnectionApplicationEndpointArrayOutput) ToGetAppConnectionApplicationEndpointArrayOutputWithContext(ctx context.Context) GetAppConnectionApplicationEndpointArrayOutput {
 	return o
+}
+
+func (o GetAppConnectionApplicationEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectionApplicationEndpoint] {
+	return pulumix.Output[[]GetAppConnectionApplicationEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectionApplicationEndpointArrayOutput) Index(i pulumi.IntInput) GetAppConnectionApplicationEndpointOutput {
@@ -916,6 +1061,12 @@ func (i GetAppConnectionGatewayArgs) ToGetAppConnectionGatewayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionGatewayOutput)
 }
 
+func (i GetAppConnectionGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectionGateway] {
+	return pulumix.Output[GetAppConnectionGateway]{
+		OutputState: i.ToGetAppConnectionGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppConnectionGatewayArrayInput is an input type that accepts GetAppConnectionGatewayArray and GetAppConnectionGatewayArrayOutput values.
 // You can construct a concrete instance of `GetAppConnectionGatewayArrayInput` via:
 //
@@ -941,6 +1092,12 @@ func (i GetAppConnectionGatewayArray) ToGetAppConnectionGatewayArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectionGatewayArrayOutput)
 }
 
+func (i GetAppConnectionGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectionGateway] {
+	return pulumix.Output[[]GetAppConnectionGateway]{
+		OutputState: i.ToGetAppConnectionGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppConnectionGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetAppConnectionGatewayOutput) ElementType() reflect.Type {
@@ -953,6 +1110,12 @@ func (o GetAppConnectionGatewayOutput) ToGetAppConnectionGatewayOutput() GetAppC
 
 func (o GetAppConnectionGatewayOutput) ToGetAppConnectionGatewayOutputWithContext(ctx context.Context) GetAppConnectionGatewayOutput {
 	return o
+}
+
+func (o GetAppConnectionGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectionGateway] {
+	return pulumix.Output[GetAppConnectionGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectionGatewayOutput) AppGateway() pulumi.StringOutput {
@@ -983,6 +1146,12 @@ func (o GetAppConnectionGatewayArrayOutput) ToGetAppConnectionGatewayArrayOutput
 
 func (o GetAppConnectionGatewayArrayOutput) ToGetAppConnectionGatewayArrayOutputWithContext(ctx context.Context) GetAppConnectionGatewayArrayOutput {
 	return o
+}
+
+func (o GetAppConnectionGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectionGateway] {
+	return pulumix.Output[[]GetAppConnectionGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectionGatewayArrayOutput) Index(i pulumi.IntInput) GetAppConnectionGatewayOutput {
@@ -1022,6 +1191,12 @@ func (i GetAppConnectorPrincipalInfoArgs) ToGetAppConnectorPrincipalInfoOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoOutput)
 }
 
+func (i GetAppConnectorPrincipalInfoArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectorPrincipalInfo] {
+	return pulumix.Output[GetAppConnectorPrincipalInfo]{
+		OutputState: i.ToGetAppConnectorPrincipalInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppConnectorPrincipalInfoArrayInput is an input type that accepts GetAppConnectorPrincipalInfoArray and GetAppConnectorPrincipalInfoArrayOutput values.
 // You can construct a concrete instance of `GetAppConnectorPrincipalInfoArrayInput` via:
 //
@@ -1047,6 +1222,12 @@ func (i GetAppConnectorPrincipalInfoArray) ToGetAppConnectorPrincipalInfoArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoArrayOutput)
 }
 
+func (i GetAppConnectorPrincipalInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectorPrincipalInfo] {
+	return pulumix.Output[[]GetAppConnectorPrincipalInfo]{
+		OutputState: i.ToGetAppConnectorPrincipalInfoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppConnectorPrincipalInfoOutput struct{ *pulumi.OutputState }
 
 func (GetAppConnectorPrincipalInfoOutput) ElementType() reflect.Type {
@@ -1059,6 +1240,12 @@ func (o GetAppConnectorPrincipalInfoOutput) ToGetAppConnectorPrincipalInfoOutput
 
 func (o GetAppConnectorPrincipalInfoOutput) ToGetAppConnectorPrincipalInfoOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoOutput {
 	return o
+}
+
+func (o GetAppConnectorPrincipalInfoOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectorPrincipalInfo] {
+	return pulumix.Output[GetAppConnectorPrincipalInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectorPrincipalInfoOutput) ServiceAccounts() GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
@@ -1079,6 +1266,12 @@ func (o GetAppConnectorPrincipalInfoArrayOutput) ToGetAppConnectorPrincipalInfoA
 
 func (o GetAppConnectorPrincipalInfoArrayOutput) ToGetAppConnectorPrincipalInfoArrayOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoArrayOutput {
 	return o
+}
+
+func (o GetAppConnectorPrincipalInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectorPrincipalInfo] {
+	return pulumix.Output[[]GetAppConnectorPrincipalInfo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectorPrincipalInfoArrayOutput) Index(i pulumi.IntInput) GetAppConnectorPrincipalInfoOutput {
@@ -1118,6 +1311,12 @@ func (i GetAppConnectorPrincipalInfoServiceAccountArgs) ToGetAppConnectorPrincip
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoServiceAccountOutput)
 }
 
+func (i GetAppConnectorPrincipalInfoServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[GetAppConnectorPrincipalInfoServiceAccount]{
+		OutputState: i.ToGetAppConnectorPrincipalInfoServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppConnectorPrincipalInfoServiceAccountArrayInput is an input type that accepts GetAppConnectorPrincipalInfoServiceAccountArray and GetAppConnectorPrincipalInfoServiceAccountArrayOutput values.
 // You can construct a concrete instance of `GetAppConnectorPrincipalInfoServiceAccountArrayInput` via:
 //
@@ -1143,6 +1342,12 @@ func (i GetAppConnectorPrincipalInfoServiceAccountArray) ToGetAppConnectorPrinci
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppConnectorPrincipalInfoServiceAccountArrayOutput)
 }
 
+func (i GetAppConnectorPrincipalInfoServiceAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[[]GetAppConnectorPrincipalInfoServiceAccount]{
+		OutputState: i.ToGetAppConnectorPrincipalInfoServiceAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppConnectorPrincipalInfoServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAppConnectorPrincipalInfoServiceAccountOutput) ElementType() reflect.Type {
@@ -1155,6 +1360,12 @@ func (o GetAppConnectorPrincipalInfoServiceAccountOutput) ToGetAppConnectorPrinc
 
 func (o GetAppConnectorPrincipalInfoServiceAccountOutput) ToGetAppConnectorPrincipalInfoServiceAccountOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoServiceAccountOutput {
 	return o
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[GetAppConnectorPrincipalInfoServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringOutput {
@@ -1173,6 +1384,12 @@ func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) ToGetAppConnector
 
 func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) ToGetAppConnectorPrincipalInfoServiceAccountArrayOutputWithContext(ctx context.Context) GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
 	return o
+}
+
+func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppConnectorPrincipalInfoServiceAccount] {
+	return pulumix.Output[[]GetAppConnectorPrincipalInfoServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) Index(i pulumi.IntInput) GetAppConnectorPrincipalInfoServiceAccountOutput {
@@ -1214,6 +1431,12 @@ func (i GetAppGatewayAllocatedConnectionArgs) ToGetAppGatewayAllocatedConnection
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppGatewayAllocatedConnectionOutput)
 }
 
+func (i GetAppGatewayAllocatedConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[GetAppGatewayAllocatedConnection] {
+	return pulumix.Output[GetAppGatewayAllocatedConnection]{
+		OutputState: i.ToGetAppGatewayAllocatedConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAppGatewayAllocatedConnectionArrayInput is an input type that accepts GetAppGatewayAllocatedConnectionArray and GetAppGatewayAllocatedConnectionArrayOutput values.
 // You can construct a concrete instance of `GetAppGatewayAllocatedConnectionArrayInput` via:
 //
@@ -1239,6 +1462,12 @@ func (i GetAppGatewayAllocatedConnectionArray) ToGetAppGatewayAllocatedConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(GetAppGatewayAllocatedConnectionArrayOutput)
 }
 
+func (i GetAppGatewayAllocatedConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAppGatewayAllocatedConnection] {
+	return pulumix.Output[[]GetAppGatewayAllocatedConnection]{
+		OutputState: i.ToGetAppGatewayAllocatedConnectionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAppGatewayAllocatedConnectionOutput struct{ *pulumi.OutputState }
 
 func (GetAppGatewayAllocatedConnectionOutput) ElementType() reflect.Type {
@@ -1251,6 +1480,12 @@ func (o GetAppGatewayAllocatedConnectionOutput) ToGetAppGatewayAllocatedConnecti
 
 func (o GetAppGatewayAllocatedConnectionOutput) ToGetAppGatewayAllocatedConnectionOutputWithContext(ctx context.Context) GetAppGatewayAllocatedConnectionOutput {
 	return o
+}
+
+func (o GetAppGatewayAllocatedConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[GetAppGatewayAllocatedConnection] {
+	return pulumix.Output[GetAppGatewayAllocatedConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppGatewayAllocatedConnectionOutput) IngressPort() pulumi.IntOutput {
@@ -1273,6 +1508,12 @@ func (o GetAppGatewayAllocatedConnectionArrayOutput) ToGetAppGatewayAllocatedCon
 
 func (o GetAppGatewayAllocatedConnectionArrayOutput) ToGetAppGatewayAllocatedConnectionArrayOutputWithContext(ctx context.Context) GetAppGatewayAllocatedConnectionArrayOutput {
 	return o
+}
+
+func (o GetAppGatewayAllocatedConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAppGatewayAllocatedConnection] {
+	return pulumix.Output[[]GetAppGatewayAllocatedConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) GetAppGatewayAllocatedConnectionOutput {

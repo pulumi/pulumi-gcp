@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Secret Manager Secret. Each of these resources serves a different use case:
@@ -356,6 +357,12 @@ func (i *SecretIamMember) ToSecretIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberOutput)
 }
 
+func (i *SecretIamMember) ToOutput(ctx context.Context) pulumix.Output[*SecretIamMember] {
+	return pulumix.Output[*SecretIamMember]{
+		OutputState: i.ToSecretIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecretIamMemberArrayInput is an input type that accepts SecretIamMemberArray and SecretIamMemberArrayOutput values.
 // You can construct a concrete instance of `SecretIamMemberArrayInput` via:
 //
@@ -379,6 +386,12 @@ func (i SecretIamMemberArray) ToSecretIamMemberArrayOutput() SecretIamMemberArra
 
 func (i SecretIamMemberArray) ToSecretIamMemberArrayOutputWithContext(ctx context.Context) SecretIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberArrayOutput)
+}
+
+func (i SecretIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecretIamMember] {
+	return pulumix.Output[[]*SecretIamMember]{
+		OutputState: i.ToSecretIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecretIamMemberMapInput is an input type that accepts SecretIamMemberMap and SecretIamMemberMapOutput values.
@@ -406,6 +419,12 @@ func (i SecretIamMemberMap) ToSecretIamMemberMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberMapOutput)
 }
 
+func (i SecretIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretIamMember] {
+	return pulumix.Output[map[string]*SecretIamMember]{
+		OutputState: i.ToSecretIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretIamMemberOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberOutput) ElementType() reflect.Type {
@@ -418,6 +437,12 @@ func (o SecretIamMemberOutput) ToSecretIamMemberOutput() SecretIamMemberOutput {
 
 func (o SecretIamMemberOutput) ToSecretIamMemberOutputWithContext(ctx context.Context) SecretIamMemberOutput {
 	return o
+}
+
+func (o SecretIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamMember] {
+	return pulumix.Output[*SecretIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretIamMemberOutput) Condition() SecretIamMemberConditionPtrOutput {
@@ -476,6 +501,12 @@ func (o SecretIamMemberArrayOutput) ToSecretIamMemberArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o SecretIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretIamMember] {
+	return pulumix.Output[[]*SecretIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecretIamMemberArrayOutput) Index(i pulumi.IntInput) SecretIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretIamMember {
 		return vs[0].([]*SecretIamMember)[vs[1].(int)]
@@ -494,6 +525,12 @@ func (o SecretIamMemberMapOutput) ToSecretIamMemberMapOutput() SecretIamMemberMa
 
 func (o SecretIamMemberMapOutput) ToSecretIamMemberMapOutputWithContext(ctx context.Context) SecretIamMemberMapOutput {
 	return o
+}
+
+func (o SecretIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretIamMember] {
+	return pulumix.Output[map[string]*SecretIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretIamMemberMapOutput) MapIndex(k pulumi.StringInput) SecretIamMemberOutput {

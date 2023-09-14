@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i TriggerDestinationArgs) ToTriggerDestinationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationOutput)
 }
 
+func (i TriggerDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerDestination] {
+	return pulumix.Output[TriggerDestination]{
+		OutputState: i.ToTriggerDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerDestinationArgs) ToTriggerDestinationPtrOutput() TriggerDestinationPtrOutput {
 	return i.ToTriggerDestinationPtrOutputWithContext(context.Background())
 }
@@ -99,6 +106,12 @@ func (i *triggerDestinationPtrType) ToTriggerDestinationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationPtrOutput)
 }
 
+func (i *triggerDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerDestination] {
+	return pulumix.Output[*TriggerDestination]{
+		OutputState: i.ToTriggerDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerDestinationOutput struct{ *pulumi.OutputState }
 
 func (TriggerDestinationOutput) ElementType() reflect.Type {
@@ -121,6 +134,12 @@ func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestination) *TriggerDestination {
 		return &v
 	}).(TriggerDestinationPtrOutput)
+}
+
+func (o TriggerDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerDestination] {
+	return pulumix.Output[TriggerDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
@@ -155,6 +174,12 @@ func (o TriggerDestinationPtrOutput) ToTriggerDestinationPtrOutput() TriggerDest
 
 func (o TriggerDestinationPtrOutput) ToTriggerDestinationPtrOutputWithContext(ctx context.Context) TriggerDestinationPtrOutput {
 	return o
+}
+
+func (o TriggerDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerDestination] {
+	return pulumix.Output[*TriggerDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerDestinationPtrOutput) Elem() TriggerDestinationOutput {
@@ -248,6 +273,12 @@ func (i TriggerDestinationCloudRunServiceArgs) ToTriggerDestinationCloudRunServi
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationCloudRunServiceOutput)
 }
 
+func (i TriggerDestinationCloudRunServiceArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerDestinationCloudRunService] {
+	return pulumix.Output[TriggerDestinationCloudRunService]{
+		OutputState: i.ToTriggerDestinationCloudRunServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerDestinationCloudRunServiceArgs) ToTriggerDestinationCloudRunServicePtrOutput() TriggerDestinationCloudRunServicePtrOutput {
 	return i.ToTriggerDestinationCloudRunServicePtrOutputWithContext(context.Background())
 }
@@ -289,6 +320,12 @@ func (i *triggerDestinationCloudRunServicePtrType) ToTriggerDestinationCloudRunS
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
+func (i *triggerDestinationCloudRunServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerDestinationCloudRunService] {
+	return pulumix.Output[*TriggerDestinationCloudRunService]{
+		OutputState: i.ToTriggerDestinationCloudRunServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerDestinationCloudRunServiceOutput struct{ *pulumi.OutputState }
 
 func (TriggerDestinationCloudRunServiceOutput) ElementType() reflect.Type {
@@ -311,6 +348,12 @@ func (o TriggerDestinationCloudRunServiceOutput) ToTriggerDestinationCloudRunSer
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestinationCloudRunService) *TriggerDestinationCloudRunService {
 		return &v
 	}).(TriggerDestinationCloudRunServicePtrOutput)
+}
+
+func (o TriggerDestinationCloudRunServiceOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerDestinationCloudRunService] {
+	return pulumix.Output[TriggerDestinationCloudRunService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
@@ -340,6 +383,12 @@ func (o TriggerDestinationCloudRunServicePtrOutput) ToTriggerDestinationCloudRun
 
 func (o TriggerDestinationCloudRunServicePtrOutput) ToTriggerDestinationCloudRunServicePtrOutputWithContext(ctx context.Context) TriggerDestinationCloudRunServicePtrOutput {
 	return o
+}
+
+func (o TriggerDestinationCloudRunServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerDestinationCloudRunService] {
+	return pulumix.Output[*TriggerDestinationCloudRunService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerDestinationCloudRunServicePtrOutput) Elem() TriggerDestinationCloudRunServiceOutput {
@@ -431,6 +480,12 @@ func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkeOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationGkeOutput)
 }
 
+func (i TriggerDestinationGkeArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerDestinationGke] {
+	return pulumix.Output[TriggerDestinationGke]{
+		OutputState: i.ToTriggerDestinationGkeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i TriggerDestinationGkeArgs) ToTriggerDestinationGkePtrOutput() TriggerDestinationGkePtrOutput {
 	return i.ToTriggerDestinationGkePtrOutputWithContext(context.Background())
 }
@@ -472,6 +527,12 @@ func (i *triggerDestinationGkePtrType) ToTriggerDestinationGkePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationGkePtrOutput)
 }
 
+func (i *triggerDestinationGkePtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerDestinationGke] {
+	return pulumix.Output[*TriggerDestinationGke]{
+		OutputState: i.ToTriggerDestinationGkePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerDestinationGkeOutput struct{ *pulumi.OutputState }
 
 func (TriggerDestinationGkeOutput) ElementType() reflect.Type {
@@ -494,6 +555,12 @@ func (o TriggerDestinationGkeOutput) ToTriggerDestinationGkePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestinationGke) *TriggerDestinationGke {
 		return &v
 	}).(TriggerDestinationGkePtrOutput)
+}
+
+func (o TriggerDestinationGkeOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerDestinationGke] {
+	return pulumix.Output[TriggerDestinationGke]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
@@ -533,6 +600,12 @@ func (o TriggerDestinationGkePtrOutput) ToTriggerDestinationGkePtrOutput() Trigg
 
 func (o TriggerDestinationGkePtrOutput) ToTriggerDestinationGkePtrOutputWithContext(ctx context.Context) TriggerDestinationGkePtrOutput {
 	return o
+}
+
+func (o TriggerDestinationGkePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerDestinationGke] {
+	return pulumix.Output[*TriggerDestinationGke]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerDestinationGkePtrOutput) Elem() TriggerDestinationGkeOutput {
@@ -640,6 +713,12 @@ func (i TriggerMatchingCriteriaArgs) ToTriggerMatchingCriteriaOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerMatchingCriteriaOutput)
 }
 
+func (i TriggerMatchingCriteriaArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerMatchingCriteria] {
+	return pulumix.Output[TriggerMatchingCriteria]{
+		OutputState: i.ToTriggerMatchingCriteriaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerMatchingCriteriaArrayInput is an input type that accepts TriggerMatchingCriteriaArray and TriggerMatchingCriteriaArrayOutput values.
 // You can construct a concrete instance of `TriggerMatchingCriteriaArrayInput` via:
 //
@@ -665,6 +744,12 @@ func (i TriggerMatchingCriteriaArray) ToTriggerMatchingCriteriaArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerMatchingCriteriaArrayOutput)
 }
 
+func (i TriggerMatchingCriteriaArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerMatchingCriteria] {
+	return pulumix.Output[[]TriggerMatchingCriteria]{
+		OutputState: i.ToTriggerMatchingCriteriaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerMatchingCriteriaOutput struct{ *pulumi.OutputState }
 
 func (TriggerMatchingCriteriaOutput) ElementType() reflect.Type {
@@ -677,6 +762,12 @@ func (o TriggerMatchingCriteriaOutput) ToTriggerMatchingCriteriaOutput() Trigger
 
 func (o TriggerMatchingCriteriaOutput) ToTriggerMatchingCriteriaOutputWithContext(ctx context.Context) TriggerMatchingCriteriaOutput {
 	return o
+}
+
+func (o TriggerMatchingCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerMatchingCriteria] {
+	return pulumix.Output[TriggerMatchingCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
@@ -708,6 +799,12 @@ func (o TriggerMatchingCriteriaArrayOutput) ToTriggerMatchingCriteriaArrayOutput
 
 func (o TriggerMatchingCriteriaArrayOutput) ToTriggerMatchingCriteriaArrayOutputWithContext(ctx context.Context) TriggerMatchingCriteriaArrayOutput {
 	return o
+}
+
+func (o TriggerMatchingCriteriaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerMatchingCriteria] {
+	return pulumix.Output[[]TriggerMatchingCriteria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerMatchingCriteriaArrayOutput) Index(i pulumi.IntInput) TriggerMatchingCriteriaOutput {
@@ -749,6 +846,12 @@ func (i TriggerTransportArgs) ToTriggerTransportOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportOutput)
 }
 
+func (i TriggerTransportArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerTransport] {
+	return pulumix.Output[TriggerTransport]{
+		OutputState: i.ToTriggerTransportOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerTransportArrayInput is an input type that accepts TriggerTransportArray and TriggerTransportArrayOutput values.
 // You can construct a concrete instance of `TriggerTransportArrayInput` via:
 //
@@ -774,6 +877,12 @@ func (i TriggerTransportArray) ToTriggerTransportArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportArrayOutput)
 }
 
+func (i TriggerTransportArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransport] {
+	return pulumix.Output[[]TriggerTransport]{
+		OutputState: i.ToTriggerTransportArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerTransportOutput struct{ *pulumi.OutputState }
 
 func (TriggerTransportOutput) ElementType() reflect.Type {
@@ -786,6 +895,12 @@ func (o TriggerTransportOutput) ToTriggerTransportOutput() TriggerTransportOutpu
 
 func (o TriggerTransportOutput) ToTriggerTransportOutputWithContext(ctx context.Context) TriggerTransportOutput {
 	return o
+}
+
+func (o TriggerTransportOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerTransport] {
+	return pulumix.Output[TriggerTransport]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
@@ -805,6 +920,12 @@ func (o TriggerTransportArrayOutput) ToTriggerTransportArrayOutput() TriggerTran
 
 func (o TriggerTransportArrayOutput) ToTriggerTransportArrayOutputWithContext(ctx context.Context) TriggerTransportArrayOutput {
 	return o
+}
+
+func (o TriggerTransportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransport] {
+	return pulumix.Output[[]TriggerTransport]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerTransportArrayOutput) Index(i pulumi.IntInput) TriggerTransportOutput {
@@ -850,6 +971,12 @@ func (i TriggerTransportPubsubArgs) ToTriggerTransportPubsubOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportPubsubOutput)
 }
 
+func (i TriggerTransportPubsubArgs) ToOutput(ctx context.Context) pulumix.Output[TriggerTransportPubsub] {
+	return pulumix.Output[TriggerTransportPubsub]{
+		OutputState: i.ToTriggerTransportPubsubOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TriggerTransportPubsubArrayInput is an input type that accepts TriggerTransportPubsubArray and TriggerTransportPubsubArrayOutput values.
 // You can construct a concrete instance of `TriggerTransportPubsubArrayInput` via:
 //
@@ -875,6 +1002,12 @@ func (i TriggerTransportPubsubArray) ToTriggerTransportPubsubArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportPubsubArrayOutput)
 }
 
+func (i TriggerTransportPubsubArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransportPubsub] {
+	return pulumix.Output[[]TriggerTransportPubsub]{
+		OutputState: i.ToTriggerTransportPubsubArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TriggerTransportPubsubOutput struct{ *pulumi.OutputState }
 
 func (TriggerTransportPubsubOutput) ElementType() reflect.Type {
@@ -887,6 +1020,12 @@ func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubOutput() TriggerTr
 
 func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubOutputWithContext(ctx context.Context) TriggerTransportPubsubOutput {
 	return o
+}
+
+func (o TriggerTransportPubsubOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerTransportPubsub] {
+	return pulumix.Output[TriggerTransportPubsub]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
@@ -911,6 +1050,12 @@ func (o TriggerTransportPubsubArrayOutput) ToTriggerTransportPubsubArrayOutput()
 
 func (o TriggerTransportPubsubArrayOutput) ToTriggerTransportPubsubArrayOutputWithContext(ctx context.Context) TriggerTransportPubsubArrayOutput {
 	return o
+}
+
+func (o TriggerTransportPubsubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransportPubsub] {
+	return pulumix.Output[[]TriggerTransportPubsub]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TriggerTransportPubsubArrayOutput) Index(i pulumi.IntInput) TriggerTransportPubsubOutput {

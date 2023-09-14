@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -366,6 +367,12 @@ func (i *ServerTlsPolicy) ToServerTlsPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyOutput)
 }
 
+func (i *ServerTlsPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicy] {
+	return pulumix.Output[*ServerTlsPolicy]{
+		OutputState: i.ToServerTlsPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServerTlsPolicyArrayInput is an input type that accepts ServerTlsPolicyArray and ServerTlsPolicyArrayOutput values.
 // You can construct a concrete instance of `ServerTlsPolicyArrayInput` via:
 //
@@ -389,6 +396,12 @@ func (i ServerTlsPolicyArray) ToServerTlsPolicyArrayOutput() ServerTlsPolicyArra
 
 func (i ServerTlsPolicyArray) ToServerTlsPolicyArrayOutputWithContext(ctx context.Context) ServerTlsPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyArrayOutput)
+}
+
+func (i ServerTlsPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServerTlsPolicy] {
+	return pulumix.Output[[]*ServerTlsPolicy]{
+		OutputState: i.ToServerTlsPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServerTlsPolicyMapInput is an input type that accepts ServerTlsPolicyMap and ServerTlsPolicyMapOutput values.
@@ -416,6 +429,12 @@ func (i ServerTlsPolicyMap) ToServerTlsPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMapOutput)
 }
 
+func (i ServerTlsPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerTlsPolicy] {
+	return pulumix.Output[map[string]*ServerTlsPolicy]{
+		OutputState: i.ToServerTlsPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerTlsPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerTlsPolicyOutput) ElementType() reflect.Type {
@@ -428,6 +447,12 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutput() ServerTlsPolicyOutput {
 
 func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Context) ServerTlsPolicyOutput {
 	return o
+}
+
+func (o ServerTlsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerTlsPolicy] {
+	return pulumix.Output[*ServerTlsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load balancer policies.
@@ -503,6 +528,12 @@ func (o ServerTlsPolicyArrayOutput) ToServerTlsPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o ServerTlsPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServerTlsPolicy] {
+	return pulumix.Output[[]*ServerTlsPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerTlsPolicyArrayOutput) Index(i pulumi.IntInput) ServerTlsPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServerTlsPolicy {
 		return vs[0].([]*ServerTlsPolicy)[vs[1].(int)]
@@ -521,6 +552,12 @@ func (o ServerTlsPolicyMapOutput) ToServerTlsPolicyMapOutput() ServerTlsPolicyMa
 
 func (o ServerTlsPolicyMapOutput) ToServerTlsPolicyMapOutputWithContext(ctx context.Context) ServerTlsPolicyMapOutput {
 	return o
+}
+
+func (o ServerTlsPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServerTlsPolicy] {
+	return pulumix.Output[map[string]*ServerTlsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerTlsPolicyMapOutput) MapIndex(k pulumi.StringInput) ServerTlsPolicyOutput {

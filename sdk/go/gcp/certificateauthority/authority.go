@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A CertificateAuthority represents an individual Certificate Authority. A
@@ -788,6 +789,12 @@ func (i *Authority) ToAuthorityOutputWithContext(ctx context.Context) AuthorityO
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityOutput)
 }
 
+func (i *Authority) ToOutput(ctx context.Context) pulumix.Output[*Authority] {
+	return pulumix.Output[*Authority]{
+		OutputState: i.ToAuthorityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthorityArrayInput is an input type that accepts AuthorityArray and AuthorityArrayOutput values.
 // You can construct a concrete instance of `AuthorityArrayInput` via:
 //
@@ -811,6 +818,12 @@ func (i AuthorityArray) ToAuthorityArrayOutput() AuthorityArrayOutput {
 
 func (i AuthorityArray) ToAuthorityArrayOutputWithContext(ctx context.Context) AuthorityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityArrayOutput)
+}
+
+func (i AuthorityArray) ToOutput(ctx context.Context) pulumix.Output[[]*Authority] {
+	return pulumix.Output[[]*Authority]{
+		OutputState: i.ToAuthorityArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthorityMapInput is an input type that accepts AuthorityMap and AuthorityMapOutput values.
@@ -838,6 +851,12 @@ func (i AuthorityMap) ToAuthorityMapOutputWithContext(ctx context.Context) Autho
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityMapOutput)
 }
 
+func (i AuthorityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Authority] {
+	return pulumix.Output[map[string]*Authority]{
+		OutputState: i.ToAuthorityMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthorityOutput struct{ *pulumi.OutputState }
 
 func (AuthorityOutput) ElementType() reflect.Type {
@@ -850,6 +869,12 @@ func (o AuthorityOutput) ToAuthorityOutput() AuthorityOutput {
 
 func (o AuthorityOutput) ToAuthorityOutputWithContext(ctx context.Context) AuthorityOutput {
 	return o
+}
+
+func (o AuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[*Authority] {
+	return pulumix.Output[*Authority]{
+		OutputState: o.OutputState,
+	}
 }
 
 // URLs for accessing content published by this CA, such as the CA certificate and CRLs.
@@ -1010,6 +1035,12 @@ func (o AuthorityArrayOutput) ToAuthorityArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AuthorityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Authority] {
+	return pulumix.Output[[]*Authority]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthorityArrayOutput) Index(i pulumi.IntInput) AuthorityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Authority {
 		return vs[0].([]*Authority)[vs[1].(int)]
@@ -1028,6 +1059,12 @@ func (o AuthorityMapOutput) ToAuthorityMapOutput() AuthorityMapOutput {
 
 func (o AuthorityMapOutput) ToAuthorityMapOutputWithContext(ctx context.Context) AuthorityMapOutput {
 	return o
+}
+
+func (o AuthorityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Authority] {
+	return pulumix.Output[map[string]*Authority]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthorityMapOutput) MapIndex(k pulumi.StringInput) AuthorityOutput {

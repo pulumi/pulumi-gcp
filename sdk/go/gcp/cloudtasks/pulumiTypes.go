@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -66,6 +67,12 @@ func (i QueueAppEngineRoutingOverrideArgs) ToQueueAppEngineRoutingOverrideOutput
 	return pulumi.ToOutputWithContext(ctx, i).(QueueAppEngineRoutingOverrideOutput)
 }
 
+func (i QueueAppEngineRoutingOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[QueueAppEngineRoutingOverride] {
+	return pulumix.Output[QueueAppEngineRoutingOverride]{
+		OutputState: i.ToQueueAppEngineRoutingOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QueueAppEngineRoutingOverrideArgs) ToQueueAppEngineRoutingOverridePtrOutput() QueueAppEngineRoutingOverridePtrOutput {
 	return i.ToQueueAppEngineRoutingOverridePtrOutputWithContext(context.Background())
 }
@@ -107,6 +114,12 @@ func (i *queueAppEngineRoutingOverridePtrType) ToQueueAppEngineRoutingOverridePt
 	return pulumi.ToOutputWithContext(ctx, i).(QueueAppEngineRoutingOverridePtrOutput)
 }
 
+func (i *queueAppEngineRoutingOverridePtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueAppEngineRoutingOverride] {
+	return pulumix.Output[*QueueAppEngineRoutingOverride]{
+		OutputState: i.ToQueueAppEngineRoutingOverridePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueueAppEngineRoutingOverrideOutput struct{ *pulumi.OutputState }
 
 func (QueueAppEngineRoutingOverrideOutput) ElementType() reflect.Type {
@@ -129,6 +142,12 @@ func (o QueueAppEngineRoutingOverrideOutput) ToQueueAppEngineRoutingOverridePtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueAppEngineRoutingOverride) *QueueAppEngineRoutingOverride {
 		return &v
 	}).(QueueAppEngineRoutingOverridePtrOutput)
+}
+
+func (o QueueAppEngineRoutingOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[QueueAppEngineRoutingOverride] {
+	return pulumix.Output[QueueAppEngineRoutingOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -167,6 +186,12 @@ func (o QueueAppEngineRoutingOverridePtrOutput) ToQueueAppEngineRoutingOverrideP
 
 func (o QueueAppEngineRoutingOverridePtrOutput) ToQueueAppEngineRoutingOverridePtrOutputWithContext(ctx context.Context) QueueAppEngineRoutingOverridePtrOutput {
 	return o
+}
+
+func (o QueueAppEngineRoutingOverridePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueAppEngineRoutingOverride] {
+	return pulumix.Output[*QueueAppEngineRoutingOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueAppEngineRoutingOverridePtrOutput) Elem() QueueAppEngineRoutingOverrideOutput {
@@ -258,6 +283,12 @@ func (i QueueIamBindingConditionArgs) ToQueueIamBindingConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingConditionOutput)
 }
 
+func (i QueueIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[QueueIamBindingCondition] {
+	return pulumix.Output[QueueIamBindingCondition]{
+		OutputState: i.ToQueueIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QueueIamBindingConditionArgs) ToQueueIamBindingConditionPtrOutput() QueueIamBindingConditionPtrOutput {
 	return i.ToQueueIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -299,6 +330,12 @@ func (i *queueIamBindingConditionPtrType) ToQueueIamBindingConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamBindingConditionPtrOutput)
 }
 
+func (i *queueIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueIamBindingCondition] {
+	return pulumix.Output[*QueueIamBindingCondition]{
+		OutputState: i.ToQueueIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueueIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (QueueIamBindingConditionOutput) ElementType() reflect.Type {
@@ -321,6 +358,12 @@ func (o QueueIamBindingConditionOutput) ToQueueIamBindingConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueIamBindingCondition) *QueueIamBindingCondition {
 		return &v
 	}).(QueueIamBindingConditionPtrOutput)
+}
+
+func (o QueueIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[QueueIamBindingCondition] {
+	return pulumix.Output[QueueIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -347,6 +390,12 @@ func (o QueueIamBindingConditionPtrOutput) ToQueueIamBindingConditionPtrOutput()
 
 func (o QueueIamBindingConditionPtrOutput) ToQueueIamBindingConditionPtrOutputWithContext(ctx context.Context) QueueIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o QueueIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueIamBindingCondition] {
+	return pulumix.Output[*QueueIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueIamBindingConditionPtrOutput) Elem() QueueIamBindingConditionOutput {
@@ -421,6 +470,12 @@ func (i QueueIamMemberConditionArgs) ToQueueIamMemberConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberConditionOutput)
 }
 
+func (i QueueIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[QueueIamMemberCondition] {
+	return pulumix.Output[QueueIamMemberCondition]{
+		OutputState: i.ToQueueIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QueueIamMemberConditionArgs) ToQueueIamMemberConditionPtrOutput() QueueIamMemberConditionPtrOutput {
 	return i.ToQueueIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -462,6 +517,12 @@ func (i *queueIamMemberConditionPtrType) ToQueueIamMemberConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(QueueIamMemberConditionPtrOutput)
 }
 
+func (i *queueIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueIamMemberCondition] {
+	return pulumix.Output[*QueueIamMemberCondition]{
+		OutputState: i.ToQueueIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueueIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (QueueIamMemberConditionOutput) ElementType() reflect.Type {
@@ -484,6 +545,12 @@ func (o QueueIamMemberConditionOutput) ToQueueIamMemberConditionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueIamMemberCondition) *QueueIamMemberCondition {
 		return &v
 	}).(QueueIamMemberConditionPtrOutput)
+}
+
+func (o QueueIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[QueueIamMemberCondition] {
+	return pulumix.Output[QueueIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -510,6 +577,12 @@ func (o QueueIamMemberConditionPtrOutput) ToQueueIamMemberConditionPtrOutput() Q
 
 func (o QueueIamMemberConditionPtrOutput) ToQueueIamMemberConditionPtrOutputWithContext(ctx context.Context) QueueIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o QueueIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueIamMemberCondition] {
+	return pulumix.Output[*QueueIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueIamMemberConditionPtrOutput) Elem() QueueIamMemberConditionOutput {
@@ -608,6 +681,12 @@ func (i QueueRateLimitsArgs) ToQueueRateLimitsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(QueueRateLimitsOutput)
 }
 
+func (i QueueRateLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[QueueRateLimits] {
+	return pulumix.Output[QueueRateLimits]{
+		OutputState: i.ToQueueRateLimitsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QueueRateLimitsArgs) ToQueueRateLimitsPtrOutput() QueueRateLimitsPtrOutput {
 	return i.ToQueueRateLimitsPtrOutputWithContext(context.Background())
 }
@@ -649,6 +728,12 @@ func (i *queueRateLimitsPtrType) ToQueueRateLimitsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(QueueRateLimitsPtrOutput)
 }
 
+func (i *queueRateLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueRateLimits] {
+	return pulumix.Output[*QueueRateLimits]{
+		OutputState: i.ToQueueRateLimitsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueueRateLimitsOutput struct{ *pulumi.OutputState }
 
 func (QueueRateLimitsOutput) ElementType() reflect.Type {
@@ -671,6 +756,12 @@ func (o QueueRateLimitsOutput) ToQueueRateLimitsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueRateLimits) *QueueRateLimits {
 		return &v
 	}).(QueueRateLimitsPtrOutput)
+}
+
+func (o QueueRateLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[QueueRateLimits] {
+	return pulumix.Output[QueueRateLimits]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -709,6 +800,12 @@ func (o QueueRateLimitsPtrOutput) ToQueueRateLimitsPtrOutput() QueueRateLimitsPt
 
 func (o QueueRateLimitsPtrOutput) ToQueueRateLimitsPtrOutputWithContext(ctx context.Context) QueueRateLimitsPtrOutput {
 	return o
+}
+
+func (o QueueRateLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueRateLimits] {
+	return pulumix.Output[*QueueRateLimits]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueRateLimitsPtrOutput) Elem() QueueRateLimitsOutput {
@@ -845,6 +942,12 @@ func (i QueueRetryConfigArgs) ToQueueRetryConfigOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(QueueRetryConfigOutput)
 }
 
+func (i QueueRetryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[QueueRetryConfig] {
+	return pulumix.Output[QueueRetryConfig]{
+		OutputState: i.ToQueueRetryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QueueRetryConfigArgs) ToQueueRetryConfigPtrOutput() QueueRetryConfigPtrOutput {
 	return i.ToQueueRetryConfigPtrOutputWithContext(context.Background())
 }
@@ -886,6 +989,12 @@ func (i *queueRetryConfigPtrType) ToQueueRetryConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(QueueRetryConfigPtrOutput)
 }
 
+func (i *queueRetryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueRetryConfig] {
+	return pulumix.Output[*QueueRetryConfig]{
+		OutputState: i.ToQueueRetryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueueRetryConfigOutput struct{ *pulumi.OutputState }
 
 func (QueueRetryConfigOutput) ElementType() reflect.Type {
@@ -908,6 +1017,12 @@ func (o QueueRetryConfigOutput) ToQueueRetryConfigPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueRetryConfig) *QueueRetryConfig {
 		return &v
 	}).(QueueRetryConfigPtrOutput)
+}
+
+func (o QueueRetryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[QueueRetryConfig] {
+	return pulumix.Output[QueueRetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of attempts per task.
@@ -965,6 +1080,12 @@ func (o QueueRetryConfigPtrOutput) ToQueueRetryConfigPtrOutput() QueueRetryConfi
 
 func (o QueueRetryConfigPtrOutput) ToQueueRetryConfigPtrOutputWithContext(ctx context.Context) QueueRetryConfigPtrOutput {
 	return o
+}
+
+func (o QueueRetryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueRetryConfig] {
+	return pulumix.Output[*QueueRetryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueRetryConfigPtrOutput) Elem() QueueRetryConfigOutput {
@@ -1082,6 +1203,12 @@ func (i QueueStackdriverLoggingConfigArgs) ToQueueStackdriverLoggingConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(QueueStackdriverLoggingConfigOutput)
 }
 
+func (i QueueStackdriverLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[QueueStackdriverLoggingConfig] {
+	return pulumix.Output[QueueStackdriverLoggingConfig]{
+		OutputState: i.ToQueueStackdriverLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i QueueStackdriverLoggingConfigArgs) ToQueueStackdriverLoggingConfigPtrOutput() QueueStackdriverLoggingConfigPtrOutput {
 	return i.ToQueueStackdriverLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -1123,6 +1250,12 @@ func (i *queueStackdriverLoggingConfigPtrType) ToQueueStackdriverLoggingConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(QueueStackdriverLoggingConfigPtrOutput)
 }
 
+func (i *queueStackdriverLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueueStackdriverLoggingConfig] {
+	return pulumix.Output[*QueueStackdriverLoggingConfig]{
+		OutputState: i.ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QueueStackdriverLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (QueueStackdriverLoggingConfigOutput) ElementType() reflect.Type {
@@ -1147,6 +1280,12 @@ func (o QueueStackdriverLoggingConfigOutput) ToQueueStackdriverLoggingConfigPtrO
 	}).(QueueStackdriverLoggingConfigPtrOutput)
 }
 
+func (o QueueStackdriverLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[QueueStackdriverLoggingConfig] {
+	return pulumix.Output[QueueStackdriverLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specifies the fraction of operations to write to Stackdriver Logging.
 // This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the
 // default and means that no operations are logged.
@@ -1166,6 +1305,12 @@ func (o QueueStackdriverLoggingConfigPtrOutput) ToQueueStackdriverLoggingConfigP
 
 func (o QueueStackdriverLoggingConfigPtrOutput) ToQueueStackdriverLoggingConfigPtrOutputWithContext(ctx context.Context) QueueStackdriverLoggingConfigPtrOutput {
 	return o
+}
+
+func (o QueueStackdriverLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueueStackdriverLoggingConfig] {
+	return pulumix.Output[*QueueStackdriverLoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QueueStackdriverLoggingConfigPtrOutput) Elem() QueueStackdriverLoggingConfigOutput {

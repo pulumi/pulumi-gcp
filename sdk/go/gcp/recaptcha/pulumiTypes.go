@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i EnterpriseKeyAndroidSettingsArgs) ToEnterpriseKeyAndroidSettingsOutput()
 
 func (i EnterpriseKeyAndroidSettingsArgs) ToEnterpriseKeyAndroidSettingsOutputWithContext(ctx context.Context) EnterpriseKeyAndroidSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyAndroidSettingsOutput)
+}
+
+func (i EnterpriseKeyAndroidSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyAndroidSettings] {
+	return pulumix.Output[EnterpriseKeyAndroidSettings]{
+		OutputState: i.ToEnterpriseKeyAndroidSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EnterpriseKeyAndroidSettingsArgs) ToEnterpriseKeyAndroidSettingsPtrOutput() EnterpriseKeyAndroidSettingsPtrOutput {
@@ -91,6 +98,12 @@ func (i *enterpriseKeyAndroidSettingsPtrType) ToEnterpriseKeyAndroidSettingsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyAndroidSettingsPtrOutput)
 }
 
+func (i *enterpriseKeyAndroidSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyAndroidSettings] {
+	return pulumix.Output[*EnterpriseKeyAndroidSettings]{
+		OutputState: i.ToEnterpriseKeyAndroidSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseKeyAndroidSettingsOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyAndroidSettingsOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o EnterpriseKeyAndroidSettingsOutput) ToEnterpriseKeyAndroidSettingsPtrOut
 	}).(EnterpriseKeyAndroidSettingsPtrOutput)
 }
 
+func (o EnterpriseKeyAndroidSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyAndroidSettings] {
+	return pulumix.Output[EnterpriseKeyAndroidSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If set to true, it means allowedPackageNames will not be enforced.
 func (o EnterpriseKeyAndroidSettingsOutput) AllowAllPackageNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnterpriseKeyAndroidSettings) *bool { return v.AllowAllPackageNames }).(pulumi.BoolPtrOutput)
@@ -137,6 +156,12 @@ func (o EnterpriseKeyAndroidSettingsPtrOutput) ToEnterpriseKeyAndroidSettingsPtr
 
 func (o EnterpriseKeyAndroidSettingsPtrOutput) ToEnterpriseKeyAndroidSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyAndroidSettingsPtrOutput {
 	return o
+}
+
+func (o EnterpriseKeyAndroidSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyAndroidSettings] {
+	return pulumix.Output[*EnterpriseKeyAndroidSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseKeyAndroidSettingsPtrOutput) Elem() EnterpriseKeyAndroidSettingsOutput {
@@ -206,6 +231,12 @@ func (i EnterpriseKeyIosSettingsArgs) ToEnterpriseKeyIosSettingsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyIosSettingsOutput)
 }
 
+func (i EnterpriseKeyIosSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyIosSettings] {
+	return pulumix.Output[EnterpriseKeyIosSettings]{
+		OutputState: i.ToEnterpriseKeyIosSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseKeyIosSettingsArgs) ToEnterpriseKeyIosSettingsPtrOutput() EnterpriseKeyIosSettingsPtrOutput {
 	return i.ToEnterpriseKeyIosSettingsPtrOutputWithContext(context.Background())
 }
@@ -247,6 +278,12 @@ func (i *enterpriseKeyIosSettingsPtrType) ToEnterpriseKeyIosSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyIosSettingsPtrOutput)
 }
 
+func (i *enterpriseKeyIosSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyIosSettings] {
+	return pulumix.Output[*EnterpriseKeyIosSettings]{
+		OutputState: i.ToEnterpriseKeyIosSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseKeyIosSettingsOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyIosSettingsOutput) ElementType() reflect.Type {
@@ -271,6 +308,12 @@ func (o EnterpriseKeyIosSettingsOutput) ToEnterpriseKeyIosSettingsPtrOutputWithC
 	}).(EnterpriseKeyIosSettingsPtrOutput)
 }
 
+func (o EnterpriseKeyIosSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyIosSettings] {
+	return pulumix.Output[EnterpriseKeyIosSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If set to true, it means allowedBundleIds will not be enforced.
 func (o EnterpriseKeyIosSettingsOutput) AllowAllBundleIds() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnterpriseKeyIosSettings) *bool { return v.AllowAllBundleIds }).(pulumi.BoolPtrOutput)
@@ -293,6 +336,12 @@ func (o EnterpriseKeyIosSettingsPtrOutput) ToEnterpriseKeyIosSettingsPtrOutput()
 
 func (o EnterpriseKeyIosSettingsPtrOutput) ToEnterpriseKeyIosSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyIosSettingsPtrOutput {
 	return o
+}
+
+func (o EnterpriseKeyIosSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyIosSettings] {
+	return pulumix.Output[*EnterpriseKeyIosSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseKeyIosSettingsPtrOutput) Elem() EnterpriseKeyIosSettingsOutput {
@@ -362,6 +411,12 @@ func (i EnterpriseKeyTestingOptionsArgs) ToEnterpriseKeyTestingOptionsOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyTestingOptionsOutput)
 }
 
+func (i EnterpriseKeyTestingOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyTestingOptions] {
+	return pulumix.Output[EnterpriseKeyTestingOptions]{
+		OutputState: i.ToEnterpriseKeyTestingOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseKeyTestingOptionsArgs) ToEnterpriseKeyTestingOptionsPtrOutput() EnterpriseKeyTestingOptionsPtrOutput {
 	return i.ToEnterpriseKeyTestingOptionsPtrOutputWithContext(context.Background())
 }
@@ -403,6 +458,12 @@ func (i *enterpriseKeyTestingOptionsPtrType) ToEnterpriseKeyTestingOptionsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyTestingOptionsPtrOutput)
 }
 
+func (i *enterpriseKeyTestingOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyTestingOptions] {
+	return pulumix.Output[*EnterpriseKeyTestingOptions]{
+		OutputState: i.ToEnterpriseKeyTestingOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseKeyTestingOptionsOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyTestingOptionsOutput) ElementType() reflect.Type {
@@ -427,6 +488,12 @@ func (o EnterpriseKeyTestingOptionsOutput) ToEnterpriseKeyTestingOptionsPtrOutpu
 	}).(EnterpriseKeyTestingOptionsPtrOutput)
 }
 
+func (o EnterpriseKeyTestingOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyTestingOptions] {
+	return pulumix.Output[EnterpriseKeyTestingOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
 func (o EnterpriseKeyTestingOptionsOutput) TestingChallenge() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseKeyTestingOptions) *string { return v.TestingChallenge }).(pulumi.StringPtrOutput)
@@ -449,6 +516,12 @@ func (o EnterpriseKeyTestingOptionsPtrOutput) ToEnterpriseKeyTestingOptionsPtrOu
 
 func (o EnterpriseKeyTestingOptionsPtrOutput) ToEnterpriseKeyTestingOptionsPtrOutputWithContext(ctx context.Context) EnterpriseKeyTestingOptionsPtrOutput {
 	return o
+}
+
+func (o EnterpriseKeyTestingOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyTestingOptions] {
+	return pulumix.Output[*EnterpriseKeyTestingOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseKeyTestingOptionsPtrOutput) Elem() EnterpriseKeyTestingOptionsOutput {
@@ -530,6 +603,12 @@ func (i EnterpriseKeyWebSettingsArgs) ToEnterpriseKeyWebSettingsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsOutput)
 }
 
+func (i EnterpriseKeyWebSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyWebSettings] {
+	return pulumix.Output[EnterpriseKeyWebSettings]{
+		OutputState: i.ToEnterpriseKeyWebSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EnterpriseKeyWebSettingsArgs) ToEnterpriseKeyWebSettingsPtrOutput() EnterpriseKeyWebSettingsPtrOutput {
 	return i.ToEnterpriseKeyWebSettingsPtrOutputWithContext(context.Background())
 }
@@ -571,6 +650,12 @@ func (i *enterpriseKeyWebSettingsPtrType) ToEnterpriseKeyWebSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWebSettingsPtrOutput)
 }
 
+func (i *enterpriseKeyWebSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyWebSettings] {
+	return pulumix.Output[*EnterpriseKeyWebSettings]{
+		OutputState: i.ToEnterpriseKeyWebSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnterpriseKeyWebSettingsOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseKeyWebSettingsOutput) ElementType() reflect.Type {
@@ -593,6 +678,12 @@ func (o EnterpriseKeyWebSettingsOutput) ToEnterpriseKeyWebSettingsPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKeyWebSettings) *EnterpriseKeyWebSettings {
 		return &v
 	}).(EnterpriseKeyWebSettingsPtrOutput)
+}
+
+func (o EnterpriseKeyWebSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EnterpriseKeyWebSettings] {
+	return pulumix.Output[EnterpriseKeyWebSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If set to true, it means allowedDomains will not be enforced.
@@ -632,6 +723,12 @@ func (o EnterpriseKeyWebSettingsPtrOutput) ToEnterpriseKeyWebSettingsPtrOutput()
 
 func (o EnterpriseKeyWebSettingsPtrOutput) ToEnterpriseKeyWebSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWebSettingsPtrOutput {
 	return o
+}
+
+func (o EnterpriseKeyWebSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseKeyWebSettings] {
+	return pulumix.Output[*EnterpriseKeyWebSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnterpriseKeyWebSettingsPtrOutput) Elem() EnterpriseKeyWebSettingsOutput {

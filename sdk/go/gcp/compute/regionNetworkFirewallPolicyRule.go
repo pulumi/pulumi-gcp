@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Compute NetworkFirewallPolicyRule resource
@@ -391,6 +392,12 @@ func (i *RegionNetworkFirewallPolicyRule) ToRegionNetworkFirewallPolicyRuleOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkFirewallPolicyRuleOutput)
 }
 
+func (i *RegionNetworkFirewallPolicyRule) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkFirewallPolicyRule] {
+	return pulumix.Output[*RegionNetworkFirewallPolicyRule]{
+		OutputState: i.ToRegionNetworkFirewallPolicyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionNetworkFirewallPolicyRuleArrayInput is an input type that accepts RegionNetworkFirewallPolicyRuleArray and RegionNetworkFirewallPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `RegionNetworkFirewallPolicyRuleArrayInput` via:
 //
@@ -414,6 +421,12 @@ func (i RegionNetworkFirewallPolicyRuleArray) ToRegionNetworkFirewallPolicyRuleA
 
 func (i RegionNetworkFirewallPolicyRuleArray) ToRegionNetworkFirewallPolicyRuleArrayOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkFirewallPolicyRuleArrayOutput)
+}
+
+func (i RegionNetworkFirewallPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionNetworkFirewallPolicyRule] {
+	return pulumix.Output[[]*RegionNetworkFirewallPolicyRule]{
+		OutputState: i.ToRegionNetworkFirewallPolicyRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionNetworkFirewallPolicyRuleMapInput is an input type that accepts RegionNetworkFirewallPolicyRuleMap and RegionNetworkFirewallPolicyRuleMapOutput values.
@@ -441,6 +454,12 @@ func (i RegionNetworkFirewallPolicyRuleMap) ToRegionNetworkFirewallPolicyRuleMap
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkFirewallPolicyRuleMapOutput)
 }
 
+func (i RegionNetworkFirewallPolicyRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionNetworkFirewallPolicyRule] {
+	return pulumix.Output[map[string]*RegionNetworkFirewallPolicyRule]{
+		OutputState: i.ToRegionNetworkFirewallPolicyRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionNetworkFirewallPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkFirewallPolicyRuleOutput) ElementType() reflect.Type {
@@ -453,6 +472,12 @@ func (o RegionNetworkFirewallPolicyRuleOutput) ToRegionNetworkFirewallPolicyRule
 
 func (o RegionNetworkFirewallPolicyRuleOutput) ToRegionNetworkFirewallPolicyRuleOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyRuleOutput {
 	return o
+}
+
+func (o RegionNetworkFirewallPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkFirewallPolicyRule] {
+	return pulumix.Output[*RegionNetworkFirewallPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
@@ -546,6 +571,12 @@ func (o RegionNetworkFirewallPolicyRuleArrayOutput) ToRegionNetworkFirewallPolic
 	return o
 }
 
+func (o RegionNetworkFirewallPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionNetworkFirewallPolicyRule] {
+	return pulumix.Output[[]*RegionNetworkFirewallPolicyRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionNetworkFirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) RegionNetworkFirewallPolicyRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionNetworkFirewallPolicyRule {
 		return vs[0].([]*RegionNetworkFirewallPolicyRule)[vs[1].(int)]
@@ -564,6 +595,12 @@ func (o RegionNetworkFirewallPolicyRuleMapOutput) ToRegionNetworkFirewallPolicyR
 
 func (o RegionNetworkFirewallPolicyRuleMapOutput) ToRegionNetworkFirewallPolicyRuleMapOutputWithContext(ctx context.Context) RegionNetworkFirewallPolicyRuleMapOutput {
 	return o
+}
+
+func (o RegionNetworkFirewallPolicyRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionNetworkFirewallPolicyRule] {
+	return pulumix.Output[map[string]*RegionNetworkFirewallPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionNetworkFirewallPolicyRuleMapOutput) MapIndex(k pulumi.StringInput) RegionNetworkFirewallPolicyRuleOutput {

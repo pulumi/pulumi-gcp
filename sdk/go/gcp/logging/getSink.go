@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a project, folder, organization or billing account logging sink details.
@@ -127,6 +128,12 @@ func (o GetSinkResultOutput) ToGetSinkResultOutput() GetSinkResultOutput {
 
 func (o GetSinkResultOutput) ToGetSinkResultOutputWithContext(ctx context.Context) GetSinkResultOutput {
 	return o
+}
+
+func (o GetSinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSinkResult] {
+	return pulumix.Output[GetSinkResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Options that affect sinks exporting data to BigQuery. Structure is documented below.

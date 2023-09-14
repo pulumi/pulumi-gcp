@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for capool
@@ -118,6 +119,12 @@ func (o LookupCaPoolIamPolicyResultOutput) ToLookupCaPoolIamPolicyResultOutput()
 
 func (o LookupCaPoolIamPolicyResultOutput) ToLookupCaPoolIamPolicyResultOutputWithContext(ctx context.Context) LookupCaPoolIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupCaPoolIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCaPoolIamPolicyResult] {
+	return pulumix.Output[LookupCaPoolIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupCaPoolIamPolicyResultOutput) CaPool() pulumi.StringOutput {

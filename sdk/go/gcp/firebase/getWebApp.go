@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Google Cloud Firebase web application instance
@@ -91,6 +92,12 @@ func (o LookupWebAppResultOutput) ToLookupWebAppResultOutput() LookupWebAppResul
 
 func (o LookupWebAppResultOutput) ToLookupWebAppResultOutputWithContext(ctx context.Context) LookupWebAppResultOutput {
 	return o
+}
+
+func (o LookupWebAppResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppResult] {
+	return pulumix.Output[LookupWebAppResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupWebAppResultOutput) ApiKeyId() pulumi.StringOutput {

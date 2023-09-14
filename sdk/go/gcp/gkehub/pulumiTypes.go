@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionOutput() Fea
 
 func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionOutputWithContext(ctx context.Context) FeatureIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionOutput)
+}
+
+func (i FeatureIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureIamBindingCondition] {
+	return pulumix.Output[FeatureIamBindingCondition]{
+		OutputState: i.ToFeatureIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *featureIamBindingConditionPtrType) ToFeatureIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionPtrOutput)
 }
 
+func (i *featureIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamBindingCondition] {
+	return pulumix.Output[*FeatureIamBindingCondition]{
+		OutputState: i.ToFeatureIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (FeatureIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o FeatureIamBindingConditionOutput) ToFeatureIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureIamBindingCondition) *FeatureIamBindingCondition {
 		return &v
 	}).(FeatureIamBindingConditionPtrOutput)
+}
+
+func (o FeatureIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureIamBindingCondition] {
+	return pulumix.Output[FeatureIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o FeatureIamBindingConditionPtrOutput) ToFeatureIamBindingConditionPtrOutp
 
 func (o FeatureIamBindingConditionPtrOutput) ToFeatureIamBindingConditionPtrOutputWithContext(ctx context.Context) FeatureIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o FeatureIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamBindingCondition] {
+	return pulumix.Output[*FeatureIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureIamBindingConditionPtrOutput) Elem() FeatureIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionOutput)
 }
 
+func (i FeatureIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureIamMemberCondition] {
+	return pulumix.Output[FeatureIamMemberCondition]{
+		OutputState: i.ToFeatureIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput {
 	return i.ToFeatureIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *featureIamMemberConditionPtrType) ToFeatureIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionPtrOutput)
 }
 
+func (i *featureIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamMemberCondition] {
+	return pulumix.Output[*FeatureIamMemberCondition]{
+		OutputState: i.ToFeatureIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (FeatureIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o FeatureIamMemberConditionOutput) ToFeatureIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureIamMemberCondition) *FeatureIamMemberCondition {
 		return &v
 	}).(FeatureIamMemberConditionPtrOutput)
+}
+
+func (o FeatureIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureIamMemberCondition] {
+	return pulumix.Output[FeatureIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o FeatureIamMemberConditionPtrOutput) ToFeatureIamMemberConditionPtrOutput
 
 func (o FeatureIamMemberConditionPtrOutput) ToFeatureIamMemberConditionPtrOutputWithContext(ctx context.Context) FeatureIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o FeatureIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureIamMemberCondition] {
+	return pulumix.Output[*FeatureIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureIamMemberConditionPtrOutput) Elem() FeatureIamMemberConditionOutput {
@@ -388,6 +437,12 @@ func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanageme
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementOutput)
 }
 
+func (i FeatureMembershipConfigmanagementArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagement] {
+	return pulumix.Output[FeatureMembershipConfigmanagement]{
+		OutputState: i.ToFeatureMembershipConfigmanagementOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementArgs) ToFeatureMembershipConfigmanagementPtrOutput() FeatureMembershipConfigmanagementPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(context.Background())
 }
@@ -429,6 +484,12 @@ func (i *featureMembershipConfigmanagementPtrType) ToFeatureMembershipConfigmana
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagement] {
+	return pulumix.Output[*FeatureMembershipConfigmanagement]{
+		OutputState: i.ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementOutput) ElementType() reflect.Type {
@@ -451,6 +512,12 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagement {
 		return &v
 	}).(FeatureMembershipConfigmanagementPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagement] {
+	return pulumix.Output[FeatureMembershipConfigmanagement]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Binauthz configuration for the cluster. Structure is documented below.
@@ -498,6 +565,12 @@ func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigman
 
 func (o FeatureMembershipConfigmanagementPtrOutput) ToFeatureMembershipConfigmanagementPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagement] {
+	return pulumix.Output[*FeatureMembershipConfigmanagement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConfigmanagementOutput {
@@ -593,6 +666,12 @@ func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfig
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzOutput)
 }
 
+func (i FeatureMembershipConfigmanagementBinauthzArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementBinauthz] {
+	return pulumix.Output[FeatureMembershipConfigmanagementBinauthz]{
+		OutputState: i.ToFeatureMembershipConfigmanagementBinauthzOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementBinauthzArgs) ToFeatureMembershipConfigmanagementBinauthzPtrOutput() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(context.Background())
 }
@@ -634,6 +713,12 @@ func (i *featureMembershipConfigmanagementBinauthzPtrType) ToFeatureMembershipCo
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementBinauthzPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementBinauthz] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementBinauthz]{
+		OutputState: i.ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementBinauthzOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementBinauthzOutput) ElementType() reflect.Type {
@@ -658,6 +743,12 @@ func (o FeatureMembershipConfigmanagementBinauthzOutput) ToFeatureMembershipConf
 	}).(FeatureMembershipConfigmanagementBinauthzPtrOutput)
 }
 
+func (o FeatureMembershipConfigmanagementBinauthzOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementBinauthz] {
+	return pulumix.Output[FeatureMembershipConfigmanagementBinauthz]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Whether binauthz is enabled in this cluster.
 func (o FeatureMembershipConfigmanagementBinauthzOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementBinauthz) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -675,6 +766,12 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipC
 
 func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToFeatureMembershipConfigmanagementBinauthzPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementBinauthz] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementBinauthz]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Elem() FeatureMembershipConfigmanagementBinauthzOutput {
@@ -746,6 +843,12 @@ func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConf
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOutput)
 }
 
+func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSync] {
+	return pulumix.Output[FeatureMembershipConfigmanagementConfigSync]{
+		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementConfigSyncArgs) ToFeatureMembershipConfigmanagementConfigSyncPtrOutput() FeatureMembershipConfigmanagementConfigSyncPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(context.Background())
 }
@@ -787,6 +890,12 @@ func (i *featureMembershipConfigmanagementConfigSyncPtrType) ToFeatureMembership
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementConfigSyncPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSync] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSync]{
+		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementConfigSyncOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementConfigSyncOutput) ElementType() reflect.Type {
@@ -809,6 +918,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSync {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSync] {
+	return pulumix.Output[FeatureMembershipConfigmanagementConfigSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Optional) Structure is documented below.
@@ -849,6 +964,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToFeatureMembershi
 
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSync] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOutput {
@@ -964,6 +1085,12 @@ func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipC
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitOutput)
 }
 
+func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit] {
+	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit]{
+		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncGitOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementConfigSyncGitArgs) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutput() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(context.Background())
 }
@@ -1005,6 +1132,12 @@ func (i *featureMembershipConfigmanagementConfigSyncGitPtrType) ToFeatureMembers
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementConfigSyncGitPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit]{
+		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementConfigSyncGitOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementConfigSyncGitOutput) ElementType() reflect.Type {
@@ -1027,6 +1160,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToFeatureMembershi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSyncGit) *FeatureMembershipConfigmanagementConfigSyncGit {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit] {
+	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncGit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
@@ -1081,6 +1220,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMember
 
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncGitPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncGit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncGitPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncGitOutput {
@@ -1222,6 +1367,12 @@ func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipC
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciOutput)
 }
 
+func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci] {
+	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci]{
+		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncOciOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementConfigSyncOciArgs) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutput() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(context.Background())
 }
@@ -1263,6 +1414,12 @@ func (i *featureMembershipConfigmanagementConfigSyncOciPtrType) ToFeatureMembers
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementConfigSyncOciPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci]{
+		OutputState: i.ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementConfigSyncOciOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementConfigSyncOciOutput) ElementType() reflect.Type {
@@ -1285,6 +1442,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToFeatureMembershi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementConfigSyncOci) *FeatureMembershipConfigmanagementConfigSyncOci {
 		return &v
 	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci] {
+	return pulumix.Output[FeatureMembershipConfigmanagementConfigSyncOci]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The GCP Service Account Email used for auth when secretType is gcpserviceaccount.
@@ -1324,6 +1487,12 @@ func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToFeatureMember
 
 func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToFeatureMembershipConfigmanagementConfigSyncOciPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementConfigSyncOci]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementConfigSyncOciPtrOutput) Elem() FeatureMembershipConfigmanagementConfigSyncOciOutput {
@@ -1427,6 +1596,12 @@ func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembe
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerOutput)
 }
 
+func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementHierarchyController] {
+	return pulumix.Output[FeatureMembershipConfigmanagementHierarchyController]{
+		OutputState: i.ToFeatureMembershipConfigmanagementHierarchyControllerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementHierarchyControllerArgs) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutput() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(context.Background())
 }
@@ -1468,6 +1643,12 @@ func (i *featureMembershipConfigmanagementHierarchyControllerPtrType) ToFeatureM
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementHierarchyControllerPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController]{
+		OutputState: i.ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementHierarchyControllerOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementHierarchyControllerOutput) ElementType() reflect.Type {
@@ -1490,6 +1671,12 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToFeatureMem
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementHierarchyController) *FeatureMembershipConfigmanagementHierarchyController {
 		return &v
 	}).(FeatureMembershipConfigmanagementHierarchyControllerPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementHierarchyController] {
+	return pulumix.Output[FeatureMembershipConfigmanagementHierarchyController]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether hierarchical resource quota is enabled in this cluster.
@@ -1521,6 +1708,12 @@ func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeature
 
 func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToFeatureMembershipConfigmanagementHierarchyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementHierarchyController]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementHierarchyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementHierarchyControllerOutput {
@@ -1624,6 +1817,12 @@ func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembersh
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerOutput)
 }
 
+func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyController] {
+	return pulumix.Output[FeatureMembershipConfigmanagementPolicyController]{
+		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementPolicyControllerArgs) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutput() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(context.Background())
 }
@@ -1665,6 +1864,12 @@ func (i *featureMembershipConfigmanagementPolicyControllerPtrType) ToFeatureMemb
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementPolicyControllerPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyController] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyController]{
+		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementPolicyControllerOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementPolicyControllerOutput) ElementType() reflect.Type {
@@ -1687,6 +1892,12 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToFeatureMember
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyController {
 		return &v
 	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyController] {
+	return pulumix.Output[FeatureMembershipConfigmanagementPolicyController]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
@@ -1743,6 +1954,12 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMem
 
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyController] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyController]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerOutput {
@@ -1866,6 +2083,12 @@ func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatu
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput)
 }
 
+func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
+	return pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
+		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(context.Background())
 }
@@ -1907,6 +2130,12 @@ func (i *featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ToF
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
+func (i *featureMembershipConfigmanagementPolicyControllerMonitoringPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
+		OutputState: i.ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ElementType() reflect.Type {
@@ -1931,6 +2160,12 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFea
 	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
+	return pulumix.Output[FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) Backends() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyControllerMonitoring) []string { return v.Backends }).(pulumi.StringArrayOutput)
 }
@@ -1947,6 +2182,12 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) To
 
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ToFeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring] {
+	return pulumix.Output[*FeatureMembershipConfigmanagementPolicyControllerMonitoring]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Elem() FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput {
@@ -2005,6 +2246,12 @@ func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshOutput)
 }
 
+func (i FeatureMembershipMeshArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipMesh] {
+	return pulumix.Output[FeatureMembershipMesh]{
+		OutputState: i.ToFeatureMembershipMeshOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureMembershipMeshArgs) ToFeatureMembershipMeshPtrOutput() FeatureMembershipMeshPtrOutput {
 	return i.ToFeatureMembershipMeshPtrOutputWithContext(context.Background())
 }
@@ -2046,6 +2293,12 @@ func (i *featureMembershipMeshPtrType) ToFeatureMembershipMeshPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipMeshPtrOutput)
 }
 
+func (i *featureMembershipMeshPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipMesh] {
+	return pulumix.Output[*FeatureMembershipMesh]{
+		OutputState: i.ToFeatureMembershipMeshPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureMembershipMeshOutput struct{ *pulumi.OutputState }
 
 func (FeatureMembershipMeshOutput) ElementType() reflect.Type {
@@ -2070,6 +2323,12 @@ func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext
 	}).(FeatureMembershipMeshPtrOutput)
 }
 
+func (o FeatureMembershipMeshOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureMembershipMesh] {
+	return pulumix.Output[FeatureMembershipMesh]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Deprecated: Deprecated in favor of the `management` field
 func (o FeatureMembershipMeshOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.ControlPlane }).(pulumi.StringPtrOutput)
@@ -2092,6 +2351,12 @@ func (o FeatureMembershipMeshPtrOutput) ToFeatureMembershipMeshPtrOutput() Featu
 
 func (o FeatureMembershipMeshPtrOutput) ToFeatureMembershipMeshPtrOutputWithContext(ctx context.Context) FeatureMembershipMeshPtrOutput {
 	return o
+}
+
+func (o FeatureMembershipMeshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureMembershipMesh] {
+	return pulumix.Output[*FeatureMembershipMesh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
@@ -2167,6 +2432,12 @@ func (i FeatureResourceStateArgs) ToFeatureResourceStateOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateOutput)
 }
 
+func (i FeatureResourceStateArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureResourceState] {
+	return pulumix.Output[FeatureResourceState]{
+		OutputState: i.ToFeatureResourceStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FeatureResourceStateArrayInput is an input type that accepts FeatureResourceStateArray and FeatureResourceStateArrayOutput values.
 // You can construct a concrete instance of `FeatureResourceStateArrayInput` via:
 //
@@ -2192,6 +2463,12 @@ func (i FeatureResourceStateArray) ToFeatureResourceStateArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateArrayOutput)
 }
 
+func (i FeatureResourceStateArray) ToOutput(ctx context.Context) pulumix.Output[[]FeatureResourceState] {
+	return pulumix.Output[[]FeatureResourceState]{
+		OutputState: i.ToFeatureResourceStateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureResourceStateOutput struct{ *pulumi.OutputState }
 
 func (FeatureResourceStateOutput) ElementType() reflect.Type {
@@ -2204,6 +2481,12 @@ func (o FeatureResourceStateOutput) ToFeatureResourceStateOutput() FeatureResour
 
 func (o FeatureResourceStateOutput) ToFeatureResourceStateOutputWithContext(ctx context.Context) FeatureResourceStateOutput {
 	return o
+}
+
+func (o FeatureResourceStateOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureResourceState] {
+	return pulumix.Output[FeatureResourceState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -2231,6 +2514,12 @@ func (o FeatureResourceStateArrayOutput) ToFeatureResourceStateArrayOutput() Fea
 
 func (o FeatureResourceStateArrayOutput) ToFeatureResourceStateArrayOutputWithContext(ctx context.Context) FeatureResourceStateArrayOutput {
 	return o
+}
+
+func (o FeatureResourceStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureResourceState] {
+	return pulumix.Output[[]FeatureResourceState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourceStateOutput {
@@ -2280,6 +2569,12 @@ func (i FeatureSpecArgs) ToFeatureSpecOutputWithContext(ctx context.Context) Fea
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecOutput)
 }
 
+func (i FeatureSpecArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpec] {
+	return pulumix.Output[FeatureSpec]{
+		OutputState: i.ToFeatureSpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureSpecArgs) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
 	return i.ToFeatureSpecPtrOutputWithContext(context.Background())
 }
@@ -2321,6 +2616,12 @@ func (i *featureSpecPtrType) ToFeatureSpecPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecPtrOutput)
 }
 
+func (i *featureSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpec] {
+	return pulumix.Output[*FeatureSpec]{
+		OutputState: i.ToFeatureSpecPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureSpecOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecOutput) ElementType() reflect.Type {
@@ -2343,6 +2644,12 @@ func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpec) *FeatureSpec {
 		return &v
 	}).(FeatureSpecPtrOutput)
+}
+
+func (o FeatureSpecOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpec] {
+	return pulumix.Output[FeatureSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Fleet Observability feature spec.
@@ -2369,6 +2676,12 @@ func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutput() FeatureSpecPtrOutput {
 
 func (o FeatureSpecPtrOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context) FeatureSpecPtrOutput {
 	return o
+}
+
+func (o FeatureSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpec] {
+	return pulumix.Output[*FeatureSpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
@@ -2438,6 +2751,12 @@ func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityOutput
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityOutput)
 }
 
+func (i FeatureSpecFleetobservabilityArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservability] {
+	return pulumix.Output[FeatureSpecFleetobservability]{
+		OutputState: i.ToFeatureSpecFleetobservabilityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityPtrOutputWithContext(context.Background())
 }
@@ -2479,6 +2798,12 @@ func (i *featureSpecFleetobservabilityPtrType) ToFeatureSpecFleetobservabilityPt
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityPtrOutput)
 }
 
+func (i *featureSpecFleetobservabilityPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservability] {
+	return pulumix.Output[*FeatureSpecFleetobservability]{
+		OutputState: i.ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureSpecFleetobservabilityOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityOutput) ElementType() reflect.Type {
@@ -2503,6 +2828,12 @@ func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityPtrO
 	}).(FeatureSpecFleetobservabilityPtrOutput)
 }
 
+func (o FeatureSpecFleetobservabilityOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservability] {
+	return pulumix.Output[FeatureSpecFleetobservability]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
 // Structure is documented below.
 func (o FeatureSpecFleetobservabilityOutput) LoggingConfig() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
@@ -2523,6 +2854,12 @@ func (o FeatureSpecFleetobservabilityPtrOutput) ToFeatureSpecFleetobservabilityP
 
 func (o FeatureSpecFleetobservabilityPtrOutput) ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityPtrOutput {
 	return o
+}
+
+func (o FeatureSpecFleetobservabilityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservability] {
+	return pulumix.Output[*FeatureSpecFleetobservability]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecFleetobservabilityPtrOutput) Elem() FeatureSpecFleetobservabilityOutput {
@@ -2587,6 +2924,12 @@ func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobserv
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigOutput)
 }
 
+func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig] {
+	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig]{
+		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -2628,6 +2971,12 @@ func (i *featureSpecFleetobservabilityLoggingConfigPtrType) ToFeatureSpecFleetob
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
 }
 
+func (i *featureSpecFleetobservabilityLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig] {
+	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig]{
+		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureSpecFleetobservabilityLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityLoggingConfigOutput) ElementType() reflect.Type {
@@ -2650,6 +2999,12 @@ func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobse
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfig {
 		return &v
 	}).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig] {
+	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specified if applying the default routing config to logs not specified in other configs.
@@ -2680,6 +3035,12 @@ func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToFeatureSpecFleeto
 
 func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
 	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig] {
+	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigOutput {
@@ -2749,6 +3110,12 @@ func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSp
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
 }
 
+func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
+	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
+		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(context.Background())
 }
@@ -2790,6 +3157,12 @@ func (i *featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ToFeatu
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
+func (i *featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
+	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
+		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ElementType() reflect.Type {
@@ -2814,6 +3187,12 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeature
 	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
+	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specified if fleet logging feature is enabled.
 // Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) Mode() pulumi.StringPtrOutput {
@@ -2832,6 +3211,12 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToFeat
 
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
 	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig] {
+	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
@@ -2890,6 +3275,12 @@ func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFe
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
 }
 
+func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
+	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
+		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
 	return i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(context.Background())
 }
@@ -2931,6 +3322,12 @@ func (i *featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 }
 
+func (i *featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
+	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
+		OutputState: i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ElementType() reflect.Type {
@@ -2955,6 +3352,12 @@ func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) To
 	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 }
 
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
+	return pulumix.Output[FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specified if fleet logging feature is enabled.
 // Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) Mode() pulumi.StringPtrOutput {
@@ -2973,6 +3376,12 @@ func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
 	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig] {
+	return pulumix.Output[*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
@@ -3029,6 +3438,12 @@ func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressOutput)
 }
 
+func (i FeatureSpecMulticlusteringressArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecMulticlusteringress] {
+	return pulumix.Output[FeatureSpecMulticlusteringress]{
+		OutputState: i.ToFeatureSpecMulticlusteringressOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i FeatureSpecMulticlusteringressArgs) ToFeatureSpecMulticlusteringressPtrOutput() FeatureSpecMulticlusteringressPtrOutput {
 	return i.ToFeatureSpecMulticlusteringressPtrOutputWithContext(context.Background())
 }
@@ -3070,6 +3485,12 @@ func (i *featureSpecMulticlusteringressPtrType) ToFeatureSpecMulticlusteringress
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecMulticlusteringressPtrOutput)
 }
 
+func (i *featureSpecMulticlusteringressPtrType) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecMulticlusteringress] {
+	return pulumix.Output[*FeatureSpecMulticlusteringress]{
+		OutputState: i.ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureSpecMulticlusteringressOutput struct{ *pulumi.OutputState }
 
 func (FeatureSpecMulticlusteringressOutput) ElementType() reflect.Type {
@@ -3094,6 +3515,12 @@ func (o FeatureSpecMulticlusteringressOutput) ToFeatureSpecMulticlusteringressPt
 	}).(FeatureSpecMulticlusteringressPtrOutput)
 }
 
+func (o FeatureSpecMulticlusteringressOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureSpecMulticlusteringress] {
+	return pulumix.Output[FeatureSpecMulticlusteringress]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o FeatureSpecMulticlusteringressOutput) ConfigMembership() pulumi.StringOutput {
 	return o.ApplyT(func(v FeatureSpecMulticlusteringress) string { return v.ConfigMembership }).(pulumi.StringOutput)
@@ -3111,6 +3538,12 @@ func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringres
 
 func (o FeatureSpecMulticlusteringressPtrOutput) ToFeatureSpecMulticlusteringressPtrOutputWithContext(ctx context.Context) FeatureSpecMulticlusteringressPtrOutput {
 	return o
+}
+
+func (o FeatureSpecMulticlusteringressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FeatureSpecMulticlusteringress] {
+	return pulumix.Output[*FeatureSpecMulticlusteringress]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureSpecMulticlusteringressPtrOutput) Elem() FeatureSpecMulticlusteringressOutput {
@@ -3170,6 +3603,12 @@ func (i FeatureStateTypeArgs) ToFeatureStateTypeOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeOutput)
 }
 
+func (i FeatureStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureStateType] {
+	return pulumix.Output[FeatureStateType]{
+		OutputState: i.ToFeatureStateTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FeatureStateTypeArrayInput is an input type that accepts FeatureStateTypeArray and FeatureStateTypeArrayOutput values.
 // You can construct a concrete instance of `FeatureStateTypeArrayInput` via:
 //
@@ -3195,6 +3634,12 @@ func (i FeatureStateTypeArray) ToFeatureStateTypeArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateTypeArrayOutput)
 }
 
+func (i FeatureStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateType] {
+	return pulumix.Output[[]FeatureStateType]{
+		OutputState: i.ToFeatureStateTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureStateTypeOutput struct{ *pulumi.OutputState }
 
 func (FeatureStateTypeOutput) ElementType() reflect.Type {
@@ -3207,6 +3652,12 @@ func (o FeatureStateTypeOutput) ToFeatureStateTypeOutput() FeatureStateTypeOutpu
 
 func (o FeatureStateTypeOutput) ToFeatureStateTypeOutputWithContext(ctx context.Context) FeatureStateTypeOutput {
 	return o
+}
+
+func (o FeatureStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureStateType] {
+	return pulumix.Output[FeatureStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -3228,6 +3679,12 @@ func (o FeatureStateTypeArrayOutput) ToFeatureStateTypeArrayOutput() FeatureStat
 
 func (o FeatureStateTypeArrayOutput) ToFeatureStateTypeArrayOutputWithContext(ctx context.Context) FeatureStateTypeArrayOutput {
 	return o
+}
+
+func (o FeatureStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateType] {
+	return pulumix.Output[[]FeatureStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureStateTypeArrayOutput) Index(i pulumi.IntInput) FeatureStateTypeOutput {
@@ -3283,6 +3740,12 @@ func (i FeatureStateStateArgs) ToFeatureStateStateOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateStateOutput)
 }
 
+func (i FeatureStateStateArgs) ToOutput(ctx context.Context) pulumix.Output[FeatureStateState] {
+	return pulumix.Output[FeatureStateState]{
+		OutputState: i.ToFeatureStateStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FeatureStateStateArrayInput is an input type that accepts FeatureStateStateArray and FeatureStateStateArrayOutput values.
 // You can construct a concrete instance of `FeatureStateStateArrayInput` via:
 //
@@ -3308,6 +3771,12 @@ func (i FeatureStateStateArray) ToFeatureStateStateArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateStateArrayOutput)
 }
 
+func (i FeatureStateStateArray) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateState] {
+	return pulumix.Output[[]FeatureStateState]{
+		OutputState: i.ToFeatureStateStateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FeatureStateStateOutput struct{ *pulumi.OutputState }
 
 func (FeatureStateStateOutput) ElementType() reflect.Type {
@@ -3320,6 +3789,12 @@ func (o FeatureStateStateOutput) ToFeatureStateStateOutput() FeatureStateStateOu
 
 func (o FeatureStateStateOutput) ToFeatureStateStateOutputWithContext(ctx context.Context) FeatureStateStateOutput {
 	return o
+}
+
+func (o FeatureStateStateOutput) ToOutput(ctx context.Context) pulumix.Output[FeatureStateState] {
+	return pulumix.Output[FeatureStateState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -3352,6 +3827,12 @@ func (o FeatureStateStateArrayOutput) ToFeatureStateStateArrayOutput() FeatureSt
 
 func (o FeatureStateStateArrayOutput) ToFeatureStateStateArrayOutputWithContext(ctx context.Context) FeatureStateStateArrayOutput {
 	return o
+}
+
+func (o FeatureStateStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FeatureStateState] {
+	return pulumix.Output[[]FeatureStateState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FeatureStateStateArrayOutput) Index(i pulumi.IntInput) FeatureStateStateOutput {
@@ -3389,6 +3870,12 @@ func (i MembershipAuthorityArgs) ToMembershipAuthorityOutput() MembershipAuthori
 
 func (i MembershipAuthorityArgs) ToMembershipAuthorityOutputWithContext(ctx context.Context) MembershipAuthorityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipAuthorityOutput)
+}
+
+func (i MembershipAuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipAuthority] {
+	return pulumix.Output[MembershipAuthority]{
+		OutputState: i.ToMembershipAuthorityOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i MembershipAuthorityArgs) ToMembershipAuthorityPtrOutput() MembershipAuthorityPtrOutput {
@@ -3432,6 +3919,12 @@ func (i *membershipAuthorityPtrType) ToMembershipAuthorityPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipAuthorityPtrOutput)
 }
 
+func (i *membershipAuthorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipAuthority] {
+	return pulumix.Output[*MembershipAuthority]{
+		OutputState: i.ToMembershipAuthorityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipAuthorityOutput struct{ *pulumi.OutputState }
 
 func (MembershipAuthorityOutput) ElementType() reflect.Type {
@@ -3456,6 +3949,12 @@ func (o MembershipAuthorityOutput) ToMembershipAuthorityPtrOutputWithContext(ctx
 	}).(MembershipAuthorityPtrOutput)
 }
 
+func (o MembershipAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipAuthority] {
+	return pulumix.Output[MembershipAuthority]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MembershipAuthorityOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipAuthority) string { return v.Issuer }).(pulumi.StringOutput)
 }
@@ -3472,6 +3971,12 @@ func (o MembershipAuthorityPtrOutput) ToMembershipAuthorityPtrOutput() Membershi
 
 func (o MembershipAuthorityPtrOutput) ToMembershipAuthorityPtrOutputWithContext(ctx context.Context) MembershipAuthorityPtrOutput {
 	return o
+}
+
+func (o MembershipAuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipAuthority] {
+	return pulumix.Output[*MembershipAuthority]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipAuthorityPtrOutput) Elem() MembershipAuthorityOutput {
@@ -3528,6 +4033,12 @@ func (i MembershipBindingStateTypeArgs) ToMembershipBindingStateTypeOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingStateTypeOutput)
 }
 
+func (i MembershipBindingStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipBindingStateType] {
+	return pulumix.Output[MembershipBindingStateType]{
+		OutputState: i.ToMembershipBindingStateTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MembershipBindingStateTypeArrayInput is an input type that accepts MembershipBindingStateTypeArray and MembershipBindingStateTypeArrayOutput values.
 // You can construct a concrete instance of `MembershipBindingStateTypeArrayInput` via:
 //
@@ -3553,6 +4064,12 @@ func (i MembershipBindingStateTypeArray) ToMembershipBindingStateTypeArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingStateTypeArrayOutput)
 }
 
+func (i MembershipBindingStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]MembershipBindingStateType] {
+	return pulumix.Output[[]MembershipBindingStateType]{
+		OutputState: i.ToMembershipBindingStateTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipBindingStateTypeOutput struct{ *pulumi.OutputState }
 
 func (MembershipBindingStateTypeOutput) ElementType() reflect.Type {
@@ -3565,6 +4082,12 @@ func (o MembershipBindingStateTypeOutput) ToMembershipBindingStateTypeOutput() M
 
 func (o MembershipBindingStateTypeOutput) ToMembershipBindingStateTypeOutputWithContext(ctx context.Context) MembershipBindingStateTypeOutput {
 	return o
+}
+
+func (o MembershipBindingStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipBindingStateType] {
+	return pulumix.Output[MembershipBindingStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -3585,6 +4108,12 @@ func (o MembershipBindingStateTypeArrayOutput) ToMembershipBindingStateTypeArray
 
 func (o MembershipBindingStateTypeArrayOutput) ToMembershipBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipBindingStateTypeArrayOutput {
 	return o
+}
+
+func (o MembershipBindingStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembershipBindingStateType] {
+	return pulumix.Output[[]MembershipBindingStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipBindingStateTypeArrayOutput) Index(i pulumi.IntInput) MembershipBindingStateTypeOutput {
@@ -3628,6 +4157,12 @@ func (i MembershipEndpointArgs) ToMembershipEndpointOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointOutput)
 }
 
+func (i MembershipEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpoint] {
+	return pulumix.Output[MembershipEndpoint]{
+		OutputState: i.ToMembershipEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MembershipEndpointArgs) ToMembershipEndpointPtrOutput() MembershipEndpointPtrOutput {
 	return i.ToMembershipEndpointPtrOutputWithContext(context.Background())
 }
@@ -3669,6 +4204,12 @@ func (i *membershipEndpointPtrType) ToMembershipEndpointPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointPtrOutput)
 }
 
+func (i *membershipEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpoint] {
+	return pulumix.Output[*MembershipEndpoint]{
+		OutputState: i.ToMembershipEndpointPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipEndpointOutput struct{ *pulumi.OutputState }
 
 func (MembershipEndpointOutput) ElementType() reflect.Type {
@@ -3693,6 +4234,12 @@ func (o MembershipEndpointOutput) ToMembershipEndpointPtrOutputWithContext(ctx c
 	}).(MembershipEndpointPtrOutput)
 }
 
+func (o MembershipEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpoint] {
+	return pulumix.Output[MembershipEndpoint]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 // Structure is documented below.
 func (o MembershipEndpointOutput) GkeCluster() MembershipEndpointGkeClusterPtrOutput {
@@ -3711,6 +4258,12 @@ func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutput() MembershipE
 
 func (o MembershipEndpointPtrOutput) ToMembershipEndpointPtrOutputWithContext(ctx context.Context) MembershipEndpointPtrOutput {
 	return o
+}
+
+func (o MembershipEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpoint] {
+	return pulumix.Output[*MembershipEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipEndpointPtrOutput) Elem() MembershipEndpointOutput {
@@ -3765,6 +4318,12 @@ func (i MembershipEndpointGkeClusterArgs) ToMembershipEndpointGkeClusterOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointGkeClusterOutput)
 }
 
+func (i MembershipEndpointGkeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpointGkeCluster] {
+	return pulumix.Output[MembershipEndpointGkeCluster]{
+		OutputState: i.ToMembershipEndpointGkeClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MembershipEndpointGkeClusterArgs) ToMembershipEndpointGkeClusterPtrOutput() MembershipEndpointGkeClusterPtrOutput {
 	return i.ToMembershipEndpointGkeClusterPtrOutputWithContext(context.Background())
 }
@@ -3806,6 +4365,12 @@ func (i *membershipEndpointGkeClusterPtrType) ToMembershipEndpointGkeClusterPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipEndpointGkeClusterPtrOutput)
 }
 
+func (i *membershipEndpointGkeClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpointGkeCluster] {
+	return pulumix.Output[*MembershipEndpointGkeCluster]{
+		OutputState: i.ToMembershipEndpointGkeClusterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipEndpointGkeClusterOutput struct{ *pulumi.OutputState }
 
 func (MembershipEndpointGkeClusterOutput) ElementType() reflect.Type {
@@ -3830,6 +4395,12 @@ func (o MembershipEndpointGkeClusterOutput) ToMembershipEndpointGkeClusterPtrOut
 	}).(MembershipEndpointGkeClusterPtrOutput)
 }
 
+func (o MembershipEndpointGkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipEndpointGkeCluster] {
+	return pulumix.Output[MembershipEndpointGkeCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MembershipEndpointGkeClusterOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipEndpointGkeCluster) string { return v.ResourceLink }).(pulumi.StringOutput)
 }
@@ -3846,6 +4417,12 @@ func (o MembershipEndpointGkeClusterPtrOutput) ToMembershipEndpointGkeClusterPtr
 
 func (o MembershipEndpointGkeClusterPtrOutput) ToMembershipEndpointGkeClusterPtrOutputWithContext(ctx context.Context) MembershipEndpointGkeClusterPtrOutput {
 	return o
+}
+
+func (o MembershipEndpointGkeClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipEndpointGkeCluster] {
+	return pulumix.Output[*MembershipEndpointGkeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipEndpointGkeClusterPtrOutput) Elem() MembershipEndpointGkeClusterOutput {
@@ -3902,6 +4479,12 @@ func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionOutput)
 }
 
+func (i MembershipIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipIamBindingCondition] {
+	return pulumix.Output[MembershipIamBindingCondition]{
+		OutputState: i.ToMembershipIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MembershipIamBindingConditionArgs) ToMembershipIamBindingConditionPtrOutput() MembershipIamBindingConditionPtrOutput {
 	return i.ToMembershipIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -3943,6 +4526,12 @@ func (i *membershipIamBindingConditionPtrType) ToMembershipIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamBindingConditionPtrOutput)
 }
 
+func (i *membershipIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamBindingCondition] {
+	return pulumix.Output[*MembershipIamBindingCondition]{
+		OutputState: i.ToMembershipIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamBindingConditionOutput) ElementType() reflect.Type {
@@ -3965,6 +4554,12 @@ func (o MembershipIamBindingConditionOutput) ToMembershipIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipIamBindingCondition) *MembershipIamBindingCondition {
 		return &v
 	}).(MembershipIamBindingConditionPtrOutput)
+}
+
+func (o MembershipIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipIamBindingCondition] {
+	return pulumix.Output[MembershipIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -3991,6 +4586,12 @@ func (o MembershipIamBindingConditionPtrOutput) ToMembershipIamBindingConditionP
 
 func (o MembershipIamBindingConditionPtrOutput) ToMembershipIamBindingConditionPtrOutputWithContext(ctx context.Context) MembershipIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o MembershipIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamBindingCondition] {
+	return pulumix.Output[*MembershipIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipIamBindingConditionPtrOutput) Elem() MembershipIamBindingConditionOutput {
@@ -4065,6 +4666,12 @@ func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionOutput)
 }
 
+func (i MembershipIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipIamMemberCondition] {
+	return pulumix.Output[MembershipIamMemberCondition]{
+		OutputState: i.ToMembershipIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MembershipIamMemberConditionArgs) ToMembershipIamMemberConditionPtrOutput() MembershipIamMemberConditionPtrOutput {
 	return i.ToMembershipIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -4106,6 +4713,12 @@ func (i *membershipIamMemberConditionPtrType) ToMembershipIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipIamMemberConditionPtrOutput)
 }
 
+func (i *membershipIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamMemberCondition] {
+	return pulumix.Output[*MembershipIamMemberCondition]{
+		OutputState: i.ToMembershipIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (MembershipIamMemberConditionOutput) ElementType() reflect.Type {
@@ -4128,6 +4741,12 @@ func (o MembershipIamMemberConditionOutput) ToMembershipIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipIamMemberCondition) *MembershipIamMemberCondition {
 		return &v
 	}).(MembershipIamMemberConditionPtrOutput)
+}
+
+func (o MembershipIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipIamMemberCondition] {
+	return pulumix.Output[MembershipIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4154,6 +4773,12 @@ func (o MembershipIamMemberConditionPtrOutput) ToMembershipIamMemberConditionPtr
 
 func (o MembershipIamMemberConditionPtrOutput) ToMembershipIamMemberConditionPtrOutputWithContext(ctx context.Context) MembershipIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o MembershipIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipIamMemberCondition] {
+	return pulumix.Output[*MembershipIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipIamMemberConditionPtrOutput) Elem() MembershipIamMemberConditionOutput {
@@ -4232,6 +4857,12 @@ func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRoleOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRoleOutput)
 }
 
+func (i MembershipRbacRoleBindingRoleArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingRole] {
+	return pulumix.Output[MembershipRbacRoleBindingRole]{
+		OutputState: i.ToMembershipRbacRoleBindingRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput {
 	return i.ToMembershipRbacRoleBindingRolePtrOutputWithContext(context.Background())
 }
@@ -4273,6 +4904,12 @@ func (i *membershipRbacRoleBindingRolePtrType) ToMembershipRbacRoleBindingRolePt
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRolePtrOutput)
 }
 
+func (i *membershipRbacRoleBindingRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBindingRole] {
+	return pulumix.Output[*MembershipRbacRoleBindingRole]{
+		OutputState: i.ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipRbacRoleBindingRoleOutput struct{ *pulumi.OutputState }
 
 func (MembershipRbacRoleBindingRoleOutput) ElementType() reflect.Type {
@@ -4297,6 +4934,12 @@ func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRolePtrO
 	}).(MembershipRbacRoleBindingRolePtrOutput)
 }
 
+func (o MembershipRbacRoleBindingRoleOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingRole] {
+	return pulumix.Output[MembershipRbacRoleBindingRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
 //
@@ -4317,6 +4960,12 @@ func (o MembershipRbacRoleBindingRolePtrOutput) ToMembershipRbacRoleBindingRoleP
 
 func (o MembershipRbacRoleBindingRolePtrOutput) ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRolePtrOutput {
 	return o
+}
+
+func (o MembershipRbacRoleBindingRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MembershipRbacRoleBindingRole] {
+	return pulumix.Output[*MembershipRbacRoleBindingRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipRbacRoleBindingRolePtrOutput) Elem() MembershipRbacRoleBindingRoleOutput {
@@ -4377,6 +5026,12 @@ func (i MembershipRbacRoleBindingStateTypeArgs) ToMembershipRbacRoleBindingState
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingStateTypeOutput)
 }
 
+func (i MembershipRbacRoleBindingStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingStateType] {
+	return pulumix.Output[MembershipRbacRoleBindingStateType]{
+		OutputState: i.ToMembershipRbacRoleBindingStateTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MembershipRbacRoleBindingStateTypeArrayInput is an input type that accepts MembershipRbacRoleBindingStateTypeArray and MembershipRbacRoleBindingStateTypeArrayOutput values.
 // You can construct a concrete instance of `MembershipRbacRoleBindingStateTypeArrayInput` via:
 //
@@ -4402,6 +5057,12 @@ func (i MembershipRbacRoleBindingStateTypeArray) ToMembershipRbacRoleBindingStat
 	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingStateTypeArrayOutput)
 }
 
+func (i MembershipRbacRoleBindingStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRbacRoleBindingStateType] {
+	return pulumix.Output[[]MembershipRbacRoleBindingStateType]{
+		OutputState: i.ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembershipRbacRoleBindingStateTypeOutput struct{ *pulumi.OutputState }
 
 func (MembershipRbacRoleBindingStateTypeOutput) ElementType() reflect.Type {
@@ -4414,6 +5075,12 @@ func (o MembershipRbacRoleBindingStateTypeOutput) ToMembershipRbacRoleBindingSta
 
 func (o MembershipRbacRoleBindingStateTypeOutput) ToMembershipRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeOutput {
 	return o
+}
+
+func (o MembershipRbacRoleBindingStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MembershipRbacRoleBindingStateType] {
+	return pulumix.Output[MembershipRbacRoleBindingStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4434,6 +5101,12 @@ func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToMembershipRbacRoleBindi
 
 func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeArrayOutput {
 	return o
+}
+
+func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembershipRbacRoleBindingStateType] {
+	return pulumix.Output[[]MembershipRbacRoleBindingStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MembershipRbacRoleBindingStateTypeArrayOutput) Index(i pulumi.IntInput) MembershipRbacRoleBindingStateTypeOutput {
@@ -4477,6 +5150,12 @@ func (i NamespaceStateTypeArgs) ToNamespaceStateTypeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStateTypeOutput)
 }
 
+func (i NamespaceStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[NamespaceStateType] {
+	return pulumix.Output[NamespaceStateType]{
+		OutputState: i.ToNamespaceStateTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamespaceStateTypeArrayInput is an input type that accepts NamespaceStateTypeArray and NamespaceStateTypeArrayOutput values.
 // You can construct a concrete instance of `NamespaceStateTypeArrayInput` via:
 //
@@ -4502,6 +5181,12 @@ func (i NamespaceStateTypeArray) ToNamespaceStateTypeArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStateTypeArrayOutput)
 }
 
+func (i NamespaceStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceStateType] {
+	return pulumix.Output[[]NamespaceStateType]{
+		OutputState: i.ToNamespaceStateTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceStateTypeOutput struct{ *pulumi.OutputState }
 
 func (NamespaceStateTypeOutput) ElementType() reflect.Type {
@@ -4514,6 +5199,12 @@ func (o NamespaceStateTypeOutput) ToNamespaceStateTypeOutput() NamespaceStateTyp
 
 func (o NamespaceStateTypeOutput) ToNamespaceStateTypeOutputWithContext(ctx context.Context) NamespaceStateTypeOutput {
 	return o
+}
+
+func (o NamespaceStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceStateType] {
+	return pulumix.Output[NamespaceStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -4534,6 +5225,12 @@ func (o NamespaceStateTypeArrayOutput) ToNamespaceStateTypeArrayOutput() Namespa
 
 func (o NamespaceStateTypeArrayOutput) ToNamespaceStateTypeArrayOutputWithContext(ctx context.Context) NamespaceStateTypeArrayOutput {
 	return o
+}
+
+func (o NamespaceStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NamespaceStateType] {
+	return pulumix.Output[[]NamespaceStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceStateTypeArrayOutput) Index(i pulumi.IntInput) NamespaceStateTypeOutput {
@@ -4577,6 +5274,12 @@ func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionOutput)
 }
 
+func (i ScopeIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeIamBindingCondition] {
+	return pulumix.Output[ScopeIamBindingCondition]{
+		OutputState: i.ToScopeIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput {
 	return i.ToScopeIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -4618,6 +5321,12 @@ func (i *scopeIamBindingConditionPtrType) ToScopeIamBindingConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionPtrOutput)
 }
 
+func (i *scopeIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamBindingCondition] {
+	return pulumix.Output[*ScopeIamBindingCondition]{
+		OutputState: i.ToScopeIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ScopeIamBindingConditionOutput) ElementType() reflect.Type {
@@ -4640,6 +5349,12 @@ func (o ScopeIamBindingConditionOutput) ToScopeIamBindingConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeIamBindingCondition) *ScopeIamBindingCondition {
 		return &v
 	}).(ScopeIamBindingConditionPtrOutput)
+}
+
+func (o ScopeIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeIamBindingCondition] {
+	return pulumix.Output[ScopeIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4666,6 +5381,12 @@ func (o ScopeIamBindingConditionPtrOutput) ToScopeIamBindingConditionPtrOutput()
 
 func (o ScopeIamBindingConditionPtrOutput) ToScopeIamBindingConditionPtrOutputWithContext(ctx context.Context) ScopeIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o ScopeIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamBindingCondition] {
+	return pulumix.Output[*ScopeIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeIamBindingConditionPtrOutput) Elem() ScopeIamBindingConditionOutput {
@@ -4740,6 +5461,12 @@ func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionOutput)
 }
 
+func (i ScopeIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeIamMemberCondition] {
+	return pulumix.Output[ScopeIamMemberCondition]{
+		OutputState: i.ToScopeIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput {
 	return i.ToScopeIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -4781,6 +5508,12 @@ func (i *scopeIamMemberConditionPtrType) ToScopeIamMemberConditionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionPtrOutput)
 }
 
+func (i *scopeIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamMemberCondition] {
+	return pulumix.Output[*ScopeIamMemberCondition]{
+		OutputState: i.ToScopeIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ScopeIamMemberConditionOutput) ElementType() reflect.Type {
@@ -4803,6 +5536,12 @@ func (o ScopeIamMemberConditionOutput) ToScopeIamMemberConditionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeIamMemberCondition) *ScopeIamMemberCondition {
 		return &v
 	}).(ScopeIamMemberConditionPtrOutput)
+}
+
+func (o ScopeIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeIamMemberCondition] {
+	return pulumix.Output[ScopeIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -4829,6 +5568,12 @@ func (o ScopeIamMemberConditionPtrOutput) ToScopeIamMemberConditionPtrOutput() S
 
 func (o ScopeIamMemberConditionPtrOutput) ToScopeIamMemberConditionPtrOutputWithContext(ctx context.Context) ScopeIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o ScopeIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeIamMemberCondition] {
+	return pulumix.Output[*ScopeIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeIamMemberConditionPtrOutput) Elem() ScopeIamMemberConditionOutput {
@@ -4907,6 +5652,12 @@ func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRoleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRoleOutput)
 }
 
+func (i ScopeRbacRoleBindingRoleArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingRole] {
+	return pulumix.Output[ScopeRbacRoleBindingRole]{
+		OutputState: i.ToScopeRbacRoleBindingRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput {
 	return i.ToScopeRbacRoleBindingRolePtrOutputWithContext(context.Background())
 }
@@ -4948,6 +5699,12 @@ func (i *scopeRbacRoleBindingRolePtrType) ToScopeRbacRoleBindingRolePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRolePtrOutput)
 }
 
+func (i *scopeRbacRoleBindingRolePtrType) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBindingRole] {
+	return pulumix.Output[*ScopeRbacRoleBindingRole]{
+		OutputState: i.ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeRbacRoleBindingRoleOutput struct{ *pulumi.OutputState }
 
 func (ScopeRbacRoleBindingRoleOutput) ElementType() reflect.Type {
@@ -4972,6 +5729,12 @@ func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutputWithC
 	}).(ScopeRbacRoleBindingRolePtrOutput)
 }
 
+func (o ScopeRbacRoleBindingRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingRole] {
+	return pulumix.Output[ScopeRbacRoleBindingRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
 //
@@ -4992,6 +5755,12 @@ func (o ScopeRbacRoleBindingRolePtrOutput) ToScopeRbacRoleBindingRolePtrOutput()
 
 func (o ScopeRbacRoleBindingRolePtrOutput) ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRolePtrOutput {
 	return o
+}
+
+func (o ScopeRbacRoleBindingRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeRbacRoleBindingRole] {
+	return pulumix.Output[*ScopeRbacRoleBindingRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeRbacRoleBindingRolePtrOutput) Elem() ScopeRbacRoleBindingRoleOutput {
@@ -5052,6 +5821,12 @@ func (i ScopeRbacRoleBindingStateTypeArgs) ToScopeRbacRoleBindingStateTypeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingStateTypeOutput)
 }
 
+func (i ScopeRbacRoleBindingStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingStateType] {
+	return pulumix.Output[ScopeRbacRoleBindingStateType]{
+		OutputState: i.ToScopeRbacRoleBindingStateTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScopeRbacRoleBindingStateTypeArrayInput is an input type that accepts ScopeRbacRoleBindingStateTypeArray and ScopeRbacRoleBindingStateTypeArrayOutput values.
 // You can construct a concrete instance of `ScopeRbacRoleBindingStateTypeArrayInput` via:
 //
@@ -5077,6 +5852,12 @@ func (i ScopeRbacRoleBindingStateTypeArray) ToScopeRbacRoleBindingStateTypeArray
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingStateTypeArrayOutput)
 }
 
+func (i ScopeRbacRoleBindingStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]ScopeRbacRoleBindingStateType] {
+	return pulumix.Output[[]ScopeRbacRoleBindingStateType]{
+		OutputState: i.ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeRbacRoleBindingStateTypeOutput struct{ *pulumi.OutputState }
 
 func (ScopeRbacRoleBindingStateTypeOutput) ElementType() reflect.Type {
@@ -5089,6 +5870,12 @@ func (o ScopeRbacRoleBindingStateTypeOutput) ToScopeRbacRoleBindingStateTypeOutp
 
 func (o ScopeRbacRoleBindingStateTypeOutput) ToScopeRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeOutput {
 	return o
+}
+
+func (o ScopeRbacRoleBindingStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeRbacRoleBindingStateType] {
+	return pulumix.Output[ScopeRbacRoleBindingStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -5109,6 +5896,12 @@ func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToScopeRbacRoleBindingStateTyp
 
 func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeArrayOutput {
 	return o
+}
+
+func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScopeRbacRoleBindingStateType] {
+	return pulumix.Output[[]ScopeRbacRoleBindingStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeRbacRoleBindingStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeRbacRoleBindingStateTypeOutput {
@@ -5152,6 +5945,12 @@ func (i ScopeStateTypeArgs) ToScopeStateTypeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeStateTypeOutput)
 }
 
+func (i ScopeStateTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ScopeStateType] {
+	return pulumix.Output[ScopeStateType]{
+		OutputState: i.ToScopeStateTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ScopeStateTypeArrayInput is an input type that accepts ScopeStateTypeArray and ScopeStateTypeArrayOutput values.
 // You can construct a concrete instance of `ScopeStateTypeArrayInput` via:
 //
@@ -5177,6 +5976,12 @@ func (i ScopeStateTypeArray) ToScopeStateTypeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeStateTypeArrayOutput)
 }
 
+func (i ScopeStateTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]ScopeStateType] {
+	return pulumix.Output[[]ScopeStateType]{
+		OutputState: i.ToScopeStateTypeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ScopeStateTypeOutput struct{ *pulumi.OutputState }
 
 func (ScopeStateTypeOutput) ElementType() reflect.Type {
@@ -5189,6 +5994,12 @@ func (o ScopeStateTypeOutput) ToScopeStateTypeOutput() ScopeStateTypeOutput {
 
 func (o ScopeStateTypeOutput) ToScopeStateTypeOutputWithContext(ctx context.Context) ScopeStateTypeOutput {
 	return o
+}
+
+func (o ScopeStateTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ScopeStateType] {
+	return pulumix.Output[ScopeStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Output)
@@ -5209,6 +6020,12 @@ func (o ScopeStateTypeArrayOutput) ToScopeStateTypeArrayOutput() ScopeStateTypeA
 
 func (o ScopeStateTypeArrayOutput) ToScopeStateTypeArrayOutputWithContext(ctx context.Context) ScopeStateTypeArrayOutput {
 	return o
+}
+
+func (o ScopeStateTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScopeStateType] {
+	return pulumix.Output[[]ScopeStateType]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput {

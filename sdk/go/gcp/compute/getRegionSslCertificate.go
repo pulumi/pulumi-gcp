@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get info about a Region Google Compute SSL Certificate from its name.
@@ -126,6 +127,12 @@ func (o LookupRegionSslCertificateResultOutput) ToLookupRegionSslCertificateResu
 
 func (o LookupRegionSslCertificateResultOutput) ToLookupRegionSslCertificateResultOutputWithContext(ctx context.Context) LookupRegionSslCertificateResultOutput {
 	return o
+}
+
+func (o LookupRegionSslCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionSslCertificateResult] {
+	return pulumix.Output[LookupRegionSslCertificateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupRegionSslCertificateResultOutput) Certificate() pulumi.StringOutput {

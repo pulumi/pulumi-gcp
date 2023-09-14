@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an active folder within GCP by `displayName` and `parent`.
@@ -105,6 +106,12 @@ func (o GetActiveFolderResultOutput) ToGetActiveFolderResultOutput() GetActiveFo
 
 func (o GetActiveFolderResultOutput) ToGetActiveFolderResultOutputWithContext(ctx context.Context) GetActiveFolderResultOutput {
 	return o
+}
+
+func (o GetActiveFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetActiveFolderResult] {
+	return pulumix.Output[GetActiveFolderResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetActiveFolderResultOutput) DisplayName() pulumi.StringOutput {

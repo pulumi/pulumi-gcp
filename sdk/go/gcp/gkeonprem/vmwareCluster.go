@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -808,6 +809,12 @@ func (i *VMwareCluster) ToVMwareClusterOutputWithContext(ctx context.Context) VM
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterOutput)
 }
 
+func (i *VMwareCluster) ToOutput(ctx context.Context) pulumix.Output[*VMwareCluster] {
+	return pulumix.Output[*VMwareCluster]{
+		OutputState: i.ToVMwareClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VMwareClusterArrayInput is an input type that accepts VMwareClusterArray and VMwareClusterArrayOutput values.
 // You can construct a concrete instance of `VMwareClusterArrayInput` via:
 //
@@ -831,6 +838,12 @@ func (i VMwareClusterArray) ToVMwareClusterArrayOutput() VMwareClusterArrayOutpu
 
 func (i VMwareClusterArray) ToVMwareClusterArrayOutputWithContext(ctx context.Context) VMwareClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterArrayOutput)
+}
+
+func (i VMwareClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*VMwareCluster] {
+	return pulumix.Output[[]*VMwareCluster]{
+		OutputState: i.ToVMwareClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VMwareClusterMapInput is an input type that accepts VMwareClusterMap and VMwareClusterMapOutput values.
@@ -858,6 +871,12 @@ func (i VMwareClusterMap) ToVMwareClusterMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterMapOutput)
 }
 
+func (i VMwareClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VMwareCluster] {
+	return pulumix.Output[map[string]*VMwareCluster]{
+		OutputState: i.ToVMwareClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VMwareClusterOutput struct{ *pulumi.OutputState }
 
 func (VMwareClusterOutput) ElementType() reflect.Type {
@@ -870,6 +889,12 @@ func (o VMwareClusterOutput) ToVMwareClusterOutput() VMwareClusterOutput {
 
 func (o VMwareClusterOutput) ToVMwareClusterOutputWithContext(ctx context.Context) VMwareClusterOutput {
 	return o
+}
+
+func (o VMwareClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareCluster] {
+	return pulumix.Output[*VMwareCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The admin cluster this VMware User Cluster belongs to.
@@ -1076,6 +1101,12 @@ func (o VMwareClusterArrayOutput) ToVMwareClusterArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o VMwareClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VMwareCluster] {
+	return pulumix.Output[[]*VMwareCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VMwareClusterArrayOutput) Index(i pulumi.IntInput) VMwareClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VMwareCluster {
 		return vs[0].([]*VMwareCluster)[vs[1].(int)]
@@ -1094,6 +1125,12 @@ func (o VMwareClusterMapOutput) ToVMwareClusterMapOutput() VMwareClusterMapOutpu
 
 func (o VMwareClusterMapOutput) ToVMwareClusterMapOutputWithContext(ctx context.Context) VMwareClusterMapOutput {
 	return o
+}
+
+func (o VMwareClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VMwareCluster] {
+	return pulumix.Output[map[string]*VMwareCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VMwareClusterMapOutput) MapIndex(k pulumi.StringInput) VMwareClusterOutput {

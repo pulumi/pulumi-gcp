@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for deviceregistry
@@ -124,6 +125,12 @@ func (o LookupRegistryIamPolicyResultOutput) ToLookupRegistryIamPolicyResultOutp
 
 func (o LookupRegistryIamPolicyResultOutput) ToLookupRegistryIamPolicyResultOutputWithContext(ctx context.Context) LookupRegistryIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupRegistryIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistryIamPolicyResult] {
+	return pulumix.Output[LookupRegistryIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.

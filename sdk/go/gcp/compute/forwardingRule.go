@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A ForwardingRule resource. A ForwardingRule resource specifies which pool
@@ -1313,6 +1314,12 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleOutput)
 }
 
+func (i *ForwardingRule) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRule] {
+	return pulumix.Output[*ForwardingRule]{
+		OutputState: i.ToForwardingRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ForwardingRuleArrayInput is an input type that accepts ForwardingRuleArray and ForwardingRuleArrayOutput values.
 // You can construct a concrete instance of `ForwardingRuleArrayInput` via:
 //
@@ -1336,6 +1343,12 @@ func (i ForwardingRuleArray) ToForwardingRuleArrayOutput() ForwardingRuleArrayOu
 
 func (i ForwardingRuleArray) ToForwardingRuleArrayOutputWithContext(ctx context.Context) ForwardingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleArrayOutput)
+}
+
+func (i ForwardingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ForwardingRule] {
+	return pulumix.Output[[]*ForwardingRule]{
+		OutputState: i.ToForwardingRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ForwardingRuleMapInput is an input type that accepts ForwardingRuleMap and ForwardingRuleMapOutput values.
@@ -1363,6 +1376,12 @@ func (i ForwardingRuleMap) ToForwardingRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleMapOutput)
 }
 
+func (i ForwardingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ForwardingRule] {
+	return pulumix.Output[map[string]*ForwardingRule]{
+		OutputState: i.ToForwardingRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ForwardingRuleOutput) ElementType() reflect.Type {
@@ -1375,6 +1394,12 @@ func (o ForwardingRuleOutput) ToForwardingRuleOutput() ForwardingRuleOutput {
 
 func (o ForwardingRuleOutput) ToForwardingRuleOutputWithContext(ctx context.Context) ForwardingRuleOutput {
 	return o
+}
+
+func (o ForwardingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardingRule] {
+	return pulumix.Output[*ForwardingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // This field can only be used:
@@ -1713,6 +1738,12 @@ func (o ForwardingRuleArrayOutput) ToForwardingRuleArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o ForwardingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ForwardingRule] {
+	return pulumix.Output[[]*ForwardingRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ForwardingRuleArrayOutput) Index(i pulumi.IntInput) ForwardingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ForwardingRule {
 		return vs[0].([]*ForwardingRule)[vs[1].(int)]
@@ -1731,6 +1762,12 @@ func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutput() ForwardingRuleMapOu
 
 func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutputWithContext(ctx context.Context) ForwardingRuleMapOutput {
 	return o
+}
+
+func (o ForwardingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ForwardingRule] {
+	return pulumix.Output[map[string]*ForwardingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) ForwardingRuleOutput {

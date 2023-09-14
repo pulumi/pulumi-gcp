@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
@@ -122,6 +123,12 @@ func (o GetRegistryImageResultOutput) ToGetRegistryImageResultOutput() GetRegist
 
 func (o GetRegistryImageResultOutput) ToGetRegistryImageResultOutputWithContext(ctx context.Context) GetRegistryImageResultOutput {
 	return o
+}
+
+func (o GetRegistryImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistryImageResult] {
+	return pulumix.Output[GetRegistryImageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRegistryImageResultOutput) Digest() pulumi.StringPtrOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -347,6 +348,12 @@ func (i *RepositoryWorkflowConfig) ToRepositoryWorkflowConfigOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigOutput)
 }
 
+func (i *RepositoryWorkflowConfig) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkflowConfig] {
+	return pulumix.Output[*RepositoryWorkflowConfig]{
+		OutputState: i.ToRepositoryWorkflowConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RepositoryWorkflowConfigArrayInput is an input type that accepts RepositoryWorkflowConfigArray and RepositoryWorkflowConfigArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigArrayInput` via:
 //
@@ -370,6 +377,12 @@ func (i RepositoryWorkflowConfigArray) ToRepositoryWorkflowConfigArrayOutput() R
 
 func (i RepositoryWorkflowConfigArray) ToRepositoryWorkflowConfigArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigArrayOutput)
+}
+
+func (i RepositoryWorkflowConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryWorkflowConfig] {
+	return pulumix.Output[[]*RepositoryWorkflowConfig]{
+		OutputState: i.ToRepositoryWorkflowConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RepositoryWorkflowConfigMapInput is an input type that accepts RepositoryWorkflowConfigMap and RepositoryWorkflowConfigMapOutput values.
@@ -397,6 +410,12 @@ func (i RepositoryWorkflowConfigMap) ToRepositoryWorkflowConfigMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigMapOutput)
 }
 
+func (i RepositoryWorkflowConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryWorkflowConfig] {
+	return pulumix.Output[map[string]*RepositoryWorkflowConfig]{
+		OutputState: i.ToRepositoryWorkflowConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RepositoryWorkflowConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigOutput) ElementType() reflect.Type {
@@ -409,6 +428,12 @@ func (o RepositoryWorkflowConfigOutput) ToRepositoryWorkflowConfigOutput() Repos
 
 func (o RepositoryWorkflowConfigOutput) ToRepositoryWorkflowConfigOutputWithContext(ctx context.Context) RepositoryWorkflowConfigOutput {
 	return o
+}
+
+func (o RepositoryWorkflowConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkflowConfig] {
+	return pulumix.Output[*RepositoryWorkflowConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Optional. Optional schedule (in cron format) for automatic creation of compilation results.
@@ -479,6 +504,12 @@ func (o RepositoryWorkflowConfigArrayOutput) ToRepositoryWorkflowConfigArrayOutp
 	return o
 }
 
+func (o RepositoryWorkflowConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RepositoryWorkflowConfig] {
+	return pulumix.Output[[]*RepositoryWorkflowConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RepositoryWorkflowConfigArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RepositoryWorkflowConfig {
 		return vs[0].([]*RepositoryWorkflowConfig)[vs[1].(int)]
@@ -497,6 +528,12 @@ func (o RepositoryWorkflowConfigMapOutput) ToRepositoryWorkflowConfigMapOutput()
 
 func (o RepositoryWorkflowConfigMapOutput) ToRepositoryWorkflowConfigMapOutputWithContext(ctx context.Context) RepositoryWorkflowConfigMapOutput {
 	return o
+}
+
+func (o RepositoryWorkflowConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RepositoryWorkflowConfig] {
+	return pulumix.Output[map[string]*RepositoryWorkflowConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RepositoryWorkflowConfigMapOutput) MapIndex(k pulumi.StringInput) RepositoryWorkflowConfigOutput {

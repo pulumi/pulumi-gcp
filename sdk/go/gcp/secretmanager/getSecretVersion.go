@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
@@ -122,6 +123,12 @@ func (o LookupSecretVersionResultOutput) ToLookupSecretVersionResultOutput() Loo
 
 func (o LookupSecretVersionResultOutput) ToLookupSecretVersionResultOutputWithContext(ctx context.Context) LookupSecretVersionResultOutput {
 	return o
+}
+
+func (o LookupSecretVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecretVersionResult] {
+	return pulumix.Output[LookupSecretVersionResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The time at which the Secret was created.

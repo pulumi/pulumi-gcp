@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A game server cluster resource.
@@ -231,6 +232,12 @@ func (i *GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterOutput)
 }
 
+func (i *GameServerCluster) ToOutput(ctx context.Context) pulumix.Output[*GameServerCluster] {
+	return pulumix.Output[*GameServerCluster]{
+		OutputState: i.ToGameServerClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GameServerClusterArrayInput is an input type that accepts GameServerClusterArray and GameServerClusterArrayOutput values.
 // You can construct a concrete instance of `GameServerClusterArrayInput` via:
 //
@@ -254,6 +261,12 @@ func (i GameServerClusterArray) ToGameServerClusterArrayOutput() GameServerClust
 
 func (i GameServerClusterArray) ToGameServerClusterArrayOutputWithContext(ctx context.Context) GameServerClusterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterArrayOutput)
+}
+
+func (i GameServerClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerCluster] {
+	return pulumix.Output[[]*GameServerCluster]{
+		OutputState: i.ToGameServerClusterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GameServerClusterMapInput is an input type that accepts GameServerClusterMap and GameServerClusterMapOutput values.
@@ -281,6 +294,12 @@ func (i GameServerClusterMap) ToGameServerClusterMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterMapOutput)
 }
 
+func (i GameServerClusterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerCluster] {
+	return pulumix.Output[map[string]*GameServerCluster]{
+		OutputState: i.ToGameServerClusterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GameServerClusterOutput struct{ *pulumi.OutputState }
 
 func (GameServerClusterOutput) ElementType() reflect.Type {
@@ -293,6 +312,12 @@ func (o GameServerClusterOutput) ToGameServerClusterOutput() GameServerClusterOu
 
 func (o GameServerClusterOutput) ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput {
 	return o
+}
+
+func (o GameServerClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*GameServerCluster] {
+	return pulumix.Output[*GameServerCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The resource name of the game server cluster
@@ -356,6 +381,12 @@ func (o GameServerClusterArrayOutput) ToGameServerClusterArrayOutputWithContext(
 	return o
 }
 
+func (o GameServerClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GameServerCluster] {
+	return pulumix.Output[[]*GameServerCluster]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GameServerClusterArrayOutput) Index(i pulumi.IntInput) GameServerClusterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GameServerCluster {
 		return vs[0].([]*GameServerCluster)[vs[1].(int)]
@@ -374,6 +405,12 @@ func (o GameServerClusterMapOutput) ToGameServerClusterMapOutput() GameServerClu
 
 func (o GameServerClusterMapOutput) ToGameServerClusterMapOutputWithContext(ctx context.Context) GameServerClusterMapOutput {
 	return o
+}
+
+func (o GameServerClusterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GameServerCluster] {
+	return pulumix.Output[map[string]*GameServerCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GameServerClusterMapOutput) MapIndex(k pulumi.StringInput) GameServerClusterOutput {

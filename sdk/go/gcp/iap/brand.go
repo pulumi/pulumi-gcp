@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -244,6 +245,12 @@ func (i *Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandOutput)
 }
 
+func (i *Brand) ToOutput(ctx context.Context) pulumix.Output[*Brand] {
+	return pulumix.Output[*Brand]{
+		OutputState: i.ToBrandOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BrandArrayInput is an input type that accepts BrandArray and BrandArrayOutput values.
 // You can construct a concrete instance of `BrandArrayInput` via:
 //
@@ -267,6 +274,12 @@ func (i BrandArray) ToBrandArrayOutput() BrandArrayOutput {
 
 func (i BrandArray) ToBrandArrayOutputWithContext(ctx context.Context) BrandArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandArrayOutput)
+}
+
+func (i BrandArray) ToOutput(ctx context.Context) pulumix.Output[[]*Brand] {
+	return pulumix.Output[[]*Brand]{
+		OutputState: i.ToBrandArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BrandMapInput is an input type that accepts BrandMap and BrandMapOutput values.
@@ -294,6 +307,12 @@ func (i BrandMap) ToBrandMapOutputWithContext(ctx context.Context) BrandMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BrandMapOutput)
 }
 
+func (i BrandMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Brand] {
+	return pulumix.Output[map[string]*Brand]{
+		OutputState: i.ToBrandMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BrandOutput struct{ *pulumi.OutputState }
 
 func (BrandOutput) ElementType() reflect.Type {
@@ -306,6 +325,12 @@ func (o BrandOutput) ToBrandOutput() BrandOutput {
 
 func (o BrandOutput) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return o
+}
+
+func (o BrandOutput) ToOutput(ctx context.Context) pulumix.Output[*Brand] {
+	return pulumix.Output[*Brand]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Application name displayed on OAuth consent screen.
@@ -357,6 +382,12 @@ func (o BrandArrayOutput) ToBrandArrayOutputWithContext(ctx context.Context) Bra
 	return o
 }
 
+func (o BrandArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Brand] {
+	return pulumix.Output[[]*Brand]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BrandArrayOutput) Index(i pulumi.IntInput) BrandOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Brand {
 		return vs[0].([]*Brand)[vs[1].(int)]
@@ -375,6 +406,12 @@ func (o BrandMapOutput) ToBrandMapOutput() BrandMapOutput {
 
 func (o BrandMapOutput) ToBrandMapOutputWithContext(ctx context.Context) BrandMapOutput {
 	return o
+}
+
+func (o BrandMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Brand] {
+	return pulumix.Output[map[string]*Brand]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BrandMapOutput) MapIndex(k pulumi.StringInput) BrandOutput {

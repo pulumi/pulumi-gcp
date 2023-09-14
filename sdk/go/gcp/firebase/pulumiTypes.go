@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -102,6 +103,12 @@ func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigOutput)
 }
 
+func (i ExtensionsInstanceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceConfig] {
+	return pulumix.Output[ExtensionsInstanceConfig]{
+		OutputState: i.ToExtensionsInstanceConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput {
 	return i.ToExtensionsInstanceConfigPtrOutputWithContext(context.Background())
 }
@@ -143,6 +150,12 @@ func (i *extensionsInstanceConfigPtrType) ToExtensionsInstanceConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigPtrOutput)
 }
 
+func (i *extensionsInstanceConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceConfig] {
+	return pulumix.Output[*ExtensionsInstanceConfig]{
+		OutputState: i.ToExtensionsInstanceConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExtensionsInstanceConfigOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceConfigOutput) ElementType() reflect.Type {
@@ -165,6 +178,12 @@ func (o ExtensionsInstanceConfigOutput) ToExtensionsInstanceConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceConfig) *ExtensionsInstanceConfig {
 		return &v
 	}).(ExtensionsInstanceConfigPtrOutput)
+}
+
+func (o ExtensionsInstanceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceConfig] {
+	return pulumix.Output[ExtensionsInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of extension events selected by consumer that extension is allowed to
@@ -236,6 +255,12 @@ func (o ExtensionsInstanceConfigPtrOutput) ToExtensionsInstanceConfigPtrOutput()
 
 func (o ExtensionsInstanceConfigPtrOutput) ToExtensionsInstanceConfigPtrOutputWithContext(ctx context.Context) ExtensionsInstanceConfigPtrOutput {
 	return o
+}
+
+func (o ExtensionsInstanceConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceConfig] {
+	return pulumix.Output[*ExtensionsInstanceConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionsInstanceConfigPtrOutput) Elem() ExtensionsInstanceConfigOutput {
@@ -391,6 +416,12 @@ func (i ExtensionsInstanceErrorStatusArgs) ToExtensionsInstanceErrorStatusOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceErrorStatusOutput)
 }
 
+func (i ExtensionsInstanceErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceErrorStatus] {
+	return pulumix.Output[ExtensionsInstanceErrorStatus]{
+		OutputState: i.ToExtensionsInstanceErrorStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExtensionsInstanceErrorStatusArrayInput is an input type that accepts ExtensionsInstanceErrorStatusArray and ExtensionsInstanceErrorStatusArrayOutput values.
 // You can construct a concrete instance of `ExtensionsInstanceErrorStatusArrayInput` via:
 //
@@ -416,6 +447,12 @@ func (i ExtensionsInstanceErrorStatusArray) ToExtensionsInstanceErrorStatusArray
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceErrorStatusArrayOutput)
 }
 
+func (i ExtensionsInstanceErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceErrorStatus] {
+	return pulumix.Output[[]ExtensionsInstanceErrorStatus]{
+		OutputState: i.ToExtensionsInstanceErrorStatusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExtensionsInstanceErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceErrorStatusOutput) ElementType() reflect.Type {
@@ -428,6 +465,12 @@ func (o ExtensionsInstanceErrorStatusOutput) ToExtensionsInstanceErrorStatusOutp
 
 func (o ExtensionsInstanceErrorStatusOutput) ToExtensionsInstanceErrorStatusOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusOutput {
 	return o
+}
+
+func (o ExtensionsInstanceErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceErrorStatus] {
+	return pulumix.Output[ExtensionsInstanceErrorStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The status code, which should be an enum value of google.rpc.Code.
@@ -457,6 +500,12 @@ func (o ExtensionsInstanceErrorStatusArrayOutput) ToExtensionsInstanceErrorStatu
 
 func (o ExtensionsInstanceErrorStatusArrayOutput) ToExtensionsInstanceErrorStatusArrayOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusArrayOutput {
 	return o
+}
+
+func (o ExtensionsInstanceErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceErrorStatus] {
+	return pulumix.Output[[]ExtensionsInstanceErrorStatus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionsInstanceErrorStatusArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceErrorStatusOutput {
@@ -510,6 +559,12 @@ func (i ExtensionsInstanceRuntimeDataArgs) ToExtensionsInstanceRuntimeDataOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataOutput)
 }
 
+func (i ExtensionsInstanceRuntimeDataArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeData] {
+	return pulumix.Output[ExtensionsInstanceRuntimeData]{
+		OutputState: i.ToExtensionsInstanceRuntimeDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ExtensionsInstanceRuntimeDataArrayInput is an input type that accepts ExtensionsInstanceRuntimeDataArray and ExtensionsInstanceRuntimeDataArrayOutput values.
 // You can construct a concrete instance of `ExtensionsInstanceRuntimeDataArrayInput` via:
 //
@@ -535,6 +590,12 @@ func (i ExtensionsInstanceRuntimeDataArray) ToExtensionsInstanceRuntimeDataArray
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataArrayOutput)
 }
 
+func (i ExtensionsInstanceRuntimeDataArray) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceRuntimeData] {
+	return pulumix.Output[[]ExtensionsInstanceRuntimeData]{
+		OutputState: i.ToExtensionsInstanceRuntimeDataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExtensionsInstanceRuntimeDataOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceRuntimeDataOutput) ElementType() reflect.Type {
@@ -547,6 +608,12 @@ func (o ExtensionsInstanceRuntimeDataOutput) ToExtensionsInstanceRuntimeDataOutp
 
 func (o ExtensionsInstanceRuntimeDataOutput) ToExtensionsInstanceRuntimeDataOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataOutput {
 	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeData] {
+	return pulumix.Output[ExtensionsInstanceRuntimeData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fatal error state for the extension instance
@@ -580,6 +647,12 @@ func (o ExtensionsInstanceRuntimeDataArrayOutput) ToExtensionsInstanceRuntimeDat
 
 func (o ExtensionsInstanceRuntimeDataArrayOutput) ToExtensionsInstanceRuntimeDataArrayOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataArrayOutput {
 	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExtensionsInstanceRuntimeData] {
+	return pulumix.Output[[]ExtensionsInstanceRuntimeData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionsInstanceRuntimeDataArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceRuntimeDataOutput {
@@ -625,6 +698,12 @@ func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntime
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorOutput)
 }
 
+func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataFatalError] {
+	return pulumix.Output[ExtensionsInstanceRuntimeDataFatalError]{
+		OutputState: i.ToExtensionsInstanceRuntimeDataFatalErrorOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
 	return i.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(context.Background())
 }
@@ -666,6 +745,12 @@ func (i *extensionsInstanceRuntimeDataFatalErrorPtrType) ToExtensionsInstanceRun
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
 }
 
+func (i *extensionsInstanceRuntimeDataFatalErrorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError] {
+	return pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError]{
+		OutputState: i.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExtensionsInstanceRuntimeDataFatalErrorOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceRuntimeDataFatalErrorOutput) ElementType() reflect.Type {
@@ -690,6 +775,12 @@ func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToExtensionsInstanceRunti
 	}).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
 }
 
+func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataFatalError] {
+	return pulumix.Output[ExtensionsInstanceRuntimeDataFatalError]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The error message. This is set by the extension developer to give
 // more detail on why the extension is unusable and must be re-installed
 // or reconfigured.
@@ -709,6 +800,12 @@ func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToExtensionsInstanceRu
 
 func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
 	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError] {
+	return pulumix.Output[*ExtensionsInstanceRuntimeDataFatalError]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) Elem() ExtensionsInstanceRuntimeDataFatalErrorOutput {
@@ -776,6 +873,12 @@ func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRu
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStateOutput)
 }
 
+func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState] {
+	return pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState]{
+		OutputState: i.ToExtensionsInstanceRuntimeDataProcessingStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
 	return i.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(context.Background())
 }
@@ -817,6 +920,12 @@ func (i *extensionsInstanceRuntimeDataProcessingStatePtrType) ToExtensionsInstan
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
 }
 
+func (i *extensionsInstanceRuntimeDataProcessingStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState] {
+	return pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState]{
+		OutputState: i.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ExtensionsInstanceRuntimeDataProcessingStateOutput struct{ *pulumi.OutputState }
 
 func (ExtensionsInstanceRuntimeDataProcessingStateOutput) ElementType() reflect.Type {
@@ -839,6 +948,12 @@ func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToExtensionsInstance
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceRuntimeDataProcessingState) *ExtensionsInstanceRuntimeDataProcessingState {
 		return &v
 	}).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState] {
+	return pulumix.Output[ExtensionsInstanceRuntimeDataProcessingState]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Details about the processing. e.g. This could include the type of
@@ -866,6 +981,12 @@ func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToExtensionsInsta
 
 func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
 	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState] {
+	return pulumix.Output[*ExtensionsInstanceRuntimeDataProcessingState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) Elem() ExtensionsInstanceRuntimeDataProcessingStateOutput {
@@ -946,6 +1067,12 @@ func (i HostingVersionConfigArgs) ToHostingVersionConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigOutput)
 }
 
+func (i HostingVersionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfig] {
+	return pulumix.Output[HostingVersionConfig]{
+		OutputState: i.ToHostingVersionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HostingVersionConfigArgs) ToHostingVersionConfigPtrOutput() HostingVersionConfigPtrOutput {
 	return i.ToHostingVersionConfigPtrOutputWithContext(context.Background())
 }
@@ -987,6 +1114,12 @@ func (i *hostingVersionConfigPtrType) ToHostingVersionConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigPtrOutput)
 }
 
+func (i *hostingVersionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfig] {
+	return pulumix.Output[*HostingVersionConfig]{
+		OutputState: i.ToHostingVersionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostingVersionConfigOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigOutput) ElementType() reflect.Type {
@@ -1009,6 +1142,12 @@ func (o HostingVersionConfigOutput) ToHostingVersionConfigPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostingVersionConfig) *HostingVersionConfig {
 		return &v
 	}).(HostingVersionConfigPtrOutput)
+}
+
+func (o HostingVersionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfig] {
+	return pulumix.Output[HostingVersionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -1037,6 +1176,12 @@ func (o HostingVersionConfigPtrOutput) ToHostingVersionConfigPtrOutput() Hosting
 
 func (o HostingVersionConfigPtrOutput) ToHostingVersionConfigPtrOutputWithContext(ctx context.Context) HostingVersionConfigPtrOutput {
 	return o
+}
+
+func (o HostingVersionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfig] {
+	return pulumix.Output[*HostingVersionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingVersionConfigPtrOutput) Elem() HostingVersionConfigOutput {
@@ -1148,6 +1293,12 @@ func (i HostingVersionConfigRedirectArgs) ToHostingVersionConfigRedirectOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRedirectOutput)
 }
 
+func (i HostingVersionConfigRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRedirect] {
+	return pulumix.Output[HostingVersionConfigRedirect]{
+		OutputState: i.ToHostingVersionConfigRedirectOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostingVersionConfigRedirectArrayInput is an input type that accepts HostingVersionConfigRedirectArray and HostingVersionConfigRedirectArrayOutput values.
 // You can construct a concrete instance of `HostingVersionConfigRedirectArrayInput` via:
 //
@@ -1173,6 +1324,12 @@ func (i HostingVersionConfigRedirectArray) ToHostingVersionConfigRedirectArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRedirectArrayOutput)
 }
 
+func (i HostingVersionConfigRedirectArray) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRedirect] {
+	return pulumix.Output[[]HostingVersionConfigRedirect]{
+		OutputState: i.ToHostingVersionConfigRedirectArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostingVersionConfigRedirectOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigRedirectOutput) ElementType() reflect.Type {
@@ -1185,6 +1342,12 @@ func (o HostingVersionConfigRedirectOutput) ToHostingVersionConfigRedirectOutput
 
 func (o HostingVersionConfigRedirectOutput) ToHostingVersionConfigRedirectOutputWithContext(ctx context.Context) HostingVersionConfigRedirectOutput {
 	return o
+}
+
+func (o HostingVersionConfigRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRedirect] {
+	return pulumix.Output[HostingVersionConfigRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The user-supplied glob to match against the request URL path.
@@ -1237,6 +1400,12 @@ func (o HostingVersionConfigRedirectArrayOutput) ToHostingVersionConfigRedirectA
 
 func (o HostingVersionConfigRedirectArrayOutput) ToHostingVersionConfigRedirectArrayOutputWithContext(ctx context.Context) HostingVersionConfigRedirectArrayOutput {
 	return o
+}
+
+func (o HostingVersionConfigRedirectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRedirect] {
+	return pulumix.Output[[]HostingVersionConfigRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingVersionConfigRedirectArrayOutput) Index(i pulumi.IntInput) HostingVersionConfigRedirectOutput {
@@ -1292,6 +1461,12 @@ func (i HostingVersionConfigRewriteArgs) ToHostingVersionConfigRewriteOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteOutput)
 }
 
+func (i HostingVersionConfigRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewrite] {
+	return pulumix.Output[HostingVersionConfigRewrite]{
+		OutputState: i.ToHostingVersionConfigRewriteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostingVersionConfigRewriteArrayInput is an input type that accepts HostingVersionConfigRewriteArray and HostingVersionConfigRewriteArrayOutput values.
 // You can construct a concrete instance of `HostingVersionConfigRewriteArrayInput` via:
 //
@@ -1317,6 +1492,12 @@ func (i HostingVersionConfigRewriteArray) ToHostingVersionConfigRewriteArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteArrayOutput)
 }
 
+func (i HostingVersionConfigRewriteArray) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRewrite] {
+	return pulumix.Output[[]HostingVersionConfigRewrite]{
+		OutputState: i.ToHostingVersionConfigRewriteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostingVersionConfigRewriteOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigRewriteOutput) ElementType() reflect.Type {
@@ -1329,6 +1510,12 @@ func (o HostingVersionConfigRewriteOutput) ToHostingVersionConfigRewriteOutput()
 
 func (o HostingVersionConfigRewriteOutput) ToHostingVersionConfigRewriteOutputWithContext(ctx context.Context) HostingVersionConfigRewriteOutput {
 	return o
+}
+
+func (o HostingVersionConfigRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewrite] {
+	return pulumix.Output[HostingVersionConfigRewrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The function to proxy requests to. Must match the exported function name exactly.
@@ -1364,6 +1551,12 @@ func (o HostingVersionConfigRewriteArrayOutput) ToHostingVersionConfigRewriteArr
 
 func (o HostingVersionConfigRewriteArrayOutput) ToHostingVersionConfigRewriteArrayOutputWithContext(ctx context.Context) HostingVersionConfigRewriteArrayOutput {
 	return o
+}
+
+func (o HostingVersionConfigRewriteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HostingVersionConfigRewrite] {
+	return pulumix.Output[[]HostingVersionConfigRewrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingVersionConfigRewriteArrayOutput) Index(i pulumi.IntInput) HostingVersionConfigRewriteOutput {
@@ -1409,6 +1602,12 @@ func (i HostingVersionConfigRewriteRunArgs) ToHostingVersionConfigRewriteRunOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteRunOutput)
 }
 
+func (i HostingVersionConfigRewriteRunArgs) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewriteRun] {
+	return pulumix.Output[HostingVersionConfigRewriteRun]{
+		OutputState: i.ToHostingVersionConfigRewriteRunOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HostingVersionConfigRewriteRunArgs) ToHostingVersionConfigRewriteRunPtrOutput() HostingVersionConfigRewriteRunPtrOutput {
 	return i.ToHostingVersionConfigRewriteRunPtrOutputWithContext(context.Background())
 }
@@ -1450,6 +1649,12 @@ func (i *hostingVersionConfigRewriteRunPtrType) ToHostingVersionConfigRewriteRun
 	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigRewriteRunPtrOutput)
 }
 
+func (i *hostingVersionConfigRewriteRunPtrType) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfigRewriteRun] {
+	return pulumix.Output[*HostingVersionConfigRewriteRun]{
+		OutputState: i.ToHostingVersionConfigRewriteRunPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostingVersionConfigRewriteRunOutput struct{ *pulumi.OutputState }
 
 func (HostingVersionConfigRewriteRunOutput) ElementType() reflect.Type {
@@ -1474,6 +1679,12 @@ func (o HostingVersionConfigRewriteRunOutput) ToHostingVersionConfigRewriteRunPt
 	}).(HostingVersionConfigRewriteRunPtrOutput)
 }
 
+func (o HostingVersionConfigRewriteRunOutput) ToOutput(ctx context.Context) pulumix.Output[HostingVersionConfigRewriteRun] {
+	return pulumix.Output[HostingVersionConfigRewriteRun]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 func (o HostingVersionConfigRewriteRunOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HostingVersionConfigRewriteRun) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -1496,6 +1707,12 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ToHostingVersionConfigRewriteRu
 
 func (o HostingVersionConfigRewriteRunPtrOutput) ToHostingVersionConfigRewriteRunPtrOutputWithContext(ctx context.Context) HostingVersionConfigRewriteRunPtrOutput {
 	return o
+}
+
+func (o HostingVersionConfigRewriteRunPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingVersionConfigRewriteRun] {
+	return pulumix.Output[*HostingVersionConfigRewriteRun]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostingVersionConfigRewriteRunPtrOutput) Elem() HostingVersionConfigRewriteRunOutput {

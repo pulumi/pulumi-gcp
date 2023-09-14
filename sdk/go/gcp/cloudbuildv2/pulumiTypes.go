@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i ConnectionGithubConfigArgs) ToConnectionGithubConfigOutput() ConnectionG
 
 func (i ConnectionGithubConfigArgs) ToConnectionGithubConfigOutputWithContext(ctx context.Context) ConnectionGithubConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubConfigOutput)
+}
+
+func (i ConnectionGithubConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubConfig] {
+	return pulumix.Output[ConnectionGithubConfig]{
+		OutputState: i.ToConnectionGithubConfigOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ConnectionGithubConfigArgs) ToConnectionGithubConfigPtrOutput() ConnectionGithubConfigPtrOutput {
@@ -91,6 +98,12 @@ func (i *connectionGithubConfigPtrType) ToConnectionGithubConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubConfigPtrOutput)
 }
 
+func (i *connectionGithubConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubConfig] {
+	return pulumix.Output[*ConnectionGithubConfig]{
+		OutputState: i.ToConnectionGithubConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGithubConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGithubConfigOutput) ElementType() reflect.Type {
@@ -113,6 +126,12 @@ func (o ConnectionGithubConfigOutput) ToConnectionGithubConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGithubConfig) *ConnectionGithubConfig {
 		return &v
 	}).(ConnectionGithubConfigPtrOutput)
+}
+
+func (o ConnectionGithubConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubConfig] {
+	return pulumix.Output[ConnectionGithubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // GitHub App installation id.
@@ -139,6 +158,12 @@ func (o ConnectionGithubConfigPtrOutput) ToConnectionGithubConfigPtrOutput() Con
 
 func (o ConnectionGithubConfigPtrOutput) ToConnectionGithubConfigPtrOutputWithContext(ctx context.Context) ConnectionGithubConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionGithubConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubConfig] {
+	return pulumix.Output[*ConnectionGithubConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGithubConfigPtrOutput) Elem() ConnectionGithubConfigOutput {
@@ -208,6 +233,12 @@ func (i ConnectionGithubConfigAuthorizerCredentialArgs) ToConnectionGithubConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubConfigAuthorizerCredentialOutput)
 }
 
+func (i ConnectionGithubConfigAuthorizerCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubConfigAuthorizerCredential] {
+	return pulumix.Output[ConnectionGithubConfigAuthorizerCredential]{
+		OutputState: i.ToConnectionGithubConfigAuthorizerCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGithubConfigAuthorizerCredentialArgs) ToConnectionGithubConfigAuthorizerCredentialPtrOutput() ConnectionGithubConfigAuthorizerCredentialPtrOutput {
 	return i.ToConnectionGithubConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
 }
@@ -249,6 +280,12 @@ func (i *connectionGithubConfigAuthorizerCredentialPtrType) ToConnectionGithubCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubConfigAuthorizerCredentialPtrOutput)
 }
 
+func (i *connectionGithubConfigAuthorizerCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubConfigAuthorizerCredential] {
+	return pulumix.Output[*ConnectionGithubConfigAuthorizerCredential]{
+		OutputState: i.ToConnectionGithubConfigAuthorizerCredentialPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGithubConfigAuthorizerCredentialOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGithubConfigAuthorizerCredentialOutput) ElementType() reflect.Type {
@@ -273,6 +310,12 @@ func (o ConnectionGithubConfigAuthorizerCredentialOutput) ToConnectionGithubConf
 	}).(ConnectionGithubConfigAuthorizerCredentialPtrOutput)
 }
 
+func (o ConnectionGithubConfigAuthorizerCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubConfigAuthorizerCredential] {
+	return pulumix.Output[ConnectionGithubConfigAuthorizerCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 func (o ConnectionGithubConfigAuthorizerCredentialOutput) OauthTokenSecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubConfigAuthorizerCredential) *string { return v.OauthTokenSecretVersion }).(pulumi.StringPtrOutput)
@@ -295,6 +338,12 @@ func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) ToConnectionGithubC
 
 func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) ToConnectionGithubConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGithubConfigAuthorizerCredentialPtrOutput {
 	return o
+}
+
+func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubConfigAuthorizerCredential] {
+	return pulumix.Output[*ConnectionGithubConfigAuthorizerCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) Elem() ConnectionGithubConfigAuthorizerCredentialOutput {
@@ -388,6 +437,12 @@ func (i ConnectionGithubEnterpriseConfigArgs) ToConnectionGithubEnterpriseConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubEnterpriseConfigOutput)
 }
 
+func (i ConnectionGithubEnterpriseConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubEnterpriseConfig] {
+	return pulumix.Output[ConnectionGithubEnterpriseConfig]{
+		OutputState: i.ToConnectionGithubEnterpriseConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGithubEnterpriseConfigArgs) ToConnectionGithubEnterpriseConfigPtrOutput() ConnectionGithubEnterpriseConfigPtrOutput {
 	return i.ToConnectionGithubEnterpriseConfigPtrOutputWithContext(context.Background())
 }
@@ -429,6 +484,12 @@ func (i *connectionGithubEnterpriseConfigPtrType) ToConnectionGithubEnterpriseCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubEnterpriseConfigPtrOutput)
 }
 
+func (i *connectionGithubEnterpriseConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubEnterpriseConfig] {
+	return pulumix.Output[*ConnectionGithubEnterpriseConfig]{
+		OutputState: i.ToConnectionGithubEnterpriseConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGithubEnterpriseConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGithubEnterpriseConfigOutput) ElementType() reflect.Type {
@@ -451,6 +512,12 @@ func (o ConnectionGithubEnterpriseConfigOutput) ToConnectionGithubEnterpriseConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGithubEnterpriseConfig) *ConnectionGithubEnterpriseConfig {
 		return &v
 	}).(ConnectionGithubEnterpriseConfigPtrOutput)
+}
+
+func (o ConnectionGithubEnterpriseConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubEnterpriseConfig] {
+	return pulumix.Output[ConnectionGithubEnterpriseConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of the GitHub App created from the manifest.
@@ -507,6 +574,12 @@ func (o ConnectionGithubEnterpriseConfigPtrOutput) ToConnectionGithubEnterpriseC
 
 func (o ConnectionGithubEnterpriseConfigPtrOutput) ToConnectionGithubEnterpriseConfigPtrOutputWithContext(ctx context.Context) ConnectionGithubEnterpriseConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionGithubEnterpriseConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubEnterpriseConfig] {
+	return pulumix.Output[*ConnectionGithubEnterpriseConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGithubEnterpriseConfigPtrOutput) Elem() ConnectionGithubEnterpriseConfigOutput {
@@ -632,6 +705,12 @@ func (i ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs) ToConnection
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput)
 }
 
+func (i ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubEnterpriseConfigServiceDirectoryConfig] {
+	return pulumix.Output[ConnectionGithubEnterpriseConfigServiceDirectoryConfig]{
+		OutputState: i.ToConnectionGithubEnterpriseConfigServiceDirectoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs) ToConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput() ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput {
 	return i.ToConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
 }
@@ -673,6 +752,12 @@ func (i *connectionGithubEnterpriseConfigServiceDirectoryConfigPtrType) ToConnec
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput)
 }
 
+func (i *connectionGithubEnterpriseConfigServiceDirectoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubEnterpriseConfigServiceDirectoryConfig] {
+	return pulumix.Output[*ConnectionGithubEnterpriseConfigServiceDirectoryConfig]{
+		OutputState: i.ToConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput) ElementType() reflect.Type {
@@ -697,6 +782,12 @@ func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput) ToConnecti
 	}).(ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput)
 }
 
+func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGithubEnterpriseConfigServiceDirectoryConfig] {
+	return pulumix.Output[ConnectionGithubEnterpriseConfigServiceDirectoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionGithubEnterpriseConfigServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
@@ -714,6 +805,12 @@ func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) ToConne
 
 func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) ToConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGithubEnterpriseConfigServiceDirectoryConfig] {
+	return pulumix.Output[*ConnectionGithubEnterpriseConfigServiceDirectoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) Elem() ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput {
@@ -793,6 +890,12 @@ func (i ConnectionGitlabConfigArgs) ToConnectionGitlabConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigOutput)
 }
 
+func (i ConnectionGitlabConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfig] {
+	return pulumix.Output[ConnectionGitlabConfig]{
+		OutputState: i.ToConnectionGitlabConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGitlabConfigArgs) ToConnectionGitlabConfigPtrOutput() ConnectionGitlabConfigPtrOutput {
 	return i.ToConnectionGitlabConfigPtrOutputWithContext(context.Background())
 }
@@ -834,6 +937,12 @@ func (i *connectionGitlabConfigPtrType) ToConnectionGitlabConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigPtrOutput)
 }
 
+func (i *connectionGitlabConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfig] {
+	return pulumix.Output[*ConnectionGitlabConfig]{
+		OutputState: i.ToConnectionGitlabConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGitlabConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGitlabConfigOutput) ElementType() reflect.Type {
@@ -856,6 +965,12 @@ func (o ConnectionGitlabConfigOutput) ToConnectionGitlabConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGitlabConfig) *ConnectionGitlabConfig {
 		return &v
 	}).(ConnectionGitlabConfigPtrOutput)
+}
+
+func (o ConnectionGitlabConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfig] {
+	return pulumix.Output[ConnectionGitlabConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. A GitLab personal access token with the `api` scope access.
@@ -911,6 +1026,12 @@ func (o ConnectionGitlabConfigPtrOutput) ToConnectionGitlabConfigPtrOutput() Con
 
 func (o ConnectionGitlabConfigPtrOutput) ToConnectionGitlabConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionGitlabConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfig] {
+	return pulumix.Output[*ConnectionGitlabConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGitlabConfigPtrOutput) Elem() ConnectionGitlabConfigOutput {
@@ -1030,6 +1151,12 @@ func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToConnectionGitlabConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigAuthorizerCredentialOutput)
 }
 
+func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfigAuthorizerCredential] {
+	return pulumix.Output[ConnectionGitlabConfigAuthorizerCredential]{
+		OutputState: i.ToConnectionGitlabConfigAuthorizerCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToConnectionGitlabConfigAuthorizerCredentialPtrOutput() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
 	return i.ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
 }
@@ -1071,6 +1198,12 @@ func (i *connectionGitlabConfigAuthorizerCredentialPtrType) ToConnectionGitlabCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigAuthorizerCredentialPtrOutput)
 }
 
+func (i *connectionGitlabConfigAuthorizerCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfigAuthorizerCredential] {
+	return pulumix.Output[*ConnectionGitlabConfigAuthorizerCredential]{
+		OutputState: i.ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGitlabConfigAuthorizerCredentialOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGitlabConfigAuthorizerCredentialOutput) ElementType() reflect.Type {
@@ -1095,6 +1228,12 @@ func (o ConnectionGitlabConfigAuthorizerCredentialOutput) ToConnectionGitlabConf
 	}).(ConnectionGitlabConfigAuthorizerCredentialPtrOutput)
 }
 
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfigAuthorizerCredential] {
+	return pulumix.Output[ConnectionGitlabConfigAuthorizerCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 func (o ConnectionGitlabConfigAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
@@ -1117,6 +1256,12 @@ func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) ToConnectionGitlabC
 
 func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
 	return o
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfigAuthorizerCredential] {
+	return pulumix.Output[*ConnectionGitlabConfigAuthorizerCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) Elem() ConnectionGitlabConfigAuthorizerCredentialOutput {
@@ -1190,6 +1335,12 @@ func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToConnectionGitlabCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigReadAuthorizerCredentialOutput)
 }
 
+func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfigReadAuthorizerCredential] {
+	return pulumix.Output[ConnectionGitlabConfigReadAuthorizerCredential]{
+		OutputState: i.ToConnectionGitlabConfigReadAuthorizerCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutput() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
 	return i.ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
 }
@@ -1231,6 +1382,12 @@ func (i *connectionGitlabConfigReadAuthorizerCredentialPtrType) ToConnectionGitl
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput)
 }
 
+func (i *connectionGitlabConfigReadAuthorizerCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfigReadAuthorizerCredential] {
+	return pulumix.Output[*ConnectionGitlabConfigReadAuthorizerCredential]{
+		OutputState: i.ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGitlabConfigReadAuthorizerCredentialOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGitlabConfigReadAuthorizerCredentialOutput) ElementType() reflect.Type {
@@ -1253,6 +1410,12 @@ func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) ToConnectionGitlab
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGitlabConfigReadAuthorizerCredential) *ConnectionGitlabConfigReadAuthorizerCredential {
 		return &v
 	}).(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput)
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfigReadAuthorizerCredential] {
+	return pulumix.Output[ConnectionGitlabConfigReadAuthorizerCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
@@ -1279,6 +1442,12 @@ func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) ToConnectionGit
 
 func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
 	return o
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfigReadAuthorizerCredential] {
+	return pulumix.Output[*ConnectionGitlabConfigReadAuthorizerCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) Elem() ConnectionGitlabConfigReadAuthorizerCredentialOutput {
@@ -1346,6 +1515,12 @@ func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToConnectionGitlabConf
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigServiceDirectoryConfigOutput)
 }
 
+func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfigServiceDirectoryConfig] {
+	return pulumix.Output[ConnectionGitlabConfigServiceDirectoryConfig]{
+		OutputState: i.ToConnectionGitlabConfigServiceDirectoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutput() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
 	return i.ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1387,6 +1562,12 @@ func (i *connectionGitlabConfigServiceDirectoryConfigPtrType) ToConnectionGitlab
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput)
 }
 
+func (i *connectionGitlabConfigServiceDirectoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfigServiceDirectoryConfig] {
+	return pulumix.Output[*ConnectionGitlabConfigServiceDirectoryConfig]{
+		OutputState: i.ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionGitlabConfigServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGitlabConfigServiceDirectoryConfigOutput) ElementType() reflect.Type {
@@ -1411,6 +1592,12 @@ func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) ToConnectionGitlabCo
 	}).(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput)
 }
 
+func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionGitlabConfigServiceDirectoryConfig] {
+	return pulumix.Output[ConnectionGitlabConfigServiceDirectoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
 func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfigServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
@@ -1428,6 +1615,12 @@ func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) ToConnectionGitla
 
 func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
 	return o
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGitlabConfigServiceDirectoryConfig] {
+	return pulumix.Output[*ConnectionGitlabConfigServiceDirectoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) Elem() ConnectionGitlabConfigServiceDirectoryConfigOutput {
@@ -1485,6 +1678,12 @@ func (i ConnectionIAMBindingConditionArgs) ToConnectionIAMBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingConditionOutput)
 }
 
+func (i ConnectionIAMBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionIAMBindingCondition] {
+	return pulumix.Output[ConnectionIAMBindingCondition]{
+		OutputState: i.ToConnectionIAMBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionIAMBindingConditionArgs) ToConnectionIAMBindingConditionPtrOutput() ConnectionIAMBindingConditionPtrOutput {
 	return i.ToConnectionIAMBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1526,6 +1725,12 @@ func (i *connectionIAMBindingConditionPtrType) ToConnectionIAMBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingConditionPtrOutput)
 }
 
+func (i *connectionIAMBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIAMBindingCondition] {
+	return pulumix.Output[*ConnectionIAMBindingCondition]{
+		OutputState: i.ToConnectionIAMBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionIAMBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIAMBindingConditionOutput) ElementType() reflect.Type {
@@ -1548,6 +1753,12 @@ func (o ConnectionIAMBindingConditionOutput) ToConnectionIAMBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIAMBindingCondition) *ConnectionIAMBindingCondition {
 		return &v
 	}).(ConnectionIAMBindingConditionPtrOutput)
+}
+
+func (o ConnectionIAMBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionIAMBindingCondition] {
+	return pulumix.Output[ConnectionIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1574,6 +1785,12 @@ func (o ConnectionIAMBindingConditionPtrOutput) ToConnectionIAMBindingConditionP
 
 func (o ConnectionIAMBindingConditionPtrOutput) ToConnectionIAMBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionPtrOutput {
 	return o
+}
+
+func (o ConnectionIAMBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIAMBindingCondition] {
+	return pulumix.Output[*ConnectionIAMBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIAMBindingConditionPtrOutput) Elem() ConnectionIAMBindingConditionOutput {
@@ -1648,6 +1865,12 @@ func (i ConnectionIAMMemberConditionArgs) ToConnectionIAMMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMMemberConditionOutput)
 }
 
+func (i ConnectionIAMMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionIAMMemberCondition] {
+	return pulumix.Output[ConnectionIAMMemberCondition]{
+		OutputState: i.ToConnectionIAMMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ConnectionIAMMemberConditionArgs) ToConnectionIAMMemberConditionPtrOutput() ConnectionIAMMemberConditionPtrOutput {
 	return i.ToConnectionIAMMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1689,6 +1912,12 @@ func (i *connectionIAMMemberConditionPtrType) ToConnectionIAMMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMMemberConditionPtrOutput)
 }
 
+func (i *connectionIAMMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIAMMemberCondition] {
+	return pulumix.Output[*ConnectionIAMMemberCondition]{
+		OutputState: i.ToConnectionIAMMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionIAMMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ConnectionIAMMemberConditionOutput) ElementType() reflect.Type {
@@ -1711,6 +1940,12 @@ func (o ConnectionIAMMemberConditionOutput) ToConnectionIAMMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIAMMemberCondition) *ConnectionIAMMemberCondition {
 		return &v
 	}).(ConnectionIAMMemberConditionPtrOutput)
+}
+
+func (o ConnectionIAMMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionIAMMemberCondition] {
+	return pulumix.Output[ConnectionIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1737,6 +1972,12 @@ func (o ConnectionIAMMemberConditionPtrOutput) ToConnectionIAMMemberConditionPtr
 
 func (o ConnectionIAMMemberConditionPtrOutput) ToConnectionIAMMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionPtrOutput {
 	return o
+}
+
+func (o ConnectionIAMMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionIAMMemberCondition] {
+	return pulumix.Output[*ConnectionIAMMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionIAMMemberConditionPtrOutput) Elem() ConnectionIAMMemberConditionOutput {
@@ -1811,6 +2052,12 @@ func (i ConnectionInstallationStateArgs) ToConnectionInstallationStateOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionInstallationStateOutput)
 }
 
+func (i ConnectionInstallationStateArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectionInstallationState] {
+	return pulumix.Output[ConnectionInstallationState]{
+		OutputState: i.ToConnectionInstallationStateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConnectionInstallationStateArrayInput is an input type that accepts ConnectionInstallationStateArray and ConnectionInstallationStateArrayOutput values.
 // You can construct a concrete instance of `ConnectionInstallationStateArrayInput` via:
 //
@@ -1836,6 +2083,12 @@ func (i ConnectionInstallationStateArray) ToConnectionInstallationStateArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionInstallationStateArrayOutput)
 }
 
+func (i ConnectionInstallationStateArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionInstallationState] {
+	return pulumix.Output[[]ConnectionInstallationState]{
+		OutputState: i.ToConnectionInstallationStateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConnectionInstallationStateOutput struct{ *pulumi.OutputState }
 
 func (ConnectionInstallationStateOutput) ElementType() reflect.Type {
@@ -1848,6 +2101,12 @@ func (o ConnectionInstallationStateOutput) ToConnectionInstallationStateOutput()
 
 func (o ConnectionInstallationStateOutput) ToConnectionInstallationStateOutputWithContext(ctx context.Context) ConnectionInstallationStateOutput {
 	return o
+}
+
+func (o ConnectionInstallationStateOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionInstallationState] {
+	return pulumix.Output[ConnectionInstallationState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionInstallationStateOutput) ActionUri() pulumi.StringPtrOutput {
@@ -1874,6 +2133,12 @@ func (o ConnectionInstallationStateArrayOutput) ToConnectionInstallationStateArr
 
 func (o ConnectionInstallationStateArrayOutput) ToConnectionInstallationStateArrayOutputWithContext(ctx context.Context) ConnectionInstallationStateArrayOutput {
 	return o
+}
+
+func (o ConnectionInstallationStateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectionInstallationState] {
+	return pulumix.Output[[]ConnectionInstallationState]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConnectionInstallationStateArrayOutput) Index(i pulumi.IntInput) ConnectionInstallationStateOutput {

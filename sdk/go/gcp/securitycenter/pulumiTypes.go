@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutput() I
 
 func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionOutputWithContext(ctx context.Context) InstanceIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionOutput)
+}
+
+func (i InstanceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
+	return pulumix.Output[InstanceIamBindingCondition]{
+		OutputState: i.ToInstanceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i InstanceIamBindingConditionArgs) ToInstanceIamBindingConditionPtrOutput() InstanceIamBindingConditionPtrOutput {
@@ -91,6 +98,12 @@ func (i *instanceIamBindingConditionPtrType) ToInstanceIamBindingConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingConditionPtrOutput)
 }
 
+func (i *instanceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
+	return pulumix.Output[*InstanceIamBindingCondition]{
+		OutputState: i.ToInstanceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -113,6 +126,12 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamBindingCondition) *InstanceIamBindingCondition {
 		return &v
 	}).(InstanceIamBindingConditionPtrOutput)
+}
+
+func (o InstanceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamBindingCondition] {
+	return pulumix.Output[InstanceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the instance.
@@ -140,6 +159,12 @@ func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOu
 
 func (o InstanceIamBindingConditionPtrOutput) ToInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) InstanceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o InstanceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamBindingCondition] {
+	return pulumix.Output[*InstanceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingConditionOutput {
@@ -217,6 +242,12 @@ func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionOutput)
 }
 
+func (i InstanceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
+	return pulumix.Output[InstanceIamMemberCondition]{
+		OutputState: i.ToInstanceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceIamMemberConditionArgs) ToInstanceIamMemberConditionPtrOutput() InstanceIamMemberConditionPtrOutput {
 	return i.ToInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -258,6 +289,12 @@ func (i *instanceIamMemberConditionPtrType) ToInstanceIamMemberConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberConditionPtrOutput)
 }
 
+func (i *instanceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
+	return pulumix.Output[*InstanceIamMemberCondition]{
+		OutputState: i.ToInstanceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -280,6 +317,12 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceIamMemberCondition) *InstanceIamMemberCondition {
 		return &v
 	}).(InstanceIamMemberConditionPtrOutput)
+}
+
+func (o InstanceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceIamMemberCondition] {
+	return pulumix.Output[InstanceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An optional description of the instance.
@@ -307,6 +350,12 @@ func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutp
 
 func (o InstanceIamMemberConditionPtrOutput) ToInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) InstanceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o InstanceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMemberCondition] {
+	return pulumix.Output[*InstanceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOutput {
@@ -420,6 +469,12 @@ func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConf
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigOutput)
 }
 
+func (i NotificationConfigStreamingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationConfigStreamingConfig] {
+	return pulumix.Output[NotificationConfigStreamingConfig]{
+		OutputState: i.ToNotificationConfigStreamingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NotificationConfigStreamingConfigArgs) ToNotificationConfigStreamingConfigPtrOutput() NotificationConfigStreamingConfigPtrOutput {
 	return i.ToNotificationConfigStreamingConfigPtrOutputWithContext(context.Background())
 }
@@ -461,6 +516,12 @@ func (i *notificationConfigStreamingConfigPtrType) ToNotificationConfigStreaming
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigStreamingConfigPtrOutput)
 }
 
+func (i *notificationConfigStreamingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfigStreamingConfig] {
+	return pulumix.Output[*NotificationConfigStreamingConfig]{
+		OutputState: i.ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationConfigStreamingConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigStreamingConfigOutput) ElementType() reflect.Type {
@@ -483,6 +544,12 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigStreamingConfig) *NotificationConfigStreamingConfig {
 		return &v
 	}).(NotificationConfigStreamingConfigPtrOutput)
+}
+
+func (o NotificationConfigStreamingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationConfigStreamingConfig] {
+	return pulumix.Output[NotificationConfigStreamingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Expression that defines the filter to apply across create/update
@@ -522,6 +589,12 @@ func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamin
 
 func (o NotificationConfigStreamingConfigPtrOutput) ToNotificationConfigStreamingConfigPtrOutputWithContext(ctx context.Context) NotificationConfigStreamingConfigPtrOutput {
 	return o
+}
+
+func (o NotificationConfigStreamingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationConfigStreamingConfig] {
+	return pulumix.Output[*NotificationConfigStreamingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStreamingConfigOutput {
@@ -601,6 +674,12 @@ func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionOutput)
 }
 
+func (i SourceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[SourceIamBindingCondition] {
+	return pulumix.Output[SourceIamBindingCondition]{
+		OutputState: i.ToSourceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SourceIamBindingConditionArgs) ToSourceIamBindingConditionPtrOutput() SourceIamBindingConditionPtrOutput {
 	return i.ToSourceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -642,6 +721,12 @@ func (i *sourceIamBindingConditionPtrType) ToSourceIamBindingConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamBindingConditionPtrOutput)
 }
 
+func (i *sourceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceIamBindingCondition] {
+	return pulumix.Output[*SourceIamBindingCondition]{
+		OutputState: i.ToSourceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SourceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (SourceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -664,6 +749,12 @@ func (o SourceIamBindingConditionOutput) ToSourceIamBindingConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceIamBindingCondition) *SourceIamBindingCondition {
 		return &v
 	}).(SourceIamBindingConditionPtrOutput)
+}
+
+func (o SourceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SourceIamBindingCondition] {
+	return pulumix.Output[SourceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the source (max of 1024 characters).
@@ -691,6 +782,12 @@ func (o SourceIamBindingConditionPtrOutput) ToSourceIamBindingConditionPtrOutput
 
 func (o SourceIamBindingConditionPtrOutput) ToSourceIamBindingConditionPtrOutputWithContext(ctx context.Context) SourceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o SourceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceIamBindingCondition] {
+	return pulumix.Output[*SourceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceIamBindingConditionPtrOutput) Elem() SourceIamBindingConditionOutput {
@@ -768,6 +865,12 @@ func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionOutput)
 }
 
+func (i SourceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[SourceIamMemberCondition] {
+	return pulumix.Output[SourceIamMemberCondition]{
+		OutputState: i.ToSourceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SourceIamMemberConditionArgs) ToSourceIamMemberConditionPtrOutput() SourceIamMemberConditionPtrOutput {
 	return i.ToSourceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -809,6 +912,12 @@ func (i *sourceIamMemberConditionPtrType) ToSourceIamMemberConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SourceIamMemberConditionPtrOutput)
 }
 
+func (i *sourceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceIamMemberCondition] {
+	return pulumix.Output[*SourceIamMemberCondition]{
+		OutputState: i.ToSourceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SourceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (SourceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -831,6 +940,12 @@ func (o SourceIamMemberConditionOutput) ToSourceIamMemberConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceIamMemberCondition) *SourceIamMemberCondition {
 		return &v
 	}).(SourceIamMemberConditionPtrOutput)
+}
+
+func (o SourceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SourceIamMemberCondition] {
+	return pulumix.Output[SourceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the source (max of 1024 characters).
@@ -858,6 +973,12 @@ func (o SourceIamMemberConditionPtrOutput) ToSourceIamMemberConditionPtrOutput()
 
 func (o SourceIamMemberConditionPtrOutput) ToSourceIamMemberConditionPtrOutputWithContext(ctx context.Context) SourceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o SourceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceIamMemberCondition] {
+	return pulumix.Output[*SourceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SourceIamMemberConditionPtrOutput) Elem() SourceIamMemberConditionOutput {

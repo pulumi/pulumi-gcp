@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides access to available Google Compute regions for a given project.
@@ -119,6 +120,12 @@ func (o GetRegionsResultOutput) ToGetRegionsResultOutput() GetRegionsResultOutpu
 
 func (o GetRegionsResultOutput) ToGetRegionsResultOutputWithContext(ctx context.Context) GetRegionsResultOutput {
 	return o
+}
+
+func (o GetRegionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionsResult] {
+	return pulumix.Output[GetRegionsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

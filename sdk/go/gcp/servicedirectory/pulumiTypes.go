@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i NamespaceIamBindingConditionArgs) ToNamespaceIamBindingConditionOutput()
 
 func (i NamespaceIamBindingConditionArgs) ToNamespaceIamBindingConditionOutputWithContext(ctx context.Context) NamespaceIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingConditionOutput)
+}
+
+func (i NamespaceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[NamespaceIamBindingCondition] {
+	return pulumix.Output[NamespaceIamBindingCondition]{
+		OutputState: i.ToNamespaceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i NamespaceIamBindingConditionArgs) ToNamespaceIamBindingConditionPtrOutput() NamespaceIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *namespaceIamBindingConditionPtrType) ToNamespaceIamBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingConditionPtrOutput)
 }
 
+func (i *namespaceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIamBindingCondition] {
+	return pulumix.Output[*NamespaceIamBindingCondition]{
+		OutputState: i.ToNamespaceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o NamespaceIamBindingConditionOutput) ToNamespaceIamBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamBindingCondition) *NamespaceIamBindingCondition {
 		return &v
 	}).(NamespaceIamBindingConditionPtrOutput)
+}
+
+func (o NamespaceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceIamBindingCondition] {
+	return pulumix.Output[NamespaceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o NamespaceIamBindingConditionPtrOutput) ToNamespaceIamBindingConditionPtr
 
 func (o NamespaceIamBindingConditionPtrOutput) ToNamespaceIamBindingConditionPtrOutputWithContext(ctx context.Context) NamespaceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o NamespaceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIamBindingCondition] {
+	return pulumix.Output[*NamespaceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceIamBindingConditionPtrOutput) Elem() NamespaceIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i NamespaceIamMemberConditionArgs) ToNamespaceIamMemberConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberConditionOutput)
 }
 
+func (i NamespaceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[NamespaceIamMemberCondition] {
+	return pulumix.Output[NamespaceIamMemberCondition]{
+		OutputState: i.ToNamespaceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NamespaceIamMemberConditionArgs) ToNamespaceIamMemberConditionPtrOutput() NamespaceIamMemberConditionPtrOutput {
 	return i.ToNamespaceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *namespaceIamMemberConditionPtrType) ToNamespaceIamMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberConditionPtrOutput)
 }
 
+func (i *namespaceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIamMemberCondition] {
+	return pulumix.Output[*NamespaceIamMemberCondition]{
+		OutputState: i.ToNamespaceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamespaceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (NamespaceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o NamespaceIamMemberConditionOutput) ToNamespaceIamMemberConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamespaceIamMemberCondition) *NamespaceIamMemberCondition {
 		return &v
 	}).(NamespaceIamMemberConditionPtrOutput)
+}
+
+func (o NamespaceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceIamMemberCondition] {
+	return pulumix.Output[NamespaceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o NamespaceIamMemberConditionPtrOutput) ToNamespaceIamMemberConditionPtrOu
 
 func (o NamespaceIamMemberConditionPtrOutput) ToNamespaceIamMemberConditionPtrOutputWithContext(ctx context.Context) NamespaceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o NamespaceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceIamMemberCondition] {
+	return pulumix.Output[*NamespaceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamespaceIamMemberConditionPtrOutput) Elem() NamespaceIamMemberConditionOutput {
@@ -374,6 +423,12 @@ func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionOutput)
 }
 
+func (i ServiceIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
+	return pulumix.Output[ServiceIamBindingCondition]{
+		OutputState: i.ToServiceIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceIamBindingConditionArgs) ToServiceIamBindingConditionPtrOutput() ServiceIamBindingConditionPtrOutput {
 	return i.ToServiceIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -415,6 +470,12 @@ func (i *serviceIamBindingConditionPtrType) ToServiceIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingConditionPtrOutput)
 }
 
+func (i *serviceIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
+	return pulumix.Output[*ServiceIamBindingCondition]{
+		OutputState: i.ToServiceIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamBindingConditionOutput) ElementType() reflect.Type {
@@ -437,6 +498,12 @@ func (o ServiceIamBindingConditionOutput) ToServiceIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamBindingCondition) *ServiceIamBindingCondition {
 		return &v
 	}).(ServiceIamBindingConditionPtrOutput)
+}
+
+func (o ServiceIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamBindingCondition] {
+	return pulumix.Output[ServiceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -463,6 +530,12 @@ func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutp
 
 func (o ServiceIamBindingConditionPtrOutput) ToServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) ServiceIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o ServiceIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamBindingCondition] {
+	return pulumix.Output[*ServiceIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamBindingConditionPtrOutput) Elem() ServiceIamBindingConditionOutput {
@@ -537,6 +610,12 @@ func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionOutput)
 }
 
+func (i ServiceIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
+	return pulumix.Output[ServiceIamMemberCondition]{
+		OutputState: i.ToServiceIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ServiceIamMemberConditionArgs) ToServiceIamMemberConditionPtrOutput() ServiceIamMemberConditionPtrOutput {
 	return i.ToServiceIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -578,6 +657,12 @@ func (i *serviceIamMemberConditionPtrType) ToServiceIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberConditionPtrOutput)
 }
 
+func (i *serviceIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
+	return pulumix.Output[*ServiceIamMemberCondition]{
+		OutputState: i.ToServiceIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ServiceIamMemberConditionOutput) ElementType() reflect.Type {
@@ -600,6 +685,12 @@ func (o ServiceIamMemberConditionOutput) ToServiceIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIamMemberCondition) *ServiceIamMemberCondition {
 		return &v
 	}).(ServiceIamMemberConditionPtrOutput)
+}
+
+func (o ServiceIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceIamMemberCondition] {
+	return pulumix.Output[ServiceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -626,6 +717,12 @@ func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutput
 
 func (o ServiceIamMemberConditionPtrOutput) ToServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) ServiceIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o ServiceIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceIamMemberCondition] {
+	return pulumix.Output[*ServiceIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServiceIamMemberConditionPtrOutput) Elem() ServiceIamMemberConditionOutput {

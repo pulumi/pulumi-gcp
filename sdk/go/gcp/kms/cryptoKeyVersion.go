@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A `CryptoKeyVersion` represents an individual cryptographic key, and the associated key material.
@@ -224,6 +225,12 @@ func (i *CryptoKeyVersion) ToCryptoKeyVersionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionOutput)
 }
 
+func (i *CryptoKeyVersion) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersion] {
+	return pulumix.Output[*CryptoKeyVersion]{
+		OutputState: i.ToCryptoKeyVersionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CryptoKeyVersionArrayInput is an input type that accepts CryptoKeyVersionArray and CryptoKeyVersionArrayOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i CryptoKeyVersionArray) ToCryptoKeyVersionArrayOutput() CryptoKeyVersionA
 
 func (i CryptoKeyVersionArray) ToCryptoKeyVersionArrayOutputWithContext(ctx context.Context) CryptoKeyVersionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionArrayOutput)
+}
+
+func (i CryptoKeyVersionArray) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKeyVersion] {
+	return pulumix.Output[[]*CryptoKeyVersion]{
+		OutputState: i.ToCryptoKeyVersionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CryptoKeyVersionMapInput is an input type that accepts CryptoKeyVersionMap and CryptoKeyVersionMapOutput values.
@@ -274,6 +287,12 @@ func (i CryptoKeyVersionMap) ToCryptoKeyVersionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyVersionMapOutput)
 }
 
+func (i CryptoKeyVersionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKeyVersion] {
+	return pulumix.Output[map[string]*CryptoKeyVersion]{
+		OutputState: i.ToCryptoKeyVersionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyVersionOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyVersionOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutput() CryptoKeyVersionOutpu
 
 func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutputWithContext(ctx context.Context) CryptoKeyVersionOutput {
 	return o
+}
+
+func (o CryptoKeyVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyVersion] {
+	return pulumix.Output[*CryptoKeyVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -343,6 +368,12 @@ func (o CryptoKeyVersionArrayOutput) ToCryptoKeyVersionArrayOutputWithContext(ct
 	return o
 }
 
+func (o CryptoKeyVersionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKeyVersion] {
+	return pulumix.Output[[]*CryptoKeyVersion]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CryptoKeyVersionArrayOutput) Index(i pulumi.IntInput) CryptoKeyVersionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyVersion {
 		return vs[0].([]*CryptoKeyVersion)[vs[1].(int)]
@@ -361,6 +392,12 @@ func (o CryptoKeyVersionMapOutput) ToCryptoKeyVersionMapOutput() CryptoKeyVersio
 
 func (o CryptoKeyVersionMapOutput) ToCryptoKeyVersionMapOutputWithContext(ctx context.Context) CryptoKeyVersionMapOutput {
 	return o
+}
+
+func (o CryptoKeyVersionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKeyVersion] {
+	return pulumix.Output[map[string]*CryptoKeyVersion]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyVersionMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyVersionOutput {

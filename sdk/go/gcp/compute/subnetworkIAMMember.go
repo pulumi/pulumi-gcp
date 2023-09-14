@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
@@ -519,6 +520,12 @@ func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberOutput)
 }
 
+func (i *SubnetworkIAMMember) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIAMMember] {
+	return pulumix.Output[*SubnetworkIAMMember]{
+		OutputState: i.ToSubnetworkIAMMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubnetworkIAMMemberArrayInput is an input type that accepts SubnetworkIAMMemberArray and SubnetworkIAMMemberArrayOutput values.
 // You can construct a concrete instance of `SubnetworkIAMMemberArrayInput` via:
 //
@@ -542,6 +549,12 @@ func (i SubnetworkIAMMemberArray) ToSubnetworkIAMMemberArrayOutput() SubnetworkI
 
 func (i SubnetworkIAMMemberArray) ToSubnetworkIAMMemberArrayOutputWithContext(ctx context.Context) SubnetworkIAMMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberArrayOutput)
+}
+
+func (i SubnetworkIAMMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetworkIAMMember] {
+	return pulumix.Output[[]*SubnetworkIAMMember]{
+		OutputState: i.ToSubnetworkIAMMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SubnetworkIAMMemberMapInput is an input type that accepts SubnetworkIAMMemberMap and SubnetworkIAMMemberMapOutput values.
@@ -569,6 +582,12 @@ func (i SubnetworkIAMMemberMap) ToSubnetworkIAMMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberMapOutput)
 }
 
+func (i SubnetworkIAMMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetworkIAMMember] {
+	return pulumix.Output[map[string]*SubnetworkIAMMember]{
+		OutputState: i.ToSubnetworkIAMMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubnetworkIAMMemberOutput struct{ *pulumi.OutputState }
 
 func (SubnetworkIAMMemberOutput) ElementType() reflect.Type {
@@ -581,6 +600,12 @@ func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberOutput() SubnetworkIAMMe
 
 func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberOutputWithContext(ctx context.Context) SubnetworkIAMMemberOutput {
 	return o
+}
+
+func (o SubnetworkIAMMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetworkIAMMember] {
+	return pulumix.Output[*SubnetworkIAMMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -650,6 +675,12 @@ func (o SubnetworkIAMMemberArrayOutput) ToSubnetworkIAMMemberArrayOutputWithCont
 	return o
 }
 
+func (o SubnetworkIAMMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetworkIAMMember] {
+	return pulumix.Output[[]*SubnetworkIAMMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetworkIAMMemberArrayOutput) Index(i pulumi.IntInput) SubnetworkIAMMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetworkIAMMember {
 		return vs[0].([]*SubnetworkIAMMember)[vs[1].(int)]
@@ -668,6 +699,12 @@ func (o SubnetworkIAMMemberMapOutput) ToSubnetworkIAMMemberMapOutput() Subnetwor
 
 func (o SubnetworkIAMMemberMapOutput) ToSubnetworkIAMMemberMapOutputWithContext(ctx context.Context) SubnetworkIAMMemberMapOutput {
 	return o
+}
+
+func (o SubnetworkIAMMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetworkIAMMember] {
+	return pulumix.Output[map[string]*SubnetworkIAMMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetworkIAMMemberMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIAMMemberOutput {

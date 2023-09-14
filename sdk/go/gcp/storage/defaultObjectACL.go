@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authoritatively manages the default object ACLs for a Google Cloud Storage bucket
@@ -174,6 +175,12 @@ func (i *DefaultObjectACL) ToDefaultObjectACLOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLOutput)
 }
 
+func (i *DefaultObjectACL) ToOutput(ctx context.Context) pulumix.Output[*DefaultObjectACL] {
+	return pulumix.Output[*DefaultObjectACL]{
+		OutputState: i.ToDefaultObjectACLOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DefaultObjectACLArrayInput is an input type that accepts DefaultObjectACLArray and DefaultObjectACLArrayOutput values.
 // You can construct a concrete instance of `DefaultObjectACLArrayInput` via:
 //
@@ -197,6 +204,12 @@ func (i DefaultObjectACLArray) ToDefaultObjectACLArrayOutput() DefaultObjectACLA
 
 func (i DefaultObjectACLArray) ToDefaultObjectACLArrayOutputWithContext(ctx context.Context) DefaultObjectACLArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLArrayOutput)
+}
+
+func (i DefaultObjectACLArray) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultObjectACL] {
+	return pulumix.Output[[]*DefaultObjectACL]{
+		OutputState: i.ToDefaultObjectACLArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DefaultObjectACLMapInput is an input type that accepts DefaultObjectACLMap and DefaultObjectACLMapOutput values.
@@ -224,6 +237,12 @@ func (i DefaultObjectACLMap) ToDefaultObjectACLMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLMapOutput)
 }
 
+func (i DefaultObjectACLMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultObjectACL] {
+	return pulumix.Output[map[string]*DefaultObjectACL]{
+		OutputState: i.ToDefaultObjectACLMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DefaultObjectACLOutput struct{ *pulumi.OutputState }
 
 func (DefaultObjectACLOutput) ElementType() reflect.Type {
@@ -236,6 +255,12 @@ func (o DefaultObjectACLOutput) ToDefaultObjectACLOutput() DefaultObjectACLOutpu
 
 func (o DefaultObjectACLOutput) ToDefaultObjectACLOutputWithContext(ctx context.Context) DefaultObjectACLOutput {
 	return o
+}
+
+func (o DefaultObjectACLOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultObjectACL] {
+	return pulumix.Output[*DefaultObjectACL]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the bucket it applies to.
@@ -264,6 +289,12 @@ func (o DefaultObjectACLArrayOutput) ToDefaultObjectACLArrayOutputWithContext(ct
 	return o
 }
 
+func (o DefaultObjectACLArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DefaultObjectACL] {
+	return pulumix.Output[[]*DefaultObjectACL]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DefaultObjectACLArrayOutput) Index(i pulumi.IntInput) DefaultObjectACLOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DefaultObjectACL {
 		return vs[0].([]*DefaultObjectACL)[vs[1].(int)]
@@ -282,6 +313,12 @@ func (o DefaultObjectACLMapOutput) ToDefaultObjectACLMapOutput() DefaultObjectAC
 
 func (o DefaultObjectACLMapOutput) ToDefaultObjectACLMapOutputWithContext(ctx context.Context) DefaultObjectACLMapOutput {
 	return o
+}
+
+func (o DefaultObjectACLMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DefaultObjectACL] {
+	return pulumix.Output[map[string]*DefaultObjectACL]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DefaultObjectACLMapOutput) MapIndex(k pulumi.StringInput) DefaultObjectACLOutput {

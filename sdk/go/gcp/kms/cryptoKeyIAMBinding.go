@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
@@ -459,6 +460,12 @@ func (i *CryptoKeyIAMBinding) ToCryptoKeyIAMBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingOutput)
 }
 
+func (i *CryptoKeyIAMBinding) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMBinding] {
+	return pulumix.Output[*CryptoKeyIAMBinding]{
+		OutputState: i.ToCryptoKeyIAMBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CryptoKeyIAMBindingArrayInput is an input type that accepts CryptoKeyIAMBindingArray and CryptoKeyIAMBindingArrayOutput values.
 // You can construct a concrete instance of `CryptoKeyIAMBindingArrayInput` via:
 //
@@ -482,6 +489,12 @@ func (i CryptoKeyIAMBindingArray) ToCryptoKeyIAMBindingArrayOutput() CryptoKeyIA
 
 func (i CryptoKeyIAMBindingArray) ToCryptoKeyIAMBindingArrayOutputWithContext(ctx context.Context) CryptoKeyIAMBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingArrayOutput)
+}
+
+func (i CryptoKeyIAMBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKeyIAMBinding] {
+	return pulumix.Output[[]*CryptoKeyIAMBinding]{
+		OutputState: i.ToCryptoKeyIAMBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CryptoKeyIAMBindingMapInput is an input type that accepts CryptoKeyIAMBindingMap and CryptoKeyIAMBindingMapOutput values.
@@ -509,6 +522,12 @@ func (i CryptoKeyIAMBindingMap) ToCryptoKeyIAMBindingMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingMapOutput)
 }
 
+func (i CryptoKeyIAMBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKeyIAMBinding] {
+	return pulumix.Output[map[string]*CryptoKeyIAMBinding]{
+		OutputState: i.ToCryptoKeyIAMBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CryptoKeyIAMBindingOutput struct{ *pulumi.OutputState }
 
 func (CryptoKeyIAMBindingOutput) ElementType() reflect.Type {
@@ -521,6 +540,12 @@ func (o CryptoKeyIAMBindingOutput) ToCryptoKeyIAMBindingOutput() CryptoKeyIAMBin
 
 func (o CryptoKeyIAMBindingOutput) ToCryptoKeyIAMBindingOutputWithContext(ctx context.Context) CryptoKeyIAMBindingOutput {
 	return o
+}
+
+func (o CryptoKeyIAMBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*CryptoKeyIAMBinding] {
+	return pulumix.Output[*CryptoKeyIAMBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -575,6 +600,12 @@ func (o CryptoKeyIAMBindingArrayOutput) ToCryptoKeyIAMBindingArrayOutputWithCont
 	return o
 }
 
+func (o CryptoKeyIAMBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CryptoKeyIAMBinding] {
+	return pulumix.Output[[]*CryptoKeyIAMBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CryptoKeyIAMBindingArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIAMBinding {
 		return vs[0].([]*CryptoKeyIAMBinding)[vs[1].(int)]
@@ -593,6 +624,12 @@ func (o CryptoKeyIAMBindingMapOutput) ToCryptoKeyIAMBindingMapOutput() CryptoKey
 
 func (o CryptoKeyIAMBindingMapOutput) ToCryptoKeyIAMBindingMapOutputWithContext(ctx context.Context) CryptoKeyIAMBindingMapOutput {
 	return o
+}
+
+func (o CryptoKeyIAMBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CryptoKeyIAMBinding] {
+	return pulumix.Output[map[string]*CryptoKeyIAMBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CryptoKeyIAMBindingMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMBindingOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Compute Region Instance Group within GCE.
@@ -130,6 +131,12 @@ func (o GetRegionInstanceGroupResultOutput) ToGetRegionInstanceGroupResultOutput
 
 func (o GetRegionInstanceGroupResultOutput) ToGetRegionInstanceGroupResultOutputWithContext(ctx context.Context) GetRegionInstanceGroupResultOutput {
 	return o
+}
+
+func (o GetRegionInstanceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegionInstanceGroupResult] {
+	return pulumix.Output[GetRegionInstanceGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

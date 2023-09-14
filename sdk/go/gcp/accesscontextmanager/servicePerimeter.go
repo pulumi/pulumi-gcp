@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ServicePerimeter describes a set of GCP resources which can freely import
@@ -681,6 +682,12 @@ func (i *ServicePerimeter) ToServicePerimeterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterOutput)
 }
 
+func (i *ServicePerimeter) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeter] {
+	return pulumix.Output[*ServicePerimeter]{
+		OutputState: i.ToServicePerimeterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServicePerimeterArrayInput is an input type that accepts ServicePerimeterArray and ServicePerimeterArrayOutput values.
 // You can construct a concrete instance of `ServicePerimeterArrayInput` via:
 //
@@ -704,6 +711,12 @@ func (i ServicePerimeterArray) ToServicePerimeterArrayOutput() ServicePerimeterA
 
 func (i ServicePerimeterArray) ToServicePerimeterArrayOutputWithContext(ctx context.Context) ServicePerimeterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterArrayOutput)
+}
+
+func (i ServicePerimeterArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeter] {
+	return pulumix.Output[[]*ServicePerimeter]{
+		OutputState: i.ToServicePerimeterArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServicePerimeterMapInput is an input type that accepts ServicePerimeterMap and ServicePerimeterMapOutput values.
@@ -731,6 +744,12 @@ func (i ServicePerimeterMap) ToServicePerimeterMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterMapOutput)
 }
 
+func (i ServicePerimeterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeter] {
+	return pulumix.Output[map[string]*ServicePerimeter]{
+		OutputState: i.ToServicePerimeterMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServicePerimeterOutput struct{ *pulumi.OutputState }
 
 func (ServicePerimeterOutput) ElementType() reflect.Type {
@@ -743,6 +762,12 @@ func (o ServicePerimeterOutput) ToServicePerimeterOutput() ServicePerimeterOutpu
 
 func (o ServicePerimeterOutput) ToServicePerimeterOutputWithContext(ctx context.Context) ServicePerimeterOutput {
 	return o
+}
+
+func (o ServicePerimeterOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePerimeter] {
+	return pulumix.Output[*ServicePerimeter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Time the AccessPolicy was created in UTC.
@@ -845,6 +870,12 @@ func (o ServicePerimeterArrayOutput) ToServicePerimeterArrayOutputWithContext(ct
 	return o
 }
 
+func (o ServicePerimeterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePerimeter] {
+	return pulumix.Output[[]*ServicePerimeter]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServicePerimeterArrayOutput) Index(i pulumi.IntInput) ServicePerimeterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePerimeter {
 		return vs[0].([]*ServicePerimeter)[vs[1].(int)]
@@ -863,6 +894,12 @@ func (o ServicePerimeterMapOutput) ToServicePerimeterMapOutput() ServicePerimete
 
 func (o ServicePerimeterMapOutput) ToServicePerimeterMapOutputWithContext(ctx context.Context) ServicePerimeterMapOutput {
 	return o
+}
+
+func (o ServicePerimeterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePerimeter] {
+	return pulumix.Output[map[string]*ServicePerimeter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePerimeterMapOutput) MapIndex(k pulumi.StringInput) ServicePerimeterOutput {

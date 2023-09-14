@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -272,6 +273,12 @@ func (i *NetworkAttachment) ToNetworkAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentOutput)
 }
 
+func (i *NetworkAttachment) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachment] {
+	return pulumix.Output[*NetworkAttachment]{
+		OutputState: i.ToNetworkAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NetworkAttachmentArrayInput is an input type that accepts NetworkAttachmentArray and NetworkAttachmentArrayOutput values.
 // You can construct a concrete instance of `NetworkAttachmentArrayInput` via:
 //
@@ -295,6 +302,12 @@ func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutput() NetworkAttachme
 
 func (i NetworkAttachmentArray) ToNetworkAttachmentArrayOutputWithContext(ctx context.Context) NetworkAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentArrayOutput)
+}
+
+func (i NetworkAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAttachment] {
+	return pulumix.Output[[]*NetworkAttachment]{
+		OutputState: i.ToNetworkAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NetworkAttachmentMapInput is an input type that accepts NetworkAttachmentMap and NetworkAttachmentMapOutput values.
@@ -322,6 +335,12 @@ func (i NetworkAttachmentMap) ToNetworkAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAttachmentMapOutput)
 }
 
+func (i NetworkAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAttachment] {
+	return pulumix.Output[map[string]*NetworkAttachment]{
+		OutputState: i.ToNetworkAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NetworkAttachmentOutput struct{ *pulumi.OutputState }
 
 func (NetworkAttachmentOutput) ElementType() reflect.Type {
@@ -334,6 +353,12 @@ func (o NetworkAttachmentOutput) ToNetworkAttachmentOutput() NetworkAttachmentOu
 
 func (o NetworkAttachmentOutput) ToNetworkAttachmentOutputWithContext(ctx context.Context) NetworkAttachmentOutput {
 	return o
+}
+
+func (o NetworkAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAttachment] {
+	return pulumix.Output[*NetworkAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An array of connections for all the producers connected to this network attachment.
@@ -434,6 +459,12 @@ func (o NetworkAttachmentArrayOutput) ToNetworkAttachmentArrayOutputWithContext(
 	return o
 }
 
+func (o NetworkAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NetworkAttachment] {
+	return pulumix.Output[[]*NetworkAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NetworkAttachmentArrayOutput) Index(i pulumi.IntInput) NetworkAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NetworkAttachment {
 		return vs[0].([]*NetworkAttachment)[vs[1].(int)]
@@ -452,6 +483,12 @@ func (o NetworkAttachmentMapOutput) ToNetworkAttachmentMapOutput() NetworkAttach
 
 func (o NetworkAttachmentMapOutput) ToNetworkAttachmentMapOutputWithContext(ctx context.Context) NetworkAttachmentMapOutput {
 	return o
+}
+
+func (o NetworkAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NetworkAttachment] {
+	return pulumix.Output[map[string]*NetworkAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NetworkAttachmentMapOutput) MapIndex(k pulumi.StringInput) NetworkAttachmentOutput {

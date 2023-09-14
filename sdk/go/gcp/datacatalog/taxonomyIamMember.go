@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog Taxonomy. Each of these resources serves a different use case:
@@ -363,6 +364,12 @@ func (i *TaxonomyIamMember) ToTaxonomyIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberOutput)
 }
 
+func (i *TaxonomyIamMember) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamMember] {
+	return pulumix.Output[*TaxonomyIamMember]{
+		OutputState: i.ToTaxonomyIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TaxonomyIamMemberArrayInput is an input type that accepts TaxonomyIamMemberArray and TaxonomyIamMemberArrayOutput values.
 // You can construct a concrete instance of `TaxonomyIamMemberArrayInput` via:
 //
@@ -386,6 +393,12 @@ func (i TaxonomyIamMemberArray) ToTaxonomyIamMemberArrayOutput() TaxonomyIamMemb
 
 func (i TaxonomyIamMemberArray) ToTaxonomyIamMemberArrayOutputWithContext(ctx context.Context) TaxonomyIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberArrayOutput)
+}
+
+func (i TaxonomyIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*TaxonomyIamMember] {
+	return pulumix.Output[[]*TaxonomyIamMember]{
+		OutputState: i.ToTaxonomyIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TaxonomyIamMemberMapInput is an input type that accepts TaxonomyIamMemberMap and TaxonomyIamMemberMapOutput values.
@@ -413,6 +426,12 @@ func (i TaxonomyIamMemberMap) ToTaxonomyIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamMemberMapOutput)
 }
 
+func (i TaxonomyIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaxonomyIamMember] {
+	return pulumix.Output[map[string]*TaxonomyIamMember]{
+		OutputState: i.ToTaxonomyIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TaxonomyIamMemberOutput struct{ *pulumi.OutputState }
 
 func (TaxonomyIamMemberOutput) ElementType() reflect.Type {
@@ -425,6 +444,12 @@ func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberOutput() TaxonomyIamMemberOu
 
 func (o TaxonomyIamMemberOutput) ToTaxonomyIamMemberOutputWithContext(ctx context.Context) TaxonomyIamMemberOutput {
 	return o
+}
+
+func (o TaxonomyIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*TaxonomyIamMember] {
+	return pulumix.Output[*TaxonomyIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamMemberOutput) Condition() TaxonomyIamMemberConditionPtrOutput {
@@ -488,6 +513,12 @@ func (o TaxonomyIamMemberArrayOutput) ToTaxonomyIamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o TaxonomyIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TaxonomyIamMember] {
+	return pulumix.Output[[]*TaxonomyIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TaxonomyIamMemberArrayOutput) Index(i pulumi.IntInput) TaxonomyIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TaxonomyIamMember {
 		return vs[0].([]*TaxonomyIamMember)[vs[1].(int)]
@@ -506,6 +537,12 @@ func (o TaxonomyIamMemberMapOutput) ToTaxonomyIamMemberMapOutput() TaxonomyIamMe
 
 func (o TaxonomyIamMemberMapOutput) ToTaxonomyIamMemberMapOutputWithContext(ctx context.Context) TaxonomyIamMemberMapOutput {
 	return o
+}
+
+func (o TaxonomyIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TaxonomyIamMember] {
+	return pulumix.Output[map[string]*TaxonomyIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TaxonomyIamMemberMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamMemberOutput {

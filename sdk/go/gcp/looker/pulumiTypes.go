@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (i InstanceAdminSettingsArgs) ToInstanceAdminSettingsOutput() InstanceAdmin
 
 func (i InstanceAdminSettingsArgs) ToInstanceAdminSettingsOutputWithContext(ctx context.Context) InstanceAdminSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdminSettingsOutput)
+}
+
+func (i InstanceAdminSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceAdminSettings] {
+	return pulumix.Output[InstanceAdminSettings]{
+		OutputState: i.ToInstanceAdminSettingsOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i InstanceAdminSettingsArgs) ToInstanceAdminSettingsPtrOutput() InstanceAdminSettingsPtrOutput {
@@ -85,6 +92,12 @@ func (i *instanceAdminSettingsPtrType) ToInstanceAdminSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceAdminSettingsPtrOutput)
 }
 
+func (i *instanceAdminSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceAdminSettings] {
+	return pulumix.Output[*InstanceAdminSettings]{
+		OutputState: i.ToInstanceAdminSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceAdminSettingsOutput struct{ *pulumi.OutputState }
 
 func (InstanceAdminSettingsOutput) ElementType() reflect.Type {
@@ -109,6 +122,12 @@ func (o InstanceAdminSettingsOutput) ToInstanceAdminSettingsPtrOutputWithContext
 	}).(InstanceAdminSettingsPtrOutput)
 }
 
+func (o InstanceAdminSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceAdminSettings] {
+	return pulumix.Output[InstanceAdminSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceAdminSettingsOutput) AllowedEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceAdminSettings) []string { return v.AllowedEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -125,6 +144,12 @@ func (o InstanceAdminSettingsPtrOutput) ToInstanceAdminSettingsPtrOutput() Insta
 
 func (o InstanceAdminSettingsPtrOutput) ToInstanceAdminSettingsPtrOutputWithContext(ctx context.Context) InstanceAdminSettingsPtrOutput {
 	return o
+}
+
+func (o InstanceAdminSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceAdminSettings] {
+	return pulumix.Output[*InstanceAdminSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceAdminSettingsPtrOutput) Elem() InstanceAdminSettingsOutput {
@@ -193,6 +218,12 @@ func (i InstanceDenyMaintenancePeriodArgs) ToInstanceDenyMaintenancePeriodOutput
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodOutput)
 }
 
+func (i InstanceDenyMaintenancePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriod] {
+	return pulumix.Output[InstanceDenyMaintenancePeriod]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceDenyMaintenancePeriodArgs) ToInstanceDenyMaintenancePeriodPtrOutput() InstanceDenyMaintenancePeriodPtrOutput {
 	return i.ToInstanceDenyMaintenancePeriodPtrOutputWithContext(context.Background())
 }
@@ -234,6 +265,12 @@ func (i *instanceDenyMaintenancePeriodPtrType) ToInstanceDenyMaintenancePeriodPt
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodPtrOutput)
 }
 
+func (i *instanceDenyMaintenancePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriod] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriod]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
 
 func (InstanceDenyMaintenancePeriodOutput) ElementType() reflect.Type {
@@ -256,6 +293,12 @@ func (o InstanceDenyMaintenancePeriodOutput) ToInstanceDenyMaintenancePeriodPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDenyMaintenancePeriod) *InstanceDenyMaintenancePeriod {
 		return &v
 	}).(InstanceDenyMaintenancePeriodPtrOutput)
+}
+
+func (o InstanceDenyMaintenancePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriod] {
+	return pulumix.Output[InstanceDenyMaintenancePeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Start date of the deny maintenance period
@@ -288,6 +331,12 @@ func (o InstanceDenyMaintenancePeriodPtrOutput) ToInstanceDenyMaintenancePeriodP
 
 func (o InstanceDenyMaintenancePeriodPtrOutput) ToInstanceDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) InstanceDenyMaintenancePeriodPtrOutput {
 	return o
+}
+
+func (o InstanceDenyMaintenancePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriod] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDenyMaintenancePeriodPtrOutput) Elem() InstanceDenyMaintenancePeriodOutput {
@@ -380,6 +429,12 @@ func (i InstanceDenyMaintenancePeriodEndDateArgs) ToInstanceDenyMaintenancePerio
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodEndDateOutput)
 }
 
+func (i InstanceDenyMaintenancePeriodEndDateArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriodEndDate] {
+	return pulumix.Output[InstanceDenyMaintenancePeriodEndDate]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodEndDateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceDenyMaintenancePeriodEndDateArgs) ToInstanceDenyMaintenancePeriodEndDatePtrOutput() InstanceDenyMaintenancePeriodEndDatePtrOutput {
 	return i.ToInstanceDenyMaintenancePeriodEndDatePtrOutputWithContext(context.Background())
 }
@@ -421,6 +476,12 @@ func (i *instanceDenyMaintenancePeriodEndDatePtrType) ToInstanceDenyMaintenanceP
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodEndDatePtrOutput)
 }
 
+func (i *instanceDenyMaintenancePeriodEndDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriodEndDate] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriodEndDate]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodEndDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceDenyMaintenancePeriodEndDateOutput struct{ *pulumi.OutputState }
 
 func (InstanceDenyMaintenancePeriodEndDateOutput) ElementType() reflect.Type {
@@ -443,6 +504,12 @@ func (o InstanceDenyMaintenancePeriodEndDateOutput) ToInstanceDenyMaintenancePer
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDenyMaintenancePeriodEndDate) *InstanceDenyMaintenancePeriodEndDate {
 		return &v
 	}).(InstanceDenyMaintenancePeriodEndDatePtrOutput)
+}
+
+func (o InstanceDenyMaintenancePeriodEndDateOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriodEndDate] {
+	return pulumix.Output[InstanceDenyMaintenancePeriodEndDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
@@ -475,6 +542,12 @@ func (o InstanceDenyMaintenancePeriodEndDatePtrOutput) ToInstanceDenyMaintenance
 
 func (o InstanceDenyMaintenancePeriodEndDatePtrOutput) ToInstanceDenyMaintenancePeriodEndDatePtrOutputWithContext(ctx context.Context) InstanceDenyMaintenancePeriodEndDatePtrOutput {
 	return o
+}
+
+func (o InstanceDenyMaintenancePeriodEndDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriodEndDate] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriodEndDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDenyMaintenancePeriodEndDatePtrOutput) Elem() InstanceDenyMaintenancePeriodEndDateOutput {
@@ -567,6 +640,12 @@ func (i InstanceDenyMaintenancePeriodStartDateArgs) ToInstanceDenyMaintenancePer
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodStartDateOutput)
 }
 
+func (i InstanceDenyMaintenancePeriodStartDateArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriodStartDate] {
+	return pulumix.Output[InstanceDenyMaintenancePeriodStartDate]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodStartDateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceDenyMaintenancePeriodStartDateArgs) ToInstanceDenyMaintenancePeriodStartDatePtrOutput() InstanceDenyMaintenancePeriodStartDatePtrOutput {
 	return i.ToInstanceDenyMaintenancePeriodStartDatePtrOutputWithContext(context.Background())
 }
@@ -608,6 +687,12 @@ func (i *instanceDenyMaintenancePeriodStartDatePtrType) ToInstanceDenyMaintenanc
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodStartDatePtrOutput)
 }
 
+func (i *instanceDenyMaintenancePeriodStartDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriodStartDate] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriodStartDate]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodStartDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceDenyMaintenancePeriodStartDateOutput struct{ *pulumi.OutputState }
 
 func (InstanceDenyMaintenancePeriodStartDateOutput) ElementType() reflect.Type {
@@ -630,6 +715,12 @@ func (o InstanceDenyMaintenancePeriodStartDateOutput) ToInstanceDenyMaintenanceP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDenyMaintenancePeriodStartDate) *InstanceDenyMaintenancePeriodStartDate {
 		return &v
 	}).(InstanceDenyMaintenancePeriodStartDatePtrOutput)
+}
+
+func (o InstanceDenyMaintenancePeriodStartDateOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriodStartDate] {
+	return pulumix.Output[InstanceDenyMaintenancePeriodStartDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
@@ -662,6 +753,12 @@ func (o InstanceDenyMaintenancePeriodStartDatePtrOutput) ToInstanceDenyMaintenan
 
 func (o InstanceDenyMaintenancePeriodStartDatePtrOutput) ToInstanceDenyMaintenancePeriodStartDatePtrOutputWithContext(ctx context.Context) InstanceDenyMaintenancePeriodStartDatePtrOutput {
 	return o
+}
+
+func (o InstanceDenyMaintenancePeriodStartDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriodStartDate] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriodStartDate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDenyMaintenancePeriodStartDatePtrOutput) Elem() InstanceDenyMaintenancePeriodStartDateOutput {
@@ -752,6 +849,12 @@ func (i InstanceDenyMaintenancePeriodTimeArgs) ToInstanceDenyMaintenancePeriodTi
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodTimeOutput)
 }
 
+func (i InstanceDenyMaintenancePeriodTimeArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriodTime] {
+	return pulumix.Output[InstanceDenyMaintenancePeriodTime]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodTimeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceDenyMaintenancePeriodTimeArgs) ToInstanceDenyMaintenancePeriodTimePtrOutput() InstanceDenyMaintenancePeriodTimePtrOutput {
 	return i.ToInstanceDenyMaintenancePeriodTimePtrOutputWithContext(context.Background())
 }
@@ -793,6 +896,12 @@ func (i *instanceDenyMaintenancePeriodTimePtrType) ToInstanceDenyMaintenancePeri
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDenyMaintenancePeriodTimePtrOutput)
 }
 
+func (i *instanceDenyMaintenancePeriodTimePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriodTime] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriodTime]{
+		OutputState: i.ToInstanceDenyMaintenancePeriodTimePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceDenyMaintenancePeriodTimeOutput struct{ *pulumi.OutputState }
 
 func (InstanceDenyMaintenancePeriodTimeOutput) ElementType() reflect.Type {
@@ -815,6 +924,12 @@ func (o InstanceDenyMaintenancePeriodTimeOutput) ToInstanceDenyMaintenancePeriod
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDenyMaintenancePeriodTime) *InstanceDenyMaintenancePeriodTime {
 		return &v
 	}).(InstanceDenyMaintenancePeriodTimePtrOutput)
+}
+
+func (o InstanceDenyMaintenancePeriodTimeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDenyMaintenancePeriodTime] {
+	return pulumix.Output[InstanceDenyMaintenancePeriodTime]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23.
@@ -849,6 +964,12 @@ func (o InstanceDenyMaintenancePeriodTimePtrOutput) ToInstanceDenyMaintenancePer
 
 func (o InstanceDenyMaintenancePeriodTimePtrOutput) ToInstanceDenyMaintenancePeriodTimePtrOutputWithContext(ctx context.Context) InstanceDenyMaintenancePeriodTimePtrOutput {
 	return o
+}
+
+func (o InstanceDenyMaintenancePeriodTimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDenyMaintenancePeriodTime] {
+	return pulumix.Output[*InstanceDenyMaintenancePeriodTime]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceDenyMaintenancePeriodTimePtrOutput) Elem() InstanceDenyMaintenancePeriodTimeOutput {
@@ -946,6 +1067,12 @@ func (i InstanceEncryptionConfigArgs) ToInstanceEncryptionConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceEncryptionConfigOutput)
 }
 
+func (i InstanceEncryptionConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceEncryptionConfig] {
+	return pulumix.Output[InstanceEncryptionConfig]{
+		OutputState: i.ToInstanceEncryptionConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceEncryptionConfigArgs) ToInstanceEncryptionConfigPtrOutput() InstanceEncryptionConfigPtrOutput {
 	return i.ToInstanceEncryptionConfigPtrOutputWithContext(context.Background())
 }
@@ -987,6 +1114,12 @@ func (i *instanceEncryptionConfigPtrType) ToInstanceEncryptionConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceEncryptionConfigPtrOutput)
 }
 
+func (i *instanceEncryptionConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceEncryptionConfig] {
+	return pulumix.Output[*InstanceEncryptionConfig]{
+		OutputState: i.ToInstanceEncryptionConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceEncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceEncryptionConfigOutput) ElementType() reflect.Type {
@@ -1009,6 +1142,12 @@ func (o InstanceEncryptionConfigOutput) ToInstanceEncryptionConfigPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceEncryptionConfig) *InstanceEncryptionConfig {
 		return &v
 	}).(InstanceEncryptionConfigPtrOutput)
+}
+
+func (o InstanceEncryptionConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceEncryptionConfig] {
+	return pulumix.Output[InstanceEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the customer managed encryption key (CMEK) in KMS.
@@ -1040,6 +1179,12 @@ func (o InstanceEncryptionConfigPtrOutput) ToInstanceEncryptionConfigPtrOutput()
 
 func (o InstanceEncryptionConfigPtrOutput) ToInstanceEncryptionConfigPtrOutputWithContext(ctx context.Context) InstanceEncryptionConfigPtrOutput {
 	return o
+}
+
+func (o InstanceEncryptionConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceEncryptionConfig] {
+	return pulumix.Output[*InstanceEncryptionConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceEncryptionConfigPtrOutput) Elem() InstanceEncryptionConfigOutput {
@@ -1139,6 +1284,12 @@ func (i InstanceMaintenanceWindowArgs) ToInstanceMaintenanceWindowOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceWindowOutput)
 }
 
+func (i InstanceMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceMaintenanceWindow] {
+	return pulumix.Output[InstanceMaintenanceWindow]{
+		OutputState: i.ToInstanceMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceMaintenanceWindowArgs) ToInstanceMaintenanceWindowPtrOutput() InstanceMaintenanceWindowPtrOutput {
 	return i.ToInstanceMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -1180,6 +1331,12 @@ func (i *instanceMaintenanceWindowPtrType) ToInstanceMaintenanceWindowPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceWindowPtrOutput)
 }
 
+func (i *instanceMaintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceMaintenanceWindow] {
+	return pulumix.Output[*InstanceMaintenanceWindow]{
+		OutputState: i.ToInstanceMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (InstanceMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -1202,6 +1359,12 @@ func (o InstanceMaintenanceWindowOutput) ToInstanceMaintenanceWindowPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenanceWindow) *InstanceMaintenanceWindow {
 		return &v
 	}).(InstanceMaintenanceWindowPtrOutput)
+}
+
+func (o InstanceMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMaintenanceWindow] {
+	return pulumix.Output[InstanceMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Day of the week for this MaintenanceWindow (in UTC).
@@ -1235,6 +1398,12 @@ func (o InstanceMaintenanceWindowPtrOutput) ToInstanceMaintenanceWindowPtrOutput
 
 func (o InstanceMaintenanceWindowPtrOutput) ToInstanceMaintenanceWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenanceWindowPtrOutput {
 	return o
+}
+
+func (o InstanceMaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceMaintenanceWindow] {
+	return pulumix.Output[*InstanceMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceMaintenanceWindowPtrOutput) Elem() InstanceMaintenanceWindowOutput {
@@ -1321,6 +1490,12 @@ func (i InstanceMaintenanceWindowStartTimeArgs) ToInstanceMaintenanceWindowStart
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceWindowStartTimeOutput)
 }
 
+func (i InstanceMaintenanceWindowStartTimeArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceMaintenanceWindowStartTime] {
+	return pulumix.Output[InstanceMaintenanceWindowStartTime]{
+		OutputState: i.ToInstanceMaintenanceWindowStartTimeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceMaintenanceWindowStartTimeArgs) ToInstanceMaintenanceWindowStartTimePtrOutput() InstanceMaintenanceWindowStartTimePtrOutput {
 	return i.ToInstanceMaintenanceWindowStartTimePtrOutputWithContext(context.Background())
 }
@@ -1362,6 +1537,12 @@ func (i *instanceMaintenanceWindowStartTimePtrType) ToInstanceMaintenanceWindowS
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceWindowStartTimePtrOutput)
 }
 
+func (i *instanceMaintenanceWindowStartTimePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceMaintenanceWindowStartTime] {
+	return pulumix.Output[*InstanceMaintenanceWindowStartTime]{
+		OutputState: i.ToInstanceMaintenanceWindowStartTimePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceMaintenanceWindowStartTimeOutput struct{ *pulumi.OutputState }
 
 func (InstanceMaintenanceWindowStartTimeOutput) ElementType() reflect.Type {
@@ -1384,6 +1565,12 @@ func (o InstanceMaintenanceWindowStartTimeOutput) ToInstanceMaintenanceWindowSta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenanceWindowStartTime) *InstanceMaintenanceWindowStartTime {
 		return &v
 	}).(InstanceMaintenanceWindowStartTimePtrOutput)
+}
+
+func (o InstanceMaintenanceWindowStartTimeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceMaintenanceWindowStartTime] {
+	return pulumix.Output[InstanceMaintenanceWindowStartTime]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hours of day in 24 hour format. Should be from 0 to 23.
@@ -1418,6 +1605,12 @@ func (o InstanceMaintenanceWindowStartTimePtrOutput) ToInstanceMaintenanceWindow
 
 func (o InstanceMaintenanceWindowStartTimePtrOutput) ToInstanceMaintenanceWindowStartTimePtrOutputWithContext(ctx context.Context) InstanceMaintenanceWindowStartTimePtrOutput {
 	return o
+}
+
+func (o InstanceMaintenanceWindowStartTimePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceMaintenanceWindowStartTime] {
+	return pulumix.Output[*InstanceMaintenanceWindowStartTime]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceMaintenanceWindowStartTimePtrOutput) Elem() InstanceMaintenanceWindowStartTimeOutput {
@@ -1507,6 +1700,12 @@ func (i InstanceOauthConfigArgs) ToInstanceOauthConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOauthConfigOutput)
 }
 
+func (i InstanceOauthConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceOauthConfig] {
+	return pulumix.Output[InstanceOauthConfig]{
+		OutputState: i.ToInstanceOauthConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceOauthConfigArgs) ToInstanceOauthConfigPtrOutput() InstanceOauthConfigPtrOutput {
 	return i.ToInstanceOauthConfigPtrOutputWithContext(context.Background())
 }
@@ -1548,6 +1747,12 @@ func (i *instanceOauthConfigPtrType) ToInstanceOauthConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceOauthConfigPtrOutput)
 }
 
+func (i *instanceOauthConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceOauthConfig] {
+	return pulumix.Output[*InstanceOauthConfig]{
+		OutputState: i.ToInstanceOauthConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceOauthConfigOutput struct{ *pulumi.OutputState }
 
 func (InstanceOauthConfigOutput) ElementType() reflect.Type {
@@ -1572,6 +1777,12 @@ func (o InstanceOauthConfigOutput) ToInstanceOauthConfigPtrOutputWithContext(ctx
 	}).(InstanceOauthConfigPtrOutput)
 }
 
+func (o InstanceOauthConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceOauthConfig] {
+	return pulumix.Output[InstanceOauthConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The client ID for the Oauth config.
 func (o InstanceOauthConfigOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceOauthConfig) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1594,6 +1805,12 @@ func (o InstanceOauthConfigPtrOutput) ToInstanceOauthConfigPtrOutput() InstanceO
 
 func (o InstanceOauthConfigPtrOutput) ToInstanceOauthConfigPtrOutputWithContext(ctx context.Context) InstanceOauthConfigPtrOutput {
 	return o
+}
+
+func (o InstanceOauthConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceOauthConfig] {
+	return pulumix.Output[*InstanceOauthConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceOauthConfigPtrOutput) Elem() InstanceOauthConfigOutput {
@@ -1667,6 +1884,12 @@ func (i InstanceUserMetadataArgs) ToInstanceUserMetadataOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUserMetadataOutput)
 }
 
+func (i InstanceUserMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceUserMetadata] {
+	return pulumix.Output[InstanceUserMetadata]{
+		OutputState: i.ToInstanceUserMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceUserMetadataArgs) ToInstanceUserMetadataPtrOutput() InstanceUserMetadataPtrOutput {
 	return i.ToInstanceUserMetadataPtrOutputWithContext(context.Background())
 }
@@ -1708,6 +1931,12 @@ func (i *instanceUserMetadataPtrType) ToInstanceUserMetadataPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUserMetadataPtrOutput)
 }
 
+func (i *instanceUserMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceUserMetadata] {
+	return pulumix.Output[*InstanceUserMetadata]{
+		OutputState: i.ToInstanceUserMetadataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceUserMetadataOutput struct{ *pulumi.OutputState }
 
 func (InstanceUserMetadataOutput) ElementType() reflect.Type {
@@ -1730,6 +1959,12 @@ func (o InstanceUserMetadataOutput) ToInstanceUserMetadataPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceUserMetadata) *InstanceUserMetadata {
 		return &v
 	}).(InstanceUserMetadataPtrOutput)
+}
+
+func (o InstanceUserMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceUserMetadata] {
+	return pulumix.Output[InstanceUserMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Number of additional Developer Users to allocate to the Looker Instance.
@@ -1759,6 +1994,12 @@ func (o InstanceUserMetadataPtrOutput) ToInstanceUserMetadataPtrOutput() Instanc
 
 func (o InstanceUserMetadataPtrOutput) ToInstanceUserMetadataPtrOutputWithContext(ctx context.Context) InstanceUserMetadataPtrOutput {
 	return o
+}
+
+func (o InstanceUserMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceUserMetadata] {
+	return pulumix.Output[*InstanceUserMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceUserMetadataPtrOutput) Elem() InstanceUserMetadataOutput {

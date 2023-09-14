@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -245,6 +246,12 @@ func (i *WorkstationConfigIamPolicy) ToWorkstationConfigIamPolicyOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamPolicyOutput)
 }
 
+func (i *WorkstationConfigIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamPolicy] {
+	return pulumix.Output[*WorkstationConfigIamPolicy]{
+		OutputState: i.ToWorkstationConfigIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkstationConfigIamPolicyArrayInput is an input type that accepts WorkstationConfigIamPolicyArray and WorkstationConfigIamPolicyArrayOutput values.
 // You can construct a concrete instance of `WorkstationConfigIamPolicyArrayInput` via:
 //
@@ -268,6 +275,12 @@ func (i WorkstationConfigIamPolicyArray) ToWorkstationConfigIamPolicyArrayOutput
 
 func (i WorkstationConfigIamPolicyArray) ToWorkstationConfigIamPolicyArrayOutputWithContext(ctx context.Context) WorkstationConfigIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamPolicyArrayOutput)
+}
+
+func (i WorkstationConfigIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationConfigIamPolicy] {
+	return pulumix.Output[[]*WorkstationConfigIamPolicy]{
+		OutputState: i.ToWorkstationConfigIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkstationConfigIamPolicyMapInput is an input type that accepts WorkstationConfigIamPolicyMap and WorkstationConfigIamPolicyMapOutput values.
@@ -295,6 +308,12 @@ func (i WorkstationConfigIamPolicyMap) ToWorkstationConfigIamPolicyMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamPolicyMapOutput)
 }
 
+func (i WorkstationConfigIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationConfigIamPolicy] {
+	return pulumix.Output[map[string]*WorkstationConfigIamPolicy]{
+		OutputState: i.ToWorkstationConfigIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationConfigIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigIamPolicyOutput) ElementType() reflect.Type {
@@ -307,6 +326,12 @@ func (o WorkstationConfigIamPolicyOutput) ToWorkstationConfigIamPolicyOutput() W
 
 func (o WorkstationConfigIamPolicyOutput) ToWorkstationConfigIamPolicyOutputWithContext(ctx context.Context) WorkstationConfigIamPolicyOutput {
 	return o
+}
+
+func (o WorkstationConfigIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationConfigIamPolicy] {
+	return pulumix.Output[*WorkstationConfigIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -366,6 +391,12 @@ func (o WorkstationConfigIamPolicyArrayOutput) ToWorkstationConfigIamPolicyArray
 	return o
 }
 
+func (o WorkstationConfigIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationConfigIamPolicy] {
+	return pulumix.Output[[]*WorkstationConfigIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkstationConfigIamPolicyArrayOutput) Index(i pulumi.IntInput) WorkstationConfigIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkstationConfigIamPolicy {
 		return vs[0].([]*WorkstationConfigIamPolicy)[vs[1].(int)]
@@ -384,6 +415,12 @@ func (o WorkstationConfigIamPolicyMapOutput) ToWorkstationConfigIamPolicyMapOutp
 
 func (o WorkstationConfigIamPolicyMapOutput) ToWorkstationConfigIamPolicyMapOutputWithContext(ctx context.Context) WorkstationConfigIamPolicyMapOutput {
 	return o
+}
+
+func (o WorkstationConfigIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationConfigIamPolicy] {
+	return pulumix.Output[map[string]*WorkstationConfigIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationConfigIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WorkstationConfigIamPolicyOutput {

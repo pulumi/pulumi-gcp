@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i RulesetMetadataArgs) ToRulesetMetadataOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetMetadataOutput)
 }
 
+func (i RulesetMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[RulesetMetadata] {
+	return pulumix.Output[RulesetMetadata]{
+		OutputState: i.ToRulesetMetadataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RulesetMetadataArrayInput is an input type that accepts RulesetMetadataArray and RulesetMetadataArrayOutput values.
 // You can construct a concrete instance of `RulesetMetadataArrayInput` via:
 //
@@ -69,6 +76,12 @@ func (i RulesetMetadataArray) ToRulesetMetadataArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetMetadataArrayOutput)
 }
 
+func (i RulesetMetadataArray) ToOutput(ctx context.Context) pulumix.Output[[]RulesetMetadata] {
+	return pulumix.Output[[]RulesetMetadata]{
+		OutputState: i.ToRulesetMetadataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RulesetMetadataOutput struct{ *pulumi.OutputState }
 
 func (RulesetMetadataOutput) ElementType() reflect.Type {
@@ -81,6 +94,12 @@ func (o RulesetMetadataOutput) ToRulesetMetadataOutput() RulesetMetadataOutput {
 
 func (o RulesetMetadataOutput) ToRulesetMetadataOutputWithContext(ctx context.Context) RulesetMetadataOutput {
 	return o
+}
+
+func (o RulesetMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[RulesetMetadata] {
+	return pulumix.Output[RulesetMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesetMetadataOutput) Services() pulumi.StringArrayOutput {
@@ -99,6 +118,12 @@ func (o RulesetMetadataArrayOutput) ToRulesetMetadataArrayOutput() RulesetMetada
 
 func (o RulesetMetadataArrayOutput) ToRulesetMetadataArrayOutputWithContext(ctx context.Context) RulesetMetadataArrayOutput {
 	return o
+}
+
+func (o RulesetMetadataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RulesetMetadata] {
+	return pulumix.Output[[]RulesetMetadata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesetMetadataArrayOutput) Index(i pulumi.IntInput) RulesetMetadataOutput {
@@ -144,6 +169,12 @@ func (i RulesetSourceArgs) ToRulesetSourceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetSourceOutput)
 }
 
+func (i RulesetSourceArgs) ToOutput(ctx context.Context) pulumix.Output[RulesetSource] {
+	return pulumix.Output[RulesetSource]{
+		OutputState: i.ToRulesetSourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RulesetSourceArgs) ToRulesetSourcePtrOutput() RulesetSourcePtrOutput {
 	return i.ToRulesetSourcePtrOutputWithContext(context.Background())
 }
@@ -185,6 +216,12 @@ func (i *rulesetSourcePtrType) ToRulesetSourcePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetSourcePtrOutput)
 }
 
+func (i *rulesetSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*RulesetSource] {
+	return pulumix.Output[*RulesetSource]{
+		OutputState: i.ToRulesetSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RulesetSourceOutput struct{ *pulumi.OutputState }
 
 func (RulesetSourceOutput) ElementType() reflect.Type {
@@ -209,6 +246,12 @@ func (o RulesetSourceOutput) ToRulesetSourcePtrOutputWithContext(ctx context.Con
 	}).(RulesetSourcePtrOutput)
 }
 
+func (o RulesetSourceOutput) ToOutput(ctx context.Context) pulumix.Output[RulesetSource] {
+	return pulumix.Output[RulesetSource]{
+		OutputState: o.OutputState,
+	}
+}
+
 // `File` set constituting the `Source` bundle.
 func (o RulesetSourceOutput) Files() RulesetSourceFileArrayOutput {
 	return o.ApplyT(func(v RulesetSource) []RulesetSourceFile { return v.Files }).(RulesetSourceFileArrayOutput)
@@ -231,6 +274,12 @@ func (o RulesetSourcePtrOutput) ToRulesetSourcePtrOutput() RulesetSourcePtrOutpu
 
 func (o RulesetSourcePtrOutput) ToRulesetSourcePtrOutputWithContext(ctx context.Context) RulesetSourcePtrOutput {
 	return o
+}
+
+func (o RulesetSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RulesetSource] {
+	return pulumix.Output[*RulesetSource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesetSourcePtrOutput) Elem() RulesetSourceOutput {
@@ -308,6 +357,12 @@ func (i RulesetSourceFileArgs) ToRulesetSourceFileOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetSourceFileOutput)
 }
 
+func (i RulesetSourceFileArgs) ToOutput(ctx context.Context) pulumix.Output[RulesetSourceFile] {
+	return pulumix.Output[RulesetSourceFile]{
+		OutputState: i.ToRulesetSourceFileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RulesetSourceFileArrayInput is an input type that accepts RulesetSourceFileArray and RulesetSourceFileArrayOutput values.
 // You can construct a concrete instance of `RulesetSourceFileArrayInput` via:
 //
@@ -333,6 +388,12 @@ func (i RulesetSourceFileArray) ToRulesetSourceFileArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetSourceFileArrayOutput)
 }
 
+func (i RulesetSourceFileArray) ToOutput(ctx context.Context) pulumix.Output[[]RulesetSourceFile] {
+	return pulumix.Output[[]RulesetSourceFile]{
+		OutputState: i.ToRulesetSourceFileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RulesetSourceFileOutput struct{ *pulumi.OutputState }
 
 func (RulesetSourceFileOutput) ElementType() reflect.Type {
@@ -345,6 +406,12 @@ func (o RulesetSourceFileOutput) ToRulesetSourceFileOutput() RulesetSourceFileOu
 
 func (o RulesetSourceFileOutput) ToRulesetSourceFileOutputWithContext(ctx context.Context) RulesetSourceFileOutput {
 	return o
+}
+
+func (o RulesetSourceFileOutput) ToOutput(ctx context.Context) pulumix.Output[RulesetSourceFile] {
+	return pulumix.Output[RulesetSourceFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Textual Content.
@@ -376,6 +443,12 @@ func (o RulesetSourceFileArrayOutput) ToRulesetSourceFileArrayOutput() RulesetSo
 
 func (o RulesetSourceFileArrayOutput) ToRulesetSourceFileArrayOutputWithContext(ctx context.Context) RulesetSourceFileArrayOutput {
 	return o
+}
+
+func (o RulesetSourceFileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RulesetSourceFile] {
+	return pulumix.Output[[]RulesetSourceFile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RulesetSourceFileArrayOutput) Index(i pulumi.IntInput) RulesetSourceFileOutput {

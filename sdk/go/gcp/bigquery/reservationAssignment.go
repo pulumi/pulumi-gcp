@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The BigqueryReservation Assignment resource
@@ -227,6 +228,12 @@ func (i *ReservationAssignment) ToReservationAssignmentOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationAssignmentOutput)
 }
 
+func (i *ReservationAssignment) ToOutput(ctx context.Context) pulumix.Output[*ReservationAssignment] {
+	return pulumix.Output[*ReservationAssignment]{
+		OutputState: i.ToReservationAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReservationAssignmentArrayInput is an input type that accepts ReservationAssignmentArray and ReservationAssignmentArrayOutput values.
 // You can construct a concrete instance of `ReservationAssignmentArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i ReservationAssignmentArray) ToReservationAssignmentArrayOutput() Reserva
 
 func (i ReservationAssignmentArray) ToReservationAssignmentArrayOutputWithContext(ctx context.Context) ReservationAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationAssignmentArrayOutput)
+}
+
+func (i ReservationAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ReservationAssignment] {
+	return pulumix.Output[[]*ReservationAssignment]{
+		OutputState: i.ToReservationAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReservationAssignmentMapInput is an input type that accepts ReservationAssignmentMap and ReservationAssignmentMapOutput values.
@@ -277,6 +290,12 @@ func (i ReservationAssignmentMap) ToReservationAssignmentMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationAssignmentMapOutput)
 }
 
+func (i ReservationAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservationAssignment] {
+	return pulumix.Output[map[string]*ReservationAssignment]{
+		OutputState: i.ToReservationAssignmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReservationAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ReservationAssignmentOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o ReservationAssignmentOutput) ToReservationAssignmentOutput() Reservation
 
 func (o ReservationAssignmentOutput) ToReservationAssignmentOutputWithContext(ctx context.Context) ReservationAssignmentOutput {
 	return o
+}
+
+func (o ReservationAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ReservationAssignment] {
+	return pulumix.Output[*ReservationAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
@@ -342,6 +367,12 @@ func (o ReservationAssignmentArrayOutput) ToReservationAssignmentArrayOutputWith
 	return o
 }
 
+func (o ReservationAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ReservationAssignment] {
+	return pulumix.Output[[]*ReservationAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReservationAssignmentArrayOutput) Index(i pulumi.IntInput) ReservationAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ReservationAssignment {
 		return vs[0].([]*ReservationAssignment)[vs[1].(int)]
@@ -360,6 +391,12 @@ func (o ReservationAssignmentMapOutput) ToReservationAssignmentMapOutput() Reser
 
 func (o ReservationAssignmentMapOutput) ToReservationAssignmentMapOutputWithContext(ctx context.Context) ReservationAssignmentMapOutput {
 	return o
+}
+
+func (o ReservationAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ReservationAssignment] {
+	return pulumix.Output[map[string]*ReservationAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReservationAssignmentMapOutput) MapIndex(k pulumi.StringInput) ReservationAssignmentOutput {

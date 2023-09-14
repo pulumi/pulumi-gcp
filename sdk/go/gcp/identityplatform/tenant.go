@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tenant configuration in a multi-tenant project.
@@ -228,6 +229,12 @@ func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOutput)
 }
 
+func (i *Tenant) ToOutput(ctx context.Context) pulumix.Output[*Tenant] {
+	return pulumix.Output[*Tenant]{
+		OutputState: i.ToTenantOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TenantArrayInput is an input type that accepts TenantArray and TenantArrayOutput values.
 // You can construct a concrete instance of `TenantArrayInput` via:
 //
@@ -251,6 +258,12 @@ func (i TenantArray) ToTenantArrayOutput() TenantArrayOutput {
 
 func (i TenantArray) ToTenantArrayOutputWithContext(ctx context.Context) TenantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantArrayOutput)
+}
+
+func (i TenantArray) ToOutput(ctx context.Context) pulumix.Output[[]*Tenant] {
+	return pulumix.Output[[]*Tenant]{
+		OutputState: i.ToTenantArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TenantMapInput is an input type that accepts TenantMap and TenantMapOutput values.
@@ -278,6 +291,12 @@ func (i TenantMap) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TenantMapOutput)
 }
 
+func (i TenantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Tenant] {
+	return pulumix.Output[map[string]*Tenant]{
+		OutputState: i.ToTenantMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TenantOutput struct{ *pulumi.OutputState }
 
 func (TenantOutput) ElementType() reflect.Type {
@@ -290,6 +309,12 @@ func (o TenantOutput) ToTenantOutput() TenantOutput {
 
 func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return o
+}
+
+func (o TenantOutput) ToOutput(ctx context.Context) pulumix.Output[*Tenant] {
+	return pulumix.Output[*Tenant]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow email/password user authentication.
@@ -341,6 +366,12 @@ func (o TenantArrayOutput) ToTenantArrayOutputWithContext(ctx context.Context) T
 	return o
 }
 
+func (o TenantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Tenant] {
+	return pulumix.Output[[]*Tenant]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TenantArrayOutput) Index(i pulumi.IntInput) TenantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Tenant {
 		return vs[0].([]*Tenant)[vs[1].(int)]
@@ -359,6 +390,12 @@ func (o TenantMapOutput) ToTenantMapOutput() TenantMapOutput {
 
 func (o TenantMapOutput) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOutput {
 	return o
+}
+
+func (o TenantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Tenant] {
+	return pulumix.Output[map[string]*Tenant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TenantMapOutput) MapIndex(k pulumi.StringInput) TenantOutput {

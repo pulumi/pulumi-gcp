@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
@@ -83,6 +84,12 @@ func (o GetCaCertsResultOutput) ToGetCaCertsResultOutput() GetCaCertsResultOutpu
 
 func (o GetCaCertsResultOutput) ToGetCaCertsResultOutputWithContext(ctx context.Context) GetCaCertsResultOutput {
 	return o
+}
+
+func (o GetCaCertsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCaCertsResult] {
+	return pulumix.Output[GetCaCertsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // SHA1 fingerprint of the currently active CA certificate.

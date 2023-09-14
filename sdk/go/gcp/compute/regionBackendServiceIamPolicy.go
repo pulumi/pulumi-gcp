@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -254,6 +255,12 @@ func (i *RegionBackendServiceIamPolicy) ToRegionBackendServiceIamPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamPolicyOutput)
 }
 
+func (i *RegionBackendServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIamPolicy] {
+	return pulumix.Output[*RegionBackendServiceIamPolicy]{
+		OutputState: i.ToRegionBackendServiceIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RegionBackendServiceIamPolicyArrayInput is an input type that accepts RegionBackendServiceIamPolicyArray and RegionBackendServiceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `RegionBackendServiceIamPolicyArrayInput` via:
 //
@@ -277,6 +284,12 @@ func (i RegionBackendServiceIamPolicyArray) ToRegionBackendServiceIamPolicyArray
 
 func (i RegionBackendServiceIamPolicyArray) ToRegionBackendServiceIamPolicyArrayOutputWithContext(ctx context.Context) RegionBackendServiceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamPolicyArrayOutput)
+}
+
+func (i RegionBackendServiceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendServiceIamPolicy] {
+	return pulumix.Output[[]*RegionBackendServiceIamPolicy]{
+		OutputState: i.ToRegionBackendServiceIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RegionBackendServiceIamPolicyMapInput is an input type that accepts RegionBackendServiceIamPolicyMap and RegionBackendServiceIamPolicyMapOutput values.
@@ -304,6 +317,12 @@ func (i RegionBackendServiceIamPolicyMap) ToRegionBackendServiceIamPolicyMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceIamPolicyMapOutput)
 }
 
+func (i RegionBackendServiceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendServiceIamPolicy] {
+	return pulumix.Output[map[string]*RegionBackendServiceIamPolicy]{
+		OutputState: i.ToRegionBackendServiceIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RegionBackendServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (RegionBackendServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -316,6 +335,12 @@ func (o RegionBackendServiceIamPolicyOutput) ToRegionBackendServiceIamPolicyOutp
 
 func (o RegionBackendServiceIamPolicyOutput) ToRegionBackendServiceIamPolicyOutputWithContext(ctx context.Context) RegionBackendServiceIamPolicyOutput {
 	return o
+}
+
+func (o RegionBackendServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionBackendServiceIamPolicy] {
+	return pulumix.Output[*RegionBackendServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -375,6 +400,12 @@ func (o RegionBackendServiceIamPolicyArrayOutput) ToRegionBackendServiceIamPolic
 	return o
 }
 
+func (o RegionBackendServiceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionBackendServiceIamPolicy] {
+	return pulumix.Output[[]*RegionBackendServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RegionBackendServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionBackendServiceIamPolicy {
 		return vs[0].([]*RegionBackendServiceIamPolicy)[vs[1].(int)]
@@ -393,6 +424,12 @@ func (o RegionBackendServiceIamPolicyMapOutput) ToRegionBackendServiceIamPolicyM
 
 func (o RegionBackendServiceIamPolicyMapOutput) ToRegionBackendServiceIamPolicyMapOutputWithContext(ctx context.Context) RegionBackendServiceIamPolicyMapOutput {
 	return o
+}
+
+func (o RegionBackendServiceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionBackendServiceIamPolicy] {
+	return pulumix.Output[map[string]*RegionBackendServiceIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RegionBackendServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) RegionBackendServiceIamPolicyOutput {

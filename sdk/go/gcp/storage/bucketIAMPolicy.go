@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
@@ -439,6 +440,12 @@ func (i *BucketIAMPolicy) ToBucketIAMPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyOutput)
 }
 
+func (i *BucketIAMPolicy) ToOutput(ctx context.Context) pulumix.Output[*BucketIAMPolicy] {
+	return pulumix.Output[*BucketIAMPolicy]{
+		OutputState: i.ToBucketIAMPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BucketIAMPolicyArrayInput is an input type that accepts BucketIAMPolicyArray and BucketIAMPolicyArrayOutput values.
 // You can construct a concrete instance of `BucketIAMPolicyArrayInput` via:
 //
@@ -462,6 +469,12 @@ func (i BucketIAMPolicyArray) ToBucketIAMPolicyArrayOutput() BucketIAMPolicyArra
 
 func (i BucketIAMPolicyArray) ToBucketIAMPolicyArrayOutputWithContext(ctx context.Context) BucketIAMPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyArrayOutput)
+}
+
+func (i BucketIAMPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*BucketIAMPolicy] {
+	return pulumix.Output[[]*BucketIAMPolicy]{
+		OutputState: i.ToBucketIAMPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BucketIAMPolicyMapInput is an input type that accepts BucketIAMPolicyMap and BucketIAMPolicyMapOutput values.
@@ -489,6 +502,12 @@ func (i BucketIAMPolicyMap) ToBucketIAMPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyMapOutput)
 }
 
+func (i BucketIAMPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketIAMPolicy] {
+	return pulumix.Output[map[string]*BucketIAMPolicy]{
+		OutputState: i.ToBucketIAMPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BucketIAMPolicyOutput struct{ *pulumi.OutputState }
 
 func (BucketIAMPolicyOutput) ElementType() reflect.Type {
@@ -501,6 +520,12 @@ func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutput() BucketIAMPolicyOutput {
 
 func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutputWithContext(ctx context.Context) BucketIAMPolicyOutput {
 	return o
+}
+
+func (o BucketIAMPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*BucketIAMPolicy] {
+	return pulumix.Output[*BucketIAMPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Used to find the parent resource to bind the IAM policy to
@@ -545,6 +570,12 @@ func (o BucketIAMPolicyArrayOutput) ToBucketIAMPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o BucketIAMPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BucketIAMPolicy] {
+	return pulumix.Output[[]*BucketIAMPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BucketIAMPolicyArrayOutput) Index(i pulumi.IntInput) BucketIAMPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMPolicy {
 		return vs[0].([]*BucketIAMPolicy)[vs[1].(int)]
@@ -563,6 +594,12 @@ func (o BucketIAMPolicyMapOutput) ToBucketIAMPolicyMapOutput() BucketIAMPolicyMa
 
 func (o BucketIAMPolicyMapOutput) ToBucketIAMPolicyMapOutputWithContext(ctx context.Context) BucketIAMPolicyMapOutput {
 	return o
+}
+
+func (o BucketIAMPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BucketIAMPolicy] {
+	return pulumix.Output[map[string]*BucketIAMPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BucketIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) BucketIAMPolicyOutput {

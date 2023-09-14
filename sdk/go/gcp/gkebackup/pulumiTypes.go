@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -78,6 +79,12 @@ func (i BackupPlanBackupConfigArgs) ToBackupPlanBackupConfigOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigOutput)
 }
 
+func (i BackupPlanBackupConfigArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfig] {
+	return pulumix.Output[BackupPlanBackupConfig]{
+		OutputState: i.ToBackupPlanBackupConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanBackupConfigArgs) ToBackupPlanBackupConfigPtrOutput() BackupPlanBackupConfigPtrOutput {
 	return i.ToBackupPlanBackupConfigPtrOutputWithContext(context.Background())
 }
@@ -119,6 +126,12 @@ func (i *backupPlanBackupConfigPtrType) ToBackupPlanBackupConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigPtrOutput)
 }
 
+func (i *backupPlanBackupConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfig] {
+	return pulumix.Output[*BackupPlanBackupConfig]{
+		OutputState: i.ToBackupPlanBackupConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanBackupConfigOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigOutput) ElementType() reflect.Type {
@@ -141,6 +154,12 @@ func (o BackupPlanBackupConfigOutput) ToBackupPlanBackupConfigPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupConfig) *BackupPlanBackupConfig {
 		return &v
 	}).(BackupPlanBackupConfigPtrOutput)
+}
+
+func (o BackupPlanBackupConfigOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfig] {
+	return pulumix.Output[BackupPlanBackupConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If True, include all namespaced resources.
@@ -193,6 +212,12 @@ func (o BackupPlanBackupConfigPtrOutput) ToBackupPlanBackupConfigPtrOutput() Bac
 
 func (o BackupPlanBackupConfigPtrOutput) ToBackupPlanBackupConfigPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigPtrOutput {
 	return o
+}
+
+func (o BackupPlanBackupConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfig] {
+	return pulumix.Output[*BackupPlanBackupConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanBackupConfigPtrOutput) Elem() BackupPlanBackupConfigOutput {
@@ -304,6 +329,12 @@ func (i BackupPlanBackupConfigEncryptionKeyArgs) ToBackupPlanBackupConfigEncrypt
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigEncryptionKeyOutput)
 }
 
+func (i BackupPlanBackupConfigEncryptionKeyArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigEncryptionKey] {
+	return pulumix.Output[BackupPlanBackupConfigEncryptionKey]{
+		OutputState: i.ToBackupPlanBackupConfigEncryptionKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanBackupConfigEncryptionKeyArgs) ToBackupPlanBackupConfigEncryptionKeyPtrOutput() BackupPlanBackupConfigEncryptionKeyPtrOutput {
 	return i.ToBackupPlanBackupConfigEncryptionKeyPtrOutputWithContext(context.Background())
 }
@@ -345,6 +376,12 @@ func (i *backupPlanBackupConfigEncryptionKeyPtrType) ToBackupPlanBackupConfigEnc
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigEncryptionKeyPtrOutput)
 }
 
+func (i *backupPlanBackupConfigEncryptionKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigEncryptionKey] {
+	return pulumix.Output[*BackupPlanBackupConfigEncryptionKey]{
+		OutputState: i.ToBackupPlanBackupConfigEncryptionKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanBackupConfigEncryptionKeyOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigEncryptionKeyOutput) ElementType() reflect.Type {
@@ -369,6 +406,12 @@ func (o BackupPlanBackupConfigEncryptionKeyOutput) ToBackupPlanBackupConfigEncry
 	}).(BackupPlanBackupConfigEncryptionKeyPtrOutput)
 }
 
+func (o BackupPlanBackupConfigEncryptionKeyOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigEncryptionKey] {
+	return pulumix.Output[BackupPlanBackupConfigEncryptionKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
 func (o BackupPlanBackupConfigEncryptionKeyOutput) GcpKmsEncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupPlanBackupConfigEncryptionKey) string { return v.GcpKmsEncryptionKey }).(pulumi.StringOutput)
@@ -386,6 +429,12 @@ func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) ToBackupPlanBackupConfigEn
 
 func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) ToBackupPlanBackupConfigEncryptionKeyPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigEncryptionKeyPtrOutput {
 	return o
+}
+
+func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigEncryptionKey] {
+	return pulumix.Output[*BackupPlanBackupConfigEncryptionKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanBackupConfigEncryptionKeyPtrOutput) Elem() BackupPlanBackupConfigEncryptionKeyOutput {
@@ -443,6 +492,12 @@ func (i BackupPlanBackupConfigSelectedApplicationsArgs) ToBackupPlanBackupConfig
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsOutput)
 }
 
+func (i BackupPlanBackupConfigSelectedApplicationsArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplications] {
+	return pulumix.Output[BackupPlanBackupConfigSelectedApplications]{
+		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanBackupConfigSelectedApplicationsArgs) ToBackupPlanBackupConfigSelectedApplicationsPtrOutput() BackupPlanBackupConfigSelectedApplicationsPtrOutput {
 	return i.ToBackupPlanBackupConfigSelectedApplicationsPtrOutputWithContext(context.Background())
 }
@@ -484,6 +539,12 @@ func (i *backupPlanBackupConfigSelectedApplicationsPtrType) ToBackupPlanBackupCo
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsPtrOutput)
 }
 
+func (i *backupPlanBackupConfigSelectedApplicationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedApplications] {
+	return pulumix.Output[*BackupPlanBackupConfigSelectedApplications]{
+		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanBackupConfigSelectedApplicationsOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigSelectedApplicationsOutput) ElementType() reflect.Type {
@@ -508,6 +569,12 @@ func (o BackupPlanBackupConfigSelectedApplicationsOutput) ToBackupPlanBackupConf
 	}).(BackupPlanBackupConfigSelectedApplicationsPtrOutput)
 }
 
+func (o BackupPlanBackupConfigSelectedApplicationsOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplications] {
+	return pulumix.Output[BackupPlanBackupConfigSelectedApplications]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of namespaced Kubernetes resources.
 // Structure is documented below.
 func (o BackupPlanBackupConfigSelectedApplicationsOutput) NamespacedNames() BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput {
@@ -528,6 +595,12 @@ func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) ToBackupPlanBackupC
 
 func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) ToBackupPlanBackupConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedApplicationsPtrOutput {
 	return o
+}
+
+func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedApplications] {
+	return pulumix.Output[*BackupPlanBackupConfigSelectedApplications]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanBackupConfigSelectedApplicationsPtrOutput) Elem() BackupPlanBackupConfigSelectedApplicationsOutput {
@@ -588,6 +661,12 @@ func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs) ToBackupPl
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput)
 }
 
+func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
+		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayInput is an input type that accepts BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray and BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput values.
 // You can construct a concrete instance of `BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayInput` via:
 //
@@ -613,6 +692,12 @@ func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray) ToBackupP
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput)
 }
 
+func (i BackupPlanBackupConfigSelectedApplicationsNamespacedNameArray) ToOutput(ctx context.Context) pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
+		OutputState: i.ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ElementType() reflect.Type {
@@ -625,6 +710,12 @@ func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ToBackup
 
 func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput {
 	return o
+}
+
+func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of a Kubernetes Resource.
@@ -649,6 +740,12 @@ func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) ToB
 
 func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) ToBackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput {
 	return o
+}
+
+func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[[]BackupPlanBackupConfigSelectedApplicationsNamespacedName]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanBackupConfigSelectedApplicationsNamespacedNameArrayOutput) Index(i pulumi.IntInput) BackupPlanBackupConfigSelectedApplicationsNamespacedNameOutput {
@@ -688,6 +785,12 @@ func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToBackupPlanBackupConfigSe
 
 func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToBackupPlanBackupConfigSelectedNamespacesOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespacesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespacesOutput)
+}
+
+func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedNamespaces] {
+	return pulumix.Output[BackupPlanBackupConfigSelectedNamespaces]{
+		OutputState: i.ToBackupPlanBackupConfigSelectedNamespacesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i BackupPlanBackupConfigSelectedNamespacesArgs) ToBackupPlanBackupConfigSelectedNamespacesPtrOutput() BackupPlanBackupConfigSelectedNamespacesPtrOutput {
@@ -731,6 +834,12 @@ func (i *backupPlanBackupConfigSelectedNamespacesPtrType) ToBackupPlanBackupConf
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupConfigSelectedNamespacesPtrOutput)
 }
 
+func (i *backupPlanBackupConfigSelectedNamespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces] {
+	return pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces]{
+		OutputState: i.ToBackupPlanBackupConfigSelectedNamespacesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanBackupConfigSelectedNamespacesOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupConfigSelectedNamespacesOutput) ElementType() reflect.Type {
@@ -755,6 +864,12 @@ func (o BackupPlanBackupConfigSelectedNamespacesOutput) ToBackupPlanBackupConfig
 	}).(BackupPlanBackupConfigSelectedNamespacesPtrOutput)
 }
 
+func (o BackupPlanBackupConfigSelectedNamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupConfigSelectedNamespaces] {
+	return pulumix.Output[BackupPlanBackupConfigSelectedNamespaces]{
+		OutputState: o.OutputState,
+	}
+}
+
 // A list of Kubernetes Namespaces.
 func (o BackupPlanBackupConfigSelectedNamespacesOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackupPlanBackupConfigSelectedNamespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
@@ -772,6 +887,12 @@ func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) ToBackupPlanBackupCon
 
 func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) ToBackupPlanBackupConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) BackupPlanBackupConfigSelectedNamespacesPtrOutput {
 	return o
+}
+
+func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces] {
+	return pulumix.Output[*BackupPlanBackupConfigSelectedNamespaces]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanBackupConfigSelectedNamespacesPtrOutput) Elem() BackupPlanBackupConfigSelectedNamespacesOutput {
@@ -835,6 +956,12 @@ func (i BackupPlanBackupScheduleArgs) ToBackupPlanBackupScheduleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupScheduleOutput)
 }
 
+func (i BackupPlanBackupScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupSchedule] {
+	return pulumix.Output[BackupPlanBackupSchedule]{
+		OutputState: i.ToBackupPlanBackupScheduleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanBackupScheduleArgs) ToBackupPlanBackupSchedulePtrOutput() BackupPlanBackupSchedulePtrOutput {
 	return i.ToBackupPlanBackupSchedulePtrOutputWithContext(context.Background())
 }
@@ -876,6 +1003,12 @@ func (i *backupPlanBackupSchedulePtrType) ToBackupPlanBackupSchedulePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupSchedulePtrOutput)
 }
 
+func (i *backupPlanBackupSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupSchedule] {
+	return pulumix.Output[*BackupPlanBackupSchedule]{
+		OutputState: i.ToBackupPlanBackupSchedulePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanBackupScheduleOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanBackupScheduleOutput) ElementType() reflect.Type {
@@ -898,6 +1031,12 @@ func (o BackupPlanBackupScheduleOutput) ToBackupPlanBackupSchedulePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupSchedule) *BackupPlanBackupSchedule {
 		return &v
 	}).(BackupPlanBackupSchedulePtrOutput)
+}
+
+func (o BackupPlanBackupScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanBackupSchedule] {
+	return pulumix.Output[BackupPlanBackupSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A standard cron string that defines a repeating schedule for
@@ -924,6 +1063,12 @@ func (o BackupPlanBackupSchedulePtrOutput) ToBackupPlanBackupSchedulePtrOutput()
 
 func (o BackupPlanBackupSchedulePtrOutput) ToBackupPlanBackupSchedulePtrOutputWithContext(ctx context.Context) BackupPlanBackupSchedulePtrOutput {
 	return o
+}
+
+func (o BackupPlanBackupSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanBackupSchedule] {
+	return pulumix.Output[*BackupPlanBackupSchedule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanBackupSchedulePtrOutput) Elem() BackupPlanBackupScheduleOutput {
@@ -993,6 +1138,12 @@ func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionOutput)
 }
 
+func (i BackupPlanIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamBindingCondition] {
+	return pulumix.Output[BackupPlanIamBindingCondition]{
+		OutputState: i.ToBackupPlanIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanIamBindingConditionArgs) ToBackupPlanIamBindingConditionPtrOutput() BackupPlanIamBindingConditionPtrOutput {
 	return i.ToBackupPlanIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1034,6 +1185,12 @@ func (i *backupPlanIamBindingConditionPtrType) ToBackupPlanIamBindingConditionPt
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamBindingConditionPtrOutput)
 }
 
+func (i *backupPlanIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamBindingCondition] {
+	return pulumix.Output[*BackupPlanIamBindingCondition]{
+		OutputState: i.ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1056,6 +1213,12 @@ func (o BackupPlanIamBindingConditionOutput) ToBackupPlanIamBindingConditionPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanIamBindingCondition) *BackupPlanIamBindingCondition {
 		return &v
 	}).(BackupPlanIamBindingConditionPtrOutput)
+}
+
+func (o BackupPlanIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamBindingCondition] {
+	return pulumix.Output[BackupPlanIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1082,6 +1245,12 @@ func (o BackupPlanIamBindingConditionPtrOutput) ToBackupPlanIamBindingConditionP
 
 func (o BackupPlanIamBindingConditionPtrOutput) ToBackupPlanIamBindingConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o BackupPlanIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamBindingCondition] {
+	return pulumix.Output[*BackupPlanIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanIamBindingConditionPtrOutput) Elem() BackupPlanIamBindingConditionOutput {
@@ -1156,6 +1325,12 @@ func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionOutput)
 }
 
+func (i BackupPlanIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamMemberCondition] {
+	return pulumix.Output[BackupPlanIamMemberCondition]{
+		OutputState: i.ToBackupPlanIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanIamMemberConditionArgs) ToBackupPlanIamMemberConditionPtrOutput() BackupPlanIamMemberConditionPtrOutput {
 	return i.ToBackupPlanIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1197,6 +1372,12 @@ func (i *backupPlanIamMemberConditionPtrType) ToBackupPlanIamMemberConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanIamMemberConditionPtrOutput)
 }
 
+func (i *backupPlanIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamMemberCondition] {
+	return pulumix.Output[*BackupPlanIamMemberCondition]{
+		OutputState: i.ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1219,6 +1400,12 @@ func (o BackupPlanIamMemberConditionOutput) ToBackupPlanIamMemberConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanIamMemberCondition) *BackupPlanIamMemberCondition {
 		return &v
 	}).(BackupPlanIamMemberConditionPtrOutput)
+}
+
+func (o BackupPlanIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanIamMemberCondition] {
+	return pulumix.Output[BackupPlanIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1245,6 +1432,12 @@ func (o BackupPlanIamMemberConditionPtrOutput) ToBackupPlanIamMemberConditionPtr
 
 func (o BackupPlanIamMemberConditionPtrOutput) ToBackupPlanIamMemberConditionPtrOutputWithContext(ctx context.Context) BackupPlanIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o BackupPlanIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanIamMemberCondition] {
+	return pulumix.Output[*BackupPlanIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanIamMemberConditionPtrOutput) Elem() BackupPlanIamMemberConditionOutput {
@@ -1357,6 +1550,12 @@ func (i BackupPlanRetentionPolicyArgs) ToBackupPlanRetentionPolicyOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanRetentionPolicyOutput)
 }
 
+func (i BackupPlanRetentionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BackupPlanRetentionPolicy] {
+	return pulumix.Output[BackupPlanRetentionPolicy]{
+		OutputState: i.ToBackupPlanRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i BackupPlanRetentionPolicyArgs) ToBackupPlanRetentionPolicyPtrOutput() BackupPlanRetentionPolicyPtrOutput {
 	return i.ToBackupPlanRetentionPolicyPtrOutputWithContext(context.Background())
 }
@@ -1398,6 +1597,12 @@ func (i *backupPlanRetentionPolicyPtrType) ToBackupPlanRetentionPolicyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanRetentionPolicyPtrOutput)
 }
 
+func (i *backupPlanRetentionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanRetentionPolicy] {
+	return pulumix.Output[*BackupPlanRetentionPolicy]{
+		OutputState: i.ToBackupPlanRetentionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackupPlanRetentionPolicyOutput struct{ *pulumi.OutputState }
 
 func (BackupPlanRetentionPolicyOutput) ElementType() reflect.Type {
@@ -1420,6 +1625,12 @@ func (o BackupPlanRetentionPolicyOutput) ToBackupPlanRetentionPolicyPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanRetentionPolicy) *BackupPlanRetentionPolicy {
 		return &v
 	}).(BackupPlanRetentionPolicyPtrOutput)
+}
+
+func (o BackupPlanRetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BackupPlanRetentionPolicy] {
+	return pulumix.Output[BackupPlanRetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Minimum age for a Backup created via this BackupPlan (in days).
@@ -1465,6 +1676,12 @@ func (o BackupPlanRetentionPolicyPtrOutput) ToBackupPlanRetentionPolicyPtrOutput
 
 func (o BackupPlanRetentionPolicyPtrOutput) ToBackupPlanRetentionPolicyPtrOutputWithContext(ctx context.Context) BackupPlanRetentionPolicyPtrOutput {
 	return o
+}
+
+func (o BackupPlanRetentionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupPlanRetentionPolicy] {
+	return pulumix.Output[*BackupPlanRetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackupPlanRetentionPolicyPtrOutput) Elem() BackupPlanRetentionPolicyOutput {

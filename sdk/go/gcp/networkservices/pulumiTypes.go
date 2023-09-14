@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -62,6 +63,12 @@ func (i EdgeCacheKeysetPublicKeyArgs) ToEdgeCacheKeysetPublicKeyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetPublicKeyOutput)
 }
 
+func (i EdgeCacheKeysetPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheKeysetPublicKey] {
+	return pulumix.Output[EdgeCacheKeysetPublicKey]{
+		OutputState: i.ToEdgeCacheKeysetPublicKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheKeysetPublicKeyArrayInput is an input type that accepts EdgeCacheKeysetPublicKeyArray and EdgeCacheKeysetPublicKeyArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetPublicKeyArrayInput` via:
 //
@@ -87,6 +94,12 @@ func (i EdgeCacheKeysetPublicKeyArray) ToEdgeCacheKeysetPublicKeyArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetPublicKeyArrayOutput)
 }
 
+func (i EdgeCacheKeysetPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheKeysetPublicKey] {
+	return pulumix.Output[[]EdgeCacheKeysetPublicKey]{
+		OutputState: i.ToEdgeCacheKeysetPublicKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheKeysetPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetPublicKeyOutput) ElementType() reflect.Type {
@@ -99,6 +112,12 @@ func (o EdgeCacheKeysetPublicKeyOutput) ToEdgeCacheKeysetPublicKeyOutput() EdgeC
 
 func (o EdgeCacheKeysetPublicKeyOutput) ToEdgeCacheKeysetPublicKeyOutputWithContext(ctx context.Context) EdgeCacheKeysetPublicKeyOutput {
 	return o
+}
+
+func (o EdgeCacheKeysetPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheKeysetPublicKey] {
+	return pulumix.Output[EdgeCacheKeysetPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
@@ -132,6 +151,12 @@ func (o EdgeCacheKeysetPublicKeyArrayOutput) ToEdgeCacheKeysetPublicKeyArrayOutp
 
 func (o EdgeCacheKeysetPublicKeyArrayOutput) ToEdgeCacheKeysetPublicKeyArrayOutputWithContext(ctx context.Context) EdgeCacheKeysetPublicKeyArrayOutput {
 	return o
+}
+
+func (o EdgeCacheKeysetPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheKeysetPublicKey] {
+	return pulumix.Output[[]EdgeCacheKeysetPublicKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheKeysetPublicKeyArrayOutput) Index(i pulumi.IntInput) EdgeCacheKeysetPublicKeyOutput {
@@ -183,6 +208,12 @@ func (i EdgeCacheKeysetValidationSharedKeyArgs) ToEdgeCacheKeysetValidationShare
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetValidationSharedKeyOutput)
 }
 
+func (i EdgeCacheKeysetValidationSharedKeyArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheKeysetValidationSharedKey] {
+	return pulumix.Output[EdgeCacheKeysetValidationSharedKey]{
+		OutputState: i.ToEdgeCacheKeysetValidationSharedKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheKeysetValidationSharedKeyArrayInput is an input type that accepts EdgeCacheKeysetValidationSharedKeyArray and EdgeCacheKeysetValidationSharedKeyArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheKeysetValidationSharedKeyArrayInput` via:
 //
@@ -208,6 +239,12 @@ func (i EdgeCacheKeysetValidationSharedKeyArray) ToEdgeCacheKeysetValidationShar
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheKeysetValidationSharedKeyArrayOutput)
 }
 
+func (i EdgeCacheKeysetValidationSharedKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheKeysetValidationSharedKey] {
+	return pulumix.Output[[]EdgeCacheKeysetValidationSharedKey]{
+		OutputState: i.ToEdgeCacheKeysetValidationSharedKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheKeysetValidationSharedKeyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheKeysetValidationSharedKeyOutput) ElementType() reflect.Type {
@@ -220,6 +257,12 @@ func (o EdgeCacheKeysetValidationSharedKeyOutput) ToEdgeCacheKeysetValidationSha
 
 func (o EdgeCacheKeysetValidationSharedKeyOutput) ToEdgeCacheKeysetValidationSharedKeyOutputWithContext(ctx context.Context) EdgeCacheKeysetValidationSharedKeyOutput {
 	return o
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheKeysetValidationSharedKey] {
+	return pulumix.Output[EdgeCacheKeysetValidationSharedKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the secret version in Secret Manager.
@@ -244,6 +287,12 @@ func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) ToEdgeCacheKeysetValidati
 
 func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) ToEdgeCacheKeysetValidationSharedKeyArrayOutputWithContext(ctx context.Context) EdgeCacheKeysetValidationSharedKeyArrayOutput {
 	return o
+}
+
+func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheKeysetValidationSharedKey] {
+	return pulumix.Output[[]EdgeCacheKeysetValidationSharedKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheKeysetValidationSharedKeyArrayOutput) Index(i pulumi.IntInput) EdgeCacheKeysetValidationSharedKeyOutput {
@@ -295,6 +344,12 @@ func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToEdgeCacheOriginAwsV4Authentica
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginAwsV4AuthenticationOutput)
 }
 
+func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginAwsV4Authentication] {
+	return pulumix.Output[EdgeCacheOriginAwsV4Authentication]{
+		OutputState: i.ToEdgeCacheOriginAwsV4AuthenticationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheOriginAwsV4AuthenticationArgs) ToEdgeCacheOriginAwsV4AuthenticationPtrOutput() EdgeCacheOriginAwsV4AuthenticationPtrOutput {
 	return i.ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(context.Background())
 }
@@ -336,6 +391,12 @@ func (i *edgeCacheOriginAwsV4AuthenticationPtrType) ToEdgeCacheOriginAwsV4Authen
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginAwsV4AuthenticationPtrOutput)
 }
 
+func (i *edgeCacheOriginAwsV4AuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginAwsV4Authentication] {
+	return pulumix.Output[*EdgeCacheOriginAwsV4Authentication]{
+		OutputState: i.ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginAwsV4AuthenticationOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginAwsV4AuthenticationOutput) ElementType() reflect.Type {
@@ -358,6 +419,12 @@ func (o EdgeCacheOriginAwsV4AuthenticationOutput) ToEdgeCacheOriginAwsV4Authenti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginAwsV4Authentication) *EdgeCacheOriginAwsV4Authentication {
 		return &v
 	}).(EdgeCacheOriginAwsV4AuthenticationPtrOutput)
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginAwsV4Authentication] {
+	return pulumix.Output[EdgeCacheOriginAwsV4Authentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The access key ID your origin uses to identify the key.
@@ -388,6 +455,12 @@ func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) ToEdgeCacheOriginAwsV4Authe
 
 func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) ToEdgeCacheOriginAwsV4AuthenticationPtrOutputWithContext(ctx context.Context) EdgeCacheOriginAwsV4AuthenticationPtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginAwsV4Authentication] {
+	return pulumix.Output[*EdgeCacheOriginAwsV4Authentication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) Elem() EdgeCacheOriginAwsV4AuthenticationOutput {
@@ -476,6 +549,12 @@ func (i EdgeCacheOriginOriginOverrideActionArgs) ToEdgeCacheOriginOriginOverride
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionOutput)
 }
 
+func (i EdgeCacheOriginOriginOverrideActionArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideAction] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideAction]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheOriginOriginOverrideActionArgs) ToEdgeCacheOriginOriginOverrideActionPtrOutput() EdgeCacheOriginOriginOverrideActionPtrOutput {
 	return i.ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(context.Background())
 }
@@ -517,6 +596,12 @@ func (i *edgeCacheOriginOriginOverrideActionPtrType) ToEdgeCacheOriginOriginOver
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionPtrOutput)
 }
 
+func (i *edgeCacheOriginOriginOverrideActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginOverrideAction] {
+	return pulumix.Output[*EdgeCacheOriginOriginOverrideAction]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginOriginOverrideActionOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOriginOverrideActionOutput) ElementType() reflect.Type {
@@ -539,6 +624,12 @@ func (o EdgeCacheOriginOriginOverrideActionOutput) ToEdgeCacheOriginOriginOverri
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginOriginOverrideAction) *EdgeCacheOriginOriginOverrideAction {
 		return &v
 	}).(EdgeCacheOriginOriginOverrideActionPtrOutput)
+}
+
+func (o EdgeCacheOriginOriginOverrideActionOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideAction] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The header actions, including adding and removing
@@ -571,6 +662,12 @@ func (o EdgeCacheOriginOriginOverrideActionPtrOutput) ToEdgeCacheOriginOriginOve
 
 func (o EdgeCacheOriginOriginOverrideActionPtrOutput) ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionPtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginOverrideAction] {
+	return pulumix.Output[*EdgeCacheOriginOriginOverrideAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginOriginOverrideActionPtrOutput) Elem() EdgeCacheOriginOriginOverrideActionOutput {
@@ -644,6 +741,12 @@ func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToEdgeCacheOriginOr
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionOutput)
 }
 
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderAction] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderAction]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionHeaderActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
 	return i.ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(context.Background())
 }
@@ -685,6 +788,12 @@ func (i *edgeCacheOriginOriginOverrideActionHeaderActionPtrType) ToEdgeCacheOrig
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput)
 }
 
+func (i *edgeCacheOriginOriginOverrideActionHeaderActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginOverrideActionHeaderAction] {
+	return pulumix.Output[*EdgeCacheOriginOriginOverrideActionHeaderAction]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginOriginOverrideActionHeaderActionOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ElementType() reflect.Type {
@@ -709,6 +818,12 @@ func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToEdgeCacheOrigin
 	}).(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput)
 }
 
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderAction] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderAction]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Describes a header to add.
 // You may add a maximum of 25 request headers.
 // Structure is documented below.
@@ -730,6 +845,12 @@ func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) ToEdgeCacheOri
 
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginOverrideActionHeaderAction] {
+	return pulumix.Output[*EdgeCacheOriginOriginOverrideActionHeaderAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) Elem() EdgeCacheOriginOriginOverrideActionHeaderActionOutput {
@@ -805,6 +926,12 @@ func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput)
 }
 
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput is an input type that accepts EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray and EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput` via:
 //
@@ -830,6 +957,12 @@ func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray)
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput)
 }
 
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd] {
+	return pulumix.Output[[]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
@@ -842,6 +975,12 @@ func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput
 
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
 	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the header to add.
@@ -878,6 +1017,12 @@ func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayO
 
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
 	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd] {
+	return pulumix.Output[[]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
@@ -925,6 +1070,12 @@ func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToEdgeCacheOriginOrig
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionUrlRewriteOutput)
 }
 
+func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideActionUrlRewrite] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideActionUrlRewrite]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
 	return i.ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(context.Background())
 }
@@ -966,6 +1117,12 @@ func (i *edgeCacheOriginOriginOverrideActionUrlRewritePtrType) ToEdgeCacheOrigin
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput)
 }
 
+func (i *edgeCacheOriginOriginOverrideActionUrlRewritePtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginOverrideActionUrlRewrite] {
+	return pulumix.Output[*EdgeCacheOriginOriginOverrideActionUrlRewrite]{
+		OutputState: i.ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginOriginOverrideActionUrlRewriteOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ElementType() reflect.Type {
@@ -990,6 +1147,12 @@ func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ToEdgeCacheOriginOr
 	}).(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput)
 }
 
+func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginOverrideActionUrlRewrite] {
+	return pulumix.Output[EdgeCacheOriginOriginOverrideActionUrlRewrite]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Prior to forwarding the request to the selected
 // origin, the request's host header is replaced with
 // contents of the hostRewrite.
@@ -1010,6 +1173,12 @@ func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) ToEdgeCacheOrigi
 
 func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginOverrideActionUrlRewrite] {
+	return pulumix.Output[*EdgeCacheOriginOriginOverrideActionUrlRewrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) Elem() EdgeCacheOriginOriginOverrideActionUrlRewriteOutput {
@@ -1074,6 +1243,12 @@ func (i EdgeCacheOriginOriginRedirectArgs) ToEdgeCacheOriginOriginRedirectOutput
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginRedirectOutput)
 }
 
+func (i EdgeCacheOriginOriginRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginRedirect] {
+	return pulumix.Output[EdgeCacheOriginOriginRedirect]{
+		OutputState: i.ToEdgeCacheOriginOriginRedirectOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheOriginOriginRedirectArgs) ToEdgeCacheOriginOriginRedirectPtrOutput() EdgeCacheOriginOriginRedirectPtrOutput {
 	return i.ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(context.Background())
 }
@@ -1115,6 +1290,12 @@ func (i *edgeCacheOriginOriginRedirectPtrType) ToEdgeCacheOriginOriginRedirectPt
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginRedirectPtrOutput)
 }
 
+func (i *edgeCacheOriginOriginRedirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginRedirect] {
+	return pulumix.Output[*EdgeCacheOriginOriginRedirect]{
+		OutputState: i.ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginOriginRedirectOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginOriginRedirectOutput) ElementType() reflect.Type {
@@ -1139,6 +1320,12 @@ func (o EdgeCacheOriginOriginRedirectOutput) ToEdgeCacheOriginOriginRedirectPtrO
 	}).(EdgeCacheOriginOriginRedirectPtrOutput)
 }
 
+func (o EdgeCacheOriginOriginRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginOriginRedirect] {
+	return pulumix.Output[EdgeCacheOriginOriginRedirect]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The set of redirect response codes that the CDN
 // follows. Values of
 // [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
@@ -1159,6 +1346,12 @@ func (o EdgeCacheOriginOriginRedirectPtrOutput) ToEdgeCacheOriginOriginRedirectP
 
 func (o EdgeCacheOriginOriginRedirectPtrOutput) ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectPtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginOriginRedirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginOriginRedirect] {
+	return pulumix.Output[*EdgeCacheOriginOriginRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginOriginRedirectPtrOutput) Elem() EdgeCacheOriginOriginRedirectOutput {
@@ -1255,6 +1448,12 @@ func (i EdgeCacheOriginTimeoutArgs) ToEdgeCacheOriginTimeoutOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginTimeoutOutput)
 }
 
+func (i EdgeCacheOriginTimeoutArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginTimeout] {
+	return pulumix.Output[EdgeCacheOriginTimeout]{
+		OutputState: i.ToEdgeCacheOriginTimeoutOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheOriginTimeoutArgs) ToEdgeCacheOriginTimeoutPtrOutput() EdgeCacheOriginTimeoutPtrOutput {
 	return i.ToEdgeCacheOriginTimeoutPtrOutputWithContext(context.Background())
 }
@@ -1296,6 +1495,12 @@ func (i *edgeCacheOriginTimeoutPtrType) ToEdgeCacheOriginTimeoutPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginTimeoutPtrOutput)
 }
 
+func (i *edgeCacheOriginTimeoutPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginTimeout] {
+	return pulumix.Output[*EdgeCacheOriginTimeout]{
+		OutputState: i.ToEdgeCacheOriginTimeoutPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheOriginTimeoutOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheOriginTimeoutOutput) ElementType() reflect.Type {
@@ -1318,6 +1523,12 @@ func (o EdgeCacheOriginTimeoutOutput) ToEdgeCacheOriginTimeoutPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginTimeout) *EdgeCacheOriginTimeout {
 		return &v
 	}).(EdgeCacheOriginTimeoutPtrOutput)
+}
+
+func (o EdgeCacheOriginTimeoutOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheOriginTimeout] {
+	return pulumix.Output[EdgeCacheOriginTimeout]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
@@ -1365,6 +1576,12 @@ func (o EdgeCacheOriginTimeoutPtrOutput) ToEdgeCacheOriginTimeoutPtrOutput() Edg
 
 func (o EdgeCacheOriginTimeoutPtrOutput) ToEdgeCacheOriginTimeoutPtrOutputWithContext(ctx context.Context) EdgeCacheOriginTimeoutPtrOutput {
 	return o
+}
+
+func (o EdgeCacheOriginTimeoutPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheOriginTimeout] {
+	return pulumix.Output[*EdgeCacheOriginTimeout]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheOriginTimeoutPtrOutput) Elem() EdgeCacheOriginTimeoutOutput {
@@ -1469,6 +1686,12 @@ func (i EdgeCacheServiceLogConfigArgs) ToEdgeCacheServiceLogConfigOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceLogConfigOutput)
 }
 
+func (i EdgeCacheServiceLogConfigArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceLogConfig] {
+	return pulumix.Output[EdgeCacheServiceLogConfig]{
+		OutputState: i.ToEdgeCacheServiceLogConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceLogConfigArgs) ToEdgeCacheServiceLogConfigPtrOutput() EdgeCacheServiceLogConfigPtrOutput {
 	return i.ToEdgeCacheServiceLogConfigPtrOutputWithContext(context.Background())
 }
@@ -1510,6 +1733,12 @@ func (i *edgeCacheServiceLogConfigPtrType) ToEdgeCacheServiceLogConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceLogConfigPtrOutput)
 }
 
+func (i *edgeCacheServiceLogConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceLogConfig] {
+	return pulumix.Output[*EdgeCacheServiceLogConfig]{
+		OutputState: i.ToEdgeCacheServiceLogConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceLogConfigOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceLogConfigOutput) ElementType() reflect.Type {
@@ -1532,6 +1761,12 @@ func (o EdgeCacheServiceLogConfigOutput) ToEdgeCacheServiceLogConfigPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceLogConfig) *EdgeCacheServiceLogConfig {
 		return &v
 	}).(EdgeCacheServiceLogConfigPtrOutput)
+}
+
+func (o EdgeCacheServiceLogConfigOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceLogConfig] {
+	return pulumix.Output[EdgeCacheServiceLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable logging for traffic served by this service.
@@ -1557,6 +1792,12 @@ func (o EdgeCacheServiceLogConfigPtrOutput) ToEdgeCacheServiceLogConfigPtrOutput
 
 func (o EdgeCacheServiceLogConfigPtrOutput) ToEdgeCacheServiceLogConfigPtrOutputWithContext(ctx context.Context) EdgeCacheServiceLogConfigPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceLogConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceLogConfig] {
+	return pulumix.Output[*EdgeCacheServiceLogConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceLogConfigPtrOutput) Elem() EdgeCacheServiceLogConfigOutput {
@@ -1631,6 +1872,12 @@ func (i EdgeCacheServiceRoutingArgs) ToEdgeCacheServiceRoutingOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingOutput)
 }
 
+func (i EdgeCacheServiceRoutingArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRouting] {
+	return pulumix.Output[EdgeCacheServiceRouting]{
+		OutputState: i.ToEdgeCacheServiceRoutingOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingArgs) ToEdgeCacheServiceRoutingPtrOutput() EdgeCacheServiceRoutingPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPtrOutputWithContext(context.Background())
 }
@@ -1672,6 +1919,12 @@ func (i *edgeCacheServiceRoutingPtrType) ToEdgeCacheServiceRoutingPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRouting] {
+	return pulumix.Output[*EdgeCacheServiceRouting]{
+		OutputState: i.ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingOutput) ElementType() reflect.Type {
@@ -1694,6 +1947,12 @@ func (o EdgeCacheServiceRoutingOutput) ToEdgeCacheServiceRoutingPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRouting) *EdgeCacheServiceRouting {
 		return &v
 	}).(EdgeCacheServiceRoutingPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRouting] {
+	return pulumix.Output[EdgeCacheServiceRouting]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
@@ -1720,6 +1979,12 @@ func (o EdgeCacheServiceRoutingPtrOutput) ToEdgeCacheServiceRoutingPtrOutput() E
 
 func (o EdgeCacheServiceRoutingPtrOutput) ToEdgeCacheServiceRoutingPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRouting] {
+	return pulumix.Output[*EdgeCacheServiceRouting]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPtrOutput) Elem() EdgeCacheServiceRoutingOutput {
@@ -1815,6 +2080,12 @@ func (i EdgeCacheServiceRoutingHostRuleArgs) ToEdgeCacheServiceRoutingHostRuleOu
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingHostRuleOutput)
 }
 
+func (i EdgeCacheServiceRoutingHostRuleArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingHostRule] {
+	return pulumix.Output[EdgeCacheServiceRoutingHostRule]{
+		OutputState: i.ToEdgeCacheServiceRoutingHostRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingHostRuleArrayInput is an input type that accepts EdgeCacheServiceRoutingHostRuleArray and EdgeCacheServiceRoutingHostRuleArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingHostRuleArrayInput` via:
 //
@@ -1840,6 +2111,12 @@ func (i EdgeCacheServiceRoutingHostRuleArray) ToEdgeCacheServiceRoutingHostRuleA
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingHostRuleArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingHostRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingHostRule] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingHostRule]{
+		OutputState: i.ToEdgeCacheServiceRoutingHostRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingHostRuleOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingHostRuleOutput) ElementType() reflect.Type {
@@ -1852,6 +2129,12 @@ func (o EdgeCacheServiceRoutingHostRuleOutput) ToEdgeCacheServiceRoutingHostRule
 
 func (o EdgeCacheServiceRoutingHostRuleOutput) ToEdgeCacheServiceRoutingHostRuleOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingHostRuleOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingHostRuleOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingHostRule] {
+	return pulumix.Output[EdgeCacheServiceRoutingHostRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A human-readable description of the hostRule.
@@ -1891,6 +2174,12 @@ func (o EdgeCacheServiceRoutingHostRuleArrayOutput) ToEdgeCacheServiceRoutingHos
 
 func (o EdgeCacheServiceRoutingHostRuleArrayOutput) ToEdgeCacheServiceRoutingHostRuleArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingHostRuleArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingHostRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingHostRule] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingHostRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingHostRuleArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingHostRuleOutput {
@@ -1942,6 +2231,12 @@ func (i EdgeCacheServiceRoutingPathMatcherArgs) ToEdgeCacheServiceRoutingPathMat
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcher] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcher]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherArray and EdgeCacheServiceRoutingPathMatcherArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherArrayInput` via:
 //
@@ -1967,6 +2262,12 @@ func (i EdgeCacheServiceRoutingPathMatcherArray) ToEdgeCacheServiceRoutingPathMa
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcher] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcher]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherOutput) ElementType() reflect.Type {
@@ -1979,6 +2280,12 @@ func (o EdgeCacheServiceRoutingPathMatcherOutput) ToEdgeCacheServiceRoutingPathM
 
 func (o EdgeCacheServiceRoutingPathMatcherOutput) ToEdgeCacheServiceRoutingPathMatcherOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcher] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A human-readable description of the resource.
@@ -2011,6 +2318,12 @@ func (o EdgeCacheServiceRoutingPathMatcherArrayOutput) ToEdgeCacheServiceRouting
 
 func (o EdgeCacheServiceRoutingPathMatcherArrayOutput) ToEdgeCacheServiceRoutingPathMatcherArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcher] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherOutput {
@@ -2094,6 +2407,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleArgs) ToEdgeCacheServiceRouti
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRule] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRule]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleArray and EdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleArrayInput` via:
 //
@@ -2119,6 +2438,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleArray) ToEdgeCacheServiceRout
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRule] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRule]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) ElementType() reflect.Type {
@@ -2131,6 +2456,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) ToEdgeCacheServiceRou
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRule] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A human-readable description of the routeRule.
@@ -2199,6 +2530,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutput) ToEdgeCacheServi
 	return o
 }
 
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRule] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheServiceRoutingPathMatcherRouteRule {
 		return vs[0].([]EdgeCacheServiceRoutingPathMatcherRouteRule)[vs[1].(int)]
@@ -2260,6 +2597,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs) ToEdgeCache
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutputWithContext(context.Background())
 }
@@ -2301,6 +2644,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrType) ToEdgeC
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput) ElementType() reflect.Type {
@@ -2323,6 +2672,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput) ToEdgeCac
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction) *EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Describes a header to add.
@@ -2370,6 +2725,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) ToEdge
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionOutput {
@@ -2468,6 +2829,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayInput` via:
 //
@@ -2493,6 +2860,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput) ElementType() reflect.Type {
@@ -2505,6 +2878,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the header to add.
@@ -2540,6 +2919,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput {
@@ -2581,6 +2966,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayInput` via:
 //
@@ -2606,6 +2997,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput) ElementType() reflect.Type {
@@ -2618,6 +3015,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the header to remove.
@@ -2639,6 +3042,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput {
@@ -2688,6 +3097,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToA
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayInput` via:
 //
@@ -2713,6 +3128,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToA
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput) ElementType() reflect.Type {
@@ -2725,6 +3146,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToA
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the header to add.
@@ -2760,6 +3187,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToA
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput {
@@ -2803,6 +3236,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToR
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArray and EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayInput` via:
 //
@@ -2828,6 +3267,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToR
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput) ElementType() reflect.Type {
@@ -2840,6 +3285,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToR
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Headers to remove from the response prior to sending it back to the client.
@@ -2862,6 +3313,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToR
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveOutput {
@@ -2941,6 +3398,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs) ToEdgeCacheSer
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayInput` via:
 //
@@ -2966,6 +3429,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray) ToEdgeCacheSe
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput) ElementType() reflect.Type {
@@ -2978,6 +3447,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput) ToEdgeCacheS
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
@@ -3035,6 +3510,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput) ToEdgeC
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput {
@@ -3098,6 +3579,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs) ToE
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArray and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayInput` via:
 //
@@ -3123,6 +3610,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArray) To
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ElementType() reflect.Type {
@@ -3135,6 +3628,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) T
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the header should exactly match contents of exactMatch.
@@ -3180,6 +3679,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutp
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput {
@@ -3229,6 +3734,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchA
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput is an input type that accepts EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArray and EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput values.
 // You can construct a concrete instance of `EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayInput` via:
 //
@@ -3254,6 +3765,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchA
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ElementType() reflect.Type {
@@ -3266,6 +3783,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchO
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
@@ -3299,6 +3822,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchA
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch] {
+	return pulumix.Output[[]EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrayOutput) Index(i pulumi.IntInput) EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchOutput {
@@ -3354,6 +3883,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs) ToEdgeCacheS
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutputWithContext(context.Background())
 }
@@ -3395,6 +3930,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrType) ToEdgeCa
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) ElementType() reflect.Type {
@@ -3417,6 +3958,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) ToEdgeCach
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The policy to use for defining caching and signed request behaviour for requests that match this route.
@@ -3455,6 +4002,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) ToEdgeC
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionOutput {
@@ -3667,6 +4220,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs) ToE
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutputWithContext(context.Background())
 }
@@ -3708,6 +4267,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrType)
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) ElementType() reflect.Type {
@@ -3730,6 +4295,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) T
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enable signature generation or propagation on this route.
@@ -3865,6 +4436,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput {
@@ -4113,6 +4690,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(context.Background())
 }
@@ -4154,6 +4737,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSigna
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ElementType() reflect.Type {
@@ -4176,6 +4765,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The actions to take to add signatures to responses.
@@ -4236,6 +4831,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput {
@@ -4402,6 +5003,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutputWithContext(context.Background())
 }
@@ -4443,6 +5050,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKey
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput) ElementType() reflect.Type {
@@ -4465,6 +5078,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If true, requests to different hosts will be cached separately.
@@ -4546,6 +5165,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyP
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyOutput {
@@ -4693,6 +5318,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(context.Background())
 }
@@ -4734,6 +5365,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTo
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ElementType() reflect.Type {
@@ -4756,6 +5393,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The allowed signature algorithms to use.
@@ -4789,6 +5432,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput {
@@ -4895,6 +5544,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(context.Background())
 }
@@ -4936,6 +5591,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) ElementType() reflect.Type {
@@ -4958,6 +5619,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
@@ -5023,6 +5690,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutpu
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyOutput {
@@ -5172,6 +5845,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
 }
@@ -5213,6 +5892,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrType
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput) ElementType() reflect.Type {
@@ -5235,6 +5920,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite) *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
@@ -5278,6 +5969,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutpu
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteOutput {
@@ -5397,6 +6094,12 @@ func (i EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs) ToEdgeCacheS
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput)
 }
 
+func (i EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs) ToEdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput() EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput {
 	return i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(context.Background())
 }
@@ -5438,6 +6141,12 @@ func (i *edgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrType) ToEdgeCa
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput)
 }
 
+func (i *edgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect]{
+		OutputState: i.ToEdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput struct{ *pulumi.OutputState }
 
 func (EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) ElementType() reflect.Type {
@@ -5460,6 +6169,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) ToEdgeCach
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
 		return &v
 	}).(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput)
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect] {
+	return pulumix.Output[EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The host that will be used in the redirect response instead of the one that was supplied in the request.
@@ -5511,6 +6226,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) ToEdgeC
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) ToEdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput {
 	return o
+}
+
+func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect] {
+	return pulumix.Output[*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) Elem() EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput {
@@ -5625,6 +6346,12 @@ func (i EndpointPolicyEndpointMatcherArgs) ToEndpointPolicyEndpointMatcherOutput
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherOutput)
 }
 
+func (i EndpointPolicyEndpointMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyEndpointMatcher] {
+	return pulumix.Output[EndpointPolicyEndpointMatcher]{
+		OutputState: i.ToEndpointPolicyEndpointMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EndpointPolicyEndpointMatcherArgs) ToEndpointPolicyEndpointMatcherPtrOutput() EndpointPolicyEndpointMatcherPtrOutput {
 	return i.ToEndpointPolicyEndpointMatcherPtrOutputWithContext(context.Background())
 }
@@ -5666,6 +6393,12 @@ func (i *endpointPolicyEndpointMatcherPtrType) ToEndpointPolicyEndpointMatcherPt
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherPtrOutput)
 }
 
+func (i *endpointPolicyEndpointMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyEndpointMatcher] {
+	return pulumix.Output[*EndpointPolicyEndpointMatcher]{
+		OutputState: i.ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointPolicyEndpointMatcherOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyEndpointMatcherOutput) ElementType() reflect.Type {
@@ -5690,6 +6423,12 @@ func (o EndpointPolicyEndpointMatcherOutput) ToEndpointPolicyEndpointMatcherPtrO
 	}).(EndpointPolicyEndpointMatcherPtrOutput)
 }
 
+func (o EndpointPolicyEndpointMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyEndpointMatcher] {
+	return pulumix.Output[EndpointPolicyEndpointMatcher]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The matcher is based on node metadata presented by xDS clients.
 // Structure is documented below.
 func (o EndpointPolicyEndpointMatcherOutput) MetadataLabelMatcher() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
@@ -5710,6 +6449,12 @@ func (o EndpointPolicyEndpointMatcherPtrOutput) ToEndpointPolicyEndpointMatcherP
 
 func (o EndpointPolicyEndpointMatcherPtrOutput) ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherPtrOutput {
 	return o
+}
+
+func (o EndpointPolicyEndpointMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyEndpointMatcher] {
+	return pulumix.Output[*EndpointPolicyEndpointMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPolicyEndpointMatcherPtrOutput) Elem() EndpointPolicyEndpointMatcherOutput {
@@ -5774,6 +6519,12 @@ func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToEndpointPolicyE
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput)
 }
 
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcher] {
+	return pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcher]{
+		OutputState: i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
 	return i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
 }
@@ -5815,6 +6566,12 @@ func (i *endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType) ToEndpointPol
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput)
 }
 
+func (i *endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyEndpointMatcherMetadataLabelMatcher] {
+	return pulumix.Output[*EndpointPolicyEndpointMatcherMetadataLabelMatcher]{
+		OutputState: i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ElementType() reflect.Type {
@@ -5837,6 +6594,12 @@ func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ToEndpointPolic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointPolicyEndpointMatcherMetadataLabelMatcher) *EndpointPolicyEndpointMatcherMetadataLabelMatcher {
 		return &v
 	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcher] {
+	return pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies how matching should be done.
@@ -5865,6 +6628,12 @@ func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointPo
 
 func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
 	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyEndpointMatcherMetadataLabelMatcher] {
+	return pulumix.Output[*EndpointPolicyEndpointMatcherMetadataLabelMatcher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) Elem() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
@@ -5940,6 +6709,12 @@ func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs) ToEn
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput)
 }
 
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel] {
+	return pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel]{
+		OutputState: i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput is an input type that accepts EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray and EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput values.
 // You can construct a concrete instance of `EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput` via:
 //
@@ -5965,6 +6740,12 @@ func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray) ToE
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput)
 }
 
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel] {
+	return pulumix.Output[[]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel]{
+		OutputState: i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) ElementType() reflect.Type {
@@ -5977,6 +6758,12 @@ func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) To
 
 func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
 	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel] {
+	return pulumix.Output[EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. Label name presented as key in xDS Node Metadata.
@@ -6003,6 +6790,12 @@ func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutpu
 
 func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
 	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel] {
+	return pulumix.Output[[]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) Index(i pulumi.IntInput) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
@@ -6042,6 +6835,12 @@ func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelect
 
 func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelectorOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyTrafficPortSelectorOutput)
+}
+
+func (i EndpointPolicyTrafficPortSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyTrafficPortSelector] {
+	return pulumix.Output[EndpointPolicyTrafficPortSelector]{
+		OutputState: i.ToEndpointPolicyTrafficPortSelectorOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelectorPtrOutput() EndpointPolicyTrafficPortSelectorPtrOutput {
@@ -6085,6 +6884,12 @@ func (i *endpointPolicyTrafficPortSelectorPtrType) ToEndpointPolicyTrafficPortSe
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyTrafficPortSelectorPtrOutput)
 }
 
+func (i *endpointPolicyTrafficPortSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyTrafficPortSelector] {
+	return pulumix.Output[*EndpointPolicyTrafficPortSelector]{
+		OutputState: i.ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointPolicyTrafficPortSelectorOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyTrafficPortSelectorOutput) ElementType() reflect.Type {
@@ -6109,6 +6914,12 @@ func (o EndpointPolicyTrafficPortSelectorOutput) ToEndpointPolicyTrafficPortSele
 	}).(EndpointPolicyTrafficPortSelectorPtrOutput)
 }
 
+func (o EndpointPolicyTrafficPortSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPolicyTrafficPortSelector] {
+	return pulumix.Output[EndpointPolicyTrafficPortSelector]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
 func (o EndpointPolicyTrafficPortSelectorOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EndpointPolicyTrafficPortSelector) []string { return v.Ports }).(pulumi.StringArrayOutput)
@@ -6126,6 +6937,12 @@ func (o EndpointPolicyTrafficPortSelectorPtrOutput) ToEndpointPolicyTrafficPortS
 
 func (o EndpointPolicyTrafficPortSelectorPtrOutput) ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorPtrOutput {
 	return o
+}
+
+func (o EndpointPolicyTrafficPortSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicyTrafficPortSelector] {
+	return pulumix.Output[*EndpointPolicyTrafficPortSelector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointPolicyTrafficPortSelectorPtrOutput) Elem() EndpointPolicyTrafficPortSelectorOutput {
@@ -6189,6 +7006,12 @@ func (i GrpcRouteRuleArgs) ToGrpcRouteRuleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleOutput)
 }
 
+func (i GrpcRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRule] {
+	return pulumix.Output[GrpcRouteRule]{
+		OutputState: i.ToGrpcRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GrpcRouteRuleArrayInput is an input type that accepts GrpcRouteRuleArray and GrpcRouteRuleArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRuleArrayInput` via:
 //
@@ -6214,6 +7037,12 @@ func (i GrpcRouteRuleArray) ToGrpcRouteRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleArrayOutput)
 }
 
+func (i GrpcRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRule] {
+	return pulumix.Output[[]GrpcRouteRule]{
+		OutputState: i.ToGrpcRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleOutput) ElementType() reflect.Type {
@@ -6226,6 +7055,12 @@ func (o GrpcRouteRuleOutput) ToGrpcRouteRuleOutput() GrpcRouteRuleOutput {
 
 func (o GrpcRouteRuleOutput) ToGrpcRouteRuleOutputWithContext(ctx context.Context) GrpcRouteRuleOutput {
 	return o
+}
+
+func (o GrpcRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRule] {
+	return pulumix.Output[GrpcRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. A detailed rule defining how to route traffic.
@@ -6252,6 +7087,12 @@ func (o GrpcRouteRuleArrayOutput) ToGrpcRouteRuleArrayOutput() GrpcRouteRuleArra
 
 func (o GrpcRouteRuleArrayOutput) ToGrpcRouteRuleArrayOutputWithContext(ctx context.Context) GrpcRouteRuleArrayOutput {
 	return o
+}
+
+func (o GrpcRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRule] {
+	return pulumix.Output[[]GrpcRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleOutput {
@@ -6311,6 +7152,12 @@ func (i GrpcRouteRuleActionArgs) ToGrpcRouteRuleActionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionOutput)
 }
 
+func (i GrpcRouteRuleActionArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleAction] {
+	return pulumix.Output[GrpcRouteRuleAction]{
+		OutputState: i.ToGrpcRouteRuleActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GrpcRouteRuleActionArgs) ToGrpcRouteRuleActionPtrOutput() GrpcRouteRuleActionPtrOutput {
 	return i.ToGrpcRouteRuleActionPtrOutputWithContext(context.Background())
 }
@@ -6352,6 +7199,12 @@ func (i *grpcRouteRuleActionPtrType) ToGrpcRouteRuleActionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionPtrOutput)
 }
 
+func (i *grpcRouteRuleActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleAction] {
+	return pulumix.Output[*GrpcRouteRuleAction]{
+		OutputState: i.ToGrpcRouteRuleActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleActionOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleActionOutput) ElementType() reflect.Type {
@@ -6374,6 +7227,12 @@ func (o GrpcRouteRuleActionOutput) ToGrpcRouteRuleActionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleAction) *GrpcRouteRuleAction {
 		return &v
 	}).(GrpcRouteRuleActionPtrOutput)
+}
+
+func (o GrpcRouteRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleAction] {
+	return pulumix.Output[GrpcRouteRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination to which traffic should be forwarded.
@@ -6411,6 +7270,12 @@ func (o GrpcRouteRuleActionPtrOutput) ToGrpcRouteRuleActionPtrOutput() GrpcRoute
 
 func (o GrpcRouteRuleActionPtrOutput) ToGrpcRouteRuleActionPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionPtrOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleAction] {
+	return pulumix.Output[*GrpcRouteRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleActionPtrOutput) Elem() GrpcRouteRuleActionOutput {
@@ -6503,6 +7368,12 @@ func (i GrpcRouteRuleActionDestinationArgs) ToGrpcRouteRuleActionDestinationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionDestinationOutput)
 }
 
+func (i GrpcRouteRuleActionDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionDestination] {
+	return pulumix.Output[GrpcRouteRuleActionDestination]{
+		OutputState: i.ToGrpcRouteRuleActionDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GrpcRouteRuleActionDestinationArrayInput is an input type that accepts GrpcRouteRuleActionDestinationArray and GrpcRouteRuleActionDestinationArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRuleActionDestinationArrayInput` via:
 //
@@ -6528,6 +7399,12 @@ func (i GrpcRouteRuleActionDestinationArray) ToGrpcRouteRuleActionDestinationArr
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionDestinationArrayOutput)
 }
 
+func (i GrpcRouteRuleActionDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRuleActionDestination] {
+	return pulumix.Output[[]GrpcRouteRuleActionDestination]{
+		OutputState: i.ToGrpcRouteRuleActionDestinationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleActionDestinationOutput) ElementType() reflect.Type {
@@ -6540,6 +7417,12 @@ func (o GrpcRouteRuleActionDestinationOutput) ToGrpcRouteRuleActionDestinationOu
 
 func (o GrpcRouteRuleActionDestinationOutput) ToGrpcRouteRuleActionDestinationOutputWithContext(ctx context.Context) GrpcRouteRuleActionDestinationOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionDestination] {
+	return pulumix.Output[GrpcRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -6564,6 +7447,12 @@ func (o GrpcRouteRuleActionDestinationArrayOutput) ToGrpcRouteRuleActionDestinat
 
 func (o GrpcRouteRuleActionDestinationArrayOutput) ToGrpcRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) GrpcRouteRuleActionDestinationArrayOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRuleActionDestination] {
+	return pulumix.Output[[]GrpcRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleActionDestinationOutput {
@@ -6613,6 +7502,12 @@ func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToGrpcRouteRuleActionFaultI
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyOutput)
 }
 
+func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicy]{
+		OutputState: i.ToGrpcRouteRuleActionFaultInjectionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
 	return i.ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
 }
@@ -6654,6 +7549,12 @@ func (i *grpcRouteRuleActionFaultInjectionPolicyPtrType) ToGrpcRouteRuleActionFa
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
 }
 
+func (i *grpcRouteRuleActionFaultInjectionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicy]{
+		OutputState: i.ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
@@ -6676,6 +7577,12 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) ToGrpcRouteRuleActionFaul
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleActionFaultInjectionPolicy) *GrpcRouteRuleActionFaultInjectionPolicy {
 		return &v
 	}).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specification of how client requests are aborted as part of fault injection before being sent to a destination.
@@ -6706,6 +7613,12 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) ToGrpcRouteRuleActionF
 
 func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) Elem() GrpcRouteRuleActionFaultInjectionPolicyOutput {
@@ -6777,6 +7690,12 @@ func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToGrpcRouteRuleActionF
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyAbortOutput)
 }
 
+func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: i.ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
 	return i.ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
 }
@@ -6818,6 +7737,12 @@ func (i *grpcRouteRuleActionFaultInjectionPolicyAbortPtrType) ToGrpcRouteRuleAct
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
 }
 
+func (i *grpcRouteRuleActionFaultInjectionPolicyAbortPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: i.ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
@@ -6842,6 +7767,12 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ToGrpcRouteRuleActio
 	}).(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
 }
 
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The HTTP status code used to abort the request.
 func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
@@ -6864,6 +7795,12 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToGrpcRouteRuleAc
 
 func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) Elem() GrpcRouteRuleActionFaultInjectionPolicyAbortOutput {
@@ -6933,6 +7870,12 @@ func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToGrpcRouteRuleActionF
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyDelayOutput)
 }
 
+func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: i.ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
 	return i.ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
 }
@@ -6974,6 +7917,12 @@ func (i *grpcRouteRuleActionFaultInjectionPolicyDelayPtrType) ToGrpcRouteRuleAct
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
 }
 
+func (i *grpcRouteRuleActionFaultInjectionPolicyDelayPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: i.ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleActionFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ElementType() reflect.Type {
@@ -6998,6 +7947,12 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ToGrpcRouteRuleActio
 	}).(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
 }
 
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[GrpcRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specify a fixed delay before forwarding the request.
 func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) FixedDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicyDelay) *string { return v.FixedDelay }).(pulumi.StringPtrOutput)
@@ -7020,6 +7975,12 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToGrpcRouteRuleAc
 
 func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[*GrpcRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Elem() GrpcRouteRuleActionFaultInjectionPolicyDelayOutput {
@@ -7095,6 +8056,12 @@ func (i GrpcRouteRuleActionRetryPolicyArgs) ToGrpcRouteRuleActionRetryPolicyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionRetryPolicyOutput)
 }
 
+func (i GrpcRouteRuleActionRetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionRetryPolicy] {
+	return pulumix.Output[GrpcRouteRuleActionRetryPolicy]{
+		OutputState: i.ToGrpcRouteRuleActionRetryPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GrpcRouteRuleActionRetryPolicyArgs) ToGrpcRouteRuleActionRetryPolicyPtrOutput() GrpcRouteRuleActionRetryPolicyPtrOutput {
 	return i.ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
 }
@@ -7136,6 +8103,12 @@ func (i *grpcRouteRuleActionRetryPolicyPtrType) ToGrpcRouteRuleActionRetryPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionRetryPolicyPtrOutput)
 }
 
+func (i *grpcRouteRuleActionRetryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionRetryPolicy] {
+	return pulumix.Output[*GrpcRouteRuleActionRetryPolicy]{
+		OutputState: i.ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleActionRetryPolicyOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleActionRetryPolicyOutput) ElementType() reflect.Type {
@@ -7158,6 +8131,12 @@ func (o GrpcRouteRuleActionRetryPolicyOutput) ToGrpcRouteRuleActionRetryPolicyPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleActionRetryPolicy) *GrpcRouteRuleActionRetryPolicy {
 		return &v
 	}).(GrpcRouteRuleActionRetryPolicyPtrOutput)
+}
+
+func (o GrpcRouteRuleActionRetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleActionRetryPolicy] {
+	return pulumix.Output[GrpcRouteRuleActionRetryPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the allowed number of retries.
@@ -7185,6 +8164,12 @@ func (o GrpcRouteRuleActionRetryPolicyPtrOutput) ToGrpcRouteRuleActionRetryPolic
 
 func (o GrpcRouteRuleActionRetryPolicyPtrOutput) ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyPtrOutput {
 	return o
+}
+
+func (o GrpcRouteRuleActionRetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleActionRetryPolicy] {
+	return pulumix.Output[*GrpcRouteRuleActionRetryPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleActionRetryPolicyPtrOutput) Elem() GrpcRouteRuleActionRetryPolicyOutput {
@@ -7261,6 +8246,12 @@ func (i GrpcRouteRuleMatchArgs) ToGrpcRouteRuleMatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchOutput)
 }
 
+func (i GrpcRouteRuleMatchArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleMatch] {
+	return pulumix.Output[GrpcRouteRuleMatch]{
+		OutputState: i.ToGrpcRouteRuleMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GrpcRouteRuleMatchArrayInput is an input type that accepts GrpcRouteRuleMatchArray and GrpcRouteRuleMatchArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRuleMatchArrayInput` via:
 //
@@ -7286,6 +8277,12 @@ func (i GrpcRouteRuleMatchArray) ToGrpcRouteRuleMatchArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchArrayOutput)
 }
 
+func (i GrpcRouteRuleMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRuleMatch] {
+	return pulumix.Output[[]GrpcRouteRuleMatch]{
+		OutputState: i.ToGrpcRouteRuleMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleMatchOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleMatchOutput) ElementType() reflect.Type {
@@ -7298,6 +8295,12 @@ func (o GrpcRouteRuleMatchOutput) ToGrpcRouteRuleMatchOutput() GrpcRouteRuleMatc
 
 func (o GrpcRouteRuleMatchOutput) ToGrpcRouteRuleMatchOutputWithContext(ctx context.Context) GrpcRouteRuleMatchOutput {
 	return o
+}
+
+func (o GrpcRouteRuleMatchOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleMatch] {
+	return pulumix.Output[GrpcRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies a list of HTTP request headers to match against.
@@ -7324,6 +8327,12 @@ func (o GrpcRouteRuleMatchArrayOutput) ToGrpcRouteRuleMatchArrayOutput() GrpcRou
 
 func (o GrpcRouteRuleMatchArrayOutput) ToGrpcRouteRuleMatchArrayOutputWithContext(ctx context.Context) GrpcRouteRuleMatchArrayOutput {
 	return o
+}
+
+func (o GrpcRouteRuleMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRuleMatch] {
+	return pulumix.Output[[]GrpcRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleMatchOutput {
@@ -7377,6 +8386,12 @@ func (i GrpcRouteRuleMatchHeaderArgs) ToGrpcRouteRuleMatchHeaderOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchHeaderOutput)
 }
 
+func (i GrpcRouteRuleMatchHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleMatchHeader] {
+	return pulumix.Output[GrpcRouteRuleMatchHeader]{
+		OutputState: i.ToGrpcRouteRuleMatchHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GrpcRouteRuleMatchHeaderArrayInput is an input type that accepts GrpcRouteRuleMatchHeaderArray and GrpcRouteRuleMatchHeaderArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRuleMatchHeaderArrayInput` via:
 //
@@ -7402,6 +8417,12 @@ func (i GrpcRouteRuleMatchHeaderArray) ToGrpcRouteRuleMatchHeaderArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchHeaderArrayOutput)
 }
 
+func (i GrpcRouteRuleMatchHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRuleMatchHeader] {
+	return pulumix.Output[[]GrpcRouteRuleMatchHeader]{
+		OutputState: i.ToGrpcRouteRuleMatchHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleMatchHeaderOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleMatchHeaderOutput) ElementType() reflect.Type {
@@ -7414,6 +8435,12 @@ func (o GrpcRouteRuleMatchHeaderOutput) ToGrpcRouteRuleMatchHeaderOutput() GrpcR
 
 func (o GrpcRouteRuleMatchHeaderOutput) ToGrpcRouteRuleMatchHeaderOutputWithContext(ctx context.Context) GrpcRouteRuleMatchHeaderOutput {
 	return o
+}
+
+func (o GrpcRouteRuleMatchHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleMatchHeader] {
+	return pulumix.Output[GrpcRouteRuleMatchHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. The key of the header.
@@ -7445,6 +8472,12 @@ func (o GrpcRouteRuleMatchHeaderArrayOutput) ToGrpcRouteRuleMatchHeaderArrayOutp
 
 func (o GrpcRouteRuleMatchHeaderArrayOutput) ToGrpcRouteRuleMatchHeaderArrayOutputWithContext(ctx context.Context) GrpcRouteRuleMatchHeaderArrayOutput {
 	return o
+}
+
+func (o GrpcRouteRuleMatchHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GrpcRouteRuleMatchHeader] {
+	return pulumix.Output[[]GrpcRouteRuleMatchHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleMatchHeaderArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleMatchHeaderOutput {
@@ -7494,6 +8527,12 @@ func (i GrpcRouteRuleMatchMethodArgs) ToGrpcRouteRuleMatchMethodOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchMethodOutput)
 }
 
+func (i GrpcRouteRuleMatchMethodArgs) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleMatchMethod] {
+	return pulumix.Output[GrpcRouteRuleMatchMethod]{
+		OutputState: i.ToGrpcRouteRuleMatchMethodOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i GrpcRouteRuleMatchMethodArgs) ToGrpcRouteRuleMatchMethodPtrOutput() GrpcRouteRuleMatchMethodPtrOutput {
 	return i.ToGrpcRouteRuleMatchMethodPtrOutputWithContext(context.Background())
 }
@@ -7535,6 +8574,12 @@ func (i *grpcRouteRuleMatchMethodPtrType) ToGrpcRouteRuleMatchMethodPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchMethodPtrOutput)
 }
 
+func (i *grpcRouteRuleMatchMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleMatchMethod] {
+	return pulumix.Output[*GrpcRouteRuleMatchMethod]{
+		OutputState: i.ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GrpcRouteRuleMatchMethodOutput struct{ *pulumi.OutputState }
 
 func (GrpcRouteRuleMatchMethodOutput) ElementType() reflect.Type {
@@ -7557,6 +8602,12 @@ func (o GrpcRouteRuleMatchMethodOutput) ToGrpcRouteRuleMatchMethodPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleMatchMethod) *GrpcRouteRuleMatchMethod {
 		return &v
 	}).(GrpcRouteRuleMatchMethodPtrOutput)
+}
+
+func (o GrpcRouteRuleMatchMethodOutput) ToOutput(ctx context.Context) pulumix.Output[GrpcRouteRuleMatchMethod] {
+	return pulumix.Output[GrpcRouteRuleMatchMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies that matches are case sensitive. The default value is true.
@@ -7586,6 +8637,12 @@ func (o GrpcRouteRuleMatchMethodPtrOutput) ToGrpcRouteRuleMatchMethodPtrOutput()
 
 func (o GrpcRouteRuleMatchMethodPtrOutput) ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodPtrOutput {
 	return o
+}
+
+func (o GrpcRouteRuleMatchMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GrpcRouteRuleMatchMethod] {
+	return pulumix.Output[*GrpcRouteRuleMatchMethod]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GrpcRouteRuleMatchMethodPtrOutput) Elem() GrpcRouteRuleMatchMethodOutput {
@@ -7673,6 +8730,12 @@ func (i HttpRouteRuleArgs) ToHttpRouteRuleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleOutput)
 }
 
+func (i HttpRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRule] {
+	return pulumix.Output[HttpRouteRule]{
+		OutputState: i.ToHttpRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpRouteRuleArrayInput is an input type that accepts HttpRouteRuleArray and HttpRouteRuleArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRuleArrayInput` via:
 //
@@ -7698,6 +8761,12 @@ func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleArrayOutput)
 }
 
+func (i HttpRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRule] {
+	return pulumix.Output[[]HttpRouteRule]{
+		OutputState: i.ToHttpRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleOutput) ElementType() reflect.Type {
@@ -7710,6 +8779,12 @@ func (o HttpRouteRuleOutput) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
 
 func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
 	return o
+}
+
+func (o HttpRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRule] {
+	return pulumix.Output[HttpRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The detailed rule defining how to route matched traffic.
@@ -7738,6 +8813,12 @@ func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutput() HttpRouteRuleArra
 
 func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRuleArrayOutput {
 	return o
+}
+
+func (o HttpRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRule] {
+	return pulumix.Output[[]HttpRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleOutput {
@@ -7833,6 +8914,12 @@ func (i HttpRouteRuleActionArgs) ToHttpRouteRuleActionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionOutput)
 }
 
+func (i HttpRouteRuleActionArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleAction] {
+	return pulumix.Output[HttpRouteRuleAction]{
+		OutputState: i.ToHttpRouteRuleActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionArgs) ToHttpRouteRuleActionPtrOutput() HttpRouteRuleActionPtrOutput {
 	return i.ToHttpRouteRuleActionPtrOutputWithContext(context.Background())
 }
@@ -7874,6 +8961,12 @@ func (i *httpRouteRuleActionPtrType) ToHttpRouteRuleActionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionPtrOutput)
 }
 
+func (i *httpRouteRuleActionPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleAction] {
+	return pulumix.Output[*HttpRouteRuleAction]{
+		OutputState: i.ToHttpRouteRuleActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionOutput) ElementType() reflect.Type {
@@ -7896,6 +8989,12 @@ func (o HttpRouteRuleActionOutput) ToHttpRouteRuleActionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleAction) *HttpRouteRuleAction {
 		return &v
 	}).(HttpRouteRuleActionPtrOutput)
+}
+
+func (o HttpRouteRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleAction] {
+	return pulumix.Output[HttpRouteRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The specification for allowing client side cross-origin requests.
@@ -7971,6 +9070,12 @@ func (o HttpRouteRuleActionPtrOutput) ToHttpRouteRuleActionPtrOutput() HttpRoute
 
 func (o HttpRouteRuleActionPtrOutput) ToHttpRouteRuleActionPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleAction] {
+	return pulumix.Output[*HttpRouteRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionPtrOutput) Elem() HttpRouteRuleActionOutput {
@@ -8157,6 +9262,12 @@ func (i HttpRouteRuleActionCorsPolicyArgs) ToHttpRouteRuleActionCorsPolicyOutput
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionCorsPolicyOutput)
 }
 
+func (i HttpRouteRuleActionCorsPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionCorsPolicy] {
+	return pulumix.Output[HttpRouteRuleActionCorsPolicy]{
+		OutputState: i.ToHttpRouteRuleActionCorsPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionCorsPolicyArgs) ToHttpRouteRuleActionCorsPolicyPtrOutput() HttpRouteRuleActionCorsPolicyPtrOutput {
 	return i.ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(context.Background())
 }
@@ -8198,6 +9309,12 @@ func (i *httpRouteRuleActionCorsPolicyPtrType) ToHttpRouteRuleActionCorsPolicyPt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionCorsPolicyPtrOutput)
 }
 
+func (i *httpRouteRuleActionCorsPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionCorsPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionCorsPolicy]{
+		OutputState: i.ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionCorsPolicyOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionCorsPolicyOutput) ElementType() reflect.Type {
@@ -8220,6 +9337,12 @@ func (o HttpRouteRuleActionCorsPolicyOutput) ToHttpRouteRuleActionCorsPolicyPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionCorsPolicy) *HttpRouteRuleActionCorsPolicy {
 		return &v
 	}).(HttpRouteRuleActionCorsPolicyPtrOutput)
+}
+
+func (o HttpRouteRuleActionCorsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionCorsPolicy] {
+	return pulumix.Output[HttpRouteRuleActionCorsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
@@ -8276,6 +9399,12 @@ func (o HttpRouteRuleActionCorsPolicyPtrOutput) ToHttpRouteRuleActionCorsPolicyP
 
 func (o HttpRouteRuleActionCorsPolicyPtrOutput) ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionCorsPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionCorsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionCorsPolicyPtrOutput) Elem() HttpRouteRuleActionCorsPolicyOutput {
@@ -8413,6 +9542,12 @@ func (i HttpRouteRuleActionDestinationArgs) ToHttpRouteRuleActionDestinationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDestinationOutput)
 }
 
+func (i HttpRouteRuleActionDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionDestination] {
+	return pulumix.Output[HttpRouteRuleActionDestination]{
+		OutputState: i.ToHttpRouteRuleActionDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpRouteRuleActionDestinationArrayInput is an input type that accepts HttpRouteRuleActionDestinationArray and HttpRouteRuleActionDestinationArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRuleActionDestinationArrayInput` via:
 //
@@ -8438,6 +9573,12 @@ func (i HttpRouteRuleActionDestinationArray) ToHttpRouteRuleActionDestinationArr
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDestinationArrayOutput)
 }
 
+func (i HttpRouteRuleActionDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleActionDestination] {
+	return pulumix.Output[[]HttpRouteRuleActionDestination]{
+		OutputState: i.ToHttpRouteRuleActionDestinationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionDestinationOutput) ElementType() reflect.Type {
@@ -8450,6 +9591,12 @@ func (o HttpRouteRuleActionDestinationOutput) ToHttpRouteRuleActionDestinationOu
 
 func (o HttpRouteRuleActionDestinationOutput) ToHttpRouteRuleActionDestinationOutputWithContext(ctx context.Context) HttpRouteRuleActionDestinationOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionDestination] {
+	return pulumix.Output[HttpRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -8477,6 +9624,12 @@ func (o HttpRouteRuleActionDestinationArrayOutput) ToHttpRouteRuleActionDestinat
 
 func (o HttpRouteRuleActionDestinationArrayOutput) ToHttpRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) HttpRouteRuleActionDestinationArrayOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleActionDestination] {
+	return pulumix.Output[[]HttpRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleActionDestinationOutput {
@@ -8526,6 +9679,12 @@ func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToHttpRouteRuleActionFaultI
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyOutput)
 }
 
+func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[HttpRouteRuleActionFaultInjectionPolicy]{
+		OutputState: i.ToHttpRouteRuleActionFaultInjectionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutput() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
 	return i.ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
 }
@@ -8567,6 +9726,12 @@ func (i *httpRouteRuleActionFaultInjectionPolicyPtrType) ToHttpRouteRuleActionFa
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
 }
 
+func (i *httpRouteRuleActionFaultInjectionPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicy]{
+		OutputState: i.ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
@@ -8589,6 +9754,12 @@ func (o HttpRouteRuleActionFaultInjectionPolicyOutput) ToHttpRouteRuleActionFaul
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionFaultInjectionPolicy) *HttpRouteRuleActionFaultInjectionPolicy {
 		return &v
 	}).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[HttpRouteRuleActionFaultInjectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specification of how client requests are aborted as part of fault injection before being sent to a destination.
@@ -8619,6 +9790,12 @@ func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) ToHttpRouteRuleActionF
 
 func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) Elem() HttpRouteRuleActionFaultInjectionPolicyOutput {
@@ -8690,6 +9867,12 @@ func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToHttpRouteRuleActionF
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyAbortOutput)
 }
 
+func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: i.ToHttpRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
 	return i.ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
 }
@@ -8731,6 +9914,12 @@ func (i *httpRouteRuleActionFaultInjectionPolicyAbortPtrType) ToHttpRouteRuleAct
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
 }
 
+func (i *httpRouteRuleActionFaultInjectionPolicyAbortPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: i.ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
@@ -8755,6 +9944,12 @@ func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ToHttpRouteRuleActio
 	}).(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
 }
 
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The HTTP status code used to abort the request.
 func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
@@ -8777,6 +9972,12 @@ func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToHttpRouteRuleAc
 
 func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyAbort] {
+	return pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyAbort]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) Elem() HttpRouteRuleActionFaultInjectionPolicyAbortOutput {
@@ -8846,6 +10047,12 @@ func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToHttpRouteRuleActionF
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyDelayOutput)
 }
 
+func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: i.ToHttpRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
 	return i.ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
 }
@@ -8887,6 +10094,12 @@ func (i *httpRouteRuleActionFaultInjectionPolicyDelayPtrType) ToHttpRouteRuleAct
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
 }
 
+func (i *httpRouteRuleActionFaultInjectionPolicyDelayPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: i.ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ElementType() reflect.Type {
@@ -8911,6 +10124,12 @@ func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ToHttpRouteRuleActio
 	}).(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
 }
 
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[HttpRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Specify a fixed delay before forwarding the request.
 func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) FixedDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicyDelay) *string { return v.FixedDelay }).(pulumi.StringPtrOutput)
@@ -8933,6 +10152,12 @@ func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToHttpRouteRuleAc
 
 func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyDelay] {
+	return pulumix.Output[*HttpRouteRuleActionFaultInjectionPolicyDelay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Elem() HttpRouteRuleActionFaultInjectionPolicyDelayOutput {
@@ -9022,6 +10247,12 @@ func (i HttpRouteRuleActionRedirectArgs) ToHttpRouteRuleActionRedirectOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRedirectOutput)
 }
 
+func (i HttpRouteRuleActionRedirectArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRedirect] {
+	return pulumix.Output[HttpRouteRuleActionRedirect]{
+		OutputState: i.ToHttpRouteRuleActionRedirectOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionRedirectArgs) ToHttpRouteRuleActionRedirectPtrOutput() HttpRouteRuleActionRedirectPtrOutput {
 	return i.ToHttpRouteRuleActionRedirectPtrOutputWithContext(context.Background())
 }
@@ -9063,6 +10294,12 @@ func (i *httpRouteRuleActionRedirectPtrType) ToHttpRouteRuleActionRedirectPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRedirectPtrOutput)
 }
 
+func (i *httpRouteRuleActionRedirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRedirect] {
+	return pulumix.Output[*HttpRouteRuleActionRedirect]{
+		OutputState: i.ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionRedirectOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionRedirectOutput) ElementType() reflect.Type {
@@ -9085,6 +10322,12 @@ func (o HttpRouteRuleActionRedirectOutput) ToHttpRouteRuleActionRedirectPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRedirect) *HttpRouteRuleActionRedirect {
 		return &v
 	}).(HttpRouteRuleActionRedirectPtrOutput)
+}
+
+func (o HttpRouteRuleActionRedirectOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRedirect] {
+	return pulumix.Output[HttpRouteRuleActionRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The host that will be used in the redirect response instead of the one that was supplied in the request.
@@ -9134,6 +10377,12 @@ func (o HttpRouteRuleActionRedirectPtrOutput) ToHttpRouteRuleActionRedirectPtrOu
 
 func (o HttpRouteRuleActionRedirectPtrOutput) ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionRedirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRedirect] {
+	return pulumix.Output[*HttpRouteRuleActionRedirect]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionRedirectPtrOutput) Elem() HttpRouteRuleActionRedirectOutput {
@@ -9257,6 +10506,12 @@ func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToHttpRouteRuleActionReque
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestHeaderModifierOutput)
 }
 
+func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRequestHeaderModifier] {
+	return pulumix.Output[HttpRouteRuleActionRequestHeaderModifier]{
+		OutputState: i.ToHttpRouteRuleActionRequestHeaderModifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToHttpRouteRuleActionRequestHeaderModifierPtrOutput() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
 	return i.ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(context.Background())
 }
@@ -9298,6 +10553,12 @@ func (i *httpRouteRuleActionRequestHeaderModifierPtrType) ToHttpRouteRuleActionR
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestHeaderModifierPtrOutput)
 }
 
+func (i *httpRouteRuleActionRequestHeaderModifierPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRequestHeaderModifier] {
+	return pulumix.Output[*HttpRouteRuleActionRequestHeaderModifier]{
+		OutputState: i.ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionRequestHeaderModifierOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionRequestHeaderModifierOutput) ElementType() reflect.Type {
@@ -9320,6 +10581,12 @@ func (o HttpRouteRuleActionRequestHeaderModifierOutput) ToHttpRouteRuleActionReq
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRequestHeaderModifier) *HttpRouteRuleActionRequestHeaderModifier {
 		return &v
 	}).(HttpRouteRuleActionRequestHeaderModifierPtrOutput)
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRequestHeaderModifier] {
+	return pulumix.Output[HttpRouteRuleActionRequestHeaderModifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Add the headers with given map where key is the name of the header, value is the value of the header.
@@ -9349,6 +10616,12 @@ func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) ToHttpRouteRuleAction
 
 func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRequestHeaderModifier] {
+	return pulumix.Output[*HttpRouteRuleActionRequestHeaderModifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) Elem() HttpRouteRuleActionRequestHeaderModifierOutput {
@@ -9426,6 +10699,12 @@ func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToHttpRouteRuleActionRequest
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyOutput)
 }
 
+func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRequestMirrorPolicy] {
+	return pulumix.Output[HttpRouteRuleActionRequestMirrorPolicy]{
+		OutputState: i.ToHttpRouteRuleActionRequestMirrorPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutput() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
 	return i.ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
 }
@@ -9467,6 +10746,12 @@ func (i *httpRouteRuleActionRequestMirrorPolicyPtrType) ToHttpRouteRuleActionReq
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyPtrOutput)
 }
 
+func (i *httpRouteRuleActionRequestMirrorPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicy]{
+		OutputState: i.ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionRequestMirrorPolicyOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionRequestMirrorPolicyOutput) ElementType() reflect.Type {
@@ -9491,6 +10776,12 @@ func (o HttpRouteRuleActionRequestMirrorPolicyOutput) ToHttpRouteRuleActionReque
 	}).(HttpRouteRuleActionRequestMirrorPolicyPtrOutput)
 }
 
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRequestMirrorPolicy] {
+	return pulumix.Output[HttpRouteRuleActionRequestMirrorPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The destination the requests will be mirrored to.
 // Structure is documented below.
 func (o HttpRouteRuleActionRequestMirrorPolicyOutput) Destination() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
@@ -9511,6 +10802,12 @@ func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ToHttpRouteRuleActionRe
 
 func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) Elem() HttpRouteRuleActionRequestMirrorPolicyOutput {
@@ -9577,6 +10874,12 @@ func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToHttpRouteRuleAc
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyDestinationOutput)
 }
 
+func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRequestMirrorPolicyDestination] {
+	return pulumix.Output[HttpRouteRuleActionRequestMirrorPolicyDestination]{
+		OutputState: i.ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
 	return i.ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(context.Background())
 }
@@ -9618,6 +10921,12 @@ func (i *httpRouteRuleActionRequestMirrorPolicyDestinationPtrType) ToHttpRouteRu
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
 }
 
+func (i *httpRouteRuleActionRequestMirrorPolicyDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicyDestination] {
+	return pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicyDestination]{
+		OutputState: i.ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionRequestMirrorPolicyDestinationOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ElementType() reflect.Type {
@@ -9640,6 +10949,12 @@ func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ToHttpRouteRule
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRequestMirrorPolicyDestination) *HttpRouteRuleActionRequestMirrorPolicyDestination {
 		return &v
 	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRequestMirrorPolicyDestination] {
+	return pulumix.Output[HttpRouteRuleActionRequestMirrorPolicyDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -9667,6 +10982,12 @@ func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ToHttpRouteR
 
 func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicyDestination] {
+	return pulumix.Output[*HttpRouteRuleActionRequestMirrorPolicyDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) Elem() HttpRouteRuleActionRequestMirrorPolicyDestinationOutput {
@@ -9743,6 +11064,12 @@ func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToHttpRouteRuleActionResp
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionResponseHeaderModifierOutput)
 }
 
+func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionResponseHeaderModifier] {
+	return pulumix.Output[HttpRouteRuleActionResponseHeaderModifier]{
+		OutputState: i.ToHttpRouteRuleActionResponseHeaderModifierOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToHttpRouteRuleActionResponseHeaderModifierPtrOutput() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
 	return i.ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(context.Background())
 }
@@ -9784,6 +11111,12 @@ func (i *httpRouteRuleActionResponseHeaderModifierPtrType) ToHttpRouteRuleAction
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionResponseHeaderModifierPtrOutput)
 }
 
+func (i *httpRouteRuleActionResponseHeaderModifierPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionResponseHeaderModifier] {
+	return pulumix.Output[*HttpRouteRuleActionResponseHeaderModifier]{
+		OutputState: i.ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionResponseHeaderModifierOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionResponseHeaderModifierOutput) ElementType() reflect.Type {
@@ -9806,6 +11139,12 @@ func (o HttpRouteRuleActionResponseHeaderModifierOutput) ToHttpRouteRuleActionRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionResponseHeaderModifier) *HttpRouteRuleActionResponseHeaderModifier {
 		return &v
 	}).(HttpRouteRuleActionResponseHeaderModifierPtrOutput)
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionResponseHeaderModifier] {
+	return pulumix.Output[HttpRouteRuleActionResponseHeaderModifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Add the headers with given map where key is the name of the header, value is the value of the header.
@@ -9835,6 +11174,12 @@ func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) ToHttpRouteRuleActio
 
 func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionResponseHeaderModifier] {
+	return pulumix.Output[*HttpRouteRuleActionResponseHeaderModifier]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) Elem() HttpRouteRuleActionResponseHeaderModifierOutput {
@@ -9918,6 +11263,12 @@ func (i HttpRouteRuleActionRetryPolicyArgs) ToHttpRouteRuleActionRetryPolicyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRetryPolicyOutput)
 }
 
+func (i HttpRouteRuleActionRetryPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRetryPolicy] {
+	return pulumix.Output[HttpRouteRuleActionRetryPolicy]{
+		OutputState: i.ToHttpRouteRuleActionRetryPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionRetryPolicyArgs) ToHttpRouteRuleActionRetryPolicyPtrOutput() HttpRouteRuleActionRetryPolicyPtrOutput {
 	return i.ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
 }
@@ -9959,6 +11310,12 @@ func (i *httpRouteRuleActionRetryPolicyPtrType) ToHttpRouteRuleActionRetryPolicy
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRetryPolicyPtrOutput)
 }
 
+func (i *httpRouteRuleActionRetryPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRetryPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionRetryPolicy]{
+		OutputState: i.ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionRetryPolicyOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionRetryPolicyOutput) ElementType() reflect.Type {
@@ -9981,6 +11338,12 @@ func (o HttpRouteRuleActionRetryPolicyOutput) ToHttpRouteRuleActionRetryPolicyPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRetryPolicy) *HttpRouteRuleActionRetryPolicy {
 		return &v
 	}).(HttpRouteRuleActionRetryPolicyPtrOutput)
+}
+
+func (o HttpRouteRuleActionRetryPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionRetryPolicy] {
+	return pulumix.Output[HttpRouteRuleActionRetryPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the allowed number of retries.
@@ -10010,6 +11373,12 @@ func (o HttpRouteRuleActionRetryPolicyPtrOutput) ToHttpRouteRuleActionRetryPolic
 
 func (o HttpRouteRuleActionRetryPolicyPtrOutput) ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionRetryPolicy] {
+	return pulumix.Output[*HttpRouteRuleActionRetryPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionRetryPolicyPtrOutput) Elem() HttpRouteRuleActionRetryPolicyOutput {
@@ -10089,6 +11458,12 @@ func (i HttpRouteRuleActionUrlRewriteArgs) ToHttpRouteRuleActionUrlRewriteOutput
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionUrlRewriteOutput)
 }
 
+func (i HttpRouteRuleActionUrlRewriteArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionUrlRewrite] {
+	return pulumix.Output[HttpRouteRuleActionUrlRewrite]{
+		OutputState: i.ToHttpRouteRuleActionUrlRewriteOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleActionUrlRewriteArgs) ToHttpRouteRuleActionUrlRewritePtrOutput() HttpRouteRuleActionUrlRewritePtrOutput {
 	return i.ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(context.Background())
 }
@@ -10130,6 +11505,12 @@ func (i *httpRouteRuleActionUrlRewritePtrType) ToHttpRouteRuleActionUrlRewritePt
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionUrlRewritePtrOutput)
 }
 
+func (i *httpRouteRuleActionUrlRewritePtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionUrlRewrite] {
+	return pulumix.Output[*HttpRouteRuleActionUrlRewrite]{
+		OutputState: i.ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleActionUrlRewriteOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleActionUrlRewriteOutput) ElementType() reflect.Type {
@@ -10154,6 +11535,12 @@ func (o HttpRouteRuleActionUrlRewriteOutput) ToHttpRouteRuleActionUrlRewritePtrO
 	}).(HttpRouteRuleActionUrlRewritePtrOutput)
 }
 
+func (o HttpRouteRuleActionUrlRewriteOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleActionUrlRewrite] {
+	return pulumix.Output[HttpRouteRuleActionUrlRewrite]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
 func (o HttpRouteRuleActionUrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleActionUrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
@@ -10176,6 +11563,12 @@ func (o HttpRouteRuleActionUrlRewritePtrOutput) ToHttpRouteRuleActionUrlRewriteP
 
 func (o HttpRouteRuleActionUrlRewritePtrOutput) ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewritePtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleActionUrlRewritePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleActionUrlRewrite] {
+	return pulumix.Output[*HttpRouteRuleActionUrlRewrite]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleActionUrlRewritePtrOutput) Elem() HttpRouteRuleActionUrlRewriteOutput {
@@ -10265,6 +11658,12 @@ func (i HttpRouteRuleMatchArgs) ToHttpRouteRuleMatchOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchOutput)
 }
 
+func (i HttpRouteRuleMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatch] {
+	return pulumix.Output[HttpRouteRuleMatch]{
+		OutputState: i.ToHttpRouteRuleMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpRouteRuleMatchArrayInput is an input type that accepts HttpRouteRuleMatchArray and HttpRouteRuleMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRuleMatchArrayInput` via:
 //
@@ -10290,6 +11689,12 @@ func (i HttpRouteRuleMatchArray) ToHttpRouteRuleMatchArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchArrayOutput)
 }
 
+func (i HttpRouteRuleMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleMatch] {
+	return pulumix.Output[[]HttpRouteRuleMatch]{
+		OutputState: i.ToHttpRouteRuleMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleMatchOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleMatchOutput) ElementType() reflect.Type {
@@ -10302,6 +11707,12 @@ func (o HttpRouteRuleMatchOutput) ToHttpRouteRuleMatchOutput() HttpRouteRuleMatc
 
 func (o HttpRouteRuleMatchOutput) ToHttpRouteRuleMatchOutputWithContext(ctx context.Context) HttpRouteRuleMatchOutput {
 	return o
+}
+
+func (o HttpRouteRuleMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatch] {
+	return pulumix.Output[HttpRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The HTTP request path value should exactly match this value.
@@ -10348,6 +11759,12 @@ func (o HttpRouteRuleMatchArrayOutput) ToHttpRouteRuleMatchArrayOutput() HttpRou
 
 func (o HttpRouteRuleMatchArrayOutput) ToHttpRouteRuleMatchArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchArrayOutput {
 	return o
+}
+
+func (o HttpRouteRuleMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleMatch] {
+	return pulumix.Output[[]HttpRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMatchOutput {
@@ -10419,6 +11836,12 @@ func (i HttpRouteRuleMatchHeaderArgs) ToHttpRouteRuleMatchHeaderOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderOutput)
 }
 
+func (i HttpRouteRuleMatchHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatchHeader] {
+	return pulumix.Output[HttpRouteRuleMatchHeader]{
+		OutputState: i.ToHttpRouteRuleMatchHeaderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpRouteRuleMatchHeaderArrayInput is an input type that accepts HttpRouteRuleMatchHeaderArray and HttpRouteRuleMatchHeaderArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRuleMatchHeaderArrayInput` via:
 //
@@ -10444,6 +11867,12 @@ func (i HttpRouteRuleMatchHeaderArray) ToHttpRouteRuleMatchHeaderArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderArrayOutput)
 }
 
+func (i HttpRouteRuleMatchHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleMatchHeader] {
+	return pulumix.Output[[]HttpRouteRuleMatchHeader]{
+		OutputState: i.ToHttpRouteRuleMatchHeaderArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleMatchHeaderOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleMatchHeaderOutput) ElementType() reflect.Type {
@@ -10456,6 +11885,12 @@ func (o HttpRouteRuleMatchHeaderOutput) ToHttpRouteRuleMatchHeaderOutput() HttpR
 
 func (o HttpRouteRuleMatchHeaderOutput) ToHttpRouteRuleMatchHeaderOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderOutput {
 	return o
+}
+
+func (o HttpRouteRuleMatchHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatchHeader] {
+	return pulumix.Output[HttpRouteRuleMatchHeader]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the header should match exactly the content of exactMatch.
@@ -10513,6 +11948,12 @@ func (o HttpRouteRuleMatchHeaderArrayOutput) ToHttpRouteRuleMatchHeaderArrayOutp
 	return o
 }
 
+func (o HttpRouteRuleMatchHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleMatchHeader] {
+	return pulumix.Output[[]HttpRouteRuleMatchHeader]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HttpRouteRuleMatchHeaderArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMatchHeaderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleMatchHeader {
 		return vs[0].([]HttpRouteRuleMatchHeader)[vs[1].(int)]
@@ -10556,6 +11997,12 @@ func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToHttpRouteRuleMatchHeaderRangeM
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderRangeMatchOutput)
 }
 
+func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatchHeaderRangeMatch] {
+	return pulumix.Output[HttpRouteRuleMatchHeaderRangeMatch]{
+		OutputState: i.ToHttpRouteRuleMatchHeaderRangeMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutput() HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
 	return i.ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(context.Background())
 }
@@ -10597,6 +12044,12 @@ func (i *httpRouteRuleMatchHeaderRangeMatchPtrType) ToHttpRouteRuleMatchHeaderRa
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderRangeMatchPtrOutput)
 }
 
+func (i *httpRouteRuleMatchHeaderRangeMatchPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleMatchHeaderRangeMatch] {
+	return pulumix.Output[*HttpRouteRuleMatchHeaderRangeMatch]{
+		OutputState: i.ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleMatchHeaderRangeMatchOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleMatchHeaderRangeMatchOutput) ElementType() reflect.Type {
@@ -10621,6 +12074,12 @@ func (o HttpRouteRuleMatchHeaderRangeMatchOutput) ToHttpRouteRuleMatchHeaderRang
 	}).(HttpRouteRuleMatchHeaderRangeMatchPtrOutput)
 }
 
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatchHeaderRangeMatch] {
+	return pulumix.Output[HttpRouteRuleMatchHeaderRangeMatch]{
+		OutputState: o.OutputState,
+	}
+}
+
 // End of the range (exclusive).
 func (o HttpRouteRuleMatchHeaderRangeMatchOutput) End() pulumi.IntOutput {
 	return o.ApplyT(func(v HttpRouteRuleMatchHeaderRangeMatch) int { return v.End }).(pulumi.IntOutput)
@@ -10643,6 +12102,12 @@ func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) ToHttpRouteRuleMatchHeaderR
 
 func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
 	return o
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpRouteRuleMatchHeaderRangeMatch] {
+	return pulumix.Output[*HttpRouteRuleMatchHeaderRangeMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) Elem() HttpRouteRuleMatchHeaderRangeMatchOutput {
@@ -10720,6 +12185,12 @@ func (i HttpRouteRuleMatchQueryParameterArgs) ToHttpRouteRuleMatchQueryParameter
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchQueryParameterOutput)
 }
 
+func (i HttpRouteRuleMatchQueryParameterArgs) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatchQueryParameter] {
+	return pulumix.Output[HttpRouteRuleMatchQueryParameter]{
+		OutputState: i.ToHttpRouteRuleMatchQueryParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HttpRouteRuleMatchQueryParameterArrayInput is an input type that accepts HttpRouteRuleMatchQueryParameterArray and HttpRouteRuleMatchQueryParameterArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRuleMatchQueryParameterArrayInput` via:
 //
@@ -10745,6 +12216,12 @@ func (i HttpRouteRuleMatchQueryParameterArray) ToHttpRouteRuleMatchQueryParamete
 	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchQueryParameterArrayOutput)
 }
 
+func (i HttpRouteRuleMatchQueryParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleMatchQueryParameter] {
+	return pulumix.Output[[]HttpRouteRuleMatchQueryParameter]{
+		OutputState: i.ToHttpRouteRuleMatchQueryParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HttpRouteRuleMatchQueryParameterOutput struct{ *pulumi.OutputState }
 
 func (HttpRouteRuleMatchQueryParameterOutput) ElementType() reflect.Type {
@@ -10757,6 +12234,12 @@ func (o HttpRouteRuleMatchQueryParameterOutput) ToHttpRouteRuleMatchQueryParamet
 
 func (o HttpRouteRuleMatchQueryParameterOutput) ToHttpRouteRuleMatchQueryParameterOutputWithContext(ctx context.Context) HttpRouteRuleMatchQueryParameterOutput {
 	return o
+}
+
+func (o HttpRouteRuleMatchQueryParameterOutput) ToOutput(ctx context.Context) pulumix.Output[HttpRouteRuleMatchQueryParameter] {
+	return pulumix.Output[HttpRouteRuleMatchQueryParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The value of the query parameter must exactly match the contents of exactMatch.
@@ -10791,6 +12274,12 @@ func (o HttpRouteRuleMatchQueryParameterArrayOutput) ToHttpRouteRuleMatchQueryPa
 
 func (o HttpRouteRuleMatchQueryParameterArrayOutput) ToHttpRouteRuleMatchQueryParameterArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchQueryParameterArrayOutput {
 	return o
+}
+
+func (o HttpRouteRuleMatchQueryParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpRouteRuleMatchQueryParameter] {
+	return pulumix.Output[[]HttpRouteRuleMatchQueryParameter]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HttpRouteRuleMatchQueryParameterArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMatchQueryParameterOutput {
@@ -10842,6 +12331,12 @@ func (i TcpRouteRuleArgs) ToTcpRouteRuleOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleOutput)
 }
 
+func (i TcpRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRule] {
+	return pulumix.Output[TcpRouteRule]{
+		OutputState: i.ToTcpRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TcpRouteRuleArrayInput is an input type that accepts TcpRouteRuleArray and TcpRouteRuleArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRuleArrayInput` via:
 //
@@ -10867,6 +12362,12 @@ func (i TcpRouteRuleArray) ToTcpRouteRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleArrayOutput)
 }
 
+func (i TcpRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRule] {
+	return pulumix.Output[[]TcpRouteRule]{
+		OutputState: i.ToTcpRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TcpRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (TcpRouteRuleOutput) ElementType() reflect.Type {
@@ -10879,6 +12380,12 @@ func (o TcpRouteRuleOutput) ToTcpRouteRuleOutput() TcpRouteRuleOutput {
 
 func (o TcpRouteRuleOutput) ToTcpRouteRuleOutputWithContext(ctx context.Context) TcpRouteRuleOutput {
 	return o
+}
+
+func (o TcpRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRule] {
+	return pulumix.Output[TcpRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A detailed rule defining how to route traffic.
@@ -10906,6 +12413,12 @@ func (o TcpRouteRuleArrayOutput) ToTcpRouteRuleArrayOutput() TcpRouteRuleArrayOu
 
 func (o TcpRouteRuleArrayOutput) ToTcpRouteRuleArrayOutputWithContext(ctx context.Context) TcpRouteRuleArrayOutput {
 	return o
+}
+
+func (o TcpRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRule] {
+	return pulumix.Output[[]TcpRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TcpRouteRuleArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleOutput {
@@ -10953,6 +12466,12 @@ func (i TcpRouteRuleActionArgs) ToTcpRouteRuleActionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleActionOutput)
 }
 
+func (i TcpRouteRuleActionArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRuleAction] {
+	return pulumix.Output[TcpRouteRuleAction]{
+		OutputState: i.ToTcpRouteRuleActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TcpRouteRuleActionOutput struct{ *pulumi.OutputState }
 
 func (TcpRouteRuleActionOutput) ElementType() reflect.Type {
@@ -10965,6 +12484,12 @@ func (o TcpRouteRuleActionOutput) ToTcpRouteRuleActionOutput() TcpRouteRuleActio
 
 func (o TcpRouteRuleActionOutput) ToTcpRouteRuleActionOutputWithContext(ctx context.Context) TcpRouteRuleActionOutput {
 	return o
+}
+
+func (o TcpRouteRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRuleAction] {
+	return pulumix.Output[TcpRouteRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination services to which traffic should be forwarded. At least one destination service is required.
@@ -11025,6 +12550,12 @@ func (i TcpRouteRuleActionDestinationArgs) ToTcpRouteRuleActionDestinationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleActionDestinationOutput)
 }
 
+func (i TcpRouteRuleActionDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRuleActionDestination] {
+	return pulumix.Output[TcpRouteRuleActionDestination]{
+		OutputState: i.ToTcpRouteRuleActionDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TcpRouteRuleActionDestinationArrayInput is an input type that accepts TcpRouteRuleActionDestinationArray and TcpRouteRuleActionDestinationArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRuleActionDestinationArrayInput` via:
 //
@@ -11050,6 +12581,12 @@ func (i TcpRouteRuleActionDestinationArray) ToTcpRouteRuleActionDestinationArray
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleActionDestinationArrayOutput)
 }
 
+func (i TcpRouteRuleActionDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRuleActionDestination] {
+	return pulumix.Output[[]TcpRouteRuleActionDestination]{
+		OutputState: i.ToTcpRouteRuleActionDestinationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TcpRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
 
 func (TcpRouteRuleActionDestinationOutput) ElementType() reflect.Type {
@@ -11062,6 +12599,12 @@ func (o TcpRouteRuleActionDestinationOutput) ToTcpRouteRuleActionDestinationOutp
 
 func (o TcpRouteRuleActionDestinationOutput) ToTcpRouteRuleActionDestinationOutputWithContext(ctx context.Context) TcpRouteRuleActionDestinationOutput {
 	return o
+}
+
+func (o TcpRouteRuleActionDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRuleActionDestination] {
+	return pulumix.Output[TcpRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -11091,6 +12634,12 @@ func (o TcpRouteRuleActionDestinationArrayOutput) ToTcpRouteRuleActionDestinatio
 
 func (o TcpRouteRuleActionDestinationArrayOutput) ToTcpRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) TcpRouteRuleActionDestinationArrayOutput {
 	return o
+}
+
+func (o TcpRouteRuleActionDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRuleActionDestination] {
+	return pulumix.Output[[]TcpRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TcpRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleActionDestinationOutput {
@@ -11138,6 +12687,12 @@ func (i TcpRouteRuleMatchArgs) ToTcpRouteRuleMatchOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleMatchOutput)
 }
 
+func (i TcpRouteRuleMatchArgs) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRuleMatch] {
+	return pulumix.Output[TcpRouteRuleMatch]{
+		OutputState: i.ToTcpRouteRuleMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TcpRouteRuleMatchArrayInput is an input type that accepts TcpRouteRuleMatchArray and TcpRouteRuleMatchArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRuleMatchArrayInput` via:
 //
@@ -11163,6 +12718,12 @@ func (i TcpRouteRuleMatchArray) ToTcpRouteRuleMatchArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleMatchArrayOutput)
 }
 
+func (i TcpRouteRuleMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRuleMatch] {
+	return pulumix.Output[[]TcpRouteRuleMatch]{
+		OutputState: i.ToTcpRouteRuleMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TcpRouteRuleMatchOutput struct{ *pulumi.OutputState }
 
 func (TcpRouteRuleMatchOutput) ElementType() reflect.Type {
@@ -11175,6 +12736,12 @@ func (o TcpRouteRuleMatchOutput) ToTcpRouteRuleMatchOutput() TcpRouteRuleMatchOu
 
 func (o TcpRouteRuleMatchOutput) ToTcpRouteRuleMatchOutputWithContext(ctx context.Context) TcpRouteRuleMatchOutput {
 	return o
+}
+
+func (o TcpRouteRuleMatchOutput) ToOutput(ctx context.Context) pulumix.Output[TcpRouteRuleMatch] {
+	return pulumix.Output[TcpRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
@@ -11200,6 +12767,12 @@ func (o TcpRouteRuleMatchArrayOutput) ToTcpRouteRuleMatchArrayOutput() TcpRouteR
 
 func (o TcpRouteRuleMatchArrayOutput) ToTcpRouteRuleMatchArrayOutputWithContext(ctx context.Context) TcpRouteRuleMatchArrayOutput {
 	return o
+}
+
+func (o TcpRouteRuleMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TcpRouteRuleMatch] {
+	return pulumix.Output[[]TcpRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TcpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleMatchOutput {
@@ -11249,6 +12822,12 @@ func (i TlsRouteRuleArgs) ToTlsRouteRuleOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleOutput)
 }
 
+func (i TlsRouteRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRule] {
+	return pulumix.Output[TlsRouteRule]{
+		OutputState: i.ToTlsRouteRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TlsRouteRuleArrayInput is an input type that accepts TlsRouteRuleArray and TlsRouteRuleArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRuleArrayInput` via:
 //
@@ -11274,6 +12853,12 @@ func (i TlsRouteRuleArray) ToTlsRouteRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleArrayOutput)
 }
 
+func (i TlsRouteRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRule] {
+	return pulumix.Output[[]TlsRouteRule]{
+		OutputState: i.ToTlsRouteRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TlsRouteRuleOutput struct{ *pulumi.OutputState }
 
 func (TlsRouteRuleOutput) ElementType() reflect.Type {
@@ -11286,6 +12871,12 @@ func (o TlsRouteRuleOutput) ToTlsRouteRuleOutput() TlsRouteRuleOutput {
 
 func (o TlsRouteRuleOutput) ToTlsRouteRuleOutputWithContext(ctx context.Context) TlsRouteRuleOutput {
 	return o
+}
+
+func (o TlsRouteRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRule] {
+	return pulumix.Output[TlsRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required. A detailed rule defining how to route traffic.
@@ -11312,6 +12903,12 @@ func (o TlsRouteRuleArrayOutput) ToTlsRouteRuleArrayOutput() TlsRouteRuleArrayOu
 
 func (o TlsRouteRuleArrayOutput) ToTlsRouteRuleArrayOutputWithContext(ctx context.Context) TlsRouteRuleArrayOutput {
 	return o
+}
+
+func (o TlsRouteRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRule] {
+	return pulumix.Output[[]TlsRouteRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TlsRouteRuleArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleOutput {
@@ -11355,6 +12952,12 @@ func (i TlsRouteRuleActionArgs) ToTlsRouteRuleActionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleActionOutput)
 }
 
+func (i TlsRouteRuleActionArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRuleAction] {
+	return pulumix.Output[TlsRouteRuleAction]{
+		OutputState: i.ToTlsRouteRuleActionOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TlsRouteRuleActionOutput struct{ *pulumi.OutputState }
 
 func (TlsRouteRuleActionOutput) ElementType() reflect.Type {
@@ -11367,6 +12970,12 @@ func (o TlsRouteRuleActionOutput) ToTlsRouteRuleActionOutput() TlsRouteRuleActio
 
 func (o TlsRouteRuleActionOutput) ToTlsRouteRuleActionOutputWithContext(ctx context.Context) TlsRouteRuleActionOutput {
 	return o
+}
+
+func (o TlsRouteRuleActionOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRuleAction] {
+	return pulumix.Output[TlsRouteRuleAction]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The destination to which traffic should be forwarded.
@@ -11416,6 +13025,12 @@ func (i TlsRouteRuleActionDestinationArgs) ToTlsRouteRuleActionDestinationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleActionDestinationOutput)
 }
 
+func (i TlsRouteRuleActionDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRuleActionDestination] {
+	return pulumix.Output[TlsRouteRuleActionDestination]{
+		OutputState: i.ToTlsRouteRuleActionDestinationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TlsRouteRuleActionDestinationArrayInput is an input type that accepts TlsRouteRuleActionDestinationArray and TlsRouteRuleActionDestinationArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRuleActionDestinationArrayInput` via:
 //
@@ -11441,6 +13056,12 @@ func (i TlsRouteRuleActionDestinationArray) ToTlsRouteRuleActionDestinationArray
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleActionDestinationArrayOutput)
 }
 
+func (i TlsRouteRuleActionDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRuleActionDestination] {
+	return pulumix.Output[[]TlsRouteRuleActionDestination]{
+		OutputState: i.ToTlsRouteRuleActionDestinationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TlsRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
 
 func (TlsRouteRuleActionDestinationOutput) ElementType() reflect.Type {
@@ -11453,6 +13074,12 @@ func (o TlsRouteRuleActionDestinationOutput) ToTlsRouteRuleActionDestinationOutp
 
 func (o TlsRouteRuleActionDestinationOutput) ToTlsRouteRuleActionDestinationOutputWithContext(ctx context.Context) TlsRouteRuleActionDestinationOutput {
 	return o
+}
+
+func (o TlsRouteRuleActionDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRuleActionDestination] {
+	return pulumix.Output[TlsRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of a BackendService to route traffic to.
@@ -11479,6 +13106,12 @@ func (o TlsRouteRuleActionDestinationArrayOutput) ToTlsRouteRuleActionDestinatio
 
 func (o TlsRouteRuleActionDestinationArrayOutput) ToTlsRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) TlsRouteRuleActionDestinationArrayOutput {
 	return o
+}
+
+func (o TlsRouteRuleActionDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRuleActionDestination] {
+	return pulumix.Output[[]TlsRouteRuleActionDestination]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TlsRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleActionDestinationOutput {
@@ -11526,6 +13159,12 @@ func (i TlsRouteRuleMatchArgs) ToTlsRouteRuleMatchOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleMatchOutput)
 }
 
+func (i TlsRouteRuleMatchArgs) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRuleMatch] {
+	return pulumix.Output[TlsRouteRuleMatch]{
+		OutputState: i.ToTlsRouteRuleMatchOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TlsRouteRuleMatchArrayInput is an input type that accepts TlsRouteRuleMatchArray and TlsRouteRuleMatchArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRuleMatchArrayInput` via:
 //
@@ -11551,6 +13190,12 @@ func (i TlsRouteRuleMatchArray) ToTlsRouteRuleMatchArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleMatchArrayOutput)
 }
 
+func (i TlsRouteRuleMatchArray) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRuleMatch] {
+	return pulumix.Output[[]TlsRouteRuleMatch]{
+		OutputState: i.ToTlsRouteRuleMatchArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TlsRouteRuleMatchOutput struct{ *pulumi.OutputState }
 
 func (TlsRouteRuleMatchOutput) ElementType() reflect.Type {
@@ -11563,6 +13208,12 @@ func (o TlsRouteRuleMatchOutput) ToTlsRouteRuleMatchOutput() TlsRouteRuleMatchOu
 
 func (o TlsRouteRuleMatchOutput) ToTlsRouteRuleMatchOutputWithContext(ctx context.Context) TlsRouteRuleMatchOutput {
 	return o
+}
+
+func (o TlsRouteRuleMatchOutput) ToOutput(ctx context.Context) pulumix.Output[TlsRouteRuleMatch] {
+	return pulumix.Output[TlsRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
@@ -11588,6 +13239,12 @@ func (o TlsRouteRuleMatchArrayOutput) ToTlsRouteRuleMatchArrayOutput() TlsRouteR
 
 func (o TlsRouteRuleMatchArrayOutput) ToTlsRouteRuleMatchArrayOutputWithContext(ctx context.Context) TlsRouteRuleMatchArrayOutput {
 	return o
+}
+
+func (o TlsRouteRuleMatchArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TlsRouteRuleMatch] {
+	return pulumix.Output[[]TlsRouteRuleMatch]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TlsRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleMatchOutput {

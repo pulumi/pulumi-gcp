@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Healthcare FHIR store. Each of these resources serves a different use case:
@@ -341,6 +342,12 @@ func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberOutput)
 }
 
+func (i *FhirStoreIamMember) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamMember] {
+	return pulumix.Output[*FhirStoreIamMember]{
+		OutputState: i.ToFhirStoreIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FhirStoreIamMemberArrayInput is an input type that accepts FhirStoreIamMemberArray and FhirStoreIamMemberArrayOutput values.
 // You can construct a concrete instance of `FhirStoreIamMemberArrayInput` via:
 //
@@ -364,6 +371,12 @@ func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutput() FhirStoreIamM
 
 func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutputWithContext(ctx context.Context) FhirStoreIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberArrayOutput)
+}
+
+func (i FhirStoreIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamMember] {
+	return pulumix.Output[[]*FhirStoreIamMember]{
+		OutputState: i.ToFhirStoreIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FhirStoreIamMemberMapInput is an input type that accepts FhirStoreIamMemberMap and FhirStoreIamMemberMapOutput values.
@@ -391,6 +404,12 @@ func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberMapOutput)
 }
 
+func (i FhirStoreIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamMember] {
+	return pulumix.Output[map[string]*FhirStoreIamMember]{
+		OutputState: i.ToFhirStoreIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FhirStoreIamMemberOutput struct{ *pulumi.OutputState }
 
 func (FhirStoreIamMemberOutput) ElementType() reflect.Type {
@@ -403,6 +422,12 @@ func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutput() FhirStoreIamMembe
 
 func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutputWithContext(ctx context.Context) FhirStoreIamMemberOutput {
 	return o
+}
+
+func (o FhirStoreIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirStoreIamMember] {
+	return pulumix.Output[*FhirStoreIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FhirStoreIamMemberOutput) Condition() FhirStoreIamMemberConditionPtrOutput {
@@ -456,6 +481,12 @@ func (o FhirStoreIamMemberArrayOutput) ToFhirStoreIamMemberArrayOutputWithContex
 	return o
 }
 
+func (o FhirStoreIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FhirStoreIamMember] {
+	return pulumix.Output[[]*FhirStoreIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FhirStoreIamMemberArrayOutput) Index(i pulumi.IntInput) FhirStoreIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FhirStoreIamMember {
 		return vs[0].([]*FhirStoreIamMember)[vs[1].(int)]
@@ -474,6 +505,12 @@ func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutput() FhirStoreIa
 
 func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutputWithContext(ctx context.Context) FhirStoreIamMemberMapOutput {
 	return o
+}
+
+func (o FhirStoreIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FhirStoreIamMember] {
+	return pulumix.Output[map[string]*FhirStoreIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FhirStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamMemberOutput {

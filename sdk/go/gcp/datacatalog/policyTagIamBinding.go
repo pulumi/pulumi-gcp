@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Data catalog PolicyTag. Each of these resources serves a different use case:
@@ -343,6 +344,12 @@ func (i *PolicyTagIamBinding) ToPolicyTagIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingOutput)
 }
 
+func (i *PolicyTagIamBinding) ToOutput(ctx context.Context) pulumix.Output[*PolicyTagIamBinding] {
+	return pulumix.Output[*PolicyTagIamBinding]{
+		OutputState: i.ToPolicyTagIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyTagIamBindingArrayInput is an input type that accepts PolicyTagIamBindingArray and PolicyTagIamBindingArrayOutput values.
 // You can construct a concrete instance of `PolicyTagIamBindingArrayInput` via:
 //
@@ -366,6 +373,12 @@ func (i PolicyTagIamBindingArray) ToPolicyTagIamBindingArrayOutput() PolicyTagIa
 
 func (i PolicyTagIamBindingArray) ToPolicyTagIamBindingArrayOutputWithContext(ctx context.Context) PolicyTagIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingArrayOutput)
+}
+
+func (i PolicyTagIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyTagIamBinding] {
+	return pulumix.Output[[]*PolicyTagIamBinding]{
+		OutputState: i.ToPolicyTagIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PolicyTagIamBindingMapInput is an input type that accepts PolicyTagIamBindingMap and PolicyTagIamBindingMapOutput values.
@@ -393,6 +406,12 @@ func (i PolicyTagIamBindingMap) ToPolicyTagIamBindingMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamBindingMapOutput)
 }
 
+func (i PolicyTagIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyTagIamBinding] {
+	return pulumix.Output[map[string]*PolicyTagIamBinding]{
+		OutputState: i.ToPolicyTagIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyTagIamBindingOutput struct{ *pulumi.OutputState }
 
 func (PolicyTagIamBindingOutput) ElementType() reflect.Type {
@@ -405,6 +424,12 @@ func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingOutput() PolicyTagIamBin
 
 func (o PolicyTagIamBindingOutput) ToPolicyTagIamBindingOutputWithContext(ctx context.Context) PolicyTagIamBindingOutput {
 	return o
+}
+
+func (o PolicyTagIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyTagIamBinding] {
+	return pulumix.Output[*PolicyTagIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyTagIamBindingOutput) Condition() PolicyTagIamBindingConditionPtrOutput {
@@ -458,6 +483,12 @@ func (o PolicyTagIamBindingArrayOutput) ToPolicyTagIamBindingArrayOutputWithCont
 	return o
 }
 
+func (o PolicyTagIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyTagIamBinding] {
+	return pulumix.Output[[]*PolicyTagIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PolicyTagIamBindingArrayOutput) Index(i pulumi.IntInput) PolicyTagIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolicyTagIamBinding {
 		return vs[0].([]*PolicyTagIamBinding)[vs[1].(int)]
@@ -476,6 +507,12 @@ func (o PolicyTagIamBindingMapOutput) ToPolicyTagIamBindingMapOutput() PolicyTag
 
 func (o PolicyTagIamBindingMapOutput) ToPolicyTagIamBindingMapOutputWithContext(ctx context.Context) PolicyTagIamBindingMapOutput {
 	return o
+}
+
+func (o PolicyTagIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyTagIamBinding] {
+	return pulumix.Output[map[string]*PolicyTagIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyTagIamBindingMapOutput) MapIndex(k pulumi.StringInput) PolicyTagIamBindingOutput {

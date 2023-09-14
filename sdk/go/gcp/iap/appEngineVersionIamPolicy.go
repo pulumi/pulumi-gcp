@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineVersion. Each of these resources serves a different use case:
@@ -498,6 +499,12 @@ func (i *AppEngineVersionIamPolicy) ToAppEngineVersionIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamPolicyOutput)
 }
 
+func (i *AppEngineVersionIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*AppEngineVersionIamPolicy] {
+	return pulumix.Output[*AppEngineVersionIamPolicy]{
+		OutputState: i.ToAppEngineVersionIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AppEngineVersionIamPolicyArrayInput is an input type that accepts AppEngineVersionIamPolicyArray and AppEngineVersionIamPolicyArrayOutput values.
 // You can construct a concrete instance of `AppEngineVersionIamPolicyArrayInput` via:
 //
@@ -521,6 +528,12 @@ func (i AppEngineVersionIamPolicyArray) ToAppEngineVersionIamPolicyArrayOutput()
 
 func (i AppEngineVersionIamPolicyArray) ToAppEngineVersionIamPolicyArrayOutputWithContext(ctx context.Context) AppEngineVersionIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamPolicyArrayOutput)
+}
+
+func (i AppEngineVersionIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineVersionIamPolicy] {
+	return pulumix.Output[[]*AppEngineVersionIamPolicy]{
+		OutputState: i.ToAppEngineVersionIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AppEngineVersionIamPolicyMapInput is an input type that accepts AppEngineVersionIamPolicyMap and AppEngineVersionIamPolicyMapOutput values.
@@ -548,6 +561,12 @@ func (i AppEngineVersionIamPolicyMap) ToAppEngineVersionIamPolicyMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamPolicyMapOutput)
 }
 
+func (i AppEngineVersionIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineVersionIamPolicy] {
+	return pulumix.Output[map[string]*AppEngineVersionIamPolicy]{
+		OutputState: i.ToAppEngineVersionIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AppEngineVersionIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (AppEngineVersionIamPolicyOutput) ElementType() reflect.Type {
@@ -560,6 +579,12 @@ func (o AppEngineVersionIamPolicyOutput) ToAppEngineVersionIamPolicyOutput() App
 
 func (o AppEngineVersionIamPolicyOutput) ToAppEngineVersionIamPolicyOutputWithContext(ctx context.Context) AppEngineVersionIamPolicyOutput {
 	return o
+}
+
+func (o AppEngineVersionIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AppEngineVersionIamPolicy] {
+	return pulumix.Output[*AppEngineVersionIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
@@ -620,6 +645,12 @@ func (o AppEngineVersionIamPolicyArrayOutput) ToAppEngineVersionIamPolicyArrayOu
 	return o
 }
 
+func (o AppEngineVersionIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppEngineVersionIamPolicy] {
+	return pulumix.Output[[]*AppEngineVersionIamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AppEngineVersionIamPolicyArrayOutput) Index(i pulumi.IntInput) AppEngineVersionIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppEngineVersionIamPolicy {
 		return vs[0].([]*AppEngineVersionIamPolicy)[vs[1].(int)]
@@ -638,6 +669,12 @@ func (o AppEngineVersionIamPolicyMapOutput) ToAppEngineVersionIamPolicyMapOutput
 
 func (o AppEngineVersionIamPolicyMapOutput) ToAppEngineVersionIamPolicyMapOutputWithContext(ctx context.Context) AppEngineVersionIamPolicyMapOutput {
 	return o
+}
+
+func (o AppEngineVersionIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppEngineVersionIamPolicy] {
+	return pulumix.Output[map[string]*AppEngineVersionIamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AppEngineVersionIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AppEngineVersionIamPolicyOutput {

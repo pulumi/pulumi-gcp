@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceIamPolicyResult, error) {
@@ -82,6 +83,12 @@ func (o LookupBackendServiceIamPolicyResultOutput) ToLookupBackendServiceIamPoli
 
 func (o LookupBackendServiceIamPolicyResultOutput) ToLookupBackendServiceIamPolicyResultOutputWithContext(ctx context.Context) LookupBackendServiceIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupBackendServiceIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackendServiceIamPolicyResult] {
+	return pulumix.Output[LookupBackendServiceIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.

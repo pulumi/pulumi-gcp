@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the email address of a project's unique BigQuery service account.
@@ -119,6 +120,12 @@ func (o GetDefaultServiceAccountResultOutput) ToGetDefaultServiceAccountResultOu
 
 func (o GetDefaultServiceAccountResultOutput) ToGetDefaultServiceAccountResultOutputWithContext(ctx context.Context) GetDefaultServiceAccountResultOutput {
 	return o
+}
+
+func (o GetDefaultServiceAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDefaultServiceAccountResult] {
+	return pulumix.Output[GetDefaultServiceAccountResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The email address of the service account. This value is often used to refer to the service account

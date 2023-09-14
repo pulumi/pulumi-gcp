@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
@@ -118,6 +119,12 @@ func (o GetKeysResultOutput) ToGetKeysResultOutput() GetKeysResultOutput {
 
 func (o GetKeysResultOutput) ToGetKeysResultOutputWithContext(ctx context.Context) GetKeysResultOutput {
 	return o
+}
+
+func (o GetKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysResult] {
+	return pulumix.Output[GetKeysResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier for the resource; defined by the server.

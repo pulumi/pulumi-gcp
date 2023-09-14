@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i DataExchangeIamBindingConditionArgs) ToDataExchangeIamBindingConditionOu
 
 func (i DataExchangeIamBindingConditionArgs) ToDataExchangeIamBindingConditionOutputWithContext(ctx context.Context) DataExchangeIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamBindingConditionOutput)
+}
+
+func (i DataExchangeIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DataExchangeIamBindingCondition] {
+	return pulumix.Output[DataExchangeIamBindingCondition]{
+		OutputState: i.ToDataExchangeIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DataExchangeIamBindingConditionArgs) ToDataExchangeIamBindingConditionPtrOutput() DataExchangeIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *dataExchangeIamBindingConditionPtrType) ToDataExchangeIamBindingConditi
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamBindingConditionPtrOutput)
 }
 
+func (i *dataExchangeIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamBindingCondition] {
+	return pulumix.Output[*DataExchangeIamBindingCondition]{
+		OutputState: i.ToDataExchangeIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataExchangeIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o DataExchangeIamBindingConditionOutput) ToDataExchangeIamBindingCondition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataExchangeIamBindingCondition) *DataExchangeIamBindingCondition {
 		return &v
 	}).(DataExchangeIamBindingConditionPtrOutput)
+}
+
+func (o DataExchangeIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DataExchangeIamBindingCondition] {
+	return pulumix.Output[DataExchangeIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o DataExchangeIamBindingConditionPtrOutput) ToDataExchangeIamBindingCondit
 
 func (o DataExchangeIamBindingConditionPtrOutput) ToDataExchangeIamBindingConditionPtrOutputWithContext(ctx context.Context) DataExchangeIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o DataExchangeIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamBindingCondition] {
+	return pulumix.Output[*DataExchangeIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamBindingConditionPtrOutput) Elem() DataExchangeIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i DataExchangeIamMemberConditionArgs) ToDataExchangeIamMemberConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberConditionOutput)
 }
 
+func (i DataExchangeIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DataExchangeIamMemberCondition] {
+	return pulumix.Output[DataExchangeIamMemberCondition]{
+		OutputState: i.ToDataExchangeIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DataExchangeIamMemberConditionArgs) ToDataExchangeIamMemberConditionPtrOutput() DataExchangeIamMemberConditionPtrOutput {
 	return i.ToDataExchangeIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *dataExchangeIamMemberConditionPtrType) ToDataExchangeIamMemberCondition
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberConditionPtrOutput)
 }
 
+func (i *dataExchangeIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamMemberCondition] {
+	return pulumix.Output[*DataExchangeIamMemberCondition]{
+		OutputState: i.ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataExchangeIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o DataExchangeIamMemberConditionOutput) ToDataExchangeIamMemberConditionPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataExchangeIamMemberCondition) *DataExchangeIamMemberCondition {
 		return &v
 	}).(DataExchangeIamMemberConditionPtrOutput)
+}
+
+func (o DataExchangeIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DataExchangeIamMemberCondition] {
+	return pulumix.Output[DataExchangeIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o DataExchangeIamMemberConditionPtrOutput) ToDataExchangeIamMemberConditio
 
 func (o DataExchangeIamMemberConditionPtrOutput) ToDataExchangeIamMemberConditionPtrOutputWithContext(ctx context.Context) DataExchangeIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o DataExchangeIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamMemberCondition] {
+	return pulumix.Output[*DataExchangeIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataExchangeIamMemberConditionPtrOutput) Elem() DataExchangeIamMemberConditionOutput {
@@ -376,6 +425,12 @@ func (i ListingBigqueryDatasetArgs) ToListingBigqueryDatasetOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetOutput)
 }
 
+func (i ListingBigqueryDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ListingBigqueryDataset] {
+	return pulumix.Output[ListingBigqueryDataset]{
+		OutputState: i.ToListingBigqueryDatasetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListingBigqueryDatasetArgs) ToListingBigqueryDatasetPtrOutput() ListingBigqueryDatasetPtrOutput {
 	return i.ToListingBigqueryDatasetPtrOutputWithContext(context.Background())
 }
@@ -417,6 +472,12 @@ func (i *listingBigqueryDatasetPtrType) ToListingBigqueryDatasetPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ListingBigqueryDatasetPtrOutput)
 }
 
+func (i *listingBigqueryDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListingBigqueryDataset] {
+	return pulumix.Output[*ListingBigqueryDataset]{
+		OutputState: i.ToListingBigqueryDatasetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingBigqueryDatasetOutput struct{ *pulumi.OutputState }
 
 func (ListingBigqueryDatasetOutput) ElementType() reflect.Type {
@@ -441,6 +502,12 @@ func (o ListingBigqueryDatasetOutput) ToListingBigqueryDatasetPtrOutputWithConte
 	}).(ListingBigqueryDatasetPtrOutput)
 }
 
+func (o ListingBigqueryDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ListingBigqueryDataset] {
+	return pulumix.Output[ListingBigqueryDataset]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
 //
 // ***
@@ -460,6 +527,12 @@ func (o ListingBigqueryDatasetPtrOutput) ToListingBigqueryDatasetPtrOutput() Lis
 
 func (o ListingBigqueryDatasetPtrOutput) ToListingBigqueryDatasetPtrOutputWithContext(ctx context.Context) ListingBigqueryDatasetPtrOutput {
 	return o
+}
+
+func (o ListingBigqueryDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingBigqueryDataset] {
+	return pulumix.Output[*ListingBigqueryDataset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingBigqueryDatasetPtrOutput) Elem() ListingBigqueryDatasetOutput {
@@ -521,6 +594,12 @@ func (i ListingDataProviderArgs) ToListingDataProviderOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ListingDataProviderOutput)
 }
 
+func (i ListingDataProviderArgs) ToOutput(ctx context.Context) pulumix.Output[ListingDataProvider] {
+	return pulumix.Output[ListingDataProvider]{
+		OutputState: i.ToListingDataProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListingDataProviderArgs) ToListingDataProviderPtrOutput() ListingDataProviderPtrOutput {
 	return i.ToListingDataProviderPtrOutputWithContext(context.Background())
 }
@@ -562,6 +641,12 @@ func (i *listingDataProviderPtrType) ToListingDataProviderPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ListingDataProviderPtrOutput)
 }
 
+func (i *listingDataProviderPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListingDataProvider] {
+	return pulumix.Output[*ListingDataProvider]{
+		OutputState: i.ToListingDataProviderPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingDataProviderOutput struct{ *pulumi.OutputState }
 
 func (ListingDataProviderOutput) ElementType() reflect.Type {
@@ -586,6 +671,12 @@ func (o ListingDataProviderOutput) ToListingDataProviderPtrOutputWithContext(ctx
 	}).(ListingDataProviderPtrOutput)
 }
 
+func (o ListingDataProviderOutput) ToOutput(ctx context.Context) pulumix.Output[ListingDataProvider] {
+	return pulumix.Output[ListingDataProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the data provider.
 func (o ListingDataProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListingDataProvider) string { return v.Name }).(pulumi.StringOutput)
@@ -608,6 +699,12 @@ func (o ListingDataProviderPtrOutput) ToListingDataProviderPtrOutput() ListingDa
 
 func (o ListingDataProviderPtrOutput) ToListingDataProviderPtrOutputWithContext(ctx context.Context) ListingDataProviderPtrOutput {
 	return o
+}
+
+func (o ListingDataProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingDataProvider] {
+	return pulumix.Output[*ListingDataProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingDataProviderPtrOutput) Elem() ListingDataProviderOutput {
@@ -675,6 +772,12 @@ func (i ListingIamBindingConditionArgs) ToListingIamBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingConditionOutput)
 }
 
+func (i ListingIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ListingIamBindingCondition] {
+	return pulumix.Output[ListingIamBindingCondition]{
+		OutputState: i.ToListingIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListingIamBindingConditionArgs) ToListingIamBindingConditionPtrOutput() ListingIamBindingConditionPtrOutput {
 	return i.ToListingIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -716,6 +819,12 @@ func (i *listingIamBindingConditionPtrType) ToListingIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamBindingConditionPtrOutput)
 }
 
+func (i *listingIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListingIamBindingCondition] {
+	return pulumix.Output[*ListingIamBindingCondition]{
+		OutputState: i.ToListingIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ListingIamBindingConditionOutput) ElementType() reflect.Type {
@@ -738,6 +847,12 @@ func (o ListingIamBindingConditionOutput) ToListingIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingIamBindingCondition) *ListingIamBindingCondition {
 		return &v
 	}).(ListingIamBindingConditionPtrOutput)
+}
+
+func (o ListingIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ListingIamBindingCondition] {
+	return pulumix.Output[ListingIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -764,6 +879,12 @@ func (o ListingIamBindingConditionPtrOutput) ToListingIamBindingConditionPtrOutp
 
 func (o ListingIamBindingConditionPtrOutput) ToListingIamBindingConditionPtrOutputWithContext(ctx context.Context) ListingIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o ListingIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingIamBindingCondition] {
+	return pulumix.Output[*ListingIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamBindingConditionPtrOutput) Elem() ListingIamBindingConditionOutput {
@@ -838,6 +959,12 @@ func (i ListingIamMemberConditionArgs) ToListingIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberConditionOutput)
 }
 
+func (i ListingIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ListingIamMemberCondition] {
+	return pulumix.Output[ListingIamMemberCondition]{
+		OutputState: i.ToListingIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListingIamMemberConditionArgs) ToListingIamMemberConditionPtrOutput() ListingIamMemberConditionPtrOutput {
 	return i.ToListingIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -879,6 +1006,12 @@ func (i *listingIamMemberConditionPtrType) ToListingIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ListingIamMemberConditionPtrOutput)
 }
 
+func (i *listingIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListingIamMemberCondition] {
+	return pulumix.Output[*ListingIamMemberCondition]{
+		OutputState: i.ToListingIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ListingIamMemberConditionOutput) ElementType() reflect.Type {
@@ -901,6 +1034,12 @@ func (o ListingIamMemberConditionOutput) ToListingIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingIamMemberCondition) *ListingIamMemberCondition {
 		return &v
 	}).(ListingIamMemberConditionPtrOutput)
+}
+
+func (o ListingIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ListingIamMemberCondition] {
+	return pulumix.Output[ListingIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -927,6 +1066,12 @@ func (o ListingIamMemberConditionPtrOutput) ToListingIamMemberConditionPtrOutput
 
 func (o ListingIamMemberConditionPtrOutput) ToListingIamMemberConditionPtrOutputWithContext(ctx context.Context) ListingIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o ListingIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingIamMemberCondition] {
+	return pulumix.Output[*ListingIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingIamMemberConditionPtrOutput) Elem() ListingIamMemberConditionOutput {
@@ -1003,6 +1148,12 @@ func (i ListingPublisherArgs) ToListingPublisherOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ListingPublisherOutput)
 }
 
+func (i ListingPublisherArgs) ToOutput(ctx context.Context) pulumix.Output[ListingPublisher] {
+	return pulumix.Output[ListingPublisher]{
+		OutputState: i.ToListingPublisherOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ListingPublisherArgs) ToListingPublisherPtrOutput() ListingPublisherPtrOutput {
 	return i.ToListingPublisherPtrOutputWithContext(context.Background())
 }
@@ -1044,6 +1195,12 @@ func (i *listingPublisherPtrType) ToListingPublisherPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ListingPublisherPtrOutput)
 }
 
+func (i *listingPublisherPtrType) ToOutput(ctx context.Context) pulumix.Output[*ListingPublisher] {
+	return pulumix.Output[*ListingPublisher]{
+		OutputState: i.ToListingPublisherPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListingPublisherOutput struct{ *pulumi.OutputState }
 
 func (ListingPublisherOutput) ElementType() reflect.Type {
@@ -1068,6 +1225,12 @@ func (o ListingPublisherOutput) ToListingPublisherPtrOutputWithContext(ctx conte
 	}).(ListingPublisherPtrOutput)
 }
 
+func (o ListingPublisherOutput) ToOutput(ctx context.Context) pulumix.Output[ListingPublisher] {
+	return pulumix.Output[ListingPublisher]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Name of the listing publisher.
 func (o ListingPublisherOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListingPublisher) string { return v.Name }).(pulumi.StringOutput)
@@ -1090,6 +1253,12 @@ func (o ListingPublisherPtrOutput) ToListingPublisherPtrOutput() ListingPublishe
 
 func (o ListingPublisherPtrOutput) ToListingPublisherPtrOutputWithContext(ctx context.Context) ListingPublisherPtrOutput {
 	return o
+}
+
+func (o ListingPublisherPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ListingPublisher] {
+	return pulumix.Output[*ListingPublisher]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListingPublisherPtrOutput) Elem() ListingPublisherOutput {

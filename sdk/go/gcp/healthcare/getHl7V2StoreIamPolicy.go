@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
@@ -107,6 +108,12 @@ func (o GetHl7V2StoreIamPolicyResultOutput) ToGetHl7V2StoreIamPolicyResultOutput
 
 func (o GetHl7V2StoreIamPolicyResultOutput) ToGetHl7V2StoreIamPolicyResultOutputWithContext(ctx context.Context) GetHl7V2StoreIamPolicyResultOutput {
 	return o
+}
+
+func (o GetHl7V2StoreIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHl7V2StoreIamPolicyResult] {
+	return pulumix.Output[GetHl7V2StoreIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for consentstore
@@ -112,6 +113,12 @@ func (o LookupConsentStoreIamPolicyResultOutput) ToLookupConsentStoreIamPolicyRe
 
 func (o LookupConsentStoreIamPolicyResultOutput) ToLookupConsentStoreIamPolicyResultOutputWithContext(ctx context.Context) LookupConsentStoreIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupConsentStoreIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsentStoreIamPolicyResult] {
+	return pulumix.Output[LookupConsentStoreIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupConsentStoreIamPolicyResultOutput) ConsentStoreId() pulumi.StringOutput {

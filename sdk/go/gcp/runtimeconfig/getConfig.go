@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -107,6 +108,12 @@ func (o LookupConfigResultOutput) ToLookupConfigResultOutput() LookupConfigResul
 
 func (o LookupConfigResultOutput) ToLookupConfigResultOutputWithContext(ctx context.Context) LookupConfigResultOutput {
 	return o
+}
+
+func (o LookupConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigResult] {
+	return pulumix.Output[LookupConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupConfigResultOutput) Description() pulumi.StringOutput {

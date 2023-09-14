@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Data Fusion instance.
@@ -428,6 +429,12 @@ func (i *InstanceIamMember) ToInstanceIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberOutput)
 }
 
+func (i *InstanceIamMember) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMember] {
+	return pulumix.Output[*InstanceIamMember]{
+		OutputState: i.ToInstanceIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceIamMemberArrayInput is an input type that accepts InstanceIamMemberArray and InstanceIamMemberArrayOutput values.
 // You can construct a concrete instance of `InstanceIamMemberArrayInput` via:
 //
@@ -451,6 +458,12 @@ func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutput() InstanceIamMemb
 
 func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutputWithContext(ctx context.Context) InstanceIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberArrayOutput)
+}
+
+func (i InstanceIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamMember] {
+	return pulumix.Output[[]*InstanceIamMember]{
+		OutputState: i.ToInstanceIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InstanceIamMemberMapInput is an input type that accepts InstanceIamMemberMap and InstanceIamMemberMapOutput values.
@@ -478,6 +491,12 @@ func (i InstanceIamMemberMap) ToInstanceIamMemberMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberMapOutput)
 }
 
+func (i InstanceIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamMember] {
+	return pulumix.Output[map[string]*InstanceIamMember]{
+		OutputState: i.ToInstanceIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceIamMemberOutput struct{ *pulumi.OutputState }
 
 func (InstanceIamMemberOutput) ElementType() reflect.Type {
@@ -490,6 +509,12 @@ func (o InstanceIamMemberOutput) ToInstanceIamMemberOutput() InstanceIamMemberOu
 
 func (o InstanceIamMemberOutput) ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput {
 	return o
+}
+
+func (o InstanceIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceIamMember] {
+	return pulumix.Output[*InstanceIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamMemberOutput) Condition() InstanceIamMemberConditionPtrOutput {
@@ -538,6 +563,12 @@ func (o InstanceIamMemberArrayOutput) ToInstanceIamMemberArrayOutputWithContext(
 	return o
 }
 
+func (o InstanceIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceIamMember] {
+	return pulumix.Output[[]*InstanceIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceIamMemberArrayOutput) Index(i pulumi.IntInput) InstanceIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamMember {
 		return vs[0].([]*InstanceIamMember)[vs[1].(int)]
@@ -556,6 +587,12 @@ func (o InstanceIamMemberMapOutput) ToInstanceIamMemberMapOutput() InstanceIamMe
 
 func (o InstanceIamMemberMapOutput) ToInstanceIamMemberMapOutputWithContext(ctx context.Context) InstanceIamMemberMapOutput {
 	return o
+}
+
+func (o InstanceIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceIamMember] {
+	return pulumix.Output[map[string]*InstanceIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceIamMemberMapOutput) MapIndex(k pulumi.StringInput) InstanceIamMemberOutput {

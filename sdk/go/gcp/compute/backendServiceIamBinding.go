@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -252,6 +253,12 @@ func (i *BackendServiceIamBinding) ToBackendServiceIamBindingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceIamBindingOutput)
 }
 
+func (i *BackendServiceIamBinding) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceIamBinding] {
+	return pulumix.Output[*BackendServiceIamBinding]{
+		OutputState: i.ToBackendServiceIamBindingOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BackendServiceIamBindingArrayInput is an input type that accepts BackendServiceIamBindingArray and BackendServiceIamBindingArrayOutput values.
 // You can construct a concrete instance of `BackendServiceIamBindingArrayInput` via:
 //
@@ -275,6 +282,12 @@ func (i BackendServiceIamBindingArray) ToBackendServiceIamBindingArrayOutput() B
 
 func (i BackendServiceIamBindingArray) ToBackendServiceIamBindingArrayOutputWithContext(ctx context.Context) BackendServiceIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceIamBindingArrayOutput)
+}
+
+func (i BackendServiceIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*BackendServiceIamBinding] {
+	return pulumix.Output[[]*BackendServiceIamBinding]{
+		OutputState: i.ToBackendServiceIamBindingArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BackendServiceIamBindingMapInput is an input type that accepts BackendServiceIamBindingMap and BackendServiceIamBindingMapOutput values.
@@ -302,6 +315,12 @@ func (i BackendServiceIamBindingMap) ToBackendServiceIamBindingMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceIamBindingMapOutput)
 }
 
+func (i BackendServiceIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendServiceIamBinding] {
+	return pulumix.Output[map[string]*BackendServiceIamBinding]{
+		OutputState: i.ToBackendServiceIamBindingMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BackendServiceIamBindingOutput struct{ *pulumi.OutputState }
 
 func (BackendServiceIamBindingOutput) ElementType() reflect.Type {
@@ -314,6 +333,12 @@ func (o BackendServiceIamBindingOutput) ToBackendServiceIamBindingOutput() Backe
 
 func (o BackendServiceIamBindingOutput) ToBackendServiceIamBindingOutputWithContext(ctx context.Context) BackendServiceIamBindingOutput {
 	return o
+}
+
+func (o BackendServiceIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceIamBinding] {
+	return pulumix.Output[*BackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -375,6 +400,12 @@ func (o BackendServiceIamBindingArrayOutput) ToBackendServiceIamBindingArrayOutp
 	return o
 }
 
+func (o BackendServiceIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BackendServiceIamBinding] {
+	return pulumix.Output[[]*BackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BackendServiceIamBindingArrayOutput) Index(i pulumi.IntInput) BackendServiceIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BackendServiceIamBinding {
 		return vs[0].([]*BackendServiceIamBinding)[vs[1].(int)]
@@ -393,6 +424,12 @@ func (o BackendServiceIamBindingMapOutput) ToBackendServiceIamBindingMapOutput()
 
 func (o BackendServiceIamBindingMapOutput) ToBackendServiceIamBindingMapOutputWithContext(ctx context.Context) BackendServiceIamBindingMapOutput {
 	return o
+}
+
+func (o BackendServiceIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BackendServiceIamBinding] {
+	return pulumix.Output[map[string]*BackendServiceIamBinding]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BackendServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) BackendServiceIamBindingOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -44,6 +45,12 @@ func (i ProviderBatchingArgs) ToProviderBatchingOutput() ProviderBatchingOutput 
 
 func (i ProviderBatchingArgs) ToProviderBatchingOutputWithContext(ctx context.Context) ProviderBatchingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderBatchingOutput)
+}
+
+func (i ProviderBatchingArgs) ToOutput(ctx context.Context) pulumix.Output[ProviderBatching] {
+	return pulumix.Output[ProviderBatching]{
+		OutputState: i.ToProviderBatchingOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ProviderBatchingArgs) ToProviderBatchingPtrOutput() ProviderBatchingPtrOutput {
@@ -87,6 +94,12 @@ func (i *providerBatchingPtrType) ToProviderBatchingPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderBatchingPtrOutput)
 }
 
+func (i *providerBatchingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProviderBatching] {
+	return pulumix.Output[*ProviderBatching]{
+		OutputState: i.ToProviderBatchingPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProviderBatchingOutput struct{ *pulumi.OutputState }
 
 func (ProviderBatchingOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o ProviderBatchingOutput) ToProviderBatchingPtrOutputWithContext(ctx conte
 	}).(ProviderBatchingPtrOutput)
 }
 
+func (o ProviderBatchingOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderBatching] {
+	return pulumix.Output[ProviderBatching]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProviderBatchingOutput) EnableBatching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProviderBatching) *bool { return v.EnableBatching }).(pulumi.BoolPtrOutput)
 }
@@ -131,6 +150,12 @@ func (o ProviderBatchingPtrOutput) ToProviderBatchingPtrOutput() ProviderBatchin
 
 func (o ProviderBatchingPtrOutput) ToProviderBatchingPtrOutputWithContext(ctx context.Context) ProviderBatchingPtrOutput {
 	return o
+}
+
+func (o ProviderBatchingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderBatching] {
+	return pulumix.Output[*ProviderBatching]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProviderBatchingPtrOutput) Elem() ProviderBatchingOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generates an IAM policy document that may be referenced by and applied to
@@ -152,6 +153,12 @@ func (o LookupIAMPolicyResultOutput) ToLookupIAMPolicyResultOutput() LookupIAMPo
 
 func (o LookupIAMPolicyResultOutput) ToLookupIAMPolicyResultOutputWithContext(ctx context.Context) LookupIAMPolicyResultOutput {
 	return o
+}
+
+func (o LookupIAMPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIAMPolicyResult] {
+	return pulumix.Output[LookupIAMPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupIAMPolicyResultOutput) AuditConfigs() GetIAMPolicyAuditConfigArrayOutput {

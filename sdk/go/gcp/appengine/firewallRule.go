@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A single firewall rule that is evaluated against incoming traffic
@@ -258,6 +259,12 @@ func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) Fire
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
 }
 
+func (i *FirewallRule) ToOutput(ctx context.Context) pulumix.Output[*FirewallRule] {
+	return pulumix.Output[*FirewallRule]{
+		OutputState: i.ToFirewallRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FirewallRuleArrayInput is an input type that accepts FirewallRuleArray and FirewallRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallRuleArrayInput` via:
 //
@@ -281,6 +288,12 @@ func (i FirewallRuleArray) ToFirewallRuleArrayOutput() FirewallRuleArrayOutput {
 
 func (i FirewallRuleArray) ToFirewallRuleArrayOutputWithContext(ctx context.Context) FirewallRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleArrayOutput)
+}
+
+func (i FirewallRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallRule] {
+	return pulumix.Output[[]*FirewallRule]{
+		OutputState: i.ToFirewallRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FirewallRuleMapInput is an input type that accepts FirewallRuleMap and FirewallRuleMapOutput values.
@@ -308,6 +321,12 @@ func (i FirewallRuleMap) ToFirewallRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleMapOutput)
 }
 
+func (i FirewallRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallRule] {
+	return pulumix.Output[map[string]*FirewallRule]{
+		OutputState: i.ToFirewallRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (FirewallRuleOutput) ElementType() reflect.Type {
@@ -320,6 +339,12 @@ func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
 
 func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return o
+}
+
+func (o FirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallRule] {
+	return pulumix.Output[*FirewallRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The action to take if this rule matches.
@@ -369,6 +394,12 @@ func (o FirewallRuleArrayOutput) ToFirewallRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o FirewallRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FirewallRule] {
+	return pulumix.Output[[]*FirewallRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FirewallRuleArrayOutput) Index(i pulumi.IntInput) FirewallRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FirewallRule {
 		return vs[0].([]*FirewallRule)[vs[1].(int)]
@@ -387,6 +418,12 @@ func (o FirewallRuleMapOutput) ToFirewallRuleMapOutput() FirewallRuleMapOutput {
 
 func (o FirewallRuleMapOutput) ToFirewallRuleMapOutputWithContext(ctx context.Context) FirewallRuleMapOutput {
 	return o
+}
+
+func (o FirewallRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FirewallRule] {
+	return pulumix.Output[map[string]*FirewallRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FirewallRuleMapOutput) MapIndex(k pulumi.StringInput) FirewallRuleOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A user-defined function or a stored procedure that belongs to a Dataset
@@ -511,6 +512,12 @@ func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineOutput)
 }
 
+func (i *Routine) ToOutput(ctx context.Context) pulumix.Output[*Routine] {
+	return pulumix.Output[*Routine]{
+		OutputState: i.ToRoutineOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RoutineArrayInput is an input type that accepts RoutineArray and RoutineArrayOutput values.
 // You can construct a concrete instance of `RoutineArrayInput` via:
 //
@@ -534,6 +541,12 @@ func (i RoutineArray) ToRoutineArrayOutput() RoutineArrayOutput {
 
 func (i RoutineArray) ToRoutineArrayOutputWithContext(ctx context.Context) RoutineArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineArrayOutput)
+}
+
+func (i RoutineArray) ToOutput(ctx context.Context) pulumix.Output[[]*Routine] {
+	return pulumix.Output[[]*Routine]{
+		OutputState: i.ToRoutineArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RoutineMapInput is an input type that accepts RoutineMap and RoutineMapOutput values.
@@ -561,6 +574,12 @@ func (i RoutineMap) ToRoutineMapOutputWithContext(ctx context.Context) RoutineMa
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineMapOutput)
 }
 
+func (i RoutineMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Routine] {
+	return pulumix.Output[map[string]*Routine]{
+		OutputState: i.ToRoutineMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RoutineOutput struct{ *pulumi.OutputState }
 
 func (RoutineOutput) ElementType() reflect.Type {
@@ -573,6 +592,12 @@ func (o RoutineOutput) ToRoutineOutput() RoutineOutput {
 
 func (o RoutineOutput) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput {
 	return o
+}
+
+func (o RoutineOutput) ToOutput(ctx context.Context) pulumix.Output[*Routine] {
+	return pulumix.Output[*Routine]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Input/output argument of a function or a stored procedure.
@@ -681,6 +706,12 @@ func (o RoutineArrayOutput) ToRoutineArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RoutineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Routine] {
+	return pulumix.Output[[]*Routine]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RoutineArrayOutput) Index(i pulumi.IntInput) RoutineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Routine {
 		return vs[0].([]*Routine)[vs[1].(int)]
@@ -699,6 +730,12 @@ func (o RoutineMapOutput) ToRoutineMapOutput() RoutineMapOutput {
 
 func (o RoutineMapOutput) ToRoutineMapOutputWithContext(ctx context.Context) RoutineMapOutput {
 	return o
+}
+
+func (o RoutineMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Routine] {
+	return pulumix.Output[map[string]*Routine]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RoutineMapOutput) MapIndex(k pulumi.StringInput) RoutineOutput {

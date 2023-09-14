@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -271,6 +272,12 @@ func (i *WorkstationIamMember) ToWorkstationIamMemberOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberOutput)
 }
 
+func (i *WorkstationIamMember) ToOutput(ctx context.Context) pulumix.Output[*WorkstationIamMember] {
+	return pulumix.Output[*WorkstationIamMember]{
+		OutputState: i.ToWorkstationIamMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkstationIamMemberArrayInput is an input type that accepts WorkstationIamMemberArray and WorkstationIamMemberArrayOutput values.
 // You can construct a concrete instance of `WorkstationIamMemberArrayInput` via:
 //
@@ -294,6 +301,12 @@ func (i WorkstationIamMemberArray) ToWorkstationIamMemberArrayOutput() Workstati
 
 func (i WorkstationIamMemberArray) ToWorkstationIamMemberArrayOutputWithContext(ctx context.Context) WorkstationIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberArrayOutput)
+}
+
+func (i WorkstationIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationIamMember] {
+	return pulumix.Output[[]*WorkstationIamMember]{
+		OutputState: i.ToWorkstationIamMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkstationIamMemberMapInput is an input type that accepts WorkstationIamMemberMap and WorkstationIamMemberMapOutput values.
@@ -321,6 +334,12 @@ func (i WorkstationIamMemberMap) ToWorkstationIamMemberMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberMapOutput)
 }
 
+func (i WorkstationIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationIamMember] {
+	return pulumix.Output[map[string]*WorkstationIamMember]{
+		OutputState: i.ToWorkstationIamMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkstationIamMemberOutput struct{ *pulumi.OutputState }
 
 func (WorkstationIamMemberOutput) ElementType() reflect.Type {
@@ -333,6 +352,12 @@ func (o WorkstationIamMemberOutput) ToWorkstationIamMemberOutput() WorkstationIa
 
 func (o WorkstationIamMemberOutput) ToWorkstationIamMemberOutputWithContext(ctx context.Context) WorkstationIamMemberOutput {
 	return o
+}
+
+func (o WorkstationIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkstationIamMember] {
+	return pulumix.Output[*WorkstationIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationIamMemberOutput) Condition() WorkstationIamMemberConditionPtrOutput {
@@ -405,6 +430,12 @@ func (o WorkstationIamMemberArrayOutput) ToWorkstationIamMemberArrayOutputWithCo
 	return o
 }
 
+func (o WorkstationIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkstationIamMember] {
+	return pulumix.Output[[]*WorkstationIamMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkstationIamMemberArrayOutput) Index(i pulumi.IntInput) WorkstationIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkstationIamMember {
 		return vs[0].([]*WorkstationIamMember)[vs[1].(int)]
@@ -423,6 +454,12 @@ func (o WorkstationIamMemberMapOutput) ToWorkstationIamMemberMapOutput() Worksta
 
 func (o WorkstationIamMemberMapOutput) ToWorkstationIamMemberMapOutputWithContext(ctx context.Context) WorkstationIamMemberMapOutput {
 	return o
+}
+
+func (o WorkstationIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkstationIamMember] {
+	return pulumix.Output[map[string]*WorkstationIamMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkstationIamMemberMapOutput) MapIndex(k pulumi.StringInput) WorkstationIamMemberOutput {

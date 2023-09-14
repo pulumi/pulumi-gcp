@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The first-class citizen for Document AI. Each processor defines how to extract structural information from a document.
@@ -224,6 +225,12 @@ func (i *DocumentAiProcessor) ToDocumentAiProcessorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiProcessorOutput)
 }
 
+func (i *DocumentAiProcessor) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiProcessor] {
+	return pulumix.Output[*DocumentAiProcessor]{
+		OutputState: i.ToDocumentAiProcessorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DocumentAiProcessorArrayInput is an input type that accepts DocumentAiProcessorArray and DocumentAiProcessorArrayOutput values.
 // You can construct a concrete instance of `DocumentAiProcessorArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i DocumentAiProcessorArray) ToDocumentAiProcessorArrayOutput() DocumentAiP
 
 func (i DocumentAiProcessorArray) ToDocumentAiProcessorArrayOutputWithContext(ctx context.Context) DocumentAiProcessorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiProcessorArrayOutput)
+}
+
+func (i DocumentAiProcessorArray) ToOutput(ctx context.Context) pulumix.Output[[]*DocumentAiProcessor] {
+	return pulumix.Output[[]*DocumentAiProcessor]{
+		OutputState: i.ToDocumentAiProcessorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DocumentAiProcessorMapInput is an input type that accepts DocumentAiProcessorMap and DocumentAiProcessorMapOutput values.
@@ -274,6 +287,12 @@ func (i DocumentAiProcessorMap) ToDocumentAiProcessorMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentAiProcessorMapOutput)
 }
 
+func (i DocumentAiProcessorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DocumentAiProcessor] {
+	return pulumix.Output[map[string]*DocumentAiProcessor]{
+		OutputState: i.ToDocumentAiProcessorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DocumentAiProcessorOutput struct{ *pulumi.OutputState }
 
 func (DocumentAiProcessorOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o DocumentAiProcessorOutput) ToDocumentAiProcessorOutput() DocumentAiProce
 
 func (o DocumentAiProcessorOutput) ToDocumentAiProcessorOutputWithContext(ctx context.Context) DocumentAiProcessorOutput {
 	return o
+}
+
+func (o DocumentAiProcessorOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentAiProcessor] {
+	return pulumix.Output[*DocumentAiProcessor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The display name. Must be unique.
@@ -335,6 +360,12 @@ func (o DocumentAiProcessorArrayOutput) ToDocumentAiProcessorArrayOutputWithCont
 	return o
 }
 
+func (o DocumentAiProcessorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DocumentAiProcessor] {
+	return pulumix.Output[[]*DocumentAiProcessor]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DocumentAiProcessorArrayOutput) Index(i pulumi.IntInput) DocumentAiProcessorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DocumentAiProcessor {
 		return vs[0].([]*DocumentAiProcessor)[vs[1].(int)]
@@ -353,6 +384,12 @@ func (o DocumentAiProcessorMapOutput) ToDocumentAiProcessorMapOutput() DocumentA
 
 func (o DocumentAiProcessorMapOutput) ToDocumentAiProcessorMapOutputWithContext(ctx context.Context) DocumentAiProcessorMapOutput {
 	return o
+}
+
+func (o DocumentAiProcessorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DocumentAiProcessor] {
+	return pulumix.Output[map[string]*DocumentAiProcessor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DocumentAiProcessorMapOutput) MapIndex(k pulumi.StringInput) DocumentAiProcessorOutput {

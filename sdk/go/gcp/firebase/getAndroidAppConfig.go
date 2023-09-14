@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetAndroidAppConfig(ctx *pulumi.Context, args *GetAndroidAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAndroidAppConfigResult, error) {
@@ -72,6 +73,12 @@ func (o GetAndroidAppConfigResultOutput) ToGetAndroidAppConfigResultOutput() Get
 
 func (o GetAndroidAppConfigResultOutput) ToGetAndroidAppConfigResultOutputWithContext(ctx context.Context) GetAndroidAppConfigResultOutput {
 	return o
+}
+
+func (o GetAndroidAppConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAndroidAppConfigResult] {
+	return pulumix.Output[GetAndroidAppConfigResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAndroidAppConfigResultOutput) AppId() pulumi.StringOutput {

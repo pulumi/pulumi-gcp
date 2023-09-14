@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a billing account level logging bucket config. For more information see
@@ -228,6 +229,12 @@ func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigOutput)
 }
 
+func (i *BillingAccountBucketConfig) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketConfig] {
+	return pulumix.Output[*BillingAccountBucketConfig]{
+		OutputState: i.ToBillingAccountBucketConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 // BillingAccountBucketConfigArrayInput is an input type that accepts BillingAccountBucketConfigArray and BillingAccountBucketConfigArrayOutput values.
 // You can construct a concrete instance of `BillingAccountBucketConfigArrayInput` via:
 //
@@ -251,6 +258,12 @@ func (i BillingAccountBucketConfigArray) ToBillingAccountBucketConfigArrayOutput
 
 func (i BillingAccountBucketConfigArray) ToBillingAccountBucketConfigArrayOutputWithContext(ctx context.Context) BillingAccountBucketConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigArrayOutput)
+}
+
+func (i BillingAccountBucketConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*BillingAccountBucketConfig] {
+	return pulumix.Output[[]*BillingAccountBucketConfig]{
+		OutputState: i.ToBillingAccountBucketConfigArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // BillingAccountBucketConfigMapInput is an input type that accepts BillingAccountBucketConfigMap and BillingAccountBucketConfigMapOutput values.
@@ -278,6 +291,12 @@ func (i BillingAccountBucketConfigMap) ToBillingAccountBucketConfigMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigMapOutput)
 }
 
+func (i BillingAccountBucketConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingAccountBucketConfig] {
+	return pulumix.Output[map[string]*BillingAccountBucketConfig]{
+		OutputState: i.ToBillingAccountBucketConfigMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type BillingAccountBucketConfigOutput struct{ *pulumi.OutputState }
 
 func (BillingAccountBucketConfigOutput) ElementType() reflect.Type {
@@ -290,6 +309,12 @@ func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutput() B
 
 func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
 	return o
+}
+
+func (o BillingAccountBucketConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingAccountBucketConfig] {
+	return pulumix.Output[*BillingAccountBucketConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The parent resource that contains the logging bucket.
@@ -350,6 +375,12 @@ func (o BillingAccountBucketConfigArrayOutput) ToBillingAccountBucketConfigArray
 	return o
 }
 
+func (o BillingAccountBucketConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BillingAccountBucketConfig] {
+	return pulumix.Output[[]*BillingAccountBucketConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o BillingAccountBucketConfigArrayOutput) Index(i pulumi.IntInput) BillingAccountBucketConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BillingAccountBucketConfig {
 		return vs[0].([]*BillingAccountBucketConfig)[vs[1].(int)]
@@ -368,6 +399,12 @@ func (o BillingAccountBucketConfigMapOutput) ToBillingAccountBucketConfigMapOutp
 
 func (o BillingAccountBucketConfigMapOutput) ToBillingAccountBucketConfigMapOutputWithContext(ctx context.Context) BillingAccountBucketConfigMapOutput {
 	return o
+}
+
+func (o BillingAccountBucketConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BillingAccountBucketConfig] {
+	return pulumix.Output[map[string]*BillingAccountBucketConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o BillingAccountBucketConfigMapOutput) MapIndex(k pulumi.StringInput) BillingAccountBucketConfigOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditi
 
 func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditionOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingConditionOutput)
+}
+
+func (i DnsManagedZoneIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DnsManagedZoneIamBindingCondition] {
+	return pulumix.Output[DnsManagedZoneIamBindingCondition]{
+		OutputState: i.ToDnsManagedZoneIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i DnsManagedZoneIamBindingConditionArgs) ToDnsManagedZoneIamBindingConditionPtrOutput() DnsManagedZoneIamBindingConditionPtrOutput {
@@ -89,6 +96,12 @@ func (i *dnsManagedZoneIamBindingConditionPtrType) ToDnsManagedZoneIamBindingCon
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamBindingConditionPtrOutput)
 }
 
+func (i *dnsManagedZoneIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamBindingCondition] {
+	return pulumix.Output[*DnsManagedZoneIamBindingCondition]{
+		OutputState: i.ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DnsManagedZoneIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (DnsManagedZoneIamBindingConditionOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o DnsManagedZoneIamBindingConditionOutput) ToDnsManagedZoneIamBindingCondi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsManagedZoneIamBindingCondition) *DnsManagedZoneIamBindingCondition {
 		return &v
 	}).(DnsManagedZoneIamBindingConditionPtrOutput)
+}
+
+func (o DnsManagedZoneIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DnsManagedZoneIamBindingCondition] {
+	return pulumix.Output[DnsManagedZoneIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsManagedZoneIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -137,6 +156,12 @@ func (o DnsManagedZoneIamBindingConditionPtrOutput) ToDnsManagedZoneIamBindingCo
 
 func (o DnsManagedZoneIamBindingConditionPtrOutput) ToDnsManagedZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamBindingConditionPtrOutput {
 	return o
+}
+
+func (o DnsManagedZoneIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamBindingCondition] {
+	return pulumix.Output[*DnsManagedZoneIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsManagedZoneIamBindingConditionPtrOutput) Elem() DnsManagedZoneIamBindingConditionOutput {
@@ -211,6 +236,12 @@ func (i DnsManagedZoneIamMemberConditionArgs) ToDnsManagedZoneIamMemberCondition
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberConditionOutput)
 }
 
+func (i DnsManagedZoneIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[DnsManagedZoneIamMemberCondition] {
+	return pulumix.Output[DnsManagedZoneIamMemberCondition]{
+		OutputState: i.ToDnsManagedZoneIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i DnsManagedZoneIamMemberConditionArgs) ToDnsManagedZoneIamMemberConditionPtrOutput() DnsManagedZoneIamMemberConditionPtrOutput {
 	return i.ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -252,6 +283,12 @@ func (i *dnsManagedZoneIamMemberConditionPtrType) ToDnsManagedZoneIamMemberCondi
 	return pulumi.ToOutputWithContext(ctx, i).(DnsManagedZoneIamMemberConditionPtrOutput)
 }
 
+func (i *dnsManagedZoneIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamMemberCondition] {
+	return pulumix.Output[*DnsManagedZoneIamMemberCondition]{
+		OutputState: i.ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DnsManagedZoneIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (DnsManagedZoneIamMemberConditionOutput) ElementType() reflect.Type {
@@ -274,6 +311,12 @@ func (o DnsManagedZoneIamMemberConditionOutput) ToDnsManagedZoneIamMemberConditi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsManagedZoneIamMemberCondition) *DnsManagedZoneIamMemberCondition {
 		return &v
 	}).(DnsManagedZoneIamMemberConditionPtrOutput)
+}
+
+func (o DnsManagedZoneIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[DnsManagedZoneIamMemberCondition] {
+	return pulumix.Output[DnsManagedZoneIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsManagedZoneIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -300,6 +343,12 @@ func (o DnsManagedZoneIamMemberConditionPtrOutput) ToDnsManagedZoneIamMemberCond
 
 func (o DnsManagedZoneIamMemberConditionPtrOutput) ToDnsManagedZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) DnsManagedZoneIamMemberConditionPtrOutput {
 	return o
+}
+
+func (o DnsManagedZoneIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsManagedZoneIamMemberCondition] {
+	return pulumix.Output[*DnsManagedZoneIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DnsManagedZoneIamMemberConditionPtrOutput) Elem() DnsManagedZoneIamMemberConditionOutput {
@@ -372,6 +421,12 @@ func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigOutput)
 }
 
+func (i ManagedZoneCloudLoggingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneCloudLoggingConfig] {
+	return pulumix.Output[ManagedZoneCloudLoggingConfig]{
+		OutputState: i.ToManagedZoneCloudLoggingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZoneCloudLoggingConfigArgs) ToManagedZoneCloudLoggingConfigPtrOutput() ManagedZoneCloudLoggingConfigPtrOutput {
 	return i.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(context.Background())
 }
@@ -413,6 +468,12 @@ func (i *managedZoneCloudLoggingConfigPtrType) ToManagedZoneCloudLoggingConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneCloudLoggingConfigPtrOutput)
 }
 
+func (i *managedZoneCloudLoggingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneCloudLoggingConfig] {
+	return pulumix.Output[*ManagedZoneCloudLoggingConfig]{
+		OutputState: i.ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneCloudLoggingConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneCloudLoggingConfigOutput) ElementType() reflect.Type {
@@ -437,6 +498,12 @@ func (o ManagedZoneCloudLoggingConfigOutput) ToManagedZoneCloudLoggingConfigPtrO
 	}).(ManagedZoneCloudLoggingConfigPtrOutput)
 }
 
+func (o ManagedZoneCloudLoggingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneCloudLoggingConfig] {
+	return pulumix.Output[ManagedZoneCloudLoggingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
 func (o ManagedZoneCloudLoggingConfigOutput) EnableLogging() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedZoneCloudLoggingConfig) bool { return v.EnableLogging }).(pulumi.BoolOutput)
@@ -454,6 +521,12 @@ func (o ManagedZoneCloudLoggingConfigPtrOutput) ToManagedZoneCloudLoggingConfigP
 
 func (o ManagedZoneCloudLoggingConfigPtrOutput) ToManagedZoneCloudLoggingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneCloudLoggingConfigPtrOutput {
 	return o
+}
+
+func (o ManagedZoneCloudLoggingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneCloudLoggingConfig] {
+	return pulumix.Output[*ManagedZoneCloudLoggingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneCloudLoggingConfigPtrOutput) Elem() ManagedZoneCloudLoggingConfigOutput {
@@ -535,6 +608,12 @@ func (i ManagedZoneDnssecConfigArgs) ToManagedZoneDnssecConfigOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnssecConfigOutput)
 }
 
+func (i ManagedZoneDnssecConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneDnssecConfig] {
+	return pulumix.Output[ManagedZoneDnssecConfig]{
+		OutputState: i.ToManagedZoneDnssecConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZoneDnssecConfigArgs) ToManagedZoneDnssecConfigPtrOutput() ManagedZoneDnssecConfigPtrOutput {
 	return i.ToManagedZoneDnssecConfigPtrOutputWithContext(context.Background())
 }
@@ -576,6 +655,12 @@ func (i *managedZoneDnssecConfigPtrType) ToManagedZoneDnssecConfigPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnssecConfigPtrOutput)
 }
 
+func (i *managedZoneDnssecConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneDnssecConfig] {
+	return pulumix.Output[*ManagedZoneDnssecConfig]{
+		OutputState: i.ToManagedZoneDnssecConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneDnssecConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnssecConfigOutput) ElementType() reflect.Type {
@@ -598,6 +683,12 @@ func (o ManagedZoneDnssecConfigOutput) ToManagedZoneDnssecConfigPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZoneDnssecConfig) *ManagedZoneDnssecConfig {
 		return &v
 	}).(ManagedZoneDnssecConfigPtrOutput)
+}
+
+func (o ManagedZoneDnssecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneDnssecConfig] {
+	return pulumix.Output[ManagedZoneDnssecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies parameters that will be used for generating initial DnsKeys
@@ -639,6 +730,12 @@ func (o ManagedZoneDnssecConfigPtrOutput) ToManagedZoneDnssecConfigPtrOutput() M
 
 func (o ManagedZoneDnssecConfigPtrOutput) ToManagedZoneDnssecConfigPtrOutputWithContext(ctx context.Context) ManagedZoneDnssecConfigPtrOutput {
 	return o
+}
+
+func (o ManagedZoneDnssecConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneDnssecConfig] {
+	return pulumix.Output[*ManagedZoneDnssecConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneDnssecConfigPtrOutput) Elem() ManagedZoneDnssecConfigOutput {
@@ -757,6 +854,12 @@ func (i ManagedZoneDnssecConfigDefaultKeySpecArgs) ToManagedZoneDnssecConfigDefa
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnssecConfigDefaultKeySpecOutput)
 }
 
+func (i ManagedZoneDnssecConfigDefaultKeySpecArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneDnssecConfigDefaultKeySpec] {
+	return pulumix.Output[ManagedZoneDnssecConfigDefaultKeySpec]{
+		OutputState: i.ToManagedZoneDnssecConfigDefaultKeySpecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagedZoneDnssecConfigDefaultKeySpecArrayInput is an input type that accepts ManagedZoneDnssecConfigDefaultKeySpecArray and ManagedZoneDnssecConfigDefaultKeySpecArrayOutput values.
 // You can construct a concrete instance of `ManagedZoneDnssecConfigDefaultKeySpecArrayInput` via:
 //
@@ -782,6 +885,12 @@ func (i ManagedZoneDnssecConfigDefaultKeySpecArray) ToManagedZoneDnssecConfigDef
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneDnssecConfigDefaultKeySpecArrayOutput)
 }
 
+func (i ManagedZoneDnssecConfigDefaultKeySpecArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZoneDnssecConfigDefaultKeySpec] {
+	return pulumix.Output[[]ManagedZoneDnssecConfigDefaultKeySpec]{
+		OutputState: i.ToManagedZoneDnssecConfigDefaultKeySpecArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneDnssecConfigDefaultKeySpecOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneDnssecConfigDefaultKeySpecOutput) ElementType() reflect.Type {
@@ -794,6 +903,12 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) ToManagedZoneDnssecConfigDe
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) ToManagedZoneDnssecConfigDefaultKeySpecOutputWithContext(ctx context.Context) ManagedZoneDnssecConfigDefaultKeySpecOutput {
 	return o
+}
+
+func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneDnssecConfigDefaultKeySpec] {
+	return pulumix.Output[ManagedZoneDnssecConfigDefaultKeySpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // String mnemonic specifying the DNSSEC algorithm of this key
@@ -835,6 +950,12 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) ToManagedZoneDnssecCon
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) ToManagedZoneDnssecConfigDefaultKeySpecArrayOutputWithContext(ctx context.Context) ManagedZoneDnssecConfigDefaultKeySpecArrayOutput {
 	return o
+}
+
+func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZoneDnssecConfigDefaultKeySpec] {
+	return pulumix.Output[[]ManagedZoneDnssecConfigDefaultKeySpec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneDnssecConfigDefaultKeySpecArrayOutput) Index(i pulumi.IntInput) ManagedZoneDnssecConfigDefaultKeySpecOutput {
@@ -882,6 +1003,12 @@ func (i ManagedZoneForwardingConfigArgs) ToManagedZoneForwardingConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigOutput)
 }
 
+func (i ManagedZoneForwardingConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneForwardingConfig] {
+	return pulumix.Output[ManagedZoneForwardingConfig]{
+		OutputState: i.ToManagedZoneForwardingConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZoneForwardingConfigArgs) ToManagedZoneForwardingConfigPtrOutput() ManagedZoneForwardingConfigPtrOutput {
 	return i.ToManagedZoneForwardingConfigPtrOutputWithContext(context.Background())
 }
@@ -923,6 +1050,12 @@ func (i *managedZoneForwardingConfigPtrType) ToManagedZoneForwardingConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigPtrOutput)
 }
 
+func (i *managedZoneForwardingConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneForwardingConfig] {
+	return pulumix.Output[*ManagedZoneForwardingConfig]{
+		OutputState: i.ToManagedZoneForwardingConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneForwardingConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigOutput) ElementType() reflect.Type {
@@ -947,6 +1080,12 @@ func (o ManagedZoneForwardingConfigOutput) ToManagedZoneForwardingConfigPtrOutpu
 	}).(ManagedZoneForwardingConfigPtrOutput)
 }
 
+func (o ManagedZoneForwardingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneForwardingConfig] {
+	return pulumix.Output[ManagedZoneForwardingConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // List of target name servers to forward to. Cloud DNS will
 // select the best available name server if more than
 // one target is given.
@@ -969,6 +1108,12 @@ func (o ManagedZoneForwardingConfigPtrOutput) ToManagedZoneForwardingConfigPtrOu
 
 func (o ManagedZoneForwardingConfigPtrOutput) ToManagedZoneForwardingConfigPtrOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigPtrOutput {
 	return o
+}
+
+func (o ManagedZoneForwardingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneForwardingConfig] {
+	return pulumix.Output[*ManagedZoneForwardingConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneForwardingConfigPtrOutput) Elem() ManagedZoneForwardingConfigOutput {
@@ -1037,6 +1182,12 @@ func (i ManagedZoneForwardingConfigTargetNameServerArgs) ToManagedZoneForwarding
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigTargetNameServerOutput)
 }
 
+func (i ManagedZoneForwardingConfigTargetNameServerArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneForwardingConfigTargetNameServer] {
+	return pulumix.Output[ManagedZoneForwardingConfigTargetNameServer]{
+		OutputState: i.ToManagedZoneForwardingConfigTargetNameServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagedZoneForwardingConfigTargetNameServerArrayInput is an input type that accepts ManagedZoneForwardingConfigTargetNameServerArray and ManagedZoneForwardingConfigTargetNameServerArrayOutput values.
 // You can construct a concrete instance of `ManagedZoneForwardingConfigTargetNameServerArrayInput` via:
 //
@@ -1062,6 +1213,12 @@ func (i ManagedZoneForwardingConfigTargetNameServerArray) ToManagedZoneForwardin
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneForwardingConfigTargetNameServerArrayOutput)
 }
 
+func (i ManagedZoneForwardingConfigTargetNameServerArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZoneForwardingConfigTargetNameServer] {
+	return pulumix.Output[[]ManagedZoneForwardingConfigTargetNameServer]{
+		OutputState: i.ToManagedZoneForwardingConfigTargetNameServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneForwardingConfigTargetNameServerOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneForwardingConfigTargetNameServerOutput) ElementType() reflect.Type {
@@ -1074,6 +1231,12 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardi
 
 func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardingConfigTargetNameServerOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigTargetNameServerOutput {
 	return o
+}
+
+func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneForwardingConfigTargetNameServer] {
+	return pulumix.Output[ManagedZoneForwardingConfigTargetNameServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
@@ -1101,6 +1264,12 @@ func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) ToManagedZoneFor
 
 func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) ToManagedZoneForwardingConfigTargetNameServerArrayOutputWithContext(ctx context.Context) ManagedZoneForwardingConfigTargetNameServerArrayOutput {
 	return o
+}
+
+func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZoneForwardingConfigTargetNameServer] {
+	return pulumix.Output[[]ManagedZoneForwardingConfigTargetNameServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneForwardingConfigTargetNameServerArrayOutput) Index(i pulumi.IntInput) ManagedZoneForwardingConfigTargetNameServerOutput {
@@ -1144,6 +1313,12 @@ func (i ManagedZonePeeringConfigArgs) ToManagedZonePeeringConfigOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigOutput)
 }
 
+func (i ManagedZonePeeringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePeeringConfig] {
+	return pulumix.Output[ManagedZonePeeringConfig]{
+		OutputState: i.ToManagedZonePeeringConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZonePeeringConfigArgs) ToManagedZonePeeringConfigPtrOutput() ManagedZonePeeringConfigPtrOutput {
 	return i.ToManagedZonePeeringConfigPtrOutputWithContext(context.Background())
 }
@@ -1185,6 +1360,12 @@ func (i *managedZonePeeringConfigPtrType) ToManagedZonePeeringConfigPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigPtrOutput)
 }
 
+func (i *managedZonePeeringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZonePeeringConfig] {
+	return pulumix.Output[*ManagedZonePeeringConfig]{
+		OutputState: i.ToManagedZonePeeringConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZonePeeringConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePeeringConfigOutput) ElementType() reflect.Type {
@@ -1209,6 +1390,12 @@ func (o ManagedZonePeeringConfigOutput) ToManagedZonePeeringConfigPtrOutputWithC
 	}).(ManagedZonePeeringConfigPtrOutput)
 }
 
+func (o ManagedZonePeeringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePeeringConfig] {
+	return pulumix.Output[ManagedZonePeeringConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The network with which to peer.
 // Structure is documented below.
 func (o ManagedZonePeeringConfigOutput) TargetNetwork() ManagedZonePeeringConfigTargetNetworkOutput {
@@ -1227,6 +1414,12 @@ func (o ManagedZonePeeringConfigPtrOutput) ToManagedZonePeeringConfigPtrOutput()
 
 func (o ManagedZonePeeringConfigPtrOutput) ToManagedZonePeeringConfigPtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigPtrOutput {
 	return o
+}
+
+func (o ManagedZonePeeringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZonePeeringConfig] {
+	return pulumix.Output[*ManagedZonePeeringConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZonePeeringConfigPtrOutput) Elem() ManagedZonePeeringConfigOutput {
@@ -1287,6 +1480,12 @@ func (i ManagedZonePeeringConfigTargetNetworkArgs) ToManagedZonePeeringConfigTar
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigTargetNetworkOutput)
 }
 
+func (i ManagedZonePeeringConfigTargetNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePeeringConfigTargetNetwork] {
+	return pulumix.Output[ManagedZonePeeringConfigTargetNetwork]{
+		OutputState: i.ToManagedZonePeeringConfigTargetNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZonePeeringConfigTargetNetworkArgs) ToManagedZonePeeringConfigTargetNetworkPtrOutput() ManagedZonePeeringConfigTargetNetworkPtrOutput {
 	return i.ToManagedZonePeeringConfigTargetNetworkPtrOutputWithContext(context.Background())
 }
@@ -1328,6 +1527,12 @@ func (i *managedZonePeeringConfigTargetNetworkPtrType) ToManagedZonePeeringConfi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePeeringConfigTargetNetworkPtrOutput)
 }
 
+func (i *managedZonePeeringConfigTargetNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZonePeeringConfigTargetNetwork] {
+	return pulumix.Output[*ManagedZonePeeringConfigTargetNetwork]{
+		OutputState: i.ToManagedZonePeeringConfigTargetNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZonePeeringConfigTargetNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePeeringConfigTargetNetworkOutput) ElementType() reflect.Type {
@@ -1352,6 +1557,12 @@ func (o ManagedZonePeeringConfigTargetNetworkOutput) ToManagedZonePeeringConfigT
 	}).(ManagedZonePeeringConfigTargetNetworkPtrOutput)
 }
 
+func (o ManagedZonePeeringConfigTargetNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePeeringConfigTargetNetwork] {
+	return pulumix.Output[ManagedZonePeeringConfigTargetNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The id or fully qualified URL of the VPC network to forward queries to.
 // This should be formatted like `projects/{project}/global/networks/{network}` or
 // `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
@@ -1371,6 +1582,12 @@ func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) ToManagedZonePeeringConf
 
 func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) ToManagedZonePeeringConfigTargetNetworkPtrOutputWithContext(ctx context.Context) ManagedZonePeeringConfigTargetNetworkPtrOutput {
 	return o
+}
+
+func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZonePeeringConfigTargetNetwork] {
+	return pulumix.Output[*ManagedZonePeeringConfigTargetNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZonePeeringConfigTargetNetworkPtrOutput) Elem() ManagedZonePeeringConfigTargetNetworkOutput {
@@ -1432,6 +1649,12 @@ func (i ManagedZonePrivateVisibilityConfigArgs) ToManagedZonePrivateVisibilityCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
+func (i ManagedZonePrivateVisibilityConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePrivateVisibilityConfig] {
+	return pulumix.Output[ManagedZonePrivateVisibilityConfig]{
+		OutputState: i.ToManagedZonePrivateVisibilityConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZonePrivateVisibilityConfigArgs) ToManagedZonePrivateVisibilityConfigPtrOutput() ManagedZonePrivateVisibilityConfigPtrOutput {
 	return i.ToManagedZonePrivateVisibilityConfigPtrOutputWithContext(context.Background())
 }
@@ -1473,6 +1696,12 @@ func (i *managedZonePrivateVisibilityConfigPtrType) ToManagedZonePrivateVisibili
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
 
+func (i *managedZonePrivateVisibilityConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZonePrivateVisibilityConfig] {
+	return pulumix.Output[*ManagedZonePrivateVisibilityConfig]{
+		OutputState: i.ToManagedZonePrivateVisibilityConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZonePrivateVisibilityConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigOutput) ElementType() reflect.Type {
@@ -1495,6 +1724,12 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedZonePrivateVisibilityConfig) *ManagedZonePrivateVisibilityConfig {
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
+}
+
+func (o ManagedZonePrivateVisibilityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePrivateVisibilityConfig] {
+	return pulumix.Output[ManagedZonePrivateVisibilityConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of Google Kubernetes Engine clusters that can see this zone.
@@ -1523,6 +1758,12 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) ToManagedZonePrivateVisibil
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) ToManagedZonePrivateVisibilityConfigPtrOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigPtrOutput {
 	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZonePrivateVisibilityConfig] {
+	return pulumix.Output[*ManagedZonePrivateVisibilityConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVisibilityConfigOutput {
@@ -1592,6 +1833,12 @@ func (i ManagedZonePrivateVisibilityConfigGkeClusterArgs) ToManagedZonePrivateVi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGkeClusterOutput)
 }
 
+func (i ManagedZonePrivateVisibilityConfigGkeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePrivateVisibilityConfigGkeCluster] {
+	return pulumix.Output[ManagedZonePrivateVisibilityConfigGkeCluster]{
+		OutputState: i.ToManagedZonePrivateVisibilityConfigGkeClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagedZonePrivateVisibilityConfigGkeClusterArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigGkeClusterArray and ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput values.
 // You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGkeClusterArrayInput` via:
 //
@@ -1617,6 +1864,12 @@ func (i ManagedZonePrivateVisibilityConfigGkeClusterArray) ToManagedZonePrivateV
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput)
 }
 
+func (i ManagedZonePrivateVisibilityConfigGkeClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZonePrivateVisibilityConfigGkeCluster] {
+	return pulumix.Output[[]ManagedZonePrivateVisibilityConfigGkeCluster]{
+		OutputState: i.ToManagedZonePrivateVisibilityConfigGkeClusterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZonePrivateVisibilityConfigGkeClusterOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigGkeClusterOutput) ElementType() reflect.Type {
@@ -1629,6 +1882,12 @@ func (o ManagedZonePrivateVisibilityConfigGkeClusterOutput) ToManagedZonePrivate
 
 func (o ManagedZonePrivateVisibilityConfigGkeClusterOutput) ToManagedZonePrivateVisibilityConfigGkeClusterOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGkeClusterOutput {
 	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePrivateVisibilityConfigGkeCluster] {
+	return pulumix.Output[ManagedZonePrivateVisibilityConfigGkeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name of the cluster to bind this ManagedZone to.
@@ -1650,6 +1909,12 @@ func (o ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput) ToManagedZonePr
 
 func (o ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput) ToManagedZonePrivateVisibilityConfigGkeClusterArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput {
 	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZonePrivateVisibilityConfigGkeCluster] {
+	return pulumix.Output[[]ManagedZonePrivateVisibilityConfigGkeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigGkeClusterOutput {
@@ -1695,6 +1960,12 @@ func (i ManagedZonePrivateVisibilityConfigNetworkArgs) ToManagedZonePrivateVisib
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigNetworkOutput)
 }
 
+func (i ManagedZonePrivateVisibilityConfigNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePrivateVisibilityConfigNetwork] {
+	return pulumix.Output[ManagedZonePrivateVisibilityConfigNetwork]{
+		OutputState: i.ToManagedZonePrivateVisibilityConfigNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ManagedZonePrivateVisibilityConfigNetworkArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigNetworkArray and ManagedZonePrivateVisibilityConfigNetworkArrayOutput values.
 // You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigNetworkArrayInput` via:
 //
@@ -1720,6 +1991,12 @@ func (i ManagedZonePrivateVisibilityConfigNetworkArray) ToManagedZonePrivateVisi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
 }
 
+func (i ManagedZonePrivateVisibilityConfigNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZonePrivateVisibilityConfigNetwork] {
+	return pulumix.Output[[]ManagedZonePrivateVisibilityConfigNetwork]{
+		OutputState: i.ToManagedZonePrivateVisibilityConfigNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZonePrivateVisibilityConfigNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagedZonePrivateVisibilityConfigNetworkOutput) ElementType() reflect.Type {
@@ -1732,6 +2009,12 @@ func (o ManagedZonePrivateVisibilityConfigNetworkOutput) ToManagedZonePrivateVis
 
 func (o ManagedZonePrivateVisibilityConfigNetworkOutput) ToManagedZonePrivateVisibilityConfigNetworkOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigNetworkOutput {
 	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZonePrivateVisibilityConfigNetwork] {
+	return pulumix.Output[ManagedZonePrivateVisibilityConfigNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id or fully qualified URL of the VPC network to bind to.
@@ -1753,6 +2036,12 @@ func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) ToManagedZonePriva
 
 func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) ToManagedZonePrivateVisibilityConfigNetworkArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigNetworkArrayOutput {
 	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedZonePrivateVisibilityConfigNetwork] {
+	return pulumix.Output[[]ManagedZonePrivateVisibilityConfigNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZonePrivateVisibilityConfigNetworkArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigNetworkOutput {
@@ -1796,6 +2085,12 @@ func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConf
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigOutput)
 }
 
+func (i ManagedZoneServiceDirectoryConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneServiceDirectoryConfig] {
+	return pulumix.Output[ManagedZoneServiceDirectoryConfig]{
+		OutputState: i.ToManagedZoneServiceDirectoryConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZoneServiceDirectoryConfigArgs) ToManagedZoneServiceDirectoryConfigPtrOutput() ManagedZoneServiceDirectoryConfigPtrOutput {
 	return i.ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(context.Background())
 }
@@ -1837,6 +2132,12 @@ func (i *managedZoneServiceDirectoryConfigPtrType) ToManagedZoneServiceDirectory
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigPtrOutput)
 }
 
+func (i *managedZoneServiceDirectoryConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneServiceDirectoryConfig] {
+	return pulumix.Output[*ManagedZoneServiceDirectoryConfig]{
+		OutputState: i.ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneServiceDirectoryConfigOutput) ElementType() reflect.Type {
@@ -1861,6 +2162,12 @@ func (o ManagedZoneServiceDirectoryConfigOutput) ToManagedZoneServiceDirectoryCo
 	}).(ManagedZoneServiceDirectoryConfigPtrOutput)
 }
 
+func (o ManagedZoneServiceDirectoryConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneServiceDirectoryConfig] {
+	return pulumix.Output[ManagedZoneServiceDirectoryConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The namespace associated with the zone.
 // Structure is documented below.
 func (o ManagedZoneServiceDirectoryConfigOutput) Namespace() ManagedZoneServiceDirectoryConfigNamespaceOutput {
@@ -1881,6 +2188,12 @@ func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToManagedZoneServiceDirector
 
 func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToManagedZoneServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigPtrOutput {
 	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneServiceDirectoryConfig] {
+	return pulumix.Output[*ManagedZoneServiceDirectoryConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneServiceDirectoryConfigPtrOutput) Elem() ManagedZoneServiceDirectoryConfigOutput {
@@ -1945,6 +2258,12 @@ func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDire
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespaceOutput)
 }
 
+func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneServiceDirectoryConfigNamespace] {
+	return pulumix.Output[ManagedZoneServiceDirectoryConfigNamespace]{
+		OutputState: i.ToManagedZoneServiceDirectoryConfigNamespaceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ManagedZoneServiceDirectoryConfigNamespaceArgs) ToManagedZoneServiceDirectoryConfigNamespacePtrOutput() ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
 	return i.ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(context.Background())
 }
@@ -1986,6 +2305,12 @@ func (i *managedZoneServiceDirectoryConfigNamespacePtrType) ToManagedZoneService
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
 }
 
+func (i *managedZoneServiceDirectoryConfigNamespacePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneServiceDirectoryConfigNamespace] {
+	return pulumix.Output[*ManagedZoneServiceDirectoryConfigNamespace]{
+		OutputState: i.ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ManagedZoneServiceDirectoryConfigNamespaceOutput struct{ *pulumi.OutputState }
 
 func (ManagedZoneServiceDirectoryConfigNamespaceOutput) ElementType() reflect.Type {
@@ -2010,6 +2335,12 @@ func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToManagedZoneServiceDi
 	}).(ManagedZoneServiceDirectoryConfigNamespacePtrOutput)
 }
 
+func (o ManagedZoneServiceDirectoryConfigNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedZoneServiceDirectoryConfigNamespace] {
+	return pulumix.Output[ManagedZoneServiceDirectoryConfigNamespace]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The fully qualified or partial URL of the service directory namespace that should be
 // associated with the zone. This should be formatted like
 // `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
@@ -2031,6 +2362,12 @@ func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToManagedZoneServic
 
 func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToManagedZoneServiceDirectoryConfigNamespacePtrOutputWithContext(ctx context.Context) ManagedZoneServiceDirectoryConfigNamespacePtrOutput {
 	return o
+}
+
+func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedZoneServiceDirectoryConfigNamespace] {
+	return pulumix.Output[*ManagedZoneServiceDirectoryConfigNamespace]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ManagedZoneServiceDirectoryConfigNamespacePtrOutput) Elem() ManagedZoneServiceDirectoryConfigNamespaceOutput {
@@ -2096,6 +2433,12 @@ func (i PolicyAlternativeNameServerConfigArgs) ToPolicyAlternativeNameServerConf
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigOutput)
 }
 
+func (i PolicyAlternativeNameServerConfigArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyAlternativeNameServerConfig] {
+	return pulumix.Output[PolicyAlternativeNameServerConfig]{
+		OutputState: i.ToPolicyAlternativeNameServerConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PolicyAlternativeNameServerConfigArgs) ToPolicyAlternativeNameServerConfigPtrOutput() PolicyAlternativeNameServerConfigPtrOutput {
 	return i.ToPolicyAlternativeNameServerConfigPtrOutputWithContext(context.Background())
 }
@@ -2137,6 +2480,12 @@ func (i *policyAlternativeNameServerConfigPtrType) ToPolicyAlternativeNameServer
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
+func (i *policyAlternativeNameServerConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicyAlternativeNameServerConfig] {
+	return pulumix.Output[*PolicyAlternativeNameServerConfig]{
+		OutputState: i.ToPolicyAlternativeNameServerConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyAlternativeNameServerConfigOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigOutput) ElementType() reflect.Type {
@@ -2161,6 +2510,12 @@ func (o PolicyAlternativeNameServerConfigOutput) ToPolicyAlternativeNameServerCo
 	}).(PolicyAlternativeNameServerConfigPtrOutput)
 }
 
+func (o PolicyAlternativeNameServerConfigOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAlternativeNameServerConfig] {
+	return pulumix.Output[PolicyAlternativeNameServerConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Sets an alternative name server for the associated networks. When specified,
 // all DNS queries are forwarded to a name server that you choose. Names such as .internal
 // are not available when an alternative name server is specified.
@@ -2183,6 +2538,12 @@ func (o PolicyAlternativeNameServerConfigPtrOutput) ToPolicyAlternativeNameServe
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) ToPolicyAlternativeNameServerConfigPtrOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigPtrOutput {
 	return o
+}
+
+func (o PolicyAlternativeNameServerConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAlternativeNameServerConfig] {
+	return pulumix.Output[*PolicyAlternativeNameServerConfig]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyAlternativeNameServerConfigPtrOutput) Elem() PolicyAlternativeNameServerConfigOutput {
@@ -2251,6 +2612,12 @@ func (i PolicyAlternativeNameServerConfigTargetNameServerArgs) ToPolicyAlternati
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigTargetNameServerOutput)
 }
 
+func (i PolicyAlternativeNameServerConfigTargetNameServerArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyAlternativeNameServerConfigTargetNameServer] {
+	return pulumix.Output[PolicyAlternativeNameServerConfigTargetNameServer]{
+		OutputState: i.ToPolicyAlternativeNameServerConfigTargetNameServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyAlternativeNameServerConfigTargetNameServerArrayInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerArray and PolicyAlternativeNameServerConfigTargetNameServerArrayOutput values.
 // You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerArrayInput` via:
 //
@@ -2276,6 +2643,12 @@ func (i PolicyAlternativeNameServerConfigTargetNameServerArray) ToPolicyAlternat
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAlternativeNameServerConfigTargetNameServerArrayOutput)
 }
 
+func (i PolicyAlternativeNameServerConfigTargetNameServerArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyAlternativeNameServerConfigTargetNameServer] {
+	return pulumix.Output[[]PolicyAlternativeNameServerConfigTargetNameServer]{
+		OutputState: i.ToPolicyAlternativeNameServerConfigTargetNameServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyAlternativeNameServerConfigTargetNameServerOutput struct{ *pulumi.OutputState }
 
 func (PolicyAlternativeNameServerConfigTargetNameServerOutput) ElementType() reflect.Type {
@@ -2288,6 +2661,12 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlterna
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlternativeNameServerConfigTargetNameServerOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerOutput {
 	return o
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAlternativeNameServerConfigTargetNameServer] {
+	return pulumix.Output[PolicyAlternativeNameServerConfigTargetNameServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
@@ -2315,6 +2694,12 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) ToPolicyAl
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) ToPolicyAlternativeNameServerConfigTargetNameServerArrayOutputWithContext(ctx context.Context) PolicyAlternativeNameServerConfigTargetNameServerArrayOutput {
 	return o
+}
+
+func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyAlternativeNameServerConfigTargetNameServer] {
+	return pulumix.Output[[]PolicyAlternativeNameServerConfigTargetNameServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyAlternativeNameServerConfigTargetNameServerArrayOutput) Index(i pulumi.IntInput) PolicyAlternativeNameServerConfigTargetNameServerOutput {
@@ -2360,6 +2745,12 @@ func (i PolicyNetworkArgs) ToPolicyNetworkOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyNetworkOutput)
 }
 
+func (i PolicyNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyNetwork] {
+	return pulumix.Output[PolicyNetwork]{
+		OutputState: i.ToPolicyNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PolicyNetworkArrayInput is an input type that accepts PolicyNetworkArray and PolicyNetworkArrayOutput values.
 // You can construct a concrete instance of `PolicyNetworkArrayInput` via:
 //
@@ -2385,6 +2776,12 @@ func (i PolicyNetworkArray) ToPolicyNetworkArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyNetworkArrayOutput)
 }
 
+func (i PolicyNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyNetwork] {
+	return pulumix.Output[[]PolicyNetwork]{
+		OutputState: i.ToPolicyNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PolicyNetworkOutput struct{ *pulumi.OutputState }
 
 func (PolicyNetworkOutput) ElementType() reflect.Type {
@@ -2397,6 +2794,12 @@ func (o PolicyNetworkOutput) ToPolicyNetworkOutput() PolicyNetworkOutput {
 
 func (o PolicyNetworkOutput) ToPolicyNetworkOutputWithContext(ctx context.Context) PolicyNetworkOutput {
 	return o
+}
+
+func (o PolicyNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyNetwork] {
+	return pulumix.Output[PolicyNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id or fully qualified URL of the VPC network to forward queries to.
@@ -2418,6 +2821,12 @@ func (o PolicyNetworkArrayOutput) ToPolicyNetworkArrayOutput() PolicyNetworkArra
 
 func (o PolicyNetworkArrayOutput) ToPolicyNetworkArrayOutputWithContext(ctx context.Context) PolicyNetworkArrayOutput {
 	return o
+}
+
+func (o PolicyNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyNetwork] {
+	return pulumix.Output[[]PolicyNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PolicyNetworkArrayOutput) Index(i pulumi.IntInput) PolicyNetworkOutput {
@@ -2477,6 +2886,12 @@ func (i RecordSetRoutingPolicyArgs) ToRecordSetRoutingPolicyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyOutput)
 }
 
+func (i RecordSetRoutingPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicy] {
+	return pulumix.Output[RecordSetRoutingPolicy]{
+		OutputState: i.ToRecordSetRoutingPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecordSetRoutingPolicyArgs) ToRecordSetRoutingPolicyPtrOutput() RecordSetRoutingPolicyPtrOutput {
 	return i.ToRecordSetRoutingPolicyPtrOutputWithContext(context.Background())
 }
@@ -2518,6 +2933,12 @@ func (i *recordSetRoutingPolicyPtrType) ToRecordSetRoutingPolicyPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPtrOutput)
 }
 
+func (i *recordSetRoutingPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicy] {
+	return pulumix.Output[*RecordSetRoutingPolicy]{
+		OutputState: i.ToRecordSetRoutingPolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyOutput) ElementType() reflect.Type {
@@ -2540,6 +2961,12 @@ func (o RecordSetRoutingPolicyOutput) ToRecordSetRoutingPolicyPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicy) *RecordSetRoutingPolicy {
 		return &v
 	}).(RecordSetRoutingPolicyPtrOutput)
+}
+
+func (o RecordSetRoutingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicy] {
+	return pulumix.Output[RecordSetRoutingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies whether to enable fencing for geo queries.
@@ -2577,6 +3004,12 @@ func (o RecordSetRoutingPolicyPtrOutput) ToRecordSetRoutingPolicyPtrOutput() Rec
 
 func (o RecordSetRoutingPolicyPtrOutput) ToRecordSetRoutingPolicyPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPtrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicy] {
+	return pulumix.Output[*RecordSetRoutingPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyPtrOutput) Elem() RecordSetRoutingPolicyOutput {
@@ -2675,6 +3108,12 @@ func (i RecordSetRoutingPolicyGeoArgs) ToRecordSetRoutingPolicyGeoOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoOutput)
 }
 
+func (i RecordSetRoutingPolicyGeoArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyGeo] {
+	return pulumix.Output[RecordSetRoutingPolicyGeo]{
+		OutputState: i.ToRecordSetRoutingPolicyGeoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyGeoArrayInput is an input type that accepts RecordSetRoutingPolicyGeoArray and RecordSetRoutingPolicyGeoArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyGeoArrayInput` via:
 //
@@ -2700,6 +3139,12 @@ func (i RecordSetRoutingPolicyGeoArray) ToRecordSetRoutingPolicyGeoArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyGeoArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyGeo] {
+	return pulumix.Output[[]RecordSetRoutingPolicyGeo]{
+		OutputState: i.ToRecordSetRoutingPolicyGeoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyGeoOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyGeoOutput) ElementType() reflect.Type {
@@ -2712,6 +3157,12 @@ func (o RecordSetRoutingPolicyGeoOutput) ToRecordSetRoutingPolicyGeoOutput() Rec
 
 func (o RecordSetRoutingPolicyGeoOutput) ToRecordSetRoutingPolicyGeoOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyGeoOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyGeo] {
+	return pulumix.Output[RecordSetRoutingPolicyGeo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
@@ -2744,6 +3195,12 @@ func (o RecordSetRoutingPolicyGeoArrayOutput) ToRecordSetRoutingPolicyGeoArrayOu
 
 func (o RecordSetRoutingPolicyGeoArrayOutput) ToRecordSetRoutingPolicyGeoArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoArrayOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyGeoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyGeo] {
+	return pulumix.Output[[]RecordSetRoutingPolicyGeo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyGeoArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyGeoOutput {
@@ -2787,6 +3244,12 @@ func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPol
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput)
 }
 
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargets] {
+	return pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargets]{
+		OutputState: i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
 	return i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
 }
@@ -2828,6 +3291,12 @@ func (i *recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType) ToRecordSetRoutin
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput)
 }
 
+func (i *recordSetRoutingPolicyGeoHealthCheckedTargetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyGeoHealthCheckedTargets] {
+	return pulumix.Output[*RecordSetRoutingPolicyGeoHealthCheckedTargets]{
+		OutputState: i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ElementType() reflect.Type {
@@ -2852,6 +3321,12 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingP
 	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput)
 }
 
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargets] {
+	return pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargets]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of internal load balancers to health check.
 // Structure is document below.
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
@@ -2872,6 +3347,12 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ToRecordSetRouti
 
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyGeoHealthCheckedTargets] {
+	return pulumix.Output[*RecordSetRoutingPolicyGeoHealthCheckedTargets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) Elem() RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput {
@@ -2952,6 +3433,12 @@ func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput)
 }
 
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray and RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput` via:
 //
@@ -2977,6 +3464,12 @@ func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) ElementType() reflect.Type {
@@ -2989,6 +3482,12 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput)
 
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The frontend IP address of the load balancer.
@@ -3040,6 +3539,12 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOu
 
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToRecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerOutput {
@@ -3097,6 +3602,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToRecordSetRoutingPolicyPrimary
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackup] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackup]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecordSetRoutingPolicyPrimaryBackupArgs) ToRecordSetRoutingPolicyPrimaryBackupPtrOutput() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
 	return i.ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(context.Background())
 }
@@ -3138,6 +3649,12 @@ func (i *recordSetRoutingPolicyPrimaryBackupPtrType) ToRecordSetRoutingPolicyPri
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
 }
 
+func (i *recordSetRoutingPolicyPrimaryBackupPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyPrimaryBackup] {
+	return pulumix.Output[*RecordSetRoutingPolicyPrimaryBackup]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyPrimaryBackupOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyPrimaryBackupOutput) ElementType() reflect.Type {
@@ -3160,6 +3677,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupOutput) ToRecordSetRoutingPolicyPrima
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSetRoutingPolicyPrimaryBackup) *RecordSetRoutingPolicyPrimaryBackup {
 		return &v
 	}).(RecordSetRoutingPolicyPrimaryBackupPtrOutput)
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackup] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
@@ -3200,6 +3723,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) ToRecordSetRoutingPolicyPr
 
 func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPtrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyPrimaryBackup] {
+	return pulumix.Output[*RecordSetRoutingPolicyPrimaryBackup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) Elem() RecordSetRoutingPolicyPrimaryBackupOutput {
@@ -3299,6 +3828,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ToRecordSetRoutingPoli
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeo] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeo]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoArray and RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayInput` via:
 //
@@ -3324,6 +3859,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArray) ToRecordSetRoutingPol
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeo] {
+	return pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeo]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ElementType() reflect.Type {
@@ -3336,6 +3877,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPo
 
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeo] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
@@ -3369,6 +3916,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) ToRecordSetRout
 
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeo] {
+	return pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput {
@@ -3412,6 +3965,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) To
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
 	return i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(context.Background())
 }
@@ -3453,6 +4012,12 @@ func (i *recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput)
 }
 
+func (i *recordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets] {
+	return pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ElementType() reflect.Type {
@@ -3477,6 +4042,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) 
 	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput)
 }
 
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of internal load balancers to health check.
 // Structure is document below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
@@ -3497,6 +4068,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutpu
 
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets] {
+	return pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) Elem() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput {
@@ -3577,6 +4154,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray and RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput` via:
 //
@@ -3602,6 +4185,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) ElementType() reflect.Type {
@@ -3614,6 +4203,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The frontend IP address of the load balancer.
@@ -3679,6 +4274,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 	return o
 }
 
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
 		return vs[0].([]RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer)[vs[1].(int)]
@@ -3718,6 +4319,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicy
 
 func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput)
+}
+
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimary] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimary]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i RecordSetRoutingPolicyPrimaryBackupPrimaryArgs) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput() RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
@@ -3761,6 +4368,12 @@ func (i *recordSetRoutingPolicyPrimaryBackupPrimaryPtrType) ToRecordSetRoutingPo
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput)
 }
 
+func (i *recordSetRoutingPolicyPrimaryBackupPrimaryPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupPrimary] {
+	return pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupPrimary]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyPrimaryBackupPrimaryOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ElementType() reflect.Type {
@@ -3785,6 +4398,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPoli
 	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput)
 }
 
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimary] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimary]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of internal load balancers to health check.
 // Structure is document below.
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
@@ -3805,6 +4424,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ToRecordSetRoutingP
 
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupPrimary] {
+	return pulumix.Output[*RecordSetRoutingPolicyPrimaryBackupPrimary]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) Elem() RecordSetRoutingPolicyPrimaryBackupPrimaryOutput {
@@ -3885,6 +4510,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs) ToRe
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray and RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput` via:
 //
@@ -3910,6 +4541,12 @@ func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray) ToR
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) ElementType() reflect.Type {
@@ -3922,6 +4559,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) To
 
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) ToRecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The frontend IP address of the load balancer.
@@ -3975,6 +4618,12 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutpu
 	return o
 }
 
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
 		return vs[0].([]RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer)[vs[1].(int)]
@@ -4024,6 +4673,12 @@ func (i RecordSetRoutingPolicyWrrArgs) ToRecordSetRoutingPolicyWrrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrOutput)
 }
 
+func (i RecordSetRoutingPolicyWrrArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyWrr] {
+	return pulumix.Output[RecordSetRoutingPolicyWrr]{
+		OutputState: i.ToRecordSetRoutingPolicyWrrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyWrrArrayInput is an input type that accepts RecordSetRoutingPolicyWrrArray and RecordSetRoutingPolicyWrrArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyWrrArrayInput` via:
 //
@@ -4049,6 +4704,12 @@ func (i RecordSetRoutingPolicyWrrArray) ToRecordSetRoutingPolicyWrrArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyWrrArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyWrr] {
+	return pulumix.Output[[]RecordSetRoutingPolicyWrr]{
+		OutputState: i.ToRecordSetRoutingPolicyWrrArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyWrrOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyWrrOutput) ElementType() reflect.Type {
@@ -4061,6 +4722,12 @@ func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutput() Rec
 
 func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyWrrOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyWrr] {
+	return pulumix.Output[RecordSetRoutingPolicyWrr]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
@@ -4093,6 +4760,12 @@ func (o RecordSetRoutingPolicyWrrArrayOutput) ToRecordSetRoutingPolicyWrrArrayOu
 
 func (o RecordSetRoutingPolicyWrrArrayOutput) ToRecordSetRoutingPolicyWrrArrayOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrArrayOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyWrrArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyWrr] {
+	return pulumix.Output[[]RecordSetRoutingPolicyWrr]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyWrrArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyWrrOutput {
@@ -4136,6 +4809,12 @@ func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToRecordSetRoutingPol
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput)
 }
 
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargets] {
+	return pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargets]{
+		OutputState: i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
 	return i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(context.Background())
 }
@@ -4177,6 +4856,12 @@ func (i *recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType) ToRecordSetRoutin
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput)
 }
 
+func (i *recordSetRoutingPolicyWrrHealthCheckedTargetsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyWrrHealthCheckedTargets] {
+	return pulumix.Output[*RecordSetRoutingPolicyWrrHealthCheckedTargets]{
+		OutputState: i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ElementType() reflect.Type {
@@ -4201,6 +4886,12 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingP
 	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput)
 }
 
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargets] {
+	return pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargets]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The list of internal load balancers to health check.
 // Structure is document below.
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
@@ -4221,6 +4912,12 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ToRecordSetRouti
 
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecordSetRoutingPolicyWrrHealthCheckedTargets] {
+	return pulumix.Output[*RecordSetRoutingPolicyWrrHealthCheckedTargets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) Elem() RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput {
@@ -4301,6 +4998,12 @@ func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput)
 }
 
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput is an input type that accepts RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray and RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput values.
 // You can construct a concrete instance of `RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput` via:
 //
@@ -4326,6 +5029,12 @@ func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput)
 }
 
+func (i RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArray) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: i.ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) ElementType() reflect.Type {
@@ -4338,6 +5047,12 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput)
 
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) ToRecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutputWithContext(ctx context.Context) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
 	return o
+}
+
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The frontend IP address of the load balancer.
@@ -4391,6 +5106,12 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOu
 	return o
 }
 
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer] {
+	return pulumix.Output[[]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput) Index(i pulumi.IntInput) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
 		return vs[0].([]RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer)[vs[1].(int)]
@@ -4434,6 +5155,12 @@ func (i ResponsePolicyGkeClusterArgs) ToResponsePolicyGkeClusterOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyGkeClusterOutput)
 }
 
+func (i ResponsePolicyGkeClusterArgs) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyGkeCluster] {
+	return pulumix.Output[ResponsePolicyGkeCluster]{
+		OutputState: i.ToResponsePolicyGkeClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResponsePolicyGkeClusterArrayInput is an input type that accepts ResponsePolicyGkeClusterArray and ResponsePolicyGkeClusterArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyGkeClusterArrayInput` via:
 //
@@ -4459,6 +5186,12 @@ func (i ResponsePolicyGkeClusterArray) ToResponsePolicyGkeClusterArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyGkeClusterArrayOutput)
 }
 
+func (i ResponsePolicyGkeClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]ResponsePolicyGkeCluster] {
+	return pulumix.Output[[]ResponsePolicyGkeCluster]{
+		OutputState: i.ToResponsePolicyGkeClusterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResponsePolicyGkeClusterOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyGkeClusterOutput) ElementType() reflect.Type {
@@ -4471,6 +5204,12 @@ func (o ResponsePolicyGkeClusterOutput) ToResponsePolicyGkeClusterOutput() Respo
 
 func (o ResponsePolicyGkeClusterOutput) ToResponsePolicyGkeClusterOutputWithContext(ctx context.Context) ResponsePolicyGkeClusterOutput {
 	return o
+}
+
+func (o ResponsePolicyGkeClusterOutput) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyGkeCluster] {
+	return pulumix.Output[ResponsePolicyGkeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The resource name of the cluster to bind this ManagedZone to.
@@ -4492,6 +5231,12 @@ func (o ResponsePolicyGkeClusterArrayOutput) ToResponsePolicyGkeClusterArrayOutp
 
 func (o ResponsePolicyGkeClusterArrayOutput) ToResponsePolicyGkeClusterArrayOutputWithContext(ctx context.Context) ResponsePolicyGkeClusterArrayOutput {
 	return o
+}
+
+func (o ResponsePolicyGkeClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResponsePolicyGkeCluster] {
+	return pulumix.Output[[]ResponsePolicyGkeCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponsePolicyGkeClusterArrayOutput) Index(i pulumi.IntInput) ResponsePolicyGkeClusterOutput {
@@ -4537,6 +5282,12 @@ func (i ResponsePolicyNetworkArgs) ToResponsePolicyNetworkOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyNetworkOutput)
 }
 
+func (i ResponsePolicyNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyNetwork] {
+	return pulumix.Output[ResponsePolicyNetwork]{
+		OutputState: i.ToResponsePolicyNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResponsePolicyNetworkArrayInput is an input type that accepts ResponsePolicyNetworkArray and ResponsePolicyNetworkArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyNetworkArrayInput` via:
 //
@@ -4562,6 +5313,12 @@ func (i ResponsePolicyNetworkArray) ToResponsePolicyNetworkArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyNetworkArrayOutput)
 }
 
+func (i ResponsePolicyNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]ResponsePolicyNetwork] {
+	return pulumix.Output[[]ResponsePolicyNetwork]{
+		OutputState: i.ToResponsePolicyNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResponsePolicyNetworkOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyNetworkOutput) ElementType() reflect.Type {
@@ -4574,6 +5331,12 @@ func (o ResponsePolicyNetworkOutput) ToResponsePolicyNetworkOutput() ResponsePol
 
 func (o ResponsePolicyNetworkOutput) ToResponsePolicyNetworkOutputWithContext(ctx context.Context) ResponsePolicyNetworkOutput {
 	return o
+}
+
+func (o ResponsePolicyNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyNetwork] {
+	return pulumix.Output[ResponsePolicyNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fully qualified URL of the VPC network to bind to.
@@ -4595,6 +5358,12 @@ func (o ResponsePolicyNetworkArrayOutput) ToResponsePolicyNetworkArrayOutput() R
 
 func (o ResponsePolicyNetworkArrayOutput) ToResponsePolicyNetworkArrayOutputWithContext(ctx context.Context) ResponsePolicyNetworkArrayOutput {
 	return o
+}
+
+func (o ResponsePolicyNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResponsePolicyNetwork] {
+	return pulumix.Output[[]ResponsePolicyNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponsePolicyNetworkArrayOutput) Index(i pulumi.IntInput) ResponsePolicyNetworkOutput {
@@ -4638,6 +5407,12 @@ func (i ResponsePolicyRuleLocalDataArgs) ToResponsePolicyRuleLocalDataOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataOutput)
 }
 
+func (i ResponsePolicyRuleLocalDataArgs) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyRuleLocalData] {
+	return pulumix.Output[ResponsePolicyRuleLocalData]{
+		OutputState: i.ToResponsePolicyRuleLocalDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResponsePolicyRuleLocalDataArgs) ToResponsePolicyRuleLocalDataPtrOutput() ResponsePolicyRuleLocalDataPtrOutput {
 	return i.ToResponsePolicyRuleLocalDataPtrOutputWithContext(context.Background())
 }
@@ -4679,6 +5454,12 @@ func (i *responsePolicyRuleLocalDataPtrType) ToResponsePolicyRuleLocalDataPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataPtrOutput)
 }
 
+func (i *responsePolicyRuleLocalDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRuleLocalData] {
+	return pulumix.Output[*ResponsePolicyRuleLocalData]{
+		OutputState: i.ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResponsePolicyRuleLocalDataOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyRuleLocalDataOutput) ElementType() reflect.Type {
@@ -4703,6 +5484,12 @@ func (o ResponsePolicyRuleLocalDataOutput) ToResponsePolicyRuleLocalDataPtrOutpu
 	}).(ResponsePolicyRuleLocalDataPtrOutput)
 }
 
+func (o ResponsePolicyRuleLocalDataOutput) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyRuleLocalData] {
+	return pulumix.Output[ResponsePolicyRuleLocalData]{
+		OutputState: o.OutputState,
+	}
+}
+
 // All resource record sets for this selector, one per resource record type. The name must match the dns_name.
 // Structure is documented below.
 func (o ResponsePolicyRuleLocalDataOutput) LocalDatas() ResponsePolicyRuleLocalDataLocalDataArrayOutput {
@@ -4721,6 +5508,12 @@ func (o ResponsePolicyRuleLocalDataPtrOutput) ToResponsePolicyRuleLocalDataPtrOu
 
 func (o ResponsePolicyRuleLocalDataPtrOutput) ToResponsePolicyRuleLocalDataPtrOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataPtrOutput {
 	return o
+}
+
+func (o ResponsePolicyRuleLocalDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponsePolicyRuleLocalData] {
+	return pulumix.Output[*ResponsePolicyRuleLocalData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponsePolicyRuleLocalDataPtrOutput) Elem() ResponsePolicyRuleLocalDataOutput {
@@ -4793,6 +5586,12 @@ func (i ResponsePolicyRuleLocalDataLocalDataArgs) ToResponsePolicyRuleLocalDataL
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataLocalDataOutput)
 }
 
+func (i ResponsePolicyRuleLocalDataLocalDataArgs) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyRuleLocalDataLocalData] {
+	return pulumix.Output[ResponsePolicyRuleLocalDataLocalData]{
+		OutputState: i.ToResponsePolicyRuleLocalDataLocalDataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResponsePolicyRuleLocalDataLocalDataArrayInput is an input type that accepts ResponsePolicyRuleLocalDataLocalDataArray and ResponsePolicyRuleLocalDataLocalDataArrayOutput values.
 // You can construct a concrete instance of `ResponsePolicyRuleLocalDataLocalDataArrayInput` via:
 //
@@ -4818,6 +5617,12 @@ func (i ResponsePolicyRuleLocalDataLocalDataArray) ToResponsePolicyRuleLocalData
 	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyRuleLocalDataLocalDataArrayOutput)
 }
 
+func (i ResponsePolicyRuleLocalDataLocalDataArray) ToOutput(ctx context.Context) pulumix.Output[[]ResponsePolicyRuleLocalDataLocalData] {
+	return pulumix.Output[[]ResponsePolicyRuleLocalDataLocalData]{
+		OutputState: i.ToResponsePolicyRuleLocalDataLocalDataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResponsePolicyRuleLocalDataLocalDataOutput struct{ *pulumi.OutputState }
 
 func (ResponsePolicyRuleLocalDataLocalDataOutput) ElementType() reflect.Type {
@@ -4830,6 +5635,12 @@ func (o ResponsePolicyRuleLocalDataLocalDataOutput) ToResponsePolicyRuleLocalDat
 
 func (o ResponsePolicyRuleLocalDataLocalDataOutput) ToResponsePolicyRuleLocalDataLocalDataOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataLocalDataOutput {
 	return o
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataOutput) ToOutput(ctx context.Context) pulumix.Output[ResponsePolicyRuleLocalDataLocalData] {
+	return pulumix.Output[ResponsePolicyRuleLocalDataLocalData]{
+		OutputState: o.OutputState,
+	}
 }
 
 // For example, www.example.com.
@@ -4866,6 +5677,12 @@ func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) ToResponsePolicyRuleLoc
 
 func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) ToResponsePolicyRuleLocalDataLocalDataArrayOutputWithContext(ctx context.Context) ResponsePolicyRuleLocalDataLocalDataArrayOutput {
 	return o
+}
+
+func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResponsePolicyRuleLocalDataLocalData] {
+	return pulumix.Output[[]ResponsePolicyRuleLocalDataLocalData]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) Index(i pulumi.IntInput) ResponsePolicyRuleLocalDataLocalDataOutput {
@@ -4943,6 +5760,12 @@ func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyOutput)
 }
 
+func (i GetKeysKeySigningKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeysKeySigningKey] {
+	return pulumix.Output[GetKeysKeySigningKey]{
+		OutputState: i.ToGetKeysKeySigningKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeysKeySigningKeyArrayInput is an input type that accepts GetKeysKeySigningKeyArray and GetKeysKeySigningKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeySigningKeyArrayInput` via:
 //
@@ -4968,6 +5791,12 @@ func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyArrayOutput)
 }
 
+func (i GetKeysKeySigningKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysKeySigningKey] {
+	return pulumix.Output[[]GetKeysKeySigningKey]{
+		OutputState: i.ToGetKeysKeySigningKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeysKeySigningKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeySigningKeyOutput) ElementType() reflect.Type {
@@ -4980,6 +5809,12 @@ func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutput() GetKeysKeySig
 
 func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
 	return o
+}
+
+func (o GetKeysKeySigningKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysKeySigningKey] {
+	return pulumix.Output[GetKeysKeySigningKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
@@ -5046,6 +5881,12 @@ func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutputWithCo
 	return o
 }
 
+func (o GetKeysKeySigningKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysKeySigningKey] {
+	return pulumix.Output[[]GetKeysKeySigningKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKeySigningKey {
 		return vs[0].([]GetKeysKeySigningKey)[vs[1].(int)]
@@ -5089,6 +5930,12 @@ func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestOutput)
 }
 
+func (i GetKeysKeySigningKeyDigestArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeysKeySigningKeyDigest] {
+	return pulumix.Output[GetKeysKeySigningKeyDigest]{
+		OutputState: i.ToGetKeysKeySigningKeyDigestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeysKeySigningKeyDigestArrayInput is an input type that accepts GetKeysKeySigningKeyDigestArray and GetKeysKeySigningKeyDigestArrayOutput values.
 // You can construct a concrete instance of `GetKeysKeySigningKeyDigestArrayInput` via:
 //
@@ -5114,6 +5961,12 @@ func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestArrayOutput)
 }
 
+func (i GetKeysKeySigningKeyDigestArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysKeySigningKeyDigest] {
+	return pulumix.Output[[]GetKeysKeySigningKeyDigest]{
+		OutputState: i.ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeysKeySigningKeyDigestOutput struct{ *pulumi.OutputState }
 
 func (GetKeysKeySigningKeyDigestOutput) ElementType() reflect.Type {
@@ -5126,6 +5979,12 @@ func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutput() G
 
 func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
 	return o
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysKeySigningKeyDigest] {
+	return pulumix.Output[GetKeysKeySigningKeyDigest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
@@ -5150,6 +6009,12 @@ func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArray
 
 func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
 	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysKeySigningKeyDigest] {
+	return pulumix.Output[[]GetKeysKeySigningKeyDigest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKeysKeySigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyDigestOutput {
@@ -5223,6 +6088,12 @@ func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyOutput)
 }
 
+func (i GetKeysZoneSigningKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeysZoneSigningKey] {
+	return pulumix.Output[GetKeysZoneSigningKey]{
+		OutputState: i.ToGetKeysZoneSigningKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeysZoneSigningKeyArrayInput is an input type that accepts GetKeysZoneSigningKeyArray and GetKeysZoneSigningKeyArrayOutput values.
 // You can construct a concrete instance of `GetKeysZoneSigningKeyArrayInput` via:
 //
@@ -5248,6 +6119,12 @@ func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyArrayOutput)
 }
 
+func (i GetKeysZoneSigningKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysZoneSigningKey] {
+	return pulumix.Output[[]GetKeysZoneSigningKey]{
+		OutputState: i.ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeysZoneSigningKeyOutput struct{ *pulumi.OutputState }
 
 func (GetKeysZoneSigningKeyOutput) ElementType() reflect.Type {
@@ -5260,6 +6137,12 @@ func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutput() GetKeysZone
 
 func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
 	return o
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysZoneSigningKey] {
+	return pulumix.Output[GetKeysZoneSigningKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
@@ -5321,6 +6204,12 @@ func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutputWith
 	return o
 }
 
+func (o GetKeysZoneSigningKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysZoneSigningKey] {
+	return pulumix.Output[[]GetKeysZoneSigningKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysZoneSigningKey {
 		return vs[0].([]GetKeysZoneSigningKey)[vs[1].(int)]
@@ -5364,6 +6253,12 @@ func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestOutput)
 }
 
+func (i GetKeysZoneSigningKeyDigestArgs) ToOutput(ctx context.Context) pulumix.Output[GetKeysZoneSigningKeyDigest] {
+	return pulumix.Output[GetKeysZoneSigningKeyDigest]{
+		OutputState: i.ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetKeysZoneSigningKeyDigestArrayInput is an input type that accepts GetKeysZoneSigningKeyDigestArray and GetKeysZoneSigningKeyDigestArrayOutput values.
 // You can construct a concrete instance of `GetKeysZoneSigningKeyDigestArrayInput` via:
 //
@@ -5389,6 +6284,12 @@ func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestArrayOutput)
 }
 
+func (i GetKeysZoneSigningKeyDigestArray) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysZoneSigningKeyDigest] {
+	return pulumix.Output[[]GetKeysZoneSigningKeyDigest]{
+		OutputState: i.ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetKeysZoneSigningKeyDigestOutput struct{ *pulumi.OutputState }
 
 func (GetKeysZoneSigningKeyDigestOutput) ElementType() reflect.Type {
@@ -5401,6 +6302,12 @@ func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutput()
 
 func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
 	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToOutput(ctx context.Context) pulumix.Output[GetKeysZoneSigningKeyDigest] {
+	return pulumix.Output[GetKeysZoneSigningKeyDigest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
@@ -5425,6 +6332,12 @@ func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArr
 
 func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
 	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetKeysZoneSigningKeyDigest] {
+	return pulumix.Output[[]GetKeysZoneSigningKeyDigest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyDigestOutput {

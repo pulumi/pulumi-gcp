@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
@@ -107,6 +108,12 @@ func (o LookupFhirStoreIamPolicyResultOutput) ToLookupFhirStoreIamPolicyResultOu
 
 func (o LookupFhirStoreIamPolicyResultOutput) ToLookupFhirStoreIamPolicyResultOutputWithContext(ctx context.Context) LookupFhirStoreIamPolicyResultOutput {
 	return o
+}
+
+func (o LookupFhirStoreIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFhirStoreIamPolicyResult] {
+	return pulumix.Output[LookupFhirStoreIamPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // (Computed) The etag of the IAM policy.
