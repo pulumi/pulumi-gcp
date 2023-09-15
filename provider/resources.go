@@ -3803,11 +3803,15 @@ func Provider() tfbridge.ProviderInfo {
 			),
 			GenerateResourceContainerTypes: true,
 		},
-		Python: &tfbridge.PythonInfo{
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
-		},
+		Python: (func() *tfbridge.PythonInfo {
+			i := &tfbridge.PythonInfo{
+				Requires: map[string]string{
+					"pulumi": ">=3.0.0,<4.0.0",
+				}}
+			i.PyProject.Enabled = true
+			return i
+		})(),
+
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
