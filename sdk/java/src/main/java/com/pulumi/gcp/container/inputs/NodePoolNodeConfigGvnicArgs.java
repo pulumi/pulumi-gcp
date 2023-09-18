@@ -13,9 +13,19 @@ public final class NodePoolNodeConfigGvnicArgs extends com.pulumi.resources.Reso
 
     public static final NodePoolNodeConfigGvnicArgs Empty = new NodePoolNodeConfigGvnicArgs();
 
+    /**
+     * Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -44,11 +54,25 @@ public final class NodePoolNodeConfigGvnicArgs extends com.pulumi.resources.Reso
             $ = new NodePoolNodeConfigGvnicArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

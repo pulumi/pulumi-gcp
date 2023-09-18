@@ -10,14 +10,16 @@ import java.util.Objects;
 @CustomType
 public final class ClusterNodeConfigConfidentialNodes {
     /**
-     * @return Enable Confidential Nodes for this cluster.
+     * @return Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
      * 
      */
     private Boolean enabled;
 
     private ClusterNodeConfigConfidentialNodes() {}
     /**
-     * @return Enable Confidential Nodes for this cluster.
+     * @return Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
      * 
      */
     public Boolean enabled() {

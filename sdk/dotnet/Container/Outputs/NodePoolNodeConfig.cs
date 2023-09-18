@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly Outputs.NodePoolNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
         public readonly string? BootDiskKmsKey;
+        /// <summary>
+        /// Configuration for Confidential Nodes feature. Structure is documented below.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigConfidentialNodes? ConfidentialNodes;
         public readonly int? DiskSizeGb;
         public readonly string? DiskType;

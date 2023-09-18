@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Get information about a VM instance template resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -195,6 +200,11 @@ export interface GetRegionInstanceTemplateResult {
     readonly tagsFingerprint: string;
 }
 /**
+ * Get information about a VM instance template resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+ *
  * ## Example Usage
  *
  * ```typescript

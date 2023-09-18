@@ -55,6 +55,8 @@ type ScopeRbacRoleBinding struct {
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
+	// Labels for this ScopeRBACRoleBinding.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the RBAC Role Binding
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -128,6 +130,8 @@ type scopeRbacRoleBindingState struct {
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group *string `pulumi:"group"`
+	// Labels for this ScopeRBACRoleBinding.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the RBAC Role Binding
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -163,6 +167,8 @@ type ScopeRbacRoleBindingState struct {
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrInput
+	// Labels for this ScopeRBACRoleBinding.
+	Labels pulumi.StringMapInput
 	// The resource name for the RBAC Role Binding
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -198,6 +204,8 @@ type scopeRbacRoleBindingArgs struct {
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group *string `pulumi:"group"`
+	// Labels for this ScopeRBACRoleBinding.
+	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -221,6 +229,8 @@ type ScopeRbacRoleBindingArgs struct {
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrInput
+	// Labels for this ScopeRBACRoleBinding.
+	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -364,6 +374,11 @@ func (o ScopeRbacRoleBindingOutput) DeleteTime() pulumi.StringOutput {
 // group is the group, as seen by the kubernetes cluster.
 func (o ScopeRbacRoleBindingOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
+}
+
+// Labels for this ScopeRBACRoleBinding.
+func (o ScopeRbacRoleBindingOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The resource name for the RBAC Role Binding

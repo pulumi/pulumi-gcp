@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not to enable advanced datapath metrics.
+        /// </summary>
         [Input("enableMetrics", required: true)]
         public Input<bool> EnableMetrics { get; set; } = null!;
 

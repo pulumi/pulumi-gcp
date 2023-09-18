@@ -527,6 +527,9 @@ func (o ServiceConnectionPolicyPscConnectionArrayOutput) Index(i pulumi.IntInput
 type ServiceConnectionPolicyPscConnectionError struct {
 	// The status code, which should be an enum value of [google.rpc.Code][].
 	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details []map[string]interface{} `pulumi:"details"`
 	// A developer-facing error message.
 	Message *string `pulumi:"message"`
 }
@@ -545,6 +548,9 @@ type ServiceConnectionPolicyPscConnectionErrorInput interface {
 type ServiceConnectionPolicyPscConnectionErrorArgs struct {
 	// The status code, which should be an enum value of [google.rpc.Code][].
 	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.MapArrayInput `pulumi:"details"`
 	// A developer-facing error message.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -649,6 +655,12 @@ func (o ServiceConnectionPolicyPscConnectionErrorOutput) Code() pulumi.IntPtrOut
 	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+// (Output)
+// A list of messages that carry the error details.
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+}
+
 // A developer-facing error message.
 func (o ServiceConnectionPolicyPscConnectionErrorOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -692,6 +704,17 @@ func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Code() pulumi.IntPtr
 		}
 		return v.Code
 	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionError) []map[string]interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.MapArrayOutput)
 }
 
 // A developer-facing error message.

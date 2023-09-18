@@ -16,9 +16,17 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
 
     public static final ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs Empty = new ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs();
 
+    /**
+     * Whether or not to enable advanced datapath metrics.
+     * 
+     */
     @Import(name="enableMetrics", required=true)
     private Output<Boolean> enableMetrics;
 
+    /**
+     * @return Whether or not to enable advanced datapath metrics.
+     * 
+     */
     public Output<Boolean> enableMetrics() {
         return this.enableMetrics;
     }
@@ -63,11 +71,23 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
             $ = new ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableMetrics Whether or not to enable advanced datapath metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableMetrics(Output<Boolean> enableMetrics) {
             $.enableMetrics = enableMetrics;
             return this;
         }
 
+        /**
+         * @param enableMetrics Whether or not to enable advanced datapath metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableMetrics(Boolean enableMetrics) {
             return enableMetrics(Output.of(enableMetrics));
         }

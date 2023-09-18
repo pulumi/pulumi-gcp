@@ -50,9 +50,17 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
 
+    /**
+     * Configuration for Confidential Nodes feature. Structure is documented below.
+     * 
+     */
     @Import(name="confidentialNodes")
     private @Nullable Output<NodePoolNodeConfigConfidentialNodesArgs> confidentialNodes;
 
+    /**
+     * @return Configuration for Confidential Nodes feature. Structure is documented below.
+     * 
+     */
     public Optional<Output<NodePoolNodeConfigConfidentialNodesArgs>> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
     }
@@ -349,11 +357,23 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
             return bootDiskKmsKey(Output.of(bootDiskKmsKey));
         }
 
+        /**
+         * @param confidentialNodes Configuration for Confidential Nodes feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder confidentialNodes(@Nullable Output<NodePoolNodeConfigConfidentialNodesArgs> confidentialNodes) {
             $.confidentialNodes = confidentialNodes;
             return this;
         }
 
+        /**
+         * @param confidentialNodes Configuration for Confidential Nodes feature. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder confidentialNodes(NodePoolNodeConfigConfidentialNodesArgs confidentialNodes) {
             return confidentialNodes(Output.of(confidentialNodes));
         }

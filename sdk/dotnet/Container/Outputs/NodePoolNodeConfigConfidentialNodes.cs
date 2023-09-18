@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigConfidentialNodes
     {
+        /// <summary>
+        /// Enable Confidential GKE Nodes for this cluster, to
+        /// enforce encryption of data in-use.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

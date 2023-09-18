@@ -241,13 +241,18 @@ class ServiceConnectionPolicyPscConnectionArgs:
 class ServiceConnectionPolicyPscConnectionErrorArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] code: The status code, which should be an enum value of [google.rpc.Code][].
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: (Output)
+               A list of messages that carry the error details.
         :param pulumi.Input[str] message: A developer-facing error message.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
         if message is not None:
             pulumi.set(__self__, "message", message)
 
@@ -262,6 +267,19 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
     @code.setter
     def code(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+        pulumi.set(self, "details", value)
 
     @property
     @pulumi.getter

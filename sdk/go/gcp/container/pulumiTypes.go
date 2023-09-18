@@ -11096,6 +11096,8 @@ type ClusterAddonsConfigConfigConnectorConfig struct {
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 	//
+	// enforce encryption of data in-use.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
 	// not.
@@ -11117,6 +11119,8 @@ type ClusterAddonsConfigConfigConnectorConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11223,6 +11227,8 @@ func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToOutput(ctx context.Con
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11264,6 +11270,8 @@ func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Elem() ClusterAddonsC
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11280,6 +11288,8 @@ type ClusterAddonsConfigDnsCacheConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11302,6 +11312,8 @@ type ClusterAddonsConfigDnsCacheConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11408,6 +11420,8 @@ func (o ClusterAddonsConfigDnsCacheConfigOutput) ToOutput(ctx context.Context) p
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11449,6 +11463,8 @@ func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Elem() ClusterAddonsConfigDn
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11465,6 +11481,8 @@ type ClusterAddonsConfigGcePersistentDiskCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11487,6 +11505,8 @@ type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11593,6 +11613,8 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToOutput(ctx 
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11634,6 +11656,8 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Elem() Clu
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11650,6 +11674,8 @@ type ClusterAddonsConfigGcpFilestoreCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11672,6 +11698,8 @@ type ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11778,6 +11806,8 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToOutput(ctx conte
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11819,6 +11849,8 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Elem() ClusterA
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -11835,6 +11867,8 @@ type ClusterAddonsConfigGcsFuseCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11857,6 +11891,8 @@ type ClusterAddonsConfigGcsFuseCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -11963,6 +11999,8 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToOutput(ctx context.Co
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -12004,6 +12042,8 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Elem() ClusterAddons
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -12020,6 +12060,8 @@ type ClusterAddonsConfigGkeBackupAgentConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -12042,6 +12084,8 @@ type ClusterAddonsConfigGkeBackupAgentConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -12148,6 +12192,8 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToOutput(ctx context.Cont
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -12188,6 +12234,8 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Elem() ClusterAddonsCo
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// enforce encryption of data in-use.
 //
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
@@ -12728,6 +12776,8 @@ type ClusterAddonsConfigKalmConfig struct {
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 	//
+	// enforce encryption of data in-use.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
 	// not.
@@ -12749,6 +12799,8 @@ type ClusterAddonsConfigKalmConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -12855,6 +12907,8 @@ func (o ClusterAddonsConfigKalmConfigOutput) ToOutput(ctx context.Context) pulum
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -12895,6 +12949,8 @@ func (o ClusterAddonsConfigKalmConfigPtrOutput) Elem() ClusterAddonsConfigKalmCo
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// enforce encryption of data in-use.
 //
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
@@ -13243,6 +13299,8 @@ type ClusterBinaryAuthorization struct {
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 	//
+	// enforce encryption of data in-use.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
 	// not.
@@ -13270,6 +13328,8 @@ type ClusterBinaryAuthorizationArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -13382,6 +13442,8 @@ func (o ClusterBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -13431,6 +13493,8 @@ func (o ClusterBinaryAuthorizationPtrOutput) Elem() ClusterBinaryAuthorizationOu
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// enforce encryption of data in-use.
 //
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
@@ -15524,7 +15588,8 @@ func (o ClusterClusterTelemetryPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ClusterConfidentialNodes struct {
-	// Enable Confidential Nodes for this cluster.
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -15540,7 +15605,8 @@ type ClusterConfidentialNodesInput interface {
 }
 
 type ClusterConfidentialNodesArgs struct {
-	// Enable Confidential Nodes for this cluster.
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -15639,7 +15705,8 @@ func (o ClusterConfidentialNodesOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// Enable Confidential Nodes for this cluster.
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o ClusterConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -15674,7 +15741,8 @@ func (o ClusterConfidentialNodesPtrOutput) Elem() ClusterConfidentialNodesOutput
 	}).(ClusterConfidentialNodesOutput)
 }
 
-// Enable Confidential Nodes for this cluster.
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o ClusterConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterConfidentialNodes) *bool {
 		if v == nil {
@@ -19818,7 +19886,7 @@ func (o ClusterMeshCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOut
 type ClusterMonitoringConfig struct {
 	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
 	AdvancedDatapathObservabilityConfigs []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfigs"`
-	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents []string `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
 	ManagedPrometheus *ClusterMonitoringConfigManagedPrometheus `pulumi:"managedPrometheus"`
@@ -19838,7 +19906,7 @@ type ClusterMonitoringConfigInput interface {
 type ClusterMonitoringConfigArgs struct {
 	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
 	AdvancedDatapathObservabilityConfigs ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput `pulumi:"advancedDatapathObservabilityConfigs"`
-	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
 	ManagedPrometheus ClusterMonitoringConfigManagedPrometheusPtrInput `pulumi:"managedPrometheus"`
@@ -19946,7 +20014,7 @@ func (o ClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfigs() Cl
 	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
 }
 
-// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -19996,7 +20064,7 @@ func (o ClusterMonitoringConfigPtrOutput) AdvancedDatapathObservabilityConfigs()
 	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
 }
 
-// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterMonitoringConfig) []string {
 		if v == nil {
@@ -20017,6 +20085,7 @@ func (o ClusterMonitoringConfigPtrOutput) ManagedPrometheus() ClusterMonitoringC
 }
 
 type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
+	// Whether or not to enable advanced datapath metrics.
 	EnableMetrics bool `pulumi:"enableMetrics"`
 	// Mode used to make Relay available.
 	RelayMode *string `pulumi:"relayMode"`
@@ -20034,6 +20103,7 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput interface {
 }
 
 type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
+	// Whether or not to enable advanced datapath metrics.
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
 	// Mode used to make Relay available.
 	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
@@ -20108,6 +20178,7 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToOutp
 	}
 }
 
+// Whether or not to enable advanced datapath metrics.
 func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
 }
@@ -22054,7 +22125,8 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulu
 }
 
 type ClusterNodeConfigConfidentialNodes struct {
-	// Enable Confidential Nodes for this cluster.
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -22070,7 +22142,8 @@ type ClusterNodeConfigConfidentialNodesInput interface {
 }
 
 type ClusterNodeConfigConfidentialNodesArgs struct {
-	// Enable Confidential Nodes for this cluster.
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -22169,7 +22242,8 @@ func (o ClusterNodeConfigConfidentialNodesOutput) ToOutput(ctx context.Context) 
 	}
 }
 
-// Enable Confidential Nodes for this cluster.
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o ClusterNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -22204,7 +22278,8 @@ func (o ClusterNodeConfigConfidentialNodesPtrOutput) Elem() ClusterNodeConfigCon
 	}).(ClusterNodeConfigConfidentialNodesOutput)
 }
 
-// Enable Confidential Nodes for this cluster.
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o ClusterNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigConfidentialNodes) *bool {
 		if v == nil {
@@ -29249,7 +29324,8 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCor
 }
 
 type ClusterNodePoolNodeConfigConfidentialNodes struct {
-	// Enable Confidential Nodes for this cluster.
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -29265,7 +29341,8 @@ type ClusterNodePoolNodeConfigConfidentialNodesInput interface {
 }
 
 type ClusterNodePoolNodeConfigConfidentialNodesArgs struct {
-	// Enable Confidential Nodes for this cluster.
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -29364,7 +29441,8 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ToOutput(ctx context.C
 	}
 }
 
-// Enable Confidential Nodes for this cluster.
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -29399,7 +29477,8 @@ func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Elem() ClusterNodeP
 	}).(ClusterNodePoolNodeConfigConfidentialNodesOutput)
 }
 
-// Enable Confidential Nodes for this cluster.
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigConfidentialNodes) *bool {
 		if v == nil {
@@ -35943,6 +36022,8 @@ type ClusterTpuConfig struct {
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 	//
+	// enforce encryption of data in-use.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
 	// not.
@@ -35966,6 +36047,8 @@ type ClusterTpuConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// enforce encryption of data in-use.
 	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
 	//
@@ -36074,6 +36157,8 @@ func (o ClusterTpuConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Clu
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
 //
+// enforce encryption of data in-use.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
 // not.
@@ -36122,6 +36207,8 @@ func (o ClusterTpuConfigPtrOutput) Elem() ClusterTpuConfigOutput {
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// enforce encryption of data in-use.
 //
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
 //
@@ -37706,8 +37793,9 @@ func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pul
 }
 
 type NodePoolNodeConfig struct {
-	AdvancedMachineFeatures        *NodePoolNodeConfigAdvancedMachineFeatures        `pulumi:"advancedMachineFeatures"`
-	BootDiskKmsKey                 *string                                           `pulumi:"bootDiskKmsKey"`
+	AdvancedMachineFeatures *NodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey          *string                                    `pulumi:"bootDiskKmsKey"`
+	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes              *NodePoolNodeConfigConfidentialNodes              `pulumi:"confidentialNodes"`
 	DiskSizeGb                     *int                                              `pulumi:"diskSizeGb"`
 	DiskType                       *string                                           `pulumi:"diskType"`
@@ -37754,8 +37842,9 @@ type NodePoolNodeConfigInput interface {
 }
 
 type NodePoolNodeConfigArgs struct {
-	AdvancedMachineFeatures        NodePoolNodeConfigAdvancedMachineFeaturesPtrInput        `pulumi:"advancedMachineFeatures"`
-	BootDiskKmsKey                 pulumi.StringPtrInput                                    `pulumi:"bootDiskKmsKey"`
+	AdvancedMachineFeatures NodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey          pulumi.StringPtrInput                             `pulumi:"bootDiskKmsKey"`
+	// Configuration for Confidential Nodes feature. Structure is documented below.
 	ConfidentialNodes              NodePoolNodeConfigConfidentialNodesPtrInput              `pulumi:"confidentialNodes"`
 	DiskSizeGb                     pulumi.IntPtrInput                                       `pulumi:"diskSizeGb"`
 	DiskType                       pulumi.StringPtrInput                                    `pulumi:"diskType"`
@@ -37895,6 +37984,7 @@ func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for Confidential Nodes feature. Structure is documented below.
 func (o NodePoolNodeConfigOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
@@ -38075,6 +38165,7 @@ func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for Confidential Nodes feature. Structure is documented below.
 func (o NodePoolNodeConfigPtrOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes {
 		if v == nil {
@@ -38521,6 +38612,8 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pul
 }
 
 type NodePoolNodeConfigConfidentialNodes struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -38536,6 +38629,8 @@ type NodePoolNodeConfigConfidentialNodesInput interface {
 }
 
 type NodePoolNodeConfigConfidentialNodesArgs struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -38634,6 +38729,8 @@ func (o NodePoolNodeConfigConfidentialNodesOutput) ToOutput(ctx context.Context)
 	}
 }
 
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o NodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -38668,6 +38765,8 @@ func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Elem() NodePoolNodeConfigC
 	}).(NodePoolNodeConfigConfidentialNodesOutput)
 }
 
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigConfidentialNodes) *bool {
 		if v == nil {
@@ -38992,6 +39091,8 @@ func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) LocalSsdCount
 }
 
 type NodePoolNodeConfigGcfsConfig struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -39007,6 +39108,8 @@ type NodePoolNodeConfigGcfsConfigInput interface {
 }
 
 type NodePoolNodeConfigGcfsConfigArgs struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -39105,6 +39208,8 @@ func (o NodePoolNodeConfigGcfsConfigOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o NodePoolNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -39139,6 +39244,8 @@ func (o NodePoolNodeConfigGcfsConfigPtrOutput) Elem() NodePoolNodeConfigGcfsConf
 	}).(NodePoolNodeConfigGcfsConfigOutput)
 }
 
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o NodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigGcfsConfig) *bool {
 		if v == nil {
@@ -39635,6 +39742,8 @@ func (o NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput) MaxSharedCl
 }
 
 type NodePoolNodeConfigGvnic struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -39650,6 +39759,8 @@ type NodePoolNodeConfigGvnicInput interface {
 }
 
 type NodePoolNodeConfigGvnicArgs struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -39748,6 +39859,8 @@ func (o NodePoolNodeConfigGvnicOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o NodePoolNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -39782,6 +39895,8 @@ func (o NodePoolNodeConfigGvnicPtrOutput) Elem() NodePoolNodeConfigGvnicOutput {
 	}).(NodePoolNodeConfigGvnicOutput)
 }
 
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
 func (o NodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigGvnic) *bool {
 		if v == nil {

@@ -5,7 +5,10 @@ package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +20,12 @@ public final class ServiceConnectionPolicyPscConnectionError {
      * 
      */
     private @Nullable Integer code;
+    /**
+     * @return (Output)
+     * A list of messages that carry the error details.
+     * 
+     */
+    private @Nullable List<Map<String,Object>> details;
     /**
      * @return A developer-facing error message.
      * 
@@ -30,6 +39,14 @@ public final class ServiceConnectionPolicyPscConnectionError {
      */
     public Optional<Integer> code() {
         return Optional.ofNullable(this.code);
+    }
+    /**
+     * @return (Output)
+     * A list of messages that carry the error details.
+     * 
+     */
+    public List<Map<String,Object>> details() {
+        return this.details == null ? List.of() : this.details;
     }
     /**
      * @return A developer-facing error message.
@@ -49,17 +66,24 @@ public final class ServiceConnectionPolicyPscConnectionError {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer code;
+        private @Nullable List<Map<String,Object>> details;
         private @Nullable String message;
         public Builder() {}
         public Builder(ServiceConnectionPolicyPscConnectionError defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
+    	      this.details = defaults.details;
     	      this.message = defaults.message;
         }
 
         @CustomType.Setter
         public Builder code(@Nullable Integer code) {
             this.code = code;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder details(@Nullable List<Map<String,Object>> details) {
+            this.details = details;
             return this;
         }
         @CustomType.Setter
@@ -70,6 +94,7 @@ public final class ServiceConnectionPolicyPscConnectionError {
         public ServiceConnectionPolicyPscConnectionError build() {
             final var o = new ServiceConnectionPolicyPscConnectionError();
             o.code = code;
+            o.details = details;
             o.message = message;
             return o;
         }

@@ -6656,6 +6656,11 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", TypeShape.of(GetRegionInstanceGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a VM instance template resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6696,6 +6701,11 @@ public final class ComputeFunctions {
         return getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Get information about a VM instance template resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6736,6 +6746,11 @@ public final class ComputeFunctions {
         return getRegionInstanceTemplatePlain(GetRegionInstanceTemplatePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Get information about a VM instance template resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6776,6 +6791,11 @@ public final class ComputeFunctions {
         return getRegionInstanceTemplate(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a VM instance template resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6816,6 +6836,11 @@ public final class ComputeFunctions {
         return getRegionInstanceTemplatePlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a VM instance template resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -6856,6 +6881,11 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", TypeShape.of(GetRegionInstanceTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a VM instance template resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
