@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+    /**
+     * @return Whether or not to enable advanced datapath metrics.
+     * 
+     */
     private Boolean enableMetrics;
     /**
      * @return Mode used to make Relay available.
@@ -20,6 +24,10 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
     private @Nullable String relayMode;
 
     private ClusterMonitoringConfigAdvancedDatapathObservabilityConfig() {}
+    /**
+     * @return Whether or not to enable advanced datapath metrics.
+     * 
+     */
     public Boolean enableMetrics() {
         return this.enableMetrics;
     }

@@ -34,6 +34,10 @@ import javax.annotation.Nullable;
 public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
     private @Nullable String bootDiskKmsKey;
+    /**
+     * @return Configuration for Confidential Nodes feature. Structure is documented below.
+     * 
+     */
     private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
     private @Nullable Integer diskSizeGb;
     private @Nullable String diskType;
@@ -74,6 +78,10 @@ public final class NodePoolNodeConfig {
     public Optional<String> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
+    /**
+     * @return Configuration for Confidential Nodes feature. Structure is documented below.
+     * 
+     */
     public Optional<NodePoolNodeConfigConfidentialNodes> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
     }

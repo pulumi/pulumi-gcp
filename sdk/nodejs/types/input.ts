@@ -23789,6 +23789,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23810,6 +23811,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23831,6 +23833,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23852,6 +23855,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23873,6 +23877,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23894,6 +23899,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23945,6 +23951,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -23982,6 +23989,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -24182,7 +24190,8 @@ export namespace container {
 
     export interface ClusterConfidentialNodes {
         /**
-         * Enable Confidential Nodes for this cluster.
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -24454,7 +24463,7 @@ export namespace container {
          */
         advancedDatapathObservabilityConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig>[]>;
         /**
-         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+         * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -24464,6 +24473,9 @@ export namespace container {
     }
 
     export interface ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+        /**
+         * Whether or not to enable advanced datapath metrics.
+         */
         enableMetrics: pulumi.Input<boolean>;
         /**
          * Mode used to make Relay available.
@@ -24708,7 +24720,8 @@ export namespace container {
 
     export interface ClusterNodeConfigConfidentialNodes {
         /**
-         * Enable Confidential Nodes for this cluster.
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -25334,7 +25347,8 @@ export namespace container {
 
     export interface ClusterNodePoolNodeConfigConfidentialNodes {
         /**
-         * Enable Confidential Nodes for this cluster.
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -25805,6 +25819,7 @@ export namespace container {
          *
          *
          *
+         * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
          *
@@ -25940,6 +25955,9 @@ export namespace container {
     export interface NodePoolNodeConfig {
         advancedMachineFeatures?: pulumi.Input<inputs.container.NodePoolNodeConfigAdvancedMachineFeatures>;
         bootDiskKmsKey?: pulumi.Input<string>;
+        /**
+         * Configuration for Confidential Nodes feature. Structure is documented below.
+         */
         confidentialNodes?: pulumi.Input<inputs.container.NodePoolNodeConfigConfidentialNodes>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
@@ -25979,6 +25997,10 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigConfidentialNodes {
+        /**
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
+         */
         enabled: pulumi.Input<boolean>;
     }
 
@@ -25991,6 +26013,10 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigGcfsConfig {
+        /**
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
+         */
         enabled: pulumi.Input<boolean>;
     }
 
@@ -26017,6 +26043,10 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigGvnic {
+        /**
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
+         */
         enabled: pulumi.Input<boolean>;
     }
 
@@ -45983,6 +46013,11 @@ export namespace networkconnectivity {
          * The status code, which should be an enum value of [google.rpc.Code][].
          */
         code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
         /**
          * A developer-facing error message.
          */

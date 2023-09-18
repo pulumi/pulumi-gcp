@@ -76,6 +76,10 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
+     * Labels for this ScopeRBACRoleBinding.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The resource name for the RBAC Role Binding
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -134,6 +138,7 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
@@ -155,6 +160,7 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'scopeRbacRoleBindingId'");
             }
             resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["scopeId"] = args ? args.scopeId : undefined;
@@ -190,6 +196,10 @@ export interface ScopeRbacRoleBindingState {
      * group is the group, as seen by the kubernetes cluster.
      */
     group?: pulumi.Input<string>;
+    /**
+     * Labels for this ScopeRBACRoleBinding.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The resource name for the RBAC Role Binding
      */
@@ -244,6 +254,10 @@ export interface ScopeRbacRoleBindingArgs {
      * group is the group, as seen by the kubernetes cluster.
      */
     group?: pulumi.Input<string>;
+    /**
+     * Labels for this ScopeRBACRoleBinding.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

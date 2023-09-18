@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         /// </summary>
         public readonly int? Code;
         /// <summary>
+        /// (Output)
+        /// A list of messages that carry the error details.
+        /// </summary>
+        public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
+        /// <summary>
         /// A developer-facing error message.
         /// </summary>
         public readonly string? Message;
@@ -26,9 +31,12 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         private ServiceConnectionPolicyPscConnectionError(
             int? code,
 
+            ImmutableArray<ImmutableDictionary<string, object>> details,
+
             string? message)
         {
             Code = code;
+            Details = details;
             Message = message;
         }
     }

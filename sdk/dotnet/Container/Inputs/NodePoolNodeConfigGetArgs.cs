@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("bootDiskKmsKey")]
         public Input<string>? BootDiskKmsKey { get; set; }
 
+        /// <summary>
+        /// Configuration for Confidential Nodes feature. Structure is documented below.
+        /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.NodePoolNodeConfigConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
 

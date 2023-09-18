@@ -16732,7 +16732,14 @@
                         "elem": {
                             "fields": {
                                 "error": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "details": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "error_info": {
                                     "maxItemsOne": true

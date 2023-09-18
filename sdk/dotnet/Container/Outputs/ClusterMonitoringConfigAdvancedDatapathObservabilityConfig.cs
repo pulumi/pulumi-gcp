@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig
     {
+        /// <summary>
+        /// Whether or not to enable advanced datapath metrics.
+        /// </summary>
         public readonly bool EnableMetrics;
         /// <summary>
         /// Mode used to make Relay available.

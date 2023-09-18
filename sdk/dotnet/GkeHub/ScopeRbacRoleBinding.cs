@@ -60,6 +60,12 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
+        /// Labels for this ScopeRBACRoleBinding.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name for the RBAC Role Binding
         /// </summary>
         [Output("name")]
@@ -173,6 +179,18 @@ namespace Pulumi.Gcp.GkeHub
         [Input("group")]
         public Input<string>? Group { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this ScopeRBACRoleBinding.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -235,6 +253,18 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this ScopeRBACRoleBinding.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The resource name for the RBAC Role Binding

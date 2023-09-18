@@ -9,9 +9,19 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigGcfsConfig {
+    /**
+     * @return Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
+     * 
+     */
     private Boolean enabled;
 
     private NodePoolNodeConfigGcfsConfig() {}
+    /**
+     * @return Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

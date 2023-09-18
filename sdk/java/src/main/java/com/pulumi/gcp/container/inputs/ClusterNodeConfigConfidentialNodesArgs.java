@@ -14,14 +14,16 @@ public final class ClusterNodeConfigConfidentialNodesArgs extends com.pulumi.res
     public static final ClusterNodeConfigConfidentialNodesArgs Empty = new ClusterNodeConfigConfidentialNodesArgs();
 
     /**
-     * Enable Confidential Nodes for this cluster.
+     * Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Confidential Nodes for this cluster.
+     * @return Enable Confidential GKE Nodes for this cluster, to
+     * enforce encryption of data in-use.
      * 
      */
     public Output<Boolean> enabled() {
@@ -53,7 +55,8 @@ public final class ClusterNodeConfigConfidentialNodesArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Enable Confidential Nodes for this cluster.
+         * @param enabled Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
          * 
          * @return builder
          * 
@@ -64,7 +67,8 @@ public final class ClusterNodeConfigConfidentialNodesArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Enable Confidential Nodes for this cluster.
+         * @param enabled Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
          * 
          * @return builder
          * 

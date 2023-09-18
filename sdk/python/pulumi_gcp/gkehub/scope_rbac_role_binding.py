@@ -20,6 +20,7 @@ class ScopeRbacRoleBindingArgs:
                  scope_id: pulumi.Input[str],
                  scope_rbac_role_binding_id: pulumi.Input[str],
                  group: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None):
         """
@@ -31,6 +32,7 @@ class ScopeRbacRoleBindingArgs:
         :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
                group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] user: Principal that is be authorized in the cluster (at least of one the oneof
@@ -43,6 +45,8 @@ class ScopeRbacRoleBindingArgs:
         pulumi.set(__self__, "scope_rbac_role_binding_id", scope_rbac_role_binding_id)
         if group is not None:
             pulumi.set(__self__, "group", group)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if user is not None:
@@ -101,6 +105,18 @@ class ScopeRbacRoleBindingArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this ScopeRBACRoleBinding.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -134,6 +150,7 @@ class _ScopeRbacRoleBindingState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input['ScopeRbacRoleBindingRoleArgs']] = None,
@@ -150,6 +167,7 @@ class _ScopeRbacRoleBindingState:
         :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
                group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -172,6 +190,8 @@ class _ScopeRbacRoleBindingState:
             pulumi.set(__self__, "delete_time", delete_time)
         if group is not None:
             pulumi.set(__self__, "group", group)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -228,6 +248,18 @@ class _ScopeRbacRoleBindingState:
     @group.setter
     def group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "group", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this ScopeRBACRoleBinding.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -350,6 +382,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
@@ -388,6 +421,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
                group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']] role: Role to bind to the principal.
@@ -448,6 +482,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
@@ -463,6 +498,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             __props__ = ScopeRbacRoleBindingArgs.__new__(ScopeRbacRoleBindingArgs)
 
             __props__.__dict__["group"] = group
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
@@ -493,6 +529,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             group: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[pulumi.InputType['ScopeRbacRoleBindingRoleArgs']]] = None,
@@ -514,6 +551,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         :param pulumi.Input[str] group: Principal that is be authorized in the cluster (at least of one the oneof
                is required). Updating one will unset the other automatically.
                group is the group, as seen by the kubernetes cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this ScopeRBACRoleBinding.
         :param pulumi.Input[str] name: The resource name for the RBAC Role Binding
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -537,6 +575,7 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["group"] = group
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["role"] = role
@@ -573,6 +612,14 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         group is the group, as seen by the kubernetes cluster.
         """
         return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels for this ScopeRBACRoleBinding.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

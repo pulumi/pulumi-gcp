@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.Compute
     public static class GetRegionInstanceTemplate
     {
         /// <summary>
+        /// Get information about a VM instance template resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -44,6 +49,11 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceTemplateResult>("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information about a VM instance template resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

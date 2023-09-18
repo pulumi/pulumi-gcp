@@ -3077,6 +3077,7 @@ class ClusterAddonsConfigConfigConnectorConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3099,6 +3100,7 @@ class ClusterAddonsConfigConfigConnectorConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3127,6 +3129,7 @@ class ClusterAddonsConfigDnsCacheConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3149,6 +3152,7 @@ class ClusterAddonsConfigDnsCacheConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3177,6 +3181,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3199,6 +3204,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3227,6 +3233,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3249,6 +3256,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3277,6 +3285,7 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3299,6 +3308,7 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3327,6 +3337,7 @@ class ClusterAddonsConfigGkeBackupAgentConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3349,6 +3360,7 @@ class ClusterAddonsConfigGkeBackupAgentConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3469,6 +3481,7 @@ class ClusterAddonsConfigKalmConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3491,6 +3504,7 @@ class ClusterAddonsConfigKalmConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -3568,6 +3582,7 @@ class ClusterBinaryAuthorizationArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -3599,6 +3614,7 @@ class ClusterBinaryAuthorizationArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -4281,7 +4297,8 @@ class ClusterConfidentialNodesArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Confidential Nodes for this cluster.
+        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -4289,7 +4306,8 @@ class ClusterConfidentialNodesArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Confidential Nodes for this cluster.
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
 
@@ -5193,7 +5211,7 @@ class ClusterMonitoringConfigArgs:
                  managed_prometheus: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         :param pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_configs is not None:
@@ -5219,7 +5237,7 @@ class ClusterMonitoringConfigArgs:
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         """
         return pulumi.get(self, "enable_components")
 
@@ -5246,6 +5264,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
                  enable_metrics: pulumi.Input[bool],
                  relay_mode: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] enable_metrics: Whether or not to enable advanced datapath metrics.
         :param pulumi.Input[str] relay_mode: Mode used to make Relay available.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
@@ -5255,6 +5274,9 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
     @property
     @pulumi.getter(name="enableMetrics")
     def enable_metrics(self) -> pulumi.Input[bool]:
+        """
+        Whether or not to enable advanced datapath metrics.
+        """
         return pulumi.get(self, "enable_metrics")
 
     @enable_metrics.setter
@@ -6058,7 +6080,8 @@ class ClusterNodeConfigConfidentialNodesArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Confidential Nodes for this cluster.
+        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -6066,7 +6089,8 @@ class ClusterNodeConfigConfidentialNodesArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Confidential Nodes for this cluster.
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
 
@@ -8234,7 +8258,8 @@ class ClusterNodePoolNodeConfigConfidentialNodesArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable Confidential Nodes for this cluster.
+        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -8242,7 +8267,8 @@ class ClusterNodePoolNodeConfigConfidentialNodesArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable Confidential Nodes for this cluster.
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
         """
         return pulumi.get(self, "enabled")
 
@@ -9747,6 +9773,7 @@ class ClusterTpuConfigArgs:
                
                
                
+               enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
                
@@ -9773,6 +9800,7 @@ class ClusterTpuConfigArgs:
 
 
 
+        enforce encryption of data in-use.
 
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
 
@@ -10268,6 +10296,9 @@ class NodePoolNodeConfigArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
+        """
+        :param pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs'] confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
+        """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
@@ -10358,6 +10389,9 @@ class NodePoolNodeConfigArgs:
     @property
     @pulumi.getter(name="confidentialNodes")
     def confidential_nodes(self) -> Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']]:
+        """
+        Configuration for Confidential Nodes feature. Structure is documented below.
+        """
         return pulumi.get(self, "confidential_nodes")
 
     @confidential_nodes.setter
@@ -10664,11 +10698,19 @@ class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
 class NodePoolNodeConfigConfidentialNodesArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10712,11 +10754,19 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
 class NodePoolNodeConfigGcfsConfigArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -10844,11 +10894,19 @@ class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
 class NodePoolNodeConfigGvnicArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter

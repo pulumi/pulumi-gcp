@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigConfidentialNodesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Confidential Nodes for this cluster.
+        /// Enable Confidential GKE Nodes for this cluster, to
+        /// enforce encryption of data in-use.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

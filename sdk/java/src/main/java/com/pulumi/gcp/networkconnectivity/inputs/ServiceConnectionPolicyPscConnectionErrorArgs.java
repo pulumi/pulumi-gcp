@@ -6,7 +6,10 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +35,23 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
     }
 
     /**
+     * (Output)
+     * A list of messages that carry the error details.
+     * 
+     */
+    @Import(name="details")
+    private @Nullable Output<List<Map<String,Object>>> details;
+
+    /**
+     * @return (Output)
+     * A list of messages that carry the error details.
+     * 
+     */
+    public Optional<Output<List<Map<String,Object>>>> details() {
+        return Optional.ofNullable(this.details);
+    }
+
+    /**
      * A developer-facing error message.
      * 
      */
@@ -50,6 +70,7 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
 
     private ServiceConnectionPolicyPscConnectionErrorArgs(ServiceConnectionPolicyPscConnectionErrorArgs $) {
         this.code = $.code;
+        this.details = $.details;
         this.message = $.message;
     }
 
@@ -90,6 +111,40 @@ public final class ServiceConnectionPolicyPscConnectionErrorArgs extends com.pul
          */
         public Builder code(Integer code) {
             return code(Output.of(code));
+        }
+
+        /**
+         * @param details (Output)
+         * A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder details(@Nullable Output<List<Map<String,Object>>> details) {
+            $.details = details;
+            return this;
+        }
+
+        /**
+         * @param details (Output)
+         * A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder details(List<Map<String,Object>> details) {
+            return details(Output.of(details));
+        }
+
+        /**
+         * @param details (Output)
+         * A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder details(Map<String,Object>... details) {
+            return details(List.of(details));
         }
 
         /**

@@ -13,6 +13,7 @@ import com.pulumi.gcp.gkehub.outputs.ScopeRbacRoleBindingRole;
 import com.pulumi.gcp.gkehub.outputs.ScopeRbacRoleBindingState;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -91,6 +92,20 @@ public class ScopeRbacRoleBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> group() {
         return Codegen.optional(this.group);
+    }
+    /**
+     * Labels for this ScopeRBACRoleBinding.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels for this ScopeRBACRoleBinding.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The resource name for the RBAC Role Binding

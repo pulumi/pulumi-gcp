@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,21 @@ public final class ScopeRbacRoleBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> group() {
         return Optional.ofNullable(this.group);
+    }
+
+    /**
+     * Labels for this ScopeRBACRoleBinding.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this ScopeRBACRoleBinding.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -124,6 +140,7 @@ public final class ScopeRbacRoleBindingArgs extends com.pulumi.resources.Resourc
 
     private ScopeRbacRoleBindingArgs(ScopeRbacRoleBindingArgs $) {
         this.group = $.group;
+        this.labels = $.labels;
         this.project = $.project;
         this.role = $.role;
         this.scopeId = $.scopeId;
@@ -172,6 +189,27 @@ public final class ScopeRbacRoleBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder group(String group) {
             return group(Output.of(group));
+        }
+
+        /**
+         * @param labels Labels for this ScopeRBACRoleBinding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this ScopeRBACRoleBinding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

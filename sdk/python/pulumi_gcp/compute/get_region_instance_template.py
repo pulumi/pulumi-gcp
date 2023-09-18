@@ -412,6 +412,11 @@ def get_region_instance_template(filter: Optional[str] = None,
                                  region: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionInstanceTemplateResult:
     """
+    Get information about a VM instance template resource within GCE. For more information see
+    [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+    and
+    [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+
     ## Example Usage
 
     ```python
@@ -485,6 +490,11 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
                                         region: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceTemplateResult]:
     """
+    Get information about a VM instance template resource within GCE. For more information see
+    [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+    and
+    [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+
     ## Example Usage
 
     ```python

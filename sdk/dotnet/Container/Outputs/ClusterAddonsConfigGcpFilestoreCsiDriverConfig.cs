@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// 
         /// 
         /// 
+        /// enforce encryption of data in-use.
         /// 
         /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
         /// 
