@@ -441,7 +441,6 @@ on:
   push:
     branches:
     - master
-    - rquitales/fix-goreleaser
     paths-ignore:
     - "**.md"
     tags-ignore:
