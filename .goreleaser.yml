@@ -46,3 +46,4 @@ release:
   disable: false
 snapshot:
   name_template: "{{ .Tag }}-SNAPSHOT"
+project_name: pulumi-gcp
