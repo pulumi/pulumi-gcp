@@ -97,7 +97,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * Possible values are: `NONE`, `ALL_ANCESTORS`.
      * 
      */
-    @Export(name="ancestor", type=String.class, parameters={})
+    @Export(name="ancestor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ancestor;
 
     /**
@@ -113,7 +113,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * The index id.
      * 
      */
-    @Export(name="indexId", type=String.class, parameters={})
+    @Export(name="indexId", refs={String.class}, tree="[0]")
     private Output<String> indexId;
 
     /**
@@ -129,7 +129,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -146,7 +146,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -162,7 +162,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="properties", type=List.class, parameters={DataStoreIndexProperty.class})
+    @Export(name="properties", refs={List.class,DataStoreIndexProperty.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataStoreIndexProperty>> properties;
 
     /**

@@ -77,7 +77,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * Output only. The time the hub was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -91,7 +91,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * An optional description of the hub.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -105,7 +105,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -121,7 +121,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -151,7 +151,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      * 
      */
-    @Export(name="routingVpcs", type=List.class, parameters={HubRoutingVpc.class})
+    @Export(name="routingVpcs", refs={List.class,HubRoutingVpc.class}, tree="[0,1]")
     private Output<List<HubRoutingVpc>> routingVpcs;
 
     /**
@@ -165,7 +165,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -179,7 +179,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      * 
      */
-    @Export(name="uniqueId", type=String.class, parameters={})
+    @Export(name="uniqueId", refs={String.class}, tree="[0]")
     private Output<String> uniqueId;
 
     /**
@@ -193,7 +193,7 @@ public class Hub extends com.pulumi.resources.CustomResource {
      * Output only. The time the hub was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

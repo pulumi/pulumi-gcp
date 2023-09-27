@@ -555,7 +555,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * as the source for Restores created via this RestorePlan.
      * 
      */
-    @Export(name="backupPlan", type=String.class, parameters={})
+    @Export(name="backupPlan", refs={String.class}, tree="[0]")
     private Output<String> backupPlan;
 
     /**
@@ -570,7 +570,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * The source cluster from which Restores will be created via this RestorePlan.
      * 
      */
-    @Export(name="cluster", type=String.class, parameters={})
+    @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
@@ -588,7 +588,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * User specified descriptive string for this RestorePlan.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -608,7 +608,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -624,7 +624,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * The region of the Restore Plan.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -638,7 +638,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * The full name of the BackupPlan Resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -653,7 +653,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -669,7 +669,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="restoreConfig", type=RestorePlanRestoreConfig.class, parameters={})
+    @Export(name="restoreConfig", refs={RestorePlanRestoreConfig.class}, tree="[0]")
     private Output<RestorePlanRestoreConfig> restoreConfig;
 
     /**
@@ -684,7 +684,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * The State of the RestorePlan.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -698,7 +698,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * Detailed description of why RestorePlan is in its current state.
      * 
      */
-    @Export(name="stateReason", type=String.class, parameters={})
+    @Export(name="stateReason", refs={String.class}, tree="[0]")
     private Output<String> stateReason;
 
     /**
@@ -712,7 +712,7 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
      * Server generated, unique identifier of UUID format.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**

@@ -292,7 +292,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/iamPolicy:IamPolicy")
 public class IamPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="datasetId", type=String.class, parameters={})
+    @Export(name="datasetId", refs={String.class}, tree="[0]")
     private Output<String> datasetId;
 
     public Output<String> datasetId() {
@@ -302,7 +302,7 @@ public class IamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -317,7 +317,7 @@ public class IamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -345,7 +345,7 @@ public class IamPolicy extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -368,7 +368,7 @@ public class IamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="tableId", type=String.class, parameters={})
+    @Export(name="tableId", refs={String.class}, tree="[0]")
     private Output<String> tableId;
 
     public Output<String> tableId() {

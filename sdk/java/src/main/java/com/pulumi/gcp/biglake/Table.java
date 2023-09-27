@@ -140,7 +140,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -157,7 +157,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The id of the parent database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
@@ -174,7 +174,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -194,7 +194,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * table operations.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -214,7 +214,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -232,7 +232,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="hiveOptions", type=TableHiveOptions.class, parameters={})
+    @Export(name="hiveOptions", refs={TableHiveOptions.class}, tree="[0]")
     private Output</* @Nullable */ TableHiveOptions> hiveOptions;
 
     /**
@@ -250,7 +250,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -268,7 +268,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * Possible values are: `HIVE`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -286,7 +286,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

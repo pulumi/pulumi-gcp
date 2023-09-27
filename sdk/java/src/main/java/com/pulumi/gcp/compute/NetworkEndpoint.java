@@ -139,7 +139,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * The instance must be in the same zone of network endpoint group.
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instance;
 
     /**
@@ -157,7 +157,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * range).
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -175,7 +175,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="networkEndpointGroup", type=String.class, parameters={})
+    @Export(name="networkEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> networkEndpointGroup;
 
     /**
@@ -193,7 +193,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * with the type of `GCE_VM_IP`
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -210,7 +210,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -225,7 +225,7 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
      * Zone where the containing network endpoint group is located.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

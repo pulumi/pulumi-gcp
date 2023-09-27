@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataplex/lakeIamBinding:LakeIamBinding")
 public class LakeIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=LakeIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={LakeIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ LakeIamBindingCondition> condition;
 
     public Output<Optional<LakeIamBindingCondition>> condition() {
@@ -178,7 +178,7 @@ public class LakeIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -192,7 +192,7 @@ public class LakeIamBinding extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="lake", type=String.class, parameters={})
+    @Export(name="lake", refs={String.class}, tree="[0]")
     private Output<String> lake;
 
     /**
@@ -202,13 +202,13 @@ public class LakeIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> lake() {
         return this.lake;
     }
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -231,7 +231,7 @@ public class LakeIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -260,7 +260,7 @@ public class LakeIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

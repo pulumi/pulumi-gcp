@@ -78,7 +78,7 @@ public class DiskAsyncReplication extends com.pulumi.resources.CustomResource {
      * The primary disk (source of replication).
      * 
      */
-    @Export(name="primaryDisk", type=String.class, parameters={})
+    @Export(name="primaryDisk", refs={String.class}, tree="[0]")
     private Output<String> primaryDisk;
 
     /**
@@ -94,7 +94,7 @@ public class DiskAsyncReplication extends com.pulumi.resources.CustomResource {
      * The `secondary_disk` block includes:
      * 
      */
-    @Export(name="secondaryDisk", type=DiskAsyncReplicationSecondaryDisk.class, parameters={})
+    @Export(name="secondaryDisk", refs={DiskAsyncReplicationSecondaryDisk.class}, tree="[0]")
     private Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk;
 
     /**

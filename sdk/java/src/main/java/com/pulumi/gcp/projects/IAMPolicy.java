@@ -348,7 +348,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the project&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -369,7 +369,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * organization-level access.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -391,7 +391,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * inferred from the provider.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

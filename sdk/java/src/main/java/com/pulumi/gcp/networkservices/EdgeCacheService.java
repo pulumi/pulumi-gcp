@@ -506,7 +506,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * A human-readable description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -531,7 +531,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
      * 
      */
-    @Export(name="disableHttp2", type=Boolean.class, parameters={})
+    @Export(name="disableHttp2", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableHttp2;
 
     /**
@@ -547,7 +547,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * HTTP/3 (IETF QUIC) and Google QUIC are enabled by default.
      * 
      */
-    @Export(name="disableQuic", type=Boolean.class, parameters={})
+    @Export(name="disableQuic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableQuic;
 
     /**
@@ -561,7 +561,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * Resource URL that points at the Cloud Armor edge security policy that is applied on each request against the EdgeCacheService.
      * 
      */
-    @Export(name="edgeSecurityPolicy", type=String.class, parameters={})
+    @Export(name="edgeSecurityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgeSecurityPolicy;
 
     /**
@@ -576,7 +576,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * Note that only &#34;global&#34; certificates with a &#34;scope&#34; of &#34;EDGE_CACHE&#34; can be attached to an EdgeCacheService.
      * 
      */
-    @Export(name="edgeSslCertificates", type=List.class, parameters={String.class})
+    @Export(name="edgeSslCertificates", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> edgeSslCertificates;
 
     /**
@@ -591,7 +591,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
      * 
      */
-    @Export(name="ipv4Addresses", type=List.class, parameters={String.class})
+    @Export(name="ipv4Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv4Addresses;
 
     /**
@@ -605,7 +605,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
      * 
      */
-    @Export(name="ipv6Addresses", type=List.class, parameters={String.class})
+    @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
     /**
@@ -619,7 +619,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the EdgeCache resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -634,7 +634,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="logConfig", type=EdgeCacheServiceLogConfig.class, parameters={})
+    @Export(name="logConfig", refs={EdgeCacheServiceLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ EdgeCacheServiceLogConfig> logConfig;
 
     /**
@@ -651,7 +651,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * and all following characters must be a dash, underscore, letter or digit.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -668,7 +668,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -685,7 +685,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * You must have at least one (1) edgeSslCertificate specified to enable this.
      * 
      */
-    @Export(name="requireTls", type=Boolean.class, parameters={})
+    @Export(name="requireTls", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requireTls;
 
     /**
@@ -702,7 +702,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="routing", type=EdgeCacheServiceRouting.class, parameters={})
+    @Export(name="routing", refs={EdgeCacheServiceRouting.class}, tree="[0]")
     private Output<EdgeCacheServiceRouting> routing;
 
     /**
@@ -718,7 +718,7 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
      * If not set, the EdgeCacheService has no SSL policy configured, and will default to the &#34;COMPATIBLE&#34; policy.
      * 
      */
-    @Export(name="sslPolicy", type=String.class, parameters={})
+    @Export(name="sslPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslPolicy;
 
     /**

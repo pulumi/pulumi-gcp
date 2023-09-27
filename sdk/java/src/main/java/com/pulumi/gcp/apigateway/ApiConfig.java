@@ -105,7 +105,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="api", type=String.class, parameters={})
+    @Export(name="api", refs={String.class}, tree="[0]")
     private Output<String> api;
 
     /**
@@ -121,7 +121,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
      * 
      */
-    @Export(name="apiConfigId", type=String.class, parameters={})
+    @Export(name="apiConfigId", refs={String.class}, tree="[0]")
     private Output<String> apiConfigId;
 
     /**
@@ -136,7 +136,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
      * 
      */
-    @Export(name="apiConfigIdPrefix", type=String.class, parameters={})
+    @Export(name="apiConfigIdPrefix", refs={String.class}, tree="[0]")
     private Output<String> apiConfigIdPrefix;
 
     /**
@@ -151,7 +151,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * A user-visible name for the API.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -167,7 +167,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gatewayConfig", type=ApiConfigGatewayConfig.class, parameters={})
+    @Export(name="gatewayConfig", refs={ApiConfigGatewayConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApiConfigGatewayConfig> gatewayConfig;
 
     /**
@@ -184,7 +184,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="grpcServices", type=List.class, parameters={ApiConfigGrpcService.class})
+    @Export(name="grpcServices", refs={List.class,ApiConfigGrpcService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApiConfigGrpcService>> grpcServices;
 
     /**
@@ -199,7 +199,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -215,7 +215,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="managedServiceConfigs", type=List.class, parameters={ApiConfigManagedServiceConfig.class})
+    @Export(name="managedServiceConfigs", refs={List.class,ApiConfigManagedServiceConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApiConfigManagedServiceConfig>> managedServiceConfigs;
 
     /**
@@ -231,7 +231,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * The resource name of the API Config.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -246,7 +246,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="openapiDocuments", type=List.class, parameters={ApiConfigOpenapiDocument.class})
+    @Export(name="openapiDocuments", refs={List.class,ApiConfigOpenapiDocument.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApiConfigOpenapiDocument>> openapiDocuments;
 
     /**
@@ -262,7 +262,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -277,7 +277,7 @@ public class ApiConfig extends com.pulumi.resources.CustomResource {
      * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
      * 
      */
-    @Export(name="serviceConfigId", type=String.class, parameters={})
+    @Export(name="serviceConfigId", refs={String.class}, tree="[0]")
     private Output<String> serviceConfigId;
 
     /**

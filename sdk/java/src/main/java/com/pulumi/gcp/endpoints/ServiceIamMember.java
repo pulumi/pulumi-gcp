@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:endpoints/serviceIamMember:ServiceIamMember")
 public class ServiceIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=ServiceIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={ServiceIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ ServiceIamMemberCondition> condition;
 
     public Output<Optional<ServiceIamMemberCondition>> condition() {
@@ -171,7 +171,7 @@ public class ServiceIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -181,7 +181,7 @@ public class ServiceIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -193,7 +193,7 @@ public class ServiceIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -205,7 +205,7 @@ public class ServiceIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     public Output<String> serviceName() {

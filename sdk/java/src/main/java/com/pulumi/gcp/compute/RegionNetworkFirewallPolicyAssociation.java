@@ -80,7 +80,7 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      * The target that the firewall policy is attached to.
      * 
      */
-    @Export(name="attachmentTarget", type=String.class, parameters={})
+    @Export(name="attachmentTarget", refs={String.class}, tree="[0]")
     private Output<String> attachmentTarget;
 
     /**
@@ -94,7 +94,7 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      * The firewall policy ID of the association.
      * 
      */
-    @Export(name="firewallPolicy", type=String.class, parameters={})
+    @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
 
     /**
@@ -110,7 +110,7 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -126,7 +126,7 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -140,7 +140,7 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      * The location of this resource.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -154,7 +154,7 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
      * The short name of the firewall policy of the association.
      * 
      */
-    @Export(name="shortName", type=String.class, parameters={})
+    @Export(name="shortName", refs={String.class}, tree="[0]")
     private Output<String> shortName;
 
     /**

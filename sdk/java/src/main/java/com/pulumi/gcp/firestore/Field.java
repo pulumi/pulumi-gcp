@@ -173,7 +173,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * The id of the collection group to configure.
      * 
      */
-    @Export(name="collection", type=String.class, parameters={})
+    @Export(name="collection", refs={String.class}, tree="[0]")
     private Output<String> collection;
 
     /**
@@ -187,7 +187,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> database;
 
     /**
@@ -203,7 +203,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="field", type=String.class, parameters={})
+    @Export(name="field", refs={String.class}, tree="[0]")
     private Output<String> field;
 
     /**
@@ -223,7 +223,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="indexConfig", type=FieldIndexConfig.class, parameters={})
+    @Export(name="indexConfig", refs={FieldIndexConfig.class}, tree="[0]")
     private Output</* @Nullable */ FieldIndexConfig> indexConfig;
 
     /**
@@ -242,7 +242,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -258,7 +258,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -274,7 +274,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="ttlConfig", type=FieldTtlConfig.class, parameters={})
+    @Export(name="ttlConfig", refs={FieldTtlConfig.class}, tree="[0]")
     private Output</* @Nullable */ FieldTtlConfig> ttlConfig;
 
     /**

@@ -550,13 +550,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding")
 public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=RestorePlanIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={RestorePlanIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ RestorePlanIamBindingCondition> condition;
 
     public Output<Optional<RestorePlanIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
@@ -566,7 +566,7 @@ public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
      * The region of the Restore Plan.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -576,7 +576,7 @@ public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -586,7 +586,7 @@ public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
      * The full name of the BackupPlan Resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -601,7 +601,7 @@ public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -612,7 +612,7 @@ public class RestorePlanIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     public Output<String> role() {

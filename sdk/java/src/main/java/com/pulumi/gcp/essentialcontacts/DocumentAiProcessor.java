@@ -79,7 +79,7 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
      * The display name. Must be unique.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -93,7 +93,7 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
      * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
      * 
      */
-    @Export(name="kmsKeyName", type=String.class, parameters={})
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -109,7 +109,7 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -125,7 +125,7 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
      * The resource name of the processor.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -155,7 +155,7 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
      * The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -164,7 +164,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="backendMetastores", type=List.class, parameters={MetastoreFederationBackendMetastore.class})
+    @Export(name="backendMetastores", refs={List.class,MetastoreFederationBackendMetastore.class}, tree="[0,1]")
     private Output<List<MetastoreFederationBackendMetastore>> backendMetastores;
 
     /**
@@ -179,7 +179,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * The URI of the endpoint used to access the metastore federation.
      * 
      */
-    @Export(name="endpointUri", type=String.class, parameters={})
+    @Export(name="endpointUri", refs={String.class}, tree="[0]")
     private Output<String> endpointUri;
 
     /**
@@ -195,7 +195,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * 3 and 63 characters.
      * 
      */
-    @Export(name="federationId", type=String.class, parameters={})
+    @Export(name="federationId", refs={String.class}, tree="[0]")
     private Output<String> federationId;
 
     /**
@@ -211,7 +211,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * User-defined labels for the metastore federation.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -225,7 +225,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * The location where the metastore federation should reside.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -239,7 +239,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -254,7 +254,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -269,7 +269,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * The current state of the metastore federation.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -283,7 +283,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * Additional information about the current state of the metastore federation, if available.
      * 
      */
-    @Export(name="stateMessage", type=String.class, parameters={})
+    @Export(name="stateMessage", refs={String.class}, tree="[0]")
     private Output<String> stateMessage;
 
     /**
@@ -297,7 +297,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * The globally unique resource identifier of the metastore federation.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -311,7 +311,7 @@ public class MetastoreFederation extends com.pulumi.resources.CustomResource {
      * The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

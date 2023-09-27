@@ -77,7 +77,7 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
      * An expiration time in microseconds since epoch.
      * 
      */
-    @Export(name="expirationTimeUsec", type=String.class, parameters={})
+    @Export(name="expirationTimeUsec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expirationTimeUsec;
 
     /**
@@ -91,7 +91,7 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
      * The SHA-256 fingerprint of the SSH public key.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -105,7 +105,7 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
      * Public key text in SSH format, defined by RFC4253 section 6.6.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -119,7 +119,7 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
      * The project ID of the Google Cloud Platform project.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> project;
 
     /**
@@ -135,7 +135,7 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**

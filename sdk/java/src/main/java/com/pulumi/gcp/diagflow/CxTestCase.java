@@ -222,7 +222,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * When the test was created. A timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTime", type=String.class, parameters={})
+    @Export(name="creationTime", refs={String.class}, tree="[0]")
     private Output<String> creationTime;
 
     /**
@@ -238,7 +238,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -255,7 +255,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="lastTestResults", type=List.class, parameters={CxTestCaseLastTestResult.class})
+    @Export(name="lastTestResults", refs={List.class,CxTestCaseLastTestResult.class}, tree="[0,1]")
     private Output<List<CxTestCaseLastTestResult>> lastTestResults;
 
     /**
@@ -275,7 +275,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -294,7 +294,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Additional freeform notes about the test case. Limit of 400 characters.
      * 
      */
-    @Export(name="notes", type=String.class, parameters={})
+    @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
@@ -309,7 +309,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -325,7 +325,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Each tag should start with &#34;#&#34; and has a limit of 30 characters
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -341,7 +341,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="testCaseConversationTurns", type=List.class, parameters={CxTestCaseTestCaseConversationTurn.class})
+    @Export(name="testCaseConversationTurns", refs={List.class,CxTestCaseTestCaseConversationTurn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CxTestCaseTestCaseConversationTurn>> testCaseConversationTurns;
 
     /**
@@ -357,7 +357,7 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="testConfig", type=CxTestCaseTestConfig.class, parameters={})
+    @Export(name="testConfig", refs={CxTestCaseTestConfig.class}, tree="[0]")
     private Output</* @Nullable */ CxTestCaseTestConfig> testConfig;
 
     /**

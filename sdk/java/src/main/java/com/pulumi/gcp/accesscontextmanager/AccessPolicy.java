@@ -118,7 +118,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Time the AccessPolicy was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -132,7 +132,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Resource name of the AccessPolicy. Format: {policy_id}
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -147,7 +147,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Format: organizations/{organization_id}
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -163,7 +163,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Format: folders/{{folder_id}} or projects/{{project_id}}
      * 
      */
-    @Export(name="scopes", type=String.class, parameters={})
+    @Export(name="scopes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scopes;
 
     /**
@@ -180,7 +180,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
@@ -196,7 +196,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Time the AccessPolicy was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -547,7 +547,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy")
 public class RestorePlanIamPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
@@ -557,7 +557,7 @@ public class RestorePlanIamPolicy extends com.pulumi.resources.CustomResource {
      * The region of the Restore Plan.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -571,7 +571,7 @@ public class RestorePlanIamPolicy extends com.pulumi.resources.CustomResource {
      * The full name of the BackupPlan Resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -581,7 +581,7 @@ public class RestorePlanIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     public Output<String> policyData() {
@@ -592,7 +592,7 @@ public class RestorePlanIamPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

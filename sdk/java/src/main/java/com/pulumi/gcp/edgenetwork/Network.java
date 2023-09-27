@@ -94,7 +94,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -110,7 +110,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -124,7 +124,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Labels associated with this resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -138,7 +138,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -152,7 +152,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * IP (L3) MTU value of the network. Default value is `1500`. Possible values are: `1500`, `9000`.
      * 
      */
-    @Export(name="mtu", type=Integer.class, parameters={})
+    @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> mtu;
 
     /**
@@ -167,7 +167,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -184,7 +184,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="networkId", type=String.class, parameters={})
+    @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
@@ -201,7 +201,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -218,7 +218,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -234,7 +234,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The name of the target Distributed Cloud Edge zone.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

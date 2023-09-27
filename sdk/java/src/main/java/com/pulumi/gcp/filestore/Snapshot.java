@@ -146,7 +146,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The time when the snapshot was created in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -160,7 +160,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The amount of bytes needed to allocate a full copy of the snapshot content.
      * 
      */
-    @Export(name="filesystemUsedBytes", type=String.class, parameters={})
+    @Export(name="filesystemUsedBytes", refs={String.class}, tree="[0]")
     private Output<String> filesystemUsedBytes;
 
     /**
@@ -190,7 +190,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
@@ -206,7 +206,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -220,7 +220,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -240,7 +240,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -261,7 +261,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -276,7 +276,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The snapshot state.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

@@ -97,7 +97,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -113,7 +113,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * One or more paragraphs of text description of a trust config.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -127,7 +127,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the trust config.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -143,7 +143,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -159,7 +159,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * A user-defined name of the trust config. Trust config names must be unique globally.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -174,7 +174,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -191,7 +191,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="trustStores", type=List.class, parameters={TrustConfigTrustStore.class})
+    @Export(name="trustStores", refs={List.class,TrustConfigTrustStore.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TrustConfigTrustStore>> trustStores;
 
     /**
@@ -209,7 +209,7 @@ public class TrustConfig extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -104,7 +104,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The amount of bytes needed to allocate a full copy of the snapshot content.
      * 
      */
-    @Export(name="capacityGb", type=String.class, parameters={})
+    @Export(name="capacityGb", refs={String.class}, tree="[0]")
     private Output<String> capacityGb;
 
     /**
@@ -118,7 +118,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The time when the snapshot was created in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -132,7 +132,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -146,7 +146,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Amount of bytes that will be downloaded if the backup is restored.
      * 
      */
-    @Export(name="downloadBytes", type=String.class, parameters={})
+    @Export(name="downloadBytes", refs={String.class}, tree="[0]")
     private Output<String> downloadBytes;
 
     /**
@@ -160,7 +160,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * KMS key name used for data encryption.
      * 
      */
-    @Export(name="kmsKeyName", type=String.class, parameters={})
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyName;
 
     /**
@@ -174,7 +174,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -190,7 +190,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -212,7 +212,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -233,7 +233,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -248,7 +248,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      * 
      */
-    @Export(name="sourceFileShare", type=String.class, parameters={})
+    @Export(name="sourceFileShare", refs={String.class}, tree="[0]")
     private Output<String> sourceFileShare;
 
     /**
@@ -262,7 +262,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
      * 
      */
-    @Export(name="sourceInstance", type=String.class, parameters={})
+    @Export(name="sourceInstance", refs={String.class}, tree="[0]")
     private Output<String> sourceInstance;
 
     /**
@@ -276,7 +276,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The service tier of the source Cloud Filestore instance that this backup is created from.
      * 
      */
-    @Export(name="sourceInstanceTier", type=String.class, parameters={})
+    @Export(name="sourceInstanceTier", refs={String.class}, tree="[0]")
     private Output<String> sourceInstanceTier;
 
     /**
@@ -290,7 +290,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The backup state.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -304,7 +304,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      * 
      */
-    @Export(name="storageBytes", type=String.class, parameters={})
+    @Export(name="storageBytes", refs={String.class}, tree="[0]")
     private Output<String> storageBytes;
 
     /**

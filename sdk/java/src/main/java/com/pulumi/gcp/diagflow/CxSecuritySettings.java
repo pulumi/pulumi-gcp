@@ -178,7 +178,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="audioExportSettings", type=CxSecuritySettingsAudioExportSettings.class, parameters={})
+    @Export(name="audioExportSettings", refs={CxSecuritySettingsAudioExportSettings.class}, tree="[0]")
     private Output</* @Nullable */ CxSecuritySettingsAudioExportSettings> audioExportSettings;
 
     /**
@@ -198,7 +198,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/deidentifyTemplates/&lt;Template ID&gt; OR organizations/&lt;Organization ID&gt;/locations/&lt;Location ID&gt;/deidentifyTemplates/&lt;Template ID&gt;
      * 
      */
-    @Export(name="deidentifyTemplate", type=String.class, parameters={})
+    @Export(name="deidentifyTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deidentifyTemplate;
 
     /**
@@ -216,7 +216,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -234,7 +234,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="insightsExportSettings", type=CxSecuritySettingsInsightsExportSettings.class, parameters={})
+    @Export(name="insightsExportSettings", refs={CxSecuritySettingsInsightsExportSettings.class}, tree="[0]")
     private Output</* @Nullable */ CxSecuritySettingsInsightsExportSettings> insightsExportSettings;
 
     /**
@@ -252,7 +252,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/inspectTemplates/&lt;Template ID&gt; OR organizations/&lt;Organization ID&gt;/locations/&lt;Location ID&gt;/inspectTemplates/&lt;Template ID&gt;
      * 
      */
-    @Export(name="inspectTemplate", type=String.class, parameters={})
+    @Export(name="inspectTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inspectTemplate;
 
     /**
@@ -269,7 +269,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -285,7 +285,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -301,7 +301,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -317,7 +317,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Each value may be one of: `DIALOGFLOW_HISTORY`.
      * 
      */
-    @Export(name="purgeDataTypes", type=List.class, parameters={String.class})
+    @Export(name="purgeDataTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> purgeDataTypes;
 
     /**
@@ -334,7 +334,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      *   Possible values are: `REDACT_DISK_STORAGE`.
      * 
      */
-    @Export(name="redactionScope", type=String.class, parameters={})
+    @Export(name="redactionScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redactionScope;
 
     /**
@@ -352,7 +352,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      *   Possible values are: `REDACT_WITH_SERVICE`.
      * 
      */
-    @Export(name="redactionStrategy", type=String.class, parameters={})
+    @Export(name="redactionStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redactionStrategy;
 
     /**
@@ -370,7 +370,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      *   Possible values are: `REMOVE_AFTER_CONVERSATION`.
      * 
      */
-    @Export(name="retentionStrategy", type=String.class, parameters={})
+    @Export(name="retentionStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> retentionStrategy;
 
     /**
@@ -387,7 +387,7 @@ public class CxSecuritySettings extends com.pulumi.resources.CustomResource {
      * Only one of `retention_window_days` and `retention_strategy` may be set.
      * 
      */
-    @Export(name="retentionWindowDays", type=Integer.class, parameters={})
+    @Export(name="retentionWindowDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionWindowDays;
 
     /**

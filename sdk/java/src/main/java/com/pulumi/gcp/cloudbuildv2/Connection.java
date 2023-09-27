@@ -215,7 +215,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Allows clients to store small amounts of arbitrary data.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -229,7 +229,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned timestamp for when the connection was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -243,7 +243,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -257,7 +257,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -271,7 +271,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Configuration for connections to github.com.
      * 
      */
-    @Export(name="githubConfig", type=ConnectionGithubConfig.class, parameters={})
+    @Export(name="githubConfig", refs={ConnectionGithubConfig.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionGithubConfig> githubConfig;
 
     /**
@@ -285,7 +285,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Configuration for connections to an instance of GitHub Enterprise.
      * 
      */
-    @Export(name="githubEnterpriseConfig", type=ConnectionGithubEnterpriseConfig.class, parameters={})
+    @Export(name="githubEnterpriseConfig", refs={ConnectionGithubEnterpriseConfig.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionGithubEnterpriseConfig> githubEnterpriseConfig;
 
     /**
@@ -299,7 +299,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
      * 
      */
-    @Export(name="gitlabConfig", type=ConnectionGitlabConfig.class, parameters={})
+    @Export(name="gitlabConfig", refs={ConnectionGitlabConfig.class}, tree="[0]")
     private Output</* @Nullable */ ConnectionGitlabConfig> gitlabConfig;
 
     /**
@@ -313,7 +313,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Output only. Installation state of the Connection.
      * 
      */
-    @Export(name="installationStates", type=List.class, parameters={ConnectionInstallationState.class})
+    @Export(name="installationStates", refs={List.class,ConnectionInstallationState.class}, tree="[0,1]")
     private Output<List<ConnectionInstallationState>> installationStates;
 
     /**
@@ -327,7 +327,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -341,7 +341,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -355,7 +355,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -369,7 +369,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Output only. Set to true when the connection is being set up or updated in the background.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -383,7 +383,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned timestamp for when the connection was updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

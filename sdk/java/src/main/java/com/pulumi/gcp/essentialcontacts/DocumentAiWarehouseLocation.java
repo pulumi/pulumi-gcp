@@ -75,7 +75,7 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
      * 
      */
-    @Export(name="accessControlMode", type=String.class, parameters={})
+    @Export(name="accessControlMode", refs={String.class}, tree="[0]")
     private Output<String> accessControlMode;
 
     /**
@@ -91,7 +91,7 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * Possible values are: `DB_INFRA_SPANNER`, `DB_CLOUD_SQL_POSTGRES`.
      * 
      */
-    @Export(name="databaseType", type=String.class, parameters={})
+    @Export(name="databaseType", refs={String.class}, tree="[0]")
     private Output<String> databaseType;
 
     /**
@@ -107,7 +107,7 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
      * 
      */
-    @Export(name="documentCreatorDefaultRole", type=String.class, parameters={})
+    @Export(name="documentCreatorDefaultRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> documentCreatorDefaultRole;
 
     /**
@@ -126,7 +126,7 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * encryption will be enforced.
      * 
      */
-    @Export(name="kmsKey", type=String.class, parameters={})
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKey;
 
     /**
@@ -146,7 +146,7 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -162,7 +162,7 @@ public class DocumentAiWarehouseLocation extends com.pulumi.resources.CustomReso
      * The unique identifier of the project.
      * 
      */
-    @Export(name="projectNumber", type=String.class, parameters={})
+    @Export(name="projectNumber", refs={String.class}, tree="[0]")
     private Output<String> projectNumber;
 
     /**

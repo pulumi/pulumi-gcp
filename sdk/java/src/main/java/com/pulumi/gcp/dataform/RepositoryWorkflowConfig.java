@@ -184,7 +184,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      * 
      */
-    @Export(name="cronSchedule", type=String.class, parameters={})
+    @Export(name="cronSchedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cronSchedule;
 
     /**
@@ -199,7 +199,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="invocationConfig", type=RepositoryWorkflowConfigInvocationConfig.class, parameters={})
+    @Export(name="invocationConfig", refs={RepositoryWorkflowConfigInvocationConfig.class}, tree="[0]")
     private Output</* @Nullable */ RepositoryWorkflowConfigInvocationConfig> invocationConfig;
 
     /**
@@ -214,7 +214,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * The workflow&#39;s name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -229,7 +229,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -245,7 +245,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="recentScheduledExecutionRecords", type=List.class, parameters={RepositoryWorkflowConfigRecentScheduledExecutionRecord.class})
+    @Export(name="recentScheduledExecutionRecords", refs={List.class,RepositoryWorkflowConfigRecentScheduledExecutionRecord.class}, tree="[0,1]")
     private Output<List<RepositoryWorkflowConfigRecentScheduledExecutionRecord>> recentScheduledExecutionRecords;
 
     /**
@@ -260,7 +260,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * A reference to the region
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -276,7 +276,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * ***
      * 
      */
-    @Export(name="releaseConfig", type=String.class, parameters={})
+    @Export(name="releaseConfig", refs={String.class}, tree="[0]")
     private Output<String> releaseConfig;
 
     /**
@@ -292,7 +292,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * A reference to the Dataform repository
      * 
      */
-    @Export(name="repository", type=String.class, parameters={})
+    @Export(name="repository", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repository;
 
     /**
@@ -306,7 +306,7 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      * 
      */
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeZone;
 
     /**

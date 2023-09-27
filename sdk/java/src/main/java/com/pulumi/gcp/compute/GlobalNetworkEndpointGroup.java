@@ -115,7 +115,7 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * network endpoint.
      * 
      */
-    @Export(name="defaultPort", type=Integer.class, parameters={})
+    @Export(name="defaultPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> defaultPort;
 
     /**
@@ -131,7 +131,7 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * you create the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -152,7 +152,7 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -175,7 +175,7 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="networkEndpointType", type=String.class, parameters={})
+    @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
     private Output<String> networkEndpointType;
 
     /**
@@ -193,7 +193,7 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -208,7 +208,7 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**

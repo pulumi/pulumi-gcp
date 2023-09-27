@@ -37,7 +37,7 @@ public class EgressPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="egressPolicyName", type=String.class, parameters={})
+    @Export(name="egressPolicyName", refs={String.class}, tree="[0]")
     private Output<String> egressPolicyName;
 
     /**
@@ -53,7 +53,7 @@ public class EgressPolicy extends com.pulumi.resources.CustomResource {
      * A GCP resource that is inside of the service perimeter.
      * 
      */
-    @Export(name="resource", type=String.class, parameters={})
+    @Export(name="resource", refs={String.class}, tree="[0]")
     private Output<String> resource;
 
     /**

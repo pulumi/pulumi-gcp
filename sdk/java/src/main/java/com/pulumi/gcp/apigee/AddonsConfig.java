@@ -198,7 +198,7 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="addonsConfig", type=AddonsConfigAddonsConfig.class, parameters={})
+    @Export(name="addonsConfig", refs={AddonsConfigAddonsConfig.class}, tree="[0]")
     private Output</* @Nullable */ AddonsConfigAddonsConfig> addonsConfig;
 
     /**
@@ -215,7 +215,7 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="org", type=String.class, parameters={})
+    @Export(name="org", refs={String.class}, tree="[0]")
     private Output<String> org;
 
     /**

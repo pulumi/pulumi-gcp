@@ -81,7 +81,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
      * 
      */
-    @Export(name="assignee", type=String.class, parameters={})
+    @Export(name="assignee", refs={String.class}, tree="[0]")
     private Output<String> assignee;
 
     /**
@@ -95,7 +95,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY
      * 
      */
-    @Export(name="jobType", type=String.class, parameters={})
+    @Export(name="jobType", refs={String.class}, tree="[0]")
     private Output<String> jobType;
 
     /**
@@ -109,7 +109,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -123,7 +123,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * Output only. The resource name of the assignment.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -153,7 +153,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="reservation", type=String.class, parameters={})
+    @Export(name="reservation", refs={String.class}, tree="[0]")
     private Output<String> reservation;
 
     /**
@@ -169,7 +169,7 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

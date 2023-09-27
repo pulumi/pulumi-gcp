@@ -142,7 +142,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="csvOptions", type=InsightsReportConfigCsvOptions.class, parameters={})
+    @Export(name="csvOptions", refs={InsightsReportConfigCsvOptions.class}, tree="[0]")
     private Output<InsightsReportConfigCsvOptions> csvOptions;
 
     /**
@@ -157,7 +157,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -172,7 +172,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="frequencyOptions", type=InsightsReportConfigFrequencyOptions.class, parameters={})
+    @Export(name="frequencyOptions", refs={InsightsReportConfigFrequencyOptions.class}, tree="[0]")
     private Output</* @Nullable */ InsightsReportConfigFrequencyOptions> frequencyOptions;
 
     /**
@@ -188,7 +188,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * must be in the same location.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -203,7 +203,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * The UUID of the inventory report configuration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -218,7 +218,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="objectMetadataReportOptions", type=InsightsReportConfigObjectMetadataReportOptions.class, parameters={})
+    @Export(name="objectMetadataReportOptions", refs={InsightsReportConfigObjectMetadataReportOptions.class}, tree="[0]")
     private Output</* @Nullable */ InsightsReportConfigObjectMetadataReportOptions> objectMetadataReportOptions;
 
     /**
@@ -234,7 +234,7 @@ public class InsightsReportConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

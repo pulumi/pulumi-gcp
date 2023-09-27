@@ -43,7 +43,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Alias Name
      * 
      */
-    @Export(name="alias", type=String.class, parameters={})
+    @Export(name="alias", refs={String.class}, tree="[0]")
     private Output<String> alias;
 
     /**
@@ -58,7 +58,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Structure is documented below.
      * 
      */
-    @Export(name="certsInfos", type=List.class, parameters={KeystoresAliasesPkcs12CertsInfo.class})
+    @Export(name="certsInfos", refs={List.class,KeystoresAliasesPkcs12CertsInfo.class}, tree="[0,1]")
     private Output<List<KeystoresAliasesPkcs12CertsInfo>> certsInfos;
 
     /**
@@ -73,7 +73,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Environment associated with the alias
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -89,7 +89,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * ***
      * 
      */
-    @Export(name="file", type=String.class, parameters={})
+    @Export(name="file", refs={String.class}, tree="[0]")
     private Output<String> file;
 
     /**
@@ -105,7 +105,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Hash of the pkcs file
      * 
      */
-    @Export(name="filehash", type=String.class, parameters={})
+    @Export(name="filehash", refs={String.class}, tree="[0]")
     private Output<String> filehash;
 
     /**
@@ -119,7 +119,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Keystore Name
      * 
      */
-    @Export(name="keystore", type=String.class, parameters={})
+    @Export(name="keystore", refs={String.class}, tree="[0]")
     private Output<String> keystore;
 
     /**
@@ -133,7 +133,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Organization ID associated with the alias, without organization/ prefix
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -147,7 +147,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Password for the PKCS12 file if it&#39;s encrypted
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -161,7 +161,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
      * Optional.Type of Alias
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

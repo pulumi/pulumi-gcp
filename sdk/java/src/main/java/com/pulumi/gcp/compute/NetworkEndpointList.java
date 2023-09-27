@@ -165,7 +165,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="networkEndpointGroup", type=String.class, parameters={})
+    @Export(name="networkEndpointGroup", refs={String.class}, tree="[0]")
     private Output<String> networkEndpointGroup;
 
     /**
@@ -184,7 +184,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkEndpoints", type=List.class, parameters={NetworkEndpointListNetworkEndpoint.class})
+    @Export(name="networkEndpoints", refs={List.class,NetworkEndpointListNetworkEndpoint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkEndpointListNetworkEndpoint>> networkEndpoints;
 
     /**
@@ -202,7 +202,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -217,7 +217,7 @@ public class NetworkEndpointList extends com.pulumi.resources.CustomResource {
      * Zone where the containing network endpoint group is located.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

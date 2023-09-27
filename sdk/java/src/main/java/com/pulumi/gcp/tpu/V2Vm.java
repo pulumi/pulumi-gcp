@@ -123,7 +123,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * TPU accelerator type for the TPU. If not specified, this defaults to &#39;v2-8&#39;.
      * 
      */
-    @Export(name="acceleratorType", type=String.class, parameters={})
+    @Export(name="acceleratorType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acceleratorType;
 
     /**
@@ -137,7 +137,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * Text description of the TPU.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -151,7 +151,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * The immutable name of the TPU.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -166,7 +166,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -183,7 +183,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="runtimeVersion", type=String.class, parameters={})
+    @Export(name="runtimeVersion", refs={String.class}, tree="[0]")
     private Output<String> runtimeVersion;
 
     /**
@@ -199,7 +199,7 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

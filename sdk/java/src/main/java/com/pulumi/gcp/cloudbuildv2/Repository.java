@@ -225,7 +225,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Allows clients to store small amounts of arbitrary data.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -239,7 +239,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned timestamp for when the connection was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -253,7 +253,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -267,7 +267,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -281,7 +281,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Name of the repository.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -295,7 +295,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The connection for the resource
      * 
      */
-    @Export(name="parentConnection", type=String.class, parameters={})
+    @Export(name="parentConnection", refs={String.class}, tree="[0]")
     private Output<String> parentConnection;
 
     /**
@@ -309,7 +309,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -325,7 +325,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="remoteUri", type=String.class, parameters={})
+    @Export(name="remoteUri", refs={String.class}, tree="[0]")
     private Output<String> remoteUri;
 
     /**
@@ -341,7 +341,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned timestamp for when the connection was updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

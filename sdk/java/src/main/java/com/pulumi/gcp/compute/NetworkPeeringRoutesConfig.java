@@ -186,7 +186,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * Whether to export the custom routes to the peer network.
      * 
      */
-    @Export(name="exportCustomRoutes", type=Boolean.class, parameters={})
+    @Export(name="exportCustomRoutes", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> exportCustomRoutes;
 
     /**
@@ -200,7 +200,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * Whether to import the custom routes to the peer network.
      * 
      */
-    @Export(name="importCustomRoutes", type=Boolean.class, parameters={})
+    @Export(name="importCustomRoutes", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> importCustomRoutes;
 
     /**
@@ -216,7 +216,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -232,7 +232,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * Name of the peering.
      * 
      */
-    @Export(name="peering", type=String.class, parameters={})
+    @Export(name="peering", refs={String.class}, tree="[0]")
     private Output<String> peering;
 
     /**
@@ -247,7 +247,7 @@ public class NetworkPeeringRoutesConfig extends com.pulumi.resources.CustomResou
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

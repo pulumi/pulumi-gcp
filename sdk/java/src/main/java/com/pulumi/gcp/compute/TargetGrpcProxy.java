@@ -173,7 +173,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -187,7 +187,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -207,7 +207,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * request to retrieve the TargetGrpcProxy. A base64-encoded string.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -235,7 +235,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -258,7 +258,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -273,7 +273,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -287,7 +287,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * Server-defined URL with id for the resource.
      * 
      */
-    @Export(name="selfLinkWithId", type=String.class, parameters={})
+    @Export(name="selfLinkWithId", refs={String.class}, tree="[0]")
     private Output<String> selfLinkWithId;
 
     /**
@@ -303,7 +303,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * must be set to GRPC.
      * 
      */
-    @Export(name="urlMap", type=String.class, parameters={})
+    @Export(name="urlMap", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> urlMap;
 
     /**
@@ -328,7 +328,7 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
      * it is connecting to
      * 
      */
-    @Export(name="validateForProxyless", type=Boolean.class, parameters={})
+    @Export(name="validateForProxyless", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> validateForProxyless;
 
     /**

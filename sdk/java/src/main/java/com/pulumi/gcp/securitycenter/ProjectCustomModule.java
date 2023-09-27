@@ -157,7 +157,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * specifies the organization or folder from which the custom module is inherited.
      * 
      */
-    @Export(name="ancestorModule", type=String.class, parameters={})
+    @Export(name="ancestorModule", refs={String.class}, tree="[0]")
     private Output<String> ancestorModule;
 
     /**
@@ -174,7 +174,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="customConfig", type=ProjectCustomModuleCustomConfig.class, parameters={})
+    @Export(name="customConfig", refs={ProjectCustomModuleCustomConfig.class}, tree="[0]")
     private Output<ProjectCustomModuleCustomConfig> customConfig;
 
     /**
@@ -193,7 +193,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * characters or underscores only.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -212,7 +212,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
-    @Export(name="enablementState", type=String.class, parameters={})
+    @Export(name="enablementState", refs={String.class}, tree="[0]")
     private Output<String> enablementState;
 
     /**
@@ -227,7 +227,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * The editor that last updated the custom module.
      * 
      */
-    @Export(name="lastEditor", type=String.class, parameters={})
+    @Export(name="lastEditor", refs={String.class}, tree="[0]")
     private Output<String> lastEditor;
 
     /**
@@ -241,7 +241,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * Name of the property for the custom output.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -256,7 +256,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -273,7 +273,7 @@ public class ProjectCustomModule extends com.pulumi.resources.CustomResource {
      * up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

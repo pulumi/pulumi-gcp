@@ -131,7 +131,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -146,7 +146,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -160,7 +160,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Number of jobs.
      * 
      */
-    @Export(name="jobCount", type=Integer.class, parameters={})
+    @Export(name="jobCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> jobCount;
 
     /**
@@ -175,7 +175,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="lastUpdateTime", type=String.class, parameters={})
+    @Export(name="lastUpdateTime", refs={String.class}, tree="[0]")
     private Output<String> lastUpdateTime;
 
     /**
@@ -193,7 +193,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * &#34;PIPELINE_ID is the ID of the pipeline. Must be unique for the selected project and location.&#34;
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -211,7 +211,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="pipelineSources", type=Map.class, parameters={String.class, String.class})
+    @Export(name="pipelineSources", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> pipelineSources;
 
     /**
@@ -227,7 +227,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -242,7 +242,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * A reference to the region
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -258,7 +258,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="scheduleInfo", type=PipelineScheduleInfo.class, parameters={})
+    @Export(name="scheduleInfo", refs={PipelineScheduleInfo.class}, tree="[0]")
     private Output</* @Nullable */ PipelineScheduleInfo> scheduleInfo;
 
     /**
@@ -274,7 +274,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
      * 
      */
-    @Export(name="schedulerServiceAccountEmail", type=String.class, parameters={})
+    @Export(name="schedulerServiceAccountEmail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedulerServiceAccountEmail;
 
     /**
@@ -292,7 +292,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -312,7 +312,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Possible values are: `PIPELINE_TYPE_UNSPECIFIED`, `PIPELINE_TYPE_BATCH`, `PIPELINE_TYPE_STREAMING`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -330,7 +330,7 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="workload", type=PipelineWorkload.class, parameters={})
+    @Export(name="workload", refs={PipelineWorkload.class}, tree="[0]")
     private Output</* @Nullable */ PipelineWorkload> workload;
 
     /**

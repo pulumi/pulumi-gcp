@@ -205,7 +205,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The ID of the alloydb backup.
      * 
      */
-    @Export(name="backupId", type=String.class, parameters={})
+    @Export(name="backupId", refs={String.class}, tree="[0]")
     private Output<String> backupId;
 
     /**
@@ -219,7 +219,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -233,7 +233,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Time the Backup was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -247,7 +247,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * User-provided description of the backup.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -262,7 +262,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionConfig", type=BackupEncryptionConfig.class, parameters={})
+    @Export(name="encryptionConfig", refs={BackupEncryptionConfig.class}, tree="[0]")
     private Output</* @Nullable */ BackupEncryptionConfig> encryptionConfig;
 
     /**
@@ -278,7 +278,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionInfos", type=List.class, parameters={BackupEncryptionInfo.class})
+    @Export(name="encryptionInfos", refs={List.class,BackupEncryptionInfo.class}, tree="[0,1]")
     private Output<List<BackupEncryptionInfo>> encryptionInfos;
 
     /**
@@ -293,7 +293,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * A hash of the resource.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -307,7 +307,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * User-defined labels for the alloydb backup.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -323,7 +323,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -339,7 +339,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -354,7 +354,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -369,7 +369,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -383,7 +383,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * The current state of the backup.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -397,7 +397,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -411,7 +411,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * Time the Backup was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

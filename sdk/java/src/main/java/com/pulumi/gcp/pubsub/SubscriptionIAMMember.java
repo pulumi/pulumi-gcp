@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember")
 public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=SubscriptionIAMMemberCondition.class, parameters={})
+    @Export(name="condition", refs={SubscriptionIAMMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ SubscriptionIAMMemberCondition> condition;
 
     public Output<Optional<SubscriptionIAMMemberCondition>> condition() {
@@ -163,7 +163,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the subscription&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -173,7 +173,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -184,7 +184,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -201,7 +201,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -226,7 +226,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="subscription", type=String.class, parameters={})
+    @Export(name="subscription", refs={String.class}, tree="[0]")
     private Output<String> subscription;
 
     /**

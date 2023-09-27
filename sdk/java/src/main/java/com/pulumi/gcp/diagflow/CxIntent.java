@@ -126,7 +126,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -142,7 +142,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -159,7 +159,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
      * 
      */
-    @Export(name="isFallback", type=Boolean.class, parameters={})
+    @Export(name="isFallback", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isFallback;
 
     /**
@@ -176,7 +176,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -194,7 +194,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * If not specified, the agent&#39;s default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      * 
      */
-    @Export(name="languageCode", type=String.class, parameters={})
+    @Export(name="languageCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> languageCode;
 
     /**
@@ -211,7 +211,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -227,7 +227,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={CxIntentParameter.class})
+    @Export(name="parameters", refs={List.class,CxIntentParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CxIntentParameter>> parameters;
 
     /**
@@ -243,7 +243,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -260,7 +260,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -277,7 +277,7 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="trainingPhrases", type=List.class, parameters={CxIntentTrainingPhrase.class})
+    @Export(name="trainingPhrases", refs={List.class,CxIntentTrainingPhrase.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CxIntentTrainingPhrase>> trainingPhrases;
 
     /**

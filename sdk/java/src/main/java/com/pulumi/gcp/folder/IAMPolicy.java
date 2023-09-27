@@ -348,7 +348,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the folder&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -362,7 +362,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
@@ -383,7 +383,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * folder-level access.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**

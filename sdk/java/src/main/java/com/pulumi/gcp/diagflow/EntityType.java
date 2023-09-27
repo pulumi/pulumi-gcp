@@ -98,7 +98,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * The name of this entity type to be displayed on the console.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -112,7 +112,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * Enables fuzzy entity extraction during classification.
      * 
      */
-    @Export(name="enableFuzzyExtraction", type=Boolean.class, parameters={})
+    @Export(name="enableFuzzyExtraction", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableFuzzyExtraction;
 
     /**
@@ -127,7 +127,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="entities", type=List.class, parameters={EntityTypeEntity.class})
+    @Export(name="entities", refs={List.class,EntityTypeEntity.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EntityTypeEntity>> entities;
 
     /**
@@ -149,7 +149,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -171,7 +171,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -187,7 +187,7 @@ public class EntityType extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

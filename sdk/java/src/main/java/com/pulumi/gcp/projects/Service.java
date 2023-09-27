@@ -81,7 +81,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * services depend on this service when destroying it.
      * 
      */
-    @Export(name="disableDependentServices", type=Boolean.class, parameters={})
+    @Export(name="disableDependentServices", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableDependentServices;
 
     /**
@@ -98,7 +98,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * If true, disable the service when the resource is destroyed. Defaults to true. May be useful in the event that a project is long-lived but the infrastructure running in that project changes frequently.
      * 
      */
-    @Export(name="disableOnDestroy", type=Boolean.class, parameters={})
+    @Export(name="disableOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableOnDestroy;
 
     /**
@@ -113,7 +113,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -128,7 +128,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The service to enable.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**

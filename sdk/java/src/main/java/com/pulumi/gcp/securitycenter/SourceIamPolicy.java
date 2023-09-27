@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:securitycenter/sourceIamPolicy:SourceIamPolicy")
 public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
@@ -86,7 +86,7 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="organization", type=String.class, parameters={})
+    @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
@@ -99,13 +99,13 @@ public class SourceIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> organization() {
         return this.organization;
     }
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     public Output<String> policyData() {
         return this.policyData;
     }
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     public Output<String> source() {

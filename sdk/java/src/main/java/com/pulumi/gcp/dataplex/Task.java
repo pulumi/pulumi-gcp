@@ -55,7 +55,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * The time when the task was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -69,7 +69,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * User-provided description of the task.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -83,7 +83,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * User friendly display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -98,7 +98,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="executionSpec", type=TaskExecutionSpec.class, parameters={})
+    @Export(name="executionSpec", refs={TaskExecutionSpec.class}, tree="[0]")
     private Output<TaskExecutionSpec> executionSpec;
 
     /**
@@ -114,7 +114,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="executionStatuses", type=List.class, parameters={TaskExecutionStatus.class})
+    @Export(name="executionStatuses", refs={List.class,TaskExecutionStatus.class}, tree="[0,1]")
     private Output<List<TaskExecutionStatus>> executionStatuses;
 
     /**
@@ -129,7 +129,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * User-defined labels for the task.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -143,7 +143,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * The lake in which the task will be created in.
      * 
      */
-    @Export(name="lake", type=String.class, parameters={})
+    @Export(name="lake", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lake;
 
     /**
@@ -157,7 +157,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * The location in which the task will be created in.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -172,7 +172,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -191,7 +191,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
      * 
      */
-    @Export(name="notebook", type=TaskNotebook.class, parameters={})
+    @Export(name="notebook", refs={TaskNotebook.class}, tree="[0]")
     private Output</* @Nullable */ TaskNotebook> notebook;
 
     /**
@@ -211,7 +211,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -228,7 +228,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="spark", type=TaskSpark.class, parameters={})
+    @Export(name="spark", refs={TaskSpark.class}, tree="[0]")
     private Output</* @Nullable */ TaskSpark> spark;
 
     /**
@@ -244,7 +244,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Execution state for the job.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -259,7 +259,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * The task Id of the task.
      * 
      */
-    @Export(name="taskId", type=String.class, parameters={})
+    @Export(name="taskId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> taskId;
 
     /**
@@ -274,7 +274,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="triggerSpec", type=TaskTriggerSpec.class, parameters={})
+    @Export(name="triggerSpec", refs={TaskTriggerSpec.class}, tree="[0]")
     private Output<TaskTriggerSpec> triggerSpec;
 
     /**
@@ -290,7 +290,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * System generated globally unique ID for the job.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -306,7 +306,7 @@ public class Task extends com.pulumi.resources.CustomResource {
      * Last update time of the status.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

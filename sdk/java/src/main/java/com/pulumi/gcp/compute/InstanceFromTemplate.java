@@ -102,7 +102,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Controls for advanced machine-related behavior features.
      * 
      */
-    @Export(name="advancedMachineFeatures", type=InstanceFromTemplateAdvancedMachineFeatures.class, parameters={})
+    @Export(name="advancedMachineFeatures", refs={InstanceFromTemplateAdvancedMachineFeatures.class}, tree="[0]")
     private Output<InstanceFromTemplateAdvancedMachineFeatures> advancedMachineFeatures;
 
     /**
@@ -117,7 +117,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * stopping the instance without setting this field, the update will fail.
      * 
      */
-    @Export(name="allowStoppingForUpdate", type=Boolean.class, parameters={})
+    @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowStoppingForUpdate;
 
     /**
@@ -132,7 +132,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * List of disks attached to the instance
      * 
      */
-    @Export(name="attachedDisks", type=List.class, parameters={InstanceFromTemplateAttachedDisk.class})
+    @Export(name="attachedDisks", refs={List.class,InstanceFromTemplateAttachedDisk.class}, tree="[0,1]")
     private Output<List<InstanceFromTemplateAttachedDisk>> attachedDisks;
 
     /**
@@ -146,7 +146,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The boot disk for the instance.
      * 
      */
-    @Export(name="bootDisk", type=InstanceFromTemplateBootDisk.class, parameters={})
+    @Export(name="bootDisk", refs={InstanceFromTemplateBootDisk.class}, tree="[0]")
     private Output<InstanceFromTemplateBootDisk> bootDisk;
 
     /**
@@ -160,7 +160,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      * 
      */
-    @Export(name="canIpForward", type=Boolean.class, parameters={})
+    @Export(name="canIpForward", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canIpForward;
 
     /**
@@ -175,7 +175,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * to create.
      * 
      */
-    @Export(name="confidentialInstanceConfig", type=InstanceFromTemplateConfidentialInstanceConfig.class, parameters={})
+    @Export(name="confidentialInstanceConfig", refs={InstanceFromTemplateConfidentialInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromTemplateConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
@@ -190,7 +190,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The CPU platform used by this instance.
      * 
      */
-    @Export(name="cpuPlatform", type=String.class, parameters={})
+    @Export(name="cpuPlatform", refs={String.class}, tree="[0]")
     private Output<String> cpuPlatform;
 
     /**
@@ -206,7 +206,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
-    @Export(name="currentStatus", type=String.class, parameters={})
+    @Export(name="currentStatus", refs={String.class}, tree="[0]")
     private Output<String> currentStatus;
 
     /**
@@ -222,7 +222,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Whether deletion protection is enabled on this instance.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -236,7 +236,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * A brief description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -250,7 +250,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
      * 
      */
-    @Export(name="desiredStatus", type=String.class, parameters={})
+    @Export(name="desiredStatus", refs={String.class}, tree="[0]")
     private Output<String> desiredStatus;
 
     /**
@@ -264,7 +264,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Whether the instance has virtual displays enabled.
      * 
      */
-    @Export(name="enableDisplay", type=Boolean.class, parameters={})
+    @Export(name="enableDisplay", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableDisplay;
 
     /**
@@ -278,7 +278,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * List of the type and count of accelerator cards attached to the instance.
      * 
      */
-    @Export(name="guestAccelerators", type=List.class, parameters={InstanceFromTemplateGuestAccelerator.class})
+    @Export(name="guestAccelerators", refs={List.class,InstanceFromTemplateGuestAccelerator.class}, tree="[0,1]")
     private Output<List<InstanceFromTemplateGuestAccelerator>> guestAccelerators;
 
     /**
@@ -294,7 +294,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -310,7 +310,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The server-assigned unique identifier of this instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -324,7 +324,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the labels.
      * 
      */
-    @Export(name="labelFingerprint", type=String.class, parameters={})
+    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
@@ -338,7 +338,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs assigned to the instance.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> labels;
 
     /**
@@ -352,7 +352,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The machine type to create.
      * 
      */
-    @Export(name="machineType", type=String.class, parameters={})
+    @Export(name="machineType", refs={String.class}, tree="[0]")
     private Output<String> machineType;
 
     /**
@@ -366,7 +366,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Metadata key/value pairs made available within the instance.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> metadata;
 
     /**
@@ -380,7 +380,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the metadata.
      * 
      */
-    @Export(name="metadataFingerprint", type=String.class, parameters={})
+    @Export(name="metadataFingerprint", refs={String.class}, tree="[0]")
     private Output<String> metadataFingerprint;
 
     /**
@@ -394,7 +394,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Metadata startup scripts made available within the instance.
      * 
      */
-    @Export(name="metadataStartupScript", type=String.class, parameters={})
+    @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
     private Output<String> metadataStartupScript;
 
     /**
@@ -408,7 +408,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The minimum CPU platform specified for the VM instance.
      * 
      */
-    @Export(name="minCpuPlatform", type=String.class, parameters={})
+    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
     private Output<String> minCpuPlatform;
 
     /**
@@ -423,7 +423,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -438,7 +438,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The networks attached to the instance.
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={InstanceFromTemplateNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,InstanceFromTemplateNetworkInterface.class}, tree="[0,1]")
     private Output<List<InstanceFromTemplateNetworkInterface>> networkInterfaces;
 
     /**
@@ -453,7 +453,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * default network performance configuration.
      * 
      */
-    @Export(name="networkPerformanceConfig", type=InstanceFromTemplateNetworkPerformanceConfig.class, parameters={})
+    @Export(name="networkPerformanceConfig", refs={InstanceFromTemplateNetworkPerformanceConfig.class}, tree="[0]")
     private Output<InstanceFromTemplateNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
@@ -468,7 +468,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      * 
      */
-    @Export(name="params", type=InstanceFromTemplateParams.class, parameters={})
+    @Export(name="params", refs={InstanceFromTemplateParams.class}, tree="[0]")
     private Output<InstanceFromTemplateParams> params;
 
     /**
@@ -483,7 +483,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * self_link nor project are provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -498,7 +498,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * Specifies the reservations that this instance can consume from.
      * 
      */
-    @Export(name="reservationAffinity", type=InstanceFromTemplateReservationAffinity.class, parameters={})
+    @Export(name="reservationAffinity", refs={InstanceFromTemplateReservationAffinity.class}, tree="[0]")
     private Output<InstanceFromTemplateReservationAffinity> reservationAffinity;
 
     /**
@@ -512,7 +512,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
-    @Export(name="resourcePolicies", type=String.class, parameters={})
+    @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
     private Output<String> resourcePolicies;
 
     /**
@@ -526,7 +526,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The scheduling strategy being used by the instance.
      * 
      */
-    @Export(name="scheduling", type=InstanceFromTemplateScheduling.class, parameters={})
+    @Export(name="scheduling", refs={InstanceFromTemplateScheduling.class}, tree="[0]")
     private Output<InstanceFromTemplateScheduling> scheduling;
 
     /**
@@ -540,7 +540,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The scratch disks attached to the instance.
      * 
      */
-    @Export(name="scratchDisks", type=List.class, parameters={InstanceFromTemplateScratchDisk.class})
+    @Export(name="scratchDisks", refs={List.class,InstanceFromTemplateScratchDisk.class}, tree="[0,1]")
     private Output<List<InstanceFromTemplateScratchDisk>> scratchDisks;
 
     /**
@@ -554,7 +554,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -568,7 +568,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The service account to attach to the instance.
      * 
      */
-    @Export(name="serviceAccount", type=InstanceFromTemplateServiceAccount.class, parameters={})
+    @Export(name="serviceAccount", refs={InstanceFromTemplateServiceAccount.class}, tree="[0]")
     private Output<InstanceFromTemplateServiceAccount> serviceAccount;
 
     /**
@@ -582,7 +582,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The shielded vm config being used by the instance.
      * 
      */
-    @Export(name="shieldedInstanceConfig", type=InstanceFromTemplateShieldedInstanceConfig.class, parameters={})
+    @Export(name="shieldedInstanceConfig", refs={InstanceFromTemplateShieldedInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromTemplateShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -600,7 +600,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="sourceInstanceTemplate", type=String.class, parameters={})
+    @Export(name="sourceInstanceTemplate", refs={String.class}, tree="[0]")
     private Output<String> sourceInstanceTemplate;
 
     /**
@@ -618,7 +618,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The list of tags attached to the instance.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
@@ -632,7 +632,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the tags.
      * 
      */
-    @Export(name="tagsFingerprint", type=String.class, parameters={})
+    @Export(name="tagsFingerprint", refs={String.class}, tree="[0]")
     private Output<String> tagsFingerprint;
 
     /**
@@ -651,7 +651,7 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * from `gcp.compute.Instance` are likewise exported here.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

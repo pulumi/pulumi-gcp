@@ -677,7 +677,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * The creation timestamp of an inspectTemplate. Set by the server.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -695,7 +695,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -712,7 +712,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * User set display name of the job trigger.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -727,7 +727,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="inspectJob", type=PreventionJobTriggerInspectJob.class, parameters={})
+    @Export(name="inspectJob", refs={PreventionJobTriggerInspectJob.class}, tree="[0]")
     private Output</* @Nullable */ PreventionJobTriggerInspectJob> inspectJob;
 
     /**
@@ -742,7 +742,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * The timestamp of the last time this trigger executed.
      * 
      */
-    @Export(name="lastRunTime", type=String.class, parameters={})
+    @Export(name="lastRunTime", refs={String.class}, tree="[0]")
     private Output<String> lastRunTime;
 
     /**
@@ -800,7 +800,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * Name describing the field.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -859,7 +859,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * or `projects/{{project}}/locations/{{location}}`
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -876,7 +876,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -894,7 +894,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      * 
      */
-    @Export(name="triggerId", type=String.class, parameters={})
+    @Export(name="triggerId", refs={String.class}, tree="[0]")
     private Output<String> triggerId;
 
     /**
@@ -911,7 +911,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="triggers", type=List.class, parameters={PreventionJobTriggerTrigger.class})
+    @Export(name="triggers", refs={List.class,PreventionJobTriggerTrigger.class}, tree="[0,1]")
     private Output<List<PreventionJobTriggerTrigger>> triggers;
 
     /**
@@ -926,7 +926,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * The last update timestamp of an inspectTemplate. Set by the server.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

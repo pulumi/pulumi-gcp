@@ -79,7 +79,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * The actual certificate data for this client certificate.
      * 
      */
-    @Export(name="cert", type=String.class, parameters={})
+    @Export(name="cert", refs={String.class}, tree="[0]")
     private Output<String> cert;
 
     /**
@@ -93,7 +93,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * The serial number extracted from the certificate data.
      * 
      */
-    @Export(name="certSerialNumber", type=String.class, parameters={})
+    @Export(name="certSerialNumber", refs={String.class}, tree="[0]")
     private Output<String> certSerialNumber;
 
     /**
@@ -108,7 +108,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="commonName", type=String.class, parameters={})
+    @Export(name="commonName", refs={String.class}, tree="[0]")
     private Output<String> commonName;
 
     /**
@@ -124,7 +124,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * for example 2012-11-15T16:19:00.094Z.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -140,7 +140,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * for example 2012-11-15T16:19:00.094Z.
      * 
      */
-    @Export(name="expirationTime", type=String.class, parameters={})
+    @Export(name="expirationTime", refs={String.class}, tree="[0]")
     private Output<String> expirationTime;
 
     /**
@@ -156,7 +156,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * forces a new resource to be created.
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
@@ -171,7 +171,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * The private key associated with the client certificate.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output<String> privateKey;
 
     /**
@@ -186,7 +186,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -201,7 +201,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * The CA cert of the server this client cert was generated from.
      * 
      */
-    @Export(name="serverCaCert", type=String.class, parameters={})
+    @Export(name="serverCaCert", refs={String.class}, tree="[0]")
     private Output<String> serverCaCert;
 
     /**
@@ -215,7 +215,7 @@ public class SslCert extends com.pulumi.resources.CustomResource {
      * The SHA1 Fingerprint of the certificate.
      * 
      */
-    @Export(name="sha1Fingerprint", type=String.class, parameters={})
+    @Export(name="sha1Fingerprint", refs={String.class}, tree="[0]")
     private Output<String> sha1Fingerprint;
 
     /**

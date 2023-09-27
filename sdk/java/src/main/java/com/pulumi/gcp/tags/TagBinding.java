@@ -96,7 +96,7 @@ public class TagBinding extends com.pulumi.resources.CustomResource {
      * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class TagBinding extends com.pulumi.resources.CustomResource {
      * The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -126,7 +126,7 @@ public class TagBinding extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="tagValue", type=String.class, parameters={})
+    @Export(name="tagValue", refs={String.class}, tree="[0]")
     private Output<String> tagValue;
 
     /**

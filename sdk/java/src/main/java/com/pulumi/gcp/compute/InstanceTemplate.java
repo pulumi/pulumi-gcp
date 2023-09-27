@@ -416,7 +416,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
      * 
      */
-    @Export(name="advancedMachineFeatures", type=InstanceTemplateAdvancedMachineFeatures.class, parameters={})
+    @Export(name="advancedMachineFeatures", refs={InstanceTemplateAdvancedMachineFeatures.class}, tree="[0]")
     private Output</* @Nullable */ InstanceTemplateAdvancedMachineFeatures> advancedMachineFeatures;
 
     /**
@@ -431,7 +431,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * packets with non-matching source or destination IPs. This defaults to false.
      * 
      */
-    @Export(name="canIpForward", type=Boolean.class, parameters={})
+    @Export(name="canIpForward", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> canIpForward;
 
     /**
@@ -446,7 +446,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      * 
      */
-    @Export(name="confidentialInstanceConfig", type=InstanceTemplateConfidentialInstanceConfig.class, parameters={})
+    @Export(name="confidentialInstanceConfig", refs={InstanceTemplateConfidentialInstanceConfig.class}, tree="[0]")
     private Output<InstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
@@ -460,7 +460,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * A brief description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -476,7 +476,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * documented below.
      * 
      */
-    @Export(name="disks", type=List.class, parameters={InstanceTemplateDisk.class})
+    @Export(name="disks", refs={List.class,InstanceTemplateDisk.class}, tree="[0,1]")
     private Output<List<InstanceTemplateDisk>> disks;
 
     /**
@@ -493,7 +493,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
-    @Export(name="enableDisplay", type=Boolean.class, parameters={})
+    @Export(name="enableDisplay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDisplay;
 
     /**
@@ -508,7 +508,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * 
      */
-    @Export(name="guestAccelerators", type=List.class, parameters={InstanceTemplateGuestAccelerator.class})
+    @Export(name="guestAccelerators", refs={List.class,InstanceTemplateGuestAccelerator.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceTemplateGuestAccelerator>> guestAccelerators;
 
     /**
@@ -523,7 +523,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * created from this template.
      * 
      */
-    @Export(name="instanceDescription", type=String.class, parameters={})
+    @Export(name="instanceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceDescription;
 
     /**
@@ -539,7 +539,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * created from this template.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -558,7 +558,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="machineType", type=String.class, parameters={})
+    @Export(name="machineType", refs={String.class}, tree="[0]")
     private Output<String> machineType;
 
     /**
@@ -577,7 +577,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * within instances created from this template.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     /**
@@ -592,7 +592,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the metadata.
      * 
      */
-    @Export(name="metadataFingerprint", type=String.class, parameters={})
+    @Export(name="metadataFingerprint", refs={String.class}, tree="[0]")
     private Output<String> metadataFingerprint;
 
     /**
@@ -609,7 +609,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
      */
-    @Export(name="metadataStartupScript", type=String.class, parameters={})
+    @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metadataStartupScript;
 
     /**
@@ -627,7 +627,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * 
      */
-    @Export(name="minCpuPlatform", type=String.class, parameters={})
+    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minCpuPlatform;
 
     /**
@@ -643,7 +643,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * this blank, the provider will auto-generate a unique name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -659,7 +659,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * prefix. Conflicts with `name`.
      * 
      */
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output<String> namePrefix;
 
     /**
@@ -676,7 +676,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={InstanceTemplateNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,InstanceTemplateNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceTemplateNetworkInterface>> networkInterfaces;
 
     /**
@@ -697,7 +697,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * in order for this setting to take effect.
      * 
      */
-    @Export(name="networkPerformanceConfig", type=InstanceTemplateNetworkPerformanceConfig.class, parameters={})
+    @Export(name="networkPerformanceConfig", refs={InstanceTemplateNetworkPerformanceConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstanceTemplateNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
@@ -717,7 +717,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -737,7 +737,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Provider if no value is given.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -757,7 +757,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="reservationAffinity", type=InstanceTemplateReservationAffinity.class, parameters={})
+    @Export(name="reservationAffinity", refs={InstanceTemplateReservationAffinity.class}, tree="[0]")
     private Output</* @Nullable */ InstanceTemplateReservationAffinity> reservationAffinity;
 
     /**
@@ -772,7 +772,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
-    @Export(name="resourcePolicies", type=String.class, parameters={})
+    @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourcePolicies;
 
     /**
@@ -787,7 +787,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * this configuration option are detailed below.
      * 
      */
-    @Export(name="scheduling", type=InstanceTemplateScheduling.class, parameters={})
+    @Export(name="scheduling", refs={InstanceTemplateScheduling.class}, tree="[0]")
     private Output<InstanceTemplateScheduling> scheduling;
 
     /**
@@ -802,7 +802,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -817,7 +817,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
      * 
      */
-    @Export(name="selfLinkUnique", type=String.class, parameters={})
+    @Export(name="selfLinkUnique", refs={String.class}, tree="[0]")
     private Output<String> selfLinkUnique;
 
     /**
@@ -832,7 +832,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Service account to attach to the instance. Structure is documented below.
      * 
      */
-    @Export(name="serviceAccount", type=InstanceTemplateServiceAccount.class, parameters={})
+    @Export(name="serviceAccount", refs={InstanceTemplateServiceAccount.class}, tree="[0]")
     private Output</* @Nullable */ InstanceTemplateServiceAccount> serviceAccount;
 
     /**
@@ -847,7 +847,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
-    @Export(name="shieldedInstanceConfig", type=InstanceTemplateShieldedInstanceConfig.class, parameters={})
+    @Export(name="shieldedInstanceConfig", refs={InstanceTemplateShieldedInstanceConfig.class}, tree="[0]")
     private Output<InstanceTemplateShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -862,7 +862,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * Tags to attach to the instance.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -876,7 +876,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the tags.
      * 
      */
-    @Export(name="tagsFingerprint", type=String.class, parameters={})
+    @Export(name="tagsFingerprint", refs={String.class}, tree="[0]")
     private Output<String> tagsFingerprint;
 
     /**

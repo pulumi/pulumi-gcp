@@ -77,7 +77,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * A textual description for the organization security policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -91,7 +91,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * A textual name of the security policy.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -106,7 +106,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * updates of this resource.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -124,7 +124,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -141,7 +141,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
@@ -159,7 +159,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * Possible values are: `FIREWALL`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

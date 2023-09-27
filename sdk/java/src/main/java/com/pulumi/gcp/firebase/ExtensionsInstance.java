@@ -112,7 +112,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="config", type=ExtensionsInstanceConfig.class, parameters={})
+    @Export(name="config", refs={ExtensionsInstanceConfig.class}, tree="[0]")
     private Output<ExtensionsInstanceConfig> config;
 
     /**
@@ -128,7 +128,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * The time at which the Extension Instance Config was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -145,7 +145,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="errorStatuses", type=List.class, parameters={ExtensionsInstanceErrorStatus.class})
+    @Export(name="errorStatuses", refs={List.class,ExtensionsInstanceErrorStatus.class}, tree="[0,1]")
     private Output<List<ExtensionsInstanceErrorStatus>> errorStatuses;
 
     /**
@@ -163,7 +163,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -180,7 +180,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * component of the instance&#39;s name.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -196,7 +196,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * Instance
      * 
      */
-    @Export(name="lastOperationName", type=String.class, parameters={})
+    @Export(name="lastOperationName", refs={String.class}, tree="[0]")
     private Output<String> lastOperationName;
 
     /**
@@ -211,7 +211,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * The type of the last operation that acted on the Extension Instance.
      * 
      */
-    @Export(name="lastOperationType", type=String.class, parameters={})
+    @Export(name="lastOperationType", refs={String.class}, tree="[0]")
     private Output<String> lastOperationType;
 
     /**
@@ -226,7 +226,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * The unique identifier for this configuration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -258,7 +258,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="runtimeDatas", type=List.class, parameters={ExtensionsInstanceRuntimeData.class})
+    @Export(name="runtimeDatas", refs={List.class,ExtensionsInstanceRuntimeData.class}, tree="[0,1]")
     private Output<List<ExtensionsInstanceRuntimeData>> runtimeDatas;
 
     /**
@@ -274,7 +274,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * created for the operation of the Extension instance.
      * 
      */
-    @Export(name="serviceAccountEmail", type=String.class, parameters={})
+    @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
@@ -289,7 +289,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * The processing state of the extension instance.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -303,7 +303,7 @@ public class ExtensionsInstance extends com.pulumi.resources.CustomResource {
      * The time at which the Extension Instance was updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

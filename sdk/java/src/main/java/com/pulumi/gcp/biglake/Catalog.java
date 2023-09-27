@@ -78,7 +78,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * digits.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -96,7 +96,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -115,7 +115,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * up to nine fractional digits.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -132,7 +132,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The geographic location where the Catalog should reside.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -149,7 +149,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -167,7 +167,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -184,7 +184,7 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * fractional digits.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

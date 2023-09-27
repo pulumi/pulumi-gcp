@@ -276,7 +276,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -291,7 +291,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * Description of the patch deployment. Length of the description is limited to 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -306,7 +306,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;
      * 
      */
-    @Export(name="duration", type=String.class, parameters={})
+    @Export(name="duration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> duration;
 
     /**
@@ -322,7 +322,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="instanceFilter", type=PatchDeploymentInstanceFilter.class, parameters={})
+    @Export(name="instanceFilter", refs={PatchDeploymentInstanceFilter.class}, tree="[0]")
     private Output<PatchDeploymentInstanceFilter> instanceFilter;
 
     /**
@@ -339,7 +339,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="lastExecuteTime", type=String.class, parameters={})
+    @Export(name="lastExecuteTime", refs={String.class}, tree="[0]")
     private Output<String> lastExecuteTime;
 
     /**
@@ -356,7 +356,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -372,7 +372,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="oneTimeSchedule", type=PatchDeploymentOneTimeSchedule.class, parameters={})
+    @Export(name="oneTimeSchedule", refs={PatchDeploymentOneTimeSchedule.class}, tree="[0]")
     private Output</* @Nullable */ PatchDeploymentOneTimeSchedule> oneTimeSchedule;
 
     /**
@@ -388,7 +388,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="patchConfig", type=PatchDeploymentPatchConfig.class, parameters={})
+    @Export(name="patchConfig", refs={PatchDeploymentPatchConfig.class}, tree="[0]")
     private Output</* @Nullable */ PatchDeploymentPatchConfig> patchConfig;
 
     /**
@@ -408,7 +408,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * * Must be unique within the project.
      * 
      */
-    @Export(name="patchDeploymentId", type=String.class, parameters={})
+    @Export(name="patchDeploymentId", refs={String.class}, tree="[0]")
     private Output<String> patchDeploymentId;
 
     /**
@@ -428,7 +428,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -444,7 +444,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="recurringSchedule", type=PatchDeploymentRecurringSchedule.class, parameters={})
+    @Export(name="recurringSchedule", refs={PatchDeploymentRecurringSchedule.class}, tree="[0]")
     private Output</* @Nullable */ PatchDeploymentRecurringSchedule> recurringSchedule;
 
     /**
@@ -460,7 +460,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rollout", type=PatchDeploymentRollout.class, parameters={})
+    @Export(name="rollout", refs={PatchDeploymentRollout.class}, tree="[0]")
     private Output</* @Nullable */ PatchDeploymentRollout> rollout;
 
     /**
@@ -476,7 +476,7 @@ public class PatchDeployment extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

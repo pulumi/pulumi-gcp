@@ -549,13 +549,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember")
 public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=RestorePlanIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={RestorePlanIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ RestorePlanIamMemberCondition> condition;
 
     public Output<Optional<RestorePlanIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
@@ -565,7 +565,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      * The region of the Restore Plan.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -575,7 +575,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -585,7 +585,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      * The full name of the BackupPlan Resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -600,7 +600,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -611,7 +611,7 @@ public class RestorePlanIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     public Output<String> role() {

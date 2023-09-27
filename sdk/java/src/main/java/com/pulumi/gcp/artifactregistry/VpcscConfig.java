@@ -73,7 +73,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * The name of the location this config is located in.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -88,7 +88,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * Always of the form: projects/{project}/location/{location}/vpcscConfig
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -104,7 +104,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -120,7 +120,7 @@ public class VpcscConfig extends com.pulumi.resources.CustomResource {
      * Possible values are: `DENY`, `ALLOW`.
      * 
      */
-    @Export(name="vpcscPolicy", type=String.class, parameters={})
+    @Export(name="vpcscPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcscPolicy;
 
     /**

@@ -114,7 +114,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -131,7 +131,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="partitionConfig", type=LiteTopicPartitionConfig.class, parameters={})
+    @Export(name="partitionConfig", refs={LiteTopicPartitionConfig.class}, tree="[0]")
     private Output</* @Nullable */ LiteTopicPartitionConfig> partitionConfig;
 
     /**
@@ -147,7 +147,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -162,7 +162,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * The region of the pubsub lite topic.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -177,7 +177,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="reservationConfig", type=LiteTopicReservationConfig.class, parameters={})
+    @Export(name="reservationConfig", refs={LiteTopicReservationConfig.class}, tree="[0]")
     private Output</* @Nullable */ LiteTopicReservationConfig> reservationConfig;
 
     /**
@@ -193,7 +193,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="retentionConfig", type=LiteTopicRetentionConfig.class, parameters={})
+    @Export(name="retentionConfig", refs={LiteTopicRetentionConfig.class}, tree="[0]")
     private Output</* @Nullable */ LiteTopicRetentionConfig> retentionConfig;
 
     /**
@@ -208,7 +208,7 @@ public class LiteTopic extends com.pulumi.resources.CustomResource {
      * The zone of the pubsub lite topic.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zone;
 
     /**

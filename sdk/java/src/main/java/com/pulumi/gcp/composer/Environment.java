@@ -40,7 +40,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Configuration parameters for this environment.
      * 
      */
-    @Export(name="config", type=EnvironmentConfig.class, parameters={})
+    @Export(name="config", refs={EnvironmentConfig.class}, tree="[0]")
     private Output<EnvironmentConfig> config;
 
     /**
@@ -58,7 +58,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * associated with a given environment. Both keys and values must be &lt;= 128 bytes in size.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -76,7 +76,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Name of the environment.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -90,7 +90,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -104,7 +104,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The location or Compute Engine region for the environment.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

@@ -128,7 +128,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * If a device is blocked, connections or requests from this device will fail.
      * 
      */
-    @Export(name="blocked", type=Boolean.class, parameters={})
+    @Export(name="blocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blocked;
 
     /**
@@ -143,7 +143,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="configs", type=List.class, parameters={DeviceConfig.class})
+    @Export(name="configs", refs={List.class,DeviceConfig.class}, tree="[0,1]")
     private Output<List<DeviceConfig>> configs;
 
     /**
@@ -159,7 +159,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="credentials", type=List.class, parameters={DeviceCredential.class})
+    @Export(name="credentials", refs={List.class,DeviceCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeviceCredential>> credentials;
 
     /**
@@ -175,7 +175,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gatewayConfig", type=DeviceGatewayConfig.class, parameters={})
+    @Export(name="gatewayConfig", refs={DeviceGatewayConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceGatewayConfig> gatewayConfig;
 
     /**
@@ -190,7 +190,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The last time a cloud-to-device config version acknowledgment was received from the device.
      * 
      */
-    @Export(name="lastConfigAckTime", type=String.class, parameters={})
+    @Export(name="lastConfigAckTime", refs={String.class}, tree="[0]")
     private Output<String> lastConfigAckTime;
 
     /**
@@ -204,7 +204,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The last time a cloud-to-device config version was sent to the device.
      * 
      */
-    @Export(name="lastConfigSendTime", type=String.class, parameters={})
+    @Export(name="lastConfigSendTime", refs={String.class}, tree="[0]")
     private Output<String> lastConfigSendTime;
 
     /**
@@ -219,7 +219,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="lastErrorStatuses", type=List.class, parameters={DeviceLastErrorStatus.class})
+    @Export(name="lastErrorStatuses", refs={List.class,DeviceLastErrorStatus.class}, tree="[0,1]")
     private Output<List<DeviceLastErrorStatus>> lastErrorStatuses;
 
     /**
@@ -234,7 +234,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
      * 
      */
-    @Export(name="lastErrorTime", type=String.class, parameters={})
+    @Export(name="lastErrorTime", refs={String.class}, tree="[0]")
     private Output<String> lastErrorTime;
 
     /**
@@ -248,7 +248,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The last time a telemetry event was received.
      * 
      */
-    @Export(name="lastEventTime", type=String.class, parameters={})
+    @Export(name="lastEventTime", refs={String.class}, tree="[0]")
     private Output<String> lastEventTime;
 
     /**
@@ -262,7 +262,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The last time an MQTT PINGREQ was received.
      * 
      */
-    @Export(name="lastHeartbeatTime", type=String.class, parameters={})
+    @Export(name="lastHeartbeatTime", refs={String.class}, tree="[0]")
     private Output<String> lastHeartbeatTime;
 
     /**
@@ -276,7 +276,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The last time a state event was received.
      * 
      */
-    @Export(name="lastStateTime", type=String.class, parameters={})
+    @Export(name="lastStateTime", refs={String.class}, tree="[0]")
     private Output<String> lastStateTime;
 
     /**
@@ -291,7 +291,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
-    @Export(name="logLevel", type=String.class, parameters={})
+    @Export(name="logLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logLevel;
 
     /**
@@ -306,7 +306,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * The metadata key-value pairs assigned to the device.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -320,7 +320,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * A unique name for the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -335,7 +335,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * This is a more compact way to identify devices, and it is globally unique.
      * 
      */
-    @Export(name="numId", type=String.class, parameters={})
+    @Export(name="numId", refs={String.class}, tree="[0]")
     private Output<String> numId;
 
     /**
@@ -352,7 +352,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="registry", type=String.class, parameters={})
+    @Export(name="registry", refs={String.class}, tree="[0]")
     private Output<String> registry;
 
     /**
@@ -369,7 +369,7 @@ public class Device extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="states", type=List.class, parameters={DeviceState.class})
+    @Export(name="states", refs={List.class,DeviceState.class}, tree="[0,1]")
     private Output<List<DeviceState>> states;
 
     /**

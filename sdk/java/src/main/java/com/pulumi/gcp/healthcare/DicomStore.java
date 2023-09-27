@@ -180,7 +180,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="dataset", type=String.class, parameters={})
+    @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
 
     /**
@@ -204,7 +204,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -226,7 +226,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * ** Changing this property may recreate the Dicom store (removing all data) **
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="notificationConfig", type=DicomStoreNotificationConfig.class, parameters={})
+    @Export(name="notificationConfig", refs={DicomStoreNotificationConfig.class}, tree="[0]")
     private Output</* @Nullable */ DicomStoreNotificationConfig> notificationConfig;
 
     /**
@@ -257,7 +257,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * The fully qualified name of this dataset
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -273,7 +273,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="streamConfigs", type=List.class, parameters={DicomStoreStreamConfig.class})
+    @Export(name="streamConfigs", refs={List.class,DicomStoreStreamConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DicomStoreStreamConfig>> streamConfigs;
 
     /**

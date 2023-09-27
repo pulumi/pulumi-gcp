@@ -69,7 +69,7 @@ public class ProjectDefaultNetworkTier extends com.pulumi.resources.CustomResour
      * ***
      * 
      */
-    @Export(name="networkTier", type=String.class, parameters={})
+    @Export(name="networkTier", refs={String.class}, tree="[0]")
     private Output<String> networkTier;
 
     /**
@@ -87,7 +87,7 @@ public class ProjectDefaultNetworkTier extends com.pulumi.resources.CustomResour
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

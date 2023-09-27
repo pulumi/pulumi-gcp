@@ -143,7 +143,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
      * 
      */
-    @Export(name="blobStoragePathPrefix", type=String.class, parameters={})
+    @Export(name="blobStoragePathPrefix", refs={String.class}, tree="[0]")
     private Output<String> blobStoragePathPrefix;
 
     /**
@@ -157,7 +157,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -171,7 +171,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * Description of this Tensorboard.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -187,7 +187,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -204,7 +204,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionSpec", type=AiTensorboardEncryptionSpec.class, parameters={})
+    @Export(name="encryptionSpec", refs={AiTensorboardEncryptionSpec.class}, tree="[0]")
     private Output</* @Nullable */ AiTensorboardEncryptionSpec> encryptionSpec;
 
     /**
@@ -219,7 +219,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * The labels with user-defined metadata to organize your Tensorboards.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -233,7 +233,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * Name of the Tensorboard.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -248,7 +248,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -263,7 +263,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * The region of the tensorboard. eg us-central1
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -277,7 +277,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * The number of Runs stored in this Tensorboard.
      * 
      */
-    @Export(name="runCount", type=String.class, parameters={})
+    @Export(name="runCount", refs={String.class}, tree="[0]")
     private Output<String> runCount;
 
     /**
@@ -291,7 +291,7 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
      * The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

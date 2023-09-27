@@ -444,7 +444,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * should be set to `my-ca`.
      * 
      */
-    @Export(name="certificateAuthority", type=String.class, parameters={})
+    @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateAuthority;
 
     /**
@@ -462,7 +462,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="certificateDescriptions", type=List.class, parameters={CertificateCertificateDescription.class})
+    @Export(name="certificateDescriptions", refs={List.class,CertificateCertificateDescription.class}, tree="[0,1]")
     private Output<List<CertificateCertificateDescription>> certificateDescriptions;
 
     /**
@@ -481,7 +481,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * as the Certificate.
      * 
      */
-    @Export(name="certificateTemplate", type=String.class, parameters={})
+    @Export(name="certificateTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateTemplate;
 
     /**
@@ -500,7 +500,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="config", type=CertificateConfig.class, parameters={})
+    @Export(name="config", refs={CertificateConfig.class}, tree="[0]")
     private Output</* @Nullable */ CertificateConfig> config;
 
     /**
@@ -516,7 +516,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * This is in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -531,7 +531,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
-    @Export(name="issuerCertificateAuthority", type=String.class, parameters={})
+    @Export(name="issuerCertificateAuthority", refs={String.class}, tree="[0]")
     private Output<String> issuerCertificateAuthority;
 
     /**
@@ -545,7 +545,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Labels with user-defined metadata to apply to this resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -561,7 +561,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="lifetime", type=String.class, parameters={})
+    @Export(name="lifetime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lifetime;
 
     /**
@@ -580,7 +580,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -597,7 +597,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The name for this Certificate.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -611,7 +611,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Output only. The pem-encoded, signed X.509 certificate.
      * 
      */
-    @Export(name="pemCertificate", type=String.class, parameters={})
+    @Export(name="pemCertificate", refs={String.class}, tree="[0]")
     private Output<String> pemCertificate;
 
     /**
@@ -625,7 +625,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      * 
      */
-    @Export(name="pemCertificateChains", type=List.class, parameters={String.class})
+    @Export(name="pemCertificateChains", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> pemCertificateChains;
 
     /**
@@ -644,7 +644,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
-    @Export(name="pemCertificates", type=List.class, parameters={String.class})
+    @Export(name="pemCertificates", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> pemCertificates;
 
     /**
@@ -659,7 +659,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      * 
      */
-    @Export(name="pemCsr", type=String.class, parameters={})
+    @Export(name="pemCsr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pemCsr;
 
     /**
@@ -673,7 +673,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The name of the CaPool this Certificate belongs to.
      * 
      */
-    @Export(name="pool", type=String.class, parameters={})
+    @Export(name="pool", refs={String.class}, tree="[0]")
     private Output<String> pool;
 
     /**
@@ -688,7 +688,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -705,7 +705,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="revocationDetails", type=List.class, parameters={CertificateRevocationDetail.class})
+    @Export(name="revocationDetails", refs={List.class,CertificateRevocationDetail.class}, tree="[0,1]")
     private Output<List<CertificateRevocationDetail>> revocationDetails;
 
     /**
@@ -722,7 +722,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * This is in RFC3339 text format.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

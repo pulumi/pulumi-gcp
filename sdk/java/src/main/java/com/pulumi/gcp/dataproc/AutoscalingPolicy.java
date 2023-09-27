@@ -102,7 +102,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="basicAlgorithm", type=AutoscalingPolicyBasicAlgorithm.class, parameters={})
+    @Export(name="basicAlgorithm", refs={AutoscalingPolicyBasicAlgorithm.class}, tree="[0]")
     private Output</* @Nullable */ AutoscalingPolicyBasicAlgorithm> basicAlgorithm;
 
     /**
@@ -118,7 +118,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -133,7 +133,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * The &#34;resource name&#34; of the autoscaling policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -151,7 +151,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
@@ -170,7 +170,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -186,7 +186,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="secondaryWorkerConfig", type=AutoscalingPolicySecondaryWorkerConfig.class, parameters={})
+    @Export(name="secondaryWorkerConfig", refs={AutoscalingPolicySecondaryWorkerConfig.class}, tree="[0]")
     private Output</* @Nullable */ AutoscalingPolicySecondaryWorkerConfig> secondaryWorkerConfig;
 
     /**
@@ -202,7 +202,7 @@ public class AutoscalingPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="workerConfig", type=AutoscalingPolicyWorkerConfig.class, parameters={})
+    @Export(name="workerConfig", refs={AutoscalingPolicyWorkerConfig.class}, tree="[0]")
     private Output</* @Nullable */ AutoscalingPolicyWorkerConfig> workerConfig;
 
     /**

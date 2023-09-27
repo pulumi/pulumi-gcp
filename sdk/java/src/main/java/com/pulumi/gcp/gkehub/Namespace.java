@@ -50,7 +50,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Time the Namespace was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -64,7 +64,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Time the Namespace was deleted in UTC.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -78,7 +78,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Labels for this Namespace.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -92,7 +92,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The resource name for the namespace
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * a key. Keys and values must be Kubernetes-conformant.
      * 
      */
-    @Export(name="namespaceLabels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="namespaceLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> namespaceLabels;
 
     /**
@@ -129,7 +129,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -144,7 +144,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The name of the Scope instance.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -160,7 +160,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="scopeId", type=String.class, parameters={})
+    @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     /**
@@ -176,7 +176,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The client-provided identifier of the namespace.
      * 
      */
-    @Export(name="scopeNamespaceId", type=String.class, parameters={})
+    @Export(name="scopeNamespaceId", refs={String.class}, tree="[0]")
     private Output<String> scopeNamespaceId;
 
     /**
@@ -191,7 +191,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="states", type=List.class, parameters={NamespaceState.class})
+    @Export(name="states", refs={List.class,NamespaceState.class}, tree="[0,1]")
     private Output<List<NamespaceState>> states;
 
     /**
@@ -206,7 +206,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Google-generated UUID for this resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -220,7 +220,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Time the Namespace was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

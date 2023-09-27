@@ -286,7 +286,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="automatedBackupPolicy", type=ClusterAutomatedBackupPolicy.class, parameters={})
+    @Export(name="automatedBackupPolicy", refs={ClusterAutomatedBackupPolicy.class}, tree="[0]")
     private Output<ClusterAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
@@ -302,7 +302,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="backupSources", type=List.class, parameters={ClusterBackupSource.class})
+    @Export(name="backupSources", refs={List.class,ClusterBackupSource.class}, tree="[0,1]")
     private Output<List<ClusterBackupSource>> backupSources;
 
     /**
@@ -317,7 +317,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the alloydb cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -333,7 +333,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="continuousBackupConfig", type=ClusterContinuousBackupConfig.class, parameters={})
+    @Export(name="continuousBackupConfig", refs={ClusterContinuousBackupConfig.class}, tree="[0]")
     private Output<ClusterContinuousBackupConfig> continuousBackupConfig;
 
     /**
@@ -350,7 +350,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="continuousBackupInfos", type=List.class, parameters={ClusterContinuousBackupInfo.class})
+    @Export(name="continuousBackupInfos", refs={List.class,ClusterContinuousBackupInfo.class}, tree="[0,1]")
     private Output<List<ClusterContinuousBackupInfo>> continuousBackupInfos;
 
     /**
@@ -365,7 +365,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
-    @Export(name="databaseVersion", type=String.class, parameters={})
+    @Export(name="databaseVersion", refs={String.class}, tree="[0]")
     private Output<String> databaseVersion;
 
     /**
@@ -379,7 +379,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * User-settable and human-readable display name for the Cluster.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -394,7 +394,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionConfig", type=ClusterEncryptionConfig.class, parameters={})
+    @Export(name="encryptionConfig", refs={ClusterEncryptionConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterEncryptionConfig> encryptionConfig;
 
     /**
@@ -411,7 +411,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionInfos", type=List.class, parameters={ClusterEncryptionInfo.class})
+    @Export(name="encryptionInfos", refs={List.class,ClusterEncryptionInfo.class}, tree="[0,1]")
     private Output<List<ClusterEncryptionInfo>> encryptionInfos;
 
     /**
@@ -428,7 +428,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="initialUser", type=ClusterInitialUser.class, parameters={})
+    @Export(name="initialUser", refs={ClusterInitialUser.class}, tree="[0]")
     private Output</* @Nullable */ ClusterInitialUser> initialUser;
 
     /**
@@ -443,7 +443,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * User-defined labels for the alloydb cluster.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -459,7 +459,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -476,7 +476,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="migrationSources", type=List.class, parameters={ClusterMigrationSource.class})
+    @Export(name="migrationSources", refs={List.class,ClusterMigrationSource.class}, tree="[0,1]")
     private Output<List<ClusterMigrationSource>> migrationSources;
 
     /**
@@ -491,7 +491,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -513,7 +513,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration. */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -532,7 +532,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkConfig", type=ClusterNetworkConfig.class, parameters={})
+    @Export(name="networkConfig", refs={ClusterNetworkConfig.class}, tree="[0]")
     private Output<ClusterNetworkConfig> networkConfig;
 
     /**
@@ -548,7 +548,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -564,7 +564,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="restoreBackupSource", type=ClusterRestoreBackupSource.class, parameters={})
+    @Export(name="restoreBackupSource", refs={ClusterRestoreBackupSource.class}, tree="[0]")
     private Output</* @Nullable */ ClusterRestoreBackupSource> restoreBackupSource;
 
     /**
@@ -580,7 +580,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="restoreContinuousBackupSource", type=ClusterRestoreContinuousBackupSource.class, parameters={})
+    @Export(name="restoreContinuousBackupSource", refs={ClusterRestoreContinuousBackupSource.class}, tree="[0]")
     private Output</* @Nullable */ ClusterRestoreContinuousBackupSource> restoreContinuousBackupSource;
 
     /**
@@ -595,7 +595,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The system-generated UID of the resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**

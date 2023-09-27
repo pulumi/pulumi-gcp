@@ -93,7 +93,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * failover\_ratio.
      * 
      */
-    @Export(name="backupPool", type=String.class, parameters={})
+    @Export(name="backupPool", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupPool;
 
     /**
@@ -108,7 +108,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * Textual description field.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -123,7 +123,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * backup pool (which must also be set).
      * 
      */
-    @Export(name="failoverRatio", type=Double.class, parameters={})
+    @Export(name="failoverRatio", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> failoverRatio;
 
     /**
@@ -139,7 +139,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * legacy `gcp.compute.HttpHealthCheck` is supported.
      * 
      */
-    @Export(name="healthChecks", type=String.class, parameters={})
+    @Export(name="healthChecks", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthChecks;
 
     /**
@@ -158,7 +158,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * target pool.
      * 
      */
-    @Export(name="instances", type=List.class, parameters={String.class})
+    @Export(name="instances", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instances;
 
     /**
@@ -179,7 +179,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -197,7 +197,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -213,7 +213,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * region.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -228,7 +228,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * ) The resource URL for the security policy associated with this target pool.
      * 
      */
-    @Export(name="securityPolicy", type=String.class, parameters={})
+    @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
@@ -242,7 +242,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -258,7 +258,7 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
      * 
      */
-    @Export(name="sessionAffinity", type=String.class, parameters={})
+    @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sessionAffinity;
 
     /**

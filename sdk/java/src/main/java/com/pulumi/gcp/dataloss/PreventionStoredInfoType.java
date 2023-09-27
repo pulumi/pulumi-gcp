@@ -221,7 +221,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * A description of the info type.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -236,7 +236,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="dictionary", type=PreventionStoredInfoTypeDictionary.class, parameters={})
+    @Export(name="dictionary", refs={PreventionStoredInfoTypeDictionary.class}, tree="[0]")
     private Output</* @Nullable */ PreventionStoredInfoTypeDictionary> dictionary;
 
     /**
@@ -251,7 +251,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * User set display name of the info type.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -266,7 +266,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="largeCustomDictionary", type=PreventionStoredInfoTypeLargeCustomDictionary.class, parameters={})
+    @Export(name="largeCustomDictionary", refs={PreventionStoredInfoTypeLargeCustomDictionary.class}, tree="[0]")
     private Output</* @Nullable */ PreventionStoredInfoTypeLargeCustomDictionary> largeCustomDictionary;
 
     /**
@@ -281,7 +281,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * Name describing the field.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -301,7 +301,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * ***
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -322,7 +322,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="regex", type=PreventionStoredInfoTypeRegex.class, parameters={})
+    @Export(name="regex", refs={PreventionStoredInfoTypeRegex.class}, tree="[0]")
     private Output</* @Nullable */ PreventionStoredInfoTypeRegex> regex;
 
     /**
@@ -339,7 +339,7 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * characters. Can be empty to allow the system to generate one.
      * 
      */
-    @Export(name="storedInfoTypeId", type=String.class, parameters={})
+    @Export(name="storedInfoTypeId", refs={String.class}, tree="[0]")
     private Output<String> storedInfoTypeId;
 
     /**

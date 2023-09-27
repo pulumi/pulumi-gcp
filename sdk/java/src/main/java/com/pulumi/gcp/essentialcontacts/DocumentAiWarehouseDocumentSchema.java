@@ -562,7 +562,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * Name of the schema given by the user.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -576,7 +576,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * Tells whether the document is a folder or a typical document.
      * 
      */
-    @Export(name="documentIsFolder", type=Boolean.class, parameters={})
+    @Export(name="documentIsFolder", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> documentIsFolder;
 
     /**
@@ -590,7 +590,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * The location of the resource.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -613,7 +613,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * The schema name in the source.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -636,7 +636,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * The unique identifier of the project.
      * 
      */
-    @Export(name="projectNumber", type=String.class, parameters={})
+    @Export(name="projectNumber", refs={String.class}, tree="[0]")
     private Output<String> projectNumber;
 
     /**
@@ -651,7 +651,7 @@ public class DocumentAiWarehouseDocumentSchema extends com.pulumi.resources.Cust
      * Structure is documented below.
      * 
      */
-    @Export(name="propertyDefinitions", type=List.class, parameters={DocumentAiWarehouseDocumentSchemaPropertyDefinition.class})
+    @Export(name="propertyDefinitions", refs={List.class,DocumentAiWarehouseDocumentSchemaPropertyDefinition.class}, tree="[0,1]")
     private Output<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>> propertyDefinitions;
 
     /**

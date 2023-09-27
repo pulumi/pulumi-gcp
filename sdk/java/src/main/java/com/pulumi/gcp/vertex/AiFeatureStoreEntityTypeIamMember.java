@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember")
 public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=AiFeatureStoreEntityTypeIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={AiFeatureStoreEntityTypeIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ AiFeatureStoreEntityTypeIamMemberCondition> condition;
 
     public Output<Optional<AiFeatureStoreEntityTypeIamMemberCondition>> condition() {
@@ -53,7 +53,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="entitytype", type=String.class, parameters={})
+    @Export(name="entitytype", refs={String.class}, tree="[0]")
     private Output<String> entitytype;
 
     /**
@@ -67,7 +67,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -93,7 +93,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="featurestore", type=String.class, parameters={})
+    @Export(name="featurestore", refs={String.class}, tree="[0]")
     private Output<String> featurestore;
 
     /**
@@ -115,7 +115,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
     public Output<String> featurestore() {
         return this.featurestore;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -127,7 +127,7 @@ public class AiFeatureStoreEntityTypeIamMember extends com.pulumi.resources.Cust
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

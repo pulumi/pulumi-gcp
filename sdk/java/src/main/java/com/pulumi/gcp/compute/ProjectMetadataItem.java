@@ -65,7 +65,7 @@ public class ProjectMetadataItem extends com.pulumi.resources.CustomResource {
      * The metadata key to set.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -80,7 +80,7 @@ public class ProjectMetadataItem extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -97,7 +97,7 @@ public class ProjectMetadataItem extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

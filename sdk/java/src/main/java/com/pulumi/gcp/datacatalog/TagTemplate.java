@@ -121,7 +121,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * The display name for this template.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -144,7 +144,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fields", type=List.class, parameters={TagTemplateField.class})
+    @Export(name="fields", refs={List.class,TagTemplateField.class}, tree="[0,1]")
     private Output<List<TagTemplateField>> fields;
 
     /**
@@ -159,7 +159,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
      * 
      */
-    @Export(name="forceDelete", type=Boolean.class, parameters={})
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
@@ -174,7 +174,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -190,7 +190,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -205,7 +205,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * Template location region.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -219,7 +219,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
      * The id of the tag template to create.
      * 
      */
-    @Export(name="tagTemplateId", type=String.class, parameters={})
+    @Export(name="tagTemplateId", refs={String.class}, tree="[0]")
     private Output<String> tagTemplateId;
 
     /**

@@ -296,7 +296,7 @@ public class WebRegionBackendServiceIamPolicy extends com.pulumi.resources.Custo
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -311,7 +311,7 @@ public class WebRegionBackendServiceIamPolicy extends com.pulumi.resources.Custo
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -339,7 +339,7 @@ public class WebRegionBackendServiceIamPolicy extends com.pulumi.resources.Custo
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -362,7 +362,7 @@ public class WebRegionBackendServiceIamPolicy extends com.pulumi.resources.Custo
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     public Output<String> region() {
@@ -372,7 +372,7 @@ public class WebRegionBackendServiceIamPolicy extends com.pulumi.resources.Custo
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="webRegionBackendService", type=String.class, parameters={})
+    @Export(name="webRegionBackendService", refs={String.class}, tree="[0]")
     private Output<String> webRegionBackendService;
 
     /**

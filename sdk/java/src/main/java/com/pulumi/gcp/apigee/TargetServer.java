@@ -158,7 +158,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * A human-readable description of this TargetServer.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="envId", type=String.class, parameters={})
+    @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
@@ -192,7 +192,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -206,7 +206,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
      * 
      */
-    @Export(name="isEnabled", type=Boolean.class, parameters={})
+    @Export(name="isEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isEnabled;
 
     /**
@@ -220,7 +220,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -234,7 +234,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -249,7 +249,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * Possible values are: `HTTP`, `HTTP2`, `GRPC_TARGET`, `GRPC`, `EXTERNAL_CALLOUT`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -265,7 +265,7 @@ public class TargetServer extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sSlInfo", type=TargetServerSSlInfo.class, parameters={})
+    @Export(name="sSlInfo", refs={TargetServerSSlInfo.class}, tree="[0]")
     private Output</* @Nullable */ TargetServerSSlInfo> sSlInfo;
 
     /**

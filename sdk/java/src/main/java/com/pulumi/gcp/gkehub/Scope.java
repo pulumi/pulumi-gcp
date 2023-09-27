@@ -84,7 +84,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Time the Scope was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -98,7 +98,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Time the Scope was deleted in UTC.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -112,7 +112,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Labels for this Scope.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -126,7 +126,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * The unique identifier of the scope
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -141,7 +141,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -158,7 +158,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="scopeId", type=String.class, parameters={})
+    @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     /**
@@ -175,7 +175,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="states", type=List.class, parameters={ScopeState.class})
+    @Export(name="states", refs={List.class,ScopeState.class}, tree="[0,1]")
     private Output<List<ScopeState>> states;
 
     /**
@@ -190,7 +190,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Google-generated UUID for this resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -204,7 +204,7 @@ public class Scope extends com.pulumi.resources.CustomResource {
      * Time the Scope was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

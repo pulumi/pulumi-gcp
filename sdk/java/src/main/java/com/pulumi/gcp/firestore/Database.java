@@ -88,7 +88,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
-    @Export(name="appEngineIntegrationMode", type=String.class, parameters={})
+    @Export(name="appEngineIntegrationMode", refs={String.class}, tree="[0]")
     private Output<String> appEngineIntegrationMode;
 
     /**
@@ -104,7 +104,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
-    @Export(name="concurrencyMode", type=String.class, parameters={})
+    @Export(name="concurrencyMode", refs={String.class}, tree="[0]")
     private Output<String> concurrencyMode;
 
     /**
@@ -119,7 +119,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Output only. The timestamp at which this database was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -134,7 +134,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
      * 
      */
-    @Export(name="deleteProtectionState", type=String.class, parameters={})
+    @Export(name="deleteProtectionState", refs={String.class}, tree="[0]")
     private Output<String> deleteProtectionState;
 
     /**
@@ -151,7 +151,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="earliestVersionTime", type=String.class, parameters={})
+    @Export(name="earliestVersionTime", refs={String.class}, tree="[0]")
     private Output<String> earliestVersionTime;
 
     /**
@@ -169,7 +169,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -188,7 +188,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
      * 
      */
-    @Export(name="keyPrefix", type=String.class, parameters={})
+    @Export(name="keyPrefix", refs={String.class}, tree="[0]")
     private Output<String> keyPrefix;
 
     /**
@@ -206,7 +206,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
-    @Export(name="locationId", type=String.class, parameters={})
+    @Export(name="locationId", refs={String.class}, tree="[0]")
     private Output<String> locationId;
 
     /**
@@ -226,7 +226,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;(default)&#34; database id is also valid.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -251,7 +251,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
      * 
      */
-    @Export(name="pointInTimeRecoveryEnablement", type=String.class, parameters={})
+    @Export(name="pointInTimeRecoveryEnablement", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pointInTimeRecoveryEnablement;
 
     /**
@@ -272,7 +272,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -292,7 +292,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -311,7 +311,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Output only. The system-generated UUID4 for this Database.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -325,7 +325,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Output only. The timestamp at which this database was most recently updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -342,7 +342,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="versionRetentionPeriod", type=String.class, parameters={})
+    @Export(name="versionRetentionPeriod", refs={String.class}, tree="[0]")
     private Output<String> versionRetentionPeriod;
 
     /**

@@ -158,7 +158,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="certificateId", type=Integer.class, parameters={})
+    @Export(name="certificateId", refs={Integer.class}, tree="[0]")
     private Output<Integer> certificateId;
 
     /**
@@ -172,7 +172,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -186,7 +186,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -200,7 +200,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * Expire time of the certificate in RFC3339 text format.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -216,7 +216,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="managed", type=MangedSslCertificateManaged.class, parameters={})
+    @Export(name="managed", refs={MangedSslCertificateManaged.class}, tree="[0]")
     private Output</* @Nullable */ MangedSslCertificateManaged> managed;
 
     /**
@@ -240,7 +240,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * These are in the same namespace as the managed SSL certificates.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -263,7 +263,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -278,7 +278,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -292,7 +292,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * Domains associated with the certificate via Subject Alternative Name.
      * 
      */
-    @Export(name="subjectAlternativeNames", type=List.class, parameters={String.class})
+    @Export(name="subjectAlternativeNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> subjectAlternativeNames;
 
     /**
@@ -309,7 +309,7 @@ public class MangedSslCertificate extends com.pulumi.resources.CustomResource {
      * Possible values are: `MANAGED`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

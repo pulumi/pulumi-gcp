@@ -179,7 +179,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
      * 
      */
-    @Export(name="availableMemoryMb", type=Integer.class, parameters={})
+    @Export(name="availableMemoryMb", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> availableMemoryMb;
 
     /**
@@ -193,7 +193,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A set of key/value environment variable pairs available during build time.
      * 
      */
-    @Export(name="buildEnvironmentVariables", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="buildEnvironmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> buildEnvironmentVariables;
 
     /**
@@ -207,7 +207,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      * 
      */
-    @Export(name="buildWorkerPool", type=String.class, parameters={})
+    @Export(name="buildWorkerPool", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> buildWorkerPool;
 
     /**
@@ -221,7 +221,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Description of the function.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -235,7 +235,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Docker Registry to use for storing the function&#39;s Docker images. Allowed values are CONTAINER_REGISTRY (default) and ARTIFACT_REGISTRY.
      * 
      */
-    @Export(name="dockerRegistry", type=String.class, parameters={})
+    @Export(name="dockerRegistry", refs={String.class}, tree="[0]")
     private Output<String> dockerRegistry;
 
     /**
@@ -249,7 +249,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
      * 
      */
-    @Export(name="dockerRepository", type=String.class, parameters={})
+    @Export(name="dockerRepository", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dockerRepository;
 
     /**
@@ -263,7 +263,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Name of the function that will be executed when the Google Cloud Function is triggered.
      * 
      */
-    @Export(name="entryPoint", type=String.class, parameters={})
+    @Export(name="entryPoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entryPoint;
 
     /**
@@ -277,7 +277,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A set of key/value environment variable pairs to assign to the function.
      * 
      */
-    @Export(name="environmentVariables", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="environmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> environmentVariables;
 
     /**
@@ -291,7 +291,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
      * 
      */
-    @Export(name="eventTrigger", type=FunctionEventTrigger.class, parameters={})
+    @Export(name="eventTrigger", refs={FunctionEventTrigger.class}, tree="[0]")
     private Output<FunctionEventTrigger> eventTrigger;
 
     /**
@@ -305,7 +305,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The security level for the function. The following options are available:
      * 
      */
-    @Export(name="httpsTriggerSecurityLevel", type=String.class, parameters={})
+    @Export(name="httpsTriggerSecurityLevel", refs={String.class}, tree="[0]")
     private Output<String> httpsTriggerSecurityLevel;
 
     /**
@@ -319,7 +319,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * URL which triggers function execution. Returned only if `trigger_http` is used.
      * 
      */
-    @Export(name="httpsTriggerUrl", type=String.class, parameters={})
+    @Export(name="httpsTriggerUrl", refs={String.class}, tree="[0]")
     private Output<String> httpsTriggerUrl;
 
     /**
@@ -333,7 +333,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
      * 
      */
-    @Export(name="ingressSettings", type=String.class, parameters={})
+    @Export(name="ingressSettings", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ingressSettings;
 
     /**
@@ -348,7 +348,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
      * 
      */
-    @Export(name="kmsKeyName", type=String.class, parameters={})
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -363,7 +363,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> labels;
 
     /**
@@ -377,7 +377,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The limit on the maximum number of function instances that may coexist at a given time.
      * 
      */
-    @Export(name="maxInstances", type=Integer.class, parameters={})
+    @Export(name="maxInstances", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxInstances;
 
     /**
@@ -391,7 +391,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The limit on the minimum number of function instances that may coexist at a given time.
      * 
      */
-    @Export(name="minInstances", type=Integer.class, parameters={})
+    @Export(name="minInstances", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minInstances;
 
     /**
@@ -405,7 +405,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A user-defined name of the function. Function names must be unique globally.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -419,7 +419,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Project of the function. If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -433,7 +433,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Region of function. If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -450,7 +450,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="runtime", type=String.class, parameters={})
+    @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
 
     /**
@@ -467,7 +467,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Secret environment variables configuration. Structure is documented below.
      * 
      */
-    @Export(name="secretEnvironmentVariables", type=List.class, parameters={FunctionSecretEnvironmentVariable.class})
+    @Export(name="secretEnvironmentVariables", refs={List.class,FunctionSecretEnvironmentVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FunctionSecretEnvironmentVariable>> secretEnvironmentVariables;
 
     /**
@@ -481,7 +481,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Secret volumes configuration. Structure is documented below.
      * 
      */
-    @Export(name="secretVolumes", type=List.class, parameters={FunctionSecretVolume.class})
+    @Export(name="secretVolumes", refs={List.class,FunctionSecretVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FunctionSecretVolume>> secretVolumes;
 
     /**
@@ -495,7 +495,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If provided, the self-provided service account to run the function with.
      * 
      */
-    @Export(name="serviceAccountEmail", type=String.class, parameters={})
+    @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
@@ -509,7 +509,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The GCS bucket containing the zip archive which contains the function.
      * 
      */
-    @Export(name="sourceArchiveBucket", type=String.class, parameters={})
+    @Export(name="sourceArchiveBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceArchiveBucket;
 
     /**
@@ -523,7 +523,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The source archive object (file) in archive bucket.
      * 
      */
-    @Export(name="sourceArchiveObject", type=String.class, parameters={})
+    @Export(name="sourceArchiveObject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceArchiveObject;
 
     /**
@@ -538,7 +538,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      * 
      */
-    @Export(name="sourceRepository", type=FunctionSourceRepository.class, parameters={})
+    @Export(name="sourceRepository", refs={FunctionSourceRepository.class}, tree="[0]")
     private Output</* @Nullable */ FunctionSourceRepository> sourceRepository;
 
     /**
@@ -553,7 +553,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Describes the current stage of a deployment.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -567,7 +567,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeout;
 
     /**
@@ -581,7 +581,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
      * 
      */
-    @Export(name="triggerHttp", type=Boolean.class, parameters={})
+    @Export(name="triggerHttp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> triggerHttp;
 
     /**
@@ -595,7 +595,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
      * 
      */
-    @Export(name="vpcConnector", type=String.class, parameters={})
+    @Export(name="vpcConnector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcConnector;
 
     /**
@@ -609,7 +609,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
      * 
      */
-    @Export(name="vpcConnectorEgressSettings", type=String.class, parameters={})
+    @Export(name="vpcConnectorEgressSettings", refs={String.class}, tree="[0]")
     private Output<String> vpcConnectorEgressSettings;
 
     /**

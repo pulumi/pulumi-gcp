@@ -132,7 +132,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * ***
      * 
      */
-    @Export(name="disk", type=String.class, parameters={})
+    @Export(name="disk", refs={String.class}, tree="[0]")
     private Output<String> disk;
 
     /**
@@ -149,7 +149,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * creation. Do not specify the self link.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -165,7 +165,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -180,7 +180,7 @@ public class RegionDiskResourcePolicyAttachment extends com.pulumi.resources.Cus
      * A reference to the region where the disk resides.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

@@ -178,7 +178,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * this parameter or the JSON body.
      * 
      */
-    @Export(name="alias", type=String.class, parameters={})
+    @Export(name="alias", refs={String.class}, tree="[0]")
     private Output<String> alias;
 
     /**
@@ -194,7 +194,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
      * 
      */
-    @Export(name="certValidityInDays", type=Integer.class, parameters={})
+    @Export(name="certValidityInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> certValidityInDays;
 
     /**
@@ -209,7 +209,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Structure is documented below.
      * 
      */
-    @Export(name="certsInfos", type=List.class, parameters={KeystoresAliasesSelfSignedCertCertsInfo.class})
+    @Export(name="certsInfos", refs={List.class,KeystoresAliasesSelfSignedCertCertsInfo.class}, tree="[0,1]")
     private Output<List<KeystoresAliasesSelfSignedCertCertsInfo>> certsInfos;
 
     /**
@@ -224,7 +224,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * The Apigee environment name
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -238,7 +238,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Key size. Default and maximum value is 2048 bits.
      * 
      */
-    @Export(name="keySize", type=String.class, parameters={})
+    @Export(name="keySize", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keySize;
 
     /**
@@ -252,7 +252,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * The Apigee keystore name associated in an Apigee environment
      * 
      */
-    @Export(name="keystore", type=String.class, parameters={})
+    @Export(name="keystore", refs={String.class}, tree="[0]")
     private Output<String> keystore;
 
     /**
@@ -266,7 +266,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * The Apigee Organization name associated with the Apigee environment
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -280,7 +280,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Signature algorithm to generate private key. Valid values are SHA512withRSA, SHA384withRSA, and SHA256withRSA
      * 
      */
-    @Export(name="sigAlg", type=String.class, parameters={})
+    @Export(name="sigAlg", refs={String.class}, tree="[0]")
     private Output<String> sigAlg;
 
     /**
@@ -295,7 +295,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Structure is documented below.
      * 
      */
-    @Export(name="subject", type=KeystoresAliasesSelfSignedCertSubject.class, parameters={})
+    @Export(name="subject", refs={KeystoresAliasesSelfSignedCertSubject.class}, tree="[0]")
     private Output<KeystoresAliasesSelfSignedCertSubject> subject;
 
     /**
@@ -311,7 +311,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Structure is documented below.
      * 
      */
-    @Export(name="subjectAlternativeDnsNames", type=KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.class, parameters={})
+    @Export(name="subjectAlternativeDnsNames", refs={KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.class}, tree="[0]")
     private Output</* @Nullable */ KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames> subjectAlternativeDnsNames;
 
     /**
@@ -326,7 +326,7 @@ public class KeystoresAliasesSelfSignedCert extends com.pulumi.resources.CustomR
      * Optional.Type of Alias
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:runtimeconfig/configIamMember:ConfigIamMember")
 public class ConfigIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=ConfigIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={ConfigIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ ConfigIamMemberCondition> condition;
 
     public Output<Optional<ConfigIamMemberCondition>> condition() {
@@ -53,7 +53,7 @@ public class ConfigIamMember extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="config", type=String.class, parameters={})
+    @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
@@ -67,7 +67,7 @@ public class ConfigIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -77,7 +77,7 @@ public class ConfigIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -100,7 +100,7 @@ public class ConfigIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -129,7 +129,7 @@ public class ConfigIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

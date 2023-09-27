@@ -182,7 +182,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -197,7 +197,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionSpec", type=AiFeatureStoreEncryptionSpec.class, parameters={})
+    @Export(name="encryptionSpec", refs={AiFeatureStoreEncryptionSpec.class}, tree="[0]")
     private Output</* @Nullable */ AiFeatureStoreEncryptionSpec> encryptionSpec;
 
     /**
@@ -212,7 +212,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * Used to perform consistent read-modify-write updates.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -226,7 +226,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * If set to true, any EntityTypes and Features for this Featurestore will also be deleted
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -240,7 +240,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this Featurestore.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -254,7 +254,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -269,7 +269,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="onlineServingConfig", type=AiFeatureStoreOnlineServingConfig.class, parameters={})
+    @Export(name="onlineServingConfig", refs={AiFeatureStoreOnlineServingConfig.class}, tree="[0]")
     private Output</* @Nullable */ AiFeatureStoreOnlineServingConfig> onlineServingConfig;
 
     /**
@@ -287,7 +287,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * featurestore. If not set, default to 4000 days
      * 
      */
-    @Export(name="onlineStorageTtlDays", type=Integer.class, parameters={})
+    @Export(name="onlineStorageTtlDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> onlineStorageTtlDays;
 
     /**
@@ -305,7 +305,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -320,7 +320,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * The region of the dataset. eg us-central1
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -334,7 +334,7 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
      * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

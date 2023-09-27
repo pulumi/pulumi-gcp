@@ -94,7 +94,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -110,7 +110,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * Whether fulfillment is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -125,7 +125,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="features", type=List.class, parameters={FulfillmentFeature.class})
+    @Export(name="features", refs={List.class,FulfillmentFeature.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FulfillmentFeature>> features;
 
     /**
@@ -141,7 +141,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="genericWebService", type=FulfillmentGenericWebService.class, parameters={})
+    @Export(name="genericWebService", refs={FulfillmentGenericWebService.class}, tree="[0]")
     private Output</* @Nullable */ FulfillmentGenericWebService> genericWebService;
 
     /**
@@ -157,7 +157,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -173,7 +173,7 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

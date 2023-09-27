@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataproc/jobIAMBinding:JobIAMBinding")
 public class JobIAMBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=JobIAMBindingCondition.class, parameters={})
+    @Export(name="condition", refs={JobIAMBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ JobIAMBindingCondition> condition;
 
     public Output<Optional<JobIAMBindingCondition>> condition() {
@@ -166,7 +166,7 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the jobs&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -176,13 +176,13 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="jobId", type=String.class, parameters={})
+    @Export(name="jobId", refs={String.class}, tree="[0]")
     private Output<String> jobId;
 
     public Output<String> jobId() {
         return this.jobId;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -193,7 +193,7 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * is not provided, the provider will use a default.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -209,7 +209,7 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * is not provided, the provider will use a default.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -228,7 +228,7 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * `gcp.dataproc.JobIAMPolicy` only:
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

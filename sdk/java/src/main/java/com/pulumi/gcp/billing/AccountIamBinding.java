@@ -167,7 +167,7 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="billingAccountId", type=String.class, parameters={})
+    @Export(name="billingAccountId", refs={String.class}, tree="[0]")
     private Output<String> billingAccountId;
 
     /**
@@ -186,7 +186,7 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> billingAccountId() {
         return this.billingAccountId;
     }
-    @Export(name="condition", type=AccountIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={AccountIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ AccountIamBindingCondition> condition;
 
     public Output<Optional<AccountIamBindingCondition>> condition() {
@@ -196,7 +196,7 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the billing account&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -206,7 +206,7 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -220,7 +220,7 @@ public class AccountIamBinding extends com.pulumi.resources.CustomResource {
      * `gcp.billing.AccountIamPolicy` only:
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

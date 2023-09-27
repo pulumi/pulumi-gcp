@@ -122,7 +122,7 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
      * ***
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
@@ -139,7 +139,7 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
      * long, and comply with RFC1035.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -154,7 +154,7 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
      * The port number, which can be a value between 1 and 65535.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -169,7 +169,7 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -184,7 +184,7 @@ public class InstanceGroupNamedPort extends com.pulumi.resources.CustomResource 
      * The zone of the instance group.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

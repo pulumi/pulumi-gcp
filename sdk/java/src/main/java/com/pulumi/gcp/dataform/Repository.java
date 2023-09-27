@@ -118,7 +118,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gitRemoteSettings", type=RepositoryGitRemoteSettings.class, parameters={})
+    @Export(name="gitRemoteSettings", refs={RepositoryGitRemoteSettings.class}, tree="[0]")
     private Output</* @Nullable */ RepositoryGitRemoteSettings> gitRemoteSettings;
 
     /**
@@ -135,7 +135,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -152,7 +152,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -167,7 +167,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * A reference to the region
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -182,7 +182,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="workspaceCompilationOverrides", type=RepositoryWorkspaceCompilationOverrides.class, parameters={})
+    @Export(name="workspaceCompilationOverrides", refs={RepositoryWorkspaceCompilationOverrides.class}, tree="[0]")
     private Output</* @Nullable */ RepositoryWorkspaceCompilationOverrides> workspaceCompilationOverrides;
 
     /**
