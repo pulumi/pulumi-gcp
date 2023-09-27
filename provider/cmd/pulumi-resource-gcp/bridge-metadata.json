@@ -872,6 +872,9 @@
                     "migration_source": {
                         "maxItemsOne": false
                     },
+                    "network_config": {
+                        "maxItemsOne": true
+                    },
                     "restore_backup_source": {
                         "maxItemsOne": true
                     },
@@ -1243,6 +1246,28 @@
                 "fields": {
                     "identities": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_apigee_target_server": {
+                "current": "gcp:apigee/targetServer:TargetServer",
+                "majorVersion": 6,
+                "fields": {
+                    "s_sl_info": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ciphers": {
+                                    "maxItemsOne": false
+                                },
+                                "common_name": {
+                                    "maxItemsOne": true
+                                },
+                                "protocols": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1627,6 +1652,10 @@
                 "current": "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy",
                 "majorVersion": 6
             },
+            "google_artifact_registry_vpcsc_config": {
+                "current": "gcp:artifactregistry/vpcscConfig:VpcscConfig",
+                "majorVersion": 6
+            },
             "google_assured_workloads_workload": {
                 "current": "gcp:assuredworkloads/workload:Workload",
                 "majorVersion": 6,
@@ -1704,6 +1733,22 @@
                 "fields": {
                     "hive_options": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "google_biglake_table": {
+                "current": "gcp:biglake/table:Table",
+                "majorVersion": 6,
+                "fields": {
+                    "hive_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "storage_descriptor": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2162,6 +2207,36 @@
                             "fields": {
                                 "range": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "table_constraints": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "foreign_keys": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "column_references": {
+                                                "maxItemsOne": true
+                                            },
+                                            "referenced_table": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "primary_key": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "columns": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3039,7 +3114,21 @@
                                                 }
                                             },
                                             "vpc_access": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "network_interfaces": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "tags": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -3216,7 +3305,21 @@
                                     }
                                 },
                                 "vpc_access": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "network_interfaces": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -7896,6 +7999,9 @@
                             }
                         }
                     },
+                    "binary_authorization": {
+                        "maxItemsOne": true
+                    },
                     "errors": {
                         "maxItemsOne": false
                     },
@@ -8081,6 +8187,9 @@
                             }
                         }
                     },
+                    "management": {
+                        "maxItemsOne": true
+                    },
                     "max_pods_constraint": {
                         "maxItemsOne": true
                     }
@@ -8192,6 +8301,9 @@
                                 }
                             }
                         }
+                    },
+                    "management": {
+                        "maxItemsOne": true
                     },
                     "max_pods_constraint": {
                         "maxItemsOne": true
@@ -8446,6 +8558,9 @@
                                 "ephemeral_storage_local_ssd_config": {
                                     "maxItemsOne": true
                                 },
+                                "fast_socket": {
+                                    "maxItemsOne": true
+                                },
                                 "gcfs_config": {
                                     "maxItemsOne": true
                                 },
@@ -8574,6 +8689,9 @@
                                                 "maxItemsOne": true
                                             },
                                             "ephemeral_storage_local_ssd_config": {
+                                                "maxItemsOne": true
+                                            },
+                                            "fast_socket": {
                                                 "maxItemsOne": true
                                             },
                                             "gcfs_config": {
@@ -8838,6 +8956,9 @@
                                     "maxItemsOne": true
                                 },
                                 "ephemeral_storage_local_ssd_config": {
+                                    "maxItemsOne": true
+                                },
+                                "fast_socket": {
                                     "maxItemsOne": true
                                 },
                                 "gcfs_config": {
@@ -10852,6 +10973,70 @@
                             "fields": {
                                 "group_indexes": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_data_pipeline_pipeline": {
+                "current": "gcp:dataflow/pipeline:Pipeline",
+                "majorVersion": 6,
+                "fields": {
+                    "schedule_info": {
+                        "maxItemsOne": true
+                    },
+                    "workload": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dataflow_flex_template_request": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "launch_parameter": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "environment": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "additional_experiments": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "dataflow_launch_template_request": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "launch_parameters": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "environment": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "additional_experiments": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -13392,6 +13577,159 @@
                     }
                 }
             },
+            "google_dialogflow_cx_security_settings": {
+                "current": "gcp:diagflow/cxSecuritySettings:CxSecuritySettings",
+                "majorVersion": 6,
+                "fields": {
+                    "audio_export_settings": {
+                        "maxItemsOne": true
+                    },
+                    "insights_export_settings": {
+                        "maxItemsOne": true
+                    },
+                    "purge_data_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dialogflow_cx_test_case": {
+                "current": "gcp:diagflow/cxTestCase:CxTestCase",
+                "majorVersion": 6,
+                "fields": {
+                    "last_test_result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conversation_turns": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "user_input": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "input": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "dtmf": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "event": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "text": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "virtual_agent_output": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "current_page": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "differences": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "status": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "text_responses": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "text": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "triggered_intent": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "test_case_conversation_turns": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "user_input": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "input": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "dtmf": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "event": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "text": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "virtual_agent_output": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "current_page": {
+                                                "maxItemsOne": true
+                                            },
+                                            "text_responses": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "text": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "triggered_intent": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "test_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tracking_parameters": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dialogflow_cx_version": {
                 "current": "gcp:diagflow/cxVersion:CxVersion",
                 "majorVersion": 6,
@@ -13817,6 +14155,22 @@
             "google_document_ai_warehouse_location": {
                 "current": "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation",
                 "majorVersion": 6
+            },
+            "google_edgenetwork_network": {
+                "current": "gcp:edgenetwork/network:Network",
+                "majorVersion": 6
+            },
+            "google_edgenetwork_subnet": {
+                "current": "gcp:edgenetwork/subnet:Subnet",
+                "majorVersion": 6,
+                "fields": {
+                    "ipv4_cidr": {
+                        "maxItemsOne": false
+                    },
+                    "ipv6_cidr": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_endpoints_service": {
                 "current": "gcp:endpoints/service:Service",
@@ -14396,6 +14750,110 @@
                 "current": "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy",
                 "majorVersion": 6
             },
+            "google_gke_backup_restore_plan": {
+                "current": "gcp:gkebackup/restorePlan:RestorePlan",
+                "majorVersion": 6,
+                "fields": {
+                    "restore_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cluster_resource_restore_scope": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "excluded_group_kinds": {
+                                                "maxItemsOne": false
+                                            },
+                                            "selected_group_kinds": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "excluded_namespaces": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "namespaces": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "selected_applications": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "namespaced_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "selected_namespaces": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "namespaces": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "transformation_rules": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "field_actions": {
+                                                "maxItemsOne": false
+                                            },
+                                            "resource_filter": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "group_kinds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "namespaces": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_gke_backup_restore_plan_iam_binding": {
+                "current": "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_gke_backup_restore_plan_iam_member": {
+                "current": "gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_gke_backup_restore_plan_iam_policy": {
+                "current": "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy",
+                "majorVersion": 6
+            },
             "google_gke_hub_feature": {
                 "current": "gcp:gkehub/feature:Feature",
                 "majorVersion": 6,
@@ -14817,6 +15275,9 @@
                 "current": "gcp:gkeonprem/bareMetalCluster:BareMetalCluster",
                 "majorVersion": 6,
                 "fields": {
+                    "binary_authorization": {
+                        "maxItemsOne": true
+                    },
                     "cluster_operations": {
                         "maxItemsOne": true
                     },
@@ -15058,6 +15519,9 @@
                             }
                         }
                     },
+                    "upgrade_policy": {
+                        "maxItemsOne": true
+                    },
                     "validation_check": {
                         "maxItemsOne": false,
                         "elem": {
@@ -15255,6 +15719,9 @@
                         }
                     },
                     "storage": {
+                        "maxItemsOne": true
+                    },
+                    "upgrade_policy": {
                         "maxItemsOne": true
                     },
                     "validation_check": {
@@ -15906,6 +16373,25 @@
                         "elem": {
                             "fields": {
                                 "sign_up_quota_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "sign_in": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "anonymous": {
+                                    "maxItemsOne": true
+                                },
+                                "email": {
+                                    "maxItemsOne": true
+                                },
+                                "hash_config": {
+                                    "maxItemsOne": false
+                                },
+                                "phone_number": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -16768,6 +17254,16 @@
                         "elem": {
                             "fields": {
                                 "instances": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "linked_vpc_network": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exclude_export_ranges": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -19715,6 +20211,49 @@
                     }
                 }
             },
+            "google_scc_project_custom_module": {
+                "current": "gcp:securitycenter/projectCustomModule:ProjectCustomModule",
+                "majorVersion": 6,
+                "fields": {
+                    "custom_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_output": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "properties": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "value_expression": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "predicate": {
+                                    "maxItemsOne": true
+                                },
+                                "resource_selector": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_types": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_scc_source": {
                 "current": "gcp:securitycenter/source:Source",
                 "majorVersion": 6
@@ -19752,6 +20291,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "auto": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "customer_managed_encryption": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "user_managed": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -20333,6 +20882,44 @@
                 "current": "gcp:storage/hmacKey:HmacKey",
                 "majorVersion": 6
             },
+            "google_storage_insights_report_config": {
+                "current": "gcp:storage/insightsReportConfig:InsightsReportConfig",
+                "majorVersion": 6,
+                "fields": {
+                    "csv_options": {
+                        "maxItemsOne": true
+                    },
+                    "frequency_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "end_date": {
+                                    "maxItemsOne": true
+                                },
+                                "start_date": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "object_metadata_report_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "metadata_fields": {
+                                    "maxItemsOne": false
+                                },
+                                "storage_destination_options": {
+                                    "maxItemsOne": true
+                                },
+                                "storage_filters": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_storage_notification": {
                 "current": "gcp:storage/notification:Notification",
                 "majorVersion": 6,
@@ -20536,6 +21123,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_tpu_v2_vm": {
+                "current": "gcp:tpu/v2Vm:V2Vm",
+                "majorVersion": 6
             },
             "google_vertex_ai_dataset": {
                 "current": "gcp:vertex/aiDataset:AiDataset",
@@ -21203,6 +21794,29 @@
             "google_binary_authorization_attestor_iam_policy": {
                 "current": "gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy",
                 "majorVersion": 6
+            },
+            "google_certificate_manager_certificate_map": {
+                "current": "gcp:certificatemanager/getCertificateMap:getCertificateMap",
+                "majorVersion": 6,
+                "fields": {
+                    "gclb_targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_configs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ports": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_client_config": {
                 "current": "gcp:organizations/getClientConfig:getClientConfig",
@@ -23228,6 +23842,9 @@
                                 "ephemeral_storage_local_ssd_config": {
                                     "maxItemsOne": false
                                 },
+                                "fast_socket": {
+                                    "maxItemsOne": false
+                                },
                                 "gcfs_config": {
                                     "maxItemsOne": false
                                 },
@@ -23356,6 +23973,9 @@
                                                 "maxItemsOne": false
                                             },
                                             "ephemeral_storage_local_ssd_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "fast_socket": {
                                                 "maxItemsOne": false
                                             },
                                             "gcfs_config": {
@@ -23845,6 +24465,10 @@
             },
             "google_gke_backup_backup_plan_iam_policy": {
                 "current": "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy",
+                "majorVersion": 6
+            },
+            "google_gke_backup_restore_plan_iam_policy": {
+                "current": "gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy",
                 "majorVersion": 6
             },
             "google_gke_hub_feature_iam_policy": {
@@ -24505,6 +25129,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "auto": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "customer_managed_encryption": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "user_managed": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -25016,6 +25650,24 @@
                     }
                 }
             },
+            "google_tpu_v2_accelerator_types": {
+                "current": "gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes",
+                "majorVersion": 6,
+                "fields": {
+                    "types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_tpu_v2_runtime_versions": {
+                "current": "gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions",
+                "majorVersion": 6,
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_vertex_ai_featurestore_entitytype_iam_policy": {
                 "current": "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy",
                 "majorVersion": 6
@@ -25188,6 +25840,7 @@
             "gcp:apigee/sharedflow:Sharedflow": 0,
             "gcp:apigee/sharedflowDeployment:SharedflowDeployment": 0,
             "gcp:apigee/syncAuthorization:SyncAuthorization": 0,
+            "gcp:apigee/targetServer:TargetServer": 0,
             "gcp:appengine/application:Application": 0,
             "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules": 0,
             "gcp:appengine/domainMapping:DomainMapping": 0,
@@ -25200,6 +25853,7 @@
             "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding": 0,
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": 0,
             "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": 0,
+            "gcp:artifactregistry/vpcscConfig:VpcscConfig": 0,
             "gcp:assuredworkloads/workload:Workload": 0,
             "gcp:backupdisasterrecovery/managementServer:ManagementServer": 0,
             "gcp:beyondcorp/appConnection:AppConnection": 0,
@@ -25207,6 +25861,7 @@
             "gcp:beyondcorp/appGateway:AppGateway": 0,
             "gcp:biglake/catalog:Catalog": 0,
             "gcp:biglake/database:Database": 0,
+            "gcp:biglake/table:Table": 0,
             "gcp:bigquery/appProfile:AppProfile": 0,
             "gcp:bigquery/biReservation:BiReservation": 0,
             "gcp:bigquery/capacityCommitment:CapacityCommitment": 0,
@@ -25492,6 +26147,7 @@
             "gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy": 0,
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": 0,
             "gcp:dataflow/job:Job": 0,
+            "gcp:dataflow/pipeline:Pipeline": 0,
             "gcp:dataform/repository:Repository": 0,
             "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig": 0,
             "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig": 0,
@@ -25553,6 +26209,8 @@
             "gcp:diagflow/cxFlow:CxFlow": 0,
             "gcp:diagflow/cxIntent:CxIntent": 0,
             "gcp:diagflow/cxPage:CxPage": 0,
+            "gcp:diagflow/cxSecuritySettings:CxSecuritySettings": 0,
+            "gcp:diagflow/cxTestCase:CxTestCase": 0,
             "gcp:diagflow/cxVersion:CxVersion": 0,
             "gcp:diagflow/cxWebhook:CxWebhook": 0,
             "gcp:diagflow/entityType:EntityType": 0,
@@ -25566,6 +26224,8 @@
             "gcp:dns/recordSet:RecordSet": 0,
             "gcp:dns/responsePolicy:ResponsePolicy": 0,
             "gcp:dns/responsePolicyRule:ResponsePolicyRule": 0,
+            "gcp:edgenetwork/network:Network": 0,
+            "gcp:edgenetwork/subnet:Subnet": 0,
             "gcp:endpoints/consumersIamBinding:ConsumersIamBinding": 0,
             "gcp:endpoints/consumersIamMember:ConsumersIamMember": 0,
             "gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy": 0,
@@ -25617,6 +26277,10 @@
             "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding": 0,
             "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember": 0,
             "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": 0,
+            "gcp:gkebackup/restorePlan:RestorePlan": 0,
+            "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding": 0,
+            "gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember": 0,
+            "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy": 0,
             "gcp:gkehub/feature:Feature": 0,
             "gcp:gkehub/featureIamBinding:FeatureIamBinding": 0,
             "gcp:gkehub/featureIamMember:FeatureIamMember": 0,
@@ -25839,6 +26503,7 @@
             "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy": 0,
             "gcp:securitycenter/muteConfig:MuteConfig": 0,
             "gcp:securitycenter/notificationConfig:NotificationConfig": 0,
+            "gcp:securitycenter/projectCustomModule:ProjectCustomModule": 0,
             "gcp:securitycenter/source:Source": 0,
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
@@ -25887,6 +26552,7 @@
             "gcp:storage/defaultObjectACL:DefaultObjectACL": 0,
             "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl": 0,
             "gcp:storage/hmacKey:HmacKey": 0,
+            "gcp:storage/insightsReportConfig:InsightsReportConfig": 0,
             "gcp:storage/notification:Notification": 0,
             "gcp:storage/objectACL:ObjectACL": 0,
             "gcp:storage/objectAccessControl:ObjectAccessControl": 0,
@@ -25903,6 +26569,7 @@
             "gcp:tags/tagValueIamMember:TagValueIamMember": 0,
             "gcp:tags/tagValueIamPolicy:TagValueIamPolicy": 0,
             "gcp:tpu/node:Node": 0,
+            "gcp:tpu/v2Vm:V2Vm": 0,
             "gcp:vertex/aiDataset:AiDataset": 0,
             "gcp:vertex/aiEndpoint:AiEndpoint": 0,
             "gcp:vertex/aiFeatureStore:AiFeatureStore": 0,
@@ -25964,6 +26631,7 @@
             "gcp:certificateauthority/getAuthority:getAuthority": 0,
             "gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy": 0,
             "gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy": 0,
+            "gcp:certificatemanager/getCertificateMap:getCertificateMap": 0,
             "gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll": 0,
             "gcp:cloudbuild/getTrigger:getTrigger": 0,
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": 0,
@@ -26072,6 +26740,7 @@
             "gcp:folder/getOrganizationPolicy:getOrganizationPolicy": 0,
             "gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout": 0,
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": 0,
+            "gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy": 0,
             "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": 0,
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": 0,
             "gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy": 0,
@@ -26175,6 +26844,8 @@
             "gcp:tags/getTagValue:getTagValue": 0,
             "gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy": 0,
             "gcp:tpu/getTensorflowVersions:getTensorflowVersions": 0,
+            "gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes": 0,
+            "gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions": 0,
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": 0,
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": 0,
             "gcp:vertex/getAiIndex:getAiIndex": 0,
@@ -26243,6 +26914,7 @@
             "gcp:apigee/sharedflow:Sharedflow": "google_apigee_sharedflow",
             "gcp:apigee/sharedflowDeployment:SharedflowDeployment": "google_apigee_sharedflow_deployment",
             "gcp:apigee/syncAuthorization:SyncAuthorization": "google_apigee_sync_authorization",
+            "gcp:apigee/targetServer:TargetServer": "google_apigee_target_server",
             "gcp:appengine/application:Application": "google_app_engine_application",
             "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules": "google_app_engine_application_url_dispatch_rules",
             "gcp:appengine/domainMapping:DomainMapping": "google_app_engine_domain_mapping",
@@ -26255,6 +26927,7 @@
             "gcp:artifactregistry/repositoryIamBinding:RepositoryIamBinding": "google_artifact_registry_repository_iam_binding",
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": "google_artifact_registry_repository_iam_member",
             "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": "google_artifact_registry_repository_iam_policy",
+            "gcp:artifactregistry/vpcscConfig:VpcscConfig": "google_artifact_registry_vpcsc_config",
             "gcp:assuredworkloads/workload:Workload": "google_assured_workloads_workload",
             "gcp:backupdisasterrecovery/managementServer:ManagementServer": "google_backup_dr_management_server",
             "gcp:beyondcorp/appConnection:AppConnection": "google_beyondcorp_app_connection",
@@ -26262,6 +26935,7 @@
             "gcp:beyondcorp/appGateway:AppGateway": "google_beyondcorp_app_gateway",
             "gcp:biglake/catalog:Catalog": "google_biglake_catalog",
             "gcp:biglake/database:Database": "google_biglake_database",
+            "gcp:biglake/table:Table": "google_biglake_table",
             "gcp:bigquery/appProfile:AppProfile": "google_bigtable_app_profile",
             "gcp:bigquery/biReservation:BiReservation": "google_bigquery_bi_reservation",
             "gcp:bigquery/capacityCommitment:CapacityCommitment": "google_bigquery_capacity_commitment",
@@ -26547,6 +27221,7 @@
             "gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy": "google_data_catalog_taxonomy_iam_policy",
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": "google_dataflow_flex_template_job",
             "gcp:dataflow/job:Job": "google_dataflow_job",
+            "gcp:dataflow/pipeline:Pipeline": "google_data_pipeline_pipeline",
             "gcp:dataform/repository:Repository": "google_dataform_repository",
             "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig": "google_dataform_repository_release_config",
             "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig": "google_dataform_repository_workflow_config",
@@ -26608,6 +27283,8 @@
             "gcp:diagflow/cxFlow:CxFlow": "google_dialogflow_cx_flow",
             "gcp:diagflow/cxIntent:CxIntent": "google_dialogflow_cx_intent",
             "gcp:diagflow/cxPage:CxPage": "google_dialogflow_cx_page",
+            "gcp:diagflow/cxSecuritySettings:CxSecuritySettings": "google_dialogflow_cx_security_settings",
+            "gcp:diagflow/cxTestCase:CxTestCase": "google_dialogflow_cx_test_case",
             "gcp:diagflow/cxVersion:CxVersion": "google_dialogflow_cx_version",
             "gcp:diagflow/cxWebhook:CxWebhook": "google_dialogflow_cx_webhook",
             "gcp:diagflow/entityType:EntityType": "google_dialogflow_entity_type",
@@ -26621,6 +27298,8 @@
             "gcp:dns/recordSet:RecordSet": "google_dns_record_set",
             "gcp:dns/responsePolicy:ResponsePolicy": "google_dns_response_policy",
             "gcp:dns/responsePolicyRule:ResponsePolicyRule": "google_dns_response_policy_rule",
+            "gcp:edgenetwork/network:Network": "google_edgenetwork_network",
+            "gcp:edgenetwork/subnet:Subnet": "google_edgenetwork_subnet",
             "gcp:endpoints/consumersIamBinding:ConsumersIamBinding": "google_endpoints_service_consumers_iam_binding",
             "gcp:endpoints/consumersIamMember:ConsumersIamMember": "google_endpoints_service_consumers_iam_member",
             "gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy": "google_endpoints_service_consumers_iam_policy",
@@ -26672,6 +27351,10 @@
             "gcp:gkebackup/backupPlanIamBinding:BackupPlanIamBinding": "google_gke_backup_backup_plan_iam_binding",
             "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember": "google_gke_backup_backup_plan_iam_member",
             "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": "google_gke_backup_backup_plan_iam_policy",
+            "gcp:gkebackup/restorePlan:RestorePlan": "google_gke_backup_restore_plan",
+            "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding": "google_gke_backup_restore_plan_iam_binding",
+            "gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember": "google_gke_backup_restore_plan_iam_member",
+            "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy": "google_gke_backup_restore_plan_iam_policy",
             "gcp:gkehub/feature:Feature": "google_gke_hub_feature",
             "gcp:gkehub/featureIamBinding:FeatureIamBinding": "google_gke_hub_feature_iam_binding",
             "gcp:gkehub/featureIamMember:FeatureIamMember": "google_gke_hub_feature_iam_member",
@@ -26894,6 +27577,7 @@
             "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy": "google_data_fusion_instance_iam_policy",
             "gcp:securitycenter/muteConfig:MuteConfig": "google_scc_mute_config",
             "gcp:securitycenter/notificationConfig:NotificationConfig": "google_scc_notification_config",
+            "gcp:securitycenter/projectCustomModule:ProjectCustomModule": "google_scc_project_custom_module",
             "gcp:securitycenter/source:Source": "google_scc_source",
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": "google_scc_source_iam_binding",
             "gcp:securitycenter/sourceIamMember:SourceIamMember": "google_scc_source_iam_member",
@@ -26942,6 +27626,7 @@
             "gcp:storage/defaultObjectACL:DefaultObjectACL": "google_storage_default_object_acl",
             "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl": "google_storage_default_object_access_control",
             "gcp:storage/hmacKey:HmacKey": "google_storage_hmac_key",
+            "gcp:storage/insightsReportConfig:InsightsReportConfig": "google_storage_insights_report_config",
             "gcp:storage/notification:Notification": "google_storage_notification",
             "gcp:storage/objectACL:ObjectACL": "google_storage_object_acl",
             "gcp:storage/objectAccessControl:ObjectAccessControl": "google_storage_object_access_control",
@@ -26958,6 +27643,7 @@
             "gcp:tags/tagValueIamMember:TagValueIamMember": "google_tags_tag_value_iam_member",
             "gcp:tags/tagValueIamPolicy:TagValueIamPolicy": "google_tags_tag_value_iam_policy",
             "gcp:tpu/node:Node": "google_tpu_node",
+            "gcp:tpu/v2Vm:V2Vm": "google_tpu_v2_vm",
             "gcp:vertex/aiDataset:AiDataset": "google_vertex_ai_dataset",
             "gcp:vertex/aiEndpoint:AiEndpoint": "google_vertex_ai_endpoint",
             "gcp:vertex/aiFeatureStore:AiFeatureStore": "google_vertex_ai_featurestore",
@@ -27019,6 +27705,7 @@
             "gcp:certificateauthority/getAuthority:getAuthority": "google_privateca_certificate_authority",
             "gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy": "google_privateca_ca_pool_iam_policy",
             "gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy": "google_privateca_certificate_template_iam_policy",
+            "gcp:certificatemanager/getCertificateMap:getCertificateMap": "google_certificate_manager_certificate_map",
             "gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll": "google_cloud_asset_resources_search_all",
             "gcp:cloudbuild/getTrigger:getTrigger": "google_cloudbuild_trigger",
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": "google_cloudbuildv2_connection_iam_policy",
@@ -27127,6 +27814,7 @@
             "gcp:folder/getOrganizationPolicy:getOrganizationPolicy": "google_folder_organization_policy",
             "gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout": "google_game_services_game_server_deployment_rollout",
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": "google_gke_backup_backup_plan_iam_policy",
+            "gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy": "google_gke_backup_restore_plan_iam_policy",
             "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": "google_gke_hub_feature_iam_policy",
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": "google_gke_hub_membership_iam_policy",
             "gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy": "google_gke_hub_scope_iam_policy",
@@ -27230,6 +27918,8 @@
             "gcp:tags/getTagValue:getTagValue": "google_tags_tag_value",
             "gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy": "google_tags_tag_value_iam_policy",
             "gcp:tpu/getTensorflowVersions:getTensorflowVersions": "google_tpu_tensorflow_versions",
+            "gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes": "google_tpu_v2_accelerator_types",
+            "gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions": "google_tpu_v2_runtime_versions",
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": "google_vertex_ai_featurestore_entitytype_iam_policy",
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": "google_vertex_ai_featurestore_iam_policy",
             "gcp:vertex/getAiIndex:getAiIndex": "google_vertex_ai_index",
@@ -27620,6 +28310,9 @@
                 "referenceId": "reference_id",
                 "sourceType": "source_type"
             },
+            "gcp:alloydb/ClusterNetworkConfig:ClusterNetworkConfig": {
+                "allocatedIpRange": "allocated_ip_range"
+            },
             "gcp:alloydb/ClusterRestoreBackupSource:ClusterRestoreBackupSource": {
                 "backupName": "backup_name"
             },
@@ -27652,6 +28345,7 @@
                 "encryptionInfos": "encryption_info",
                 "initialUser": "initial_user",
                 "migrationSources": "migration_source",
+                "networkConfig": "network_config",
                 "restoreBackupSource": "restore_backup_source",
                 "restoreContinuousBackupSource": "restore_continuous_backup_source"
             },
@@ -27822,6 +28516,17 @@
                 "lastModifiedAt": "last_modified_at",
                 "subType": "sub_type"
             },
+            "gcp:apigee/TargetServerSSlInfo:TargetServerSSlInfo": {
+                "clientAuthEnabled": "client_auth_enabled",
+                "commonName": "common_name",
+                "ignoreValidationErrors": "ignore_validation_errors",
+                "keyAlias": "key_alias",
+                "keyStore": "key_store",
+                "trustStore": "trust_store"
+            },
+            "gcp:apigee/TargetServerSSlInfoCommonName:TargetServerSSlInfoCommonName": {
+                "wildcardMatch": "wildcard_match"
+            },
             "gcp:apigee/addonsConfig:AddonsConfig": {
                 "addonsConfig": "addons_config"
             },
@@ -27931,6 +28636,11 @@
                 "orgId": "org_id",
                 "serviceAccount": "service_account",
                 "sharedflowId": "sharedflow_id"
+            },
+            "gcp:apigee/targetServer:TargetServer": {
+                "envId": "env_id",
+                "isEnabled": "is_enabled",
+                "sSlInfo": "s_sl_info"
             },
             "gcp:appengine/ApplicationFeatureSettings:ApplicationFeatureSettings": {
                 "splitHealthChecks": "split_health_checks"
@@ -28287,6 +28997,9 @@
             "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": {
                 "policyData": "policy_data"
             },
+            "gcp:artifactregistry/vpcscConfig:VpcscConfig": {
+                "vpcscPolicy": "vpcsc_policy"
+            },
             "gcp:assuredworkloads/WorkloadKmsSettings:WorkloadKmsSettings": {
                 "nextRotationTime": "next_rotation_time",
                 "rotationPeriod": "rotation_period"
@@ -28370,6 +29083,15 @@
             "gcp:biglake/DatabaseHiveOptions:DatabaseHiveOptions": {
                 "locationUri": "location_uri"
             },
+            "gcp:biglake/TableHiveOptions:TableHiveOptions": {
+                "storageDescriptor": "storage_descriptor",
+                "tableType": "table_type"
+            },
+            "gcp:biglake/TableHiveOptionsStorageDescriptor:TableHiveOptionsStorageDescriptor": {
+                "inputFormat": "input_format",
+                "locationUri": "location_uri",
+                "outputFormat": "output_format"
+            },
             "gcp:biglake/catalog:Catalog": {
                 "createTime": "create_time",
                 "deleteTime": "delete_time",
@@ -28377,6 +29099,13 @@
                 "updateTime": "update_time"
             },
             "gcp:biglake/database:Database": {
+                "createTime": "create_time",
+                "deleteTime": "delete_time",
+                "expireTime": "expire_time",
+                "hiveOptions": "hive_options",
+                "updateTime": "update_time"
+            },
+            "gcp:biglake/table:Table": {
                 "createTime": "create_time",
                 "deleteTime": "delete_time",
                 "expireTime": "expire_time",
@@ -28627,8 +29356,26 @@
                 "enumAsString": "enum_as_string"
             },
             "gcp:bigquery/TableMaterializedView:TableMaterializedView": {
+                "allowNonIncrementalDefinition": "allow_non_incremental_definition",
                 "enableRefresh": "enable_refresh",
                 "refreshIntervalMs": "refresh_interval_ms"
+            },
+            "gcp:bigquery/TableTableConstraints:TableTableConstraints": {
+                "foreignKeys": "foreign_keys",
+                "primaryKey": "primary_key"
+            },
+            "gcp:bigquery/TableTableConstraintsForeignKey:TableTableConstraintsForeignKey": {
+                "columnReferences": "column_references",
+                "referencedTable": "referenced_table"
+            },
+            "gcp:bigquery/TableTableConstraintsForeignKeyColumnReferences:TableTableConstraintsForeignKeyColumnReferences": {
+                "referencedColumn": "referenced_column",
+                "referencingColumn": "referencing_column"
+            },
+            "gcp:bigquery/TableTableConstraintsForeignKeyReferencedTable:TableTableConstraintsForeignKeyReferencedTable": {
+                "datasetId": "dataset_id",
+                "projectId": "project_id",
+                "tableId": "table_id"
             },
             "gcp:bigquery/TableTimePartitioning:TableTimePartitioning": {
                 "expirationMs": "expiration_ms",
@@ -28790,6 +29537,7 @@
                 "numRows": "num_rows",
                 "rangePartitioning": "range_partitioning",
                 "selfLink": "self_link",
+                "tableConstraints": "table_constraints",
                 "tableId": "table_id",
                 "timePartitioning": "time_partitioning"
             },
@@ -29719,6 +30467,19 @@
             },
             "gcp:certificatemanager/dnsAuthorization:DnsAuthorization": {
                 "dnsResourceRecords": "dns_resource_record"
+            },
+            "gcp:certificatemanager/getCertificateMap:getCertificateMap": {
+                "createTime": "create_time",
+                "gclbTargets": "gclb_targets",
+                "updateTime": "update_time"
+            },
+            "gcp:certificatemanager/getCertificateMapGclbTarget:getCertificateMapGclbTarget": {
+                "ipConfigs": "ip_configs",
+                "targetHttpsProxy": "target_https_proxy",
+                "targetSslProxy": "target_ssl_proxy"
+            },
+            "gcp:certificatemanager/getCertificateMapGclbTargetIpConfig:getCertificateMapGclbTargetIpConfig": {
+                "ipAddress": "ip_address"
             },
             "gcp:certificatemanager/trustConfig:TrustConfig": {
                 "createTime": "create_time",
@@ -30752,6 +31513,9 @@
             "gcp:cloudrunv2/JobTemplateTemplateVolumeSecret:JobTemplateTemplateVolumeSecret": {
                 "defaultMode": "default_mode"
             },
+            "gcp:cloudrunv2/JobTemplateTemplateVpcAccess:JobTemplateTemplateVpcAccess": {
+                "networkInterfaces": "network_interfaces"
+            },
             "gcp:cloudrunv2/JobTerminalCondition:JobTerminalCondition": {
                 "executionReason": "execution_reason",
                 "lastTransitionTime": "last_transition_time",
@@ -30834,6 +31598,9 @@
             },
             "gcp:cloudrunv2/ServiceTemplateVolumeSecret:ServiceTemplateVolumeSecret": {
                 "defaultMode": "default_mode"
+            },
+            "gcp:cloudrunv2/ServiceTemplateVpcAccess:ServiceTemplateVpcAccess": {
+                "networkInterfaces": "network_interfaces"
             },
             "gcp:cloudrunv2/ServiceTerminalCondition:ServiceTerminalCondition": {
                 "executionReason": "execution_reason",
@@ -31458,8 +32225,10 @@
             "gcp:compute/InstanceFromMachineImageNetworkInterface:InstanceFromMachineImageNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
                 "queueCount": "queue_count",
@@ -31534,8 +32303,10 @@
             "gcp:compute/InstanceFromTemplateNetworkInterface:InstanceFromTemplateNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
                 "queueCount": "queue_count",
@@ -31634,8 +32405,10 @@
             "gcp:compute/InstanceNetworkInterface:InstanceNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
                 "queueCount": "queue_count",
@@ -31718,8 +32491,10 @@
             "gcp:compute/InstanceTemplateNetworkInterface:InstanceTemplateNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkAttachment": "network_attachment",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
@@ -32082,8 +32857,10 @@
             "gcp:compute/RegionInstanceTemplateNetworkInterface:RegionInstanceTemplateNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
                 "queueCount": "queue_count",
@@ -33650,8 +34427,10 @@
             "gcp:compute/getInstanceNetworkInterface:getInstanceNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
                 "queueCount": "queue_count",
@@ -33759,8 +34538,10 @@
             "gcp:compute/getInstanceTemplateNetworkInterface:getInstanceTemplateNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkAttachment": "network_attachment",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
@@ -33910,8 +34691,10 @@
             "gcp:compute/getRegionInstanceTemplateNetworkInterface:getRegionInstanceTemplateNetworkInterface": {
                 "accessConfigs": "access_config",
                 "aliasIpRanges": "alias_ip_range",
+                "internalIpv6PrefixLength": "internal_ipv6_prefix_length",
                 "ipv6AccessConfigs": "ipv6_access_config",
                 "ipv6AccessType": "ipv6_access_type",
+                "ipv6Address": "ipv6_address",
                 "networkIp": "network_ip",
                 "nicType": "nic_type",
                 "queueCount": "queue_count",
@@ -34917,6 +35700,7 @@
                 "creationTimestamp": "creation_timestamp",
                 "externalIpv6Prefix": "external_ipv6_prefix",
                 "gatewayAddress": "gateway_address",
+                "internalIpv6Prefix": "internal_ipv6_prefix",
                 "ipCidrRange": "ip_cidr_range",
                 "ipv6AccessType": "ipv6_access_type",
                 "ipv6CidrRange": "ipv6_cidr_range",
@@ -34953,6 +35737,7 @@
                 "proxyId": "proxy_id",
                 "quicOverride": "quic_override",
                 "selfLink": "self_link",
+                "serverTlsPolicy": "server_tls_policy",
                 "sslCertificates": "ssl_certificates",
                 "sslPolicy": "ssl_policy",
                 "urlMap": "url_map"
@@ -35031,6 +35816,9 @@
             },
             "gcp:container/AttachedClusterAuthorization:AttachedClusterAuthorization": {
                 "adminUsers": "admin_users"
+            },
+            "gcp:container/AttachedClusterBinaryAuthorization:AttachedClusterBinaryAuthorization": {
+                "evaluationMode": "evaluation_mode"
             },
             "gcp:container/AttachedClusterLoggingConfig:AttachedClusterLoggingConfig": {
                 "componentConfig": "component_config"
@@ -35145,6 +35933,9 @@
             "gcp:container/AwsNodePoolConfigSshConfig:AwsNodePoolConfigSshConfig": {
                 "ec2KeyPair": "ec2_key_pair"
             },
+            "gcp:container/AwsNodePoolManagement:AwsNodePoolManagement": {
+                "autoRepair": "auto_repair"
+            },
             "gcp:container/AwsNodePoolMaxPodsConstraint:AwsNodePoolMaxPodsConstraint": {
                 "maxPodsPerNode": "max_pods_per_node"
             },
@@ -35221,6 +36012,9 @@
             },
             "gcp:container/AzureNodePoolConfigSshConfig:AzureNodePoolConfigSshConfig": {
                 "authorizedKey": "authorized_key"
+            },
+            "gcp:container/AzureNodePoolManagement:AzureNodePoolManagement": {
+                "autoRepair": "auto_repair"
             },
             "gcp:container/AzureNodePoolMaxPodsConstraint:AzureNodePoolMaxPodsConstraint": {
                 "maxPodsPerNode": "max_pods_per_node"
@@ -35374,6 +36168,7 @@
                 "diskType": "disk_type",
                 "ephemeralStorageConfig": "ephemeral_storage_config",
                 "ephemeralStorageLocalSsdConfig": "ephemeral_storage_local_ssd_config",
+                "fastSocket": "fast_socket",
                 "gcfsConfig": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "hostMaintenancePolicy": "host_maintenance_policy",
@@ -35497,6 +36292,7 @@
                 "diskType": "disk_type",
                 "ephemeralStorageConfig": "ephemeral_storage_config",
                 "ephemeralStorageLocalSsdConfig": "ephemeral_storage_local_ssd_config",
+                "fastSocket": "fast_socket",
                 "gcfsConfig": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "hostMaintenancePolicy": "host_maintenance_policy",
@@ -35653,6 +36449,7 @@
                 "diskType": "disk_type",
                 "ephemeralStorageConfig": "ephemeral_storage_config",
                 "ephemeralStorageLocalSsdConfig": "ephemeral_storage_local_ssd_config",
+                "fastSocket": "fast_socket",
                 "gcfsConfig": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "hostMaintenancePolicy": "host_maintenance_policy",
@@ -35740,6 +36537,7 @@
                 "batchSoakDuration": "batch_soak_duration"
             },
             "gcp:container/attachedCluster:AttachedCluster": {
+                "binaryAuthorization": "binary_authorization",
                 "clusterRegion": "cluster_region",
                 "createTime": "create_time",
                 "deletionPolicy": "deletion_policy",
@@ -36086,6 +36884,7 @@
                 "diskType": "disk_type",
                 "ephemeralStorageConfigs": "ephemeral_storage_config",
                 "ephemeralStorageLocalSsdConfigs": "ephemeral_storage_local_ssd_config",
+                "fastSockets": "fast_socket",
                 "gcfsConfigs": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "gvnics": "gvnic",
@@ -36212,6 +37011,7 @@
                 "diskType": "disk_type",
                 "ephemeralStorageConfigs": "ephemeral_storage_config",
                 "ephemeralStorageLocalSsdConfigs": "ephemeral_storage_local_ssd_config",
+                "fastSockets": "fast_socket",
                 "gcfsConfigs": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "gvnics": "gvnic",
@@ -36607,6 +37407,65 @@
             "gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy": {
                 "policyData": "policy_data"
             },
+            "gcp:dataflow/PipelineScheduleInfo:PipelineScheduleInfo": {
+                "nextJobTime": "next_job_time",
+                "timeZone": "time_zone"
+            },
+            "gcp:dataflow/PipelineWorkload:PipelineWorkload": {
+                "dataflowFlexTemplateRequest": "dataflow_flex_template_request",
+                "dataflowLaunchTemplateRequest": "dataflow_launch_template_request"
+            },
+            "gcp:dataflow/PipelineWorkloadDataflowFlexTemplateRequest:PipelineWorkloadDataflowFlexTemplateRequest": {
+                "launchParameter": "launch_parameter",
+                "projectId": "project_id",
+                "validateOnly": "validate_only"
+            },
+            "gcp:dataflow/PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter:PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter": {
+                "containerSpecGcsPath": "container_spec_gcs_path",
+                "jobName": "job_name",
+                "launchOptions": "launch_options",
+                "transformNameMappings": "transform_name_mappings"
+            },
+            "gcp:dataflow/PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment:PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment": {
+                "additionalExperiments": "additional_experiments",
+                "additionalUserLabels": "additional_user_labels",
+                "enableStreamingEngine": "enable_streaming_engine",
+                "flexrsGoal": "flexrs_goal",
+                "ipConfiguration": "ip_configuration",
+                "kmsKeyName": "kms_key_name",
+                "machineType": "machine_type",
+                "maxWorkers": "max_workers",
+                "numWorkers": "num_workers",
+                "serviceAccountEmail": "service_account_email",
+                "tempLocation": "temp_location",
+                "workerRegion": "worker_region",
+                "workerZone": "worker_zone"
+            },
+            "gcp:dataflow/PipelineWorkloadDataflowLaunchTemplateRequest:PipelineWorkloadDataflowLaunchTemplateRequest": {
+                "gcsPath": "gcs_path",
+                "launchParameters": "launch_parameters",
+                "projectId": "project_id",
+                "validateOnly": "validate_only"
+            },
+            "gcp:dataflow/PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters:PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters": {
+                "jobName": "job_name",
+                "transformNameMapping": "transform_name_mapping"
+            },
+            "gcp:dataflow/PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment:PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment": {
+                "additionalExperiments": "additional_experiments",
+                "additionalUserLabels": "additional_user_labels",
+                "bypassTempDirValidation": "bypass_temp_dir_validation",
+                "enableStreamingEngine": "enable_streaming_engine",
+                "ipConfiguration": "ip_configuration",
+                "kmsKeyName": "kms_key_name",
+                "machineType": "machine_type",
+                "maxWorkers": "max_workers",
+                "numWorkers": "num_workers",
+                "serviceAccountEmail": "service_account_email",
+                "tempLocation": "temp_location",
+                "workerRegion": "worker_region",
+                "workerZone": "worker_zone"
+            },
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": {
                 "additionalExperiments": "additional_experiments",
                 "autoscalingAlgorithm": "autoscaling_algorithm",
@@ -36641,6 +37500,15 @@
                 "tempGcsLocation": "temp_gcs_location",
                 "templateGcsPath": "template_gcs_path",
                 "transformNameMapping": "transform_name_mapping"
+            },
+            "gcp:dataflow/pipeline:Pipeline": {
+                "createTime": "create_time",
+                "displayName": "display_name",
+                "jobCount": "job_count",
+                "lastUpdateTime": "last_update_time",
+                "pipelineSources": "pipeline_sources",
+                "scheduleInfo": "schedule_info",
+                "schedulerServiceAccountEmail": "scheduler_service_account_email"
             },
             "gcp:dataform/RepositoryGitRemoteSettings:RepositoryGitRemoteSettings": {
                 "authenticationTokenSecretVersion": "authentication_token_secret_version",
@@ -39094,6 +39962,83 @@
                 "allowPlaybackInterruption": "allow_playback_interruption",
                 "texts": "text"
             },
+            "gcp:diagflow/CxSecuritySettingsAudioExportSettings:CxSecuritySettingsAudioExportSettings": {
+                "audioExportPattern": "audio_export_pattern",
+                "audioFormat": "audio_format",
+                "enableAudioRedaction": "enable_audio_redaction",
+                "gcsBucket": "gcs_bucket"
+            },
+            "gcp:diagflow/CxSecuritySettingsInsightsExportSettings:CxSecuritySettingsInsightsExportSettings": {
+                "enableInsightsExport": "enable_insights_export"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResult:CxTestCaseLastTestResult": {
+                "conversationTurns": "conversation_turns",
+                "testResult": "test_result",
+                "testTime": "test_time"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurn:CxTestCaseLastTestResultConversationTurn": {
+                "userInput": "user_input",
+                "virtualAgentOutput": "virtual_agent_output"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnUserInput:CxTestCaseLastTestResultConversationTurnUserInput": {
+                "enableSentimentAnalysis": "enable_sentiment_analysis",
+                "injectedParameters": "injected_parameters",
+                "isWebhookEnabled": "is_webhook_enabled"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnUserInputInput:CxTestCaseLastTestResultConversationTurnUserInputInput": {
+                "languageCode": "language_code"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnUserInputInputDtmf:CxTestCaseLastTestResultConversationTurnUserInputInputDtmf": {
+                "finishDigit": "finish_digit"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnVirtualAgentOutput:CxTestCaseLastTestResultConversationTurnVirtualAgentOutput": {
+                "currentPage": "current_page",
+                "sessionParameters": "session_parameters",
+                "textResponses": "text_responses",
+                "triggeredIntent": "triggered_intent"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage:CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage": {
+                "displayName": "display_name"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse:CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse": {
+                "texts": "text"
+            },
+            "gcp:diagflow/CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent:CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent": {
+                "displayName": "display_name"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurn:CxTestCaseTestCaseConversationTurn": {
+                "userInput": "user_input",
+                "virtualAgentOutput": "virtual_agent_output"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnUserInput:CxTestCaseTestCaseConversationTurnUserInput": {
+                "enableSentimentAnalysis": "enable_sentiment_analysis",
+                "injectedParameters": "injected_parameters",
+                "isWebhookEnabled": "is_webhook_enabled"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnUserInputInput:CxTestCaseTestCaseConversationTurnUserInputInput": {
+                "languageCode": "language_code"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnUserInputInputDtmf:CxTestCaseTestCaseConversationTurnUserInputInputDtmf": {
+                "finishDigit": "finish_digit"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnVirtualAgentOutput:CxTestCaseTestCaseConversationTurnVirtualAgentOutput": {
+                "currentPage": "current_page",
+                "sessionParameters": "session_parameters",
+                "textResponses": "text_responses",
+                "triggeredIntent": "triggered_intent"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage:CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage": {
+                "displayName": "display_name"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse:CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse": {
+                "texts": "text"
+            },
+            "gcp:diagflow/CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent:CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent": {
+                "displayName": "display_name"
+            },
+            "gcp:diagflow/CxTestCaseTestConfig:CxTestCaseTestConfig": {
+                "trackingParameters": "tracking_parameters"
+            },
             "gcp:diagflow/CxVersionNluSetting:CxVersionNluSetting": {
                 "classificationThreshold": "classification_threshold",
                 "modelTrainingMode": "model_training_mode",
@@ -39174,6 +40119,25 @@
                 "languageCode": "language_code",
                 "transitionRouteGroups": "transition_route_groups",
                 "transitionRoutes": "transition_routes"
+            },
+            "gcp:diagflow/cxSecuritySettings:CxSecuritySettings": {
+                "audioExportSettings": "audio_export_settings",
+                "deidentifyTemplate": "deidentify_template",
+                "displayName": "display_name",
+                "insightsExportSettings": "insights_export_settings",
+                "inspectTemplate": "inspect_template",
+                "purgeDataTypes": "purge_data_types",
+                "redactionScope": "redaction_scope",
+                "redactionStrategy": "redaction_strategy",
+                "retentionStrategy": "retention_strategy",
+                "retentionWindowDays": "retention_window_days"
+            },
+            "gcp:diagflow/cxTestCase:CxTestCase": {
+                "creationTime": "creation_time",
+                "displayName": "display_name",
+                "lastTestResults": "last_test_result",
+                "testCaseConversationTurns": "test_case_conversation_turns",
+                "testConfig": "test_config"
             },
             "gcp:diagflow/cxVersion:CxVersion": {
                 "createTime": "create_time",
@@ -39394,6 +40358,19 @@
                 "localData": "local_data",
                 "responsePolicy": "response_policy",
                 "ruleName": "rule_name"
+            },
+            "gcp:edgenetwork/network:Network": {
+                "createTime": "create_time",
+                "networkId": "network_id",
+                "updateTime": "update_time"
+            },
+            "gcp:edgenetwork/subnet:Subnet": {
+                "createTime": "create_time",
+                "ipv4Cidrs": "ipv4_cidr",
+                "ipv6Cidrs": "ipv6_cidr",
+                "subnetId": "subnet_id",
+                "updateTime": "update_time",
+                "vlanId": "vlan_id"
             },
             "gcp:endpoints/ServiceApiMethod:ServiceApiMethod": {
                 "requestType": "request_type",
@@ -39744,8 +40721,13 @@
                 "appEngineIntegrationMode": "app_engine_integration_mode",
                 "concurrencyMode": "concurrency_mode",
                 "createTime": "create_time",
+                "deleteProtectionState": "delete_protection_state",
+                "earliestVersionTime": "earliest_version_time",
                 "keyPrefix": "key_prefix",
-                "locationId": "location_id"
+                "locationId": "location_id",
+                "pointInTimeRecoveryEnablement": "point_in_time_recovery_enablement",
+                "updateTime": "update_time",
+                "versionRetentionPeriod": "version_retention_period"
             },
             "gcp:firestore/document:Document": {
                 "createTime": "create_time",
@@ -39879,6 +40861,50 @@
                 "backupDeleteLockDays": "backup_delete_lock_days",
                 "backupRetainDays": "backup_retain_days"
             },
+            "gcp:gkebackup/RestorePlanRestoreConfig:RestorePlanRestoreConfig": {
+                "allNamespaces": "all_namespaces",
+                "clusterResourceConflictPolicy": "cluster_resource_conflict_policy",
+                "clusterResourceRestoreScope": "cluster_resource_restore_scope",
+                "excludedNamespaces": "excluded_namespaces",
+                "namespacedResourceRestoreMode": "namespaced_resource_restore_mode",
+                "noNamespaces": "no_namespaces",
+                "selectedApplications": "selected_applications",
+                "selectedNamespaces": "selected_namespaces",
+                "transformationRules": "transformation_rules",
+                "volumeDataRestorePolicy": "volume_data_restore_policy"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigClusterResourceRestoreScope:RestorePlanRestoreConfigClusterResourceRestoreScope": {
+                "allGroupKinds": "all_group_kinds",
+                "excludedGroupKinds": "excluded_group_kinds",
+                "noGroupKinds": "no_group_kinds",
+                "selectedGroupKinds": "selected_group_kinds"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind:RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind": {
+                "resourceGroup": "resource_group",
+                "resourceKind": "resource_kind"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind:RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind": {
+                "resourceGroup": "resource_group",
+                "resourceKind": "resource_kind"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigSelectedApplications:RestorePlanRestoreConfigSelectedApplications": {
+                "namespacedNames": "namespaced_names"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigTransformationRule:RestorePlanRestoreConfigTransformationRule": {
+                "fieldActions": "field_actions",
+                "resourceFilter": "resource_filter"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigTransformationRuleFieldAction:RestorePlanRestoreConfigTransformationRuleFieldAction": {
+                "fromPath": "from_path"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigTransformationRuleResourceFilter:RestorePlanRestoreConfigTransformationRuleResourceFilter": {
+                "groupKinds": "group_kinds",
+                "jsonPath": "json_path"
+            },
+            "gcp:gkebackup/RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind:RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind": {
+                "resourceGroup": "resource_group",
+                "resourceKind": "resource_kind"
+            },
             "gcp:gkebackup/backupPlan:BackupPlan": {
                 "backupConfig": "backup_config",
                 "backupSchedule": "backup_schedule",
@@ -39890,6 +40916,17 @@
                 "policyData": "policy_data"
             },
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:gkebackup/restorePlan:RestorePlan": {
+                "backupPlan": "backup_plan",
+                "restoreConfig": "restore_config",
+                "stateReason": "state_reason"
+            },
+            "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:gkehub/FeatureMembershipConfigmanagement:FeatureMembershipConfigmanagement": {
@@ -40017,6 +41054,7 @@
             "gcp:gkehub/namespace:Namespace": {
                 "createTime": "create_time",
                 "deleteTime": "delete_time",
+                "namespaceLabels": "namespace_labels",
                 "scopeId": "scope_id",
                 "scopeNamespaceId": "scope_namespace_id",
                 "states": "state",
@@ -40122,6 +41160,9 @@
             },
             "gcp:gkeonprem/BareMetalAdminClusterValidationCheckStatus:BareMetalAdminClusterValidationCheckStatus": {
                 "results": "result"
+            },
+            "gcp:gkeonprem/BareMetalClusterBinaryAuthorization:BareMetalClusterBinaryAuthorization": {
+                "evaluationMode": "evaluation_mode"
             },
             "gcp:gkeonprem/BareMetalClusterClusterOperations:BareMetalClusterClusterOperations": {
                 "enableApplicationLogs": "enable_application_logs"
@@ -40342,6 +41383,9 @@
             "gcp:gkeonprem/VMwareClusterStorage:VMwareClusterStorage": {
                 "vsphereCsiDisabled": "vsphere_csi_disabled"
             },
+            "gcp:gkeonprem/VMwareClusterUpgradePolicy:VMwareClusterUpgradePolicy": {
+                "controlPlaneOnly": "control_plane_only"
+            },
             "gcp:gkeonprem/VMwareClusterValidationCheck:VMwareClusterValidationCheck": {
                 "statuses": "status"
             },
@@ -40391,6 +41435,7 @@
             "gcp:gkeonprem/bareMetalCluster:BareMetalCluster": {
                 "adminClusterMembership": "admin_cluster_membership",
                 "bareMetalVersion": "bare_metal_version",
+                "binaryAuthorization": "binary_authorization",
                 "clusterOperations": "cluster_operations",
                 "controlPlane": "control_plane",
                 "createTime": "create_time",
@@ -40406,6 +41451,7 @@
                 "securityConfig": "security_config",
                 "statuses": "status",
                 "updateTime": "update_time",
+                "upgradePolicy": "upgrade_policy",
                 "validationChecks": "validation_check"
             },
             "gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool": {
@@ -40433,6 +41479,7 @@
                 "onPremVersion": "on_prem_version",
                 "statuses": "status",
                 "updateTime": "update_time",
+                "upgradePolicy": "upgrade_policy",
                 "validationChecks": "validation_check",
                 "vcenters": "vcenter",
                 "vmTrackingEnabled": "vm_tracking_enabled"
@@ -40823,6 +41870,22 @@
                 "quotaDuration": "quota_duration",
                 "startTime": "start_time"
             },
+            "gcp:identityplatform/ConfigSignIn:ConfigSignIn": {
+                "allowDuplicateEmails": "allow_duplicate_emails",
+                "hashConfigs": "hash_config",
+                "phoneNumber": "phone_number"
+            },
+            "gcp:identityplatform/ConfigSignInEmail:ConfigSignInEmail": {
+                "passwordRequired": "password_required"
+            },
+            "gcp:identityplatform/ConfigSignInHashConfig:ConfigSignInHashConfig": {
+                "memoryCost": "memory_cost",
+                "saltSeparator": "salt_separator",
+                "signerKey": "signer_key"
+            },
+            "gcp:identityplatform/ConfigSignInPhoneNumber:ConfigSignInPhoneNumber": {
+                "testPhoneNumbers": "test_phone_numbers"
+            },
             "gcp:identityplatform/InboundSamlConfigIdpConfig:InboundSamlConfigIdpConfig": {
                 "idpCertificates": "idp_certificates",
                 "idpEntityId": "idp_entity_id",
@@ -40876,7 +41939,8 @@
             "gcp:identityplatform/config:Config": {
                 "authorizedDomains": "authorized_domains",
                 "autodeleteAnonymousUsers": "autodelete_anonymous_users",
-                "blockingFunctions": "blocking_functions"
+                "blockingFunctions": "blocking_functions",
+                "signIn": "sign_in"
             },
             "gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig": {
                 "clientId": "client_id",
@@ -40974,6 +42038,7 @@
                 "dataCatalogCustomEndpoint": "data_catalog_custom_endpoint",
                 "dataFusionCustomEndpoint": "data_fusion_custom_endpoint",
                 "dataLossPreventionCustomEndpoint": "data_loss_prevention_custom_endpoint",
+                "dataPipelineCustomEndpoint": "data_pipeline_custom_endpoint",
                 "databaseMigrationServiceCustomEndpoint": "database_migration_service_custom_endpoint",
                 "dataflowCustomEndpoint": "dataflow_custom_endpoint",
                 "dataformCustomEndpoint": "dataform_custom_endpoint",
@@ -40989,6 +42054,7 @@
                 "dnsCustomEndpoint": "dns_custom_endpoint",
                 "documentAiCustomEndpoint": "document_ai_custom_endpoint",
                 "documentAiWarehouseCustomEndpoint": "document_ai_warehouse_custom_endpoint",
+                "edgenetworkCustomEndpoint": "edgenetwork_custom_endpoint",
                 "essentialContactsCustomEndpoint": "essential_contacts_custom_endpoint",
                 "eventarcCustomEndpoint": "eventarc_custom_endpoint",
                 "filestoreCustomEndpoint": "filestore_custom_endpoint",
@@ -41053,10 +42119,12 @@
                 "spannerCustomEndpoint": "spanner_custom_endpoint",
                 "sqlCustomEndpoint": "sql_custom_endpoint",
                 "storageCustomEndpoint": "storage_custom_endpoint",
+                "storageInsightsCustomEndpoint": "storage_insights_custom_endpoint",
                 "storageTransferCustomEndpoint": "storage_transfer_custom_endpoint",
                 "tagsCustomEndpoint": "tags_custom_endpoint",
                 "tagsLocationCustomEndpoint": "tags_location_custom_endpoint",
                 "tpuCustomEndpoint": "tpu_custom_endpoint",
+                "tpuV2CustomEndpoint": "tpu_v2_custom_endpoint",
                 "userProjectOverride": "user_project_override",
                 "vertexAiCustomEndpoint": "vertex_ai_custom_endpoint",
                 "vmwareengineCustomEndpoint": "vmwareengine_custom_endpoint",
@@ -41764,6 +42832,9 @@
                 "ipAddress": "ip_address",
                 "virtualMachine": "virtual_machine"
             },
+            "gcp:networkconnectivity/SpokeLinkedVpcNetwork:SpokeLinkedVpcNetwork": {
+                "excludeExportRanges": "exclude_export_ranges"
+            },
             "gcp:networkconnectivity/SpokeLinkedVpnTunnels:SpokeLinkedVpnTunnels": {
                 "siteToSiteDataTransfer": "site_to_site_data_transfer"
             },
@@ -41784,6 +42855,7 @@
                 "createTime": "create_time",
                 "linkedInterconnectAttachments": "linked_interconnect_attachments",
                 "linkedRouterApplianceInstances": "linked_router_appliance_instances",
+                "linkedVpcNetwork": "linked_vpc_network",
                 "linkedVpnTunnels": "linked_vpn_tunnels",
                 "uniqueId": "unique_id",
                 "updateTime": "update_time"
@@ -43261,6 +44333,12 @@
             "gcp:secretmanager/SecretReplication:SecretReplication": {
                 "userManaged": "user_managed"
             },
+            "gcp:secretmanager/SecretReplicationAuto:SecretReplicationAuto": {
+                "customerManagedEncryption": "customer_managed_encryption"
+            },
+            "gcp:secretmanager/SecretReplicationAutoCustomerManagedEncryption:SecretReplicationAutoCustomerManagedEncryption": {
+                "kmsKeyName": "kms_key_name"
+            },
             "gcp:secretmanager/SecretReplicationUserManagedReplica:SecretReplicationUserManagedReplica": {
                 "customerManagedEncryption": "customer_managed_encryption"
             },
@@ -43284,7 +44362,14 @@
                 "secretId": "secret_id"
             },
             "gcp:secretmanager/getSecretReplication:getSecretReplication": {
+                "autos": "auto",
                 "userManageds": "user_managed"
+            },
+            "gcp:secretmanager/getSecretReplicationAuto:getSecretReplicationAuto": {
+                "customerManagedEncryptions": "customer_managed_encryption"
+            },
+            "gcp:secretmanager/getSecretReplicationAutoCustomerManagedEncryption:getSecretReplicationAutoCustomerManagedEncryption": {
+                "kmsKeyName": "kms_key_name"
             },
             "gcp:secretmanager/getSecretReplicationUserManagedReplica:getSecretReplicationUserManagedReplica": {
                 "customerManagedEncryptions": "customer_managed_encryption"
@@ -43322,8 +44407,20 @@
             },
             "gcp:secretmanager/secretVersion:SecretVersion": {
                 "createTime": "create_time",
+                "deletionPolicy": "deletion_policy",
                 "destroyTime": "destroy_time",
+                "isSecretDataBase64": "is_secret_data_base64",
                 "secretData": "secret_data"
+            },
+            "gcp:securitycenter/ProjectCustomModuleCustomConfig:ProjectCustomModuleCustomConfig": {
+                "customOutput": "custom_output",
+                "resourceSelector": "resource_selector"
+            },
+            "gcp:securitycenter/ProjectCustomModuleCustomConfigCustomOutputProperty:ProjectCustomModuleCustomConfigCustomOutputProperty": {
+                "valueExpression": "value_expression"
+            },
+            "gcp:securitycenter/ProjectCustomModuleCustomConfigResourceSelector:ProjectCustomModuleCustomConfigResourceSelector": {
+                "resourceTypes": "resource_types"
             },
             "gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy": {
                 "policyData": "policy_data"
@@ -43342,6 +44439,14 @@
                 "pubsubTopic": "pubsub_topic",
                 "serviceAccount": "service_account",
                 "streamingConfig": "streaming_config"
+            },
+            "gcp:securitycenter/projectCustomModule:ProjectCustomModule": {
+                "ancestorModule": "ancestor_module",
+                "customConfig": "custom_config",
+                "displayName": "display_name",
+                "enablementState": "enablement_state",
+                "lastEditor": "last_editor",
+                "updateTime": "update_time"
             },
             "gcp:securitycenter/source:Source": {
                 "displayName": "display_name"
@@ -44029,6 +45134,22 @@
             "gcp:storage/DefaultObjectAccessControlProjectTeam:DefaultObjectAccessControlProjectTeam": {
                 "projectNumber": "project_number"
             },
+            "gcp:storage/InsightsReportConfigCsvOptions:InsightsReportConfigCsvOptions": {
+                "headerRequired": "header_required",
+                "recordSeparator": "record_separator"
+            },
+            "gcp:storage/InsightsReportConfigFrequencyOptions:InsightsReportConfigFrequencyOptions": {
+                "endDate": "end_date",
+                "startDate": "start_date"
+            },
+            "gcp:storage/InsightsReportConfigObjectMetadataReportOptions:InsightsReportConfigObjectMetadataReportOptions": {
+                "metadataFields": "metadata_fields",
+                "storageDestinationOptions": "storage_destination_options",
+                "storageFilters": "storage_filters"
+            },
+            "gcp:storage/InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions:InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions": {
+                "destinationPath": "destination_path"
+            },
             "gcp:storage/ObjectAccessControlProjectTeam:ObjectAccessControlProjectTeam": {
                 "projectNumber": "project_number"
             },
@@ -44272,6 +45393,12 @@
                 "serviceAccountEmail": "service_account_email",
                 "timeCreated": "time_created"
             },
+            "gcp:storage/insightsReportConfig:InsightsReportConfig": {
+                "csvOptions": "csv_options",
+                "displayName": "display_name",
+                "frequencyOptions": "frequency_options",
+                "objectMetadataReportOptions": "object_metadata_report_options"
+            },
             "gcp:storage/notification:Notification": {
                 "customAttributes": "custom_attributes",
                 "eventTypes": "event_types",
@@ -44369,6 +45496,10 @@
                 "serviceAccount": "service_account",
                 "tensorflowVersion": "tensorflow_version",
                 "useServiceNetworking": "use_service_networking"
+            },
+            "gcp:tpu/v2Vm:V2Vm": {
+                "acceleratorType": "accelerator_type",
+                "runtimeVersion": "runtime_version"
             },
             "gcp:vertex/AiDatasetEncryptionSpec:AiDatasetEncryptionSpec": {
                 "kmsKeyName": "kms_key_name"
@@ -44524,6 +45655,8 @@
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": {
                 "createTime": "create_time",
                 "displayName": "display_name",
+                "publicEndpointDomainName": "public_endpoint_domain_name",
+                "publicEndpointEnabled": "public_endpoint_enabled",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiMetadataStore:AiMetadataStore": {
@@ -44868,6 +46001,7 @@
             "dataCatalogCustomEndpoint": "data_catalog_custom_endpoint",
             "dataFusionCustomEndpoint": "data_fusion_custom_endpoint",
             "dataLossPreventionCustomEndpoint": "data_loss_prevention_custom_endpoint",
+            "dataPipelineCustomEndpoint": "data_pipeline_custom_endpoint",
             "databaseMigrationServiceCustomEndpoint": "database_migration_service_custom_endpoint",
             "dataflowCustomEndpoint": "dataflow_custom_endpoint",
             "dataformCustomEndpoint": "dataform_custom_endpoint",
@@ -44883,6 +46017,7 @@
             "dnsCustomEndpoint": "dns_custom_endpoint",
             "documentAiCustomEndpoint": "document_ai_custom_endpoint",
             "documentAiWarehouseCustomEndpoint": "document_ai_warehouse_custom_endpoint",
+            "edgenetworkCustomEndpoint": "edgenetwork_custom_endpoint",
             "essentialContactsCustomEndpoint": "essential_contacts_custom_endpoint",
             "eventarcCustomEndpoint": "eventarc_custom_endpoint",
             "filestoreCustomEndpoint": "filestore_custom_endpoint",
@@ -44947,10 +46082,12 @@
             "spannerCustomEndpoint": "spanner_custom_endpoint",
             "sqlCustomEndpoint": "sql_custom_endpoint",
             "storageCustomEndpoint": "storage_custom_endpoint",
+            "storageInsightsCustomEndpoint": "storage_insights_custom_endpoint",
             "storageTransferCustomEndpoint": "storage_transfer_custom_endpoint",
             "tagsCustomEndpoint": "tags_custom_endpoint",
             "tagsLocationCustomEndpoint": "tags_location_custom_endpoint",
             "tpuCustomEndpoint": "tpu_custom_endpoint",
+            "tpuV2CustomEndpoint": "tpu_v2_custom_endpoint",
             "userProjectOverride": "user_project_override",
             "vertexAiCustomEndpoint": "vertex_ai_custom_endpoint",
             "vmwareengineCustomEndpoint": "vmwareengine_custom_endpoint",
