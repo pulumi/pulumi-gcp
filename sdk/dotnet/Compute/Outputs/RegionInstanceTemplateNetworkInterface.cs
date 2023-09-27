@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// interfaces on subnet-mode networks. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionInstanceTemplateNetworkInterfaceAliasIpRange> AliasIpRanges;
+        public readonly int? InternalIpv6PrefixLength;
         /// <summary>
         /// An array of IPv6 access configurations for this interface.
         /// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -27,6 +28,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> Ipv6AccessConfigs;
         public readonly string? Ipv6AccessType;
+        public readonly string? Ipv6Address;
         public readonly string? Name;
         /// <summary>
         /// The name or self_link of the network to attach this interface to.
@@ -69,9 +71,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.RegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges,
 
+            int? internalIpv6PrefixLength,
+
             ImmutableArray<Outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
 
             string? ipv6AccessType,
+
+            string? ipv6Address,
 
             string? name,
 
@@ -91,8 +97,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;
             Ipv6AccessType = ipv6AccessType;
+            Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
             NetworkIp = networkIp;

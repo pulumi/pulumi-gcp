@@ -192,6 +192,12 @@ import (
 //						},
 //					},
 //				},
+//				BinaryAuthorization: &gkeonprem.BareMetalClusterBinaryAuthorizationArgs{
+//					EvaluationMode: pulumi.String("DISABLED"),
+//				},
+//				UpgradePolicy: &gkeonprem.BareMetalClusterUpgradePolicyArgs{
+//					Policy: pulumi.String("SERIAL"),
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -418,6 +424,9 @@ type BareMetalCluster struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringOutput `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	// Structure is documented below.
+	BinaryAuthorization BareMetalClusterBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
 	// Specifies the User Cluster's observability infrastructure.
 	// Structure is documented below.
 	ClusterOperations BareMetalClusterClusterOperationsPtrOutput `pulumi:"clusterOperations"`
@@ -504,6 +513,9 @@ type BareMetalCluster struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// The cluster upgrade policy.
+	// Structure is documented below.
+	UpgradePolicy BareMetalClusterUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
 	// Structure is documented below.
 	ValidationChecks BareMetalClusterValidationCheckArrayOutput `pulumi:"validationChecks"`
@@ -574,6 +586,9 @@ type bareMetalClusterState struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion *string `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	// Structure is documented below.
+	BinaryAuthorization *BareMetalClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Specifies the User Cluster's observability infrastructure.
 	// Structure is documented below.
 	ClusterOperations *BareMetalClusterClusterOperations `pulumi:"clusterOperations"`
@@ -660,6 +675,9 @@ type bareMetalClusterState struct {
 	Uid *string `pulumi:"uid"`
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime *string `pulumi:"updateTime"`
+	// The cluster upgrade policy.
+	// Structure is documented below.
+	UpgradePolicy *BareMetalClusterUpgradePolicy `pulumi:"upgradePolicy"`
 	// Specifies the security related settings for the Bare Metal User Cluster.
 	// Structure is documented below.
 	ValidationChecks []BareMetalClusterValidationCheck `pulumi:"validationChecks"`
@@ -680,6 +698,9 @@ type BareMetalClusterState struct {
 	Annotations pulumi.StringMapInput
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringPtrInput
+	// Binary Authorization related configurations.
+	// Structure is documented below.
+	BinaryAuthorization BareMetalClusterBinaryAuthorizationPtrInput
 	// Specifies the User Cluster's observability infrastructure.
 	// Structure is documented below.
 	ClusterOperations BareMetalClusterClusterOperationsPtrInput
@@ -766,6 +787,9 @@ type BareMetalClusterState struct {
 	Uid pulumi.StringPtrInput
 	// The time the cluster was last updated, in RFC3339 text format.
 	UpdateTime pulumi.StringPtrInput
+	// The cluster upgrade policy.
+	// Structure is documented below.
+	UpgradePolicy BareMetalClusterUpgradePolicyPtrInput
 	// Specifies the security related settings for the Bare Metal User Cluster.
 	// Structure is documented below.
 	ValidationChecks BareMetalClusterValidationCheckArrayInput
@@ -790,6 +814,9 @@ type bareMetalClusterArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion string `pulumi:"bareMetalVersion"`
+	// Binary Authorization related configurations.
+	// Structure is documented below.
+	BinaryAuthorization *BareMetalClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Specifies the User Cluster's observability infrastructure.
 	// Structure is documented below.
 	ClusterOperations *BareMetalClusterClusterOperations `pulumi:"clusterOperations"`
@@ -832,6 +859,9 @@ type bareMetalClusterArgs struct {
 	// Specifies the cluster storage configuration.
 	// Structure is documented below.
 	Storage BareMetalClusterStorage `pulumi:"storage"`
+	// The cluster upgrade policy.
+	// Structure is documented below.
+	UpgradePolicy *BareMetalClusterUpgradePolicy `pulumi:"upgradePolicy"`
 }
 
 // The set of arguments for constructing a BareMetalCluster resource.
@@ -850,6 +880,9 @@ type BareMetalClusterArgs struct {
 	Annotations pulumi.StringMapInput
 	// A human readable description of this Bare Metal User Cluster.
 	BareMetalVersion pulumi.StringInput
+	// Binary Authorization related configurations.
+	// Structure is documented below.
+	BinaryAuthorization BareMetalClusterBinaryAuthorizationPtrInput
 	// Specifies the User Cluster's observability infrastructure.
 	// Structure is documented below.
 	ClusterOperations BareMetalClusterClusterOperationsPtrInput
@@ -892,6 +925,9 @@ type BareMetalClusterArgs struct {
 	// Specifies the cluster storage configuration.
 	// Structure is documented below.
 	Storage BareMetalClusterStorageInput
+	// The cluster upgrade policy.
+	// Structure is documented below.
+	UpgradePolicy BareMetalClusterUpgradePolicyPtrInput
 }
 
 func (BareMetalClusterArgs) ElementType() reflect.Type {
@@ -1026,6 +1062,12 @@ func (o BareMetalClusterOutput) Annotations() pulumi.StringMapOutput {
 // A human readable description of this Bare Metal User Cluster.
 func (o BareMetalClusterOutput) BareMetalVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.BareMetalVersion }).(pulumi.StringOutput)
+}
+
+// Binary Authorization related configurations.
+// Structure is documented below.
+func (o BareMetalClusterOutput) BinaryAuthorization() BareMetalClusterBinaryAuthorizationPtrOutput {
+	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(BareMetalClusterBinaryAuthorizationPtrOutput)
 }
 
 // Specifies the User Cluster's observability infrastructure.
@@ -1190,6 +1232,12 @@ func (o BareMetalClusterOutput) Uid() pulumi.StringOutput {
 // The time the cluster was last updated, in RFC3339 text format.
 func (o BareMetalClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The cluster upgrade policy.
+// Structure is documented below.
+func (o BareMetalClusterOutput) UpgradePolicy() BareMetalClusterUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *BareMetalCluster) BareMetalClusterUpgradePolicyPtrOutput { return v.UpgradePolicy }).(BareMetalClusterUpgradePolicyPtrOutput)
 }
 
 // Specifies the security related settings for the Bare Metal User Cluster.

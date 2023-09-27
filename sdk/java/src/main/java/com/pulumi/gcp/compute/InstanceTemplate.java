@@ -689,7 +689,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkInterfaces);
     }
     /**
-     * Configures network performance settings for the instance created from the
+     * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machine_type`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -701,7 +701,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceTemplateNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance created from the
+     * @return (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machine_type`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

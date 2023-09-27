@@ -21,11 +21,22 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// <summary>
         /// Traffic VPC egress settings.
         /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("egress")]
         public Input<string>? Egress { get; set; }
+
+        [Input("networkInterfaces")]
+        private InputList<Inputs.JobTemplateTemplateVpcAccessNetworkInterfaceGetArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Direct VPC egress settings. Currently only single network interface is supported.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.JobTemplateTemplateVpcAccessNetworkInterfaceGetArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.JobTemplateTemplateVpcAccessNetworkInterfaceGetArgs>());
+            set => _networkInterfaces = value;
+        }
 
         public JobTemplateTemplateVpcAccessGetArgs()
         {

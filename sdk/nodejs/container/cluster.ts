@@ -412,7 +412,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeLocations!: pulumi.Output<string[]>;
     /**
-     * ) Node pool configs that apply to auto-provisioned node pools in
+     * Node pool configs that apply to auto-provisioned node pools in
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      */
@@ -1022,7 +1022,7 @@ export interface ClusterState {
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ) Node pool configs that apply to auto-provisioned node pools in
+     * Node pool configs that apply to auto-provisioned node pools in
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      */
@@ -1452,7 +1452,7 @@ export interface ClusterArgs {
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ) Node pool configs that apply to auto-provisioned node pools in
+     * Node pool configs that apply to auto-provisioned node pools in
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      */

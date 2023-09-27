@@ -15507,6 +15507,4889 @@ func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) In
 	}).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
+type CxSecuritySettingsAudioExportSettings struct {
+	// Filename pattern for exported audio.
+	AudioExportPattern *string `pulumi:"audioExportPattern"`
+	// File format for exported audio file. Currently only in telephony recordings.
+	// * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+	// * MP3: MP3 file format.
+	// * OGG: OGG Vorbis.
+	//   Possible values are: `MULAW`, `MP3`, `OGG`.
+	AudioFormat *string `pulumi:"audioFormat"`
+	// Enable audio redaction if it is true.
+	EnableAudioRedaction *bool `pulumi:"enableAudioRedaction"`
+	// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+	GcsBucket *string `pulumi:"gcsBucket"`
+}
+
+// CxSecuritySettingsAudioExportSettingsInput is an input type that accepts CxSecuritySettingsAudioExportSettingsArgs and CxSecuritySettingsAudioExportSettingsOutput values.
+// You can construct a concrete instance of `CxSecuritySettingsAudioExportSettingsInput` via:
+//
+//	CxSecuritySettingsAudioExportSettingsArgs{...}
+type CxSecuritySettingsAudioExportSettingsInput interface {
+	pulumi.Input
+
+	ToCxSecuritySettingsAudioExportSettingsOutput() CxSecuritySettingsAudioExportSettingsOutput
+	ToCxSecuritySettingsAudioExportSettingsOutputWithContext(context.Context) CxSecuritySettingsAudioExportSettingsOutput
+}
+
+type CxSecuritySettingsAudioExportSettingsArgs struct {
+	// Filename pattern for exported audio.
+	AudioExportPattern pulumi.StringPtrInput `pulumi:"audioExportPattern"`
+	// File format for exported audio file. Currently only in telephony recordings.
+	// * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+	// * MP3: MP3 file format.
+	// * OGG: OGG Vorbis.
+	//   Possible values are: `MULAW`, `MP3`, `OGG`.
+	AudioFormat pulumi.StringPtrInput `pulumi:"audioFormat"`
+	// Enable audio redaction if it is true.
+	EnableAudioRedaction pulumi.BoolPtrInput `pulumi:"enableAudioRedaction"`
+	// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+	GcsBucket pulumi.StringPtrInput `pulumi:"gcsBucket"`
+}
+
+func (CxSecuritySettingsAudioExportSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxSecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (i CxSecuritySettingsAudioExportSettingsArgs) ToCxSecuritySettingsAudioExportSettingsOutput() CxSecuritySettingsAudioExportSettingsOutput {
+	return i.ToCxSecuritySettingsAudioExportSettingsOutputWithContext(context.Background())
+}
+
+func (i CxSecuritySettingsAudioExportSettingsArgs) ToCxSecuritySettingsAudioExportSettingsOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsAudioExportSettingsOutput)
+}
+
+func (i CxSecuritySettingsAudioExportSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsAudioExportSettings] {
+	return pulumix.Output[CxSecuritySettingsAudioExportSettings]{
+		OutputState: i.ToCxSecuritySettingsAudioExportSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxSecuritySettingsAudioExportSettingsArgs) ToCxSecuritySettingsAudioExportSettingsPtrOutput() CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return i.ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxSecuritySettingsAudioExportSettingsArgs) ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsAudioExportSettingsOutput).ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx)
+}
+
+// CxSecuritySettingsAudioExportSettingsPtrInput is an input type that accepts CxSecuritySettingsAudioExportSettingsArgs, CxSecuritySettingsAudioExportSettingsPtr and CxSecuritySettingsAudioExportSettingsPtrOutput values.
+// You can construct a concrete instance of `CxSecuritySettingsAudioExportSettingsPtrInput` via:
+//
+//	        CxSecuritySettingsAudioExportSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxSecuritySettingsAudioExportSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxSecuritySettingsAudioExportSettingsPtrOutput() CxSecuritySettingsAudioExportSettingsPtrOutput
+	ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Context) CxSecuritySettingsAudioExportSettingsPtrOutput
+}
+
+type cxSecuritySettingsAudioExportSettingsPtrType CxSecuritySettingsAudioExportSettingsArgs
+
+func CxSecuritySettingsAudioExportSettingsPtr(v *CxSecuritySettingsAudioExportSettingsArgs) CxSecuritySettingsAudioExportSettingsPtrInput {
+	return (*cxSecuritySettingsAudioExportSettingsPtrType)(v)
+}
+
+func (*cxSecuritySettingsAudioExportSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxSecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (i *cxSecuritySettingsAudioExportSettingsPtrType) ToCxSecuritySettingsAudioExportSettingsPtrOutput() CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return i.ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxSecuritySettingsAudioExportSettingsPtrType) ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsAudioExportSettingsPtrOutput)
+}
+
+func (i *cxSecuritySettingsAudioExportSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsAudioExportSettings] {
+	return pulumix.Output[*CxSecuritySettingsAudioExportSettings]{
+		OutputState: i.ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxSecuritySettingsAudioExportSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxSecuritySettingsAudioExportSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxSecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (o CxSecuritySettingsAudioExportSettingsOutput) ToCxSecuritySettingsAudioExportSettingsOutput() CxSecuritySettingsAudioExportSettingsOutput {
+	return o
+}
+
+func (o CxSecuritySettingsAudioExportSettingsOutput) ToCxSecuritySettingsAudioExportSettingsOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsOutput {
+	return o
+}
+
+func (o CxSecuritySettingsAudioExportSettingsOutput) ToCxSecuritySettingsAudioExportSettingsPtrOutput() CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return o.ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxSecuritySettingsAudioExportSettingsOutput) ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxSecuritySettingsAudioExportSettings) *CxSecuritySettingsAudioExportSettings {
+		return &v
+	}).(CxSecuritySettingsAudioExportSettingsPtrOutput)
+}
+
+func (o CxSecuritySettingsAudioExportSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsAudioExportSettings] {
+	return pulumix.Output[CxSecuritySettingsAudioExportSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Filename pattern for exported audio.
+func (o CxSecuritySettingsAudioExportSettingsOutput) AudioExportPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxSecuritySettingsAudioExportSettings) *string { return v.AudioExportPattern }).(pulumi.StringPtrOutput)
+}
+
+// File format for exported audio file. Currently only in telephony recordings.
+//   - MULAW: G.711 mu-law PCM with 8kHz sample rate.
+//   - MP3: MP3 file format.
+//   - OGG: OGG Vorbis.
+//     Possible values are: `MULAW`, `MP3`, `OGG`.
+func (o CxSecuritySettingsAudioExportSettingsOutput) AudioFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxSecuritySettingsAudioExportSettings) *string { return v.AudioFormat }).(pulumi.StringPtrOutput)
+}
+
+// Enable audio redaction if it is true.
+func (o CxSecuritySettingsAudioExportSettingsOutput) EnableAudioRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxSecuritySettingsAudioExportSettings) *bool { return v.EnableAudioRedaction }).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+func (o CxSecuritySettingsAudioExportSettingsOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxSecuritySettingsAudioExportSettings) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
+}
+
+type CxSecuritySettingsAudioExportSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxSecuritySettingsAudioExportSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxSecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) ToCxSecuritySettingsAudioExportSettingsPtrOutput() CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return o
+}
+
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) ToCxSecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsAudioExportSettingsPtrOutput {
+	return o
+}
+
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsAudioExportSettings] {
+	return pulumix.Output[*CxSecuritySettingsAudioExportSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) Elem() CxSecuritySettingsAudioExportSettingsOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsAudioExportSettings) CxSecuritySettingsAudioExportSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxSecuritySettingsAudioExportSettings
+		return ret
+	}).(CxSecuritySettingsAudioExportSettingsOutput)
+}
+
+// Filename pattern for exported audio.
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) AudioExportPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsAudioExportSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AudioExportPattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// File format for exported audio file. Currently only in telephony recordings.
+//   - MULAW: G.711 mu-law PCM with 8kHz sample rate.
+//   - MP3: MP3 file format.
+//   - OGG: OGG Vorbis.
+//     Possible values are: `MULAW`, `MP3`, `OGG`.
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) AudioFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsAudioExportSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AudioFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable audio redaction if it is true.
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) EnableAudioRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsAudioExportSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAudioRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+func (o CxSecuritySettingsAudioExportSettingsPtrOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsAudioExportSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcsBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxSecuritySettingsInsightsExportSettings struct {
+	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+	EnableInsightsExport bool `pulumi:"enableInsightsExport"`
+}
+
+// CxSecuritySettingsInsightsExportSettingsInput is an input type that accepts CxSecuritySettingsInsightsExportSettingsArgs and CxSecuritySettingsInsightsExportSettingsOutput values.
+// You can construct a concrete instance of `CxSecuritySettingsInsightsExportSettingsInput` via:
+//
+//	CxSecuritySettingsInsightsExportSettingsArgs{...}
+type CxSecuritySettingsInsightsExportSettingsInput interface {
+	pulumi.Input
+
+	ToCxSecuritySettingsInsightsExportSettingsOutput() CxSecuritySettingsInsightsExportSettingsOutput
+	ToCxSecuritySettingsInsightsExportSettingsOutputWithContext(context.Context) CxSecuritySettingsInsightsExportSettingsOutput
+}
+
+type CxSecuritySettingsInsightsExportSettingsArgs struct {
+	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+	EnableInsightsExport pulumi.BoolInput `pulumi:"enableInsightsExport"`
+}
+
+func (CxSecuritySettingsInsightsExportSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxSecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (i CxSecuritySettingsInsightsExportSettingsArgs) ToCxSecuritySettingsInsightsExportSettingsOutput() CxSecuritySettingsInsightsExportSettingsOutput {
+	return i.ToCxSecuritySettingsInsightsExportSettingsOutputWithContext(context.Background())
+}
+
+func (i CxSecuritySettingsInsightsExportSettingsArgs) ToCxSecuritySettingsInsightsExportSettingsOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsInsightsExportSettingsOutput)
+}
+
+func (i CxSecuritySettingsInsightsExportSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsInsightsExportSettings] {
+	return pulumix.Output[CxSecuritySettingsInsightsExportSettings]{
+		OutputState: i.ToCxSecuritySettingsInsightsExportSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxSecuritySettingsInsightsExportSettingsArgs) ToCxSecuritySettingsInsightsExportSettingsPtrOutput() CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return i.ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxSecuritySettingsInsightsExportSettingsArgs) ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsInsightsExportSettingsOutput).ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx)
+}
+
+// CxSecuritySettingsInsightsExportSettingsPtrInput is an input type that accepts CxSecuritySettingsInsightsExportSettingsArgs, CxSecuritySettingsInsightsExportSettingsPtr and CxSecuritySettingsInsightsExportSettingsPtrOutput values.
+// You can construct a concrete instance of `CxSecuritySettingsInsightsExportSettingsPtrInput` via:
+//
+//	        CxSecuritySettingsInsightsExportSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxSecuritySettingsInsightsExportSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxSecuritySettingsInsightsExportSettingsPtrOutput() CxSecuritySettingsInsightsExportSettingsPtrOutput
+	ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Context) CxSecuritySettingsInsightsExportSettingsPtrOutput
+}
+
+type cxSecuritySettingsInsightsExportSettingsPtrType CxSecuritySettingsInsightsExportSettingsArgs
+
+func CxSecuritySettingsInsightsExportSettingsPtr(v *CxSecuritySettingsInsightsExportSettingsArgs) CxSecuritySettingsInsightsExportSettingsPtrInput {
+	return (*cxSecuritySettingsInsightsExportSettingsPtrType)(v)
+}
+
+func (*cxSecuritySettingsInsightsExportSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxSecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (i *cxSecuritySettingsInsightsExportSettingsPtrType) ToCxSecuritySettingsInsightsExportSettingsPtrOutput() CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return i.ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxSecuritySettingsInsightsExportSettingsPtrType) ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxSecuritySettingsInsightsExportSettingsPtrOutput)
+}
+
+func (i *cxSecuritySettingsInsightsExportSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsInsightsExportSettings] {
+	return pulumix.Output[*CxSecuritySettingsInsightsExportSettings]{
+		OutputState: i.ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxSecuritySettingsInsightsExportSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxSecuritySettingsInsightsExportSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxSecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsOutput) ToCxSecuritySettingsInsightsExportSettingsOutput() CxSecuritySettingsInsightsExportSettingsOutput {
+	return o
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsOutput) ToCxSecuritySettingsInsightsExportSettingsOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsOutput {
+	return o
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsOutput) ToCxSecuritySettingsInsightsExportSettingsPtrOutput() CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return o.ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsOutput) ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxSecuritySettingsInsightsExportSettings) *CxSecuritySettingsInsightsExportSettings {
+		return &v
+	}).(CxSecuritySettingsInsightsExportSettingsPtrOutput)
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CxSecuritySettingsInsightsExportSettings] {
+	return pulumix.Output[CxSecuritySettingsInsightsExportSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+func (o CxSecuritySettingsInsightsExportSettingsOutput) EnableInsightsExport() pulumi.BoolOutput {
+	return o.ApplyT(func(v CxSecuritySettingsInsightsExportSettings) bool { return v.EnableInsightsExport }).(pulumi.BoolOutput)
+}
+
+type CxSecuritySettingsInsightsExportSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxSecuritySettingsInsightsExportSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxSecuritySettingsInsightsExportSettings)(nil)).Elem()
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) ToCxSecuritySettingsInsightsExportSettingsPtrOutput() CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return o
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) ToCxSecuritySettingsInsightsExportSettingsPtrOutputWithContext(ctx context.Context) CxSecuritySettingsInsightsExportSettingsPtrOutput {
+	return o
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxSecuritySettingsInsightsExportSettings] {
+	return pulumix.Output[*CxSecuritySettingsInsightsExportSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) Elem() CxSecuritySettingsInsightsExportSettingsOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsInsightsExportSettings) CxSecuritySettingsInsightsExportSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxSecuritySettingsInsightsExportSettings
+		return ret
+	}).(CxSecuritySettingsInsightsExportSettingsOutput)
+}
+
+// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+func (o CxSecuritySettingsInsightsExportSettingsPtrOutput) EnableInsightsExport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxSecuritySettingsInsightsExportSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableInsightsExport
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxTestCaseLastTestResult struct {
+	// The conversation turns uttered during the test case replay in chronological order.
+	// Structure is documented below.
+	ConversationTurns []CxTestCaseLastTestResultConversationTurn `pulumi:"conversationTurns"`
+	// Environment where the test was run. If not set, it indicates the draft environment.
+	Environment *string `pulumi:"environment"`
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+	//
+	// (Optional)
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	Name *string `pulumi:"name"`
+	// Whether the test case passed in the agent environment.
+	// * PASSED: The test passed.
+	// * FAILED: The test did not pass.
+	//   Possible values are: `PASSED`, `FAILED`.
+	TestResult *string `pulumi:"testResult"`
+	// The time that the test was run. A timestamp in RFC3339 text format.
+	TestTime *string `pulumi:"testTime"`
+}
+
+// CxTestCaseLastTestResultInput is an input type that accepts CxTestCaseLastTestResultArgs and CxTestCaseLastTestResultOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultInput` via:
+//
+//	CxTestCaseLastTestResultArgs{...}
+type CxTestCaseLastTestResultInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultOutput() CxTestCaseLastTestResultOutput
+	ToCxTestCaseLastTestResultOutputWithContext(context.Context) CxTestCaseLastTestResultOutput
+}
+
+type CxTestCaseLastTestResultArgs struct {
+	// The conversation turns uttered during the test case replay in chronological order.
+	// Structure is documented below.
+	ConversationTurns CxTestCaseLastTestResultConversationTurnArrayInput `pulumi:"conversationTurns"`
+	// Environment where the test was run. If not set, it indicates the draft environment.
+	Environment pulumi.StringPtrInput `pulumi:"environment"`
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+	//
+	// (Optional)
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether the test case passed in the agent environment.
+	// * PASSED: The test passed.
+	// * FAILED: The test did not pass.
+	//   Possible values are: `PASSED`, `FAILED`.
+	TestResult pulumi.StringPtrInput `pulumi:"testResult"`
+	// The time that the test was run. A timestamp in RFC3339 text format.
+	TestTime pulumi.StringPtrInput `pulumi:"testTime"`
+}
+
+func (CxTestCaseLastTestResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResult)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultArgs) ToCxTestCaseLastTestResultOutput() CxTestCaseLastTestResultOutput {
+	return i.ToCxTestCaseLastTestResultOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultArgs) ToCxTestCaseLastTestResultOutputWithContext(ctx context.Context) CxTestCaseLastTestResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultOutput)
+}
+
+func (i CxTestCaseLastTestResultArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResult] {
+	return pulumix.Output[CxTestCaseLastTestResult]{
+		OutputState: i.ToCxTestCaseLastTestResultOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CxTestCaseLastTestResultArrayInput is an input type that accepts CxTestCaseLastTestResultArray and CxTestCaseLastTestResultArrayOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultArrayInput` via:
+//
+//	CxTestCaseLastTestResultArray{ CxTestCaseLastTestResultArgs{...} }
+type CxTestCaseLastTestResultArrayInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultArrayOutput() CxTestCaseLastTestResultArrayOutput
+	ToCxTestCaseLastTestResultArrayOutputWithContext(context.Context) CxTestCaseLastTestResultArrayOutput
+}
+
+type CxTestCaseLastTestResultArray []CxTestCaseLastTestResultInput
+
+func (CxTestCaseLastTestResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResult)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultArray) ToCxTestCaseLastTestResultArrayOutput() CxTestCaseLastTestResultArrayOutput {
+	return i.ToCxTestCaseLastTestResultArrayOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultArray) ToCxTestCaseLastTestResultArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultArrayOutput)
+}
+
+func (i CxTestCaseLastTestResultArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResult] {
+	return pulumix.Output[[]CxTestCaseLastTestResult]{
+		OutputState: i.ToCxTestCaseLastTestResultArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResult)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultOutput) ToCxTestCaseLastTestResultOutput() CxTestCaseLastTestResultOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultOutput) ToCxTestCaseLastTestResultOutputWithContext(ctx context.Context) CxTestCaseLastTestResultOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResult] {
+	return pulumix.Output[CxTestCaseLastTestResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The conversation turns uttered during the test case replay in chronological order.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultOutput) ConversationTurns() CxTestCaseLastTestResultConversationTurnArrayOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResult) []CxTestCaseLastTestResultConversationTurn {
+		return v.ConversationTurns
+	}).(CxTestCaseLastTestResultConversationTurnArrayOutput)
+}
+
+// Environment where the test was run. If not set, it indicates the draft environment.
+func (o CxTestCaseLastTestResultOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResult) *string { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+//
+// (Optional)
+// The unique identifier of the page.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxTestCaseLastTestResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether the test case passed in the agent environment.
+//   - PASSED: The test passed.
+//   - FAILED: The test did not pass.
+//     Possible values are: `PASSED`, `FAILED`.
+func (o CxTestCaseLastTestResultOutput) TestResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResult) *string { return v.TestResult }).(pulumi.StringPtrOutput)
+}
+
+// The time that the test was run. A timestamp in RFC3339 text format.
+func (o CxTestCaseLastTestResultOutput) TestTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResult) *string { return v.TestTime }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultArrayOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResult)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultArrayOutput) ToCxTestCaseLastTestResultArrayOutput() CxTestCaseLastTestResultArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultArrayOutput) ToCxTestCaseLastTestResultArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResult] {
+	return pulumix.Output[[]CxTestCaseLastTestResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxTestCaseLastTestResult {
+		return vs[0].([]CxTestCaseLastTestResult)[vs[1].(int)]
+	}).(CxTestCaseLastTestResultOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurn struct {
+	// The user input.
+	// Structure is documented below.
+	UserInput *CxTestCaseLastTestResultConversationTurnUserInput `pulumi:"userInput"`
+	// The virtual agent output.
+	// Structure is documented below.
+	VirtualAgentOutput *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput `pulumi:"virtualAgentOutput"`
+}
+
+// CxTestCaseLastTestResultConversationTurnInput is an input type that accepts CxTestCaseLastTestResultConversationTurnArgs and CxTestCaseLastTestResultConversationTurnOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnArgs{...}
+type CxTestCaseLastTestResultConversationTurnInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnOutput() CxTestCaseLastTestResultConversationTurnOutput
+	ToCxTestCaseLastTestResultConversationTurnOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnArgs struct {
+	// The user input.
+	// Structure is documented below.
+	UserInput CxTestCaseLastTestResultConversationTurnUserInputPtrInput `pulumi:"userInput"`
+	// The virtual agent output.
+	// Structure is documented below.
+	VirtualAgentOutput CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrInput `pulumi:"virtualAgentOutput"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurn)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnArgs) ToCxTestCaseLastTestResultConversationTurnOutput() CxTestCaseLastTestResultConversationTurnOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnArgs) ToCxTestCaseLastTestResultConversationTurnOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurn] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurn]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CxTestCaseLastTestResultConversationTurnArrayInput is an input type that accepts CxTestCaseLastTestResultConversationTurnArray and CxTestCaseLastTestResultConversationTurnArrayOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnArrayInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnArray{ CxTestCaseLastTestResultConversationTurnArgs{...} }
+type CxTestCaseLastTestResultConversationTurnArrayInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnArrayOutput() CxTestCaseLastTestResultConversationTurnArrayOutput
+	ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnArrayOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnArray []CxTestCaseLastTestResultConversationTurnInput
+
+func (CxTestCaseLastTestResultConversationTurnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResultConversationTurn)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnArray) ToCxTestCaseLastTestResultConversationTurnArrayOutput() CxTestCaseLastTestResultConversationTurnArrayOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnArray) ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnArrayOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurn] {
+	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurn]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurn)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnOutput) ToCxTestCaseLastTestResultConversationTurnOutput() CxTestCaseLastTestResultConversationTurnOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnOutput) ToCxTestCaseLastTestResultConversationTurnOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurn] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurn]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The user input.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnOutput) UserInput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurn) *CxTestCaseLastTestResultConversationTurnUserInput {
+		return v.UserInput
+	}).(CxTestCaseLastTestResultConversationTurnUserInputPtrOutput)
+}
+
+// The virtual agent output.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnOutput) VirtualAgentOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurn) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
+		return v.VirtualAgentOutput
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnArrayOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResultConversationTurn)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnArrayOutput) ToCxTestCaseLastTestResultConversationTurnArrayOutput() CxTestCaseLastTestResultConversationTurnArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnArrayOutput) ToCxTestCaseLastTestResultConversationTurnArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurn] {
+	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurn]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultConversationTurnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxTestCaseLastTestResultConversationTurn {
+		return vs[0].([]CxTestCaseLastTestResultConversationTurn)[vs[1].(int)]
+	}).(CxTestCaseLastTestResultConversationTurnOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInput struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
+	// Parameters that need to be injected into the conversation during intent detection.
+	InjectedParameters *string `pulumi:"injectedParameters"`
+	// User input. Supports text input, event input, dtmf input in the test case.
+	// Structure is documented below.
+	Input *CxTestCaseLastTestResultConversationTurnUserInputInputType `pulumi:"input"`
+	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+	IsWebhookEnabled *bool `pulumi:"isWebhookEnabled"`
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputArgs and CxTestCaseLastTestResultConversationTurnUserInputOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnUserInputArgs{...}
+type CxTestCaseLastTestResultConversationTurnUserInputInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputOutput() CxTestCaseLastTestResultConversationTurnUserInputOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputArgs struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
+	// Parameters that need to be injected into the conversation during intent detection.
+	InjectedParameters pulumi.StringPtrInput `pulumi:"injectedParameters"`
+	// User input. Supports text input, event input, dtmf input in the test case.
+	// Structure is documented below.
+	Input CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrInput `pulumi:"input"`
+	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+	IsWebhookEnabled pulumi.BoolPtrInput `pulumi:"isWebhookEnabled"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnUserInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInput)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToCxTestCaseLastTestResultConversationTurnUserInputOutput() CxTestCaseLastTestResultConversationTurnUserInputOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToCxTestCaseLastTestResultConversationTurnUserInputOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputArgs) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputOutput).ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputArgs, CxTestCaseLastTestResultConversationTurnUserInputPtr and CxTestCaseLastTestResultConversationTurnUserInputPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnUserInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnUserInputPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnUserInputPtrType CxTestCaseLastTestResultConversationTurnUserInputArgs
+
+func CxTestCaseLastTestResultConversationTurnUserInputPtr(v *CxTestCaseLastTestResultConversationTurnUserInputArgs) CxTestCaseLastTestResultConversationTurnUserInputPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnUserInputPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnUserInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInput)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInput)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToCxTestCaseLastTestResultConversationTurnUserInputOutput() CxTestCaseLastTestResultConversationTurnUserInputOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToCxTestCaseLastTestResultConversationTurnUserInputOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInput) *CxTestCaseLastTestResultConversationTurnUserInput {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnUserInputPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInput]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether sentiment analysis is enabled.
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInput) *bool { return v.EnableSentimentAnalysis }).(pulumi.BoolPtrOutput)
+}
+
+// Parameters that need to be injected into the conversation during intent detection.
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) InjectedParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInput) *string { return v.InjectedParameters }).(pulumi.StringPtrOutput)
+}
+
+// User input. Supports text input, event input, dtmf input in the test case.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) Input() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInput) *CxTestCaseLastTestResultConversationTurnUserInputInputType {
+		return v.Input
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput)
+}
+
+// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+func (o CxTestCaseLastTestResultConversationTurnUserInputOutput) IsWebhookEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInput) *bool { return v.IsWebhookEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInput)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInput]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInput) CxTestCaseLastTestResultConversationTurnUserInput {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnUserInput
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnUserInputOutput)
+}
+
+// Whether sentiment analysis is enabled.
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Parameters that need to be injected into the conversation during intent detection.
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) InjectedParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InjectedParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+// User input. Supports text input, event input, dtmf input in the test case.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) Input() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInput) *CxTestCaseLastTestResultConversationTurnUserInputInputType {
+		if v == nil {
+			return nil
+		}
+		return v.Input
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput)
+}
+
+// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+func (o CxTestCaseLastTestResultConversationTurnUserInputPtrOutput) IsWebhookEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsWebhookEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputType struct {
+	// The DTMF event to be handled.
+	// Structure is documented below.
+	Dtmf *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf `pulumi:"dtmf"`
+	// The event to be triggered.
+	// Structure is documented below.
+	Event *CxTestCaseLastTestResultConversationTurnUserInputInputEvent `pulumi:"event"`
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+	// Note that queries in the same session do not necessarily need to specify the same language.
+	LanguageCode *string `pulumi:"languageCode"`
+	// The natural language text to be processed.
+	// Structure is documented below.
+	Text *CxTestCaseLastTestResultConversationTurnUserInputInputText `pulumi:"text"`
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputTypeInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs and CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputTypeInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs{...}
+type CxTestCaseLastTestResultConversationTurnUserInputInputTypeInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs struct {
+	// The DTMF event to be handled.
+	// Structure is documented below.
+	Dtmf CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrInput `pulumi:"dtmf"`
+	// The event to be triggered.
+	// Structure is documented below.
+	Event CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrInput `pulumi:"event"`
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+	// Note that queries in the same session do not necessarily need to specify the same language.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// The natural language text to be processed.
+	// Structure is documented below.
+	Text CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrInput `pulumi:"text"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput).ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs, CxTestCaseLastTestResultConversationTurnUserInputInputTypePtr and CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs
+
+func CxTestCaseLastTestResultConversationTurnUserInputInputTypePtr(v *CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypeOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputType {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The DTMF event to be handled.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) Dtmf() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
+		return v.Dtmf
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+// The event to be triggered.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) Event() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
+		return v.Event
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput)
+}
+
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+// Note that queries in the same session do not necessarily need to specify the same language.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputType) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// The natural language text to be processed.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput) Text() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputText {
+		return v.Text
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputType) CxTestCaseLastTestResultConversationTurnUserInputInputType {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnUserInputInputType
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput)
+}
+
+// The DTMF event to be handled.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) Dtmf() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
+		if v == nil {
+			return nil
+		}
+		return v.Dtmf
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+// The event to be triggered.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) Event() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
+		if v == nil {
+			return nil
+		}
+		return v.Event
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput)
+}
+
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+// Note that queries in the same session do not necessarily need to specify the same language.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The natural language text to be processed.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput) Text() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputType) *CxTestCaseLastTestResultConversationTurnUserInputInputText {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputDtmf struct {
+	// The dtmf digits.
+	Digits *string `pulumi:"digits"`
+	// The finish digit (if any).
+	FinishDigit *string `pulumi:"finishDigit"`
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputDtmfInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs and CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputDtmfInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs{...}
+type CxTestCaseLastTestResultConversationTurnUserInputInputDtmfInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs struct {
+	// The dtmf digits.
+	Digits pulumi.StringPtrInput `pulumi:"digits"`
+	// The finish digit (if any).
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput).ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs, CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtr and CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs
+
+func CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtr(v *CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The dtmf digits.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) Digits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) *string { return v.Digits }).(pulumi.StringPtrOutput)
+}
+
+// The finish digit (if any).
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) *string { return v.FinishDigit }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputDtmf]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnUserInputInputDtmf
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput)
+}
+
+// The dtmf digits.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) Digits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digits
+	}).(pulumi.StringPtrOutput)
+}
+
+// The finish digit (if any).
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputDtmf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputEvent struct {
+	// Name of the event.
+	Event string `pulumi:"event"`
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputEventInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs and CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputEventInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs{...}
+type CxTestCaseLastTestResultConversationTurnUserInputInputEventInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs struct {
+	// Name of the event.
+	Event pulumi.StringInput `pulumi:"event"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput).ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs, CxTestCaseLastTestResultConversationTurnUserInputInputEventPtr and CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs
+
+func CxTestCaseLastTestResultConversationTurnUserInputInputEventPtr(v *CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputEventPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInputInputEvent) *CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the event.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput) Event() pulumi.StringOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputEvent) string { return v.Event }).(pulumi.StringOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputEvent) CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnUserInputInputEvent
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput)
+}
+
+// Name of the event.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput) Event() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Event
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputText struct {
+	// The natural language text to be processed. Text length must not exceed 256 characters.
+	Text string `pulumi:"text"`
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputTextInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs and CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputTextInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs{...}
+type CxTestCaseLastTestResultConversationTurnUserInputInputTextInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs struct {
+	// The natural language text to be processed. Text length must not exceed 256 characters.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput).ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs, CxTestCaseLastTestResultConversationTurnUserInputInputTextPtr and CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs
+
+func CxTestCaseLastTestResultConversationTurnUserInputInputTextPtr(v *CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnUserInputInputTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnUserInputInputText) *CxTestCaseLastTestResultConversationTurnUserInputInputText {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnUserInputInputText]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The natural language text to be processed. Text length must not exceed 256 characters.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnUserInputInputText) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput() CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ToCxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnUserInputInputText]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputText) CxTestCaseLastTestResultConversationTurnUserInputInputText {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnUserInputInputText
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput)
+}
+
+// The natural language text to be processed. Text length must not exceed 256 characters.
+func (o CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnUserInputInputText) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutput struct {
+	// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+	// Structure is documented below.
+	CurrentPage *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage `pulumi:"currentPage"`
+	// The list of differences between the original run and the replay for this output, if any.
+	// Structure is documented below.
+	Differences []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference `pulumi:"differences"`
+	// The session parameters available to the bot at this point.
+	SessionParameters *string `pulumi:"sessionParameters"`
+	// Response error from the agent in the test result. If set, other output is empty.
+	// Structure is documented below.
+	Status *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus `pulumi:"status"`
+	// The text responses from the agent for the turn.
+	// Structure is documented below.
+	TextResponses []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse `pulumi:"textResponses"`
+	// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+	// Structure is documented below.
+	TriggeredIntent *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent `pulumi:"triggeredIntent"`
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs{...}
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs struct {
+	// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+	// Structure is documented below.
+	CurrentPage CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrInput `pulumi:"currentPage"`
+	// The list of differences between the original run and the replay for this output, if any.
+	// Structure is documented below.
+	Differences CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput `pulumi:"differences"`
+	// The session parameters available to the bot at this point.
+	SessionParameters pulumi.StringPtrInput `pulumi:"sessionParameters"`
+	// Response error from the agent in the test result. If set, other output is empty.
+	// Structure is documented below.
+	Status CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrInput `pulumi:"status"`
+	// The text responses from the agent for the turn.
+	// Structure is documented below.
+	TextResponses CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput `pulumi:"textResponses"`
+	// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+	// Structure is documented below.
+	TriggeredIntent CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrInput `pulumi:"triggeredIntent"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput).ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs, CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtr and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs
+
+func CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtr(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) CurrentPage() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
+		return v.CurrentPage
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+// The list of differences between the original run and the replay for this output, if any.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) Differences() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
+		return v.Differences
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput)
+}
+
+// The session parameters available to the bot at this point.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) SessionParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *string { return v.SessionParameters }).(pulumi.StringPtrOutput)
+}
+
+// Response error from the agent in the test result. If set, other output is empty.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) Status() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
+		return v.Status
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput)
+}
+
+// The text responses from the agent for the turn.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) TextResponses() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
+		return v.TextResponses
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput)
+}
+
+// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput) TriggeredIntent() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
+		return v.TriggeredIntent
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutput]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnVirtualAgentOutput
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput)
+}
+
+// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) CurrentPage() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentPage
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+// The list of differences between the original run and the replay for this output, if any.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) Differences() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
+		if v == nil {
+			return nil
+		}
+		return v.Differences
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput)
+}
+
+// The session parameters available to the bot at this point.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) SessionParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+// Response error from the agent in the test result. If set, other output is empty.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) Status() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput)
+}
+
+// The text responses from the agent for the turn.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) TextResponses() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TextResponses
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput)
+}
+
+// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+// Structure is documented below.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput) TriggeredIntent() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutput) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
+		if v == nil {
+			return nil
+		}
+		return v.TriggeredIntent
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage struct {
+	// (Output)
+	// The human-readable name of the page, unique within the flow.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	Name *string `pulumi:"name"`
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs{...}
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs struct {
+	// (Output)
+	// The human-readable name of the page, unique within the flow.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput).ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs, CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtr and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs
+
+func CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtr(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Output)
+// The human-readable name of the page, unique within the flow.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the page.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput)
+}
+
+// (Output)
+// The human-readable name of the page, unique within the flow.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the page.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference struct {
+	// A human readable description of the diff, showing the actual output vs expected output.
+	Description *string `pulumi:"description"`
+	// The type of diff.
+	// * INTENT: The intent.
+	// * PAGE: The page.
+	// * PARAMETERS: The parameters.
+	// * UTTERANCE: The message utterance.
+	// * FLOW: The flow.
+	//   Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+	Type *string `pulumi:"type"`
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs{...}
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs struct {
+	// A human readable description of the diff, showing the actual output vs expected output.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The type of diff.
+	// * INTENT: The intent.
+	// * PAGE: The page.
+	// * PARAMETERS: The parameters.
+	// * UTTERANCE: The message utterance.
+	// * FLOW: The flow.
+	//   Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray{ CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs{...} }
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceInput
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
+	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A human readable description of the diff, showing the actual output vs expected output.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference) *string {
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of diff.
+//   - INTENT: The intent.
+//   - PAGE: The page.
+//   - PARAMETERS: The parameters.
+//   - UTTERANCE: The message utterance.
+//   - FLOW: The flow.
+//     Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference] {
+	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
+		return vs[0].([]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference)[vs[1].(int)]
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A JSON encoded list of messages that carry the error details.
+	Details *string `pulumi:"details"`
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs{...}
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A JSON encoded list of messages that carry the error details.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput).ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs, CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtr and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs
+
+func CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtr(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A JSON encoded list of messages that carry the error details.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// A developer-facing error message.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A JSON encoded list of messages that carry the error details.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+// A developer-facing error message.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse struct {
+	// A collection of text responses.
+	Texts []string `pulumi:"texts"`
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs{...}
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs struct {
+	// A collection of text responses.
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray{ CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs{...} }
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray []CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseInput
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A collection of text responses.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse) []string {
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[[]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput) Index(i pulumi.IntInput) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
+		return vs[0].([]CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse)[vs[1].(int)]
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent struct {
+	// (Output)
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+	Name *string `pulumi:"name"`
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentInput` via:
+//
+//	CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs{...}
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs struct {
+	// (Output)
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput)
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput).ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrInput is an input type that accepts CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs, CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtr and CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrInput` via:
+//
+//	        CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput
+	ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput
+}
+
+type cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs
+
+func CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtr(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrInput {
+	return (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType)(v)
+}
+
+func (*cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+func (i *cxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: i.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
+		return &v
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Output)
+// The human-readable name of the intent, unique within the agent.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToCxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) Elem() CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent
+		return ret
+	}).(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput)
+}
+
+// (Output)
+// The human-readable name of the intent, unique within the agent.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+func (o CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurn struct {
+	// The user input.
+	// Structure is documented below.
+	UserInput *CxTestCaseTestCaseConversationTurnUserInput `pulumi:"userInput"`
+	// The virtual agent output.
+	// Structure is documented below.
+	VirtualAgentOutput *CxTestCaseTestCaseConversationTurnVirtualAgentOutput `pulumi:"virtualAgentOutput"`
+}
+
+// CxTestCaseTestCaseConversationTurnInput is an input type that accepts CxTestCaseTestCaseConversationTurnArgs and CxTestCaseTestCaseConversationTurnOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnArgs{...}
+type CxTestCaseTestCaseConversationTurnInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnOutput() CxTestCaseTestCaseConversationTurnOutput
+	ToCxTestCaseTestCaseConversationTurnOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnOutput
+}
+
+type CxTestCaseTestCaseConversationTurnArgs struct {
+	// The user input.
+	// Structure is documented below.
+	UserInput CxTestCaseTestCaseConversationTurnUserInputPtrInput `pulumi:"userInput"`
+	// The virtual agent output.
+	// Structure is documented below.
+	VirtualAgentOutput CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrInput `pulumi:"virtualAgentOutput"`
+}
+
+func (CxTestCaseTestCaseConversationTurnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurn)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnArgs) ToCxTestCaseTestCaseConversationTurnOutput() CxTestCaseTestCaseConversationTurnOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnArgs) ToCxTestCaseTestCaseConversationTurnOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurn] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurn]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CxTestCaseTestCaseConversationTurnArrayInput is an input type that accepts CxTestCaseTestCaseConversationTurnArray and CxTestCaseTestCaseConversationTurnArrayOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnArrayInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnArray{ CxTestCaseTestCaseConversationTurnArgs{...} }
+type CxTestCaseTestCaseConversationTurnArrayInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnArrayOutput() CxTestCaseTestCaseConversationTurnArrayOutput
+	ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnArrayOutput
+}
+
+type CxTestCaseTestCaseConversationTurnArray []CxTestCaseTestCaseConversationTurnInput
+
+func (CxTestCaseTestCaseConversationTurnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseTestCaseConversationTurn)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnArray) ToCxTestCaseTestCaseConversationTurnArrayOutput() CxTestCaseTestCaseConversationTurnArrayOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnArray) ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnArrayOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurn] {
+	return pulumix.Output[[]CxTestCaseTestCaseConversationTurn]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurn)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnOutput) ToCxTestCaseTestCaseConversationTurnOutput() CxTestCaseTestCaseConversationTurnOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnOutput) ToCxTestCaseTestCaseConversationTurnOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurn] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurn]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The user input.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnOutput) UserInput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurn) *CxTestCaseTestCaseConversationTurnUserInput {
+		return v.UserInput
+	}).(CxTestCaseTestCaseConversationTurnUserInputPtrOutput)
+}
+
+// The virtual agent output.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnOutput) VirtualAgentOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurn) *CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
+		return v.VirtualAgentOutput
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnArrayOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseTestCaseConversationTurn)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnArrayOutput) ToCxTestCaseTestCaseConversationTurnArrayOutput() CxTestCaseTestCaseConversationTurnArrayOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnArrayOutput) ToCxTestCaseTestCaseConversationTurnArrayOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnArrayOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurn] {
+	return pulumix.Output[[]CxTestCaseTestCaseConversationTurn]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnArrayOutput) Index(i pulumi.IntInput) CxTestCaseTestCaseConversationTurnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxTestCaseTestCaseConversationTurn {
+		return vs[0].([]CxTestCaseTestCaseConversationTurn)[vs[1].(int)]
+	}).(CxTestCaseTestCaseConversationTurnOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInput struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
+	// Parameters that need to be injected into the conversation during intent detection.
+	InjectedParameters *string `pulumi:"injectedParameters"`
+	// User input. Supports text input, event input, dtmf input in the test case.
+	// Structure is documented below.
+	Input *CxTestCaseTestCaseConversationTurnUserInputInputType `pulumi:"input"`
+	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+	IsWebhookEnabled *bool `pulumi:"isWebhookEnabled"`
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputArgs and CxTestCaseTestCaseConversationTurnUserInputOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnUserInputArgs{...}
+type CxTestCaseTestCaseConversationTurnUserInputInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputOutput() CxTestCaseTestCaseConversationTurnUserInputOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputOutput
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputArgs struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
+	// Parameters that need to be injected into the conversation during intent detection.
+	InjectedParameters pulumi.StringPtrInput `pulumi:"injectedParameters"`
+	// User input. Supports text input, event input, dtmf input in the test case.
+	// Structure is documented below.
+	Input CxTestCaseTestCaseConversationTurnUserInputInputTypePtrInput `pulumi:"input"`
+	// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+	IsWebhookEnabled pulumi.BoolPtrInput `pulumi:"isWebhookEnabled"`
+}
+
+func (CxTestCaseTestCaseConversationTurnUserInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInput)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToCxTestCaseTestCaseConversationTurnUserInputOutput() CxTestCaseTestCaseConversationTurnUserInputOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToCxTestCaseTestCaseConversationTurnUserInputOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputArgs) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputOutput).ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputPtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputArgs, CxTestCaseTestCaseConversationTurnUserInputPtr and CxTestCaseTestCaseConversationTurnUserInputPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputPtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnUserInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnUserInputPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputPtrOutput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputPtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnUserInputPtrType CxTestCaseTestCaseConversationTurnUserInputArgs
+
+func CxTestCaseTestCaseConversationTurnUserInputPtr(v *CxTestCaseTestCaseConversationTurnUserInputArgs) CxTestCaseTestCaseConversationTurnUserInputPtrInput {
+	return (*cxTestCaseTestCaseConversationTurnUserInputPtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnUserInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInput)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputPtrType) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputPtrType) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputPtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInput)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToCxTestCaseTestCaseConversationTurnUserInputOutput() CxTestCaseTestCaseConversationTurnUserInputOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToCxTestCaseTestCaseConversationTurnUserInputOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInput) *CxTestCaseTestCaseConversationTurnUserInput {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnUserInputPtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInput]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether sentiment analysis is enabled.
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInput) *bool { return v.EnableSentimentAnalysis }).(pulumi.BoolPtrOutput)
+}
+
+// Parameters that need to be injected into the conversation during intent detection.
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) InjectedParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInput) *string { return v.InjectedParameters }).(pulumi.StringPtrOutput)
+}
+
+// User input. Supports text input, event input, dtmf input in the test case.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) Input() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInput) *CxTestCaseTestCaseConversationTurnUserInputInputType {
+		return v.Input
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput)
+}
+
+// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+func (o CxTestCaseTestCaseConversationTurnUserInputOutput) IsWebhookEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInput) *bool { return v.IsWebhookEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInput)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutput() CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInput]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInput) CxTestCaseTestCaseConversationTurnUserInput {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnUserInput
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnUserInputOutput)
+}
+
+// Whether sentiment analysis is enabled.
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Parameters that need to be injected into the conversation during intent detection.
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) InjectedParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InjectedParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+// User input. Supports text input, event input, dtmf input in the test case.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) Input() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInput) *CxTestCaseTestCaseConversationTurnUserInputInputType {
+		if v == nil {
+			return nil
+		}
+		return v.Input
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput)
+}
+
+// If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+func (o CxTestCaseTestCaseConversationTurnUserInputPtrOutput) IsWebhookEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsWebhookEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputType struct {
+	// The DTMF event to be handled.
+	// Structure is documented below.
+	Dtmf *CxTestCaseTestCaseConversationTurnUserInputInputDtmf `pulumi:"dtmf"`
+	// The event to be triggered.
+	// Structure is documented below.
+	Event *CxTestCaseTestCaseConversationTurnUserInputInputEvent `pulumi:"event"`
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+	// Note that queries in the same session do not necessarily need to specify the same language.
+	LanguageCode *string `pulumi:"languageCode"`
+	// The natural language text to be processed.
+	// Structure is documented below.
+	Text *CxTestCaseTestCaseConversationTurnUserInputInputText `pulumi:"text"`
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputTypeInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs and CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputTypeInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs{...}
+type CxTestCaseTestCaseConversationTurnUserInputInputTypeInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs struct {
+	// The DTMF event to be handled.
+	// Structure is documented below.
+	Dtmf CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrInput `pulumi:"dtmf"`
+	// The event to be triggered.
+	// Structure is documented below.
+	Event CxTestCaseTestCaseConversationTurnUserInputInputEventPtrInput `pulumi:"event"`
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+	// Note that queries in the same session do not necessarily need to specify the same language.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// The natural language text to be processed.
+	// Structure is documented below.
+	Text CxTestCaseTestCaseConversationTurnUserInputInputTextPtrInput `pulumi:"text"`
+}
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput).ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputTypePtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs, CxTestCaseTestCaseConversationTurnUserInputInputTypePtr and CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputTypePtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnUserInputInputTypePtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs
+
+func CxTestCaseTestCaseConversationTurnUserInputInputTypePtr(v *CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrInput {
+	return (*cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypeOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputType {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputType]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The DTMF event to be handled.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) Dtmf() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
+		return v.Dtmf
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+// The event to be triggered.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) Event() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputEvent {
+		return v.Event
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput)
+}
+
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+// Note that queries in the same session do not necessarily need to specify the same language.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputType) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// The natural language text to be processed.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput) Text() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputText {
+		return v.Text
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputType)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputType]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputType) CxTestCaseTestCaseConversationTurnUserInputInputType {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnUserInputInputType
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput)
+}
+
+// The DTMF event to be handled.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) Dtmf() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
+		if v == nil {
+			return nil
+		}
+		return v.Dtmf
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+// The event to be triggered.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) Event() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputEvent {
+		if v == nil {
+			return nil
+		}
+		return v.Event
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput)
+}
+
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+// Note that queries in the same session do not necessarily need to specify the same language.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The natural language text to be processed.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput) Text() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputType) *CxTestCaseTestCaseConversationTurnUserInputInputText {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputDtmf struct {
+	// The dtmf digits.
+	Digits *string `pulumi:"digits"`
+	// The finish digit (if any).
+	FinishDigit *string `pulumi:"finishDigit"`
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputDtmfInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs and CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputDtmfInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs{...}
+type CxTestCaseTestCaseConversationTurnUserInputInputDtmfInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs struct {
+	// The dtmf digits.
+	Digits pulumi.StringPtrInput `pulumi:"digits"`
+	// The finish digit (if any).
+	FinishDigit pulumi.StringPtrInput `pulumi:"finishDigit"`
+}
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput).ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs, CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtr and CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs
+
+func CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtr(v *CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrInput {
+	return (*cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInputInputDtmf) *CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The dtmf digits.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) Digits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputDtmf) *string { return v.Digits }).(pulumi.StringPtrOutput)
+}
+
+// The finish digit (if any).
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputDtmf) *string { return v.FinishDigit }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputDtmf)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputDtmf]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputDtmf) CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnUserInputInputDtmf
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput)
+}
+
+// The dtmf digits.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) Digits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputDtmf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digits
+	}).(pulumi.StringPtrOutput)
+}
+
+// The finish digit (if any).
+func (o CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput) FinishDigit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputDtmf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FinishDigit
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputEvent struct {
+	// Name of the event.
+	Event string `pulumi:"event"`
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputEventInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputEventArgs and CxTestCaseTestCaseConversationTurnUserInputInputEventOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputEventInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnUserInputInputEventArgs{...}
+type CxTestCaseTestCaseConversationTurnUserInputInputEventInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventOutput
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputEventArgs struct {
+	// Name of the event.
+	Event pulumi.StringInput `pulumi:"event"`
+}
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputEventOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputEventOutput).ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputEventPtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputEventArgs, CxTestCaseTestCaseConversationTurnUserInputInputEventPtr and CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputEventPtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnUserInputInputEventArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnUserInputInputEventPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType CxTestCaseTestCaseConversationTurnUserInputInputEventArgs
+
+func CxTestCaseTestCaseConversationTurnUserInputInputEventPtr(v *CxTestCaseTestCaseConversationTurnUserInputInputEventArgs) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrInput {
+	return (*cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputEventPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputEventOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInputInputEvent) *CxTestCaseTestCaseConversationTurnUserInputInputEvent {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Name of the event.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventOutput) Event() pulumi.StringOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputEvent) string { return v.Event }).(pulumi.StringOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputEvent)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputEvent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputEventOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputEvent) CxTestCaseTestCaseConversationTurnUserInputInputEvent {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnUserInputInputEvent
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputEventOutput)
+}
+
+// Name of the event.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput) Event() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputEvent) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Event
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputText struct {
+	// The natural language text to be processed. Text length must not exceed 256 characters.
+	Text string `pulumi:"text"`
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputTextInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputTextArgs and CxTestCaseTestCaseConversationTurnUserInputInputTextOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputTextInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnUserInputInputTextArgs{...}
+type CxTestCaseTestCaseConversationTurnUserInputInputTextInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextOutput
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputTextArgs struct {
+	// The natural language text to be processed. Text length must not exceed 256 characters.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTextOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTextOutput).ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnUserInputInputTextPtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnUserInputInputTextArgs, CxTestCaseTestCaseConversationTurnUserInputInputTextPtr and CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnUserInputInputTextPtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnUserInputInputTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnUserInputInputTextPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput
+	ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType CxTestCaseTestCaseConversationTurnUserInputInputTextArgs
+
+func CxTestCaseTestCaseConversationTurnUserInputInputTextPtr(v *CxTestCaseTestCaseConversationTurnUserInputInputTextArgs) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrInput {
+	return (*cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnUserInputInputTextPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputTextOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnUserInputInputText) *CxTestCaseTestCaseConversationTurnUserInputInputText {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnUserInputInputText]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The natural language text to be processed. Text length must not exceed 256 characters.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnUserInputInputText) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnUserInputInputText)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput() CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ToCxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnUserInputInputText]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) Elem() CxTestCaseTestCaseConversationTurnUserInputInputTextOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputText) CxTestCaseTestCaseConversationTurnUserInputInputText {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnUserInputInputText
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnUserInputInputTextOutput)
+}
+
+// The natural language text to be processed. Text length must not exceed 256 characters.
+func (o CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnUserInputInputText) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutput struct {
+	// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+	// Structure is documented below.
+	CurrentPage *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage `pulumi:"currentPage"`
+	// The session parameters available to the bot at this point.
+	SessionParameters *string `pulumi:"sessionParameters"`
+	// The text responses from the agent for the turn.
+	// Structure is documented below.
+	TextResponses []CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse `pulumi:"textResponses"`
+	// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+	// Structure is documented below.
+	TriggeredIntent *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent `pulumi:"triggeredIntent"`
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs and CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{...}
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs struct {
+	// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+	// Structure is documented below.
+	CurrentPage CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrInput `pulumi:"currentPage"`
+	// The session parameters available to the bot at this point.
+	SessionParameters pulumi.StringPtrInput `pulumi:"sessionParameters"`
+	// The text responses from the agent for the turn.
+	// Structure is documented below.
+	TextResponses CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput `pulumi:"textResponses"`
+	// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+	// Structure is documented below.
+	TriggeredIntent CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput `pulumi:"triggeredIntent"`
+}
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput).ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs, CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtr and CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs
+
+func CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtr(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrInput {
+	return (*cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) CurrentPage() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
+		return v.CurrentPage
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+// The session parameters available to the bot at this point.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) SessionParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *string { return v.SessionParameters }).(pulumi.StringPtrOutput)
+}
+
+// The text responses from the agent for the turn.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) TextResponses() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutput) []CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse {
+		return v.TextResponses
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput)
+}
+
+// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput) TriggeredIntent() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
+		return v.TriggeredIntent
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnVirtualAgentOutput)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutput]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) Elem() CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutput) CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnVirtualAgentOutput
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput)
+}
+
+// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) CurrentPage() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentPage
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+// The session parameters available to the bot at this point.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) SessionParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionParameters
+	}).(pulumi.StringPtrOutput)
+}
+
+// The text responses from the agent for the turn.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) TextResponses() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutput) []CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TextResponses
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput)
+}
+
+// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+// Structure is documented below.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput) TriggeredIntent() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutput) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
+		if v == nil {
+			return nil
+		}
+		return v.TriggeredIntent
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage struct {
+	// (Output)
+	// The human-readable name of the page, unique within the flow.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	Name *string `pulumi:"name"`
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs and CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{...}
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs struct {
+	// (Output)
+	// The human-readable name of the page, unique within the flow.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the page.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput).ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs, CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtr and CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs
+
+func CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtr(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrInput {
+	return (*cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Output)
+// The human-readable name of the page, unique within the flow.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the page.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) Elem() CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput)
+}
+
+// (Output)
+// The human-readable name of the page, unique within the flow.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the page.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse struct {
+	// A collection of text responses.
+	Texts []string `pulumi:"texts"`
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs and CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{...}
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs struct {
+	// A collection of text responses.
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx).OutputState,
+	}
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray and CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{ CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{...} }
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray []CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseInput
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A collection of text responses.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse) []string { return v.Texts }).(pulumi.StringArrayOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse] {
+	return pulumix.Output[[]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput) Index(i pulumi.IntInput) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse {
+		return vs[0].([]CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse)[vs[1].(int)]
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent struct {
+	// (Output)
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+	Name *string `pulumi:"name"`
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs and CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentInput` via:
+//
+//	CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{...}
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs struct {
+	// (Output)
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput)
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput).ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput is an input type that accepts CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs, CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtr and CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput` via:
+//
+//	        CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput
+	ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput
+}
+
+type cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs
+
+func CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtr(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput {
+	return (*cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType)(v)
+}
+
+func (*cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+func (i *cxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: i.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
+		return &v
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput)
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Output)
+// The human-readable name of the intent, unique within the agent.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent)(nil)).Elem()
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToCxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutputWithContext(ctx context.Context) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent] {
+	return pulumix.Output[*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) Elem() CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent
+		return ret
+	}).(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput)
+}
+
+// (Output)
+// The human-readable name of the intent, unique within the agent.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+func (o CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxTestCaseTestConfig struct {
+	// Flow name to start the test case with.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+	Flow *string `pulumi:"flow"`
+	// The page to start the test case with.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+	Page *string `pulumi:"page"`
+	// Session parameters to be compared when calculating differences.
+	TrackingParameters []string `pulumi:"trackingParameters"`
+}
+
+// CxTestCaseTestConfigInput is an input type that accepts CxTestCaseTestConfigArgs and CxTestCaseTestConfigOutput values.
+// You can construct a concrete instance of `CxTestCaseTestConfigInput` via:
+//
+//	CxTestCaseTestConfigArgs{...}
+type CxTestCaseTestConfigInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestConfigOutput() CxTestCaseTestConfigOutput
+	ToCxTestCaseTestConfigOutputWithContext(context.Context) CxTestCaseTestConfigOutput
+}
+
+type CxTestCaseTestConfigArgs struct {
+	// Flow name to start the test case with.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+	Flow pulumi.StringPtrInput `pulumi:"flow"`
+	// The page to start the test case with.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+	Page pulumi.StringPtrInput `pulumi:"page"`
+	// Session parameters to be compared when calculating differences.
+	TrackingParameters pulumi.StringArrayInput `pulumi:"trackingParameters"`
+}
+
+func (CxTestCaseTestConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestConfig)(nil)).Elem()
+}
+
+func (i CxTestCaseTestConfigArgs) ToCxTestCaseTestConfigOutput() CxTestCaseTestConfigOutput {
+	return i.ToCxTestCaseTestConfigOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestConfigArgs) ToCxTestCaseTestConfigOutputWithContext(ctx context.Context) CxTestCaseTestConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestConfigOutput)
+}
+
+func (i CxTestCaseTestConfigArgs) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestConfig] {
+	return pulumix.Output[CxTestCaseTestConfig]{
+		OutputState: i.ToCxTestCaseTestConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i CxTestCaseTestConfigArgs) ToCxTestCaseTestConfigPtrOutput() CxTestCaseTestConfigPtrOutput {
+	return i.ToCxTestCaseTestConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CxTestCaseTestConfigArgs) ToCxTestCaseTestConfigPtrOutputWithContext(ctx context.Context) CxTestCaseTestConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestConfigOutput).ToCxTestCaseTestConfigPtrOutputWithContext(ctx)
+}
+
+// CxTestCaseTestConfigPtrInput is an input type that accepts CxTestCaseTestConfigArgs, CxTestCaseTestConfigPtr and CxTestCaseTestConfigPtrOutput values.
+// You can construct a concrete instance of `CxTestCaseTestConfigPtrInput` via:
+//
+//	        CxTestCaseTestConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxTestCaseTestConfigPtrInput interface {
+	pulumi.Input
+
+	ToCxTestCaseTestConfigPtrOutput() CxTestCaseTestConfigPtrOutput
+	ToCxTestCaseTestConfigPtrOutputWithContext(context.Context) CxTestCaseTestConfigPtrOutput
+}
+
+type cxTestCaseTestConfigPtrType CxTestCaseTestConfigArgs
+
+func CxTestCaseTestConfigPtr(v *CxTestCaseTestConfigArgs) CxTestCaseTestConfigPtrInput {
+	return (*cxTestCaseTestConfigPtrType)(v)
+}
+
+func (*cxTestCaseTestConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestConfig)(nil)).Elem()
+}
+
+func (i *cxTestCaseTestConfigPtrType) ToCxTestCaseTestConfigPtrOutput() CxTestCaseTestConfigPtrOutput {
+	return i.ToCxTestCaseTestConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cxTestCaseTestConfigPtrType) ToCxTestCaseTestConfigPtrOutputWithContext(ctx context.Context) CxTestCaseTestConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxTestCaseTestConfigPtrOutput)
+}
+
+func (i *cxTestCaseTestConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestConfig] {
+	return pulumix.Output[*CxTestCaseTestConfig]{
+		OutputState: i.ToCxTestCaseTestConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type CxTestCaseTestConfigOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxTestCaseTestConfig)(nil)).Elem()
+}
+
+func (o CxTestCaseTestConfigOutput) ToCxTestCaseTestConfigOutput() CxTestCaseTestConfigOutput {
+	return o
+}
+
+func (o CxTestCaseTestConfigOutput) ToCxTestCaseTestConfigOutputWithContext(ctx context.Context) CxTestCaseTestConfigOutput {
+	return o
+}
+
+func (o CxTestCaseTestConfigOutput) ToCxTestCaseTestConfigPtrOutput() CxTestCaseTestConfigPtrOutput {
+	return o.ToCxTestCaseTestConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CxTestCaseTestConfigOutput) ToCxTestCaseTestConfigPtrOutputWithContext(ctx context.Context) CxTestCaseTestConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxTestCaseTestConfig) *CxTestCaseTestConfig {
+		return &v
+	}).(CxTestCaseTestConfigPtrOutput)
+}
+
+func (o CxTestCaseTestConfigOutput) ToOutput(ctx context.Context) pulumix.Output[CxTestCaseTestConfig] {
+	return pulumix.Output[CxTestCaseTestConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Flow name to start the test case with.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+func (o CxTestCaseTestConfigOutput) Flow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestConfig) *string { return v.Flow }).(pulumi.StringPtrOutput)
+}
+
+// The page to start the test case with.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+func (o CxTestCaseTestConfigOutput) Page() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxTestCaseTestConfig) *string { return v.Page }).(pulumi.StringPtrOutput)
+}
+
+// Session parameters to be compared when calculating differences.
+func (o CxTestCaseTestConfigOutput) TrackingParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxTestCaseTestConfig) []string { return v.TrackingParameters }).(pulumi.StringArrayOutput)
+}
+
+type CxTestCaseTestConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CxTestCaseTestConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxTestCaseTestConfig)(nil)).Elem()
+}
+
+func (o CxTestCaseTestConfigPtrOutput) ToCxTestCaseTestConfigPtrOutput() CxTestCaseTestConfigPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestConfigPtrOutput) ToCxTestCaseTestConfigPtrOutputWithContext(ctx context.Context) CxTestCaseTestConfigPtrOutput {
+	return o
+}
+
+func (o CxTestCaseTestConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CxTestCaseTestConfig] {
+	return pulumix.Output[*CxTestCaseTestConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o CxTestCaseTestConfigPtrOutput) Elem() CxTestCaseTestConfigOutput {
+	return o.ApplyT(func(v *CxTestCaseTestConfig) CxTestCaseTestConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CxTestCaseTestConfig
+		return ret
+	}).(CxTestCaseTestConfigOutput)
+}
+
+// Flow name to start the test case with.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+func (o CxTestCaseTestConfigPtrOutput) Flow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Flow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The page to start the test case with.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+// Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+func (o CxTestCaseTestConfigPtrOutput) Page() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxTestCaseTestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Page
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session parameters to be compared when calculating differences.
+func (o CxTestCaseTestConfigPtrOutput) TrackingParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxTestCaseTestConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TrackingParameters
+	}).(pulumi.StringArrayOutput)
+}
+
 type CxVersionNluSetting struct {
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
 	// The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
@@ -17059,6 +21942,58 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsAudioExportSettingsInput)(nil)).Elem(), CxSecuritySettingsAudioExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsAudioExportSettingsPtrInput)(nil)).Elem(), CxSecuritySettingsAudioExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsInsightsExportSettingsInput)(nil)).Elem(), CxSecuritySettingsInsightsExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxSecuritySettingsInsightsExportSettingsPtrInput)(nil)).Elem(), CxSecuritySettingsInsightsExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultInput)(nil)).Elem(), CxTestCaseLastTestResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultArrayInput)(nil)).Elem(), CxTestCaseLastTestResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnArrayInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputTypeInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputDtmfInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputEventInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputTextInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrInput)(nil)).Elem(), CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnArrayInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputTypeInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputTypePtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputDtmfInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputEventInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputEventPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputTextInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnUserInputInputTextPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnUserInputInputTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrInput)(nil)).Elem(), CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestConfigInput)(nil)).Elem(), CxTestCaseTestConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxTestCaseTestConfigPtrInput)(nil)).Elem(), CxTestCaseTestConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingInput)(nil)).Elem(), CxVersionNluSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingArrayInput)(nil)).Elem(), CxVersionNluSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
@@ -17247,6 +22182,58 @@ func init() {
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput{})
+	pulumi.RegisterOutputType(CxSecuritySettingsAudioExportSettingsOutput{})
+	pulumi.RegisterOutputType(CxSecuritySettingsAudioExportSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxSecuritySettingsInsightsExportSettingsOutput{})
+	pulumi.RegisterOutputType(CxSecuritySettingsInsightsExportSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultArrayOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnArrayOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputTypeOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputTypePtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputDtmfPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputEventOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputEventPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputTextOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnUserInputInputTextPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPagePtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArrayOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArrayOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentOutput{})
+	pulumi.RegisterOutputType(CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnArrayOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputTypeOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputTypePtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputDtmfOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputDtmfPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputEventOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputEventPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputTextOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnUserInputInputTextPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPagePtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrayOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentPtrOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestConfigOutput{})
+	pulumi.RegisterOutputType(CxTestCaseTestConfigPtrOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingArrayOutput{})
 	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOutput{})

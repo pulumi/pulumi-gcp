@@ -12,6 +12,7 @@ import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeState;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedInterconnectAttachments;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
+import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpnTunnels;
 import java.lang.String;
 import java.util.Map;
@@ -22,6 +23,58 @@ import javax.annotation.Nullable;
  * The NetworkConnectivity Spoke resource
  * 
  * ## Example Usage
+ * ### Linked_vpc_network
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var basicHub = new Hub(&#34;basicHub&#34;, HubArgs.builder()        
+ *             .description(&#34;A sample hub&#34;)
+ *             .labels(Map.of(&#34;label-two&#34;, &#34;value-one&#34;))
+ *             .build());
+ * 
+ *         var primary = new Spoke(&#34;primary&#34;, SpokeArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .description(&#34;A sample spoke with a linked routher appliance instance&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .hub(basicHub.id())
+ *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .excludeExportRanges(                
+ *                     &#34;198.51.100.0/24&#34;,
+ *                     &#34;10.10.0.0/16&#34;)
+ *                 .uri(network.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Router_appliance
  * ```java
  * package generated_program;
@@ -209,6 +262,20 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SpokeLinkedRouterApplianceInstances>> linkedRouterApplianceInstances() {
         return Codegen.optional(this.linkedRouterApplianceInstances);
+    }
+    /**
+     * VPC network that is associated with the spoke.
+     * 
+     */
+    @Export(name="linkedVpcNetwork", refs={SpokeLinkedVpcNetwork.class}, tree="[0]")
+    private Output</* @Nullable */ SpokeLinkedVpcNetwork> linkedVpcNetwork;
+
+    /**
+     * @return VPC network that is associated with the spoke.
+     * 
+     */
+    public Output<Optional<SpokeLinkedVpcNetwork>> linkedVpcNetwork() {
+        return Codegen.optional(this.linkedVpcNetwork);
     }
     /**
      * The URIs of linked VPN tunnel resources

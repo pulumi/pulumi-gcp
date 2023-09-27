@@ -79,6 +79,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
@@ -110,7 +111,7 @@ import javax.annotation.Nullable;
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret-1&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -251,6 +252,54 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudrunv2 Service Directvpc
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .launchStage(&#34;BETA&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .build())
+ *                 .vpcAccess(ServiceTemplateVpcAccessArgs.builder()
+ *                     .egress(&#34;ALL_TRAFFIC&#34;)
+ *                     .networkInterfaces(ServiceTemplateVpcAccessNetworkInterfaceArgs.builder()
+ *                         .network(&#34;default&#34;)
+ *                         .subnetwork(&#34;default&#34;)
+ *                         .tags(                        
+ *                             &#34;tag1&#34;,
+ *                             &#34;tag2&#34;,
+ *                             &#34;tag3&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Cloudrunv2 Service Probes
  * ```java
  * package generated_program;
@@ -310,6 +359,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.cloudrunv2.Service;
@@ -336,7 +386,7 @@ import javax.annotation.Nullable;
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret-1&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 

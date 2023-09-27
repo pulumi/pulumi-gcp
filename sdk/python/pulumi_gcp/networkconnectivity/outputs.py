@@ -19,6 +19,7 @@ __all__ = [
     'SpokeLinkedInterconnectAttachments',
     'SpokeLinkedRouterApplianceInstances',
     'SpokeLinkedRouterApplianceInstancesInstance',
+    'SpokeLinkedVpcNetwork',
     'SpokeLinkedVpnTunnels',
 ]
 
@@ -451,6 +452,53 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
         - - -
         """
         return pulumi.get(self, "virtual_machine")
+
+
+@pulumi.output_type
+class SpokeLinkedVpcNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeExportRanges":
+            suggest = "exclude_export_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpokeLinkedVpcNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpokeLinkedVpcNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpokeLinkedVpcNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uri: str,
+                 exclude_export_ranges: Optional[Sequence[str]] = None):
+        """
+        :param str uri: The URI of the VPC network resource.
+        :param Sequence[str] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The URI of the VPC network resource.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IP ranges encompassing the subnets to be excluded from peering.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
 
 
 @pulumi.output_type

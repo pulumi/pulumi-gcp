@@ -12,6 +12,8 @@ from .cx_environment import *
 from .cx_flow import *
 from .cx_intent import *
 from .cx_page import *
+from .cx_security_settings import *
+from .cx_test_case import *
 from .cx_version import *
 from .cx_webhook import *
 from .entity_type import *

@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodeConfigAdvancedMachineFeaturesA
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigConfidentialNodesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigFastSocketArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGvnicArgs;
@@ -233,6 +234,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs>> ephemeralStorageLocalSsdConfig() {
         return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
+    }
+
+    /**
+     * Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+     * Node Pool must enable gvnic.
+     * GKE version 1.25.2-gke.1700 or later.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="fastSocket")
+    private @Nullable Output<ClusterNodeConfigFastSocketArgs> fastSocket;
+
+    /**
+     * @return Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+     * Node Pool must enable gvnic.
+     * GKE version 1.25.2-gke.1700 or later.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigFastSocketArgs>> fastSocket() {
+        return Optional.ofNullable(this.fastSocket);
     }
 
     /**
@@ -944,6 +966,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.diskType = $.diskType;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
+        this.fastSocket = $.fastSocket;
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
@@ -1230,6 +1253,33 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder ephemeralStorageLocalSsdConfig(ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs ephemeralStorageLocalSsdConfig) {
             return ephemeralStorageLocalSsdConfig(Output.of(ephemeralStorageLocalSsdConfig));
+        }
+
+        /**
+         * @param fastSocket Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+         * Node Pool must enable gvnic.
+         * GKE version 1.25.2-gke.1700 or later.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fastSocket(@Nullable Output<ClusterNodeConfigFastSocketArgs> fastSocket) {
+            $.fastSocket = fastSocket;
+            return this;
+        }
+
+        /**
+         * @param fastSocket Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+         * Node Pool must enable gvnic.
+         * GKE version 1.25.2-gke.1700 or later.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fastSocket(ClusterNodeConfigFastSocketArgs fastSocket) {
+            return fastSocket(Output.of(fastSocket));
         }
 
         /**

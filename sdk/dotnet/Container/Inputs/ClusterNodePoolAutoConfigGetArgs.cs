@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolAutoConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) - The network tag config for the cluster's automatically provisioned node pools.
+        /// The network tag config for the cluster's automatically provisioned node pools.
         /// </summary>
         [Input("networkTags")]
         public Input<Inputs.ClusterNodePoolAutoConfigNetworkTagsGetArgs>? NetworkTags { get; set; }

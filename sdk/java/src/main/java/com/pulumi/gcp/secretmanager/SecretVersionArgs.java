@@ -17,6 +17,31 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
     public static final SecretVersionArgs Empty = new SecretVersionArgs();
 
     /**
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * The current state of the SecretVersion.
      * 
      */
@@ -29,6 +54,21 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * If set to &#39;true&#39;, the secret data is expected to be base64-encoded string and would be sent as is.
+     * 
+     */
+    @Import(name="isSecretDataBase64")
+    private @Nullable Output<Boolean> isSecretDataBase64;
+
+    /**
+     * @return If set to &#39;true&#39;, the secret data is expected to be base64-encoded string and would be sent as is.
+     * 
+     */
+    public Optional<Output<Boolean>> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
     }
 
     /**
@@ -70,7 +110,9 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
     private SecretVersionArgs() {}
 
     private SecretVersionArgs(SecretVersionArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.enabled = $.enabled;
+        this.isSecretDataBase64 = $.isSecretDataBase64;
         this.secret = $.secret;
         this.secretData = $.secretData;
     }
@@ -94,6 +136,37 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deletionPolicy The deletion policy for the secret version. Setting `ABANDON` allows the resource
+         * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+         * disabled rather than deleted. Default is `DELETE`. Possible values are:
+         * * DELETE
+         * * DISABLE
+         * * ABANDON
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the secret version. Setting `ABANDON` allows the resource
+         * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+         * disabled rather than deleted. Default is `DELETE`. Possible values are:
+         * * DELETE
+         * * DISABLE
+         * * ABANDON
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
          * @param enabled The current state of the SecretVersion.
          * 
          * @return builder
@@ -112,6 +185,27 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is expected to be base64-encoded string and would be sent as is.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(@Nullable Output<Boolean> isSecretDataBase64) {
+            $.isSecretDataBase64 = isSecretDataBase64;
+            return this;
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is expected to be base64-encoded string and would be sent as is.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(Boolean isSecretDataBase64) {
+            return isSecretDataBase64(Output.of(isSecretDataBase64));
         }
 
         /**

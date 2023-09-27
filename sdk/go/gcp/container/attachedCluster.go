@@ -157,6 +157,9 @@ type AttachedCluster struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrOutput `pulumi:"authorization"`
+	// Binary Authorization configuration.
+	// Structure is documented below.
+	BinaryAuthorization AttachedClusterBinaryAuthorizationOutput `pulumi:"binaryAuthorization"`
 	// Output only. The region where this cluster runs.
 	// For EKS clusters, this is an AWS region. For AKS clusters,
 	// this is an Azure region.
@@ -278,6 +281,9 @@ type attachedClusterState struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
+	// Binary Authorization configuration.
+	// Structure is documented below.
+	BinaryAuthorization *AttachedClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Output only. The region where this cluster runs.
 	// For EKS clusters, this is an AWS region. For AKS clusters,
 	// this is an Azure region.
@@ -355,6 +361,9 @@ type AttachedClusterState struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrInput
+	// Binary Authorization configuration.
+	// Structure is documented below.
+	BinaryAuthorization AttachedClusterBinaryAuthorizationPtrInput
 	// Output only. The region where this cluster runs.
 	// For EKS clusters, this is an AWS region. For AKS clusters,
 	// this is an Azure region.
@@ -436,6 +445,9 @@ type attachedClusterArgs struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
+	// Binary Authorization configuration.
+	// Structure is documented below.
+	BinaryAuthorization *AttachedClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Policy to determine what flags to send on delete.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
@@ -490,6 +502,9 @@ type AttachedClusterArgs struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrInput
+	// Binary Authorization configuration.
+	// Structure is documented below.
+	BinaryAuthorization AttachedClusterBinaryAuthorizationPtrInput
 	// Policy to determine what flags to send on delete.
 	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer
@@ -657,6 +672,12 @@ func (o AttachedClusterOutput) Annotations() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o AttachedClusterOutput) Authorization() AttachedClusterAuthorizationPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterAuthorizationPtrOutput { return v.Authorization }).(AttachedClusterAuthorizationPtrOutput)
+}
+
+// Binary Authorization configuration.
+// Structure is documented below.
+func (o AttachedClusterOutput) BinaryAuthorization() AttachedClusterBinaryAuthorizationOutput {
+	return o.ApplyT(func(v *AttachedCluster) AttachedClusterBinaryAuthorizationOutput { return v.BinaryAuthorization }).(AttachedClusterBinaryAuthorizationOutput)
 }
 
 // Output only. The region where this cluster runs.

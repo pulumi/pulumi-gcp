@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -82,6 +83,39 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(vertexVpcConnection)
  *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Vertex Ai Index Endpoint With Public Endpoint
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiIndexEndpoint;
+ * import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
+ *             .description(&#34;A sample vertex endpoint with an public endpoint&#34;)
+ *             .displayName(&#34;sample-endpoint&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .publicEndpointEnabled(true)
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -233,6 +267,34 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     * 
+     */
+    @Export(name="publicEndpointDomainName", refs={String.class}, tree="[0]")
+    private Output<String> publicEndpointDomainName;
+
+    /**
+     * @return If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     * 
+     */
+    public Output<String> publicEndpointDomainName() {
+        return this.publicEndpointDomainName;
+    }
+    /**
+     * If true, the deployed index will be accessible through public endpoint.
+     * 
+     */
+    @Export(name="publicEndpointEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> publicEndpointEnabled;
+
+    /**
+     * @return If true, the deployed index will be accessible through public endpoint.
+     * 
+     */
+    public Output<Optional<Boolean>> publicEndpointEnabled() {
+        return Codegen.optional(this.publicEndpointEnabled);
     }
     /**
      * The region of the index endpoint. eg us-central1

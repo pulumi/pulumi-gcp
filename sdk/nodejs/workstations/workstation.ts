@@ -58,6 +58,9 @@ import * as utilities from "../utilities";
  *     labels: {
  *         label: "key",
  *     },
+ *     env: {
+ *         name: "foo",
+ *     },
  *     annotations: {
  *         "label-one": "value-one",
  *     },
@@ -123,6 +126,10 @@ export class Workstation extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * 'Client-specified environment variables passed to the workstation container's entrypoint.'
+     */
+    public readonly env!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Host to which clients can send HTTPS traffic that will be received by the workstation.
      * Authorized traffic will be received to the workstation as HTTP on port 80.
      * To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
@@ -185,6 +192,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["env"] = state ? state.env : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -211,6 +219,7 @@ export class Workstation extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["env"] = args ? args.env : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -244,6 +253,10 @@ export interface WorkstationState {
      * Human-readable name for this resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * 'Client-specified environment variables passed to the workstation container's entrypoint.'
+     */
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Host to which clients can send HTTPS traffic that will be received by the workstation.
      * Authorized traffic will be received to the workstation as HTTP on port 80.
@@ -304,6 +317,10 @@ export interface WorkstationArgs {
      * Human-readable name for this resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * 'Client-specified environment variables passed to the workstation container's entrypoint.'
+     */
+    env?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      */

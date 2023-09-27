@@ -69,6 +69,7 @@ class ProviderArgs:
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_pipeline_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -84,6 +85,7 @@ class ProviderArgs:
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -151,10 +153,12 @@ class ProviderArgs:
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -273,6 +277,8 @@ class ProviderArgs:
             pulumi.set(__self__, "data_fusion_custom_endpoint", data_fusion_custom_endpoint)
         if data_loss_prevention_custom_endpoint is not None:
             pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
+        if data_pipeline_custom_endpoint is not None:
+            pulumi.set(__self__, "data_pipeline_custom_endpoint", data_pipeline_custom_endpoint)
         if database_migration_service_custom_endpoint is not None:
             pulumi.set(__self__, "database_migration_service_custom_endpoint", database_migration_service_custom_endpoint)
         if dataflow_custom_endpoint is not None:
@@ -303,6 +309,8 @@ class ProviderArgs:
             pulumi.set(__self__, "document_ai_custom_endpoint", document_ai_custom_endpoint)
         if document_ai_warehouse_custom_endpoint is not None:
             pulumi.set(__self__, "document_ai_warehouse_custom_endpoint", document_ai_warehouse_custom_endpoint)
+        if edgenetwork_custom_endpoint is not None:
+            pulumi.set(__self__, "edgenetwork_custom_endpoint", edgenetwork_custom_endpoint)
         if essential_contacts_custom_endpoint is not None:
             pulumi.set(__self__, "essential_contacts_custom_endpoint", essential_contacts_custom_endpoint)
         if eventarc_custom_endpoint is not None:
@@ -441,6 +449,8 @@ class ProviderArgs:
             pulumi.set(__self__, "sql_custom_endpoint", sql_custom_endpoint)
         if storage_custom_endpoint is not None:
             pulumi.set(__self__, "storage_custom_endpoint", storage_custom_endpoint)
+        if storage_insights_custom_endpoint is not None:
+            pulumi.set(__self__, "storage_insights_custom_endpoint", storage_insights_custom_endpoint)
         if storage_transfer_custom_endpoint is not None:
             pulumi.set(__self__, "storage_transfer_custom_endpoint", storage_transfer_custom_endpoint)
         if tags_custom_endpoint is not None:
@@ -449,6 +459,8 @@ class ProviderArgs:
             pulumi.set(__self__, "tags_location_custom_endpoint", tags_location_custom_endpoint)
         if tpu_custom_endpoint is not None:
             pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
+        if tpu_v2_custom_endpoint is not None:
+            pulumi.set(__self__, "tpu_v2_custom_endpoint", tpu_v2_custom_endpoint)
         if user_project_override is not None:
             pulumi.set(__self__, "user_project_override", user_project_override)
         if vertex_ai_custom_endpoint is not None:
@@ -953,6 +965,15 @@ class ProviderArgs:
         pulumi.set(self, "data_loss_prevention_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="dataPipelineCustomEndpoint")
+    def data_pipeline_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "data_pipeline_custom_endpoint")
+
+    @data_pipeline_custom_endpoint.setter
+    def data_pipeline_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_pipeline_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="databaseMigrationServiceCustomEndpoint")
     def database_migration_service_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "database_migration_service_custom_endpoint")
@@ -1086,6 +1107,15 @@ class ProviderArgs:
     @document_ai_warehouse_custom_endpoint.setter
     def document_ai_warehouse_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "document_ai_warehouse_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="edgenetworkCustomEndpoint")
+    def edgenetwork_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "edgenetwork_custom_endpoint")
+
+    @edgenetwork_custom_endpoint.setter
+    def edgenetwork_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edgenetwork_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="essentialContactsCustomEndpoint")
@@ -1691,6 +1721,15 @@ class ProviderArgs:
         pulumi.set(self, "storage_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="storageInsightsCustomEndpoint")
+    def storage_insights_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "storage_insights_custom_endpoint")
+
+    @storage_insights_custom_endpoint.setter
+    def storage_insights_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_insights_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="storageTransferCustomEndpoint")
     def storage_transfer_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "storage_transfer_custom_endpoint")
@@ -1725,6 +1764,15 @@ class ProviderArgs:
     @tpu_custom_endpoint.setter
     def tpu_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tpu_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="tpuV2CustomEndpoint")
+    def tpu_v2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tpu_v2_custom_endpoint")
+
+    @tpu_v2_custom_endpoint.setter
+    def tpu_v2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tpu_v2_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="userProjectOverride")
@@ -1849,6 +1897,7 @@ class Provider(pulumi.ProviderResource):
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_pipeline_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1864,6 +1913,7 @@ class Provider(pulumi.ProviderResource):
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1931,10 +1981,12 @@ class Provider(pulumi.ProviderResource):
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2033,6 +2085,7 @@ class Provider(pulumi.ProviderResource):
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 data_pipeline_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2048,6 +2101,7 @@ class Provider(pulumi.ProviderResource):
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 edgenetwork_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2115,10 +2169,12 @@ class Provider(pulumi.ProviderResource):
                  spanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 storage_insights_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2189,6 +2245,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
             __props__.__dict__["data_loss_prevention_custom_endpoint"] = data_loss_prevention_custom_endpoint
+            __props__.__dict__["data_pipeline_custom_endpoint"] = data_pipeline_custom_endpoint
             __props__.__dict__["database_migration_service_custom_endpoint"] = database_migration_service_custom_endpoint
             __props__.__dict__["dataflow_custom_endpoint"] = dataflow_custom_endpoint
             __props__.__dict__["dataform_custom_endpoint"] = dataform_custom_endpoint
@@ -2204,6 +2261,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
             __props__.__dict__["document_ai_warehouse_custom_endpoint"] = document_ai_warehouse_custom_endpoint
+            __props__.__dict__["edgenetwork_custom_endpoint"] = edgenetwork_custom_endpoint
             __props__.__dict__["essential_contacts_custom_endpoint"] = essential_contacts_custom_endpoint
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
@@ -2275,10 +2333,12 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["spanner_custom_endpoint"] = spanner_custom_endpoint
             __props__.__dict__["sql_custom_endpoint"] = sql_custom_endpoint
             __props__.__dict__["storage_custom_endpoint"] = storage_custom_endpoint
+            __props__.__dict__["storage_insights_custom_endpoint"] = storage_insights_custom_endpoint
             __props__.__dict__["storage_transfer_custom_endpoint"] = storage_transfer_custom_endpoint
             __props__.__dict__["tags_custom_endpoint"] = tags_custom_endpoint
             __props__.__dict__["tags_location_custom_endpoint"] = tags_location_custom_endpoint
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
+            __props__.__dict__["tpu_v2_custom_endpoint"] = tpu_v2_custom_endpoint
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vmwareengine_custom_endpoint"] = vmwareengine_custom_endpoint
@@ -2560,6 +2620,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "data_loss_prevention_custom_endpoint")
 
     @property
+    @pulumi.getter(name="dataPipelineCustomEndpoint")
+    def data_pipeline_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "data_pipeline_custom_endpoint")
+
+    @property
     @pulumi.getter(name="databaseMigrationServiceCustomEndpoint")
     def database_migration_service_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "database_migration_service_custom_endpoint")
@@ -2628,6 +2693,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="documentAiWarehouseCustomEndpoint")
     def document_ai_warehouse_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "document_ai_warehouse_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="edgenetworkCustomEndpoint")
+    def edgenetwork_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "edgenetwork_custom_endpoint")
 
     @property
     @pulumi.getter(name="essentialContactsCustomEndpoint")
@@ -2955,6 +3025,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "storage_custom_endpoint")
 
     @property
+    @pulumi.getter(name="storageInsightsCustomEndpoint")
+    def storage_insights_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "storage_insights_custom_endpoint")
+
+    @property
     @pulumi.getter(name="storageTransferCustomEndpoint")
     def storage_transfer_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "storage_transfer_custom_endpoint")
@@ -2973,6 +3048,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tpuCustomEndpoint")
     def tpu_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "tpu_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="tpuV2CustomEndpoint")
+    def tpu_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "tpu_v2_custom_endpoint")
 
     @property
     @pulumi.getter(name="vertexAiCustomEndpoint")

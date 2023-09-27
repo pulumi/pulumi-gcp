@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AttachedClusterAuthorizationArgs;
+import com.pulumi.gcp.container.inputs.AttachedClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterErrorArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterLoggingConfigArgs;
@@ -65,6 +66,23 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<AttachedClusterAuthorizationArgs>> authorization() {
         return Optional.ofNullable(this.authorization);
+    }
+
+    /**
+     * Binary Authorization configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="binaryAuthorization")
+    private @Nullable Output<AttachedClusterBinaryAuthorizationArgs> binaryAuthorization;
+
+    /**
+     * @return Binary Authorization configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AttachedClusterBinaryAuthorizationArgs>> binaryAuthorization() {
+        return Optional.ofNullable(this.binaryAuthorization);
     }
 
     /**
@@ -420,6 +438,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     private AttachedClusterState(AttachedClusterState $) {
         this.annotations = $.annotations;
         this.authorization = $.authorization;
+        this.binaryAuthorization = $.binaryAuthorization;
         this.clusterRegion = $.clusterRegion;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
@@ -512,6 +531,29 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          */
         public Builder authorization(AttachedClusterAuthorizationArgs authorization) {
             return authorization(Output.of(authorization));
+        }
+
+        /**
+         * @param binaryAuthorization Binary Authorization configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(@Nullable Output<AttachedClusterBinaryAuthorizationArgs> binaryAuthorization) {
+            $.binaryAuthorization = binaryAuthorization;
+            return this;
+        }
+
+        /**
+         * @param binaryAuthorization Binary Authorization configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(AttachedClusterBinaryAuthorizationArgs binaryAuthorization) {
+            return binaryAuthorization(Output.of(binaryAuthorization));
         }
 
         /**

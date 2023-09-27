@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkeonprem.BareMetalClusterArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterState;
+import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterBinaryAuthorization;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterClusterOperations;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterControlPlane;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterFleet;
@@ -23,6 +24,7 @@ import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterProxy;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterSecurityConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterStatus;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterStorage;
+import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterUpgradePolicy;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterValidationCheck;
 import java.lang.Boolean;
 import java.lang.String;
@@ -170,6 +172,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterBinaryAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterUpgradePolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -237,6 +241,12 @@ import javax.annotation.Nullable;
  *                         .username(&#34;admin@hashicorptest.com&#34;)
  *                         .build())
  *                     .build())
+ *                 .build())
+ *             .binaryAuthorization(BareMetalClusterBinaryAuthorizationArgs.builder()
+ *                 .evaluationMode(&#34;DISABLED&#34;)
+ *                 .build())
+ *             .upgradePolicy(BareMetalClusterUpgradePolicyArgs.builder()
+ *                 .policy(&#34;SERIAL&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
@@ -506,6 +516,22 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bareMetalVersion() {
         return this.bareMetalVersion;
+    }
+    /**
+     * Binary Authorization related configurations.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="binaryAuthorization", refs={BareMetalClusterBinaryAuthorization.class}, tree="[0]")
+    private Output</* @Nullable */ BareMetalClusterBinaryAuthorization> binaryAuthorization;
+
+    /**
+     * @return Binary Authorization related configurations.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BareMetalClusterBinaryAuthorization>> binaryAuthorization() {
+        return Codegen.optional(this.binaryAuthorization);
     }
     /**
      * Specifies the User Cluster&#39;s observability infrastructure.
@@ -938,6 +964,22 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * The cluster upgrade policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="upgradePolicy", refs={BareMetalClusterUpgradePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ BareMetalClusterUpgradePolicy> upgradePolicy;
+
+    /**
+     * @return The cluster upgrade policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BareMetalClusterUpgradePolicy>> upgradePolicy() {
+        return Codegen.optional(this.upgradePolicy);
     }
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.

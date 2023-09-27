@@ -18,6 +18,7 @@ import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterInitialUser;
 import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterNetworkConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreContinuousBackupSource;
 import java.lang.String;
@@ -501,20 +502,46 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
+     * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * 
+     * @deprecated
+     * `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * 
      */
+    @Deprecated /* `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration. */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+     * @return (Optional, Deprecated)
+     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
+     * 
+     * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
      * 
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * Metadata related to network configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkConfig", refs={ClusterNetworkConfig.class}, tree="[0]")
+    private Output<ClusterNetworkConfig> networkConfig;
+
+    /**
+     * @return Metadata related to network configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ClusterNetworkConfig> networkConfig() {
+        return this.networkConfig;
     }
     /**
      * The ID of the project in which the resource belongs.

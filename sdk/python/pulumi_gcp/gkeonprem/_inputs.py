@@ -40,6 +40,7 @@ __all__ = [
     'BareMetalAdminClusterValidationCheckArgs',
     'BareMetalAdminClusterValidationCheckStatusArgs',
     'BareMetalAdminClusterValidationCheckStatusResultArgs',
+    'BareMetalClusterBinaryAuthorizationArgs',
     'BareMetalClusterClusterOperationsArgs',
     'BareMetalClusterControlPlaneArgs',
     'BareMetalClusterControlPlaneApiServerArgArgs',
@@ -84,6 +85,7 @@ __all__ = [
     'BareMetalClusterStorageLvpNodeMountsConfigArgs',
     'BareMetalClusterStorageLvpShareConfigArgs',
     'BareMetalClusterStorageLvpShareConfigLvpConfigArgs',
+    'BareMetalClusterUpgradePolicyArgs',
     'BareMetalClusterValidationCheckArgs',
     'BareMetalClusterValidationCheckStatusArgs',
     'BareMetalClusterValidationCheckStatusResultArgs',
@@ -119,6 +121,7 @@ __all__ = [
     'VMwareClusterStatusArgs',
     'VMwareClusterStatusConditionArgs',
     'VMwareClusterStorageArgs',
+    'VMwareClusterUpgradePolicyArgs',
     'VMwareClusterValidationCheckArgs',
     'VMwareClusterValidationCheckStatusArgs',
     'VMwareClusterValidationCheckStatusResultArgs',
@@ -1378,6 +1381,33 @@ class BareMetalAdminClusterValidationCheckStatusResultArgs:
     @reason.setter
     def reason(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "reason", value)
+
+
+@pulumi.input_type
+class BareMetalClusterBinaryAuthorizationArgs:
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified,
+               defaults to DISABLED.
+               Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Mode of operation for binauthz policy evaluation. If unspecified,
+        defaults to DISABLED.
+        Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @evaluation_mode.setter
+    def evaluation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_mode", value)
 
 
 @pulumi.input_type
@@ -3559,6 +3589,31 @@ class BareMetalClusterStorageLvpShareConfigLvpConfigArgs:
 
 
 @pulumi.input_type
+class BareMetalClusterUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] policy: Specifies which upgrade policy to use.
+               Possible values are: `SERIAL`, `CONCURRENT`.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies which upgrade policy to use.
+        Possible values are: `SERIAL`, `CONCURRENT`.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+
+@pulumi.input_type
 class BareMetalClusterValidationCheckArgs:
     def __init__(__self__, *,
                  options: Optional[pulumi.Input[str]] = None,
@@ -5450,6 +5505,29 @@ class VMwareClusterStorageArgs:
     @vsphere_csi_disabled.setter
     def vsphere_csi_disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "vsphere_csi_disabled", value)
+
+
+@pulumi.input_type
+class VMwareClusterUpgradePolicyArgs:
+    def __init__(__self__, *,
+                 control_plane_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] control_plane_only: Controls whether the upgrade applies to the control plane only.
+        """
+        if control_plane_only is not None:
+            pulumi.set(__self__, "control_plane_only", control_plane_only)
+
+    @property
+    @pulumi.getter(name="controlPlaneOnly")
+    def control_plane_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether the upgrade applies to the control plane only.
+        """
+        return pulumi.get(self, "control_plane_only")
+
+    @control_plane_only.setter
+    def control_plane_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "control_plane_only", value)
 
 
 @pulumi.input_type

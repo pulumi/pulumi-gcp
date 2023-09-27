@@ -188,6 +188,10 @@ namespace Pulumi.Gcp.Container
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
+    ///         Management = new Gcp.Container.Inputs.AwsNodePoolManagementArgs
+    ///         {
+    ///             AutoRepair = true,
+    ///         },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -623,6 +627,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The Management configuration for this node pool.
+        /// </summary>
+        [Output("management")]
+        public Output<Outputs.AwsNodePoolManagement> Management { get; private set; } = null!;
+
+        /// <summary>
         /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Output("maxPodsConstraint")]
@@ -759,6 +769,12 @@ namespace Pulumi.Gcp.Container
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// The Management configuration for this node pool.
+        /// </summary>
+        [Input("management")]
+        public Input<Inputs.AwsNodePoolManagementArgs>? Management { get; set; }
+
+        /// <summary>
         /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         /// </summary>
         [Input("maxPodsConstraint", required: true)]
@@ -843,6 +859,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The Management configuration for this node pool.
+        /// </summary>
+        [Input("management")]
+        public Input<Inputs.AwsNodePoolManagementGetArgs>? Management { get; set; }
 
         /// <summary>
         /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.

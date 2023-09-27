@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class TableMaterializedViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allow non incremental materialized view definition.
+        /// The default value is false.
+        /// </summary>
+        [Input("allowNonIncrementalDefinition")]
+        public Input<bool>? AllowNonIncrementalDefinition { get; set; }
+
+        /// <summary>
         /// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
         /// The default value is true.
         /// </summary>

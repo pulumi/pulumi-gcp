@@ -23,6 +23,8 @@ __all__ = [
     'TrustConfigTrustStore',
     'TrustConfigTrustStoreIntermediateCa',
     'TrustConfigTrustStoreTrustAnchor',
+    'GetCertificateMapGclbTargetResult',
+    'GetCertificateMapGclbTargetIpConfigResult',
 ]
 
 @pulumi.output_type
@@ -810,5 +812,50 @@ class TrustConfigTrustStoreTrustAnchor(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class GetCertificateMapGclbTargetResult(dict):
+    def __init__(__self__, *,
+                 ip_configs: Sequence['outputs.GetCertificateMapGclbTargetIpConfigResult'],
+                 target_https_proxy: str,
+                 target_ssl_proxy: str):
+        pulumi.set(__self__, "ip_configs", ip_configs)
+        pulumi.set(__self__, "target_https_proxy", target_https_proxy)
+        pulumi.set(__self__, "target_ssl_proxy", target_ssl_proxy)
+
+    @property
+    @pulumi.getter(name="ipConfigs")
+    def ip_configs(self) -> Sequence['outputs.GetCertificateMapGclbTargetIpConfigResult']:
+        return pulumi.get(self, "ip_configs")
+
+    @property
+    @pulumi.getter(name="targetHttpsProxy")
+    def target_https_proxy(self) -> str:
+        return pulumi.get(self, "target_https_proxy")
+
+    @property
+    @pulumi.getter(name="targetSslProxy")
+    def target_ssl_proxy(self) -> str:
+        return pulumi.get(self, "target_ssl_proxy")
+
+
+@pulumi.output_type
+class GetCertificateMapGclbTargetIpConfigResult(dict):
+    def __init__(__self__, *,
+                 ip_address: str,
+                 ports: Sequence[int]):
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence[int]:
+        return pulumi.get(self, "ports")
 
 

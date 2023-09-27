@@ -15,6 +15,11 @@ export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
+export { TableArgs, TableState } from "./table";
+export type Table = import("./table").Table;
+export const Table: typeof import("./table").Table = null as any;
+utilities.lazyLoad(exports, ["Table"], () => require("./table"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +29,8 @@ const _module = {
                 return new Catalog(name, <any>undefined, { urn })
             case "gcp:biglake/database:Database":
                 return new Database(name, <any>undefined, { urn })
+            case "gcp:biglake/table:Table":
+                return new Table(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -31,3 +38,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "biglake/catalog", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/database", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/table", _module)

@@ -26,6 +26,36 @@ import (
 //   - [Official Documentation](https://cloud.google.com/firestore/docs/)
 //
 // ## Example Usage
+// ### Firestore Database With Delete Protection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.Any(google_project.Project.Project_id),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				google_project_service.Firestore,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -57,9 +87,16 @@ type Database struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
-	// The timestamp at which this database was created.
+	// Output only. The timestamp at which this database was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// This checksum is computed by the server based on the value of other fields,
+	// State of delete protection for the database.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+	DeleteProtectionState pulumi.StringOutput `pulumi:"deleteProtectionState"`
+	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EarliestVersionTime pulumi.StringOutput `pulumi:"earliestVersionTime"`
+	// Output only. This checksum is computed by the server based on the value of other fields,
 	// and may be sent on update and delete requests to ensure the client has an
 	// up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -68,7 +105,7 @@ type Database struct {
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
 	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
 	KeyPrefix pulumi.StringOutput `pulumi:"keyPrefix"`
-	// The location of the database. Available databases are listed at
+	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
 	// The ID to use for the database, which will become the final
@@ -78,6 +115,14 @@ type Database struct {
 	// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
 	// "(default)" database id is also valid.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether to enable the PITR feature on this database.
+	// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+	// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+	// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+	// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+	// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+	// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+	PointInTimeRecoveryEnablement pulumi.StringPtrOutput `pulumi:"pointInTimeRecoveryEnablement"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -88,6 +133,15 @@ type Database struct {
 	//
 	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Output only. The system-generated UUID4 for this Database.
+	Uid pulumi.StringOutput `pulumi:"uid"`
+	// Output only. The timestamp at which this database was most recently updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Output only. The period during which past versions of data are retained in the database.
+	// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+	// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	VersionRetentionPeriod pulumi.StringOutput `pulumi:"versionRetentionPeriod"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -132,9 +186,16 @@ type databaseState struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
-	// The timestamp at which this database was created.
+	// Output only. The timestamp at which this database was created.
 	CreateTime *string `pulumi:"createTime"`
-	// This checksum is computed by the server based on the value of other fields,
+	// State of delete protection for the database.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
+	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EarliestVersionTime *string `pulumi:"earliestVersionTime"`
+	// Output only. This checksum is computed by the server based on the value of other fields,
 	// and may be sent on update and delete requests to ensure the client has an
 	// up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -143,7 +204,7 @@ type databaseState struct {
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
 	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
 	KeyPrefix *string `pulumi:"keyPrefix"`
-	// The location of the database. Available databases are listed at
+	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId *string `pulumi:"locationId"`
 	// The ID to use for the database, which will become the final
@@ -153,6 +214,14 @@ type databaseState struct {
 	// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
 	// "(default)" database id is also valid.
 	Name *string `pulumi:"name"`
+	// Whether to enable the PITR feature on this database.
+	// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+	// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+	// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+	// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+	// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+	// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+	PointInTimeRecoveryEnablement *string `pulumi:"pointInTimeRecoveryEnablement"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -163,6 +232,15 @@ type databaseState struct {
 	//
 	// ***
 	Type *string `pulumi:"type"`
+	// Output only. The system-generated UUID4 for this Database.
+	Uid *string `pulumi:"uid"`
+	// Output only. The timestamp at which this database was most recently updated.
+	UpdateTime *string `pulumi:"updateTime"`
+	// Output only. The period during which past versions of data are retained in the database.
+	// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+	// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	VersionRetentionPeriod *string `pulumi:"versionRetentionPeriod"`
 }
 
 type DatabaseState struct {
@@ -172,9 +250,16 @@ type DatabaseState struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
-	// The timestamp at which this database was created.
+	// Output only. The timestamp at which this database was created.
 	CreateTime pulumi.StringPtrInput
-	// This checksum is computed by the server based on the value of other fields,
+	// State of delete protection for the database.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+	DeleteProtectionState pulumi.StringPtrInput
+	// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+	// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	EarliestVersionTime pulumi.StringPtrInput
+	// Output only. This checksum is computed by the server based on the value of other fields,
 	// and may be sent on update and delete requests to ensure the client has an
 	// up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -183,7 +268,7 @@ type DatabaseState struct {
 	// that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
 	// This value may be empty in which case the appid to use for URL-encoded keys is the projectId (eg: foo instead of v~foo).
 	KeyPrefix pulumi.StringPtrInput
-	// The location of the database. Available databases are listed at
+	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringPtrInput
 	// The ID to use for the database, which will become the final
@@ -193,6 +278,14 @@ type DatabaseState struct {
 	// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
 	// "(default)" database id is also valid.
 	Name pulumi.StringPtrInput
+	// Whether to enable the PITR feature on this database.
+	// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+	// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+	// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+	// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+	// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+	// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+	PointInTimeRecoveryEnablement pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -203,6 +296,15 @@ type DatabaseState struct {
 	//
 	// ***
 	Type pulumi.StringPtrInput
+	// Output only. The system-generated UUID4 for this Database.
+	Uid pulumi.StringPtrInput
+	// Output only. The timestamp at which this database was most recently updated.
+	UpdateTime pulumi.StringPtrInput
+	// Output only. The period during which past versions of data are retained in the database.
+	// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+	// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	VersionRetentionPeriod pulumi.StringPtrInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {
@@ -216,7 +318,10 @@ type databaseArgs struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
-	// The location of the database. Available databases are listed at
+	// State of delete protection for the database.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+	DeleteProtectionState *string `pulumi:"deleteProtectionState"`
+	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId string `pulumi:"locationId"`
 	// The ID to use for the database, which will become the final
@@ -226,6 +331,14 @@ type databaseArgs struct {
 	// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
 	// "(default)" database id is also valid.
 	Name *string `pulumi:"name"`
+	// Whether to enable the PITR feature on this database.
+	// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+	// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+	// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+	// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+	// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+	// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+	PointInTimeRecoveryEnablement *string `pulumi:"pointInTimeRecoveryEnablement"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -246,7 +359,10 @@ type DatabaseArgs struct {
 	// The concurrency control mode to use for this database.
 	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
-	// The location of the database. Available databases are listed at
+	// State of delete protection for the database.
+	// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+	DeleteProtectionState pulumi.StringPtrInput
+	// The location of the database. Available locations are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringInput
 	// The ID to use for the database, which will become the final
@@ -256,6 +372,14 @@ type DatabaseArgs struct {
 	// UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
 	// "(default)" database id is also valid.
 	Name pulumi.StringPtrInput
+	// Whether to enable the PITR feature on this database.
+	// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+	// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+	// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+	// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+	// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+	// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+	PointInTimeRecoveryEnablement pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -391,12 +515,25 @@ func (o DatabaseOutput) ConcurrencyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ConcurrencyMode }).(pulumi.StringOutput)
 }
 
-// The timestamp at which this database was created.
+// Output only. The timestamp at which this database was created.
 func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// This checksum is computed by the server based on the value of other fields,
+// State of delete protection for the database.
+// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+func (o DatabaseOutput) DeleteProtectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DeleteProtectionState }).(pulumi.StringOutput)
+}
+
+// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o DatabaseOutput) EarliestVersionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.EarliestVersionTime }).(pulumi.StringOutput)
+}
+
+// Output only. This checksum is computed by the server based on the value of other fields,
 // and may be sent on update and delete requests to ensure the client has an
 // up-to-date value before proceeding.
 func (o DatabaseOutput) Etag() pulumi.StringOutput {
@@ -411,7 +548,7 @@ func (o DatabaseOutput) KeyPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.KeyPrefix }).(pulumi.StringOutput)
 }
 
-// The location of the database. Available databases are listed at
+// The location of the database. Available locations are listed at
 // https://cloud.google.com/firestore/docs/locations.
 func (o DatabaseOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.LocationId }).(pulumi.StringOutput)
@@ -425,6 +562,17 @@ func (o DatabaseOutput) LocationId() pulumi.StringOutput {
 // "(default)" database id is also valid.
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to enable the PITR feature on this database.
+// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+func (o DatabaseOutput) PointInTimeRecoveryEnablement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.PointInTimeRecoveryEnablement }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -441,6 +589,24 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 // ***
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Output only. The system-generated UUID4 for this Database.
+func (o DatabaseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Output only. The timestamp at which this database was most recently updated.
+func (o DatabaseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Output only. The period during which past versions of data are retained in the database.
+// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o DatabaseOutput) VersionRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.VersionRetentionPeriod }).(pulumi.StringOutput)
 }
 
 type DatabaseArrayOutput struct{ *pulumi.OutputState }

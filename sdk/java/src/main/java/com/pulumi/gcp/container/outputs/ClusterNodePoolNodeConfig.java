@@ -8,6 +8,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigAdvancedMachine
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigConfidentialNodes;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigFastSocket;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGvnic;
@@ -114,6 +115,14 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
+    /**
+     * @return Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+     * Node Pool must enable gvnic.
+     * GKE version 1.25.2-gke.1700 or later.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigFastSocket fastSocket;
     /**
      * @return Parameters for the Google Container Filesystem (GCFS).
      * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
@@ -495,6 +504,16 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
     }
     /**
+     * @return Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+     * Node Pool must enable gvnic.
+     * GKE version 1.25.2-gke.1700 or later.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigFastSocket> fastSocket() {
+        return Optional.ofNullable(this.fastSocket);
+    }
+    /**
      * @return Parameters for the Google Container Filesystem (GCFS).
      * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
      * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -847,6 +866,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable String diskType;
         private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
+        private @Nullable ClusterNodePoolNodeConfigFastSocket fastSocket;
         private @Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
@@ -884,6 +904,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
+    	      this.fastSocket = defaults.fastSocket;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
@@ -946,6 +967,11 @@ public final class ClusterNodePoolNodeConfig {
         @CustomType.Setter
         public Builder ephemeralStorageLocalSsdConfig(@Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig) {
             this.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fastSocket(@Nullable ClusterNodePoolNodeConfigFastSocket fastSocket) {
+            this.fastSocket = fastSocket;
             return this;
         }
         @CustomType.Setter
@@ -1104,6 +1130,7 @@ public final class ClusterNodePoolNodeConfig {
             o.diskType = diskType;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
             o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            o.fastSocket = fastSocket;
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;

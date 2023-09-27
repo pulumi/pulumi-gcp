@@ -1740,6 +1740,2793 @@ func (o BackupPlanRetentionPolicyPtrOutput) Locked() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type RestorePlanIamBindingCondition struct {
+	// The description is a user specified string description
+	// of the transformation rule.
+	//
+	// (Optional)
+	// User specified descriptive string for this RestorePlan.
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RestorePlanIamBindingConditionInput is an input type that accepts RestorePlanIamBindingConditionArgs and RestorePlanIamBindingConditionOutput values.
+// You can construct a concrete instance of `RestorePlanIamBindingConditionInput` via:
+//
+//	RestorePlanIamBindingConditionArgs{...}
+type RestorePlanIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToRestorePlanIamBindingConditionOutput() RestorePlanIamBindingConditionOutput
+	ToRestorePlanIamBindingConditionOutputWithContext(context.Context) RestorePlanIamBindingConditionOutput
+}
+
+type RestorePlanIamBindingConditionArgs struct {
+	// The description is a user specified string description
+	// of the transformation rule.
+	//
+	// (Optional)
+	// User specified descriptive string for this RestorePlan.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RestorePlanIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanIamBindingCondition)(nil)).Elem()
+}
+
+func (i RestorePlanIamBindingConditionArgs) ToRestorePlanIamBindingConditionOutput() RestorePlanIamBindingConditionOutput {
+	return i.ToRestorePlanIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i RestorePlanIamBindingConditionArgs) ToRestorePlanIamBindingConditionOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingConditionOutput)
+}
+
+func (i RestorePlanIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamBindingCondition] {
+	return pulumix.Output[RestorePlanIamBindingCondition]{
+		OutputState: i.ToRestorePlanIamBindingConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanIamBindingConditionArgs) ToRestorePlanIamBindingConditionPtrOutput() RestorePlanIamBindingConditionPtrOutput {
+	return i.ToRestorePlanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanIamBindingConditionArgs) ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingConditionOutput).ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// RestorePlanIamBindingConditionPtrInput is an input type that accepts RestorePlanIamBindingConditionArgs, RestorePlanIamBindingConditionPtr and RestorePlanIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `RestorePlanIamBindingConditionPtrInput` via:
+//
+//	        RestorePlanIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanIamBindingConditionPtrOutput() RestorePlanIamBindingConditionPtrOutput
+	ToRestorePlanIamBindingConditionPtrOutputWithContext(context.Context) RestorePlanIamBindingConditionPtrOutput
+}
+
+type restorePlanIamBindingConditionPtrType RestorePlanIamBindingConditionArgs
+
+func RestorePlanIamBindingConditionPtr(v *RestorePlanIamBindingConditionArgs) RestorePlanIamBindingConditionPtrInput {
+	return (*restorePlanIamBindingConditionPtrType)(v)
+}
+
+func (*restorePlanIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanIamBindingCondition)(nil)).Elem()
+}
+
+func (i *restorePlanIamBindingConditionPtrType) ToRestorePlanIamBindingConditionPtrOutput() RestorePlanIamBindingConditionPtrOutput {
+	return i.ToRestorePlanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanIamBindingConditionPtrType) ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamBindingConditionPtrOutput)
+}
+
+func (i *restorePlanIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamBindingCondition] {
+	return pulumix.Output[*RestorePlanIamBindingCondition]{
+		OutputState: i.ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanIamBindingCondition)(nil)).Elem()
+}
+
+func (o RestorePlanIamBindingConditionOutput) ToRestorePlanIamBindingConditionOutput() RestorePlanIamBindingConditionOutput {
+	return o
+}
+
+func (o RestorePlanIamBindingConditionOutput) ToRestorePlanIamBindingConditionOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionOutput {
+	return o
+}
+
+func (o RestorePlanIamBindingConditionOutput) ToRestorePlanIamBindingConditionPtrOutput() RestorePlanIamBindingConditionPtrOutput {
+	return o.ToRestorePlanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanIamBindingConditionOutput) ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanIamBindingCondition) *RestorePlanIamBindingCondition {
+		return &v
+	}).(RestorePlanIamBindingConditionPtrOutput)
+}
+
+func (o RestorePlanIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamBindingCondition] {
+	return pulumix.Output[RestorePlanIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The description is a user specified string description
+// of the transformation rule.
+//
+// (Optional)
+// User specified descriptive string for this RestorePlan.
+func (o RestorePlanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RestorePlanIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RestorePlanIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RestorePlanIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanIamBindingCondition)(nil)).Elem()
+}
+
+func (o RestorePlanIamBindingConditionPtrOutput) ToRestorePlanIamBindingConditionPtrOutput() RestorePlanIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RestorePlanIamBindingConditionPtrOutput) ToRestorePlanIamBindingConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RestorePlanIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamBindingCondition] {
+	return pulumix.Output[*RestorePlanIamBindingCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanIamBindingConditionPtrOutput) Elem() RestorePlanIamBindingConditionOutput {
+	return o.ApplyT(func(v *RestorePlanIamBindingCondition) RestorePlanIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanIamBindingCondition
+		return ret
+	}).(RestorePlanIamBindingConditionOutput)
+}
+
+// The description is a user specified string description
+// of the transformation rule.
+//
+// (Optional)
+// User specified descriptive string for this RestorePlan.
+func (o RestorePlanIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RestorePlanIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RestorePlanIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanIamMemberCondition struct {
+	// The description is a user specified string description
+	// of the transformation rule.
+	//
+	// (Optional)
+	// User specified descriptive string for this RestorePlan.
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// RestorePlanIamMemberConditionInput is an input type that accepts RestorePlanIamMemberConditionArgs and RestorePlanIamMemberConditionOutput values.
+// You can construct a concrete instance of `RestorePlanIamMemberConditionInput` via:
+//
+//	RestorePlanIamMemberConditionArgs{...}
+type RestorePlanIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToRestorePlanIamMemberConditionOutput() RestorePlanIamMemberConditionOutput
+	ToRestorePlanIamMemberConditionOutputWithContext(context.Context) RestorePlanIamMemberConditionOutput
+}
+
+type RestorePlanIamMemberConditionArgs struct {
+	// The description is a user specified string description
+	// of the transformation rule.
+	//
+	// (Optional)
+	// User specified descriptive string for this RestorePlan.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (RestorePlanIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanIamMemberCondition)(nil)).Elem()
+}
+
+func (i RestorePlanIamMemberConditionArgs) ToRestorePlanIamMemberConditionOutput() RestorePlanIamMemberConditionOutput {
+	return i.ToRestorePlanIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i RestorePlanIamMemberConditionArgs) ToRestorePlanIamMemberConditionOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberConditionOutput)
+}
+
+func (i RestorePlanIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamMemberCondition] {
+	return pulumix.Output[RestorePlanIamMemberCondition]{
+		OutputState: i.ToRestorePlanIamMemberConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanIamMemberConditionArgs) ToRestorePlanIamMemberConditionPtrOutput() RestorePlanIamMemberConditionPtrOutput {
+	return i.ToRestorePlanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanIamMemberConditionArgs) ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberConditionOutput).ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// RestorePlanIamMemberConditionPtrInput is an input type that accepts RestorePlanIamMemberConditionArgs, RestorePlanIamMemberConditionPtr and RestorePlanIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `RestorePlanIamMemberConditionPtrInput` via:
+//
+//	        RestorePlanIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanIamMemberConditionPtrOutput() RestorePlanIamMemberConditionPtrOutput
+	ToRestorePlanIamMemberConditionPtrOutputWithContext(context.Context) RestorePlanIamMemberConditionPtrOutput
+}
+
+type restorePlanIamMemberConditionPtrType RestorePlanIamMemberConditionArgs
+
+func RestorePlanIamMemberConditionPtr(v *RestorePlanIamMemberConditionArgs) RestorePlanIamMemberConditionPtrInput {
+	return (*restorePlanIamMemberConditionPtrType)(v)
+}
+
+func (*restorePlanIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanIamMemberCondition)(nil)).Elem()
+}
+
+func (i *restorePlanIamMemberConditionPtrType) ToRestorePlanIamMemberConditionPtrOutput() RestorePlanIamMemberConditionPtrOutput {
+	return i.ToRestorePlanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanIamMemberConditionPtrType) ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberConditionPtrOutput)
+}
+
+func (i *restorePlanIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamMemberCondition] {
+	return pulumix.Output[*RestorePlanIamMemberCondition]{
+		OutputState: i.ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanIamMemberCondition)(nil)).Elem()
+}
+
+func (o RestorePlanIamMemberConditionOutput) ToRestorePlanIamMemberConditionOutput() RestorePlanIamMemberConditionOutput {
+	return o
+}
+
+func (o RestorePlanIamMemberConditionOutput) ToRestorePlanIamMemberConditionOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionOutput {
+	return o
+}
+
+func (o RestorePlanIamMemberConditionOutput) ToRestorePlanIamMemberConditionPtrOutput() RestorePlanIamMemberConditionPtrOutput {
+	return o.ToRestorePlanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanIamMemberConditionOutput) ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanIamMemberCondition) *RestorePlanIamMemberCondition {
+		return &v
+	}).(RestorePlanIamMemberConditionPtrOutput)
+}
+
+func (o RestorePlanIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanIamMemberCondition] {
+	return pulumix.Output[RestorePlanIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The description is a user specified string description
+// of the transformation rule.
+//
+// (Optional)
+// User specified descriptive string for this RestorePlan.
+func (o RestorePlanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o RestorePlanIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o RestorePlanIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RestorePlanIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanIamMemberCondition)(nil)).Elem()
+}
+
+func (o RestorePlanIamMemberConditionPtrOutput) ToRestorePlanIamMemberConditionPtrOutput() RestorePlanIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RestorePlanIamMemberConditionPtrOutput) ToRestorePlanIamMemberConditionPtrOutputWithContext(ctx context.Context) RestorePlanIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RestorePlanIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamMemberCondition] {
+	return pulumix.Output[*RestorePlanIamMemberCondition]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanIamMemberConditionPtrOutput) Elem() RestorePlanIamMemberConditionOutput {
+	return o.ApplyT(func(v *RestorePlanIamMemberCondition) RestorePlanIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanIamMemberCondition
+		return ret
+	}).(RestorePlanIamMemberConditionOutput)
+}
+
+// The description is a user specified string description
+// of the transformation rule.
+//
+// (Optional)
+// User specified descriptive string for this RestorePlan.
+func (o RestorePlanIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RestorePlanIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RestorePlanIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfig struct {
+	// If True, restore all namespaced resources in the Backup.
+	// Setting this field to False will result in an error.
+	AllNamespaces *bool `pulumi:"allNamespaces"`
+	// Defines the behavior for handling the situation where cluster-scoped resources
+	// being restored already exist in the target cluster.
+	// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+	// if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+	// for more information on each policy option.
+	// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+	ClusterResourceConflictPolicy *string `pulumi:"clusterResourceConflictPolicy"`
+	// Identifies the cluster-scoped resources to restore from the Backup.
+	// Structure is documented below.
+	ClusterResourceRestoreScope *RestorePlanRestoreConfigClusterResourceRestoreScope `pulumi:"clusterResourceRestoreScope"`
+	// A list of selected namespaces excluded from restoration.
+	// All namespaces except those in this list will be restored.
+	// Structure is documented below.
+	ExcludedNamespaces *RestorePlanRestoreConfigExcludedNamespaces `pulumi:"excludedNamespaces"`
+	// Defines the behavior for handling the situation where sets of namespaced resources
+	// being restored already exist in the target cluster.
+	// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+	// for more information on each mode.
+	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+	NamespacedResourceRestoreMode *string `pulumi:"namespacedResourceRestoreMode"`
+	// Do not restore any namespaced resources if set to "True".
+	// Specifying this field to "False" is not allowed.
+	NoNamespaces *bool `pulumi:"noNamespaces"`
+	// A list of selected ProtectedApplications to restore.
+	// The listed ProtectedApplications and all the resources
+	// to which they refer will be restored.
+	// Structure is documented below.
+	SelectedApplications *RestorePlanRestoreConfigSelectedApplications `pulumi:"selectedApplications"`
+	// A list of selected namespaces to restore from the Backup.
+	// The listed Namespaces and all resources contained in them will be restored.
+	// Structure is documented below.
+	SelectedNamespaces *RestorePlanRestoreConfigSelectedNamespaces `pulumi:"selectedNamespaces"`
+	// A list of transformation rules to be applied against Kubernetes
+	// resources as they are selected for restoration from a Backup.
+	// Rules are executed in order defined - this order matters,
+	// as changes made by a rule may impact the filtering logic of subsequent
+	// rules. An empty list means no transformation will occur.
+	// Structure is documented below.
+	TransformationRules []RestorePlanRestoreConfigTransformationRule `pulumi:"transformationRules"`
+	// Specifies the mechanism to be used to restore volume data.
+	// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+	// If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// for more information on each policy option.
+	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+	VolumeDataRestorePolicy *string `pulumi:"volumeDataRestorePolicy"`
+}
+
+// RestorePlanRestoreConfigInput is an input type that accepts RestorePlanRestoreConfigArgs and RestorePlanRestoreConfigOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigInput` via:
+//
+//	RestorePlanRestoreConfigArgs{...}
+type RestorePlanRestoreConfigInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigOutput() RestorePlanRestoreConfigOutput
+	ToRestorePlanRestoreConfigOutputWithContext(context.Context) RestorePlanRestoreConfigOutput
+}
+
+type RestorePlanRestoreConfigArgs struct {
+	// If True, restore all namespaced resources in the Backup.
+	// Setting this field to False will result in an error.
+	AllNamespaces pulumi.BoolPtrInput `pulumi:"allNamespaces"`
+	// Defines the behavior for handling the situation where cluster-scoped resources
+	// being restored already exist in the target cluster.
+	// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+	// if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+	// for more information on each policy option.
+	// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+	ClusterResourceConflictPolicy pulumi.StringPtrInput `pulumi:"clusterResourceConflictPolicy"`
+	// Identifies the cluster-scoped resources to restore from the Backup.
+	// Structure is documented below.
+	ClusterResourceRestoreScope RestorePlanRestoreConfigClusterResourceRestoreScopePtrInput `pulumi:"clusterResourceRestoreScope"`
+	// A list of selected namespaces excluded from restoration.
+	// All namespaces except those in this list will be restored.
+	// Structure is documented below.
+	ExcludedNamespaces RestorePlanRestoreConfigExcludedNamespacesPtrInput `pulumi:"excludedNamespaces"`
+	// Defines the behavior for handling the situation where sets of namespaced resources
+	// being restored already exist in the target cluster.
+	// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+	// for more information on each mode.
+	// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+	NamespacedResourceRestoreMode pulumi.StringPtrInput `pulumi:"namespacedResourceRestoreMode"`
+	// Do not restore any namespaced resources if set to "True".
+	// Specifying this field to "False" is not allowed.
+	NoNamespaces pulumi.BoolPtrInput `pulumi:"noNamespaces"`
+	// A list of selected ProtectedApplications to restore.
+	// The listed ProtectedApplications and all the resources
+	// to which they refer will be restored.
+	// Structure is documented below.
+	SelectedApplications RestorePlanRestoreConfigSelectedApplicationsPtrInput `pulumi:"selectedApplications"`
+	// A list of selected namespaces to restore from the Backup.
+	// The listed Namespaces and all resources contained in them will be restored.
+	// Structure is documented below.
+	SelectedNamespaces RestorePlanRestoreConfigSelectedNamespacesPtrInput `pulumi:"selectedNamespaces"`
+	// A list of transformation rules to be applied against Kubernetes
+	// resources as they are selected for restoration from a Backup.
+	// Rules are executed in order defined - this order matters,
+	// as changes made by a rule may impact the filtering logic of subsequent
+	// rules. An empty list means no transformation will occur.
+	// Structure is documented below.
+	TransformationRules RestorePlanRestoreConfigTransformationRuleArrayInput `pulumi:"transformationRules"`
+	// Specifies the mechanism to be used to restore volume data.
+	// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+	// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+	// If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+	// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+	// for more information on each policy option.
+	// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+	VolumeDataRestorePolicy pulumi.StringPtrInput `pulumi:"volumeDataRestorePolicy"`
+}
+
+func (RestorePlanRestoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfig)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigArgs) ToRestorePlanRestoreConfigOutput() RestorePlanRestoreConfigOutput {
+	return i.ToRestorePlanRestoreConfigOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigArgs) ToRestorePlanRestoreConfigOutputWithContext(ctx context.Context) RestorePlanRestoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigOutput)
+}
+
+func (i RestorePlanRestoreConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfig] {
+	return pulumix.Output[RestorePlanRestoreConfig]{
+		OutputState: i.ToRestorePlanRestoreConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanRestoreConfigArgs) ToRestorePlanRestoreConfigPtrOutput() RestorePlanRestoreConfigPtrOutput {
+	return i.ToRestorePlanRestoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigArgs) ToRestorePlanRestoreConfigPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigOutput).ToRestorePlanRestoreConfigPtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigPtrInput is an input type that accepts RestorePlanRestoreConfigArgs, RestorePlanRestoreConfigPtr and RestorePlanRestoreConfigPtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigPtrInput` via:
+//
+//	        RestorePlanRestoreConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigPtrOutput() RestorePlanRestoreConfigPtrOutput
+	ToRestorePlanRestoreConfigPtrOutputWithContext(context.Context) RestorePlanRestoreConfigPtrOutput
+}
+
+type restorePlanRestoreConfigPtrType RestorePlanRestoreConfigArgs
+
+func RestorePlanRestoreConfigPtr(v *RestorePlanRestoreConfigArgs) RestorePlanRestoreConfigPtrInput {
+	return (*restorePlanRestoreConfigPtrType)(v)
+}
+
+func (*restorePlanRestoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfig)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigPtrType) ToRestorePlanRestoreConfigPtrOutput() RestorePlanRestoreConfigPtrOutput {
+	return i.ToRestorePlanRestoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigPtrType) ToRestorePlanRestoreConfigPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigPtrOutput)
+}
+
+func (i *restorePlanRestoreConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfig] {
+	return pulumix.Output[*RestorePlanRestoreConfig]{
+		OutputState: i.ToRestorePlanRestoreConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfig)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigOutput) ToRestorePlanRestoreConfigOutput() RestorePlanRestoreConfigOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigOutput) ToRestorePlanRestoreConfigOutputWithContext(ctx context.Context) RestorePlanRestoreConfigOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigOutput) ToRestorePlanRestoreConfigPtrOutput() RestorePlanRestoreConfigPtrOutput {
+	return o.ToRestorePlanRestoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigOutput) ToRestorePlanRestoreConfigPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfig) *RestorePlanRestoreConfig {
+		return &v
+	}).(RestorePlanRestoreConfigPtrOutput)
+}
+
+func (o RestorePlanRestoreConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfig] {
+	return pulumix.Output[RestorePlanRestoreConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If True, restore all namespaced resources in the Backup.
+// Setting this field to False will result in an error.
+func (o RestorePlanRestoreConfigOutput) AllNamespaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *bool { return v.AllNamespaces }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the behavior for handling the situation where cluster-scoped resources
+// being restored already exist in the target cluster.
+// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+// if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+// for more information on each policy option.
+// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+func (o RestorePlanRestoreConfigOutput) ClusterResourceConflictPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *string { return v.ClusterResourceConflictPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the cluster-scoped resources to restore from the Backup.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) ClusterResourceRestoreScope() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *RestorePlanRestoreConfigClusterResourceRestoreScope {
+		return v.ClusterResourceRestoreScope
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput)
+}
+
+// A list of selected namespaces excluded from restoration.
+// All namespaces except those in this list will be restored.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) ExcludedNamespaces() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *RestorePlanRestoreConfigExcludedNamespaces {
+		return v.ExcludedNamespaces
+	}).(RestorePlanRestoreConfigExcludedNamespacesPtrOutput)
+}
+
+// Defines the behavior for handling the situation where sets of namespaced resources
+// being restored already exist in the target cluster.
+// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+// for more information on each mode.
+// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+func (o RestorePlanRestoreConfigOutput) NamespacedResourceRestoreMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *string { return v.NamespacedResourceRestoreMode }).(pulumi.StringPtrOutput)
+}
+
+// Do not restore any namespaced resources if set to "True".
+// Specifying this field to "False" is not allowed.
+func (o RestorePlanRestoreConfigOutput) NoNamespaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *bool { return v.NoNamespaces }).(pulumi.BoolPtrOutput)
+}
+
+// A list of selected ProtectedApplications to restore.
+// The listed ProtectedApplications and all the resources
+// to which they refer will be restored.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) SelectedApplications() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *RestorePlanRestoreConfigSelectedApplications {
+		return v.SelectedApplications
+	}).(RestorePlanRestoreConfigSelectedApplicationsPtrOutput)
+}
+
+// A list of selected namespaces to restore from the Backup.
+// The listed Namespaces and all resources contained in them will be restored.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) SelectedNamespaces() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *RestorePlanRestoreConfigSelectedNamespaces {
+		return v.SelectedNamespaces
+	}).(RestorePlanRestoreConfigSelectedNamespacesPtrOutput)
+}
+
+// A list of transformation rules to be applied against Kubernetes
+// resources as they are selected for restoration from a Backup.
+// Rules are executed in order defined - this order matters,
+// as changes made by a rule may impact the filtering logic of subsequent
+// rules. An empty list means no transformation will occur.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigOutput) TransformationRules() RestorePlanRestoreConfigTransformationRuleArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) []RestorePlanRestoreConfigTransformationRule {
+		return v.TransformationRules
+	}).(RestorePlanRestoreConfigTransformationRuleArrayOutput)
+}
+
+// Specifies the mechanism to be used to restore volume data.
+// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+// If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+// for more information on each policy option.
+// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+func (o RestorePlanRestoreConfigOutput) VolumeDataRestorePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfig) *string { return v.VolumeDataRestorePolicy }).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfig)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigPtrOutput) ToRestorePlanRestoreConfigPtrOutput() RestorePlanRestoreConfigPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigPtrOutput) ToRestorePlanRestoreConfigPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfig] {
+	return pulumix.Output[*RestorePlanRestoreConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigPtrOutput) Elem() RestorePlanRestoreConfigOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) RestorePlanRestoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfig
+		return ret
+	}).(RestorePlanRestoreConfigOutput)
+}
+
+// If True, restore all namespaced resources in the Backup.
+// Setting this field to False will result in an error.
+func (o RestorePlanRestoreConfigPtrOutput) AllNamespaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllNamespaces
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the behavior for handling the situation where cluster-scoped resources
+// being restored already exist in the target cluster.
+// This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+// if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+// for more information on each policy option.
+// Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+func (o RestorePlanRestoreConfigPtrOutput) ClusterResourceConflictPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterResourceConflictPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the cluster-scoped resources to restore from the Backup.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) ClusterResourceRestoreScope() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *RestorePlanRestoreConfigClusterResourceRestoreScope {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterResourceRestoreScope
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput)
+}
+
+// A list of selected namespaces excluded from restoration.
+// All namespaces except those in this list will be restored.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) ExcludedNamespaces() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *RestorePlanRestoreConfigExcludedNamespaces {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedNamespaces
+	}).(RestorePlanRestoreConfigExcludedNamespacesPtrOutput)
+}
+
+// Defines the behavior for handling the situation where sets of namespaced resources
+// being restored already exist in the target cluster.
+// This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+// for more information on each mode.
+// Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+func (o RestorePlanRestoreConfigPtrOutput) NamespacedResourceRestoreMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamespacedResourceRestoreMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Do not restore any namespaced resources if set to "True".
+// Specifying this field to "False" is not allowed.
+func (o RestorePlanRestoreConfigPtrOutput) NoNamespaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoNamespaces
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of selected ProtectedApplications to restore.
+// The listed ProtectedApplications and all the resources
+// to which they refer will be restored.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) SelectedApplications() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *RestorePlanRestoreConfigSelectedApplications {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedApplications
+	}).(RestorePlanRestoreConfigSelectedApplicationsPtrOutput)
+}
+
+// A list of selected namespaces to restore from the Backup.
+// The listed Namespaces and all resources contained in them will be restored.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) SelectedNamespaces() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *RestorePlanRestoreConfigSelectedNamespaces {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedNamespaces
+	}).(RestorePlanRestoreConfigSelectedNamespacesPtrOutput)
+}
+
+// A list of transformation rules to be applied against Kubernetes
+// resources as they are selected for restoration from a Backup.
+// Rules are executed in order defined - this order matters,
+// as changes made by a rule may impact the filtering logic of subsequent
+// rules. An empty list means no transformation will occur.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigPtrOutput) TransformationRules() RestorePlanRestoreConfigTransformationRuleArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) []RestorePlanRestoreConfigTransformationRule {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationRules
+	}).(RestorePlanRestoreConfigTransformationRuleArrayOutput)
+}
+
+// Specifies the mechanism to be used to restore volume data.
+// This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+// if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+// If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+// See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+// for more information on each policy option.
+// Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+func (o RestorePlanRestoreConfigPtrOutput) VolumeDataRestorePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeDataRestorePolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScope struct {
+	// If True, all valid cluster-scoped resources will be restored.
+	// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+	AllGroupKinds *bool `pulumi:"allGroupKinds"`
+	// A list of cluster-scoped resource group kinds to NOT restore from the backup.
+	// If specified, all valid cluster-scoped resources will be restored except
+	// for those specified in the list.
+	// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+	// Structure is documented below.
+	ExcludedGroupKinds []RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind `pulumi:"excludedGroupKinds"`
+	// If True, no cluster-scoped resources will be restored.
+	// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+	NoGroupKinds *bool `pulumi:"noGroupKinds"`
+	// A list of cluster-scoped resource group kinds to restore from the backup.
+	// If specified, only the selected resources will be restored.
+	// Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+	// Structure is documented below.
+	SelectedGroupKinds []RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind `pulumi:"selectedGroupKinds"`
+}
+
+// RestorePlanRestoreConfigClusterResourceRestoreScopeInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeArgs and RestorePlanRestoreConfigClusterResourceRestoreScopeOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeInput` via:
+//
+//	RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{...}
+type RestorePlanRestoreConfigClusterResourceRestoreScopeInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeOutput
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutputWithContext(context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeOutput
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeArgs struct {
+	// If True, all valid cluster-scoped resources will be restored.
+	// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+	AllGroupKinds pulumi.BoolPtrInput `pulumi:"allGroupKinds"`
+	// A list of cluster-scoped resource group kinds to NOT restore from the backup.
+	// If specified, all valid cluster-scoped resources will be restored except
+	// for those specified in the list.
+	// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+	// Structure is documented below.
+	ExcludedGroupKinds RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput `pulumi:"excludedGroupKinds"`
+	// If True, no cluster-scoped resources will be restored.
+	// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+	NoGroupKinds pulumi.BoolPtrInput `pulumi:"noGroupKinds"`
+	// A list of cluster-scoped resource group kinds to restore from the backup.
+	// If specified, only the selected resources will be restored.
+	// Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+	// Structure is documented below.
+	SelectedGroupKinds RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput `pulumi:"selectedGroupKinds"`
+}
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScope)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeOutput)
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope] {
+	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope]{
+		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeOutput).ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigClusterResourceRestoreScopePtrInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeArgs, RestorePlanRestoreConfigClusterResourceRestoreScopePtr and RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopePtrInput` via:
+//
+//	        RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigClusterResourceRestoreScopePtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput
+}
+
+type restorePlanRestoreConfigClusterResourceRestoreScopePtrType RestorePlanRestoreConfigClusterResourceRestoreScopeArgs
+
+func RestorePlanRestoreConfigClusterResourceRestoreScopePtr(v *RestorePlanRestoreConfigClusterResourceRestoreScopeArgs) RestorePlanRestoreConfigClusterResourceRestoreScopePtrInput {
+	return (*restorePlanRestoreConfigClusterResourceRestoreScopePtrType)(v)
+}
+
+func (*restorePlanRestoreConfigClusterResourceRestoreScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigClusterResourceRestoreScope)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigClusterResourceRestoreScopePtrType) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigClusterResourceRestoreScopePtrType) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput)
+}
+
+func (i *restorePlanRestoreConfigClusterResourceRestoreScopePtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope] {
+	return pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope]{
+		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScope)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return o.ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigClusterResourceRestoreScope) *RestorePlanRestoreConfigClusterResourceRestoreScope {
+		return &v
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput)
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope] {
+	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScope]{
+		OutputState: o.OutputState,
+	}
+}
+
+// If True, all valid cluster-scoped resources will be restored.
+// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) AllGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScope) *bool { return v.AllGroupKinds }).(pulumi.BoolPtrOutput)
+}
+
+// A list of cluster-scoped resource group kinds to NOT restore from the backup.
+// If specified, all valid cluster-scoped resources will be restored except
+// for those specified in the list.
+// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) ExcludedGroupKinds() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScope) []RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
+		return v.ExcludedGroupKinds
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput)
+}
+
+// If True, no cluster-scoped resources will be restored.
+// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) NoGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScope) *bool { return v.NoGroupKinds }).(pulumi.BoolPtrOutput)
+}
+
+// A list of cluster-scoped resource group kinds to restore from the backup.
+// If specified, only the selected resources will be restored.
+// Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeOutput) SelectedGroupKinds() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScope) []RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind {
+		return v.SelectedGroupKinds
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput)
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigClusterResourceRestoreScope)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput() RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopePtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope] {
+	return pulumix.Output[*RestorePlanRestoreConfigClusterResourceRestoreScope]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) Elem() RestorePlanRestoreConfigClusterResourceRestoreScopeOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigClusterResourceRestoreScope) RestorePlanRestoreConfigClusterResourceRestoreScope {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfigClusterResourceRestoreScope
+		return ret
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeOutput)
+}
+
+// If True, all valid cluster-scoped resources will be restored.
+// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) AllGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigClusterResourceRestoreScope) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllGroupKinds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of cluster-scoped resource group kinds to NOT restore from the backup.
+// If specified, all valid cluster-scoped resources will be restored except
+// for those specified in the list.
+// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) ExcludedGroupKinds() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigClusterResourceRestoreScope) []RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedGroupKinds
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput)
+}
+
+// If True, no cluster-scoped resources will be restored.
+// Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) NoGroupKinds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigClusterResourceRestoreScope) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoGroupKinds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of cluster-scoped resource group kinds to restore from the backup.
+// If specified, only the selected resources will be restored.
+// Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput) SelectedGroupKinds() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigClusterResourceRestoreScope) []RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind {
+		if v == nil {
+			return nil
+		}
+		return v.SelectedGroupKinds
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput)
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind struct {
+	// API Group string of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind *string `pulumi:"resourceKind"`
+}
+
+// RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs and RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindInput` via:
+//
+//	RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs{...}
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs struct {
+	// API Group string of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
+}
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput)
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
+	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
+		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray and RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput` via:
+//
+//	RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray{ RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs{...} }
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray []RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindInput
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput)
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
+	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
+		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
+	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
+// API Group string of a Kubernetes resource, e.g.
+// "apiextensions.k8s.io", "storage.k8s.io", etc.
+// Use empty string for core group.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind) *string {
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of a Kubernetes resource, e.g.
+// "CustomResourceDefinition", "StorageClass", etc.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput) ResourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind) *string {
+		return v.ResourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind] {
+	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
+		return vs[0].([]RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput)
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind struct {
+	// API Group string of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind *string `pulumi:"resourceKind"`
+}
+
+// RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs and RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindInput` via:
+//
+//	RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs{...}
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs struct {
+	// API Group string of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
+}
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput)
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
+	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
+		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput is an input type that accepts RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray and RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput` via:
+//
+//	RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray{ RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs{...} }
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput
+	ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray []RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindInput
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
+	return i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput)
+}
+
+func (i RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
+	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
+		OutputState: i.ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
+	return pulumix.Output[RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
+// API Group string of a Kubernetes resource, e.g.
+// "apiextensions.k8s.io", "storage.k8s.io", etc.
+// Use empty string for core group.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind) *string {
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of a Kubernetes resource, e.g.
+// "CustomResourceDefinition", "StorageClass", etc.
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput) ResourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind) *string {
+		return v.ResourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput() RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) ToRestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind] {
+	return pulumix.Output[[]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind {
+		return vs[0].([]RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput)
+}
+
+type RestorePlanRestoreConfigExcludedNamespaces struct {
+	// A list of Kubernetes Namespaces.
+	Namespaces []string `pulumi:"namespaces"`
+}
+
+// RestorePlanRestoreConfigExcludedNamespacesInput is an input type that accepts RestorePlanRestoreConfigExcludedNamespacesArgs and RestorePlanRestoreConfigExcludedNamespacesOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigExcludedNamespacesInput` via:
+//
+//	RestorePlanRestoreConfigExcludedNamespacesArgs{...}
+type RestorePlanRestoreConfigExcludedNamespacesInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigExcludedNamespacesOutput() RestorePlanRestoreConfigExcludedNamespacesOutput
+	ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(context.Context) RestorePlanRestoreConfigExcludedNamespacesOutput
+}
+
+type RestorePlanRestoreConfigExcludedNamespacesArgs struct {
+	// A list of Kubernetes Namespaces.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+}
+
+func (RestorePlanRestoreConfigExcludedNamespacesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigExcludedNamespaces)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConfigExcludedNamespacesOutput() RestorePlanRestoreConfigExcludedNamespacesOutput {
+	return i.ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigExcludedNamespacesOutput)
+}
+
+func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces] {
+	return pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces]{
+		OutputState: i.ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutput() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return i.ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigExcludedNamespacesArgs) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigExcludedNamespacesOutput).ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigExcludedNamespacesPtrInput is an input type that accepts RestorePlanRestoreConfigExcludedNamespacesArgs, RestorePlanRestoreConfigExcludedNamespacesPtr and RestorePlanRestoreConfigExcludedNamespacesPtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigExcludedNamespacesPtrInput` via:
+//
+//	        RestorePlanRestoreConfigExcludedNamespacesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigExcludedNamespacesPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigExcludedNamespacesPtrOutput() RestorePlanRestoreConfigExcludedNamespacesPtrOutput
+	ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(context.Context) RestorePlanRestoreConfigExcludedNamespacesPtrOutput
+}
+
+type restorePlanRestoreConfigExcludedNamespacesPtrType RestorePlanRestoreConfigExcludedNamespacesArgs
+
+func RestorePlanRestoreConfigExcludedNamespacesPtr(v *RestorePlanRestoreConfigExcludedNamespacesArgs) RestorePlanRestoreConfigExcludedNamespacesPtrInput {
+	return (*restorePlanRestoreConfigExcludedNamespacesPtrType)(v)
+}
+
+func (*restorePlanRestoreConfigExcludedNamespacesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigExcludedNamespaces)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigExcludedNamespacesPtrType) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutput() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return i.ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigExcludedNamespacesPtrType) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigExcludedNamespacesPtrOutput)
+}
+
+func (i *restorePlanRestoreConfigExcludedNamespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces] {
+	return pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces]{
+		OutputState: i.ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigExcludedNamespacesOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigExcludedNamespacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigExcludedNamespaces)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToRestorePlanRestoreConfigExcludedNamespacesOutput() RestorePlanRestoreConfigExcludedNamespacesOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToRestorePlanRestoreConfigExcludedNamespacesOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutput() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return o.ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigExcludedNamespaces) *RestorePlanRestoreConfigExcludedNamespaces {
+		return &v
+	}).(RestorePlanRestoreConfigExcludedNamespacesPtrOutput)
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces] {
+	return pulumix.Output[RestorePlanRestoreConfigExcludedNamespaces]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of Kubernetes Namespaces.
+func (o RestorePlanRestoreConfigExcludedNamespacesOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigExcludedNamespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+type RestorePlanRestoreConfigExcludedNamespacesPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigExcludedNamespaces)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutput() RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ToRestorePlanRestoreConfigExcludedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigExcludedNamespacesPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces] {
+	return pulumix.Output[*RestorePlanRestoreConfigExcludedNamespaces]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) Elem() RestorePlanRestoreConfigExcludedNamespacesOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigExcludedNamespaces) RestorePlanRestoreConfigExcludedNamespaces {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfigExcludedNamespaces
+		return ret
+	}).(RestorePlanRestoreConfigExcludedNamespacesOutput)
+}
+
+// A list of Kubernetes Namespaces.
+func (o RestorePlanRestoreConfigExcludedNamespacesPtrOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigExcludedNamespaces) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestorePlanRestoreConfigSelectedApplications struct {
+	// A list of namespaced Kubernetes resources.
+	// Structure is documented below.
+	NamespacedNames []RestorePlanRestoreConfigSelectedApplicationsNamespacedName `pulumi:"namespacedNames"`
+}
+
+// RestorePlanRestoreConfigSelectedApplicationsInput is an input type that accepts RestorePlanRestoreConfigSelectedApplicationsArgs and RestorePlanRestoreConfigSelectedApplicationsOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigSelectedApplicationsInput` via:
+//
+//	RestorePlanRestoreConfigSelectedApplicationsArgs{...}
+type RestorePlanRestoreConfigSelectedApplicationsInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigSelectedApplicationsOutput() RestorePlanRestoreConfigSelectedApplicationsOutput
+	ToRestorePlanRestoreConfigSelectedApplicationsOutputWithContext(context.Context) RestorePlanRestoreConfigSelectedApplicationsOutput
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsArgs struct {
+	// A list of namespaced Kubernetes resources.
+	// Structure is documented below.
+	NamespacedNames RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput `pulumi:"namespacedNames"`
+}
+
+func (RestorePlanRestoreConfigSelectedApplicationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplications)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToRestorePlanRestoreConfigSelectedApplicationsOutput() RestorePlanRestoreConfigSelectedApplicationsOutput {
+	return i.ToRestorePlanRestoreConfigSelectedApplicationsOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToRestorePlanRestoreConfigSelectedApplicationsOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsOutput)
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplications] {
+	return pulumix.Output[RestorePlanRestoreConfigSelectedApplications]{
+		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutput() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return i.ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsArgs) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsOutput).ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigSelectedApplicationsPtrInput is an input type that accepts RestorePlanRestoreConfigSelectedApplicationsArgs, RestorePlanRestoreConfigSelectedApplicationsPtr and RestorePlanRestoreConfigSelectedApplicationsPtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigSelectedApplicationsPtrInput` via:
+//
+//	        RestorePlanRestoreConfigSelectedApplicationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigSelectedApplicationsPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigSelectedApplicationsPtrOutput() RestorePlanRestoreConfigSelectedApplicationsPtrOutput
+	ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(context.Context) RestorePlanRestoreConfigSelectedApplicationsPtrOutput
+}
+
+type restorePlanRestoreConfigSelectedApplicationsPtrType RestorePlanRestoreConfigSelectedApplicationsArgs
+
+func RestorePlanRestoreConfigSelectedApplicationsPtr(v *RestorePlanRestoreConfigSelectedApplicationsArgs) RestorePlanRestoreConfigSelectedApplicationsPtrInput {
+	return (*restorePlanRestoreConfigSelectedApplicationsPtrType)(v)
+}
+
+func (*restorePlanRestoreConfigSelectedApplicationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigSelectedApplications)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigSelectedApplicationsPtrType) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutput() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return i.ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigSelectedApplicationsPtrType) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsPtrOutput)
+}
+
+func (i *restorePlanRestoreConfigSelectedApplicationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedApplications] {
+	return pulumix.Output[*RestorePlanRestoreConfigSelectedApplications]{
+		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigSelectedApplicationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplications)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToRestorePlanRestoreConfigSelectedApplicationsOutput() RestorePlanRestoreConfigSelectedApplicationsOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToRestorePlanRestoreConfigSelectedApplicationsOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutput() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return o.ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigSelectedApplications) *RestorePlanRestoreConfigSelectedApplications {
+		return &v
+	}).(RestorePlanRestoreConfigSelectedApplicationsPtrOutput)
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplications] {
+	return pulumix.Output[RestorePlanRestoreConfigSelectedApplications]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of namespaced Kubernetes resources.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigSelectedApplicationsOutput) NamespacedNames() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigSelectedApplications) []RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
+		return v.NamespacedNames
+	}).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput)
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigSelectedApplications)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutput() RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ToRestorePlanRestoreConfigSelectedApplicationsPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedApplications] {
+	return pulumix.Output[*RestorePlanRestoreConfigSelectedApplications]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) Elem() RestorePlanRestoreConfigSelectedApplicationsOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigSelectedApplications) RestorePlanRestoreConfigSelectedApplications {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfigSelectedApplications
+		return ret
+	}).(RestorePlanRestoreConfigSelectedApplicationsOutput)
+}
+
+// A list of namespaced Kubernetes resources.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigSelectedApplicationsPtrOutput) NamespacedNames() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigSelectedApplications) []RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
+		if v == nil {
+			return nil
+		}
+		return v.NamespacedNames
+	}).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput)
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedName struct {
+	// The name of a Kubernetes Resource.
+	Name string `pulumi:"name"`
+	// The namespace of a Kubernetes Resource.
+	Namespace string `pulumi:"namespace"`
+}
+
+// RestorePlanRestoreConfigSelectedApplicationsNamespacedNameInput is an input type that accepts RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs and RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigSelectedApplicationsNamespacedNameInput` via:
+//
+//	RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs{...}
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput
+	ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs struct {
+	// The name of a Kubernetes Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace of a Kubernetes Resource.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsNamespacedName)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
+	return i.ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput)
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
+		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput is an input type that accepts RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray and RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput` via:
+//
+//	RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray{ RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs{...} }
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput
+	ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray []RestorePlanRestoreConfigSelectedApplicationsNamespacedNameInput
+
+func (RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
+	return i.ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput)
+}
+
+func (i RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
+		OutputState: i.ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsNamespacedName)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of a Kubernetes Resource.
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigSelectedApplicationsNamespacedName) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace of a Kubernetes Resource.
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigSelectedApplicationsNamespacedName) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput() RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) ToRestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName] {
+	return pulumix.Output[[]RestorePlanRestoreConfigSelectedApplicationsNamespacedName]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
+		return vs[0].([]RestorePlanRestoreConfigSelectedApplicationsNamespacedName)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput)
+}
+
+type RestorePlanRestoreConfigSelectedNamespaces struct {
+	// A list of Kubernetes Namespaces.
+	Namespaces []string `pulumi:"namespaces"`
+}
+
+// RestorePlanRestoreConfigSelectedNamespacesInput is an input type that accepts RestorePlanRestoreConfigSelectedNamespacesArgs and RestorePlanRestoreConfigSelectedNamespacesOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigSelectedNamespacesInput` via:
+//
+//	RestorePlanRestoreConfigSelectedNamespacesArgs{...}
+type RestorePlanRestoreConfigSelectedNamespacesInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigSelectedNamespacesOutput() RestorePlanRestoreConfigSelectedNamespacesOutput
+	ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(context.Context) RestorePlanRestoreConfigSelectedNamespacesOutput
+}
+
+type RestorePlanRestoreConfigSelectedNamespacesArgs struct {
+	// A list of Kubernetes Namespaces.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+}
+
+func (RestorePlanRestoreConfigSelectedNamespacesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigSelectedNamespaces)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConfigSelectedNamespacesOutput() RestorePlanRestoreConfigSelectedNamespacesOutput {
+	return i.ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedNamespacesOutput)
+}
+
+func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces] {
+	return pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces]{
+		OutputState: i.ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutput() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return i.ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigSelectedNamespacesArgs) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedNamespacesOutput).ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigSelectedNamespacesPtrInput is an input type that accepts RestorePlanRestoreConfigSelectedNamespacesArgs, RestorePlanRestoreConfigSelectedNamespacesPtr and RestorePlanRestoreConfigSelectedNamespacesPtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigSelectedNamespacesPtrInput` via:
+//
+//	        RestorePlanRestoreConfigSelectedNamespacesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigSelectedNamespacesPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigSelectedNamespacesPtrOutput() RestorePlanRestoreConfigSelectedNamespacesPtrOutput
+	ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(context.Context) RestorePlanRestoreConfigSelectedNamespacesPtrOutput
+}
+
+type restorePlanRestoreConfigSelectedNamespacesPtrType RestorePlanRestoreConfigSelectedNamespacesArgs
+
+func RestorePlanRestoreConfigSelectedNamespacesPtr(v *RestorePlanRestoreConfigSelectedNamespacesArgs) RestorePlanRestoreConfigSelectedNamespacesPtrInput {
+	return (*restorePlanRestoreConfigSelectedNamespacesPtrType)(v)
+}
+
+func (*restorePlanRestoreConfigSelectedNamespacesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigSelectedNamespaces)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigSelectedNamespacesPtrType) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutput() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return i.ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigSelectedNamespacesPtrType) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigSelectedNamespacesPtrOutput)
+}
+
+func (i *restorePlanRestoreConfigSelectedNamespacesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces] {
+	return pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces]{
+		OutputState: i.ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigSelectedNamespacesOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigSelectedNamespacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigSelectedNamespaces)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToRestorePlanRestoreConfigSelectedNamespacesOutput() RestorePlanRestoreConfigSelectedNamespacesOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToRestorePlanRestoreConfigSelectedNamespacesOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutput() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return o.ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigSelectedNamespaces) *RestorePlanRestoreConfigSelectedNamespaces {
+		return &v
+	}).(RestorePlanRestoreConfigSelectedNamespacesPtrOutput)
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces] {
+	return pulumix.Output[RestorePlanRestoreConfigSelectedNamespaces]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list of Kubernetes Namespaces.
+func (o RestorePlanRestoreConfigSelectedNamespacesOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigSelectedNamespaces) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+type RestorePlanRestoreConfigSelectedNamespacesPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigSelectedNamespaces)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutput() RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ToRestorePlanRestoreConfigSelectedNamespacesPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigSelectedNamespacesPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces] {
+	return pulumix.Output[*RestorePlanRestoreConfigSelectedNamespaces]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) Elem() RestorePlanRestoreConfigSelectedNamespacesOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigSelectedNamespaces) RestorePlanRestoreConfigSelectedNamespaces {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfigSelectedNamespaces
+		return ret
+	}).(RestorePlanRestoreConfigSelectedNamespacesOutput)
+}
+
+// A list of Kubernetes Namespaces.
+func (o RestorePlanRestoreConfigSelectedNamespacesPtrOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigSelectedNamespaces) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRule struct {
+	// The description is a user specified string description
+	// of the transformation rule.
+	Description *string `pulumi:"description"`
+	// A list of transformation rule actions to take against candidate
+	// resources. Actions are executed in order defined - this order
+	// matters, as they could potentially interfere with each other and
+	// the first operation could affect the outcome of the second operation.
+	// Structure is documented below.
+	FieldActions []RestorePlanRestoreConfigTransformationRuleFieldAction `pulumi:"fieldActions"`
+	// This field is used to specify a set of fields that should be used to
+	// determine which resources in backup should be acted upon by the
+	// supplied transformation rule actions, and this will ensure that only
+	// specific resources are affected by transformation rule actions.
+	// Structure is documented below.
+	ResourceFilter *RestorePlanRestoreConfigTransformationRuleResourceFilter `pulumi:"resourceFilter"`
+}
+
+// RestorePlanRestoreConfigTransformationRuleInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleArgs and RestorePlanRestoreConfigTransformationRuleOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleArgs{...}
+type RestorePlanRestoreConfigTransformationRuleInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleOutput() RestorePlanRestoreConfigTransformationRuleOutput
+	ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleArgs struct {
+	// The description is a user specified string description
+	// of the transformation rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A list of transformation rule actions to take against candidate
+	// resources. Actions are executed in order defined - this order
+	// matters, as they could potentially interfere with each other and
+	// the first operation could affect the outcome of the second operation.
+	// Structure is documented below.
+	FieldActions RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput `pulumi:"fieldActions"`
+	// This field is used to specify a set of fields that should be used to
+	// determine which resources in backup should be acted upon by the
+	// supplied transformation rule actions, and this will ensure that only
+	// specific resources are affected by transformation rule actions.
+	// Structure is documented below.
+	ResourceFilter RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput `pulumi:"resourceFilter"`
+}
+
+func (RestorePlanRestoreConfigTransformationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRule)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleArgs) ToRestorePlanRestoreConfigTransformationRuleOutput() RestorePlanRestoreConfigTransformationRuleOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleArgs) ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRule] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRule]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RestorePlanRestoreConfigTransformationRuleArrayInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleArray and RestorePlanRestoreConfigTransformationRuleArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleArrayInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleArray{ RestorePlanRestoreConfigTransformationRuleArgs{...} }
+type RestorePlanRestoreConfigTransformationRuleArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleArrayOutput() RestorePlanRestoreConfigTransformationRuleArrayOutput
+	ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleArrayOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleArray []RestorePlanRestoreConfigTransformationRuleInput
+
+func (RestorePlanRestoreConfigTransformationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigTransformationRule)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleArray) ToRestorePlanRestoreConfigTransformationRuleArrayOutput() RestorePlanRestoreConfigTransformationRuleArrayOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleArray) ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleArrayOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRule] {
+	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRule]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigTransformationRuleOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRule)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleOutput) ToRestorePlanRestoreConfigTransformationRuleOutput() RestorePlanRestoreConfigTransformationRuleOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleOutput) ToRestorePlanRestoreConfigTransformationRuleOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRule] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The description is a user specified string description
+// of the transformation rule.
+func (o RestorePlanRestoreConfigTransformationRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A list of transformation rule actions to take against candidate
+// resources. Actions are executed in order defined - this order
+// matters, as they could potentially interfere with each other and
+// the first operation could affect the outcome of the second operation.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigTransformationRuleOutput) FieldActions() RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRule) []RestorePlanRestoreConfigTransformationRuleFieldAction {
+		return v.FieldActions
+	}).(RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput)
+}
+
+// This field is used to specify a set of fields that should be used to
+// determine which resources in backup should be acted upon by the
+// supplied transformation rule actions, and this will ensure that only
+// specific resources are affected by transformation rule actions.
+// Structure is documented below.
+func (o RestorePlanRestoreConfigTransformationRuleOutput) ResourceFilter() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRule) *RestorePlanRestoreConfigTransformationRuleResourceFilter {
+		return v.ResourceFilter
+	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigTransformationRule)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) ToRestorePlanRestoreConfigTransformationRuleArrayOutput() RestorePlanRestoreConfigTransformationRuleArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) ToRestorePlanRestoreConfigTransformationRuleArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRule] {
+	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigTransformationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigTransformationRule {
+		return vs[0].([]RestorePlanRestoreConfigTransformationRule)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigTransformationRuleOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleFieldAction struct {
+	// A string containing a JSON Pointer value that references the
+	// location in the target document to move the value from.
+	FromPath *string `pulumi:"fromPath"`
+	// Specifies the operation to perform.
+	// Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+	Op string `pulumi:"op"`
+	// A string containing a JSON-Pointer value that references a
+	// location within the target document where the operation is performed.
+	Path *string `pulumi:"path"`
+	// A string that specifies the desired value in string format
+	// to use for transformation.
+	//
+	// ***
+	Value *string `pulumi:"value"`
+}
+
+// RestorePlanRestoreConfigTransformationRuleFieldActionInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleFieldActionArgs and RestorePlanRestoreConfigTransformationRuleFieldActionOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleFieldActionInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleFieldActionArgs{...}
+type RestorePlanRestoreConfigTransformationRuleFieldActionInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleFieldActionOutput() RestorePlanRestoreConfigTransformationRuleFieldActionOutput
+	ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleFieldActionArgs struct {
+	// A string containing a JSON Pointer value that references the
+	// location in the target document to move the value from.
+	FromPath pulumi.StringPtrInput `pulumi:"fromPath"`
+	// Specifies the operation to perform.
+	// Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+	Op pulumi.StringInput `pulumi:"op"`
+	// A string containing a JSON-Pointer value that references a
+	// location within the target document where the operation is performed.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// A string that specifies the desired value in string format
+	// to use for transformation.
+	//
+	// ***
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RestorePlanRestoreConfigTransformationRuleFieldActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleFieldAction)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleFieldActionArgs) ToRestorePlanRestoreConfigTransformationRuleFieldActionOutput() RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleFieldActionArgs) ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleFieldActionOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleFieldActionArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleFieldActionArray and RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleFieldActionArray{ RestorePlanRestoreConfigTransformationRuleFieldActionArgs{...} }
+type RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput() RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput
+	ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleFieldActionArray []RestorePlanRestoreConfigTransformationRuleFieldActionInput
+
+func (RestorePlanRestoreConfigTransformationRuleFieldActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigTransformationRuleFieldAction)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleFieldActionArray) ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput() RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleFieldActionArray) ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleFieldActionArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction] {
+	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigTransformationRuleFieldActionOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleFieldAction)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ToRestorePlanRestoreConfigTransformationRuleFieldActionOutput() RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ToRestorePlanRestoreConfigTransformationRuleFieldActionOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleFieldAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A string containing a JSON Pointer value that references the
+// location in the target document to move the value from.
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) FromPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleFieldAction) *string { return v.FromPath }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the operation to perform.
+// Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleFieldAction) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// A string containing a JSON-Pointer value that references a
+// location within the target document where the operation is performed.
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleFieldAction) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// A string that specifies the desired value in string format
+// to use for transformation.
+//
+// ***
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleFieldAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigTransformationRuleFieldAction)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput() RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ToRestorePlanRestoreConfigTransformationRuleFieldActionArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction] {
+	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleFieldAction]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigTransformationRuleFieldActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigTransformationRuleFieldAction {
+		return vs[0].([]RestorePlanRestoreConfigTransformationRuleFieldAction)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigTransformationRuleFieldActionOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilter struct {
+	// (Filtering parameter) Any resource subject to transformation must
+	// belong to one of the listed "types". If this field is not provided,
+	// no type filtering will be performed
+	// (all resources of all types matching previous filtering parameters
+	// will be candidates for transformation).
+	// Structure is documented below.
+	GroupKinds []RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind `pulumi:"groupKinds"`
+	// This is a JSONPath expression that matches specific fields of
+	// candidate resources and it operates as a filtering parameter
+	// (resources that are not matched with this expression will not
+	// be candidates for transformation).
+	JsonPath *string `pulumi:"jsonPath"`
+	// (Filtering parameter) Any resource subject to transformation must
+	// be contained within one of the listed Kubernetes Namespace in the
+	// Backup. If this field is not provided, no namespace filtering will
+	// be performed (all resources in all Namespaces, including all
+	// cluster-scoped resources, will be candidates for transformation).
+	// To mix cluster-scoped and namespaced resources in the same rule,
+	// use an empty string ("") as one of the target namespaces.
+	Namespaces []string `pulumi:"namespaces"`
+}
+
+// RestorePlanRestoreConfigTransformationRuleResourceFilterInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleResourceFilterArgs and RestorePlanRestoreConfigTransformationRuleResourceFilterOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleResourceFilterInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{...}
+type RestorePlanRestoreConfigTransformationRuleResourceFilterInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterOutput
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterArgs struct {
+	// (Filtering parameter) Any resource subject to transformation must
+	// belong to one of the listed "types". If this field is not provided,
+	// no type filtering will be performed
+	// (all resources of all types matching previous filtering parameters
+	// will be candidates for transformation).
+	// Structure is documented below.
+	GroupKinds RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput `pulumi:"groupKinds"`
+	// This is a JSONPath expression that matches specific fields of
+	// candidate resources and it operates as a filtering parameter
+	// (resources that are not matched with this expression will not
+	// be candidates for transformation).
+	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
+	// (Filtering parameter) Any resource subject to transformation must
+	// be contained within one of the listed Kubernetes Namespace in the
+	// Backup. If this field is not provided, no namespace filtering will
+	// be performed (all resources in all Namespaces, including all
+	// cluster-scoped resources, will be candidates for transformation).
+	// To mix cluster-scoped and namespaced resources in the same rule,
+	// use an empty string ("") as one of the target namespaces.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+}
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilter)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterOutput).ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx)
+}
+
+// RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleResourceFilterArgs, RestorePlanRestoreConfigTransformationRuleResourceFilterPtr and RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput` via:
+//
+//	        RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput
+}
+
+type restorePlanRestoreConfigTransformationRuleResourceFilterPtrType RestorePlanRestoreConfigTransformationRuleResourceFilterArgs
+
+func RestorePlanRestoreConfigTransformationRuleResourceFilterPtr(v *RestorePlanRestoreConfigTransformationRuleResourceFilterArgs) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput {
+	return (*restorePlanRestoreConfigTransformationRuleResourceFilterPtrType)(v)
+}
+
+func (*restorePlanRestoreConfigTransformationRuleResourceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigTransformationRuleResourceFilter)(nil)).Elem()
+}
+
+func (i *restorePlanRestoreConfigTransformationRuleResourceFilterPtrType) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *restorePlanRestoreConfigTransformationRuleResourceFilterPtrType) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput)
+}
+
+func (i *restorePlanRestoreConfigTransformationRuleResourceFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter] {
+	return pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilter)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return o.ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestorePlanRestoreConfigTransformationRuleResourceFilter) *RestorePlanRestoreConfigTransformationRuleResourceFilter {
+		return &v
+	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput)
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Filtering parameter) Any resource subject to transformation must
+// belong to one of the listed "types". If this field is not provided,
+// no type filtering will be performed
+// (all resources of all types matching previous filtering parameters
+// will be candidates for transformation).
+// Structure is documented below.
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) GroupKinds() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleResourceFilter) []RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind {
+		return v.GroupKinds
+	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput)
+}
+
+// This is a JSONPath expression that matches specific fields of
+// candidate resources and it operates as a filtering parameter
+// (resources that are not matched with this expression will not
+// be candidates for transformation).
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleResourceFilter) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
+}
+
+// (Filtering parameter) Any resource subject to transformation must
+// be contained within one of the listed Kubernetes Namespace in the
+// Backup. If this field is not provided, no namespace filtering will
+// be performed (all resources in all Namespaces, including all
+// cluster-scoped resources, will be candidates for transformation).
+// To mix cluster-scoped and namespaced resources in the same rule,
+// use an empty string ("") as one of the target namespaces.
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleResourceFilter) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestorePlanRestoreConfigTransformationRuleResourceFilter)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter] {
+	return pulumix.Output[*RestorePlanRestoreConfigTransformationRuleResourceFilter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) Elem() RestorePlanRestoreConfigTransformationRuleResourceFilterOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigTransformationRuleResourceFilter) RestorePlanRestoreConfigTransformationRuleResourceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret RestorePlanRestoreConfigTransformationRuleResourceFilter
+		return ret
+	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterOutput)
+}
+
+// (Filtering parameter) Any resource subject to transformation must
+// belong to one of the listed "types". If this field is not provided,
+// no type filtering will be performed
+// (all resources of all types matching previous filtering parameters
+// will be candidates for transformation).
+// Structure is documented below.
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) GroupKinds() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigTransformationRuleResourceFilter) []RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind {
+		if v == nil {
+			return nil
+		}
+		return v.GroupKinds
+	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput)
+}
+
+// This is a JSONPath expression that matches specific fields of
+// candidate resources and it operates as a filtering parameter
+// (resources that are not matched with this expression will not
+// be candidates for transformation).
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigTransformationRuleResourceFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Filtering parameter) Any resource subject to transformation must
+// be contained within one of the listed Kubernetes Namespace in the
+// Backup. If this field is not provided, no namespace filtering will
+// be performed (all resources in all Namespaces, including all
+// cluster-scoped resources, will be candidates for transformation).
+// To mix cluster-scoped and namespaced resources in the same rule,
+// use an empty string ("") as one of the target namespaces.
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RestorePlanRestoreConfigTransformationRuleResourceFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind struct {
+	// API Group string of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind *string `pulumi:"resourceKind"`
+}
+
+// RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs and RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs{...}
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs struct {
+	// API Group string of a Kubernetes resource, e.g.
+	// "apiextensions.k8s.io", "storage.k8s.io", etc.
+	// Use empty string for core group.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Kind of a Kubernetes resource, e.g.
+	// "CustomResourceDefinition", "StorageClass", etc.
+	ResourceKind pulumi.StringPtrInput `pulumi:"resourceKind"`
+}
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(ctx).OutputState,
+	}
+}
+
+// RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput is an input type that accepts RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray and RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput values.
+// You can construct a concrete instance of `RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput` via:
+//
+//	RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray{ RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs{...} }
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput interface {
+	pulumi.Input
+
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput
+	ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray []RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindInput
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind)(nil)).Elem()
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
+	return i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(context.Background())
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput)
+}
+
+func (i RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
+	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
+		OutputState: i.ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
+	return pulumix.Output[RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
+// API Group string of a Kubernetes resource, e.g.
+// "apiextensions.k8s.io", "storage.k8s.io", etc.
+// Use empty string for core group.
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind) *string {
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of a Kubernetes resource, e.g.
+// "CustomResourceDefinition", "StorageClass", etc.
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput) ResourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind) *string {
+		return v.ResourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput struct{ *pulumi.OutputState }
+
+func (RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind)(nil)).Elem()
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput() RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) ToRestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutputWithContext(ctx context.Context) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput {
+	return o
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind] {
+	return pulumix.Output[[]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput) Index(i pulumi.IntInput) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind {
+		return vs[0].([]RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind)[vs[1].(int)]
+	}).(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigInput)(nil)).Elem(), BackupPlanBackupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupConfigPtrInput)(nil)).Elem(), BackupPlanBackupConfigArgs{})
@@ -1759,6 +4546,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanIamMemberConditionPtrInput)(nil)).Elem(), BackupPlanIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanRetentionPolicyInput)(nil)).Elem(), BackupPlanRetentionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanRetentionPolicyPtrInput)(nil)).Elem(), BackupPlanRetentionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanIamBindingConditionInput)(nil)).Elem(), RestorePlanIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanIamBindingConditionPtrInput)(nil)).Elem(), RestorePlanIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanIamMemberConditionInput)(nil)).Elem(), RestorePlanIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanIamMemberConditionPtrInput)(nil)).Elem(), RestorePlanIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigInput)(nil)).Elem(), RestorePlanRestoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigPtrInput)(nil)).Elem(), RestorePlanRestoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopePtrInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayInput)(nil)).Elem(), RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigExcludedNamespacesInput)(nil)).Elem(), RestorePlanRestoreConfigExcludedNamespacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigExcludedNamespacesPtrInput)(nil)).Elem(), RestorePlanRestoreConfigExcludedNamespacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsPtrInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsNamespacedNameInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedNamespacesInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedNamespacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigSelectedNamespacesPtrInput)(nil)).Elem(), RestorePlanRestoreConfigSelectedNamespacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleArrayInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleFieldActionInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleFieldActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleFieldActionArrayInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleFieldActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterPtrInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayInput)(nil)).Elem(), RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArray{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupConfigEncryptionKeyOutput{})
@@ -1777,4 +4592,32 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(BackupPlanRetentionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(RestorePlanIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(RestorePlanIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopeOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopePtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigExcludedNamespacesOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigExcludedNamespacesPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedNamespacesOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigSelectedNamespacesPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleFieldActionOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleFieldActionArrayOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterPtrOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindOutput{})
+	pulumi.RegisterOutputType(RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArrayOutput{})
 }

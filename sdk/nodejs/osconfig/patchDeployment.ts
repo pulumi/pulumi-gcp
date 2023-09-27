@@ -210,6 +210,7 @@ import * as utilities from "../utilities";
  *                 "SECURITY",
  *                 "UPDATE",
  *             ],
+ *             excludes: ["5012170"],
  *         },
  *         yum: {
  *             excludes: ["bash"],

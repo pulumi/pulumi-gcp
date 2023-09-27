@@ -323,7 +323,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Configures network performance settings for the instance created from the
+     * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machine_type`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -335,7 +335,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<InstanceTemplateNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance created from the
+     * @return (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machine_type`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1014,7 +1014,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance created from the
+         * @param networkPerformanceConfig (Optional, Configures network performance settings for the instance created from the
          * template. Structure is documented below. **Note**: `machine_type`
          * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
          * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1030,7 +1030,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance created from the
+         * @param networkPerformanceConfig (Optional, Configures network performance settings for the instance created from the
          * template. Structure is documented below. **Note**: `machine_type`
          * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
          * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

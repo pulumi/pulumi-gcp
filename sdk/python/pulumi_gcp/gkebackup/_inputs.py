@@ -19,6 +19,20 @@ __all__ = [
     'BackupPlanIamBindingConditionArgs',
     'BackupPlanIamMemberConditionArgs',
     'BackupPlanRetentionPolicyArgs',
+    'RestorePlanIamBindingConditionArgs',
+    'RestorePlanIamMemberConditionArgs',
+    'RestorePlanRestoreConfigArgs',
+    'RestorePlanRestoreConfigClusterResourceRestoreScopeArgs',
+    'RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs',
+    'RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs',
+    'RestorePlanRestoreConfigExcludedNamespacesArgs',
+    'RestorePlanRestoreConfigSelectedApplicationsArgs',
+    'RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs',
+    'RestorePlanRestoreConfigSelectedNamespacesArgs',
+    'RestorePlanRestoreConfigTransformationRuleArgs',
+    'RestorePlanRestoreConfigTransformationRuleFieldActionArgs',
+    'RestorePlanRestoreConfigTransformationRuleResourceFilterArgs',
+    'RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs',
 ]
 
 @pulumi.input_type
@@ -447,5 +461,910 @@ class BackupPlanRetentionPolicyArgs:
     @locked.setter
     def locked(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "locked", value)
+
+
+@pulumi.input_type
+class RestorePlanIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description is a user specified string description
+               of the transformation rule.
+               
+               (Optional)
+               User specified descriptive string for this RestorePlan.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description is a user specified string description
+        of the transformation rule.
+
+        (Optional)
+        User specified descriptive string for this RestorePlan.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RestorePlanIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description is a user specified string description
+               of the transformation rule.
+               
+               (Optional)
+               User specified descriptive string for this RestorePlan.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description is a user specified string description
+        of the transformation rule.
+
+        (Optional)
+        User specified descriptive string for this RestorePlan.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigArgs:
+    def __init__(__self__, *,
+                 all_namespaces: Optional[pulumi.Input[bool]] = None,
+                 cluster_resource_conflict_policy: Optional[pulumi.Input[str]] = None,
+                 cluster_resource_restore_scope: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']] = None,
+                 excluded_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']] = None,
+                 namespaced_resource_restore_mode: Optional[pulumi.Input[str]] = None,
+                 no_namespaces: Optional[pulumi.Input[bool]] = None,
+                 selected_applications: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']] = None,
+                 selected_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']] = None,
+                 transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]] = None,
+                 volume_data_restore_policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] all_namespaces: If True, restore all namespaced resources in the Backup.
+               Setting this field to False will result in an error.
+        :param pulumi.Input[str] cluster_resource_conflict_policy: Defines the behavior for handling the situation where cluster-scoped resources
+               being restored already exist in the target cluster.
+               This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+               if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+               for more information on each policy option.
+               Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+        :param pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs'] cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup.
+               Structure is documented below.
+        :param pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs'] excluded_namespaces: A list of selected namespaces excluded from restoration.
+               All namespaces except those in this list will be restored.
+               Structure is documented below.
+        :param pulumi.Input[str] namespaced_resource_restore_mode: Defines the behavior for handling the situation where sets of namespaced resources
+               being restored already exist in the target cluster.
+               This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+               if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+               for more information on each mode.
+               Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+        :param pulumi.Input[bool] no_namespaces: Do not restore any namespaced resources if set to "True".
+               Specifying this field to "False" is not allowed.
+        :param pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs'] selected_applications: A list of selected ProtectedApplications to restore.
+               The listed ProtectedApplications and all the resources
+               to which they refer will be restored.
+               Structure is documented below.
+        :param pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs'] selected_namespaces: A list of selected namespaces to restore from the Backup.
+               The listed Namespaces and all resources contained in them will be restored.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]] transformation_rules: A list of transformation rules to be applied against Kubernetes
+               resources as they are selected for restoration from a Backup.
+               Rules are executed in order defined - this order matters,
+               as changes made by a rule may impact the filtering logic of subsequent
+               rules. An empty list means no transformation will occur.
+               Structure is documented below.
+        :param pulumi.Input[str] volume_data_restore_policy: Specifies the mechanism to be used to restore volume data.
+               This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+               if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+               If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+               See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+               for more information on each policy option.
+               Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+        """
+        if all_namespaces is not None:
+            pulumi.set(__self__, "all_namespaces", all_namespaces)
+        if cluster_resource_conflict_policy is not None:
+            pulumi.set(__self__, "cluster_resource_conflict_policy", cluster_resource_conflict_policy)
+        if cluster_resource_restore_scope is not None:
+            pulumi.set(__self__, "cluster_resource_restore_scope", cluster_resource_restore_scope)
+        if excluded_namespaces is not None:
+            pulumi.set(__self__, "excluded_namespaces", excluded_namespaces)
+        if namespaced_resource_restore_mode is not None:
+            pulumi.set(__self__, "namespaced_resource_restore_mode", namespaced_resource_restore_mode)
+        if no_namespaces is not None:
+            pulumi.set(__self__, "no_namespaces", no_namespaces)
+        if selected_applications is not None:
+            pulumi.set(__self__, "selected_applications", selected_applications)
+        if selected_namespaces is not None:
+            pulumi.set(__self__, "selected_namespaces", selected_namespaces)
+        if transformation_rules is not None:
+            pulumi.set(__self__, "transformation_rules", transformation_rules)
+        if volume_data_restore_policy is not None:
+            pulumi.set(__self__, "volume_data_restore_policy", volume_data_restore_policy)
+
+    @property
+    @pulumi.getter(name="allNamespaces")
+    def all_namespaces(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If True, restore all namespaced resources in the Backup.
+        Setting this field to False will result in an error.
+        """
+        return pulumi.get(self, "all_namespaces")
+
+    @all_namespaces.setter
+    def all_namespaces(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all_namespaces", value)
+
+    @property
+    @pulumi.getter(name="clusterResourceConflictPolicy")
+    def cluster_resource_conflict_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the behavior for handling the situation where cluster-scoped resources
+        being restored already exist in the target cluster.
+        This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+        if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+        for more information on each policy option.
+        Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+        """
+        return pulumi.get(self, "cluster_resource_conflict_policy")
+
+    @cluster_resource_conflict_policy.setter
+    def cluster_resource_conflict_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_resource_conflict_policy", value)
+
+    @property
+    @pulumi.getter(name="clusterResourceRestoreScope")
+    def cluster_resource_restore_scope(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]:
+        """
+        Identifies the cluster-scoped resources to restore from the Backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cluster_resource_restore_scope")
+
+    @cluster_resource_restore_scope.setter
+    def cluster_resource_restore_scope(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]):
+        pulumi.set(self, "cluster_resource_restore_scope", value)
+
+    @property
+    @pulumi.getter(name="excludedNamespaces")
+    def excluded_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']]:
+        """
+        A list of selected namespaces excluded from restoration.
+        All namespaces except those in this list will be restored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_namespaces")
+
+    @excluded_namespaces.setter
+    def excluded_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']]):
+        pulumi.set(self, "excluded_namespaces", value)
+
+    @property
+    @pulumi.getter(name="namespacedResourceRestoreMode")
+    def namespaced_resource_restore_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the behavior for handling the situation where sets of namespaced resources
+        being restored already exist in the target cluster.
+        This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+        if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+        for more information on each mode.
+        Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+        """
+        return pulumi.get(self, "namespaced_resource_restore_mode")
+
+    @namespaced_resource_restore_mode.setter
+    def namespaced_resource_restore_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespaced_resource_restore_mode", value)
+
+    @property
+    @pulumi.getter(name="noNamespaces")
+    def no_namespaces(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Do not restore any namespaced resources if set to "True".
+        Specifying this field to "False" is not allowed.
+        """
+        return pulumi.get(self, "no_namespaces")
+
+    @no_namespaces.setter
+    def no_namespaces(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_namespaces", value)
+
+    @property
+    @pulumi.getter(name="selectedApplications")
+    def selected_applications(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']]:
+        """
+        A list of selected ProtectedApplications to restore.
+        The listed ProtectedApplications and all the resources
+        to which they refer will be restored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selected_applications")
+
+    @selected_applications.setter
+    def selected_applications(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']]):
+        pulumi.set(self, "selected_applications", value)
+
+    @property
+    @pulumi.getter(name="selectedNamespaces")
+    def selected_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']]:
+        """
+        A list of selected namespaces to restore from the Backup.
+        The listed Namespaces and all resources contained in them will be restored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selected_namespaces")
+
+    @selected_namespaces.setter
+    def selected_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']]):
+        pulumi.set(self, "selected_namespaces", value)
+
+    @property
+    @pulumi.getter(name="transformationRules")
+    def transformation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]:
+        """
+        A list of transformation rules to be applied against Kubernetes
+        resources as they are selected for restoration from a Backup.
+        Rules are executed in order defined - this order matters,
+        as changes made by a rule may impact the filtering logic of subsequent
+        rules. An empty list means no transformation will occur.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformation_rules")
+
+    @transformation_rules.setter
+    def transformation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]):
+        pulumi.set(self, "transformation_rules", value)
+
+    @property
+    @pulumi.getter(name="volumeDataRestorePolicy")
+    def volume_data_restore_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the mechanism to be used to restore volume data.
+        This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+        if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+        If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+        See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+        for more information on each policy option.
+        Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+        """
+        return pulumi.get(self, "volume_data_restore_policy")
+
+    @volume_data_restore_policy.setter
+    def volume_data_restore_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "volume_data_restore_policy", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
+    def __init__(__self__, *,
+                 all_group_kinds: Optional[pulumi.Input[bool]] = None,
+                 excluded_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]] = None,
+                 no_group_kinds: Optional[pulumi.Input[bool]] = None,
+                 selected_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]] = None):
+        """
+        :param pulumi.Input[bool] all_group_kinds: If True, all valid cluster-scoped resources will be restored.
+               Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]] excluded_group_kinds: A list of cluster-scoped resource group kinds to NOT restore from the backup.
+               If specified, all valid cluster-scoped resources will be restored except
+               for those specified in the list.
+               Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+               Structure is documented below.
+        :param pulumi.Input[bool] no_group_kinds: If True, no cluster-scoped resources will be restored.
+               Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]] selected_group_kinds: A list of cluster-scoped resource group kinds to restore from the backup.
+               If specified, only the selected resources will be restored.
+               Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+               Structure is documented below.
+        """
+        if all_group_kinds is not None:
+            pulumi.set(__self__, "all_group_kinds", all_group_kinds)
+        if excluded_group_kinds is not None:
+            pulumi.set(__self__, "excluded_group_kinds", excluded_group_kinds)
+        if no_group_kinds is not None:
+            pulumi.set(__self__, "no_group_kinds", no_group_kinds)
+        if selected_group_kinds is not None:
+            pulumi.set(__self__, "selected_group_kinds", selected_group_kinds)
+
+    @property
+    @pulumi.getter(name="allGroupKinds")
+    def all_group_kinds(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If True, all valid cluster-scoped resources will be restored.
+        Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+        """
+        return pulumi.get(self, "all_group_kinds")
+
+    @all_group_kinds.setter
+    def all_group_kinds(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "all_group_kinds", value)
+
+    @property
+    @pulumi.getter(name="excludedGroupKinds")
+    def excluded_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]:
+        """
+        A list of cluster-scoped resource group kinds to NOT restore from the backup.
+        If specified, all valid cluster-scoped resources will be restored except
+        for those specified in the list.
+        Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_group_kinds")
+
+    @excluded_group_kinds.setter
+    def excluded_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]):
+        pulumi.set(self, "excluded_group_kinds", value)
+
+    @property
+    @pulumi.getter(name="noGroupKinds")
+    def no_group_kinds(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If True, no cluster-scoped resources will be restored.
+        Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+        """
+        return pulumi.get(self, "no_group_kinds")
+
+    @no_group_kinds.setter
+    def no_group_kinds(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_group_kinds", value)
+
+    @property
+    @pulumi.getter(name="selectedGroupKinds")
+    def selected_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]:
+        """
+        A list of cluster-scoped resource group kinds to restore from the backup.
+        If specified, only the selected resources will be restored.
+        Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selected_group_kinds")
+
+    @selected_group_kinds.setter
+    def selected_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]):
+        pulumi.set(self, "selected_group_kinds", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
+    def __init__(__self__, *,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 resource_kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_group: API Group string of a Kubernetes resource, e.g.
+               "apiextensions.k8s.io", "storage.k8s.io", etc.
+               Use empty string for core group.
+        :param pulumi.Input[str] resource_kind: Kind of a Kubernetes resource, e.g.
+               "CustomResourceDefinition", "StorageClass", etc.
+        """
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if resource_kind is not None:
+            pulumi.set(__self__, "resource_kind", resource_kind)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Group string of a Kubernetes resource, e.g.
+        "apiextensions.k8s.io", "storage.k8s.io", etc.
+        Use empty string for core group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="resourceKind")
+    def resource_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of a Kubernetes resource, e.g.
+        "CustomResourceDefinition", "StorageClass", etc.
+        """
+        return pulumi.get(self, "resource_kind")
+
+    @resource_kind.setter
+    def resource_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_kind", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
+    def __init__(__self__, *,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 resource_kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_group: API Group string of a Kubernetes resource, e.g.
+               "apiextensions.k8s.io", "storage.k8s.io", etc.
+               Use empty string for core group.
+        :param pulumi.Input[str] resource_kind: Kind of a Kubernetes resource, e.g.
+               "CustomResourceDefinition", "StorageClass", etc.
+        """
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if resource_kind is not None:
+            pulumi.set(__self__, "resource_kind", resource_kind)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Group string of a Kubernetes resource, e.g.
+        "apiextensions.k8s.io", "storage.k8s.io", etc.
+        Use empty string for core group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="resourceKind")
+    def resource_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of a Kubernetes resource, e.g.
+        "CustomResourceDefinition", "StorageClass", etc.
+        """
+        return pulumi.get(self, "resource_kind")
+
+    @resource_kind.setter
+    def resource_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_kind", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigExcludedNamespacesArgs:
+    def __init__(__self__, *,
+                 namespaces: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: A list of Kubernetes Namespaces.
+        """
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of Kubernetes Namespaces.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "namespaces", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigSelectedApplicationsArgs:
+    def __init__(__self__, *,
+                 namespaced_names: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]] namespaced_names: A list of namespaced Kubernetes resources.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "namespaced_names", namespaced_names)
+
+    @property
+    @pulumi.getter(name="namespacedNames")
+    def namespaced_names(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]:
+        """
+        A list of namespaced Kubernetes resources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "namespaced_names")
+
+    @namespaced_names.setter
+    def namespaced_names(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs']]]):
+        pulumi.set(self, "namespaced_names", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 namespace: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The name of a Kubernetes Resource.
+        :param pulumi.Input[str] namespace: The namespace of a Kubernetes Resource.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of a Kubernetes Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        """
+        The namespace of a Kubernetes Resource.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigSelectedNamespacesArgs:
+    def __init__(__self__, *,
+                 namespaces: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: A list of Kubernetes Namespaces.
+        """
+        pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of Kubernetes Namespaces.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "namespaces", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigTransformationRuleArgs:
+    def __init__(__self__, *,
+                 field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 resource_filter: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]] field_actions: A list of transformation rule actions to take against candidate
+               resources. Actions are executed in order defined - this order
+               matters, as they could potentially interfere with each other and
+               the first operation could affect the outcome of the second operation.
+               Structure is documented below.
+        :param pulumi.Input[str] description: The description is a user specified string description
+               of the transformation rule.
+        :param pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs'] resource_filter: This field is used to specify a set of fields that should be used to
+               determine which resources in backup should be acted upon by the
+               supplied transformation rule actions, and this will ensure that only
+               specific resources are affected by transformation rule actions.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field_actions", field_actions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if resource_filter is not None:
+            pulumi.set(__self__, "resource_filter", resource_filter)
+
+    @property
+    @pulumi.getter(name="fieldActions")
+    def field_actions(self) -> pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]]:
+        """
+        A list of transformation rule actions to take against candidate
+        resources. Actions are executed in order defined - this order
+        matters, as they could potentially interfere with each other and
+        the first operation could affect the outcome of the second operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "field_actions")
+
+    @field_actions.setter
+    def field_actions(self, value: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]]):
+        pulumi.set(self, "field_actions", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description is a user specified string description
+        of the transformation rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="resourceFilter")
+    def resource_filter(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]:
+        """
+        This field is used to specify a set of fields that should be used to
+        determine which resources in backup should be acted upon by the
+        supplied transformation rule actions, and this will ensure that only
+        specific resources are affected by transformation rule actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "resource_filter")
+
+    @resource_filter.setter
+    def resource_filter(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]):
+        pulumi.set(self, "resource_filter", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
+    def __init__(__self__, *,
+                 op: pulumi.Input[str],
+                 from_path: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] op: Specifies the operation to perform.
+               Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+        :param pulumi.Input[str] from_path: A string containing a JSON Pointer value that references the
+               location in the target document to move the value from.
+        :param pulumi.Input[str] path: A string containing a JSON-Pointer value that references a
+               location within the target document where the operation is performed.
+        :param pulumi.Input[str] value: A string that specifies the desired value in string format
+               to use for transformation.
+               
+               - - -
+        """
+        pulumi.set(__self__, "op", op)
+        if from_path is not None:
+            pulumi.set(__self__, "from_path", from_path)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def op(self) -> pulumi.Input[str]:
+        """
+        Specifies the operation to perform.
+        Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: pulumi.Input[str]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter(name="fromPath")
+    def from_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string containing a JSON Pointer value that references the
+        location in the target document to move the value from.
+        """
+        return pulumi.get(self, "from_path")
+
+    @from_path.setter
+    def from_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_path", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string containing a JSON-Pointer value that references a
+        location within the target document where the operation is performed.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string that specifies the desired value in string format
+        to use for transformation.
+
+        - - -
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
+    def __init__(__self__, *,
+                 group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]] = None,
+                 json_path: Optional[pulumi.Input[str]] = None,
+                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]] group_kinds: (Filtering parameter) Any resource subject to transformation must
+               belong to one of the listed "types". If this field is not provided,
+               no type filtering will be performed
+               (all resources of all types matching previous filtering parameters
+               will be candidates for transformation).
+               Structure is documented below.
+        :param pulumi.Input[str] json_path: This is a JSONPath expression that matches specific fields of
+               candidate resources and it operates as a filtering parameter
+               (resources that are not matched with this expression will not
+               be candidates for transformation).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: (Filtering parameter) Any resource subject to transformation must
+               be contained within one of the listed Kubernetes Namespace in the
+               Backup. If this field is not provided, no namespace filtering will
+               be performed (all resources in all Namespaces, including all
+               cluster-scoped resources, will be candidates for transformation).
+               To mix cluster-scoped and namespaced resources in the same rule,
+               use an empty string ("") as one of the target namespaces.
+        """
+        if group_kinds is not None:
+            pulumi.set(__self__, "group_kinds", group_kinds)
+        if json_path is not None:
+            pulumi.set(__self__, "json_path", json_path)
+        if namespaces is not None:
+            pulumi.set(__self__, "namespaces", namespaces)
+
+    @property
+    @pulumi.getter(name="groupKinds")
+    def group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]:
+        """
+        (Filtering parameter) Any resource subject to transformation must
+        belong to one of the listed "types". If this field is not provided,
+        no type filtering will be performed
+        (all resources of all types matching previous filtering parameters
+        will be candidates for transformation).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_kinds")
+
+    @group_kinds.setter
+    def group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]):
+        pulumi.set(self, "group_kinds", value)
+
+    @property
+    @pulumi.getter(name="jsonPath")
+    def json_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is a JSONPath expression that matches specific fields of
+        candidate resources and it operates as a filtering parameter
+        (resources that are not matched with this expression will not
+        be candidates for transformation).
+        """
+        return pulumi.get(self, "json_path")
+
+    @json_path.setter
+    def json_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "json_path", value)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Filtering parameter) Any resource subject to transformation must
+        be contained within one of the listed Kubernetes Namespace in the
+        Backup. If this field is not provided, no namespace filtering will
+        be performed (all resources in all Namespaces, including all
+        cluster-scoped resources, will be candidates for transformation).
+        To mix cluster-scoped and namespaced resources in the same rule,
+        use an empty string ("") as one of the target namespaces.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @namespaces.setter
+    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "namespaces", value)
+
+
+@pulumi.input_type
+class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
+    def __init__(__self__, *,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 resource_kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_group: API Group string of a Kubernetes resource, e.g.
+               "apiextensions.k8s.io", "storage.k8s.io", etc.
+               Use empty string for core group.
+        :param pulumi.Input[str] resource_kind: Kind of a Kubernetes resource, e.g.
+               "CustomResourceDefinition", "StorageClass", etc.
+        """
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if resource_kind is not None:
+            pulumi.set(__self__, "resource_kind", resource_kind)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Group string of a Kubernetes resource, e.g.
+        "apiextensions.k8s.io", "storage.k8s.io", etc.
+        Use empty string for core group.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="resourceKind")
+    def resource_kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of a Kubernetes resource, e.g.
+        "CustomResourceDefinition", "StorageClass", etc.
+        """
+        return pulumi.get(self, "resource_kind")
+
+    @resource_kind.setter
+    def resource_kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_kind", value)
 
 

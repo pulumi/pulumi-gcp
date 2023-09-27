@@ -77,6 +77,30 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Index Endpoint With Public Endpoint
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var indexEndpoint = new Gcp.Vertex.AiIndexEndpoint("indexEndpoint", new()
+    ///     {
+    ///         Description = "A sample vertex endpoint with an public endpoint",
+    ///         DisplayName = "sample-endpoint",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         PublicEndpointEnabled = true,
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -155,6 +179,18 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+        /// </summary>
+        [Output("publicEndpointDomainName")]
+        public Output<string> PublicEndpointDomainName { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the deployed index will be accessible through public endpoint.
+        /// </summary>
+        [Output("publicEndpointEnabled")]
+        public Output<bool?> PublicEndpointEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The region of the index endpoint. eg us-central1
@@ -258,6 +294,12 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// If true, the deployed index will be accessible through public endpoint.
+        /// </summary>
+        [Input("publicEndpointEnabled")]
+        public Input<bool>? PublicEndpointEnabled { get; set; }
+
+        /// <summary>
         /// The region of the index endpoint. eg us-central1
         /// </summary>
         [Input("region")]
@@ -331,6 +373,18 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+        /// </summary>
+        [Input("publicEndpointDomainName")]
+        public Input<string>? PublicEndpointDomainName { get; set; }
+
+        /// <summary>
+        /// If true, the deployed index will be accessible through public endpoint.
+        /// </summary>
+        [Input("publicEndpointEnabled")]
+        public Input<bool>? PublicEndpointEnabled { get; set; }
 
         /// <summary>
         /// The region of the index endpoint. eg us-central1

@@ -147,6 +147,12 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
+ *     binaryAuthorization: {
+ *         evaluationMode: "DISABLED",
+ *     },
+ *     upgradePolicy: {
+ *         policy: "SERIAL",
+ *     },
  * }, {
  *     provider: google_beta,
  * });
@@ -356,6 +362,11 @@ export class BareMetalCluster extends pulumi.CustomResource {
      */
     public readonly bareMetalVersion!: pulumi.Output<string>;
     /**
+     * Binary Authorization related configurations.
+     * Structure is documented below.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.gkeonprem.BareMetalClusterBinaryAuthorization | undefined>;
+    /**
      * Specifies the User Cluster's observability infrastructure.
      * Structure is documented below.
      */
@@ -494,6 +505,11 @@ export class BareMetalCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
+     * The cluster upgrade policy.
+     * Structure is documented below.
+     */
+    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.BareMetalClusterUpgradePolicy | undefined>;
+    /**
      * Specifies the security related settings for the Bare Metal User Cluster.
      * Structure is documented below.
      */
@@ -515,6 +531,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["adminClusterMembership"] = state ? state.adminClusterMembership : undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["bareMetalVersion"] = state ? state.bareMetalVersion : undefined;
+            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["clusterOperations"] = state ? state.clusterOperations : undefined;
             resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -541,6 +558,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["storage"] = state ? state.storage : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["upgradePolicy"] = state ? state.upgradePolicy : undefined;
             resourceInputs["validationChecks"] = state ? state.validationChecks : undefined;
         } else {
             const args = argsOrState as BareMetalClusterArgs | undefined;
@@ -568,6 +586,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["adminClusterMembership"] = args ? args.adminClusterMembership : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["bareMetalVersion"] = args ? args.bareMetalVersion : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["clusterOperations"] = args ? args.clusterOperations : undefined;
             resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -583,6 +602,7 @@ export class BareMetalCluster extends pulumi.CustomResource {
             resourceInputs["proxy"] = args ? args.proxy : undefined;
             resourceInputs["securityConfig"] = args ? args.securityConfig : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -625,6 +645,11 @@ export interface BareMetalClusterState {
      * A human readable description of this Bare Metal User Cluster.
      */
     bareMetalVersion?: pulumi.Input<string>;
+    /**
+     * Binary Authorization related configurations.
+     * Structure is documented below.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.gkeonprem.BareMetalClusterBinaryAuthorization>;
     /**
      * Specifies the User Cluster's observability infrastructure.
      * Structure is documented below.
@@ -764,6 +789,11 @@ export interface BareMetalClusterState {
      */
     updateTime?: pulumi.Input<string>;
     /**
+     * The cluster upgrade policy.
+     * Structure is documented below.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.BareMetalClusterUpgradePolicy>;
+    /**
      * Specifies the security related settings for the Bare Metal User Cluster.
      * Structure is documented below.
      */
@@ -794,6 +824,11 @@ export interface BareMetalClusterArgs {
      * A human readable description of this Bare Metal User Cluster.
      */
     bareMetalVersion: pulumi.Input<string>;
+    /**
+     * Binary Authorization related configurations.
+     * Structure is documented below.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.gkeonprem.BareMetalClusterBinaryAuthorization>;
     /**
      * Specifies the User Cluster's observability infrastructure.
      * Structure is documented below.
@@ -866,4 +901,9 @@ export interface BareMetalClusterArgs {
      * Structure is documented below.
      */
     storage: pulumi.Input<inputs.gkeonprem.BareMetalClusterStorage>;
+    /**
+     * The cluster upgrade policy.
+     * Structure is documented below.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.BareMetalClusterUpgradePolicy>;
 }

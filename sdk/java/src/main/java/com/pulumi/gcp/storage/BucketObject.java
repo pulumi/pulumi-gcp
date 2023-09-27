@@ -134,14 +134,14 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> content;
+    private Output<String> content;
 
     /**
      * @return Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      * 
      */
-    public Output<Optional<String>> content() {
-        return Codegen.optional(this.content);
+    public Output<String> content() {
+        return this.content;
     }
     /**
      * [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.

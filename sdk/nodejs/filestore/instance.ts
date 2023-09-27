@@ -186,7 +186,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
      */
     public readonly tier!: pulumi.Output<string>;
     /**
@@ -305,7 +305,7 @@ export interface InstanceState {
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
      */
     tier?: pulumi.Input<string>;
     /**
@@ -362,7 +362,7 @@ export interface InstanceArgs {
     project?: pulumi.Input<string>;
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
      */
     tier: pulumi.Input<string>;
     /**

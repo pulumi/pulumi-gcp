@@ -20,6 +20,7 @@ import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterLoadBalancer;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterNetworkConfig;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterStatus;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterStorage;
+import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterUpgradePolicy;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterValidationCheck;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterVcenter;
 import java.lang.Boolean;
@@ -231,6 +232,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerManualLbConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
@@ -313,6 +315,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .vmTrackingEnabled(true)
  *             .enableControlPlaneV2(true)
+ *             .upgradePolicy(VMwareClusterUpgradePolicyArgs.builder()
+ *                 .controlPlaneOnly(true)
+ *                 .build())
  *             .authorization(VMwareClusterAuthorizationArgs.builder()
  *                 .adminUsers(VMwareClusterAuthorizationAdminUserArgs.builder()
  *                     .username(&#34;testuser@gmail.com&#34;)
@@ -802,6 +807,22 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="upgradePolicy", refs={VMwareClusterUpgradePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ VMwareClusterUpgradePolicy> upgradePolicy;
+
+    /**
+     * @return Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VMwareClusterUpgradePolicy>> upgradePolicy() {
+        return Codegen.optional(this.upgradePolicy);
     }
     /**
      * ValidationCheck represents the result of the preflight check job.

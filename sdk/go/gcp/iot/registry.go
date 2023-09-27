@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **Warning:** `iot.Registry` is deprecated in the API. This resource will be removed in the next major release of the provider.
+//
 // A Google Cloud IoT Core device registry.
 //
 // To get more information about DeviceRegistry, see:

@@ -363,6 +363,20 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.gatewayAddress;
     }
     /**
+     * The internal IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    @Export(name="internalIpv6Prefix", refs={String.class}, tree="[0]")
+    private Output<String> internalIpv6Prefix;
+
+    /**
+     * @return The internal IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    public Output<String> internalIpv6Prefix() {
+        return this.internalIpv6Prefix;
+    }
+    /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and

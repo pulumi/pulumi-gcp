@@ -340,6 +340,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dataLossPreventionCustomEndpoint() {
         return Codegen.optional(this.dataLossPreventionCustomEndpoint);
     }
+    @Export(name="dataPipelineCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataPipelineCustomEndpoint;
+
+    public Output<Optional<String>> dataPipelineCustomEndpoint() {
+        return Codegen.optional(this.dataPipelineCustomEndpoint);
+    }
     @Export(name="databaseMigrationServiceCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> databaseMigrationServiceCustomEndpoint;
 
@@ -423,6 +429,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> documentAiWarehouseCustomEndpoint() {
         return Codegen.optional(this.documentAiWarehouseCustomEndpoint);
+    }
+    @Export(name="edgenetworkCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> edgenetworkCustomEndpoint;
+
+    public Output<Optional<String>> edgenetworkCustomEndpoint() {
+        return Codegen.optional(this.edgenetworkCustomEndpoint);
     }
     @Export(name="essentialContactsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> essentialContactsCustomEndpoint;
@@ -814,6 +826,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> storageCustomEndpoint() {
         return Codegen.optional(this.storageCustomEndpoint);
     }
+    @Export(name="storageInsightsCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> storageInsightsCustomEndpoint;
+
+    public Output<Optional<String>> storageInsightsCustomEndpoint() {
+        return Codegen.optional(this.storageInsightsCustomEndpoint);
+    }
     @Export(name="storageTransferCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageTransferCustomEndpoint;
 
@@ -837,6 +855,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> tpuCustomEndpoint() {
         return Codegen.optional(this.tpuCustomEndpoint);
+    }
+    @Export(name="tpuV2CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tpuV2CustomEndpoint;
+
+    public Output<Optional<String>> tpuV2CustomEndpoint() {
+        return Codegen.optional(this.tpuV2CustomEndpoint);
     }
     @Export(name="vertexAiCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vertexAiCustomEndpoint;

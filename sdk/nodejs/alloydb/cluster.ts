@@ -262,10 +262,20 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
+     *
+     * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+     *
+     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
      */
     public readonly network!: pulumi.Output<string>;
+    /**
+     * Metadata related to network configuration.
+     * Structure is documented below.
+     */
+    public readonly networkConfig!: pulumi.Output<outputs.alloydb.ClusterNetworkConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -314,6 +324,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["migrationSources"] = state ? state.migrationSources : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
@@ -326,9 +337,6 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'network'");
-            }
             resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
@@ -338,6 +346,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
@@ -428,10 +437,20 @@ export interface ClusterState {
      */
     name?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
+     *
+     * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+     *
+     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Metadata related to network configuration.
+     * Structure is documented below.
+     */
+    networkConfig?: pulumi.Input<inputs.alloydb.ClusterNetworkConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -498,10 +517,20 @@ export interface ClusterArgs {
      */
     location: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
+     *
+     * > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+     *
+     * @deprecated `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
      */
-    network: pulumi.Input<string>;
+    network?: pulumi.Input<string>;
+    /**
+     * Metadata related to network configuration.
+     * Structure is documented below.
+     */
+    networkConfig?: pulumi.Input<inputs.alloydb.ClusterNetworkConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

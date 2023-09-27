@@ -2874,6 +2874,194 @@ func (o ClusterMigrationSourceArrayOutput) Index(i pulumi.IntInput) ClusterMigra
 	}).(ClusterMigrationSourceOutput)
 }
 
+type ClusterNetworkConfig struct {
+	// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+	// If set, the instance IPs for this cluster will be created in the allocated range.
+	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+	// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+	Network *string `pulumi:"network"`
+}
+
+// ClusterNetworkConfigInput is an input type that accepts ClusterNetworkConfigArgs and ClusterNetworkConfigOutput values.
+// You can construct a concrete instance of `ClusterNetworkConfigInput` via:
+//
+//	ClusterNetworkConfigArgs{...}
+type ClusterNetworkConfigInput interface {
+	pulumi.Input
+
+	ToClusterNetworkConfigOutput() ClusterNetworkConfigOutput
+	ToClusterNetworkConfigOutputWithContext(context.Context) ClusterNetworkConfigOutput
+}
+
+type ClusterNetworkConfigArgs struct {
+	// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+	// If set, the instance IPs for this cluster will be created in the allocated range.
+	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+	// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+	Network pulumi.StringPtrInput `pulumi:"network"`
+}
+
+func (ClusterNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i ClusterNetworkConfigArgs) ToClusterNetworkConfigOutput() ClusterNetworkConfigOutput {
+	return i.ToClusterNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworkConfigArgs) ToClusterNetworkConfigOutputWithContext(ctx context.Context) ClusterNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkConfigOutput)
+}
+
+func (i ClusterNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkConfig] {
+	return pulumix.Output[ClusterNetworkConfig]{
+		OutputState: i.ToClusterNetworkConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClusterNetworkConfigArgs) ToClusterNetworkConfigPtrOutput() ClusterNetworkConfigPtrOutput {
+	return i.ToClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNetworkConfigArgs) ToClusterNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkConfigOutput).ToClusterNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNetworkConfigPtrInput is an input type that accepts ClusterNetworkConfigArgs, ClusterNetworkConfigPtr and ClusterNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNetworkConfigPtrInput` via:
+//
+//	        ClusterNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNetworkConfigPtrOutput() ClusterNetworkConfigPtrOutput
+	ToClusterNetworkConfigPtrOutputWithContext(context.Context) ClusterNetworkConfigPtrOutput
+}
+
+type clusterNetworkConfigPtrType ClusterNetworkConfigArgs
+
+func ClusterNetworkConfigPtr(v *ClusterNetworkConfigArgs) ClusterNetworkConfigPtrInput {
+	return (*clusterNetworkConfigPtrType)(v)
+}
+
+func (*clusterNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i *clusterNetworkConfigPtrType) ToClusterNetworkConfigPtrOutput() ClusterNetworkConfigPtrOutput {
+	return i.ToClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNetworkConfigPtrType) ToClusterNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNetworkConfigPtrOutput)
+}
+
+func (i *clusterNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkConfig] {
+	return pulumix.Output[*ClusterNetworkConfig]{
+		OutputState: i.ToClusterNetworkConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClusterNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNetworkConfigOutput) ToClusterNetworkConfigOutput() ClusterNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNetworkConfigOutput) ToClusterNetworkConfigOutputWithContext(ctx context.Context) ClusterNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNetworkConfigOutput) ToClusterNetworkConfigPtrOutput() ClusterNetworkConfigPtrOutput {
+	return o.ToClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNetworkConfigOutput) ToClusterNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNetworkConfig) *ClusterNetworkConfig {
+		return &v
+	}).(ClusterNetworkConfigPtrOutput)
+}
+
+func (o ClusterNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkConfig] {
+	return pulumix.Output[ClusterNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+// If set, the instance IPs for this cluster will be created in the allocated range.
+func (o ClusterNetworkConfigOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworkConfig) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
+}
+
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+func (o ClusterNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNetworkConfigPtrOutput) ToClusterNetworkConfigPtrOutput() ClusterNetworkConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkConfigPtrOutput) ToClusterNetworkConfigPtrOutputWithContext(ctx context.Context) ClusterNetworkConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkConfig] {
+	return pulumix.Output[*ClusterNetworkConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNetworkConfigPtrOutput) Elem() ClusterNetworkConfigOutput {
+	return o.ApplyT(func(v *ClusterNetworkConfig) ClusterNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNetworkConfig
+		return ret
+	}).(ClusterNetworkConfigOutput)
+}
+
+// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+// If set, the instance IPs for this cluster will be created in the allocated range.
+func (o ClusterNetworkConfigPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllocatedIpRange
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+func (o ClusterNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterRestoreBackupSource struct {
 	// The name of the backup that this cluster is restored from.
 	BackupName string `pulumi:"backupName"`
@@ -4047,6 +4235,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitialUserPtrInput)(nil)).Elem(), ClusterInitialUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceInput)(nil)).Elem(), ClusterMigrationSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceArrayInput)(nil)).Elem(), ClusterMigrationSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkConfigInput)(nil)).Elem(), ClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkConfigPtrInput)(nil)).Elem(), ClusterNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreBackupSourceInput)(nil)).Elem(), ClusterRestoreBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreBackupSourcePtrInput)(nil)).Elem(), ClusterRestoreBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreContinuousBackupSourceInput)(nil)).Elem(), ClusterRestoreContinuousBackupSourceArgs{})
@@ -4095,6 +4285,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterInitialUserPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterRestoreBackupSourceOutput{})
 	pulumi.RegisterOutputType(ClusterRestoreBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(ClusterRestoreContinuousBackupSourceOutput{})

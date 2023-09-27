@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AwsNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigArgs;
+import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
 import java.lang.String;
 import java.util.Map;
@@ -95,6 +96,21 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Management configuration for this node pool.
+     * 
+     */
+    @Import(name="management")
+    private @Nullable Output<AwsNodePoolManagementArgs> management;
+
+    /**
+     * @return The Management configuration for this node pool.
+     * 
+     */
+    public Optional<Output<AwsNodePoolManagementArgs>> management() {
+        return Optional.ofNullable(this.management);
+    }
+
+    /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      * 
      */
@@ -177,6 +193,7 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.cluster = $.cluster;
         this.config = $.config;
         this.location = $.location;
+        this.management = $.management;
         this.maxPodsConstraint = $.maxPodsConstraint;
         this.name = $.name;
         this.project = $.project;
@@ -305,6 +322,27 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param management The Management configuration for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(@Nullable Output<AwsNodePoolManagementArgs> management) {
+            $.management = management;
+            return this;
+        }
+
+        /**
+         * @param management The Management configuration for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(AwsNodePoolManagementArgs management) {
+            return management(Output.of(management));
         }
 
         /**

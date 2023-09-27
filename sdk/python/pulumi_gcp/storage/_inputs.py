@@ -25,6 +25,13 @@ __all__ = [
     'BucketVersioningArgs',
     'BucketWebsiteArgs',
     'DefaultObjectAccessControlProjectTeamArgs',
+    'InsightsReportConfigCsvOptionsArgs',
+    'InsightsReportConfigFrequencyOptionsArgs',
+    'InsightsReportConfigFrequencyOptionsEndDateArgs',
+    'InsightsReportConfigFrequencyOptionsStartDateArgs',
+    'InsightsReportConfigObjectMetadataReportOptionsArgs',
+    'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs',
+    'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs',
     'ObjectAccessControlProjectTeamArgs',
     'TransferAgentPoolBandwidthLimitArgs',
     'TransferJobNotificationConfigArgs',
@@ -809,6 +816,345 @@ class DefaultObjectAccessControlProjectTeamArgs:
     @team.setter
     def team(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "team", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigCsvOptionsArgs:
+    def __init__(__self__, *,
+                 delimiter: Optional[pulumi.Input[str]] = None,
+                 header_required: Optional[pulumi.Input[bool]] = None,
+                 record_separator: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delimiter: The delimiter used to separate the fields in the inventory report CSV file.
+        :param pulumi.Input[bool] header_required: The boolean that indicates whether or not headers are included in the inventory report CSV file.
+               
+               - - -
+        :param pulumi.Input[str] record_separator: The character used to separate the records in the inventory report CSV file.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+        if header_required is not None:
+            pulumi.set(__self__, "header_required", header_required)
+        if record_separator is not None:
+            pulumi.set(__self__, "record_separator", record_separator)
+
+    @property
+    @pulumi.getter
+    def delimiter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The delimiter used to separate the fields in the inventory report CSV file.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @delimiter.setter
+    def delimiter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delimiter", value)
+
+    @property
+    @pulumi.getter(name="headerRequired")
+    def header_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The boolean that indicates whether or not headers are included in the inventory report CSV file.
+
+        - - -
+        """
+        return pulumi.get(self, "header_required")
+
+    @header_required.setter
+    def header_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "header_required", value)
+
+    @property
+    @pulumi.getter(name="recordSeparator")
+    def record_separator(self) -> Optional[pulumi.Input[str]]:
+        """
+        The character used to separate the records in the inventory report CSV file.
+        """
+        return pulumi.get(self, "record_separator")
+
+    @record_separator.setter
+    def record_separator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "record_separator", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigFrequencyOptionsArgs:
+    def __init__(__self__, *,
+                 end_date: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs'],
+                 frequency: pulumi.Input[str],
+                 start_date: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']):
+        """
+        :param pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs'] end_date: The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+               Structure is documented below.
+        :param pulumi.Input[str] frequency: The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+               Possible values are: `DAILY`, `WEEKLY`.
+        :param pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs'] start_date: The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "start_date", start_date)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs']:
+        """
+        The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: pulumi.Input['InsightsReportConfigFrequencyOptionsEndDateArgs']):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[str]:
+        """
+        The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+        Possible values are: `DAILY`, `WEEKLY`.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[str]):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']:
+        """
+        The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input['InsightsReportConfigFrequencyOptionsStartDateArgs']):
+        pulumi.set(self, "start_date", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigFrequencyOptionsEndDateArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[int],
+                 month: pulumi.Input[int],
+                 year: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] day: The day of the month to stop generating inventory reports.
+        :param pulumi.Input[int] month: The month to stop generating inventory reports.
+        :param pulumi.Input[int] year: The year to stop generating inventory reports
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[int]:
+        """
+        The day of the month to stop generating inventory reports.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> pulumi.Input[int]:
+        """
+        The month to stop generating inventory reports.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: pulumi.Input[int]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> pulumi.Input[int]:
+        """
+        The year to stop generating inventory reports
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: pulumi.Input[int]):
+        pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigFrequencyOptionsStartDateArgs:
+    def __init__(__self__, *,
+                 day: pulumi.Input[int],
+                 month: pulumi.Input[int],
+                 year: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] day: The day of the month to start generating inventory reports.
+        :param pulumi.Input[int] month: The month to start generating inventory reports.
+        :param pulumi.Input[int] year: The year to start generating inventory reports
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> pulumi.Input[int]:
+        """
+        The day of the month to start generating inventory reports.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> pulumi.Input[int]:
+        """
+        The month to start generating inventory reports.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: pulumi.Input[int]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> pulumi.Input[int]:
+        """
+        The year to start generating inventory reports
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: pulumi.Input[int]):
+        pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigObjectMetadataReportOptionsArgs:
+    def __init__(__self__, *,
+                 metadata_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 storage_destination_options: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'],
+                 storage_filters: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] metadata_fields: The metadata fields included in an inventory report.
+        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'] storage_destination_options: Options for where the inventory reports are stored.
+               Structure is documented below.
+        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs'] storage_filters: A nested object resource
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "metadata_fields", metadata_fields)
+        pulumi.set(__self__, "storage_destination_options", storage_destination_options)
+        if storage_filters is not None:
+            pulumi.set(__self__, "storage_filters", storage_filters)
+
+    @property
+    @pulumi.getter(name="metadataFields")
+    def metadata_fields(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The metadata fields included in an inventory report.
+        """
+        return pulumi.get(self, "metadata_fields")
+
+    @metadata_fields.setter
+    def metadata_fields(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "metadata_fields", value)
+
+    @property
+    @pulumi.getter(name="storageDestinationOptions")
+    def storage_destination_options(self) -> pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs']:
+        """
+        Options for where the inventory reports are stored.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_destination_options")
+
+    @storage_destination_options.setter
+    def storage_destination_options(self, value: pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs']):
+        pulumi.set(self, "storage_destination_options", value)
+
+    @property
+    @pulumi.getter(name="storageFilters")
+    def storage_filters(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_filters")
+
+    @storage_filters.setter
+    def storage_filters(self, value: Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]):
+        pulumi.set(self, "storage_filters", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 destination_path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: The destination bucket that stores the generated inventory reports.
+        :param pulumi.Input[str] destination_path: The path within the destination bucket to store generated inventory reports.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if destination_path is not None:
+            pulumi.set(__self__, "destination_path", destination_path)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        The destination bucket that stores the generated inventory reports.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="destinationPath")
+    def destination_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path within the destination bucket to store generated inventory reports.
+        """
+        return pulumi.get(self, "destination_path")
+
+    @destination_path.setter
+    def destination_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_path", value)
+
+
+@pulumi.input_type
+class InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs:
+    def __init__(__self__, *,
+                 bucket: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: The filter to use when specifying which bucket to generate inventory reports for.
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filter to use when specifying which bucket to generate inventory reports for.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket", value)
 
 
 @pulumi.input_type

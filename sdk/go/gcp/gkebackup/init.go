@@ -29,6 +29,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPlanIamMember{}
 	case "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy":
 		r = &BackupPlanIamPolicy{}
+	case "gcp:gkebackup/restorePlan:RestorePlan":
+		r = &RestorePlan{}
+	case "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding":
+		r = &RestorePlanIamBinding{}
+	case "gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember":
+		r = &RestorePlanIamMember{}
+	case "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy":
+		r = &RestorePlanIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +68,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkebackup/backupPlanIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/restorePlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/restorePlanIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/restorePlanIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkebackup/restorePlanIamPolicy",
 		&module{version},
 	)
 }

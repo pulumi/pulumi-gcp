@@ -16,7 +16,9 @@ class SecretVersionArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[str],
                  secret_data: pulumi.Input[str],
-                 enabled: Optional[pulumi.Input[bool]] = None):
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 is_secret_data_base64: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a SecretVersion resource.
         :param pulumi.Input[str] secret: Secret Manager secret resource
@@ -25,12 +27,23 @@ class SecretVersionArgs:
                - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
+               to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               * DELETE
+               * DISABLE
+               * ABANDON
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         """
         pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "secret_data", secret_data)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if is_secret_data_base64 is not None:
+            pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
 
     @property
     @pulumi.getter
@@ -61,6 +74,23 @@ class SecretVersionArgs:
         pulumi.set(self, "secret_data", value)
 
     @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the secret version. Setting `ABANDON` allows the resource
+        to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+        disabled rather than deleted. Default is `DELETE`. Possible values are:
+        * DELETE
+        * DISABLE
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -72,13 +102,27 @@ class SecretVersionArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+    @property
+    @pulumi.getter(name="isSecretDataBase64")
+    def is_secret_data_base64(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        """
+        return pulumi.get(self, "is_secret_data_base64")
+
+    @is_secret_data_base64.setter
+    def is_secret_data_base64(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_secret_data_base64", value)
+
 
 @pulumi.input_type
 class _SecretVersionState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  destroy_time: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
@@ -86,8 +130,15 @@ class _SecretVersionState:
         """
         Input properties used for looking up and filtering SecretVersion resources.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
+               to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               * DELETE
+               * DISABLE
+               * ABANDON
         :param pulumi.Input[str] destroy_time: The time at which the Secret was destroyed. Only present if state is DESTROYED.
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[str] secret: Secret Manager secret resource
@@ -100,10 +151,14 @@ class _SecretVersionState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destroy_time is not None:
             pulumi.set(__self__, "destroy_time", destroy_time)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if is_secret_data_base64 is not None:
+            pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if secret is not None:
@@ -124,6 +179,23 @@ class _SecretVersionState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion policy for the secret version. Setting `ABANDON` allows the resource
+        to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+        disabled rather than deleted. Default is `DELETE`. Possible values are:
+        * DELETE
+        * DISABLE
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="destroyTime")
@@ -148,6 +220,18 @@ class _SecretVersionState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="isSecretDataBase64")
+    def is_secret_data_base64(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        """
+        return pulumi.get(self, "is_secret_data_base64")
+
+    @is_secret_data_base64.setter
+    def is_secret_data_base64(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_secret_data_base64", value)
 
     @property
     @pulumi.getter
@@ -208,7 +292,9 @@ class SecretVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -231,11 +317,72 @@ class SecretVersion(pulumi.CustomResource):
                 "label": "my-label",
             },
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
+        ```
+        ### Secret Version Deletion Policy Abandon
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="ABANDON")
+        ```
+        ### Secret Version Deletion Policy Disable
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="DISABLE")
+        ```
+        ### Secret Version With Base64 String Secret Data
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
+            secret=secret_basic.id,
+            is_secret_data_base64=True,
+            secret_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())("secret-data.pfx"))
         ```
 
         ## Import
@@ -248,7 +395,14 @@ class SecretVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
+               to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               * DELETE
+               * DISABLE
+               * ABANDON
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[str] secret: Secret Manager secret resource
                
                
@@ -281,11 +435,72 @@ class SecretVersion(pulumi.CustomResource):
                 "label": "my-label",
             },
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
             secret_data="secret-data")
+        ```
+        ### Secret Version Deletion Policy Abandon
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="ABANDON")
+        ```
+        ### Secret Version Deletion Policy Disable
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_deletion_policy = gcp.secretmanager.SecretVersion("secret-version-deletion-policy",
+            secret=secret_basic.id,
+            secret_data="secret-data",
+            deletion_policy="DISABLE")
+        ```
+        ### Secret Version With Base64 String Secret Data
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_gcp as gcp
+
+        secret_basic = gcp.secretmanager.Secret("secret-basic",
+            secret_id="secret-version",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
+                    replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
+                        location="us-central1",
+                    )],
+                ),
+            ))
+        secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
+            secret=secret_basic.id,
+            is_secret_data_base64=True,
+            secret_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())("secret-data.pfx"))
         ```
 
         ## Import
@@ -311,7 +526,9 @@ class SecretVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -323,7 +540,9 @@ class SecretVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretVersionArgs.__new__(SecretVersionArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["is_secret_data_base64"] = is_secret_data_base64
             if secret is None and not opts.urn:
                 raise TypeError("Missing required property 'secret'")
             __props__.__dict__["secret"] = secret
@@ -347,8 +566,10 @@ class SecretVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             destroy_time: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            is_secret_data_base64: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None,
             secret_data: Optional[pulumi.Input[str]] = None,
@@ -361,8 +582,15 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
+               to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               * DELETE
+               * DISABLE
+               * ABANDON
         :param pulumi.Input[str] destroy_time: The time at which the Secret was destroyed. Only present if state is DESTROYED.
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
+        :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[str] secret: Secret Manager secret resource
@@ -378,8 +606,10 @@ class SecretVersion(pulumi.CustomResource):
         __props__ = _SecretVersionState.__new__(_SecretVersionState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destroy_time"] = destroy_time
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["is_secret_data_base64"] = is_secret_data_base64
         __props__.__dict__["name"] = name
         __props__.__dict__["secret"] = secret
         __props__.__dict__["secret_data"] = secret_data
@@ -393,6 +623,19 @@ class SecretVersion(pulumi.CustomResource):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The deletion policy for the secret version. Setting `ABANDON` allows the resource
+        to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+        disabled rather than deleted. Default is `DELETE`. Possible values are:
+        * DELETE
+        * DISABLE
+        * ABANDON
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="destroyTime")
@@ -409,6 +652,14 @@ class SecretVersion(pulumi.CustomResource):
         The current state of the SecretVersion.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="isSecretDataBase64")
+    def is_secret_data_base64(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        """
+        return pulumi.get(self, "is_secret_data_base64")
 
     @property
     @pulumi.getter

@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -18,15 +19,46 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The Secret will automatically be replicated without any restrictions.
+     * Structure is documented below.
      * 
      */
+    @Import(name="auto")
+    private @Nullable Output<SecretReplicationAutoArgs> auto;
+
+    /**
+     * @return The Secret will automatically be replicated without any restrictions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecretReplicationAutoArgs>> auto() {
+        return Optional.ofNullable(this.auto);
+    }
+
+    /**
+     * (Optional, Deprecated)
+     * The Secret will automatically be replicated without any restrictions.
+     * 
+     * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+     * 
+     * @deprecated
+     * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+     * 
+     */
+    @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
     @Import(name="automatic")
     private @Nullable Output<Boolean> automatic;
 
     /**
-     * @return The Secret will automatically be replicated without any restrictions.
+     * @return (Optional, Deprecated)
+     * The Secret will automatically be replicated without any restrictions.
+     * 
+     * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+     * 
+     * @deprecated
+     * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
      * 
      */
+    @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
     public Optional<Output<Boolean>> automatic() {
         return Optional.ofNullable(this.automatic);
     }
@@ -51,6 +83,7 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
     private SecretReplicationArgs() {}
 
     private SecretReplicationArgs(SecretReplicationArgs $) {
+        this.auto = $.auto;
         this.automatic = $.automatic;
         this.userManaged = $.userManaged;
     }
@@ -74,22 +107,59 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param automatic The Secret will automatically be replicated without any restrictions.
+         * @param auto The Secret will automatically be replicated without any restrictions.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
+        public Builder auto(@Nullable Output<SecretReplicationAutoArgs> auto) {
+            $.auto = auto;
+            return this;
+        }
+
+        /**
+         * @param auto The Secret will automatically be replicated without any restrictions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auto(SecretReplicationAutoArgs auto) {
+            return auto(Output.of(auto));
+        }
+
+        /**
+         * @param automatic (Optional, Deprecated)
+         * The Secret will automatically be replicated without any restrictions.
+         * 
+         * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+         * 
+         */
+        @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
         public Builder automatic(@Nullable Output<Boolean> automatic) {
             $.automatic = automatic;
             return this;
         }
 
         /**
-         * @param automatic The Secret will automatically be replicated without any restrictions.
+         * @param automatic (Optional, Deprecated)
+         * The Secret will automatically be replicated without any restrictions.
+         * 
+         * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+         * 
          */
+        @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
         public Builder automatic(Boolean automatic) {
             return automatic(Output.of(automatic));
         }

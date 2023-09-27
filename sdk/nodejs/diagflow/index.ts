@@ -40,6 +40,16 @@ export type CxPage = import("./cxPage").CxPage;
 export const CxPage: typeof import("./cxPage").CxPage = null as any;
 utilities.lazyLoad(exports, ["CxPage"], () => require("./cxPage"));
 
+export { CxSecuritySettingsArgs, CxSecuritySettingsState } from "./cxSecuritySettings";
+export type CxSecuritySettings = import("./cxSecuritySettings").CxSecuritySettings;
+export const CxSecuritySettings: typeof import("./cxSecuritySettings").CxSecuritySettings = null as any;
+utilities.lazyLoad(exports, ["CxSecuritySettings"], () => require("./cxSecuritySettings"));
+
+export { CxTestCaseArgs, CxTestCaseState } from "./cxTestCase";
+export type CxTestCase = import("./cxTestCase").CxTestCase;
+export const CxTestCase: typeof import("./cxTestCase").CxTestCase = null as any;
+utilities.lazyLoad(exports, ["CxTestCase"], () => require("./cxTestCase"));
+
 export { CxVersionArgs, CxVersionState } from "./cxVersion";
 export type CxVersion = import("./cxVersion").CxVersion;
 export const CxVersion: typeof import("./cxVersion").CxVersion = null as any;
@@ -84,6 +94,10 @@ const _module = {
                 return new CxIntent(name, <any>undefined, { urn })
             case "gcp:diagflow/cxPage:CxPage":
                 return new CxPage(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxSecuritySettings:CxSecuritySettings":
+                return new CxSecuritySettings(name, <any>undefined, { urn })
+            case "gcp:diagflow/cxTestCase:CxTestCase":
+                return new CxTestCase(name, <any>undefined, { urn })
             case "gcp:diagflow/cxVersion:CxVersion":
                 return new CxVersion(name, <any>undefined, { urn })
             case "gcp:diagflow/cxWebhook:CxWebhook":
@@ -106,6 +120,8 @@ pulumi.runtime.registerResourceModule("gcp", "diagflow/cxEnvironment", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxFlow", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxIntent", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxPage", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxSecuritySettings", _module)
+pulumi.runtime.registerResourceModule("gcp", "diagflow/cxTestCase", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/cxWebhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "diagflow/entityType", _module)

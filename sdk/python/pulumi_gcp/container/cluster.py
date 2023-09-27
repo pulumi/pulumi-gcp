@@ -232,7 +232,7 @@ class ClusterArgs:
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+        :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
@@ -1088,7 +1088,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodePoolAutoConfig")
     def node_pool_auto_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]:
         """
-        ) Node pool configs that apply to auto-provisioned node pools in
+        Node pool configs that apply to auto-provisioned node pools in
         [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
         [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         """
@@ -1594,7 +1594,7 @@ class _ClusterState:
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+        :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
@@ -2510,7 +2510,7 @@ class _ClusterState:
     @pulumi.getter(name="nodePoolAutoConfig")
     def node_pool_auto_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]:
         """
-        ) Node pool configs that apply to auto-provisioned node pools in
+        Node pool configs that apply to auto-provisioned node pools in
         [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
         [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         """
@@ -3127,7 +3127,7 @@ class Cluster(pulumi.CustomResource):
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
@@ -3671,7 +3671,7 @@ class Cluster(pulumi.CustomResource):
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
+        :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolDefaultsArgs']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
@@ -4320,7 +4320,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodePoolAutoConfig")
     def node_pool_auto_config(self) -> pulumi.Output['outputs.ClusterNodePoolAutoConfig']:
         """
-        ) Node pool configs that apply to auto-provisioned node pools in
+        Node pool configs that apply to auto-provisioned node pools in
         [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
         [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         """

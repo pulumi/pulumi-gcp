@@ -14,6 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableMaterializedView {
     /**
+     * @return Allow non incremental materialized view definition.
+     * The default value is false.
+     * 
+     */
+    private @Nullable Boolean allowNonIncrementalDefinition;
+    /**
      * @return Specifies whether to use BigQuery&#39;s automatic refresh for this materialized view when the base table is updated.
      * The default value is true.
      * 
@@ -32,6 +38,14 @@ public final class TableMaterializedView {
     private @Nullable Integer refreshIntervalMs;
 
     private TableMaterializedView() {}
+    /**
+     * @return Allow non incremental materialized view definition.
+     * The default value is false.
+     * 
+     */
+    public Optional<Boolean> allowNonIncrementalDefinition() {
+        return Optional.ofNullable(this.allowNonIncrementalDefinition);
+    }
     /**
      * @return Specifies whether to use BigQuery&#39;s automatic refresh for this materialized view when the base table is updated.
      * The default value is true.
@@ -65,17 +79,24 @@ public final class TableMaterializedView {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowNonIncrementalDefinition;
         private @Nullable Boolean enableRefresh;
         private String query;
         private @Nullable Integer refreshIntervalMs;
         public Builder() {}
         public Builder(TableMaterializedView defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowNonIncrementalDefinition = defaults.allowNonIncrementalDefinition;
     	      this.enableRefresh = defaults.enableRefresh;
     	      this.query = defaults.query;
     	      this.refreshIntervalMs = defaults.refreshIntervalMs;
         }
 
+        @CustomType.Setter
+        public Builder allowNonIncrementalDefinition(@Nullable Boolean allowNonIncrementalDefinition) {
+            this.allowNonIncrementalDefinition = allowNonIncrementalDefinition;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableRefresh(@Nullable Boolean enableRefresh) {
             this.enableRefresh = enableRefresh;
@@ -93,6 +114,7 @@ public final class TableMaterializedView {
         }
         public TableMaterializedView build() {
             final var o = new TableMaterializedView();
+            o.allowNonIncrementalDefinition = allowNonIncrementalDefinition;
             o.enableRefresh = enableRefresh;
             o.query = query;
             o.refreshIntervalMs = refreshIntervalMs;

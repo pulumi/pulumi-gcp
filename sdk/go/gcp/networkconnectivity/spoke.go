@@ -16,6 +16,58 @@ import (
 // The NetworkConnectivity Spoke resource
 //
 // ## Example Usage
+// ### Linked_vpc_network
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicHub, err := networkconnectivity.NewHub(ctx, "basicHub", &networkconnectivity.HubArgs{
+//				Description: pulumi.String("A sample hub"),
+//				Labels: pulumi.StringMap{
+//					"label-two": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("A sample spoke with a linked routher appliance instance"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Hub: basicHub.ID(),
+//				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
+//					ExcludeExportRanges: pulumi.StringArray{
+//						pulumi.String("198.51.100.0/24"),
+//						pulumi.String("10.10.0.0/16"),
+//					},
+//					Uri: network.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Router_appliance
 // ```go
 // package main
@@ -139,6 +191,8 @@ type Spoke struct {
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrOutput `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrOutput `pulumi:"linkedRouterApplianceInstances"`
+	// VPC network that is associated with the spoke.
+	LinkedVpcNetwork SpokeLinkedVpcNetworkPtrOutput `pulumi:"linkedVpcNetwork"`
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrOutput `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
@@ -203,6 +257,8 @@ type spokeState struct {
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
+	// VPC network that is associated with the spoke.
+	LinkedVpcNetwork *SpokeLinkedVpcNetwork `pulumi:"linkedVpcNetwork"`
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels *SpokeLinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
@@ -232,6 +288,8 @@ type SpokeState struct {
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
+	// VPC network that is associated with the spoke.
+	LinkedVpcNetwork SpokeLinkedVpcNetworkPtrInput
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrInput
 	// The location for the resource
@@ -263,6 +321,8 @@ type spokeArgs struct {
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
+	// VPC network that is associated with the spoke.
+	LinkedVpcNetwork *SpokeLinkedVpcNetwork `pulumi:"linkedVpcNetwork"`
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels *SpokeLinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	// The location for the resource
@@ -285,6 +345,8 @@ type SpokeArgs struct {
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
 	// The URIs of linked Router appliance resources
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
+	// VPC network that is associated with the spoke.
+	LinkedVpcNetwork SpokeLinkedVpcNetworkPtrInput
 	// The URIs of linked VPN tunnel resources
 	LinkedVpnTunnels SpokeLinkedVpnTunnelsPtrInput
 	// The location for the resource
@@ -434,6 +496,11 @@ func (o SpokeOutput) LinkedInterconnectAttachments() SpokeLinkedInterconnectAtta
 // The URIs of linked Router appliance resources
 func (o SpokeOutput) LinkedRouterApplianceInstances() SpokeLinkedRouterApplianceInstancesPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedRouterApplianceInstancesPtrOutput { return v.LinkedRouterApplianceInstances }).(SpokeLinkedRouterApplianceInstancesPtrOutput)
+}
+
+// VPC network that is associated with the spoke.
+func (o SpokeOutput) LinkedVpcNetwork() SpokeLinkedVpcNetworkPtrOutput {
+	return o.ApplyT(func(v *Spoke) SpokeLinkedVpcNetworkPtrOutput { return v.LinkedVpcNetwork }).(SpokeLinkedVpcNetworkPtrOutput)
 }
 
 // The URIs of linked VPN tunnel resources

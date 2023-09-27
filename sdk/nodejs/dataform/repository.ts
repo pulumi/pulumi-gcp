@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "secret",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * }, {
  *     provider: google_beta,

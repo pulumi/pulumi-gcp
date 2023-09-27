@@ -210,9 +210,427 @@ func (o DatabaseHiveOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type TableHiveOptions struct {
+	// Stores user supplied Hive table parameters. An object containing a
+	// list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Stores physical storage information on the data.
+	// Structure is documented below.
+	StorageDescriptor *TableHiveOptionsStorageDescriptor `pulumi:"storageDescriptor"`
+	// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+	TableType *string `pulumi:"tableType"`
+}
+
+// TableHiveOptionsInput is an input type that accepts TableHiveOptionsArgs and TableHiveOptionsOutput values.
+// You can construct a concrete instance of `TableHiveOptionsInput` via:
+//
+//	TableHiveOptionsArgs{...}
+type TableHiveOptionsInput interface {
+	pulumi.Input
+
+	ToTableHiveOptionsOutput() TableHiveOptionsOutput
+	ToTableHiveOptionsOutputWithContext(context.Context) TableHiveOptionsOutput
+}
+
+type TableHiveOptionsArgs struct {
+	// Stores user supplied Hive table parameters. An object containing a
+	// list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Stores physical storage information on the data.
+	// Structure is documented below.
+	StorageDescriptor TableHiveOptionsStorageDescriptorPtrInput `pulumi:"storageDescriptor"`
+	// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+	TableType pulumi.StringPtrInput `pulumi:"tableType"`
+}
+
+func (TableHiveOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableHiveOptions)(nil)).Elem()
+}
+
+func (i TableHiveOptionsArgs) ToTableHiveOptionsOutput() TableHiveOptionsOutput {
+	return i.ToTableHiveOptionsOutputWithContext(context.Background())
+}
+
+func (i TableHiveOptionsArgs) ToTableHiveOptionsOutputWithContext(ctx context.Context) TableHiveOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsOutput)
+}
+
+func (i TableHiveOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptions] {
+	return pulumix.Output[TableHiveOptions]{
+		OutputState: i.ToTableHiveOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TableHiveOptionsArgs) ToTableHiveOptionsPtrOutput() TableHiveOptionsPtrOutput {
+	return i.ToTableHiveOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableHiveOptionsArgs) ToTableHiveOptionsPtrOutputWithContext(ctx context.Context) TableHiveOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsOutput).ToTableHiveOptionsPtrOutputWithContext(ctx)
+}
+
+// TableHiveOptionsPtrInput is an input type that accepts TableHiveOptionsArgs, TableHiveOptionsPtr and TableHiveOptionsPtrOutput values.
+// You can construct a concrete instance of `TableHiveOptionsPtrInput` via:
+//
+//	        TableHiveOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableHiveOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableHiveOptionsPtrOutput() TableHiveOptionsPtrOutput
+	ToTableHiveOptionsPtrOutputWithContext(context.Context) TableHiveOptionsPtrOutput
+}
+
+type tableHiveOptionsPtrType TableHiveOptionsArgs
+
+func TableHiveOptionsPtr(v *TableHiveOptionsArgs) TableHiveOptionsPtrInput {
+	return (*tableHiveOptionsPtrType)(v)
+}
+
+func (*tableHiveOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableHiveOptions)(nil)).Elem()
+}
+
+func (i *tableHiveOptionsPtrType) ToTableHiveOptionsPtrOutput() TableHiveOptionsPtrOutput {
+	return i.ToTableHiveOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableHiveOptionsPtrType) ToTableHiveOptionsPtrOutputWithContext(ctx context.Context) TableHiveOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsPtrOutput)
+}
+
+func (i *tableHiveOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptions] {
+	return pulumix.Output[*TableHiveOptions]{
+		OutputState: i.ToTableHiveOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TableHiveOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableHiveOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableHiveOptions)(nil)).Elem()
+}
+
+func (o TableHiveOptionsOutput) ToTableHiveOptionsOutput() TableHiveOptionsOutput {
+	return o
+}
+
+func (o TableHiveOptionsOutput) ToTableHiveOptionsOutputWithContext(ctx context.Context) TableHiveOptionsOutput {
+	return o
+}
+
+func (o TableHiveOptionsOutput) ToTableHiveOptionsPtrOutput() TableHiveOptionsPtrOutput {
+	return o.ToTableHiveOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableHiveOptionsOutput) ToTableHiveOptionsPtrOutputWithContext(ctx context.Context) TableHiveOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableHiveOptions) *TableHiveOptions {
+		return &v
+	}).(TableHiveOptionsPtrOutput)
+}
+
+func (o TableHiveOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptions] {
+	return pulumix.Output[TableHiveOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Stores user supplied Hive table parameters. An object containing a
+// list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o TableHiveOptionsOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TableHiveOptions) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Stores physical storage information on the data.
+// Structure is documented below.
+func (o TableHiveOptionsOutput) StorageDescriptor() TableHiveOptionsStorageDescriptorPtrOutput {
+	return o.ApplyT(func(v TableHiveOptions) *TableHiveOptionsStorageDescriptor { return v.StorageDescriptor }).(TableHiveOptionsStorageDescriptorPtrOutput)
+}
+
+// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+func (o TableHiveOptionsOutput) TableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableHiveOptions) *string { return v.TableType }).(pulumi.StringPtrOutput)
+}
+
+type TableHiveOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableHiveOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableHiveOptions)(nil)).Elem()
+}
+
+func (o TableHiveOptionsPtrOutput) ToTableHiveOptionsPtrOutput() TableHiveOptionsPtrOutput {
+	return o
+}
+
+func (o TableHiveOptionsPtrOutput) ToTableHiveOptionsPtrOutputWithContext(ctx context.Context) TableHiveOptionsPtrOutput {
+	return o
+}
+
+func (o TableHiveOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptions] {
+	return pulumix.Output[*TableHiveOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TableHiveOptionsPtrOutput) Elem() TableHiveOptionsOutput {
+	return o.ApplyT(func(v *TableHiveOptions) TableHiveOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableHiveOptions
+		return ret
+	}).(TableHiveOptionsOutput)
+}
+
+// Stores user supplied Hive table parameters. An object containing a
+// list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o TableHiveOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TableHiveOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Stores physical storage information on the data.
+// Structure is documented below.
+func (o TableHiveOptionsPtrOutput) StorageDescriptor() TableHiveOptionsStorageDescriptorPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptions) *TableHiveOptionsStorageDescriptor {
+		if v == nil {
+			return nil
+		}
+		return v.StorageDescriptor
+	}).(TableHiveOptionsStorageDescriptorPtrOutput)
+}
+
+// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+func (o TableHiveOptionsPtrOutput) TableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableType
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableHiveOptionsStorageDescriptor struct {
+	// The fully qualified Java class name of the input format.
+	InputFormat *string `pulumi:"inputFormat"`
+	// Cloud Storage folder URI where the table data is stored, starting with "gs://".
+	LocationUri *string `pulumi:"locationUri"`
+	// The fully qualified Java class name of the output format.
+	OutputFormat *string `pulumi:"outputFormat"`
+}
+
+// TableHiveOptionsStorageDescriptorInput is an input type that accepts TableHiveOptionsStorageDescriptorArgs and TableHiveOptionsStorageDescriptorOutput values.
+// You can construct a concrete instance of `TableHiveOptionsStorageDescriptorInput` via:
+//
+//	TableHiveOptionsStorageDescriptorArgs{...}
+type TableHiveOptionsStorageDescriptorInput interface {
+	pulumi.Input
+
+	ToTableHiveOptionsStorageDescriptorOutput() TableHiveOptionsStorageDescriptorOutput
+	ToTableHiveOptionsStorageDescriptorOutputWithContext(context.Context) TableHiveOptionsStorageDescriptorOutput
+}
+
+type TableHiveOptionsStorageDescriptorArgs struct {
+	// The fully qualified Java class name of the input format.
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// Cloud Storage folder URI where the table data is stored, starting with "gs://".
+	LocationUri pulumi.StringPtrInput `pulumi:"locationUri"`
+	// The fully qualified Java class name of the output format.
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+}
+
+func (TableHiveOptionsStorageDescriptorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableHiveOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (i TableHiveOptionsStorageDescriptorArgs) ToTableHiveOptionsStorageDescriptorOutput() TableHiveOptionsStorageDescriptorOutput {
+	return i.ToTableHiveOptionsStorageDescriptorOutputWithContext(context.Background())
+}
+
+func (i TableHiveOptionsStorageDescriptorArgs) ToTableHiveOptionsStorageDescriptorOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorOutput)
+}
+
+func (i TableHiveOptionsStorageDescriptorArgs) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptionsStorageDescriptor] {
+	return pulumix.Output[TableHiveOptionsStorageDescriptor]{
+		OutputState: i.ToTableHiveOptionsStorageDescriptorOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TableHiveOptionsStorageDescriptorArgs) ToTableHiveOptionsStorageDescriptorPtrOutput() TableHiveOptionsStorageDescriptorPtrOutput {
+	return i.ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i TableHiveOptionsStorageDescriptorArgs) ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorOutput).ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx)
+}
+
+// TableHiveOptionsStorageDescriptorPtrInput is an input type that accepts TableHiveOptionsStorageDescriptorArgs, TableHiveOptionsStorageDescriptorPtr and TableHiveOptionsStorageDescriptorPtrOutput values.
+// You can construct a concrete instance of `TableHiveOptionsStorageDescriptorPtrInput` via:
+//
+//	        TableHiveOptionsStorageDescriptorArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableHiveOptionsStorageDescriptorPtrInput interface {
+	pulumi.Input
+
+	ToTableHiveOptionsStorageDescriptorPtrOutput() TableHiveOptionsStorageDescriptorPtrOutput
+	ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(context.Context) TableHiveOptionsStorageDescriptorPtrOutput
+}
+
+type tableHiveOptionsStorageDescriptorPtrType TableHiveOptionsStorageDescriptorArgs
+
+func TableHiveOptionsStorageDescriptorPtr(v *TableHiveOptionsStorageDescriptorArgs) TableHiveOptionsStorageDescriptorPtrInput {
+	return (*tableHiveOptionsStorageDescriptorPtrType)(v)
+}
+
+func (*tableHiveOptionsStorageDescriptorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableHiveOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (i *tableHiveOptionsStorageDescriptorPtrType) ToTableHiveOptionsStorageDescriptorPtrOutput() TableHiveOptionsStorageDescriptorPtrOutput {
+	return i.ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i *tableHiveOptionsStorageDescriptorPtrType) ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableHiveOptionsStorageDescriptorPtrOutput)
+}
+
+func (i *tableHiveOptionsStorageDescriptorPtrType) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptionsStorageDescriptor] {
+	return pulumix.Output[*TableHiveOptionsStorageDescriptor]{
+		OutputState: i.ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TableHiveOptionsStorageDescriptorOutput struct{ *pulumi.OutputState }
+
+func (TableHiveOptionsStorageDescriptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableHiveOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (o TableHiveOptionsStorageDescriptorOutput) ToTableHiveOptionsStorageDescriptorOutput() TableHiveOptionsStorageDescriptorOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorOutput) ToTableHiveOptionsStorageDescriptorOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorOutput) ToTableHiveOptionsStorageDescriptorPtrOutput() TableHiveOptionsStorageDescriptorPtrOutput {
+	return o.ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (o TableHiveOptionsStorageDescriptorOutput) ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableHiveOptionsStorageDescriptor) *TableHiveOptionsStorageDescriptor {
+		return &v
+	}).(TableHiveOptionsStorageDescriptorPtrOutput)
+}
+
+func (o TableHiveOptionsStorageDescriptorOutput) ToOutput(ctx context.Context) pulumix.Output[TableHiveOptionsStorageDescriptor] {
+	return pulumix.Output[TableHiveOptionsStorageDescriptor]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The fully qualified Java class name of the input format.
+func (o TableHiveOptionsStorageDescriptorOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableHiveOptionsStorageDescriptor) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage folder URI where the table data is stored, starting with "gs://".
+func (o TableHiveOptionsStorageDescriptorOutput) LocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableHiveOptionsStorageDescriptor) *string { return v.LocationUri }).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the output format.
+func (o TableHiveOptionsStorageDescriptorOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableHiveOptionsStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+type TableHiveOptionsStorageDescriptorPtrOutput struct{ *pulumi.OutputState }
+
+func (TableHiveOptionsStorageDescriptorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableHiveOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (o TableHiveOptionsStorageDescriptorPtrOutput) ToTableHiveOptionsStorageDescriptorPtrOutput() TableHiveOptionsStorageDescriptorPtrOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorPtrOutput) ToTableHiveOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableHiveOptionsStorageDescriptorPtrOutput {
+	return o
+}
+
+func (o TableHiveOptionsStorageDescriptorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TableHiveOptionsStorageDescriptor] {
+	return pulumix.Output[*TableHiveOptionsStorageDescriptor]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TableHiveOptionsStorageDescriptorPtrOutput) Elem() TableHiveOptionsStorageDescriptorOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptor) TableHiveOptionsStorageDescriptor {
+		if v != nil {
+			return *v
+		}
+		var ret TableHiveOptionsStorageDescriptor
+		return ret
+	}).(TableHiveOptionsStorageDescriptorOutput)
+}
+
+// The fully qualified Java class name of the input format.
+func (o TableHiveOptionsStorageDescriptorPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage folder URI where the table data is stored, starting with "gs://".
+func (o TableHiveOptionsStorageDescriptorPtrOutput) LocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the output format.
+func (o TableHiveOptionsStorageDescriptorPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableHiveOptionsStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseHiveOptionsInput)(nil)).Elem(), DatabaseHiveOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseHiveOptionsPtrInput)(nil)).Elem(), DatabaseHiveOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsInput)(nil)).Elem(), TableHiveOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsPtrInput)(nil)).Elem(), TableHiveOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableHiveOptionsStorageDescriptorPtrInput)(nil)).Elem(), TableHiveOptionsStorageDescriptorArgs{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsOutput{})
 	pulumi.RegisterOutputType(DatabaseHiveOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableHiveOptionsOutput{})
+	pulumi.RegisterOutputType(TableHiveOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorOutput{})
+	pulumi.RegisterOutputType(TableHiveOptionsStorageDescriptorPtrOutput{})
 }

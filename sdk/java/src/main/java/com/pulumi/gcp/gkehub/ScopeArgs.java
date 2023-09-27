@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ScopeArgs Empty = new ScopeArgs();
+
+    /**
+     * Labels for this Scope.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Scope.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
 
     /**
      * The ID of the project in which the resource belongs.
@@ -54,6 +70,7 @@ public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
     private ScopeArgs() {}
 
     private ScopeArgs(ScopeArgs $) {
+        this.labels = $.labels;
         this.project = $.project;
         this.scopeId = $.scopeId;
     }
@@ -74,6 +91,27 @@ public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ScopeArgs defaults) {
             $ = new ScopeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param labels Labels for this Scope.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this Scope.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

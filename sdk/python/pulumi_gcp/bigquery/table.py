@@ -31,6 +31,7 @@ class TableArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
         """
@@ -95,6 +96,8 @@ class TableArgs:
                ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
                table schema must be specified using the top-level `schema` field
                documented above.
+        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
+               Structure is documented below.
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
@@ -128,6 +131,8 @@ class TableArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if table_constraints is not None:
+            pulumi.set(__self__, "table_constraints", table_constraints)
         if time_partitioning is not None:
             pulumi.set(__self__, "time_partitioning", time_partitioning)
         if view is not None:
@@ -359,6 +364,19 @@ class TableArgs:
         pulumi.set(self, "schema", value)
 
     @property
+    @pulumi.getter(name="tableConstraints")
+    def table_constraints(self) -> Optional[pulumi.Input['TableTableConstraintsArgs']]:
+        """
+        Defines the primary key and foreign keys. 
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_constraints")
+
+    @table_constraints.setter
+    def table_constraints(self, value: Optional[pulumi.Input['TableTableConstraintsArgs']]):
+        pulumi.set(self, "table_constraints", value)
+
+    @property
     @pulumi.getter(name="timePartitioning")
     def time_partitioning(self) -> Optional[pulumi.Input['TableTimePartitioningArgs']]:
         """
@@ -410,6 +428,7 @@ class _TableState:
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -482,6 +501,8 @@ class _TableState:
                table schema must be specified using the top-level `schema` field
                documented above.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
+               Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
@@ -535,6 +556,8 @@ class _TableState:
             pulumi.set(__self__, "schema", schema)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if table_constraints is not None:
+            pulumi.set(__self__, "table_constraints", table_constraints)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
         if time_partitioning is not None:
@@ -853,6 +876,19 @@ class _TableState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="tableConstraints")
+    def table_constraints(self) -> Optional[pulumi.Input['TableTableConstraintsArgs']]:
+        """
+        Defines the primary key and foreign keys. 
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_constraints")
+
+    @table_constraints.setter
+    def table_constraints(self, value: Optional[pulumi.Input['TableTableConstraintsArgs']]):
+        pulumi.set(self, "table_constraints", value)
+
+    @property
     @pulumi.getter(name="tableId")
     def table_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -924,6 +960,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
@@ -1065,6 +1102,8 @@ class Table(pulumi.CustomResource):
                ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
                table schema must be specified using the top-level `schema` field
                documented above.
+        :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
+               Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
@@ -1184,6 +1223,7 @@ class Table(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
+                 table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
@@ -1212,6 +1252,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["table_constraints"] = table_constraints
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
             __props__.__dict__["table_id"] = table_id
@@ -1258,6 +1299,7 @@ class Table(pulumi.CustomResource):
             range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
             schema: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
             table_id: Optional[pulumi.Input[str]] = None,
             time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1335,6 +1377,8 @@ class Table(pulumi.CustomResource):
                table schema must be specified using the top-level `schema` field
                documented above.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']] table_constraints: Defines the primary key and foreign keys. 
+               Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
@@ -1370,6 +1414,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["range_partitioning"] = range_partitioning
         __props__.__dict__["schema"] = schema
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["table_constraints"] = table_constraints
         __props__.__dict__["table_id"] = table_id
         __props__.__dict__["time_partitioning"] = time_partitioning
         __props__.__dict__["type"] = type
@@ -1595,6 +1640,15 @@ class Table(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="tableConstraints")
+    def table_constraints(self) -> pulumi.Output[Optional['outputs.TableTableConstraints']]:
+        """
+        Defines the primary key and foreign keys. 
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_constraints")
 
     @property
     @pulumi.getter(name="tableId")

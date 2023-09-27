@@ -13,6 +13,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **Warning:** `iot.Device` is deprecated in the API. This resource will be removed in the next major release of the provider.
+//
 // A Google Cloud IoT Core device.
 //
 // To get more information about Device, see:

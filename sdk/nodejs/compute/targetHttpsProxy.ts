@@ -121,6 +121,18 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     */
+    public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
+    /**
      * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
      * connections between users and the load balancer. At least one resource must be specified.
      */
@@ -163,6 +175,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["proxyId"] = state ? state.proxyId : undefined;
             resourceInputs["quicOverride"] = state ? state.quicOverride : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
             resourceInputs["sslCertificates"] = state ? state.sslCertificates : undefined;
             resourceInputs["sslPolicy"] = state ? state.sslPolicy : undefined;
             resourceInputs["urlMap"] = state ? state.urlMap : undefined;
@@ -178,6 +191,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
             resourceInputs["quicOverride"] = args ? args.quicOverride : undefined;
+            resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             resourceInputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             resourceInputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             resourceInputs["urlMap"] = args ? args.urlMap : undefined;
@@ -255,6 +269,18 @@ export interface TargetHttpsProxyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     */
+    serverTlsPolicy?: pulumi.Input<string>;
+    /**
      * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
      * connections between users and the load balancer. At least one resource must be specified.
      */
@@ -327,6 +353,18 @@ export interface TargetHttpsProxyArgs {
      * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      */
     quicOverride?: pulumi.Input<string>;
+    /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     */
+    serverTlsPolicy?: pulumi.Input<string>;
     /**
      * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
      * connections between users and the load balancer. At least one resource must be specified.

@@ -121,6 +121,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// A URL referring to a networksecurity.ServerTlsPolicy
+        /// resource that describes how the proxy should authenticate inbound
+        /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        /// attached to globalForwardingRules with the loadBalancingScheme
+        /// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        /// For details which ServerTlsPolicy resources are accepted with
+        /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        /// loadBalancingScheme consult ServerTlsPolicy documentation.
+        /// If left blank, communications are not encrypted.
+        /// </summary>
+        [Output("serverTlsPolicy")]
+        public Output<string?> ServerTlsPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
         /// connections between users and the load balancer. At least one resource must be specified.
         /// </summary>
@@ -253,6 +267,20 @@ namespace Pulumi.Gcp.Compute
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }
 
+        /// <summary>
+        /// A URL referring to a networksecurity.ServerTlsPolicy
+        /// resource that describes how the proxy should authenticate inbound
+        /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        /// attached to globalForwardingRules with the loadBalancingScheme
+        /// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        /// For details which ServerTlsPolicy resources are accepted with
+        /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        /// loadBalancingScheme consult ServerTlsPolicy documentation.
+        /// If left blank, communications are not encrypted.
+        /// </summary>
+        [Input("serverTlsPolicy")]
+        public Input<string>? ServerTlsPolicy { get; set; }
+
         [Input("sslCertificates")]
         private InputList<string>? _sslCertificates;
 
@@ -371,6 +399,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// A URL referring to a networksecurity.ServerTlsPolicy
+        /// resource that describes how the proxy should authenticate inbound
+        /// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        /// attached to globalForwardingRules with the loadBalancingScheme
+        /// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        /// For details which ServerTlsPolicy resources are accepted with
+        /// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        /// loadBalancingScheme consult ServerTlsPolicy documentation.
+        /// If left blank, communications are not encrypted.
+        /// </summary>
+        [Input("serverTlsPolicy")]
+        public Input<string>? ServerTlsPolicy { get; set; }
 
         [Input("sslCertificates")]
         private InputList<string>? _sslCertificates;

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.container.AttachedClusterArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterState;
 import com.pulumi.gcp.container.outputs.AttachedClusterAuthorization;
+import com.pulumi.gcp.container.outputs.AttachedClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.AttachedClusterError;
 import com.pulumi.gcp.container.outputs.AttachedClusterFleet;
 import com.pulumi.gcp.container.outputs.AttachedClusterLoggingConfig;
@@ -199,6 +200,22 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AttachedClusterAuthorization>> authorization() {
         return Codegen.optional(this.authorization);
+    }
+    /**
+     * Binary Authorization configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="binaryAuthorization", refs={AttachedClusterBinaryAuthorization.class}, tree="[0]")
+    private Output<AttachedClusterBinaryAuthorization> binaryAuthorization;
+
+    /**
+     * @return Binary Authorization configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<AttachedClusterBinaryAuthorization> binaryAuthorization() {
+        return this.binaryAuthorization;
     }
     /**
      * Output only. The region where this cluster runs.

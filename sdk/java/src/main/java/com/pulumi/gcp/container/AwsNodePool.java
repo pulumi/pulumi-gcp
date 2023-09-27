@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.AwsNodePoolArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolState;
 import com.pulumi.gcp.container.outputs.AwsNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfig;
+import com.pulumi.gcp.container.outputs.AwsNodePoolManagement;
 import com.pulumi.gcp.container.outputs.AwsNodePoolMaxPodsConstraint;
 import java.lang.Boolean;
 import java.lang.String;
@@ -57,6 +58,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
+ * import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -174,6 +176,9 @@ import javax.annotation.Nullable;
  *             .subnetId(&#34;subnet-00000000000000000&#34;)
  *             .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .management(AwsNodePoolManagementArgs.builder()
+ *                 .autoRepair(true)
+ *                 .build())
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
@@ -617,6 +622,20 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The Management configuration for this node pool.
+     * 
+     */
+    @Export(name="management", refs={AwsNodePoolManagement.class}, tree="[0]")
+    private Output<AwsNodePoolManagement> management;
+
+    /**
+     * @return The Management configuration for this node pool.
+     * 
+     */
+    public Output<AwsNodePoolManagement> management() {
+        return this.management;
     }
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.

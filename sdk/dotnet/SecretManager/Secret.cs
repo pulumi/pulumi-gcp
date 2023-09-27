@@ -81,9 +81,51 @@ namespace Pulumi.Gcp.SecretManager
     ///         },
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///         SecretId = "secret",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secret With Automatic Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var kms_secret_binding = new Gcp.Kms.CryptoKeyIAMMember("kms-secret-binding", new()
+    ///     {
+    ///         CryptoKeyId = "kms-key",
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-secretmanager.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var secret_with_automatic_cmek = new Gcp.SecretManager.Secret("secret-with-automatic-cmek", new()
+    ///     {
+    ///         SecretId = "secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = new Gcp.SecretManager.Inputs.SecretReplicationAutoArgs
+    ///             {
+    ///                 CustomerManagedEncryption = new Gcp.SecretManager.Inputs.SecretReplicationAutoCustomerManagedEncryptionArgs
+    ///                 {
+    ///                     KmsKeyName = "kms-key",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             kms_secret_binding,
+    ///         },
     ///     });
     /// 
     /// });

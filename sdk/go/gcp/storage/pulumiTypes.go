@@ -2510,6 +2510,1382 @@ func (o DefaultObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInpu
 	}).(DefaultObjectAccessControlProjectTeamOutput)
 }
 
+type InsightsReportConfigCsvOptions struct {
+	// The delimiter used to separate the fields in the inventory report CSV file.
+	Delimiter *string `pulumi:"delimiter"`
+	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
+	//
+	// ***
+	HeaderRequired *bool `pulumi:"headerRequired"`
+	// The character used to separate the records in the inventory report CSV file.
+	RecordSeparator *string `pulumi:"recordSeparator"`
+}
+
+// InsightsReportConfigCsvOptionsInput is an input type that accepts InsightsReportConfigCsvOptionsArgs and InsightsReportConfigCsvOptionsOutput values.
+// You can construct a concrete instance of `InsightsReportConfigCsvOptionsInput` via:
+//
+//	InsightsReportConfigCsvOptionsArgs{...}
+type InsightsReportConfigCsvOptionsInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigCsvOptionsOutput() InsightsReportConfigCsvOptionsOutput
+	ToInsightsReportConfigCsvOptionsOutputWithContext(context.Context) InsightsReportConfigCsvOptionsOutput
+}
+
+type InsightsReportConfigCsvOptionsArgs struct {
+	// The delimiter used to separate the fields in the inventory report CSV file.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
+	//
+	// ***
+	HeaderRequired pulumi.BoolPtrInput `pulumi:"headerRequired"`
+	// The character used to separate the records in the inventory report CSV file.
+	RecordSeparator pulumi.StringPtrInput `pulumi:"recordSeparator"`
+}
+
+func (InsightsReportConfigCsvOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigCsvOptions)(nil)).Elem()
+}
+
+func (i InsightsReportConfigCsvOptionsArgs) ToInsightsReportConfigCsvOptionsOutput() InsightsReportConfigCsvOptionsOutput {
+	return i.ToInsightsReportConfigCsvOptionsOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigCsvOptionsArgs) ToInsightsReportConfigCsvOptionsOutputWithContext(ctx context.Context) InsightsReportConfigCsvOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigCsvOptionsOutput)
+}
+
+func (i InsightsReportConfigCsvOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigCsvOptions] {
+	return pulumix.Output[InsightsReportConfigCsvOptions]{
+		OutputState: i.ToInsightsReportConfigCsvOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigCsvOptionsArgs) ToInsightsReportConfigCsvOptionsPtrOutput() InsightsReportConfigCsvOptionsPtrOutput {
+	return i.ToInsightsReportConfigCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigCsvOptionsArgs) ToInsightsReportConfigCsvOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigCsvOptionsOutput).ToInsightsReportConfigCsvOptionsPtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigCsvOptionsPtrInput is an input type that accepts InsightsReportConfigCsvOptionsArgs, InsightsReportConfigCsvOptionsPtr and InsightsReportConfigCsvOptionsPtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigCsvOptionsPtrInput` via:
+//
+//	        InsightsReportConfigCsvOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigCsvOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigCsvOptionsPtrOutput() InsightsReportConfigCsvOptionsPtrOutput
+	ToInsightsReportConfigCsvOptionsPtrOutputWithContext(context.Context) InsightsReportConfigCsvOptionsPtrOutput
+}
+
+type insightsReportConfigCsvOptionsPtrType InsightsReportConfigCsvOptionsArgs
+
+func InsightsReportConfigCsvOptionsPtr(v *InsightsReportConfigCsvOptionsArgs) InsightsReportConfigCsvOptionsPtrInput {
+	return (*insightsReportConfigCsvOptionsPtrType)(v)
+}
+
+func (*insightsReportConfigCsvOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigCsvOptions)(nil)).Elem()
+}
+
+func (i *insightsReportConfigCsvOptionsPtrType) ToInsightsReportConfigCsvOptionsPtrOutput() InsightsReportConfigCsvOptionsPtrOutput {
+	return i.ToInsightsReportConfigCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigCsvOptionsPtrType) ToInsightsReportConfigCsvOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigCsvOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigCsvOptionsPtrOutput)
+}
+
+func (i *insightsReportConfigCsvOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigCsvOptions] {
+	return pulumix.Output[*InsightsReportConfigCsvOptions]{
+		OutputState: i.ToInsightsReportConfigCsvOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigCsvOptionsOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigCsvOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigCsvOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigCsvOptionsOutput) ToInsightsReportConfigCsvOptionsOutput() InsightsReportConfigCsvOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigCsvOptionsOutput) ToInsightsReportConfigCsvOptionsOutputWithContext(ctx context.Context) InsightsReportConfigCsvOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigCsvOptionsOutput) ToInsightsReportConfigCsvOptionsPtrOutput() InsightsReportConfigCsvOptionsPtrOutput {
+	return o.ToInsightsReportConfigCsvOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigCsvOptionsOutput) ToInsightsReportConfigCsvOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigCsvOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigCsvOptions) *InsightsReportConfigCsvOptions {
+		return &v
+	}).(InsightsReportConfigCsvOptionsPtrOutput)
+}
+
+func (o InsightsReportConfigCsvOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigCsvOptions] {
+	return pulumix.Output[InsightsReportConfigCsvOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The delimiter used to separate the fields in the inventory report CSV file.
+func (o InsightsReportConfigCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsReportConfigCsvOptions) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+// The boolean that indicates whether or not headers are included in the inventory report CSV file.
+//
+// ***
+func (o InsightsReportConfigCsvOptionsOutput) HeaderRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InsightsReportConfigCsvOptions) *bool { return v.HeaderRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The character used to separate the records in the inventory report CSV file.
+func (o InsightsReportConfigCsvOptionsOutput) RecordSeparator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsReportConfigCsvOptions) *string { return v.RecordSeparator }).(pulumi.StringPtrOutput)
+}
+
+type InsightsReportConfigCsvOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigCsvOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigCsvOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigCsvOptionsPtrOutput) ToInsightsReportConfigCsvOptionsPtrOutput() InsightsReportConfigCsvOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigCsvOptionsPtrOutput) ToInsightsReportConfigCsvOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigCsvOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigCsvOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigCsvOptions] {
+	return pulumix.Output[*InsightsReportConfigCsvOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigCsvOptionsPtrOutput) Elem() InsightsReportConfigCsvOptionsOutput {
+	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) InsightsReportConfigCsvOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigCsvOptions
+		return ret
+	}).(InsightsReportConfigCsvOptionsOutput)
+}
+
+// The delimiter used to separate the fields in the inventory report CSV file.
+func (o InsightsReportConfigCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The boolean that indicates whether or not headers are included in the inventory report CSV file.
+//
+// ***
+func (o InsightsReportConfigCsvOptionsPtrOutput) HeaderRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The character used to separate the records in the inventory report CSV file.
+func (o InsightsReportConfigCsvOptionsPtrOutput) RecordSeparator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordSeparator
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsReportConfigFrequencyOptions struct {
+	// The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+	// Structure is documented below.
+	EndDate InsightsReportConfigFrequencyOptionsEndDate `pulumi:"endDate"`
+	// The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+	// Possible values are: `DAILY`, `WEEKLY`.
+	Frequency string `pulumi:"frequency"`
+	// The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+	// Structure is documented below.
+	StartDate InsightsReportConfigFrequencyOptionsStartDate `pulumi:"startDate"`
+}
+
+// InsightsReportConfigFrequencyOptionsInput is an input type that accepts InsightsReportConfigFrequencyOptionsArgs and InsightsReportConfigFrequencyOptionsOutput values.
+// You can construct a concrete instance of `InsightsReportConfigFrequencyOptionsInput` via:
+//
+//	InsightsReportConfigFrequencyOptionsArgs{...}
+type InsightsReportConfigFrequencyOptionsInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigFrequencyOptionsOutput() InsightsReportConfigFrequencyOptionsOutput
+	ToInsightsReportConfigFrequencyOptionsOutputWithContext(context.Context) InsightsReportConfigFrequencyOptionsOutput
+}
+
+type InsightsReportConfigFrequencyOptionsArgs struct {
+	// The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+	// Structure is documented below.
+	EndDate InsightsReportConfigFrequencyOptionsEndDateInput `pulumi:"endDate"`
+	// The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+	// Possible values are: `DAILY`, `WEEKLY`.
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+	// Structure is documented below.
+	StartDate InsightsReportConfigFrequencyOptionsStartDateInput `pulumi:"startDate"`
+}
+
+func (InsightsReportConfigFrequencyOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigFrequencyOptions)(nil)).Elem()
+}
+
+func (i InsightsReportConfigFrequencyOptionsArgs) ToInsightsReportConfigFrequencyOptionsOutput() InsightsReportConfigFrequencyOptionsOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigFrequencyOptionsArgs) ToInsightsReportConfigFrequencyOptionsOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsOutput)
+}
+
+func (i InsightsReportConfigFrequencyOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigFrequencyOptions] {
+	return pulumix.Output[InsightsReportConfigFrequencyOptions]{
+		OutputState: i.ToInsightsReportConfigFrequencyOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigFrequencyOptionsArgs) ToInsightsReportConfigFrequencyOptionsPtrOutput() InsightsReportConfigFrequencyOptionsPtrOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigFrequencyOptionsArgs) ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsOutput).ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigFrequencyOptionsPtrInput is an input type that accepts InsightsReportConfigFrequencyOptionsArgs, InsightsReportConfigFrequencyOptionsPtr and InsightsReportConfigFrequencyOptionsPtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigFrequencyOptionsPtrInput` via:
+//
+//	        InsightsReportConfigFrequencyOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigFrequencyOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigFrequencyOptionsPtrOutput() InsightsReportConfigFrequencyOptionsPtrOutput
+	ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(context.Context) InsightsReportConfigFrequencyOptionsPtrOutput
+}
+
+type insightsReportConfigFrequencyOptionsPtrType InsightsReportConfigFrequencyOptionsArgs
+
+func InsightsReportConfigFrequencyOptionsPtr(v *InsightsReportConfigFrequencyOptionsArgs) InsightsReportConfigFrequencyOptionsPtrInput {
+	return (*insightsReportConfigFrequencyOptionsPtrType)(v)
+}
+
+func (*insightsReportConfigFrequencyOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigFrequencyOptions)(nil)).Elem()
+}
+
+func (i *insightsReportConfigFrequencyOptionsPtrType) ToInsightsReportConfigFrequencyOptionsPtrOutput() InsightsReportConfigFrequencyOptionsPtrOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigFrequencyOptionsPtrType) ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsPtrOutput)
+}
+
+func (i *insightsReportConfigFrequencyOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigFrequencyOptions] {
+	return pulumix.Output[*InsightsReportConfigFrequencyOptions]{
+		OutputState: i.ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigFrequencyOptionsOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigFrequencyOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigFrequencyOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigFrequencyOptionsOutput) ToInsightsReportConfigFrequencyOptionsOutput() InsightsReportConfigFrequencyOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsOutput) ToInsightsReportConfigFrequencyOptionsOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsOutput) ToInsightsReportConfigFrequencyOptionsPtrOutput() InsightsReportConfigFrequencyOptionsPtrOutput {
+	return o.ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigFrequencyOptionsOutput) ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigFrequencyOptions) *InsightsReportConfigFrequencyOptions {
+		return &v
+	}).(InsightsReportConfigFrequencyOptionsPtrOutput)
+}
+
+func (o InsightsReportConfigFrequencyOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigFrequencyOptions] {
+	return pulumix.Output[InsightsReportConfigFrequencyOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+// Structure is documented below.
+func (o InsightsReportConfigFrequencyOptionsOutput) EndDate() InsightsReportConfigFrequencyOptionsEndDateOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptions) InsightsReportConfigFrequencyOptionsEndDate {
+		return v.EndDate
+	}).(InsightsReportConfigFrequencyOptionsEndDateOutput)
+}
+
+// The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+// Possible values are: `DAILY`, `WEEKLY`.
+func (o InsightsReportConfigFrequencyOptionsOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptions) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+// Structure is documented below.
+func (o InsightsReportConfigFrequencyOptionsOutput) StartDate() InsightsReportConfigFrequencyOptionsStartDateOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptions) InsightsReportConfigFrequencyOptionsStartDate {
+		return v.StartDate
+	}).(InsightsReportConfigFrequencyOptionsStartDateOutput)
+}
+
+type InsightsReportConfigFrequencyOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigFrequencyOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigFrequencyOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) ToInsightsReportConfigFrequencyOptionsPtrOutput() InsightsReportConfigFrequencyOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) ToInsightsReportConfigFrequencyOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigFrequencyOptions] {
+	return pulumix.Output[*InsightsReportConfigFrequencyOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) Elem() InsightsReportConfigFrequencyOptionsOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptions) InsightsReportConfigFrequencyOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigFrequencyOptions
+		return ret
+	}).(InsightsReportConfigFrequencyOptionsOutput)
+}
+
+// The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+// Structure is documented below.
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) EndDate() InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptions) *InsightsReportConfigFrequencyOptionsEndDate {
+		if v == nil {
+			return nil
+		}
+		return &v.EndDate
+	}).(InsightsReportConfigFrequencyOptionsEndDatePtrOutput)
+}
+
+// The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+// Possible values are: `DAILY`, `WEEKLY`.
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+// Structure is documented below.
+func (o InsightsReportConfigFrequencyOptionsPtrOutput) StartDate() InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptions) *InsightsReportConfigFrequencyOptionsStartDate {
+		if v == nil {
+			return nil
+		}
+		return &v.StartDate
+	}).(InsightsReportConfigFrequencyOptionsStartDatePtrOutput)
+}
+
+type InsightsReportConfigFrequencyOptionsEndDate struct {
+	// The day of the month to stop generating inventory reports.
+	Day int `pulumi:"day"`
+	// The month to stop generating inventory reports.
+	Month int `pulumi:"month"`
+	// The year to stop generating inventory reports
+	Year int `pulumi:"year"`
+}
+
+// InsightsReportConfigFrequencyOptionsEndDateInput is an input type that accepts InsightsReportConfigFrequencyOptionsEndDateArgs and InsightsReportConfigFrequencyOptionsEndDateOutput values.
+// You can construct a concrete instance of `InsightsReportConfigFrequencyOptionsEndDateInput` via:
+//
+//	InsightsReportConfigFrequencyOptionsEndDateArgs{...}
+type InsightsReportConfigFrequencyOptionsEndDateInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigFrequencyOptionsEndDateOutput() InsightsReportConfigFrequencyOptionsEndDateOutput
+	ToInsightsReportConfigFrequencyOptionsEndDateOutputWithContext(context.Context) InsightsReportConfigFrequencyOptionsEndDateOutput
+}
+
+type InsightsReportConfigFrequencyOptionsEndDateArgs struct {
+	// The day of the month to stop generating inventory reports.
+	Day pulumi.IntInput `pulumi:"day"`
+	// The month to stop generating inventory reports.
+	Month pulumi.IntInput `pulumi:"month"`
+	// The year to stop generating inventory reports
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (InsightsReportConfigFrequencyOptionsEndDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigFrequencyOptionsEndDate)(nil)).Elem()
+}
+
+func (i InsightsReportConfigFrequencyOptionsEndDateArgs) ToInsightsReportConfigFrequencyOptionsEndDateOutput() InsightsReportConfigFrequencyOptionsEndDateOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsEndDateOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigFrequencyOptionsEndDateArgs) ToInsightsReportConfigFrequencyOptionsEndDateOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsEndDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsEndDateOutput)
+}
+
+func (i InsightsReportConfigFrequencyOptionsEndDateArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigFrequencyOptionsEndDate] {
+	return pulumix.Output[InsightsReportConfigFrequencyOptionsEndDate]{
+		OutputState: i.ToInsightsReportConfigFrequencyOptionsEndDateOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigFrequencyOptionsEndDateArgs) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutput() InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigFrequencyOptionsEndDateArgs) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsEndDateOutput).ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigFrequencyOptionsEndDatePtrInput is an input type that accepts InsightsReportConfigFrequencyOptionsEndDateArgs, InsightsReportConfigFrequencyOptionsEndDatePtr and InsightsReportConfigFrequencyOptionsEndDatePtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigFrequencyOptionsEndDatePtrInput` via:
+//
+//	        InsightsReportConfigFrequencyOptionsEndDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigFrequencyOptionsEndDatePtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigFrequencyOptionsEndDatePtrOutput() InsightsReportConfigFrequencyOptionsEndDatePtrOutput
+	ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(context.Context) InsightsReportConfigFrequencyOptionsEndDatePtrOutput
+}
+
+type insightsReportConfigFrequencyOptionsEndDatePtrType InsightsReportConfigFrequencyOptionsEndDateArgs
+
+func InsightsReportConfigFrequencyOptionsEndDatePtr(v *InsightsReportConfigFrequencyOptionsEndDateArgs) InsightsReportConfigFrequencyOptionsEndDatePtrInput {
+	return (*insightsReportConfigFrequencyOptionsEndDatePtrType)(v)
+}
+
+func (*insightsReportConfigFrequencyOptionsEndDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigFrequencyOptionsEndDate)(nil)).Elem()
+}
+
+func (i *insightsReportConfigFrequencyOptionsEndDatePtrType) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutput() InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigFrequencyOptionsEndDatePtrType) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsEndDatePtrOutput)
+}
+
+func (i *insightsReportConfigFrequencyOptionsEndDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigFrequencyOptionsEndDate] {
+	return pulumix.Output[*InsightsReportConfigFrequencyOptionsEndDate]{
+		OutputState: i.ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigFrequencyOptionsEndDateOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigFrequencyOptionsEndDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigFrequencyOptionsEndDate)(nil)).Elem()
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) ToInsightsReportConfigFrequencyOptionsEndDateOutput() InsightsReportConfigFrequencyOptionsEndDateOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) ToInsightsReportConfigFrequencyOptionsEndDateOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsEndDateOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutput() InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return o.ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigFrequencyOptionsEndDate) *InsightsReportConfigFrequencyOptionsEndDate {
+		return &v
+	}).(InsightsReportConfigFrequencyOptionsEndDatePtrOutput)
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigFrequencyOptionsEndDate] {
+	return pulumix.Output[InsightsReportConfigFrequencyOptionsEndDate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The day of the month to stop generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptionsEndDate) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// The month to stop generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptionsEndDate) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// The year to stop generating inventory reports
+func (o InsightsReportConfigFrequencyOptionsEndDateOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptionsEndDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type InsightsReportConfigFrequencyOptionsEndDatePtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigFrequencyOptionsEndDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigFrequencyOptionsEndDate)(nil)).Elem()
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutput() InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) ToInsightsReportConfigFrequencyOptionsEndDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsEndDatePtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigFrequencyOptionsEndDate] {
+	return pulumix.Output[*InsightsReportConfigFrequencyOptionsEndDate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) Elem() InsightsReportConfigFrequencyOptionsEndDateOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsEndDate) InsightsReportConfigFrequencyOptionsEndDate {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigFrequencyOptionsEndDate
+		return ret
+	}).(InsightsReportConfigFrequencyOptionsEndDateOutput)
+}
+
+// The day of the month to stop generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// The month to stop generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// The year to stop generating inventory reports
+func (o InsightsReportConfigFrequencyOptionsEndDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsEndDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type InsightsReportConfigFrequencyOptionsStartDate struct {
+	// The day of the month to start generating inventory reports.
+	Day int `pulumi:"day"`
+	// The month to start generating inventory reports.
+	Month int `pulumi:"month"`
+	// The year to start generating inventory reports
+	Year int `pulumi:"year"`
+}
+
+// InsightsReportConfigFrequencyOptionsStartDateInput is an input type that accepts InsightsReportConfigFrequencyOptionsStartDateArgs and InsightsReportConfigFrequencyOptionsStartDateOutput values.
+// You can construct a concrete instance of `InsightsReportConfigFrequencyOptionsStartDateInput` via:
+//
+//	InsightsReportConfigFrequencyOptionsStartDateArgs{...}
+type InsightsReportConfigFrequencyOptionsStartDateInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigFrequencyOptionsStartDateOutput() InsightsReportConfigFrequencyOptionsStartDateOutput
+	ToInsightsReportConfigFrequencyOptionsStartDateOutputWithContext(context.Context) InsightsReportConfigFrequencyOptionsStartDateOutput
+}
+
+type InsightsReportConfigFrequencyOptionsStartDateArgs struct {
+	// The day of the month to start generating inventory reports.
+	Day pulumi.IntInput `pulumi:"day"`
+	// The month to start generating inventory reports.
+	Month pulumi.IntInput `pulumi:"month"`
+	// The year to start generating inventory reports
+	Year pulumi.IntInput `pulumi:"year"`
+}
+
+func (InsightsReportConfigFrequencyOptionsStartDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigFrequencyOptionsStartDate)(nil)).Elem()
+}
+
+func (i InsightsReportConfigFrequencyOptionsStartDateArgs) ToInsightsReportConfigFrequencyOptionsStartDateOutput() InsightsReportConfigFrequencyOptionsStartDateOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsStartDateOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigFrequencyOptionsStartDateArgs) ToInsightsReportConfigFrequencyOptionsStartDateOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsStartDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsStartDateOutput)
+}
+
+func (i InsightsReportConfigFrequencyOptionsStartDateArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigFrequencyOptionsStartDate] {
+	return pulumix.Output[InsightsReportConfigFrequencyOptionsStartDate]{
+		OutputState: i.ToInsightsReportConfigFrequencyOptionsStartDateOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigFrequencyOptionsStartDateArgs) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutput() InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigFrequencyOptionsStartDateArgs) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsStartDateOutput).ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigFrequencyOptionsStartDatePtrInput is an input type that accepts InsightsReportConfigFrequencyOptionsStartDateArgs, InsightsReportConfigFrequencyOptionsStartDatePtr and InsightsReportConfigFrequencyOptionsStartDatePtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigFrequencyOptionsStartDatePtrInput` via:
+//
+//	        InsightsReportConfigFrequencyOptionsStartDateArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigFrequencyOptionsStartDatePtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigFrequencyOptionsStartDatePtrOutput() InsightsReportConfigFrequencyOptionsStartDatePtrOutput
+	ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(context.Context) InsightsReportConfigFrequencyOptionsStartDatePtrOutput
+}
+
+type insightsReportConfigFrequencyOptionsStartDatePtrType InsightsReportConfigFrequencyOptionsStartDateArgs
+
+func InsightsReportConfigFrequencyOptionsStartDatePtr(v *InsightsReportConfigFrequencyOptionsStartDateArgs) InsightsReportConfigFrequencyOptionsStartDatePtrInput {
+	return (*insightsReportConfigFrequencyOptionsStartDatePtrType)(v)
+}
+
+func (*insightsReportConfigFrequencyOptionsStartDatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigFrequencyOptionsStartDate)(nil)).Elem()
+}
+
+func (i *insightsReportConfigFrequencyOptionsStartDatePtrType) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutput() InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return i.ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigFrequencyOptionsStartDatePtrType) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigFrequencyOptionsStartDatePtrOutput)
+}
+
+func (i *insightsReportConfigFrequencyOptionsStartDatePtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigFrequencyOptionsStartDate] {
+	return pulumix.Output[*InsightsReportConfigFrequencyOptionsStartDate]{
+		OutputState: i.ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigFrequencyOptionsStartDateOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigFrequencyOptionsStartDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigFrequencyOptionsStartDate)(nil)).Elem()
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) ToInsightsReportConfigFrequencyOptionsStartDateOutput() InsightsReportConfigFrequencyOptionsStartDateOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) ToInsightsReportConfigFrequencyOptionsStartDateOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsStartDateOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutput() InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return o.ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigFrequencyOptionsStartDate) *InsightsReportConfigFrequencyOptionsStartDate {
+		return &v
+	}).(InsightsReportConfigFrequencyOptionsStartDatePtrOutput)
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigFrequencyOptionsStartDate] {
+	return pulumix.Output[InsightsReportConfigFrequencyOptionsStartDate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The day of the month to start generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptionsStartDate) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// The month to start generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptionsStartDate) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// The year to start generating inventory reports
+func (o InsightsReportConfigFrequencyOptionsStartDateOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v InsightsReportConfigFrequencyOptionsStartDate) int { return v.Year }).(pulumi.IntOutput)
+}
+
+type InsightsReportConfigFrequencyOptionsStartDatePtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigFrequencyOptionsStartDatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigFrequencyOptionsStartDate)(nil)).Elem()
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutput() InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) ToInsightsReportConfigFrequencyOptionsStartDatePtrOutputWithContext(ctx context.Context) InsightsReportConfigFrequencyOptionsStartDatePtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigFrequencyOptionsStartDate] {
+	return pulumix.Output[*InsightsReportConfigFrequencyOptionsStartDate]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) Elem() InsightsReportConfigFrequencyOptionsStartDateOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsStartDate) InsightsReportConfigFrequencyOptionsStartDate {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigFrequencyOptionsStartDate
+		return ret
+	}).(InsightsReportConfigFrequencyOptionsStartDateOutput)
+}
+
+// The day of the month to start generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.IntPtrOutput)
+}
+
+// The month to start generating inventory reports.
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Month
+	}).(pulumi.IntPtrOutput)
+}
+
+// The year to start generating inventory reports
+func (o InsightsReportConfigFrequencyOptionsStartDatePtrOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigFrequencyOptionsStartDate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Year
+	}).(pulumi.IntPtrOutput)
+}
+
+type InsightsReportConfigObjectMetadataReportOptions struct {
+	// The metadata fields included in an inventory report.
+	MetadataFields []string `pulumi:"metadataFields"`
+	// Options for where the inventory reports are stored.
+	// Structure is documented below.
+	StorageDestinationOptions InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions `pulumi:"storageDestinationOptions"`
+	// A nested object resource
+	// Structure is documented below.
+	StorageFilters *InsightsReportConfigObjectMetadataReportOptionsStorageFilters `pulumi:"storageFilters"`
+}
+
+// InsightsReportConfigObjectMetadataReportOptionsInput is an input type that accepts InsightsReportConfigObjectMetadataReportOptionsArgs and InsightsReportConfigObjectMetadataReportOptionsOutput values.
+// You can construct a concrete instance of `InsightsReportConfigObjectMetadataReportOptionsInput` via:
+//
+//	InsightsReportConfigObjectMetadataReportOptionsArgs{...}
+type InsightsReportConfigObjectMetadataReportOptionsInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigObjectMetadataReportOptionsOutput() InsightsReportConfigObjectMetadataReportOptionsOutput
+	ToInsightsReportConfigObjectMetadataReportOptionsOutputWithContext(context.Context) InsightsReportConfigObjectMetadataReportOptionsOutput
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsArgs struct {
+	// The metadata fields included in an inventory report.
+	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
+	// Options for where the inventory reports are stored.
+	// Structure is documented below.
+	StorageDestinationOptions InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsInput `pulumi:"storageDestinationOptions"`
+	// A nested object resource
+	// Structure is documented below.
+	StorageFilters InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput `pulumi:"storageFilters"`
+}
+
+func (InsightsReportConfigObjectMetadataReportOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptions)(nil)).Elem()
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsOutput() InsightsReportConfigObjectMetadataReportOptionsOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsOutput)
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigObjectMetadataReportOptions] {
+	return pulumix.Output[InsightsReportConfigObjectMetadataReportOptions]{
+		OutputState: i.ToInsightsReportConfigObjectMetadataReportOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsOutput).ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigObjectMetadataReportOptionsPtrInput is an input type that accepts InsightsReportConfigObjectMetadataReportOptionsArgs, InsightsReportConfigObjectMetadataReportOptionsPtr and InsightsReportConfigObjectMetadataReportOptionsPtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigObjectMetadataReportOptionsPtrInput` via:
+//
+//	        InsightsReportConfigObjectMetadataReportOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigObjectMetadataReportOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigObjectMetadataReportOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsPtrOutput
+	ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(context.Context) InsightsReportConfigObjectMetadataReportOptionsPtrOutput
+}
+
+type insightsReportConfigObjectMetadataReportOptionsPtrType InsightsReportConfigObjectMetadataReportOptionsArgs
+
+func InsightsReportConfigObjectMetadataReportOptionsPtr(v *InsightsReportConfigObjectMetadataReportOptionsArgs) InsightsReportConfigObjectMetadataReportOptionsPtrInput {
+	return (*insightsReportConfigObjectMetadataReportOptionsPtrType)(v)
+}
+
+func (*insightsReportConfigObjectMetadataReportOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigObjectMetadataReportOptions)(nil)).Elem()
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsPtrType) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsPtrType) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsPtrOutput)
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigObjectMetadataReportOptions] {
+	return pulumix.Output[*InsightsReportConfigObjectMetadataReportOptions]{
+		OutputState: i.ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigObjectMetadataReportOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsOutput() InsightsReportConfigObjectMetadataReportOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return o.ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigObjectMetadataReportOptions) *InsightsReportConfigObjectMetadataReportOptions {
+		return &v
+	}).(InsightsReportConfigObjectMetadataReportOptionsPtrOutput)
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigObjectMetadataReportOptions] {
+	return pulumix.Output[InsightsReportConfigObjectMetadataReportOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The metadata fields included in an inventory report.
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptions) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
+}
+
+// Options for where the inventory reports are stored.
+// Structure is documented below.
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) StorageDestinationOptions() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput {
+	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptions) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
+		return v.StorageDestinationOptions
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o InsightsReportConfigObjectMetadataReportOptionsOutput) StorageFilters() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptions) *InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
+		return v.StorageFilters
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput)
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigObjectMetadataReportOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigObjectMetadataReportOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) ToInsightsReportConfigObjectMetadataReportOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigObjectMetadataReportOptions] {
+	return pulumix.Output[*InsightsReportConfigObjectMetadataReportOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) Elem() InsightsReportConfigObjectMetadataReportOptionsOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptions) InsightsReportConfigObjectMetadataReportOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigObjectMetadataReportOptions
+		return ret
+	}).(InsightsReportConfigObjectMetadataReportOptionsOutput)
+}
+
+// The metadata fields included in an inventory report.
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// Options for where the inventory reports are stored.
+// Structure is documented below.
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) StorageDestinationOptions() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptions) *InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageDestinationOptions
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) StorageFilters() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptions) *InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
+		if v == nil {
+			return nil
+		}
+		return v.StorageFilters
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput)
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions struct {
+	// The destination bucket that stores the generated inventory reports.
+	Bucket string `pulumi:"bucket"`
+	// The path within the destination bucket to store generated inventory reports.
+	DestinationPath *string `pulumi:"destinationPath"`
+}
+
+// InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsInput is an input type that accepts InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs and InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput values.
+// You can construct a concrete instance of `InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsInput` via:
+//
+//	InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs{...}
+type InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutputWithContext(context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs struct {
+	// The destination bucket that stores the generated inventory reports.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The path within the destination bucket to store generated inventory reports.
+	DestinationPath pulumi.StringPtrInput `pulumi:"destinationPath"`
+}
+
+func (InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions)(nil)).Elem()
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput)
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions] {
+	return pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions]{
+		OutputState: i.ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput).ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput is an input type that accepts InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs, InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtr and InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput` via:
+//
+//	        InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput
+}
+
+type insightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrType InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs
+
+func InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtr(v *InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput {
+	return (*insightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrType)(v)
+}
+
+func (*insightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions)(nil)).Elem()
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrType) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrType) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput)
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions] {
+	return pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions]{
+		OutputState: i.ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return o.ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions) *InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
+		return &v
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput)
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions] {
+	return pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The destination bucket that stores the generated inventory reports.
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions) string {
+		return v.Bucket
+	}).(pulumi.StringOutput)
+}
+
+// The path within the destination bucket to store generated inventory reports.
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput) DestinationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions) *string {
+		return v.DestinationPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions)(nil)).Elem()
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions] {
+	return pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) Elem() InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions) InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions
+		return ret
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput)
+}
+
+// The destination bucket that stores the generated inventory reports.
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path within the destination bucket to store generated inventory reports.
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput) DestinationPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageFilters struct {
+	// The filter to use when specifying which bucket to generate inventory reports for.
+	Bucket *string `pulumi:"bucket"`
+}
+
+// InsightsReportConfigObjectMetadataReportOptionsStorageFiltersInput is an input type that accepts InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs and InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput values.
+// You can construct a concrete instance of `InsightsReportConfigObjectMetadataReportOptionsStorageFiltersInput` via:
+//
+//	InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{...}
+type InsightsReportConfigObjectMetadataReportOptionsStorageFiltersInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutputWithContext(context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs struct {
+	// The filter to use when specifying which bucket to generate inventory reports for.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
+}
+
+func (InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFilters)(nil)).Elem()
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput)
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageFilters] {
+	return pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageFilters]{
+		OutputState: i.ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput).ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(ctx)
+}
+
+// InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput is an input type that accepts InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs, InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtr and InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput values.
+// You can construct a concrete instance of `InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput` via:
+//
+//	        InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput interface {
+	pulumi.Input
+
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput
+	ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput
+}
+
+type insightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrType InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs
+
+func InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtr(v *InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput {
+	return (*insightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrType)(v)
+}
+
+func (*insightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigObjectMetadataReportOptionsStorageFilters)(nil)).Elem()
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrType) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return i.ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrType) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput)
+}
+
+func (i *insightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrType) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageFilters] {
+	return pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageFilters]{
+		OutputState: i.ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFilters)(nil)).Elem()
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return o.ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InsightsReportConfigObjectMetadataReportOptionsStorageFilters) *InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
+		return &v
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput)
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageFilters] {
+	return pulumix.Output[InsightsReportConfigObjectMetadataReportOptionsStorageFilters]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The filter to use when specifying which bucket to generate inventory reports for.
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptionsStorageFilters) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+type InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InsightsReportConfigObjectMetadataReportOptionsStorageFilters)(nil)).Elem()
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) ToInsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutputWithContext(ctx context.Context) InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
+	return o
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageFilters] {
+	return pulumix.Output[*InsightsReportConfigObjectMetadataReportOptionsStorageFilters]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) Elem() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptionsStorageFilters) InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
+		if v != nil {
+			return *v
+		}
+		var ret InsightsReportConfigObjectMetadataReportOptionsStorageFilters
+		return ret
+	}).(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput)
+}
+
+// The filter to use when specifying which bucket to generate inventory reports for.
+func (o InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptionsStorageFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
 type ObjectAccessControlProjectTeam struct {
 	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
@@ -8007,6 +9383,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsitePtrInput)(nil)).Elem(), BucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), DefaultObjectAccessControlProjectTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigCsvOptionsInput)(nil)).Elem(), InsightsReportConfigCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigCsvOptionsPtrInput)(nil)).Elem(), InsightsReportConfigCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsPtrInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsEndDateInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsEndDatePtrInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsEndDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsStartDateInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigFrequencyOptionsStartDatePtrInput)(nil)).Elem(), InsightsReportConfigFrequencyOptionsStartDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFiltersInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput)(nil)).Elem(), InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamInput)(nil)).Elem(), ObjectAccessControlProjectTeamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectAccessControlProjectTeamArrayInput)(nil)).Elem(), ObjectAccessControlProjectTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferAgentPoolBandwidthLimitInput)(nil)).Elem(), TransferAgentPoolBandwidthLimitArgs{})
@@ -8099,6 +9489,20 @@ func init() {
 	pulumi.RegisterOutputType(BucketWebsitePtrOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlProjectTeamArrayOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigCsvOptionsOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigCsvOptionsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsEndDateOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsEndDatePtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsStartDateOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigFrequencyOptionsStartDatePtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersOutput{})
+	pulumi.RegisterOutputType(InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamArrayOutput{})
 	pulumi.RegisterOutputType(TransferAgentPoolBandwidthLimitOutput{})

@@ -213,6 +213,9 @@ type Table struct {
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Defines the primary key and foreign keys.
+	// Structure is documented below.
+	TableConstraints TableTableConstraintsPtrOutput `pulumi:"tableConstraints"`
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringOutput `pulumi:"tableId"`
@@ -351,6 +354,9 @@ type tableState struct {
 	Schema *string `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Defines the primary key and foreign keys.
+	// Structure is documented below.
+	TableConstraints *TableTableConstraints `pulumi:"tableConstraints"`
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId *string `pulumi:"tableId"`
@@ -454,6 +460,9 @@ type TableState struct {
 	Schema pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Defines the primary key and foreign keys.
+	// Structure is documented below.
+	TableConstraints TableTableConstraintsPtrInput
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringPtrInput
@@ -545,6 +554,9 @@ type tableArgs struct {
 	// table schema must be specified using the top-level `schema` field
 	// documented above.
 	Schema *string `pulumi:"schema"`
+	// Defines the primary key and foreign keys.
+	// Structure is documented below.
+	TableConstraints *TableTableConstraints `pulumi:"tableConstraints"`
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId string `pulumi:"tableId"`
@@ -630,6 +642,9 @@ type TableArgs struct {
 	// table schema must be specified using the top-level `schema` field
 	// documented above.
 	Schema pulumi.StringPtrInput
+	// Defines the primary key and foreign keys.
+	// Structure is documented below.
+	TableConstraints TableTableConstraintsPtrInput
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
 	TableId pulumi.StringInput
@@ -904,6 +919,12 @@ func (o TableOutput) Schema() pulumi.StringOutput {
 // The URI of the created resource.
 func (o TableOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Defines the primary key and foreign keys.
+// Structure is documented below.
+func (o TableOutput) TableConstraints() TableTableConstraintsPtrOutput {
+	return o.ApplyT(func(v *Table) TableTableConstraintsPtrOutput { return v.TableConstraints }).(TableTableConstraintsPtrOutput)
 }
 
 // A unique ID for the resource.

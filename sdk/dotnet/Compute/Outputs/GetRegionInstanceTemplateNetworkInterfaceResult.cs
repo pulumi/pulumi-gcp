@@ -20,8 +20,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// interfaces on subnet-mode networks. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult> AliasIpRanges;
+        public readonly int InternalIpv6PrefixLength;
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult> Ipv6AccessConfigs;
         public readonly string Ipv6AccessType;
+        public readonly string Ipv6Address;
         /// <summary>
         /// The name of the instance template. One of `name` or `filter` must be provided.
         /// </summary>
@@ -58,9 +60,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult> aliasIpRanges,
 
+            int internalIpv6PrefixLength,
+
             ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult> ipv6AccessConfigs,
 
             string ipv6AccessType,
+
+            string ipv6Address,
 
             string name,
 
@@ -80,8 +86,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;
             Ipv6AccessType = ipv6AccessType;
+            Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
             NetworkIp = networkIp;

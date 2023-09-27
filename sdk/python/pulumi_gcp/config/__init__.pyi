@@ -118,6 +118,8 @@ dataFusionCustomEndpoint: Optional[str]
 
 dataLossPreventionCustomEndpoint: Optional[str]
 
+dataPipelineCustomEndpoint: Optional[str]
+
 databaseMigrationServiceCustomEndpoint: Optional[str]
 
 dataflowCustomEndpoint: Optional[str]
@@ -147,6 +149,8 @@ dnsCustomEndpoint: Optional[str]
 documentAiCustomEndpoint: Optional[str]
 
 documentAiWarehouseCustomEndpoint: Optional[str]
+
+edgenetworkCustomEndpoint: Optional[str]
 
 essentialContactsCustomEndpoint: Optional[str]
 
@@ -282,6 +286,8 @@ sqlCustomEndpoint: Optional[str]
 
 storageCustomEndpoint: Optional[str]
 
+storageInsightsCustomEndpoint: Optional[str]
+
 storageTransferCustomEndpoint: Optional[str]
 
 tagsCustomEndpoint: Optional[str]
@@ -289,6 +295,8 @@ tagsCustomEndpoint: Optional[str]
 tagsLocationCustomEndpoint: Optional[str]
 
 tpuCustomEndpoint: Optional[str]
+
+tpuV2CustomEndpoint: Optional[str]
 
 userProjectOverride: Optional[bool]
 

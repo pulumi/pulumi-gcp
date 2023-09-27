@@ -23,6 +23,7 @@ from .get_project_service_account import *
 from .get_transfer_project_service_account import *
 from .get_transfer_project_servie_account import *
 from .hmac_key import *
+from .insights_report_config import *
 from .notification import *
 from .object_access_control import *
 from .object_acl import *

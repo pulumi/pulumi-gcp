@@ -928,7 +928,7 @@ class Service(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1019,6 +1019,33 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Cloudrunv2 Service Directvpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            launch_stage="BETA",
+            location="us-central1",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello",
+                )],
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                    egress="ALL_TRAFFIC",
+                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
+                        network="default",
+                        subnetwork="default",
+                        tags=[
+                            "tag1",
+                            "tag2",
+                            "tag3",
+                        ],
+                    )],
+                ),
+            ))
+        ```
         ### Cloudrunv2 Service Probes
 
         ```python
@@ -1056,7 +1083,7 @@ class Service(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1233,7 +1260,7 @@ class Service(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1324,6 +1351,33 @@ class Service(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Cloudrunv2 Service Directvpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            launch_stage="BETA",
+            location="us-central1",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello",
+                )],
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                    egress="ALL_TRAFFIC",
+                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
+                        network="default",
+                        subnetwork="default",
+                        tags=[
+                            "tag1",
+                            "tag2",
+                            "tag3",
+                        ],
+                    )],
+                ),
+            ))
+        ```
         ### Cloudrunv2 Service Probes
 
         ```python
@@ -1361,7 +1415,7 @@ class Service(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret-1",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,

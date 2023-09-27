@@ -50,14 +50,14 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The timestamp at which this database was created.
+     * Output only. The timestamp at which this database was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The timestamp at which this database was created.
+     * @return Output only. The timestamp at which this database was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -65,7 +65,43 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This checksum is computed by the server based on the value of other fields,
+     * State of delete protection for the database.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
+    @Import(name="deleteProtectionState")
+    private @Nullable Output<String> deleteProtectionState;
+
+    /**
+     * @return State of delete protection for the database.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> deleteProtectionState() {
+        return Optional.ofNullable(this.deleteProtectionState);
+    }
+
+    /**
+     * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+     * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="earliestVersionTime")
+    private @Nullable Output<String> earliestVersionTime;
+
+    /**
+     * @return Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+     * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> earliestVersionTime() {
+        return Optional.ofNullable(this.earliestVersionTime);
+    }
+
+    /**
+     * Output only. This checksum is computed by the server based on the value of other fields,
      * and may be sent on update and delete requests to ensure the client has an
      * up-to-date value before proceeding.
      * 
@@ -74,7 +110,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> etag;
 
     /**
-     * @return This checksum is computed by the server based on the value of other fields,
+     * @return Output only. This checksum is computed by the server based on the value of other fields,
      * and may be sent on update and delete requests to ensure the client has an
      * up-to-date value before proceeding.
      * 
@@ -105,7 +141,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location of the database. Available databases are listed at
+     * The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
@@ -113,7 +149,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> locationId;
 
     /**
-     * @return The location of the database. Available databases are listed at
+     * @return The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
@@ -144,6 +180,33 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Whether to enable the PITR feature on this database.
+     * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+     * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+     * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+     * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+     * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * 
+     */
+    @Import(name="pointInTimeRecoveryEnablement")
+    private @Nullable Output<String> pointInTimeRecoveryEnablement;
+
+    /**
+     * @return Whether to enable the PITR feature on this database.
+     * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+     * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+     * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+     * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+     * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> pointInTimeRecoveryEnablement() {
+        return Optional.ofNullable(this.pointInTimeRecoveryEnablement);
     }
 
     /**
@@ -188,18 +251,75 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Output only. The system-generated UUID4 for this Database.
+     * 
+     */
+    @Import(name="uid")
+    private @Nullable Output<String> uid;
+
+    /**
+     * @return Output only. The system-generated UUID4 for this Database.
+     * 
+     */
+    public Optional<Output<String>> uid() {
+        return Optional.ofNullable(this.uid);
+    }
+
+    /**
+     * Output only. The timestamp at which this database was most recently updated.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return Output only. The timestamp at which this database was most recently updated.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
+     * Output only. The period during which past versions of data are retained in the database.
+     * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+     * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Import(name="versionRetentionPeriod")
+    private @Nullable Output<String> versionRetentionPeriod;
+
+    /**
+     * @return Output only. The period during which past versions of data are retained in the database.
+     * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+     * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<Output<String>> versionRetentionPeriod() {
+        return Optional.ofNullable(this.versionRetentionPeriod);
+    }
+
     private DatabaseState() {}
 
     private DatabaseState(DatabaseState $) {
         this.appEngineIntegrationMode = $.appEngineIntegrationMode;
         this.concurrencyMode = $.concurrencyMode;
         this.createTime = $.createTime;
+        this.deleteProtectionState = $.deleteProtectionState;
+        this.earliestVersionTime = $.earliestVersionTime;
         this.etag = $.etag;
         this.keyPrefix = $.keyPrefix;
         this.locationId = $.locationId;
         this.name = $.name;
+        this.pointInTimeRecoveryEnablement = $.pointInTimeRecoveryEnablement;
         this.project = $.project;
         this.type = $.type;
+        this.uid = $.uid;
+        this.updateTime = $.updateTime;
+        this.versionRetentionPeriod = $.versionRetentionPeriod;
     }
 
     public static Builder builder() {
@@ -267,7 +387,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The timestamp at which this database was created.
+         * @param createTime Output only. The timestamp at which this database was created.
          * 
          * @return builder
          * 
@@ -278,7 +398,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The timestamp at which this database was created.
+         * @param createTime Output only. The timestamp at which this database was created.
          * 
          * @return builder
          * 
@@ -288,7 +408,55 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag This checksum is computed by the server based on the value of other fields,
+         * @param deleteProtectionState State of delete protection for the database.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteProtectionState(@Nullable Output<String> deleteProtectionState) {
+            $.deleteProtectionState = deleteProtectionState;
+            return this;
+        }
+
+        /**
+         * @param deleteProtectionState State of delete protection for the database.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteProtectionState(String deleteProtectionState) {
+            return deleteProtectionState(Output.of(deleteProtectionState));
+        }
+
+        /**
+         * @param earliestVersionTime Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+         * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder earliestVersionTime(@Nullable Output<String> earliestVersionTime) {
+            $.earliestVersionTime = earliestVersionTime;
+            return this;
+        }
+
+        /**
+         * @param earliestVersionTime Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+         * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder earliestVersionTime(String earliestVersionTime) {
+            return earliestVersionTime(Output.of(earliestVersionTime));
+        }
+
+        /**
+         * @param etag Output only. This checksum is computed by the server based on the value of other fields,
          * and may be sent on update and delete requests to ensure the client has an
          * up-to-date value before proceeding.
          * 
@@ -301,7 +469,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag This checksum is computed by the server based on the value of other fields,
+         * @param etag Output only. This checksum is computed by the server based on the value of other fields,
          * and may be sent on update and delete requests to ensure the client has an
          * up-to-date value before proceeding.
          * 
@@ -340,7 +508,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locationId The location of the database. Available databases are listed at
+         * @param locationId The location of the database. Available locations are listed at
          * https://cloud.google.com/firestore/docs/locations.
          * 
          * @return builder
@@ -352,7 +520,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locationId The location of the database. Available databases are listed at
+         * @param locationId The location of the database. Available locations are listed at
          * https://cloud.google.com/firestore/docs/locations.
          * 
          * @return builder
@@ -391,6 +559,39 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param pointInTimeRecoveryEnablement Whether to enable the PITR feature on this database.
+         * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+         * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+         * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+         * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+         * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pointInTimeRecoveryEnablement(@Nullable Output<String> pointInTimeRecoveryEnablement) {
+            $.pointInTimeRecoveryEnablement = pointInTimeRecoveryEnablement;
+            return this;
+        }
+
+        /**
+         * @param pointInTimeRecoveryEnablement Whether to enable the PITR feature on this database.
+         * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+         * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+         * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+         * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+         * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pointInTimeRecoveryEnablement(String pointInTimeRecoveryEnablement) {
+            return pointInTimeRecoveryEnablement(Output.of(pointInTimeRecoveryEnablement));
         }
 
         /**
@@ -445,6 +646,75 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param uid Output only. The system-generated UUID4 for this Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(@Nullable Output<String> uid) {
+            $.uid = uid;
+            return this;
+        }
+
+        /**
+         * @param uid Output only. The system-generated UUID4 for this Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uid(String uid) {
+            return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime Output only. The timestamp at which this database was most recently updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime Output only. The timestamp at which this database was most recently updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param versionRetentionPeriod Output only. The period during which past versions of data are retained in the database.
+         * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+         * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionRetentionPeriod(@Nullable Output<String> versionRetentionPeriod) {
+            $.versionRetentionPeriod = versionRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param versionRetentionPeriod Output only. The period during which past versions of data are retained in the database.
+         * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+         * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionRetentionPeriod(String versionRetentionPeriod) {
+            return versionRetentionPeriod(Output.of(versionRetentionPeriod));
         }
 
         public DatabaseState build() {

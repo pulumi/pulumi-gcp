@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class MembershipBindingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MembershipBindingArgs Empty = new MembershipBindingArgs();
+
+    /**
+     * Labels for this Membership binding.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Membership binding.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
 
     /**
      * Location of the membership
@@ -101,6 +117,7 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
     private MembershipBindingArgs() {}
 
     private MembershipBindingArgs(MembershipBindingArgs $) {
+        this.labels = $.labels;
         this.location = $.location;
         this.membershipBindingId = $.membershipBindingId;
         this.membershipId = $.membershipId;
@@ -124,6 +141,27 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(MembershipBindingArgs defaults) {
             $ = new MembershipBindingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param labels Labels for this Membership binding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this Membership binding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

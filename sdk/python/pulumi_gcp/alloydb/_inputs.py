@@ -27,6 +27,7 @@ __all__ = [
     'ClusterEncryptionInfoArgs',
     'ClusterInitialUserArgs',
     'ClusterMigrationSourceArgs',
+    'ClusterNetworkConfigArgs',
     'ClusterRestoreBackupSourceArgs',
     'ClusterRestoreContinuousBackupSourceArgs',
     'InstanceMachineConfigArgs',
@@ -818,6 +819,49 @@ class ClusterMigrationSourceArgs:
     @source_type.setter
     def source_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_type", value)
+
+
+@pulumi.input_type
+class ClusterNetworkConfigArgs:
+    def __init__(__self__, *,
+                 allocated_ip_range: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] allocated_ip_range: The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+               If set, the instance IPs for this cluster will be created in the allocated range.
+        :param pulumi.Input[str] network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+               It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        if allocated_ip_range is not None:
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+        If set, the instance IPs for this cluster will be created in the allocated range.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @allocated_ip_range.setter
+    def allocated_ip_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocated_ip_range", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+        It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
 
 
 @pulumi.input_type

@@ -10,6 +10,34 @@ import * as utilities from "../utilities";
  * The NetworkConnectivity Spoke resource
  *
  * ## Example Usage
+ * ### Linked_vpc_network
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {autoCreateSubnetworks: false});
+ * const basicHub = new gcp.networkconnectivity.Hub("basicHub", {
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     location: "global",
+ *     description: "A sample spoke with a linked routher appliance instance",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedVpcNetwork: {
+ *         excludeExportRanges: [
+ *             "198.51.100.0/24",
+ *             "10.10.0.0/16",
+ *         ],
+ *         uri: network.selfLink,
+ *     },
+ * });
+ * ```
  * ### Router_appliance
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -130,6 +158,10 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly linkedRouterApplianceInstances!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedRouterApplianceInstances | undefined>;
     /**
+     * VPC network that is associated with the spoke.
+     */
+    public readonly linkedVpcNetwork!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpcNetwork | undefined>;
+    /**
      * The URIs of linked VPN tunnel resources
      */
     public readonly linkedVpnTunnels!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
@@ -177,6 +209,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = state ? state.linkedInterconnectAttachments : undefined;
             resourceInputs["linkedRouterApplianceInstances"] = state ? state.linkedRouterApplianceInstances : undefined;
+            resourceInputs["linkedVpcNetwork"] = state ? state.linkedVpcNetwork : undefined;
             resourceInputs["linkedVpnTunnels"] = state ? state.linkedVpnTunnels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -197,6 +230,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
             resourceInputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
+            resourceInputs["linkedVpcNetwork"] = args ? args.linkedVpcNetwork : undefined;
             resourceInputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -239,6 +273,10 @@ export interface SpokeState {
      * The URIs of linked Router appliance resources
      */
     linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances>;
+    /**
+     * VPC network that is associated with the spoke.
+     */
+    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork>;
     /**
      * The URIs of linked VPN tunnel resources
      */
@@ -293,6 +331,10 @@ export interface SpokeArgs {
      * The URIs of linked Router appliance resources
      */
     linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances>;
+    /**
+     * VPC network that is associated with the spoke.
+     */
+    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork>;
     /**
      * The URIs of linked VPN tunnel resources
      */

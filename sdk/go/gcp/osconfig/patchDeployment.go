@@ -303,6 +303,9 @@ import (
 //							pulumi.String("SECURITY"),
 //							pulumi.String("UPDATE"),
 //						},
+//						Excludes: pulumi.StringArray{
+//							pulumi.String("5012170"),
+//						},
 //					},
 //					Yum: &osconfig.PatchDeploymentPatchConfigYumArgs{
 //						Excludes: pulumi.StringArray{

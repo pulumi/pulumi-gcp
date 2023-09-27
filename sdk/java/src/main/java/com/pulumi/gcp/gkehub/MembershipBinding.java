@@ -12,6 +12,8 @@ import com.pulumi.gcp.gkehub.MembershipBindingArgs;
 import com.pulumi.gcp.gkehub.outputs.MembershipBindingState;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -71,6 +73,20 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Labels for this Membership binding.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Membership binding.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * Location of the membership

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.NamespaceStateArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,6 +49,21 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Labels for this Namespace.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Namespace.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The resource name for the namespace
      * 
      */
@@ -60,6 +76,29 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    @Import(name="namespaceLabels")
+    private @Nullable Output<Map<String,String>> namespaceLabels;
+
+    /**
+     * @return Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> namespaceLabels() {
+        return Optional.ofNullable(this.namespaceLabels);
     }
 
     /**
@@ -180,7 +219,9 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     private NamespaceState(NamespaceState $) {
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
+        this.labels = $.labels;
         this.name = $.name;
+        this.namespaceLabels = $.namespaceLabels;
         this.project = $.project;
         this.scope = $.scope;
         this.scopeId = $.scopeId;
@@ -251,6 +292,27 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param labels Labels for this Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
          * @param name The resource name for the namespace
          * 
          * @return builder
@@ -269,6 +331,35 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param namespaceLabels Namespace-level cluster namespace labels. These labels are applied
+         * to the related namespace of the member clusters bound to the parent
+         * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+         * resource) take precedence over Namespace-level labels if they share
+         * a key. Keys and values must be Kubernetes-conformant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceLabels(@Nullable Output<Map<String,String>> namespaceLabels) {
+            $.namespaceLabels = namespaceLabels;
+            return this;
+        }
+
+        /**
+         * @param namespaceLabels Namespace-level cluster namespace labels. These labels are applied
+         * to the related namespace of the member clusters bound to the parent
+         * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+         * resource) take precedence over Namespace-level labels if they share
+         * a key. Keys and values must be Kubernetes-conformant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceLabels(Map<String,String> namespaceLabels) {
+            return namespaceLabels(Output.of(namespaceLabels));
         }
 
         /**

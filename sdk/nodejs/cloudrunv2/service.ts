@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "secret-1",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
@@ -142,6 +142,34 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Directvpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     launchStage: "BETA",
+ *     location: "us-central1",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *         vpcAccess: {
+ *             egress: "ALL_TRAFFIC",
+ *             networkInterfaces: [{
+ *                 network: "default",
+ *                 subnetwork: "default",
+ *                 tags: [
+ *                     "tag1",
+ *                     "tag2",
+ *                     "tag3",
+ *                 ],
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Service Probes
  *
  * ```typescript
@@ -180,7 +208,7 @@ import * as utilities from "../utilities";
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "secret-1",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {

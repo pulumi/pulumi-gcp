@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -103,10 +104,64 @@ import javax.annotation.Nullable;
  *             ))
  *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .secretId(&#34;secret&#34;)
  *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secret With Automatic Cmek
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoCustomerManagedEncryptionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var kms_secret_binding = new CryptoKeyIAMMember(&#34;kms-secret-binding&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId(&#34;kms-key&#34;)
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-secretmanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var secret_with_automatic_cmek = new Secret(&#34;secret-with-automatic-cmek&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .customerManagedEncryption(SecretReplicationAutoCustomerManagedEncryptionArgs.builder()
+ *                         .kmsKeyName(&#34;kms-key&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(kms_secret_binding)
+ *                 .build());
  * 
  *     }
  * }

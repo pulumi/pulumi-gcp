@@ -128,7 +128,7 @@ type Trigger struct {
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
-	EventDataContentType pulumi.StringPtrOutput `pulumi:"eventDataContentType"`
+	EventDataContentType pulumi.StringOutput `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
@@ -441,8 +441,8 @@ func (o TriggerOutput) Etag() pulumi.StringOutput {
 }
 
 // Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
-func (o TriggerOutput) EventDataContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.EventDataContentType }).(pulumi.StringPtrOutput)
+func (o TriggerOutput) EventDataContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.EventDataContentType }).(pulumi.StringOutput)
 }
 
 // Optional. User labels attached to the triggers that can be used to group resources.

@@ -752,8 +752,6 @@ class AutoscalarAutoscalingPolicy(dict):
         :param Sequence['AutoscalarAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param str mode: Defines operating mode for this policy.
-               Default value is `ON`.
-               Possible values are: `OFF`, `ONLY_UP`, `ON`.
         :param 'AutoscalarAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -854,8 +852,6 @@ class AutoscalarAutoscalingPolicy(dict):
     def mode(self) -> Optional[str]:
         """
         Defines operating mode for this policy.
-        Default value is `ON`.
-        Possible values are: `OFF`, `ONLY_UP`, `ON`.
         """
         return pulumi.get(self, "mode")
 
@@ -1522,8 +1518,6 @@ class AutoscalerAutoscalingPolicy(dict):
         :param Sequence['AutoscalerAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param str mode: Defines operating mode for this policy.
-               Default value is `ON`.
-               Possible values are: `OFF`, `ONLY_UP`, `ON`.
         :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -1624,8 +1618,6 @@ class AutoscalerAutoscalingPolicy(dict):
     def mode(self) -> Optional[str]:
         """
         Defines operating mode for this policy.
-        Default value is `ON`.
-        Possible values are: `OFF`, `ONLY_UP`, `ON`.
         """
         return pulumi.get(self, "mode")
 
@@ -7390,10 +7382,14 @@ class InstanceFromMachineImageNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "internalIpv6PrefixLength":
+            suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
             suggest = "ipv6_access_configs"
         elif key == "ipv6AccessType":
             suggest = "ipv6_access_type"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
@@ -7419,8 +7415,10 @@ class InstanceFromMachineImageNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceAliasIpRange']] = None,
+                 internal_ipv6_prefix_length: Optional[int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[str] = None,
+                 ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
@@ -7437,10 +7435,14 @@ class InstanceFromMachineImageNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -7469,6 +7471,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[int]:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[Sequence['outputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig']]:
         return pulumi.get(self, "ipv6_access_configs")
@@ -7477,6 +7484,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[str]:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -8416,10 +8428,14 @@ class InstanceFromTemplateNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "internalIpv6PrefixLength":
+            suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
             suggest = "ipv6_access_configs"
         elif key == "ipv6AccessType":
             suggest = "ipv6_access_type"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
@@ -8445,8 +8461,10 @@ class InstanceFromTemplateNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceAliasIpRange']] = None,
+                 internal_ipv6_prefix_length: Optional[int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[str] = None,
+                 ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
@@ -8463,10 +8481,14 @@ class InstanceFromTemplateNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -8495,6 +8517,11 @@ class InstanceFromTemplateNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[int]:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[Sequence['outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig']]:
         return pulumi.get(self, "ipv6_access_configs")
@@ -8503,6 +8530,11 @@ class InstanceFromTemplateNetworkInterface(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[str]:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -10031,10 +10063,14 @@ class InstanceNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "internalIpv6PrefixLength":
+            suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
             suggest = "ipv6_access_configs"
         elif key == "ipv6AccessType":
             suggest = "ipv6_access_type"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
@@ -10060,8 +10096,10 @@ class InstanceNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceNetworkInterfaceAliasIpRange']] = None,
+                 internal_ipv6_prefix_length: Optional[int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[str] = None,
+                 ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
@@ -10105,10 +10143,14 @@ class InstanceNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -10142,6 +10184,11 @@ class InstanceNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[int]:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[Sequence['outputs.InstanceNetworkInterfaceIpv6AccessConfig']]:
         """
@@ -10159,6 +10206,11 @@ class InstanceNetworkInterface(dict):
         This field is always inherited from its subnetwork.
         """
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -11717,10 +11769,14 @@ class InstanceTemplateNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "internalIpv6PrefixLength":
+            suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
             suggest = "ipv6_access_configs"
         elif key == "ipv6AccessType":
             suggest = "ipv6_access_type"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
         elif key == "networkAttachment":
             suggest = "network_attachment"
         elif key == "networkIp":
@@ -11748,8 +11804,10 @@ class InstanceTemplateNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceAliasIpRange']] = None,
+                 internal_ipv6_prefix_length: Optional[int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[str] = None,
+                 ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_attachment: Optional[str] = None,
@@ -11792,10 +11850,14 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -11839,6 +11901,11 @@ class InstanceTemplateNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[int]:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[Sequence['outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig']]:
         """
@@ -11852,6 +11919,11 @@ class InstanceTemplateNetworkInterface(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[str]:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -14520,8 +14592,6 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         :param Sequence['RegionAutoscalerAutoscalingPolicyMetricArgs'] metrics: Configuration parameters of autoscaling based on a custom metric.
                Structure is documented below.
         :param str mode: Defines operating mode for this policy.
-               Default value is `ON`.
-               Possible values are: `OFF`, `ONLY_UP`, `ON`.
         :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -14622,8 +14692,6 @@ class RegionAutoscalerAutoscalingPolicy(dict):
     def mode(self) -> Optional[str]:
         """
         Defines operating mode for this policy.
-        Default value is `ON`.
-        Possible values are: `OFF`, `ONLY_UP`, `ON`.
         """
         return pulumi.get(self, "mode")
 
@@ -19688,10 +19756,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
             suggest = "access_configs"
         elif key == "aliasIpRanges":
             suggest = "alias_ip_ranges"
+        elif key == "internalIpv6PrefixLength":
+            suggest = "internal_ipv6_prefix_length"
         elif key == "ipv6AccessConfigs":
             suggest = "ipv6_access_configs"
         elif key == "ipv6AccessType":
             suggest = "ipv6_access_type"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
         elif key == "networkIp":
             suggest = "network_ip"
         elif key == "nicType":
@@ -19717,8 +19789,10 @@ class RegionInstanceTemplateNetworkInterface(dict):
     def __init__(__self__, *,
                  access_configs: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig']] = None,
                  alias_ip_ranges: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAliasIpRange']] = None,
+                 internal_ipv6_prefix_length: Optional[int] = None,
                  ipv6_access_configs: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig']] = None,
                  ipv6_access_type: Optional[str] = None,
+                 ipv6_address: Optional[str] = None,
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
@@ -19752,10 +19826,14 @@ class RegionInstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -19789,6 +19867,11 @@ class RegionInstanceTemplateNetworkInterface(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[int]:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig']]:
         """
@@ -19802,6 +19885,11 @@ class RegionInstanceTemplateNetworkInterface(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[str]:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -39578,8 +39666,10 @@ class GetInstanceNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetInstanceNetworkInterfaceAliasIpRangeResult'],
+                 internal_ipv6_prefix_length: int,
                  ipv6_access_configs: Sequence['outputs.GetInstanceNetworkInterfaceIpv6AccessConfigResult'],
                  ipv6_access_type: str,
+                 ipv6_address: str,
                  name: str,
                  network: str,
                  network_ip: str,
@@ -39600,8 +39690,10 @@ class GetInstanceNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
@@ -39629,6 +39721,11 @@ class GetInstanceNetworkInterfaceResult(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> int:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Sequence['outputs.GetInstanceNetworkInterfaceIpv6AccessConfigResult']:
         return pulumi.get(self, "ipv6_access_configs")
@@ -39637,6 +39734,11 @@ class GetInstanceNetworkInterfaceResult(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> str:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -40539,8 +40641,10 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
+                 internal_ipv6_prefix_length: int,
                  ipv6_access_configs: Sequence['outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult'],
                  ipv6_access_type: str,
+                 ipv6_address: str,
                  name: str,
                  network: str,
                  network_attachment: str,
@@ -40574,8 +40678,10 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_attachment", network_attachment)
@@ -40610,6 +40716,11 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> int:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult']:
         return pulumi.get(self, "ipv6_access_configs")
@@ -40618,6 +40729,11 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> str:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -41607,8 +41723,10 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult'],
                  alias_ip_ranges: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
+                 internal_ipv6_prefix_length: int,
                  ipv6_access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult'],
                  ipv6_access_type: str,
+                 ipv6_address: str,
                  name: str,
                  network: str,
                  network_ip: str,
@@ -41635,8 +41753,10 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         """
         pulumi.set(__self__, "access_configs", access_configs)
         pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
@@ -41662,6 +41782,11 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
         return pulumi.get(self, "alias_ip_ranges")
 
     @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> int:
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult']:
         return pulumi.get(self, "ipv6_access_configs")
@@ -41670,6 +41795,11 @@ class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> str:
         return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter

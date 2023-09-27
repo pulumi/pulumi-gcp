@@ -9,6 +9,7 @@ import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableMaterializedViewArgs;
 import com.pulumi.gcp.bigquery.inputs.TableRangePartitioningArgs;
+import com.pulumi.gcp.bigquery.inputs.TableTableConstraintsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTimePartitioningArgs;
 import com.pulumi.gcp.bigquery.inputs.TableViewArgs;
 import java.lang.Boolean;
@@ -444,6 +445,23 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the primary key and foreign keys.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tableConstraints")
+    private @Nullable Output<TableTableConstraintsArgs> tableConstraints;
+
+    /**
+     * @return Defines the primary key and foreign keys.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TableTableConstraintsArgs>> tableConstraints() {
+        return Optional.ofNullable(this.tableConstraints);
+    }
+
+    /**
      * A unique ID for the resource.
      * Changing this forces a new resource to be created.
      * 
@@ -536,6 +554,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.rangePartitioning = $.rangePartitioning;
         this.schema = $.schema;
         this.selfLink = $.selfLink;
+        this.tableConstraints = $.tableConstraints;
         this.tableId = $.tableId;
         this.timePartitioning = $.timePartitioning;
         this.type = $.type;
@@ -1120,6 +1139,29 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param tableConstraints Defines the primary key and foreign keys.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableConstraints(@Nullable Output<TableTableConstraintsArgs> tableConstraints) {
+            $.tableConstraints = tableConstraints;
+            return this;
+        }
+
+        /**
+         * @param tableConstraints Defines the primary key and foreign keys.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableConstraints(TableTableConstraintsArgs tableConstraints) {
+            return tableConstraints(Output.of(tableConstraints));
         }
 
         /**

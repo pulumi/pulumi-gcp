@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///         SecretId = "secret-name",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 

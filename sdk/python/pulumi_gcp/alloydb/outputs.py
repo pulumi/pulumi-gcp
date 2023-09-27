@@ -28,6 +28,7 @@ __all__ = [
     'ClusterEncryptionInfo',
     'ClusterInitialUser',
     'ClusterMigrationSource',
+    'ClusterNetworkConfig',
     'ClusterRestoreBackupSource',
     'ClusterRestoreContinuousBackupSource',
     'InstanceMachineConfig',
@@ -931,6 +932,58 @@ class ClusterMigrationSource(dict):
         Type of migration source.
         """
         return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class ClusterNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedIpRange":
+            suggest = "allocated_ip_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_ip_range: Optional[str] = None,
+                 network: Optional[str] = None):
+        """
+        :param str allocated_ip_range: The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+               If set, the instance IPs for this cluster will be created in the allocated range.
+        :param str network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+               It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        if allocated_ip_range is not None:
+            pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter(name="allocatedIpRange")
+    def allocated_ip_range(self) -> Optional[str]:
+        """
+        The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+        If set, the instance IPs for this cluster will be created in the allocated range.
+        """
+        return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+        It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+        """
+        return pulumi.get(self, "network")
 
 
 @pulumi.output_type

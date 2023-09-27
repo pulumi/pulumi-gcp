@@ -8,6 +8,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigAdvancedMach
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigConfidentialNode;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigFastSocket;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGvnic;
@@ -37,6 +38,7 @@ public final class GetClusterNodePoolNodeConfig {
     private String diskType;
     private List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
     private List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
+    private List<GetClusterNodePoolNodeConfigFastSocket> fastSockets;
     private List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs;
     private List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
     private List<GetClusterNodePoolNodeConfigGvnic> gvnics;
@@ -86,6 +88,9 @@ public final class GetClusterNodePoolNodeConfig {
     }
     public List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs() {
         return this.ephemeralStorageLocalSsdConfigs;
+    }
+    public List<GetClusterNodePoolNodeConfigFastSocket> fastSockets() {
+        return this.fastSockets;
     }
     public List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs() {
         return this.gcfsConfigs;
@@ -185,6 +190,7 @@ public final class GetClusterNodePoolNodeConfig {
         private String diskType;
         private List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
         private List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
+        private List<GetClusterNodePoolNodeConfigFastSocket> fastSockets;
         private List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs;
         private List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private List<GetClusterNodePoolNodeConfigGvnic> gvnics;
@@ -222,6 +228,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
     	      this.ephemeralStorageLocalSsdConfigs = defaults.ephemeralStorageLocalSsdConfigs;
+    	      this.fastSockets = defaults.fastSockets;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnics = defaults.gvnics;
@@ -297,6 +304,14 @@ public final class GetClusterNodePoolNodeConfig {
         }
         public Builder ephemeralStorageLocalSsdConfigs(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig... ephemeralStorageLocalSsdConfigs) {
             return ephemeralStorageLocalSsdConfigs(List.of(ephemeralStorageLocalSsdConfigs));
+        }
+        @CustomType.Setter
+        public Builder fastSockets(List<GetClusterNodePoolNodeConfigFastSocket> fastSockets) {
+            this.fastSockets = Objects.requireNonNull(fastSockets);
+            return this;
+        }
+        public Builder fastSockets(GetClusterNodePoolNodeConfigFastSocket... fastSockets) {
+            return fastSockets(List.of(fastSockets));
         }
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs) {
@@ -487,6 +502,7 @@ public final class GetClusterNodePoolNodeConfig {
             o.diskType = diskType;
             o.ephemeralStorageConfigs = ephemeralStorageConfigs;
             o.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
+            o.fastSockets = fastSockets;
             o.gcfsConfigs = gcfsConfigs;
             o.guestAccelerators = guestAccelerators;
             o.gvnics = gvnics;

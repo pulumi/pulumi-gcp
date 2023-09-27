@@ -22,6 +22,7 @@ class SpokeArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
+                 linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -33,6 +34,7 @@ class SpokeArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input['SpokeLinkedVpcNetworkArgs'] linked_vpc_network: VPC network that is associated with the spoke.
         :param pulumi.Input['SpokeLinkedVpnTunnelsArgs'] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The project for the resource
@@ -47,6 +49,8 @@ class SpokeArgs:
             pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
         if linked_router_appliance_instances is not None:
             pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
+        if linked_vpc_network is not None:
+            pulumi.set(__self__, "linked_vpc_network", linked_vpc_network)
         if linked_vpn_tunnels is not None:
             pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if name is not None:
@@ -127,6 +131,18 @@ class SpokeArgs:
         pulumi.set(self, "linked_router_appliance_instances", value)
 
     @property
+    @pulumi.getter(name="linkedVpcNetwork")
+    def linked_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]:
+        """
+        VPC network that is associated with the spoke.
+        """
+        return pulumi.get(self, "linked_vpc_network")
+
+    @linked_vpc_network.setter
+    def linked_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]):
+        pulumi.set(self, "linked_vpc_network", value)
+
+    @property
     @pulumi.getter(name="linkedVpnTunnels")
     def linked_vpn_tunnels(self) -> Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']]:
         """
@@ -172,6 +188,7 @@ class _SpokeState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
+                 linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -187,6 +204,7 @@ class _SpokeState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input['SpokeLinkedVpcNetworkArgs'] linked_vpc_network: VPC network that is associated with the spoke.
         :param pulumi.Input['SpokeLinkedVpnTunnelsArgs'] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
@@ -207,6 +225,8 @@ class _SpokeState:
             pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
         if linked_router_appliance_instances is not None:
             pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
+        if linked_vpc_network is not None:
+            pulumi.set(__self__, "linked_vpc_network", linked_vpc_network)
         if linked_vpn_tunnels is not None:
             pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if location is not None:
@@ -293,6 +313,18 @@ class _SpokeState:
     @linked_router_appliance_instances.setter
     def linked_router_appliance_instances(self, value: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]):
         pulumi.set(self, "linked_router_appliance_instances", value)
+
+    @property
+    @pulumi.getter(name="linkedVpcNetwork")
+    def linked_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]:
+        """
+        VPC network that is associated with the spoke.
+        """
+        return pulumi.get(self, "linked_vpc_network")
+
+    @linked_vpc_network.setter
+    def linked_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']]):
+        pulumi.set(self, "linked_vpc_network", value)
 
     @property
     @pulumi.getter(name="linkedVpnTunnels")
@@ -389,6 +421,7 @@ class Spoke(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']]] = None,
+                 linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedVpnTunnelsArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -398,6 +431,32 @@ class Spoke(pulumi.CustomResource):
         The NetworkConnectivity Spoke resource
 
         ## Example Usage
+        ### Linked_vpc_network
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            location="global",
+            description="A sample spoke with a linked routher appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
+                exclude_export_ranges=[
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                uri=network.self_link,
+            ))
+        ```
         ### Router_appliance
         ```python
         import pulumi
@@ -468,6 +527,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']] linked_vpc_network: VPC network that is associated with the spoke.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedVpnTunnelsArgs']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
@@ -483,6 +543,32 @@ class Spoke(pulumi.CustomResource):
         The NetworkConnectivity Spoke resource
 
         ## Example Usage
+        ### Linked_vpc_network
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network", auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basicHub",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            location="global",
+            description="A sample spoke with a linked routher appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network=gcp.networkconnectivity.SpokeLinkedVpcNetworkArgs(
+                exclude_export_ranges=[
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                uri=network.self_link,
+            ))
+        ```
         ### Router_appliance
         ```python
         import pulumi
@@ -566,6 +652,7 @@ class Spoke(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']]] = None,
+                 linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedVpnTunnelsArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -586,6 +673,7 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
             __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
+            __props__.__dict__["linked_vpc_network"] = linked_vpc_network
             __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -612,6 +700,7 @@ class Spoke(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linked_interconnect_attachments: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']]] = None,
             linked_router_appliance_instances: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']]] = None,
+            linked_vpc_network: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']]] = None,
             linked_vpn_tunnels: Optional[pulumi.Input[pulumi.InputType['SpokeLinkedVpnTunnelsArgs']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -632,6 +721,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[pulumi.InputType['SpokeLinkedInterconnectAttachmentsArgs']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input[pulumi.InputType['SpokeLinkedVpcNetworkArgs']] linked_vpc_network: VPC network that is associated with the spoke.
         :param pulumi.Input[pulumi.InputType['SpokeLinkedVpnTunnelsArgs']] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
@@ -650,6 +740,7 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
         __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
+        __props__.__dict__["linked_vpc_network"] = linked_vpc_network
         __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -706,6 +797,14 @@ class Spoke(pulumi.CustomResource):
         The URIs of linked Router appliance resources
         """
         return pulumi.get(self, "linked_router_appliance_instances")
+
+    @property
+    @pulumi.getter(name="linkedVpcNetwork")
+    def linked_vpc_network(self) -> pulumi.Output[Optional['outputs.SpokeLinkedVpcNetwork']]:
+        """
+        VPC network that is associated with the spoke.
+        """
+        return pulumi.get(self, "linked_vpc_network")
 
     @property
     @pulumi.getter(name="linkedVpnTunnels")

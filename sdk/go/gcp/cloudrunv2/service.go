@@ -77,7 +77,7 @@ import (
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-1"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Automatic: pulumi.Bool(true),
+//					Auto: nil,
 //				},
 //			})
 //			if err != nil {
@@ -240,6 +240,53 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Directvpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				LaunchStage: pulumi.String("BETA"),
+//				Location:    pulumi.String("us-central1"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//					VpcAccess: &cloudrunv2.ServiceTemplateVpcAccessArgs{
+//						Egress: pulumi.String("ALL_TRAFFIC"),
+//						NetworkInterfaces: cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArray{
+//							&cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs{
+//								Network:    pulumi.String("default"),
+//								Subnetwork: pulumi.String("default"),
+//								Tags: pulumi.StringArray{
+//									pulumi.String("tag1"),
+//									pulumi.String("tag2"),
+//									pulumi.String("tag3"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudrunv2 Service Probes
 //
 // ```go
@@ -307,7 +354,7 @@ import (
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-1"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Automatic: pulumi.Bool(true),
+//					Auto: nil,
 //				},
 //			})
 //			if err != nil {

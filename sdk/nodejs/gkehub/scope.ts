@@ -22,7 +22,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope%{random_suffix}"});
+ * const scope = new gcp.gkehub.Scope("scope", {
+ *     labels: {
+ *         keya: "valuea",
+ *         keyb: "valueb",
+ *         keyc: "valuec",
+ *     },
+ *     scopeId: "tf-test-scope%{random_suffix}",
+ * });
  * ```
  *
  * ## Import
@@ -78,6 +85,10 @@ export class Scope extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
+     * Labels for this Scope.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The unique identifier of the scope
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -122,6 +133,7 @@ export class Scope extends pulumi.CustomResource {
             const state = argsOrState as ScopeState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["scopeId"] = state ? state.scopeId : undefined;
@@ -133,6 +145,7 @@ export class Scope extends pulumi.CustomResource {
             if ((!args || args.scopeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopeId'");
             }
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scopeId"] = args ? args.scopeId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -159,6 +172,10 @@ export interface ScopeState {
      * Time the Scope was deleted in UTC.
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * Labels for this Scope.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The unique identifier of the scope
      */
@@ -194,6 +211,10 @@ export interface ScopeState {
  * The set of arguments for constructing a Scope resource.
  */
 export interface ScopeArgs {
+    /**
+     * Labels for this Scope.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

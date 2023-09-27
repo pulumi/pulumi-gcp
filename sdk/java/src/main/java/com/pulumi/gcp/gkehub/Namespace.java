@@ -12,6 +12,8 @@ import com.pulumi.gcp.gkehub.NamespaceArgs;
 import com.pulumi.gcp.gkehub.outputs.NamespaceState;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -73,6 +75,20 @@ public class Namespace extends com.pulumi.resources.CustomResource {
         return this.deleteTime;
     }
     /**
+     * Labels for this Namespace.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Namespace.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
+    }
+    /**
      * The resource name for the namespace
      * 
      */
@@ -85,6 +101,28 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    @Export(name="namespaceLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> namespaceLabels;
+
+    /**
+     * @return Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> namespaceLabels() {
+        return Codegen.optional(this.namespaceLabels);
     }
     /**
      * The ID of the project in which the resource belongs.

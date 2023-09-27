@@ -64,6 +64,22 @@ import (
 //			_, err = identityplatform.NewConfig(ctx, "defaultConfig", &identityplatform.ConfigArgs{
 //				Project:                  defaultProject.ProjectId,
 //				AutodeleteAnonymousUsers: pulumi.Bool(true),
+//				SignIn: &identityplatform.ConfigSignInArgs{
+//					AllowDuplicateEmails: pulumi.Bool(true),
+//					Anonymous: &identityplatform.ConfigSignInAnonymousArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					Email: &identityplatform.ConfigSignInEmailArgs{
+//						Enabled:          pulumi.Bool(true),
+//						PasswordRequired: pulumi.Bool(false),
+//					},
+//					PhoneNumber: &identityplatform.ConfigSignInPhoneNumberArgs{
+//						Enabled: pulumi.Bool(true),
+//						TestPhoneNumbers: pulumi.StringMap{
+//							"+11231231234": pulumi.String("000000"),
+//						},
+//					},
+//				},
 //				BlockingFunctions: &identityplatform.ConfigBlockingFunctionsArgs{
 //					Triggers: identityplatform.ConfigBlockingFunctionsTriggerArray{
 //						&identityplatform.ConfigBlockingFunctionsTriggerArgs{
@@ -138,6 +154,9 @@ type Config struct {
 	// Configuration related to quotas.
 	// Structure is documented below.
 	Quota ConfigQuotaPtrOutput `pulumi:"quota"`
+	// Configuration related to local sign in methods.
+	// Structure is documented below.
+	SignIn ConfigSignInOutput `pulumi:"signIn"`
 }
 
 // NewConfig registers a new resource with the given unique name, arguments, and options.
@@ -185,6 +204,9 @@ type configState struct {
 	// Configuration related to quotas.
 	// Structure is documented below.
 	Quota *ConfigQuota `pulumi:"quota"`
+	// Configuration related to local sign in methods.
+	// Structure is documented below.
+	SignIn *ConfigSignIn `pulumi:"signIn"`
 }
 
 type ConfigState struct {
@@ -203,6 +225,9 @@ type ConfigState struct {
 	// Configuration related to quotas.
 	// Structure is documented below.
 	Quota ConfigQuotaPtrInput
+	// Configuration related to local sign in methods.
+	// Structure is documented below.
+	SignIn ConfigSignInPtrInput
 }
 
 func (ConfigState) ElementType() reflect.Type {
@@ -223,6 +248,9 @@ type configArgs struct {
 	// Configuration related to quotas.
 	// Structure is documented below.
 	Quota *ConfigQuota `pulumi:"quota"`
+	// Configuration related to local sign in methods.
+	// Structure is documented below.
+	SignIn *ConfigSignIn `pulumi:"signIn"`
 }
 
 // The set of arguments for constructing a Config resource.
@@ -240,6 +268,9 @@ type ConfigArgs struct {
 	// Configuration related to quotas.
 	// Structure is documented below.
 	Quota ConfigQuotaPtrInput
+	// Configuration related to local sign in methods.
+	// Structure is documented below.
+	SignIn ConfigSignInPtrInput
 }
 
 func (ConfigArgs) ElementType() reflect.Type {
@@ -384,6 +415,12 @@ func (o ConfigOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o ConfigOutput) Quota() ConfigQuotaPtrOutput {
 	return o.ApplyT(func(v *Config) ConfigQuotaPtrOutput { return v.Quota }).(ConfigQuotaPtrOutput)
+}
+
+// Configuration related to local sign in methods.
+// Structure is documented below.
+func (o ConfigOutput) SignIn() ConfigSignInOutput {
+	return o.ApplyT(func(v *Config) ConfigSignInOutput { return v.SignIn }).(ConfigSignInOutput)
 }
 
 type ConfigArrayOutput struct{ *pulumi.OutputState }

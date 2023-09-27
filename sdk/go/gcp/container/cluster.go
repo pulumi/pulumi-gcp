@@ -341,7 +341,7 @@ type Cluster struct {
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
-	// ) Node pool configs that apply to auto-provisioned node pools in
+	// Node pool configs that apply to auto-provisioned node pools in
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigOutput `pulumi:"nodePoolAutoConfig"`
@@ -667,7 +667,7 @@ type clusterState struct {
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
 	NodeLocations []string `pulumi:"nodeLocations"`
-	// ) Node pool configs that apply to auto-provisioned node pools in
+	// Node pool configs that apply to auto-provisioned node pools in
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
@@ -964,7 +964,7 @@ type ClusterState struct {
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
 	NodeLocations pulumi.StringArrayInput
-	// ) Node pool configs that apply to auto-provisioned node pools in
+	// Node pool configs that apply to auto-provisioned node pools in
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
@@ -1257,7 +1257,7 @@ type clusterArgs struct {
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
 	NodeLocations []string `pulumi:"nodeLocations"`
-	// ) Node pool configs that apply to auto-provisioned node pools in
+	// Node pool configs that apply to auto-provisioned node pools in
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig *ClusterNodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
@@ -1535,7 +1535,7 @@ type ClusterArgs struct {
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
 	NodeLocations pulumi.StringArrayInput
-	// ) Node pool configs that apply to auto-provisioned node pools in
+	// Node pool configs that apply to auto-provisioned node pools in
 	// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 	// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 	NodePoolAutoConfig ClusterNodePoolAutoConfigPtrInput
@@ -2077,7 +2077,7 @@ func (o ClusterOutput) NodeLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.NodeLocations }).(pulumi.StringArrayOutput)
 }
 
-// ) Node pool configs that apply to auto-provisioned node pools in
+// Node pool configs that apply to auto-provisioned node pools in
 // [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
 // [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
 func (o ClusterOutput) NodePoolAutoConfig() ClusterNodePoolAutoConfigOutput {

@@ -83,6 +83,7 @@ const (
 	gcpDatastream               = "Datastream"               // Datastream resources
 	gcpDeploymentManager        = "DeploymentManager"        // DeploymentManager resources
 	gcpDiagflow                 = "Diagflow"                 // Diagflow resources
+	gcpEdgeNetwork              = "EdgeNetwork"              // Distributed Cloud Edge Network resources
 	gcpEndPoints                = "Endpoints"                // End Point resources
 	gcpEssentialContacts        = "EssentialContacts"        // Essential Contacts resources
 	gcpEventarc                 = "Eventarc"                 // Eventarc
@@ -118,7 +119,7 @@ const (
 	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
 	gcpProject                  = "Projects"                 // Project resources
 	gcpPubSub                   = "PubSub"                   // PubSub resources
-	gcpRecaptcha                = "Recaptcha"                //Recaptcha resources
+	gcpRecaptcha                = "Recaptcha"                // Recaptcha resources
 	gcpRedis                    = "Redis"                    // Redis resources
 	gcpResourceManager          = "ResourceManager"          // Resource Manager resources
 	gcpRuntimeConfig            = "RuntimeConfig"            // Runtime Config resources
@@ -183,12 +184,14 @@ var moduleMapping = map[string]string{
 	"dataflow":                        gcpDataFlow,
 	"data_fusion":                     gcpDataFusion,
 	"data_loss":                       gcpDataLoss,
+	"data_pipeline":                   gcpDataFlow, // Intentionally the same as "dataflow" since in Google's docs, data pipelines are nested under DataFlow.
 	"dataplex":                        gcpDataPlex,
 	"dataproc":                        gcpDataProc,
 	"datastore":                       gcpDatastore,
 	"datastream":                      gcpDatastream,
 	"deployment_manager":              gcpDeploymentManager,
 	"dialogflow":                      gcpDiagflow,
+	"edgenetwork":                     gcpEdgeNetwork,
 	"endpoints":                       gcpEndPoints,
 	"essential_contacts":              gcpEssentialContacts,
 	"eventarc":                        gcpEventarc,
@@ -3077,6 +3080,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpGkeBackup, "BackupPlanIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "gke_backup_backup_plan_iam.html.markdown",
+				},
+			},
+			"google_gke_backup_restore_plan_iam_binding": {
+				Tok: gcpResource(gcpGkeBackup, "RestorePlanIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_backup_restore_plan.html.markdown",
+				},
+			},
+			"google_gke_backup_restore_plan_iam_member": {
+				Tok: gcpResource(gcpGkeBackup, "RestorePlanIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_backup_restore_plan.html.markdown",
+				},
+			},
+			"google_gke_backup_restore_plan_iam_policy": {
+				Tok: gcpResource(gcpGkeBackup, "RestorePlanIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_backup_restore_plan.html.markdown",
 				},
 			},
 

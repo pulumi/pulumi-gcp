@@ -203,6 +203,9 @@ import * as utilities from "../utilities";
  *     },
  *     vmTrackingEnabled: true,
  *     enableControlPlaneV2: true,
+ *     upgradePolicy: {
+ *         controlPlaneOnly: true,
+ *     },
  *     authorization: {
  *         adminUsers: [{
  *             username: "testuser@gmail.com",
@@ -409,6 +412,11 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
+     * Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     */
+    public readonly upgradePolicy!: pulumi.Output<outputs.gkeonprem.VMwareClusterUpgradePolicy | undefined>;
+    /**
      * ValidationCheck represents the result of the preflight check job.
      * Structure is documented below.
      */
@@ -464,6 +472,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["storage"] = state ? state.storage : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["upgradePolicy"] = state ? state.upgradePolicy : undefined;
             resourceInputs["validationChecks"] = state ? state.validationChecks : undefined;
             resourceInputs["vcenters"] = state ? state.vcenters : undefined;
             resourceInputs["vmTrackingEnabled"] = state ? state.vmTrackingEnabled : undefined;
@@ -497,6 +506,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["onPremVersion"] = args ? args.onPremVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["upgradePolicy"] = args ? args.upgradePolicy : undefined;
             resourceInputs["vmTrackingEnabled"] = args ? args.vmTrackingEnabled : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
@@ -667,6 +677,11 @@ export interface VMwareClusterState {
      */
     updateTime?: pulumi.Input<string>;
     /**
+     * Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
+    /**
      * ValidationCheck represents the result of the preflight check job.
      * Structure is documented below.
      */
@@ -771,6 +786,11 @@ export interface VMwareClusterArgs {
      * Structure is documented below.
      */
     storage?: pulumi.Input<inputs.gkeonprem.VMwareClusterStorage>;
+    /**
+     * Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     */
+    upgradePolicy?: pulumi.Input<inputs.gkeonprem.VMwareClusterUpgradePolicy>;
     /**
      * Enable VM tracking.
      */

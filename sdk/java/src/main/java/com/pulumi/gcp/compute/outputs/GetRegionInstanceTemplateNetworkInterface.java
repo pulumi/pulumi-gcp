@@ -22,8 +22,10 @@ public final class GetRegionInstanceTemplateNetworkInterface {
      * 
      */
     private List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    private Integer internalIpv6PrefixLength;
     private List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
     private String ipv6AccessType;
+    private String ipv6Address;
     /**
      * @return The name of the instance template. One of `name` or `filter` must be provided.
      * 
@@ -72,11 +74,17 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     public List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges;
     }
+    public Integer internalIpv6PrefixLength() {
+        return this.internalIpv6PrefixLength;
+    }
     public List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs() {
         return this.ipv6AccessConfigs;
     }
     public String ipv6AccessType() {
         return this.ipv6AccessType;
+    }
+    public String ipv6Address() {
+        return this.ipv6Address;
     }
     /**
      * @return The name of the instance template. One of `name` or `filter` must be provided.
@@ -140,8 +148,10 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     public static final class Builder {
         private List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private Integer internalIpv6PrefixLength;
         private List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
         private String ipv6AccessType;
+        private String ipv6Address;
         private String name;
         private String network;
         private String networkIp;
@@ -155,8 +165,10 @@ public final class GetRegionInstanceTemplateNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
+    	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.networkIp = defaults.networkIp;
@@ -184,6 +196,11 @@ public final class GetRegionInstanceTemplateNetworkInterface {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
         @CustomType.Setter
+        public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
+            this.internalIpv6PrefixLength = Objects.requireNonNull(internalIpv6PrefixLength);
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipv6AccessConfigs(List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
             this.ipv6AccessConfigs = Objects.requireNonNull(ipv6AccessConfigs);
             return this;
@@ -194,6 +211,11 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         @CustomType.Setter
         public Builder ipv6AccessType(String ipv6AccessType) {
             this.ipv6AccessType = Objects.requireNonNull(ipv6AccessType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Address(String ipv6Address) {
+            this.ipv6Address = Objects.requireNonNull(ipv6Address);
             return this;
         }
         @CustomType.Setter
@@ -240,8 +262,10 @@ public final class GetRegionInstanceTemplateNetworkInterface {
             final var o = new GetRegionInstanceTemplateNetworkInterface();
             o.accessConfigs = accessConfigs;
             o.aliasIpRanges = aliasIpRanges;
+            o.internalIpv6PrefixLength = internalIpv6PrefixLength;
             o.ipv6AccessConfigs = ipv6AccessConfigs;
             o.ipv6AccessType = ipv6AccessType;
+            o.ipv6Address = ipv6Address;
             o.name = name;
             o.network = network;
             o.networkIp = networkIp;

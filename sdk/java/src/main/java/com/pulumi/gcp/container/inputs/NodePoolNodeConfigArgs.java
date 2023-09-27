@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeatures
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigConfidentialNodesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigFastSocketArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGvnicArgs;
@@ -91,6 +92,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs>> ephemeralStorageLocalSsdConfig() {
         return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
+    }
+
+    @Import(name="fastSocket")
+    private @Nullable Output<NodePoolNodeConfigFastSocketArgs> fastSocket;
+
+    public Optional<Output<NodePoolNodeConfigFastSocketArgs>> fastSocket() {
+        return Optional.ofNullable(this.fastSocket);
     }
 
     @Import(name="gcfsConfig")
@@ -292,6 +300,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.diskType = $.diskType;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
         this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
+        this.fastSocket = $.fastSocket;
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
@@ -412,6 +421,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder ephemeralStorageLocalSsdConfig(NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs ephemeralStorageLocalSsdConfig) {
             return ephemeralStorageLocalSsdConfig(Output.of(ephemeralStorageLocalSsdConfig));
+        }
+
+        public Builder fastSocket(@Nullable Output<NodePoolNodeConfigFastSocketArgs> fastSocket) {
+            $.fastSocket = fastSocket;
+            return this;
+        }
+
+        public Builder fastSocket(NodePoolNodeConfigFastSocketArgs fastSocket) {
+            return fastSocket(Output.of(fastSocket));
         }
 
         public Builder gcfsConfig(@Nullable Output<NodePoolNodeConfigGcfsConfigArgs> gcfsConfig) {

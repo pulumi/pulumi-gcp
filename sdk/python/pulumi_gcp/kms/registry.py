@@ -406,6 +406,8 @@ class Registry(pulumi.CustomResource):
                  state_notification_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        > **Warning:** `iot.Registry` is deprecated in the API. This resource will be removed in the next major release of the provider.
+
         A Google Cloud IoT Core device registry.
 
         To get more information about DeviceRegistry, see:
@@ -529,6 +531,8 @@ class Registry(pulumi.CustomResource):
                  args: Optional[RegistryArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `iot.Registry` is deprecated in the API. This resource will be removed in the next major release of the provider.
+
         A Google Cloud IoT Core device registry.
 
         To get more information about DeviceRegistry, see:

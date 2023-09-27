@@ -41,6 +41,7 @@ __all__ = [
     'BareMetalAdminClusterValidationCheck',
     'BareMetalAdminClusterValidationCheckStatus',
     'BareMetalAdminClusterValidationCheckStatusResult',
+    'BareMetalClusterBinaryAuthorization',
     'BareMetalClusterClusterOperations',
     'BareMetalClusterControlPlane',
     'BareMetalClusterControlPlaneApiServerArg',
@@ -85,6 +86,7 @@ __all__ = [
     'BareMetalClusterStorageLvpNodeMountsConfig',
     'BareMetalClusterStorageLvpShareConfig',
     'BareMetalClusterStorageLvpShareConfigLvpConfig',
+    'BareMetalClusterUpgradePolicy',
     'BareMetalClusterValidationCheck',
     'BareMetalClusterValidationCheckStatus',
     'BareMetalClusterValidationCheckStatusResult',
@@ -120,6 +122,7 @@ __all__ = [
     'VMwareClusterStatus',
     'VMwareClusterStatusCondition',
     'VMwareClusterStorage',
+    'VMwareClusterUpgradePolicy',
     'VMwareClusterValidationCheck',
     'VMwareClusterValidationCheckStatus',
     'VMwareClusterValidationCheckStatusResult',
@@ -1522,6 +1525,46 @@ class BareMetalAdminClusterValidationCheckStatusResult(dict):
         A human-readable message of the check failure.
         """
         return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class BareMetalClusterBinaryAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalClusterBinaryAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalClusterBinaryAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalClusterBinaryAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[str] = None):
+        """
+        :param str evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified,
+               defaults to DISABLED.
+               Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[str]:
+        """
+        Mode of operation for binauthz policy evaluation. If unspecified,
+        defaults to DISABLED.
+        Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type
@@ -3935,6 +3978,27 @@ class BareMetalClusterStorageLvpShareConfigLvpConfig(dict):
 
 
 @pulumi.output_type
+class BareMetalClusterUpgradePolicy(dict):
+    def __init__(__self__, *,
+                 policy: Optional[str] = None):
+        """
+        :param str policy: Specifies which upgrade policy to use.
+               Possible values are: `SERIAL`, `CONCURRENT`.
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        Specifies which upgrade policy to use.
+        Possible values are: `SERIAL`, `CONCURRENT`.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
 class BareMetalClusterValidationCheck(dict):
     def __init__(__self__, *,
                  options: Optional[str] = None,
@@ -5880,6 +5944,42 @@ class VMwareClusterStorage(dict):
         Enabled by default.
         """
         return pulumi.get(self, "vsphere_csi_disabled")
+
+
+@pulumi.output_type
+class VMwareClusterUpgradePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneOnly":
+            suggest = "control_plane_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VMwareClusterUpgradePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VMwareClusterUpgradePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VMwareClusterUpgradePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_only: Optional[bool] = None):
+        """
+        :param bool control_plane_only: Controls whether the upgrade applies to the control plane only.
+        """
+        if control_plane_only is not None:
+            pulumi.set(__self__, "control_plane_only", control_plane_only)
+
+    @property
+    @pulumi.getter(name="controlPlaneOnly")
+    def control_plane_only(self) -> Optional[bool]:
+        """
+        Controls whether the upgrade applies to the control plane only.
+        """
+        return pulumi.get(self, "control_plane_only")
 
 
 @pulumi.output_type

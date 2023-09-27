@@ -125,8 +125,9 @@ type DataTransferConfig struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the transfer config. Transfer config names have the
-	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-	// Where configId is usually a uuid, but this is not required.
+	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+	// or projects/{projectId}/transferConfigs/{configId},
+	// where configId is usually a uuid, but this is not required.
 	// The name is ignored when creating a transfer config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pub/Sub topic where notifications will be sent after transfer runs
@@ -229,8 +230,9 @@ type dataTransferConfigState struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
 	// The resource name of the transfer config. Transfer config names have the
-	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-	// Where configId is usually a uuid, but this is not required.
+	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+	// or projects/{projectId}/transferConfigs/{configId},
+	// where configId is usually a uuid, but this is not required.
 	// The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
 	// Pub/Sub topic where notifications will be sent after transfer runs
@@ -295,8 +297,9 @@ type DataTransferConfigState struct {
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
 	// The resource name of the transfer config. Transfer config names have the
-	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-	// Where configId is usually a uuid, but this is not required.
+	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+	// or projects/{projectId}/transferConfigs/{configId},
+	// where configId is usually a uuid, but this is not required.
 	// The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
 	// Pub/Sub topic where notifications will be sent after transfer runs
@@ -619,8 +622,9 @@ func (o DataTransferConfigOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The resource name of the transfer config. Transfer config names have the
-// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-// Where configId is usually a uuid, but this is not required.
+// form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+// or projects/{projectId}/transferConfigs/{configId},
+// where configId is usually a uuid, but this is not required.
 // The name is ignored when creating a transfer config.
 func (o DataTransferConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

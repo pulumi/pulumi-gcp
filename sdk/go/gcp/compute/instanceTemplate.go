@@ -291,7 +291,7 @@ type InstanceTemplate struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces InstanceTemplateNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance created from the
+	// (Optional, Configures network performance settings for the instance created from the
 	// template. Structure is documented below. **Note**: `machineType`
 	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -421,7 +421,7 @@ type instanceTemplateState struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces []InstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance created from the
+	// (Optional, Configures network performance settings for the instance created from the
 	// template. Structure is documented below. **Note**: `machineType`
 	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -516,7 +516,7 @@ type InstanceTemplateState struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces InstanceTemplateNetworkInterfaceArrayInput
-	// Configures network performance settings for the instance created from the
+	// (Optional, Configures network performance settings for the instance created from the
 	// template. Structure is documented below. **Note**: `machineType`
 	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -613,7 +613,7 @@ type instanceTemplateArgs struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces []InstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance created from the
+	// (Optional, Configures network performance settings for the instance created from the
 	// template. Structure is documented below. **Note**: `machineType`
 	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -700,7 +700,7 @@ type InstanceTemplateArgs struct {
 	// this template. This can be specified multiple times for multiple networks.
 	// Structure is documented below.
 	NetworkInterfaces InstanceTemplateNetworkInterfaceArrayInput
-	// Configures network performance settings for the instance created from the
+	// (Optional, Configures network performance settings for the instance created from the
 	// template. Structure is documented below. **Note**: `machineType`
 	// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -953,7 +953,7 @@ func (o InstanceTemplateOutput) NetworkInterfaces() InstanceTemplateNetworkInter
 	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(InstanceTemplateNetworkInterfaceArrayOutput)
 }
 
-// Configures network performance settings for the instance created from the
+// (Optional, Configures network performance settings for the instance created from the
 // template. Structure is documented below. **Note**: `machineType`
 // must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
 // the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

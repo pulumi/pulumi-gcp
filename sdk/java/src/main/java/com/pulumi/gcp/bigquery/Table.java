@@ -14,6 +14,7 @@ import com.pulumi.gcp.bigquery.outputs.TableEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableMaterializedView;
 import com.pulumi.gcp.bigquery.outputs.TableRangePartitioning;
+import com.pulumi.gcp.bigquery.outputs.TableTableConstraints;
 import com.pulumi.gcp.bigquery.outputs.TableTimePartitioning;
 import com.pulumi.gcp.bigquery.outputs.TableView;
 import java.lang.Boolean;
@@ -525,6 +526,22 @@ public class Table extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * Defines the primary key and foreign keys.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tableConstraints", refs={TableTableConstraints.class}, tree="[0]")
+    private Output</* @Nullable */ TableTableConstraints> tableConstraints;
+
+    /**
+     * @return Defines the primary key and foreign keys.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<TableTableConstraints>> tableConstraints() {
+        return Codegen.optional(this.tableConstraints);
     }
     /**
      * A unique ID for the resource.

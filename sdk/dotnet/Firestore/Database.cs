@@ -23,6 +23,32 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
     /// 
     /// ## Example Usage
+    /// ### Firestore Database With Delete Protection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = google_project.Project.Project_id,
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             google_project_service.Firestore,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -58,13 +84,28 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> ConcurrencyMode { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp at which this database was created.
+        /// Output only. The timestamp at which this database was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields,
+        /// State of delete protection for the database.
+        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// </summary>
+        [Output("deleteProtectionState")]
+        public Output<string> DeleteProtectionState { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+        /// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("earliestVersionTime")]
+        public Output<string> EarliestVersionTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields,
         /// and may be sent on update and delete requests to ensure the client has an
         /// up-to-date value before proceeding.
         /// </summary>
@@ -81,7 +122,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> KeyPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the database. Available databases are listed at
+        /// The location of the database. Available locations are listed at
         /// https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         [Output("locationId")]
@@ -97,6 +138,18 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the PITR feature on this database.
+        /// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+        /// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+        /// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+        /// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+        /// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+        /// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+        /// </summary>
+        [Output("pointInTimeRecoveryEnablement")]
+        public Output<string?> PointInTimeRecoveryEnablement { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -116,6 +169,27 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The system-generated UUID4 for this Database.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The timestamp at which this database was most recently updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. The period during which past versions of data are retained in the database.
+        /// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+        /// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Output("versionRetentionPeriod")]
+        public Output<string> VersionRetentionPeriod { get; private set; } = null!;
 
 
         /// <summary>
@@ -178,7 +252,14 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// The location of the database. Available databases are listed at
+        /// State of delete protection for the database.
+        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// </summary>
+        [Input("deleteProtectionState")]
+        public Input<string>? DeleteProtectionState { get; set; }
+
+        /// <summary>
+        /// The location of the database. Available locations are listed at
         /// https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         [Input("locationId", required: true)]
@@ -194,6 +275,18 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether to enable the PITR feature on this database.
+        /// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+        /// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+        /// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+        /// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+        /// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+        /// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+        /// </summary>
+        [Input("pointInTimeRecoveryEnablement")]
+        public Input<string>? PointInTimeRecoveryEnablement { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -237,13 +330,28 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// The timestamp at which this database was created.
+        /// Output only. The timestamp at which this database was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields,
+        /// State of delete protection for the database.
+        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// </summary>
+        [Input("deleteProtectionState")]
+        public Input<string>? DeleteProtectionState { get; set; }
+
+        /// <summary>
+        /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+        /// This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("earliestVersionTime")]
+        public Input<string>? EarliestVersionTime { get; set; }
+
+        /// <summary>
+        /// Output only. This checksum is computed by the server based on the value of other fields,
         /// and may be sent on update and delete requests to ensure the client has an
         /// up-to-date value before proceeding.
         /// </summary>
@@ -260,7 +368,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? KeyPrefix { get; set; }
 
         /// <summary>
-        /// The location of the database. Available databases are listed at
+        /// The location of the database. Available locations are listed at
         /// https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         [Input("locationId")]
@@ -276,6 +384,18 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Whether to enable the PITR feature on this database.
+        /// If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+        /// versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+        /// and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+        /// If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+        /// Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+        /// Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+        /// </summary>
+        [Input("pointInTimeRecoveryEnablement")]
+        public Input<string>? PointInTimeRecoveryEnablement { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -295,6 +415,27 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Output only. The system-generated UUID4 for this Database.
+        /// </summary>
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp at which this database was most recently updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The period during which past versions of data are retained in the database.
+        /// Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+        /// If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Input("versionRetentionPeriod")]
+        public Input<string>? VersionRetentionPeriod { get; set; }
 
         public DatabaseState()
         {

@@ -7,3 +7,6 @@ import typing
 # Export this package's modules as members:
 from .flex_template_job import *
 from .job import *
+from .pipeline import *
+from ._inputs import *
+from . import outputs

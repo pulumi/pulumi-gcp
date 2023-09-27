@@ -510,7 +510,7 @@ namespace Pulumi.Gcp.Container
         public Output<ImmutableArray<string>> NodeLocations { get; private set; } = null!;
 
         /// <summary>
-        /// ) Node pool configs that apply to auto-provisioned node pools in
+        /// Node pool configs that apply to auto-provisioned node pools in
         /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
         /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         /// </summary>
@@ -1124,7 +1124,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// ) Node pool configs that apply to auto-provisioned node pools in
+        /// Node pool configs that apply to auto-provisioned node pools in
         /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
         /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         /// </summary>
@@ -1706,7 +1706,7 @@ namespace Pulumi.Gcp.Container
         }
 
         /// <summary>
-        /// ) Node pool configs that apply to auto-provisioned node pools in
+        /// Node pool configs that apply to auto-provisioned node pools in
         /// [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
         /// [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
         /// </summary>

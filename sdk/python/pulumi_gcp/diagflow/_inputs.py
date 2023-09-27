@@ -96,6 +96,32 @@ __all__ = [
     'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
     'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs',
     'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs',
+    'CxSecuritySettingsAudioExportSettingsArgs',
+    'CxSecuritySettingsInsightsExportSettingsArgs',
+    'CxTestCaseLastTestResultArgs',
+    'CxTestCaseLastTestResultConversationTurnArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs',
+    'CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs',
+    'CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs',
+    'CxTestCaseTestCaseConversationTurnArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputEventArgs',
+    'CxTestCaseTestCaseConversationTurnUserInputInputTextArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs',
+    'CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs',
+    'CxTestCaseTestConfigArgs',
     'CxVersionNluSettingArgs',
     'CxWebhookGenericWebServiceArgs',
     'CxWebhookServiceDirectoryArgs',
@@ -4999,6 +5025,1345 @@ class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CxSecuritySettingsAudioExportSettingsArgs:
+    def __init__(__self__, *,
+                 audio_export_pattern: Optional[pulumi.Input[str]] = None,
+                 audio_format: Optional[pulumi.Input[str]] = None,
+                 enable_audio_redaction: Optional[pulumi.Input[bool]] = None,
+                 gcs_bucket: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] audio_export_pattern: Filename pattern for exported audio.
+        :param pulumi.Input[str] audio_format: File format for exported audio file. Currently only in telephony recordings.
+               * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+               * MP3: MP3 file format.
+               * OGG: OGG Vorbis.
+               Possible values are: `MULAW`, `MP3`, `OGG`.
+        :param pulumi.Input[bool] enable_audio_redaction: Enable audio redaction if it is true.
+        :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+        """
+        if audio_export_pattern is not None:
+            pulumi.set(__self__, "audio_export_pattern", audio_export_pattern)
+        if audio_format is not None:
+            pulumi.set(__self__, "audio_format", audio_format)
+        if enable_audio_redaction is not None:
+            pulumi.set(__self__, "enable_audio_redaction", enable_audio_redaction)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+
+    @property
+    @pulumi.getter(name="audioExportPattern")
+    def audio_export_pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filename pattern for exported audio.
+        """
+        return pulumi.get(self, "audio_export_pattern")
+
+    @audio_export_pattern.setter
+    def audio_export_pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audio_export_pattern", value)
+
+    @property
+    @pulumi.getter(name="audioFormat")
+    def audio_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        File format for exported audio file. Currently only in telephony recordings.
+        * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+        * MP3: MP3 file format.
+        * OGG: OGG Vorbis.
+        Possible values are: `MULAW`, `MP3`, `OGG`.
+        """
+        return pulumi.get(self, "audio_format")
+
+    @audio_format.setter
+    def audio_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audio_format", value)
+
+    @property
+    @pulumi.getter(name="enableAudioRedaction")
+    def enable_audio_redaction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable audio redaction if it is true.
+        """
+        return pulumi.get(self, "enable_audio_redaction")
+
+    @enable_audio_redaction.setter
+    def enable_audio_redaction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audio_redaction", value)
+
+    @property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @gcs_bucket.setter
+    def gcs_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_bucket", value)
+
+
+@pulumi.input_type
+class CxSecuritySettingsInsightsExportSettingsArgs:
+    def __init__(__self__, *,
+                 enable_insights_export: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_insights_export: If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+        pulumi.set(__self__, "enable_insights_export", enable_insights_export)
+
+    @property
+    @pulumi.getter(name="enableInsightsExport")
+    def enable_insights_export(self) -> pulumi.Input[bool]:
+        """
+        If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+        """
+        return pulumi.get(self, "enable_insights_export")
+
+    @enable_insights_export.setter
+    def enable_insights_export(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_insights_export", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultArgs:
+    def __init__(__self__, *,
+                 conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 test_result: Optional[pulumi.Input[str]] = None,
+                 test_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]] conversation_turns: The conversation turns uttered during the test case replay in chronological order.
+               Structure is documented below.
+        :param pulumi.Input[str] environment: Environment where the test was run. If not set, it indicates the draft environment.
+        :param pulumi.Input[str] name: The unique identifier of the intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+               
+               (Optional)
+               The unique identifier of the page.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        :param pulumi.Input[str] test_result: Whether the test case passed in the agent environment.
+               * PASSED: The test passed.
+               * FAILED: The test did not pass.
+               Possible values are: `PASSED`, `FAILED`.
+        :param pulumi.Input[str] test_time: The time that the test was run. A timestamp in RFC3339 text format.
+        """
+        if conversation_turns is not None:
+            pulumi.set(__self__, "conversation_turns", conversation_turns)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if test_result is not None:
+            pulumi.set(__self__, "test_result", test_result)
+        if test_time is not None:
+            pulumi.set(__self__, "test_time", test_time)
+
+    @property
+    @pulumi.getter(name="conversationTurns")
+    def conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]]]:
+        """
+        The conversation turns uttered during the test case replay in chronological order.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_turns")
+
+    @conversation_turns.setter
+    def conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnArgs']]]]):
+        pulumi.set(self, "conversation_turns", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Environment where the test was run. If not set, it indicates the draft environment.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+
+        (Optional)
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="testResult")
+    def test_result(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the test case passed in the agent environment.
+        * PASSED: The test passed.
+        * FAILED: The test did not pass.
+        Possible values are: `PASSED`, `FAILED`.
+        """
+        return pulumi.get(self, "test_result")
+
+    @test_result.setter
+    def test_result(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_result", value)
+
+    @property
+    @pulumi.getter(name="testTime")
+    def test_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time that the test was run. A timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "test_time")
+
+    @test_time.setter
+    def test_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "test_time", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnArgs:
+    def __init__(__self__, *,
+                 user_input: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs']] = None,
+                 virtual_agent_output: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']] = None):
+        """
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs'] user_input: The user input.
+               Structure is documented below.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs'] virtual_agent_output: The virtual agent output.
+               Structure is documented below.
+        """
+        if user_input is not None:
+            pulumi.set(__self__, "user_input", user_input)
+        if virtual_agent_output is not None:
+            pulumi.set(__self__, "virtual_agent_output", virtual_agent_output)
+
+    @property
+    @pulumi.getter(name="userInput")
+    def user_input(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs']]:
+        """
+        The user input.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_input")
+
+    @user_input.setter
+    def user_input(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputArgs']]):
+        pulumi.set(self, "user_input", value)
+
+    @property
+    @pulumi.getter(name="virtualAgentOutput")
+    def virtual_agent_output(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']]:
+        """
+        The virtual agent output.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "virtual_agent_output")
+
+    @virtual_agent_output.setter
+    def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs']]):
+        pulumi.set(self, "virtual_agent_output", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnUserInputArgs:
+    def __init__(__self__, *,
+                 enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None,
+                 injected_parameters: Optional[pulumi.Input[str]] = None,
+                 input: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs']] = None,
+                 is_webhook_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_sentiment_analysis: Whether sentiment analysis is enabled.
+        :param pulumi.Input[str] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs'] input: User input. Supports text input, event input, dtmf input in the test case.
+               Structure is documented below.
+        :param pulumi.Input[bool] is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+        """
+        if enable_sentiment_analysis is not None:
+            pulumi.set(__self__, "enable_sentiment_analysis", enable_sentiment_analysis)
+        if injected_parameters is not None:
+            pulumi.set(__self__, "injected_parameters", injected_parameters)
+        if input is not None:
+            pulumi.set(__self__, "input", input)
+        if is_webhook_enabled is not None:
+            pulumi.set(__self__, "is_webhook_enabled", is_webhook_enabled)
+
+    @property
+    @pulumi.getter(name="enableSentimentAnalysis")
+    def enable_sentiment_analysis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether sentiment analysis is enabled.
+        """
+        return pulumi.get(self, "enable_sentiment_analysis")
+
+    @enable_sentiment_analysis.setter
+    def enable_sentiment_analysis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_sentiment_analysis", value)
+
+    @property
+    @pulumi.getter(name="injectedParameters")
+    def injected_parameters(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameters that need to be injected into the conversation during intent detection.
+        """
+        return pulumi.get(self, "injected_parameters")
+
+    @injected_parameters.setter
+    def injected_parameters(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "injected_parameters", value)
+
+    @property
+    @pulumi.getter
+    def input(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs']]:
+        """
+        User input. Supports text input, event input, dtmf input in the test case.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "input")
+
+    @input.setter
+    def input(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputArgs']]):
+        pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter(name="isWebhookEnabled")
+    def is_webhook_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+        """
+        return pulumi.get(self, "is_webhook_enabled")
+
+    @is_webhook_enabled.setter
+    def is_webhook_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_webhook_enabled", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnUserInputInputArgs:
+    def __init__(__self__, *,
+                 dtmf: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs']] = None,
+                 event: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs']] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs']] = None):
+        """
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs'] dtmf: The DTMF event to be handled.
+               Structure is documented below.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs'] event: The event to be triggered.
+               Structure is documented below.
+        :param pulumi.Input[str] language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+               Note that queries in the same session do not necessarily need to specify the same language.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs'] text: The natural language text to be processed.
+               Structure is documented below.
+        """
+        if dtmf is not None:
+            pulumi.set(__self__, "dtmf", dtmf)
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def dtmf(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs']]:
+        """
+        The DTMF event to be handled.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf")
+
+    @dtmf.setter
+    def dtmf(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs']]):
+        pulumi.set(self, "dtmf", value)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs']]:
+        """
+        The event to be triggered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event")
+
+    @event.setter
+    def event(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs']]):
+        pulumi.set(self, "event", value)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+        Note that queries in the same session do not necessarily need to specify the same language.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs']]:
+        """
+        The natural language text to be processed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs']]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnUserInputInputDtmfArgs:
+    def __init__(__self__, *,
+                 digits: Optional[pulumi.Input[str]] = None,
+                 finish_digit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] digits: The dtmf digits.
+        :param pulumi.Input[str] finish_digit: The finish digit (if any).
+        """
+        if digits is not None:
+            pulumi.set(__self__, "digits", digits)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+
+    @property
+    @pulumi.getter
+    def digits(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dtmf digits.
+        """
+        return pulumi.get(self, "digits")
+
+    @digits.setter
+    def digits(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digits", value)
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The finish digit (if any).
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @finish_digit.setter
+    def finish_digit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "finish_digit", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnUserInputInputEventArgs:
+    def __init__(__self__, *,
+                 event: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] event: Name of the event.
+        """
+        pulumi.set(__self__, "event", event)
+
+    @property
+    @pulumi.getter
+    def event(self) -> pulumi.Input[str]:
+        """
+        Name of the event.
+        """
+        return pulumi.get(self, "event")
+
+    @event.setter
+    def event(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnUserInputInputTextArgs:
+    def __init__(__self__, *,
+                 text: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] text: The natural language text to be processed. Text length must not exceed 256 characters.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[str]:
+        """
+        The natural language text to be processed. Text length must not exceed 256 characters.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputArgs:
+    def __init__(__self__, *,
+                 current_page: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs']] = None,
+                 differences: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]]] = None,
+                 session_parameters: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs']] = None,
+                 text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]]] = None,
+                 triggered_intent: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs']] = None):
+        """
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs'] current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]] differences: The list of differences between the original run and the replay for this output, if any.
+               Structure is documented below.
+        :param pulumi.Input[str] session_parameters: The session parameters available to the bot at this point.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs'] status: Response error from the agent in the test result. If set, other output is empty.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]] text_responses: The text responses from the agent for the turn.
+               Structure is documented below.
+        :param pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs'] triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+               Structure is documented below.
+        """
+        if current_page is not None:
+            pulumi.set(__self__, "current_page", current_page)
+        if differences is not None:
+            pulumi.set(__self__, "differences", differences)
+        if session_parameters is not None:
+            pulumi.set(__self__, "session_parameters", session_parameters)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if text_responses is not None:
+            pulumi.set(__self__, "text_responses", text_responses)
+        if triggered_intent is not None:
+            pulumi.set(__self__, "triggered_intent", triggered_intent)
+
+    @property
+    @pulumi.getter(name="currentPage")
+    def current_page(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs']]:
+        """
+        The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "current_page")
+
+    @current_page.setter
+    def current_page(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs']]):
+        pulumi.set(self, "current_page", value)
+
+    @property
+    @pulumi.getter
+    def differences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]]]:
+        """
+        The list of differences between the original run and the replay for this output, if any.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "differences")
+
+    @differences.setter
+    def differences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs']]]]):
+        pulumi.set(self, "differences", value)
+
+    @property
+    @pulumi.getter(name="sessionParameters")
+    def session_parameters(self) -> Optional[pulumi.Input[str]]:
+        """
+        The session parameters available to the bot at this point.
+        """
+        return pulumi.get(self, "session_parameters")
+
+    @session_parameters.setter
+    def session_parameters(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_parameters", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs']]:
+        """
+        Response error from the agent in the test result. If set, other output is empty.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs']]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="textResponses")
+    def text_responses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]]]:
+        """
+        The text responses from the agent for the turn.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_responses")
+
+    @text_responses.setter
+    def text_responses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs']]]]):
+        pulumi.set(self, "text_responses", value)
+
+    @property
+    @pulumi.getter(name="triggeredIntent")
+    def triggered_intent(self) -> Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs']]:
+        """
+        The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "triggered_intent")
+
+    @triggered_intent.setter
+    def triggered_intent(self, value: Optional[pulumi.Input['CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs']]):
+        pulumi.set(self, "triggered_intent", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPageArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: (Output)
+               The human-readable name of the page, unique within the flow.
+        :param pulumi.Input[str] name: The unique identifier of the page.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The human-readable name of the page, unique within the flow.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifferenceArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: A human readable description of the diff, showing the actual output vs expected output.
+        :param pulumi.Input[str] type: The type of diff.
+               * INTENT: The intent.
+               * PAGE: The page.
+               * PARAMETERS: The parameters.
+               * UTTERANCE: The message utterance.
+               * FLOW: The flow.
+               Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human readable description of the diff, showing the actual output vs expected output.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of diff.
+        * INTENT: The intent.
+        * PAGE: The page.
+        * PARAMETERS: The parameters.
+        * UTTERANCE: The message utterance.
+        * FLOW: The flow.
+        Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[str] details: A JSON encoded list of messages that carry the error details.
+        :param pulumi.Input[str] message: A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponseArgs:
+    def __init__(__self__, *,
+                 texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] texts: A collection of text responses.
+        """
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+    @texts.setter
+    def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntentArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: (Output)
+               The human-readable name of the intent, unique within the agent.
+        :param pulumi.Input[str] name: The unique identifier of the intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The human-readable name of the intent, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnArgs:
+    def __init__(__self__, *,
+                 user_input: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs']] = None,
+                 virtual_agent_output: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']] = None):
+        """
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs'] user_input: The user input.
+               Structure is documented below.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs'] virtual_agent_output: The virtual agent output.
+               Structure is documented below.
+        """
+        if user_input is not None:
+            pulumi.set(__self__, "user_input", user_input)
+        if virtual_agent_output is not None:
+            pulumi.set(__self__, "virtual_agent_output", virtual_agent_output)
+
+    @property
+    @pulumi.getter(name="userInput")
+    def user_input(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs']]:
+        """
+        The user input.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_input")
+
+    @user_input.setter
+    def user_input(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputArgs']]):
+        pulumi.set(self, "user_input", value)
+
+    @property
+    @pulumi.getter(name="virtualAgentOutput")
+    def virtual_agent_output(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']]:
+        """
+        The virtual agent output.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "virtual_agent_output")
+
+    @virtual_agent_output.setter
+    def virtual_agent_output(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs']]):
+        pulumi.set(self, "virtual_agent_output", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnUserInputArgs:
+    def __init__(__self__, *,
+                 enable_sentiment_analysis: Optional[pulumi.Input[bool]] = None,
+                 injected_parameters: Optional[pulumi.Input[str]] = None,
+                 input: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs']] = None,
+                 is_webhook_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_sentiment_analysis: Whether sentiment analysis is enabled.
+        :param pulumi.Input[str] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs'] input: User input. Supports text input, event input, dtmf input in the test case.
+               Structure is documented below.
+        :param pulumi.Input[bool] is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+        """
+        if enable_sentiment_analysis is not None:
+            pulumi.set(__self__, "enable_sentiment_analysis", enable_sentiment_analysis)
+        if injected_parameters is not None:
+            pulumi.set(__self__, "injected_parameters", injected_parameters)
+        if input is not None:
+            pulumi.set(__self__, "input", input)
+        if is_webhook_enabled is not None:
+            pulumi.set(__self__, "is_webhook_enabled", is_webhook_enabled)
+
+    @property
+    @pulumi.getter(name="enableSentimentAnalysis")
+    def enable_sentiment_analysis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether sentiment analysis is enabled.
+        """
+        return pulumi.get(self, "enable_sentiment_analysis")
+
+    @enable_sentiment_analysis.setter
+    def enable_sentiment_analysis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_sentiment_analysis", value)
+
+    @property
+    @pulumi.getter(name="injectedParameters")
+    def injected_parameters(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameters that need to be injected into the conversation during intent detection.
+        """
+        return pulumi.get(self, "injected_parameters")
+
+    @injected_parameters.setter
+    def injected_parameters(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "injected_parameters", value)
+
+    @property
+    @pulumi.getter
+    def input(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs']]:
+        """
+        User input. Supports text input, event input, dtmf input in the test case.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "input")
+
+    @input.setter
+    def input(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputArgs']]):
+        pulumi.set(self, "input", value)
+
+    @property
+    @pulumi.getter(name="isWebhookEnabled")
+    def is_webhook_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+        """
+        return pulumi.get(self, "is_webhook_enabled")
+
+    @is_webhook_enabled.setter
+    def is_webhook_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_webhook_enabled", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnUserInputInputArgs:
+    def __init__(__self__, *,
+                 dtmf: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs']] = None,
+                 event: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs']] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs']] = None):
+        """
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs'] dtmf: The DTMF event to be handled.
+               Structure is documented below.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs'] event: The event to be triggered.
+               Structure is documented below.
+        :param pulumi.Input[str] language_code: The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+               Note that queries in the same session do not necessarily need to specify the same language.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs'] text: The natural language text to be processed.
+               Structure is documented below.
+        """
+        if dtmf is not None:
+            pulumi.set(__self__, "dtmf", dtmf)
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def dtmf(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs']]:
+        """
+        The DTMF event to be handled.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dtmf")
+
+    @dtmf.setter
+    def dtmf(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs']]):
+        pulumi.set(self, "dtmf", value)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs']]:
+        """
+        The event to be triggered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "event")
+
+    @event.setter
+    def event(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputEventArgs']]):
+        pulumi.set(self, "event", value)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+        Note that queries in the same session do not necessarily need to specify the same language.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs']]:
+        """
+        The natural language text to be processed.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnUserInputInputTextArgs']]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs:
+    def __init__(__self__, *,
+                 digits: Optional[pulumi.Input[str]] = None,
+                 finish_digit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] digits: The dtmf digits.
+        :param pulumi.Input[str] finish_digit: The finish digit (if any).
+        """
+        if digits is not None:
+            pulumi.set(__self__, "digits", digits)
+        if finish_digit is not None:
+            pulumi.set(__self__, "finish_digit", finish_digit)
+
+    @property
+    @pulumi.getter
+    def digits(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dtmf digits.
+        """
+        return pulumi.get(self, "digits")
+
+    @digits.setter
+    def digits(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digits", value)
+
+    @property
+    @pulumi.getter(name="finishDigit")
+    def finish_digit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The finish digit (if any).
+        """
+        return pulumi.get(self, "finish_digit")
+
+    @finish_digit.setter
+    def finish_digit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "finish_digit", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnUserInputInputEventArgs:
+    def __init__(__self__, *,
+                 event: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] event: Name of the event.
+        """
+        pulumi.set(__self__, "event", event)
+
+    @property
+    @pulumi.getter
+    def event(self) -> pulumi.Input[str]:
+        """
+        Name of the event.
+        """
+        return pulumi.get(self, "event")
+
+    @event.setter
+    def event(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnUserInputInputTextArgs:
+    def __init__(__self__, *,
+                 text: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] text: The natural language text to be processed. Text length must not exceed 256 characters.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[str]:
+        """
+        The natural language text to be processed. Text length must not exceed 256 characters.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs:
+    def __init__(__self__, *,
+                 current_page: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs']] = None,
+                 session_parameters: Optional[pulumi.Input[str]] = None,
+                 text_responses: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]]] = None,
+                 triggered_intent: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs']] = None):
+        """
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs'] current_page: The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+               Structure is documented below.
+        :param pulumi.Input[str] session_parameters: The session parameters available to the bot at this point.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]] text_responses: The text responses from the agent for the turn.
+               Structure is documented below.
+        :param pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs'] triggered_intent: The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+               Structure is documented below.
+        """
+        if current_page is not None:
+            pulumi.set(__self__, "current_page", current_page)
+        if session_parameters is not None:
+            pulumi.set(__self__, "session_parameters", session_parameters)
+        if text_responses is not None:
+            pulumi.set(__self__, "text_responses", text_responses)
+        if triggered_intent is not None:
+            pulumi.set(__self__, "triggered_intent", triggered_intent)
+
+    @property
+    @pulumi.getter(name="currentPage")
+    def current_page(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs']]:
+        """
+        The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "current_page")
+
+    @current_page.setter
+    def current_page(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs']]):
+        pulumi.set(self, "current_page", value)
+
+    @property
+    @pulumi.getter(name="sessionParameters")
+    def session_parameters(self) -> Optional[pulumi.Input[str]]:
+        """
+        The session parameters available to the bot at this point.
+        """
+        return pulumi.get(self, "session_parameters")
+
+    @session_parameters.setter
+    def session_parameters(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_parameters", value)
+
+    @property
+    @pulumi.getter(name="textResponses")
+    def text_responses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]]]:
+        """
+        The text responses from the agent for the turn.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_responses")
+
+    @text_responses.setter
+    def text_responses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs']]]]):
+        pulumi.set(self, "text_responses", value)
+
+    @property
+    @pulumi.getter(name="triggeredIntent")
+    def triggered_intent(self) -> Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs']]:
+        """
+        The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "triggered_intent")
+
+    @triggered_intent.setter
+    def triggered_intent(self, value: Optional[pulumi.Input['CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs']]):
+        pulumi.set(self, "triggered_intent", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: (Output)
+               The human-readable name of the page, unique within the flow.
+        :param pulumi.Input[str] name: The unique identifier of the page.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The human-readable name of the page, unique within the flow.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the page.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs:
+    def __init__(__self__, *,
+                 texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] texts: A collection of text responses.
+        """
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+    @texts.setter
+    def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: (Output)
+               The human-readable name of the intent, unique within the agent.
+        :param pulumi.Input[str] name: The unique identifier of the intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The human-readable name of the intent, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class CxTestCaseTestConfigArgs:
+    def __init__(__self__, *,
+                 flow: Optional[pulumi.Input[str]] = None,
+                 page: Optional[pulumi.Input[str]] = None,
+                 tracking_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] flow: Flow name to start the test case with.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+               Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+        :param pulumi.Input[str] page: The page to start the test case with.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+               Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tracking_parameters: Session parameters to be compared when calculating differences.
+        """
+        if flow is not None:
+            pulumi.set(__self__, "flow", flow)
+        if page is not None:
+            pulumi.set(__self__, "page", page)
+        if tracking_parameters is not None:
+            pulumi.set(__self__, "tracking_parameters", tracking_parameters)
+
+    @property
+    @pulumi.getter
+    def flow(self) -> Optional[pulumi.Input[str]]:
+        """
+        Flow name to start the test case with.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+        """
+        return pulumi.get(self, "flow")
+
+    @flow.setter
+    def flow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "flow", value)
+
+    @property
+    @pulumi.getter
+    def page(self) -> Optional[pulumi.Input[str]]:
+        """
+        The page to start the test case with.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+        """
+        return pulumi.get(self, "page")
+
+    @page.setter
+    def page(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "page", value)
+
+    @property
+    @pulumi.getter(name="trackingParameters")
+    def tracking_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Session parameters to be compared when calculating differences.
+        """
+        return pulumi.get(self, "tracking_parameters")
+
+    @tracking_parameters.setter
+    def tracking_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tracking_parameters", value)
 
 
 @pulumi.input_type

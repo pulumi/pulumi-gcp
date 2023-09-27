@@ -18,11 +18,13 @@ class DatabaseArgs:
                  type: pulumi.Input[str],
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
+                 delete_protection_state: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
+        :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
@@ -35,12 +37,21 @@ class DatabaseArgs:
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
                a letter and the last a letter or a number. Must not be
                UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
                "(default)" database id is also valid.
+        :param pulumi.Input[str] point_in_time_recovery_enablement: Whether to enable the PITR feature on this database.
+               If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+               versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+               and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+               If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+               Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+               Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -50,8 +61,12 @@ class DatabaseArgs:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
         if concurrency_mode is not None:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
+        if delete_protection_state is not None:
+            pulumi.set(__self__, "delete_protection_state", delete_protection_state)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if point_in_time_recovery_enablement is not None:
+            pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -59,7 +74,7 @@ class DatabaseArgs:
     @pulumi.getter(name="locationId")
     def location_id(self) -> pulumi.Input[str]:
         """
-        The location of the database. Available databases are listed at
+        The location of the database. Available locations are listed at
         https://cloud.google.com/firestore/docs/locations.
         """
         return pulumi.get(self, "location_id")
@@ -113,6 +128,19 @@ class DatabaseArgs:
         pulumi.set(self, "concurrency_mode", value)
 
     @property
+    @pulumi.getter(name="deleteProtectionState")
+    def delete_protection_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of delete protection for the database.
+        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        """
+        return pulumi.get(self, "delete_protection_state")
+
+    @delete_protection_state.setter
+    def delete_protection_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_protection_state", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -128,6 +156,24 @@ class DatabaseArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pointInTimeRecoveryEnablement")
+    def point_in_time_recovery_enablement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable the PITR feature on this database.
+        If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+        versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+        and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+        If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+        Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+        Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+        """
+        return pulumi.get(self, "point_in_time_recovery_enablement")
+
+    @point_in_time_recovery_enablement.setter
+    def point_in_time_recovery_enablement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "point_in_time_recovery_enablement", value)
 
     @property
     @pulumi.getter
@@ -149,27 +195,38 @@ class _DatabaseState:
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 delete_protection_state: Optional[pulumi.Input[str]] = None,
+                 earliest_version_time: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  key_prefix: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 version_retention_period: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[str] create_time: The timestamp at which this database was created.
-        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields,
+        :param pulumi.Input[str] create_time: Output only. The timestamp at which this database was created.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+               This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields,
                and may be sent on update and delete requests to ensure the client has an
                up-to-date value before proceeding.
         :param pulumi.Input[str] key_prefix: Output only. The keyPrefix for this database.
                This keyPrefix is used, in combination with the project id ("~") to construct the application id
                that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
                This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
-        :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
+        :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
@@ -177,6 +234,13 @@ class _DatabaseState:
                a letter and the last a letter or a number. Must not be
                UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
                "(default)" database id is also valid.
+        :param pulumi.Input[str] point_in_time_recovery_enablement: Whether to enable the PITR feature on this database.
+               If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+               versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+               and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+               If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+               Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+               Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the database.
@@ -186,6 +250,12 @@ class _DatabaseState:
                
                
                - - -
+        :param pulumi.Input[str] uid: Output only. The system-generated UUID4 for this Database.
+        :param pulumi.Input[str] update_time: Output only. The timestamp at which this database was most recently updated.
+        :param pulumi.Input[str] version_retention_period: Output only. The period during which past versions of data are retained in the database.
+               Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+               If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         if app_engine_integration_mode is not None:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
@@ -193,6 +263,10 @@ class _DatabaseState:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delete_protection_state is not None:
+            pulumi.set(__self__, "delete_protection_state", delete_protection_state)
+        if earliest_version_time is not None:
+            pulumi.set(__self__, "earliest_version_time", earliest_version_time)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if key_prefix is not None:
@@ -201,10 +275,18 @@ class _DatabaseState:
             pulumi.set(__self__, "location_id", location_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if point_in_time_recovery_enablement is not None:
+            pulumi.set(__self__, "point_in_time_recovery_enablement", point_in_time_recovery_enablement)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if version_retention_period is not None:
+            pulumi.set(__self__, "version_retention_period", version_retention_period)
 
     @property
     @pulumi.getter(name="appEngineIntegrationMode")
@@ -236,7 +318,7 @@ class _DatabaseState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp at which this database was created.
+        Output only. The timestamp at which this database was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -245,10 +327,37 @@ class _DatabaseState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="deleteProtectionState")
+    def delete_protection_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of delete protection for the database.
+        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        """
+        return pulumi.get(self, "delete_protection_state")
+
+    @delete_protection_state.setter
+    def delete_protection_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_protection_state", value)
+
+    @property
+    @pulumi.getter(name="earliestVersionTime")
+    def earliest_version_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+        This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "earliest_version_time")
+
+    @earliest_version_time.setter
+    def earliest_version_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "earliest_version_time", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        This checksum is computed by the server based on the value of other fields,
+        Output only. This checksum is computed by the server based on the value of other fields,
         and may be sent on update and delete requests to ensure the client has an
         up-to-date value before proceeding.
         """
@@ -277,7 +386,7 @@ class _DatabaseState:
     @pulumi.getter(name="locationId")
     def location_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the database. Available databases are listed at
+        The location of the database. Available locations are listed at
         https://cloud.google.com/firestore/docs/locations.
         """
         return pulumi.get(self, "location_id")
@@ -302,6 +411,24 @@ class _DatabaseState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pointInTimeRecoveryEnablement")
+    def point_in_time_recovery_enablement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable the PITR feature on this database.
+        If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+        versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+        and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+        If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+        Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+        Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+        """
+        return pulumi.get(self, "point_in_time_recovery_enablement")
+
+    @point_in_time_recovery_enablement.setter
+    def point_in_time_recovery_enablement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "point_in_time_recovery_enablement", value)
 
     @property
     @pulumi.getter
@@ -334,6 +461,45 @@ class _DatabaseState:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The system-generated UUID4 for this Database.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The timestamp at which this database was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The period during which past versions of data are retained in the database.
+        Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+        If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "version_retention_period")
+
+    @version_retention_period.setter
+    def version_retention_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_retention_period", value)
+
 
 class Database(pulumi.CustomResource):
     @overload
@@ -342,8 +508,10 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
+                 delete_protection_state: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -361,6 +529,19 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Database With Delete Protection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project=google_project["project"]["project_id"],
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[google_project_service["firestore"]]))
+        ```
 
         ## Import
 
@@ -384,7 +565,9 @@ class Database(pulumi.CustomResource):
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
@@ -392,6 +575,13 @@ class Database(pulumi.CustomResource):
                a letter and the last a letter or a number. Must not be
                UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
                "(default)" database id is also valid.
+        :param pulumi.Input[str] point_in_time_recovery_enablement: Whether to enable the PITR feature on this database.
+               If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+               versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+               and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+               If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+               Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+               Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the database.
@@ -422,6 +612,19 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Database With Delete Protection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project=google_project["project"]["project_id"],
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            opts=pulumi.ResourceOptions(depends_on=[google_project_service["firestore"]]))
+        ```
 
         ## Import
 
@@ -456,8 +659,10 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
+                 delete_protection_state: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -471,17 +676,23 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
             __props__.__dict__["concurrency_mode"] = concurrency_mode
+            __props__.__dict__["delete_protection_state"] = delete_protection_state
             if location_id is None and not opts.urn:
                 raise TypeError("Missing required property 'location_id'")
             __props__.__dict__["location_id"] = location_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["point_in_time_recovery_enablement"] = point_in_time_recovery_enablement
             __props__.__dict__["project"] = project
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["earliest_version_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["key_prefix"] = None
+            __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
+            __props__.__dict__["version_retention_period"] = None
         super(Database, __self__).__init__(
             'gcp:firestore/database:Database',
             resource_name,
@@ -495,12 +706,18 @@ class Database(pulumi.CustomResource):
             app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
             concurrency_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            delete_protection_state: Optional[pulumi.Input[str]] = None,
+            earliest_version_time: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             key_prefix: Optional[pulumi.Input[str]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'Database':
+            type: Optional[pulumi.Input[str]] = None,
+            uid: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None,
+            version_retention_period: Optional[pulumi.Input[str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -512,15 +729,20 @@ class Database(pulumi.CustomResource):
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[str] create_time: The timestamp at which this database was created.
-        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields,
+        :param pulumi.Input[str] create_time: Output only. The timestamp at which this database was created.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
+               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+               This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields,
                and may be sent on update and delete requests to ensure the client has an
                up-to-date value before proceeding.
         :param pulumi.Input[str] key_prefix: Output only. The keyPrefix for this database.
                This keyPrefix is used, in combination with the project id ("~") to construct the application id
                that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
                This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
-        :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
+        :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
@@ -528,6 +750,13 @@ class Database(pulumi.CustomResource):
                a letter and the last a letter or a number. Must not be
                UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
                "(default)" database id is also valid.
+        :param pulumi.Input[str] point_in_time_recovery_enablement: Whether to enable the PITR feature on this database.
+               If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+               versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+               and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+               If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+               Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+               Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the database.
@@ -537,6 +766,12 @@ class Database(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] uid: Output only. The system-generated UUID4 for this Database.
+        :param pulumi.Input[str] update_time: Output only. The timestamp at which this database was most recently updated.
+        :param pulumi.Input[str] version_retention_period: Output only. The period during which past versions of data are retained in the database.
+               Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+               If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -545,12 +780,18 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
         __props__.__dict__["concurrency_mode"] = concurrency_mode
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_protection_state"] = delete_protection_state
+        __props__.__dict__["earliest_version_time"] = earliest_version_time
         __props__.__dict__["etag"] = etag
         __props__.__dict__["key_prefix"] = key_prefix
         __props__.__dict__["location_id"] = location_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["point_in_time_recovery_enablement"] = point_in_time_recovery_enablement
         __props__.__dict__["project"] = project
         __props__.__dict__["type"] = type
+        __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["version_retention_period"] = version_retention_period
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -575,15 +816,34 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp at which this database was created.
+        Output only. The timestamp at which this database was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deleteProtectionState")
+    def delete_protection_state(self) -> pulumi.Output[str]:
+        """
+        State of delete protection for the database.
+        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        """
+        return pulumi.get(self, "delete_protection_state")
+
+    @property
+    @pulumi.getter(name="earliestVersionTime")
+    def earliest_version_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+        This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "earliest_version_time")
 
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        This checksum is computed by the server based on the value of other fields,
+        Output only. This checksum is computed by the server based on the value of other fields,
         and may be sent on update and delete requests to ensure the client has an
         up-to-date value before proceeding.
         """
@@ -604,7 +864,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="locationId")
     def location_id(self) -> pulumi.Output[str]:
         """
-        The location of the database. Available databases are listed at
+        The location of the database. Available locations are listed at
         https://cloud.google.com/firestore/docs/locations.
         """
         return pulumi.get(self, "location_id")
@@ -621,6 +881,20 @@ class Database(pulumi.CustomResource):
         "(default)" database id is also valid.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pointInTimeRecoveryEnablement")
+    def point_in_time_recovery_enablement(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to enable the PITR feature on this database.
+        If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+        versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+        and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+        If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+        Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+        Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+        """
+        return pulumi.get(self, "point_in_time_recovery_enablement")
 
     @property
     @pulumi.getter
@@ -644,4 +918,31 @@ class Database(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        Output only. The system-generated UUID4 for this Database.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        Output only. The timestamp at which this database was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="versionRetentionPeriod")
+    def version_retention_period(self) -> pulumi.Output[str]:
+        """
+        Output only. The period during which past versions of data are retained in the database.
+        Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+        If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "version_retention_period")
 

@@ -19,6 +19,7 @@ class AiIndexEndpointArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AiIndexEndpoint resource.
@@ -34,6 +35,7 @@ class AiIndexEndpointArgs:
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -45,6 +47,8 @@ class AiIndexEndpointArgs:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if public_endpoint_enabled is not None:
+            pulumi.set(__self__, "public_endpoint_enabled", public_endpoint_enabled)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -116,6 +120,18 @@ class AiIndexEndpointArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="publicEndpointEnabled")
+    def public_endpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the deployed index will be accessible through public endpoint.
+        """
+        return pulumi.get(self, "public_endpoint_enabled")
+
+    @public_endpoint_enabled.setter
+    def public_endpoint_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public_endpoint_enabled", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -139,6 +155,8 @@ class _AiIndexEndpointState:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
+                 public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -158,6 +176,8 @@ class _AiIndexEndpointState:
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] public_endpoint_domain_name: If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+        :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
@@ -177,6 +197,10 @@ class _AiIndexEndpointState:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if public_endpoint_domain_name is not None:
+            pulumi.set(__self__, "public_endpoint_domain_name", public_endpoint_domain_name)
+        if public_endpoint_enabled is not None:
+            pulumi.set(__self__, "public_endpoint_enabled", public_endpoint_enabled)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if update_time is not None:
@@ -286,6 +310,30 @@ class _AiIndexEndpointState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="publicEndpointDomainName")
+    def public_endpoint_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+        """
+        return pulumi.get(self, "public_endpoint_domain_name")
+
+    @public_endpoint_domain_name.setter
+    def public_endpoint_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_endpoint_domain_name", value)
+
+    @property
+    @pulumi.getter(name="publicEndpointEnabled")
+    def public_endpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the deployed index will be accessible through public endpoint.
+        """
+        return pulumi.get(self, "public_endpoint_enabled")
+
+    @public_endpoint_enabled.setter
+    def public_endpoint_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "public_endpoint_enabled", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -320,6 +368,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -357,6 +406,21 @@ class AiIndexEndpoint(pulumi.CustomResource):
             network=f"projects/{project.number}/global/networks/{vertex_network.name}",
             opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
+        ### Vertex Ai Index Endpoint With Public Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+            description="A sample vertex endpoint with an public endpoint",
+            display_name="sample-endpoint",
+            labels={
+                "label-one": "value-one",
+            },
+            public_endpoint_enabled=True,
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -392,6 +456,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         """
         ...
@@ -435,6 +500,21 @@ class AiIndexEndpoint(pulumi.CustomResource):
             network=f"projects/{project.number}/global/networks/{vertex_network.name}",
             opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         ```
+        ### Vertex Ai Index Endpoint With Public Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        index_endpoint = gcp.vertex.AiIndexEndpoint("indexEndpoint",
+            description="A sample vertex endpoint with an public endpoint",
+            display_name="sample-endpoint",
+            labels={
+                "label-one": "value-one",
+            },
+            public_endpoint_enabled=True,
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -476,6 +556,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -493,10 +574,12 @@ class AiIndexEndpoint(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            __props__.__dict__["public_endpoint_enabled"] = public_endpoint_enabled
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["public_endpoint_domain_name"] = None
             __props__.__dict__["update_time"] = None
         super(AiIndexEndpoint, __self__).__init__(
             'gcp:vertex/aiIndexEndpoint:AiIndexEndpoint',
@@ -516,6 +599,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
+            public_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiIndexEndpoint':
         """
@@ -540,6 +625,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
                Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] public_endpoint_domain_name: If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+        :param pulumi.Input[bool] public_endpoint_enabled: If true, the deployed index will be accessible through public endpoint.
         :param pulumi.Input[str] region: The region of the index endpoint. eg us-central1
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
@@ -555,6 +642,8 @@ class AiIndexEndpoint(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
+        __props__.__dict__["public_endpoint_domain_name"] = public_endpoint_domain_name
+        __props__.__dict__["public_endpoint_enabled"] = public_endpoint_enabled
         __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
         return AiIndexEndpoint(resource_name, opts=opts, __props__=__props__)
@@ -629,6 +718,22 @@ class AiIndexEndpoint(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="publicEndpointDomainName")
+    def public_endpoint_domain_name(self) -> pulumi.Output[str]:
+        """
+        If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+        """
+        return pulumi.get(self, "public_endpoint_domain_name")
+
+    @property
+    @pulumi.getter(name="publicEndpointEnabled")
+    def public_endpoint_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the deployed index will be accessible through public endpoint.
+        """
+        return pulumi.get(self, "public_endpoint_enabled")
 
     @property
     @pulumi.getter

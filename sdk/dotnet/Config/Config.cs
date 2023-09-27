@@ -410,6 +410,13 @@ namespace Pulumi.Gcp
             set => _dataLossPreventionCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _dataPipelineCustomEndpoint = new __Value<string?>(() => __config.Get("dataPipelineCustomEndpoint"));
+        public static string? DataPipelineCustomEndpoint
+        {
+            get => _dataPipelineCustomEndpoint.Get();
+            set => _dataPipelineCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _databaseMigrationServiceCustomEndpoint = new __Value<string?>(() => __config.Get("databaseMigrationServiceCustomEndpoint"));
         public static string? DatabaseMigrationServiceCustomEndpoint
         {
@@ -513,6 +520,13 @@ namespace Pulumi.Gcp
         {
             get => _documentAiWarehouseCustomEndpoint.Get();
             set => _documentAiWarehouseCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _edgenetworkCustomEndpoint = new __Value<string?>(() => __config.Get("edgenetworkCustomEndpoint"));
+        public static string? EdgenetworkCustomEndpoint
+        {
+            get => _edgenetworkCustomEndpoint.Get();
+            set => _edgenetworkCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _essentialContactsCustomEndpoint = new __Value<string?>(() => __config.Get("essentialContactsCustomEndpoint"));
@@ -984,6 +998,13 @@ namespace Pulumi.Gcp
             set => _storageCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _storageInsightsCustomEndpoint = new __Value<string?>(() => __config.Get("storageInsightsCustomEndpoint"));
+        public static string? StorageInsightsCustomEndpoint
+        {
+            get => _storageInsightsCustomEndpoint.Get();
+            set => _storageInsightsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _storageTransferCustomEndpoint = new __Value<string?>(() => __config.Get("storageTransferCustomEndpoint"));
         public static string? StorageTransferCustomEndpoint
         {
@@ -1010,6 +1031,13 @@ namespace Pulumi.Gcp
         {
             get => _tpuCustomEndpoint.Get();
             set => _tpuCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _tpuV2CustomEndpoint = new __Value<string?>(() => __config.Get("tpuV2CustomEndpoint"));
+        public static string? TpuV2CustomEndpoint
+        {
+            get => _tpuV2CustomEndpoint.Get();
+            set => _tpuV2CustomEndpoint.Set(value);
         }
 
         private static readonly __Value<bool?> _userProjectOverride = new __Value<bool?>(() => __config.GetBoolean("userProjectOverride"));

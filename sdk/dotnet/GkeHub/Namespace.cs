@@ -52,10 +52,26 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
+        /// Labels for this Namespace.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name for the namespace
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Namespace-level cluster namespace labels. These labels are applied
+        /// to the related namespace of the member clusters bound to the parent
+        /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        /// resource) take precedence over Namespace-level labels if they share
+        /// a key. Keys and values must be Kubernetes-conformant.
+        /// </summary>
+        [Output("namespaceLabels")]
+        public Output<ImmutableDictionary<string, string>?> NamespaceLabels { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -150,6 +166,34 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Namespace.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        [Input("namespaceLabels")]
+        private InputMap<string>? _namespaceLabels;
+
+        /// <summary>
+        /// Namespace-level cluster namespace labels. These labels are applied
+        /// to the related namespace of the member clusters bound to the parent
+        /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        /// resource) take precedence over Namespace-level labels if they share
+        /// a key. Keys and values must be Kubernetes-conformant.
+        /// </summary>
+        public InputMap<string> NamespaceLabels
+        {
+            get => _namespaceLabels ?? (_namespaceLabels = new InputMap<string>());
+            set => _namespaceLabels = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -198,11 +242,39 @@ namespace Pulumi.Gcp.GkeHub
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Namespace.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The resource name for the namespace
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("namespaceLabels")]
+        private InputMap<string>? _namespaceLabels;
+
+        /// <summary>
+        /// Namespace-level cluster namespace labels. These labels are applied
+        /// to the related namespace of the member clusters bound to the parent
+        /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        /// resource) take precedence over Namespace-level labels if they share
+        /// a key. Keys and values must be Kubernetes-conformant.
+        /// </summary>
+        public InputMap<string> NamespaceLabels
+        {
+            get => _namespaceLabels ?? (_namespaceLabels = new InputMap<string>());
+            set => _namespaceLabels = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

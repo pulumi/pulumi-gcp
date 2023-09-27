@@ -134,6 +134,13 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.AttachedClusterAuthorization?> Authorization { get; private set; } = null!;
 
         /// <summary>
+        /// Binary Authorization configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("binaryAuthorization")]
+        public Output<Outputs.AttachedClusterBinaryAuthorization> BinaryAuthorization { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The region where this cluster runs.
         /// For EKS clusters, this is an AWS region. For AKS clusters,
         /// this is an Azure region.
@@ -349,6 +356,13 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AttachedClusterAuthorizationArgs>? Authorization { get; set; }
 
         /// <summary>
+        /// Binary Authorization configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.AttachedClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
+
+        /// <summary>
         /// Policy to determine what flags to send on delete.
         /// </summary>
         [Input("deletionPolicy")]
@@ -464,6 +478,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("authorization")]
         public Input<Inputs.AttachedClusterAuthorizationGetArgs>? Authorization { get; set; }
+
+        /// <summary>
+        /// Binary Authorization configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.AttachedClusterBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Output only. The region where this cluster runs.

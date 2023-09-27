@@ -144,7 +144,7 @@ namespace Pulumi.Gcp.Eventarc
         /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         /// </summary>
         [Output("eventDataContentType")]
-        public Output<string?> EventDataContentType { get; private set; } = null!;
+        public Output<string> EventDataContentType { get; private set; } = null!;
 
         /// <summary>
         /// Optional. User labels attached to the triggers that can be used to group resources.

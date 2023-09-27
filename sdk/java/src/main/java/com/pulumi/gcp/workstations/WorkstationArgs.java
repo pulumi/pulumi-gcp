@@ -47,6 +47,21 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<Map<String,String>> env;
+
+    /**
+     * @return &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+     * 
+     */
+    public Optional<Output<Map<String,String>>> env() {
+        return Optional.ofNullable(this.env);
+    }
+
+    /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * 
      */
@@ -147,6 +162,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
     private WorkstationArgs(WorkstationArgs $) {
         this.annotations = $.annotations;
         this.displayName = $.displayName;
+        this.env = $.env;
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
@@ -213,6 +229,27 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param env &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<Map<String,String>> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(Map<String,String> env) {
+            return env(Output.of(env));
         }
 
         /**

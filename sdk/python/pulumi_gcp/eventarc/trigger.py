@@ -755,7 +755,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventDataContentType")
-    def event_data_content_type(self) -> pulumi.Output[Optional[str]]:
+    def event_data_content_type(self) -> pulumi.Output[str]:
         """
         Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         """

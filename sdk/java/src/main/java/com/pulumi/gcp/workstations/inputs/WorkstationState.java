@@ -62,6 +62,21 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<Map<String,String>> env;
+
+    /**
+     * @return &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+     * 
+     */
+    public Optional<Output<Map<String,String>>> env() {
+        return Optional.ofNullable(this.env);
+    }
+
+    /**
      * Host to which clients can send HTTPS traffic that will be received by the workstation.
      * Authorized traffic will be received to the workstation as HTTP on port 80.
      * To send traffic to a different port, clients may prefix the host with the destination port in the format &#34;{port}-{host}&#34;.
@@ -227,6 +242,7 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.createTime = $.createTime;
         this.displayName = $.displayName;
+        this.env = $.env;
         this.host = $.host;
         this.labels = $.labels;
         this.location = $.location;
@@ -318,6 +334,27 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param env &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<Map<String,String>> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(Map<String,String> env) {
+            return env(Output.of(env));
         }
 
         /**

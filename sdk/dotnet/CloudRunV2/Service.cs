@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         SecretId = "secret-1",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 
@@ -232,6 +232,52 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Directvpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         LaunchStage = "BETA",
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///             VpcAccess = new Gcp.CloudRunV2.Inputs.ServiceTemplateVpcAccessArgs
+    ///             {
+    ///                 Egress = "ALL_TRAFFIC",
+    ///                 NetworkInterfaces = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs
+    ///                     {
+    ///                         Network = "default",
+    ///                         Subnetwork = "default",
+    ///                         Tags = new[]
+    ///                         {
+    ///                             "tag1",
+    ///                             "tag2",
+    ///                             "tag3",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Service Probes
     /// 
     /// ```csharp
@@ -292,7 +338,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         SecretId = "secret-1",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 

@@ -52,6 +52,12 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
+        /// Labels for this Membership binding.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// Location of the membership
         /// 
         /// 
@@ -157,6 +163,18 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class MembershipBindingArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Membership binding.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Location of the membership
         /// 
@@ -211,6 +229,18 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Membership binding.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// Location of the membership

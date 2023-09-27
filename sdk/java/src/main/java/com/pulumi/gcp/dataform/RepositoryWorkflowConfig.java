@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.dataform.Repository;
@@ -66,7 +67,7 @@ import javax.annotation.Nullable;
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;my_secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

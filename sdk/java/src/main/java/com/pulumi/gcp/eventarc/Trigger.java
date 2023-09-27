@@ -193,14 +193,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="eventDataContentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> eventDataContentType;
+    private Output<String> eventDataContentType;
 
     /**
      * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      * 
      */
-    public Output<Optional<String>> eventDataContentType() {
-        return Codegen.optional(this.eventDataContentType);
+    public Output<String> eventDataContentType() {
+        return this.eventDataContentType;
     }
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.

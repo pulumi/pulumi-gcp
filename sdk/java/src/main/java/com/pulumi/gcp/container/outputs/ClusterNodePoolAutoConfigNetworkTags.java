@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolAutoConfigNetworkTags {
     /**
-     * @return ) - List of network tags applied to auto-provisioned node pools.
+     * @return List of network tags applied to auto-provisioned node pools.
      * ```java
      * package generated_program;
      * 
@@ -41,7 +41,7 @@ public final class ClusterNodePoolAutoConfigNetworkTags {
 
     private ClusterNodePoolAutoConfigNetworkTags() {}
     /**
-     * @return ) - List of network tags applied to auto-provisioned node pools.
+     * @return List of network tags applied to auto-provisioned node pools.
      * ```java
      * package generated_program;
      * 

@@ -34,6 +34,9 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("internalIpv6PrefixLength")]
+        public Input<int>? InternalIpv6PrefixLength { get; set; }
+
         [Input("ipv6AccessConfigs")]
         private InputList<Inputs.InstanceNetworkInterfaceIpv6AccessConfigArgs>? _ipv6AccessConfigs;
 
@@ -54,6 +57,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
+
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
         /// A unique name for the resource, required by GCE.

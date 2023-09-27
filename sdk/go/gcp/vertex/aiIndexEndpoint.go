@@ -87,6 +87,37 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Index Endpoint With Public Endpoint
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiIndexEndpoint(ctx, "indexEndpoint", &vertex.AiIndexEndpointArgs{
+//				Description: pulumi.String("A sample vertex endpoint with an public endpoint"),
+//				DisplayName: pulumi.String("sample-endpoint"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				PublicEndpointEnabled: pulumi.Bool(true),
+//				Region:                pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -140,6 +171,10 @@ type AiIndexEndpoint struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+	PublicEndpointDomainName pulumi.StringOutput `pulumi:"publicEndpointDomainName"`
+	// If true, the deployed index will be accessible through public endpoint.
+	PublicEndpointEnabled pulumi.BoolPtrOutput `pulumi:"publicEndpointEnabled"`
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -201,6 +236,10 @@ type aiIndexEndpointState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+	PublicEndpointDomainName *string `pulumi:"publicEndpointDomainName"`
+	// If true, the deployed index will be accessible through public endpoint.
+	PublicEndpointEnabled *bool `pulumi:"publicEndpointEnabled"`
 	// The region of the index endpoint. eg us-central1
 	Region *string `pulumi:"region"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -230,6 +269,10 @@ type AiIndexEndpointState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+	PublicEndpointDomainName pulumi.StringPtrInput
+	// If true, the deployed index will be accessible through public endpoint.
+	PublicEndpointEnabled pulumi.BoolPtrInput
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrInput
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -257,6 +300,8 @@ type aiIndexEndpointArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// If true, the deployed index will be accessible through public endpoint.
+	PublicEndpointEnabled *bool `pulumi:"publicEndpointEnabled"`
 	// The region of the index endpoint. eg us-central1
 	Region *string `pulumi:"region"`
 }
@@ -279,6 +324,8 @@ type AiIndexEndpointArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// If true, the deployed index will be accessible through public endpoint.
+	PublicEndpointEnabled pulumi.BoolPtrInput
 	// The region of the index endpoint. eg us-central1
 	Region pulumi.StringPtrInput
 }
@@ -438,6 +485,16 @@ func (o AiIndexEndpointOutput) Network() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o AiIndexEndpointOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+func (o AiIndexEndpointOutput) PublicEndpointDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.StringOutput { return v.PublicEndpointDomainName }).(pulumi.StringOutput)
+}
+
+// If true, the deployed index will be accessible through public endpoint.
+func (o AiIndexEndpointOutput) PublicEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiIndexEndpoint) pulumi.BoolPtrOutput { return v.PublicEndpointEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The region of the index endpoint. eg us-central1

@@ -15,8 +15,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceAccessConfig> AccessConfigs;
         public readonly ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceAliasIpRange> AliasIpRanges;
+        public readonly int? InternalIpv6PrefixLength;
         public readonly ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig> Ipv6AccessConfigs;
         public readonly string? Ipv6AccessType;
+        public readonly string? Ipv6Address;
         /// <summary>
         /// A unique name for the resource, required by GCE.
         /// Changing this forces a new resource to be created.
@@ -36,9 +38,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceAliasIpRange> aliasIpRanges,
 
+            int? internalIpv6PrefixLength,
+
             ImmutableArray<Outputs.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs,
 
             string? ipv6AccessType,
+
+            string? ipv6Address,
 
             string? name,
 
@@ -58,8 +64,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
+            InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;
             Ipv6AccessType = ipv6AccessType;
+            Ipv6Address = ipv6Address;
             Name = name;
             Network = network;
             NetworkIp = networkIp;

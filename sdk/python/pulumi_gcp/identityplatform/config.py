@@ -20,7 +20,8 @@ class ConfigArgs:
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
                  blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None):
+                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
+                 sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None):
         """
         The set of arguments for constructing a Config resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
@@ -30,6 +31,8 @@ class ConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ConfigQuotaArgs'] quota: Configuration related to quotas.
+               Structure is documented below.
+        :param pulumi.Input['ConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
         if authorized_domains is not None:
@@ -42,6 +45,8 @@ class ConfigArgs:
             pulumi.set(__self__, "project", project)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
+        if sign_in is not None:
+            pulumi.set(__self__, "sign_in", sign_in)
 
     @property
     @pulumi.getter(name="authorizedDomains")
@@ -106,6 +111,19 @@ class ConfigArgs:
     def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
+    @property
+    @pulumi.getter(name="signIn")
+    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArgs']]:
+        """
+        Configuration related to local sign in methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sign_in")
+
+    @sign_in.setter
+    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArgs']]):
+        pulumi.set(self, "sign_in", value)
+
 
 @pulumi.input_type
 class _ConfigState:
@@ -115,7 +133,8 @@ class _ConfigState:
                  blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None):
+                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
+                 sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None):
         """
         Input properties used for looking up and filtering Config resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
@@ -126,6 +145,8 @@ class _ConfigState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ConfigQuotaArgs'] quota: Configuration related to quotas.
+               Structure is documented below.
+        :param pulumi.Input['ConfigSignInArgs'] sign_in: Configuration related to local sign in methods.
                Structure is documented below.
         """
         if authorized_domains is not None:
@@ -140,6 +161,8 @@ class _ConfigState:
             pulumi.set(__self__, "project", project)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
+        if sign_in is not None:
+            pulumi.set(__self__, "sign_in", sign_in)
 
     @property
     @pulumi.getter(name="authorizedDomains")
@@ -216,6 +239,19 @@ class _ConfigState:
     def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
+    @property
+    @pulumi.getter(name="signIn")
+    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArgs']]:
+        """
+        Configuration related to local sign in methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sign_in")
+
+    @sign_in.setter
+    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArgs']]):
+        pulumi.set(self, "sign_in", value)
+
 
 class Config(pulumi.CustomResource):
     @overload
@@ -227,6 +263,7 @@ class Config(pulumi.CustomResource):
                  blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
+                 sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
                  __props__=None):
         """
         Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -263,6 +300,22 @@ class Config(pulumi.CustomResource):
         default_config = gcp.identityplatform.Config("defaultConfig",
             project=default_project.project_id,
             autodelete_anonymous_users=True,
+            sign_in=gcp.identityplatform.ConfigSignInArgs(
+                allow_duplicate_emails=True,
+                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
+                    enabled=True,
+                ),
+                email=gcp.identityplatform.ConfigSignInEmailArgs(
+                    enabled=True,
+                    password_required=False,
+                ),
+                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
+                    enabled=True,
+                    test_phone_numbers={
+                        "+11231231234": "000000",
+                    },
+                ),
+            ),
             blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
                 triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
                     event_type="beforeSignIn",
@@ -314,6 +367,8 @@ class Config(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ConfigQuotaArgs']] quota: Configuration related to quotas.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigSignInArgs']] sign_in: Configuration related to local sign in methods.
+               Structure is documented below.
         """
         ...
     @overload
@@ -356,6 +411,22 @@ class Config(pulumi.CustomResource):
         default_config = gcp.identityplatform.Config("defaultConfig",
             project=default_project.project_id,
             autodelete_anonymous_users=True,
+            sign_in=gcp.identityplatform.ConfigSignInArgs(
+                allow_duplicate_emails=True,
+                anonymous=gcp.identityplatform.ConfigSignInAnonymousArgs(
+                    enabled=True,
+                ),
+                email=gcp.identityplatform.ConfigSignInEmailArgs(
+                    enabled=True,
+                    password_required=False,
+                ),
+                phone_number=gcp.identityplatform.ConfigSignInPhoneNumberArgs(
+                    enabled=True,
+                    test_phone_numbers={
+                        "+11231231234": "000000",
+                    },
+                ),
+            ),
             blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
                 triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
                     event_type="beforeSignIn",
@@ -417,6 +488,7 @@ class Config(pulumi.CustomResource):
                  blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
+                 sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -431,6 +503,7 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["blocking_functions"] = blocking_functions
             __props__.__dict__["project"] = project
             __props__.__dict__["quota"] = quota
+            __props__.__dict__["sign_in"] = sign_in
             __props__.__dict__["name"] = None
         super(Config, __self__).__init__(
             'gcp:identityplatform/config:Config',
@@ -447,7 +520,8 @@ class Config(pulumi.CustomResource):
             blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None) -> 'Config':
+            quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
+            sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -464,6 +538,8 @@ class Config(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ConfigQuotaArgs']] quota: Configuration related to quotas.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigSignInArgs']] sign_in: Configuration related to local sign in methods.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -475,6 +551,7 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["quota"] = quota
+        __props__.__dict__["sign_in"] = sign_in
         return Config(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -527,4 +604,13 @@ class Config(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="signIn")
+    def sign_in(self) -> pulumi.Output['outputs.ConfigSignIn']:
+        """
+        Configuration related to local sign in methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sign_in")
 

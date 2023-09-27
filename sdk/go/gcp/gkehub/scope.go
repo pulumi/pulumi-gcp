@@ -37,6 +37,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
+//				Labels: pulumi.StringMap{
+//					"keya": pulumi.String("valuea"),
+//					"keyb": pulumi.String("valueb"),
+//					"keyc": pulumi.String("valuec"),
+//				},
 //				ScopeId: pulumi.String("tf-test-scope%{random_suffix}"),
 //			})
 //			if err != nil {
@@ -76,6 +81,8 @@ type Scope struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the Scope was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Labels for this Scope.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The unique identifier of the scope
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -131,6 +138,8 @@ type scopeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the Scope was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Labels for this Scope.
+	Labels map[string]string `pulumi:"labels"`
 	// The unique identifier of the scope
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -154,6 +163,8 @@ type ScopeState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the Scope was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// Labels for this Scope.
+	Labels pulumi.StringMapInput
 	// The unique identifier of the scope
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -177,6 +188,8 @@ func (ScopeState) ElementType() reflect.Type {
 }
 
 type scopeArgs struct {
+	// Labels for this Scope.
+	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -188,6 +201,8 @@ type scopeArgs struct {
 
 // The set of arguments for constructing a Scope resource.
 type ScopeArgs struct {
+	// Labels for this Scope.
+	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -316,6 +331,11 @@ func (o ScopeOutput) CreateTime() pulumi.StringOutput {
 // Time the Scope was deleted in UTC.
 func (o ScopeOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Labels for this Scope.
+func (o ScopeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The unique identifier of the scope

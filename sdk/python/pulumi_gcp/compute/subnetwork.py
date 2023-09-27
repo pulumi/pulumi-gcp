@@ -331,6 +331,7 @@ class _SubnetworkState:
                  external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  gateway_address: Optional[pulumi.Input[str]] = None,
+                 internal_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -356,6 +357,7 @@ class _SubnetworkState:
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses
                outside this subnetwork.
+        :param pulumi.Input[str] internal_ipv6_prefix: The internal IPv6 address range that is assigned to this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
                10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -423,6 +425,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if gateway_address is not None:
             pulumi.set(__self__, "gateway_address", gateway_address)
+        if internal_ipv6_prefix is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix", internal_ipv6_prefix)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if ipv6_access_type is not None:
@@ -519,6 +523,18 @@ class _SubnetworkState:
     @gateway_address.setter
     def gateway_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway_address", value)
+
+    @property
+    @pulumi.getter(name="internalIpv6Prefix")
+    def internal_ipv6_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal IPv6 address range that is assigned to this subnetwork.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix")
+
+    @internal_ipv6_prefix.setter
+    def internal_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_ipv6_prefix", value)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -1146,6 +1162,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
+            __props__.__dict__["internal_ipv6_prefix"] = None
             __props__.__dict__["ipv6_cidr_range"] = None
             __props__.__dict__["self_link"] = None
         super(Subnetwork, __self__).__init__(
@@ -1163,6 +1180,7 @@ class Subnetwork(pulumi.CustomResource):
             external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             gateway_address: Optional[pulumi.Input[str]] = None,
+            internal_ipv6_prefix: Optional[pulumi.Input[str]] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
             ipv6_access_type: Optional[pulumi.Input[str]] = None,
             ipv6_cidr_range: Optional[pulumi.Input[str]] = None,
@@ -1193,6 +1211,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses
                outside this subnetwork.
+        :param pulumi.Input[str] internal_ipv6_prefix: The internal IPv6 address range that is assigned to this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
                10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -1256,6 +1275,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["gateway_address"] = gateway_address
+        __props__.__dict__["internal_ipv6_prefix"] = internal_ipv6_prefix
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
         __props__.__dict__["ipv6_access_type"] = ipv6_access_type
         __props__.__dict__["ipv6_cidr_range"] = ipv6_cidr_range
@@ -1318,6 +1338,14 @@ class Subnetwork(pulumi.CustomResource):
         outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
+
+    @property
+    @pulumi.getter(name="internalIpv6Prefix")
+    def internal_ipv6_prefix(self) -> pulumi.Output[str]:
+        """
+        The internal IPv6 address range that is assigned to this subnetwork.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix")
 
     @property
     @pulumi.getter(name="ipCidrRange")

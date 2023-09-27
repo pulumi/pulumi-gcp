@@ -70,6 +70,11 @@ __all__ = [
     'TableMaterializedViewArgs',
     'TableRangePartitioningArgs',
     'TableRangePartitioningRangeArgs',
+    'TableTableConstraintsArgs',
+    'TableTableConstraintsForeignKeyArgs',
+    'TableTableConstraintsForeignKeyColumnReferencesArgs',
+    'TableTableConstraintsForeignKeyReferencedTableArgs',
+    'TableTableConstraintsPrimaryKeyArgs',
     'TableTimePartitioningArgs',
     'TableViewArgs',
 ]
@@ -4298,16 +4303,21 @@ class TableExternalDataConfigurationParquetOptionsArgs:
 class TableMaterializedViewArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
+                 allow_non_incremental_definition: Optional[pulumi.Input[bool]] = None,
                  enable_refresh: Optional[pulumi.Input[bool]] = None,
                  refresh_interval_ms: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] query: A query whose result is persisted.
+        :param pulumi.Input[bool] allow_non_incremental_definition: Allow non incremental materialized view definition.
+               The default value is false.
         :param pulumi.Input[bool] enable_refresh: Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
                The default value is true.
         :param pulumi.Input[int] refresh_interval_ms: The maximum frequency at which this materialized view will be refreshed.
                The default value is 1800000
         """
         pulumi.set(__self__, "query", query)
+        if allow_non_incremental_definition is not None:
+            pulumi.set(__self__, "allow_non_incremental_definition", allow_non_incremental_definition)
         if enable_refresh is not None:
             pulumi.set(__self__, "enable_refresh", enable_refresh)
         if refresh_interval_ms is not None:
@@ -4324,6 +4334,19 @@ class TableMaterializedViewArgs:
     @query.setter
     def query(self, value: pulumi.Input[str]):
         pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="allowNonIncrementalDefinition")
+    def allow_non_incremental_definition(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow non incremental materialized view definition.
+        The default value is false.
+        """
+        return pulumi.get(self, "allow_non_incremental_definition")
+
+    @allow_non_incremental_definition.setter
+    def allow_non_incremental_definition(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_non_incremental_definition", value)
 
     @property
     @pulumi.getter(name="enableRefresh")
@@ -4443,6 +4466,235 @@ class TableRangePartitioningRangeArgs:
     @start.setter
     def start(self, value: pulumi.Input[int]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class TableTableConstraintsArgs:
+    def __init__(__self__, *,
+                 foreign_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]] = None,
+                 primary_key: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]] foreign_keys: Present only if the table has a foreign key.
+               The foreign key is not enforced.
+               Structure is documented below.
+        :param pulumi.Input['TableTableConstraintsPrimaryKeyArgs'] primary_key: Represents the primary key constraint
+               on a table's columns. Present only if the table has a primary key.
+               The primary key is not enforced.
+               Structure is documented below.
+        """
+        if foreign_keys is not None:
+            pulumi.set(__self__, "foreign_keys", foreign_keys)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+
+    @property
+    @pulumi.getter(name="foreignKeys")
+    def foreign_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]:
+        """
+        Present only if the table has a foreign key.
+        The foreign key is not enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "foreign_keys")
+
+    @foreign_keys.setter
+    def foreign_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]):
+        pulumi.set(self, "foreign_keys", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']]:
+        """
+        Represents the primary key constraint
+        on a table's columns. Present only if the table has a primary key.
+        The primary key is not enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input['TableTableConstraintsPrimaryKeyArgs']]):
+        pulumi.set(self, "primary_key", value)
+
+
+@pulumi.input_type
+class TableTableConstraintsForeignKeyArgs:
+    def __init__(__self__, *,
+                 column_references: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs'],
+                 referenced_table: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs'],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs'] column_references: The pair of the foreign key column and primary key column.
+               Structure is documented below.
+        :param pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs'] referenced_table: The table that holds the primary key
+               and is referenced by this foreign key.
+               Structure is documented below.
+        :param pulumi.Input[str] name: Set only if the foreign key constraint is named.
+        """
+        pulumi.set(__self__, "column_references", column_references)
+        pulumi.set(__self__, "referenced_table", referenced_table)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="columnReferences")
+    def column_references(self) -> pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs']:
+        """
+        The pair of the foreign key column and primary key column.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "column_references")
+
+    @column_references.setter
+    def column_references(self, value: pulumi.Input['TableTableConstraintsForeignKeyColumnReferencesArgs']):
+        pulumi.set(self, "column_references", value)
+
+    @property
+    @pulumi.getter(name="referencedTable")
+    def referenced_table(self) -> pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs']:
+        """
+        The table that holds the primary key
+        and is referenced by this foreign key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "referenced_table")
+
+    @referenced_table.setter
+    def referenced_table(self, value: pulumi.Input['TableTableConstraintsForeignKeyReferencedTableArgs']):
+        pulumi.set(self, "referenced_table", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set only if the foreign key constraint is named.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class TableTableConstraintsForeignKeyColumnReferencesArgs:
+    def __init__(__self__, *,
+                 referenced_column: pulumi.Input[str],
+                 referencing_column: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] referenced_column: The column in the primary key that are
+               referenced by the referencingColumn
+        :param pulumi.Input[str] referencing_column: The column that composes the foreign key.
+        """
+        pulumi.set(__self__, "referenced_column", referenced_column)
+        pulumi.set(__self__, "referencing_column", referencing_column)
+
+    @property
+    @pulumi.getter(name="referencedColumn")
+    def referenced_column(self) -> pulumi.Input[str]:
+        """
+        The column in the primary key that are
+        referenced by the referencingColumn
+        """
+        return pulumi.get(self, "referenced_column")
+
+    @referenced_column.setter
+    def referenced_column(self, value: pulumi.Input[str]):
+        pulumi.set(self, "referenced_column", value)
+
+    @property
+    @pulumi.getter(name="referencingColumn")
+    def referencing_column(self) -> pulumi.Input[str]:
+        """
+        The column that composes the foreign key.
+        """
+        return pulumi.get(self, "referencing_column")
+
+    @referencing_column.setter
+    def referencing_column(self, value: pulumi.Input[str]):
+        pulumi.set(self, "referencing_column", value)
+
+
+@pulumi.input_type
+class TableTableConstraintsForeignKeyReferencedTableArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 table_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] project_id: The ID of the project containing this table.
+        :param pulumi.Input[str] table_id: The ID of the table. The ID must contain only
+               letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+               length is 1,024 characters. Certain operations allow suffixing of
+               the table ID with a partition decorator, such as
+               sample_table$20190123.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the table. The ID must contain only
+        letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+        length is 1,024 characters. Certain operations allow suffixing of
+        the table ID with a partition decorator, such as
+        sample_table$20190123.
+        """
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table_id", value)
+
+
+@pulumi.input_type
+class TableTableConstraintsPrimaryKeyArgs:
+    def __init__(__self__, *,
+                 columns: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] columns: The columns that are composed of the primary key constraint.
+        """
+        pulumi.set(__self__, "columns", columns)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The columns that are composed of the primary key constraint.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "columns", value)
 
 
 @pulumi.input_type

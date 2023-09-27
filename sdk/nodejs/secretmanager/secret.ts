@@ -57,9 +57,34 @@ import * as utilities from "../utilities";
  *         label: "my-label",
  *     },
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  *     secretId: "secret",
+ * });
+ * ```
+ * ### Secret With Automatic Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const kms_secret_binding = new gcp.kms.CryptoKeyIAMMember("kms-secret-binding", {
+ *     cryptoKeyId: "kms-key",
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com`),
+ * });
+ * const secret_with_automatic_cmek = new gcp.secretmanager.Secret("secret-with-automatic-cmek", {
+ *     secretId: "secret",
+ *     replication: {
+ *         auto: {
+ *             customerManagedEncryption: {
+ *                 kmsKeyName: "kms-key",
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [kms_secret_binding],
  * });
  * ```
  *

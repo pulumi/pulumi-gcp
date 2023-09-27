@@ -390,6 +390,14 @@ func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type SecretReplication struct {
 	// The Secret will automatically be replicated without any restrictions.
+	// Structure is documented below.
+	Auto *SecretReplicationAuto `pulumi:"auto"`
+	// (Optional, Deprecated)
+	// The Secret will automatically be replicated without any restrictions.
+	//
+	// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+	//
+	// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
 	Automatic *bool `pulumi:"automatic"`
 	// The Secret will be replicated to the regions specified by the user.
 	// Structure is documented below.
@@ -409,6 +417,14 @@ type SecretReplicationInput interface {
 
 type SecretReplicationArgs struct {
 	// The Secret will automatically be replicated without any restrictions.
+	// Structure is documented below.
+	Auto SecretReplicationAutoPtrInput `pulumi:"auto"`
+	// (Optional, Deprecated)
+	// The Secret will automatically be replicated without any restrictions.
+	//
+	// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+	//
+	// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
 	Automatic pulumi.BoolPtrInput `pulumi:"automatic"`
 	// The Secret will be replicated to the regions specified by the user.
 	// Structure is documented below.
@@ -511,6 +527,17 @@ func (o SecretReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[Se
 }
 
 // The Secret will automatically be replicated without any restrictions.
+// Structure is documented below.
+func (o SecretReplicationOutput) Auto() SecretReplicationAutoPtrOutput {
+	return o.ApplyT(func(v SecretReplication) *SecretReplicationAuto { return v.Auto }).(SecretReplicationAutoPtrOutput)
+}
+
+// (Optional, Deprecated)
+// The Secret will automatically be replicated without any restrictions.
+//
+// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+//
+// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
 func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
@@ -552,6 +579,22 @@ func (o SecretReplicationPtrOutput) Elem() SecretReplicationOutput {
 }
 
 // The Secret will automatically be replicated without any restrictions.
+// Structure is documented below.
+func (o SecretReplicationPtrOutput) Auto() SecretReplicationAutoPtrOutput {
+	return o.ApplyT(func(v *SecretReplication) *SecretReplicationAuto {
+		if v == nil {
+			return nil
+		}
+		return v.Auto
+	}).(SecretReplicationAutoPtrOutput)
+}
+
+// (Optional, Deprecated)
+// The Secret will automatically be replicated without any restrictions.
+//
+// > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+//
+// Deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
 func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretReplication) *bool {
 		if v == nil {
@@ -570,6 +613,350 @@ func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPt
 		}
 		return v.UserManaged
 	}).(SecretReplicationUserManagedPtrOutput)
+}
+
+type SecretReplicationAuto struct {
+	// The customer-managed encryption configuration of the Secret.
+	// If no configuration is provided, Google-managed default
+	// encryption is used.
+	// Structure is documented below.
+	CustomerManagedEncryption *SecretReplicationAutoCustomerManagedEncryption `pulumi:"customerManagedEncryption"`
+}
+
+// SecretReplicationAutoInput is an input type that accepts SecretReplicationAutoArgs and SecretReplicationAutoOutput values.
+// You can construct a concrete instance of `SecretReplicationAutoInput` via:
+//
+//	SecretReplicationAutoArgs{...}
+type SecretReplicationAutoInput interface {
+	pulumi.Input
+
+	ToSecretReplicationAutoOutput() SecretReplicationAutoOutput
+	ToSecretReplicationAutoOutputWithContext(context.Context) SecretReplicationAutoOutput
+}
+
+type SecretReplicationAutoArgs struct {
+	// The customer-managed encryption configuration of the Secret.
+	// If no configuration is provided, Google-managed default
+	// encryption is used.
+	// Structure is documented below.
+	CustomerManagedEncryption SecretReplicationAutoCustomerManagedEncryptionPtrInput `pulumi:"customerManagedEncryption"`
+}
+
+func (SecretReplicationAutoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretReplicationAuto)(nil)).Elem()
+}
+
+func (i SecretReplicationAutoArgs) ToSecretReplicationAutoOutput() SecretReplicationAutoOutput {
+	return i.ToSecretReplicationAutoOutputWithContext(context.Background())
+}
+
+func (i SecretReplicationAutoArgs) ToSecretReplicationAutoOutputWithContext(ctx context.Context) SecretReplicationAutoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoOutput)
+}
+
+func (i SecretReplicationAutoArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAuto] {
+	return pulumix.Output[SecretReplicationAuto]{
+		OutputState: i.ToSecretReplicationAutoOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecretReplicationAutoArgs) ToSecretReplicationAutoPtrOutput() SecretReplicationAutoPtrOutput {
+	return i.ToSecretReplicationAutoPtrOutputWithContext(context.Background())
+}
+
+func (i SecretReplicationAutoArgs) ToSecretReplicationAutoPtrOutputWithContext(ctx context.Context) SecretReplicationAutoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoOutput).ToSecretReplicationAutoPtrOutputWithContext(ctx)
+}
+
+// SecretReplicationAutoPtrInput is an input type that accepts SecretReplicationAutoArgs, SecretReplicationAutoPtr and SecretReplicationAutoPtrOutput values.
+// You can construct a concrete instance of `SecretReplicationAutoPtrInput` via:
+//
+//	        SecretReplicationAutoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretReplicationAutoPtrInput interface {
+	pulumi.Input
+
+	ToSecretReplicationAutoPtrOutput() SecretReplicationAutoPtrOutput
+	ToSecretReplicationAutoPtrOutputWithContext(context.Context) SecretReplicationAutoPtrOutput
+}
+
+type secretReplicationAutoPtrType SecretReplicationAutoArgs
+
+func SecretReplicationAutoPtr(v *SecretReplicationAutoArgs) SecretReplicationAutoPtrInput {
+	return (*secretReplicationAutoPtrType)(v)
+}
+
+func (*secretReplicationAutoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretReplicationAuto)(nil)).Elem()
+}
+
+func (i *secretReplicationAutoPtrType) ToSecretReplicationAutoPtrOutput() SecretReplicationAutoPtrOutput {
+	return i.ToSecretReplicationAutoPtrOutputWithContext(context.Background())
+}
+
+func (i *secretReplicationAutoPtrType) ToSecretReplicationAutoPtrOutputWithContext(ctx context.Context) SecretReplicationAutoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoPtrOutput)
+}
+
+func (i *secretReplicationAutoPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAuto] {
+	return pulumix.Output[*SecretReplicationAuto]{
+		OutputState: i.ToSecretReplicationAutoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecretReplicationAutoOutput struct{ *pulumi.OutputState }
+
+func (SecretReplicationAutoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretReplicationAuto)(nil)).Elem()
+}
+
+func (o SecretReplicationAutoOutput) ToSecretReplicationAutoOutput() SecretReplicationAutoOutput {
+	return o
+}
+
+func (o SecretReplicationAutoOutput) ToSecretReplicationAutoOutputWithContext(ctx context.Context) SecretReplicationAutoOutput {
+	return o
+}
+
+func (o SecretReplicationAutoOutput) ToSecretReplicationAutoPtrOutput() SecretReplicationAutoPtrOutput {
+	return o.ToSecretReplicationAutoPtrOutputWithContext(context.Background())
+}
+
+func (o SecretReplicationAutoOutput) ToSecretReplicationAutoPtrOutputWithContext(ctx context.Context) SecretReplicationAutoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplicationAuto) *SecretReplicationAuto {
+		return &v
+	}).(SecretReplicationAutoPtrOutput)
+}
+
+func (o SecretReplicationAutoOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAuto] {
+	return pulumix.Output[SecretReplicationAuto]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The customer-managed encryption configuration of the Secret.
+// If no configuration is provided, Google-managed default
+// encryption is used.
+// Structure is documented below.
+func (o SecretReplicationAutoOutput) CustomerManagedEncryption() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return o.ApplyT(func(v SecretReplicationAuto) *SecretReplicationAutoCustomerManagedEncryption {
+		return v.CustomerManagedEncryption
+	}).(SecretReplicationAutoCustomerManagedEncryptionPtrOutput)
+}
+
+type SecretReplicationAutoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretReplicationAutoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretReplicationAuto)(nil)).Elem()
+}
+
+func (o SecretReplicationAutoPtrOutput) ToSecretReplicationAutoPtrOutput() SecretReplicationAutoPtrOutput {
+	return o
+}
+
+func (o SecretReplicationAutoPtrOutput) ToSecretReplicationAutoPtrOutputWithContext(ctx context.Context) SecretReplicationAutoPtrOutput {
+	return o
+}
+
+func (o SecretReplicationAutoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAuto] {
+	return pulumix.Output[*SecretReplicationAuto]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecretReplicationAutoPtrOutput) Elem() SecretReplicationAutoOutput {
+	return o.ApplyT(func(v *SecretReplicationAuto) SecretReplicationAuto {
+		if v != nil {
+			return *v
+		}
+		var ret SecretReplicationAuto
+		return ret
+	}).(SecretReplicationAutoOutput)
+}
+
+// The customer-managed encryption configuration of the Secret.
+// If no configuration is provided, Google-managed default
+// encryption is used.
+// Structure is documented below.
+func (o SecretReplicationAutoPtrOutput) CustomerManagedEncryption() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return o.ApplyT(func(v *SecretReplicationAuto) *SecretReplicationAutoCustomerManagedEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedEncryption
+	}).(SecretReplicationAutoCustomerManagedEncryptionPtrOutput)
+}
+
+type SecretReplicationAutoCustomerManagedEncryption struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	//
+	// ***
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// SecretReplicationAutoCustomerManagedEncryptionInput is an input type that accepts SecretReplicationAutoCustomerManagedEncryptionArgs and SecretReplicationAutoCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `SecretReplicationAutoCustomerManagedEncryptionInput` via:
+//
+//	SecretReplicationAutoCustomerManagedEncryptionArgs{...}
+type SecretReplicationAutoCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToSecretReplicationAutoCustomerManagedEncryptionOutput() SecretReplicationAutoCustomerManagedEncryptionOutput
+	ToSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(context.Context) SecretReplicationAutoCustomerManagedEncryptionOutput
+}
+
+type SecretReplicationAutoCustomerManagedEncryptionArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	//
+	// ***
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (SecretReplicationAutoCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToSecretReplicationAutoCustomerManagedEncryptionOutput() SecretReplicationAutoCustomerManagedEncryptionOutput {
+	return i.ToSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoCustomerManagedEncryptionOutput)
+}
+
+func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[SecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: i.ToSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutput() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return i.ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoCustomerManagedEncryptionOutput).ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx)
+}
+
+// SecretReplicationAutoCustomerManagedEncryptionPtrInput is an input type that accepts SecretReplicationAutoCustomerManagedEncryptionArgs, SecretReplicationAutoCustomerManagedEncryptionPtr and SecretReplicationAutoCustomerManagedEncryptionPtrOutput values.
+// You can construct a concrete instance of `SecretReplicationAutoCustomerManagedEncryptionPtrInput` via:
+//
+//	        SecretReplicationAutoCustomerManagedEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretReplicationAutoCustomerManagedEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToSecretReplicationAutoCustomerManagedEncryptionPtrOutput() SecretReplicationAutoCustomerManagedEncryptionPtrOutput
+	ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(context.Context) SecretReplicationAutoCustomerManagedEncryptionPtrOutput
+}
+
+type secretReplicationAutoCustomerManagedEncryptionPtrType SecretReplicationAutoCustomerManagedEncryptionArgs
+
+func SecretReplicationAutoCustomerManagedEncryptionPtr(v *SecretReplicationAutoCustomerManagedEncryptionArgs) SecretReplicationAutoCustomerManagedEncryptionPtrInput {
+	return (*secretReplicationAutoCustomerManagedEncryptionPtrType)(v)
+}
+
+func (*secretReplicationAutoCustomerManagedEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i *secretReplicationAutoCustomerManagedEncryptionPtrType) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutput() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return i.ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *secretReplicationAutoCustomerManagedEncryptionPtrType) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoCustomerManagedEncryptionPtrOutput)
+}
+
+func (i *secretReplicationAutoCustomerManagedEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: i.ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SecretReplicationAutoCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (SecretReplicationAutoCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToSecretReplicationAutoCustomerManagedEncryptionOutput() SecretReplicationAutoCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutput() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return o.ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplicationAutoCustomerManagedEncryption) *SecretReplicationAutoCustomerManagedEncryption {
+		return &v
+	}).(SecretReplicationAutoCustomerManagedEncryptionPtrOutput)
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[SecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+//
+// ***
+func (o SecretReplicationAutoCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretReplicationAutoCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type SecretReplicationAutoCustomerManagedEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutput() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return o
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
+	return o
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) Elem() SecretReplicationAutoCustomerManagedEncryptionOutput {
+	return o.ApplyT(func(v *SecretReplicationAutoCustomerManagedEncryption) SecretReplicationAutoCustomerManagedEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret SecretReplicationAutoCustomerManagedEncryption
+		return ret
+	}).(SecretReplicationAutoCustomerManagedEncryptionOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+//
+// ***
+func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretReplicationAutoCustomerManagedEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 type SecretReplicationUserManaged struct {
@@ -1355,6 +1742,7 @@ func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
 
 type GetSecretReplication struct {
 	Automatic    bool                              `pulumi:"automatic"`
+	Autos        []GetSecretReplicationAuto        `pulumi:"autos"`
 	UserManageds []GetSecretReplicationUserManaged `pulumi:"userManageds"`
 }
 
@@ -1371,6 +1759,7 @@ type GetSecretReplicationInput interface {
 
 type GetSecretReplicationArgs struct {
 	Automatic    pulumi.BoolInput                          `pulumi:"automatic"`
+	Autos        GetSecretReplicationAutoArrayInput        `pulumi:"autos"`
 	UserManageds GetSecretReplicationUserManagedArrayInput `pulumi:"userManageds"`
 }
 
@@ -1447,6 +1836,10 @@ func (o GetSecretReplicationOutput) Automatic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSecretReplication) bool { return v.Automatic }).(pulumi.BoolOutput)
 }
 
+func (o GetSecretReplicationOutput) Autos() GetSecretReplicationAutoArrayOutput {
+	return o.ApplyT(func(v GetSecretReplication) []GetSecretReplicationAuto { return v.Autos }).(GetSecretReplicationAutoArrayOutput)
+}
+
 func (o GetSecretReplicationOutput) UserManageds() GetSecretReplicationUserManagedArrayOutput {
 	return o.ApplyT(func(v GetSecretReplication) []GetSecretReplicationUserManaged { return v.UserManageds }).(GetSecretReplicationUserManagedArrayOutput)
 }
@@ -1475,6 +1868,244 @@ func (o GetSecretReplicationArrayOutput) Index(i pulumi.IntInput) GetSecretRepli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplication {
 		return vs[0].([]GetSecretReplication)[vs[1].(int)]
 	}).(GetSecretReplicationOutput)
+}
+
+type GetSecretReplicationAuto struct {
+	CustomerManagedEncryptions []GetSecretReplicationAutoCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
+}
+
+// GetSecretReplicationAutoInput is an input type that accepts GetSecretReplicationAutoArgs and GetSecretReplicationAutoOutput values.
+// You can construct a concrete instance of `GetSecretReplicationAutoInput` via:
+//
+//	GetSecretReplicationAutoArgs{...}
+type GetSecretReplicationAutoInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationAutoOutput() GetSecretReplicationAutoOutput
+	ToGetSecretReplicationAutoOutputWithContext(context.Context) GetSecretReplicationAutoOutput
+}
+
+type GetSecretReplicationAutoArgs struct {
+	CustomerManagedEncryptions GetSecretReplicationAutoCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
+}
+
+func (GetSecretReplicationAutoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationAuto)(nil)).Elem()
+}
+
+func (i GetSecretReplicationAutoArgs) ToGetSecretReplicationAutoOutput() GetSecretReplicationAutoOutput {
+	return i.ToGetSecretReplicationAutoOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationAutoArgs) ToGetSecretReplicationAutoOutputWithContext(ctx context.Context) GetSecretReplicationAutoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoOutput)
+}
+
+func (i GetSecretReplicationAutoArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAuto] {
+	return pulumix.Output[GetSecretReplicationAuto]{
+		OutputState: i.ToGetSecretReplicationAutoOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetSecretReplicationAutoArrayInput is an input type that accepts GetSecretReplicationAutoArray and GetSecretReplicationAutoArrayOutput values.
+// You can construct a concrete instance of `GetSecretReplicationAutoArrayInput` via:
+//
+//	GetSecretReplicationAutoArray{ GetSecretReplicationAutoArgs{...} }
+type GetSecretReplicationAutoArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationAutoArrayOutput() GetSecretReplicationAutoArrayOutput
+	ToGetSecretReplicationAutoArrayOutputWithContext(context.Context) GetSecretReplicationAutoArrayOutput
+}
+
+type GetSecretReplicationAutoArray []GetSecretReplicationAutoInput
+
+func (GetSecretReplicationAutoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationAuto)(nil)).Elem()
+}
+
+func (i GetSecretReplicationAutoArray) ToGetSecretReplicationAutoArrayOutput() GetSecretReplicationAutoArrayOutput {
+	return i.ToGetSecretReplicationAutoArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationAutoArray) ToGetSecretReplicationAutoArrayOutputWithContext(ctx context.Context) GetSecretReplicationAutoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoArrayOutput)
+}
+
+func (i GetSecretReplicationAutoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAuto] {
+	return pulumix.Output[[]GetSecretReplicationAuto]{
+		OutputState: i.ToGetSecretReplicationAutoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetSecretReplicationAutoOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationAutoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationAuto)(nil)).Elem()
+}
+
+func (o GetSecretReplicationAutoOutput) ToGetSecretReplicationAutoOutput() GetSecretReplicationAutoOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoOutput) ToGetSecretReplicationAutoOutputWithContext(ctx context.Context) GetSecretReplicationAutoOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAuto] {
+	return pulumix.Output[GetSecretReplicationAuto]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetSecretReplicationAutoOutput) CustomerManagedEncryptions() GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
+	return o.ApplyT(func(v GetSecretReplicationAuto) []GetSecretReplicationAutoCustomerManagedEncryption {
+		return v.CustomerManagedEncryptions
+	}).(GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput)
+}
+
+type GetSecretReplicationAutoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationAutoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationAuto)(nil)).Elem()
+}
+
+func (o GetSecretReplicationAutoArrayOutput) ToGetSecretReplicationAutoArrayOutput() GetSecretReplicationAutoArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoArrayOutput) ToGetSecretReplicationAutoArrayOutputWithContext(ctx context.Context) GetSecretReplicationAutoArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAuto] {
+	return pulumix.Output[[]GetSecretReplicationAuto]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetSecretReplicationAutoArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationAutoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplicationAuto {
+		return vs[0].([]GetSecretReplicationAuto)[vs[1].(int)]
+	}).(GetSecretReplicationAutoOutput)
+}
+
+type GetSecretReplicationAutoCustomerManagedEncryption struct {
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetSecretReplicationAutoCustomerManagedEncryptionInput is an input type that accepts GetSecretReplicationAutoCustomerManagedEncryptionArgs and GetSecretReplicationAutoCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `GetSecretReplicationAutoCustomerManagedEncryptionInput` via:
+//
+//	GetSecretReplicationAutoCustomerManagedEncryptionArgs{...}
+type GetSecretReplicationAutoCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationAutoCustomerManagedEncryptionOutput() GetSecretReplicationAutoCustomerManagedEncryptionOutput
+	ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(context.Context) GetSecretReplicationAutoCustomerManagedEncryptionOutput
+}
+
+type GetSecretReplicationAutoCustomerManagedEncryptionArgs struct {
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetSecretReplicationAutoCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetSecretReplicationAutoCustomerManagedEncryptionArgs) ToGetSecretReplicationAutoCustomerManagedEncryptionOutput() GetSecretReplicationAutoCustomerManagedEncryptionOutput {
+	return i.ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationAutoCustomerManagedEncryptionArgs) ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetSecretReplicationAutoCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoCustomerManagedEncryptionOutput)
+}
+
+func (i GetSecretReplicationAutoCustomerManagedEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: i.ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetSecretReplicationAutoCustomerManagedEncryptionArrayInput is an input type that accepts GetSecretReplicationAutoCustomerManagedEncryptionArray and GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetSecretReplicationAutoCustomerManagedEncryptionArrayInput` via:
+//
+//	GetSecretReplicationAutoCustomerManagedEncryptionArray{ GetSecretReplicationAutoCustomerManagedEncryptionArgs{...} }
+type GetSecretReplicationAutoCustomerManagedEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutput() GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput
+	ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(context.Context) GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput
+}
+
+type GetSecretReplicationAutoCustomerManagedEncryptionArray []GetSecretReplicationAutoCustomerManagedEncryptionInput
+
+func (GetSecretReplicationAutoCustomerManagedEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetSecretReplicationAutoCustomerManagedEncryptionArray) ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutput() GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
+	return i.ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretReplicationAutoCustomerManagedEncryptionArray) ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput)
+}
+
+func (i GetSecretReplicationAutoCustomerManagedEncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: i.ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetSecretReplicationAutoCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationAutoCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToGetSecretReplicationAutoCustomerManagedEncryptionOutput() GetSecretReplicationAutoCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetSecretReplicationAutoCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretReplicationAutoCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretReplicationAutoCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutput() GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption] {
+	return pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationAutoCustomerManagedEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretReplicationAutoCustomerManagedEncryption {
+		return vs[0].([]GetSecretReplicationAutoCustomerManagedEncryption)[vs[1].(int)]
+	}).(GetSecretReplicationAutoCustomerManagedEncryptionOutput)
 }
 
 type GetSecretReplicationUserManaged struct {
@@ -2088,6 +2719,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberConditionPtrInput)(nil)).Elem(), SecretIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationInput)(nil)).Elem(), SecretReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationPtrInput)(nil)).Elem(), SecretReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationAutoInput)(nil)).Elem(), SecretReplicationAutoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationAutoPtrInput)(nil)).Elem(), SecretReplicationAutoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationAutoCustomerManagedEncryptionInput)(nil)).Elem(), SecretReplicationAutoCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationAutoCustomerManagedEncryptionPtrInput)(nil)).Elem(), SecretReplicationAutoCustomerManagedEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationUserManagedInput)(nil)).Elem(), SecretReplicationUserManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationUserManagedPtrInput)(nil)).Elem(), SecretReplicationUserManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretReplicationUserManagedReplicaInput)(nil)).Elem(), SecretReplicationUserManagedReplicaArgs{})
@@ -2100,6 +2735,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTopicArrayInput)(nil)).Elem(), SecretTopicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationInput)(nil)).Elem(), GetSecretReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationArrayInput)(nil)).Elem(), GetSecretReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationAutoInput)(nil)).Elem(), GetSecretReplicationAutoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationAutoArrayInput)(nil)).Elem(), GetSecretReplicationAutoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationAutoCustomerManagedEncryptionInput)(nil)).Elem(), GetSecretReplicationAutoCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationAutoCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetSecretReplicationAutoCustomerManagedEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationUserManagedInput)(nil)).Elem(), GetSecretReplicationUserManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationUserManagedArrayInput)(nil)).Elem(), GetSecretReplicationUserManagedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationUserManagedReplicaInput)(nil)).Elem(), GetSecretReplicationUserManagedReplicaArgs{})
@@ -2116,6 +2755,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationOutput{})
 	pulumi.RegisterOutputType(SecretReplicationPtrOutput{})
+	pulumi.RegisterOutputType(SecretReplicationAutoOutput{})
+	pulumi.RegisterOutputType(SecretReplicationAutoPtrOutput{})
+	pulumi.RegisterOutputType(SecretReplicationAutoCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(SecretReplicationAutoCustomerManagedEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedPtrOutput{})
 	pulumi.RegisterOutputType(SecretReplicationUserManagedReplicaOutput{})
@@ -2128,6 +2771,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretTopicArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationAutoOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationAutoArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationAutoCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationUserManagedOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationUserManagedArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationUserManagedReplicaOutput{})

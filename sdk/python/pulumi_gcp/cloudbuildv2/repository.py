@@ -305,7 +305,7 @@ class Repository(pulumi.CustomResource):
         private_key_secret = gcp.secretmanager.Secret("private-key-secret",
             secret_id="ghe-pk-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
@@ -313,7 +313,7 @@ class Repository(pulumi.CustomResource):
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
@@ -356,7 +356,7 @@ class Repository(pulumi.CustomResource):
         github_token_secret = gcp.secretmanager.Secret("github-token-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
@@ -429,7 +429,7 @@ class Repository(pulumi.CustomResource):
         private_key_secret = gcp.secretmanager.Secret("private-key-secret",
             secret_id="ghe-pk-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
@@ -437,7 +437,7 @@ class Repository(pulumi.CustomResource):
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
@@ -480,7 +480,7 @@ class Repository(pulumi.CustomResource):
         github_token_secret = gcp.secretmanager.Secret("github-token-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,

@@ -18,6 +18,7 @@ __all__ = [
     'SpokeLinkedInterconnectAttachmentsArgs',
     'SpokeLinkedRouterApplianceInstancesArgs',
     'SpokeLinkedRouterApplianceInstancesInstanceArgs',
+    'SpokeLinkedVpcNetworkArgs',
     'SpokeLinkedVpnTunnelsArgs',
 ]
 
@@ -464,6 +465,44 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
     @virtual_machine.setter
     def virtual_machine(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "virtual_machine", value)
+
+
+@pulumi.input_type
+class SpokeLinkedVpcNetworkArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str],
+                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] uri: The URI of the VPC network resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The URI of the VPC network resource.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IP ranges encompassing the subnets to be excluded from peering.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @exclude_export_ranges.setter
+    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_export_ranges", value)
 
 
 @pulumi.input_type

@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.AzureNodePoolArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolState;
 import com.pulumi.gcp.container.outputs.AzureNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.AzureNodePoolConfig;
+import com.pulumi.gcp.container.outputs.AzureNodePoolManagement;
 import com.pulumi.gcp.container.outputs.AzureNodePoolMaxPodsConstraint;
 import java.lang.Boolean;
 import java.lang.String;
@@ -52,6 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigRootVolumeArgs;
  * import com.pulumi.gcp.container.inputs.AzureNodePoolMaxPodsConstraintArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolManagementArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -132,6 +134,9 @@ import javax.annotation.Nullable;
  *             .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
  *             .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;annotation-one&#34;, &#34;value-one&#34;))
+ *             .management(AzureNodePoolManagementArgs.builder()
+ *                 .autoRepair(true)
+ *                 .build())
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
@@ -269,6 +274,20 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The Management configuration for this node pool.
+     * 
+     */
+    @Export(name="management", refs={AzureNodePoolManagement.class}, tree="[0]")
+    private Output<AzureNodePoolManagement> management;
+
+    /**
+     * @return The Management configuration for this node pool.
+     * 
+     */
+    public Output<AzureNodePoolManagement> management() {
+        return this.management;
     }
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.

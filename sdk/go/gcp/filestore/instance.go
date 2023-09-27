@@ -223,7 +223,7 @@ type Instance struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
@@ -300,7 +300,7 @@ type instanceState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier *string `pulumi:"tier"`
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
@@ -339,7 +339,7 @@ type InstanceState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier pulumi.StringPtrInput
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
@@ -377,7 +377,7 @@ type instanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier string `pulumi:"tier"`
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
@@ -412,7 +412,7 @@ type InstanceArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The service tier of the instance.
-	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier pulumi.StringInput
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
@@ -591,7 +591,7 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 }
 
 // The service tier of the instance.
-// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 func (o InstanceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }

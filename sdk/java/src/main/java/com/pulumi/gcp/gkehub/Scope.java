@@ -12,6 +12,8 @@ import com.pulumi.gcp.gkehub.ScopeArgs;
 import com.pulumi.gcp.gkehub.outputs.ScopeState;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -47,6 +49,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var scope = new Scope(&#34;scope&#34;, ScopeArgs.builder()        
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;keya&#34;, &#34;valuea&#34;),
+ *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
+ *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
+ *             ))
  *             .scopeId(&#34;tf-test-scope%{random_suffix}&#34;)
  *             .build());
  * 
@@ -100,6 +107,20 @@ public class Scope extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Labels for this Scope.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Scope.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The unique identifier of the scope

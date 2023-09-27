@@ -90,7 +90,7 @@ type BucketObject struct {
 	// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
 	CacheControl pulumi.StringPtrOutput `pulumi:"cacheControl"`
 	// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
-	Content pulumi.StringPtrOutput `pulumi:"content"`
+	Content pulumi.StringOutput `pulumi:"content"`
 	// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
 	ContentDisposition pulumi.StringPtrOutput `pulumi:"contentDisposition"`
 	// [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
@@ -502,8 +502,8 @@ func (o BucketObjectOutput) CacheControl() pulumi.StringPtrOutput {
 }
 
 // Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
-func (o BucketObjectOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+func (o BucketObjectOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
 // [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.

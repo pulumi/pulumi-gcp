@@ -70,6 +70,10 @@ export class MembershipBinding extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
+     * Labels for this Membership binding.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Location of the membership
      *
      *
@@ -127,6 +131,7 @@ export class MembershipBinding extends pulumi.CustomResource {
             const state = argsOrState as MembershipBindingState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["membershipBindingId"] = state ? state.membershipBindingId : undefined;
             resourceInputs["membershipId"] = state ? state.membershipId : undefined;
@@ -150,6 +155,7 @@ export class MembershipBinding extends pulumi.CustomResource {
             if ((!args || args.scope === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scope'");
             }
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["membershipBindingId"] = args ? args.membershipBindingId : undefined;
             resourceInputs["membershipId"] = args ? args.membershipId : undefined;
@@ -179,6 +185,10 @@ export interface MembershipBindingState {
      * Time the MembershipBinding was deleted in UTC.
      */
     deleteTime?: pulumi.Input<string>;
+    /**
+     * Labels for this Membership binding.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the membership
      *
@@ -227,6 +237,10 @@ export interface MembershipBindingState {
  * The set of arguments for constructing a MembershipBinding resource.
  */
 export interface MembershipBindingArgs {
+    /**
+     * Labels for this Membership binding.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Location of the membership
      *

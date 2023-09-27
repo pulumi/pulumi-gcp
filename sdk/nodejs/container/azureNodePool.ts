@@ -86,6 +86,9 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         "annotation-one": "value-one",
  *     },
+ *     management: {
+ *         autoRepair: true,
+ *     },
  *     project: "my-project-name",
  * });
  * ```
@@ -167,6 +170,10 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * The Management configuration for this node pool.
+     */
+    public readonly management!: pulumi.Output<outputs.container.AzureNodePoolManagement>;
+    /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
     public readonly maxPodsConstraint!: pulumi.Output<outputs.container.AzureNodePoolMaxPodsConstraint>;
@@ -224,6 +231,7 @@ export class AzureNodePool extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["management"] = state ? state.management : undefined;
             resourceInputs["maxPodsConstraint"] = state ? state.maxPodsConstraint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -262,6 +270,7 @@ export class AzureNodePool extends pulumi.CustomResource {
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["management"] = args ? args.management : undefined;
             resourceInputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -315,6 +324,10 @@ export interface AzureNodePoolState {
      * The location for the resource
      */
     location?: pulumi.Input<string>;
+    /**
+     * The Management configuration for this node pool.
+     */
+    management?: pulumi.Input<inputs.container.AzureNodePoolManagement>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
@@ -381,6 +394,10 @@ export interface AzureNodePoolArgs {
      * The location for the resource
      */
     location: pulumi.Input<string>;
+    /**
+     * The Management configuration for this node pool.
+     */
+    management?: pulumi.Input<inputs.container.AzureNodePoolManagement>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */

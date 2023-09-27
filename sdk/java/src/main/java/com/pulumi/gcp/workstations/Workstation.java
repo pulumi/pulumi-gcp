@@ -96,6 +96,7 @@ import javax.annotation.Nullable;
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
+ *             .env(Map.of(&#34;name&#34;, &#34;foo&#34;))
  *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
@@ -165,6 +166,20 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+     * 
+     */
+    @Export(name="env", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> env;
+
+    /**
+     * @return &#39;Client-specified environment variables passed to the workstation container&#39;s entrypoint.&#39;
+     * 
+     */
+    public Output<Optional<Map<String,String>>> env() {
+        return Codegen.optional(this.env);
     }
     /**
      * Host to which clients can send HTTPS traffic that will be received by the workstation.

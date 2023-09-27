@@ -24,6 +24,10 @@ import javax.annotation.Nullable;
 /**
  * EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
  * 
+ * To get more information about EdgeCacheOrigin, see:
+ * 
+ * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
+ * 
  * ## Example Usage
  * ### Network Services Edge Cache Origin Basic
  * ```java
@@ -145,6 +149,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.networkservices.EdgeCacheOrigin;
@@ -166,7 +171,7 @@ import javax.annotation.Nullable;
  *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret-name&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 

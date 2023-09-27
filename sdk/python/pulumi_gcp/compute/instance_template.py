@@ -78,7 +78,7 @@ class InstanceTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
-        :param pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance created from the
+        :param pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs'] network_performance_config: (Optional, Configures network performance settings for the instance created from the
                template. Structure is documented below. **Note**: `machine_type`
                must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -366,7 +366,7 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]:
         """
-        Configures network performance settings for the instance created from the
+        (Optional, Configures network performance settings for the instance created from the
         template. Structure is documented below. **Note**: `machine_type`
         must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
         the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -555,7 +555,7 @@ class _InstanceTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
-        :param pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance created from the
+        :param pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs'] network_performance_config: (Optional, Configures network performance settings for the instance created from the
                template. Structure is documented below. **Note**: `machine_type`
                must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -869,7 +869,7 @@ class _InstanceTemplateState:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]:
         """
-        Configures network performance settings for the instance created from the
+        (Optional, Configures network performance settings for the instance created from the
         template. Structure is documented below. **Note**: `machine_type`
         must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
         the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1236,7 +1236,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance created from the
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']] network_performance_config: (Optional, Configures network performance settings for the instance created from the
                template. Structure is documented below. **Note**: `machine_type`
                must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1573,7 +1573,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to instances created from
                this template. This can be specified multiple times for multiple networks.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance created from the
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateNetworkPerformanceConfigArgs']] network_performance_config: (Optional, Configures network performance settings for the instance created from the
                template. Structure is documented below. **Note**: `machine_type`
                must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1795,7 +1795,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Output[Optional['outputs.InstanceTemplateNetworkPerformanceConfig']]:
         """
-        Configures network performance settings for the instance created from the
+        (Optional, Configures network performance settings for the instance created from the
         template. Structure is documented below. **Note**: `machine_type`
         must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
         the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

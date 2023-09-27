@@ -23,6 +23,7 @@ class AttachedClusterArgs:
                  platform_version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
@@ -55,6 +56,8 @@ class AttachedClusterArgs:
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
+        :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
+               Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
@@ -79,6 +82,8 @@ class AttachedClusterArgs:
             pulumi.set(__self__, "annotations", annotations)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
@@ -194,6 +199,19 @@ class AttachedClusterArgs:
         pulumi.set(self, "authorization", value)
 
     @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]:
+        """
+        Binary Authorization configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
+
+    @property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -279,6 +297,7 @@ class _AttachedClusterState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
                  cluster_region: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -308,6 +327,8 @@ class _AttachedClusterState:
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+               Structure is documented below.
+        :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
@@ -359,6 +380,8 @@ class _AttachedClusterState:
             pulumi.set(__self__, "annotations", annotations)
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
+        if binary_authorization is not None:
+            pulumi.set(__self__, "binary_authorization", binary_authorization)
         if cluster_region is not None:
             pulumi.set(__self__, "cluster_region", cluster_region)
         if create_time is not None:
@@ -429,6 +452,19 @@ class _AttachedClusterState:
     @authorization.setter
     def authorization(self, value: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]):
         pulumi.set(self, "authorization", value)
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]:
+        """
+        Binary Authorization configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization")
+
+    @binary_authorization.setter
+    def binary_authorization(self, value: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]):
+        pulumi.set(self, "binary_authorization", value)
 
     @property
     @pulumi.getter(name="clusterRegion")
@@ -703,6 +739,7 @@ class AttachedCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
@@ -797,6 +834,8 @@ class AttachedCluster(pulumi.CustomResource):
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
@@ -925,6 +964,7 @@ class AttachedCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
@@ -947,6 +987,7 @@ class AttachedCluster(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["authorization"] = authorization
+            __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if distribution is None and not opts.urn:
@@ -989,6 +1030,7 @@ class AttachedCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
             cluster_region: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -1023,6 +1065,8 @@ class AttachedCluster(pulumi.CustomResource):
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
@@ -1076,6 +1120,7 @@ class AttachedCluster(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["authorization"] = authorization
+        __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["cluster_region"] = cluster_region
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1119,6 +1164,15 @@ class AttachedCluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "authorization")
+
+    @property
+    @pulumi.getter(name="binaryAuthorization")
+    def binary_authorization(self) -> pulumi.Output['outputs.AttachedClusterBinaryAuthorization']:
+        """
+        Binary Authorization configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization")
 
     @property
     @pulumi.getter(name="clusterRegion")

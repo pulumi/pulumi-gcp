@@ -34,6 +34,9 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("internalIpv6PrefixLength")]
+        public Input<int>? InternalIpv6PrefixLength { get; set; }
+
         [Input("ipv6AccessConfigs")]
         private InputList<Inputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs>? _ipv6AccessConfigs;
 
@@ -50,6 +53,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
+
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

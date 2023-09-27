@@ -34,6 +34,13 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
         return Optional.ofNullable(this.aliasIpRanges);
     }
 
+    @Import(name="internalIpv6PrefixLength")
+    private @Nullable Output<Integer> internalIpv6PrefixLength;
+
+    public Optional<Output<Integer>> internalIpv6PrefixLength() {
+        return Optional.ofNullable(this.internalIpv6PrefixLength);
+    }
+
     @Import(name="ipv6AccessConfigs")
     private @Nullable Output<List<InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs>> ipv6AccessConfigs;
 
@@ -46,6 +53,13 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
 
     public Optional<Output<String>> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
+    }
+
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
 
     /**
@@ -119,8 +133,10 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
     private InstanceFromTemplateNetworkInterfaceArgs(InstanceFromTemplateNetworkInterfaceArgs $) {
         this.accessConfigs = $.accessConfigs;
         this.aliasIpRanges = $.aliasIpRanges;
+        this.internalIpv6PrefixLength = $.internalIpv6PrefixLength;
         this.ipv6AccessConfigs = $.ipv6AccessConfigs;
         this.ipv6AccessType = $.ipv6AccessType;
+        this.ipv6Address = $.ipv6Address;
         this.name = $.name;
         this.network = $.network;
         this.networkIp = $.networkIp;
@@ -175,6 +191,15 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
             return aliasIpRanges(List.of(aliasIpRanges));
         }
 
+        public Builder internalIpv6PrefixLength(@Nullable Output<Integer> internalIpv6PrefixLength) {
+            $.internalIpv6PrefixLength = internalIpv6PrefixLength;
+            return this;
+        }
+
+        public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
+            return internalIpv6PrefixLength(Output.of(internalIpv6PrefixLength));
+        }
+
         public Builder ipv6AccessConfigs(@Nullable Output<List<InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs>> ipv6AccessConfigs) {
             $.ipv6AccessConfigs = ipv6AccessConfigs;
             return this;
@@ -195,6 +220,15 @@ public final class InstanceFromTemplateNetworkInterfaceArgs extends com.pulumi.r
 
         public Builder ipv6AccessType(String ipv6AccessType) {
             return ipv6AccessType(Output.of(ipv6AccessType));
+        }
+
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         /**

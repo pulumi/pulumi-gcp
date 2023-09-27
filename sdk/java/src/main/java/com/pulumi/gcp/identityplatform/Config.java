@@ -12,6 +12,7 @@ import com.pulumi.gcp.identityplatform.ConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigState;
 import com.pulumi.gcp.identityplatform.outputs.ConfigBlockingFunctions;
 import com.pulumi.gcp.identityplatform.outputs.ConfigQuota;
+import com.pulumi.gcp.identityplatform.outputs.ConfigSignIn;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -47,6 +48,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.identityplatform.Config;
  * import com.pulumi.gcp.identityplatform.ConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInAnonymousArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInEmailArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigSignInPhoneNumberArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs;
  * import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
@@ -79,6 +84,20 @@ import javax.annotation.Nullable;
  *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
  *             .project(defaultProject.projectId())
  *             .autodeleteAnonymousUsers(true)
+ *             .signIn(ConfigSignInArgs.builder()
+ *                 .allowDuplicateEmails(true)
+ *                 .anonymous(ConfigSignInAnonymousArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .email(ConfigSignInEmailArgs.builder()
+ *                     .enabled(true)
+ *                     .passwordRequired(false)
+ *                     .build())
+ *                 .phoneNumber(ConfigSignInPhoneNumberArgs.builder()
+ *                     .enabled(true)
+ *                     .testPhoneNumbers(Map.of(&#34;+11231231234&#34;, &#34;000000&#34;))
+ *                     .build())
+ *                 .build())
  *             .blockingFunctions(ConfigBlockingFunctionsArgs.builder()
  *                 .triggers(ConfigBlockingFunctionsTriggerArgs.builder()
  *                     .eventType(&#34;beforeSignIn&#34;)
@@ -215,6 +234,22 @@ public class Config extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConfigQuota>> quota() {
         return Codegen.optional(this.quota);
+    }
+    /**
+     * Configuration related to local sign in methods.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="signIn", refs={ConfigSignIn.class}, tree="[0]")
+    private Output<ConfigSignIn> signIn;
+
+    /**
+     * @return Configuration related to local sign in methods.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ConfigSignIn> signIn() {
+        return this.signIn;
     }
 
     /**

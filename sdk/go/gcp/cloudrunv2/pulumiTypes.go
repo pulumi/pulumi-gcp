@@ -5034,9 +5034,10 @@ type JobTemplateTemplateVpcAccess struct {
 	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-	//
-	// ***
 	Egress *string `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	// Structure is documented below.
+	NetworkInterfaces []JobTemplateTemplateVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
 }
 
 // JobTemplateTemplateVpcAccessInput is an input type that accepts JobTemplateTemplateVpcAccessArgs and JobTemplateTemplateVpcAccessOutput values.
@@ -5055,9 +5056,10 @@ type JobTemplateTemplateVpcAccessArgs struct {
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-	//
-	// ***
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	// Structure is documented below.
+	NetworkInterfaces JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 }
 
 func (JobTemplateTemplateVpcAccessArgs) ElementType() reflect.Type {
@@ -5162,10 +5164,16 @@ func (o JobTemplateTemplateVpcAccessOutput) Connector() pulumi.StringPtrOutput {
 
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-//
-// ***
 func (o JobTemplateTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccess) *string { return v.Egress }).(pulumi.StringPtrOutput)
+}
+
+// Direct VPC egress settings. Currently only single network interface is supported.
+// Structure is documented below.
+func (o JobTemplateTemplateVpcAccessOutput) NetworkInterfaces() JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVpcAccess) []JobTemplateTemplateVpcAccessNetworkInterface {
+		return v.NetworkInterfaces
+	}).(JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput)
 }
 
 type JobTemplateTemplateVpcAccessPtrOutput struct{ *pulumi.OutputState }
@@ -5210,8 +5218,6 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Connector() pulumi.StringPtrOutpu
 
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-//
-// ***
 func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateVpcAccess) *string {
 		if v == nil {
@@ -5219,6 +5225,174 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 		}
 		return v.Egress
 	}).(pulumi.StringPtrOutput)
+}
+
+// Direct VPC egress settings. Currently only single network interface is supported.
+// Structure is documented below.
+func (o JobTemplateTemplateVpcAccessPtrOutput) NetworkInterfaces() JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVpcAccess) []JobTemplateTemplateVpcAccessNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type JobTemplateTemplateVpcAccessNetworkInterface struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network *string `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run job.
+	//
+	// ***
+	Tags []string `pulumi:"tags"`
+}
+
+// JobTemplateTemplateVpcAccessNetworkInterfaceInput is an input type that accepts JobTemplateTemplateVpcAccessNetworkInterfaceArgs and JobTemplateTemplateVpcAccessNetworkInterfaceOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVpcAccessNetworkInterfaceInput` via:
+//
+//	JobTemplateTemplateVpcAccessNetworkInterfaceArgs{...}
+type JobTemplateTemplateVpcAccessNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVpcAccessNetworkInterfaceOutput() JobTemplateTemplateVpcAccessNetworkInterfaceOutput
+	ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceOutput
+}
+
+type JobTemplateTemplateVpcAccessNetworkInterfaceArgs struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run job.
+	//
+	// ***
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (JobTemplateTemplateVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToJobTemplateTemplateVpcAccessNetworkInterfaceOutput() JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return i.ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+func (i JobTemplateTemplateVpcAccessNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface]{
+		OutputState: i.ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput is an input type that accepts JobTemplateTemplateVpcAccessNetworkInterfaceArray and JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput` via:
+//
+//	JobTemplateTemplateVpcAccessNetworkInterfaceArray{ JobTemplateTemplateVpcAccessNetworkInterfaceArgs{...} }
+type JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput() JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput
+	ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput
+}
+
+type JobTemplateTemplateVpcAccessNetworkInterfaceArray []JobTemplateTemplateVpcAccessNetworkInterfaceInput
+
+func (JobTemplateTemplateVpcAccessNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateVpcAccessNetworkInterfaceArray) ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput() JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return i.ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVpcAccessNetworkInterfaceArray) ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+func (i JobTemplateTemplateVpcAccessNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface]{
+		OutputState: i.ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type JobTemplateTemplateVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToJobTemplateTemplateVpcAccessNetworkInterfaceOutput() JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToJobTemplateTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[JobTemplateTemplateVpcAccessNetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+// looked up from the subnetwork.
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVpcAccessNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+// subnetwork with the same name with the network will be used.
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVpcAccessNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// Network tags applied to this Cloud Run job.
+//
+// ***
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobTemplateTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput() JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[[]JobTemplateTemplateVpcAccessNetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) JobTemplateTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobTemplateTemplateVpcAccessNetworkInterface {
+		return vs[0].([]JobTemplateTemplateVpcAccessNetworkInterface)[vs[1].(int)]
+	}).(JobTemplateTemplateVpcAccessNetworkInterfaceOutput)
 }
 
 type JobTerminalCondition struct {
@@ -10852,6 +11026,9 @@ type ServiceTemplateVpcAccess struct {
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress *string `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	// Structure is documented below.
+	NetworkInterfaces []ServiceTemplateVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
 }
 
 // ServiceTemplateVpcAccessInput is an input type that accepts ServiceTemplateVpcAccessArgs and ServiceTemplateVpcAccessOutput values.
@@ -10871,6 +11048,9 @@ type ServiceTemplateVpcAccessArgs struct {
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
+	// Structure is documented below.
+	NetworkInterfaces ServiceTemplateVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 }
 
 func (ServiceTemplateVpcAccessArgs) ElementType() reflect.Type {
@@ -10979,6 +11159,14 @@ func (o ServiceTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVpcAccess) *string { return v.Egress }).(pulumi.StringPtrOutput)
 }
 
+// Direct VPC egress settings. Currently only single network interface is supported.
+// Structure is documented below.
+func (o ServiceTemplateVpcAccessOutput) NetworkInterfaces() ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateVpcAccess) []ServiceTemplateVpcAccessNetworkInterface {
+		return v.NetworkInterfaces
+	}).(ServiceTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
 type ServiceTemplateVpcAccessPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateVpcAccessPtrOutput) ElementType() reflect.Type {
@@ -11028,6 +11216,168 @@ func (o ServiceTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 		}
 		return v.Egress
 	}).(pulumi.StringPtrOutput)
+}
+
+// Direct VPC egress settings. Currently only single network interface is supported.
+// Structure is documented below.
+func (o ServiceTemplateVpcAccessPtrOutput) NetworkInterfaces() ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *ServiceTemplateVpcAccess) []ServiceTemplateVpcAccessNetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(ServiceTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+type ServiceTemplateVpcAccessNetworkInterface struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network *string `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run service.
+	Tags []string `pulumi:"tags"`
+}
+
+// ServiceTemplateVpcAccessNetworkInterfaceInput is an input type that accepts ServiceTemplateVpcAccessNetworkInterfaceArgs and ServiceTemplateVpcAccessNetworkInterfaceOutput values.
+// You can construct a concrete instance of `ServiceTemplateVpcAccessNetworkInterfaceInput` via:
+//
+//	ServiceTemplateVpcAccessNetworkInterfaceArgs{...}
+type ServiceTemplateVpcAccessNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVpcAccessNetworkInterfaceOutput() ServiceTemplateVpcAccessNetworkInterfaceOutput
+	ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Context) ServiceTemplateVpcAccessNetworkInterfaceOutput
+}
+
+type ServiceTemplateVpcAccessNetworkInterfaceArgs struct {
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run service.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (ServiceTemplateVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i ServiceTemplateVpcAccessNetworkInterfaceArgs) ToServiceTemplateVpcAccessNetworkInterfaceOutput() ServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return i.ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVpcAccessNetworkInterfaceArgs) ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessNetworkInterfaceOutput)
+}
+
+func (i ServiceTemplateVpcAccessNetworkInterfaceArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[ServiceTemplateVpcAccessNetworkInterface]{
+		OutputState: i.ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ServiceTemplateVpcAccessNetworkInterfaceArrayInput is an input type that accepts ServiceTemplateVpcAccessNetworkInterfaceArray and ServiceTemplateVpcAccessNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateVpcAccessNetworkInterfaceArrayInput` via:
+//
+//	ServiceTemplateVpcAccessNetworkInterfaceArray{ ServiceTemplateVpcAccessNetworkInterfaceArgs{...} }
+type ServiceTemplateVpcAccessNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVpcAccessNetworkInterfaceArrayOutput() ServiceTemplateVpcAccessNetworkInterfaceArrayOutput
+	ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Context) ServiceTemplateVpcAccessNetworkInterfaceArrayOutput
+}
+
+type ServiceTemplateVpcAccessNetworkInterfaceArray []ServiceTemplateVpcAccessNetworkInterfaceInput
+
+func (ServiceTemplateVpcAccessNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (i ServiceTemplateVpcAccessNetworkInterfaceArray) ToServiceTemplateVpcAccessNetworkInterfaceArrayOutput() ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return i.ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVpcAccessNetworkInterfaceArray) ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVpcAccessNetworkInterfaceArrayOutput)
+}
+
+func (i ServiceTemplateVpcAccessNetworkInterfaceArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface]{
+		OutputState: i.ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ServiceTemplateVpcAccessNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVpcAccessNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) ToServiceTemplateVpcAccessNetworkInterfaceOutput() ServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) ToServiceTemplateVpcAccessNetworkInterfaceOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return o
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[ServiceTemplateVpcAccessNetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+// looked up from the subnetwork.
+func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVpcAccessNetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+// subnetwork with the same name with the network will be used.
+func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVpcAccessNetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// Network tags applied to this Cloud Run service.
+func (o ServiceTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type ServiceTemplateVpcAccessNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateVpcAccessNetworkInterface)(nil)).Elem()
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToServiceTemplateVpcAccessNetworkInterfaceArrayOutput() ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToServiceTemplateVpcAccessNetworkInterfaceArrayOutputWithContext(ctx context.Context) ServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface] {
+	return pulumix.Output[[]ServiceTemplateVpcAccessNetworkInterface]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ServiceTemplateVpcAccessNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateVpcAccessNetworkInterface {
+		return vs[0].([]ServiceTemplateVpcAccessNetworkInterface)[vs[1].(int)]
+	}).(ServiceTemplateVpcAccessNetworkInterfaceOutput)
 }
 
 type ServiceTerminalCondition struct {
@@ -11621,6 +11971,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretItemArrayInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessInput)(nil)).Elem(), JobTemplateTemplateVpcAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessPtrInput)(nil)).Elem(), JobTemplateTemplateVpcAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), JobTemplateTemplateVpcAccessNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), JobTemplateTemplateVpcAccessNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTerminalConditionInput)(nil)).Elem(), JobTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTerminalConditionArrayInput)(nil)).Elem(), JobTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBinaryAuthorizationInput)(nil)).Elem(), ServiceBinaryAuthorizationArgs{})
@@ -11681,6 +12033,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretItemArrayInput)(nil)).Elem(), ServiceTemplateVolumeSecretItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessInput)(nil)).Elem(), ServiceTemplateVpcAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessPtrInput)(nil)).Elem(), ServiceTemplateVpcAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessNetworkInterfaceInput)(nil)).Elem(), ServiceTemplateVpcAccessNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVpcAccessNetworkInterfaceArrayInput)(nil)).Elem(), ServiceTemplateVpcAccessNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTerminalConditionInput)(nil)).Elem(), ServiceTerminalConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTerminalConditionArrayInput)(nil)).Elem(), ServiceTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTrafficInput)(nil)).Elem(), ServiceTrafficArgs{})
@@ -11743,6 +12097,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretItemArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessPtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(JobTerminalConditionOutput{})
 	pulumi.RegisterOutputType(JobTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceBinaryAuthorizationOutput{})
@@ -11803,6 +12159,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretItemArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVpcAccessOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVpcAccessPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVpcAccessNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVpcAccessNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTerminalConditionOutput{})
 	pulumi.RegisterOutputType(ServiceTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTrafficOutput{})

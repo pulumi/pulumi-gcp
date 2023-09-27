@@ -20,6 +20,7 @@ class WorkstationArgs:
                  workstation_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -33,6 +34,7 @@ class WorkstationArgs:
         :param pulumi.Input[str] workstation_id: ID to use for the workstation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -45,6 +47,8 @@ class WorkstationArgs:
             pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -127,6 +131,18 @@ class WorkstationArgs:
 
     @property
     @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        'Client-specified environment variables passed to the workstation container's entrypoint.'
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "env", value)
+
+    @property
+    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -157,6 +173,7 @@ class _WorkstationState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -172,6 +189,7 @@ class _WorkstationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[str] host: Host to which clients can send HTTPS traffic that will be received by the workstation.
                Authorized traffic will be received to the workstation as HTTP on port 80.
                To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
@@ -195,6 +213,8 @@ class _WorkstationState:
             pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if env is not None:
+            pulumi.set(__self__, "env", env)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if labels is not None:
@@ -251,6 +271,18 @@ class _WorkstationState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        'Client-specified environment variables passed to the workstation container's entrypoint.'
+        """
+        return pulumi.get(self, "env")
+
+    @env.setter
+    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "env", value)
 
     @property
     @pulumi.getter
@@ -386,6 +418,7 @@ class Workstation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -440,6 +473,9 @@ class Workstation(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
+            env={
+                "name": "foo",
+            },
             annotations={
                 "label-one": "value-one",
             },
@@ -466,6 +502,7 @@ class Workstation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
                
@@ -530,6 +567,9 @@ class Workstation(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
+            env={
+                "name": "foo",
+            },
             annotations={
                 "label-one": "value-one",
             },
@@ -569,6 +609,7 @@ class Workstation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -586,6 +627,7 @@ class Workstation(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["env"] = env
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -618,6 +660,7 @@ class Workstation(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             host: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -638,6 +681,7 @@ class Workstation(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env: 'Client-specified environment variables passed to the workstation container's entrypoint.'
         :param pulumi.Input[str] host: Host to which clients can send HTTPS traffic that will be received by the workstation.
                Authorized traffic will be received to the workstation as HTTP on port 80.
                To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
@@ -662,6 +706,7 @@ class Workstation(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["env"] = env
         __props__.__dict__["host"] = host
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -697,6 +742,14 @@ class Workstation(pulumi.CustomResource):
         Human-readable name for this resource.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def env(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        'Client-specified environment variables passed to the workstation container's entrypoint.'
+        """
+        return pulumi.get(self, "env")
 
     @property
     @pulumi.getter

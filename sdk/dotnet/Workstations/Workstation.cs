@@ -87,6 +87,10 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label", "key" },
     ///         },
+    ///         Env = 
+    ///         {
+    ///             { "name", "foo" },
+    ///         },
     ///         Annotations = 
     ///         {
     ///             { "label-one", "value-one" },
@@ -135,6 +139,12 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+        /// </summary>
+        [Output("env")]
+        public Output<ImmutableDictionary<string, string>?> Env { get; private set; } = null!;
 
         /// <summary>
         /// Host to which clients can send HTTPS traffic that will be received by the workstation.
@@ -266,6 +276,18 @@ namespace Pulumi.Gcp.Workstations
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("env")]
+        private InputMap<string>? _env;
+
+        /// <summary>
+        /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+        /// </summary>
+        public InputMap<string> Env
+        {
+            get => _env ?? (_env = new InputMap<string>());
+            set => _env = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -343,6 +365,18 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("env")]
+        private InputMap<string>? _env;
+
+        /// <summary>
+        /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+        /// </summary>
+        public InputMap<string> Env
+        {
+            get => _env ?? (_env = new InputMap<string>());
+            set => _env = value;
+        }
 
         /// <summary>
         /// Host to which clients can send HTTPS traffic that will be received by the workstation.

@@ -5114,6 +5114,175 @@ func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) Index(i pul
 	}).(BareMetalAdminClusterValidationCheckStatusResultOutput)
 }
 
+type BareMetalClusterBinaryAuthorization struct {
+	// Mode of operation for binauthz policy evaluation. If unspecified,
+	// defaults to DISABLED.
+	// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+	EvaluationMode *string `pulumi:"evaluationMode"`
+}
+
+// BareMetalClusterBinaryAuthorizationInput is an input type that accepts BareMetalClusterBinaryAuthorizationArgs and BareMetalClusterBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `BareMetalClusterBinaryAuthorizationInput` via:
+//
+//	BareMetalClusterBinaryAuthorizationArgs{...}
+type BareMetalClusterBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterBinaryAuthorizationOutput() BareMetalClusterBinaryAuthorizationOutput
+	ToBareMetalClusterBinaryAuthorizationOutputWithContext(context.Context) BareMetalClusterBinaryAuthorizationOutput
+}
+
+type BareMetalClusterBinaryAuthorizationArgs struct {
+	// Mode of operation for binauthz policy evaluation. If unspecified,
+	// defaults to DISABLED.
+	// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
+}
+
+func (BareMetalClusterBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i BareMetalClusterBinaryAuthorizationArgs) ToBareMetalClusterBinaryAuthorizationOutput() BareMetalClusterBinaryAuthorizationOutput {
+	return i.ToBareMetalClusterBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i BareMetalClusterBinaryAuthorizationArgs) ToBareMetalClusterBinaryAuthorizationOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBinaryAuthorizationOutput)
+}
+
+func (i BareMetalClusterBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterBinaryAuthorization] {
+	return pulumix.Output[BareMetalClusterBinaryAuthorization]{
+		OutputState: i.ToBareMetalClusterBinaryAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BareMetalClusterBinaryAuthorizationArgs) ToBareMetalClusterBinaryAuthorizationPtrOutput() BareMetalClusterBinaryAuthorizationPtrOutput {
+	return i.ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalClusterBinaryAuthorizationArgs) ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBinaryAuthorizationOutput).ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx)
+}
+
+// BareMetalClusterBinaryAuthorizationPtrInput is an input type that accepts BareMetalClusterBinaryAuthorizationArgs, BareMetalClusterBinaryAuthorizationPtr and BareMetalClusterBinaryAuthorizationPtrOutput values.
+// You can construct a concrete instance of `BareMetalClusterBinaryAuthorizationPtrInput` via:
+//
+//	        BareMetalClusterBinaryAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalClusterBinaryAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterBinaryAuthorizationPtrOutput() BareMetalClusterBinaryAuthorizationPtrOutput
+	ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(context.Context) BareMetalClusterBinaryAuthorizationPtrOutput
+}
+
+type bareMetalClusterBinaryAuthorizationPtrType BareMetalClusterBinaryAuthorizationArgs
+
+func BareMetalClusterBinaryAuthorizationPtr(v *BareMetalClusterBinaryAuthorizationArgs) BareMetalClusterBinaryAuthorizationPtrInput {
+	return (*bareMetalClusterBinaryAuthorizationPtrType)(v)
+}
+
+func (*bareMetalClusterBinaryAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i *bareMetalClusterBinaryAuthorizationPtrType) ToBareMetalClusterBinaryAuthorizationPtrOutput() BareMetalClusterBinaryAuthorizationPtrOutput {
+	return i.ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalClusterBinaryAuthorizationPtrType) ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterBinaryAuthorizationPtrOutput)
+}
+
+func (i *bareMetalClusterBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBinaryAuthorization] {
+	return pulumix.Output[*BareMetalClusterBinaryAuthorization]{
+		OutputState: i.ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BareMetalClusterBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o BareMetalClusterBinaryAuthorizationOutput) ToBareMetalClusterBinaryAuthorizationOutput() BareMetalClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o BareMetalClusterBinaryAuthorizationOutput) ToBareMetalClusterBinaryAuthorizationOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o BareMetalClusterBinaryAuthorizationOutput) ToBareMetalClusterBinaryAuthorizationPtrOutput() BareMetalClusterBinaryAuthorizationPtrOutput {
+	return o.ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterBinaryAuthorizationOutput) ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterBinaryAuthorization) *BareMetalClusterBinaryAuthorization {
+		return &v
+	}).(BareMetalClusterBinaryAuthorizationPtrOutput)
+}
+
+func (o BareMetalClusterBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterBinaryAuthorization] {
+	return pulumix.Output[BareMetalClusterBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Mode of operation for binauthz policy evaluation. If unspecified,
+// defaults to DISABLED.
+// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+func (o BareMetalClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalClusterBinaryAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterBinaryAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o BareMetalClusterBinaryAuthorizationPtrOutput) ToBareMetalClusterBinaryAuthorizationPtrOutput() BareMetalClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterBinaryAuthorizationPtrOutput) ToBareMetalClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterBinaryAuthorization] {
+	return pulumix.Output[*BareMetalClusterBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalClusterBinaryAuthorizationPtrOutput) Elem() BareMetalClusterBinaryAuthorizationOutput {
+	return o.ApplyT(func(v *BareMetalClusterBinaryAuthorization) BareMetalClusterBinaryAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalClusterBinaryAuthorization
+		return ret
+	}).(BareMetalClusterBinaryAuthorizationOutput)
+}
+
+// Mode of operation for binauthz policy evaluation. If unspecified,
+// defaults to DISABLED.
+// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+func (o BareMetalClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalClusterBinaryAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type BareMetalClusterClusterOperations struct {
 	// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
 	EnableApplicationLogs *bool `pulumi:"enableApplicationLogs"`
@@ -13137,6 +13306,171 @@ func (o BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput) StorageClass() 
 	}).(pulumi.StringPtrOutput)
 }
 
+type BareMetalClusterUpgradePolicy struct {
+	// Specifies which upgrade policy to use.
+	// Possible values are: `SERIAL`, `CONCURRENT`.
+	Policy *string `pulumi:"policy"`
+}
+
+// BareMetalClusterUpgradePolicyInput is an input type that accepts BareMetalClusterUpgradePolicyArgs and BareMetalClusterUpgradePolicyOutput values.
+// You can construct a concrete instance of `BareMetalClusterUpgradePolicyInput` via:
+//
+//	BareMetalClusterUpgradePolicyArgs{...}
+type BareMetalClusterUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterUpgradePolicyOutput() BareMetalClusterUpgradePolicyOutput
+	ToBareMetalClusterUpgradePolicyOutputWithContext(context.Context) BareMetalClusterUpgradePolicyOutput
+}
+
+type BareMetalClusterUpgradePolicyArgs struct {
+	// Specifies which upgrade policy to use.
+	// Possible values are: `SERIAL`, `CONCURRENT`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (BareMetalClusterUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutput() BareMetalClusterUpgradePolicyOutput {
+	return i.ToBareMetalClusterUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyOutput)
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[BareMetalClusterUpgradePolicy]{
+		OutputState: i.ToBareMetalClusterUpgradePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalClusterUpgradePolicyArgs) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyOutput).ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// BareMetalClusterUpgradePolicyPtrInput is an input type that accepts BareMetalClusterUpgradePolicyArgs, BareMetalClusterUpgradePolicyPtr and BareMetalClusterUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `BareMetalClusterUpgradePolicyPtrInput` via:
+//
+//	        BareMetalClusterUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalClusterUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput
+	ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Context) BareMetalClusterUpgradePolicyPtrOutput
+}
+
+type bareMetalClusterUpgradePolicyPtrType BareMetalClusterUpgradePolicyArgs
+
+func BareMetalClusterUpgradePolicyPtr(v *BareMetalClusterUpgradePolicyArgs) BareMetalClusterUpgradePolicyPtrInput {
+	return (*bareMetalClusterUpgradePolicyPtrType)(v)
+}
+
+func (*bareMetalClusterUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i *bareMetalClusterUpgradePolicyPtrType) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalClusterUpgradePolicyPtrType) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalClusterUpgradePolicyPtrOutput)
+}
+
+func (i *bareMetalClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
+		OutputState: i.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BareMetalClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyOutput() BareMetalClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return o.ToBareMetalClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalClusterUpgradePolicy) *BareMetalClusterUpgradePolicy {
+		return &v
+	}).(BareMetalClusterUpgradePolicyPtrOutput)
+}
+
+func (o BareMetalClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[BareMetalClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Specifies which upgrade policy to use.
+// Possible values are: `SERIAL`, `CONCURRENT`.
+func (o BareMetalClusterUpgradePolicyOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalClusterUpgradePolicy) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalClusterUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalClusterUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyPtrOutput() BareMetalClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) ToBareMetalClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) BareMetalClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalClusterUpgradePolicy] {
+	return pulumix.Output[*BareMetalClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BareMetalClusterUpgradePolicyPtrOutput) Elem() BareMetalClusterUpgradePolicyOutput {
+	return o.ApplyT(func(v *BareMetalClusterUpgradePolicy) BareMetalClusterUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalClusterUpgradePolicy
+		return ret
+	}).(BareMetalClusterUpgradePolicyOutput)
+}
+
+// Specifies which upgrade policy to use.
+// Possible values are: `SERIAL`, `CONCURRENT`.
+func (o BareMetalClusterUpgradePolicyPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalClusterUpgradePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
 type BareMetalClusterValidationCheck struct {
 	// (Output)
 	// Options used for the validation check.
@@ -19319,6 +19653,167 @@ func (o VMwareClusterStoragePtrOutput) VsphereCsiDisabled() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+type VMwareClusterUpgradePolicy struct {
+	// Controls whether the upgrade applies to the control plane only.
+	ControlPlaneOnly *bool `pulumi:"controlPlaneOnly"`
+}
+
+// VMwareClusterUpgradePolicyInput is an input type that accepts VMwareClusterUpgradePolicyArgs and VMwareClusterUpgradePolicyOutput values.
+// You can construct a concrete instance of `VMwareClusterUpgradePolicyInput` via:
+//
+//	VMwareClusterUpgradePolicyArgs{...}
+type VMwareClusterUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToVMwareClusterUpgradePolicyOutput() VMwareClusterUpgradePolicyOutput
+	ToVMwareClusterUpgradePolicyOutputWithContext(context.Context) VMwareClusterUpgradePolicyOutput
+}
+
+type VMwareClusterUpgradePolicyArgs struct {
+	// Controls whether the upgrade applies to the control plane only.
+	ControlPlaneOnly pulumi.BoolPtrInput `pulumi:"controlPlaneOnly"`
+}
+
+func (VMwareClusterUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i VMwareClusterUpgradePolicyArgs) ToVMwareClusterUpgradePolicyOutput() VMwareClusterUpgradePolicyOutput {
+	return i.ToVMwareClusterUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i VMwareClusterUpgradePolicyArgs) ToVMwareClusterUpgradePolicyOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterUpgradePolicyOutput)
+}
+
+func (i VMwareClusterUpgradePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterUpgradePolicy] {
+	return pulumix.Output[VMwareClusterUpgradePolicy]{
+		OutputState: i.ToVMwareClusterUpgradePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i VMwareClusterUpgradePolicyArgs) ToVMwareClusterUpgradePolicyPtrOutput() VMwareClusterUpgradePolicyPtrOutput {
+	return i.ToVMwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i VMwareClusterUpgradePolicyArgs) ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterUpgradePolicyOutput).ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// VMwareClusterUpgradePolicyPtrInput is an input type that accepts VMwareClusterUpgradePolicyArgs, VMwareClusterUpgradePolicyPtr and VMwareClusterUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `VMwareClusterUpgradePolicyPtrInput` via:
+//
+//	        VMwareClusterUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMwareClusterUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToVMwareClusterUpgradePolicyPtrOutput() VMwareClusterUpgradePolicyPtrOutput
+	ToVMwareClusterUpgradePolicyPtrOutputWithContext(context.Context) VMwareClusterUpgradePolicyPtrOutput
+}
+
+type vmwareClusterUpgradePolicyPtrType VMwareClusterUpgradePolicyArgs
+
+func VMwareClusterUpgradePolicyPtr(v *VMwareClusterUpgradePolicyArgs) VMwareClusterUpgradePolicyPtrInput {
+	return (*vmwareClusterUpgradePolicyPtrType)(v)
+}
+
+func (*vmwareClusterUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (i *vmwareClusterUpgradePolicyPtrType) ToVMwareClusterUpgradePolicyPtrOutput() VMwareClusterUpgradePolicyPtrOutput {
+	return i.ToVMwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareClusterUpgradePolicyPtrType) ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareClusterUpgradePolicyPtrOutput)
+}
+
+func (i *vmwareClusterUpgradePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterUpgradePolicy] {
+	return pulumix.Output[*VMwareClusterUpgradePolicy]{
+		OutputState: i.ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type VMwareClusterUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (VMwareClusterUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o VMwareClusterUpgradePolicyOutput) ToVMwareClusterUpgradePolicyOutput() VMwareClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o VMwareClusterUpgradePolicyOutput) ToVMwareClusterUpgradePolicyOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyOutput {
+	return o
+}
+
+func (o VMwareClusterUpgradePolicyOutput) ToVMwareClusterUpgradePolicyPtrOutput() VMwareClusterUpgradePolicyPtrOutput {
+	return o.ToVMwareClusterUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o VMwareClusterUpgradePolicyOutput) ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareClusterUpgradePolicy) *VMwareClusterUpgradePolicy {
+		return &v
+	}).(VMwareClusterUpgradePolicyPtrOutput)
+}
+
+func (o VMwareClusterUpgradePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[VMwareClusterUpgradePolicy] {
+	return pulumix.Output[VMwareClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Controls whether the upgrade applies to the control plane only.
+func (o VMwareClusterUpgradePolicyOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareClusterUpgradePolicy) *bool { return v.ControlPlaneOnly }).(pulumi.BoolPtrOutput)
+}
+
+type VMwareClusterUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (VMwareClusterUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareClusterUpgradePolicy)(nil)).Elem()
+}
+
+func (o VMwareClusterUpgradePolicyPtrOutput) ToVMwareClusterUpgradePolicyPtrOutput() VMwareClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o VMwareClusterUpgradePolicyPtrOutput) ToVMwareClusterUpgradePolicyPtrOutputWithContext(ctx context.Context) VMwareClusterUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o VMwareClusterUpgradePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMwareClusterUpgradePolicy] {
+	return pulumix.Output[*VMwareClusterUpgradePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o VMwareClusterUpgradePolicyPtrOutput) Elem() VMwareClusterUpgradePolicyOutput {
+	return o.ApplyT(func(v *VMwareClusterUpgradePolicy) VMwareClusterUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret VMwareClusterUpgradePolicy
+		return ret
+	}).(VMwareClusterUpgradePolicyOutput)
+}
+
+// Controls whether the upgrade applies to the control plane only.
+func (o VMwareClusterUpgradePolicyPtrOutput) ControlPlaneOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VMwareClusterUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
 type VMwareClusterValidationCheck struct {
 	// (Output)
 	// Options used for the validation check.
@@ -21353,6 +21848,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusArrayInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusResultInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusResultArrayInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterBinaryAuthorizationInput)(nil)).Elem(), BareMetalClusterBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterBinaryAuthorizationPtrInput)(nil)).Elem(), BareMetalClusterBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterClusterOperationsInput)(nil)).Elem(), BareMetalClusterClusterOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterClusterOperationsPtrInput)(nil)).Elem(), BareMetalClusterClusterOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterControlPlaneInput)(nil)).Elem(), BareMetalClusterControlPlaneArgs{})
@@ -21441,6 +21938,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterStorageLvpShareConfigPtrInput)(nil)).Elem(), BareMetalClusterStorageLvpShareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterStorageLvpShareConfigLvpConfigInput)(nil)).Elem(), BareMetalClusterStorageLvpShareConfigLvpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterStorageLvpShareConfigLvpConfigPtrInput)(nil)).Elem(), BareMetalClusterStorageLvpShareConfigLvpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterUpgradePolicyInput)(nil)).Elem(), BareMetalClusterUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterUpgradePolicyPtrInput)(nil)).Elem(), BareMetalClusterUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterValidationCheckInput)(nil)).Elem(), BareMetalClusterValidationCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterValidationCheckArrayInput)(nil)).Elem(), BareMetalClusterValidationCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterValidationCheckStatusInput)(nil)).Elem(), BareMetalClusterValidationCheckStatusArgs{})
@@ -21511,6 +22010,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterStatusConditionArrayInput)(nil)).Elem(), VMwareClusterStatusConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterStorageInput)(nil)).Elem(), VMwareClusterStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterStoragePtrInput)(nil)).Elem(), VMwareClusterStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterUpgradePolicyInput)(nil)).Elem(), VMwareClusterUpgradePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterUpgradePolicyPtrInput)(nil)).Elem(), VMwareClusterUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterValidationCheckInput)(nil)).Elem(), VMwareClusterValidationCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterValidationCheckArrayInput)(nil)).Elem(), VMwareClusterValidationCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareClusterValidationCheckStatusInput)(nil)).Elem(), VMwareClusterValidationCheckStatusArgs{})
@@ -21593,6 +22094,8 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusResultOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusResultArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterClusterOperationsOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterClusterOperationsPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterControlPlaneOutput{})
@@ -21681,6 +22184,8 @@ func init() {
 	pulumi.RegisterOutputType(BareMetalClusterStorageLvpShareConfigPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterStorageLvpShareConfigLvpConfigOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterStorageLvpShareConfigLvpConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(BareMetalClusterUpgradePolicyPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterValidationCheckOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterValidationCheckArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterValidationCheckStatusOutput{})
@@ -21751,6 +22256,8 @@ func init() {
 	pulumi.RegisterOutputType(VMwareClusterStatusConditionArrayOutput{})
 	pulumi.RegisterOutputType(VMwareClusterStorageOutput{})
 	pulumi.RegisterOutputType(VMwareClusterStoragePtrOutput{})
+	pulumi.RegisterOutputType(VMwareClusterUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(VMwareClusterUpgradePolicyPtrOutput{})
 	pulumi.RegisterOutputType(VMwareClusterValidationCheckOutput{})
 	pulumi.RegisterOutputType(VMwareClusterValidationCheckArrayOutput{})
 	pulumi.RegisterOutputType(VMwareClusterValidationCheckStatusOutput{})

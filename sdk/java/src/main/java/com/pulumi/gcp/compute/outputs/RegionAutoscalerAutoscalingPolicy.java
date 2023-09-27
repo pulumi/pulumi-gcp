@@ -70,8 +70,6 @@ public final class RegionAutoscalerAutoscalingPolicy {
     private Integer minReplicas;
     /**
      * @return Defines operating mode for this policy.
-     * Default value is `ON`.
-     * Possible values are: `OFF`, `ONLY_UP`, `ON`.
      * 
      */
     private @Nullable String mode;
@@ -160,8 +158,6 @@ public final class RegionAutoscalerAutoscalingPolicy {
     }
     /**
      * @return Defines operating mode for this policy.
-     * Default value is `ON`.
-     * Possible values are: `OFF`, `ONLY_UP`, `ON`.
      * 
      */
     public Optional<String> mode() {
