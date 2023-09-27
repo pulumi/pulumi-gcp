@@ -96,7 +96,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      * 
      */
-    @Export(name="assetType", refs={String.class}, tree="[0]")
+    @Export(name="assetType", type=String.class, parameters={})
     private Output</* @Nullable */ String> assetType;
 
     /**
@@ -127,7 +127,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      * 
      */
-    @Export(name="authorizationDirection", refs={String.class}, tree="[0]")
+    @Export(name="authorizationDirection", type=String.class, parameters={})
     private Output</* @Nullable */ String> authorizationDirection;
 
     /**
@@ -156,7 +156,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      * 
      */
-    @Export(name="authorizationType", refs={String.class}, tree="[0]")
+    @Export(name="authorizationType", type=String.class, parameters={})
     private Output</* @Nullable */ String> authorizationType;
 
     /**
@@ -171,7 +171,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Time the AuthorizedOrgsDesc was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -191,7 +191,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -213,7 +213,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Example: `organizations/123456`
      * 
      */
-    @Export(name="orgs", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="orgs", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> orgs;
 
     /**
@@ -229,7 +229,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -243,7 +243,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * Time the AuthorizedOrgsDesc was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

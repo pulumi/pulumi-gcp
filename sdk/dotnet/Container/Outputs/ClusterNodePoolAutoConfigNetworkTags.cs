@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolAutoConfigNetworkTags
     {
         /// <summary>
-        /// ) - List of network tags applied to auto-provisioned node pools.
+        /// List of network tags applied to auto-provisioned node pools.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

@@ -115,6 +115,11 @@ export type SyncAuthorization = import("./syncAuthorization").SyncAuthorization;
 export const SyncAuthorization: typeof import("./syncAuthorization").SyncAuthorization = null as any;
 utilities.lazyLoad(exports, ["SyncAuthorization"], () => require("./syncAuthorization"));
 
+export { TargetServerArgs, TargetServerState } from "./targetServer";
+export type TargetServer = import("./targetServer").TargetServer;
+export const TargetServer: typeof import("./targetServer").TargetServer = null as any;
+utilities.lazyLoad(exports, ["TargetServer"], () => require("./targetServer"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -162,6 +167,8 @@ const _module = {
                 return new SharedflowDeployment(name, <any>undefined, { urn })
             case "gcp:apigee/syncAuthorization:SyncAuthorization":
                 return new SyncAuthorization(name, <any>undefined, { urn })
+            case "gcp:apigee/targetServer:TargetServer":
+                return new TargetServer(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -188,3 +195,4 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflowDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/syncAuthorization", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/targetServer", _module)

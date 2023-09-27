@@ -23,12 +23,79 @@ import * as utilities from "../utilities";
  *         label: "my-label",
  *     },
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {
  *     secret: secret_basic.id,
  *     secretData: "secret-data",
+ * });
+ * ```
+ * ### Secret Version Deletion Policy Abandon
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_deletion_policy = new gcp.secretmanager.SecretVersion("secret-version-deletion-policy", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ *     deletionPolicy: "ABANDON",
+ * });
+ * ```
+ * ### Secret Version Deletion Policy Disable
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_deletion_policy = new gcp.secretmanager.SecretVersion("secret-version-deletion-policy", {
+ *     secret: secret_basic.id,
+ *     secretData: "secret-data",
+ *     deletionPolicy: "DISABLE",
+ * });
+ * ```
+ * ### Secret Version With Base64 String Secret Data
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     secretId: "secret-version",
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [{
+ *                 location: "us-central1",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const secret_version_base64 = new gcp.secretmanager.SecretVersion("secret-version-base64", {
+ *     secret: secret_basic.id,
+ *     isSecretDataBase64: true,
+ *     secretData: Buffer.from(fs.readFileSync("secret-data.pfx"), 'binary').toString('base64'),
  * });
  * ```
  *
@@ -73,6 +140,15 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      */
     public /*out*/ readonly destroyTime!: pulumi.Output<string>;
@@ -80,6 +156,10 @@ export class SecretVersion extends pulumi.CustomResource {
      * The current state of the SecretVersion.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+     */
+    public readonly isSecretDataBase64!: pulumi.Output<boolean | undefined>;
     /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -116,8 +196,10 @@ export class SecretVersion extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecretVersionState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["destroyTime"] = state ? state.destroyTime : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["isSecretDataBase64"] = state ? state.isSecretDataBase64 : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["secretData"] = state ? state.secretData : undefined;
@@ -130,7 +212,9 @@ export class SecretVersion extends pulumi.CustomResource {
             if ((!args || args.secretData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretData'");
             }
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["isSecretDataBase64"] = args ? args.isSecretDataBase64 : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -154,6 +238,15 @@ export interface SecretVersionState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     */
+    deletionPolicy?: pulumi.Input<string>;
+    /**
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      */
     destroyTime?: pulumi.Input<string>;
@@ -161,6 +254,10 @@ export interface SecretVersionState {
      * The current state of the SecretVersion.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+     */
+    isSecretDataBase64?: pulumi.Input<boolean>;
     /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -189,9 +286,22 @@ export interface SecretVersionState {
  */
 export interface SecretVersionArgs {
     /**
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     */
+    deletionPolicy?: pulumi.Input<string>;
+    /**
      * The current state of the SecretVersion.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+     */
+    isSecretDataBase64?: pulumi.Input<boolean>;
     /**
      * Secret Manager secret resource
      *

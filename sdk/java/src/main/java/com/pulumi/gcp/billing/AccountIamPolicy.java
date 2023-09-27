@@ -164,7 +164,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="billingAccountId", refs={String.class}, tree="[0]")
+    @Export(name="billingAccountId", type=String.class, parameters={})
     private Output<String> billingAccountId;
 
     /**
@@ -187,7 +187,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the billing account&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -203,7 +203,7 @@ public class AccountIamPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**

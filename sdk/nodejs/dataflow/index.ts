@@ -15,6 +15,11 @@ export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
+export { PipelineArgs, PipelineState } from "./pipeline";
+export type Pipeline = import("./pipeline").Pipeline;
+export const Pipeline: typeof import("./pipeline").Pipeline = null as any;
+utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +29,8 @@ const _module = {
                 return new FlexTemplateJob(name, <any>undefined, { urn })
             case "gcp:dataflow/job:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "gcp:dataflow/pipeline:Pipeline":
+                return new Pipeline(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -31,3 +38,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "dataflow/flexTemplateJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataflow/job", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataflow/pipeline", _module)

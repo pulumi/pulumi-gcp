@@ -198,7 +198,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure defined below.
      * 
      */
-    @Export(name="clusterConfig", refs={ClusterClusterConfig.class}, tree="[0]")
+    @Export(name="clusterConfig", type=ClusterClusterConfig.class, parameters={})
     private Output<ClusterClusterConfig> clusterConfig;
 
     /**
@@ -214,7 +214,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * terraform apply
      * 
      */
-    @Export(name="gracefulDecommissionTimeout", refs={String.class}, tree="[0]")
+    @Export(name="gracefulDecommissionTimeout", type=String.class, parameters={})
     private Output</* @Nullable */ String> gracefulDecommissionTimeout;
 
     /**
@@ -231,7 +231,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * which is the name of the cluster.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> labels;
 
     /**
@@ -250,7 +250,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -268,7 +268,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -284,7 +284,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Defaults to `global`.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -300,7 +300,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure defined below.
      * 
      */
-    @Export(name="virtualClusterConfig", refs={ClusterVirtualClusterConfig.class}, tree="[0]")
+    @Export(name="virtualClusterConfig", type=ClusterVirtualClusterConfig.class, parameters={})
     private Output<ClusterVirtualClusterConfig> virtualClusterConfig;
 
     /**

@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember")
 public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={AutoscalingPolicyIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=AutoscalingPolicyIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ AutoscalingPolicyIamMemberCondition> condition;
 
     public Output<Optional<AutoscalingPolicyIamMemberCondition>> condition() {
@@ -177,7 +177,7 @@ public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResou
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -193,7 +193,7 @@ public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResou
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -205,7 +205,7 @@ public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResou
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -218,7 +218,7 @@ public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResou
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="policyId", refs={String.class}, tree="[0]")
+    @Export(name="policyId", type=String.class, parameters={})
     private Output<String> policyId;
 
     /**
@@ -248,7 +248,7 @@ public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResou
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -277,7 +277,7 @@ public class AutoscalingPolicyIamMember extends com.pulumi.resources.CustomResou
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

@@ -397,6 +397,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataLossPreventionCustomEndpoint);
     }
 
+    @Import(name="dataPipelineCustomEndpoint")
+    private @Nullable Output<String> dataPipelineCustomEndpoint;
+
+    public Optional<Output<String>> dataPipelineCustomEndpoint() {
+        return Optional.ofNullable(this.dataPipelineCustomEndpoint);
+    }
+
     @Import(name="databaseMigrationServiceCustomEndpoint")
     private @Nullable Output<String> databaseMigrationServiceCustomEndpoint;
 
@@ -500,6 +507,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> documentAiWarehouseCustomEndpoint() {
         return Optional.ofNullable(this.documentAiWarehouseCustomEndpoint);
+    }
+
+    @Import(name="edgenetworkCustomEndpoint")
+    private @Nullable Output<String> edgenetworkCustomEndpoint;
+
+    public Optional<Output<String>> edgenetworkCustomEndpoint() {
+        return Optional.ofNullable(this.edgenetworkCustomEndpoint);
     }
 
     @Import(name="essentialContactsCustomEndpoint")
@@ -971,6 +985,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.storageCustomEndpoint);
     }
 
+    @Import(name="storageInsightsCustomEndpoint")
+    private @Nullable Output<String> storageInsightsCustomEndpoint;
+
+    public Optional<Output<String>> storageInsightsCustomEndpoint() {
+        return Optional.ofNullable(this.storageInsightsCustomEndpoint);
+    }
+
     @Import(name="storageTransferCustomEndpoint")
     private @Nullable Output<String> storageTransferCustomEndpoint;
 
@@ -997,6 +1018,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> tpuCustomEndpoint() {
         return Optional.ofNullable(this.tpuCustomEndpoint);
+    }
+
+    @Import(name="tpuV2CustomEndpoint")
+    private @Nullable Output<String> tpuV2CustomEndpoint;
+
+    public Optional<Output<String>> tpuV2CustomEndpoint() {
+        return Optional.ofNullable(this.tpuV2CustomEndpoint);
     }
 
     @Import(name="userProjectOverride", json=true)
@@ -1105,6 +1133,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataCatalogCustomEndpoint = $.dataCatalogCustomEndpoint;
         this.dataFusionCustomEndpoint = $.dataFusionCustomEndpoint;
         this.dataLossPreventionCustomEndpoint = $.dataLossPreventionCustomEndpoint;
+        this.dataPipelineCustomEndpoint = $.dataPipelineCustomEndpoint;
         this.databaseMigrationServiceCustomEndpoint = $.databaseMigrationServiceCustomEndpoint;
         this.dataflowCustomEndpoint = $.dataflowCustomEndpoint;
         this.dataformCustomEndpoint = $.dataformCustomEndpoint;
@@ -1120,6 +1149,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
         this.documentAiWarehouseCustomEndpoint = $.documentAiWarehouseCustomEndpoint;
+        this.edgenetworkCustomEndpoint = $.edgenetworkCustomEndpoint;
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
@@ -1187,10 +1217,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.spannerCustomEndpoint = $.spannerCustomEndpoint;
         this.sqlCustomEndpoint = $.sqlCustomEndpoint;
         this.storageCustomEndpoint = $.storageCustomEndpoint;
+        this.storageInsightsCustomEndpoint = $.storageInsightsCustomEndpoint;
         this.storageTransferCustomEndpoint = $.storageTransferCustomEndpoint;
         this.tagsCustomEndpoint = $.tagsCustomEndpoint;
         this.tagsLocationCustomEndpoint = $.tagsLocationCustomEndpoint;
         this.tpuCustomEndpoint = $.tpuCustomEndpoint;
+        this.tpuV2CustomEndpoint = $.tpuV2CustomEndpoint;
         this.userProjectOverride = $.userProjectOverride;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
         this.vmwareengineCustomEndpoint = $.vmwareengineCustomEndpoint;
@@ -1704,6 +1736,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dataLossPreventionCustomEndpoint(Output.of(dataLossPreventionCustomEndpoint));
         }
 
+        public Builder dataPipelineCustomEndpoint(@Nullable Output<String> dataPipelineCustomEndpoint) {
+            $.dataPipelineCustomEndpoint = dataPipelineCustomEndpoint;
+            return this;
+        }
+
+        public Builder dataPipelineCustomEndpoint(String dataPipelineCustomEndpoint) {
+            return dataPipelineCustomEndpoint(Output.of(dataPipelineCustomEndpoint));
+        }
+
         public Builder databaseMigrationServiceCustomEndpoint(@Nullable Output<String> databaseMigrationServiceCustomEndpoint) {
             $.databaseMigrationServiceCustomEndpoint = databaseMigrationServiceCustomEndpoint;
             return this;
@@ -1837,6 +1878,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder documentAiWarehouseCustomEndpoint(String documentAiWarehouseCustomEndpoint) {
             return documentAiWarehouseCustomEndpoint(Output.of(documentAiWarehouseCustomEndpoint));
+        }
+
+        public Builder edgenetworkCustomEndpoint(@Nullable Output<String> edgenetworkCustomEndpoint) {
+            $.edgenetworkCustomEndpoint = edgenetworkCustomEndpoint;
+            return this;
+        }
+
+        public Builder edgenetworkCustomEndpoint(String edgenetworkCustomEndpoint) {
+            return edgenetworkCustomEndpoint(Output.of(edgenetworkCustomEndpoint));
         }
 
         public Builder essentialContactsCustomEndpoint(@Nullable Output<String> essentialContactsCustomEndpoint) {
@@ -2450,6 +2500,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return storageCustomEndpoint(Output.of(storageCustomEndpoint));
         }
 
+        public Builder storageInsightsCustomEndpoint(@Nullable Output<String> storageInsightsCustomEndpoint) {
+            $.storageInsightsCustomEndpoint = storageInsightsCustomEndpoint;
+            return this;
+        }
+
+        public Builder storageInsightsCustomEndpoint(String storageInsightsCustomEndpoint) {
+            return storageInsightsCustomEndpoint(Output.of(storageInsightsCustomEndpoint));
+        }
+
         public Builder storageTransferCustomEndpoint(@Nullable Output<String> storageTransferCustomEndpoint) {
             $.storageTransferCustomEndpoint = storageTransferCustomEndpoint;
             return this;
@@ -2484,6 +2543,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder tpuCustomEndpoint(String tpuCustomEndpoint) {
             return tpuCustomEndpoint(Output.of(tpuCustomEndpoint));
+        }
+
+        public Builder tpuV2CustomEndpoint(@Nullable Output<String> tpuV2CustomEndpoint) {
+            $.tpuV2CustomEndpoint = tpuV2CustomEndpoint;
+            return this;
+        }
+
+        public Builder tpuV2CustomEndpoint(String tpuV2CustomEndpoint) {
+            return tpuV2CustomEndpoint(Output.of(tpuV2CustomEndpoint));
         }
 
         public Builder userProjectOverride(@Nullable Output<Boolean> userProjectOverride) {

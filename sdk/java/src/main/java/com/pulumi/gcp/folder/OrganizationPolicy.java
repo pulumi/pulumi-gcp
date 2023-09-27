@@ -197,7 +197,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      * 
      */
-    @Export(name="booleanPolicy", refs={OrganizationPolicyBooleanPolicy.class}, tree="[0]")
+    @Export(name="booleanPolicy", type=OrganizationPolicyBooleanPolicy.class, parameters={})
     private Output</* @Nullable */ OrganizationPolicyBooleanPolicy> booleanPolicy;
 
     /**
@@ -213,7 +213,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="constraint", refs={String.class}, tree="[0]")
+    @Export(name="constraint", type=String.class, parameters={})
     private Output<String> constraint;
 
     /**
@@ -229,7 +229,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -243,7 +243,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
      * 
      */
-    @Export(name="folder", refs={String.class}, tree="[0]")
+    @Export(name="folder", type=String.class, parameters={})
     private Output<String> folder;
 
     /**
@@ -258,7 +258,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * can also be used to allow or deny all values. Structure is documented below.
      * 
      */
-    @Export(name="listPolicy", refs={OrganizationPolicyListPolicy.class}, tree="[0]")
+    @Export(name="listPolicy", type=OrganizationPolicyListPolicy.class, parameters={})
     private Output</* @Nullable */ OrganizationPolicyListPolicy> listPolicy;
 
     /**
@@ -278,7 +278,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="restorePolicy", refs={OrganizationPolicyRestorePolicy.class}, tree="[0]")
+    @Export(name="restorePolicy", type=OrganizationPolicyRestorePolicy.class, parameters={})
     private Output</* @Nullable */ OrganizationPolicyRestorePolicy> restorePolicy;
 
     /**
@@ -297,7 +297,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds, representing when the variable was last updated. Example: &#34;2016-10-09T12:33:37.578138407Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -311,7 +311,7 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * Version of the Policy. Default version is 0.
      * 
      */
-    @Export(name="version", refs={Integer.class}, tree="[0]")
+    @Export(name="version", type=Integer.class, parameters={})
     private Output<Integer> version;
 
     /**

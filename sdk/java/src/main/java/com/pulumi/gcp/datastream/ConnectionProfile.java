@@ -283,7 +283,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * BigQuery warehouse profile.
      * 
      */
-    @Export(name="bigqueryProfile", refs={ConnectionProfileBigqueryProfile.class}, tree="[0]")
+    @Export(name="bigqueryProfile", type=ConnectionProfileBigqueryProfile.class, parameters={})
     private Output</* @Nullable */ ConnectionProfileBigqueryProfile> bigqueryProfile;
 
     /**
@@ -297,7 +297,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * The connection profile identifier.
      * 
      */
-    @Export(name="connectionProfileId", refs={String.class}, tree="[0]")
+    @Export(name="connectionProfileId", type=String.class, parameters={})
     private Output<String> connectionProfileId;
 
     /**
@@ -311,7 +311,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Display name.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -326,7 +326,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="forwardSshConnectivity", refs={ConnectionProfileForwardSshConnectivity.class}, tree="[0]")
+    @Export(name="forwardSshConnectivity", type=ConnectionProfileForwardSshConnectivity.class, parameters={})
     private Output</* @Nullable */ ConnectionProfileForwardSshConnectivity> forwardSshConnectivity;
 
     /**
@@ -342,7 +342,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gcsProfile", refs={ConnectionProfileGcsProfile.class}, tree="[0]")
+    @Export(name="gcsProfile", type=ConnectionProfileGcsProfile.class, parameters={})
     private Output</* @Nullable */ ConnectionProfileGcsProfile> gcsProfile;
 
     /**
@@ -357,7 +357,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Labels.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -373,7 +373,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -390,7 +390,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="mysqlProfile", refs={ConnectionProfileMysqlProfile.class}, tree="[0]")
+    @Export(name="mysqlProfile", type=ConnectionProfileMysqlProfile.class, parameters={})
     private Output</* @Nullable */ ConnectionProfileMysqlProfile> mysqlProfile;
 
     /**
@@ -405,7 +405,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * The resource&#39;s name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -420,7 +420,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="oracleProfile", refs={ConnectionProfileOracleProfile.class}, tree="[0]")
+    @Export(name="oracleProfile", type=ConnectionProfileOracleProfile.class, parameters={})
     private Output</* @Nullable */ ConnectionProfileOracleProfile> oracleProfile;
 
     /**
@@ -436,7 +436,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="postgresqlProfile", refs={ConnectionProfilePostgresqlProfile.class}, tree="[0]")
+    @Export(name="postgresqlProfile", type=ConnectionProfilePostgresqlProfile.class, parameters={})
     private Output</* @Nullable */ ConnectionProfilePostgresqlProfile> postgresqlProfile;
 
     /**
@@ -452,7 +452,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="privateConnectivity", refs={ConnectionProfilePrivateConnectivity.class}, tree="[0]")
+    @Export(name="privateConnectivity", type=ConnectionProfilePrivateConnectivity.class, parameters={})
     private Output</* @Nullable */ ConnectionProfilePrivateConnectivity> privateConnectivity;
 
     /**
@@ -468,7 +468,7 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

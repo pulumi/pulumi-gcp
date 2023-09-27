@@ -171,7 +171,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding")
 public class ListingIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={ListingIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=ListingIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ ListingIamBindingCondition> condition;
 
     public Output<Optional<ListingIamBindingCondition>> condition() {
@@ -181,7 +181,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="dataExchangeId", refs={String.class}, tree="[0]")
+    @Export(name="dataExchangeId", type=String.class, parameters={})
     private Output<String> dataExchangeId;
 
     /**
@@ -195,7 +195,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -209,7 +209,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="listingId", refs={String.class}, tree="[0]")
+    @Export(name="listingId", type=String.class, parameters={})
     private Output<String> listingId;
 
     /**
@@ -224,7 +224,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -235,7 +235,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -258,7 +258,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -287,7 +287,7 @@ public class ListingIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

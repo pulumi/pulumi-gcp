@@ -94,7 +94,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      * 
      */
-    @Export(name="apiVersion", refs={String.class}, tree="[0]")
+    @Export(name="apiVersion", type=String.class, parameters={})
     private Output<String> apiVersion;
 
     /**
@@ -116,7 +116,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * from the API will be shown in the [avatarUriBackend] field.
      * 
      */
-    @Export(name="avatarUri", refs={String.class}, tree="[0]")
+    @Export(name="avatarUri", type=String.class, parameters={})
     private Output</* @Nullable */ String> avatarUri;
 
     /**
@@ -133,7 +133,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * the [avatarUri] field can be used.
      * 
      */
-    @Export(name="avatarUriBackend", refs={String.class}, tree="[0]")
+    @Export(name="avatarUriBackend", type=String.class, parameters={})
     private Output<String> avatarUriBackend;
 
     /**
@@ -152,7 +152,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * default of 0.3 is used.
      * 
      */
-    @Export(name="classificationThreshold", refs={Double.class}, tree="[0]")
+    @Export(name="classificationThreshold", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> classificationThreshold;
 
     /**
@@ -171,7 +171,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      * 
      */
-    @Export(name="defaultLanguageCode", refs={String.class}, tree="[0]")
+    @Export(name="defaultLanguageCode", type=String.class, parameters={})
     private Output<String> defaultLanguageCode;
 
     /**
@@ -186,7 +186,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -200,7 +200,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * The name of this agent.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -214,7 +214,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * Determines whether this agent should log conversation queries.
      * 
      */
-    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableLogging", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
@@ -233,7 +233,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */
-    @Export(name="matchMode", refs={String.class}, tree="[0]")
+    @Export(name="matchMode", type=String.class, parameters={})
     private Output<String> matchMode;
 
     /**
@@ -253,7 +253,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -268,7 +268,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * The list of all languages supported by this agent (except for the defaultLanguageCode).
      * 
      */
-    @Export(name="supportedLanguageCodes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="supportedLanguageCodes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> supportedLanguageCodes;
 
     /**
@@ -287,7 +287,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      * 
      */
-    @Export(name="tier", refs={String.class}, tree="[0]")
+    @Export(name="tier", type=String.class, parameters={})
     private Output</* @Nullable */ String> tier;
 
     /**
@@ -309,7 +309,7 @@ public class Agent extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="timeZone", refs={String.class}, tree="[0]")
+    @Export(name="timeZone", type=String.class, parameters={})
     private Output<String> timeZone;
 
     /**

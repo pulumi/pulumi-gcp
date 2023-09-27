@@ -106,7 +106,7 @@ public class ProjectLocation extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="locationId", refs={String.class}, tree="[0]")
+    @Export(name="locationId", type=String.class, parameters={})
     private Output<String> locationId;
 
     /**
@@ -124,7 +124,7 @@ public class ProjectLocation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

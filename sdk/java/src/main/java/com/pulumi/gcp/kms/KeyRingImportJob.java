@@ -52,7 +52,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="attestations", refs={List.class,KeyRingImportJobAttestation.class}, tree="[0,1]")
+    @Export(name="attestations", type=List.class, parameters={KeyRingImportJobAttestation.class})
     private Output<List<KeyRingImportJobAttestation>> attestations;
 
     /**
@@ -70,7 +70,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * This is in RFC3339 text format.
      * 
      */
-    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
@@ -87,7 +87,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="importJobId", refs={String.class}, tree="[0]")
+    @Export(name="importJobId", type=String.class, parameters={})
     private Output<String> importJobId;
 
     /**
@@ -104,7 +104,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
      * 
      */
-    @Export(name="importMethod", refs={String.class}, tree="[0]")
+    @Export(name="importMethod", type=String.class, parameters={})
     private Output<String> importMethod;
 
     /**
@@ -120,7 +120,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
      * 
      */
-    @Export(name="keyRing", refs={String.class}, tree="[0]")
+    @Export(name="keyRing", type=String.class, parameters={})
     private Output<String> keyRing;
 
     /**
@@ -135,7 +135,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * The resource name for this ImportJob in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}importJobs/*.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -151,7 +151,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      * 
      */
-    @Export(name="protectionLevel", refs={String.class}, tree="[0]")
+    @Export(name="protectionLevel", type=String.class, parameters={})
     private Output<String> protectionLevel;
 
     /**
@@ -168,7 +168,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="publicKeys", refs={List.class,KeyRingImportJobPublicKey.class}, tree="[0,1]")
+    @Export(name="publicKeys", type=List.class, parameters={KeyRingImportJobPublicKey.class})
     private Output<List<KeyRingImportJobPublicKey>> publicKeys;
 
     /**
@@ -183,7 +183,7 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
      * The current state of the ImportJob, indicating if it can be used.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

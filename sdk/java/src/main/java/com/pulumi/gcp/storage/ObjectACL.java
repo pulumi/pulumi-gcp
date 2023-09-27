@@ -89,7 +89,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * The name of the bucket the object is stored in.
      * 
      */
-    @Export(name="bucket", refs={String.class}, tree="[0]")
+    @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     /**
@@ -105,7 +105,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="object", refs={String.class}, tree="[0]")
+    @Export(name="object", type=String.class, parameters={})
     private Output<String> object;
 
     /**
@@ -121,7 +121,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * The &#34;canned&#34; [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
      * 
      */
-    @Export(name="predefinedAcl", refs={String.class}, tree="[0]")
+    @Export(name="predefinedAcl", type=String.class, parameters={})
     private Output</* @Nullable */ String> predefinedAcl;
 
     /**
@@ -136,7 +136,7 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
      * Must be set if `predefined_acl` is not.
      * 
      */
-    @Export(name="roleEntities", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="roleEntities", type=List.class, parameters={String.class})
     private Output<List<String>> roleEntities;
 
     /**

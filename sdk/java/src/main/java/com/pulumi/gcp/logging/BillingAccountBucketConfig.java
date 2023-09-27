@@ -77,7 +77,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * The parent resource that contains the logging bucket.
      * 
      */
-    @Export(name="billingAccount", refs={String.class}, tree="[0]")
+    @Export(name="billingAccount", type=String.class, parameters={})
     private Output<String> billingAccount;
 
     /**
@@ -91,7 +91,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      * 
      */
-    @Export(name="bucketId", refs={String.class}, tree="[0]")
+    @Export(name="bucketId", type=String.class, parameters={})
     private Output<String> bucketId;
 
     /**
@@ -107,7 +107,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * updating the log bucket. Changing the KMS key is allowed.
      * 
      */
-    @Export(name="cmekSettings", refs={BillingAccountBucketConfigCmekSettings.class}, tree="[0]")
+    @Export(name="cmekSettings", type=BillingAccountBucketConfigCmekSettings.class, parameters={})
     private Output</* @Nullable */ BillingAccountBucketConfigCmekSettings> cmekSettings;
 
     /**
@@ -123,7 +123,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * Describes this bucket.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -137,7 +137,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      * 
      */
-    @Export(name="lifecycleState", refs={String.class}, tree="[0]")
+    @Export(name="lifecycleState", type=String.class, parameters={})
     private Output<String> lifecycleState;
 
     /**
@@ -151,7 +151,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * The location of the bucket.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -165,7 +165,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -179,7 +179,7 @@ public class BillingAccountBucketConfig extends com.pulumi.resources.CustomResou
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      * 
      */
-    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
+    @Export(name="retentionDays", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**

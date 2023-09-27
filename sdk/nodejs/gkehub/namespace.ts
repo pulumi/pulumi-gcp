@@ -70,9 +70,21 @@ export class Namespace extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
+     * Labels for this Namespace.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The resource name for the namespace
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     */
+    public readonly namespaceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -122,7 +134,9 @@ export class Namespace extends pulumi.CustomResource {
             const state = argsOrState as NamespaceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceLabels"] = state ? state.namespaceLabels : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["scopeId"] = state ? state.scopeId : undefined;
@@ -141,6 +155,8 @@ export class Namespace extends pulumi.CustomResource {
             if ((!args || args.scopeNamespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scopeNamespaceId'");
             }
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["namespaceLabels"] = args ? args.namespaceLabels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["scopeId"] = args ? args.scopeId : undefined;
@@ -170,9 +186,21 @@ export interface NamespaceState {
      */
     deleteTime?: pulumi.Input<string>;
     /**
+     * Labels for this Namespace.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The resource name for the namespace
      */
     name?: pulumi.Input<string>;
+    /**
+     * Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     */
+    namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -212,6 +240,18 @@ export interface NamespaceState {
  * The set of arguments for constructing a Namespace resource.
  */
 export interface NamespaceArgs {
+    /**
+     * Labels for this Namespace.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     */
+    namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

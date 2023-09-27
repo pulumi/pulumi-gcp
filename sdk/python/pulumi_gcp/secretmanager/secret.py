@@ -563,9 +563,31 @@ class Secret(pulumi.CustomResource):
                 "label": "my-label",
             },
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ),
             secret_id="secret")
+        ```
+        ### Secret With Automatic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        kms_secret_binding = gcp.kms.CryptoKeyIAMMember("kms-secret-binding",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
+        secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(
+                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
+                        kms_key_name="kms-key",
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
 
         ## Import
@@ -682,9 +704,31 @@ class Secret(pulumi.CustomResource):
                 "label": "my-label",
             },
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ),
             secret_id="secret")
+        ```
+        ### Secret With Automatic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        kms_secret_binding = gcp.kms.CryptoKeyIAMMember("kms-secret-binding",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-secretmanager.iam.gserviceaccount.com")
+        secret_with_automatic_cmek = gcp.secretmanager.Secret("secret-with-automatic-cmek",
+            secret_id="secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(
+                    customer_managed_encryption=gcp.secretmanager.SecretReplicationAutoCustomerManagedEncryptionArgs(
+                        kms_key_name="kms-key",
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[kms_secret_binding]))
         ```
 
         ## Import

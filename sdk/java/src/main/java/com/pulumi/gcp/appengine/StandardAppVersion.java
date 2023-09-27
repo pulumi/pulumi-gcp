@@ -187,7 +187,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Allows App Engine second generation runtimes to access the legacy bundled services.
      * 
      */
-    @Export(name="appEngineApis", refs={Boolean.class}, tree="[0]")
+    @Export(name="appEngineApis", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> appEngineApis;
 
     /**
@@ -202,7 +202,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="automaticScaling", refs={StandardAppVersionAutomaticScaling.class}, tree="[0]")
+    @Export(name="automaticScaling", type=StandardAppVersionAutomaticScaling.class, parameters={})
     private Output</* @Nullable */ StandardAppVersionAutomaticScaling> automaticScaling;
 
     /**
@@ -218,7 +218,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="basicScaling", refs={StandardAppVersionBasicScaling.class}, tree="[0]")
+    @Export(name="basicScaling", type=StandardAppVersionBasicScaling.class, parameters={})
     private Output</* @Nullable */ StandardAppVersionBasicScaling> basicScaling;
 
     /**
@@ -233,7 +233,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * If set to `true`, the service will be deleted if it is the last version.
      * 
      */
-    @Export(name="deleteServiceOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="deleteServiceOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deleteServiceOnDestroy;
 
     /**
@@ -248,7 +248,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="deployment", refs={StandardAppVersionDeployment.class}, tree="[0]")
+    @Export(name="deployment", type=StandardAppVersionDeployment.class, parameters={})
     private Output<StandardAppVersionDeployment> deployment;
 
     /**
@@ -264,7 +264,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="entrypoint", refs={StandardAppVersionEntrypoint.class}, tree="[0]")
+    @Export(name="entrypoint", type=StandardAppVersionEntrypoint.class, parameters={})
     private Output<StandardAppVersionEntrypoint> entrypoint;
 
     /**
@@ -279,7 +279,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Environment variables available to the application.
      * 
      */
-    @Export(name="envVariables", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="envVariables", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> envVariables;
 
     /**
@@ -295,7 +295,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="handlers", refs={List.class,StandardAppVersionHandler.class}, tree="[0,1]")
+    @Export(name="handlers", type=List.class, parameters={StandardAppVersionHandler.class})
     private Output<List<StandardAppVersionHandler>> handlers;
 
     /**
@@ -312,7 +312,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      * 
      */
-    @Export(name="inboundServices", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="inboundServices", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> inboundServices;
 
     /**
@@ -330,7 +330,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Defaults to F1 for AutomaticScaling and B2 for ManualScaling and BasicScaling. If no scaling is specified, AutomaticScaling is chosen.
      * 
      */
-    @Export(name="instanceClass", refs={String.class}, tree="[0]")
+    @Export(name="instanceClass", type=String.class, parameters={})
     private Output<String> instanceClass;
 
     /**
@@ -348,7 +348,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="libraries", refs={List.class,StandardAppVersionLibrary.class}, tree="[0,1]")
+    @Export(name="libraries", type=List.class, parameters={StandardAppVersionLibrary.class})
     private Output</* @Nullable */ List<StandardAppVersionLibrary>> libraries;
 
     /**
@@ -364,7 +364,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="manualScaling", refs={StandardAppVersionManualScaling.class}, tree="[0]")
+    @Export(name="manualScaling", type=StandardAppVersionManualScaling.class, parameters={})
     private Output</* @Nullable */ StandardAppVersionManualScaling> manualScaling;
 
     /**
@@ -385,7 +385,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -405,7 +405,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * If set to `true`, the application version will not be deleted.
      * 
      */
-    @Export(name="noopOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="noopOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noopOnDestroy;
 
     /**
@@ -420,7 +420,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -435,7 +435,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Desired runtime. Example python27.
      * 
      */
-    @Export(name="runtime", refs={String.class}, tree="[0]")
+    @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
 
     /**
@@ -451,7 +451,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Substitute `&lt;language&gt;` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
      * 
      */
-    @Export(name="runtimeApiVersion", refs={String.class}, tree="[0]")
+    @Export(name="runtimeApiVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> runtimeApiVersion;
 
     /**
@@ -467,7 +467,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * AppEngine service resource
      * 
      */
-    @Export(name="service", refs={String.class}, tree="[0]")
+    @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**
@@ -481,7 +481,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
      * 
      */
-    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
@@ -495,7 +495,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Whether multiple requests can be dispatched to this version at once.
      * 
      */
-    @Export(name="threadsafe", refs={Boolean.class}, tree="[0]")
+    @Export(name="threadsafe", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> threadsafe;
 
     /**
@@ -509,7 +509,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,&#34;default&#34;, &#34;latest&#34;, and any name with the prefix &#34;ah-&#34;.
      * 
      */
-    @Export(name="versionId", refs={String.class}, tree="[0]")
+    @Export(name="versionId", type=String.class, parameters={})
     private Output</* @Nullable */ String> versionId;
 
     /**
@@ -524,7 +524,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vpcAccessConnector", refs={StandardAppVersionVpcAccessConnector.class}, tree="[0]")
+    @Export(name="vpcAccessConnector", type=StandardAppVersionVpcAccessConnector.class, parameters={})
     private Output</* @Nullable */ StandardAppVersionVpcAccessConnector> vpcAccessConnector;
 
     /**

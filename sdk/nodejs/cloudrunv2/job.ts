@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "secret",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const instance = new gcp.sql.DatabaseInstance("instance", {
@@ -137,6 +137,36 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Job Directvpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
+ *             }],
+ *             vpcAccess: {
+ *                 networkInterfaces: [{
+ *                     network: "default",
+ *                     subnetwork: "default",
+ *                     tags: [
+ *                         "tag1",
+ *                         "tag2",
+ *                         "tag3",
+ *                     ],
+ *                 }],
+ *                 egress: "ALL_TRAFFIC",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Job Secret
  *
  * ```typescript
@@ -146,7 +176,7 @@ import * as utilities from "../utilities";
  * const secret = new gcp.secretmanager.Secret("secret", {
  *     secretId: "secret",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {

@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:cloudrun/iamBinding:IamBinding")
 public class IamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={IamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=IamBindingCondition.class, parameters={})
     private Output</* @Nullable */ IamBindingCondition> condition;
 
     public Output<Optional<IamBindingCondition>> condition() {
@@ -178,7 +178,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -192,7 +192,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * The location of the cloud run instance. eg us-central1 Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -202,7 +202,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -225,7 +225,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -254,7 +254,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -270,7 +270,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="service", refs={String.class}, tree="[0]")
+    @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**

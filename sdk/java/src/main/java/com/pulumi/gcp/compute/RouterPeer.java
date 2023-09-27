@@ -306,7 +306,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
-    @Export(name="advertiseMode", refs={String.class}, tree="[0]")
+    @Export(name="advertiseMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> advertiseMode;
 
     /**
@@ -324,7 +324,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * mode, which currently supports the following option:
      * 
      */
-    @Export(name="advertisedGroups", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="advertisedGroups", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> advertisedGroups;
 
     /**
@@ -344,7 +344,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="advertisedIpRanges", refs={List.class,RouterPeerAdvertisedIpRange.class}, tree="[0,1]")
+    @Export(name="advertisedIpRanges", type=List.class, parameters={RouterPeerAdvertisedIpRange.class})
     private Output</* @Nullable */ List<RouterPeerAdvertisedIpRange>> advertisedIpRanges;
 
     /**
@@ -365,7 +365,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * length, the routes with the lowest priority value win.
      * 
      */
-    @Export(name="advertisedRoutePriority", refs={Integer.class}, tree="[0]")
+    @Export(name="advertisedRoutePriority", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> advertisedRoutePriority;
 
     /**
@@ -382,7 +382,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bfd", refs={RouterPeerBfd.class}, tree="[0]")
+    @Export(name="bfd", type=RouterPeerBfd.class, parameters={})
     private Output<RouterPeerBfd> bfd;
 
     /**
@@ -400,7 +400,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * The default is true.
      * 
      */
-    @Export(name="enable", refs={Boolean.class}, tree="[0]")
+    @Export(name="enable", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enable;
 
     /**
@@ -417,7 +417,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
      * 
      */
-    @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableIpv6", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
@@ -431,7 +431,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Name of the interface the BGP peer is associated with.
      * 
      */
-    @Export(name="interface", refs={String.class}, tree="[0]")
+    @Export(name="interface", type=String.class, parameters={})
     private Output<String> interface_;
 
     /**
@@ -446,7 +446,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Only IPv4 is supported.
      * 
      */
-    @Export(name="ipAddress", refs={String.class}, tree="[0]")
+    @Export(name="ipAddress", type=String.class, parameters={})
     private Output<String> ipAddress;
 
     /**
@@ -464,7 +464,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
      * 
      */
-    @Export(name="ipv6NexthopAddress", refs={String.class}, tree="[0]")
+    @Export(name="ipv6NexthopAddress", type=String.class, parameters={})
     private Output<String> ipv6NexthopAddress;
 
     /**
@@ -481,7 +481,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * The resource that configures and manages this BGP peer.
      * 
      */
-    @Export(name="managementType", refs={String.class}, tree="[0]")
+    @Export(name="managementType", type=String.class, parameters={})
     private Output<String> managementType;
 
     /**
@@ -500,7 +500,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -520,7 +520,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Each BGP interface may use a different value.
      * 
      */
-    @Export(name="peerAsn", refs={Integer.class}, tree="[0]")
+    @Export(name="peerAsn", type=Integer.class, parameters={})
     private Output<Integer> peerAsn;
 
     /**
@@ -536,7 +536,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
-    @Export(name="peerIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="peerIpAddress", type=String.class, parameters={})
     private Output<String> peerIpAddress;
 
     /**
@@ -554,7 +554,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
      * 
      */
-    @Export(name="peerIpv6NexthopAddress", refs={String.class}, tree="[0]")
+    @Export(name="peerIpv6NexthopAddress", type=String.class, parameters={})
     private Output<String> peerIpv6NexthopAddress;
 
     /**
@@ -572,7 +572,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -588,7 +588,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -605,7 +605,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="router", refs={String.class}, tree="[0]")
+    @Export(name="router", type=String.class, parameters={})
     private Output<String> router;
 
     /**
@@ -624,7 +624,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      * 
      */
-    @Export(name="routerApplianceInstance", refs={String.class}, tree="[0]")
+    @Export(name="routerApplianceInstance", type=String.class, parameters={})
     private Output</* @Nullable */ String> routerApplianceInstance;
 
     /**

@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.dataform.Repository;
@@ -57,7 +58,7 @@ import javax.annotation.Nullable;
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
@@ -117,7 +118,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gitRemoteSettings", refs={RepositoryGitRemoteSettings.class}, tree="[0]")
+    @Export(name="gitRemoteSettings", type=RepositoryGitRemoteSettings.class, parameters={})
     private Output</* @Nullable */ RepositoryGitRemoteSettings> gitRemoteSettings;
 
     /**
@@ -134,7 +135,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -151,7 +152,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -166,7 +167,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * A reference to the region
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -181,7 +182,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="workspaceCompilationOverrides", refs={RepositoryWorkspaceCompilationOverrides.class}, tree="[0]")
+    @Export(name="workspaceCompilationOverrides", type=RepositoryWorkspaceCompilationOverrides.class, parameters={})
     private Output</* @Nullable */ RepositoryWorkspaceCompilationOverrides> workspaceCompilationOverrides;
 
     /**

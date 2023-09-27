@@ -41,7 +41,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Time the RBAC Role Binding was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -55,7 +55,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Time the RBAC Role Binding was deleted in UTC.
      * 
      */
-    @Export(name="deleteTime", refs={String.class}, tree="[0]")
+    @Export(name="deleteTime", type=String.class, parameters={})
     private Output<String> deleteTime;
 
     /**
@@ -69,7 +69,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Location of the Membership
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -83,7 +83,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Id of the membership
      * 
      */
-    @Export(name="membershipId", refs={String.class}, tree="[0]")
+    @Export(name="membershipId", type=String.class, parameters={})
     private Output<String> membershipId;
 
     /**
@@ -97,7 +97,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * The client-provided identifier of the RBAC Role Binding.
      * 
      */
-    @Export(name="membershipRbacRoleBindingId", refs={String.class}, tree="[0]")
+    @Export(name="membershipRbacRoleBindingId", type=String.class, parameters={})
     private Output<String> membershipRbacRoleBindingId;
 
     /**
@@ -111,7 +111,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * The resource name for the RBAC Role Binding
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -126,7 +126,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -142,7 +142,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Structure is documented below.
      * 
      */
-    @Export(name="role", refs={MembershipRbacRoleBindingRole.class}, tree="[0]")
+    @Export(name="role", type=MembershipRbacRoleBindingRole.class, parameters={})
     private Output<MembershipRbacRoleBindingRole> role;
 
     /**
@@ -158,7 +158,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Structure is documented below.
      * 
      */
-    @Export(name="states", refs={List.class,MembershipRbacRoleBindingState.class}, tree="[0,1]")
+    @Export(name="states", type=List.class, parameters={MembershipRbacRoleBindingState.class})
     private Output<List<MembershipRbacRoleBindingState>> states;
 
     /**
@@ -173,7 +173,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Google-generated UUID for this resource.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -187,7 +187,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * Time the RBAC Role Binding was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -204,7 +204,7 @@ public class MembershipRbacRoleBinding extends com.pulumi.resources.CustomResour
      * &#34;alice&#34; or &#34;alice@domain.tld&#34;
      * 
      */
-    @Export(name="user", refs={String.class}, tree="[0]")
+    @Export(name="user", type=String.class, parameters={})
     private Output<String> user;
 
     /**

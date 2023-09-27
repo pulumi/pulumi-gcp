@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
@@ -57,7 +58,7 @@ import javax.annotation.Nullable;
  *         var private_key_secret = new Secret(&#34;private-key-secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;ghe-pk-secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -69,7 +70,7 @@ import javax.annotation.Nullable;
  *         var webhook_secret_secret = new Secret(&#34;webhook-secret-secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;github-token-secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
@@ -159,7 +161,7 @@ import javax.annotation.Nullable;
  *         var github_token_secret = new Secret(&#34;github-token-secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;github-token-secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -223,7 +225,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Allows clients to store small amounts of arbitrary data.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -237,7 +239,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned timestamp for when the connection was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -251,7 +253,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -265,7 +267,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -279,7 +281,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Name of the repository.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -293,7 +295,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The connection for the resource
      * 
      */
-    @Export(name="parentConnection", refs={String.class}, tree="[0]")
+    @Export(name="parentConnection", type=String.class, parameters={})
     private Output<String> parentConnection;
 
     /**
@@ -307,7 +309,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -323,7 +325,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="remoteUri", refs={String.class}, tree="[0]")
+    @Export(name="remoteUri", type=String.class, parameters={})
     private Output<String> remoteUri;
 
     /**
@@ -339,7 +341,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Output only. Server assigned timestamp for when the connection was updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

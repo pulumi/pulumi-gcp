@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         SecretId = "ghe-pk-secret",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         SecretId = "github-token-secret",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         SecretId = "github-token-secret",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 

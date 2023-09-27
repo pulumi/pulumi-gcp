@@ -78,7 +78,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      * 
      */
-    @Export(name="bucketId", refs={String.class}, tree="[0]")
+    @Export(name="bucketId", type=String.class, parameters={})
     private Output<String> bucketId;
 
     /**
@@ -94,7 +94,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * updating the log bucket. Changing the KMS key is allowed.
      * 
      */
-    @Export(name="cmekSettings", refs={FolderBucketConfigCmekSettings.class}, tree="[0]")
+    @Export(name="cmekSettings", type=FolderBucketConfigCmekSettings.class, parameters={})
     private Output</* @Nullable */ FolderBucketConfigCmekSettings> cmekSettings;
 
     /**
@@ -110,7 +110,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * Describes this bucket.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -124,7 +124,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * The parent resource that contains the logging bucket.
      * 
      */
-    @Export(name="folder", refs={String.class}, tree="[0]")
+    @Export(name="folder", type=String.class, parameters={})
     private Output<String> folder;
 
     /**
@@ -138,7 +138,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      * 
      */
-    @Export(name="lifecycleState", refs={String.class}, tree="[0]")
+    @Export(name="lifecycleState", type=String.class, parameters={})
     private Output<String> lifecycleState;
 
     /**
@@ -152,7 +152,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * The location of the bucket.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -166,7 +166,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * The resource name of the bucket. For example: &#34;folders/my-folder-id/locations/my-location/buckets/my-bucket-id&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -180,7 +180,7 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      * 
      */
-    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
+    @Export(name="retentionDays", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**

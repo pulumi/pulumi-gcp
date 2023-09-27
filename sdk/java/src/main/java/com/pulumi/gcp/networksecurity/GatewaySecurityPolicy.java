@@ -227,7 +227,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -243,7 +243,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -258,7 +258,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -276,7 +276,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -294,7 +294,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -309,7 +309,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * Server-defined URL of this resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -323,7 +323,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      * 
      */
-    @Export(name="tlsInspectionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="tlsInspectionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> tlsInspectionPolicy;
 
     /**
@@ -339,7 +339,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

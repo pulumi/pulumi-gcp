@@ -272,7 +272,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * The following keywords may be referenced in the expressions:
      * 
      */
-    @Export(name="attributeCondition", refs={String.class}, tree="[0]")
+    @Export(name="attributeCondition", type=String.class, parameters={})
     private Output</* @Nullable */ String> attributeCondition;
 
     /**
@@ -350,7 +350,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
-    @Export(name="attributeMapping", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="attributeMapping", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> attributeMapping;
 
     /**
@@ -424,7 +424,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * A user-specified description of the provider. Cannot exceed 256 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -439,7 +439,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * However, existing tokens still grant access.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -454,7 +454,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -468,7 +468,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * The location for the resource.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -483,7 +483,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -499,7 +499,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="oidc", refs={WorkforcePoolProviderOidc.class}, tree="[0]")
+    @Export(name="oidc", type=WorkforcePoolProviderOidc.class, parameters={})
     private Output</* @Nullable */ WorkforcePoolProviderOidc> oidc;
 
     /**
@@ -518,7 +518,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="providerId", refs={String.class}, tree="[0]")
+    @Export(name="providerId", type=String.class, parameters={})
     private Output<String> providerId;
 
     /**
@@ -537,7 +537,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="saml", refs={WorkforcePoolProviderSaml.class}, tree="[0]")
+    @Export(name="saml", type=WorkforcePoolProviderSaml.class, parameters={})
     private Output</* @Nullable */ WorkforcePoolProviderSaml> saml;
 
     /**
@@ -557,7 +557,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      *   [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -579,7 +579,7 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      * 
      */
-    @Export(name="workforcePoolId", refs={String.class}, tree="[0]")
+    @Export(name="workforcePoolId", type=String.class, parameters={})
     private Output<String> workforcePoolId;
 
     /**

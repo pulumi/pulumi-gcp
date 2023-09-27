@@ -112,7 +112,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
      * 
      */
-    @Export(name="driverControlsFilesUri", refs={String.class}, tree="[0]")
+    @Export(name="driverControlsFilesUri", type=String.class, parameters={})
     private Output<String> driverControlsFilesUri;
 
     /**
@@ -126,7 +126,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * A URI pointing to the location of the stdout of the job&#39;s driver program.
      * 
      */
-    @Export(name="driverOutputResourceUri", refs={String.class}, tree="[0]")
+    @Export(name="driverOutputResourceUri", type=String.class, parameters={})
     private Output<String> driverOutputResourceUri;
 
     /**
@@ -142,7 +142,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * job is first cancelled before issuing the delete.
      * 
      */
-    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    @Export(name="forceDelete", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
@@ -158,7 +158,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of Hadoop job
      * 
      */
-    @Export(name="hadoopConfig", refs={JobHadoopConfig.class}, tree="[0]")
+    @Export(name="hadoopConfig", type=JobHadoopConfig.class, parameters={})
     private Output</* @Nullable */ JobHadoopConfig> hadoopConfig;
 
     /**
@@ -172,7 +172,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of hive job
      * 
      */
-    @Export(name="hiveConfig", refs={JobHiveConfig.class}, tree="[0]")
+    @Export(name="hiveConfig", type=JobHiveConfig.class, parameters={})
     private Output</* @Nullable */ JobHiveConfig> hiveConfig;
 
     /**
@@ -190,7 +190,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -208,7 +208,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of pag job.
      * 
      */
-    @Export(name="pigConfig", refs={JobPigConfig.class}, tree="[0]")
+    @Export(name="pigConfig", type=JobPigConfig.class, parameters={})
     private Output</* @Nullable */ JobPigConfig> pigConfig;
 
     /**
@@ -222,7 +222,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of job placement.
      * 
      */
-    @Export(name="placement", refs={JobPlacement.class}, tree="[0]")
+    @Export(name="placement", type=JobPlacement.class, parameters={})
     private Output<JobPlacement> placement;
 
     /**
@@ -236,7 +236,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of presto job
      * 
      */
-    @Export(name="prestoConfig", refs={JobPrestoConfig.class}, tree="[0]")
+    @Export(name="prestoConfig", type=JobPrestoConfig.class, parameters={})
     private Output</* @Nullable */ JobPrestoConfig> prestoConfig;
 
     /**
@@ -251,7 +251,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * subsequently run against. If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -266,7 +266,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of pySpark job.
      * 
      */
-    @Export(name="pysparkConfig", refs={JobPysparkConfig.class}, tree="[0]")
+    @Export(name="pysparkConfig", type=JobPysparkConfig.class, parameters={})
     private Output</* @Nullable */ JobPysparkConfig> pysparkConfig;
 
     /**
@@ -280,7 +280,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The reference of the job
      * 
      */
-    @Export(name="reference", refs={JobReference.class}, tree="[0]")
+    @Export(name="reference", type=JobReference.class, parameters={})
     private Output<JobReference> reference;
 
     /**
@@ -295,7 +295,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * for this job to be submitted to. If not specified, defaults to `global`.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -310,7 +310,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Optional. Job scheduling configuration.
      * 
      */
-    @Export(name="scheduling", refs={JobScheduling.class}, tree="[0]")
+    @Export(name="scheduling", type=JobScheduling.class, parameters={})
     private Output</* @Nullable */ JobScheduling> scheduling;
 
     /**
@@ -324,7 +324,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of the Spark job.
      * 
      */
-    @Export(name="sparkConfig", refs={JobSparkConfig.class}, tree="[0]")
+    @Export(name="sparkConfig", type=JobSparkConfig.class, parameters={})
     private Output</* @Nullable */ JobSparkConfig> sparkConfig;
 
     /**
@@ -338,7 +338,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The config of SparkSql job
      * 
      */
-    @Export(name="sparksqlConfig", refs={JobSparksqlConfig.class}, tree="[0]")
+    @Export(name="sparksqlConfig", type=JobSparksqlConfig.class, parameters={})
     private Output</* @Nullable */ JobSparksqlConfig> sparksqlConfig;
 
     /**
@@ -352,7 +352,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The status of the job.
      * 
      */
-    @Export(name="statuses", refs={List.class,JobStatus.class}, tree="[0,1]")
+    @Export(name="statuses", type=List.class, parameters={JobStatus.class})
     private Output<List<JobStatus>> statuses;
 
     /**

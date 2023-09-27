@@ -1898,6 +1898,19 @@ export namespace alloydb {
         sourceType?: string;
     }
 
+    export interface ClusterNetworkConfig {
+        /**
+         * The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
+         * If set, the instance IPs for this cluster will be created in the allocated range.
+         */
+        allocatedIpRange?: string;
+        /**
+         * The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+         * It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
+         */
+        network?: string;
+    }
+
     export interface ClusterRestoreBackupSource {
         /**
          * The name of the backup that this cluster is restored from.
@@ -2504,6 +2517,57 @@ export namespace apigee {
          * The type of entity described
          */
         subType: string;
+    }
+
+    export interface TargetServerSSlInfo {
+        /**
+         * The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+         */
+        ciphers?: string[];
+        /**
+         * Enables two-way TLS.
+         */
+        clientAuthEnabled?: boolean;
+        /**
+         * The TLS Common Name of the certificate.
+         * Structure is documented below.
+         */
+        commonName?: outputs.apigee.TargetServerSSlInfoCommonName;
+        /**
+         * Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+         */
+        enabled: boolean;
+        /**
+         * If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+         */
+        ignoreValidationErrors?: boolean;
+        /**
+         * Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+         */
+        keyAlias?: string;
+        /**
+         * Required if clientAuthEnabled is true. The resource ID of the keystore.
+         */
+        keyStore?: string;
+        /**
+         * The TLS versioins to be used.
+         */
+        protocols?: string[];
+        /**
+         * The resource ID of the truststore.
+         */
+        trustStore?: string;
+    }
+
+    export interface TargetServerSSlInfoCommonName {
+        /**
+         * The TLS Common Name string of the certificate.
+         */
+        value?: string;
+        /**
+         * Indicates whether the cert should be matched against as a wildcard cert.
+         */
+        wildcardMatch?: boolean;
     }
 
 }
@@ -3721,6 +3785,39 @@ export namespace biglake {
          * - - -
          */
         parameters?: {[key: string]: string};
+    }
+
+    export interface TableHiveOptions {
+        /**
+         * Stores user supplied Hive table parameters. An object containing a
+         * list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        parameters?: {[key: string]: string};
+        /**
+         * Stores physical storage information on the data.
+         * Structure is documented below.
+         */
+        storageDescriptor?: outputs.biglake.TableHiveOptionsStorageDescriptor;
+        /**
+         * Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
+         */
+        tableType?: string;
+    }
+
+    export interface TableHiveOptionsStorageDescriptor {
+        /**
+         * The fully qualified Java class name of the input format.
+         */
+        inputFormat?: string;
+        /**
+         * Cloud Storage folder URI where the table data is stored, starting with "gs://".
+         */
+        locationUri?: string;
+        /**
+         * The fully qualified Java class name of the output format.
+         */
+        outputFormat?: string;
     }
 
 }
@@ -4997,6 +5094,11 @@ export namespace bigquery {
 
     export interface TableMaterializedView {
         /**
+         * Allow non incremental materialized view definition.
+         * The default value is false.
+         */
+        allowNonIncrementalDefinition?: boolean;
+        /**
          * Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
          * The default value is true.
          */
@@ -5038,6 +5140,78 @@ export namespace bigquery {
          * Start of the range partitioning, inclusive.
          */
         start: number;
+    }
+
+    export interface TableTableConstraints {
+        /**
+         * Present only if the table has a foreign key.
+         * The foreign key is not enforced.
+         * Structure is documented below.
+         */
+        foreignKeys?: outputs.bigquery.TableTableConstraintsForeignKey[];
+        /**
+         * Represents the primary key constraint
+         * on a table's columns. Present only if the table has a primary key.
+         * The primary key is not enforced.
+         * Structure is documented below.
+         */
+        primaryKey?: outputs.bigquery.TableTableConstraintsPrimaryKey;
+    }
+
+    export interface TableTableConstraintsForeignKey {
+        /**
+         * The pair of the foreign key column and primary key column.
+         * Structure is documented below.
+         */
+        columnReferences: outputs.bigquery.TableTableConstraintsForeignKeyColumnReferences;
+        /**
+         * Set only if the foreign key constraint is named.
+         */
+        name?: string;
+        /**
+         * The table that holds the primary key
+         * and is referenced by this foreign key.
+         * Structure is documented below.
+         */
+        referencedTable: outputs.bigquery.TableTableConstraintsForeignKeyReferencedTable;
+    }
+
+    export interface TableTableConstraintsForeignKeyColumnReferences {
+        /**
+         * The column in the primary key that are
+         * referenced by the referencingColumn
+         */
+        referencedColumn: string;
+        /**
+         * The column that composes the foreign key.
+         */
+        referencingColumn: string;
+    }
+
+    export interface TableTableConstraintsForeignKeyReferencedTable {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: string;
+        /**
+         * The ID of the table. The ID must contain only
+         * letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+         * length is 1,024 characters. Certain operations allow suffixing of
+         * the table ID with a partition decorator, such as
+         * sample_table$20190123.
+         */
+        tableId: string;
+    }
+
+    export interface TableTableConstraintsPrimaryKey {
+        /**
+         * The columns that are composed of the primary key constraint.
+         */
+        columns: string[];
     }
 
     export interface TableTimePartitioning {
@@ -7935,6 +8109,17 @@ export namespace certificatemanager {
          * Type of the DNS Resource Record.
          */
         type: string;
+    }
+
+    export interface GetCertificateMapGclbTarget {
+        ipConfigs: outputs.certificatemanager.GetCertificateMapGclbTargetIpConfig[];
+        targetHttpsProxy: string;
+        targetSslProxy: string;
+    }
+
+    export interface GetCertificateMapGclbTargetIpConfig {
+        ipAddress: string;
+        ports: number[];
     }
 
     export interface TrustConfigTrustStore {
@@ -12060,10 +12245,34 @@ export namespace cloudrunv2 {
         /**
          * Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+         */
+        egress: string;
+        /**
+         * Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         */
+        networkInterfaces?: outputs.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterface[];
+    }
+
+    export interface JobTemplateTemplateVpcAccessNetworkInterface {
+        /**
+         * The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+         * looked up from the subnetwork.
+         */
+        network: string;
+        /**
+         * The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+         * subnetwork with the same name with the network will be used.
+         */
+        subnetwork: string;
+        /**
+         * Network tags applied to this Cloud Run job.
          *
          * - - -
          */
-        egress?: string;
+        tags?: string[];
     }
 
     export interface JobTerminalCondition {
@@ -12635,7 +12844,31 @@ export namespace cloudrunv2 {
          * Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          */
-        egress?: string;
+        egress: string;
+        /**
+         * Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         */
+        networkInterfaces?: outputs.cloudrunv2.ServiceTemplateVpcAccessNetworkInterface[];
+    }
+
+    export interface ServiceTemplateVpcAccessNetworkInterface {
+        /**
+         * The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+         * looked up from the subnetwork.
+         */
+        network: string;
+        /**
+         * The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+         * subnetwork with the same name with the network will be used.
+         */
+        subnetwork: string;
+        /**
+         * Network tags applied to this Cloud Run service.
+         */
+        tags?: string[];
     }
 
     export interface ServiceTerminalCondition {
@@ -13371,8 +13604,6 @@ export namespace compute {
         minReplicas: number;
         /**
          * Defines operating mode for this policy.
-         * Default value is `ON`.
-         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          */
         mode?: string;
         /**
@@ -13628,8 +13859,6 @@ export namespace compute {
         minReplicas: number;
         /**
          * Defines operating mode for this policy.
-         * Default value is `ON`.
-         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          */
         mode?: string;
         /**
@@ -15285,8 +15514,10 @@ export namespace compute {
          * An array of alias IP ranges for this network interface. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetInstanceNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         ipv6AccessConfigs: outputs.compute.GetInstanceNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * The name of the instance. One of `name` or `selfLink` must be provided.
          */
@@ -15613,8 +15844,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetInstanceTemplateNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         ipv6AccessConfigs: outputs.compute.GetInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
          */
@@ -15975,8 +16208,10 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         ipv6AccessConfigs: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * The name of the instance template. One of `name` or `filter` must be provided.
          */
@@ -17056,8 +17291,10 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterface {
         accessConfigs: outputs.compute.InstanceFromMachineImageNetworkInterfaceAccessConfig[];
         aliasIpRanges: outputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         ipv6AccessConfigs: outputs.compute.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -17204,8 +17441,10 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterface {
         accessConfigs: outputs.compute.InstanceFromTemplateNetworkInterfaceAccessConfig[];
         aliasIpRanges: outputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         ipv6AccessConfigs: outputs.compute.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -17572,6 +17811,7 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: outputs.compute.InstanceNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         /**
          * An array of IPv6 access configurations for this interface.
          * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -17583,6 +17823,7 @@ export namespace compute {
          * This field is always inherited from its subnetwork.
          */
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
@@ -18088,6 +18329,7 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: outputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         /**
          * An array of IPv6 access configurations for this interface.
          * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -18095,6 +18337,7 @@ export namespace compute {
          */
         ipv6AccessConfigs?: outputs.compute.InstanceTemplateNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         /**
          * The name of the instance template. If you leave
          * this blank, the provider will auto-generate a unique name.
@@ -18932,8 +19175,6 @@ export namespace compute {
         minReplicas: number;
         /**
          * Defines operating mode for this policy.
-         * Default value is `ON`.
-         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          */
         mode?: string;
         /**
@@ -20550,6 +20791,7 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: outputs.compute.RegionInstanceTemplateNetworkInterfaceAliasIpRange[];
+        internalIpv6PrefixLength: number;
         /**
          * An array of IPv6 access configurations for this interface.
          * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -20557,6 +20799,7 @@ export namespace compute {
          */
         ipv6AccessConfigs?: outputs.compute.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
         ipv6AccessType: string;
+        ipv6Address: string;
         name: string;
         /**
          * The name or selfLink of the network to attach this interface to.
@@ -25883,6 +26126,14 @@ export namespace container {
         adminUsers?: string[];
     }
 
+    export interface AttachedClusterBinaryAuthorization {
+        /**
+         * Configure Binary Authorization evaluation mode.
+         * Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+         */
+        evaluationMode?: string;
+    }
+
     export interface AttachedClusterError {
         /**
          * Human-friendly description of the error.
@@ -26342,6 +26593,13 @@ export namespace container {
         value: string;
     }
 
+    export interface AwsNodePoolManagement {
+        /**
+         * Optional. Whether or not the nodes will be automatically repaired.
+         */
+        autoRepair: boolean;
+    }
+
     export interface AwsNodePoolMaxPodsConstraint {
         /**
          * The maximum number of pods to schedule on a single node.
@@ -26580,6 +26838,13 @@ export namespace container {
         authorizedKey: string;
     }
 
+    export interface AzureNodePoolManagement {
+        /**
+         * Optional. Whether or not the nodes will be automatically repaired.
+         */
+        autoRepair: boolean;
+    }
+
     export interface AzureNodePoolMaxPodsConstraint {
         /**
          * The maximum number of pods to schedule on a single node.
@@ -26618,7 +26883,9 @@ export namespace container {
         dnsCacheConfig: outputs.container.ClusterAddonsConfigDnsCacheConfig;
         /**
          * .
-         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+         *
+         * **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
          */
         gcePersistentDiskCsiDriverConfig: outputs.container.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig;
         /**
@@ -26698,6 +26965,7 @@ export namespace container {
          *
          *
          *
+         *
          * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -26714,6 +26982,7 @@ export namespace container {
          *
          *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
          *
          *
          *
@@ -26742,6 +27011,7 @@ export namespace container {
          *
          *
          *
+         *
          * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -26758,6 +27028,7 @@ export namespace container {
          *
          *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
          *
          *
          *
@@ -26786,6 +27057,7 @@ export namespace container {
          *
          *
          *
+         *
          * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -26802,6 +27074,7 @@ export namespace container {
          *
          *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
          *
          *
          *
@@ -26860,6 +27133,7 @@ export namespace container {
          *
          *
          *
+         *
          * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -26892,6 +27166,7 @@ export namespace container {
          *
          *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
          *
          *
          *
@@ -27451,6 +27726,13 @@ export namespace container {
          */
         ephemeralStorageLocalSsdConfig?: outputs.container.ClusterNodeConfigEphemeralStorageLocalSsdConfig;
         /**
+         * Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+         * Node Pool must enable gvnic.
+         * GKE version 1.25.2-gke.1700 or later.
+         * Structure is documented below.
+         */
+        fastSocket?: outputs.container.ClusterNodeConfigFastSocket;
+        /**
          * Parameters for the Google Container Filesystem (GCFS).
          * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
          * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -27647,6 +27929,13 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
+    }
+
+    export interface ClusterNodeConfigFastSocket {
+        /**
+         * Whether or not the NCCL Fast Socket is enabled
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodeConfigGcfsConfig {
@@ -27917,14 +28206,14 @@ export namespace container {
 
     export interface ClusterNodePoolAutoConfig {
         /**
-         * ) - The network tag config for the cluster's automatically provisioned node pools.
+         * The network tag config for the cluster's automatically provisioned node pools.
          */
         networkTags?: outputs.container.ClusterNodePoolAutoConfigNetworkTags;
     }
 
     export interface ClusterNodePoolAutoConfigNetworkTags {
         /**
-         * ) - List of network tags applied to auto-provisioned node pools.
+         * List of network tags applied to auto-provisioned node pools.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -28077,6 +28366,13 @@ export namespace container {
          * ```
          */
         ephemeralStorageLocalSsdConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+        /**
+         * Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+         * Node Pool must enable gvnic.
+         * GKE version 1.25.2-gke.1700 or later.
+         * Structure is documented below.
+         */
+        fastSocket?: outputs.container.ClusterNodePoolNodeConfigFastSocket;
         /**
          * Parameters for the Google Container Filesystem (GCFS).
          * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -28274,6 +28570,13 @@ export namespace container {
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
+    }
+
+    export interface ClusterNodePoolNodeConfigFastSocket {
+        /**
+         * Whether or not the NCCL Fast Socket is enabled
+         */
+        enabled: boolean;
     }
 
     export interface ClusterNodePoolNodeConfigGcfsConfig {
@@ -28728,6 +29031,7 @@ export namespace container {
          *
          *
          *
+         *
          * enforce encryption of data in-use.
          *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -29033,6 +29337,7 @@ export namespace container {
         diskType: string;
         ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
         ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageLocalSsdConfig[];
+        fastSockets: outputs.container.GetClusterNodeConfigFastSocket[];
         gcfsConfigs: outputs.container.GetClusterNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
         gvnics: outputs.container.GetClusterNodeConfigGvnic[];
@@ -29076,6 +29381,10 @@ export namespace container {
 
     export interface GetClusterNodeConfigEphemeralStorageLocalSsdConfig {
         localSsdCount: number;
+    }
+
+    export interface GetClusterNodeConfigFastSocket {
+        enabled: boolean;
     }
 
     export interface GetClusterNodeConfigGcfsConfig {
@@ -29245,6 +29554,7 @@ export namespace container {
         diskType: string;
         ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
         ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig[];
+        fastSockets: outputs.container.GetClusterNodePoolNodeConfigFastSocket[];
         gcfsConfigs: outputs.container.GetClusterNodePoolNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
         gvnics: outputs.container.GetClusterNodePoolNodeConfigGvnic[];
@@ -29288,6 +29598,10 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
         localSsdCount: number;
+    }
+
+    export interface GetClusterNodePoolNodeConfigFastSocket {
+        enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigGcfsConfig {
@@ -29587,6 +29901,7 @@ export namespace container {
         diskType: string;
         ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
         ephemeralStorageLocalSsdConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+        fastSocket?: outputs.container.NodePoolNodeConfigFastSocket;
         gcfsConfig?: outputs.container.NodePoolNodeConfigGcfsConfig;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
         gvnic?: outputs.container.NodePoolNodeConfigGvnic;
@@ -29634,6 +29949,14 @@ export namespace container {
 
     export interface NodePoolNodeConfigEphemeralStorageLocalSsdConfig {
         localSsdCount: number;
+    }
+
+    export interface NodePoolNodeConfigFastSocket {
+        /**
+         * Enable Confidential GKE Nodes for this cluster, to
+         * enforce encryption of data in-use.
+         */
+        enabled: boolean;
     }
 
     export interface NodePoolNodeConfigGcfsConfig {
@@ -30527,6 +30850,294 @@ export namespace datacatalog {
         description?: string;
         expression: string;
         title: string;
+    }
+
+}
+
+export namespace dataflow {
+    export interface PipelineScheduleInfo {
+        /**
+         * (Output)
+         * When the next Scheduler job is going to run.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        nextJobTime: string;
+        /**
+         * Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
+         */
+        schedule?: string;
+        /**
+         * Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
+         */
+        timeZone?: string;
+    }
+
+    export interface PipelineWorkload {
+        /**
+         * Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
+         * Structure is documented below.
+         */
+        dataflowFlexTemplateRequest?: outputs.dataflow.PipelineWorkloadDataflowFlexTemplateRequest;
+        /**
+         * Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
+         * Structure is documented below.
+         */
+        dataflowLaunchTemplateRequest?: outputs.dataflow.PipelineWorkloadDataflowLaunchTemplateRequest;
+    }
+
+    export interface PipelineWorkloadDataflowFlexTemplateRequest {
+        /**
+         * Parameter to launch a job from a Flex Template.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplateparameter
+         * Structure is documented below.
+         */
+        launchParameter: outputs.dataflow.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter;
+        /**
+         * The regional endpoint to which to direct the request. For example, us-central1, us-west1.
+         */
+        location: string;
+        /**
+         * The ID of the Cloud Platform project that the job belongs to.
+         */
+        projectId: string;
+        /**
+         * If true, the request is validated but not actually executed. Defaults to false.
+         */
+        validateOnly?: boolean;
+    }
+
+    export interface PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
+        /**
+         * Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
+         */
+        containerSpecGcsPath?: string;
+        /**
+         * The runtime environment for the Flex Template job.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
+         * Structure is documented below.
+         */
+        environment?: outputs.dataflow.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment;
+        /**
+         * The job name to use for the created job. For an update job request, the job name should be the same as the existing running job.
+         */
+        jobName: string;
+        /**
+         * Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters.
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        launchOptions?: {[key: string]: string};
+        /**
+         * 'The parameters for the Flex Template. Example: {"numWorkers":"5"}'
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        parameters?: {[key: string]: string};
+        /**
+         * 'Use this to pass transform name mappings for streaming update jobs. Example: {"oldTransformName":"newTransformName",...}'
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        transformNameMappings?: {[key: string]: string};
+        /**
+         * Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
+         */
+        update?: boolean;
+    }
+
+    export interface PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment {
+        /**
+         * Additional experiment flags for the job.
+         */
+        additionalExperiments?: string[];
+        /**
+         * Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page. An object containing a list of key/value pairs.
+         * 'Example: { "name": "wrench", "mass": "1kg", "count": "3" }.'
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        additionalUserLabels?: {[key: string]: string};
+        /**
+         * Whether to enable Streaming Engine for the job.
+         */
+        enableStreamingEngine?: boolean;
+        /**
+         * Set FlexRS goal for the job. https://cloud.google.com/dataflow/docs/guides/flexrs
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexResourceSchedulingGoal
+         * Possible values are: `FLEXRS_UNSPECIFIED`, `FLEXRS_SPEED_OPTIMIZED`, `FLEXRS_COST_OPTIMIZED`.
+         */
+        flexrsGoal?: string;
+        /**
+         * Configuration for VM IPs.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+         * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
+         */
+        ipConfiguration?: string;
+        /**
+         * 'Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/'
+         */
+        kmsKeyName?: string;
+        /**
+         * The machine type to use for the job. Defaults to the value from the template if not specified.
+         */
+        machineType?: string;
+        /**
+         * The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+         */
+        maxWorkers?: number;
+        /**
+         * Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+         */
+        network?: string;
+        /**
+         * The initial number of Compute Engine instances for the job.
+         */
+        numWorkers?: number;
+        /**
+         * The email address of the service account to run the job as.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+         */
+        subnetwork?: string;
+        /**
+         * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+         */
+        tempLocation?: string;
+        /**
+         * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+         */
+        workerRegion?: string;
+        /**
+         * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+         */
+        workerZone?: string;
+        /**
+         * The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
+         */
+        zone?: string;
+    }
+
+    export interface PipelineWorkloadDataflowLaunchTemplateRequest {
+        /**
+         * A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
+         */
+        gcsPath?: string;
+        /**
+         * The parameters of the template to launch. This should be part of the body of the POST request.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
+         * Structure is documented below.
+         */
+        launchParameters?: outputs.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters;
+        /**
+         * The regional endpoint to which to direct the request.
+         */
+        location?: string;
+        /**
+         * The ID of the Cloud Platform project that the job belongs to.
+         */
+        projectId: string;
+        /**
+         * (Optional)
+         */
+        validateOnly?: boolean;
+    }
+
+    export interface PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters {
+        /**
+         * The runtime environment for the job.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment
+         * Structure is documented below.
+         */
+        environment?: outputs.dataflow.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment;
+        /**
+         * The job name to use for the created job.
+         */
+        jobName: string;
+        /**
+         * The runtime parameters to pass to the job.
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        parameters?: {[key: string]: string};
+        /**
+         * Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        transformNameMapping?: {[key: string]: string};
+        /**
+         * If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
+         */
+        update?: boolean;
+    }
+
+    export interface PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment {
+        /**
+         * Additional experiment flags for the job.
+         */
+        additionalExperiments?: string[];
+        /**
+         * Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the labeling restrictions page. An object containing a list of key/value pairs.
+         * 'Example: { "name": "wrench", "mass": "1kg", "count": "3" }.'
+         * 'An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.'
+         */
+        additionalUserLabels?: {[key: string]: string};
+        /**
+         * Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+         */
+        bypassTempDirValidation?: boolean;
+        /**
+         * Whether to enable Streaming Engine for the job.
+         */
+        enableStreamingEngine?: boolean;
+        /**
+         * Configuration for VM IPs.
+         * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#WorkerIPAddressConfiguration
+         * Possible values are: `WORKER_IP_UNSPECIFIED`, `WORKER_IP_PUBLIC`, `WORKER_IP_PRIVATE`.
+         */
+        ipConfiguration?: string;
+        /**
+         * 'Name for the Cloud KMS key for the job. The key format is: projects//locations//keyRings//cryptoKeys/'
+         */
+        kmsKeyName?: string;
+        /**
+         * The machine type to use for the job. Defaults to the value from the template if not specified.
+         */
+        machineType?: string;
+        /**
+         * The maximum number of Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+         */
+        maxWorkers?: number;
+        /**
+         * Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+         */
+        network: string;
+        /**
+         * The initial number of Compute Engine instances for the job.
+         */
+        numWorkers?: number;
+        /**
+         * The email address of the service account to run the job as.
+         */
+        serviceAccountEmail?: string;
+        /**
+         * Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+         */
+        subnetwork?: string;
+        /**
+         * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+         */
+        tempLocation?: string;
+        /**
+         * The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
+         */
+        workerRegion?: string;
+        /**
+         * The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
+         */
+        workerZone?: string;
+        /**
+         * The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
+         */
+        zone?: string;
     }
 
 }
@@ -42059,6 +42670,401 @@ export namespace diagflow {
         value?: string;
     }
 
+    export interface CxSecuritySettingsAudioExportSettings {
+        /**
+         * Filename pattern for exported audio.
+         */
+        audioExportPattern?: string;
+        /**
+         * File format for exported audio file. Currently only in telephony recordings.
+         * * MULAW: G.711 mu-law PCM with 8kHz sample rate.
+         * * MP3: MP3 file format.
+         * * OGG: OGG Vorbis.
+         * Possible values are: `MULAW`, `MP3`, `OGG`.
+         */
+        audioFormat?: string;
+        /**
+         * Enable audio redaction if it is true.
+         */
+        enableAudioRedaction?: boolean;
+        /**
+         * Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
+         */
+        gcsBucket?: string;
+    }
+
+    export interface CxSecuritySettingsInsightsExportSettings {
+        /**
+         * If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
+         */
+        enableInsightsExport: boolean;
+    }
+
+    export interface CxTestCaseLastTestResult {
+        /**
+         * The conversation turns uttered during the test case replay in chronological order.
+         * Structure is documented below.
+         */
+        conversationTurns?: outputs.diagflow.CxTestCaseLastTestResultConversationTurn[];
+        /**
+         * Environment where the test was run. If not set, it indicates the draft environment.
+         */
+        environment?: string;
+        /**
+         * The unique identifier of the intent.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+         *
+         * (Optional)
+         * The unique identifier of the page.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        name?: string;
+        /**
+         * Whether the test case passed in the agent environment.
+         * * PASSED: The test passed.
+         * * FAILED: The test did not pass.
+         * Possible values are: `PASSED`, `FAILED`.
+         */
+        testResult?: string;
+        /**
+         * The time that the test was run. A timestamp in RFC3339 text format.
+         */
+        testTime?: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurn {
+        /**
+         * The user input.
+         * Structure is documented below.
+         */
+        userInput?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnUserInput;
+        /**
+         * The virtual agent output.
+         * Structure is documented below.
+         */
+        virtualAgentOutput?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnVirtualAgentOutput;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnUserInput {
+        /**
+         * Whether sentiment analysis is enabled.
+         */
+        enableSentimentAnalysis?: boolean;
+        /**
+         * Parameters that need to be injected into the conversation during intent detection.
+         */
+        injectedParameters?: string;
+        /**
+         * User input. Supports text input, event input, dtmf input in the test case.
+         * Structure is documented below.
+         */
+        input?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnUserInputInput;
+        /**
+         * If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+         */
+        isWebhookEnabled?: boolean;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnUserInputInput {
+        /**
+         * The DTMF event to be handled.
+         * Structure is documented below.
+         */
+        dtmf?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnUserInputInputDtmf;
+        /**
+         * The event to be triggered.
+         * Structure is documented below.
+         */
+        event?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnUserInputInputEvent;
+        /**
+         * The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+         * Note that queries in the same session do not necessarily need to specify the same language.
+         */
+        languageCode?: string;
+        /**
+         * The natural language text to be processed.
+         * Structure is documented below.
+         */
+        text?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnUserInputInputText;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
+        /**
+         * The dtmf digits.
+         */
+        digits?: string;
+        /**
+         * The finish digit (if any).
+         */
+        finishDigit?: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
+        /**
+         * Name of the event.
+         */
+        event: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnUserInputInputText {
+        /**
+         * The natural language text to be processed. Text length must not exceed 256 characters.
+         */
+        text: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
+        /**
+         * The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+         * Structure is documented below.
+         */
+        currentPage?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage;
+        /**
+         * The list of differences between the original run and the replay for this output, if any.
+         * Structure is documented below.
+         */
+        differences?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference[];
+        /**
+         * The session parameters available to the bot at this point.
+         */
+        sessionParameters?: string;
+        /**
+         * Response error from the agent in the test result. If set, other output is empty.
+         * Structure is documented below.
+         */
+        status?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus;
+        /**
+         * The text responses from the agent for the turn.
+         * Structure is documented below.
+         */
+        textResponses?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse[];
+        /**
+         * The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+         * Structure is documented below.
+         */
+        triggeredIntent?: outputs.diagflow.CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
+        /**
+         * (Output)
+         * The human-readable name of the page, unique within the flow.
+         */
+        displayName?: string;
+        /**
+         * The unique identifier of the page.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        name?: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
+        /**
+         * A human readable description of the diff, showing the actual output vs expected output.
+         */
+        description?: string;
+        /**
+         * The type of diff.
+         * * INTENT: The intent.
+         * * PAGE: The page.
+         * * PARAMETERS: The parameters.
+         * * UTTERANCE: The message utterance.
+         * * FLOW: The flow.
+         * Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
+         */
+        type?: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
+        /**
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: number;
+        /**
+         * A JSON encoded list of messages that carry the error details.
+         */
+        details?: string;
+        /**
+         * A developer-facing error message.
+         */
+        message?: string;
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent {
+        /**
+         * (Output)
+         * The human-readable name of the intent, unique within the agent.
+         */
+        displayName?: string;
+        /**
+         * The unique identifier of the intent.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+         */
+        name?: string;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurn {
+        /**
+         * The user input.
+         * Structure is documented below.
+         */
+        userInput?: outputs.diagflow.CxTestCaseTestCaseConversationTurnUserInput;
+        /**
+         * The virtual agent output.
+         * Structure is documented below.
+         */
+        virtualAgentOutput?: outputs.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutput;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnUserInput {
+        /**
+         * Whether sentiment analysis is enabled.
+         */
+        enableSentimentAnalysis?: boolean;
+        /**
+         * Parameters that need to be injected into the conversation during intent detection.
+         */
+        injectedParameters?: string;
+        /**
+         * User input. Supports text input, event input, dtmf input in the test case.
+         * Structure is documented below.
+         */
+        input?: outputs.diagflow.CxTestCaseTestCaseConversationTurnUserInputInput;
+        /**
+         * If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
+         */
+        isWebhookEnabled?: boolean;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnUserInputInput {
+        /**
+         * The DTMF event to be handled.
+         * Structure is documented below.
+         */
+        dtmf?: outputs.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmf;
+        /**
+         * The event to be triggered.
+         * Structure is documented below.
+         */
+        event?: outputs.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEvent;
+        /**
+         * The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
+         * Note that queries in the same session do not necessarily need to specify the same language.
+         */
+        languageCode?: string;
+        /**
+         * The natural language text to be processed.
+         * Structure is documented below.
+         */
+        text?: outputs.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputText;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
+        /**
+         * The dtmf digits.
+         */
+        digits?: string;
+        /**
+         * The finish digit (if any).
+         */
+        finishDigit?: string;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnUserInputInputEvent {
+        /**
+         * Name of the event.
+         */
+        event: string;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnUserInputInputText {
+        /**
+         * The natural language text to be processed. Text length must not exceed 256 characters.
+         */
+        text: string;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
+        /**
+         * The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
+         * Structure is documented below.
+         */
+        currentPage?: outputs.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage;
+        /**
+         * The session parameters available to the bot at this point.
+         */
+        sessionParameters?: string;
+        /**
+         * The text responses from the agent for the turn.
+         * Structure is documented below.
+         */
+        textResponses?: outputs.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse[];
+        /**
+         * The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
+         * Structure is documented below.
+         */
+        triggeredIntent?: outputs.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage {
+        /**
+         * (Output)
+         * The human-readable name of the page, unique within the flow.
+         */
+        displayName: string;
+        /**
+         * The unique identifier of the page.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        name?: string;
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse {
+        /**
+         * A collection of text responses.
+         */
+        texts?: string[];
+    }
+
+    export interface CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent {
+        /**
+         * (Output)
+         * The human-readable name of the intent, unique within the agent.
+         */
+        displayName: string;
+        /**
+         * The unique identifier of the intent.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
+         */
+        name?: string;
+    }
+
+    export interface CxTestCaseTestConfig {
+        /**
+         * Flow name to start the test case with.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+         * Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+         */
+        flow?: string;
+        /**
+         * The page to start the test case with.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         * Only one of flow and page should be set to indicate the starting point of the test case. If neither is set, the test case will start with start page on the default start flow.
+         */
+        page?: string;
+        /**
+         * Session parameters to be compared when calculating differences.
+         */
+        trackingParameters?: string[];
+    }
+
     export interface CxVersionNluSetting {
         /**
          * To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
@@ -43985,6 +44991,289 @@ export namespace gkebackup {
         locked: boolean;
     }
 
+    export interface RestorePlanIamBindingCondition {
+        /**
+         * The description is a user specified string description
+         * of the transformation rule.
+         *
+         * (Optional)
+         * User specified descriptive string for this RestorePlan.
+         */
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RestorePlanIamMemberCondition {
+        /**
+         * The description is a user specified string description
+         * of the transformation rule.
+         *
+         * (Optional)
+         * User specified descriptive string for this RestorePlan.
+         */
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RestorePlanRestoreConfig {
+        /**
+         * If True, restore all namespaced resources in the Backup.
+         * Setting this field to False will result in an error.
+         */
+        allNamespaces?: boolean;
+        /**
+         * Defines the behavior for handling the situation where cluster-scoped resources
+         * being restored already exist in the target cluster.
+         * This MUST be set to a value other than `CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED`
+         * if `clusterResourceRestoreScope` is anyting other than `noGroupKinds`.
+         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#clusterresourceconflictpolicy
+         * for more information on each policy option.
+         * Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
+         */
+        clusterResourceConflictPolicy?: string;
+        /**
+         * Identifies the cluster-scoped resources to restore from the Backup.
+         * Structure is documented below.
+         */
+        clusterResourceRestoreScope?: outputs.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScope;
+        /**
+         * A list of selected namespaces excluded from restoration.
+         * All namespaces except those in this list will be restored.
+         * Structure is documented below.
+         */
+        excludedNamespaces?: outputs.gkebackup.RestorePlanRestoreConfigExcludedNamespaces;
+        /**
+         * Defines the behavior for handling the situation where sets of namespaced resources
+         * being restored already exist in the target cluster.
+         * This MUST be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+         * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode
+         * for more information on each mode.
+         * Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`.
+         */
+        namespacedResourceRestoreMode?: string;
+        /**
+         * Do not restore any namespaced resources if set to "True".
+         * Specifying this field to "False" is not allowed.
+         */
+        noNamespaces?: boolean;
+        /**
+         * A list of selected ProtectedApplications to restore.
+         * The listed ProtectedApplications and all the resources
+         * to which they refer will be restored.
+         * Structure is documented below.
+         */
+        selectedApplications?: outputs.gkebackup.RestorePlanRestoreConfigSelectedApplications;
+        /**
+         * A list of selected namespaces to restore from the Backup.
+         * The listed Namespaces and all resources contained in them will be restored.
+         * Structure is documented below.
+         */
+        selectedNamespaces?: outputs.gkebackup.RestorePlanRestoreConfigSelectedNamespaces;
+        /**
+         * A list of transformation rules to be applied against Kubernetes
+         * resources as they are selected for restoration from a Backup.
+         * Rules are executed in order defined - this order matters,
+         * as changes made by a rule may impact the filtering logic of subsequent
+         * rules. An empty list means no transformation will occur.
+         * Structure is documented below.
+         */
+        transformationRules?: outputs.gkebackup.RestorePlanRestoreConfigTransformationRule[];
+        /**
+         * Specifies the mechanism to be used to restore volume data.
+         * This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
+         * if the `namespacedResourceRestoreScope` is anything other than `noNamespaces`.
+         * If not specified, it will be treated as `NO_VOLUME_DATA_RESTORATION`.
+         * See https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy
+         * for more information on each policy option.
+         * Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
+         */
+        volumeDataRestorePolicy?: string;
+    }
+
+    export interface RestorePlanRestoreConfigClusterResourceRestoreScope {
+        /**
+         * If True, all valid cluster-scoped resources will be restored.
+         * Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+         */
+        allGroupKinds?: boolean;
+        /**
+         * A list of cluster-scoped resource group kinds to NOT restore from the backup.
+         * If specified, all valid cluster-scoped resources will be restored except
+         * for those specified in the list.
+         * Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+         * Structure is documented below.
+         */
+        excludedGroupKinds?: outputs.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind[];
+        /**
+         * If True, no cluster-scoped resources will be restored.
+         * Mutually exclusive to any other field in `clusterResourceRestoreScope`.
+         */
+        noGroupKinds?: boolean;
+        /**
+         * A list of cluster-scoped resource group kinds to restore from the backup.
+         * If specified, only the selected resources will be restored.
+         * Mutually exclusive to any other field in the `clusterResourceRestoreScope`.
+         * Structure is documented below.
+         */
+        selectedGroupKinds?: outputs.gkebackup.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind[];
+    }
+
+    export interface RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
+        /**
+         * API Group string of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: string;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         */
+        resourceKind?: string;
+    }
+
+    export interface RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind {
+        /**
+         * API Group string of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: string;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         */
+        resourceKind?: string;
+    }
+
+    export interface RestorePlanRestoreConfigExcludedNamespaces {
+        /**
+         * A list of Kubernetes Namespaces.
+         */
+        namespaces: string[];
+    }
+
+    export interface RestorePlanRestoreConfigSelectedApplications {
+        /**
+         * A list of namespaced Kubernetes resources.
+         * Structure is documented below.
+         */
+        namespacedNames: outputs.gkebackup.RestorePlanRestoreConfigSelectedApplicationsNamespacedName[];
+    }
+
+    export interface RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
+        /**
+         * The name of a Kubernetes Resource.
+         */
+        name: string;
+        /**
+         * The namespace of a Kubernetes Resource.
+         */
+        namespace: string;
+    }
+
+    export interface RestorePlanRestoreConfigSelectedNamespaces {
+        /**
+         * A list of Kubernetes Namespaces.
+         */
+        namespaces: string[];
+    }
+
+    export interface RestorePlanRestoreConfigTransformationRule {
+        /**
+         * The description is a user specified string description
+         * of the transformation rule.
+         */
+        description?: string;
+        /**
+         * A list of transformation rule actions to take against candidate
+         * resources. Actions are executed in order defined - this order
+         * matters, as they could potentially interfere with each other and
+         * the first operation could affect the outcome of the second operation.
+         * Structure is documented below.
+         */
+        fieldActions: outputs.gkebackup.RestorePlanRestoreConfigTransformationRuleFieldAction[];
+        /**
+         * This field is used to specify a set of fields that should be used to
+         * determine which resources in backup should be acted upon by the
+         * supplied transformation rule actions, and this will ensure that only
+         * specific resources are affected by transformation rule actions.
+         * Structure is documented below.
+         */
+        resourceFilter?: outputs.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilter;
+    }
+
+    export interface RestorePlanRestoreConfigTransformationRuleFieldAction {
+        /**
+         * A string containing a JSON Pointer value that references the
+         * location in the target document to move the value from.
+         */
+        fromPath?: string;
+        /**
+         * Specifies the operation to perform.
+         * Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
+         */
+        op: string;
+        /**
+         * A string containing a JSON-Pointer value that references a
+         * location within the target document where the operation is performed.
+         */
+        path?: string;
+        /**
+         * A string that specifies the desired value in string format
+         * to use for transformation.
+         *
+         * - - -
+         */
+        value?: string;
+    }
+
+    export interface RestorePlanRestoreConfigTransformationRuleResourceFilter {
+        /**
+         * (Filtering parameter) Any resource subject to transformation must
+         * belong to one of the listed "types". If this field is not provided,
+         * no type filtering will be performed
+         * (all resources of all types matching previous filtering parameters
+         * will be candidates for transformation).
+         * Structure is documented below.
+         */
+        groupKinds?: outputs.gkebackup.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind[];
+        /**
+         * This is a JSONPath expression that matches specific fields of
+         * candidate resources and it operates as a filtering parameter
+         * (resources that are not matched with this expression will not
+         * be candidates for transformation).
+         */
+        jsonPath?: string;
+        /**
+         * (Filtering parameter) Any resource subject to transformation must
+         * be contained within one of the listed Kubernetes Namespace in the
+         * Backup. If this field is not provided, no namespace filtering will
+         * be performed (all resources in all Namespaces, including all
+         * cluster-scoped resources, will be candidates for transformation).
+         * To mix cluster-scoped and namespaced resources in the same rule,
+         * use an empty string ("") as one of the target namespaces.
+         */
+        namespaces?: string[];
+    }
+
+    export interface RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind {
+        /**
+         * API Group string of a Kubernetes resource, e.g.
+         * "apiextensions.k8s.io", "storage.k8s.io", etc.
+         * Use empty string for core group.
+         */
+        resourceGroup?: string;
+        /**
+         * Kind of a Kubernetes resource, e.g.
+         * "CustomResourceDefinition", "StorageClass", etc.
+         */
+        resourceKind?: string;
+    }
+
 }
 
 export namespace gkehub {
@@ -44767,6 +46056,15 @@ export namespace gkeonprem {
         reason: string;
     }
 
+    export interface BareMetalClusterBinaryAuthorization {
+        /**
+         * Mode of operation for binauthz policy evaluation. If unspecified,
+         * defaults to DISABLED.
+         * Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+         */
+        evaluationMode?: string;
+    }
+
     export interface BareMetalClusterClusterOperations {
         /**
          * Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
@@ -45455,6 +46753,14 @@ export namespace gkeonprem {
         storageClass: string;
     }
 
+    export interface BareMetalClusterUpgradePolicy {
+        /**
+         * Specifies which upgrade policy to use.
+         * Possible values are: `SERIAL`, `CONCURRENT`.
+         */
+        policy?: string;
+    }
+
     export interface BareMetalClusterValidationCheck {
         /**
          * (Output)
@@ -46031,6 +47337,13 @@ export namespace gkeonprem {
          * Enabled by default.
          */
         vsphereCsiDisabled: boolean;
+    }
+
+    export interface VMwareClusterUpgradePolicy {
+        /**
+         * Controls whether the upgrade applies to the control plane only.
+         */
+        controlPlaneOnly?: boolean;
     }
 
     export interface VMwareClusterValidationCheck {
@@ -47205,6 +48518,95 @@ export namespace identityplatform {
          * When this quota will take affect.
          */
         startTime?: string;
+    }
+
+    export interface ConfigSignIn {
+        /**
+         * Whether to allow more than one account to have the same email.
+         */
+        allowDuplicateEmails?: boolean;
+        /**
+         * Configuration options related to authenticating an anonymous user.
+         * Structure is documented below.
+         */
+        anonymous?: outputs.identityplatform.ConfigSignInAnonymous;
+        /**
+         * Configuration options related to authenticating a user by their email address.
+         * Structure is documented below.
+         */
+        email?: outputs.identityplatform.ConfigSignInEmail;
+        /**
+         * (Output)
+         * Output only. Hash config information.
+         * Structure is documented below.
+         */
+        hashConfigs: outputs.identityplatform.ConfigSignInHashConfig[];
+        /**
+         * Configuration options related to authenticated a user by their phone number.
+         * Structure is documented below.
+         */
+        phoneNumber?: outputs.identityplatform.ConfigSignInPhoneNumber;
+    }
+
+    export interface ConfigSignInAnonymous {
+        /**
+         * Whether anonymous user auth is enabled for the project or not.
+         *
+         * <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+         */
+        enabled: boolean;
+    }
+
+    export interface ConfigSignInEmail {
+        /**
+         * Whether email auth is enabled for the project or not.
+         */
+        enabled: boolean;
+        /**
+         * Whether a password is required for email auth or not. If true, both an email and
+         * password must be provided to sign in. If false, a user may sign in via either
+         * email/password or email link.
+         */
+        passwordRequired?: boolean;
+    }
+
+    export interface ConfigSignInHashConfig {
+        /**
+         * (Output)
+         * Different password hash algorithms used in Identity Toolkit.
+         */
+        algorithm: string;
+        /**
+         * (Output)
+         * Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+         */
+        memoryCost: number;
+        /**
+         * (Output)
+         * How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+         */
+        rounds: number;
+        /**
+         * (Output)
+         * Non-printable character to be inserted between the salt and plain text password in base64.
+         */
+        saltSeparator: string;
+        /**
+         * (Output)
+         * Signer key in base64.
+         */
+        signerKey: string;
+    }
+
+    export interface ConfigSignInPhoneNumber {
+        /**
+         * Whether phone number auth is enabled for the project or not.
+         */
+        enabled: boolean;
+        /**
+         * A map of <test phone number, fake code> that can be used for phone auth testing.
+         */
+        testPhoneNumbers?: {[key: string]: string};
     }
 
     export interface InboundSamlConfigIdpConfig {
@@ -50015,6 +51417,17 @@ export namespace networkconnectivity {
          * - - -
          */
         virtualMachine?: string;
+    }
+
+    export interface SpokeLinkedVpcNetwork {
+        /**
+         * IP ranges encompassing the subnets to be excluded from peering.
+         */
+        excludeExportRanges?: string[];
+        /**
+         * The URI of the VPC network resource.
+         */
+        uri: string;
     }
 
     export interface SpokeLinkedVpnTunnels {
@@ -55392,7 +56805,16 @@ export namespace runtimeconfig {
 export namespace secretmanager {
     export interface GetSecretReplication {
         automatic: boolean;
+        autos: outputs.secretmanager.GetSecretReplicationAuto[];
         userManageds: outputs.secretmanager.GetSecretReplicationUserManaged[];
+    }
+
+    export interface GetSecretReplicationAuto {
+        customerManagedEncryptions: outputs.secretmanager.GetSecretReplicationAutoCustomerManagedEncryption[];
+    }
+
+    export interface GetSecretReplicationAutoCustomerManagedEncryption {
+        kmsKeyName: string;
     }
 
     export interface GetSecretReplicationUserManaged {
@@ -55432,6 +56854,16 @@ export namespace secretmanager {
     export interface SecretReplication {
         /**
          * The Secret will automatically be replicated without any restrictions.
+         * Structure is documented below.
+         */
+        auto?: outputs.secretmanager.SecretReplicationAuto;
+        /**
+         * (Optional, Deprecated)
+         * The Secret will automatically be replicated without any restrictions.
+         *
+         * > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+         *
+         * @deprecated `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
          */
         automatic?: boolean;
         /**
@@ -55439,6 +56871,25 @@ export namespace secretmanager {
          * Structure is documented below.
          */
         userManaged?: outputs.secretmanager.SecretReplicationUserManaged;
+    }
+
+    export interface SecretReplicationAuto {
+        /**
+         * The customer-managed encryption configuration of the Secret.
+         * If no configuration is provided, Google-managed default
+         * encryption is used.
+         * Structure is documented below.
+         */
+        customerManagedEncryption?: outputs.secretmanager.SecretReplicationAutoCustomerManagedEncryption;
+    }
+
+    export interface SecretReplicationAutoCustomerManagedEncryption {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination secret.
+         *
+         * - - -
+         */
+        kmsKeyName: string;
     }
 
     export interface SecretReplicationUserManaged {
@@ -55537,6 +56988,117 @@ export namespace securitycenter {
          * - - -
          */
         filter: string;
+    }
+
+    export interface ProjectCustomModuleCustomConfig {
+        /**
+         * Custom output properties.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securitycenter.ProjectCustomModuleCustomConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects. This explanation is returned with each finding instance to
+         * help investigators understand the detected issue. The text must be enclosed in quotation marks.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings. When the expression evaluates
+         * to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: outputs.securitycenter.ProjectCustomModuleCustomConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to resolve
+         * the detected issue. This explanation is returned with each finding generated by
+         * this module in the nextSteps property of the finding JSON.
+         */
+        recommendation: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: outputs.securitycenter.ProjectCustomModuleCustomConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: string;
+    }
+
+    export interface ProjectCustomModuleCustomConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securitycenter.ProjectCustomModuleCustomConfigCustomOutputProperty[];
+    }
+
+    export interface ProjectCustomModuleCustomConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name?: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be specified
+         * to return the value of the property or a text string enclosed in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securitycenter.ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface ProjectCustomModuleCustomConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ProjectCustomModuleCustomConfigPredicate {
+        /**
+         * Description of the expression. This is a longer text which describes the
+         * expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a
+         * file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose. This can
+         * be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ProjectCustomModuleCustomConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         *
+         * - - -
+         */
+        resourceTypes: string[];
     }
 
     export interface SourceIamBindingCondition {
@@ -56935,6 +58497,106 @@ export namespace storage {
     export interface GetBucketWebsite {
         mainPageSuffix: string;
         notFoundPage: string;
+    }
+
+    export interface InsightsReportConfigCsvOptions {
+        /**
+         * The delimiter used to separate the fields in the inventory report CSV file.
+         */
+        delimiter?: string;
+        /**
+         * The boolean that indicates whether or not headers are included in the inventory report CSV file.
+         *
+         * - - -
+         */
+        headerRequired?: boolean;
+        /**
+         * The character used to separate the records in the inventory report CSV file.
+         */
+        recordSeparator?: string;
+    }
+
+    export interface InsightsReportConfigFrequencyOptions {
+        /**
+         * The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
+         * Structure is documented below.
+         */
+        endDate: outputs.storage.InsightsReportConfigFrequencyOptionsEndDate;
+        /**
+         * The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
+         * Possible values are: `DAILY`, `WEEKLY`.
+         */
+        frequency: string;
+        /**
+         * The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
+         * Structure is documented below.
+         */
+        startDate: outputs.storage.InsightsReportConfigFrequencyOptionsStartDate;
+    }
+
+    export interface InsightsReportConfigFrequencyOptionsEndDate {
+        /**
+         * The day of the month to stop generating inventory reports.
+         */
+        day: number;
+        /**
+         * The month to stop generating inventory reports.
+         */
+        month: number;
+        /**
+         * The year to stop generating inventory reports
+         */
+        year: number;
+    }
+
+    export interface InsightsReportConfigFrequencyOptionsStartDate {
+        /**
+         * The day of the month to start generating inventory reports.
+         */
+        day: number;
+        /**
+         * The month to start generating inventory reports.
+         */
+        month: number;
+        /**
+         * The year to start generating inventory reports
+         */
+        year: number;
+    }
+
+    export interface InsightsReportConfigObjectMetadataReportOptions {
+        /**
+         * The metadata fields included in an inventory report.
+         */
+        metadataFields: string[];
+        /**
+         * Options for where the inventory reports are stored.
+         * Structure is documented below.
+         */
+        storageDestinationOptions: outputs.storage.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions;
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        storageFilters?: outputs.storage.InsightsReportConfigObjectMetadataReportOptionsStorageFilters;
+    }
+
+    export interface InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
+        /**
+         * The destination bucket that stores the generated inventory reports.
+         */
+        bucket: string;
+        /**
+         * The path within the destination bucket to store generated inventory reports.
+         */
+        destinationPath?: string;
+    }
+
+    export interface InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
+        /**
+         * The filter to use when specifying which bucket to generate inventory reports for.
+         */
+        bucket?: string;
     }
 
     export interface ObjectAccessControlProjectTeam {

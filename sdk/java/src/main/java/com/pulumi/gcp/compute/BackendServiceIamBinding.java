@@ -49,7 +49,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={BackendServiceIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=BackendServiceIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ BackendServiceIamBindingCondition> condition;
 
     /**
@@ -64,7 +64,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -74,7 +74,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -84,7 +84,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -111,7 +111,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -140,7 +140,7 @@ public class BackendServiceIamBinding extends com.pulumi.resources.CustomResourc
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

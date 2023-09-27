@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.SecretManager
     ///         },
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 
@@ -43,6 +43,123 @@ namespace Pulumi.Gcp.SecretManager
     ///     {
     ///         Secret = secret_basic.Id,
     ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secret Version Deletion Policy Abandon
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
+    ///     {
+    ///         SecretId = "secret-version",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
+    ///             {
+    ///                 Replicas = new[]
+    ///                 {
+    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_deletion_policy = new Gcp.SecretManager.SecretVersion("secret-version-deletion-policy", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         SecretData = "secret-data",
+    ///         DeletionPolicy = "ABANDON",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secret Version Deletion Policy Disable
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
+    ///     {
+    ///         SecretId = "secret-version",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
+    ///             {
+    ///                 Replicas = new[]
+    ///                 {
+    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_deletion_policy = new Gcp.SecretManager.SecretVersion("secret-version-deletion-policy", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         SecretData = "secret-data",
+    ///         DeletionPolicy = "DISABLE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secret Version With Base64 String Secret Data
+    /// 
+    /// ```csharp
+    /// using System;
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// 	private static string ReadFileBase64(string path) {
+    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
+    /// 	}
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
+    ///     {
+    ///         SecretId = "secret-version",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
+    ///             {
+    ///                 Replicas = new[]
+    ///                 {
+    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
+    ///                     {
+    ///                         Location = "us-central1",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var secret_version_base64 = new Gcp.SecretManager.SecretVersion("secret-version-base64", new()
+    ///     {
+    ///         Secret = secret_basic.Id,
+    ///         IsSecretDataBase64 = true,
+    ///         SecretData = ReadFileBase64("secret-data.pfx"),
     ///     });
     /// 
     /// });
@@ -66,6 +183,17 @@ namespace Pulumi.Gcp.SecretManager
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+        /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+        /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+        /// * DELETE
+        /// * DISABLE
+        /// * ABANDON
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
         /// </summary>
         [Output("destroyTime")]
@@ -76,6 +204,12 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        /// </summary>
+        [Output("isSecretDataBase64")]
+        public Output<bool?> IsSecretDataBase64 { get; private set; } = null!;
 
         /// <summary>
         /// The resource name of the SecretVersion. Format:
@@ -157,10 +291,27 @@ namespace Pulumi.Gcp.SecretManager
     public sealed class SecretVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+        /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+        /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+        /// * DELETE
+        /// * DISABLE
+        /// * ABANDON
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The current state of the SecretVersion.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        /// </summary>
+        [Input("isSecretDataBase64")]
+        public Input<bool>? IsSecretDataBase64 { get; set; }
 
         /// <summary>
         /// Secret Manager secret resource
@@ -203,6 +354,17 @@ namespace Pulumi.Gcp.SecretManager
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+        /// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+        /// disabled rather than deleted. Default is `DELETE`. Possible values are:
+        /// * DELETE
+        /// * DISABLE
+        /// * ABANDON
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The time at which the Secret was destroyed. Only present if state is DESTROYED.
         /// </summary>
         [Input("destroyTime")]
@@ -213,6 +375,12 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+        /// </summary>
+        [Input("isSecretDataBase64")]
+        public Input<bool>? IsSecretDataBase64 { get; set; }
 
         /// <summary>
         /// The resource name of the SecretVersion. Format:

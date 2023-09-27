@@ -110,6 +110,8 @@ if typing.TYPE_CHECKING:
     diagflow = __diagflow
     import pulumi_gcp.dns as __dns
     dns = __dns
+    import pulumi_gcp.edgenetwork as __edgenetwork
+    edgenetwork = __edgenetwork
     import pulumi_gcp.endpoints as __endpoints
     endpoints = __endpoints
     import pulumi_gcp.essentialcontacts as __essentialcontacts
@@ -271,6 +273,7 @@ else:
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
     dns = _utilities.lazy_import('pulumi_gcp.dns')
+    edgenetwork = _utilities.lazy_import('pulumi_gcp.edgenetwork')
     endpoints = _utilities.lazy_import('pulumi_gcp.endpoints')
     essentialcontacts = _utilities.lazy_import('pulumi_gcp.essentialcontacts')
     eventarc = _utilities.lazy_import('pulumi_gcp.eventarc')
@@ -772,6 +775,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/targetServer",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/targetServer:TargetServer": "TargetServer"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "appengine/application",
   "fqn": "pulumi_gcp.appengine",
   "classes": {
@@ -868,6 +879,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "artifactregistry/vpcscConfig",
+  "fqn": "pulumi_gcp.artifactregistry",
+  "classes": {
+   "gcp:artifactregistry/vpcscConfig:VpcscConfig": "VpcscConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "assuredworkloads/workload",
   "fqn": "pulumi_gcp.assuredworkloads",
   "classes": {
@@ -920,6 +939,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.biglake",
   "classes": {
    "gcp:biglake/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/table",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/table:Table": "Table"
   }
  },
  {
@@ -3204,6 +3231,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataflow/pipeline",
+  "fqn": "pulumi_gcp.dataflow",
+  "classes": {
+   "gcp:dataflow/pipeline:Pipeline": "Pipeline"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataform/repository",
   "fqn": "pulumi_gcp.dataform",
   "classes": {
@@ -3692,6 +3727,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "diagflow/cxSecuritySettings",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxSecuritySettings:CxSecuritySettings": "CxSecuritySettings"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/cxTestCase",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/cxTestCase:CxTestCase": "CxTestCase"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "diagflow/cxVersion",
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
@@ -3792,6 +3843,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.dns",
   "classes": {
    "gcp:dns/responsePolicyRule:ResponsePolicyRule": "ResponsePolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "edgenetwork/network",
+  "fqn": "pulumi_gcp.edgenetwork",
+  "classes": {
+   "gcp:edgenetwork/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "edgenetwork/subnet",
+  "fqn": "pulumi_gcp.edgenetwork",
+  "classes": {
+   "gcp:edgenetwork/subnet:Subnet": "Subnet"
   }
  },
  {
@@ -4200,6 +4267,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkebackup",
   "classes": {
    "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": "BackupPlanIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/restorePlan",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/restorePlan:RestorePlan": "RestorePlan"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/restorePlanIamBinding",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding": "RestorePlanIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/restorePlanIamMember",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember": "RestorePlanIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/restorePlanIamPolicy",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy": "RestorePlanIamPolicy"
   }
  },
  {
@@ -5980,6 +6079,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/projectCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/projectCustomModule:ProjectCustomModule": "ProjectCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/source",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -6364,6 +6471,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "storage/insightsReportConfig",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/insightsReportConfig:InsightsReportConfig": "InsightsReportConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "storage/notification",
   "fqn": "pulumi_gcp.storage",
   "classes": {
@@ -6488,6 +6603,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.tpu",
   "classes": {
    "gcp:tpu/node:Node": "Node"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "tpu/v2Vm",
+  "fqn": "pulumi_gcp.tpu",
+  "classes": {
+   "gcp:tpu/v2Vm:V2Vm": "V2Vm"
   }
  },
  {

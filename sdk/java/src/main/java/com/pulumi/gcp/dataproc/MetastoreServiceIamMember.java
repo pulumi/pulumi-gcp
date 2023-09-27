@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataproc/metastoreServiceIamMember:MetastoreServiceIamMember")
 public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={MetastoreServiceIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=MetastoreServiceIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ MetastoreServiceIamMemberCondition> condition;
 
     public Output<Optional<MetastoreServiceIamMemberCondition>> condition() {
@@ -177,7 +177,7 @@ public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResour
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -193,7 +193,7 @@ public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResour
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -205,7 +205,7 @@ public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResour
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -228,7 +228,7 @@ public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResour
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -257,7 +257,7 @@ public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResour
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -269,7 +269,7 @@ public class MetastoreServiceIamMember extends com.pulumi.resources.CustomResour
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="serviceId", refs={String.class}, tree="[0]")
+    @Export(name="serviceId", type=String.class, parameters={})
     private Output<String> serviceId;
 
     public Output<String> serviceId() {

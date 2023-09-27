@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigtable/tableIamMember:TableIamMember")
 public class TableIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={TableIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=TableIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ TableIamMemberCondition> condition;
 
     public Output<Optional<TableIamMemberCondition>> condition() {
@@ -167,7 +167,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the tables&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -181,7 +181,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * The name or relative resource id of the instance that owns the table.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -191,7 +191,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> instance() {
         return this.instance;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -202,7 +202,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * is not provided, this provider will use the provider default.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -221,7 +221,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * `gcp.bigtable.TableIamPolicy` only:
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -250,7 +250,7 @@ public class TableIamMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="table", refs={String.class}, tree="[0]")
+    @Export(name="table", type=String.class, parameters={})
     private Output<String> table;
 
     /**

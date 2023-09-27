@@ -284,7 +284,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={IAMMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=IAMMemberCondition.class, parameters={})
     private Output</* @Nullable */ IAMMemberCondition> condition;
 
     /**
@@ -299,7 +299,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the service account IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -309,7 +309,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -321,7 +321,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -346,7 +346,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="serviceAccountId", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccountId", type=String.class, parameters={})
     private Output<String> serviceAccountId;
 
     /**

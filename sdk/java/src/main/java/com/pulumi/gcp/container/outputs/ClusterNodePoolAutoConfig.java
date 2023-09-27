@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolAutoConfig {
     /**
-     * @return ) - The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * @return The network tag config for the cluster&#39;s automatically provisioned node pools.
      * 
      */
     private @Nullable ClusterNodePoolAutoConfigNetworkTags networkTags;
 
     private ClusterNodePoolAutoConfig() {}
     /**
-     * @return ) - The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * @return The network tag config for the cluster&#39;s automatically provisioned node pools.
      * 
      */
     public Optional<ClusterNodePoolAutoConfigNetworkTags> networkTags() {

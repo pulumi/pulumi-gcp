@@ -654,7 +654,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Client-specified annotations. This is distinct from labels.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -669,7 +669,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="conditions", refs={List.class,WorkstationConfigCondition.class}, tree="[0,1]")
+    @Export(name="conditions", type=List.class, parameters={WorkstationConfigCondition.class})
     private Output<List<WorkstationConfigCondition>> conditions;
 
     /**
@@ -685,7 +685,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="container", refs={WorkstationConfigContainer.class}, tree="[0]")
+    @Export(name="container", type=WorkstationConfigContainer.class, parameters={})
     private Output<WorkstationConfigContainer> container;
 
     /**
@@ -700,7 +700,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Time when this resource was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -714,7 +714,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
      * 
      */
-    @Export(name="degraded", refs={Boolean.class}, tree="[0]")
+    @Export(name="degraded", type=Boolean.class, parameters={})
     private Output<Boolean> degraded;
 
     /**
@@ -728,7 +728,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Human-readable name for this resource.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -746,7 +746,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionKey", refs={WorkstationConfigEncryptionKey.class}, tree="[0]")
+    @Export(name="encryptionKey", type=WorkstationConfigEncryptionKey.class, parameters={})
     private Output</* @Nullable */ WorkstationConfigEncryptionKey> encryptionKey;
 
     /**
@@ -765,7 +765,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -781,7 +781,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="host", refs={WorkstationConfigHost.class}, tree="[0]")
+    @Export(name="host", type=WorkstationConfigHost.class, parameters={})
     private Output<WorkstationConfigHost> host;
 
     /**
@@ -797,7 +797,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="idleTimeout", refs={String.class}, tree="[0]")
+    @Export(name="idleTimeout", type=String.class, parameters={})
     private Output</* @Nullable */ String> idleTimeout;
 
     /**
@@ -812,7 +812,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -828,7 +828,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -844,7 +844,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Full name of this resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -859,7 +859,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="persistentDirectories", refs={List.class,WorkstationConfigPersistentDirectory.class}, tree="[0,1]")
+    @Export(name="persistentDirectories", type=List.class, parameters={WorkstationConfigPersistentDirectory.class})
     private Output<List<WorkstationConfigPersistentDirectory>> persistentDirectories;
 
     /**
@@ -875,7 +875,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -891,7 +891,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="runningTimeout", refs={String.class}, tree="[0]")
+    @Export(name="runningTimeout", type=String.class, parameters={})
     private Output</* @Nullable */ String> runningTimeout;
 
     /**
@@ -906,7 +906,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * The system-generated UID of the resource.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -920,7 +920,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * The ID of the parent workstation cluster.
      * 
      */
-    @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
+    @Export(name="workstationClusterId", type=String.class, parameters={})
     private Output<String> workstationClusterId;
 
     /**
@@ -934,7 +934,7 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      * The ID to be assigned to the workstation cluster config.
      * 
      */
-    @Export(name="workstationConfigId", refs={String.class}, tree="[0]")
+    @Export(name="workstationConfigId", type=String.class, parameters={})
     private Output<String> workstationConfigId;
 
     /**

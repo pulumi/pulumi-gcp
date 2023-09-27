@@ -226,6 +226,14 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///         },
+    ///         BinaryAuthorization = new Gcp.GkeOnPrem.Inputs.BareMetalClusterBinaryAuthorizationArgs
+    ///         {
+    ///             EvaluationMode = "DISABLED",
+    ///         },
+    ///         UpgradePolicy = new Gcp.GkeOnPrem.Inputs.BareMetalClusterUpgradePolicyArgs
+    ///         {
+    ///             Policy = "SERIAL",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -501,6 +509,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> BareMetalVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Binary Authorization related configurations.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("binaryAuthorization")]
+        public Output<Outputs.BareMetalClusterBinaryAuthorization?> BinaryAuthorization { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the User Cluster's observability infrastructure.
         /// Structure is documented below.
         /// </summary>
@@ -691,6 +706,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The cluster upgrade policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.BareMetalClusterUpgradePolicy?> UpgradePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the security related settings for the Bare Metal User Cluster.
         /// Structure is documented below.
         /// </summary>
@@ -774,6 +796,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("bareMetalVersion", required: true)]
         public Input<string> BareMetalVersion { get; set; } = null!;
+
+        /// <summary>
+        /// Binary Authorization related configurations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.BareMetalClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Specifies the User Cluster's observability infrastructure.
@@ -877,6 +906,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         [Input("storage", required: true)]
         public Input<Inputs.BareMetalClusterStorageArgs> Storage { get; set; } = null!;
 
+        /// <summary>
+        /// The cluster upgrade policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.BareMetalClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
+
         public BareMetalClusterArgs()
         {
         }
@@ -916,6 +952,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("bareMetalVersion")]
         public Input<string>? BareMetalVersion { get; set; }
+
+        /// <summary>
+        /// Binary Authorization related configurations.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.BareMetalClusterBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Specifies the User Cluster's observability infrastructure.
@@ -1118,6 +1161,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// The cluster upgrade policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.BareMetalClusterUpgradePolicyGetArgs>? UpgradePolicy { get; set; }
 
         [Input("validationChecks")]
         private InputList<Inputs.BareMetalClusterValidationCheckGetArgs>? _validationChecks;

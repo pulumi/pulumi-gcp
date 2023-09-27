@@ -119,7 +119,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * The resource that the security policy is attached to.
      * 
      */
-    @Export(name="attachmentId", refs={String.class}, tree="[0]")
+    @Export(name="attachmentId", type=String.class, parameters={})
     private Output<String> attachmentId;
 
     /**
@@ -133,7 +133,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * The display name of the security policy of the association.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -147,7 +147,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * The name for an association.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -163,7 +163,7 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
      * ***
      * 
      */
-    @Export(name="policyId", refs={String.class}, tree="[0]")
+    @Export(name="policyId", type=String.class, parameters={})
     private Output<String> policyId;
 
     /**

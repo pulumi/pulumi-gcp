@@ -153,7 +153,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      * 
      */
-    @Export(name="config", refs={String.class}, tree="[0]")
+    @Export(name="config", type=String.class, parameters={})
     private Output<String> config;
 
     /**
@@ -175,7 +175,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -193,7 +193,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This must be set to true if you created a backup manually in the console.
      * 
      */
-    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -209,7 +209,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -228,7 +228,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If not provided, a random string starting with `tf-` will be selected.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * terraform.
      * 
      */
-    @Export(name="numNodes", refs={Integer.class}, tree="[0]")
+    @Export(name="numNodes", type=Integer.class, parameters={})
     private Output<Integer> numNodes;
 
     /**
@@ -263,7 +263,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * in terraform.
      * 
      */
-    @Export(name="processingUnits", refs={Integer.class}, tree="[0]")
+    @Export(name="processingUnits", type=Integer.class, parameters={})
     private Output<Integer> processingUnits;
 
     /**
@@ -279,7 +279,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -294,7 +294,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance status: `CREATING` or `READY`.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

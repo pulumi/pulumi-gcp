@@ -129,7 +129,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -149,7 +149,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */
-    @Export(name="availabilityType", refs={String.class}, tree="[0]")
+    @Export(name="availabilityType", type=String.class, parameters={})
     private Output<String> availabilityType;
 
     /**
@@ -170,7 +170,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
      * 
      */
-    @Export(name="cluster", refs={String.class}, tree="[0]")
+    @Export(name="cluster", type=String.class, parameters={})
     private Output<String> cluster;
 
     /**
@@ -185,7 +185,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Time the Instance was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -199,7 +199,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      * 
      */
-    @Export(name="databaseFlags", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="databaseFlags", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> databaseFlags;
 
     /**
@@ -213,7 +213,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * User-settable and human-readable display name for the Instance.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -227,7 +227,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
-    @Export(name="gceZone", refs={String.class}, tree="[0]")
+    @Export(name="gceZone", type=String.class, parameters={})
     private Output</* @Nullable */ String> gceZone;
 
     /**
@@ -243,7 +243,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
     /**
@@ -260,7 +260,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
-    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
@@ -275,7 +275,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The IP address for the Instance. This is the connection endpoint for an end-user application.
      * 
      */
-    @Export(name="ipAddress", refs={String.class}, tree="[0]")
+    @Export(name="ipAddress", type=String.class, parameters={})
     private Output<String> ipAddress;
 
     /**
@@ -289,7 +289,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * User-defined labels for the alloydb instance.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -304,7 +304,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="machineConfig", refs={InstanceMachineConfig.class}, tree="[0]")
+    @Export(name="machineConfig", type=InstanceMachineConfig.class, parameters={})
     private Output<InstanceMachineConfig> machineConfig;
 
     /**
@@ -319,7 +319,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the instance resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -334,7 +334,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="readPoolConfig", refs={InstanceReadPoolConfig.class}, tree="[0]")
+    @Export(name="readPoolConfig", type=InstanceReadPoolConfig.class, parameters={})
     private Output</* @Nullable */ InstanceReadPoolConfig> readPoolConfig;
 
     /**
@@ -349,7 +349,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
-    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
+    @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
@@ -363,7 +363,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The current state of the alloydb instance.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -377,7 +377,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The system-generated UID of the resource.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -391,7 +391,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Time the Instance was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

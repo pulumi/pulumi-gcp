@@ -45,7 +45,7 @@ public class RegionBackendServiceIamPolicy extends com.pulumi.resources.CustomRe
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -59,7 +59,7 @@ public class RegionBackendServiceIamPolicy extends com.pulumi.resources.CustomRe
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -74,7 +74,7 @@ public class RegionBackendServiceIamPolicy extends com.pulumi.resources.CustomRe
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**
@@ -102,7 +102,7 @@ public class RegionBackendServiceIamPolicy extends com.pulumi.resources.CustomRe
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -133,7 +133,7 @@ public class RegionBackendServiceIamPolicy extends com.pulumi.resources.CustomRe
      * region is specified, it is taken from the provider configuration.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

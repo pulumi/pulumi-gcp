@@ -959,7 +959,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> pulumi.Output[Optional[str]]:
+    def content(self) -> pulumi.Output[str]:
         """
         Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         """

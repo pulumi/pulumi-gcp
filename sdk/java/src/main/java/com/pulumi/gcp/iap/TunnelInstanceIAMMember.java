@@ -299,7 +299,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={TunnelInstanceIAMMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=TunnelInstanceIAMMemberCondition.class, parameters={})
     private Output</* @Nullable */ TunnelInstanceIAMMemberCondition> condition;
 
     /**
@@ -314,7 +314,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -328,7 +328,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -338,7 +338,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
     public Output<String> instance() {
         return this.instance;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -361,7 +361,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -390,7 +390,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -402,7 +402,7 @@ public class TunnelInstanceIAMMember extends com.pulumi.resources.CustomResource
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     public Output<String> zone() {

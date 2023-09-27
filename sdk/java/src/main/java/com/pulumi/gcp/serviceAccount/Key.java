@@ -111,7 +111,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Arbitrary map of values that, when changed, will trigger a new key to be generated.
      * 
      */
-    @Export(name="keepers", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="keepers", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> keepers;
 
     /**
@@ -128,7 +128,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * (only used on create)
      * 
      */
-    @Export(name="keyAlgorithm", refs={String.class}, tree="[0]")
+    @Export(name="keyAlgorithm", type=String.class, parameters={})
     private Output</* @Nullable */ String> keyAlgorithm;
 
     /**
@@ -145,7 +145,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The name used for this key pair
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -160,7 +160,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * service account keys through the CLI or web console. This is only populated when creating a new key.
      * 
      */
-    @Export(name="privateKey", refs={String.class}, tree="[0]")
+    @Export(name="privateKey", type=String.class, parameters={})
     private Output<String> privateKey;
 
     /**
@@ -175,7 +175,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
      * 
      */
-    @Export(name="privateKeyType", refs={String.class}, tree="[0]")
+    @Export(name="privateKeyType", type=String.class, parameters={})
     private Output</* @Nullable */ String> privateKeyType;
 
     /**
@@ -189,7 +189,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The public key, base64 encoded
      * 
      */
-    @Export(name="publicKey", refs={String.class}, tree="[0]")
+    @Export(name="publicKey", type=String.class, parameters={})
     private Output<String> publicKey;
 
     /**
@@ -203,7 +203,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
      * 
      */
-    @Export(name="publicKeyData", refs={String.class}, tree="[0]")
+    @Export(name="publicKeyData", type=String.class, parameters={})
     private Output</* @Nullable */ String> publicKeyData;
 
     /**
@@ -217,7 +217,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      * 
      */
-    @Export(name="publicKeyType", refs={String.class}, tree="[0]")
+    @Export(name="publicKeyType", type=String.class, parameters={})
     private Output</* @Nullable */ String> publicKeyType;
 
     /**
@@ -236,7 +236,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * unique id. Substituting `-` as a wildcard for the `{PROJECT_ID}` will infer the project from the account.
      * 
      */
-    @Export(name="serviceAccountId", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccountId", type=String.class, parameters={})
     private Output<String> serviceAccountId;
 
     /**
@@ -255,7 +255,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The key can be used after this timestamp. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="validAfter", refs={String.class}, tree="[0]")
+    @Export(name="validAfter", type=String.class, parameters={})
     private Output<String> validAfter;
 
     /**
@@ -270,7 +270,7 @@ public class Key extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="validBefore", refs={String.class}, tree="[0]")
+    @Export(name="validBefore", type=String.class, parameters={})
     private Output<String> validBefore;
 
     /**

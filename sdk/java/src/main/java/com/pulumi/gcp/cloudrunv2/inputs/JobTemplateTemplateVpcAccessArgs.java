@@ -5,7 +5,9 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVpcAccessNetworkInterfaceArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,8 +36,6 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
      * Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
-     * ***
-     * 
      */
     @Import(name="egress")
     private @Nullable Output<String> egress;
@@ -44,11 +44,26 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
      * @return Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> egress() {
         return Optional.ofNullable(this.egress);
+    }
+
+    /**
+     * Direct VPC egress settings. Currently only single network interface is supported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkInterfaces")
+    private @Nullable Output<List<JobTemplateTemplateVpcAccessNetworkInterfaceArgs>> networkInterfaces;
+
+    /**
+     * @return Direct VPC egress settings. Currently only single network interface is supported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<JobTemplateTemplateVpcAccessNetworkInterfaceArgs>>> networkInterfaces() {
+        return Optional.ofNullable(this.networkInterfaces);
     }
 
     private JobTemplateTemplateVpcAccessArgs() {}
@@ -56,6 +71,7 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
     private JobTemplateTemplateVpcAccessArgs(JobTemplateTemplateVpcAccessArgs $) {
         this.connector = $.connector;
         this.egress = $.egress;
+        this.networkInterfaces = $.networkInterfaces;
     }
 
     public static Builder builder() {
@@ -101,8 +117,6 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
          * @param egress Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -115,13 +129,45 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
          * @param egress Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder egress(String egress) {
             return egress(Output.of(egress));
+        }
+
+        /**
+         * @param networkInterfaces Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(@Nullable Output<List<JobTemplateTemplateVpcAccessNetworkInterfaceArgs>> networkInterfaces) {
+            $.networkInterfaces = networkInterfaces;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaces Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(List<JobTemplateTemplateVpcAccessNetworkInterfaceArgs> networkInterfaces) {
+            return networkInterfaces(Output.of(networkInterfaces));
+        }
+
+        /**
+         * @param networkInterfaces Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(JobTemplateTemplateVpcAccessNetworkInterfaceArgs... networkInterfaces) {
+            return networkInterfaces(List.of(networkInterfaces));
         }
 
         public JobTemplateTemplateVpcAccessArgs build() {

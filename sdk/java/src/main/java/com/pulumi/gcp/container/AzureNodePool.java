@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.AzureNodePoolArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolState;
 import com.pulumi.gcp.container.outputs.AzureNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.AzureNodePoolConfig;
+import com.pulumi.gcp.container.outputs.AzureNodePoolManagement;
 import com.pulumi.gcp.container.outputs.AzureNodePoolMaxPodsConstraint;
 import java.lang.Boolean;
 import java.lang.String;
@@ -52,6 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AzureNodePoolConfigRootVolumeArgs;
  * import com.pulumi.gcp.container.inputs.AzureNodePoolMaxPodsConstraintArgs;
+ * import com.pulumi.gcp.container.inputs.AzureNodePoolManagementArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -132,6 +134,9 @@ import javax.annotation.Nullable;
  *             .subnetId(&#34;/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default&#34;)
  *             .version(versions.applyValue(getAzureVersionsResult -&gt; getAzureVersionsResult.validVersions()[0]))
  *             .annotations(Map.of(&#34;annotation-one&#34;, &#34;value-one&#34;))
+ *             .management(AzureNodePoolManagementArgs.builder()
+ *                 .autoRepair(true)
+ *                 .build())
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
@@ -162,7 +167,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -176,7 +181,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Autoscaler configuration for this node pool.
      * 
      */
-    @Export(name="autoscaling", refs={AzureNodePoolAutoscaling.class}, tree="[0]")
+    @Export(name="autoscaling", type=AzureNodePoolAutoscaling.class, parameters={})
     private Output<AzureNodePoolAutoscaling> autoscaling;
 
     /**
@@ -190,7 +195,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
      * 
      */
-    @Export(name="azureAvailabilityZone", refs={String.class}, tree="[0]")
+    @Export(name="azureAvailabilityZone", type=String.class, parameters={})
     private Output<String> azureAvailabilityZone;
 
     /**
@@ -204,7 +209,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The azureCluster for the resource
      * 
      */
-    @Export(name="cluster", refs={String.class}, tree="[0]")
+    @Export(name="cluster", type=String.class, parameters={})
     private Output<String> cluster;
 
     /**
@@ -218,7 +223,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The node configuration of the node pool.
      * 
      */
-    @Export(name="config", refs={AzureNodePoolConfig.class}, tree="[0]")
+    @Export(name="config", type=AzureNodePoolConfig.class, parameters={})
     private Output<AzureNodePoolConfig> config;
 
     /**
@@ -232,7 +237,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this node pool was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -246,7 +251,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -260,7 +265,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -271,10 +276,24 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * The Management configuration for this node pool.
+     * 
+     */
+    @Export(name="management", type=AzureNodePoolManagement.class, parameters={})
+    private Output<AzureNodePoolManagement> management;
+
+    /**
+     * @return The Management configuration for this node pool.
+     * 
+     */
+    public Output<AzureNodePoolManagement> management() {
+        return this.management;
+    }
+    /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      * 
      */
-    @Export(name="maxPodsConstraint", refs={AzureNodePoolMaxPodsConstraint.class}, tree="[0]")
+    @Export(name="maxPodsConstraint", type=AzureNodePoolMaxPodsConstraint.class, parameters={})
     private Output<AzureNodePoolMaxPodsConstraint> maxPodsConstraint;
 
     /**
@@ -288,7 +307,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The name of this resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -302,7 +321,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -316,7 +335,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Output only. If set, there are currently pending changes to the node pool.
      * 
      */
-    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
+    @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
@@ -330,7 +349,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -344,7 +363,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The ARM ID of the subnet where the node pool VMs run. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
      * 
      */
-    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    @Export(name="subnetId", type=String.class, parameters={})
     private Output<String> subnetId;
 
     /**
@@ -358,7 +377,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Output only. A globally unique identifier for the node pool.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -372,7 +391,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this node pool was last updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -386,7 +405,7 @@ public class AzureNodePool extends com.pulumi.resources.CustomResource {
      * The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
      * 
      */
-    @Export(name="version", refs={String.class}, tree="[0]")
+    @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**

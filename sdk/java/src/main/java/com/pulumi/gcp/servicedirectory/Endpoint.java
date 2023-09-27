@@ -175,7 +175,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * IPv4 or IPv6 address of the endpoint.
      * 
      */
-    @Export(name="address", refs={String.class}, tree="[0]")
+    @Export(name="address", type=String.class, parameters={})
     private Output</* @Nullable */ String> address;
 
     /**
@@ -192,7 +192,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="endpointId", refs={String.class}, tree="[0]")
+    @Export(name="endpointId", type=String.class, parameters={})
     private Output<String> endpointId;
 
     /**
@@ -212,7 +212,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Metadata that goes beyond any these limits will be rejected.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -230,7 +230,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -245,7 +245,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -260,7 +260,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * range of [0, 65535]. If unspecified, the default is 0.
      * 
      */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
+    @Export(name="port", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -275,7 +275,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The resource name of the service that this endpoint provides.
      * 
      */
-    @Export(name="service", refs={String.class}, tree="[0]")
+    @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**

@@ -78,7 +78,7 @@ import (
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Automatic: pulumi.Bool(true),
+//					Auto: nil,
 //				},
 //			})
 //			if err != nil {
@@ -233,6 +233,55 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Job Directvpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
+//				Template: &cloudrunv2.JobTemplateArgs{
+//					Template: &cloudrunv2.JobTemplateTemplateArgs{
+//						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+//							&cloudrunv2.JobTemplateTemplateContainerArgs{
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
+//							},
+//						},
+//						VpcAccess: &cloudrunv2.JobTemplateTemplateVpcAccessArgs{
+//							NetworkInterfaces: cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArray{
+//								&cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs{
+//									Network:    pulumi.String("default"),
+//									Subnetwork: pulumi.String("default"),
+//									Tags: pulumi.StringArray{
+//										pulumi.String("tag1"),
+//										pulumi.String("tag2"),
+//										pulumi.String("tag3"),
+//									},
+//								},
+//							},
+//							Egress: pulumi.String("ALL_TRAFFIC"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudrunv2 Job Secret
 //
 // ```go
@@ -254,7 +303,7 @@ import (
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Automatic: pulumi.Bool(true),
+//					Auto: nil,
 //				},
 //			})
 //			if err != nil {

@@ -176,7 +176,7 @@ public class ApiConfigIamPolicy extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="api", refs={String.class}, tree="[0]")
+    @Export(name="api", type=String.class, parameters={})
     private Output<String> api;
 
     /**
@@ -187,7 +187,7 @@ public class ApiConfigIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> api() {
         return this.api;
     }
-    @Export(name="apiConfig", refs={String.class}, tree="[0]")
+    @Export(name="apiConfig", type=String.class, parameters={})
     private Output<String> apiConfig;
 
     public Output<String> apiConfig() {
@@ -197,7 +197,7 @@ public class ApiConfigIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -212,7 +212,7 @@ public class ApiConfigIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**
@@ -240,7 +240,7 @@ public class ApiConfigIamPolicy extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

@@ -9,6 +9,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterNetworkConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
 import java.lang.String;
@@ -157,20 +158,51 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
-     */
-    @Import(name="network", required=true)
-    private Output<String> network;
-
-    /**
-     * @return The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-     * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
+     * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * 
+     * @deprecated
+     * `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    @Deprecated /* `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration. */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return (Optional, Deprecated)
+     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+     * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
+     * 
+     * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * 
+     * @deprecated
+     * `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+     * 
+     */
+    @Deprecated /* `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration. */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * Metadata related to network configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<ClusterNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return Metadata related to network configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
     }
 
     /**
@@ -236,6 +268,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.location = $.location;
         this.network = $.network;
+        this.networkConfig = $.networkConfig;
         this.project = $.project;
         this.restoreBackupSource = $.restoreBackupSource;
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
@@ -442,26 +475,63 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+         * @param network (Optional, Deprecated)
+         * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
          * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
+         * 
+         * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+         * 
          */
-        public Builder network(Output<String> network) {
+        @Deprecated /* `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration. */
+        public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
 
         /**
-         * @param network The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+         * @param network (Optional, Deprecated)
+         * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
          * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
+         * 
+         * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+         * 
+         */
+        @Deprecated /* `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration. */
+        public Builder network(String network) {
+            return network(Output.of(network));
+        }
+
+        /**
+         * @param networkConfig Metadata related to network configuration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder network(String network) {
-            return network(Output.of(network));
+        public Builder networkConfig(@Nullable Output<ClusterNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig Metadata related to network configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(ClusterNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
         }
 
         /**
@@ -536,7 +606,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         public ClusterArgs build() {
             $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             return $;
         }
     }

@@ -79,7 +79,7 @@ public class SharedVPCHostProject extends com.pulumi.resources.CustomResource {
      * The ID of the project that will serve as a Shared VPC host project
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

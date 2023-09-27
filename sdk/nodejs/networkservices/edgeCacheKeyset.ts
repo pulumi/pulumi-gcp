@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
  *     secretId: "secret-name",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {

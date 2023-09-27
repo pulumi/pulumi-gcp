@@ -92,7 +92,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * The name of the bucket.
      * 
      */
-    @Export(name="bucket", refs={String.class}, tree="[0]")
+    @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     /**
@@ -106,7 +106,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * The domain associated with the entity.
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
+    @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
     /**
@@ -120,7 +120,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * The email address associated with the entity.
      * 
      */
-    @Export(name="email", refs={String.class}, tree="[0]")
+    @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
@@ -150,7 +150,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="entity", refs={String.class}, tree="[0]")
+    @Export(name="entity", type=String.class, parameters={})
     private Output<String> entity;
 
     /**
@@ -181,7 +181,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
      * Possible values are: `OWNER`, `READER`, `WRITER`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output</* @Nullable */ String> role;
 
     /**

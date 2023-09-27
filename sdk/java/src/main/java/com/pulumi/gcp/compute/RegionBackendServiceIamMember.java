@@ -48,7 +48,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={RegionBackendServiceIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=RegionBackendServiceIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ RegionBackendServiceIamMemberCondition> condition;
 
     /**
@@ -63,7 +63,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -73,7 +73,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -83,7 +83,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -141,7 +141,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * region is specified, it is taken from the provider configuration.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -161,7 +161,7 @@ public class RegionBackendServiceIamMember extends com.pulumi.resources.CustomRe
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

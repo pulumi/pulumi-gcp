@@ -222,7 +222,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -242,7 +242,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -264,7 +264,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -281,7 +281,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -296,7 +296,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * The region this gateway should sit in.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -310,7 +310,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -327,7 +327,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
      * 
      */
-    @Export(name="stackType", refs={String.class}, tree="[0]")
+    @Export(name="stackType", type=String.class, parameters={})
     private Output</* @Nullable */ String> stackType;
 
     /**
@@ -345,7 +345,7 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vpnInterfaces", refs={List.class,HaVpnGatewayVpnInterface.class}, tree="[0,1]")
+    @Export(name="vpnInterfaces", type=List.class, parameters={HaVpnGatewayVpnInterface.class})
     private Output<List<HaVpnGatewayVpnInterface>> vpnInterfaces;
 
     /**

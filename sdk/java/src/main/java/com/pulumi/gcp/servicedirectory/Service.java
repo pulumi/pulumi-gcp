@@ -98,7 +98,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Metadata that goes beyond any these limits will be rejected.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -116,7 +116,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * format `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -131,7 +131,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The resource name of the namespace this service will belong to.
      * 
      */
-    @Export(name="namespace", refs={String.class}, tree="[0]")
+    @Export(name="namespace", type=String.class, parameters={})
     private Output<String> namespace;
 
     /**
@@ -148,7 +148,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="serviceId", refs={String.class}, tree="[0]")
+    @Export(name="serviceId", type=String.class, parameters={})
     private Output<String> serviceId;
 
     /**

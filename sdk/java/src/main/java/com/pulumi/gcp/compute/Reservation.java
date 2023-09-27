@@ -101,7 +101,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * reservations that are tied to a commitment.
      * 
      */
-    @Export(name="commitment", refs={String.class}, tree="[0]")
+    @Export(name="commitment", type=String.class, parameters={})
     private Output<String> commitment;
 
     /**
@@ -116,7 +116,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -130,7 +130,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -150,7 +150,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -171,7 +171,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -186,7 +186,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -201,7 +201,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="shareSettings", refs={ReservationShareSettings.class}, tree="[0]")
+    @Export(name="shareSettings", type=ReservationShareSettings.class, parameters={})
     private Output<ReservationShareSettings> shareSettings;
 
     /**
@@ -217,7 +217,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="specificReservation", refs={ReservationSpecificReservation.class}, tree="[0]")
+    @Export(name="specificReservation", type=ReservationSpecificReservation.class, parameters={})
     private Output<ReservationSpecificReservation> specificReservation;
 
     /**
@@ -234,7 +234,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * affinity for any reservation. Defaults to false.
      * 
      */
-    @Export(name="specificReservationRequired", refs={Boolean.class}, tree="[0]")
+    @Export(name="specificReservationRequired", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> specificReservationRequired;
 
     /**
@@ -250,7 +250,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * The status of the reservation.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -264,7 +264,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * The zone where the reservation is made.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

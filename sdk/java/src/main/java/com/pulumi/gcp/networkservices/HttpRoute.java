@@ -371,7 +371,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Time the HttpRoute was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -385,7 +385,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -400,7 +400,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Each gateway reference should match the pattern: projects/*{@literal /}locations/global/gateways/&lt;gateway_name&gt;
      * 
      */
-    @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="gateways", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> gateways;
 
     /**
@@ -415,7 +415,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
      * 
      */
-    @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="hostnames", type=List.class, parameters={String.class})
     private Output<List<String>> hostnames;
 
     /**
@@ -429,7 +429,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the HttpRoute resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -445,7 +445,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * The attached Mesh should be of a type SIDECAR.
      * 
      */
-    @Export(name="meshes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="meshes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> meshes;
 
     /**
@@ -461,7 +461,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Name of the HttpRoute resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -476,7 +476,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -492,7 +492,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rules", refs={List.class,HttpRouteRule.class}, tree="[0,1]")
+    @Export(name="rules", type=List.class, parameters={HttpRouteRule.class})
     private Output<List<HttpRouteRule>> rules;
 
     /**
@@ -507,7 +507,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Server-defined URL of this resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -521,7 +521,7 @@ public class HttpRoute extends com.pulumi.resources.CustomResource {
      * Time the HttpRoute was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

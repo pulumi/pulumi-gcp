@@ -56,6 +56,27 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///     {
     ///         Project = defaultProject.ProjectId,
     ///         AutodeleteAnonymousUsers = true,
+    ///         SignIn = new Gcp.IdentityPlatform.Inputs.ConfigSignInArgs
+    ///         {
+    ///             AllowDuplicateEmails = true,
+    ///             Anonymous = new Gcp.IdentityPlatform.Inputs.ConfigSignInAnonymousArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Email = new Gcp.IdentityPlatform.Inputs.ConfigSignInEmailArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 PasswordRequired = false,
+    ///             },
+    ///             PhoneNumber = new Gcp.IdentityPlatform.Inputs.ConfigSignInPhoneNumberArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 TestPhoneNumbers = 
+    ///                 {
+    ///                     { "+11231231234", "000000" },
+    ///                 },
+    ///             },
+    ///         },
     ///         BlockingFunctions = new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsArgs
     ///         {
     ///             Triggers = new[]
@@ -151,6 +172,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Output("quota")]
         public Output<Outputs.ConfigQuota?> Quota { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration related to local sign in methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("signIn")]
+        public Output<Outputs.ConfigSignIn> SignIn { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Config resource with the given unique name, arguments, and options.
@@ -236,6 +264,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         [Input("quota")]
         public Input<Inputs.ConfigQuotaArgs>? Quota { get; set; }
 
+        /// <summary>
+        /// Configuration related to local sign in methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("signIn")]
+        public Input<Inputs.ConfigSignInArgs>? SignIn { get; set; }
+
         public ConfigArgs()
         {
         }
@@ -288,6 +323,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("quota")]
         public Input<Inputs.ConfigQuotaGetArgs>? Quota { get; set; }
+
+        /// <summary>
+        /// Configuration related to local sign in methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("signIn")]
+        public Input<Inputs.ConfigSignInGetArgs>? SignIn { get; set; }
 
         public ConfigState()
         {

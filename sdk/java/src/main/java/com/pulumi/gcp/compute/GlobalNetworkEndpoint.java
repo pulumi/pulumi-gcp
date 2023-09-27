@@ -90,7 +90,7 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
      * 
      */
-    @Export(name="fqdn", refs={String.class}, tree="[0]")
+    @Export(name="fqdn", type=String.class, parameters={})
     private Output</* @Nullable */ String> fqdn;
 
     /**
@@ -107,7 +107,7 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="globalNetworkEndpointGroup", refs={String.class}, tree="[0]")
+    @Export(name="globalNetworkEndpointGroup", type=String.class, parameters={})
     private Output<String> globalNetworkEndpointGroup;
 
     /**
@@ -123,7 +123,7 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * IPv4 address external endpoint.
      * 
      */
-    @Export(name="ipAddress", refs={String.class}, tree="[0]")
+    @Export(name="ipAddress", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipAddress;
 
     /**
@@ -137,7 +137,7 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * Port number of the external endpoint.
      * 
      */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
+    @Export(name="port", type=Integer.class, parameters={})
     private Output<Integer> port;
 
     /**
@@ -152,7 +152,7 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

@@ -92,7 +92,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * Display name.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -107,7 +107,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="errors", refs={List.class,PrivateConnectionError.class}, tree="[0,1]")
+    @Export(name="errors", type=List.class, parameters={PrivateConnectionError.class})
     private Output<List<PrivateConnectionError>> errors;
 
     /**
@@ -122,7 +122,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * Labels.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -136,7 +136,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * The name of the location this private connection is located in.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -150,7 +150,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * The resource&#39;s name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -164,7 +164,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * The private connectivity identifier.
      * 
      */
-    @Export(name="privateConnectionId", refs={String.class}, tree="[0]")
+    @Export(name="privateConnectionId", type=String.class, parameters={})
     private Output<String> privateConnectionId;
 
     /**
@@ -179,7 +179,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -194,7 +194,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * State of the PrivateConnection.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -210,7 +210,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vpcPeeringConfig", refs={PrivateConnectionVpcPeeringConfig.class}, tree="[0]")
+    @Export(name="vpcPeeringConfig", type=PrivateConnectionVpcPeeringConfig.class, parameters={})
     private Output<PrivateConnectionVpcPeeringConfig> vpcPeeringConfig;
 
     /**

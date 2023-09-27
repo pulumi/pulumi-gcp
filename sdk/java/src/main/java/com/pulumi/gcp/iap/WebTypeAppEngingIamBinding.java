@@ -293,7 +293,7 @@ public class WebTypeAppEngingIamBinding extends com.pulumi.resources.CustomResou
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="appId", refs={String.class}, tree="[0]")
+    @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
@@ -308,7 +308,7 @@ public class WebTypeAppEngingIamBinding extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={WebTypeAppEngingIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=WebTypeAppEngingIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ WebTypeAppEngingIamBindingCondition> condition;
 
     /**
@@ -323,7 +323,7 @@ public class WebTypeAppEngingIamBinding extends com.pulumi.resources.CustomResou
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -333,7 +333,7 @@ public class WebTypeAppEngingIamBinding extends com.pulumi.resources.CustomResou
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -356,7 +356,7 @@ public class WebTypeAppEngingIamBinding extends com.pulumi.resources.CustomResou
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -385,7 +385,7 @@ public class WebTypeAppEngingIamBinding extends com.pulumi.resources.CustomResou
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

@@ -51,6 +51,8 @@ type MembershipBinding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the MembershipBinding was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Labels for this Membership binding.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the membership
 	//
 	// ***
@@ -122,6 +124,8 @@ type membershipBindingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the MembershipBinding was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Labels for this Membership binding.
+	Labels map[string]string `pulumi:"labels"`
 	// Location of the membership
 	//
 	// ***
@@ -152,6 +156,8 @@ type MembershipBindingState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the MembershipBinding was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// Labels for this Membership binding.
+	Labels pulumi.StringMapInput
 	// Location of the membership
 	//
 	// ***
@@ -182,6 +188,8 @@ func (MembershipBindingState) ElementType() reflect.Type {
 }
 
 type membershipBindingArgs struct {
+	// Labels for this Membership binding.
+	Labels map[string]string `pulumi:"labels"`
 	// Location of the membership
 	//
 	// ***
@@ -200,6 +208,8 @@ type membershipBindingArgs struct {
 
 // The set of arguments for constructing a MembershipBinding resource.
 type MembershipBindingArgs struct {
+	// Labels for this Membership binding.
+	Labels pulumi.StringMapInput
 	// Location of the membership
 	//
 	// ***
@@ -335,6 +345,11 @@ func (o MembershipBindingOutput) CreateTime() pulumi.StringOutput {
 // Time the MembershipBinding was deleted in UTC.
 func (o MembershipBindingOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Labels for this Membership binding.
+func (o MembershipBindingOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MembershipBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Location of the membership

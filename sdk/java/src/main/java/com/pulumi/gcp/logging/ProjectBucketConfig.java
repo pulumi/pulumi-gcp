@@ -213,7 +213,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
      * 
      */
-    @Export(name="bucketId", refs={String.class}, tree="[0]")
+    @Export(name="bucketId", type=String.class, parameters={})
     private Output<String> bucketId;
 
     /**
@@ -227,7 +227,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
      * 
      */
-    @Export(name="cmekSettings", refs={ProjectBucketConfigCmekSettings.class}, tree="[0]")
+    @Export(name="cmekSettings", type=ProjectBucketConfigCmekSettings.class, parameters={})
     private Output</* @Nullable */ ProjectBucketConfigCmekSettings> cmekSettings;
 
     /**
@@ -241,7 +241,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * Describes this bucket.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -255,7 +255,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
      * 
      */
-    @Export(name="enableAnalytics", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableAnalytics", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableAnalytics;
 
     /**
@@ -269,7 +269,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      * 
      */
-    @Export(name="lifecycleState", refs={String.class}, tree="[0]")
+    @Export(name="lifecycleState", type=String.class, parameters={})
     private Output<String> lifecycleState;
 
     /**
@@ -283,7 +283,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * The location of the bucket.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -297,7 +297,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
      * 
      */
-    @Export(name="locked", refs={Boolean.class}, tree="[0]")
+    @Export(name="locked", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> locked;
 
     /**
@@ -311,7 +311,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * The resource name of the CMEK settings.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -325,7 +325,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * The parent resource that contains the logging bucket.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -339,7 +339,7 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      * 
      */
-    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
+    @Export(name="retentionDays", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**

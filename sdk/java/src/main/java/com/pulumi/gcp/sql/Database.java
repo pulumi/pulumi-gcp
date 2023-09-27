@@ -138,7 +138,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * a value of `UTF8` at creation time.
      * 
      */
-    @Export(name="charset", refs={String.class}, tree="[0]")
+    @Export(name="charset", type=String.class, parameters={})
     private Output<String> charset;
 
     /**
@@ -160,7 +160,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * a value of `en_US.UTF8` at creation time.
      * 
      */
-    @Export(name="collation", refs={String.class}, tree="[0]")
+    @Export(name="collation", type=String.class, parameters={})
     private Output<String> collation;
 
     /**
@@ -181,7 +181,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
      * 
      */
-    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -201,7 +201,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -219,7 +219,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * This does not include the project ID or instance name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -235,7 +235,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -250,7 +250,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**

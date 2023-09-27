@@ -58,8 +58,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int MinReplicas;
         /// <summary>
         /// Defines operating mode for this policy.
-        /// Default value is `ON`.
-        /// Possible values are: `OFF`, `ONLY_UP`, `ON`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

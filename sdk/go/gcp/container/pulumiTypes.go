@@ -191,6 +191,171 @@ func (o AttachedClusterAuthorizationPtrOutput) AdminUsers() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type AttachedClusterBinaryAuthorization struct {
+	// Configure Binary Authorization evaluation mode.
+	// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+	EvaluationMode *string `pulumi:"evaluationMode"`
+}
+
+// AttachedClusterBinaryAuthorizationInput is an input type that accepts AttachedClusterBinaryAuthorizationArgs and AttachedClusterBinaryAuthorizationOutput values.
+// You can construct a concrete instance of `AttachedClusterBinaryAuthorizationInput` via:
+//
+//	AttachedClusterBinaryAuthorizationArgs{...}
+type AttachedClusterBinaryAuthorizationInput interface {
+	pulumi.Input
+
+	ToAttachedClusterBinaryAuthorizationOutput() AttachedClusterBinaryAuthorizationOutput
+	ToAttachedClusterBinaryAuthorizationOutputWithContext(context.Context) AttachedClusterBinaryAuthorizationOutput
+}
+
+type AttachedClusterBinaryAuthorizationArgs struct {
+	// Configure Binary Authorization evaluation mode.
+	// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
+}
+
+func (AttachedClusterBinaryAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i AttachedClusterBinaryAuthorizationArgs) ToAttachedClusterBinaryAuthorizationOutput() AttachedClusterBinaryAuthorizationOutput {
+	return i.ToAttachedClusterBinaryAuthorizationOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterBinaryAuthorizationArgs) ToAttachedClusterBinaryAuthorizationOutputWithContext(ctx context.Context) AttachedClusterBinaryAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterBinaryAuthorizationOutput)
+}
+
+func (i AttachedClusterBinaryAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[AttachedClusterBinaryAuthorization] {
+	return pulumix.Output[AttachedClusterBinaryAuthorization]{
+		OutputState: i.ToAttachedClusterBinaryAuthorizationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AttachedClusterBinaryAuthorizationArgs) ToAttachedClusterBinaryAuthorizationPtrOutput() AttachedClusterBinaryAuthorizationPtrOutput {
+	return i.ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterBinaryAuthorizationArgs) ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterBinaryAuthorizationOutput).ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterBinaryAuthorizationPtrInput is an input type that accepts AttachedClusterBinaryAuthorizationArgs, AttachedClusterBinaryAuthorizationPtr and AttachedClusterBinaryAuthorizationPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterBinaryAuthorizationPtrInput` via:
+//
+//	        AttachedClusterBinaryAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterBinaryAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterBinaryAuthorizationPtrOutput() AttachedClusterBinaryAuthorizationPtrOutput
+	ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(context.Context) AttachedClusterBinaryAuthorizationPtrOutput
+}
+
+type attachedClusterBinaryAuthorizationPtrType AttachedClusterBinaryAuthorizationArgs
+
+func AttachedClusterBinaryAuthorizationPtr(v *AttachedClusterBinaryAuthorizationArgs) AttachedClusterBinaryAuthorizationPtrInput {
+	return (*attachedClusterBinaryAuthorizationPtrType)(v)
+}
+
+func (*attachedClusterBinaryAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (i *attachedClusterBinaryAuthorizationPtrType) ToAttachedClusterBinaryAuthorizationPtrOutput() AttachedClusterBinaryAuthorizationPtrOutput {
+	return i.ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterBinaryAuthorizationPtrType) ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterBinaryAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterBinaryAuthorizationPtrOutput)
+}
+
+func (i *attachedClusterBinaryAuthorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AttachedClusterBinaryAuthorization] {
+	return pulumix.Output[*AttachedClusterBinaryAuthorization]{
+		OutputState: i.ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AttachedClusterBinaryAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterBinaryAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o AttachedClusterBinaryAuthorizationOutput) ToAttachedClusterBinaryAuthorizationOutput() AttachedClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o AttachedClusterBinaryAuthorizationOutput) ToAttachedClusterBinaryAuthorizationOutputWithContext(ctx context.Context) AttachedClusterBinaryAuthorizationOutput {
+	return o
+}
+
+func (o AttachedClusterBinaryAuthorizationOutput) ToAttachedClusterBinaryAuthorizationPtrOutput() AttachedClusterBinaryAuthorizationPtrOutput {
+	return o.ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterBinaryAuthorizationOutput) ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterBinaryAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterBinaryAuthorization) *AttachedClusterBinaryAuthorization {
+		return &v
+	}).(AttachedClusterBinaryAuthorizationPtrOutput)
+}
+
+func (o AttachedClusterBinaryAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[AttachedClusterBinaryAuthorization] {
+	return pulumix.Output[AttachedClusterBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Configure Binary Authorization evaluation mode.
+// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+func (o AttachedClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttachedClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
+}
+
+type AttachedClusterBinaryAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterBinaryAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterBinaryAuthorization)(nil)).Elem()
+}
+
+func (o AttachedClusterBinaryAuthorizationPtrOutput) ToAttachedClusterBinaryAuthorizationPtrOutput() AttachedClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o AttachedClusterBinaryAuthorizationPtrOutput) ToAttachedClusterBinaryAuthorizationPtrOutputWithContext(ctx context.Context) AttachedClusterBinaryAuthorizationPtrOutput {
+	return o
+}
+
+func (o AttachedClusterBinaryAuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AttachedClusterBinaryAuthorization] {
+	return pulumix.Output[*AttachedClusterBinaryAuthorization]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AttachedClusterBinaryAuthorizationPtrOutput) Elem() AttachedClusterBinaryAuthorizationOutput {
+	return o.ApplyT(func(v *AttachedClusterBinaryAuthorization) AttachedClusterBinaryAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterBinaryAuthorization
+		return ret
+	}).(AttachedClusterBinaryAuthorizationOutput)
+}
+
+// Configure Binary Authorization evaluation mode.
+// Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+func (o AttachedClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterBinaryAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type AttachedClusterError struct {
 	// Human-friendly description of the error.
 	Message *string `pulumi:"message"`
@@ -6488,6 +6653,167 @@ func (o AwsNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) AwsNodePoolC
 	}).(AwsNodePoolConfigTaintOutput)
 }
 
+type AwsNodePoolManagement struct {
+	// Optional. Whether or not the nodes will be automatically repaired.
+	AutoRepair *bool `pulumi:"autoRepair"`
+}
+
+// AwsNodePoolManagementInput is an input type that accepts AwsNodePoolManagementArgs and AwsNodePoolManagementOutput values.
+// You can construct a concrete instance of `AwsNodePoolManagementInput` via:
+//
+//	AwsNodePoolManagementArgs{...}
+type AwsNodePoolManagementInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolManagementOutput() AwsNodePoolManagementOutput
+	ToAwsNodePoolManagementOutputWithContext(context.Context) AwsNodePoolManagementOutput
+}
+
+type AwsNodePoolManagementArgs struct {
+	// Optional. Whether or not the nodes will be automatically repaired.
+	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
+}
+
+func (AwsNodePoolManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolManagement)(nil)).Elem()
+}
+
+func (i AwsNodePoolManagementArgs) ToAwsNodePoolManagementOutput() AwsNodePoolManagementOutput {
+	return i.ToAwsNodePoolManagementOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolManagementArgs) ToAwsNodePoolManagementOutputWithContext(ctx context.Context) AwsNodePoolManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolManagementOutput)
+}
+
+func (i AwsNodePoolManagementArgs) ToOutput(ctx context.Context) pulumix.Output[AwsNodePoolManagement] {
+	return pulumix.Output[AwsNodePoolManagement]{
+		OutputState: i.ToAwsNodePoolManagementOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AwsNodePoolManagementArgs) ToAwsNodePoolManagementPtrOutput() AwsNodePoolManagementPtrOutput {
+	return i.ToAwsNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolManagementArgs) ToAwsNodePoolManagementPtrOutputWithContext(ctx context.Context) AwsNodePoolManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolManagementOutput).ToAwsNodePoolManagementPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolManagementPtrInput is an input type that accepts AwsNodePoolManagementArgs, AwsNodePoolManagementPtr and AwsNodePoolManagementPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolManagementPtrInput` via:
+//
+//	        AwsNodePoolManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsNodePoolManagementPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolManagementPtrOutput() AwsNodePoolManagementPtrOutput
+	ToAwsNodePoolManagementPtrOutputWithContext(context.Context) AwsNodePoolManagementPtrOutput
+}
+
+type awsNodePoolManagementPtrType AwsNodePoolManagementArgs
+
+func AwsNodePoolManagementPtr(v *AwsNodePoolManagementArgs) AwsNodePoolManagementPtrInput {
+	return (*awsNodePoolManagementPtrType)(v)
+}
+
+func (*awsNodePoolManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolManagement)(nil)).Elem()
+}
+
+func (i *awsNodePoolManagementPtrType) ToAwsNodePoolManagementPtrOutput() AwsNodePoolManagementPtrOutput {
+	return i.ToAwsNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolManagementPtrType) ToAwsNodePoolManagementPtrOutputWithContext(ctx context.Context) AwsNodePoolManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolManagementPtrOutput)
+}
+
+func (i *awsNodePoolManagementPtrType) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePoolManagement] {
+	return pulumix.Output[*AwsNodePoolManagement]{
+		OutputState: i.ToAwsNodePoolManagementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AwsNodePoolManagementOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolManagement)(nil)).Elem()
+}
+
+func (o AwsNodePoolManagementOutput) ToAwsNodePoolManagementOutput() AwsNodePoolManagementOutput {
+	return o
+}
+
+func (o AwsNodePoolManagementOutput) ToAwsNodePoolManagementOutputWithContext(ctx context.Context) AwsNodePoolManagementOutput {
+	return o
+}
+
+func (o AwsNodePoolManagementOutput) ToAwsNodePoolManagementPtrOutput() AwsNodePoolManagementPtrOutput {
+	return o.ToAwsNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolManagementOutput) ToAwsNodePoolManagementPtrOutputWithContext(ctx context.Context) AwsNodePoolManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolManagement) *AwsNodePoolManagement {
+		return &v
+	}).(AwsNodePoolManagementPtrOutput)
+}
+
+func (o AwsNodePoolManagementOutput) ToOutput(ctx context.Context) pulumix.Output[AwsNodePoolManagement] {
+	return pulumix.Output[AwsNodePoolManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Whether or not the nodes will be automatically repaired.
+func (o AwsNodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+}
+
+type AwsNodePoolManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolManagement)(nil)).Elem()
+}
+
+func (o AwsNodePoolManagementPtrOutput) ToAwsNodePoolManagementPtrOutput() AwsNodePoolManagementPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolManagementPtrOutput) ToAwsNodePoolManagementPtrOutputWithContext(ctx context.Context) AwsNodePoolManagementPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsNodePoolManagement] {
+	return pulumix.Output[*AwsNodePoolManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AwsNodePoolManagementPtrOutput) Elem() AwsNodePoolManagementOutput {
+	return o.ApplyT(func(v *AwsNodePoolManagement) AwsNodePoolManagement {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolManagement
+		return ret
+	}).(AwsNodePoolManagementOutput)
+}
+
+// Optional. Whether or not the nodes will be automatically repaired.
+func (o AwsNodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRepair
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AwsNodePoolMaxPodsConstraint struct {
 	// The maximum number of pods to schedule on a single node.
 	//
@@ -10186,6 +10512,167 @@ func (o AzureNodePoolConfigSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type AzureNodePoolManagement struct {
+	// Optional. Whether or not the nodes will be automatically repaired.
+	AutoRepair *bool `pulumi:"autoRepair"`
+}
+
+// AzureNodePoolManagementInput is an input type that accepts AzureNodePoolManagementArgs and AzureNodePoolManagementOutput values.
+// You can construct a concrete instance of `AzureNodePoolManagementInput` via:
+//
+//	AzureNodePoolManagementArgs{...}
+type AzureNodePoolManagementInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolManagementOutput() AzureNodePoolManagementOutput
+	ToAzureNodePoolManagementOutputWithContext(context.Context) AzureNodePoolManagementOutput
+}
+
+type AzureNodePoolManagementArgs struct {
+	// Optional. Whether or not the nodes will be automatically repaired.
+	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
+}
+
+func (AzureNodePoolManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolManagement)(nil)).Elem()
+}
+
+func (i AzureNodePoolManagementArgs) ToAzureNodePoolManagementOutput() AzureNodePoolManagementOutput {
+	return i.ToAzureNodePoolManagementOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolManagementArgs) ToAzureNodePoolManagementOutputWithContext(ctx context.Context) AzureNodePoolManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolManagementOutput)
+}
+
+func (i AzureNodePoolManagementArgs) ToOutput(ctx context.Context) pulumix.Output[AzureNodePoolManagement] {
+	return pulumix.Output[AzureNodePoolManagement]{
+		OutputState: i.ToAzureNodePoolManagementOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i AzureNodePoolManagementArgs) ToAzureNodePoolManagementPtrOutput() AzureNodePoolManagementPtrOutput {
+	return i.ToAzureNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (i AzureNodePoolManagementArgs) ToAzureNodePoolManagementPtrOutputWithContext(ctx context.Context) AzureNodePoolManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolManagementOutput).ToAzureNodePoolManagementPtrOutputWithContext(ctx)
+}
+
+// AzureNodePoolManagementPtrInput is an input type that accepts AzureNodePoolManagementArgs, AzureNodePoolManagementPtr and AzureNodePoolManagementPtrOutput values.
+// You can construct a concrete instance of `AzureNodePoolManagementPtrInput` via:
+//
+//	        AzureNodePoolManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureNodePoolManagementPtrInput interface {
+	pulumi.Input
+
+	ToAzureNodePoolManagementPtrOutput() AzureNodePoolManagementPtrOutput
+	ToAzureNodePoolManagementPtrOutputWithContext(context.Context) AzureNodePoolManagementPtrOutput
+}
+
+type azureNodePoolManagementPtrType AzureNodePoolManagementArgs
+
+func AzureNodePoolManagementPtr(v *AzureNodePoolManagementArgs) AzureNodePoolManagementPtrInput {
+	return (*azureNodePoolManagementPtrType)(v)
+}
+
+func (*azureNodePoolManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolManagement)(nil)).Elem()
+}
+
+func (i *azureNodePoolManagementPtrType) ToAzureNodePoolManagementPtrOutput() AzureNodePoolManagementPtrOutput {
+	return i.ToAzureNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *azureNodePoolManagementPtrType) ToAzureNodePoolManagementPtrOutputWithContext(ctx context.Context) AzureNodePoolManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureNodePoolManagementPtrOutput)
+}
+
+func (i *azureNodePoolManagementPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureNodePoolManagement] {
+	return pulumix.Output[*AzureNodePoolManagement]{
+		OutputState: i.ToAzureNodePoolManagementPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type AzureNodePoolManagementOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureNodePoolManagement)(nil)).Elem()
+}
+
+func (o AzureNodePoolManagementOutput) ToAzureNodePoolManagementOutput() AzureNodePoolManagementOutput {
+	return o
+}
+
+func (o AzureNodePoolManagementOutput) ToAzureNodePoolManagementOutputWithContext(ctx context.Context) AzureNodePoolManagementOutput {
+	return o
+}
+
+func (o AzureNodePoolManagementOutput) ToAzureNodePoolManagementPtrOutput() AzureNodePoolManagementPtrOutput {
+	return o.ToAzureNodePoolManagementPtrOutputWithContext(context.Background())
+}
+
+func (o AzureNodePoolManagementOutput) ToAzureNodePoolManagementPtrOutputWithContext(ctx context.Context) AzureNodePoolManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureNodePoolManagement) *AzureNodePoolManagement {
+		return &v
+	}).(AzureNodePoolManagementPtrOutput)
+}
+
+func (o AzureNodePoolManagementOutput) ToOutput(ctx context.Context) pulumix.Output[AzureNodePoolManagement] {
+	return pulumix.Output[AzureNodePoolManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Optional. Whether or not the nodes will be automatically repaired.
+func (o AzureNodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
+}
+
+type AzureNodePoolManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureNodePoolManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureNodePoolManagement)(nil)).Elem()
+}
+
+func (o AzureNodePoolManagementPtrOutput) ToAzureNodePoolManagementPtrOutput() AzureNodePoolManagementPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolManagementPtrOutput) ToAzureNodePoolManagementPtrOutputWithContext(ctx context.Context) AzureNodePoolManagementPtrOutput {
+	return o
+}
+
+func (o AzureNodePoolManagementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureNodePoolManagement] {
+	return pulumix.Output[*AzureNodePoolManagement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o AzureNodePoolManagementPtrOutput) Elem() AzureNodePoolManagementOutput {
+	return o.ApplyT(func(v *AzureNodePoolManagement) AzureNodePoolManagement {
+		if v != nil {
+			return *v
+		}
+		var ret AzureNodePoolManagement
+		return ret
+	}).(AzureNodePoolManagementOutput)
+}
+
+// Optional. Whether or not the nodes will be automatically repaired.
+func (o AzureNodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureNodePoolManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRepair
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AzureNodePoolMaxPodsConstraint struct {
 	// The maximum number of pods to schedule on a single node.
 	//
@@ -10386,7 +10873,9 @@ type ClusterAddonsConfig struct {
 	// All cluster nodes running GKE 1.15 and higher are recreated.**
 	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
 	// .
-	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+	//
+	// **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 	GcePersistentDiskCsiDriverConfig *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Filestore CSI driver addon,
 	// which allows the usage of filestore instance as volumes.
@@ -10466,7 +10955,9 @@ type ClusterAddonsConfigArgs struct {
 	// All cluster nodes running GKE 1.15 and higher are recreated.**
 	DnsCacheConfig ClusterAddonsConfigDnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
 	// .
-	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+	//
+	// **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 	GcePersistentDiskCsiDriverConfig ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput `pulumi:"gcePersistentDiskCsiDriverConfig"`
 	// The status of the Filestore CSI driver addon,
 	// which allows the usage of filestore instance as volumes.
@@ -10641,7 +11132,9 @@ func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheC
 }
 
 // .
-// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+//
+// **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 func (o ClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfig() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 		return v.GcePersistentDiskCsiDriverConfig
@@ -10799,7 +11292,9 @@ func (o ClusterAddonsConfigPtrOutput) DnsCacheConfig() ClusterAddonsConfigDnsCac
 }
 
 // .
-// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+//
+// **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 func (o ClusterAddonsConfigPtrOutput) GcePersistentDiskCsiDriverConfig() ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 		if v == nil {
@@ -20601,6 +21096,11 @@ type ClusterNodeConfig struct {
 	// }
 	// ```
 	EphemeralStorageLocalSsdConfig *ClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+	// Node Pool must enable gvnic.
+	// GKE version 1.25.2-gke.1700 or later.
+	// Structure is documented below.
+	FastSocket *ClusterNodeConfigFastSocket `pulumi:"fastSocket"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -20827,6 +21327,11 @@ type ClusterNodeConfigArgs struct {
 	// }
 	// ```
 	EphemeralStorageLocalSsdConfig ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+	// Node Pool must enable gvnic.
+	// GKE version 1.25.2-gke.1700 or later.
+	// Structure is documented below.
+	FastSocket ClusterNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -21163,6 +21668,14 @@ func (o ClusterNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodeCon
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
 	}).(ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+// Node Pool must enable gvnic.
+// GKE version 1.25.2-gke.1700 or later.
+// Structure is documented below.
+func (o ClusterNodeConfigOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigFastSocket { return v.FastSocket }).(ClusterNodeConfigFastSocketPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -21563,6 +22076,19 @@ func (o ClusterNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() ClusterNode
 		}
 		return v.EphemeralStorageLocalSsdConfig
 	}).(ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+// Node Pool must enable gvnic.
+// GKE version 1.25.2-gke.1700 or later.
+// Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) FastSocket() ClusterNodeConfigFastSocketPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigFastSocket {
+		if v == nil {
+			return nil
+		}
+		return v.FastSocket
+	}).(ClusterNodeConfigFastSocketPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -22609,6 +23135,167 @@ func (o ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) LocalSsdCount(
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeConfigFastSocket struct {
+	// Whether or not the NCCL Fast Socket is enabled
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodeConfigFastSocketInput is an input type that accepts ClusterNodeConfigFastSocketArgs and ClusterNodeConfigFastSocketOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigFastSocketInput` via:
+//
+//	ClusterNodeConfigFastSocketArgs{...}
+type ClusterNodeConfigFastSocketInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigFastSocketOutput() ClusterNodeConfigFastSocketOutput
+	ToClusterNodeConfigFastSocketOutputWithContext(context.Context) ClusterNodeConfigFastSocketOutput
+}
+
+type ClusterNodeConfigFastSocketArgs struct {
+	// Whether or not the NCCL Fast Socket is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodeConfigFastSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigFastSocketArgs) ToClusterNodeConfigFastSocketOutput() ClusterNodeConfigFastSocketOutput {
+	return i.ToClusterNodeConfigFastSocketOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigFastSocketArgs) ToClusterNodeConfigFastSocketOutputWithContext(ctx context.Context) ClusterNodeConfigFastSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigFastSocketOutput)
+}
+
+func (i ClusterNodeConfigFastSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeConfigFastSocket] {
+	return pulumix.Output[ClusterNodeConfigFastSocket]{
+		OutputState: i.ToClusterNodeConfigFastSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClusterNodeConfigFastSocketArgs) ToClusterNodeConfigFastSocketPtrOutput() ClusterNodeConfigFastSocketPtrOutput {
+	return i.ToClusterNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigFastSocketArgs) ToClusterNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodeConfigFastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigFastSocketOutput).ToClusterNodeConfigFastSocketPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigFastSocketPtrInput is an input type that accepts ClusterNodeConfigFastSocketArgs, ClusterNodeConfigFastSocketPtr and ClusterNodeConfigFastSocketPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigFastSocketPtrInput` via:
+//
+//	        ClusterNodeConfigFastSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigFastSocketPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigFastSocketPtrOutput() ClusterNodeConfigFastSocketPtrOutput
+	ToClusterNodeConfigFastSocketPtrOutputWithContext(context.Context) ClusterNodeConfigFastSocketPtrOutput
+}
+
+type clusterNodeConfigFastSocketPtrType ClusterNodeConfigFastSocketArgs
+
+func ClusterNodeConfigFastSocketPtr(v *ClusterNodeConfigFastSocketArgs) ClusterNodeConfigFastSocketPtrInput {
+	return (*clusterNodeConfigFastSocketPtrType)(v)
+}
+
+func (*clusterNodeConfigFastSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigFastSocketPtrType) ToClusterNodeConfigFastSocketPtrOutput() ClusterNodeConfigFastSocketPtrOutput {
+	return i.ToClusterNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigFastSocketPtrType) ToClusterNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodeConfigFastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigFastSocketPtrOutput)
+}
+
+func (i *clusterNodeConfigFastSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterNodeConfigFastSocket] {
+	return pulumix.Output[*ClusterNodeConfigFastSocket]{
+		OutputState: i.ToClusterNodeConfigFastSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClusterNodeConfigFastSocketOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigFastSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigFastSocketOutput) ToClusterNodeConfigFastSocketOutput() ClusterNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o ClusterNodeConfigFastSocketOutput) ToClusterNodeConfigFastSocketOutputWithContext(ctx context.Context) ClusterNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o ClusterNodeConfigFastSocketOutput) ToClusterNodeConfigFastSocketPtrOutput() ClusterNodeConfigFastSocketPtrOutput {
+	return o.ToClusterNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigFastSocketOutput) ToClusterNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodeConfigFastSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigFastSocket) *ClusterNodeConfigFastSocket {
+		return &v
+	}).(ClusterNodeConfigFastSocketPtrOutput)
+}
+
+func (o ClusterNodeConfigFastSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeConfigFastSocket] {
+	return pulumix.Output[ClusterNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether or not the NCCL Fast Socket is enabled
+func (o ClusterNodeConfigFastSocketOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodeConfigFastSocket) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodeConfigFastSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigFastSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigFastSocketPtrOutput) ToClusterNodeConfigFastSocketPtrOutput() ClusterNodeConfigFastSocketPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigFastSocketPtrOutput) ToClusterNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodeConfigFastSocketPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigFastSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterNodeConfigFastSocket] {
+	return pulumix.Output[*ClusterNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNodeConfigFastSocketPtrOutput) Elem() ClusterNodeConfigFastSocketOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigFastSocket) ClusterNodeConfigFastSocket {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigFastSocket
+		return ret
+	}).(ClusterNodeConfigFastSocketOutput)
+}
+
+// Whether or not the NCCL Fast Socket is enabled
+func (o ClusterNodeConfigFastSocketPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigFastSocket) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigGcfsConfig struct {
@@ -25715,7 +26402,7 @@ func (o ClusterNodePoolArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolOutp
 }
 
 type ClusterNodePoolAutoConfig struct {
-	// ) - The network tag config for the cluster's automatically provisioned node pools.
+	// The network tag config for the cluster's automatically provisioned node pools.
 	NetworkTags *ClusterNodePoolAutoConfigNetworkTags `pulumi:"networkTags"`
 }
 
@@ -25731,7 +26418,7 @@ type ClusterNodePoolAutoConfigInput interface {
 }
 
 type ClusterNodePoolAutoConfigArgs struct {
-	// ) - The network tag config for the cluster's automatically provisioned node pools.
+	// The network tag config for the cluster's automatically provisioned node pools.
 	NetworkTags ClusterNodePoolAutoConfigNetworkTagsPtrInput `pulumi:"networkTags"`
 }
 
@@ -25830,7 +26517,7 @@ func (o ClusterNodePoolAutoConfigOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// ) - The network tag config for the cluster's automatically provisioned node pools.
+// The network tag config for the cluster's automatically provisioned node pools.
 func (o ClusterNodePoolAutoConfigOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags { return v.NetworkTags }).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
 }
@@ -25865,7 +26552,7 @@ func (o ClusterNodePoolAutoConfigPtrOutput) Elem() ClusterNodePoolAutoConfigOutp
 	}).(ClusterNodePoolAutoConfigOutput)
 }
 
-// ) - The network tag config for the cluster's automatically provisioned node pools.
+// The network tag config for the cluster's automatically provisioned node pools.
 func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags {
 		if v == nil {
@@ -25876,7 +26563,7 @@ func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoCon
 }
 
 type ClusterNodePoolAutoConfigNetworkTags struct {
-	// ) - List of network tags applied to auto-provisioned node pools.
+	// List of network tags applied to auto-provisioned node pools.
 	//
 	// ```go
 	// package main
@@ -25906,7 +26593,7 @@ type ClusterNodePoolAutoConfigNetworkTagsInput interface {
 }
 
 type ClusterNodePoolAutoConfigNetworkTagsArgs struct {
-	// ) - List of network tags applied to auto-provisioned node pools.
+	// List of network tags applied to auto-provisioned node pools.
 	//
 	// ```go
 	// package main
@@ -26019,7 +26706,7 @@ func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToOutput(ctx context.Context
 	}
 }
 
-// ) - List of network tags applied to auto-provisioned node pools.
+// List of network tags applied to auto-provisioned node pools.
 //
 // ```go
 // package main
@@ -26071,7 +26758,7 @@ func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Elem() ClusterNodePoolAut
 	}).(ClusterNodePoolAutoConfigNetworkTagsOutput)
 }
 
-// ) - List of network tags applied to auto-provisioned node pools.
+// List of network tags applied to auto-provisioned node pools.
 //
 // ```go
 // package main
@@ -27780,6 +28467,11 @@ type ClusterNodePoolNodeConfig struct {
 	// }
 	// ```
 	EphemeralStorageLocalSsdConfig *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+	// Node Pool must enable gvnic.
+	// GKE version 1.25.2-gke.1700 or later.
+	// Structure is documented below.
+	FastSocket *ClusterNodePoolNodeConfigFastSocket `pulumi:"fastSocket"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -28006,6 +28698,11 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// }
 	// ```
 	EphemeralStorageLocalSsdConfig ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+	// Node Pool must enable gvnic.
+	// GKE version 1.25.2-gke.1700 or later.
+	// Structure is documented below.
+	FastSocket ClusterNodePoolNodeConfigFastSocketPtrInput `pulumi:"fastSocket"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
 	// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -28348,6 +29045,14 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() Cluste
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
 	}).(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+// Node Pool must enable gvnic.
+// GKE version 1.25.2-gke.1700 or later.
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) FastSocket() ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigFastSocket { return v.FastSocket }).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -28762,6 +29467,19 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() Clu
 		}
 		return v.EphemeralStorageLocalSsdConfig
 	}).(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+// Node Pool must enable gvnic.
+// GKE version 1.25.2-gke.1700 or later.
+// Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) FastSocket() ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigFastSocket {
+		if v == nil {
+			return nil
+		}
+		return v.FastSocket
+	}).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
 }
 
 // Parameters for the Google Container Filesystem (GCFS).
@@ -29808,6 +30526,167 @@ func (o ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) LocalS
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigFastSocket struct {
+	// Whether or not the NCCL Fast Socket is enabled
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolNodeConfigFastSocketInput is an input type that accepts ClusterNodePoolNodeConfigFastSocketArgs and ClusterNodePoolNodeConfigFastSocketOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigFastSocketInput` via:
+//
+//	ClusterNodePoolNodeConfigFastSocketArgs{...}
+type ClusterNodePoolNodeConfigFastSocketInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigFastSocketOutput() ClusterNodePoolNodeConfigFastSocketOutput
+	ToClusterNodePoolNodeConfigFastSocketOutputWithContext(context.Context) ClusterNodePoolNodeConfigFastSocketOutput
+}
+
+type ClusterNodePoolNodeConfigFastSocketArgs struct {
+	// Whether or not the NCCL Fast Socket is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolNodeConfigFastSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigFastSocketArgs) ToClusterNodePoolNodeConfigFastSocketOutput() ClusterNodePoolNodeConfigFastSocketOutput {
+	return i.ToClusterNodePoolNodeConfigFastSocketOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigFastSocketArgs) ToClusterNodePoolNodeConfigFastSocketOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigFastSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigFastSocketOutput)
+}
+
+func (i ClusterNodePoolNodeConfigFastSocketArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[ClusterNodePoolNodeConfigFastSocket]{
+		OutputState: i.ToClusterNodePoolNodeConfigFastSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ClusterNodePoolNodeConfigFastSocketArgs) ToClusterNodePoolNodeConfigFastSocketPtrOutput() ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return i.ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigFastSocketArgs) ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigFastSocketOutput).ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigFastSocketPtrInput is an input type that accepts ClusterNodePoolNodeConfigFastSocketArgs, ClusterNodePoolNodeConfigFastSocketPtr and ClusterNodePoolNodeConfigFastSocketPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigFastSocketPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigFastSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigFastSocketPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigFastSocketPtrOutput() ClusterNodePoolNodeConfigFastSocketPtrOutput
+	ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigFastSocketPtrOutput
+}
+
+type clusterNodePoolNodeConfigFastSocketPtrType ClusterNodePoolNodeConfigFastSocketArgs
+
+func ClusterNodePoolNodeConfigFastSocketPtr(v *ClusterNodePoolNodeConfigFastSocketArgs) ClusterNodePoolNodeConfigFastSocketPtrInput {
+	return (*clusterNodePoolNodeConfigFastSocketPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigFastSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigFastSocketPtrType) ToClusterNodePoolNodeConfigFastSocketPtrOutput() ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return i.ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigFastSocketPtrType) ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
+}
+
+func (i *clusterNodePoolNodeConfigFastSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[*ClusterNodePoolNodeConfigFastSocket]{
+		OutputState: i.ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ClusterNodePoolNodeConfigFastSocketOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigFastSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketOutput) ToClusterNodePoolNodeConfigFastSocketOutput() ClusterNodePoolNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketOutput) ToClusterNodePoolNodeConfigFastSocketOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketOutput) ToClusterNodePoolNodeConfigFastSocketPtrOutput() ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return o.ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketOutput) ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigFastSocket) *ClusterNodePoolNodeConfigFastSocket {
+		return &v
+	}).(ClusterNodePoolNodeConfigFastSocketPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[ClusterNodePoolNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Whether or not the NCCL Fast Socket is enabled
+func (o ClusterNodePoolNodeConfigFastSocketOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigFastSocket) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolNodeConfigFastSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigFastSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketPtrOutput) ToClusterNodePoolNodeConfigFastSocketPtrOutput() ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketPtrOutput) ToClusterNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigFastSocketPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[*ClusterNodePoolNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ClusterNodePoolNodeConfigFastSocketPtrOutput) Elem() ClusterNodePoolNodeConfigFastSocketOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigFastSocket) ClusterNodePoolNodeConfigFastSocket {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigFastSocket
+		return ret
+	}).(ClusterNodePoolNodeConfigFastSocketOutput)
+}
+
+// Whether or not the NCCL Fast Socket is enabled
+func (o ClusterNodePoolNodeConfigFastSocketPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigFastSocket) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigGcfsConfig struct {
@@ -37801,6 +38680,7 @@ type NodePoolNodeConfig struct {
 	DiskType                       *string                                           `pulumi:"diskType"`
 	EphemeralStorageConfig         *NodePoolNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfig"`
 	EphemeralStorageLocalSsdConfig *NodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
+	FastSocket                     *NodePoolNodeConfigFastSocket                     `pulumi:"fastSocket"`
 	GcfsConfig                     *NodePoolNodeConfigGcfsConfig                     `pulumi:"gcfsConfig"`
 	GuestAccelerators              []NodePoolNodeConfigGuestAccelerator              `pulumi:"guestAccelerators"`
 	Gvnic                          *NodePoolNodeConfigGvnic                          `pulumi:"gvnic"`
@@ -37850,6 +38730,7 @@ type NodePoolNodeConfigArgs struct {
 	DiskType                       pulumi.StringPtrInput                                    `pulumi:"diskType"`
 	EphemeralStorageConfig         NodePoolNodeConfigEphemeralStorageConfigPtrInput         `pulumi:"ephemeralStorageConfig"`
 	EphemeralStorageLocalSsdConfig NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
+	FastSocket                     NodePoolNodeConfigFastSocketPtrInput                     `pulumi:"fastSocket"`
 	GcfsConfig                     NodePoolNodeConfigGcfsConfigPtrInput                     `pulumi:"gcfsConfig"`
 	GuestAccelerators              NodePoolNodeConfigGuestAcceleratorArrayInput             `pulumi:"guestAccelerators"`
 	Gvnic                          NodePoolNodeConfigGvnicPtrInput                          `pulumi:"gvnic"`
@@ -38005,6 +38886,10 @@ func (o NodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() NodePoolNodeC
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
 	}).(NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) FastSocket() NodePoolNodeConfigFastSocketPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigFastSocket { return v.FastSocket }).(NodePoolNodeConfigFastSocketPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) GcfsConfig() NodePoolNodeConfigGcfsConfigPtrOutput {
@@ -38209,6 +39094,15 @@ func (o NodePoolNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() NodePoolNo
 		}
 		return v.EphemeralStorageLocalSsdConfig
 	}).(NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) FastSocket() NodePoolNodeConfigFastSocketPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigFastSocket {
+		if v == nil {
+			return nil
+		}
+		return v.FastSocket
+	}).(NodePoolNodeConfigFastSocketPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) GcfsConfig() NodePoolNodeConfigGcfsConfigPtrOutput {
@@ -39088,6 +39982,171 @@ func (o NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput) LocalSsdCount
 		}
 		return &v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type NodePoolNodeConfigFastSocket struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NodePoolNodeConfigFastSocketInput is an input type that accepts NodePoolNodeConfigFastSocketArgs and NodePoolNodeConfigFastSocketOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigFastSocketInput` via:
+//
+//	NodePoolNodeConfigFastSocketArgs{...}
+type NodePoolNodeConfigFastSocketInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigFastSocketOutput() NodePoolNodeConfigFastSocketOutput
+	ToNodePoolNodeConfigFastSocketOutputWithContext(context.Context) NodePoolNodeConfigFastSocketOutput
+}
+
+type NodePoolNodeConfigFastSocketArgs struct {
+	// Enable Confidential GKE Nodes for this cluster, to
+	// enforce encryption of data in-use.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NodePoolNodeConfigFastSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigFastSocketArgs) ToNodePoolNodeConfigFastSocketOutput() NodePoolNodeConfigFastSocketOutput {
+	return i.ToNodePoolNodeConfigFastSocketOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigFastSocketArgs) ToNodePoolNodeConfigFastSocketOutputWithContext(ctx context.Context) NodePoolNodeConfigFastSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigFastSocketOutput)
+}
+
+func (i NodePoolNodeConfigFastSocketArgs) ToOutput(ctx context.Context) pulumix.Output[NodePoolNodeConfigFastSocket] {
+	return pulumix.Output[NodePoolNodeConfigFastSocket]{
+		OutputState: i.ToNodePoolNodeConfigFastSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i NodePoolNodeConfigFastSocketArgs) ToNodePoolNodeConfigFastSocketPtrOutput() NodePoolNodeConfigFastSocketPtrOutput {
+	return i.ToNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigFastSocketArgs) ToNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigFastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigFastSocketOutput).ToNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigFastSocketPtrInput is an input type that accepts NodePoolNodeConfigFastSocketArgs, NodePoolNodeConfigFastSocketPtr and NodePoolNodeConfigFastSocketPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigFastSocketPtrInput` via:
+//
+//	        NodePoolNodeConfigFastSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigFastSocketPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigFastSocketPtrOutput() NodePoolNodeConfigFastSocketPtrOutput
+	ToNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Context) NodePoolNodeConfigFastSocketPtrOutput
+}
+
+type nodePoolNodeConfigFastSocketPtrType NodePoolNodeConfigFastSocketArgs
+
+func NodePoolNodeConfigFastSocketPtr(v *NodePoolNodeConfigFastSocketArgs) NodePoolNodeConfigFastSocketPtrInput {
+	return (*nodePoolNodeConfigFastSocketPtrType)(v)
+}
+
+func (*nodePoolNodeConfigFastSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigFastSocketPtrType) ToNodePoolNodeConfigFastSocketPtrOutput() NodePoolNodeConfigFastSocketPtrOutput {
+	return i.ToNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigFastSocketPtrType) ToNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigFastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigFastSocketPtrOutput)
+}
+
+func (i *nodePoolNodeConfigFastSocketPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodePoolNodeConfigFastSocket] {
+	return pulumix.Output[*NodePoolNodeConfigFastSocket]{
+		OutputState: i.ToNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type NodePoolNodeConfigFastSocketOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigFastSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigFastSocketOutput) ToNodePoolNodeConfigFastSocketOutput() NodePoolNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigFastSocketOutput) ToNodePoolNodeConfigFastSocketOutputWithContext(ctx context.Context) NodePoolNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigFastSocketOutput) ToNodePoolNodeConfigFastSocketPtrOutput() NodePoolNodeConfigFastSocketPtrOutput {
+	return o.ToNodePoolNodeConfigFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigFastSocketOutput) ToNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigFastSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigFastSocket) *NodePoolNodeConfigFastSocket {
+		return &v
+	}).(NodePoolNodeConfigFastSocketPtrOutput)
+}
+
+func (o NodePoolNodeConfigFastSocketOutput) ToOutput(ctx context.Context) pulumix.Output[NodePoolNodeConfigFastSocket] {
+	return pulumix.Output[NodePoolNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
+func (o NodePoolNodeConfigFastSocketOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigFastSocket) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolNodeConfigFastSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigFastSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigFastSocketPtrOutput) ToNodePoolNodeConfigFastSocketPtrOutput() NodePoolNodeConfigFastSocketPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigFastSocketPtrOutput) ToNodePoolNodeConfigFastSocketPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigFastSocketPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigFastSocketPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodePoolNodeConfigFastSocket] {
+	return pulumix.Output[*NodePoolNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o NodePoolNodeConfigFastSocketPtrOutput) Elem() NodePoolNodeConfigFastSocketOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigFastSocket) NodePoolNodeConfigFastSocket {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigFastSocket
+		return ret
+	}).(NodePoolNodeConfigFastSocketOutput)
+}
+
+// Enable Confidential GKE Nodes for this cluster, to
+// enforce encryption of data in-use.
+func (o NodePoolNodeConfigFastSocketPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigFastSocket) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigGcfsConfig struct {
@@ -48997,6 +50056,7 @@ type GetClusterNodeConfig struct {
 	DiskType                        string                                               `pulumi:"diskType"`
 	EphemeralStorageConfigs         []GetClusterNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs []GetClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
+	FastSockets                     []GetClusterNodeConfigFastSocket                     `pulumi:"fastSockets"`
 	GcfsConfigs                     []GetClusterNodeConfigGcfsConfig                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               []GetClusterNodeConfigGuestAccelerator               `pulumi:"guestAccelerators"`
 	Gvnics                          []GetClusterNodeConfigGvnic                          `pulumi:"gvnics"`
@@ -49045,6 +50105,7 @@ type GetClusterNodeConfigArgs struct {
 	DiskType                        pulumi.StringInput                                           `pulumi:"diskType"`
 	EphemeralStorageConfigs         GetClusterNodeConfigEphemeralStorageConfigArrayInput         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
+	FastSockets                     GetClusterNodeConfigFastSocketArrayInput                     `pulumi:"fastSockets"`
 	GcfsConfigs                     GetClusterNodeConfigGcfsConfigArrayInput                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               GetClusterNodeConfigGuestAcceleratorArrayInput               `pulumi:"guestAccelerators"`
 	Gvnics                          GetClusterNodeConfigGvnicArrayInput                          `pulumi:"gvnics"`
@@ -49175,6 +50236,10 @@ func (o GetClusterNodeConfigOutput) EphemeralStorageLocalSsdConfigs() GetCluster
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfigs
 	}).(GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) FastSockets() GetClusterNodeConfigFastSocketArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodeConfigFastSocketArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) GcfsConfigs() GetClusterNodeConfigGcfsConfigArrayOutput {
@@ -49789,6 +50854,124 @@ func (o GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		return vs[0].([]GetClusterNodeConfigEphemeralStorageLocalSsdConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput)
+}
+
+type GetClusterNodeConfigFastSocket struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigFastSocketInput is an input type that accepts GetClusterNodeConfigFastSocketArgs and GetClusterNodeConfigFastSocketOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigFastSocketInput` via:
+//
+//	GetClusterNodeConfigFastSocketArgs{...}
+type GetClusterNodeConfigFastSocketInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigFastSocketOutput() GetClusterNodeConfigFastSocketOutput
+	ToGetClusterNodeConfigFastSocketOutputWithContext(context.Context) GetClusterNodeConfigFastSocketOutput
+}
+
+type GetClusterNodeConfigFastSocketArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigFastSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigFastSocketArgs) ToGetClusterNodeConfigFastSocketOutput() GetClusterNodeConfigFastSocketOutput {
+	return i.ToGetClusterNodeConfigFastSocketOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigFastSocketArgs) ToGetClusterNodeConfigFastSocketOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigFastSocketOutput)
+}
+
+func (i GetClusterNodeConfigFastSocketArgs) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodeConfigFastSocket] {
+	return pulumix.Output[GetClusterNodeConfigFastSocket]{
+		OutputState: i.ToGetClusterNodeConfigFastSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClusterNodeConfigFastSocketArrayInput is an input type that accepts GetClusterNodeConfigFastSocketArray and GetClusterNodeConfigFastSocketArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigFastSocketArrayInput` via:
+//
+//	GetClusterNodeConfigFastSocketArray{ GetClusterNodeConfigFastSocketArgs{...} }
+type GetClusterNodeConfigFastSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigFastSocketArrayOutput() GetClusterNodeConfigFastSocketArrayOutput
+	ToGetClusterNodeConfigFastSocketArrayOutputWithContext(context.Context) GetClusterNodeConfigFastSocketArrayOutput
+}
+
+type GetClusterNodeConfigFastSocketArray []GetClusterNodeConfigFastSocketInput
+
+func (GetClusterNodeConfigFastSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigFastSocketArray) ToGetClusterNodeConfigFastSocketArrayOutput() GetClusterNodeConfigFastSocketArrayOutput {
+	return i.ToGetClusterNodeConfigFastSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigFastSocketArray) ToGetClusterNodeConfigFastSocketArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigFastSocketArrayOutput)
+}
+
+func (i GetClusterNodeConfigFastSocketArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodeConfigFastSocket] {
+	return pulumix.Output[[]GetClusterNodeConfigFastSocket]{
+		OutputState: i.ToGetClusterNodeConfigFastSocketArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClusterNodeConfigFastSocketOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigFastSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigFastSocketOutput) ToGetClusterNodeConfigFastSocketOutput() GetClusterNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigFastSocketOutput) ToGetClusterNodeConfigFastSocketOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigFastSocketOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodeConfigFastSocket] {
+	return pulumix.Output[GetClusterNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodeConfigFastSocketOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigFastSocket) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigFastSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigFastSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigFastSocketArrayOutput) ToGetClusterNodeConfigFastSocketArrayOutput() GetClusterNodeConfigFastSocketArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigFastSocketArrayOutput) ToGetClusterNodeConfigFastSocketArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigFastSocketArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigFastSocketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodeConfigFastSocket] {
+	return pulumix.Output[[]GetClusterNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodeConfigFastSocketArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigFastSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigFastSocket {
+		return vs[0].([]GetClusterNodeConfigFastSocket)[vs[1].(int)]
+	}).(GetClusterNodeConfigFastSocketOutput)
 }
 
 type GetClusterNodeConfigGcfsConfig struct {
@@ -53388,6 +54571,7 @@ type GetClusterNodePoolNodeConfig struct {
 	DiskType                        string                                                       `pulumi:"diskType"`
 	EphemeralStorageConfigs         []GetClusterNodePoolNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfigs"`
+	FastSockets                     []GetClusterNodePoolNodeConfigFastSocket                     `pulumi:"fastSockets"`
 	GcfsConfigs                     []GetClusterNodePoolNodeConfigGcfsConfig                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               []GetClusterNodePoolNodeConfigGuestAccelerator               `pulumi:"guestAccelerators"`
 	Gvnics                          []GetClusterNodePoolNodeConfigGvnic                          `pulumi:"gvnics"`
@@ -53436,6 +54620,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	DiskType                        pulumi.StringInput                                                   `pulumi:"diskType"`
 	EphemeralStorageConfigs         GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput         `pulumi:"ephemeralStorageConfigs"`
 	EphemeralStorageLocalSsdConfigs GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayInput `pulumi:"ephemeralStorageLocalSsdConfigs"`
+	FastSockets                     GetClusterNodePoolNodeConfigFastSocketArrayInput                     `pulumi:"fastSockets"`
 	GcfsConfigs                     GetClusterNodePoolNodeConfigGcfsConfigArrayInput                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput               `pulumi:"guestAccelerators"`
 	Gvnics                          GetClusterNodePoolNodeConfigGvnicArrayInput                          `pulumi:"gvnics"`
@@ -53568,6 +54753,10 @@ func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfigs() Ge
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfigs
 	}).(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) FastSockets() GetClusterNodePoolNodeConfigFastSocketArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigFastSocket { return v.FastSockets }).(GetClusterNodePoolNodeConfigFastSocketArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) GcfsConfigs() GetClusterNodePoolNodeConfigGcfsConfigArrayOutput {
@@ -54194,6 +55383,124 @@ func (o GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayOutput) I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigFastSocket struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolNodeConfigFastSocketInput is an input type that accepts GetClusterNodePoolNodeConfigFastSocketArgs and GetClusterNodePoolNodeConfigFastSocketOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigFastSocketInput` via:
+//
+//	GetClusterNodePoolNodeConfigFastSocketArgs{...}
+type GetClusterNodePoolNodeConfigFastSocketInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigFastSocketOutput() GetClusterNodePoolNodeConfigFastSocketOutput
+	ToGetClusterNodePoolNodeConfigFastSocketOutputWithContext(context.Context) GetClusterNodePoolNodeConfigFastSocketOutput
+}
+
+type GetClusterNodePoolNodeConfigFastSocketArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolNodeConfigFastSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigFastSocketArgs) ToGetClusterNodePoolNodeConfigFastSocketOutput() GetClusterNodePoolNodeConfigFastSocketOutput {
+	return i.ToGetClusterNodePoolNodeConfigFastSocketOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigFastSocketArgs) ToGetClusterNodePoolNodeConfigFastSocketOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigFastSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigFastSocketOutput)
+}
+
+func (i GetClusterNodePoolNodeConfigFastSocketArgs) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[GetClusterNodePoolNodeConfigFastSocket]{
+		OutputState: i.ToGetClusterNodePoolNodeConfigFastSocketOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetClusterNodePoolNodeConfigFastSocketArrayInput is an input type that accepts GetClusterNodePoolNodeConfigFastSocketArray and GetClusterNodePoolNodeConfigFastSocketArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigFastSocketArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigFastSocketArray{ GetClusterNodePoolNodeConfigFastSocketArgs{...} }
+type GetClusterNodePoolNodeConfigFastSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigFastSocketArrayOutput() GetClusterNodePoolNodeConfigFastSocketArrayOutput
+	ToGetClusterNodePoolNodeConfigFastSocketArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigFastSocketArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigFastSocketArray []GetClusterNodePoolNodeConfigFastSocketInput
+
+func (GetClusterNodePoolNodeConfigFastSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigFastSocketArray) ToGetClusterNodePoolNodeConfigFastSocketArrayOutput() GetClusterNodePoolNodeConfigFastSocketArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigFastSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigFastSocketArray) ToGetClusterNodePoolNodeConfigFastSocketArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigFastSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigFastSocketArrayOutput)
+}
+
+func (i GetClusterNodePoolNodeConfigFastSocketArray) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[[]GetClusterNodePoolNodeConfigFastSocket]{
+		OutputState: i.ToGetClusterNodePoolNodeConfigFastSocketArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetClusterNodePoolNodeConfigFastSocketOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigFastSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketOutput) ToGetClusterNodePoolNodeConfigFastSocketOutput() GetClusterNodePoolNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketOutput) ToGetClusterNodePoolNodeConfigFastSocketOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigFastSocketOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketOutput) ToOutput(ctx context.Context) pulumix.Output[GetClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[GetClusterNodePoolNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigFastSocket) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigFastSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigFastSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigFastSocket)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketArrayOutput) ToGetClusterNodePoolNodeConfigFastSocketArrayOutput() GetClusterNodePoolNodeConfigFastSocketArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketArrayOutput) ToGetClusterNodePoolNodeConfigFastSocketArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigFastSocketArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetClusterNodePoolNodeConfigFastSocket] {
+	return pulumix.Output[[]GetClusterNodePoolNodeConfigFastSocket]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetClusterNodePoolNodeConfigFastSocketArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigFastSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigFastSocket {
+		return vs[0].([]GetClusterNodePoolNodeConfigFastSocket)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigFastSocketOutput)
 }
 
 type GetClusterNodePoolNodeConfigGcfsConfig struct {
@@ -58703,6 +60010,8 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterBinaryAuthorizationInput)(nil)).Elem(), AttachedClusterBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterBinaryAuthorizationPtrInput)(nil)).Elem(), AttachedClusterBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterErrorInput)(nil)).Elem(), AttachedClusterErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterErrorArrayInput)(nil)).Elem(), AttachedClusterErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterFleetInput)(nil)).Elem(), AttachedClusterFleetArgs{})
@@ -58771,6 +60080,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintInput)(nil)).Elem(), AwsNodePoolConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintArrayInput)(nil)).Elem(), AwsNodePoolConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolManagementInput)(nil)).Elem(), AwsNodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolManagementPtrInput)(nil)).Elem(), AwsNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintPtrInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureClusterAuthorizationInput)(nil)).Elem(), AzureClusterAuthorizationArgs{})
@@ -58813,6 +60124,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigRootVolumePtrInput)(nil)).Elem(), AzureNodePoolConfigRootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigSshConfigInput)(nil)).Elem(), AzureNodePoolConfigSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolConfigSshConfigPtrInput)(nil)).Elem(), AzureNodePoolConfigSshConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolManagementInput)(nil)).Elem(), AzureNodePoolManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolManagementPtrInput)(nil)).Elem(), AzureNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolMaxPodsConstraintInput)(nil)).Elem(), AzureNodePoolMaxPodsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AzureNodePoolMaxPodsConstraintPtrInput)(nil)).Elem(), AzureNodePoolMaxPodsConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigInput)(nil)).Elem(), ClusterAddonsConfigArgs{})
@@ -58927,6 +60240,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigFastSocketInput)(nil)).Elem(), ClusterNodeConfigFastSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigFastSocketPtrInput)(nil)).Elem(), ClusterNodeConfigFastSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArgs{})
@@ -58993,6 +60308,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigFastSocketInput)(nil)).Elem(), ClusterNodePoolNodeConfigFastSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigFastSocketPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigFastSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArgs{})
@@ -59087,6 +60404,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigFastSocketInput)(nil)).Elem(), NodePoolNodeConfigFastSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigFastSocketPtrInput)(nil)).Elem(), NodePoolNodeConfigFastSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArgs{})
@@ -59239,6 +60558,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigFastSocketInput)(nil)).Elem(), GetClusterNodeConfigFastSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigFastSocketArrayInput)(nil)).Elem(), GetClusterNodeConfigFastSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
@@ -59305,6 +60626,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigFastSocketInput)(nil)).Elem(), GetClusterNodePoolNodeConfigFastSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigFastSocketArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigFastSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArgs{})
@@ -59379,6 +60702,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationOutput{})
+	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterErrorOutput{})
 	pulumi.RegisterOutputType(AttachedClusterErrorArrayOutput{})
 	pulumi.RegisterOutputType(AttachedClusterFleetOutput{})
@@ -59447,6 +60772,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigTaintOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolManagementOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintPtrOutput{})
 	pulumi.RegisterOutputType(AzureClusterAuthorizationOutput{})
@@ -59489,6 +60816,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureNodePoolConfigRootVolumePtrOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigSshConfigOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolConfigSshConfigPtrOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolManagementOutput{})
+	pulumi.RegisterOutputType(AzureNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolMaxPodsConstraintOutput{})
 	pulumi.RegisterOutputType(AzureNodePoolMaxPodsConstraintPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigOutput{})
@@ -59603,6 +60932,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigFastSocketOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigFastSocketPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
@@ -59669,6 +61000,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigFastSocketOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigFastSocketPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
@@ -59763,6 +61096,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigFastSocketOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigFastSocketPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
@@ -59915,6 +61250,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigFastSocketOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigFastSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
@@ -59981,6 +61318,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigFastSocketOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigFastSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})

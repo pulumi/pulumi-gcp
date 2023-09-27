@@ -260,7 +260,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * stored in state as a different member type
      * 
      */
-    @Export(name="apiUpdatedMember", refs={Boolean.class}, tree="[0]")
+    @Export(name="apiUpdatedMember", type=Boolean.class, parameters={})
     private Output<Boolean> apiUpdatedMember;
 
     /**
@@ -276,7 +276,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="authorizedDataset", refs={DatasetAccessAuthorizedDataset.class}, tree="[0]")
+    @Export(name="authorizedDataset", type=DatasetAccessAuthorizedDataset.class, parameters={})
     private Output</* @Nullable */ DatasetAccessAuthorizedDataset> authorizedDataset;
 
     /**
@@ -295,7 +295,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="datasetId", refs={String.class}, tree="[0]")
+    @Export(name="datasetId", type=String.class, parameters={})
     private Output<String> datasetId;
 
     /**
@@ -314,7 +314,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * domain specified will be granted the specified access
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
+    @Export(name="domain", type=String.class, parameters={})
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -329,7 +329,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * An email address of a Google Group to grant access to.
      * 
      */
-    @Export(name="groupByEmail", refs={String.class}, tree="[0]")
+    @Export(name="groupByEmail", type=String.class, parameters={})
     private Output</* @Nullable */ String> groupByEmail;
 
     /**
@@ -344,7 +344,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * group, domain, or special group. For example: `allUsers`
      * 
      */
-    @Export(name="iamMember", refs={String.class}, tree="[0]")
+    @Export(name="iamMember", type=String.class, parameters={})
     private Output</* @Nullable */ String> iamMember;
 
     /**
@@ -360,7 +360,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -380,7 +380,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * [official docs](https://cloud.google.com/bigquery/docs/access-control).
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output</* @Nullable */ String> role;
 
     /**
@@ -404,7 +404,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="routine", refs={DatasetAccessRoutine.class}, tree="[0]")
+    @Export(name="routine", type=DatasetAccessRoutine.class, parameters={})
     private Output</* @Nullable */ DatasetAccessRoutine> routine;
 
     /**
@@ -423,7 +423,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * A special group to grant access to. Possible values include:
      * 
      */
-    @Export(name="specialGroup", refs={String.class}, tree="[0]")
+    @Export(name="specialGroup", type=String.class, parameters={})
     private Output</* @Nullable */ String> specialGroup;
 
     /**
@@ -438,7 +438,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * fred@example.com
      * 
      */
-    @Export(name="userByEmail", refs={String.class}, tree="[0]")
+    @Export(name="userByEmail", type=String.class, parameters={})
     private Output</* @Nullable */ String> userByEmail;
 
     /**
@@ -458,7 +458,7 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="view", refs={DatasetAccessView.class}, tree="[0]")
+    @Export(name="view", type=DatasetAccessView.class, parameters={})
     private Output</* @Nullable */ DatasetAccessView> view;
 
     /**

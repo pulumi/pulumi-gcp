@@ -112,7 +112,7 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -126,7 +126,7 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
      * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -140,7 +140,7 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
      * The name of the environment.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -155,7 +155,7 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -170,7 +170,7 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
      * Update time of this environment. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -185,7 +185,7 @@ public class CxEnvironment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="versionConfigs", refs={List.class,CxEnvironmentVersionConfig.class}, tree="[0,1]")
+    @Export(name="versionConfigs", type=List.class, parameters={CxEnvironmentVersionConfig.class})
     private Output<List<CxEnvironmentVersionConfig>> versionConfigs;
 
     /**

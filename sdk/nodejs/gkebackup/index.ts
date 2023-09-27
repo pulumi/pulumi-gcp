@@ -30,6 +30,31 @@ export const getBackupPlanIamPolicy: typeof import("./getBackupPlanIamPolicy").g
 export const getBackupPlanIamPolicyOutput: typeof import("./getBackupPlanIamPolicy").getBackupPlanIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getBackupPlanIamPolicy","getBackupPlanIamPolicyOutput"], () => require("./getBackupPlanIamPolicy"));
 
+export { GetRestorePlanIamPolicyArgs, GetRestorePlanIamPolicyResult, GetRestorePlanIamPolicyOutputArgs } from "./getRestorePlanIamPolicy";
+export const getRestorePlanIamPolicy: typeof import("./getRestorePlanIamPolicy").getRestorePlanIamPolicy = null as any;
+export const getRestorePlanIamPolicyOutput: typeof import("./getRestorePlanIamPolicy").getRestorePlanIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRestorePlanIamPolicy","getRestorePlanIamPolicyOutput"], () => require("./getRestorePlanIamPolicy"));
+
+export { RestorePlanArgs, RestorePlanState } from "./restorePlan";
+export type RestorePlan = import("./restorePlan").RestorePlan;
+export const RestorePlan: typeof import("./restorePlan").RestorePlan = null as any;
+utilities.lazyLoad(exports, ["RestorePlan"], () => require("./restorePlan"));
+
+export { RestorePlanIamBindingArgs, RestorePlanIamBindingState } from "./restorePlanIamBinding";
+export type RestorePlanIamBinding = import("./restorePlanIamBinding").RestorePlanIamBinding;
+export const RestorePlanIamBinding: typeof import("./restorePlanIamBinding").RestorePlanIamBinding = null as any;
+utilities.lazyLoad(exports, ["RestorePlanIamBinding"], () => require("./restorePlanIamBinding"));
+
+export { RestorePlanIamMemberArgs, RestorePlanIamMemberState } from "./restorePlanIamMember";
+export type RestorePlanIamMember = import("./restorePlanIamMember").RestorePlanIamMember;
+export const RestorePlanIamMember: typeof import("./restorePlanIamMember").RestorePlanIamMember = null as any;
+utilities.lazyLoad(exports, ["RestorePlanIamMember"], () => require("./restorePlanIamMember"));
+
+export { RestorePlanIamPolicyArgs, RestorePlanIamPolicyState } from "./restorePlanIamPolicy";
+export type RestorePlanIamPolicy = import("./restorePlanIamPolicy").RestorePlanIamPolicy;
+export const RestorePlanIamPolicy: typeof import("./restorePlanIamPolicy").RestorePlanIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RestorePlanIamPolicy"], () => require("./restorePlanIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -43,6 +68,14 @@ const _module = {
                 return new BackupPlanIamMember(name, <any>undefined, { urn })
             case "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy":
                 return new BackupPlanIamPolicy(name, <any>undefined, { urn })
+            case "gcp:gkebackup/restorePlan:RestorePlan":
+                return new RestorePlan(name, <any>undefined, { urn })
+            case "gcp:gkebackup/restorePlanIamBinding:RestorePlanIamBinding":
+                return new RestorePlanIamBinding(name, <any>undefined, { urn })
+            case "gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember":
+                return new RestorePlanIamMember(name, <any>undefined, { urn })
+            case "gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy":
+                return new RestorePlanIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -52,3 +85,7 @@ pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlan", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkebackup/backupPlanIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlan", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlanIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlanIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkebackup/restorePlanIamPolicy", _module)

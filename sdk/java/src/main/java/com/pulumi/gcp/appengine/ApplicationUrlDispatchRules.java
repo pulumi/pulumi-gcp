@@ -119,7 +119,7 @@ public class ApplicationUrlDispatchRules extends com.pulumi.resources.CustomReso
      * Structure is documented below.
      * 
      */
-    @Export(name="dispatchRules", refs={List.class,ApplicationUrlDispatchRulesDispatchRule.class}, tree="[0,1]")
+    @Export(name="dispatchRules", type=List.class, parameters={ApplicationUrlDispatchRulesDispatchRule.class})
     private Output<List<ApplicationUrlDispatchRulesDispatchRule>> dispatchRules;
 
     /**
@@ -135,7 +135,7 @@ public class ApplicationUrlDispatchRules extends com.pulumi.resources.CustomReso
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

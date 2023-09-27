@@ -117,7 +117,7 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      * The bucket to store reports in.
      * 
      */
-    @Export(name="bucketName", refs={String.class}, tree="[0]")
+    @Export(name="bucketName", type=String.class, parameters={})
     private Output<String> bucketName;
 
     /**
@@ -131,7 +131,7 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      * A prefix for the reports, for instance, the project name.
      * 
      */
-    @Export(name="prefix", refs={String.class}, tree="[0]")
+    @Export(name="prefix", type=String.class, parameters={})
     private Output</* @Nullable */ String> prefix;
 
     /**
@@ -145,7 +145,7 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
      * The project to set the export bucket on. If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

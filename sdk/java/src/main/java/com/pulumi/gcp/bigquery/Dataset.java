@@ -305,7 +305,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="accesses", refs={List.class,DatasetAccess.class}, tree="[0,1]")
+    @Export(name="accesses", type=List.class, parameters={DatasetAccess.class})
     private Output<List<DatasetAccess>> accesses;
 
     /**
@@ -321,7 +321,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * epoch.
      * 
      */
-    @Export(name="creationTime", refs={Integer.class}, tree="[0]")
+    @Export(name="creationTime", type=Integer.class, parameters={})
     private Output<Integer> creationTime;
 
     /**
@@ -340,7 +340,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="datasetId", refs={String.class}, tree="[0]")
+    @Export(name="datasetId", type=String.class, parameters={})
     private Output<String> datasetId;
 
     /**
@@ -366,7 +366,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * - &#39;&#39;: empty string. Default to case-sensitive behavior.
      * 
      */
-    @Export(name="defaultCollation", refs={String.class}, tree="[0]")
+    @Export(name="defaultCollation", type=String.class, parameters={})
     private Output<String> defaultCollation;
 
     /**
@@ -391,7 +391,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="defaultEncryptionConfiguration", refs={DatasetDefaultEncryptionConfiguration.class}, tree="[0]")
+    @Export(name="defaultEncryptionConfiguration", type=DatasetDefaultEncryptionConfiguration.class, parameters={})
     private Output</* @Nullable */ DatasetDefaultEncryptionConfiguration> defaultEncryptionConfiguration;
 
     /**
@@ -421,7 +421,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * over the default partition expiration time indicated by this property.
      * 
      */
-    @Export(name="defaultPartitionExpirationMs", refs={Integer.class}, tree="[0]")
+    @Export(name="defaultPartitionExpirationMs", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> defaultPartitionExpirationMs;
 
     /**
@@ -459,7 +459,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * expiration time indicated by this property.
      * 
      */
-    @Export(name="defaultTableExpirationMs", refs={Integer.class}, tree="[0]")
+    @Export(name="defaultTableExpirationMs", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> defaultTableExpirationMs;
 
     /**
@@ -486,7 +486,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * destroying the resource will fail if tables are present.
      * 
      */
-    @Export(name="deleteContentsOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="deleteContentsOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deleteContentsOnDestroy;
 
     /**
@@ -502,7 +502,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * A user-friendly description of the dataset
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -516,7 +516,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * A hash of the resource.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -530,7 +530,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * A descriptive name for the dataset
      * 
      */
-    @Export(name="friendlyName", refs={String.class}, tree="[0]")
+    @Export(name="friendlyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> friendlyName;
 
     /**
@@ -546,7 +546,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * case-sensitive. This field does not affect routine references.
      * 
      */
-    @Export(name="isCaseInsensitive", refs={Boolean.class}, tree="[0]")
+    @Export(name="isCaseInsensitive", type=Boolean.class, parameters={})
     private Output<Boolean> isCaseInsensitive;
 
     /**
@@ -563,7 +563,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * organize and group your datasets
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> labels;
 
     /**
@@ -579,7 +579,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * milliseconds since the epoch.
      * 
      */
-    @Export(name="lastModifiedTime", refs={Integer.class}, tree="[0]")
+    @Export(name="lastModifiedTime", type=Integer.class, parameters={})
     private Output<Integer> lastModifiedTime;
 
     /**
@@ -603,7 +603,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -626,7 +626,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
      * 
      */
-    @Export(name="maxTimeTravelHours", refs={String.class}, tree="[0]")
+    @Export(name="maxTimeTravelHours", type=String.class, parameters={})
     private Output<String> maxTimeTravelHours;
 
     /**
@@ -641,7 +641,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -656,7 +656,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -673,7 +673,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * LOGICAL is the default if this flag isn&#39;t specified.
      * 
      */
-    @Export(name="storageBillingModel", refs={String.class}, tree="[0]")
+    @Export(name="storageBillingModel", type=String.class, parameters={})
     private Output<String> storageBillingModel;
 
     /**

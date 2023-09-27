@@ -17,7 +17,7 @@ public final class ClusterNodePoolAutoConfigNetworkTagsArgs extends com.pulumi.r
     public static final ClusterNodePoolAutoConfigNetworkTagsArgs Empty = new ClusterNodePoolAutoConfigNetworkTagsArgs();
 
     /**
-     * ) - List of network tags applied to auto-provisioned node pools.
+     * List of network tags applied to auto-provisioned node pools.
      * ```java
      * package generated_program;
      * 
@@ -46,7 +46,7 @@ public final class ClusterNodePoolAutoConfigNetworkTagsArgs extends com.pulumi.r
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return ) - List of network tags applied to auto-provisioned node pools.
+     * @return List of network tags applied to auto-provisioned node pools.
      * ```java
      * package generated_program;
      * 
@@ -100,7 +100,7 @@ public final class ClusterNodePoolAutoConfigNetworkTagsArgs extends com.pulumi.r
         }
 
         /**
-         * @param tags ) - List of network tags applied to auto-provisioned node pools.
+         * @param tags List of network tags applied to auto-provisioned node pools.
          * ```java
          * package generated_program;
          * 
@@ -133,7 +133,7 @@ public final class ClusterNodePoolAutoConfigNetworkTagsArgs extends com.pulumi.r
         }
 
         /**
-         * @param tags ) - List of network tags applied to auto-provisioned node pools.
+         * @param tags List of network tags applied to auto-provisioned node pools.
          * ```java
          * package generated_program;
          * 
@@ -165,7 +165,7 @@ public final class ClusterNodePoolAutoConfigNetworkTagsArgs extends com.pulumi.r
         }
 
         /**
-         * @param tags ) - List of network tags applied to auto-provisioned node pools.
+         * @param tags List of network tags applied to auto-provisioned node pools.
          * ```java
          * package generated_program;
          * 

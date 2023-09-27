@@ -95,6 +95,11 @@ export type HmacKey = import("./hmacKey").HmacKey;
 export const HmacKey: typeof import("./hmacKey").HmacKey = null as any;
 utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
 
+export { InsightsReportConfigArgs, InsightsReportConfigState } from "./insightsReportConfig";
+export type InsightsReportConfig = import("./insightsReportConfig").InsightsReportConfig;
+export const InsightsReportConfig: typeof import("./insightsReportConfig").InsightsReportConfig = null as any;
+utilities.lazyLoad(exports, ["InsightsReportConfig"], () => require("./insightsReportConfig"));
+
 export { NotificationArgs, NotificationState } from "./notification";
 export type Notification = import("./notification").Notification;
 export const Notification: typeof import("./notification").Notification = null as any;
@@ -146,6 +151,8 @@ const _module = {
                 return new DefaultObjectAccessControl(name, <any>undefined, { urn })
             case "gcp:storage/hmacKey:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
+            case "gcp:storage/insightsReportConfig:InsightsReportConfig":
+                return new InsightsReportConfig(name, <any>undefined, { urn })
             case "gcp:storage/notification:Notification":
                 return new Notification(name, <any>undefined, { urn })
             case "gcp:storage/objectACL:ObjectACL":
@@ -171,6 +178,7 @@ pulumi.runtime.registerResourceModule("gcp", "storage/bucketObject", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/hmacKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/insightsReportConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/notification", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/objectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/objectAccessControl", _module)

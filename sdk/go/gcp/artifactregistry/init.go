@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RepositoryIamMember{}
 	case "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy":
 		r = &RepositoryIamPolicy{}
+	case "gcp:artifactregistry/vpcscConfig:VpcscConfig":
+		r = &VpcscConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"artifactregistry/repositoryIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"artifactregistry/vpcscConfig",
 		&module{version},
 	)
 }

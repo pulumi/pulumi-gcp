@@ -80,6 +80,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataCatalogCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataFusionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataLossPreventionCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly dataPipelineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly databaseMigrationServiceCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataflowCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataformCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -94,6 +95,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dnsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly documentAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly documentAiWarehouseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly edgenetworkCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly essentialContactsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -159,10 +161,12 @@ export class Provider extends pulumi.ProviderResource {
     public readonly spannerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly sqlCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly storageInsightsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly tpuV2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vmwareengineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vpcAccessCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -235,6 +239,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataCatalogCustomEndpoint"] = args ? args.dataCatalogCustomEndpoint : undefined;
             resourceInputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
             resourceInputs["dataLossPreventionCustomEndpoint"] = args ? args.dataLossPreventionCustomEndpoint : undefined;
+            resourceInputs["dataPipelineCustomEndpoint"] = args ? args.dataPipelineCustomEndpoint : undefined;
             resourceInputs["databaseMigrationServiceCustomEndpoint"] = args ? args.databaseMigrationServiceCustomEndpoint : undefined;
             resourceInputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
             resourceInputs["dataformCustomEndpoint"] = args ? args.dataformCustomEndpoint : undefined;
@@ -250,6 +255,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["documentAiWarehouseCustomEndpoint"] = args ? args.documentAiWarehouseCustomEndpoint : undefined;
+            resourceInputs["edgenetworkCustomEndpoint"] = args ? args.edgenetworkCustomEndpoint : undefined;
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
@@ -317,10 +323,12 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["spannerCustomEndpoint"] = args ? args.spannerCustomEndpoint : undefined;
             resourceInputs["sqlCustomEndpoint"] = args ? args.sqlCustomEndpoint : undefined;
             resourceInputs["storageCustomEndpoint"] = args ? args.storageCustomEndpoint : undefined;
+            resourceInputs["storageInsightsCustomEndpoint"] = args ? args.storageInsightsCustomEndpoint : undefined;
             resourceInputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
             resourceInputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
             resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
+            resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
             resourceInputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
             resourceInputs["vmwareengineCustomEndpoint"] = args ? args.vmwareengineCustomEndpoint : undefined;
@@ -392,6 +400,7 @@ export interface ProviderArgs {
     dataCatalogCustomEndpoint?: pulumi.Input<string>;
     dataFusionCustomEndpoint?: pulumi.Input<string>;
     dataLossPreventionCustomEndpoint?: pulumi.Input<string>;
+    dataPipelineCustomEndpoint?: pulumi.Input<string>;
     databaseMigrationServiceCustomEndpoint?: pulumi.Input<string>;
     dataflowCustomEndpoint?: pulumi.Input<string>;
     dataformCustomEndpoint?: pulumi.Input<string>;
@@ -407,6 +416,7 @@ export interface ProviderArgs {
     dnsCustomEndpoint?: pulumi.Input<string>;
     documentAiCustomEndpoint?: pulumi.Input<string>;
     documentAiWarehouseCustomEndpoint?: pulumi.Input<string>;
+    edgenetworkCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
     filestoreCustomEndpoint?: pulumi.Input<string>;
@@ -474,10 +484,12 @@ export interface ProviderArgs {
     spannerCustomEndpoint?: pulumi.Input<string>;
     sqlCustomEndpoint?: pulumi.Input<string>;
     storageCustomEndpoint?: pulumi.Input<string>;
+    storageInsightsCustomEndpoint?: pulumi.Input<string>;
     storageTransferCustomEndpoint?: pulumi.Input<string>;
     tagsCustomEndpoint?: pulumi.Input<string>;
     tagsLocationCustomEndpoint?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
+    tpuV2CustomEndpoint?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
     vertexAiCustomEndpoint?: pulumi.Input<string>;
     vmwareengineCustomEndpoint?: pulumi.Input<string>;

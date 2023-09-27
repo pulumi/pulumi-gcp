@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -86,6 +87,39 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Vertex Ai Index Endpoint With Public Endpoint
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiIndexEndpoint;
+ * import com.pulumi.gcp.vertex.AiIndexEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var indexEndpoint = new AiIndexEndpoint(&#34;indexEndpoint&#34;, AiIndexEndpointArgs.builder()        
+ *             .description(&#34;A sample vertex endpoint with an public endpoint&#34;)
+ *             .displayName(&#34;sample-endpoint&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .publicEndpointEnabled(true)
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -114,7 +148,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -128,7 +162,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * The description of the Index.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -144,7 +178,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -160,7 +194,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * Used to perform consistent read-modify-write updates.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -174,7 +208,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * The labels with user-defined metadata to organize your Indexes.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -188,7 +222,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * The resource name of the Index.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -205,7 +239,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -223,7 +257,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -235,10 +269,38 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     * 
+     */
+    @Export(name="publicEndpointDomainName", type=String.class, parameters={})
+    private Output<String> publicEndpointDomainName;
+
+    /**
+     * @return If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     * 
+     */
+    public Output<String> publicEndpointDomainName() {
+        return this.publicEndpointDomainName;
+    }
+    /**
+     * If true, the deployed index will be accessible through public endpoint.
+     * 
+     */
+    @Export(name="publicEndpointEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> publicEndpointEnabled;
+
+    /**
+     * @return If true, the deployed index will be accessible through public endpoint.
+     * 
+     */
+    public Output<Optional<Boolean>> publicEndpointEnabled() {
+        return Codegen.optional(this.publicEndpointEnabled);
+    }
+    /**
      * The region of the index endpoint. eg us-central1
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -252,7 +314,7 @@ public class AiIndexEndpoint extends com.pulumi.resources.CustomResource {
      * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

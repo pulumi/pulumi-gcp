@@ -82,7 +82,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      * Required. Immutable. The ID of the underlying Google Cloud Storage bucket
      * 
      */
-    @Export(name="bucketId", refs={String.class}, tree="[0]")
+    @Export(name="bucketId", type=String.class, parameters={})
     private Output</* @Nullable */ String> bucketId;
 
     /**
@@ -96,7 +96,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      * Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -111,7 +111,7 @@ public class StorageBucket extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

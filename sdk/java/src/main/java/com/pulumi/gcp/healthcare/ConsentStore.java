@@ -169,7 +169,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="dataset", refs={String.class}, tree="[0]")
+    @Export(name="dataset", type=String.class, parameters={})
     private Output<String> dataset;
 
     /**
@@ -187,7 +187,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="defaultConsentTtl", refs={String.class}, tree="[0]")
+    @Export(name="defaultConsentTtl", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultConsentTtl;
 
     /**
@@ -202,7 +202,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      * 
      */
-    @Export(name="enableConsentCreateOnUpdate", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableConsentCreateOnUpdate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableConsentCreateOnUpdate;
 
     /**
@@ -223,7 +223,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -245,7 +245,7 @@ public class ConsentStore extends com.pulumi.resources.CustomResource {
      * &#34;consent1&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

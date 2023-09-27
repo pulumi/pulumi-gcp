@@ -100,7 +100,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The parent catalog.
      * 
      */
-    @Export(name="catalog", refs={String.class}, tree="[0]")
+    @Export(name="catalog", type=String.class, parameters={})
     private Output<String> catalog;
 
     /**
@@ -117,7 +117,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -137,7 +137,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="deleteTime", refs={String.class}, tree="[0]")
+    @Export(name="deleteTime", type=String.class, parameters={})
     private Output<String> deleteTime;
 
     /**
@@ -157,7 +157,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
@@ -175,7 +175,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="hiveOptions", refs={DatabaseHiveOptions.class}, tree="[0]")
+    @Export(name="hiveOptions", type=DatabaseHiveOptions.class, parameters={})
     private Output<DatabaseHiveOptions> hiveOptions;
 
     /**
@@ -190,7 +190,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The name of the database.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -204,7 +204,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The database type.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -221,7 +221,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

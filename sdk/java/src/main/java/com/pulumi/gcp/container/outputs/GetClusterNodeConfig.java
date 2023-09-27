@@ -8,6 +8,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigAdvancedMachineFeatu
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigConfidentialNode;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigFastSocket;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGvnic;
@@ -37,6 +38,7 @@ public final class GetClusterNodeConfig {
     private String diskType;
     private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
     private List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
+    private List<GetClusterNodeConfigFastSocket> fastSockets;
     private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
     private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
     private List<GetClusterNodeConfigGvnic> gvnics;
@@ -86,6 +88,9 @@ public final class GetClusterNodeConfig {
     }
     public List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs() {
         return this.ephemeralStorageLocalSsdConfigs;
+    }
+    public List<GetClusterNodeConfigFastSocket> fastSockets() {
+        return this.fastSockets;
     }
     public List<GetClusterNodeConfigGcfsConfig> gcfsConfigs() {
         return this.gcfsConfigs;
@@ -185,6 +190,7 @@ public final class GetClusterNodeConfig {
         private String diskType;
         private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
         private List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
+        private List<GetClusterNodeConfigFastSocket> fastSockets;
         private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
         private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
         private List<GetClusterNodeConfigGvnic> gvnics;
@@ -222,6 +228,7 @@ public final class GetClusterNodeConfig {
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
     	      this.ephemeralStorageLocalSsdConfigs = defaults.ephemeralStorageLocalSsdConfigs;
+    	      this.fastSockets = defaults.fastSockets;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnics = defaults.gvnics;
@@ -297,6 +304,14 @@ public final class GetClusterNodeConfig {
         }
         public Builder ephemeralStorageLocalSsdConfigs(GetClusterNodeConfigEphemeralStorageLocalSsdConfig... ephemeralStorageLocalSsdConfigs) {
             return ephemeralStorageLocalSsdConfigs(List.of(ephemeralStorageLocalSsdConfigs));
+        }
+        @CustomType.Setter
+        public Builder fastSockets(List<GetClusterNodeConfigFastSocket> fastSockets) {
+            this.fastSockets = Objects.requireNonNull(fastSockets);
+            return this;
+        }
+        public Builder fastSockets(GetClusterNodeConfigFastSocket... fastSockets) {
+            return fastSockets(List.of(fastSockets));
         }
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodeConfigGcfsConfig> gcfsConfigs) {
@@ -487,6 +502,7 @@ public final class GetClusterNodeConfig {
             o.diskType = diskType;
             o.ephemeralStorageConfigs = ephemeralStorageConfigs;
             o.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
+            o.fastSockets = fastSockets;
             o.gcfsConfigs = gcfsConfigs;
             o.guestAccelerators = guestAccelerators;
             o.gvnics = gvnics;

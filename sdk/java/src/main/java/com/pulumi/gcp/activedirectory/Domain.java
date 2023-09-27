@@ -74,7 +74,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * If not specified, setupadmin will be used.
      * 
      */
-    @Export(name="admin", refs={String.class}, tree="[0]")
+    @Export(name="admin", type=String.class, parameters={})
     private Output</* @Nullable */ String> admin;
 
     /**
@@ -90,7 +90,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * If CIDR subnets overlap between networks, domain creation will fail.
      * 
      */
-    @Export(name="authorizedNetworks", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="authorizedNetworks", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> authorizedNetworks;
 
     /**
@@ -108,7 +108,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="domainName", refs={String.class}, tree="[0]")
+    @Export(name="domainName", type=String.class, parameters={})
     private Output<String> domainName;
 
     /**
@@ -126,7 +126,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Similar to what would be chosen for an Active Directory set up on an internal network.
      * 
      */
-    @Export(name="fqdn", refs={String.class}, tree="[0]")
+    @Export(name="fqdn", type=String.class, parameters={})
     private Output<String> fqdn;
 
     /**
@@ -141,7 +141,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Resource labels that can contain user-provided metadata
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -156,7 +156,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      * 
      */
-    @Export(name="locations", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="locations", type=List.class, parameters={String.class})
     private Output<List<String>> locations;
 
     /**
@@ -171,7 +171,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -186,7 +186,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -202,7 +202,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
      * 
      */
-    @Export(name="reservedIpRange", refs={String.class}, tree="[0]")
+    @Export(name="reservedIpRange", type=String.class, parameters={})
     private Output<String> reservedIpRange;
 
     /**

@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:spanner/instanceIAMBinding:InstanceIAMBinding")
 public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={InstanceIAMBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=InstanceIAMBindingCondition.class, parameters={})
     private Output</* @Nullable */ InstanceIAMBindingCondition> condition;
 
     public Output<Optional<InstanceIAMBindingCondition>> condition() {
@@ -171,7 +171,7 @@ public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the instance&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -194,7 +194,7 @@ public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -213,7 +213,7 @@ public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> instance() {
         return this.instance;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -224,7 +224,7 @@ public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -241,7 +241,7 @@ public class InstanceIAMBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

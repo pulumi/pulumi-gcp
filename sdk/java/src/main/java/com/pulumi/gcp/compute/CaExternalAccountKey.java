@@ -80,7 +80,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="b64MacKey", refs={String.class}, tree="[0]")
+    @Export(name="b64MacKey", type=String.class, parameters={})
     private Output<String> b64MacKey;
 
     /**
@@ -97,7 +97,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="keyId", refs={String.class}, tree="[0]")
+    @Export(name="keyId", type=String.class, parameters={})
     private Output<String> keyId;
 
     /**
@@ -112,7 +112,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * Location for the externalAccountKey. Currently only `global` is supported.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -126,7 +126,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * Resource name. projects/{project}/locations/{location}/externalAccountKeys/{keyId}.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -141,7 +141,7 @@ public class CaExternalAccountKey extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

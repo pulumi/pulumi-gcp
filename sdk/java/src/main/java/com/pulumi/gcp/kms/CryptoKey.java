@@ -132,7 +132,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * If not specified at creation time, the default duration is 24 hours.
      * 
      */
-    @Export(name="destroyScheduledDuration", refs={String.class}, tree="[0]")
+    @Export(name="destroyScheduledDuration", type=String.class, parameters={})
     private Output<String> destroyScheduledDuration;
 
     /**
@@ -147,7 +147,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * Whether this key may contain imported versions only.
      * 
      */
-    @Export(name="importOnly", refs={Boolean.class}, tree="[0]")
+    @Export(name="importOnly", type=Boolean.class, parameters={})
     private Output<Boolean> importOnly;
 
     /**
@@ -164,7 +164,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="keyRing", refs={String.class}, tree="[0]")
+    @Export(name="keyRing", type=String.class, parameters={})
     private Output<String> keyRing;
 
     /**
@@ -181,7 +181,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * Labels with user-defined metadata to apply to this resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -195,7 +195,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * The resource name for the CryptoKey.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -212,7 +212,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * Default value is &#34;ENCRYPT_DECRYPT&#34;.
      * 
      */
-    @Export(name="purpose", refs={String.class}, tree="[0]")
+    @Export(name="purpose", type=String.class, parameters={})
     private Output</* @Nullable */ String> purpose;
 
     /**
@@ -232,7 +232,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      * 
      */
-    @Export(name="rotationPeriod", refs={String.class}, tree="[0]")
+    @Export(name="rotationPeriod", type=String.class, parameters={})
     private Output</* @Nullable */ String> rotationPeriod;
 
     /**
@@ -250,7 +250,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      * 
      */
-    @Export(name="skipInitialVersionCreation", refs={Boolean.class}, tree="[0]")
+    @Export(name="skipInitialVersionCreation", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipInitialVersionCreation;
 
     /**
@@ -266,7 +266,7 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="versionTemplate", refs={CryptoKeyVersionTemplate.class}, tree="[0]")
+    @Export(name="versionTemplate", type=CryptoKeyVersionTemplate.class, parameters={})
     private Output<CryptoKeyVersionTemplate> versionTemplate;
 
     /**

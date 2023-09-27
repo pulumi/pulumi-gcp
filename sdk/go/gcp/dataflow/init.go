@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FlexTemplateJob{}
 	case "gcp:dataflow/job:Job":
 		r = &Job{}
+	case "gcp:dataflow/pipeline:Pipeline":
+		r = &Pipeline{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataflow/job",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataflow/pipeline",
 		&module{version},
 	)
 }

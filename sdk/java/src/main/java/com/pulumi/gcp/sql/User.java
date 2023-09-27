@@ -48,7 +48,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -70,7 +70,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Can be an IP address. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="host", refs={String.class}, tree="[0]")
+    @Export(name="host", type=String.class, parameters={})
     private Output<String> host;
 
     /**
@@ -87,7 +87,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * forces a new resource to be created.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -103,7 +103,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * to be created.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -121,7 +121,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * and CLOUD_IAM_SERVICE_ACCOUNT user types for any Cloud SQL instance.
      * 
      */
-    @Export(name="password", refs={String.class}, tree="[0]")
+    @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
@@ -134,7 +134,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
-    @Export(name="passwordPolicy", refs={UserPasswordPolicy.class}, tree="[0]")
+    @Export(name="passwordPolicy", type=UserPasswordPolicy.class, parameters={})
     private Output</* @Nullable */ UserPasswordPolicy> passwordPolicy;
 
     public Output<Optional<UserPasswordPolicy>> passwordPolicy() {
@@ -145,7 +145,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -156,7 +156,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="sqlServerUserDetails", refs={List.class,UserSqlServerUserDetail.class}, tree="[0,1]")
+    @Export(name="sqlServerUserDetails", type=List.class, parameters={UserSqlServerUserDetail.class})
     private Output<List<UserSqlServerUserDetail>> sqlServerUserDetails;
 
     public Output<List<UserSqlServerUserDetail>> sqlServerUserDetails() {
@@ -168,7 +168,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**

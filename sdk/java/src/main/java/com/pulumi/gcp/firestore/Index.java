@@ -93,7 +93,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * The collection being indexed.
      * 
      */
-    @Export(name="collection", refs={String.class}, tree="[0]")
+    @Export(name="collection", type=String.class, parameters={})
     private Output<String> collection;
 
     /**
@@ -107,7 +107,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
-    @Export(name="database", refs={String.class}, tree="[0]")
+    @Export(name="database", type=String.class, parameters={})
     private Output</* @Nullable */ String> database;
 
     /**
@@ -127,7 +127,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fields", refs={List.class,IndexField.class}, tree="[0,1]")
+    @Export(name="fields", type=List.class, parameters={IndexField.class})
     private Output<List<IndexField>> fields;
 
     /**
@@ -148,7 +148,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -164,7 +164,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -181,7 +181,7 @@ public class Index extends com.pulumi.resources.CustomResource {
      * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      * 
      */
-    @Export(name="queryScope", refs={String.class}, tree="[0]")
+    @Export(name="queryScope", type=String.class, parameters={})
     private Output</* @Nullable */ String> queryScope;
 
     /**

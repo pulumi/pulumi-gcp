@@ -314,9 +314,17 @@ type Cluster struct {
 	MigrationSources ClusterMigrationSourceArrayOutput `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
+	//
+	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	//
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Metadata related to network configuration.
+	// Structure is documented below.
+	NetworkConfig ClusterNetworkConfigOutput `pulumi:"networkConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -342,9 +350,6 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Network == nil {
-		return nil, errors.New("invalid value for required argument 'Network'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
@@ -409,9 +414,17 @@ type clusterState struct {
 	MigrationSources []ClusterMigrationSource `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name *string `pulumi:"name"`
+	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
+	//
+	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	//
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network *string `pulumi:"network"`
+	// Metadata related to network configuration.
+	// Structure is documented below.
+	NetworkConfig *ClusterNetworkConfig `pulumi:"networkConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -466,9 +479,17 @@ type ClusterState struct {
 	MigrationSources ClusterMigrationSourceArrayInput
 	// The name of the cluster resource.
 	Name pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
+	//
+	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	//
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 	Network pulumi.StringPtrInput
+	// Metadata related to network configuration.
+	// Structure is documented below.
+	NetworkConfig ClusterNetworkConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -510,9 +531,17 @@ type clusterArgs struct {
 	//
 	// ***
 	Location string `pulumi:"location"`
+	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
-	Network string `pulumi:"network"`
+	//
+	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	//
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	Network *string `pulumi:"network"`
+	// Metadata related to network configuration.
+	// Structure is documented below.
+	NetworkConfig *ClusterNetworkConfig `pulumi:"networkConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -549,9 +578,17 @@ type ClusterArgs struct {
 	//
 	// ***
 	Location pulumi.StringInput
+	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
-	Network pulumi.StringInput
+	//
+	// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+	//
+	// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+	Network pulumi.StringPtrInput
+	// Metadata related to network configuration.
+	// Structure is documented below.
+	NetworkConfig ClusterNetworkConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -756,10 +793,21 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 // "projects/{projectNumber}/global/networks/{network_id}".
+//
+// > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `networkConfig` to define the network configuration.
+//
+// Deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
 func (o ClusterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Metadata related to network configuration.
+// Structure is documented below.
+func (o ClusterOutput) NetworkConfig() ClusterNetworkConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterNetworkConfigOutput { return v.NetworkConfig }).(ClusterNetworkConfigOutput)
 }
 
 // The ID of the project in which the resource belongs.

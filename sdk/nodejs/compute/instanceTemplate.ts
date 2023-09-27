@@ -272,7 +272,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceTemplateNetworkInterface[] | undefined>;
     /**
-     * Configures network performance settings for the instance created from the
+     * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machineType`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -512,7 +512,7 @@ export interface InstanceTemplateState {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
     /**
-     * Configures network performance settings for the instance created from the
+     * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machineType`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -664,7 +664,7 @@ export interface InstanceTemplateArgs {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterface>[]>;
     /**
-     * Configures network performance settings for the instance created from the
+     * (Optional, Configures network performance settings for the instance created from the
      * template. Structure is documented below. **Note**: `machineType`
      * must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

@@ -143,7 +143,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      * 
      */
-    @Export(name="apiKeyId", refs={String.class}, tree="[0]")
+    @Export(name="apiKeyId", type=String.class, parameters={})
     private Output<String> apiKeyId;
 
     /**
@@ -160,7 +160,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
-    @Export(name="appId", refs={String.class}, tree="[0]")
+    @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
@@ -177,7 +177,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * AndroidApp. Defaults to &#39;DELETE&#39;.
      * 
      */
-    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -195,7 +195,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -212,7 +212,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * with update requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -228,7 +228,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * projects/projectId/androidApps/appId
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -244,7 +244,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * Developer Console.
      * 
      */
-    @Export(name="packageName", refs={String.class}, tree="[0]")
+    @Export(name="packageName", type=String.class, parameters={})
     private Output</* @Nullable */ String> packageName;
 
     /**
@@ -260,7 +260,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -275,7 +275,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * The SHA1 certificate hashes for the AndroidApp.
      * 
      */
-    @Export(name="sha1Hashes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="sha1Hashes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> sha1Hashes;
 
     /**
@@ -289,7 +289,7 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
      * The SHA256 certificate hashes for the AndroidApp.
      * 
      */
-    @Export(name="sha256Hashes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="sha256Hashes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> sha256Hashes;
 
     /**

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * const private_key_secret = new gcp.secretmanager.Secret("private-key-secret", {
  *     secretId: "ghe-pk-secret",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const private_key_secret_version = new gcp.secretmanager.SecretVersion("private-key-secret-version", {
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const webhook_secret_secret = new gcp.secretmanager.Secret("webhook-secret-secret", {
  *     secretId: "github-token-secret",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const webhook_secret_secret_version = new gcp.secretmanager.SecretVersion("webhook-secret-secret-version", {
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * const github_token_secret = new gcp.secretmanager.Secret("github-token-secret", {
  *     secretId: "github-token-secret",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const github_token_secret_version = new gcp.secretmanager.SecretVersion("github-token-secret-version", {

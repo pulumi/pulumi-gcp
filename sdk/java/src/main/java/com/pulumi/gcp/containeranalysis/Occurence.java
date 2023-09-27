@@ -143,7 +143,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="attestation", refs={OccurenceAttestation.class}, tree="[0]")
+    @Export(name="attestation", type=OccurenceAttestation.class, parameters={})
     private Output<OccurenceAttestation> attestation;
 
     /**
@@ -165,7 +165,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * The time when the repository was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -181,7 +181,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * requests.
      * 
      */
-    @Export(name="kind", refs={String.class}, tree="[0]")
+    @Export(name="kind", type=String.class, parameters={})
     private Output<String> kind;
 
     /**
@@ -197,7 +197,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * The name of the occurrence.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -213,7 +213,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * filter in list requests.
      * 
      */
-    @Export(name="noteName", refs={String.class}, tree="[0]")
+    @Export(name="noteName", type=String.class, parameters={})
     private Output<String> noteName;
 
     /**
@@ -230,7 +230,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -245,7 +245,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * A description of actions that can be taken to remedy the note.
      * 
      */
-    @Export(name="remediation", refs={String.class}, tree="[0]")
+    @Export(name="remediation", type=String.class, parameters={})
     private Output</* @Nullable */ String> remediation;
 
     /**
@@ -261,7 +261,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * https://gcr.io/project/image@sha256:123abc for a Docker image.
      * 
      */
-    @Export(name="resourceUri", refs={String.class}, tree="[0]")
+    @Export(name="resourceUri", type=String.class, parameters={})
     private Output<String> resourceUri;
 
     /**
@@ -277,7 +277,7 @@ public class Occurence extends com.pulumi.resources.CustomResource {
      * The time when the repository was last updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

@@ -4,7 +4,9 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVpcAccessNetworkInterface;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,10 +22,14 @@ public final class JobTemplateTemplateVpcAccess {
      * @return Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
-     * ***
-     * 
      */
     private @Nullable String egress;
+    /**
+     * @return Direct VPC egress settings. Currently only single network interface is supported.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<JobTemplateTemplateVpcAccessNetworkInterface> networkInterfaces;
 
     private JobTemplateTemplateVpcAccess() {}
     /**
@@ -37,11 +43,17 @@ public final class JobTemplateTemplateVpcAccess {
      * @return Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
-     * ***
-     * 
      */
     public Optional<String> egress() {
         return Optional.ofNullable(this.egress);
+    }
+    /**
+     * @return Direct VPC egress settings. Currently only single network interface is supported.
+     * Structure is documented below.
+     * 
+     */
+    public List<JobTemplateTemplateVpcAccessNetworkInterface> networkInterfaces() {
+        return this.networkInterfaces == null ? List.of() : this.networkInterfaces;
     }
 
     public static Builder builder() {
@@ -55,11 +67,13 @@ public final class JobTemplateTemplateVpcAccess {
     public static final class Builder {
         private @Nullable String connector;
         private @Nullable String egress;
+        private @Nullable List<JobTemplateTemplateVpcAccessNetworkInterface> networkInterfaces;
         public Builder() {}
         public Builder(JobTemplateTemplateVpcAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connector = defaults.connector;
     	      this.egress = defaults.egress;
+    	      this.networkInterfaces = defaults.networkInterfaces;
         }
 
         @CustomType.Setter
@@ -72,10 +86,19 @@ public final class JobTemplateTemplateVpcAccess {
             this.egress = egress;
             return this;
         }
+        @CustomType.Setter
+        public Builder networkInterfaces(@Nullable List<JobTemplateTemplateVpcAccessNetworkInterface> networkInterfaces) {
+            this.networkInterfaces = networkInterfaces;
+            return this;
+        }
+        public Builder networkInterfaces(JobTemplateTemplateVpcAccessNetworkInterface... networkInterfaces) {
+            return networkInterfaces(List.of(networkInterfaces));
+        }
         public JobTemplateTemplateVpcAccess build() {
             final var o = new JobTemplateTemplateVpcAccess();
             o.connector = connector;
             o.egress = egress;
+            o.networkInterfaces = networkInterfaces;
             return o;
         }
     }

@@ -343,7 +343,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * under 128 characters in length.
      * 
      */
-    @Export(name="cleanupPolicies", refs={List.class,RepositoryCleanupPolicy.class}, tree="[0,1]")
+    @Export(name="cleanupPolicies", type=List.class, parameters={RepositoryCleanupPolicy.class})
     private Output</* @Nullable */ List<RepositoryCleanupPolicy>> cleanupPolicies;
 
     /**
@@ -359,7 +359,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * If true, the cleanup pipeline is prevented from deleting versions in this repository.
      * 
      */
-    @Export(name="cleanupPolicyDryRun", refs={Boolean.class}, tree="[0]")
+    @Export(name="cleanupPolicyDryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> cleanupPolicyDryRun;
 
     /**
@@ -373,7 +373,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The time when the repository was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -387,7 +387,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The user-provided description of the repository.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -402,7 +402,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dockerConfig", refs={RepositoryDockerConfig.class}, tree="[0]")
+    @Export(name="dockerConfig", type=RepositoryDockerConfig.class, parameters={})
     private Output</* @Nullable */ RepositoryDockerConfig> dockerConfig;
 
     /**
@@ -422,7 +422,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="format", refs={String.class}, tree="[0]")
+    @Export(name="format", type=String.class, parameters={})
     private Output<String> format;
 
     /**
@@ -444,7 +444,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * This value may not be changed after the Repository has been created.
      * 
      */
-    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    @Export(name="kmsKeyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -465,7 +465,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * and dashes.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -483,7 +483,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The name of the location this repository is located in.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -500,7 +500,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="mavenConfig", refs={RepositoryMavenConfig.class}, tree="[0]")
+    @Export(name="mavenConfig", type=RepositoryMavenConfig.class, parameters={})
     private Output</* @Nullable */ RepositoryMavenConfig> mavenConfig;
 
     /**
@@ -519,7 +519,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      * 
      */
-    @Export(name="mode", refs={String.class}, tree="[0]")
+    @Export(name="mode", type=String.class, parameters={})
     private Output</* @Nullable */ String> mode;
 
     /**
@@ -536,7 +536,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * &#34;repo1&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -552,7 +552,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -568,7 +568,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="remoteRepositoryConfig", refs={RepositoryRemoteRepositoryConfig.class}, tree="[0]")
+    @Export(name="remoteRepositoryConfig", type=RepositoryRemoteRepositoryConfig.class, parameters={})
     private Output</* @Nullable */ RepositoryRemoteRepositoryConfig> remoteRepositoryConfig;
 
     /**
@@ -584,7 +584,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * &#34;repo1&#34;
      * 
      */
-    @Export(name="repositoryId", refs={String.class}, tree="[0]")
+    @Export(name="repositoryId", type=String.class, parameters={})
     private Output<String> repositoryId;
 
     /**
@@ -599,7 +599,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The time when the repository was last updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -614,7 +614,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="virtualRepositoryConfig", refs={RepositoryVirtualRepositoryConfig.class}, tree="[0]")
+    @Export(name="virtualRepositoryConfig", type=RepositoryVirtualRepositoryConfig.class, parameters={})
     private Output</* @Nullable */ RepositoryVirtualRepositoryConfig> virtualRepositoryConfig;
 
     /**

@@ -281,7 +281,7 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * Human-readable display name of this API key. Modifiable by user.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -295,7 +295,7 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      * 
      */
-    @Export(name="keyString", refs={String.class}, tree="[0]")
+    @Export(name="keyString", type=String.class, parameters={})
     private Output<String> keyString;
 
     /**
@@ -309,7 +309,7 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -323,7 +323,7 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -337,7 +337,7 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * Key restrictions.
      * 
      */
-    @Export(name="restrictions", refs={ApiKeyRestrictions.class}, tree="[0]")
+    @Export(name="restrictions", type=ApiKeyRestrictions.class, parameters={})
     private Output</* @Nullable */ ApiKeyRestrictions> restrictions;
 
     /**
@@ -351,7 +351,7 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * Output only. Unique id in UUID4 format.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**

@@ -354,7 +354,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="aws", refs={ConnectionAws.class}, tree="[0]")
+    @Export(name="aws", type=ConnectionAws.class, parameters={})
     private Output</* @Nullable */ ConnectionAws> aws;
 
     /**
@@ -370,7 +370,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="azure", refs={ConnectionAzure.class}, tree="[0]")
+    @Export(name="azure", type=ConnectionAzure.class, parameters={})
     private Output</* @Nullable */ ConnectionAzure> azure;
 
     /**
@@ -386,7 +386,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="cloudResource", refs={ConnectionCloudResource.class}, tree="[0]")
+    @Export(name="cloudResource", type=ConnectionCloudResource.class, parameters={})
     private Output</* @Nullable */ ConnectionCloudResource> cloudResource;
 
     /**
@@ -402,7 +402,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="cloudSpanner", refs={ConnectionCloudSpanner.class}, tree="[0]")
+    @Export(name="cloudSpanner", type=ConnectionCloudSpanner.class, parameters={})
     private Output</* @Nullable */ ConnectionCloudSpanner> cloudSpanner;
 
     /**
@@ -418,7 +418,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="cloudSql", refs={ConnectionCloudSql.class}, tree="[0]")
+    @Export(name="cloudSql", type=ConnectionCloudSql.class, parameters={})
     private Output</* @Nullable */ ConnectionCloudSql> cloudSql;
 
     /**
@@ -433,7 +433,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Optional connection id that should be assigned to the created connection.
      * 
      */
-    @Export(name="connectionId", refs={String.class}, tree="[0]")
+    @Export(name="connectionId", type=String.class, parameters={})
     private Output<String> connectionId;
 
     /**
@@ -447,7 +447,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * A descriptive description for the connection
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -461,7 +461,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * A descriptive name for the connection
      * 
      */
-    @Export(name="friendlyName", refs={String.class}, tree="[0]")
+    @Export(name="friendlyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> friendlyName;
 
     /**
@@ -475,7 +475,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * True if the connection has credential assigned.
      * 
      */
-    @Export(name="hasCredential", refs={Boolean.class}, tree="[0]")
+    @Export(name="hasCredential", type=Boolean.class, parameters={})
     private Output<Boolean> hasCredential;
 
     /**
@@ -495,7 +495,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Azure allowed regions are azure-eastus2
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -516,7 +516,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * &#34;projects/{project_id}/locations/{location_id}/connections/{connectionId}&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -532,7 +532,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

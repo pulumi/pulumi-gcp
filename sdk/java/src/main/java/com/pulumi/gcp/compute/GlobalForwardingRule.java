@@ -1424,7 +1424,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
-    @Export(name="allowPscGlobalAccess", refs={Boolean.class}, tree="[0]")
+    @Export(name="allowPscGlobalAccess", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowPscGlobalAccess;
 
     /**
@@ -1438,7 +1438,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      * 
      */
-    @Export(name="baseForwardingRule", refs={String.class}, tree="[0]")
+    @Export(name="baseForwardingRule", type=String.class, parameters={})
     private Output<String> baseForwardingRule;
 
     /**
@@ -1453,7 +1453,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -1500,7 +1500,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * address number.
      * 
      */
-    @Export(name="ipAddress", refs={String.class}, tree="[0]")
+    @Export(name="ipAddress", type=String.class, parameters={})
     private Output<String> ipAddress;
 
     /**
@@ -1554,7 +1554,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      * 
      */
-    @Export(name="ipProtocol", refs={String.class}, tree="[0]")
+    @Export(name="ipProtocol", type=String.class, parameters={})
     private Output<String> ipProtocol;
 
     /**
@@ -1577,7 +1577,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * Possible values are: `IPV4`, `IPV6`.
      * 
      */
-    @Export(name="ipVersion", refs={String.class}, tree="[0]")
+    @Export(name="ipVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipVersion;
 
     /**
@@ -1593,7 +1593,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * internally during updates.
      * 
      */
-    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
@@ -1608,7 +1608,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -1626,7 +1626,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
-    @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
+    @Export(name="loadBalancingScheme", type=String.class, parameters={})
     private Output</* @Nullable */ String> loadBalancingScheme;
 
     /**
@@ -1658,7 +1658,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metadataFilters", refs={List.class,GlobalForwardingRuleMetadataFilter.class}, tree="[0,1]")
+    @Export(name="metadataFilters", type=List.class, parameters={GlobalForwardingRuleMetadataFilter.class})
     private Output</* @Nullable */ List<GlobalForwardingRuleMetadataFilter>> metadataFilters;
 
     /**
@@ -1696,7 +1696,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * lowercase letters and numbers and must start with a letter.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -1727,7 +1727,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * APIs, a network must be provided.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -1748,7 +1748,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      * 
      */
-    @Export(name="noAutomateDnsZone", refs={Boolean.class}, tree="[0]")
+    @Export(name="noAutomateDnsZone", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noAutomateDnsZone;
 
     /**
@@ -1777,7 +1777,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * * TargetVpnGateway: 500, 4500
      * 
      */
-    @Export(name="portRange", refs={String.class}, tree="[0]")
+    @Export(name="portRange", type=String.class, parameters={})
     private Output</* @Nullable */ String> portRange;
 
     /**
@@ -1807,7 +1807,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -1822,7 +1822,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * The PSC connection id of the PSC Forwarding Rule.
      * 
      */
-    @Export(name="pscConnectionId", refs={String.class}, tree="[0]")
+    @Export(name="pscConnectionId", type=String.class, parameters={})
     private Output<String> pscConnectionId;
 
     /**
@@ -1836,7 +1836,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
      * 
      */
-    @Export(name="pscConnectionStatus", refs={String.class}, tree="[0]")
+    @Export(name="pscConnectionStatus", type=String.class, parameters={})
     private Output<String> pscConnectionStatus;
 
     /**
@@ -1850,7 +1850,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -1864,7 +1864,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      * 
      */
-    @Export(name="sourceIpRanges", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="sourceIpRanges", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> sourceIpRanges;
 
     /**
@@ -1883,7 +1883,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * mode or when creating external forwarding rule with IPv6.
      * 
      */
-    @Export(name="subnetwork", refs={String.class}, tree="[0]")
+    @Export(name="subnetwork", type=String.class, parameters={})
     private Output<String> subnetwork;
 
     /**
@@ -1914,7 +1914,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="target", refs={String.class}, tree="[0]")
+    @Export(name="target", type=String.class, parameters={})
     private Output<String> target;
 
     /**

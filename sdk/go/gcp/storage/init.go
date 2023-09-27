@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultObjectAccessControl{}
 	case "gcp:storage/hmacKey:HmacKey":
 		r = &HmacKey{}
+	case "gcp:storage/insightsReportConfig:InsightsReportConfig":
+		r = &InsightsReportConfig{}
 	case "gcp:storage/notification:Notification":
 		r = &Notification{}
 	case "gcp:storage/objectACL:ObjectACL":
@@ -112,6 +114,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/hmacKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/insightsReportConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -288,6 +288,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the primary key and foreign keys. 
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tableConstraints")]
+        public Output<Outputs.TableTableConstraints?> TableConstraints { get; private set; } = null!;
+
+        /// <summary>
         /// A unique ID for the resource.
         /// Changing this forces a new resource to be created.
         /// </summary>
@@ -500,6 +507,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
+
+        /// <summary>
+        /// Defines the primary key and foreign keys. 
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tableConstraints")]
+        public Input<Inputs.TableTableConstraintsArgs>? TableConstraints { get; set; }
 
         /// <summary>
         /// A unique ID for the resource.
@@ -717,6 +731,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Defines the primary key and foreign keys. 
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tableConstraints")]
+        public Input<Inputs.TableTableConstraintsGetArgs>? TableConstraints { get; set; }
 
         /// <summary>
         /// A unique ID for the resource.

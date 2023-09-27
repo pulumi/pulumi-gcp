@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AttachedClusterAuthorization',
+    'AttachedClusterBinaryAuthorization',
     'AttachedClusterError',
     'AttachedClusterFleet',
     'AttachedClusterLoggingConfig',
@@ -46,6 +47,7 @@ __all__ = [
     'AwsNodePoolConfigSpotConfig',
     'AwsNodePoolConfigSshConfig',
     'AwsNodePoolConfigTaint',
+    'AwsNodePoolManagement',
     'AwsNodePoolMaxPodsConstraint',
     'AzureClusterAuthorization',
     'AzureClusterAuthorizationAdminUser',
@@ -67,6 +69,7 @@ __all__ = [
     'AzureNodePoolConfigProxyConfig',
     'AzureNodePoolConfigRootVolume',
     'AzureNodePoolConfigSshConfig',
+    'AzureNodePoolManagement',
     'AzureNodePoolMaxPodsConstraint',
     'ClusterAddonsConfig',
     'ClusterAddonsConfigCloudrunConfig',
@@ -124,6 +127,7 @@ __all__ = [
     'ClusterNodeConfigConfidentialNodes',
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfig',
+    'ClusterNodeConfigFastSocket',
     'ClusterNodeConfigGcfsConfig',
     'ClusterNodeConfigGuestAccelerator',
     'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig',
@@ -157,6 +161,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigConfidentialNodes',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig',
+    'ClusterNodePoolNodeConfigFastSocket',
     'ClusterNodePoolNodeConfigGcfsConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
     'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig',
@@ -204,6 +209,7 @@ __all__ = [
     'NodePoolNodeConfigConfidentialNodes',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfig',
+    'NodePoolNodeConfigFastSocket',
     'NodePoolNodeConfigGcfsConfig',
     'NodePoolNodeConfigGuestAccelerator',
     'NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig',
@@ -280,6 +286,7 @@ __all__ = [
     'GetClusterNodeConfigConfidentialNodeResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult',
+    'GetClusterNodeConfigFastSocketResult',
     'GetClusterNodeConfigGcfsConfigResult',
     'GetClusterNodeConfigGuestAcceleratorResult',
     'GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult',
@@ -313,6 +320,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigConfidentialNodeResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult',
+    'GetClusterNodePoolNodeConfigFastSocketResult',
     'GetClusterNodePoolNodeConfigGcfsConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult',
@@ -393,6 +401,44 @@ class AttachedClusterAuthorization(dict):
         https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
+
+
+@pulumi.output_type
+class AttachedClusterBinaryAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterBinaryAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterBinaryAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterBinaryAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[str] = None):
+        """
+        :param str evaluation_mode: Configure Binary Authorization evaluation mode.
+               Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[str]:
+        """
+        Configure Binary Authorization evaluation mode.
+        Possible values are: `DISABLED`, `PROJECT_SINGLETON_POLICY_ENFORCE`.
+        """
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type
@@ -2177,6 +2223,42 @@ class AwsNodePoolConfigTaint(dict):
 
 
 @pulumi.output_type
+class AwsNodePoolManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRepair":
+            suggest = "auto_repair"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsNodePoolManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsNodePoolManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsNodePoolManagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_repair: Optional[bool] = None):
+        """
+        :param bool auto_repair: Optional. Whether or not the nodes will be automatically repaired.
+        """
+        if auto_repair is not None:
+            pulumi.set(__self__, "auto_repair", auto_repair)
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> Optional[bool]:
+        """
+        Optional. Whether or not the nodes will be automatically repaired.
+        """
+        return pulumi.get(self, "auto_repair")
+
+
+@pulumi.output_type
 class AwsNodePoolMaxPodsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3198,6 +3280,42 @@ class AzureNodePoolConfigSshConfig(dict):
 
 
 @pulumi.output_type
+class AzureNodePoolManagement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRepair":
+            suggest = "auto_repair"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureNodePoolManagement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureNodePoolManagement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureNodePoolManagement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_repair: Optional[bool] = None):
+        """
+        :param bool auto_repair: Optional. Whether or not the nodes will be automatically repaired.
+        """
+        if auto_repair is not None:
+            pulumi.set(__self__, "auto_repair", auto_repair)
+
+    @property
+    @pulumi.getter(name="autoRepair")
+    def auto_repair(self) -> Optional[bool]:
+        """
+        Optional. Whether or not the nodes will be automatically repaired.
+        """
+        return pulumi.get(self, "auto_repair")
+
+
+@pulumi.output_type
 class AzureNodePoolMaxPodsConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3309,7 +3427,9 @@ class ClusterAddonsConfig(dict):
                **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
                All cluster nodes running GKE 1.15 and higher are recreated.**
         :param 'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs' gce_persistent_disk_csi_driver_config: .
-               Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+               Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+               
+               **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
         :param 'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs' gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
@@ -3405,7 +3525,9 @@ class ClusterAddonsConfig(dict):
     def gce_persistent_disk_csi_driver_config(self) -> Optional['outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig']:
         """
         .
-        Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+        Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+
+        **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
         """
         return pulumi.get(self, "gce_persistent_disk_csi_driver_config")
 
@@ -3557,6 +3679,7 @@ class ClusterAddonsConfigConfigConnectorConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3574,6 +3697,7 @@ class ClusterAddonsConfigConfigConnectorConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -3605,6 +3729,7 @@ class ClusterAddonsConfigDnsCacheConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3622,6 +3747,7 @@ class ClusterAddonsConfigDnsCacheConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -3653,6 +3779,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3670,6 +3797,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -3701,6 +3829,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3718,6 +3847,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -3749,6 +3879,7 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3766,6 +3897,7 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -3797,6 +3929,7 @@ class ClusterAddonsConfigGkeBackupAgentConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3814,6 +3947,7 @@ class ClusterAddonsConfigGkeBackupAgentConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -3921,6 +4055,7 @@ class ClusterAddonsConfigKalmConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -3938,6 +4073,7 @@ class ClusterAddonsConfigKalmConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -4044,6 +4180,7 @@ class ClusterBinaryAuthorization(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -4067,6 +4204,7 @@ class ClusterBinaryAuthorization(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -6004,6 +6142,8 @@ class ClusterNodeConfig(dict):
             suggest = "ephemeral_storage_config"
         elif key == "ephemeralStorageLocalSsdConfig":
             suggest = "ephemeral_storage_local_ssd_config"
+        elif key == "fastSocket":
+            suggest = "fast_socket"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -6064,6 +6204,7 @@ class ClusterNodeConfig(dict):
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig'] = None,
+                 fast_socket: Optional['outputs.ClusterNodeConfigFastSocket'] = None,
                  gcfs_config: Optional['outputs.ClusterNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodeConfigGvnic'] = None,
@@ -6110,6 +6251,10 @@ class ClusterNodeConfig(dict):
                ```python
                import pulumi
                ```
+        :param 'ClusterNodeConfigFastSocketArgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+               Node Pool must enable gvnic.
+               GKE version 1.25.2-gke.1700 or later.
+               Structure is documented below.
         :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -6216,6 +6361,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
+        if fast_socket is not None:
+            pulumi.set(__self__, "fast_socket", fast_socket)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -6337,6 +6484,17 @@ class ClusterNodeConfig(dict):
         ```
         """
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
+
+    @property
+    @pulumi.getter(name="fastSocket")
+    def fast_socket(self) -> Optional['outputs.ClusterNodeConfigFastSocket']:
+        """
+        Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+        Node Pool must enable gvnic.
+        GKE version 1.25.2-gke.1700 or later.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fast_socket")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -6738,6 +6896,24 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class ClusterNodeConfigFastSocket(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Whether or not the NCCL Fast Socket is enabled
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not the NCCL Fast Socket is enabled
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -7711,7 +7887,7 @@ class ClusterNodePoolAutoConfig(dict):
     def __init__(__self__, *,
                  network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None):
         """
-        :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: ) - The network tag config for the cluster's automatically provisioned node pools.
+        :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: The network tag config for the cluster's automatically provisioned node pools.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
@@ -7720,7 +7896,7 @@ class ClusterNodePoolAutoConfig(dict):
     @pulumi.getter(name="networkTags")
     def network_tags(self) -> Optional['outputs.ClusterNodePoolAutoConfigNetworkTags']:
         """
-        ) - The network tag config for the cluster's automatically provisioned node pools.
+        The network tag config for the cluster's automatically provisioned node pools.
         """
         return pulumi.get(self, "network_tags")
 
@@ -7730,7 +7906,7 @@ class ClusterNodePoolAutoConfigNetworkTags(dict):
     def __init__(__self__, *,
                  tags: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] tags: ) - List of network tags applied to auto-provisioned node pools.
+        :param Sequence[str] tags: List of network tags applied to auto-provisioned node pools.
                
                ```python
                import pulumi
@@ -7743,7 +7919,7 @@ class ClusterNodePoolAutoConfigNetworkTags(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        ) - List of network tags applied to auto-provisioned node pools.
+        List of network tags applied to auto-provisioned node pools.
 
         ```python
         import pulumi
@@ -8228,6 +8404,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "ephemeral_storage_config"
         elif key == "ephemeralStorageLocalSsdConfig":
             suggest = "ephemeral_storage_local_ssd_config"
+        elif key == "fastSocket":
+            suggest = "fast_socket"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -8288,6 +8466,7 @@ class ClusterNodePoolNodeConfig(dict):
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
+                 fast_socket: Optional['outputs.ClusterNodePoolNodeConfigFastSocket'] = None,
                  gcfs_config: Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodePoolNodeConfigGvnic'] = None,
@@ -8334,6 +8513,10 @@ class ClusterNodePoolNodeConfig(dict):
                ```python
                import pulumi
                ```
+        :param 'ClusterNodePoolNodeConfigFastSocketArgs' fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+               Node Pool must enable gvnic.
+               GKE version 1.25.2-gke.1700 or later.
+               Structure is documented below.
         :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -8440,6 +8623,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
+        if fast_socket is not None:
+            pulumi.set(__self__, "fast_socket", fast_socket)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -8561,6 +8746,17 @@ class ClusterNodePoolNodeConfig(dict):
         ```
         """
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
+
+    @property
+    @pulumi.getter(name="fastSocket")
+    def fast_socket(self) -> Optional['outputs.ClusterNodePoolNodeConfigFastSocket']:
+        """
+        Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+        Node Pool must enable gvnic.
+        GKE version 1.25.2-gke.1700 or later.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fast_socket")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -8962,6 +9158,24 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
         Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigFastSocket(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Whether or not the NCCL Fast Socket is enabled
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not the NCCL Fast Socket is enabled
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -10562,6 +10776,7 @@ class ClusterTpuConfig(dict):
                
                
                
+               
                enforce encryption of data in-use.
                
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -10583,6 +10798,7 @@ class ClusterTpuConfig(dict):
 
 
         for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+
 
 
 
@@ -11076,6 +11292,8 @@ class NodePoolNodeConfig(dict):
             suggest = "ephemeral_storage_config"
         elif key == "ephemeralStorageLocalSsdConfig":
             suggest = "ephemeral_storage_local_ssd_config"
+        elif key == "fastSocket":
+            suggest = "fast_socket"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -11136,6 +11354,7 @@ class NodePoolNodeConfig(dict):
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
                  ephemeral_storage_local_ssd_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
+                 fast_socket: Optional['outputs.NodePoolNodeConfigFastSocket'] = None,
                  gcfs_config: Optional['outputs.NodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.NodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.NodePoolNodeConfigGvnic'] = None,
@@ -11180,6 +11399,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if ephemeral_storage_local_ssd_config is not None:
             pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
+        if fast_socket is not None:
+            pulumi.set(__self__, "fast_socket", fast_socket)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -11272,6 +11493,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
     def ephemeral_storage_local_ssd_config(self) -> Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig']:
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
+
+    @property
+    @pulumi.getter(name="fastSocket")
+    def fast_socket(self) -> Optional['outputs.NodePoolNodeConfigFastSocket']:
+        return pulumi.get(self, "fast_socket")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -11514,6 +11740,26 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigFastSocket(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable Confidential GKE Nodes for this cluster, to
+               enforce encryption of data in-use.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Confidential GKE Nodes for this cluster, to
+        enforce encryption of data in-use.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -13377,6 +13623,7 @@ class GetClusterNodeConfigResult(dict):
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult'],
                  ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult'],
+                 fast_sockets: Sequence['outputs.GetClusterNodeConfigFastSocketResult'],
                  gcfs_configs: Sequence['outputs.GetClusterNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodeConfigGvnicResult'],
@@ -13411,6 +13658,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
         pulumi.set(__self__, "ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
+        pulumi.set(__self__, "fast_sockets", fast_sockets)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
@@ -13473,6 +13721,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="ephemeralStorageLocalSsdConfigs")
     def ephemeral_storage_local_ssd_configs(self) -> Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult']:
         return pulumi.get(self, "ephemeral_storage_local_ssd_configs")
+
+    @property
+    @pulumi.getter(name="fastSockets")
+    def fast_sockets(self) -> Sequence['outputs.GetClusterNodeConfigFastSocketResult']:
+        return pulumi.get(self, "fast_sockets")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -13656,6 +13909,18 @@ class GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigFastSocketResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -14318,6 +14583,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult'],
                  ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult'],
+                 fast_sockets: Sequence['outputs.GetClusterNodePoolNodeConfigFastSocketResult'],
                  gcfs_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodePoolNodeConfigGvnicResult'],
@@ -14352,6 +14618,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
         pulumi.set(__self__, "ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
+        pulumi.set(__self__, "fast_sockets", fast_sockets)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
@@ -14414,6 +14681,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="ephemeralStorageLocalSsdConfigs")
     def ephemeral_storage_local_ssd_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult']:
         return pulumi.get(self, "ephemeral_storage_local_ssd_configs")
+
+    @property
+    @pulumi.getter(name="fastSockets")
+    def fast_sockets(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigFastSocketResult']:
+        return pulumi.get(self, "fast_sockets")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -14597,6 +14869,18 @@ class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> int:
         return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigFastSocketResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

@@ -190,7 +190,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -205,7 +205,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="deployedIndexes", refs={List.class,AiIndexDeployedIndex.class}, tree="[0,1]")
+    @Export(name="deployedIndexes", type=List.class, parameters={AiIndexDeployedIndex.class})
     private Output<List<AiIndexDeployedIndex>> deployedIndexes;
 
     /**
@@ -220,7 +220,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * The description of the Index.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -236,7 +236,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -252,7 +252,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * Used to perform consistent read-modify-write updates.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -267,7 +267,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="indexStats", refs={List.class,AiIndexIndexStat.class}, tree="[0,1]")
+    @Export(name="indexStats", type=List.class, parameters={AiIndexIndexStat.class})
     private Output<List<AiIndexIndexStat>> indexStats;
 
     /**
@@ -284,7 +284,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
      * 
      */
-    @Export(name="indexUpdateMethod", refs={String.class}, tree="[0]")
+    @Export(name="indexUpdateMethod", type=String.class, parameters={})
     private Output</* @Nullable */ String> indexUpdateMethod;
 
     /**
@@ -300,7 +300,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * The labels with user-defined metadata to organize your Indexes.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -315,7 +315,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metadata", refs={AiIndexMetadata.class}, tree="[0]")
+    @Export(name="metadata", type=AiIndexMetadata.class, parameters={})
     private Output</* @Nullable */ AiIndexMetadata> metadata;
 
     /**
@@ -330,7 +330,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      * 
      */
-    @Export(name="metadataSchemaUri", refs={String.class}, tree="[0]")
+    @Export(name="metadataSchemaUri", type=String.class, parameters={})
     private Output<String> metadataSchemaUri;
 
     /**
@@ -344,7 +344,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * The resource name of the Index.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -359,7 +359,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -374,7 +374,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * The region of the index. eg us-central1
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -388,7 +388,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
      * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

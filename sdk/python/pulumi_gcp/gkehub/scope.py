@@ -17,6 +17,7 @@ __all__ = ['ScopeArgs', 'Scope']
 class ScopeArgs:
     def __init__(__self__, *,
                  scope_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Scope resource.
@@ -24,10 +25,13 @@ class ScopeArgs:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "scope_id", scope_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -48,6 +52,18 @@ class ScopeArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Scope.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -65,6 +81,7 @@ class _ScopeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
@@ -75,6 +92,7 @@ class _ScopeState:
         Input properties used for looking up and filtering Scope resources.
         :param pulumi.Input[str] create_time: Time the Scope was created in UTC.
         :param pulumi.Input[str] delete_time: Time the Scope was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
         :param pulumi.Input[str] name: The unique identifier of the scope
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -91,6 +109,8 @@ class _ScopeState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -127,6 +147,18 @@ class _ScopeState:
     @delete_time.setter
     def delete_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_time", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Scope.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -211,6 +243,7 @@ class Scope(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -230,7 +263,13 @@ class Scope(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope%{random_suffix}")
+        scope = gcp.gkehub.Scope("scope",
+            labels={
+                "keya": "valuea",
+                "keyb": "valueb",
+                "keyc": "valuec",
+            },
+            scope_id="tf-test-scope%{random_suffix}")
         ```
 
         ## Import
@@ -251,6 +290,7 @@ class Scope(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope_id: The client-provided identifier of the scope.
@@ -280,7 +320,13 @@ class Scope(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope%{random_suffix}")
+        scope = gcp.gkehub.Scope("scope",
+            labels={
+                "keya": "valuea",
+                "keyb": "valueb",
+                "keyc": "valuec",
+            },
+            scope_id="tf-test-scope%{random_suffix}")
         ```
 
         ## Import
@@ -314,6 +360,7 @@ class Scope(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -325,6 +372,7 @@ class Scope(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ScopeArgs.__new__(ScopeArgs)
 
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             if scope_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scope_id'")
@@ -347,6 +395,7 @@ class Scope(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
@@ -362,6 +411,7 @@ class Scope(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Scope was created in UTC.
         :param pulumi.Input[str] delete_time: Time the Scope was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
         :param pulumi.Input[str] name: The unique identifier of the scope
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -380,6 +430,7 @@ class Scope(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["scope_id"] = scope_id
@@ -403,6 +454,14 @@ class Scope(pulumi.CustomResource):
         Time the Scope was deleted in UTC.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels for this Scope.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

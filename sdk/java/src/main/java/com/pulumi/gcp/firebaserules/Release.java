@@ -146,7 +146,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * Output only. Time the release was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -160,7 +160,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output<Boolean> disabled;
 
     /**
@@ -174,7 +174,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name &#39;cloud.firestore&#39;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -188,7 +188,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -204,7 +204,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="rulesetName", refs={String.class}, tree="[0]")
+    @Export(name="rulesetName", type=String.class, parameters={})
     private Output<String> rulesetName;
 
     /**
@@ -220,7 +220,7 @@ public class Release extends com.pulumi.resources.CustomResource {
      * Output only. Time the release was updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

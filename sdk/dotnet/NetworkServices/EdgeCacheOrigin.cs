@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.NetworkServices
     /// <summary>
     /// EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
     /// 
+    /// To get more information about EdgeCacheOrigin, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
+    /// 
     /// ## Example Usage
     /// ### Network Services Edge Cache Origin Basic
     /// 
@@ -127,7 +131,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///         SecretId = "secret-name",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     });
     /// 

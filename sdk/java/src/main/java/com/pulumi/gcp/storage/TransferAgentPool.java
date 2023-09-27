@@ -100,7 +100,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bandwidthLimit", refs={TransferAgentPoolBandwidthLimit.class}, tree="[0]")
+    @Export(name="bandwidthLimit", type=TransferAgentPoolBandwidthLimit.class, parameters={})
     private Output</* @Nullable */ TransferAgentPoolBandwidthLimit> bandwidthLimit;
 
     /**
@@ -115,7 +115,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * Specifies the client-specified AgentPool description.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -138,7 +138,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -162,7 +162,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -177,7 +177,7 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * Specifies the state of the AgentPool.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

@@ -128,7 +128,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * The collection ID, relative to database. For example: chatrooms or chatrooms/my-document/private-messages.
      * 
      */
-    @Export(name="collection", refs={String.class}, tree="[0]")
+    @Export(name="collection", type=String.class, parameters={})
     private Output<String> collection;
 
     /**
@@ -142,7 +142,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 format.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -156,7 +156,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * The Firestore database id. Defaults to `&#34;(default)&#34;`.
      * 
      */
-    @Export(name="database", refs={String.class}, tree="[0]")
+    @Export(name="database", type=String.class, parameters={})
     private Output</* @Nullable */ String> database;
 
     /**
@@ -172,7 +172,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="documentId", refs={String.class}, tree="[0]")
+    @Export(name="documentId", type=String.class, parameters={})
     private Output<String> documentId;
 
     /**
@@ -188,7 +188,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * The document&#39;s [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
      * 
      */
-    @Export(name="fields", refs={String.class}, tree="[0]")
+    @Export(name="fields", type=String.class, parameters={})
     private Output<String> fields;
 
     /**
@@ -203,7 +203,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -218,7 +218,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * A relative path to the collection this document exists within
      * 
      */
-    @Export(name="path", refs={String.class}, tree="[0]")
+    @Export(name="path", type=String.class, parameters={})
     private Output<String> path;
 
     /**
@@ -233,7 +233,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -248,7 +248,7 @@ public class Document extends com.pulumi.resources.CustomResource {
      * Last update timestamp in RFC3339 format.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

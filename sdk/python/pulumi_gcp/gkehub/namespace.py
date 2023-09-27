@@ -19,6 +19,8 @@ class NamespaceArgs:
                  scope: pulumi.Input[str],
                  scope_id: pulumi.Input[str],
                  scope_namespace_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
@@ -28,12 +30,22 @@ class NamespaceArgs:
                
                - - -
         :param pulumi.Input[str] scope_namespace_id: The client-provided identifier of the namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Namespace-level cluster namespace labels. These labels are applied
+               to the related namespace of the member clusters bound to the parent
+               Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+               resource) take precedence over Namespace-level labels if they share
+               a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "scope", scope)
         pulumi.set(__self__, "scope_id", scope_id)
         pulumi.set(__self__, "scope_namespace_id", scope_namespace_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if namespace_labels is not None:
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -78,6 +90,34 @@ class NamespaceArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Namespace.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Namespace-level cluster namespace labels. These labels are applied
+        to the related namespace of the member clusters bound to the parent
+        Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        resource) take precedence over Namespace-level labels if they share
+        a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @namespace_labels.setter
+    def namespace_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "namespace_labels", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -95,7 +135,9 @@ class _NamespaceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
@@ -107,7 +149,13 @@ class _NamespaceState:
         Input properties used for looking up and filtering Namespace resources.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] delete_time: Time the Namespace was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Namespace.
         :param pulumi.Input[str] name: The resource name for the namespace
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Namespace-level cluster namespace labels. These labels are applied
+               to the related namespace of the member clusters bound to the parent
+               Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+               resource) take precedence over Namespace-level labels if they share
+               a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The name of the Scope instance.
@@ -125,8 +173,12 @@ class _NamespaceState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if namespace_labels is not None:
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if scope is not None:
@@ -168,6 +220,18 @@ class _NamespaceState:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Namespace.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name for the namespace
@@ -177,6 +241,22 @@ class _NamespaceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Namespace-level cluster namespace labels. These labels are applied
+        to the related namespace of the member clusters bound to the parent
+        Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        resource) take precedence over Namespace-level labels if they share
+        a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @namespace_labels.setter
+    def namespace_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "namespace_labels", value)
 
     @property
     @pulumi.getter
@@ -273,6 +353,8 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
@@ -307,6 +389,12 @@ class Namespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Namespace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Namespace-level cluster namespace labels. These labels are applied
+               to the related namespace of the member clusters bound to the parent
+               Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+               resource) take precedence over Namespace-level labels if they share
+               a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The name of the Scope instance.
@@ -364,6 +452,8 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
@@ -377,6 +467,8 @@ class Namespace(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["namespace_labels"] = namespace_labels
             __props__.__dict__["project"] = project
             if scope is None and not opts.urn:
                 raise TypeError("Missing required property 'scope'")
@@ -405,7 +497,9 @@ class Namespace(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            namespace_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
@@ -422,7 +516,13 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
         :param pulumi.Input[str] delete_time: Time the Namespace was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Namespace.
         :param pulumi.Input[str] name: The resource name for the namespace
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] namespace_labels: Namespace-level cluster namespace labels. These labels are applied
+               to the related namespace of the member clusters bound to the parent
+               Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+               resource) take precedence over Namespace-level labels if they share
+               a key. Keys and values must be Kubernetes-conformant.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The name of the Scope instance.
@@ -442,7 +542,9 @@ class Namespace(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["namespace_labels"] = namespace_labels
         __props__.__dict__["project"] = project
         __props__.__dict__["scope"] = scope
         __props__.__dict__["scope_id"] = scope_id
@@ -470,11 +572,31 @@ class Namespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels for this Namespace.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         The resource name for the namespace
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Namespace-level cluster namespace labels. These labels are applied
+        to the related namespace of the member clusters bound to the parent
+        Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+        resource) take precedence over Namespace-level labels if they share
+        a key. Keys and values must be Kubernetes-conformant.
+        """
+        return pulumi.get(self, "namespace_labels")
 
     @property
     @pulumi.getter

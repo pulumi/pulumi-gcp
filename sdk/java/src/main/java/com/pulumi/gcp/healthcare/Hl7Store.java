@@ -267,7 +267,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="dataset", refs={String.class}, tree="[0]")
+    @Export(name="dataset", type=String.class, parameters={})
     private Output<String> dataset;
 
     /**
@@ -291,7 +291,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -313,7 +313,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * ** Changing this property may recreate the Hl7v2 store (removing all data) **
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -336,7 +336,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
-    @Export(name="notificationConfig", refs={Hl7StoreNotificationConfig.class}, tree="[0]")
+    @Export(name="notificationConfig", type=Hl7StoreNotificationConfig.class, parameters={})
     private Output</* @Nullable */ Hl7StoreNotificationConfig> notificationConfig;
 
     /**
@@ -357,7 +357,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="notificationConfigs", refs={List.class,Hl7StoreNotificationConfigs.class}, tree="[0,1]")
+    @Export(name="notificationConfigs", type=List.class, parameters={Hl7StoreNotificationConfigs.class})
     private Output</* @Nullable */ List<Hl7StoreNotificationConfigs>> notificationConfigs;
 
     /**
@@ -375,7 +375,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="parserConfig", refs={Hl7StoreParserConfig.class}, tree="[0]")
+    @Export(name="parserConfig", type=Hl7StoreParserConfig.class, parameters={})
     private Output<Hl7StoreParserConfig> parserConfig;
 
     /**
@@ -390,7 +390,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * The fully qualified name of this dataset
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**

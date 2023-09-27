@@ -89,7 +89,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * be no longer than 63 characters.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -107,7 +107,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * `gcloud beta service-directory locations list`.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -124,7 +124,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * in the format `projects/*{@literal /}locations/*{@literal /}namespaces/*`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -142,7 +142,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="namespaceId", refs={String.class}, tree="[0]")
+    @Export(name="namespaceId", type=String.class, parameters={})
     private Output<String> namespaceId;
 
     /**
@@ -160,7 +160,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

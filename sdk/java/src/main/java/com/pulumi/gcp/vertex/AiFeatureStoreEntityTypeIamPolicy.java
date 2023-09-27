@@ -45,7 +45,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="entitytype", refs={String.class}, tree="[0]")
+    @Export(name="entitytype", type=String.class, parameters={})
     private Output<String> entitytype;
 
     /**
@@ -59,7 +59,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -85,7 +85,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="featurestore", refs={String.class}, tree="[0]")
+    @Export(name="featurestore", type=String.class, parameters={})
     private Output<String> featurestore;
 
     /**
@@ -112,7 +112,7 @@ public class AiFeatureStoreEntityTypeIamPolicy extends com.pulumi.resources.Cust
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**

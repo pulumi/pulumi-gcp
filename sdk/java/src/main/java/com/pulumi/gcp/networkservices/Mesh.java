@@ -109,7 +109,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * Time the Mesh was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -123,7 +123,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -141,7 +141,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * deployments.
      * 
      */
-    @Export(name="interceptionPort", refs={Integer.class}, tree="[0]")
+    @Export(name="interceptionPort", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> interceptionPort;
 
     /**
@@ -159,7 +159,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the Mesh resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -175,7 +175,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -192,7 +192,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -207,7 +207,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * Server-defined URL of this resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -221,7 +221,7 @@ public class Mesh extends com.pulumi.resources.CustomResource {
      * Time the Mesh was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

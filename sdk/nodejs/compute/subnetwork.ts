@@ -200,6 +200,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     /**
+     * The internal IPv6 address range that is assigned to this subnetwork.
+     */
+    public /*out*/ readonly internalIpv6Prefix!: pulumi.Output<string>;
+    /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -316,6 +320,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["externalIpv6Prefix"] = state ? state.externalIpv6Prefix : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["gatewayAddress"] = state ? state.gatewayAddress : undefined;
+            resourceInputs["internalIpv6Prefix"] = state ? state.internalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["ipv6AccessType"] = state ? state.ipv6AccessType : undefined;
             resourceInputs["ipv6CidrRange"] = state ? state.ipv6CidrRange : undefined;
@@ -357,6 +362,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
+            resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -394,6 +400,10 @@ export interface SubnetworkState {
      * outside this subnetwork.
      */
     gatewayAddress?: pulumi.Input<string>;
+    /**
+     * The internal IPv6 address range that is assigned to this subnetwork.
+     */
+    internalIpv6Prefix?: pulumi.Input<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,

@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigtable/instanceIamBinding:InstanceIamBinding")
 public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={InstanceIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=InstanceIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ InstanceIamBindingCondition> condition;
 
     public Output<Optional<InstanceIamBindingCondition>> condition() {
@@ -165,7 +165,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the instances&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -190,7 +190,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -211,7 +211,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> instance() {
         return this.instance;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -222,7 +222,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * is not provided, a default will be supplied.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -241,7 +241,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

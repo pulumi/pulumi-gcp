@@ -22,15 +22,23 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         /// </summary>
         public readonly string? Egress;
+        /// <summary>
+        /// Direct VPC egress settings. Currently only single network interface is supported.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServiceTemplateVpcAccessNetworkInterface> NetworkInterfaces;
 
         [OutputConstructor]
         private ServiceTemplateVpcAccess(
             string? connector,
 
-            string? egress)
+            string? egress,
+
+            ImmutableArray<Outputs.ServiceTemplateVpcAccessNetworkInterface> networkInterfaces)
         {
             Connector = connector;
             Egress = egress;
+            NetworkInterfaces = networkInterfaces;
         }
     }
 }

@@ -348,7 +348,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",
@@ -475,7 +475,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         secret_version = gcp.secretmanager.SecretVersion("secretVersion",

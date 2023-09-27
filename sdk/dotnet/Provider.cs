@@ -177,6 +177,9 @@ namespace Pulumi.Gcp
         [Output("dataLossPreventionCustomEndpoint")]
         public Output<string?> DataLossPreventionCustomEndpoint { get; private set; } = null!;
 
+        [Output("dataPipelineCustomEndpoint")]
+        public Output<string?> DataPipelineCustomEndpoint { get; private set; } = null!;
+
         [Output("databaseMigrationServiceCustomEndpoint")]
         public Output<string?> DatabaseMigrationServiceCustomEndpoint { get; private set; } = null!;
 
@@ -218,6 +221,9 @@ namespace Pulumi.Gcp
 
         [Output("documentAiWarehouseCustomEndpoint")]
         public Output<string?> DocumentAiWarehouseCustomEndpoint { get; private set; } = null!;
+
+        [Output("edgenetworkCustomEndpoint")]
+        public Output<string?> EdgenetworkCustomEndpoint { get; private set; } = null!;
 
         [Output("essentialContactsCustomEndpoint")]
         public Output<string?> EssentialContactsCustomEndpoint { get; private set; } = null!;
@@ -414,6 +420,9 @@ namespace Pulumi.Gcp
         [Output("storageCustomEndpoint")]
         public Output<string?> StorageCustomEndpoint { get; private set; } = null!;
 
+        [Output("storageInsightsCustomEndpoint")]
+        public Output<string?> StorageInsightsCustomEndpoint { get; private set; } = null!;
+
         [Output("storageTransferCustomEndpoint")]
         public Output<string?> StorageTransferCustomEndpoint { get; private set; } = null!;
 
@@ -425,6 +434,9 @@ namespace Pulumi.Gcp
 
         [Output("tpuCustomEndpoint")]
         public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
+
+        [Output("tpuV2CustomEndpoint")]
+        public Output<string?> TpuV2CustomEndpoint { get; private set; } = null!;
 
         [Output("vertexAiCustomEndpoint")]
         public Output<string?> VertexAiCustomEndpoint { get; private set; } = null!;
@@ -634,6 +646,9 @@ namespace Pulumi.Gcp
         [Input("dataLossPreventionCustomEndpoint")]
         public Input<string>? DataLossPreventionCustomEndpoint { get; set; }
 
+        [Input("dataPipelineCustomEndpoint")]
+        public Input<string>? DataPipelineCustomEndpoint { get; set; }
+
         [Input("databaseMigrationServiceCustomEndpoint")]
         public Input<string>? DatabaseMigrationServiceCustomEndpoint { get; set; }
 
@@ -678,6 +693,9 @@ namespace Pulumi.Gcp
 
         [Input("documentAiWarehouseCustomEndpoint")]
         public Input<string>? DocumentAiWarehouseCustomEndpoint { get; set; }
+
+        [Input("edgenetworkCustomEndpoint")]
+        public Input<string>? EdgenetworkCustomEndpoint { get; set; }
 
         [Input("essentialContactsCustomEndpoint")]
         public Input<string>? EssentialContactsCustomEndpoint { get; set; }
@@ -890,6 +908,9 @@ namespace Pulumi.Gcp
         [Input("storageCustomEndpoint")]
         public Input<string>? StorageCustomEndpoint { get; set; }
 
+        [Input("storageInsightsCustomEndpoint")]
+        public Input<string>? StorageInsightsCustomEndpoint { get; set; }
+
         [Input("storageTransferCustomEndpoint")]
         public Input<string>? StorageTransferCustomEndpoint { get; set; }
 
@@ -901,6 +922,9 @@ namespace Pulumi.Gcp
 
         [Input("tpuCustomEndpoint")]
         public Input<string>? TpuCustomEndpoint { get; set; }
+
+        [Input("tpuV2CustomEndpoint")]
+        public Input<string>? TpuV2CustomEndpoint { get; set; }
 
         [Input("userProjectOverride", json: true)]
         public Input<bool>? UserProjectOverride { get; set; }

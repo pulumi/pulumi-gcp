@@ -115,7 +115,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * Examples: &#39;2014-10-02T15:01:23Z&#39; and &#39;2014-10-02T15:01:23.045123456Z&#39;
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -131,7 +131,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * Free-text description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -147,7 +147,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -164,7 +164,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. &#39;urlList&#39;.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -180,7 +180,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -197,7 +197,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * Examples: &#39;2014-10-02T15:01:23Z&#39; and &#39;2014-10-02T15:01:23.045123456Z&#39;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -213,7 +213,7 @@ public class UrlList extends com.pulumi.resources.CustomResource {
      * FQDNs and URLs.
      * 
      */
-    @Export(name="values", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="values", type=List.class, parameters={String.class})
     private Output<List<String>> values;
 
     /**

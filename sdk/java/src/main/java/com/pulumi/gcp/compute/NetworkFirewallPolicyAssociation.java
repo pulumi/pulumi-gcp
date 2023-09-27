@@ -78,7 +78,7 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
      * The target that the firewall policy is attached to.
      * 
      */
-    @Export(name="attachmentTarget", refs={String.class}, tree="[0]")
+    @Export(name="attachmentTarget", type=String.class, parameters={})
     private Output<String> attachmentTarget;
 
     /**
@@ -92,7 +92,7 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
      * The firewall policy ID of the association.
      * 
      */
-    @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
+    @Export(name="firewallPolicy", type=String.class, parameters={})
     private Output<String> firewallPolicy;
 
     /**
@@ -108,7 +108,7 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -124,7 +124,7 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -138,7 +138,7 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
      * The short name of the firewall policy of the association.
      * 
      */
-    @Export(name="shortName", refs={String.class}, tree="[0]")
+    @Export(name="shortName", type=String.class, parameters={})
     private Output<String> shortName;
 
     /**

@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:servicedirectory/namespaceIamMember:NamespaceIamMember")
 public class NamespaceIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={NamespaceIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=NamespaceIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ NamespaceIamMemberCondition> condition;
 
     public Output<Optional<NamespaceIamMemberCondition>> condition() {
@@ -177,7 +177,7 @@ public class NamespaceIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -187,7 +187,7 @@ public class NamespaceIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -209,7 +209,7 @@ public class NamespaceIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -237,7 +237,7 @@ public class NamespaceIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

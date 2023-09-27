@@ -176,6 +176,9 @@ public final class Config {
     public Optional<String> dataLossPreventionCustomEndpoint() {
         return Codegen.stringProp("dataLossPreventionCustomEndpoint").config(config).get();
     }
+    public Optional<String> dataPipelineCustomEndpoint() {
+        return Codegen.stringProp("dataPipelineCustomEndpoint").config(config).get();
+    }
     public Optional<String> databaseMigrationServiceCustomEndpoint() {
         return Codegen.stringProp("databaseMigrationServiceCustomEndpoint").config(config).get();
     }
@@ -220,6 +223,9 @@ public final class Config {
     }
     public Optional<String> documentAiWarehouseCustomEndpoint() {
         return Codegen.stringProp("documentAiWarehouseCustomEndpoint").config(config).get();
+    }
+    public Optional<String> edgenetworkCustomEndpoint() {
+        return Codegen.stringProp("edgenetworkCustomEndpoint").config(config).get();
     }
     public Optional<String> essentialContactsCustomEndpoint() {
         return Codegen.stringProp("essentialContactsCustomEndpoint").config(config).get();
@@ -422,6 +428,9 @@ public final class Config {
     public Optional<String> storageCustomEndpoint() {
         return Codegen.stringProp("storageCustomEndpoint").config(config).get();
     }
+    public Optional<String> storageInsightsCustomEndpoint() {
+        return Codegen.stringProp("storageInsightsCustomEndpoint").config(config).get();
+    }
     public Optional<String> storageTransferCustomEndpoint() {
         return Codegen.stringProp("storageTransferCustomEndpoint").config(config).get();
     }
@@ -433,6 +442,9 @@ public final class Config {
     }
     public Optional<String> tpuCustomEndpoint() {
         return Codegen.stringProp("tpuCustomEndpoint").config(config).get();
+    }
+    public Optional<String> tpuV2CustomEndpoint() {
+        return Codegen.stringProp("tpuV2CustomEndpoint").config(config).get();
     }
     public Optional<Boolean> userProjectOverride() {
         return Codegen.booleanProp("userProjectOverride").config(config).get();

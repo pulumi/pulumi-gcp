@@ -51,8 +51,16 @@ type Namespace struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the Namespace was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Labels for this Namespace.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the namespace
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Namespace-level cluster namespace labels. These labels are applied
+	// to the related namespace of the member clusters bound to the parent
+	// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+	// resource) take precedence over Namespace-level labels if they share
+	// a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapOutput `pulumi:"namespaceLabels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -116,8 +124,16 @@ type namespaceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the Namespace was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Labels for this Namespace.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the namespace
 	Name *string `pulumi:"name"`
+	// Namespace-level cluster namespace labels. These labels are applied
+	// to the related namespace of the member clusters bound to the parent
+	// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+	// resource) take precedence over Namespace-level labels if they share
+	// a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -143,8 +159,16 @@ type NamespaceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the Namespace was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// Labels for this Namespace.
+	Labels pulumi.StringMapInput
 	// The resource name for the namespace
 	Name pulumi.StringPtrInput
+	// Namespace-level cluster namespace labels. These labels are applied
+	// to the related namespace of the member clusters bound to the parent
+	// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+	// resource) take precedence over Namespace-level labels if they share
+	// a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -170,6 +194,14 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
+	// Labels for this Namespace.
+	Labels map[string]string `pulumi:"labels"`
+	// Namespace-level cluster namespace labels. These labels are applied
+	// to the related namespace of the member clusters bound to the parent
+	// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+	// resource) take precedence over Namespace-level labels if they share
+	// a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -185,6 +217,14 @@ type namespaceArgs struct {
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
+	// Labels for this Namespace.
+	Labels pulumi.StringMapInput
+	// Namespace-level cluster namespace labels. These labels are applied
+	// to the related namespace of the member clusters bound to the parent
+	// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+	// resource) take precedence over Namespace-level labels if they share
+	// a key. Keys and values must be Kubernetes-conformant.
+	NamespaceLabels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -319,9 +359,23 @@ func (o NamespaceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// Labels for this Namespace.
+func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The resource name for the namespace
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace-level cluster namespace labels. These labels are applied
+// to the related namespace of the member clusters bound to the parent
+// Scope. Scope-level labels (`namespaceLabels` in the Fleet Scope
+// resource) take precedence over Namespace-level labels if they share
+// a key. Keys and values must be Kubernetes-conformant.
+func (o NamespaceOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.NamespaceLabels }).(pulumi.StringMapOutput)
 }
 
 // The ID of the project in which the resource belongs.

@@ -72,6 +72,7 @@ type Provider struct {
 	DataCatalogCustomEndpoint              pulumi.StringPtrOutput `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint       pulumi.StringPtrOutput `pulumi:"dataLossPreventionCustomEndpoint"`
+	DataPipelineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dataPipelineCustomEndpoint"`
 	DatabaseMigrationServiceCustomEndpoint pulumi.StringPtrOutput `pulumi:"databaseMigrationServiceCustomEndpoint"`
 	DataflowCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"dataflowCustomEndpoint"`
 	DataformCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"dataformCustomEndpoint"`
@@ -86,6 +87,7 @@ type Provider struct {
 	DnsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint               pulumi.StringPtrOutput `pulumi:"documentAiCustomEndpoint"`
 	DocumentAiWarehouseCustomEndpoint      pulumi.StringPtrOutput `pulumi:"documentAiWarehouseCustomEndpoint"`
+	EdgenetworkCustomEndpoint              pulumi.StringPtrOutput `pulumi:"edgenetworkCustomEndpoint"`
 	EssentialContactsCustomEndpoint        pulumi.StringPtrOutput `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
@@ -151,10 +153,12 @@ type Provider struct {
 	SpannerCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"sqlCustomEndpoint"`
 	StorageCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"storageCustomEndpoint"`
+	StorageInsightsCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageInsightsCustomEndpoint"`
 	StorageTransferCustomEndpoint          pulumi.StringPtrOutput `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                     pulumi.StringPtrOutput `pulumi:"tagsCustomEndpoint"`
 	TagsLocationCustomEndpoint             pulumi.StringPtrOutput `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"tpuCustomEndpoint"`
+	TpuV2CustomEndpoint                    pulumi.StringPtrOutput `pulumi:"tpuV2CustomEndpoint"`
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
@@ -249,6 +253,7 @@ type providerArgs struct {
 	DataCatalogCustomEndpoint              *string           `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint               *string           `pulumi:"dataFusionCustomEndpoint"`
 	DataLossPreventionCustomEndpoint       *string           `pulumi:"dataLossPreventionCustomEndpoint"`
+	DataPipelineCustomEndpoint             *string           `pulumi:"dataPipelineCustomEndpoint"`
 	DatabaseMigrationServiceCustomEndpoint *string           `pulumi:"databaseMigrationServiceCustomEndpoint"`
 	DataflowCustomEndpoint                 *string           `pulumi:"dataflowCustomEndpoint"`
 	DataformCustomEndpoint                 *string           `pulumi:"dataformCustomEndpoint"`
@@ -264,6 +269,7 @@ type providerArgs struct {
 	DnsCustomEndpoint                      *string           `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint               *string           `pulumi:"documentAiCustomEndpoint"`
 	DocumentAiWarehouseCustomEndpoint      *string           `pulumi:"documentAiWarehouseCustomEndpoint"`
+	EdgenetworkCustomEndpoint              *string           `pulumi:"edgenetworkCustomEndpoint"`
 	EssentialContactsCustomEndpoint        *string           `pulumi:"essentialContactsCustomEndpoint"`
 	EventarcCustomEndpoint                 *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint                *string           `pulumi:"filestoreCustomEndpoint"`
@@ -331,10 +337,12 @@ type providerArgs struct {
 	SpannerCustomEndpoint                  *string           `pulumi:"spannerCustomEndpoint"`
 	SqlCustomEndpoint                      *string           `pulumi:"sqlCustomEndpoint"`
 	StorageCustomEndpoint                  *string           `pulumi:"storageCustomEndpoint"`
+	StorageInsightsCustomEndpoint          *string           `pulumi:"storageInsightsCustomEndpoint"`
 	StorageTransferCustomEndpoint          *string           `pulumi:"storageTransferCustomEndpoint"`
 	TagsCustomEndpoint                     *string           `pulumi:"tagsCustomEndpoint"`
 	TagsLocationCustomEndpoint             *string           `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      *string           `pulumi:"tpuCustomEndpoint"`
+	TpuV2CustomEndpoint                    *string           `pulumi:"tpuV2CustomEndpoint"`
 	UserProjectOverride                    *bool             `pulumi:"userProjectOverride"`
 	VertexAiCustomEndpoint                 *string           `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             *string           `pulumi:"vmwareengineCustomEndpoint"`
@@ -400,6 +408,7 @@ type ProviderArgs struct {
 	DataCatalogCustomEndpoint              pulumi.StringPtrInput
 	DataFusionCustomEndpoint               pulumi.StringPtrInput
 	DataLossPreventionCustomEndpoint       pulumi.StringPtrInput
+	DataPipelineCustomEndpoint             pulumi.StringPtrInput
 	DatabaseMigrationServiceCustomEndpoint pulumi.StringPtrInput
 	DataflowCustomEndpoint                 pulumi.StringPtrInput
 	DataformCustomEndpoint                 pulumi.StringPtrInput
@@ -415,6 +424,7 @@ type ProviderArgs struct {
 	DnsCustomEndpoint                      pulumi.StringPtrInput
 	DocumentAiCustomEndpoint               pulumi.StringPtrInput
 	DocumentAiWarehouseCustomEndpoint      pulumi.StringPtrInput
+	EdgenetworkCustomEndpoint              pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint        pulumi.StringPtrInput
 	EventarcCustomEndpoint                 pulumi.StringPtrInput
 	FilestoreCustomEndpoint                pulumi.StringPtrInput
@@ -482,10 +492,12 @@ type ProviderArgs struct {
 	SpannerCustomEndpoint                  pulumi.StringPtrInput
 	SqlCustomEndpoint                      pulumi.StringPtrInput
 	StorageCustomEndpoint                  pulumi.StringPtrInput
+	StorageInsightsCustomEndpoint          pulumi.StringPtrInput
 	StorageTransferCustomEndpoint          pulumi.StringPtrInput
 	TagsCustomEndpoint                     pulumi.StringPtrInput
 	TagsLocationCustomEndpoint             pulumi.StringPtrInput
 	TpuCustomEndpoint                      pulumi.StringPtrInput
+	TpuV2CustomEndpoint                    pulumi.StringPtrInput
 	UserProjectOverride                    pulumi.BoolPtrInput
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
 	VmwareengineCustomEndpoint             pulumi.StringPtrInput
@@ -756,6 +768,10 @@ func (o ProviderOutput) DataLossPreventionCustomEndpoint() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataLossPreventionCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DataPipelineCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataPipelineCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) DatabaseMigrationServiceCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatabaseMigrationServiceCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -810,6 +826,10 @@ func (o ProviderOutput) DocumentAiCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) DocumentAiWarehouseCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DocumentAiWarehouseCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) EdgenetworkCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EdgenetworkCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) EssentialContactsCustomEndpoint() pulumi.StringPtrOutput {
@@ -1072,6 +1092,10 @@ func (o ProviderOutput) StorageCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) StorageInsightsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageInsightsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) StorageTransferCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.StorageTransferCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1086,6 +1110,10 @@ func (o ProviderOutput) TagsLocationCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) TpuCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TpuCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) TpuV2CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TpuV2CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) VertexAiCustomEndpoint() pulumi.StringPtrOutput {

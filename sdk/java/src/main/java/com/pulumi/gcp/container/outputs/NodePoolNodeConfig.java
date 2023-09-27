@@ -8,6 +8,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeature
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigConfidentialNodes;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigFastSocket;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGvnic;
@@ -43,6 +44,7 @@ public final class NodePoolNodeConfig {
     private @Nullable String diskType;
     private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
+    private @Nullable NodePoolNodeConfigFastSocket fastSocket;
     private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
     private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
     private @Nullable NodePoolNodeConfigGvnic gvnic;
@@ -96,6 +98,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<NodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfig() {
         return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
+    }
+    public Optional<NodePoolNodeConfigFastSocket> fastSocket() {
+        return Optional.ofNullable(this.fastSocket);
     }
     public Optional<NodePoolNodeConfigGcfsConfig> gcfsConfig() {
         return Optional.ofNullable(this.gcfsConfig);
@@ -195,6 +200,7 @@ public final class NodePoolNodeConfig {
         private @Nullable String diskType;
         private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
         private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
+        private @Nullable NodePoolNodeConfigFastSocket fastSocket;
         private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable NodePoolNodeConfigGvnic gvnic;
@@ -232,6 +238,7 @@ public final class NodePoolNodeConfig {
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
     	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
+    	      this.fastSocket = defaults.fastSocket;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
@@ -294,6 +301,11 @@ public final class NodePoolNodeConfig {
         @CustomType.Setter
         public Builder ephemeralStorageLocalSsdConfig(@Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig) {
             this.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fastSocket(@Nullable NodePoolNodeConfigFastSocket fastSocket) {
+            this.fastSocket = fastSocket;
             return this;
         }
         @CustomType.Setter
@@ -452,6 +464,7 @@ public final class NodePoolNodeConfig {
             o.diskType = diskType;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
             o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            o.fastSocket = fastSocket;
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;

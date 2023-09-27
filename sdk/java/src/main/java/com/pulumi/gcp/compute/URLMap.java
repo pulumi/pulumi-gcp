@@ -871,7 +871,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -890,7 +890,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="defaultRouteAction", refs={URLMapDefaultRouteAction.class}, tree="[0]")
+    @Export(name="defaultRouteAction", type=URLMapDefaultRouteAction.class, parameters={})
     private Output</* @Nullable */ URLMapDefaultRouteAction> defaultRouteAction;
 
     /**
@@ -909,7 +909,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * The backend service or backend bucket to use when none of the given rules match.
      * 
      */
-    @Export(name="defaultService", refs={String.class}, tree="[0]")
+    @Export(name="defaultService", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultService;
 
     /**
@@ -926,7 +926,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="defaultUrlRedirect", refs={URLMapDefaultUrlRedirect.class}, tree="[0]")
+    @Export(name="defaultUrlRedirect", type=URLMapDefaultUrlRedirect.class, parameters={})
     private Output</* @Nullable */ URLMapDefaultUrlRedirect> defaultUrlRedirect;
 
     /**
@@ -944,7 +944,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -960,7 +960,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * field is used in optimistic locking.
      * 
      */
-    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
@@ -978,7 +978,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="headerAction", refs={URLMapHeaderAction.class}, tree="[0]")
+    @Export(name="headerAction", type=URLMapHeaderAction.class, parameters={})
     private Output</* @Nullable */ URLMapHeaderAction> headerAction;
 
     /**
@@ -996,7 +996,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="hostRules", refs={List.class,URLMapHostRule.class}, tree="[0,1]")
+    @Export(name="hostRules", type=List.class, parameters={URLMapHostRule.class})
     private Output</* @Nullable */ List<URLMapHostRule>> hostRules;
 
     /**
@@ -1011,7 +1011,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="mapId", refs={Integer.class}, tree="[0]")
+    @Export(name="mapId", type=Integer.class, parameters={})
     private Output<Integer> mapId;
 
     /**
@@ -1032,7 +1032,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -1054,7 +1054,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pathMatchers", refs={List.class,URLMapPathMatcher.class}, tree="[0,1]")
+    @Export(name="pathMatchers", type=List.class, parameters={URLMapPathMatcher.class})
     private Output</* @Nullable */ List<URLMapPathMatcher>> pathMatchers;
 
     /**
@@ -1070,7 +1070,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -1085,7 +1085,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -1102,7 +1102,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="tests", refs={List.class,URLMapTest.class}, tree="[0,1]")
+    @Export(name="tests", type=List.class, parameters={URLMapTest.class})
     private Output</* @Nullable */ List<URLMapTest>> tests;
 
     /**

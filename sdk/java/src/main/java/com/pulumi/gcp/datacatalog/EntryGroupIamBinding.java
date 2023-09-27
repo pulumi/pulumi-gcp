@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding")
 public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={EntryGroupIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=EntryGroupIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ EntryGroupIamBindingCondition> condition;
 
     public Output<Optional<EntryGroupIamBindingCondition>> condition() {
@@ -172,7 +172,7 @@ public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="entryGroup", refs={String.class}, tree="[0]")
+    @Export(name="entryGroup", type=String.class, parameters={})
     private Output<String> entryGroup;
 
     /**
@@ -186,7 +186,7 @@ public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -196,7 +196,7 @@ public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -219,7 +219,7 @@ public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -242,7 +242,7 @@ public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     public Output<String> region() {
@@ -254,7 +254,7 @@ public class EntryGroupIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

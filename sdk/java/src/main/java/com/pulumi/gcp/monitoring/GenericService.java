@@ -98,7 +98,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="basicService", refs={GenericServiceBasicService.class}, tree="[0]")
+    @Export(name="basicService", type=GenericServiceBasicService.class, parameters={})
     private Output</* @Nullable */ GenericServiceBasicService> basicService;
 
     /**
@@ -115,7 +115,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * Name used for UI elements listing this Service.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -130,7 +130,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -146,7 +146,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -164,7 +164,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="serviceId", refs={String.class}, tree="[0]")
+    @Export(name="serviceId", type=String.class, parameters={})
     private Output<String> serviceId;
 
     /**
@@ -182,7 +182,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="telemetries", refs={List.class,GenericServiceTelemetry.class}, tree="[0,1]")
+    @Export(name="telemetries", type=List.class, parameters={GenericServiceTelemetry.class})
     private Output<List<GenericServiceTelemetry>> telemetries;
 
     /**
@@ -202,7 +202,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
      * the empty string may be supplied for the label value.
      * 
      */
-    @Export(name="userLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="userLabels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> userLabels;
 
     /**

@@ -13,6 +13,7 @@ import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStorageArgs;
+import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -306,6 +307,23 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="upgradePolicy")
+    private @Nullable Output<VMwareClusterUpgradePolicyArgs> upgradePolicy;
+
+    /**
+     * @return Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VMwareClusterUpgradePolicyArgs>> upgradePolicy() {
+        return Optional.ofNullable(this.upgradePolicy);
+    }
+
+    /**
      * Enable VM tracking.
      * 
      */
@@ -339,6 +357,7 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.onPremVersion = $.onPremVersion;
         this.project = $.project;
         this.storage = $.storage;
+        this.upgradePolicy = $.upgradePolicy;
         this.vmTrackingEnabled = $.vmTrackingEnabled;
     }
 
@@ -734,6 +753,29 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storage(VMwareClusterStorageArgs storage) {
             return storage(Output.of(storage));
+        }
+
+        /**
+         * @param upgradePolicy Specifies upgrade policy for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(@Nullable Output<VMwareClusterUpgradePolicyArgs> upgradePolicy) {
+            $.upgradePolicy = upgradePolicy;
+            return this;
+        }
+
+        /**
+         * @param upgradePolicy Specifies upgrade policy for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(VMwareClusterUpgradePolicyArgs upgradePolicy) {
+            return upgradePolicy(Output.of(upgradePolicy));
         }
 
         /**

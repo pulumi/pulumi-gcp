@@ -89,7 +89,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="autoscale", refs={ReservationAutoscale.class}, tree="[0]")
+    @Export(name="autoscale", type=ReservationAutoscale.class, parameters={})
     private Output</* @Nullable */ ReservationAutoscale> autoscale;
 
     /**
@@ -104,7 +104,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      * 
      */
-    @Export(name="concurrency", refs={Integer.class}, tree="[0]")
+    @Export(name="concurrency", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> concurrency;
 
     /**
@@ -118,7 +118,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      * 
      */
-    @Export(name="edition", refs={String.class}, tree="[0]")
+    @Export(name="edition", type=String.class, parameters={})
     private Output<String> edition;
 
     /**
@@ -134,7 +134,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * capacity specified above at most.
      * 
      */
-    @Export(name="ignoreIdleSlots", refs={Boolean.class}, tree="[0]")
+    @Export(name="ignoreIdleSlots", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> ignoreIdleSlots;
 
     /**
@@ -151,7 +151,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * Examples: US, EU, asia-northeast1. The default value is US.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -167,7 +167,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * If set to true, this reservation is placed in the organization&#39;s secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization&#39;s default region.
      * 
      */
-    @Export(name="multiRegionAuxiliary", refs={Boolean.class}, tree="[0]")
+    @Export(name="multiRegionAuxiliary", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> multiRegionAuxiliary;
 
     /**
@@ -184,7 +184,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -201,7 +201,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -217,7 +217,7 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      * 
      */
-    @Export(name="slotCapacity", refs={Integer.class}, tree="[0]")
+    @Export(name="slotCapacity", type=Integer.class, parameters={})
     private Output<Integer> slotCapacity;
 
     /**

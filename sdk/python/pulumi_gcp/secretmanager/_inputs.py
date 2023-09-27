@@ -13,6 +13,8 @@ __all__ = [
     'SecretIamBindingConditionArgs',
     'SecretIamMemberConditionArgs',
     'SecretReplicationArgs',
+    'SecretReplicationAutoArgs',
+    'SecretReplicationAutoCustomerManagedEncryptionArgs',
     'SecretReplicationUserManagedArgs',
     'SecretReplicationUserManagedReplicaArgs',
     'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs',
@@ -101,13 +103,24 @@ class SecretIamMemberConditionArgs:
 @pulumi.input_type
 class SecretReplicationArgs:
     def __init__(__self__, *,
+                 auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
                  automatic: Optional[pulumi.Input[bool]] = None,
                  user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None):
         """
-        :param pulumi.Input[bool] automatic: The Secret will automatically be replicated without any restrictions.
+        :param pulumi.Input['SecretReplicationAutoArgs'] auto: The Secret will automatically be replicated without any restrictions.
+               Structure is documented below.
+        :param pulumi.Input[bool] automatic: (Optional, Deprecated)
+               The Secret will automatically be replicated without any restrictions.
+               
+               > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
         :param pulumi.Input['SecretReplicationUserManagedArgs'] user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
+        if auto is not None:
+            pulumi.set(__self__, "auto", auto)
+        if automatic is not None:
+            warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
+            pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
         if automatic is not None:
             pulumi.set(__self__, "automatic", automatic)
         if user_managed is not None:
@@ -115,10 +128,29 @@ class SecretReplicationArgs:
 
     @property
     @pulumi.getter
-    def automatic(self) -> Optional[pulumi.Input[bool]]:
+    def auto(self) -> Optional[pulumi.Input['SecretReplicationAutoArgs']]:
         """
         The Secret will automatically be replicated without any restrictions.
+        Structure is documented below.
         """
+        return pulumi.get(self, "auto")
+
+    @auto.setter
+    def auto(self, value: Optional[pulumi.Input['SecretReplicationAutoArgs']]):
+        pulumi.set(self, "auto", value)
+
+    @property
+    @pulumi.getter
+    def automatic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Optional, Deprecated)
+        The Secret will automatically be replicated without any restrictions.
+
+        > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+        """
+        warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
+        pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
+
         return pulumi.get(self, "automatic")
 
     @automatic.setter
@@ -137,6 +169,61 @@ class SecretReplicationArgs:
     @user_managed.setter
     def user_managed(self, value: Optional[pulumi.Input['SecretReplicationUserManagedArgs']]):
         pulumi.set(self, "user_managed", value)
+
+
+@pulumi.input_type
+class SecretReplicationAutoArgs:
+    def __init__(__self__, *,
+                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']] = None):
+        """
+        :param pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the Secret.
+               If no configuration is provided, Google-managed default
+               encryption is used.
+               Structure is documented below.
+        """
+        if customer_managed_encryption is not None:
+            pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryption")
+    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']]:
+        """
+        The customer-managed encryption configuration of the Secret.
+        If no configuration is provided, Google-managed default
+        encryption is used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryption")
+
+    @customer_managed_encryption.setter
+    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']]):
+        pulumi.set(self, "customer_managed_encryption", value)
+
+
+@pulumi.input_type
+class SecretReplicationAutoCustomerManagedEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+               
+               - - -
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+
+        - - -
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 @pulumi.input_type

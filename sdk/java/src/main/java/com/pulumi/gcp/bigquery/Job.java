@@ -430,7 +430,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Copies a table.
      * 
      */
-    @Export(name="copy", refs={JobCopy.class}, tree="[0]")
+    @Export(name="copy", type=JobCopy.class, parameters={})
     private Output</* @Nullable */ JobCopy> copy;
 
     /**
@@ -444,7 +444,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Configures an extract job.
      * 
      */
-    @Export(name="extract", refs={JobExtract.class}, tree="[0]")
+    @Export(name="extract", type=JobExtract.class, parameters={})
     private Output</* @Nullable */ JobExtract> extract;
 
     /**
@@ -458,7 +458,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
      * 
      */
-    @Export(name="jobId", refs={String.class}, tree="[0]")
+    @Export(name="jobId", type=String.class, parameters={})
     private Output<String> jobId;
 
     /**
@@ -472,7 +472,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
      * 
      */
-    @Export(name="jobTimeoutMs", refs={String.class}, tree="[0]")
+    @Export(name="jobTimeoutMs", type=String.class, parameters={})
     private Output</* @Nullable */ String> jobTimeoutMs;
 
     /**
@@ -487,7 +487,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The type of the job.
      * 
      */
-    @Export(name="jobType", refs={String.class}, tree="[0]")
+    @Export(name="jobType", type=String.class, parameters={})
     private Output<String> jobType;
 
     /**
@@ -502,7 +502,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The labels associated with this job. You can use these to organize and group your jobs.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -516,7 +516,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Configures a load job.
      * 
      */
-    @Export(name="load", refs={JobLoad.class}, tree="[0]")
+    @Export(name="load", type=JobLoad.class, parameters={})
     private Output</* @Nullable */ JobLoad> load;
 
     /**
@@ -530,7 +530,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The geographic location of the job. The default value is US.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -545,7 +545,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -560,7 +560,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Configures a query job.
      * 
      */
-    @Export(name="query", refs={JobQuery.class}, tree="[0]")
+    @Export(name="query", type=JobQuery.class, parameters={})
     private Output</* @Nullable */ JobQuery> query;
 
     /**
@@ -575,7 +575,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="statuses", refs={List.class,JobStatus.class}, tree="[0,1]")
+    @Export(name="statuses", type=List.class, parameters={JobStatus.class})
     private Output<List<JobStatus>> statuses;
 
     /**
@@ -590,7 +590,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Email address of the user who ran the job.
      * 
      */
-    @Export(name="userEmail", refs={String.class}, tree="[0]")
+    @Export(name="userEmail", type=String.class, parameters={})
     private Output<String> userEmail;
 
     /**

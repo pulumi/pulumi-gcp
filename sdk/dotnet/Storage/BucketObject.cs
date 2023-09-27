@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Storage
         /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
         /// </summary>
         [Output("content")]
-        public Output<string?> Content { get; private set; } = null!;
+        public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
         /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.

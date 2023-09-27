@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataform
     ///         SecretId = "secret",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
-    ///             Automatic = true,
+    ///             Auto = null,
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

@@ -146,7 +146,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * one or three years according to the terms of the existing commitment.
      * 
      */
-    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    @Export(name="autoRenew", type=Boolean.class, parameters={})
     private Output<Boolean> autoRenew;
 
     /**
@@ -167,7 +167,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Possible values are: `LICENSE`, `MACHINE`.
      * 
      */
-    @Export(name="category", refs={String.class}, tree="[0]")
+    @Export(name="category", type=String.class, parameters={})
     private Output<String> category;
 
     /**
@@ -185,7 +185,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Unique identifier for the resource.
      * 
      */
-    @Export(name="commitmentId", refs={Integer.class}, tree="[0]")
+    @Export(name="commitmentId", type=Integer.class, parameters={})
     private Output<Integer> commitmentId;
 
     /**
@@ -199,7 +199,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -213,7 +213,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -227,7 +227,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Commitment end time in RFC3339 text format.
      * 
      */
-    @Export(name="endTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="endTimestamp", type=String.class, parameters={})
     private Output<String> endTimestamp;
 
     /**
@@ -242,7 +242,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="licenseResource", refs={RegionCommitmentLicenseResource.class}, tree="[0]")
+    @Export(name="licenseResource", type=RegionCommitmentLicenseResource.class, parameters={})
     private Output</* @Nullable */ RegionCommitmentLicenseResource> licenseResource;
 
     /**
@@ -261,7 +261,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -283,7 +283,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="plan", refs={String.class}, tree="[0]")
+    @Export(name="plan", type=String.class, parameters={})
     private Output<String> plan;
 
     /**
@@ -302,7 +302,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -317,7 +317,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * URL of the region where this commitment may be used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -333,7 +333,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="resources", refs={List.class,RegionCommitmentResource.class}, tree="[0,1]")
+    @Export(name="resources", type=List.class, parameters={RegionCommitmentResource.class})
     private Output</* @Nullable */ List<RegionCommitmentResource>> resources;
 
     /**
@@ -349,7 +349,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -363,7 +363,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * Commitment start time in RFC3339 text format.
      * 
      */
-    @Export(name="startTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="startTimestamp", type=String.class, parameters={})
     private Output<String> startTimestamp;
 
     /**
@@ -378,7 +378,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * (each commitment has an end date defined).
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -393,7 +393,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * A human-readable explanation of the status.
      * 
      */
-    @Export(name="statusMessage", refs={String.class}, tree="[0]")
+    @Export(name="statusMessage", type=String.class, parameters={})
     private Output<String> statusMessage;
 
     /**
@@ -411,7 +411,7 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * `GRAPHICS_OPTIMIZED_G2`
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

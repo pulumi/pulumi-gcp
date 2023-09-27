@@ -22,6 +22,7 @@ class TargetHttpsProxyArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
@@ -58,6 +59,15 @@ class TargetHttpsProxyArgs:
                specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
                connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -79,6 +89,8 @@ class TargetHttpsProxyArgs:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if quic_override is not None:
             pulumi.set(__self__, "quic_override", quic_override)
+        if server_tls_policy is not None:
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
@@ -205,6 +217,26 @@ class TargetHttpsProxyArgs:
         pulumi.set(self, "quic_override", value)
 
     @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A URL referring to a networksecurity.ServerTlsPolicy
+        resource that describes how the proxy should authenticate inbound
+        traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        attached to globalForwardingRules with the loadBalancingScheme
+        set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        For details which ServerTlsPolicy resources are accepted with
+        INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        loadBalancingScheme consult ServerTlsPolicy documentation.
+        If left blank, communications are not encrypted.
+        """
+        return pulumi.get(self, "server_tls_policy")
+
+    @server_tls_policy.setter
+    def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_tls_policy", value)
+
+    @property
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -245,6 +277,7 @@ class _TargetHttpsProxyState:
                  proxy_id: Optional[pulumi.Input[int]] = None,
                  quic_override: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None):
@@ -280,6 +313,15 @@ class _TargetHttpsProxyState:
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
                connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -311,6 +353,8 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "quic_override", quic_override)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if server_tls_policy is not None:
+            pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if ssl_certificates is not None:
             pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         if ssl_policy is not None:
@@ -459,6 +503,26 @@ class _TargetHttpsProxyState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A URL referring to a networksecurity.ServerTlsPolicy
+        resource that describes how the proxy should authenticate inbound
+        traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        attached to globalForwardingRules with the loadBalancingScheme
+        set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        For details which ServerTlsPolicy resources are accepted with
+        INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        loadBalancingScheme consult ServerTlsPolicy documentation.
+        If left blank, communications are not encrypted.
+        """
+        return pulumi.get(self, "server_tls_policy")
+
+    @server_tls_policy.setter
+    def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_tls_policy", value)
+
+    @property
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -514,6 +578,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
@@ -575,6 +640,15 @@ class TargetHttpsProxy(pulumi.CustomResource):
                specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
                connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -642,6 +716,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input[str]] = None,
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
@@ -661,6 +736,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             __props__.__dict__["quic_override"] = quic_override
+            __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["ssl_certificates"] = ssl_certificates
             __props__.__dict__["ssl_policy"] = ssl_policy
             if url_map is None and not opts.urn:
@@ -689,6 +765,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             proxy_id: Optional[pulumi.Input[int]] = None,
             quic_override: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            server_tls_policy: Optional[pulumi.Input[str]] = None,
             ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None,
             url_map: Optional[pulumi.Input[str]] = None) -> 'TargetHttpsProxy':
@@ -729,6 +806,15 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] server_tls_policy: A URL referring to a networksecurity.ServerTlsPolicy
+               resource that describes how the proxy should authenticate inbound
+               traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+               attached to globalForwardingRules with the loadBalancingScheme
+               set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+               For details which ServerTlsPolicy resources are accepted with
+               INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+               loadBalancingScheme consult ServerTlsPolicy documentation.
+               If left blank, communications are not encrypted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
                connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
@@ -754,6 +840,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["proxy_id"] = proxy_id
         __props__.__dict__["quic_override"] = quic_override
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["server_tls_policy"] = server_tls_policy
         __props__.__dict__["ssl_certificates"] = ssl_certificates
         __props__.__dict__["ssl_policy"] = ssl_policy
         __props__.__dict__["url_map"] = url_map
@@ -858,6 +945,22 @@ class TargetHttpsProxy(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serverTlsPolicy")
+    def server_tls_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        A URL referring to a networksecurity.ServerTlsPolicy
+        resource that describes how the proxy should authenticate inbound
+        traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+        attached to globalForwardingRules with the loadBalancingScheme
+        set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+        For details which ServerTlsPolicy resources are accepted with
+        INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+        loadBalancingScheme consult ServerTlsPolicy documentation.
+        If left blank, communications are not encrypted.
+        """
+        return pulumi.get(self, "server_tls_policy")
 
     @property
     @pulumi.getter(name="sslCertificates")

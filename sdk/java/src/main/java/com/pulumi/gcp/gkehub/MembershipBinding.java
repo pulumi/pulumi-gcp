@@ -12,6 +12,8 @@ import com.pulumi.gcp.gkehub.MembershipBindingArgs;
 import com.pulumi.gcp.gkehub.outputs.MembershipBindingState;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -48,7 +50,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * Time the MembershipBinding was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -62,7 +64,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * Time the MembershipBinding was deleted in UTC.
      * 
      */
-    @Export(name="deleteTime", refs={String.class}, tree="[0]")
+    @Export(name="deleteTime", type=String.class, parameters={})
     private Output<String> deleteTime;
 
     /**
@@ -73,12 +75,26 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
         return this.deleteTime;
     }
     /**
+     * Labels for this Membership binding.
+     * 
+     */
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Membership binding.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
+    }
+    /**
      * Location of the membership
      * 
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -94,7 +110,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * The client-provided identifier of the membership binding.
      * 
      */
-    @Export(name="membershipBindingId", refs={String.class}, tree="[0]")
+    @Export(name="membershipBindingId", type=String.class, parameters={})
     private Output<String> membershipBindingId;
 
     /**
@@ -108,7 +124,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * Id of the membership
      * 
      */
-    @Export(name="membershipId", refs={String.class}, tree="[0]")
+    @Export(name="membershipId", type=String.class, parameters={})
     private Output<String> membershipId;
 
     /**
@@ -122,7 +138,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * The resource name for the membershipbinding itself
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -137,7 +153,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -153,7 +169,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * `projects/*{@literal /}locations/*{@literal /}scopes/*`.
      * 
      */
-    @Export(name="scope", refs={String.class}, tree="[0]")
+    @Export(name="scope", type=String.class, parameters={})
     private Output<String> scope;
 
     /**
@@ -169,7 +185,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="states", refs={List.class,MembershipBindingState.class}, tree="[0,1]")
+    @Export(name="states", type=List.class, parameters={MembershipBindingState.class})
     private Output<List<MembershipBindingState>> states;
 
     /**
@@ -184,7 +200,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * Google-generated UUID for this resource.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -198,7 +214,7 @@ public class MembershipBinding extends com.pulumi.resources.CustomResource {
      * Time the MembershipBinding was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

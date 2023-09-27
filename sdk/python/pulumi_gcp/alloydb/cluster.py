@@ -18,13 +18,14 @@ class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 network: pulumi.Input[str],
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None):
@@ -35,8 +36,6 @@ class ClusterArgs:
                
                
                - - -
-        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-               "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
@@ -48,6 +47,13 @@ class ClusterArgs:
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+        :param pulumi.Input[str] network: (Optional, Deprecated)
+               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+               "projects/{projectNumber}/global/networks/{network_id}".
+               
+               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+        :param pulumi.Input['ClusterNetworkConfigArgs'] network_config: Metadata related to network configuration.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -57,7 +63,6 @@ class ClusterArgs:
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "network", network)
         if automated_backup_policy is not None:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if continuous_backup_config is not None:
@@ -70,6 +75,13 @@ class ClusterArgs:
             pulumi.set(__self__, "initial_user", initial_user)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if network is not None:
+            warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
+            pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if restore_backup_source is not None:
@@ -103,19 +115,6 @@ class ClusterArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[str]:
-        """
-        The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
-        "projects/{projectNumber}/global/networks/{network_id}".
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[str]):
-        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter(name="automatedBackupPolicy")
@@ -196,6 +195,38 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional, Deprecated)
+        The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        "projects/{projectNumber}/global/networks/{network_id}".
+
+        > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+        """
+        warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
+
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['ClusterNetworkConfigArgs']]:
+        """
+        Metadata related to network configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['ClusterNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -252,6 +283,7 @@ class _ClusterState:
                  migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input['ClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
@@ -285,8 +317,13 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
-        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: (Optional, Deprecated)
+               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+               
+               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+        :param pulumi.Input['ClusterNetworkConfigArgs'] network_config: Metadata related to network configuration.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -324,7 +361,12 @@ class _ClusterState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
+            warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
+            pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
+        if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if restore_backup_source is not None:
@@ -519,14 +561,33 @@ class _ClusterState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Deprecated)
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
+
+        > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         """
+        warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
+
         return pulumi.get(self, "network")
 
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['ClusterNetworkConfigArgs']]:
+        """
+        Metadata related to network configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['ClusterNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
 
     @property
     @pulumi.getter
@@ -594,6 +655,7 @@ class Cluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
@@ -761,8 +823,13 @@ class Cluster(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: (Optional, Deprecated)
+               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+               
+               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+        :param pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']] network_config: Metadata related to network configuration.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -945,6 +1012,7 @@ class Cluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
@@ -969,9 +1037,11 @@ class Cluster(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if network is None and not opts.urn:
-                raise TypeError("Missing required property 'network'")
+            if network is not None and not opts.urn:
+                warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
+                pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
             __props__.__dict__["network"] = network
+            __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
             __props__.__dict__["restore_backup_source"] = restore_backup_source
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
@@ -1007,6 +1077,7 @@ class Cluster(pulumi.CustomResource):
             migration_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            network_config: Optional[pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
             restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
@@ -1045,8 +1116,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
-        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: (Optional, Deprecated)
+               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
+               
+               > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
+        :param pulumi.Input[pulumi.InputType['ClusterNetworkConfigArgs']] network_config: Metadata related to network configuration.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
@@ -1074,6 +1150,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["migration_sources"] = migration_sources
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["network_config"] = network_config
         __props__.__dict__["project"] = project
         __props__.__dict__["restore_backup_source"] = restore_backup_source
         __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
@@ -1209,10 +1286,25 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
+        (Optional, Deprecated)
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
+
+        > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         """
+        warnings.warn("""`network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""", DeprecationWarning)
+        pulumi.log.warn("""network is deprecated: `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.""")
+
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output['outputs.ClusterNetworkConfig']:
+        """
+        Metadata related to network configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter

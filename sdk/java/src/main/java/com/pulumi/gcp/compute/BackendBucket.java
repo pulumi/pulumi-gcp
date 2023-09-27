@@ -227,7 +227,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * Cloud Storage bucket name.
      * 
      */
-    @Export(name="bucketName", refs={String.class}, tree="[0]")
+    @Export(name="bucketName", type=String.class, parameters={})
     private Output<String> bucketName;
 
     /**
@@ -242,7 +242,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="cdnPolicy", refs={BackendBucketCdnPolicy.class}, tree="[0]")
+    @Export(name="cdnPolicy", type=BackendBucketCdnPolicy.class, parameters={})
     private Output<BackendBucketCdnPolicy> cdnPolicy;
 
     /**
@@ -258,7 +258,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
-    @Export(name="compressionMode", refs={String.class}, tree="[0]")
+    @Export(name="compressionMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> compressionMode;
 
     /**
@@ -273,7 +273,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -287,7 +287,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * Headers that the HTTP/S load balancer should add to proxied responses.
      * 
      */
-    @Export(name="customResponseHeaders", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="customResponseHeaders", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> customResponseHeaders;
 
     /**
@@ -302,7 +302,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * client when the resource is created.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -317,7 +317,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * The security policy associated with this backend bucket.
      * 
      */
-    @Export(name="edgeSecurityPolicy", refs={String.class}, tree="[0]")
+    @Export(name="edgeSecurityPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> edgeSecurityPolicy;
 
     /**
@@ -331,7 +331,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * If true, enable Cloud CDN for this BackendBucket.
      * 
      */
-    @Export(name="enableCdn", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableCdn", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableCdn;
 
     /**
@@ -353,7 +353,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -376,7 +376,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -391,7 +391,7 @@ public class BackendBucket extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**

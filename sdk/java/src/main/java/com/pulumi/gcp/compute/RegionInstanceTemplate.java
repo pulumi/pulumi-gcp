@@ -54,7 +54,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
      * 
      */
-    @Export(name="advancedMachineFeatures", refs={RegionInstanceTemplateAdvancedMachineFeatures.class}, tree="[0]")
+    @Export(name="advancedMachineFeatures", type=RegionInstanceTemplateAdvancedMachineFeatures.class, parameters={})
     private Output</* @Nullable */ RegionInstanceTemplateAdvancedMachineFeatures> advancedMachineFeatures;
 
     /**
@@ -69,7 +69,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * packets with non-matching source or destination IPs. This defaults to false.
      * 
      */
-    @Export(name="canIpForward", refs={Boolean.class}, tree="[0]")
+    @Export(name="canIpForward", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> canIpForward;
 
     /**
@@ -84,7 +84,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      * 
      */
-    @Export(name="confidentialInstanceConfig", refs={RegionInstanceTemplateConfidentialInstanceConfig.class}, tree="[0]")
+    @Export(name="confidentialInstanceConfig", type=RegionInstanceTemplateConfidentialInstanceConfig.class, parameters={})
     private Output<RegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
@@ -98,7 +98,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * A brief description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +114,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * documented below.
      * 
      */
-    @Export(name="disks", refs={List.class,RegionInstanceTemplateDisk.class}, tree="[0,1]")
+    @Export(name="disks", type=List.class, parameters={RegionInstanceTemplateDisk.class})
     private Output<List<RegionInstanceTemplateDisk>> disks;
 
     /**
@@ -131,7 +131,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
-    @Export(name="enableDisplay", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableDisplay", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableDisplay;
 
     /**
@@ -146,7 +146,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * 
      */
-    @Export(name="guestAccelerators", refs={List.class,RegionInstanceTemplateGuestAccelerator.class}, tree="[0,1]")
+    @Export(name="guestAccelerators", type=List.class, parameters={RegionInstanceTemplateGuestAccelerator.class})
     private Output</* @Nullable */ List<RegionInstanceTemplateGuestAccelerator>> guestAccelerators;
 
     /**
@@ -161,7 +161,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * created from this template.
      * 
      */
-    @Export(name="instanceDescription", refs={String.class}, tree="[0]")
+    @Export(name="instanceDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> instanceDescription;
 
     /**
@@ -177,7 +177,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * created from this template.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -196,7 +196,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * ***
      * 
      */
-    @Export(name="machineType", refs={String.class}, tree="[0]")
+    @Export(name="machineType", type=String.class, parameters={})
     private Output<String> machineType;
 
     /**
@@ -215,7 +215,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * within instances created from this template.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     /**
@@ -230,7 +230,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * The unique fingerprint of the metadata.
      * 
      */
-    @Export(name="metadataFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="metadataFingerprint", type=String.class, parameters={})
     private Output<String> metadataFingerprint;
 
     /**
@@ -247,7 +247,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * thus the two mechanisms are not allowed to be used simultaneously.
      * 
      */
-    @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
+    @Export(name="metadataStartupScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> metadataStartupScript;
 
     /**
@@ -265,7 +265,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * 
      */
-    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
+    @Export(name="minCpuPlatform", type=String.class, parameters={})
     private Output</* @Nullable */ String> minCpuPlatform;
 
     /**
@@ -280,7 +280,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * The name of the instance template. If you leave this blank, Terraform will auto-generate a unique name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -295,7 +295,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * prefix. Conflicts with `name`.
      * 
      */
-    @Export(name="namePrefix", refs={String.class}, tree="[0]")
+    @Export(name="namePrefix", type=String.class, parameters={})
     private Output<String> namePrefix;
 
     /**
@@ -312,7 +312,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * Structure is documented below.
      * 
      */
-    @Export(name="networkInterfaces", refs={List.class,RegionInstanceTemplateNetworkInterface.class}, tree="[0,1]")
+    @Export(name="networkInterfaces", type=List.class, parameters={RegionInstanceTemplateNetworkInterface.class})
     private Output</* @Nullable */ List<RegionInstanceTemplateNetworkInterface>> networkInterfaces;
 
     /**
@@ -333,7 +333,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * in order for this setting to take effect.
      * 
      */
-    @Export(name="networkPerformanceConfig", refs={RegionInstanceTemplateNetworkPerformanceConfig.class}, tree="[0]")
+    @Export(name="networkPerformanceConfig", type=RegionInstanceTemplateNetworkPerformanceConfig.class, parameters={})
     private Output</* @Nullable */ RegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
@@ -353,7 +353,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -369,7 +369,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * If region is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -385,7 +385,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * Structure is documented below.
      * 
      */
-    @Export(name="reservationAffinity", refs={RegionInstanceTemplateReservationAffinity.class}, tree="[0]")
+    @Export(name="reservationAffinity", type=RegionInstanceTemplateReservationAffinity.class, parameters={})
     private Output</* @Nullable */ RegionInstanceTemplateReservationAffinity> reservationAffinity;
 
     /**
@@ -400,7 +400,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
-    @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
+    @Export(name="resourcePolicies", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourcePolicies;
 
     /**
@@ -415,7 +415,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * this configuration option are detailed below.
      * 
      */
-    @Export(name="scheduling", refs={RegionInstanceTemplateScheduling.class}, tree="[0]")
+    @Export(name="scheduling", type=RegionInstanceTemplateScheduling.class, parameters={})
     private Output<RegionInstanceTemplateScheduling> scheduling;
 
     /**
@@ -430,7 +430,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -444,7 +444,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * Service account to attach to the instance. Structure is documented below.
      * 
      */
-    @Export(name="serviceAccount", refs={RegionInstanceTemplateServiceAccount.class}, tree="[0]")
+    @Export(name="serviceAccount", type=RegionInstanceTemplateServiceAccount.class, parameters={})
     private Output</* @Nullable */ RegionInstanceTemplateServiceAccount> serviceAccount;
 
     /**
@@ -459,7 +459,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * 
      */
-    @Export(name="shieldedInstanceConfig", refs={RegionInstanceTemplateShieldedInstanceConfig.class}, tree="[0]")
+    @Export(name="shieldedInstanceConfig", type=RegionInstanceTemplateShieldedInstanceConfig.class, parameters={})
     private Output<RegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -474,7 +474,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * Tags to attach to the instance.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -488,7 +488,7 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      * The unique fingerprint of the tags.
      * 
      */
-    @Export(name="tagsFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="tagsFingerprint", type=String.class, parameters={})
     private Output<String> tagsFingerprint;
 
     /**

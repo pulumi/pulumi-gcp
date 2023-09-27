@@ -42,7 +42,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * User-provided description for this VMware Engine network.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -56,7 +56,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The location where the VMwareEngineNetwork should reside.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -72,7 +72,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -89,7 +89,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -104,7 +104,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * State of the VMware Engine network.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -119,7 +119,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Possible values are: `LEGACY`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -134,7 +134,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * System-generated unique identifier for the resource.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -150,7 +150,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vpcNetworks", refs={List.class,NetworkVpcNetwork.class}, tree="[0,1]")
+    @Export(name="vpcNetworks", type=List.class, parameters={NetworkVpcNetwork.class})
     private Output<List<NetworkVpcNetwork>> vpcNetworks;
 
     /**

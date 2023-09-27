@@ -15,6 +15,11 @@ __all__ = [
     'ConfigBlockingFunctionsTriggerArgs',
     'ConfigQuotaArgs',
     'ConfigQuotaSignUpQuotaConfigArgs',
+    'ConfigSignInArgs',
+    'ConfigSignInAnonymousArgs',
+    'ConfigSignInEmailArgs',
+    'ConfigSignInHashConfigArgs',
+    'ConfigSignInPhoneNumberArgs',
     'InboundSamlConfigIdpConfigArgs',
     'InboundSamlConfigIdpConfigIdpCertificateArgs',
     'InboundSamlConfigSpConfigArgs',
@@ -260,6 +265,306 @@ class ConfigQuotaSignUpQuotaConfigArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class ConfigSignInArgs:
+    def __init__(__self__, *,
+                 allow_duplicate_emails: Optional[pulumi.Input[bool]] = None,
+                 anonymous: Optional[pulumi.Input['ConfigSignInAnonymousArgs']] = None,
+                 email: Optional[pulumi.Input['ConfigSignInEmailArgs']] = None,
+                 hash_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]] = None,
+                 phone_number: Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']] = None):
+        """
+        :param pulumi.Input[bool] allow_duplicate_emails: Whether to allow more than one account to have the same email.
+        :param pulumi.Input['ConfigSignInAnonymousArgs'] anonymous: Configuration options related to authenticating an anonymous user.
+               Structure is documented below.
+        :param pulumi.Input['ConfigSignInEmailArgs'] email: Configuration options related to authenticating a user by their email address.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]] hash_configs: (Output)
+               Output only. Hash config information.
+               Structure is documented below.
+        :param pulumi.Input['ConfigSignInPhoneNumberArgs'] phone_number: Configuration options related to authenticated a user by their phone number.
+               Structure is documented below.
+        """
+        if allow_duplicate_emails is not None:
+            pulumi.set(__self__, "allow_duplicate_emails", allow_duplicate_emails)
+        if anonymous is not None:
+            pulumi.set(__self__, "anonymous", anonymous)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if hash_configs is not None:
+            pulumi.set(__self__, "hash_configs", hash_configs)
+        if phone_number is not None:
+            pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="allowDuplicateEmails")
+    def allow_duplicate_emails(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow more than one account to have the same email.
+        """
+        return pulumi.get(self, "allow_duplicate_emails")
+
+    @allow_duplicate_emails.setter
+    def allow_duplicate_emails(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_duplicate_emails", value)
+
+    @property
+    @pulumi.getter
+    def anonymous(self) -> Optional[pulumi.Input['ConfigSignInAnonymousArgs']]:
+        """
+        Configuration options related to authenticating an anonymous user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "anonymous")
+
+    @anonymous.setter
+    def anonymous(self, value: Optional[pulumi.Input['ConfigSignInAnonymousArgs']]):
+        pulumi.set(self, "anonymous", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input['ConfigSignInEmailArgs']]:
+        """
+        Configuration options related to authenticating a user by their email address.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input['ConfigSignInEmailArgs']]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="hashConfigs")
+    def hash_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]]:
+        """
+        (Output)
+        Output only. Hash config information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hash_configs")
+
+    @hash_configs.setter
+    def hash_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]]):
+        pulumi.set(self, "hash_configs", value)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']]:
+        """
+        Configuration options related to authenticated a user by their phone number.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: Optional[pulumi.Input['ConfigSignInPhoneNumberArgs']]):
+        pulumi.set(self, "phone_number", value)
+
+
+@pulumi.input_type
+class ConfigSignInAnonymousArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Whether anonymous user auth is enabled for the project or not.
+               
+               <a name="nested_hash_config"></a>The `hash_config` block contains:
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether anonymous user auth is enabled for the project or not.
+
+        <a name="nested_hash_config"></a>The `hash_config` block contains:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ConfigSignInEmailArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 password_required: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether email auth is enabled for the project or not.
+        :param pulumi.Input[bool] password_required: Whether a password is required for email auth or not. If true, both an email and
+               password must be provided to sign in. If false, a user may sign in via either
+               email/password or email link.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if password_required is not None:
+            pulumi.set(__self__, "password_required", password_required)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether email auth is enabled for the project or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="passwordRequired")
+    def password_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether a password is required for email auth or not. If true, both an email and
+        password must be provided to sign in. If false, a user may sign in via either
+        email/password or email link.
+        """
+        return pulumi.get(self, "password_required")
+
+    @password_required.setter
+    def password_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "password_required", value)
+
+
+@pulumi.input_type
+class ConfigSignInHashConfigArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 memory_cost: Optional[pulumi.Input[int]] = None,
+                 rounds: Optional[pulumi.Input[int]] = None,
+                 salt_separator: Optional[pulumi.Input[str]] = None,
+                 signer_key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] algorithm: (Output)
+               Different password hash algorithms used in Identity Toolkit.
+        :param pulumi.Input[int] memory_cost: (Output)
+               Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+        :param pulumi.Input[int] rounds: (Output)
+               How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+        :param pulumi.Input[str] salt_separator: (Output)
+               Non-printable character to be inserted between the salt and plain text password in base64.
+        :param pulumi.Input[str] signer_key: (Output)
+               Signer key in base64.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if memory_cost is not None:
+            pulumi.set(__self__, "memory_cost", memory_cost)
+        if rounds is not None:
+            pulumi.set(__self__, "rounds", rounds)
+        if salt_separator is not None:
+            pulumi.set(__self__, "salt_separator", salt_separator)
+        if signer_key is not None:
+            pulumi.set(__self__, "signer_key", signer_key)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Different password hash algorithms used in Identity Toolkit.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter(name="memoryCost")
+    def memory_cost(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+        """
+        return pulumi.get(self, "memory_cost")
+
+    @memory_cost.setter
+    def memory_cost(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory_cost", value)
+
+    @property
+    @pulumi.getter
+    def rounds(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+        """
+        return pulumi.get(self, "rounds")
+
+    @rounds.setter
+    def rounds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rounds", value)
+
+    @property
+    @pulumi.getter(name="saltSeparator")
+    def salt_separator(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Non-printable character to be inserted between the salt and plain text password in base64.
+        """
+        return pulumi.get(self, "salt_separator")
+
+    @salt_separator.setter
+    def salt_separator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "salt_separator", value)
+
+    @property
+    @pulumi.getter(name="signerKey")
+    def signer_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Signer key in base64.
+        """
+        return pulumi.get(self, "signer_key")
+
+    @signer_key.setter
+    def signer_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signer_key", value)
+
+
+@pulumi.input_type
+class ConfigSignInPhoneNumberArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether phone number auth is enabled for the project or not.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of <test phone number, fake code> that can be used for phone auth testing.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if test_phone_numbers is not None:
+            pulumi.set(__self__, "test_phone_numbers", test_phone_numbers)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether phone number auth is enabled for the project or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="testPhoneNumbers")
+    def test_phone_numbers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of <test phone number, fake code> that can be used for phone auth testing.
+        """
+        return pulumi.get(self, "test_phone_numbers")
+
+    @test_phone_numbers.setter
+    def test_phone_numbers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "test_phone_numbers", value)
 
 
 @pulumi.input_type

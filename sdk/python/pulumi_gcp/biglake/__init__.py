@@ -7,5 +7,6 @@ import typing
 # Export this package's modules as members:
 from .catalog import *
 from .database import *
+from .table import *
 from ._inputs import *
 from . import outputs

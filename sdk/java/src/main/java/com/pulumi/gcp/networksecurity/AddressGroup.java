@@ -143,7 +143,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * Capacity of the Address Group.
      * 
      */
-    @Export(name="capacity", refs={Integer.class}, tree="[0]")
+    @Export(name="capacity", type=Integer.class, parameters={})
     private Output<Integer> capacity;
 
     /**
@@ -159,7 +159,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -175,7 +175,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * Free-text description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -189,7 +189,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * List of items.
      * 
      */
-    @Export(name="items", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="items", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> items;
 
     /**
@@ -204,7 +204,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -222,7 +222,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -239,7 +239,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * Name of the AddressGroup resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -253,7 +253,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -268,7 +268,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * Possible values are: `IPV4`, `IPV6`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -285,7 +285,7 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

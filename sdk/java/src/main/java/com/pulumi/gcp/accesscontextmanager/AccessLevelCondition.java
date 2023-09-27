@@ -136,7 +136,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="accessLevel", refs={String.class}, tree="[0]")
+    @Export(name="accessLevel", type=String.class, parameters={})
     private Output<String> accessLevel;
 
     /**
@@ -155,7 +155,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="devicePolicy", refs={AccessLevelConditionDevicePolicy.class}, tree="[0]")
+    @Export(name="devicePolicy", type=AccessLevelConditionDevicePolicy.class, parameters={})
     private Output</* @Nullable */ AccessLevelConditionDevicePolicy> devicePolicy;
 
     /**
@@ -181,7 +181,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * If empty, all IP addresses are allowed.
      * 
      */
-    @Export(name="ipSubnetworks", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="ipSubnetworks", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> ipSubnetworks;
 
     /**
@@ -210,7 +210,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * Formats: `user:{emailid}`, `serviceAccount:{emailid}`
      * 
      */
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> members;
 
     /**
@@ -232,7 +232,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * the Condition overall to be satisfied. Defaults to false.
      * 
      */
-    @Export(name="negate", refs={Boolean.class}, tree="[0]")
+    @Export(name="negate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> negate;
 
     /**
@@ -250,7 +250,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * Format: A valid ISO 3166-1 alpha-2 code.
      * 
      */
-    @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="regions", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> regions;
 
     /**
@@ -270,7 +270,7 @@ public class AccessLevelCondition extends com.pulumi.resources.CustomResource {
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      * 
      */
-    @Export(name="requiredAccessLevels", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="requiredAccessLevels", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> requiredAccessLevels;
 
     /**

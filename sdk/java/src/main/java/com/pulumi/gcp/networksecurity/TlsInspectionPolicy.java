@@ -180,7 +180,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * A CA pool resource used to issue interception certificates.
      * 
      */
-    @Export(name="caPool", refs={String.class}, tree="[0]")
+    @Export(name="caPool", type=String.class, parameters={})
     private Output<String> caPool;
 
     /**
@@ -194,7 +194,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * The timestamp when the resource was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -208,7 +208,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * Free-text description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -222,7 +222,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
      * 
      */
-    @Export(name="excludePublicCaSet", refs={Boolean.class}, tree="[0]")
+    @Export(name="excludePublicCaSet", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> excludePublicCaSet;
 
     /**
@@ -236,7 +236,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * The location of the tls inspection policy.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -252,7 +252,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -269,7 +269,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -284,7 +284,7 @@ public class TlsInspectionPolicy extends com.pulumi.resources.CustomResource {
      * The timestamp when the resource was updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

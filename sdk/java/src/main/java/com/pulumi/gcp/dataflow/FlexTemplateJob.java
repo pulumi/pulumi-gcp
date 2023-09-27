@@ -139,7 +139,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
      * 
      */
-    @Export(name="additionalExperiments", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="additionalExperiments", type=List.class, parameters={String.class})
     private Output<List<String>> additionalExperiments;
 
     /**
@@ -153,7 +153,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The algorithm to use for autoscaling
      * 
      */
-    @Export(name="autoscalingAlgorithm", refs={String.class}, tree="[0]")
+    @Export(name="autoscalingAlgorithm", type=String.class, parameters={})
     private Output</* @Nullable */ String> autoscalingAlgorithm;
 
     /**
@@ -170,7 +170,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="containerSpecGcsPath", refs={String.class}, tree="[0]")
+    @Export(name="containerSpecGcsPath", type=String.class, parameters={})
     private Output<String> containerSpecGcsPath;
 
     /**
@@ -187,7 +187,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * Indicates if the job should use the streaming engine feature.
      * 
      */
-    @Export(name="enableStreamingEngine", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableStreamingEngine", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableStreamingEngine;
 
     /**
@@ -201,7 +201,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
      * 
      */
-    @Export(name="ipConfiguration", refs={String.class}, tree="[0]")
+    @Export(name="ipConfiguration", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipConfiguration;
 
     /**
@@ -215,7 +215,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The unique ID of this job.
      * 
      */
-    @Export(name="jobId", refs={String.class}, tree="[0]")
+    @Export(name="jobId", type=String.class, parameters={})
     private Output<String> jobId;
 
     /**
@@ -230,7 +230,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
      * 
      */
-    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    @Export(name="kmsKeyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -251,7 +251,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * labels will be ignored to prevent diffs on re-apply.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> labels;
 
     /**
@@ -271,7 +271,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The machine type to use for launching the job. The default is n1-standard-1.
      * 
      */
-    @Export(name="launcherMachineType", refs={String.class}, tree="[0]")
+    @Export(name="launcherMachineType", type=String.class, parameters={})
     private Output</* @Nullable */ String> launcherMachineType;
 
     /**
@@ -285,7 +285,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The machine type to use for the job.
      * 
      */
-    @Export(name="machineType", refs={String.class}, tree="[0]")
+    @Export(name="machineType", type=String.class, parameters={})
     private Output</* @Nullable */ String> machineType;
 
     /**
@@ -300,7 +300,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 1000.
      * 
      */
-    @Export(name="maxWorkers", refs={Integer.class}, tree="[0]")
+    @Export(name="maxWorkers", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> maxWorkers;
 
     /**
@@ -315,7 +315,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * A unique name for the resource, required by Dataflow.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -329,7 +329,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -343,7 +343,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The initial number of Google Compute Engine instances for the job.
      * 
      */
-    @Export(name="numWorkers", refs={Integer.class}, tree="[0]")
+    @Export(name="numWorkers", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> numWorkers;
 
     /**
@@ -358,7 +358,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * deletion during `pulumi destroy`.  See above note.
      * 
      */
-    @Export(name="onDelete", refs={String.class}, tree="[0]")
+    @Export(name="onDelete", type=String.class, parameters={})
     private Output</* @Nullable */ String> onDelete;
 
     /**
@@ -375,7 +375,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
      * 
      */
-    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="parameters", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> parameters;
 
     /**
@@ -392,7 +392,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -407,7 +407,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The region in which the created job should run.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -422,7 +422,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * the SDK. Note this field is only valid for portable pipelines.
      * 
      */
-    @Export(name="sdkContainerImage", refs={String.class}, tree="[0]")
+    @Export(name="sdkContainerImage", type=String.class, parameters={})
     private Output</* @Nullable */ String> sdkContainerImage;
 
     /**
@@ -437,7 +437,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The Service Account email used to create the job.
      * 
      */
-    @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccountEmail", type=String.class, parameters={})
     private Output<String> serviceAccountEmail;
 
     /**
@@ -453,7 +453,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * different, e.g. by embedding a release ID or by using a random_id.
      * 
      */
-    @Export(name="skipWaitOnJobTermination", refs={Boolean.class}, tree="[0]")
+    @Export(name="skipWaitOnJobTermination", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipWaitOnJobTermination;
 
     /**
@@ -469,7 +469,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
      * 
      */
-    @Export(name="stagingLocation", refs={String.class}, tree="[0]")
+    @Export(name="stagingLocation", type=String.class, parameters={})
     private Output<String> stagingLocation;
 
     /**
@@ -483,7 +483,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -497,7 +497,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
      * 
      */
-    @Export(name="subnetwork", refs={String.class}, tree="[0]")
+    @Export(name="subnetwork", type=String.class, parameters={})
     private Output</* @Nullable */ String> subnetwork;
 
     /**
@@ -511,7 +511,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
      * 
      */
-    @Export(name="tempLocation", refs={String.class}, tree="[0]")
+    @Export(name="tempLocation", type=String.class, parameters={})
     private Output<String> tempLocation;
 
     /**
@@ -526,7 +526,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * corresponding name prefixes of the new job.
      * 
      */
-    @Export(name="transformNameMapping", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="transformNameMapping", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> transformNameMapping;
 
     /**
@@ -541,7 +541,7 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The type of this job, selected from the JobType enum.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

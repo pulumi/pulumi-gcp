@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
@@ -111,7 +112,7 @@ import javax.annotation.Nullable;
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -247,6 +248,57 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudrunv2 Job Directvpc
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVpcAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .launchStage(&#34;BETA&#34;)
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/job&#34;)
+ *                         .build())
+ *                     .vpcAccess(JobTemplateTemplateVpcAccessArgs.builder()
+ *                         .networkInterfaces(JobTemplateTemplateVpcAccessNetworkInterfaceArgs.builder()
+ *                             .network(&#34;default&#34;)
+ *                             .subnetwork(&#34;default&#34;)
+ *                             .tags(                            
+ *                                 &#34;tag1&#34;,
+ *                                 &#34;tag2&#34;,
+ *                                 &#34;tag3&#34;)
+ *                             .build())
+ *                         .egress(&#34;ALL_TRAFFIC&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Cloudrunv2 Job Secret
  * ```java
  * package generated_program;
@@ -257,6 +309,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
@@ -284,7 +337,7 @@ import javax.annotation.Nullable;
  *         var secret = new Secret(&#34;secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -423,7 +476,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -447,7 +500,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="binaryAuthorization", refs={JobBinaryAuthorization.class}, tree="[0]")
+    @Export(name="binaryAuthorization", type=JobBinaryAuthorization.class, parameters={})
     private Output</* @Nullable */ JobBinaryAuthorization> binaryAuthorization;
 
     /**
@@ -462,7 +515,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Arbitrary identifier for the API client.
      * 
      */
-    @Export(name="client", refs={String.class}, tree="[0]")
+    @Export(name="client", type=String.class, parameters={})
     private Output</* @Nullable */ String> client;
 
     /**
@@ -476,7 +529,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Arbitrary version identifier for the API client.
      * 
      */
-    @Export(name="clientVersion", refs={String.class}, tree="[0]")
+    @Export(name="clientVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> clientVersion;
 
     /**
@@ -491,7 +544,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="conditions", refs={List.class,JobCondition.class}, tree="[0,1]")
+    @Export(name="conditions", type=List.class, parameters={JobCondition.class})
     private Output<List<JobCondition>> conditions;
 
     /**
@@ -508,7 +561,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -524,7 +577,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Email address of the authenticated creator.
      * 
      */
-    @Export(name="creator", refs={String.class}, tree="[0]")
+    @Export(name="creator", type=String.class, parameters={})
     private Output<String> creator;
 
     /**
@@ -538,7 +591,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The deletion time.
      * 
      */
-    @Export(name="deleteTime", refs={String.class}, tree="[0]")
+    @Export(name="deleteTime", type=String.class, parameters={})
     private Output<String> deleteTime;
 
     /**
@@ -552,7 +605,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -566,7 +619,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Number of executions created for this job.
      * 
      */
-    @Export(name="executionCount", refs={Integer.class}, tree="[0]")
+    @Export(name="executionCount", type=Integer.class, parameters={})
     private Output<Integer> executionCount;
 
     /**
@@ -580,7 +633,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * For a deleted resource, the time after which it will be permamently deleted.
      * 
      */
-    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
@@ -594,7 +647,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * A number that monotonically increases every time the user modifies the desired state.
      * 
      */
-    @Export(name="generation", refs={String.class}, tree="[0]")
+    @Export(name="generation", type=String.class, parameters={})
     private Output<String> generation;
 
     /**
@@ -618,7 +671,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * All system labels in v1 now have a corresponding field in v2 Job.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -642,7 +695,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Email address of the last authenticated modifier.
      * 
      */
-    @Export(name="lastModifier", refs={String.class}, tree="[0]")
+    @Export(name="lastModifier", type=String.class, parameters={})
     private Output<String> lastModifier;
 
     /**
@@ -657,7 +710,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="latestCreatedExecutions", refs={List.class,JobLatestCreatedExecution.class}, tree="[0,1]")
+    @Export(name="latestCreatedExecutions", type=List.class, parameters={JobLatestCreatedExecution.class})
     private Output<List<JobLatestCreatedExecution>> latestCreatedExecutions;
 
     /**
@@ -675,7 +728,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
-    @Export(name="launchStage", refs={String.class}, tree="[0]")
+    @Export(name="launchStage", type=String.class, parameters={})
     private Output<String> launchStage;
 
     /**
@@ -692,7 +745,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The location of the cloud run job
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -706,7 +759,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Name of the Job.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -720,7 +773,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
-    @Export(name="observedGeneration", refs={String.class}, tree="[0]")
+    @Export(name="observedGeneration", type=String.class, parameters={})
     private Output<String> observedGeneration;
 
     /**
@@ -735,7 +788,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -753,7 +806,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
      * 
      */
-    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
+    @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
@@ -771,7 +824,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="template", refs={JobTemplate.class}, tree="[0]")
+    @Export(name="template", type=JobTemplate.class, parameters={})
     private Output<JobTemplate> template;
 
     /**
@@ -787,7 +840,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="terminalConditions", refs={List.class,JobTerminalCondition.class}, tree="[0,1]")
+    @Export(name="terminalConditions", type=List.class, parameters={JobTerminalCondition.class})
     private Output<List<JobTerminalCondition>> terminalConditions;
 
     /**
@@ -802,7 +855,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -816,7 +869,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * The last-modified time.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

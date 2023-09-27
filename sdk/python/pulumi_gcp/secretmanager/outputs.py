@@ -14,12 +14,16 @@ __all__ = [
     'SecretIamBindingCondition',
     'SecretIamMemberCondition',
     'SecretReplication',
+    'SecretReplicationAuto',
+    'SecretReplicationAutoCustomerManagedEncryption',
     'SecretReplicationUserManaged',
     'SecretReplicationUserManagedReplica',
     'SecretReplicationUserManagedReplicaCustomerManagedEncryption',
     'SecretRotation',
     'SecretTopic',
     'GetSecretReplicationResult',
+    'GetSecretReplicationAutoResult',
+    'GetSecretReplicationAutoCustomerManagedEncryptionResult',
     'GetSecretReplicationUserManagedResult',
     'GetSecretReplicationUserManagedReplicaResult',
     'GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult',
@@ -101,13 +105,21 @@ class SecretReplication(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto: Optional['outputs.SecretReplicationAuto'] = None,
                  automatic: Optional[bool] = None,
                  user_managed: Optional['outputs.SecretReplicationUserManaged'] = None):
         """
-        :param bool automatic: The Secret will automatically be replicated without any restrictions.
+        :param 'SecretReplicationAutoArgs' auto: The Secret will automatically be replicated without any restrictions.
+               Structure is documented below.
+        :param bool automatic: (Optional, Deprecated)
+               The Secret will automatically be replicated without any restrictions.
+               
+               > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
         :param 'SecretReplicationUserManagedArgs' user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
+        if auto is not None:
+            pulumi.set(__self__, "auto", auto)
         if automatic is not None:
             pulumi.set(__self__, "automatic", automatic)
         if user_managed is not None:
@@ -115,10 +127,25 @@ class SecretReplication(dict):
 
     @property
     @pulumi.getter
-    def automatic(self) -> Optional[bool]:
+    def auto(self) -> Optional['outputs.SecretReplicationAuto']:
         """
         The Secret will automatically be replicated without any restrictions.
+        Structure is documented below.
         """
+        return pulumi.get(self, "auto")
+
+    @property
+    @pulumi.getter
+    def automatic(self) -> Optional[bool]:
+        """
+        (Optional, Deprecated)
+        The Secret will automatically be replicated without any restrictions.
+
+        > **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
+        """
+        warnings.warn("""`automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""", DeprecationWarning)
+        pulumi.log.warn("""automatic is deprecated: `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.""")
+
         return pulumi.get(self, "automatic")
 
     @property
@@ -129,6 +156,87 @@ class SecretReplication(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "user_managed")
+
+
+@pulumi.output_type
+class SecretReplicationAuto(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerManagedEncryption":
+            suggest = "customer_managed_encryption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretReplicationAuto. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretReplicationAuto.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretReplicationAuto.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 customer_managed_encryption: Optional['outputs.SecretReplicationAutoCustomerManagedEncryption'] = None):
+        """
+        :param 'SecretReplicationAutoCustomerManagedEncryptionArgs' customer_managed_encryption: The customer-managed encryption configuration of the Secret.
+               If no configuration is provided, Google-managed default
+               encryption is used.
+               Structure is documented below.
+        """
+        if customer_managed_encryption is not None:
+            pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryption")
+    def customer_managed_encryption(self) -> Optional['outputs.SecretReplicationAutoCustomerManagedEncryption']:
+        """
+        The customer-managed encryption configuration of the Secret.
+        If no configuration is provided, Google-managed default
+        encryption is used.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryption")
+
+
+@pulumi.output_type
+class SecretReplicationAutoCustomerManagedEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretReplicationAutoCustomerManagedEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretReplicationAutoCustomerManagedEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretReplicationAutoCustomerManagedEncryption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+               
+               - - -
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+
+        - - -
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type
@@ -317,8 +425,10 @@ class SecretTopic(dict):
 class GetSecretReplicationResult(dict):
     def __init__(__self__, *,
                  automatic: bool,
+                 autos: Sequence['outputs.GetSecretReplicationAutoResult'],
                  user_manageds: Sequence['outputs.GetSecretReplicationUserManagedResult']):
         pulumi.set(__self__, "automatic", automatic)
+        pulumi.set(__self__, "autos", autos)
         pulumi.set(__self__, "user_manageds", user_manageds)
 
     @property
@@ -327,9 +437,38 @@ class GetSecretReplicationResult(dict):
         return pulumi.get(self, "automatic")
 
     @property
+    @pulumi.getter
+    def autos(self) -> Sequence['outputs.GetSecretReplicationAutoResult']:
+        return pulumi.get(self, "autos")
+
+    @property
     @pulumi.getter(name="userManageds")
     def user_manageds(self) -> Sequence['outputs.GetSecretReplicationUserManagedResult']:
         return pulumi.get(self, "user_manageds")
+
+
+@pulumi.output_type
+class GetSecretReplicationAutoResult(dict):
+    def __init__(__self__, *,
+                 customer_managed_encryptions: Sequence['outputs.GetSecretReplicationAutoCustomerManagedEncryptionResult']):
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptions")
+    def customer_managed_encryptions(self) -> Sequence['outputs.GetSecretReplicationAutoCustomerManagedEncryptionResult']:
+        return pulumi.get(self, "customer_managed_encryptions")
+
+
+@pulumi.output_type
+class GetSecretReplicationAutoCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type

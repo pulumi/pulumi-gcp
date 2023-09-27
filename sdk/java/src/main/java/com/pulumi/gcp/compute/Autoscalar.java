@@ -255,7 +255,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="autoscalingPolicy", refs={AutoscalarAutoscalingPolicy.class}, tree="[0]")
+    @Export(name="autoscalingPolicy", type=AutoscalarAutoscalingPolicy.class, parameters={})
     private Output<AutoscalarAutoscalingPolicy> autoscalingPolicy;
 
     /**
@@ -274,7 +274,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -293,7 +293,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -316,7 +316,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -335,7 +335,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -350,7 +350,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -364,7 +364,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * URL of the managed instance group that this autoscaler will scale.
      * 
      */
-    @Export(name="target", refs={String.class}, tree="[0]")
+    @Export(name="target", type=String.class, parameters={})
     private Output<String> target;
 
     /**
@@ -378,7 +378,7 @@ public class Autoscalar extends com.pulumi.resources.CustomResource {
      * URL of the zone where the instance group resides.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

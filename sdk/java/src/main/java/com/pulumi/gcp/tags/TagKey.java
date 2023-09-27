@@ -77,7 +77,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -92,7 +92,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * User-assigned description of the TagKey. Must not exceed 256 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -106,7 +106,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * The generated numeric id for the TagKey.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -120,7 +120,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * Output only. Namespaced name of the TagKey.
      * 
      */
-    @Export(name="namespacedName", refs={String.class}, tree="[0]")
+    @Export(name="namespacedName", type=String.class, parameters={})
     private Output<String> namespacedName;
 
     /**
@@ -134,7 +134,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -150,7 +150,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * Possible values are: `GCE_FIREWALL`.
      * 
      */
-    @Export(name="purpose", refs={String.class}, tree="[0]")
+    @Export(name="purpose", type=String.class, parameters={})
     private Output</* @Nullable */ String> purpose;
 
     /**
@@ -167,7 +167,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = &#34;&lt;project-name&gt;/&lt;vpc-name&gt;&#34;`.
      * 
      */
-    @Export(name="purposeData", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="purposeData", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> purposeData;
 
     /**
@@ -185,7 +185,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="shortName", refs={String.class}, tree="[0]")
+    @Export(name="shortName", type=String.class, parameters={})
     private Output<String> shortName;
 
     /**
@@ -203,7 +203,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

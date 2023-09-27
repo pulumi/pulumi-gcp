@@ -9,6 +9,10 @@ import * as utilities from "../utilities";
 /**
  * EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
  *
+ * To get more information about EdgeCacheOrigin, see:
+ *
+ * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
+ *
  * ## Example Usage
  * ### Network Services Edge Cache Origin Basic
  *
@@ -89,7 +93,7 @@ import * as utilities from "../utilities";
  * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
  *     secretId: "secret-name",
  *     replication: {
- *         automatic: true,
+ *         auto: {},
  *     },
  * });
  * const secret_version_basic = new gcp.secretmanager.SecretVersion("secret-version-basic", {

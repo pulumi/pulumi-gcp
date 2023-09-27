@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:workstations/workstationIamMember:WorkstationIamMember")
 public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={WorkstationIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=WorkstationIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ WorkstationIamMemberCondition> condition;
 
     public Output<Optional<WorkstationIamMemberCondition>> condition() {
@@ -53,7 +53,7 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -68,7 +68,7 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -79,7 +79,7 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -102,7 +102,7 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -131,7 +131,7 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -143,19 +143,19 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
+    @Export(name="workstationClusterId", type=String.class, parameters={})
     private Output<String> workstationClusterId;
 
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
     }
-    @Export(name="workstationConfigId", refs={String.class}, tree="[0]")
+    @Export(name="workstationConfigId", type=String.class, parameters={})
     private Output<String> workstationConfigId;
 
     public Output<String> workstationConfigId() {
         return this.workstationConfigId;
     }
-    @Export(name="workstationId", refs={String.class}, tree="[0]")
+    @Export(name="workstationId", type=String.class, parameters={})
     private Output<String> workstationId;
 
     public Output<String> workstationId() {

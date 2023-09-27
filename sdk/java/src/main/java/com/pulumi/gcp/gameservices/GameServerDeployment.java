@@ -81,7 +81,7 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="deploymentId", refs={String.class}, tree="[0]")
+    @Export(name="deploymentId", type=String.class, parameters={})
     private Output<String> deploymentId;
 
     /**
@@ -97,7 +97,7 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
      * Human readable description of the game server deployment.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -112,7 +112,7 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
      * key-value pair.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -127,7 +127,7 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
      * Location of the Deployment.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -144,7 +144,7 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
      * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -162,7 +162,7 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

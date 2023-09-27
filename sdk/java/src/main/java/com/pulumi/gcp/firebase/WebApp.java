@@ -205,7 +205,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      * 
      */
-    @Export(name="apiKeyId", refs={String.class}, tree="[0]")
+    @Export(name="apiKeyId", type=String.class, parameters={})
     private Output<String> apiKeyId;
 
     /**
@@ -222,7 +222,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
-    @Export(name="appId", refs={String.class}, tree="[0]")
+    @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
@@ -237,7 +237,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * The URLs where the `WebApp` is hosted.
      * 
      */
-    @Export(name="appUrls", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="appUrls", type=List.class, parameters={String.class})
     private Output<List<String>> appUrls;
 
     /**
@@ -252,7 +252,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
      * 
      */
-    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -269,7 +269,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -286,7 +286,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * projects/projectId/webApps/appId
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -302,7 +302,7 @@ public class WebApp extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

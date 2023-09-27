@@ -298,7 +298,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      * 
      */
-    @Export(name="analyticsRegion", refs={String.class}, tree="[0]")
+    @Export(name="analyticsRegion", type=String.class, parameters={})
     private Output</* @Nullable */ String> analyticsRegion;
 
     /**
@@ -312,7 +312,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Output only. Project ID of the Apigee Tenant Project.
      * 
      */
-    @Export(name="apigeeProjectId", refs={String.class}, tree="[0]")
+    @Export(name="apigeeProjectId", type=String.class, parameters={})
     private Output<String> apigeeProjectId;
 
     /**
@@ -328,7 +328,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: &#34;default&#34;.
      * 
      */
-    @Export(name="authorizedNetwork", refs={String.class}, tree="[0]")
+    @Export(name="authorizedNetwork", type=String.class, parameters={})
     private Output</* @Nullable */ String> authorizedNetwork;
 
     /**
@@ -344,7 +344,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
      * 
      */
-    @Export(name="billingType", refs={String.class}, tree="[0]")
+    @Export(name="billingType", type=String.class, parameters={})
     private Output<String> billingType;
 
     /**
@@ -359,7 +359,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      * 
      */
-    @Export(name="caCertificate", refs={String.class}, tree="[0]")
+    @Export(name="caCertificate", type=String.class, parameters={})
     private Output<String> caCertificate;
 
     /**
@@ -374,7 +374,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Description of the Apigee organization.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -392,7 +392,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * of any Apigee runtime instance and can be updated only when there are no runtime instances.
      * 
      */
-    @Export(name="disableVpcPeering", refs={Boolean.class}, tree="[0]")
+    @Export(name="disableVpcPeering", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableVpcPeering;
 
     /**
@@ -410,7 +410,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * The display name of the Apigee organization.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -424,7 +424,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Name of the property.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -440,7 +440,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
@@ -457,7 +457,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="properties", refs={OrganizationProperties.class}, tree="[0]")
+    @Export(name="properties", type=OrganizationProperties.class, parameters={})
     private Output<OrganizationProperties> properties;
 
     /**
@@ -477,7 +477,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      * 
      */
-    @Export(name="retention", refs={String.class}, tree="[0]")
+    @Export(name="retention", type=String.class, parameters={})
     private Output</* @Nullable */ String> retention;
 
     /**
@@ -499,7 +499,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
      * 
      */
-    @Export(name="runtimeDatabaseEncryptionKeyName", refs={String.class}, tree="[0]")
+    @Export(name="runtimeDatabaseEncryptionKeyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> runtimeDatabaseEncryptionKeyName;
 
     /**
@@ -518,7 +518,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Possible values are: `CLOUD`, `HYBRID`.
      * 
      */
-    @Export(name="runtimeType", refs={String.class}, tree="[0]")
+    @Export(name="runtimeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> runtimeType;
 
     /**
@@ -535,7 +535,7 @@ public class Organization extends com.pulumi.resources.CustomResource {
      * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      * 
      */
-    @Export(name="subscriptionType", refs={String.class}, tree="[0]")
+    @Export(name="subscriptionType", type=String.class, parameters={})
     private Output<String> subscriptionType;
 
     /**

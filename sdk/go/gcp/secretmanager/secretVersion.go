@@ -39,7 +39,7 @@ import (
 //					"label": pulumi.String("my-label"),
 //				},
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Automatic: pulumi.Bool(true),
+//					Auto: nil,
 //				},
 //			})
 //			if err != nil {
@@ -48,6 +48,143 @@ import (
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
 //				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secret Version Deletion Policy Abandon
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-version"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-deletion-policy", &secretmanager.SecretVersionArgs{
+//				Secret:         secret_basic.ID(),
+//				SecretData:     pulumi.String("secret-data"),
+//				DeletionPolicy: pulumi.String("ABANDON"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secret Version Deletion Policy Disable
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-version"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-deletion-policy", &secretmanager.SecretVersionArgs{
+//				Secret:         secret_basic.ID(),
+//				SecretData:     pulumi.String("secret-data"),
+//				DeletionPolicy: pulumi.String("DISABLE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secret Version With Base64 String Secret Data
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/base64"
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := os.ReadFile(path); err == nil {
+//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("secret-version"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
+//								Location: pulumi.String("us-central1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64", &secretmanager.SecretVersionArgs{
+//				Secret:             secret_basic.ID(),
+//				IsSecretDataBase64: pulumi.Bool(true),
+//				SecretData:         filebase64OrPanic("secret-data.pfx"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,10 +209,19 @@ type SecretVersion struct {
 
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// * DELETE
+	// * DISABLE
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime pulumi.StringOutput `pulumi:"destroyTime"`
 	// The current state of the SecretVersion.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+	IsSecretDataBase64 pulumi.BoolPtrOutput `pulumi:"isSecretDataBase64"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -135,10 +281,19 @@ func GetSecretVersion(ctx *pulumi.Context,
 type secretVersionState struct {
 	// The time at which the Secret was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// * DELETE
+	// * DISABLE
+	// * ABANDON
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime *string `pulumi:"destroyTime"`
 	// The current state of the SecretVersion.
 	Enabled *bool `pulumi:"enabled"`
+	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name *string `pulumi:"name"`
@@ -156,10 +311,19 @@ type secretVersionState struct {
 type SecretVersionState struct {
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringPtrInput
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// * DELETE
+	// * DISABLE
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrInput
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime pulumi.StringPtrInput
 	// The current state of the SecretVersion.
 	Enabled pulumi.BoolPtrInput
+	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+	IsSecretDataBase64 pulumi.BoolPtrInput
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringPtrInput
@@ -179,8 +343,17 @@ func (SecretVersionState) ElementType() reflect.Type {
 }
 
 type secretVersionArgs struct {
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// * DELETE
+	// * DISABLE
+	// * ABANDON
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of the SecretVersion.
 	Enabled *bool `pulumi:"enabled"`
+	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// Secret Manager secret resource
 	//
 	// ***
@@ -192,8 +365,17 @@ type secretVersionArgs struct {
 
 // The set of arguments for constructing a SecretVersion resource.
 type SecretVersionArgs struct {
+	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// * DELETE
+	// * DISABLE
+	// * ABANDON
+	DeletionPolicy pulumi.StringPtrInput
 	// The current state of the SecretVersion.
 	Enabled pulumi.BoolPtrInput
+	// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+	IsSecretDataBase64 pulumi.BoolPtrInput
 	// Secret Manager secret resource
 	//
 	// ***
@@ -319,6 +501,16 @@ func (o SecretVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The deletion policy for the secret version. Setting `ABANDON` allows the resource
+// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+// disabled rather than deleted. Default is `DELETE`. Possible values are:
+// * DELETE
+// * DISABLE
+// * ABANDON
+func (o SecretVersionOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+}
+
 // The time at which the Secret was destroyed. Only present if state is DESTROYED.
 func (o SecretVersionOutput) DestroyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.DestroyTime }).(pulumi.StringOutput)
@@ -327,6 +519,11 @@ func (o SecretVersionOutput) DestroyTime() pulumi.StringOutput {
 // The current state of the SecretVersion.
 func (o SecretVersionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
+func (o SecretVersionOutput) IsSecretDataBase64() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.BoolPtrOutput { return v.IsSecretDataBase64 }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the SecretVersion. Format:

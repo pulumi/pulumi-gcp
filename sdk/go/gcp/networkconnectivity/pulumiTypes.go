@@ -1424,6 +1424,186 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) Index(i pulumi.I
 	}).(SpokeLinkedRouterApplianceInstancesInstanceOutput)
 }
 
+type SpokeLinkedVpcNetwork struct {
+	// IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// The URI of the VPC network resource.
+	Uri string `pulumi:"uri"`
+}
+
+// SpokeLinkedVpcNetworkInput is an input type that accepts SpokeLinkedVpcNetworkArgs and SpokeLinkedVpcNetworkOutput values.
+// You can construct a concrete instance of `SpokeLinkedVpcNetworkInput` via:
+//
+//	SpokeLinkedVpcNetworkArgs{...}
+type SpokeLinkedVpcNetworkInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedVpcNetworkOutput() SpokeLinkedVpcNetworkOutput
+	ToSpokeLinkedVpcNetworkOutputWithContext(context.Context) SpokeLinkedVpcNetworkOutput
+}
+
+type SpokeLinkedVpcNetworkArgs struct {
+	// IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// The URI of the VPC network resource.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (SpokeLinkedVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedVpcNetwork)(nil)).Elem()
+}
+
+func (i SpokeLinkedVpcNetworkArgs) ToSpokeLinkedVpcNetworkOutput() SpokeLinkedVpcNetworkOutput {
+	return i.ToSpokeLinkedVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedVpcNetworkArgs) ToSpokeLinkedVpcNetworkOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpcNetworkOutput)
+}
+
+func (i SpokeLinkedVpcNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpcNetwork] {
+	return pulumix.Output[SpokeLinkedVpcNetwork]{
+		OutputState: i.ToSpokeLinkedVpcNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i SpokeLinkedVpcNetworkArgs) ToSpokeLinkedVpcNetworkPtrOutput() SpokeLinkedVpcNetworkPtrOutput {
+	return i.ToSpokeLinkedVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedVpcNetworkArgs) ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpcNetworkOutput).ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx)
+}
+
+// SpokeLinkedVpcNetworkPtrInput is an input type that accepts SpokeLinkedVpcNetworkArgs, SpokeLinkedVpcNetworkPtr and SpokeLinkedVpcNetworkPtrOutput values.
+// You can construct a concrete instance of `SpokeLinkedVpcNetworkPtrInput` via:
+//
+//	        SpokeLinkedVpcNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpokeLinkedVpcNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedVpcNetworkPtrOutput() SpokeLinkedVpcNetworkPtrOutput
+	ToSpokeLinkedVpcNetworkPtrOutputWithContext(context.Context) SpokeLinkedVpcNetworkPtrOutput
+}
+
+type spokeLinkedVpcNetworkPtrType SpokeLinkedVpcNetworkArgs
+
+func SpokeLinkedVpcNetworkPtr(v *SpokeLinkedVpcNetworkArgs) SpokeLinkedVpcNetworkPtrInput {
+	return (*spokeLinkedVpcNetworkPtrType)(v)
+}
+
+func (*spokeLinkedVpcNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedVpcNetwork)(nil)).Elem()
+}
+
+func (i *spokeLinkedVpcNetworkPtrType) ToSpokeLinkedVpcNetworkPtrOutput() SpokeLinkedVpcNetworkPtrOutput {
+	return i.ToSpokeLinkedVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *spokeLinkedVpcNetworkPtrType) ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedVpcNetworkPtrOutput)
+}
+
+func (i *spokeLinkedVpcNetworkPtrType) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpcNetwork] {
+	return pulumix.Output[*SpokeLinkedVpcNetwork]{
+		OutputState: i.ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type SpokeLinkedVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedVpcNetwork)(nil)).Elem()
+}
+
+func (o SpokeLinkedVpcNetworkOutput) ToSpokeLinkedVpcNetworkOutput() SpokeLinkedVpcNetworkOutput {
+	return o
+}
+
+func (o SpokeLinkedVpcNetworkOutput) ToSpokeLinkedVpcNetworkOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkOutput {
+	return o
+}
+
+func (o SpokeLinkedVpcNetworkOutput) ToSpokeLinkedVpcNetworkPtrOutput() SpokeLinkedVpcNetworkPtrOutput {
+	return o.ToSpokeLinkedVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SpokeLinkedVpcNetworkOutput) ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedVpcNetwork) *SpokeLinkedVpcNetwork {
+		return &v
+	}).(SpokeLinkedVpcNetworkPtrOutput)
+}
+
+func (o SpokeLinkedVpcNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[SpokeLinkedVpcNetwork] {
+	return pulumix.Output[SpokeLinkedVpcNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+// IP ranges encompassing the subnets to be excluded from peering.
+func (o SpokeLinkedVpcNetworkOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpcNetwork) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// The URI of the VPC network resource.
+func (o SpokeLinkedVpcNetworkOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeLinkedVpcNetwork) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type SpokeLinkedVpcNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedVpcNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedVpcNetwork)(nil)).Elem()
+}
+
+func (o SpokeLinkedVpcNetworkPtrOutput) ToSpokeLinkedVpcNetworkPtrOutput() SpokeLinkedVpcNetworkPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedVpcNetworkPtrOutput) ToSpokeLinkedVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedVpcNetworkPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedVpcNetworkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SpokeLinkedVpcNetwork] {
+	return pulumix.Output[*SpokeLinkedVpcNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o SpokeLinkedVpcNetworkPtrOutput) Elem() SpokeLinkedVpcNetworkOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpcNetwork) SpokeLinkedVpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SpokeLinkedVpcNetwork
+		return ret
+	}).(SpokeLinkedVpcNetworkOutput)
+}
+
+// IP ranges encompassing the subnets to be excluded from peering.
+func (o SpokeLinkedVpcNetworkPtrOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// The URI of the VPC network resource.
+func (o SpokeLinkedVpcNetworkPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpokeLinkedVpnTunnels struct {
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -1621,6 +1801,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesPtrInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstanceInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstanceArrayInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpcNetworkInput)(nil)).Elem(), SpokeLinkedVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpcNetworkPtrInput)(nil)).Elem(), SpokeLinkedVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
@@ -1639,6 +1821,8 @@ func init() {
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedVpcNetworkOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedVpcNetworkPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedVpnTunnelsOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedVpnTunnelsPtrOutput{})
 }

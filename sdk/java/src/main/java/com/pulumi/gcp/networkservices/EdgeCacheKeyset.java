@@ -81,6 +81,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.networkservices.EdgeCacheKeyset;
@@ -103,7 +104,7 @@ import javax.annotation.Nullable;
  *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
  *             .secretId(&#34;secret-name&#34;)
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
@@ -150,7 +151,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * A human-readable description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -164,7 +165,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the EdgeCache resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -182,7 +183,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -201,7 +202,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -222,7 +223,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="publicKeys", refs={List.class,EdgeCacheKeysetPublicKey.class}, tree="[0,1]")
+    @Export(name="publicKeys", type=List.class, parameters={EdgeCacheKeysetPublicKey.class})
     private Output</* @Nullable */ List<EdgeCacheKeysetPublicKey>> publicKeys;
 
     /**
@@ -246,7 +247,7 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="validationSharedKeys", refs={List.class,EdgeCacheKeysetValidationSharedKey.class}, tree="[0,1]")
+    @Export(name="validationSharedKeys", type=List.class, parameters={EdgeCacheKeysetValidationSharedKey.class})
     private Output</* @Nullable */ List<EdgeCacheKeysetValidationSharedKey>> validationSharedKeys;
 
     /**

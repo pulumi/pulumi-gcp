@@ -659,6 +659,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         """
         EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
 
+        To get more information about EdgeCacheOrigin, see:
+
+        * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
+
         ## Example Usage
         ### Network Services Edge Cache Origin Basic
 
@@ -736,7 +740,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
@@ -833,6 +837,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         """
         EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
 
+        To get more information about EdgeCacheOrigin, see:
+
+        * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
+
         ## Example Usage
         ### Network Services Edge Cache Origin Basic
 
@@ -910,7 +918,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,

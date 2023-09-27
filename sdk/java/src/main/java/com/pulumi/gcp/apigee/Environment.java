@@ -112,7 +112,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      * 
      */
-    @Export(name="apiProxyType", refs={String.class}, tree="[0]")
+    @Export(name="apiProxyType", type=String.class, parameters={})
     private Output<String> apiProxyType;
 
     /**
@@ -135,7 +135,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      * 
      */
-    @Export(name="deploymentType", refs={String.class}, tree="[0]")
+    @Export(name="deploymentType", type=String.class, parameters={})
     private Output<String> deploymentType;
 
     /**
@@ -156,7 +156,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Description of the environment.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -170,7 +170,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Display name of the environment.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -184,7 +184,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The resource ID of the environment.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -199,7 +199,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeConfig", refs={EnvironmentNodeConfig.class}, tree="[0]")
+    @Export(name="nodeConfig", type=EnvironmentNodeConfig.class, parameters={})
     private Output<EnvironmentNodeConfig> nodeConfig;
 
     /**
@@ -217,7 +217,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="orgId", refs={String.class}, tree="[0]")
+    @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**

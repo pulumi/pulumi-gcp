@@ -81,6 +81,9 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
 //				},
+//				Env: pulumi.StringMap{
+//					"name": pulumi.String("foo"),
+//				},
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -124,6 +127,8 @@ type Workstation struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+	Env pulumi.StringMapOutput `pulumi:"env"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation.
 	// Authorized traffic will be received to the workstation as HTTP on port 80.
 	// To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
@@ -199,6 +204,8 @@ type workstationState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
+	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+	Env map[string]string `pulumi:"env"`
 	// Host to which clients can send HTTPS traffic that will be received by the workstation.
 	// Authorized traffic will be received to the workstation as HTTP on port 80.
 	// To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
@@ -233,6 +240,8 @@ type WorkstationState struct {
 	CreateTime pulumi.StringPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
+	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+	Env pulumi.StringMapInput
 	// Host to which clients can send HTTPS traffic that will be received by the workstation.
 	// Authorized traffic will be received to the workstation as HTTP on port 80.
 	// To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
@@ -269,6 +278,8 @@ type workstationArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
+	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+	Env map[string]string `pulumi:"env"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
@@ -292,6 +303,8 @@ type WorkstationArgs struct {
 	Annotations pulumi.StringMapInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
+	// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+	Env pulumi.StringMapInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
@@ -433,6 +446,11 @@ func (o WorkstationOutput) CreateTime() pulumi.StringOutput {
 // Human-readable name for this resource.
 func (o WorkstationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+func (o WorkstationOutput) Env() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Env }).(pulumi.StringMapOutput)
 }
 
 // Host to which clients can send HTTPS traffic that will be received by the workstation.

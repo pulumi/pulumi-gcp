@@ -74,7 +74,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * the server and will be ignored if provided on config creation.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -89,7 +89,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * A description of the mute config.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * project = Y scope, it might not match any findings.
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
+    @Export(name="filter", type=String.class, parameters={})
     private Output<String> filter;
 
     /**
@@ -127,7 +127,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * config creation or update.
      * 
      */
-    @Export(name="mostRecentEditor", refs={String.class}, tree="[0]")
+    @Export(name="mostRecentEditor", type=String.class, parameters={})
     private Output<String> mostRecentEditor;
 
     /**
@@ -143,7 +143,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * Unique identifier provided by the client within the parent scope.
      * 
      */
-    @Export(name="muteConfigId", refs={String.class}, tree="[0]")
+    @Export(name="muteConfigId", type=String.class, parameters={})
     private Output<String> muteConfigId;
 
     /**
@@ -160,7 +160,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * or projects/{project}/muteConfigs/{configId}
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -181,7 +181,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -201,7 +201,7 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * provided on config creation or update.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

@@ -126,7 +126,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      * 
      */
-    @Export(name="authorizationMode", refs={String.class}, tree="[0]")
+    @Export(name="authorizationMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> authorizationMode;
 
     /**
@@ -144,7 +144,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -163,7 +163,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="discoveryEndpoints", refs={List.class,ClusterDiscoveryEndpoint.class}, tree="[0,1]")
+    @Export(name="discoveryEndpoints", type=List.class, parameters={ClusterDiscoveryEndpoint.class})
     private Output<List<ClusterDiscoveryEndpoint>> discoveryEndpoints;
 
     /**
@@ -181,7 +181,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -197,7 +197,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -215,7 +215,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pscConfigs", refs={List.class,ClusterPscConfig.class}, tree="[0,1]")
+    @Export(name="pscConfigs", type=List.class, parameters={ClusterPscConfig.class})
     private Output<List<ClusterPscConfig>> pscConfigs;
 
     /**
@@ -233,7 +233,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pscConnections", refs={List.class,ClusterPscConnection.class}, tree="[0,1]")
+    @Export(name="pscConnections", type=List.class, parameters={ClusterPscConnection.class})
     private Output<List<ClusterPscConnection>> pscConnections;
 
     /**
@@ -248,7 +248,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the region of the Redis cluster.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -262,7 +262,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Optional. The number of replica nodes per shard.
      * 
      */
-    @Export(name="replicaCount", refs={Integer.class}, tree="[0]")
+    @Export(name="replicaCount", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> replicaCount;
 
     /**
@@ -276,7 +276,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Required. Number of shards for the Redis cluster.
      * 
      */
-    @Export(name="shardCount", refs={Integer.class}, tree="[0]")
+    @Export(name="shardCount", type=Integer.class, parameters={})
     private Output<Integer> shardCount;
 
     /**
@@ -290,7 +290,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Output only. Redis memory size in GB for the entire cluster.
      * 
      */
-    @Export(name="sizeGb", refs={Integer.class}, tree="[0]")
+    @Export(name="sizeGb", type=Integer.class, parameters={})
     private Output<Integer> sizeGb;
 
     /**
@@ -304,7 +304,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -319,7 +319,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="stateInfos", refs={List.class,ClusterStateInfo.class}, tree="[0,1]")
+    @Export(name="stateInfos", type=List.class, parameters={ClusterStateInfo.class})
     private Output<List<ClusterStateInfo>> stateInfos;
 
     /**
@@ -337,7 +337,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      * 
      */
-    @Export(name="transitEncryptionMode", refs={String.class}, tree="[0]")
+    @Export(name="transitEncryptionMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> transitEncryptionMode;
 
     /**
@@ -354,7 +354,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * System assigned, unique identifier for the cluster.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**

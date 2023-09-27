@@ -88,7 +88,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * seconds.
      * 
      */
-    @Export(name="checkIntervalSec", refs={Integer.class}, tree="[0]")
+    @Export(name="checkIntervalSec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> checkIntervalSec;
 
     /**
@@ -103,7 +103,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -118,7 +118,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -134,7 +134,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * consecutive successes. The default value is 2.
      * 
      */
-    @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
+    @Export(name="healthyThreshold", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> healthyThreshold;
 
     /**
@@ -151,7 +151,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * health check is performed will be used.
      * 
      */
-    @Export(name="host", refs={String.class}, tree="[0]")
+    @Export(name="host", type=String.class, parameters={})
     private Output</* @Nullable */ String> host;
 
     /**
@@ -175,7 +175,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -198,7 +198,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * The default value is 80.
      * 
      */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
+    @Export(name="port", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -214,7 +214,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -230,7 +230,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * The default value is /.
      * 
      */
-    @Export(name="requestPath", refs={String.class}, tree="[0]")
+    @Export(name="requestPath", type=String.class, parameters={})
     private Output</* @Nullable */ String> requestPath;
 
     /**
@@ -245,7 +245,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -261,7 +261,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * greater value than checkIntervalSec.
      * 
      */
-    @Export(name="timeoutSec", refs={Integer.class}, tree="[0]")
+    @Export(name="timeoutSec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> timeoutSec;
 
     /**
@@ -278,7 +278,7 @@ public class HttpHealthCheck extends com.pulumi.resources.CustomResource {
      * consecutive failures. The default value is 2.
      * 
      */
-    @Export(name="unhealthyThreshold", refs={Integer.class}, tree="[0]")
+    @Export(name="unhealthyThreshold", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> unhealthyThreshold;
 
     /**

@@ -182,6 +182,132 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Target Https Proxy Mtls
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.certificatemanager.TrustConfig;
+ * import com.pulumi.gcp.certificatemanager.TrustConfigArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicy;
+ * import com.pulumi.gcp.networksecurity.ServerTlsPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.ServerTlsPolicyMtlsPolicyArgs;
+ * import com.pulumi.gcp.compute.SSLCertificate;
+ * import com.pulumi.gcp.compute.SSLCertificateArgs;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpsProxy;
+ * import com.pulumi.gcp.compute.TargetHttpsProxyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var defaultTrustConfig = new TrustConfig(&#34;defaultTrustConfig&#34;, TrustConfigArgs.builder()        
+ *             .description(&#34;sample description for the trust config&#34;)
+ *             .location(&#34;global&#34;)
+ *             .trustStores(TrustConfigTrustStoreArgs.builder()
+ *                 .trustAnchors(TrustConfigTrustStoreTrustAnchorArgs.builder()
+ *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .build())
+ *                 .intermediateCas(TrustConfigTrustStoreIntermediateCaArgs.builder()
+ *                     .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/ca_cert.pem&#34;)))
+ *                     .build())
+ *                 .build())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultServerTlsPolicy = new ServerTlsPolicy(&#34;defaultServerTlsPolicy&#34;, ServerTlsPolicyArgs.builder()        
+ *             .description(&#34;my description&#34;)
+ *             .location(&#34;global&#34;)
+ *             .allowOpen(&#34;false&#34;)
+ *             .mtlsPolicy(ServerTlsPolicyMtlsPolicyArgs.builder()
+ *                 .clientValidationMode(&#34;ALLOW_INVALID_OR_MISSING_CLIENT_CERT&#34;)
+ *                 .clientValidationTrustConfig(defaultTrustConfig.name().applyValue(name -&gt; String.format(&#34;projects/%s/locations/global/trustConfigs/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSSLCertificate = new SSLCertificate(&#34;defaultSSLCertificate&#34;, SSLCertificateArgs.builder()        
+ *             .privateKey(Files.readString(Paths.get(&#34;path/to/private.key&#34;)))
+ *             .certificate(Files.readString(Paths.get(&#34;path/to/certificate.crt&#34;)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .requestPath(&#34;/&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .description(&#34;a description&#34;)
+ *             .defaultService(defaultBackendService.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(defaultBackendService.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths(&#34;/*&#34;)
+ *                     .service(defaultBackendService.id())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultTargetHttpsProxy = new TargetHttpsProxy(&#34;defaultTargetHttpsProxy&#34;, TargetHttpsProxyArgs.builder()        
+ *             .urlMap(defaultURLMap.id())
+ *             .sslCertificates(defaultSSLCertificate.id())
+ *             .serverTlsPolicy(defaultServerTlsPolicy.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -208,7 +334,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
      * 
      */
-    @Export(name="certificateMap", refs={String.class}, tree="[0]")
+    @Export(name="certificateMap", type=String.class, parameters={})
     private Output</* @Nullable */ String> certificateMap;
 
     /**
@@ -224,7 +350,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -238,7 +364,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -257,7 +383,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * load balancer (classic), this option is not available publicly.
      * 
      */
-    @Export(name="httpKeepAliveTimeoutSec", refs={Integer.class}, tree="[0]")
+    @Export(name="httpKeepAliveTimeoutSec", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> httpKeepAliveTimeoutSec;
 
     /**
@@ -282,7 +408,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -303,7 +429,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -319,7 +445,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * 
      */
-    @Export(name="proxyBind", refs={Boolean.class}, tree="[0]")
+    @Export(name="proxyBind", type=Boolean.class, parameters={})
     private Output<Boolean> proxyBind;
 
     /**
@@ -334,7 +460,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="proxyId", refs={Integer.class}, tree="[0]")
+    @Export(name="proxyId", type=Integer.class, parameters={})
     private Output<Integer> proxyId;
 
     /**
@@ -353,7 +479,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      * 
      */
-    @Export(name="quicOverride", refs={String.class}, tree="[0]")
+    @Export(name="quicOverride", type=String.class, parameters={})
     private Output</* @Nullable */ String> quicOverride;
 
     /**
@@ -372,7 +498,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -383,11 +509,41 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     * 
+     */
+    @Export(name="serverTlsPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> serverTlsPolicy;
+
+    /**
+     * @return A URL referring to a networksecurity.ServerTlsPolicy
+     * resource that describes how the proxy should authenticate inbound
+     * traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+     * attached to globalForwardingRules with the loadBalancingScheme
+     * set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+     * For details which ServerTlsPolicy resources are accepted with
+     * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+     * loadBalancingScheme consult ServerTlsPolicy documentation.
+     * If left blank, communications are not encrypted.
+     * 
+     */
+    public Output<Optional<String>> serverTlsPolicy() {
+        return Codegen.optional(this.serverTlsPolicy);
+    }
+    /**
      * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
      * connections between users and the load balancer. At least one resource must be specified.
      * 
      */
-    @Export(name="sslCertificates", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="sslCertificates", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> sslCertificates;
 
     /**
@@ -404,7 +560,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * resource will not have any SSL policy configured.
      * 
      */
-    @Export(name="sslPolicy", refs={String.class}, tree="[0]")
+    @Export(name="sslPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> sslPolicy;
 
     /**
@@ -423,7 +579,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="urlMap", refs={String.class}, tree="[0]")
+    @Export(name="urlMap", type=String.class, parameters={})
     private Output<String> urlMap;
 
     /**

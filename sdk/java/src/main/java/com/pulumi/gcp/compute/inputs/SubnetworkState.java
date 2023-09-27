@@ -109,6 +109,21 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The internal IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    @Import(name="internalIpv6Prefix")
+    private @Nullable Output<String> internalIpv6Prefix;
+
+    /**
+     * @return The internal IPv6 address range that is assigned to this subnetwork.
+     * 
+     */
+    public Optional<Output<String>> internalIpv6Prefix() {
+        return Optional.ofNullable(this.internalIpv6Prefix);
+    }
+
+    /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -415,6 +430,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.externalIpv6Prefix = $.externalIpv6Prefix;
         this.fingerprint = $.fingerprint;
         this.gatewayAddress = $.gatewayAddress;
+        this.internalIpv6Prefix = $.internalIpv6Prefix;
         this.ipCidrRange = $.ipCidrRange;
         this.ipv6AccessType = $.ipv6AccessType;
         this.ipv6CidrRange = $.ipv6CidrRange;
@@ -567,6 +583,27 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gatewayAddress(String gatewayAddress) {
             return gatewayAddress(Output.of(gatewayAddress));
+        }
+
+        /**
+         * @param internalIpv6Prefix The internal IPv6 address range that is assigned to this subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internalIpv6Prefix(@Nullable Output<String> internalIpv6Prefix) {
+            $.internalIpv6Prefix = internalIpv6Prefix;
+            return this;
+        }
+
+        /**
+         * @param internalIpv6Prefix The internal IPv6 address range that is assigned to this subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder internalIpv6Prefix(String internalIpv6Prefix) {
+            return internalIpv6Prefix(Output.of(internalIpv6Prefix));
         }
 
         /**

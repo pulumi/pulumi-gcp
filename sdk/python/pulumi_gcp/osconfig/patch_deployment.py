@@ -649,6 +649,7 @@ class PatchDeployment(pulumi.CustomResource):
                         "SECURITY",
                         "UPDATE",
                     ],
+                    excludes=["5012170"],
                 ),
                 yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
                     excludes=["bash"],
@@ -928,6 +929,7 @@ class PatchDeployment(pulumi.CustomResource):
                         "SECURITY",
                         "UPDATE",
                     ],
+                    excludes=["5012170"],
                 ),
                 yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
                     excludes=["bash"],

@@ -172,7 +172,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="admissionWhitelistPatterns", refs={List.class,PolicyAdmissionWhitelistPattern.class}, tree="[0,1]")
+    @Export(name="admissionWhitelistPatterns", type=List.class, parameters={PolicyAdmissionWhitelistPattern.class})
     private Output</* @Nullable */ List<PolicyAdmissionWhitelistPattern>> admissionWhitelistPatterns;
 
     /**
@@ -198,7 +198,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="clusterAdmissionRules", refs={List.class,PolicyClusterAdmissionRule.class}, tree="[0,1]")
+    @Export(name="clusterAdmissionRules", type=List.class, parameters={PolicyClusterAdmissionRule.class})
     private Output</* @Nullable */ List<PolicyClusterAdmissionRule>> clusterAdmissionRules;
 
     /**
@@ -223,7 +223,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="defaultAdmissionRule", refs={PolicyDefaultAdmissionRule.class}, tree="[0]")
+    @Export(name="defaultAdmissionRule", type=PolicyDefaultAdmissionRule.class, parameters={})
     private Output<PolicyDefaultAdmissionRule> defaultAdmissionRule;
 
     /**
@@ -239,7 +239,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * A descriptive comment.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -256,7 +256,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
-    @Export(name="globalPolicyEvaluationMode", refs={String.class}, tree="[0]")
+    @Export(name="globalPolicyEvaluationMode", type=String.class, parameters={})
     private Output<String> globalPolicyEvaluationMode;
 
     /**
@@ -274,7 +274,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

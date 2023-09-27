@@ -268,7 +268,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
+    @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
@@ -287,7 +287,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * An optional description of this resource. Provide this property when you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -303,7 +303,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="match", refs={RegionSecurityPolicyRuleMatch.class}, tree="[0]")
+    @Export(name="match", type=RegionSecurityPolicyRuleMatch.class, parameters={})
     private Output</* @Nullable */ RegionSecurityPolicyRuleMatch> match;
 
     /**
@@ -327,7 +327,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="networkMatch", refs={RegionSecurityPolicyRuleNetworkMatch.class}, tree="[0]")
+    @Export(name="networkMatch", type=RegionSecurityPolicyRuleNetworkMatch.class, parameters={})
     private Output</* @Nullable */ RegionSecurityPolicyRuleNetworkMatch> networkMatch;
 
     /**
@@ -349,7 +349,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * If set to true, the specified action is not enforced.
      * 
      */
-    @Export(name="preview", refs={Boolean.class}, tree="[0]")
+    @Export(name="preview", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> preview;
 
     /**
@@ -365,7 +365,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output<Integer> priority;
 
     /**
@@ -382,7 +382,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -397,7 +397,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * The Region in which the created Region Security Policy rule should reside.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -413,7 +413,7 @@ public class RegionSecurityPolicyRule extends com.pulumi.resources.CustomResourc
      * ***
      * 
      */
-    @Export(name="securityPolicy", refs={String.class}, tree="[0]")
+    @Export(name="securityPolicy", type=String.class, parameters={})
     private Output<String> securityPolicy;
 
     /**

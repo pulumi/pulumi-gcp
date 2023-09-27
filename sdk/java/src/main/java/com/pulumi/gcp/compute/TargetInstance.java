@@ -176,7 +176,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -190,7 +190,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -211,7 +211,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -238,7 +238,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -261,7 +261,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * Possible values are: `NO_NAT`.
      * 
      */
-    @Export(name="natPolicy", refs={String.class}, tree="[0]")
+    @Export(name="natPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> natPolicy;
 
     /**
@@ -278,7 +278,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -293,7 +293,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -308,7 +308,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * The resource URL for the security policy associated with this target instance.
      * 
      */
-    @Export(name="securityPolicy", refs={String.class}, tree="[0]")
+    @Export(name="securityPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
@@ -322,7 +322,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -336,7 +336,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * URL of the zone where the target instance resides.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

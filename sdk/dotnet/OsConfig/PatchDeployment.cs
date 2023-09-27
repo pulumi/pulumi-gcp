@@ -309,6 +309,10 @@ namespace Pulumi.Gcp.OsConfig
     ///                     "SECURITY",
     ///                     "UPDATE",
     ///                 },
+    ///                 Excludes = new[]
+    ///                 {
+    ///                     "5012170",
+    ///                 },
     ///             },
     ///             Yum = new Gcp.OsConfig.Inputs.PatchDeploymentPatchConfigYumArgs
     ///             {

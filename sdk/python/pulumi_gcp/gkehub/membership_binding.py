@@ -20,6 +20,7 @@ class MembershipBindingArgs:
                  membership_binding_id: pulumi.Input[str],
                  membership_id: pulumi.Input[str],
                  scope: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MembershipBinding resource.
@@ -31,6 +32,7 @@ class MembershipBindingArgs:
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -38,6 +40,8 @@ class MembershipBindingArgs:
         pulumi.set(__self__, "membership_binding_id", membership_binding_id)
         pulumi.set(__self__, "membership_id", membership_id)
         pulumi.set(__self__, "scope", scope)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -95,6 +99,18 @@ class MembershipBindingArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Membership binding.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs.
@@ -112,6 +128,7 @@ class _MembershipBindingState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_binding_id: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -125,6 +142,7 @@ class _MembershipBindingState:
         Input properties used for looking up and filtering MembershipBinding resources.
         :param pulumi.Input[str] create_time: Time the MembershipBinding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the MembershipBinding was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
         :param pulumi.Input[str] location: Location of the membership
                
                
@@ -145,6 +163,8 @@ class _MembershipBindingState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if membership_binding_id is not None:
@@ -187,6 +207,18 @@ class _MembershipBindingState:
     @delete_time.setter
     def delete_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_time", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this Membership binding.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -308,6 +340,7 @@ class MembershipBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_binding_id: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -343,6 +376,7 @@ class MembershipBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
         :param pulumi.Input[str] location: Location of the membership
                
                
@@ -402,6 +436,7 @@ class MembershipBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_binding_id: Optional[pulumi.Input[str]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
@@ -416,6 +451,7 @@ class MembershipBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MembershipBindingArgs.__new__(MembershipBindingArgs)
 
+            __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -447,6 +483,7 @@ class MembershipBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             membership_binding_id: Optional[pulumi.Input[str]] = None,
             membership_id: Optional[pulumi.Input[str]] = None,
@@ -465,6 +502,7 @@ class MembershipBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the MembershipBinding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the MembershipBinding was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
         :param pulumi.Input[str] location: Location of the membership
                
                
@@ -487,6 +525,7 @@ class MembershipBinding(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["membership_binding_id"] = membership_binding_id
         __props__.__dict__["membership_id"] = membership_id
@@ -513,6 +552,14 @@ class MembershipBinding(pulumi.CustomResource):
         Time the MembershipBinding was deleted in UTC.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels for this Membership binding.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

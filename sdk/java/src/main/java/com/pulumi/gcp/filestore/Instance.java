@@ -201,7 +201,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -215,7 +215,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A description of the instance.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -230,7 +230,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * simultaneous updates from overwriting each other.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fileShares", refs={InstanceFileShares.class}, tree="[0]")
+    @Export(name="fileShares", type=InstanceFileShares.class, parameters={})
     private Output<InstanceFileShares> fileShares;
 
     /**
@@ -263,7 +263,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * KMS key name used for data encryption.
      * 
      */
-    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
+    @Export(name="kmsKeyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -277,7 +277,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -291,7 +291,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -305,7 +305,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The resource name of the instance.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -321,7 +321,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networks", refs={List.class,InstanceNetwork.class}, tree="[0,1]")
+    @Export(name="networks", type=List.class, parameters={InstanceNetwork.class})
     private Output<List<InstanceNetwork>> networks;
 
     /**
@@ -338,7 +338,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -351,15 +351,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
      * 
      */
-    @Export(name="tier", refs={String.class}, tree="[0]")
+    @Export(name="tier", type=String.class, parameters={})
     private Output<String> tier;
 
     /**
      * @return The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
      * 
      */
     public Output<String> tier() {
@@ -376,7 +376,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

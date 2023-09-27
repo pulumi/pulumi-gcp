@@ -12820,9 +12820,11 @@ type GetInstanceNetworkInterface struct {
 	// instance can be accessed via the Internet. Structure documented below.
 	AccessConfigs []GetInstanceNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. Structure documented below.
-	AliasIpRanges     []GetInstanceNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
-	Ipv6AccessConfigs []GetInstanceNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType    string                                        `pulumi:"ipv6AccessType"`
+	AliasIpRanges            []GetInstanceNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
+	InternalIpv6PrefixLength int                                           `pulumi:"internalIpv6PrefixLength"`
+	Ipv6AccessConfigs        []GetInstanceNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType           string                                        `pulumi:"ipv6AccessType"`
+	Ipv6Address              string                                        `pulumi:"ipv6Address"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
@@ -12854,9 +12856,11 @@ type GetInstanceNetworkInterfaceArgs struct {
 	// instance can be accessed via the Internet. Structure documented below.
 	AccessConfigs GetInstanceNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. Structure documented below.
-	AliasIpRanges     GetInstanceNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
-	Ipv6AccessConfigs GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType    pulumi.StringInput                                    `pulumi:"ipv6AccessType"`
+	AliasIpRanges            GetInstanceNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
+	InternalIpv6PrefixLength pulumi.IntInput                                       `pulumi:"internalIpv6PrefixLength"`
+	Ipv6AccessConfigs        GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType           pulumi.StringInput                                    `pulumi:"ipv6AccessType"`
+	Ipv6Address              pulumi.StringInput                                    `pulumi:"ipv6Address"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
@@ -12952,6 +12956,10 @@ func (o GetInstanceNetworkInterfaceOutput) AliasIpRanges() GetInstanceNetworkInt
 	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+func (o GetInstanceNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
+}
+
 func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceIpv6AccessConfig {
 		return v.Ipv6AccessConfigs
@@ -12960,6 +12968,10 @@ func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceNetwor
 
 func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 // The name of the instance. One of `name` or `selfLink` must be provided.
@@ -16019,9 +16031,11 @@ type GetInstanceTemplateNetworkInterface struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges     []GetInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
-	Ipv6AccessConfigs []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType    string                                                `pulumi:"ipv6AccessType"`
+	AliasIpRanges            []GetInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
+	InternalIpv6PrefixLength int                                                   `pulumi:"internalIpv6PrefixLength"`
+	Ipv6AccessConfigs        []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType           string                                                `pulumi:"ipv6AccessType"`
+	Ipv6Address              string                                                `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
@@ -16066,9 +16080,11 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges     GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
-	Ipv6AccessConfigs GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType    pulumi.StringInput                                            `pulumi:"ipv6AccessType"`
+	AliasIpRanges            GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
+	InternalIpv6PrefixLength pulumi.IntInput                                               `pulumi:"internalIpv6PrefixLength"`
+	Ipv6AccessConfigs        GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType           pulumi.StringInput                                            `pulumi:"ipv6AccessType"`
+	Ipv6Address              pulumi.StringInput                                            `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
@@ -16181,6 +16197,10 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetInstanceTe
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+func (o GetInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
+}
+
 func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 		return v.Ipv6AccessConfigs
@@ -16189,6 +16209,10 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstan
 
 func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 // The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
@@ -19337,9 +19361,11 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges     []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
-	Ipv6AccessConfigs []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType    string                                                      `pulumi:"ipv6AccessType"`
+	AliasIpRanges            []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
+	InternalIpv6PrefixLength int                                                         `pulumi:"internalIpv6PrefixLength"`
+	Ipv6AccessConfigs        []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType           string                                                      `pulumi:"ipv6AccessType"`
+	Ipv6Address              string                                                      `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
@@ -19377,9 +19403,11 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges     GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
-	Ipv6AccessConfigs GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType    pulumi.StringInput                                                  `pulumi:"ipv6AccessType"`
+	AliasIpRanges            GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
+	InternalIpv6PrefixLength pulumi.IntInput                                                     `pulumi:"internalIpv6PrefixLength"`
+	Ipv6AccessConfigs        GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	Ipv6AccessType           pulumi.StringInput                                                  `pulumi:"ipv6AccessType"`
+	Ipv6Address              pulumi.StringInput                                                  `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
@@ -19485,6 +19513,10 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetRegi
 	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
+}
+
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 		return v.Ipv6AccessConfigs
@@ -19493,6 +19525,10 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() Get
 
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 // The name of the instance template. One of `name` or `filter` must be provided.

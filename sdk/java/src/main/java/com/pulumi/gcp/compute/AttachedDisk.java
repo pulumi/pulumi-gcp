@@ -105,7 +105,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * assigned by Google Compute Engine.
      * 
      */
-    @Export(name="deviceName", refs={String.class}, tree="[0]")
+    @Export(name="deviceName", type=String.class, parameters={})
     private Output<String> deviceName;
 
     /**
@@ -129,7 +129,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="disk", refs={String.class}, tree="[0]")
+    @Export(name="disk", type=String.class, parameters={})
     private Output<String> disk;
 
     /**
@@ -148,7 +148,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * as properties on the resource or provider.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -171,7 +171,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * &#34;READ_WRITE&#34;
      * 
      */
-    @Export(name="mode", refs={String.class}, tree="[0]")
+    @Export(name="mode", type=String.class, parameters={})
     private Output</* @Nullable */ String> mode;
 
     /**
@@ -192,7 +192,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * `self_link` the project defined in the link will take precedence.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -208,7 +208,7 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * `self_link` the zone defined in the link will take precedence.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

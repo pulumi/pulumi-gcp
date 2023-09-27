@@ -79,7 +79,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -95,7 +95,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * The resource name for the Dataset.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -125,7 +125,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * The fully qualified name of this dataset
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -141,7 +141,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      * (e.g., HL7 messages) where no explicit timezone is specified.
      * 
      */
-    @Export(name="timeZone", refs={String.class}, tree="[0]")
+    @Export(name="timeZone", type=String.class, parameters={})
     private Output<String> timeZone;
 
     /**

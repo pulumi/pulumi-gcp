@@ -180,7 +180,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -195,7 +195,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="interfaces", refs={List.class,ExternalVpnGatewayInterface.class}, tree="[0,1]")
+    @Export(name="interfaces", type=List.class, parameters={ExternalVpnGatewayInterface.class})
     private Output</* @Nullable */ List<ExternalVpnGatewayInterface>> interfaces;
 
     /**
@@ -211,7 +211,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * internally during updates.
      * 
      */
-    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
@@ -226,7 +226,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * Labels for the external VPN gateway resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -248,7 +248,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -271,7 +271,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -287,7 +287,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      * 
      */
-    @Export(name="redundancyType", refs={String.class}, tree="[0]")
+    @Export(name="redundancyType", type=String.class, parameters={})
     private Output</* @Nullable */ String> redundancyType;
 
     /**
@@ -302,7 +302,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**

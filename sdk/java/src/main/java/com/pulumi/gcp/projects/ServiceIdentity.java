@@ -85,7 +85,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * The email address of the Google managed service account.
      * 
      */
-    @Export(name="email", refs={String.class}, tree="[0]")
+    @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
@@ -100,7 +100,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -117,7 +117,7 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="service", refs={String.class}, tree="[0]")
+    @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**

@@ -87,7 +87,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * or merged.
      * 
      */
-    @Export(name="capacityCommitmentId", refs={String.class}, tree="[0]")
+    @Export(name="capacityCommitmentId", type=String.class, parameters={})
     private Output</* @Nullable */ String> capacityCommitmentId;
 
     /**
@@ -104,7 +104,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      * 
      */
-    @Export(name="commitmentEndTime", refs={String.class}, tree="[0]")
+    @Export(name="commitmentEndTime", type=String.class, parameters={})
     private Output<String> commitmentEndTime;
 
     /**
@@ -118,7 +118,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      * 
      */
-    @Export(name="commitmentStartTime", refs={String.class}, tree="[0]")
+    @Export(name="commitmentStartTime", type=String.class, parameters={})
     private Output<String> commitmentStartTime;
 
     /**
@@ -132,7 +132,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      * 
      */
-    @Export(name="edition", refs={String.class}, tree="[0]")
+    @Export(name="edition", type=String.class, parameters={})
     private Output</* @Nullable */ String> edition;
 
     /**
@@ -146,7 +146,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * If true, fail the request if another project in the organization has a capacity commitment.
      * 
      */
-    @Export(name="enforceSingleAdminProjectPerOrg", refs={String.class}, tree="[0]")
+    @Export(name="enforceSingleAdminProjectPerOrg", type=String.class, parameters={})
     private Output</* @Nullable */ String> enforceSingleAdminProjectPerOrg;
 
     /**
@@ -161,7 +161,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * Examples: US, EU, asia-northeast1. The default value is US.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -176,7 +176,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -192,7 +192,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="plan", refs={String.class}, tree="[0]")
+    @Export(name="plan", type=String.class, parameters={})
     private Output<String> plan;
 
     /**
@@ -209,7 +209,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -224,7 +224,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      * 
      */
-    @Export(name="renewalPlan", refs={String.class}, tree="[0]")
+    @Export(name="renewalPlan", type=String.class, parameters={})
     private Output</* @Nullable */ String> renewalPlan;
 
     /**
@@ -238,7 +238,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * Number of slots in this commitment.
      * 
      */
-    @Export(name="slotCount", refs={Integer.class}, tree="[0]")
+    @Export(name="slotCount", type=Integer.class, parameters={})
     private Output<Integer> slotCount;
 
     /**
@@ -252,7 +252,7 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
      * State of the commitment
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

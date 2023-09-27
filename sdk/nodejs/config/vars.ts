@@ -441,6 +441,14 @@ Object.defineProperty(exports, "dataLossPreventionCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const dataPipelineCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataPipelineCustomEndpoint", {
+    get() {
+        return __config.get("dataPipelineCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const databaseMigrationServiceCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "databaseMigrationServiceCustomEndpoint", {
     get() {
@@ -557,6 +565,14 @@ export declare const documentAiWarehouseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "documentAiWarehouseCustomEndpoint", {
     get() {
         return __config.get("documentAiWarehouseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const edgenetworkCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "edgenetworkCustomEndpoint", {
+    get() {
+        return __config.get("edgenetworkCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1097,6 +1113,14 @@ Object.defineProperty(exports, "storageCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const storageInsightsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "storageInsightsCustomEndpoint", {
+    get() {
+        return __config.get("storageInsightsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const storageTransferCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "storageTransferCustomEndpoint", {
     get() {
@@ -1125,6 +1149,14 @@ export declare const tpuCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tpuCustomEndpoint", {
     get() {
         return __config.get("tpuCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const tpuV2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "tpuV2CustomEndpoint", {
+    get() {
+        return __config.get("tpuV2CustomEndpoint");
     },
     enumerable: true,
 });

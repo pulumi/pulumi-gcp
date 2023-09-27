@@ -43,6 +43,22 @@ import * as utilities from "../utilities";
  * const defaultConfig = new gcp.identityplatform.Config("defaultConfig", {
  *     project: defaultProject.projectId,
  *     autodeleteAnonymousUsers: true,
+ *     signIn: {
+ *         allowDuplicateEmails: true,
+ *         anonymous: {
+ *             enabled: true,
+ *         },
+ *         email: {
+ *             enabled: true,
+ *             passwordRequired: false,
+ *         },
+ *         phoneNumber: {
+ *             enabled: true,
+ *             testPhoneNumbers: {
+ *                 "+11231231234": "000000",
+ *             },
+ *         },
+ *     },
  *     blockingFunctions: {
  *         triggers: [{
  *             eventType: "beforeSignIn",
@@ -140,6 +156,11 @@ export class Config extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly quota!: pulumi.Output<outputs.identityplatform.ConfigQuota | undefined>;
+    /**
+     * Configuration related to local sign in methods.
+     * Structure is documented below.
+     */
+    public readonly signIn!: pulumi.Output<outputs.identityplatform.ConfigSignIn>;
 
     /**
      * Create a Config resource with the given unique name, arguments, and options.
@@ -160,6 +181,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["quota"] = state ? state.quota : undefined;
+            resourceInputs["signIn"] = state ? state.signIn : undefined;
         } else {
             const args = argsOrState as ConfigArgs | undefined;
             resourceInputs["authorizedDomains"] = args ? args.authorizedDomains : undefined;
@@ -167,6 +189,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["blockingFunctions"] = args ? args.blockingFunctions : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["signIn"] = args ? args.signIn : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -205,6 +228,11 @@ export interface ConfigState {
      * Structure is documented below.
      */
     quota?: pulumi.Input<inputs.identityplatform.ConfigQuota>;
+    /**
+     * Configuration related to local sign in methods.
+     * Structure is documented below.
+     */
+    signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn>;
 }
 
 /**
@@ -234,4 +262,9 @@ export interface ConfigArgs {
      * Structure is documented below.
      */
     quota?: pulumi.Input<inputs.identityplatform.ConfigQuota>;
+    /**
+     * Configuration related to local sign in methods.
+     * Structure is documented below.
+     */
+    signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn>;
 }

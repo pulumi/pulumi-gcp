@@ -159,7 +159,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The type of hardware accelerators associated with this node.
      * 
      */
-    @Export(name="acceleratorType", refs={String.class}, tree="[0]")
+    @Export(name="acceleratorType", type=String.class, parameters={})
     private Output<String> acceleratorType;
 
     /**
@@ -180,7 +180,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * is peered with another network that is using that CIDR block.
      * 
      */
-    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
+    @Export(name="cidrBlock", type=String.class, parameters={})
     private Output<String> cidrBlock;
 
     /**
@@ -201,7 +201,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The user-supplied description of the TPU. Maximum of 512 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -215,7 +215,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user provided metadata.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -229,7 +229,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The immutable name of the TPU.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -246,7 +246,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * used.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -266,7 +266,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkEndpoints", refs={List.class,NodeNetworkEndpoint.class}, tree="[0,1]")
+    @Export(name="networkEndpoints", type=List.class, parameters={NodeNetworkEndpoint.class})
     private Output<List<NodeNetworkEndpoint>> networkEndpoints;
 
     /**
@@ -284,7 +284,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -300,7 +300,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="schedulingConfig", refs={NodeSchedulingConfig.class}, tree="[0]")
+    @Export(name="schedulingConfig", type=NodeSchedulingConfig.class, parameters={})
     private Output</* @Nullable */ NodeSchedulingConfig> schedulingConfig;
 
     /**
@@ -318,7 +318,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * permissions to that data.
      * 
      */
-    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
@@ -337,7 +337,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="tensorflowVersion", refs={String.class}, tree="[0]")
+    @Export(name="tensorflowVersion", type=String.class, parameters={})
     private Output<String> tensorflowVersion;
 
     /**
@@ -356,7 +356,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
      * 
      */
-    @Export(name="useServiceNetworking", refs={Boolean.class}, tree="[0]")
+    @Export(name="useServiceNetworking", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> useServiceNetworking;
 
     /**
@@ -373,7 +373,7 @@ public class Node extends com.pulumi.resources.CustomResource {
      * The GCP location for the TPU. If it is not provided, the provider zone is used.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

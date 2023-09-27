@@ -156,7 +156,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the instances&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -181,7 +181,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -208,7 +208,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**
@@ -225,7 +225,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * is not provided, a default will be supplied.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

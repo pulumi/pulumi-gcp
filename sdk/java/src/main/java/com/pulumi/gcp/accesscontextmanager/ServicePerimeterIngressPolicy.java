@@ -47,7 +47,7 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      * Structure is documented below.
      * 
      */
-    @Export(name="ingressFrom", refs={ServicePerimeterIngressPolicyIngressFrom.class}, tree="[0]")
+    @Export(name="ingressFrom", type=ServicePerimeterIngressPolicyIngressFrom.class, parameters={})
     private Output</* @Nullable */ ServicePerimeterIngressPolicyIngressFrom> ingressFrom;
 
     /**
@@ -65,7 +65,7 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      * Structure is documented below.
      * 
      */
-    @Export(name="ingressTo", refs={ServicePerimeterIngressPolicyIngressTo.class}, tree="[0]")
+    @Export(name="ingressTo", type=ServicePerimeterIngressPolicyIngressTo.class, parameters={})
     private Output</* @Nullable */ ServicePerimeterIngressPolicyIngressTo> ingressTo;
 
     /**
@@ -83,7 +83,7 @@ public class ServicePerimeterIngressPolicy extends com.pulumi.resources.CustomRe
      * ***
      * 
      */
-    @Export(name="perimeter", refs={String.class}, tree="[0]")
+    @Export(name="perimeter", type=String.class, parameters={})
     private Output<String> perimeter;
 
     /**

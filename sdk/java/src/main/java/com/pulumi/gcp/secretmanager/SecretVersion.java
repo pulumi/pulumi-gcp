@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import java.util.List;
@@ -52,13 +53,151 @@ import javax.annotation.Nullable;
  *             .secretId(&#34;secret-version&#34;)
  *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .build());
  * 
  *         var secret_version_basic = new SecretVersion(&#34;secret-version-basic&#34;, SecretVersionArgs.builder()        
  *             .secret(secret_basic.id())
  *             .secretData(&#34;secret-data&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secret Version Deletion Policy Abandon
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret-version&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .userManaged(SecretReplicationUserManagedArgs.builder()
+ *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
+ *                         .location(&#34;us-central1&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_deletion_policy = new SecretVersion(&#34;secret-version-deletion-policy&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret_basic.id())
+ *             .secretData(&#34;secret-data&#34;)
+ *             .deletionPolicy(&#34;ABANDON&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secret Version Deletion Policy Disable
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret-version&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .userManaged(SecretReplicationUserManagedArgs.builder()
+ *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
+ *                         .location(&#34;us-central1&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_deletion_policy = new SecretVersion(&#34;secret-version-deletion-policy&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret_basic.id())
+ *             .secretData(&#34;secret-data&#34;)
+ *             .deletionPolicy(&#34;DISABLE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secret Version With Base64 String Secret Data
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_basic = new Secret(&#34;secret-basic&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret-version&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .userManaged(SecretReplicationUserManagedArgs.builder()
+ *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
+ *                         .location(&#34;us-central1&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var secret_version_base64 = new SecretVersion(&#34;secret-version-base64&#34;, SecretVersionArgs.builder()        
+ *             .secret(secret_basic.id())
+ *             .isSecretDataBase64(true)
+ *             .secretData(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;secret-data.pfx&#34;))))
  *             .build());
  * 
  *     }
@@ -80,7 +219,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The time at which the Secret was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -91,10 +230,34 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     * 
+     */
+    @Export(name="deletionPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the secret version. Setting `ABANDON` allows the resource
+     * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
+     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * * DELETE
+     * * DISABLE
+     * * ABANDON
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
+    }
+    /**
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      * 
      */
-    @Export(name="destroyTime", refs={String.class}, tree="[0]")
+    @Export(name="destroyTime", type=String.class, parameters={})
     private Output<String> destroyTime;
 
     /**
@@ -108,7 +271,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The current state of the SecretVersion.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -119,11 +282,25 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
+     * If set to &#39;true&#39;, the secret data is expected to be base64-encoded string and would be sent as is.
+     * 
+     */
+    @Export(name="isSecretDataBase64", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> isSecretDataBase64;
+
+    /**
+     * @return If set to &#39;true&#39;, the secret data is expected to be base64-encoded string and would be sent as is.
+     * 
+     */
+    public Output<Optional<Boolean>> isSecretDataBase64() {
+        return Codegen.optional(this.isSecretDataBase64);
+    }
+    /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -140,7 +317,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
+    @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
     /**
@@ -157,7 +334,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="secretData", refs={String.class}, tree="[0]")
+    @Export(name="secretData", type=String.class, parameters={})
     private Output<String> secretData;
 
     /**
@@ -172,7 +349,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The version of the Secret.
      * 
      */
-    @Export(name="version", refs={String.class}, tree="[0]")
+    @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**

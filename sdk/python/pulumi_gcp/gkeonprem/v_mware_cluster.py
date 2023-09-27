@@ -32,6 +32,7 @@ class VMwareClusterArgs:
                  network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
+                 upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VMwareCluster resource.
@@ -71,6 +72,8 @@ class VMwareClusterArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
                Structure is documented below.
+        :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
+               Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
         pulumi.set(__self__, "admin_cluster_membership", admin_cluster_membership)
@@ -101,6 +104,8 @@ class VMwareClusterArgs:
             pulumi.set(__self__, "project", project)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if vm_tracking_enabled is not None:
             pulumi.set(__self__, "vm_tracking_enabled", vm_tracking_enabled)
 
@@ -317,6 +322,19 @@ class VMwareClusterArgs:
         pulumi.set(self, "storage", value)
 
     @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]:
+        """
+        Specifies upgrade policy for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
+    @property
     @pulumi.getter(name="vmTrackingEnabled")
     def vm_tracking_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -359,6 +377,7 @@ class _VMwareClusterState:
                  storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
+                 upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
                  validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]] = None,
                  vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None):
@@ -428,6 +447,8 @@ class _VMwareClusterState:
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[str] update_time: The time at which VMware User Cluster was last updated.
+        :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
@@ -489,6 +510,8 @@ class _VMwareClusterState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if upgrade_policy is not None:
+            pulumi.set(__self__, "upgrade_policy", upgrade_policy)
         if validation_checks is not None:
             pulumi.set(__self__, "validation_checks", validation_checks)
         if vcenters is not None:
@@ -858,6 +881,19 @@ class _VMwareClusterState:
         pulumi.set(self, "update_time", value)
 
     @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]:
+        """
+        Specifies upgrade policy for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upgrade_policy")
+
+    @upgrade_policy.setter
+    def upgrade_policy(self, value: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]):
+        pulumi.set(self, "upgrade_policy", value)
+
+    @property
     @pulumi.getter(name="validationChecks")
     def validation_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]]:
         """
@@ -918,6 +954,7 @@ class VMwareCluster(pulumi.CustomResource):
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -1113,6 +1150,9 @@ class VMwareCluster(pulumi.CustomResource):
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
+            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
+                control_plane_only=True,
+            ),
             authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
                 admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
                     username="testuser@gmail.com",
@@ -1180,6 +1220,8 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']] storage: Storage configuration.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
@@ -1382,6 +1424,9 @@ class VMwareCluster(pulumi.CustomResource):
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
+            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
+                control_plane_only=True,
+            ),
             authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
                 admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
                     username="testuser@gmail.com",
@@ -1443,6 +1488,7 @@ class VMwareCluster(pulumi.CustomResource):
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1477,6 +1523,7 @@ class VMwareCluster(pulumi.CustomResource):
             __props__.__dict__["on_prem_version"] = on_prem_version
             __props__.__dict__["project"] = project
             __props__.__dict__["storage"] = storage
+            __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
@@ -1528,6 +1575,7 @@ class VMwareCluster(pulumi.CustomResource):
             storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
+            upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']]] = None,
             validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArgs']]]]] = None,
             vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]]] = None,
             vm_tracking_enabled: Optional[pulumi.Input[bool]] = None) -> 'VMwareCluster':
@@ -1602,6 +1650,8 @@ class VMwareCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[str] update_time: The time at which VMware User Cluster was last updated.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArgs']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
@@ -1640,6 +1690,7 @@ class VMwareCluster(pulumi.CustomResource):
         __props__.__dict__["storage"] = storage
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["upgrade_policy"] = upgrade_policy
         __props__.__dict__["validation_checks"] = validation_checks
         __props__.__dict__["vcenters"] = vcenters
         __props__.__dict__["vm_tracking_enabled"] = vm_tracking_enabled
@@ -1897,6 +1948,15 @@ class VMwareCluster(pulumi.CustomResource):
         The time at which VMware User Cluster was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="upgradePolicy")
+    def upgrade_policy(self) -> pulumi.Output[Optional['outputs.VMwareClusterUpgradePolicy']]:
+        """
+        Specifies upgrade policy for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upgrade_policy")
 
     @property
     @pulumi.getter(name="validationChecks")

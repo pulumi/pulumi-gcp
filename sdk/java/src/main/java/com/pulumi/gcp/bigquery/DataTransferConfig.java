@@ -119,7 +119,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * Set the value to 0 to use the default value.
      * 
      */
-    @Export(name="dataRefreshWindowDays", refs={Integer.class}, tree="[0]")
+    @Export(name="dataRefreshWindowDays", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> dataRefreshWindowDays;
 
     /**
@@ -137,7 +137,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * The data source id. Cannot be changed once the transfer config is created.
      * 
      */
-    @Export(name="dataSourceId", refs={String.class}, tree="[0]")
+    @Export(name="dataSourceId", type=String.class, parameters={})
     private Output<String> dataSourceId;
 
     /**
@@ -151,7 +151,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * The BigQuery target dataset id.
      * 
      */
-    @Export(name="destinationDatasetId", refs={String.class}, tree="[0]")
+    @Export(name="destinationDatasetId", type=String.class, parameters={})
     private Output</* @Nullable */ String> destinationDatasetId;
 
     /**
@@ -165,7 +165,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * When set to true, no runs are scheduled for a given transfer.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -179,7 +179,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * The user specified display name for the transfer config.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -195,7 +195,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="emailPreferences", refs={DataTransferConfigEmailPreferences.class}, tree="[0]")
+    @Export(name="emailPreferences", type=DataTransferConfigEmailPreferences.class, parameters={})
     private Output</* @Nullable */ DataTransferConfigEmailPreferences> emailPreferences;
 
     /**
@@ -212,7 +212,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * Examples: US, EU, asia-northeast1. The default value is US.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -225,18 +225,20 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name of the transfer config. Transfer config names have the
-     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-     * Where configId is usually a uuid, but this is not required.
+     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+     * or projects/{projectId}/transferConfigs/{configId},
+     * where configId is usually a uuid, but this is not required.
      * The name is ignored when creating a transfer config.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The resource name of the transfer config. Transfer config names have the
-     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-     * Where configId is usually a uuid, but this is not required.
+     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+     * or projects/{projectId}/transferConfigs/{configId},
+     * where configId is usually a uuid, but this is not required.
      * The name is ignored when creating a transfer config.
      * 
      */
@@ -248,7 +250,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * associated with this transfer config finish.
      * 
      */
-    @Export(name="notificationPubsubTopic", refs={String.class}, tree="[0]")
+    @Export(name="notificationPubsubTopic", type=String.class, parameters={})
     private Output</* @Nullable */ String> notificationPubsubTopic;
 
     /**
@@ -268,7 +270,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="params", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="params", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> params;
 
     /**
@@ -288,7 +290,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -310,7 +312,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * NOTE: the granularity should be at least 8 hours, or less frequent.
      * 
      */
-    @Export(name="schedule", refs={String.class}, tree="[0]")
+    @Export(name="schedule", type=String.class, parameters={})
     private Output</* @Nullable */ String> schedule;
 
     /**
@@ -332,7 +334,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="scheduleOptions", refs={DataTransferConfigScheduleOptions.class}, tree="[0]")
+    @Export(name="scheduleOptions", type=DataTransferConfigScheduleOptions.class, parameters={})
     private Output</* @Nullable */ DataTransferConfigScheduleOptions> scheduleOptions;
 
     /**
@@ -353,7 +355,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sensitiveParams", refs={DataTransferConfigSensitiveParams.class}, tree="[0]")
+    @Export(name="sensitiveParams", type=DataTransferConfigSensitiveParams.class, parameters={})
     private Output</* @Nullable */ DataTransferConfigSensitiveParams> sensitiveParams;
 
     /**
@@ -375,7 +377,7 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
      * requesting user calling this API has permissions to act as this service account.
      * 
      */
-    @Export(name="serviceAccountName", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccountName", type=String.class, parameters={})
     private Output</* @Nullable */ String> serviceAccountName;
 
     /**

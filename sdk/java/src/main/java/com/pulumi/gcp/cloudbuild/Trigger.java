@@ -1036,7 +1036,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="approvalConfig", refs={TriggerApprovalConfig.class}, tree="[0]")
+    @Export(name="approvalConfig", type=TriggerApprovalConfig.class, parameters={})
     private Output<TriggerApprovalConfig> approvalConfig;
 
     /**
@@ -1054,7 +1054,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bitbucketServerTriggerConfig", refs={TriggerBitbucketServerTriggerConfig.class}, tree="[0]")
+    @Export(name="bitbucketServerTriggerConfig", type=TriggerBitbucketServerTriggerConfig.class, parameters={})
     private Output</* @Nullable */ TriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfig;
 
     /**
@@ -1070,7 +1070,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="build", refs={TriggerBuild.class}, tree="[0]")
+    @Export(name="build", type=TriggerBuild.class, parameters={})
     private Output</* @Nullable */ TriggerBuild> build;
 
     /**
@@ -1085,7 +1085,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Time when the trigger was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -1099,7 +1099,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Human-readable description of the trigger.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -1113,7 +1113,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Whether the trigger is disabled or not. If true, the trigger will never result in a build.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -1129,7 +1129,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
      * 
      */
-    @Export(name="filename", refs={String.class}, tree="[0]")
+    @Export(name="filename", type=String.class, parameters={})
     private Output</* @Nullable */ String> filename;
 
     /**
@@ -1145,7 +1145,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * A Common Expression Language string. Used only with Pub/Sub and Webhook.
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
+    @Export(name="filter", type=String.class, parameters={})
     private Output</* @Nullable */ String> filter;
 
     /**
@@ -1160,7 +1160,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gitFileSource", refs={TriggerGitFileSource.class}, tree="[0]")
+    @Export(name="gitFileSource", type=TriggerGitFileSource.class, parameters={})
     private Output</* @Nullable */ TriggerGitFileSource> gitFileSource;
 
     /**
@@ -1177,7 +1177,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="github", refs={TriggerGithub.class}, tree="[0]")
+    @Export(name="github", type=TriggerGithub.class, parameters={})
     private Output</* @Nullable */ TriggerGithub> github;
 
     /**
@@ -1199,7 +1199,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * of the ignoredFiles globs, then we do not trigger a build.
      * 
      */
-    @Export(name="ignoredFiles", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="ignoredFiles", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> ignoredFiles;
 
     /**
@@ -1222,7 +1222,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      * 
      */
-    @Export(name="includeBuildLogs", refs={String.class}, tree="[0]")
+    @Export(name="includeBuildLogs", type=String.class, parameters={})
     private Output</* @Nullable */ String> includeBuildLogs;
 
     /**
@@ -1247,7 +1247,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * a build.
      * 
      */
-    @Export(name="includedFiles", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="includedFiles", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> includedFiles;
 
     /**
@@ -1270,7 +1270,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * If not specified, &#34;global&#34; is used.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -1285,7 +1285,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Name of the trigger. Must be unique within the project.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -1300,7 +1300,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -1318,7 +1318,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pubsubConfig", refs={TriggerPubsubConfig.class}, tree="[0]")
+    @Export(name="pubsubConfig", type=TriggerPubsubConfig.class, parameters={})
     private Output</* @Nullable */ TriggerPubsubConfig> pubsubConfig;
 
     /**
@@ -1336,7 +1336,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="repositoryEventConfig", refs={TriggerRepositoryEventConfig.class}, tree="[0]")
+    @Export(name="repositoryEventConfig", type=TriggerRepositoryEventConfig.class, parameters={})
     private Output</* @Nullable */ TriggerRepositoryEventConfig> repositoryEventConfig;
 
     /**
@@ -1355,7 +1355,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
      * 
      */
-    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccount", type=String.class, parameters={})
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
@@ -1378,7 +1378,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sourceToBuild", refs={TriggerSourceToBuild.class}, tree="[0]")
+    @Export(name="sourceToBuild", type=TriggerSourceToBuild.class, parameters={})
     private Output</* @Nullable */ TriggerSourceToBuild> sourceToBuild;
 
     /**
@@ -1397,7 +1397,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Substitutions data for Build resource.
      * 
      */
-    @Export(name="substitutions", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="substitutions", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> substitutions;
 
     /**
@@ -1411,7 +1411,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Tags for annotation of a BuildTrigger
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -1425,7 +1425,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The unique identifier for the trigger.
      * 
      */
-    @Export(name="triggerId", refs={String.class}, tree="[0]")
+    @Export(name="triggerId", type=String.class, parameters={})
     private Output<String> triggerId;
 
     /**
@@ -1444,7 +1444,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="triggerTemplate", refs={TriggerTriggerTemplate.class}, tree="[0]")
+    @Export(name="triggerTemplate", type=TriggerTriggerTemplate.class, parameters={})
     private Output</* @Nullable */ TriggerTriggerTemplate> triggerTemplate;
 
     /**
@@ -1466,7 +1466,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="webhookConfig", refs={TriggerWebhookConfig.class}, tree="[0]")
+    @Export(name="webhookConfig", type=TriggerWebhookConfig.class, parameters={})
     private Output</* @Nullable */ TriggerWebhookConfig> webhookConfig;
 
     /**

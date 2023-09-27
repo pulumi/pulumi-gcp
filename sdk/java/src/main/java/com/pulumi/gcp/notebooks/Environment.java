@@ -84,7 +84,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="containerImage", refs={EnvironmentContainerImage.class}, tree="[0]")
+    @Export(name="containerImage", type=EnvironmentContainerImage.class, parameters={})
     private Output</* @Nullable */ EnvironmentContainerImage> containerImage;
 
     /**
@@ -99,7 +99,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Instance creation time
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -113,7 +113,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * A brief description of this environment.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -127,7 +127,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Display name of this environment for the UI.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -143,7 +143,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -160,7 +160,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Format: projects/{project_id}/locations/{location}/environments/{environmentId}
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * The path must be a URL or Cloud Storage path. Example: &#34;gs://path-to-file/file-name&#34;
      * 
      */
-    @Export(name="postStartupScript", refs={String.class}, tree="[0]")
+    @Export(name="postStartupScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> postStartupScript;
 
     /**
@@ -192,7 +192,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -208,7 +208,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vmImage", refs={EnvironmentVmImage.class}, tree="[0]")
+    @Export(name="vmImage", type=EnvironmentVmImage.class, parameters={})
     private Output</* @Nullable */ EnvironmentVmImage> vmImage;
 
     /**

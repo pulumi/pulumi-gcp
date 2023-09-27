@@ -233,7 +233,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="acceleratorConfig", refs={InstanceAcceleratorConfig.class}, tree="[0]")
+    @Export(name="acceleratorConfig", type=InstanceAcceleratorConfig.class, parameters={})
     private Output</* @Nullable */ InstanceAcceleratorConfig> acceleratorConfig;
 
     /**
@@ -252,7 +252,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If not specified, this defaults to 100.
      * 
      */
-    @Export(name="bootDiskSizeGb", refs={Integer.class}, tree="[0]")
+    @Export(name="bootDiskSizeGb", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> bootDiskSizeGb;
 
     /**
@@ -269,7 +269,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      * 
      */
-    @Export(name="bootDiskType", refs={String.class}, tree="[0]")
+    @Export(name="bootDiskType", type=String.class, parameters={})
     private Output</* @Nullable */ String> bootDiskType;
 
     /**
@@ -285,7 +285,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="containerImage", refs={InstanceContainerImage.class}, tree="[0]")
+    @Export(name="containerImage", type=InstanceContainerImage.class, parameters={})
     private Output</* @Nullable */ InstanceContainerImage> containerImage;
 
     /**
@@ -300,7 +300,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance creation time
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -315,7 +315,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If not specified, we&#39;ll automatically choose from official GPU drivers.
      * 
      */
-    @Export(name="customGpuDriverPath", refs={String.class}, tree="[0]")
+    @Export(name="customGpuDriverPath", type=String.class, parameters={})
     private Output</* @Nullable */ String> customGpuDriverPath;
 
     /**
@@ -333,7 +333,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If not specified, this defaults to 100.
      * 
      */
-    @Export(name="dataDiskSizeGb", refs={Integer.class}, tree="[0]")
+    @Export(name="dataDiskSizeGb", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> dataDiskSizeGb;
 
     /**
@@ -351,7 +351,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      * 
      */
-    @Export(name="dataDiskType", refs={String.class}, tree="[0]")
+    @Export(name="dataDiskType", type=String.class, parameters={})
     private Output</* @Nullable */ String> dataDiskType;
 
     /**
@@ -367,7 +367,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      * 
      */
-    @Export(name="diskEncryption", refs={String.class}, tree="[0]")
+    @Export(name="diskEncryption", type=String.class, parameters={})
     private Output</* @Nullable */ String> diskEncryption;
 
     /**
@@ -384,7 +384,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * won&#39;t be installed. Only applicable to instances with GPUs.
      * 
      */
-    @Export(name="installGpuDriver", refs={Boolean.class}, tree="[0]")
+    @Export(name="installGpuDriver", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> installGpuDriver;
 
     /**
@@ -404,7 +404,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * your VM instance&#39;s service account can use the instance.
      * 
      */
-    @Export(name="instanceOwners", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="instanceOwners", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> instanceOwners;
 
     /**
@@ -423,7 +423,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
      * 
      */
-    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    @Export(name="kmsKey", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsKey;
 
     /**
@@ -439,7 +439,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> labels;
 
     /**
@@ -456,7 +456,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -472,7 +472,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A reference to a machine type which defines VM kind.
      * 
      */
-    @Export(name="machineType", refs={String.class}, tree="[0]")
+    @Export(name="machineType", type=String.class, parameters={})
     private Output<String> machineType;
 
     /**
@@ -487,7 +487,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -502,7 +502,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name specified for the Notebook instance.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -517,7 +517,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Format: projects/{project_id}/global/networks/{network_id}
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -533,7 +533,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
-    @Export(name="nicType", refs={String.class}, tree="[0]")
+    @Export(name="nicType", type=String.class, parameters={})
     private Output</* @Nullable */ String> nicType;
 
     /**
@@ -548,7 +548,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The notebook instance will not register with the proxy..
      * 
      */
-    @Export(name="noProxyAccess", refs={Boolean.class}, tree="[0]")
+    @Export(name="noProxyAccess", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noProxyAccess;
 
     /**
@@ -562,7 +562,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * No public IP will be assigned to this instance.
      * 
      */
-    @Export(name="noPublicIp", refs={Boolean.class}, tree="[0]")
+    @Export(name="noPublicIp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noPublicIp;
 
     /**
@@ -576,7 +576,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If true, the data disk will not be auto deleted when deleting the instance.
      * 
      */
-    @Export(name="noRemoveDataDisk", refs={Boolean.class}, tree="[0]")
+    @Export(name="noRemoveDataDisk", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noRemoveDataDisk;
 
     /**
@@ -592,7 +592,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * or Cloud Storage path (gs://path-to-file/file-name).
      * 
      */
-    @Export(name="postStartupScript", refs={String.class}, tree="[0]")
+    @Export(name="postStartupScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> postStartupScript;
 
     /**
@@ -609,7 +609,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -627,7 +627,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the population of this value.
      * 
      */
-    @Export(name="proxyUri", refs={String.class}, tree="[0]")
+    @Export(name="proxyUri", type=String.class, parameters={})
     private Output<String> proxyUri;
 
     /**
@@ -645,7 +645,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="reservationAffinity", refs={InstanceReservationAffinity.class}, tree="[0]")
+    @Export(name="reservationAffinity", type=InstanceReservationAffinity.class, parameters={})
     private Output</* @Nullable */ InstanceReservationAffinity> reservationAffinity;
 
     /**
@@ -664,7 +664,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the Compute Engine default service account is used.
      * 
      */
-    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
@@ -685,7 +685,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - https://www.googleapis.com/auth/userinfo.email
      * 
      */
-    @Export(name="serviceAccountScopes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="serviceAccountScopes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> serviceAccountScopes;
 
     /**
@@ -704,7 +704,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="shieldedInstanceConfig", refs={InstanceShieldedInstanceConfig.class}, tree="[0]")
+    @Export(name="shieldedInstanceConfig", type=InstanceShieldedInstanceConfig.class, parameters={})
     private Output<InstanceShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -720,7 +720,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The state of this instance.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -735,7 +735,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      * 
      */
-    @Export(name="subnet", refs={String.class}, tree="[0]")
+    @Export(name="subnet", type=String.class, parameters={})
     private Output<String> subnet;
 
     /**
@@ -750,7 +750,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Compute Engine tags to add to instance.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -764,7 +764,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance update time.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -779,7 +779,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vmImage", refs={InstanceVmImage.class}, tree="[0]")
+    @Export(name="vmImage", type=InstanceVmImage.class, parameters={})
     private Output</* @Nullable */ InstanceVmImage> vmImage;
 
     /**

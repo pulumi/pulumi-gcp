@@ -146,7 +146,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="clusters", refs={List.class,InstanceCluster.class}, tree="[0,1]")
+    @Export(name="clusters", type=List.class, parameters={InstanceCluster.class})
     private Output<List<InstanceCluster>> clusters;
 
     /**
@@ -165,7 +165,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
      * 
      */
-    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -180,7 +180,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -202,7 +202,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* It is recommended to leave this field unspecified since the distinction between ""DEVELOPMENT"" and ""PRODUCTION"" instances is going away, and all instances will become ""PRODUCTION"" instances. This means that new and existing ""DEVELOPMENT"" instances will be converted to ""PRODUCTION"" instances. It is recommended for users to use ""PRODUCTION"" instances in any case, since a 1-node ""PRODUCTION"" instance is functionally identical to a ""DEVELOPMENT"" instance, but without the accompanying restrictions. */
-    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    @Export(name="instanceType", type=String.class, parameters={})
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -222,7 +222,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -238,7 +238,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -253,7 +253,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

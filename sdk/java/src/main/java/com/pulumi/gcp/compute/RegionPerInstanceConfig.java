@@ -166,7 +166,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * * NONE
      * 
      */
-    @Export(name="minimalAction", refs={String.class}, tree="[0]")
+    @Export(name="minimalAction", type=String.class, parameters={})
     private Output</* @Nullable */ String> minimalAction;
 
     /**
@@ -190,7 +190,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * * NONE
      * 
      */
-    @Export(name="mostDisruptiveAllowedAction", refs={String.class}, tree="[0]")
+    @Export(name="mostDisruptiveAllowedAction", type=String.class, parameters={})
     private Output</* @Nullable */ String> mostDisruptiveAllowedAction;
 
     /**
@@ -209,7 +209,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * The name for this per-instance config and its corresponding instance.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -224,7 +224,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="preservedState", refs={RegionPerInstanceConfigPreservedState.class}, tree="[0]")
+    @Export(name="preservedState", type=RegionPerInstanceConfigPreservedState.class, parameters={})
     private Output</* @Nullable */ RegionPerInstanceConfigPreservedState> preservedState;
 
     /**
@@ -240,7 +240,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -255,7 +255,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * Region where the containing instance group manager is located
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -271,7 +271,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * ***
      * 
      */
-    @Export(name="regionInstanceGroupManager", refs={String.class}, tree="[0]")
+    @Export(name="regionInstanceGroupManager", type=String.class, parameters={})
     private Output<String> regionInstanceGroupManager;
 
     /**
@@ -289,7 +289,7 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
      * State will be removed on the next instance recreation or update.
      * 
      */
-    @Export(name="removeInstanceStateOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="removeInstanceStateOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> removeInstanceStateOnDestroy;
 
     /**

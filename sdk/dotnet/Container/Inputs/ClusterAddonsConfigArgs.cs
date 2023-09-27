@@ -52,7 +52,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// .
-        /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
+        /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
+        /// 
+        /// **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
         /// </summary>
         [Input("gcePersistentDiskCsiDriverConfig")]
         public Input<Inputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs>? GcePersistentDiskCsiDriverConfig { get; set; }

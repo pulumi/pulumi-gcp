@@ -119,6 +119,9 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"annotation-one": pulumi.String("value-one"),
 //				},
+//				Management: &container.AzureNodePoolManagementArgs{
+//					AutoRepair: pulumi.Bool(true),
+//				},
 //				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -170,6 +173,8 @@ type AzureNodePool struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The Management configuration for this node pool.
+	Management AzureNodePoolManagementOutput `pulumi:"management"`
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AzureNodePoolMaxPodsConstraintOutput `pulumi:"maxPodsConstraint"`
 	// The name of this resource.
@@ -257,6 +262,8 @@ type azureNodePoolState struct {
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
+	// The Management configuration for this node pool.
+	Management *AzureNodePoolManagement `pulumi:"management"`
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint *AzureNodePoolMaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of this resource.
@@ -294,6 +301,8 @@ type AzureNodePoolState struct {
 	Etag pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
+	// The Management configuration for this node pool.
+	Management AzureNodePoolManagementPtrInput
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AzureNodePoolMaxPodsConstraintPtrInput
 	// The name of this resource.
@@ -331,6 +340,8 @@ type azureNodePoolArgs struct {
 	Config AzureNodePoolConfig `pulumi:"config"`
 	// The location for the resource
 	Location string `pulumi:"location"`
+	// The Management configuration for this node pool.
+	Management *AzureNodePoolManagement `pulumi:"management"`
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AzureNodePoolMaxPodsConstraint `pulumi:"maxPodsConstraint"`
 	// The name of this resource.
@@ -357,6 +368,8 @@ type AzureNodePoolArgs struct {
 	Config AzureNodePoolConfigInput
 	// The location for the resource
 	Location pulumi.StringInput
+	// The Management configuration for this node pool.
+	Management AzureNodePoolManagementPtrInput
 	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
 	MaxPodsConstraint AzureNodePoolMaxPodsConstraintInput
 	// The name of this resource.
@@ -518,6 +531,11 @@ func (o AzureNodePoolOutput) Etag() pulumi.StringOutput {
 // The location for the resource
 func (o AzureNodePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The Management configuration for this node pool.
+func (o AzureNodePoolOutput) Management() AzureNodePoolManagementOutput {
+	return o.ApplyT(func(v *AzureNodePool) AzureNodePoolManagementOutput { return v.Management }).(AzureNodePoolManagementOutput)
 }
 
 // The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.

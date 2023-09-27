@@ -107,7 +107,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="brand", refs={String.class}, tree="[0]")
+    @Export(name="brand", type=String.class, parameters={})
     private Output<String> brand;
 
     /**
@@ -125,7 +125,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * The OAuth2 ID of the client.
      * 
      */
-    @Export(name="clientId", refs={String.class}, tree="[0]")
+    @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
@@ -139,7 +139,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * Human-friendly name given to the OAuth client.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -154,7 +154,7 @@ public class Client extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
+    @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
     /**

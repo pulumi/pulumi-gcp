@@ -42,7 +42,7 @@ public class DenyPolicy extends com.pulumi.resources.CustomResource {
      * The display name of the rule.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -56,7 +56,7 @@ public class DenyPolicy extends com.pulumi.resources.CustomResource {
      * The hash of the resource. Used internally during updates.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -70,7 +70,7 @@ public class DenyPolicy extends com.pulumi.resources.CustomResource {
      * The name of the policy.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -84,7 +84,7 @@ public class DenyPolicy extends com.pulumi.resources.CustomResource {
      * The attachment point is identified by its URL-encoded full resource name.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -99,7 +99,7 @@ public class DenyPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rules", refs={List.class,DenyPolicyRule.class}, tree="[0,1]")
+    @Export(name="rules", type=List.class, parameters={DenyPolicyRule.class})
     private Output<List<DenyPolicyRule>> rules;
 
     /**

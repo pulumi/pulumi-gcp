@@ -259,7 +259,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * are supported. The bucket has to be in the same project as the metric.
      * 
      */
-    @Export(name="bucketName", refs={String.class}, tree="[0]")
+    @Export(name="bucketName", type=String.class, parameters={})
     private Output</* @Nullable */ String> bucketName;
 
     /**
@@ -276,7 +276,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bucketOptions", refs={MetricBucketOptions.class}, tree="[0]")
+    @Export(name="bucketOptions", type=MetricBucketOptions.class, parameters={})
     private Output</* @Nullable */ MetricBucketOptions> bucketOptions;
 
     /**
@@ -293,7 +293,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * description is 8000 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -308,7 +308,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * If set to True, then this metric is disabled and it does not generate any points.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -325,7 +325,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
+    @Export(name="filter", type=String.class, parameters={})
     private Output<String> filter;
 
     /**
@@ -345,7 +345,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * the same as for the valueExtractor field.
      * 
      */
-    @Export(name="labelExtractors", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labelExtractors", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labelExtractors;
 
     /**
@@ -366,7 +366,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metricDescriptor", refs={MetricMetricDescriptor.class}, tree="[0]")
+    @Export(name="metricDescriptor", type=MetricMetricDescriptor.class, parameters={})
     private Output<MetricMetricDescriptor> metricDescriptor;
 
     /**
@@ -388,7 +388,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * of the name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -407,7 +407,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -428,7 +428,7 @@ public class Metric extends com.pulumi.resources.CustomResource {
      * error to specify a regex that does not include exactly one capture group.
      * 
      */
-    @Export(name="valueExtractor", refs={String.class}, tree="[0]")
+    @Export(name="valueExtractor", type=String.class, parameters={})
     private Output</* @Nullable */ String> valueExtractor;
 
     /**

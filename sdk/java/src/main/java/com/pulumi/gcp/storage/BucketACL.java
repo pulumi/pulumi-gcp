@@ -81,7 +81,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="bucket", refs={String.class}, tree="[0]")
+    @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     /**
@@ -97,7 +97,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * Configure this ACL to be the default ACL.
      * 
      */
-    @Export(name="defaultAcl", refs={String.class}, tree="[0]")
+    @Export(name="defaultAcl", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultAcl;
 
     /**
@@ -111,7 +111,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * The [canned GCS ACL](https://cloud.google.com/storage/docs/access-control/lists#predefined-acl) to apply. Must be set if `role_entity` is not.
      * 
      */
-    @Export(name="predefinedAcl", refs={String.class}, tree="[0]")
+    @Export(name="predefinedAcl", type=String.class, parameters={})
     private Output</* @Nullable */ String> predefinedAcl;
 
     /**
@@ -125,7 +125,7 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
      * List of role/entity pairs in the form `ROLE:entity`. See [GCS Bucket ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls)  for more details. Must be set if `predefined_acl` is not.
      * 
      */
-    @Export(name="roleEntities", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="roleEntities", type=List.class, parameters={String.class})
     private Output<List<String>> roleEntities;
 
     /**

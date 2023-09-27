@@ -35,6 +35,11 @@ export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamP
 export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
 utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
 
+export { VpcscConfigArgs, VpcscConfigState } from "./vpcscConfig";
+export type VpcscConfig = import("./vpcscConfig").VpcscConfig;
+export const VpcscConfig: typeof import("./vpcscConfig").VpcscConfig = null as any;
+utilities.lazyLoad(exports, ["VpcscConfig"], () => require("./vpcscConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -48,6 +53,8 @@ const _module = {
                 return new RepositoryIamMember(name, <any>undefined, { urn })
             case "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy":
                 return new RepositoryIamPolicy(name, <any>undefined, { urn })
+            case "gcp:artifactregistry/vpcscConfig:VpcscConfig":
+                return new VpcscConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -57,3 +64,4 @@ pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repository", _mod
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "artifactregistry/repositoryIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "artifactregistry/vpcscConfig", _module)

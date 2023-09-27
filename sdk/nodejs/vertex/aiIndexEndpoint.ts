@@ -45,6 +45,22 @@ import * as utilities from "../utilities";
  *     dependsOn: [vertexVpcConnection],
  * });
  * ```
+ * ### Vertex Ai Index Endpoint With Public Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const indexEndpoint = new gcp.vertex.AiIndexEndpoint("indexEndpoint", {
+ *     description: "A sample vertex endpoint with an public endpoint",
+ *     displayName: "sample-endpoint",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     publicEndpointEnabled: true,
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -134,6 +150,14 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     */
+    public /*out*/ readonly publicEndpointDomainName!: pulumi.Output<string>;
+    /**
+     * If true, the deployed index will be accessible through public endpoint.
+     */
+    public readonly publicEndpointEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The region of the index endpoint. eg us-central1
      */
     public readonly region!: pulumi.Output<string | undefined>;
@@ -163,6 +187,8 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["publicEndpointDomainName"] = state ? state.publicEndpointDomainName : undefined;
+            resourceInputs["publicEndpointEnabled"] = state ? state.publicEndpointEnabled : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -175,10 +201,12 @@ export class AiIndexEndpoint extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["publicEndpointEnabled"] = args ? args.publicEndpointEnabled : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["publicEndpointDomainName"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -230,6 +258,14 @@ export interface AiIndexEndpointState {
      */
     project?: pulumi.Input<string>;
     /**
+     * If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     */
+    publicEndpointDomainName?: pulumi.Input<string>;
+    /**
+     * If true, the deployed index will be accessible through public endpoint.
+     */
+    publicEndpointEnabled?: pulumi.Input<boolean>;
+    /**
      * The region of the index endpoint. eg us-central1
      */
     region?: pulumi.Input<string>;
@@ -270,6 +306,10 @@ export interface AiIndexEndpointArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * If true, the deployed index will be accessible through public endpoint.
+     */
+    publicEndpointEnabled?: pulumi.Input<boolean>;
     /**
      * The region of the index endpoint. eg us-central1
      */

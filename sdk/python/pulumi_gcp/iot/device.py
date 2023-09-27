@@ -458,6 +458,8 @@ class Device(pulumi.CustomResource):
                  registry: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **Warning:** `iot.Device` is deprecated in the API. This resource will be removed in the next major release of the provider.
+
         A Google Cloud IoT Core device.
 
         To get more information about Device, see:
@@ -532,6 +534,8 @@ class Device(pulumi.CustomResource):
                  args: DeviceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `iot.Device` is deprecated in the API. This resource will be removed in the next major release of the provider.
+
         A Google Cloud IoT Core device.
 
         To get more information about Device, see:

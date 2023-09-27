@@ -64,6 +64,13 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.aliasIpRanges);
     }
 
+    @Import(name="internalIpv6PrefixLength")
+    private @Nullable Output<Integer> internalIpv6PrefixLength;
+
+    public Optional<Output<Integer>> internalIpv6PrefixLength() {
+        return Optional.ofNullable(this.internalIpv6PrefixLength);
+    }
+
     /**
      * An array of IPv6 access configurations for this interface.
      * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -88,6 +95,13 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
 
     public Optional<Output<String>> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
+    }
+
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
 
     /**
@@ -236,8 +250,10 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     private InstanceTemplateNetworkInterfaceArgs(InstanceTemplateNetworkInterfaceArgs $) {
         this.accessConfigs = $.accessConfigs;
         this.aliasIpRanges = $.aliasIpRanges;
+        this.internalIpv6PrefixLength = $.internalIpv6PrefixLength;
         this.ipv6AccessConfigs = $.ipv6AccessConfigs;
         this.ipv6AccessType = $.ipv6AccessType;
+        this.ipv6Address = $.ipv6Address;
         this.name = $.name;
         this.network = $.network;
         this.networkAttachment = $.networkAttachment;
@@ -350,6 +366,15 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
             return aliasIpRanges(List.of(aliasIpRanges));
         }
 
+        public Builder internalIpv6PrefixLength(@Nullable Output<Integer> internalIpv6PrefixLength) {
+            $.internalIpv6PrefixLength = internalIpv6PrefixLength;
+            return this;
+        }
+
+        public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
+            return internalIpv6PrefixLength(Output.of(internalIpv6PrefixLength));
+        }
+
         /**
          * @param ipv6AccessConfigs An array of IPv6 access configurations for this interface.
          * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -394,6 +419,15 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
 
         public Builder ipv6AccessType(String ipv6AccessType) {
             return ipv6AccessType(Output.of(ipv6AccessType));
+        }
+
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         /**

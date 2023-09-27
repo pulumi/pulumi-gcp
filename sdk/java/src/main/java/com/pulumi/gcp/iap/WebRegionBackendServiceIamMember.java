@@ -299,7 +299,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={WebRegionBackendServiceIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=WebRegionBackendServiceIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ WebRegionBackendServiceIamMemberCondition> condition;
 
     /**
@@ -314,7 +314,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -324,7 +324,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -347,7 +347,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -370,7 +370,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     public Output<String> region() {
@@ -382,7 +382,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -398,7 +398,7 @@ public class WebRegionBackendServiceIamMember extends com.pulumi.resources.Custo
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="webRegionBackendService", refs={String.class}, tree="[0]")
+    @Export(name="webRegionBackendService", type=String.class, parameters={})
     private Output<String> webRegionBackendService;
 
     /**

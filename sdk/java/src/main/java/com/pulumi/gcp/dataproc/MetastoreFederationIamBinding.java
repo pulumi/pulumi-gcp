@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding")
 public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={MetastoreFederationIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=MetastoreFederationIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ MetastoreFederationIamBindingCondition> condition;
 
     public Output<Optional<MetastoreFederationIamBindingCondition>> condition() {
@@ -54,7 +54,7 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -64,7 +64,7 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="federationId", refs={String.class}, tree="[0]")
+    @Export(name="federationId", type=String.class, parameters={})
     private Output<String> federationId;
 
     public Output<String> federationId() {
@@ -75,7 +75,7 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -86,7 +86,7 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -109,7 +109,7 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -138,7 +138,7 @@ public class MetastoreFederationIamBinding extends com.pulumi.resources.CustomRe
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

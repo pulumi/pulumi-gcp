@@ -130,7 +130,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLED`, `NONE`.
      * 
      */
-    @Export(name="cpuOvercommitType", refs={String.class}, tree="[0]")
+    @Export(name="cpuOvercommitType", type=String.class, parameters={})
     private Output</* @Nullable */ String> cpuOvercommitType;
 
     /**
@@ -146,7 +146,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -160,7 +160,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * An optional textual description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -189,7 +189,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * instance scheduling.
      * 
      */
-    @Export(name="nodeAffinityLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="nodeAffinityLabels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> nodeAffinityLabels;
 
     /**
@@ -205,7 +205,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Only one of nodeTypeFlexibility and nodeType can be specified.
      * 
      */
-    @Export(name="nodeType", refs={String.class}, tree="[0]")
+    @Export(name="nodeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> nodeType;
 
     /**
@@ -224,7 +224,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeTypeFlexibility", refs={NodeTemplateNodeTypeFlexibility.class}, tree="[0]")
+    @Export(name="nodeTypeFlexibility", type=NodeTemplateNodeTypeFlexibility.class, parameters={})
     private Output</* @Nullable */ NodeTemplateNodeTypeFlexibility> nodeTypeFlexibility;
 
     /**
@@ -243,7 +243,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -259,7 +259,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -274,7 +274,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -290,7 +290,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serverBinding", refs={NodeTemplateServerBinding.class}, tree="[0]")
+    @Export(name="serverBinding", type=NodeTemplateServerBinding.class, parameters={})
     private Output<NodeTemplateServerBinding> serverBinding;
 
     /**

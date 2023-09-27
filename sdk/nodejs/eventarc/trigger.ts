@@ -123,7 +123,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
-    public readonly eventDataContentType!: pulumi.Output<string | undefined>;
+    public readonly eventDataContentType!: pulumi.Output<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */

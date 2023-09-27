@@ -350,7 +350,7 @@ public class IAMAuditConfig extends com.pulumi.resources.CustomResource {
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      * 
      */
-    @Export(name="auditLogConfigs", refs={List.class,IAMAuditConfigAuditLogConfig.class}, tree="[0,1]")
+    @Export(name="auditLogConfigs", type=List.class, parameters={IAMAuditConfigAuditLogConfig.class})
     private Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs;
 
     /**
@@ -364,7 +364,7 @@ public class IAMAuditConfig extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the project&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -379,7 +379,7 @@ public class IAMAuditConfig extends com.pulumi.resources.CustomResource {
      * inferred from the provider.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -394,7 +394,7 @@ public class IAMAuditConfig extends com.pulumi.resources.CustomResource {
      * Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
      * 
      */
-    @Export(name="service", refs={String.class}, tree="[0]")
+    @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**

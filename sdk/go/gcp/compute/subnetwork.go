@@ -273,6 +273,8 @@ type Subnetwork struct {
 	// The gateway address for default routes to reach destination addresses
 	// outside this subnetwork.
 	GatewayAddress pulumi.StringOutput `pulumi:"gatewayAddress"`
+	// The internal IPv6 address range that is assigned to this subnetwork.
+	InternalIpv6Prefix pulumi.StringOutput `pulumi:"internalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork.
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -393,6 +395,8 @@ type subnetworkState struct {
 	// The gateway address for default routes to reach destination addresses
 	// outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
+	// The internal IPv6 address range that is assigned to this subnetwork.
+	InternalIpv6Prefix *string `pulumi:"internalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork.
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -478,6 +482,8 @@ type SubnetworkState struct {
 	// The gateway address for default routes to reach destination addresses
 	// outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput
+	// The internal IPv6 address range that is assigned to this subnetwork.
+	InternalIpv6Prefix pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork.
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -831,6 +837,11 @@ func (o SubnetworkOutput) Fingerprint() pulumi.StringOutput {
 // outside this subnetwork.
 func (o SubnetworkOutput) GatewayAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.GatewayAddress }).(pulumi.StringOutput)
+}
+
+// The internal IPv6 address range that is assigned to this subnetwork.
+func (o SubnetworkOutput) InternalIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.InternalIpv6Prefix }).(pulumi.StringOutput)
 }
 
 // The range of internal addresses that are owned by this subnetwork.

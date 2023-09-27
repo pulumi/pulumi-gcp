@@ -101,7 +101,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      * 
      */
-    @Export(name="databaseDialect", refs={String.class}, tree="[0]")
+    @Export(name="databaseDialect", type=String.class, parameters={})
     private Output<String> databaseDialect;
 
     /**
@@ -120,7 +120,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * error in any statement, the database is not created.
      * 
      */
-    @Export(name="ddls", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="ddls", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> ddls;
 
     /**
@@ -138,7 +138,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      * 
      */
-    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -157,7 +157,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
      * 
      */
-    @Export(name="enableDropProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableDropProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableDropProtection;
 
     /**
@@ -176,7 +176,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionConfig", refs={DatabaseEncryptionConfig.class}, tree="[0]")
+    @Export(name="encryptionConfig", type=DatabaseEncryptionConfig.class, parameters={})
     private Output</* @Nullable */ DatabaseEncryptionConfig> encryptionConfig;
 
     /**
@@ -193,7 +193,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instance", refs={String.class}, tree="[0]")
+    @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
@@ -210,7 +210,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -226,7 +226,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -241,7 +241,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * An explanation of the status of the database.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -259,7 +259,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * update the database&#39;s version_retention_period.
      * 
      */
-    @Export(name="versionRetentionPeriod", refs={String.class}, tree="[0]")
+    @Export(name="versionRetentionPeriod", type=String.class, parameters={})
     private Output<String> versionRetentionPeriod;
 
     /**

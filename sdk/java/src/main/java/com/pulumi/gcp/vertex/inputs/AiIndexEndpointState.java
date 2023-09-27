@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -149,6 +150,36 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     * 
+     */
+    @Import(name="publicEndpointDomainName")
+    private @Nullable Output<String> publicEndpointDomainName;
+
+    /**
+     * @return If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+     * 
+     */
+    public Optional<Output<String>> publicEndpointDomainName() {
+        return Optional.ofNullable(this.publicEndpointDomainName);
+    }
+
+    /**
+     * If true, the deployed index will be accessible through public endpoint.
+     * 
+     */
+    @Import(name="publicEndpointEnabled")
+    private @Nullable Output<Boolean> publicEndpointEnabled;
+
+    /**
+     * @return If true, the deployed index will be accessible through public endpoint.
+     * 
+     */
+    public Optional<Output<Boolean>> publicEndpointEnabled() {
+        return Optional.ofNullable(this.publicEndpointEnabled);
+    }
+
+    /**
      * The region of the index endpoint. eg us-central1
      * 
      */
@@ -189,6 +220,8 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
+        this.publicEndpointDomainName = $.publicEndpointDomainName;
+        this.publicEndpointEnabled = $.publicEndpointEnabled;
         this.region = $.region;
         this.updateTime = $.updateTime;
     }
@@ -389,6 +422,48 @@ public final class AiIndexEndpointState extends com.pulumi.resources.ResourceArg
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param publicEndpointDomainName If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicEndpointDomainName(@Nullable Output<String> publicEndpointDomainName) {
+            $.publicEndpointDomainName = publicEndpointDomainName;
+            return this;
+        }
+
+        /**
+         * @param publicEndpointDomainName If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicEndpointDomainName(String publicEndpointDomainName) {
+            return publicEndpointDomainName(Output.of(publicEndpointDomainName));
+        }
+
+        /**
+         * @param publicEndpointEnabled If true, the deployed index will be accessible through public endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicEndpointEnabled(@Nullable Output<Boolean> publicEndpointEnabled) {
+            $.publicEndpointEnabled = publicEndpointEnabled;
+            return this;
+        }
+
+        /**
+         * @param publicEndpointEnabled If true, the deployed index will be accessible through public endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicEndpointEnabled(Boolean publicEndpointEnabled) {
+            return publicEndpointEnabled(Output.of(publicEndpointEnabled));
         }
 
         /**

@@ -99,7 +99,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * Human friendly display name.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -113,7 +113,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * If this config allows users to sign in with the provider.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -128,7 +128,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="idpConfig", refs={TenantInboundSamlConfigIdpConfig.class}, tree="[0]")
+    @Export(name="idpConfig", type=TenantInboundSamlConfigIdpConfig.class, parameters={})
     private Output<TenantInboundSamlConfigIdpConfig> idpConfig;
 
     /**
@@ -145,7 +145,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * alphanumeric character, and have at least 2 characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -162,7 +162,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -179,7 +179,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="spConfig", refs={TenantInboundSamlConfigSpConfig.class}, tree="[0]")
+    @Export(name="spConfig", type=TenantInboundSamlConfigSpConfig.class, parameters={})
     private Output<TenantInboundSamlConfigSpConfig> spConfig;
 
     /**
@@ -195,7 +195,7 @@ public class TenantInboundSamlConfig extends com.pulumi.resources.CustomResource
      * The name of the tenant where this inbound SAML config resource exists
      * 
      */
-    @Export(name="tenant", refs={String.class}, tree="[0]")
+    @Export(name="tenant", type=String.class, parameters={})
     private Output<String> tenant;
 
     /**

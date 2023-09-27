@@ -145,7 +145,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * A unique id for the deployment config.
      * 
      */
-    @Export(name="configId", refs={String.class}, tree="[0]")
+    @Export(name="configId", type=String.class, parameters={})
     private Output<String> configId;
 
     /**
@@ -159,7 +159,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * A unique id for the deployment.
      * 
      */
-    @Export(name="deploymentId", refs={String.class}, tree="[0]")
+    @Export(name="deploymentId", type=String.class, parameters={})
     private Output<String> deploymentId;
 
     /**
@@ -173,7 +173,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * The description of the game server config.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -189,7 +189,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fleetConfigs", refs={List.class,GameServerConfigFleetConfig.class}, tree="[0,1]")
+    @Export(name="fleetConfigs", type=List.class, parameters={GameServerConfigFleetConfig.class})
     private Output<List<GameServerConfigFleetConfig>> fleetConfigs;
 
     /**
@@ -209,7 +209,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * Set of labels to group by.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -227,7 +227,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * Location of the Deployment.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -246,7 +246,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * The name of the ScalingConfig
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -266,7 +266,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -282,7 +282,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="scalingConfigs", refs={List.class,GameServerConfigScalingConfig.class}, tree="[0,1]")
+    @Export(name="scalingConfigs", type=List.class, parameters={GameServerConfigScalingConfig.class})
     private Output</* @Nullable */ List<GameServerConfigScalingConfig>> scalingConfigs;
 
     /**

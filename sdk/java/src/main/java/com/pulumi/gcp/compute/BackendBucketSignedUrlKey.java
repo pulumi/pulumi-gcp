@@ -91,7 +91,7 @@ public class BackendBucketSignedUrlKey extends com.pulumi.resources.CustomResour
      * ***
      * 
      */
-    @Export(name="backendBucket", refs={String.class}, tree="[0]")
+    @Export(name="backendBucket", type=String.class, parameters={})
     private Output<String> backendBucket;
 
     /**
@@ -109,7 +109,7 @@ public class BackendBucketSignedUrlKey extends com.pulumi.resources.CustomResour
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="keyValue", refs={String.class}, tree="[0]")
+    @Export(name="keyValue", type=String.class, parameters={})
     private Output<String> keyValue;
 
     /**
@@ -125,7 +125,7 @@ public class BackendBucketSignedUrlKey extends com.pulumi.resources.CustomResour
      * Name of the signed URL key.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class BackendBucketSignedUrlKey extends com.pulumi.resources.CustomResour
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

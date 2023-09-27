@@ -125,7 +125,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="allocatedConnections", refs={List.class,AppGatewayAllocatedConnection.class}, tree="[0,1]")
+    @Export(name="allocatedConnections", type=List.class, parameters={AppGatewayAllocatedConnection.class})
     private Output<List<AppGatewayAllocatedConnection>> allocatedConnections;
 
     /**
@@ -140,7 +140,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * An arbitrary user-provided name for the AppGateway.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -156,7 +156,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      * 
      */
-    @Export(name="hostType", refs={String.class}, tree="[0]")
+    @Export(name="hostType", type=String.class, parameters={})
     private Output</* @Nullable */ String> hostType;
 
     /**
@@ -172,7 +172,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user provided metadata.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -188,7 +188,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -205,7 +205,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -220,7 +220,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * The region of the AppGateway.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -234,7 +234,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * Represents the different states of a AppGateway.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -250,7 +250,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
@@ -266,7 +266,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
      * Server-defined URI for this resource.
      * 
      */
-    @Export(name="uri", refs={String.class}, tree="[0]")
+    @Export(name="uri", type=String.class, parameters={})
     private Output<String> uri;
 
     /**

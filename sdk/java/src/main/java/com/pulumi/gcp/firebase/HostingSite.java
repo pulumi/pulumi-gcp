@@ -122,7 +122,7 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      * associated with the Hosting site.
      * 
      */
-    @Export(name="appId", refs={String.class}, tree="[0]")
+    @Export(name="appId", type=String.class, parameters={})
     private Output</* @Nullable */ String> appId;
 
     /**
@@ -137,7 +137,7 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      * The default URL for the site in the form of https://{name}.web.app
      * 
      */
-    @Export(name="defaultUrl", refs={String.class}, tree="[0]")
+    @Export(name="defaultUrl", type=String.class, parameters={})
     private Output<String> defaultUrl;
 
     /**
@@ -157,7 +157,7 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -178,7 +178,7 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -195,7 +195,7 @@ public class HostingSite extends com.pulumi.resources.CustomResource {
      * domain name label.
      * 
      */
-    @Export(name="siteId", refs={String.class}, tree="[0]")
+    @Export(name="siteId", type=String.class, parameters={})
     private Output</* @Nullable */ String> siteId;
 
     /**

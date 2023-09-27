@@ -134,7 +134,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="appEngineRoutingOverride", refs={QueueAppEngineRoutingOverride.class}, tree="[0]")
+    @Export(name="appEngineRoutingOverride", type=QueueAppEngineRoutingOverride.class, parameters={})
     private Output</* @Nullable */ QueueAppEngineRoutingOverride> appEngineRoutingOverride;
 
     /**
@@ -152,7 +152,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -168,7 +168,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * The queue name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -183,7 +183,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -205,7 +205,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      *   Structure is documented below.
      * 
      */
-    @Export(name="rateLimits", refs={QueueRateLimits.class}, tree="[0]")
+    @Export(name="rateLimits", type=QueueRateLimits.class, parameters={})
     private Output<QueueRateLimits> rateLimits;
 
     /**
@@ -227,7 +227,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="retryConfig", refs={QueueRetryConfig.class}, tree="[0]")
+    @Export(name="retryConfig", type=QueueRetryConfig.class, parameters={})
     private Output<QueueRetryConfig> retryConfig;
 
     /**
@@ -243,7 +243,7 @@ public class Queue extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="stackdriverLoggingConfig", refs={QueueStackdriverLoggingConfig.class}, tree="[0]")
+    @Export(name="stackdriverLoggingConfig", type=QueueStackdriverLoggingConfig.class, parameters={})
     private Output</* @Nullable */ QueueStackdriverLoggingConfig> stackdriverLoggingConfig;
 
     /**

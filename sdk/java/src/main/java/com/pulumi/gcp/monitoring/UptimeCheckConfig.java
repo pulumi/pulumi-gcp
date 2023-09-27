@@ -353,7 +353,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
-    @Export(name="checkerType", refs={String.class}, tree="[0]")
+    @Export(name="checkerType", type=String.class, parameters={})
     private Output<String> checkerType;
 
     /**
@@ -369,7 +369,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="contentMatchers", refs={List.class,UptimeCheckConfigContentMatcher.class}, tree="[0,1]")
+    @Export(name="contentMatchers", type=List.class, parameters={UptimeCheckConfigContentMatcher.class})
     private Output</* @Nullable */ List<UptimeCheckConfigContentMatcher>> contentMatchers;
 
     /**
@@ -384,7 +384,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -399,7 +399,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="httpCheck", refs={UptimeCheckConfigHttpCheck.class}, tree="[0]")
+    @Export(name="httpCheck", type=UptimeCheckConfigHttpCheck.class, parameters={})
     private Output</* @Nullable */ UptimeCheckConfigHttpCheck> httpCheck;
 
     /**
@@ -415,7 +415,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="monitoredResource", refs={UptimeCheckConfigMonitoredResource.class}, tree="[0]")
+    @Export(name="monitoredResource", type=UptimeCheckConfigMonitoredResource.class, parameters={})
     private Output</* @Nullable */ UptimeCheckConfigMonitoredResource> monitoredResource;
 
     /**
@@ -430,7 +430,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * The fully qualified name of the cloud function resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -444,7 +444,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
      * 
      */
-    @Export(name="period", refs={String.class}, tree="[0]")
+    @Export(name="period", type=String.class, parameters={})
     private Output</* @Nullable */ String> period;
 
     /**
@@ -459,7 +459,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -475,7 +475,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="resourceGroup", refs={UptimeCheckConfigResourceGroup.class}, tree="[0]")
+    @Export(name="resourceGroup", type=UptimeCheckConfigResourceGroup.class, parameters={})
     private Output</* @Nullable */ UptimeCheckConfigResourceGroup> resourceGroup;
 
     /**
@@ -490,7 +490,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      * 
      */
-    @Export(name="selectedRegions", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="selectedRegions", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> selectedRegions;
 
     /**
@@ -505,7 +505,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="syntheticMonitor", refs={UptimeCheckConfigSyntheticMonitor.class}, tree="[0]")
+    @Export(name="syntheticMonitor", type=UptimeCheckConfigSyntheticMonitor.class, parameters={})
     private Output</* @Nullable */ UptimeCheckConfigSyntheticMonitor> syntheticMonitor;
 
     /**
@@ -521,7 +521,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="tcpCheck", refs={UptimeCheckConfigTcpCheck.class}, tree="[0]")
+    @Export(name="tcpCheck", type=UptimeCheckConfigTcpCheck.class, parameters={})
     private Output</* @Nullable */ UptimeCheckConfigTcpCheck> tcpCheck;
 
     /**
@@ -538,7 +538,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="timeout", refs={String.class}, tree="[0]")
+    @Export(name="timeout", type=String.class, parameters={})
     private Output<String> timeout;
 
     /**
@@ -554,7 +554,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      * The id of the uptime check
      * 
      */
-    @Export(name="uptimeCheckId", refs={String.class}, tree="[0]")
+    @Export(name="uptimeCheckId", type=String.class, parameters={})
     private Output<String> uptimeCheckId;
 
     /**

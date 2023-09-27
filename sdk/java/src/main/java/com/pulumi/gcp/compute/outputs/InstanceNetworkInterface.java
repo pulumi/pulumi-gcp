@@ -24,6 +24,7 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable List<InstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
+    private @Nullable Integer internalIpv6PrefixLength;
     /**
      * @return An array of IPv6 access configurations for this interface.
      * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -37,6 +38,7 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable String ipv6AccessType;
+    private @Nullable String ipv6Address;
     /**
      * @return A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
@@ -104,6 +106,9 @@ public final class InstanceNetworkInterface {
     public List<InstanceNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges == null ? List.of() : this.aliasIpRanges;
     }
+    public Optional<Integer> internalIpv6PrefixLength() {
+        return Optional.ofNullable(this.internalIpv6PrefixLength);
+    }
     /**
      * @return An array of IPv6 access configurations for this interface.
      * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -120,6 +125,9 @@ public final class InstanceNetworkInterface {
      */
     public Optional<String> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
+    }
+    public Optional<String> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
     /**
      * @return A unique name for the resource, required by GCE.
@@ -202,8 +210,10 @@ public final class InstanceNetworkInterface {
     public static final class Builder {
         private @Nullable List<InstanceNetworkInterfaceAccessConfig> accessConfigs;
         private @Nullable List<InstanceNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private @Nullable Integer internalIpv6PrefixLength;
         private @Nullable List<InstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
         private @Nullable String ipv6AccessType;
+        private @Nullable String ipv6Address;
         private @Nullable String name;
         private @Nullable String network;
         private @Nullable String networkIp;
@@ -217,8 +227,10 @@ public final class InstanceNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
+    	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.networkIp = defaults.networkIp;
@@ -246,6 +258,11 @@ public final class InstanceNetworkInterface {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
         @CustomType.Setter
+        public Builder internalIpv6PrefixLength(@Nullable Integer internalIpv6PrefixLength) {
+            this.internalIpv6PrefixLength = internalIpv6PrefixLength;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipv6AccessConfigs(@Nullable List<InstanceNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
             this.ipv6AccessConfigs = ipv6AccessConfigs;
             return this;
@@ -256,6 +273,11 @@ public final class InstanceNetworkInterface {
         @CustomType.Setter
         public Builder ipv6AccessType(@Nullable String ipv6AccessType) {
             this.ipv6AccessType = ipv6AccessType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Address(@Nullable String ipv6Address) {
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
@@ -302,8 +324,10 @@ public final class InstanceNetworkInterface {
             final var o = new InstanceNetworkInterface();
             o.accessConfigs = accessConfigs;
             o.aliasIpRanges = aliasIpRanges;
+            o.internalIpv6PrefixLength = internalIpv6PrefixLength;
             o.ipv6AccessConfigs = ipv6AccessConfigs;
             o.ipv6AccessType = ipv6AccessType;
+            o.ipv6Address = ipv6Address;
             o.name = name;
             o.network = network;
             o.networkIp = networkIp;

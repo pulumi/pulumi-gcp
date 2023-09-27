@@ -83,7 +83,7 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -99,7 +99,7 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -114,7 +114,7 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="preferredTables", refs={List.class,BiReservationPreferredTable.class}, tree="[0,1]")
+    @Export(name="preferredTables", type=List.class, parameters={BiReservationPreferredTable.class})
     private Output</* @Nullable */ List<BiReservationPreferredTable>> preferredTables;
 
     /**
@@ -130,7 +130,7 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -145,7 +145,7 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * Size of a reservation, in bytes.
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> size;
 
     /**
@@ -160,7 +160,7 @@ public class BiReservation extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

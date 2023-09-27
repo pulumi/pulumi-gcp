@@ -209,7 +209,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bigqueryDateShardedSpecs", refs={List.class,EntryBigqueryDateShardedSpec.class}, tree="[0,1]")
+    @Export(name="bigqueryDateShardedSpecs", type=List.class, parameters={EntryBigqueryDateShardedSpec.class})
     private Output<List<EntryBigqueryDateShardedSpec>> bigqueryDateShardedSpecs;
 
     /**
@@ -226,7 +226,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bigqueryTableSpecs", refs={List.class,EntryBigqueryTableSpec.class}, tree="[0,1]")
+    @Export(name="bigqueryTableSpecs", type=List.class, parameters={EntryBigqueryTableSpec.class})
     private Output<List<EntryBigqueryTableSpec>> bigqueryTableSpecs;
 
     /**
@@ -241,7 +241,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -256,7 +256,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * for example, &#34;Analytics Data - Jan 2011&#34;.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -271,7 +271,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * The name of the entry group this entry is in.
      * 
      */
-    @Export(name="entryGroup", refs={String.class}, tree="[0]")
+    @Export(name="entryGroup", type=String.class, parameters={})
     private Output<String> entryGroup;
 
     /**
@@ -287,7 +287,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="entryId", refs={String.class}, tree="[0]")
+    @Export(name="entryId", type=String.class, parameters={})
     private Output<String> entryId;
 
     /**
@@ -304,7 +304,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gcsFilesetSpec", refs={EntryGcsFilesetSpec.class}, tree="[0]")
+    @Export(name="gcsFilesetSpec", type=EntryGcsFilesetSpec.class, parameters={})
     private Output</* @Nullable */ EntryGcsFilesetSpec> gcsFilesetSpec;
 
     /**
@@ -319,7 +319,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * This field indicates the entry&#39;s source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
      * 
      */
-    @Export(name="integratedSystem", refs={String.class}, tree="[0]")
+    @Export(name="integratedSystem", type=String.class, parameters={})
     private Output<String> integratedSystem;
 
     /**
@@ -338,7 +338,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * this field is optional and defaults to an empty string.
      * 
      */
-    @Export(name="linkedResource", refs={String.class}, tree="[0]")
+    @Export(name="linkedResource", type=String.class, parameters={})
     private Output<String> linkedResource;
 
     /**
@@ -359,7 +359,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * Note that this Entry and its child resources may not actually be stored in the location in this name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -378,7 +378,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * for what fields this schema can contain.
      * 
      */
-    @Export(name="schema", refs={String.class}, tree="[0]")
+    @Export(name="schema", type=String.class, parameters={})
     private Output</* @Nullable */ String> schema;
 
     /**
@@ -397,7 +397,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * Possible values are: `FILESET`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
@@ -415,7 +415,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      * 
      */
-    @Export(name="userSpecifiedSystem", refs={String.class}, tree="[0]")
+    @Export(name="userSpecifiedSystem", type=String.class, parameters={})
     private Output</* @Nullable */ String> userSpecifiedSystem;
 
     /**
@@ -435,7 +435,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
      * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      * 
      */
-    @Export(name="userSpecifiedType", refs={String.class}, tree="[0]")
+    @Export(name="userSpecifiedType", type=String.class, parameters={})
     private Output</* @Nullable */ String> userSpecifiedType;
 
     /**

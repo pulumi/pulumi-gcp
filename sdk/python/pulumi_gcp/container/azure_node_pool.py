@@ -25,6 +25,7 @@ class AzureNodePoolArgs:
                  version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  azure_availability_zone: Optional[pulumi.Input[str]] = None,
+                 management: Optional[pulumi.Input['AzureNodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -38,6 +39,7 @@ class AzureNodePoolArgs:
         :param pulumi.Input[str] version: The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] azure_availability_zone: Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
+        :param pulumi.Input['AzureNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         """
@@ -52,6 +54,8 @@ class AzureNodePoolArgs:
             pulumi.set(__self__, "annotations", annotations)
         if azure_availability_zone is not None:
             pulumi.set(__self__, "azure_availability_zone", azure_availability_zone)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -167,6 +171,18 @@ class AzureNodePoolArgs:
 
     @property
     @pulumi.getter
+    def management(self) -> Optional[pulumi.Input['AzureNodePoolManagementArgs']]:
+        """
+        The Management configuration for this node pool.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input['AzureNodePoolManagementArgs']]):
+        pulumi.set(self, "management", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of this resource.
@@ -201,6 +217,7 @@ class _AzureNodePoolState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 management: Optional[pulumi.Input['AzureNodePoolManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['AzureNodePoolMaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -220,6 +237,7 @@ class _AzureNodePoolState:
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input['AzureNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input['AzureNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
@@ -246,6 +264,8 @@ class _AzureNodePoolState:
             pulumi.set(__self__, "etag", etag)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if management is not None:
+            pulumi.set(__self__, "management", management)
         if max_pods_constraint is not None:
             pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         if name is not None:
@@ -360,6 +380,18 @@ class _AzureNodePoolState:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def management(self) -> Optional[pulumi.Input['AzureNodePoolManagementArgs']]:
+        """
+        The Management configuration for this node pool.
+        """
+        return pulumi.get(self, "management")
+
+    @management.setter
+    def management(self, value: Optional[pulumi.Input['AzureNodePoolManagementArgs']]):
+        pulumi.set(self, "management", value)
 
     @property
     @pulumi.getter(name="maxPodsConstraint")
@@ -481,6 +513,7 @@ class AzureNodePool(pulumi.CustomResource):
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -563,6 +596,9 @@ class AzureNodePool(pulumi.CustomResource):
             annotations={
                 "annotation-one": "value-one",
             },
+            management=gcp.container.AzureNodePoolManagementArgs(
+                auto_repair=True,
+            ),
             project="my-project-name")
         ```
 
@@ -590,6 +626,7 @@ class AzureNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The azureCluster for the resource
         :param pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']] config: The node configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']] management: The Management configuration for this node pool.
         :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
@@ -678,6 +715,9 @@ class AzureNodePool(pulumi.CustomResource):
             annotations={
                 "annotation-one": "value-one",
             },
+            management=gcp.container.AzureNodePoolManagementArgs(
+                auto_repair=True,
+            ),
             project="my-project-name")
         ```
 
@@ -718,6 +758,7 @@ class AzureNodePool(pulumi.CustomResource):
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -746,6 +787,7 @@ class AzureNodePool(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["management"] = management
             if max_pods_constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'max_pods_constraint'")
             __props__.__dict__["max_pods_constraint"] = max_pods_constraint
@@ -781,6 +823,7 @@ class AzureNodePool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            management: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']]] = None,
             max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -805,6 +848,7 @@ class AzureNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
+        :param pulumi.Input[pulumi.InputType['AzureNodePoolManagementArgs']] management: The Management configuration for this node pool.
         :param pulumi.Input[pulumi.InputType['AzureNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
@@ -827,6 +871,7 @@ class AzureNodePool(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["etag"] = etag
         __props__.__dict__["location"] = location
+        __props__.__dict__["management"] = management
         __props__.__dict__["max_pods_constraint"] = max_pods_constraint
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -901,6 +946,14 @@ class AzureNodePool(pulumi.CustomResource):
         The location for the resource
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def management(self) -> pulumi.Output['outputs.AzureNodePoolManagement']:
+        """
+        The Management configuration for this node pool.
+        """
+        return pulumi.get(self, "management")
 
     @property
     @pulumi.getter(name="maxPodsConstraint")

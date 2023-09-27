@@ -36,6 +36,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("ephemeralStorageLocalSsdConfig")]
         public Input<Inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigGetArgs>? EphemeralStorageLocalSsdConfig { get; set; }
 
+        [Input("fastSocket")]
+        public Input<Inputs.NodePoolNodeConfigFastSocketGetArgs>? FastSocket { get; set; }
+
         [Input("gcfsConfig")]
         public Input<Inputs.NodePoolNodeConfigGcfsConfigGetArgs>? GcfsConfig { get; set; }
 

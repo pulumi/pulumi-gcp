@@ -15,6 +15,10 @@ import (
 
 // EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
 //
+// To get more information about EdgeCacheOrigin, see:
+//
+// * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins)
+//
 // ## Example Usage
 // ### Network Services Edge Cache Origin Basic
 //
@@ -139,7 +143,7 @@ import (
 //			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-name"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Automatic: pulumi.Bool(true),
+//					Auto: nil,
 //				},
 //			})
 //			if err != nil {

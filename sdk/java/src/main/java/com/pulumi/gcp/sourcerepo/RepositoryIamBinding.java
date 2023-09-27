@@ -165,7 +165,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding")
 public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={RepositoryIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=RepositoryIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ RepositoryIamBindingCondition> condition;
 
     public Output<Optional<RepositoryIamBindingCondition>> condition() {
@@ -175,7 +175,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -185,7 +185,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -208,7 +208,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -231,7 +231,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="repository", refs={String.class}, tree="[0]")
+    @Export(name="repository", type=String.class, parameters={})
     private Output<String> repository;
 
     public Output<String> repository() {
@@ -243,7 +243,7 @@ public class RepositoryIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

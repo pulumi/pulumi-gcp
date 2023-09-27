@@ -5,7 +5,9 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,11 +49,29 @@ public final class ServiceTemplateVpcAccessArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.egress);
     }
 
+    /**
+     * Direct VPC egress settings. Currently only single network interface is supported.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkInterfaces")
+    private @Nullable Output<List<ServiceTemplateVpcAccessNetworkInterfaceArgs>> networkInterfaces;
+
+    /**
+     * @return Direct VPC egress settings. Currently only single network interface is supported.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceTemplateVpcAccessNetworkInterfaceArgs>>> networkInterfaces() {
+        return Optional.ofNullable(this.networkInterfaces);
+    }
+
     private ServiceTemplateVpcAccessArgs() {}
 
     private ServiceTemplateVpcAccessArgs(ServiceTemplateVpcAccessArgs $) {
         this.connector = $.connector;
         this.egress = $.egress;
+        this.networkInterfaces = $.networkInterfaces;
     }
 
     public static Builder builder() {
@@ -114,6 +134,40 @@ public final class ServiceTemplateVpcAccessArgs extends com.pulumi.resources.Res
          */
         public Builder egress(String egress) {
             return egress(Output.of(egress));
+        }
+
+        /**
+         * @param networkInterfaces Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(@Nullable Output<List<ServiceTemplateVpcAccessNetworkInterfaceArgs>> networkInterfaces) {
+            $.networkInterfaces = networkInterfaces;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaces Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(List<ServiceTemplateVpcAccessNetworkInterfaceArgs> networkInterfaces) {
+            return networkInterfaces(Output.of(networkInterfaces));
+        }
+
+        /**
+         * @param networkInterfaces Direct VPC egress settings. Currently only single network interface is supported.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(ServiceTemplateVpcAccessNetworkInterfaceArgs... networkInterfaces) {
+            return networkInterfaces(List.of(networkInterfaces));
         }
 
         public ServiceTemplateVpcAccessArgs build() {

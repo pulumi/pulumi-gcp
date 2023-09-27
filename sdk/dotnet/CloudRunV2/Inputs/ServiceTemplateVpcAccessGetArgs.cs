@@ -25,6 +25,19 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("egress")]
         public Input<string>? Egress { get; set; }
 
+        [Input("networkInterfaces")]
+        private InputList<Inputs.ServiceTemplateVpcAccessNetworkInterfaceGetArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Direct VPC egress settings. Currently only single network interface is supported.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceTemplateVpcAccessNetworkInterfaceGetArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ServiceTemplateVpcAccessNetworkInterfaceGetArgs>());
+            set => _networkInterfaces = value;
+        }
+
         public ServiceTemplateVpcAccessGetArgs()
         {
         }

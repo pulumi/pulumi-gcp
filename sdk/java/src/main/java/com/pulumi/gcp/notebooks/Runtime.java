@@ -332,7 +332,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="accessConfig", refs={RuntimeAccessConfig.class}, tree="[0]")
+    @Export(name="accessConfig", type=RuntimeAccessConfig.class, parameters={})
     private Output</* @Nullable */ RuntimeAccessConfig> accessConfig;
 
     /**
@@ -349,7 +349,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
      * 
      */
-    @Export(name="healthState", refs={String.class}, tree="[0]")
+    @Export(name="healthState", type=String.class, parameters={})
     private Output<String> healthState;
 
     /**
@@ -367,7 +367,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -385,7 +385,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metrics", refs={List.class,RuntimeMetric.class}, tree="[0,1]")
+    @Export(name="metrics", type=List.class, parameters={RuntimeMetric.class})
     private Output<List<RuntimeMetric>> metrics;
 
     /**
@@ -401,7 +401,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * The name specified for the Notebook runtime.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -416,7 +416,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -432,7 +432,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="softwareConfig", refs={RuntimeSoftwareConfig.class}, tree="[0]")
+    @Export(name="softwareConfig", type=RuntimeSoftwareConfig.class, parameters={})
     private Output<RuntimeSoftwareConfig> softwareConfig;
 
     /**
@@ -447,7 +447,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * The state of this runtime.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -462,7 +462,7 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="virtualMachine", refs={RuntimeVirtualMachine.class}, tree="[0]")
+    @Export(name="virtualMachine", type=RuntimeVirtualMachine.class, parameters={})
     private Output</* @Nullable */ RuntimeVirtualMachine> virtualMachine;
 
     /**

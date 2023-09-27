@@ -246,6 +246,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> GatewayAddress { get; private set; } = null!;
 
         /// <summary>
+        /// The internal IPv6 address range that is assigned to this subnetwork.
+        /// </summary>
+        [Output("internalIpv6Prefix")]
+        public Output<string> InternalIpv6Prefix { get; private set; } = null!;
+
+        /// <summary>
         /// The range of internal addresses that are owned by this subnetwork.
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -589,6 +595,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("gatewayAddress")]
         public Input<string>? GatewayAddress { get; set; }
+
+        /// <summary>
+        /// The internal IPv6 address range that is assigned to this subnetwork.
+        /// </summary>
+        [Input("internalIpv6Prefix")]
+        public Input<string>? InternalIpv6Prefix { get; set; }
 
         /// <summary>
         /// The range of internal addresses that are owned by this subnetwork.

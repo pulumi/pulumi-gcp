@@ -155,7 +155,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this CertificateTemplate was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -172,7 +172,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -189,7 +189,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate&#39;s identity.
      * 
      */
-    @Export(name="identityConstraints", refs={CertificateTemplateIdentityConstraints.class}, tree="[0]")
+    @Export(name="identityConstraints", type=CertificateTemplateIdentityConstraints.class, parameters={})
     private Output</* @Nullable */ CertificateTemplateIdentityConstraints> identityConstraints;
 
     /**
@@ -203,7 +203,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Optional. Labels with user-defined metadata.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -217,7 +217,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -231,7 +231,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * The resource name for this CertificateTemplate in the format `projects/*{@literal /}locations/*{@literal /}certificateTemplates/*`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -245,7 +245,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don&#39;t appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool&#39;s IssuancePolicy defines baseline_values that don&#39;t appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate&#39;s X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate&#39;s predefined_values.
      * 
      */
-    @Export(name="passthroughExtensions", refs={CertificateTemplatePassthroughExtensions.class}, tree="[0]")
+    @Export(name="passthroughExtensions", type=CertificateTemplatePassthroughExtensions.class, parameters={})
     private Output</* @Nullable */ CertificateTemplatePassthroughExtensions> passthroughExtensions;
 
     /**
@@ -259,7 +259,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool&#39;s IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
      * 
      */
-    @Export(name="predefinedValues", refs={CertificateTemplatePredefinedValues.class}, tree="[0]")
+    @Export(name="predefinedValues", type=CertificateTemplatePredefinedValues.class, parameters={})
     private Output</* @Nullable */ CertificateTemplatePredefinedValues> predefinedValues;
 
     /**
@@ -273,7 +273,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -287,7 +287,7 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this CertificateTemplate was updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

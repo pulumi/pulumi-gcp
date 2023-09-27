@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// ) - List of network tags applied to auto-provisioned node pools.
+        /// List of network tags applied to auto-provisioned node pools.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

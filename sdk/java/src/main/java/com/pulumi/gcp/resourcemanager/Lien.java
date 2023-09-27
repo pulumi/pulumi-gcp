@@ -72,7 +72,7 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * Time of creation
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -86,7 +86,7 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * A system-generated unique identifier for this Lien.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -102,7 +102,7 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * 200 characters.
      * 
      */
-    @Export(name="origin", refs={String.class}, tree="[0]")
+    @Export(name="origin", type=String.class, parameters={})
     private Output<String> origin;
 
     /**
@@ -121,7 +121,7 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * prefix (e.g. &#34;projects/my-project-name&#34;).
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -139,7 +139,7 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * on a resource. Maximum length of 200 characters.
      * 
      */
-    @Export(name="reason", refs={String.class}, tree="[0]")
+    @Export(name="reason", type=String.class, parameters={})
     private Output<String> reason;
 
     /**
@@ -160,7 +160,7 @@ public class Lien extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="restrictions", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="restrictions", type=List.class, parameters={String.class})
     private Output<List<String>> restrictions;
 
     /**

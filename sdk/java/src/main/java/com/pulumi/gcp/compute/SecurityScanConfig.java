@@ -96,7 +96,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="authentication", refs={SecurityScanConfigAuthentication.class}, tree="[0]")
+    @Export(name="authentication", type=SecurityScanConfigAuthentication.class, parameters={})
     private Output</* @Nullable */ SecurityScanConfigAuthentication> authentication;
 
     /**
@@ -113,7 +113,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * https://cloud.google.com/security-scanner/docs/excluded-urls
      * 
      */
-    @Export(name="blacklistPatterns", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="blacklistPatterns", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> blacklistPatterns;
 
     /**
@@ -128,7 +128,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * The user provider display name of the ScanConfig.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -144,7 +144,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
-    @Export(name="exportToSecurityCommandCenter", refs={String.class}, tree="[0]")
+    @Export(name="exportToSecurityCommandCenter", type=String.class, parameters={})
     private Output</* @Nullable */ String> exportToSecurityCommandCenter;
 
     /**
@@ -161,7 +161,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * Defaults to 15.
      * 
      */
-    @Export(name="maxQps", refs={Integer.class}, tree="[0]")
+    @Export(name="maxQps", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> maxQps;
 
     /**
@@ -177,7 +177,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -193,7 +193,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -209,7 +209,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="schedule", refs={SecurityScanConfigSchedule.class}, tree="[0]")
+    @Export(name="schedule", type=SecurityScanConfigSchedule.class, parameters={})
     private Output</* @Nullable */ SecurityScanConfigSchedule> schedule;
 
     /**
@@ -226,7 +226,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="startingUrls", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="startingUrls", type=List.class, parameters={String.class})
     private Output<List<String>> startingUrls;
 
     /**
@@ -243,7 +243,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      * 
      */
-    @Export(name="targetPlatforms", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="targetPlatforms", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> targetPlatforms;
 
     /**
@@ -260,7 +260,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      * 
      */
-    @Export(name="userAgent", refs={String.class}, tree="[0]")
+    @Export(name="userAgent", type=String.class, parameters={})
     private Output</* @Nullable */ String> userAgent;
 
     /**

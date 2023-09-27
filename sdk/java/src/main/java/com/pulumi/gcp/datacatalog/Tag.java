@@ -405,7 +405,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * `outer_column.inner_column`
      * 
      */
-    @Export(name="column", refs={String.class}, tree="[0]")
+    @Export(name="column", type=String.class, parameters={})
     private Output</* @Nullable */ String> column;
 
     /**
@@ -424,7 +424,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fields", refs={List.class,TagField.class}, tree="[0,1]")
+    @Export(name="fields", type=List.class, parameters={TagField.class})
     private Output<List<TagField>> fields;
 
     /**
@@ -443,7 +443,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -461,7 +461,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * all entries in that group.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -478,7 +478,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * This field cannot be modified after creation.
      * 
      */
-    @Export(name="template", refs={String.class}, tree="[0]")
+    @Export(name="template", type=String.class, parameters={})
     private Output<String> template;
 
     /**
@@ -494,7 +494,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * The display name of the tag template.
      * 
      */
-    @Export(name="templateDisplayname", refs={String.class}, tree="[0]")
+    @Export(name="templateDisplayname", type=String.class, parameters={})
     private Output<String> templateDisplayname;
 
     /**

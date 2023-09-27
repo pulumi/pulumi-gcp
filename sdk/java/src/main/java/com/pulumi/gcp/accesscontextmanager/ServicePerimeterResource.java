@@ -102,7 +102,7 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
      * ***
      * 
      */
-    @Export(name="perimeterName", refs={String.class}, tree="[0]")
+    @Export(name="perimeterName", type=String.class, parameters={})
     private Output<String> perimeterName;
 
     /**
@@ -120,7 +120,7 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
      * Format: projects/{project_number}
      * 
      */
-    @Export(name="resource", refs={String.class}, tree="[0]")
+    @Export(name="resource", type=String.class, parameters={})
     private Output<String> resource;
 
     /**

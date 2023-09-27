@@ -126,7 +126,7 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -144,7 +144,7 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="servicePerimeters", refs={List.class,ServicePerimetersServicePerimeter.class}, tree="[0,1]")
+    @Export(name="servicePerimeters", type=List.class, parameters={ServicePerimetersServicePerimeter.class})
     private Output</* @Nullable */ List<ServicePerimetersServicePerimeter>> servicePerimeters;
 
     /**

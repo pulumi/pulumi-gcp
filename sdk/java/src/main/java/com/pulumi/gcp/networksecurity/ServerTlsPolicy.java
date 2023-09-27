@@ -187,7 +187,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * Consider using it if you wish to upgrade in place your deployment to TLS while having mixed TLS and non-TLS traffic reaching port :80.
      * 
      */
-    @Export(name="allowOpen", refs={Boolean.class}, tree="[0]")
+    @Export(name="allowOpen", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowOpen;
 
     /**
@@ -203,7 +203,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * Time the ServerTlsPolicy was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -217,7 +217,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -231,7 +231,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the ServerTlsPolicy resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -246,7 +246,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -263,7 +263,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="mtlsPolicy", refs={ServerTlsPolicyMtlsPolicy.class}, tree="[0]")
+    @Export(name="mtlsPolicy", type=ServerTlsPolicyMtlsPolicy.class, parameters={})
     private Output</* @Nullable */ ServerTlsPolicyMtlsPolicy> mtlsPolicy;
 
     /**
@@ -281,7 +281,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -298,7 +298,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -314,7 +314,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serverCertificate", refs={ServerTlsPolicyServerCertificate.class}, tree="[0]")
+    @Export(name="serverCertificate", type=ServerTlsPolicyServerCertificate.class, parameters={})
     private Output</* @Nullable */ ServerTlsPolicyServerCertificate> serverCertificate;
 
     /**
@@ -329,7 +329,7 @@ public class ServerTlsPolicy extends com.pulumi.resources.CustomResource {
      * Time the ServerTlsPolicy was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

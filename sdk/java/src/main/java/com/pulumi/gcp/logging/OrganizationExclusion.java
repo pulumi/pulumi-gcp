@@ -71,7 +71,7 @@ public class OrganizationExclusion extends com.pulumi.resources.CustomResource {
      * A human-readable description.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -86,7 +86,7 @@ public class OrganizationExclusion extends com.pulumi.resources.CustomResource {
      * false.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -103,7 +103,7 @@ public class OrganizationExclusion extends com.pulumi.resources.CustomResource {
      * write a filter.
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
+    @Export(name="filter", type=String.class, parameters={})
     private Output<String> filter;
 
     /**
@@ -119,7 +119,7 @@ public class OrganizationExclusion extends com.pulumi.resources.CustomResource {
      * The name of the logging exclusion.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class OrganizationExclusion extends com.pulumi.resources.CustomResource {
      * The organization to create the exclusion in.
      * 
      */
-    @Export(name="orgId", refs={String.class}, tree="[0]")
+    @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**

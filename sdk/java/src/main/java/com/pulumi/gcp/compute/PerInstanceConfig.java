@@ -156,7 +156,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instanceGroupManager", refs={String.class}, tree="[0]")
+    @Export(name="instanceGroupManager", type=String.class, parameters={})
     private Output<String> instanceGroupManager;
 
     /**
@@ -177,7 +177,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * * NONE
      * 
      */
-    @Export(name="minimalAction", refs={String.class}, tree="[0]")
+    @Export(name="minimalAction", type=String.class, parameters={})
     private Output</* @Nullable */ String> minimalAction;
 
     /**
@@ -201,7 +201,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * * NONE
      * 
      */
-    @Export(name="mostDisruptiveAllowedAction", refs={String.class}, tree="[0]")
+    @Export(name="mostDisruptiveAllowedAction", type=String.class, parameters={})
     private Output</* @Nullable */ String> mostDisruptiveAllowedAction;
 
     /**
@@ -220,7 +220,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * The name for this per-instance config and its corresponding instance.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -235,7 +235,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="preservedState", refs={PerInstanceConfigPreservedState.class}, tree="[0]")
+    @Export(name="preservedState", type=PerInstanceConfigPreservedState.class, parameters={})
     private Output</* @Nullable */ PerInstanceConfigPreservedState> preservedState;
 
     /**
@@ -251,7 +251,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -268,7 +268,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * State will be removed on the next instance recreation or update.
      * 
      */
-    @Export(name="removeInstanceStateOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="removeInstanceStateOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> removeInstanceStateOnDestroy;
 
     /**
@@ -284,7 +284,7 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * Zone where the containing instance group manager is located
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output</* @Nullable */ String> zone;
 
     /**

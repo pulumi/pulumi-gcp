@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding")
 public class NamespaceIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={NamespaceIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=NamespaceIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ NamespaceIamBindingCondition> condition;
 
     public Output<Optional<NamespaceIamBindingCondition>> condition() {
@@ -178,7 +178,7 @@ public class NamespaceIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -188,7 +188,7 @@ public class NamespaceIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -210,7 +210,7 @@ public class NamespaceIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -238,7 +238,7 @@ public class NamespaceIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

@@ -152,7 +152,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -168,7 +168,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -196,7 +196,7 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
      * 
      */
-    @Export(name="tagValue", refs={String.class}, tree="[0]")
+    @Export(name="tagValue", type=String.class, parameters={})
     private Output<String> tagValue;
 
     /**

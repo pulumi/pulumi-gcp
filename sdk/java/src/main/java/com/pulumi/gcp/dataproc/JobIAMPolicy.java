@@ -157,7 +157,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the jobs&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -167,7 +167,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="jobId", refs={String.class}, tree="[0]")
+    @Export(name="jobId", type=String.class, parameters={})
     private Output<String> jobId;
 
     public Output<String> jobId() {
@@ -179,7 +179,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**
@@ -196,7 +196,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * is not provided, the provider will use a default.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -212,7 +212,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * is not provided, the provider will use a default.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

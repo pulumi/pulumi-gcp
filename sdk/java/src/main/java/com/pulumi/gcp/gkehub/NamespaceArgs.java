@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,44 @@ import javax.annotation.Nullable;
 public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NamespaceArgs Empty = new NamespaceArgs();
+
+    /**
+     * Labels for this Namespace.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Namespace.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    @Import(name="namespaceLabels")
+    private @Nullable Output<Map<String,String>> namespaceLabels;
+
+    /**
+     * @return Namespace-level cluster namespace labels. These labels are applied
+     * to the related namespace of the member clusters bound to the parent
+     * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+     * resource) take precedence over Namespace-level labels if they share
+     * a key. Keys and values must be Kubernetes-conformant.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> namespaceLabels() {
+        return Optional.ofNullable(this.namespaceLabels);
+    }
 
     /**
      * The ID of the project in which the resource belongs.
@@ -84,6 +123,8 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     private NamespaceArgs() {}
 
     private NamespaceArgs(NamespaceArgs $) {
+        this.labels = $.labels;
+        this.namespaceLabels = $.namespaceLabels;
         this.project = $.project;
         this.scope = $.scope;
         this.scopeId = $.scopeId;
@@ -106,6 +147,56 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NamespaceArgs defaults) {
             $ = new NamespaceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param labels Labels for this Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this Namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
+         * @param namespaceLabels Namespace-level cluster namespace labels. These labels are applied
+         * to the related namespace of the member clusters bound to the parent
+         * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+         * resource) take precedence over Namespace-level labels if they share
+         * a key. Keys and values must be Kubernetes-conformant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceLabels(@Nullable Output<Map<String,String>> namespaceLabels) {
+            $.namespaceLabels = namespaceLabels;
+            return this;
+        }
+
+        /**
+         * @param namespaceLabels Namespace-level cluster namespace labels. These labels are applied
+         * to the related namespace of the member clusters bound to the parent
+         * Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
+         * resource) take precedence over Namespace-level labels if they share
+         * a key. Keys and values must be Kubernetes-conformant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceLabels(Map<String,String> namespaceLabels) {
+            return namespaceLabels(Output.of(namespaceLabels));
         }
 
         /**

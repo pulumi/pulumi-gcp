@@ -108,7 +108,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bigqueryDataset", refs={ListingBigqueryDataset.class}, tree="[0]")
+    @Export(name="bigqueryDataset", type=ListingBigqueryDataset.class, parameters={})
     private Output<ListingBigqueryDataset> bigqueryDataset;
 
     /**
@@ -123,7 +123,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Categories of the listing. Up to two categories are allowed.
      * 
      */
-    @Export(name="categories", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="categories", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> categories;
 
     /**
@@ -137,7 +137,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      * 
      */
-    @Export(name="dataExchangeId", refs={String.class}, tree="[0]")
+    @Export(name="dataExchangeId", type=String.class, parameters={})
     private Output<String> dataExchangeId;
 
     /**
@@ -152,7 +152,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dataProvider", refs={ListingDataProvider.class}, tree="[0]")
+    @Export(name="dataProvider", type=ListingDataProvider.class, parameters={})
     private Output</* @Nullable */ ListingDataProvider> dataProvider;
 
     /**
@@ -167,7 +167,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -181,7 +181,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&amp;) and can&#39;t start or end with spaces.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -195,7 +195,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Documentation describing the listing.
      * 
      */
-    @Export(name="documentation", refs={String.class}, tree="[0]")
+    @Export(name="documentation", type=String.class, parameters={})
     private Output</* @Nullable */ String> documentation;
 
     /**
@@ -209,7 +209,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Base64 encoded image representing the listing.
      * 
      */
-    @Export(name="icon", refs={String.class}, tree="[0]")
+    @Export(name="icon", type=String.class, parameters={})
     private Output</* @Nullable */ String> icon;
 
     /**
@@ -223,7 +223,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      * 
      */
-    @Export(name="listingId", refs={String.class}, tree="[0]")
+    @Export(name="listingId", type=String.class, parameters={})
     private Output<String> listingId;
 
     /**
@@ -237,7 +237,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * The name of the location this data exchange listing.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -254,7 +254,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Name of the listing publisher.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -277,7 +277,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Email or URL of the listing publisher.
      * 
      */
-    @Export(name="primaryContact", refs={String.class}, tree="[0]")
+    @Export(name="primaryContact", type=String.class, parameters={})
     private Output</* @Nullable */ String> primaryContact;
 
     /**
@@ -298,7 +298,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -314,7 +314,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="publisher", refs={ListingPublisher.class}, tree="[0]")
+    @Export(name="publisher", type=ListingPublisher.class, parameters={})
     private Output</* @Nullable */ ListingPublisher> publisher;
 
     /**
@@ -329,7 +329,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      * 
      */
-    @Export(name="requestAccess", refs={String.class}, tree="[0]")
+    @Export(name="requestAccess", type=String.class, parameters={})
     private Output</* @Nullable */ String> requestAccess;
 
     /**

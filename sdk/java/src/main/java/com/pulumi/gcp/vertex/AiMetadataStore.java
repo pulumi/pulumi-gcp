@@ -76,7 +76,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * The timestamp of when the MetadataStore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -90,7 +90,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * Description of the MetadataStore.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -105,7 +105,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionSpec", refs={AiMetadataStoreEncryptionSpec.class}, tree="[0]")
+    @Export(name="encryptionSpec", type=AiMetadataStoreEncryptionSpec.class, parameters={})
     private Output</* @Nullable */ AiMetadataStoreEncryptionSpec> encryptionSpec;
 
     /**
@@ -120,7 +120,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -135,7 +135,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -150,7 +150,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * The region of the Metadata Store. eg us-central1
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -165,7 +165,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="states", refs={List.class,AiMetadataStoreState.class}, tree="[0,1]")
+    @Export(name="states", type=List.class, parameters={AiMetadataStoreState.class})
     private Output<List<AiMetadataStoreState>> states;
 
     /**
@@ -180,7 +180,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
      * The timestamp of when the MetadataStore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

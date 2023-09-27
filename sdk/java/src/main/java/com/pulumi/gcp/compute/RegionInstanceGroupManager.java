@@ -171,7 +171,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * apply the configuration.
      * 
      */
-    @Export(name="allInstancesConfig", refs={RegionInstanceGroupManagerAllInstancesConfig.class}, tree="[0]")
+    @Export(name="allInstancesConfig", type=RegionInstanceGroupManagerAllInstancesConfig.class, parameters={})
     private Output</* @Nullable */ RegionInstanceGroupManagerAllInstancesConfig> allInstancesConfig;
 
     /**
@@ -189,7 +189,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
      * 
      */
-    @Export(name="autoHealingPolicies", refs={RegionInstanceGroupManagerAutoHealingPolicies.class}, tree="[0]")
+    @Export(name="autoHealingPolicies", type=RegionInstanceGroupManagerAutoHealingPolicies.class, parameters={})
     private Output</* @Nullable */ RegionInstanceGroupManagerAutoHealingPolicies> autoHealingPolicies;
 
     /**
@@ -209,7 +209,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * name.
      * 
      */
-    @Export(name="baseInstanceName", refs={String.class}, tree="[0]")
+    @Export(name="baseInstanceName", type=String.class, parameters={})
     private Output<String> baseInstanceName;
 
     /**
@@ -229,7 +229,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * group manager.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -244,7 +244,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
      * 
      */
-    @Export(name="distributionPolicyTargetShape", refs={String.class}, tree="[0]")
+    @Export(name="distributionPolicyTargetShape", type=String.class, parameters={})
     private Output<String> distributionPolicyTargetShape;
 
     /**
@@ -259,7 +259,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      * 
      */
-    @Export(name="distributionPolicyZones", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="distributionPolicyZones", type=List.class, parameters={String.class})
     private Output<List<String>> distributionPolicyZones;
 
     /**
@@ -274,7 +274,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The fingerprint of the instance group manager.
      * 
      */
-    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
@@ -288,7 +288,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The full URL of the instance group created by the manager.
      * 
      */
-    @Export(name="instanceGroup", refs={String.class}, tree="[0]")
+    @Export(name="instanceGroup", type=String.class, parameters={})
     private Output<String> instanceGroup;
 
     /**
@@ -302,7 +302,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The instance lifecycle policy for this managed instance group.
      * 
      */
-    @Export(name="instanceLifecyclePolicy", refs={RegionInstanceGroupManagerInstanceLifecyclePolicy.class}, tree="[0]")
+    @Export(name="instanceLifecyclePolicy", type=RegionInstanceGroupManagerInstanceLifecyclePolicy.class, parameters={})
     private Output<RegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicy;
 
     /**
@@ -321,7 +321,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * respected.
      * 
      */
-    @Export(name="listManagedInstancesResults", refs={String.class}, tree="[0]")
+    @Export(name="listManagedInstancesResults", type=String.class, parameters={})
     private Output</* @Nullable */ String> listManagedInstancesResults;
 
     /**
@@ -343,7 +343,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * include lowercase letters, numbers, and hyphens.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -361,7 +361,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * for details on configuration.
      * 
      */
-    @Export(name="namedPorts", refs={List.class,RegionInstanceGroupManagerNamedPort.class}, tree="[0,1]")
+    @Export(name="namedPorts", type=List.class, parameters={RegionInstanceGroupManagerNamedPort.class})
     private Output</* @Nullable */ List<RegionInstanceGroupManagerNamedPort>> namedPorts;
 
     /**
@@ -377,7 +377,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -394,7 +394,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -410,7 +410,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The URL of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -424,7 +424,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
      * 
      */
-    @Export(name="statefulDisks", refs={List.class,RegionInstanceGroupManagerStatefulDisk.class}, tree="[0,1]")
+    @Export(name="statefulDisks", type=List.class, parameters={RegionInstanceGroupManagerStatefulDisk.class})
     private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulDisk>> statefulDisks;
 
     /**
@@ -440,7 +440,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="statefulExternalIps", refs={List.class,RegionInstanceGroupManagerStatefulExternalIp.class}, tree="[0,1]")
+    @Export(name="statefulExternalIps", type=List.class, parameters={RegionInstanceGroupManagerStatefulExternalIp.class})
     private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulExternalIp>> statefulExternalIps;
 
     /**
@@ -456,7 +456,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
-    @Export(name="statefulInternalIps", refs={List.class,RegionInstanceGroupManagerStatefulInternalIp.class}, tree="[0,1]")
+    @Export(name="statefulInternalIps", type=List.class, parameters={RegionInstanceGroupManagerStatefulInternalIp.class})
     private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulInternalIp>> statefulInternalIps;
 
     /**
@@ -470,7 +470,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The status of this managed instance group.
      * 
      */
-    @Export(name="statuses", refs={List.class,RegionInstanceGroupManagerStatus.class}, tree="[0,1]")
+    @Export(name="statuses", type=List.class, parameters={RegionInstanceGroupManagerStatus.class})
     private Output<List<RegionInstanceGroupManagerStatus>> statuses;
 
     /**
@@ -486,7 +486,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * not affect existing instances.
      * 
      */
-    @Export(name="targetPools", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="targetPools", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> targetPools;
 
     /**
@@ -503,7 +503,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      * 
      */
-    @Export(name="targetSize", refs={Integer.class}, tree="[0]")
+    @Export(name="targetSize", type=Integer.class, parameters={})
     private Output<Integer> targetSize;
 
     /**
@@ -518,7 +518,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
      * 
      */
-    @Export(name="updatePolicy", refs={RegionInstanceGroupManagerUpdatePolicy.class}, tree="[0]")
+    @Export(name="updatePolicy", type=RegionInstanceGroupManagerUpdatePolicy.class, parameters={})
     private Output<RegionInstanceGroupManagerUpdatePolicy> updatePolicy;
 
     /**
@@ -534,7 +534,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    @Export(name="versions", refs={List.class,RegionInstanceGroupManagerVersion.class}, tree="[0,1]")
+    @Export(name="versions", type=List.class, parameters={RegionInstanceGroupManagerVersion.class})
     private Output<List<RegionInstanceGroupManagerVersion>> versions;
 
     /**
@@ -552,7 +552,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * continue trying until it times out.
      * 
      */
-    @Export(name="waitForInstances", refs={Boolean.class}, tree="[0]")
+    @Export(name="waitForInstances", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForInstances;
 
     /**
@@ -571,7 +571,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
      * instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
      * 
      */
-    @Export(name="waitForInstancesStatus", refs={String.class}, tree="[0]")
+    @Export(name="waitForInstancesStatus", type=String.class, parameters={})
     private Output</* @Nullable */ String> waitForInstancesStatus;
 
     /**

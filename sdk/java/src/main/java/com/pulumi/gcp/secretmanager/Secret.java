@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.Secret;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -103,10 +104,64 @@ import javax.annotation.Nullable;
  *             ))
  *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
  *             .replication(SecretReplicationArgs.builder()
- *                 .automatic(true)
+ *                 .auto()
  *                 .build())
  *             .secretId(&#34;secret&#34;)
  *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secret With Automatic Cmek
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoCustomerManagedEncryptionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var kms_secret_binding = new CryptoKeyIAMMember(&#34;kms-secret-binding&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId(&#34;kms-key&#34;)
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-secretmanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var secret_with_automatic_cmek = new Secret(&#34;secret-with-automatic-cmek&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;secret&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .customerManagedEncryption(SecretReplicationAutoCustomerManagedEncryptionArgs.builder()
+ *                         .kmsKeyName(&#34;kms-key&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(kms_secret_binding)
+ *                 .build());
  * 
  *     }
  * }
@@ -144,7 +199,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -167,7 +222,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The time at which the Secret was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -182,7 +237,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
@@ -204,7 +259,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -226,7 +281,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -242,7 +297,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -259,7 +314,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="replication", refs={SecretReplication.class}, tree="[0]")
+    @Export(name="replication", type=SecretReplication.class, parameters={})
     private Output<SecretReplication> replication;
 
     /**
@@ -276,7 +331,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rotation", refs={SecretRotation.class}, tree="[0]")
+    @Export(name="rotation", type=SecretRotation.class, parameters={})
     private Output</* @Nullable */ SecretRotation> rotation;
 
     /**
@@ -291,7 +346,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * This must be unique within the project.
      * 
      */
-    @Export(name="secretId", refs={String.class}, tree="[0]")
+    @Export(name="secretId", type=String.class, parameters={})
     private Output<String> secretId;
 
     /**
@@ -306,7 +361,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="topics", refs={List.class,SecretTopic.class}, tree="[0,1]")
+    @Export(name="topics", type=List.class, parameters={SecretTopic.class})
     private Output</* @Nullable */ List<SecretTopic>> topics;
 
     /**
@@ -322,7 +377,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="ttl", refs={String.class}, tree="[0]")
+    @Export(name="ttl", type=String.class, parameters={})
     private Output</* @Nullable */ String> ttl;
 
     /**
@@ -343,7 +398,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="versionAliases", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="versionAliases", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> versionAliases;
 
     /**

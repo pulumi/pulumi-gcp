@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.container.AttachedClusterArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterState;
 import com.pulumi.gcp.container.outputs.AttachedClusterAuthorization;
+import com.pulumi.gcp.container.outputs.AttachedClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.AttachedClusterError;
 import com.pulumi.gcp.container.outputs.AttachedClusterFleet;
 import com.pulumi.gcp.container.outputs.AttachedClusterLoggingConfig;
@@ -169,7 +170,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -189,7 +190,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="authorization", refs={AttachedClusterAuthorization.class}, tree="[0]")
+    @Export(name="authorization", type=AttachedClusterAuthorization.class, parameters={})
     private Output</* @Nullable */ AttachedClusterAuthorization> authorization;
 
     /**
@@ -201,12 +202,28 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorization);
     }
     /**
+     * Binary Authorization configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="binaryAuthorization", type=AttachedClusterBinaryAuthorization.class, parameters={})
+    private Output<AttachedClusterBinaryAuthorization> binaryAuthorization;
+
+    /**
+     * @return Binary Authorization configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<AttachedClusterBinaryAuthorization> binaryAuthorization() {
+        return this.binaryAuthorization;
+    }
+    /**
      * Output only. The region where this cluster runs.
      * For EKS clusters, this is an AWS region. For AKS clusters,
      * this is an Azure region.
      * 
      */
-    @Export(name="clusterRegion", refs={String.class}, tree="[0]")
+    @Export(name="clusterRegion", type=String.class, parameters={})
     private Output<String> clusterRegion;
 
     /**
@@ -222,7 +239,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this cluster was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -236,7 +253,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Policy to determine what flags to send on delete.
      * 
      */
-    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -251,7 +268,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * than 255 UTF-8 encoded bytes.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -267,7 +284,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * &#34;eks&#34;, &#34;aks&#34;.
      * 
      */
-    @Export(name="distribution", refs={String.class}, tree="[0]")
+    @Export(name="distribution", type=String.class, parameters={})
     private Output<String> distribution;
 
     /**
@@ -283,7 +300,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="errors", refs={List.class,AttachedClusterError.class}, tree="[0,1]")
+    @Export(name="errors", type=List.class, parameters={AttachedClusterError.class})
     private Output<List<AttachedClusterError>> errors;
 
     /**
@@ -299,7 +316,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fleet", refs={AttachedClusterFleet.class}, tree="[0]")
+    @Export(name="fleet", type=AttachedClusterFleet.class, parameters={})
     private Output<AttachedClusterFleet> fleet;
 
     /**
@@ -314,7 +331,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * The Kubernetes version of the cluster.
      * 
      */
-    @Export(name="kubernetesVersion", refs={String.class}, tree="[0]")
+    @Export(name="kubernetesVersion", type=String.class, parameters={})
     private Output<String> kubernetesVersion;
 
     /**
@@ -328,7 +345,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -343,7 +360,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="loggingConfig", refs={AttachedClusterLoggingConfig.class}, tree="[0]")
+    @Export(name="loggingConfig", type=AttachedClusterLoggingConfig.class, parameters={})
     private Output</* @Nullable */ AttachedClusterLoggingConfig> loggingConfig;
 
     /**
@@ -359,7 +376,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="monitoringConfig", refs={AttachedClusterMonitoringConfig.class}, tree="[0]")
+    @Export(name="monitoringConfig", type=AttachedClusterMonitoringConfig.class, parameters={})
     private Output<AttachedClusterMonitoringConfig> monitoringConfig;
 
     /**
@@ -374,7 +391,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * The name of this resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -397,7 +414,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="oidcConfig", refs={AttachedClusterOidcConfig.class}, tree="[0]")
+    @Export(name="oidcConfig", type=AttachedClusterOidcConfig.class, parameters={})
     private Output<AttachedClusterOidcConfig> oidcConfig;
 
     /**
@@ -420,7 +437,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * The platform version for the cluster (e.g. `1.23.0-gke.1`).
      * 
      */
-    @Export(name="platformVersion", refs={String.class}, tree="[0]")
+    @Export(name="platformVersion", type=String.class, parameters={})
     private Output<String> platformVersion;
 
     /**
@@ -438,7 +455,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -456,7 +473,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * If set, there are currently changes in flight to the cluster.
      * 
      */
-    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
+    @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
@@ -472,7 +489,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * DEGRADED
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -488,7 +505,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * A globally unique identifier for the cluster.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -502,7 +519,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * The time at which this cluster was last updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
@@ -517,7 +534,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="workloadIdentityConfigs", refs={List.class,AttachedClusterWorkloadIdentityConfig.class}, tree="[0,1]")
+    @Export(name="workloadIdentityConfigs", type=List.class, parameters={AttachedClusterWorkloadIdentityConfig.class})
     private Output<List<AttachedClusterWorkloadIdentityConfig>> workloadIdentityConfigs;
 
     /**

@@ -271,6 +271,9 @@ import (
 //				},
 //				VmTrackingEnabled:    pulumi.Bool(true),
 //				EnableControlPlaneV2: pulumi.Bool(true),
+//				UpgradePolicy: &gkeonprem.VMwareClusterUpgradePolicyArgs{
+//					ControlPlaneOnly: pulumi.Bool(true),
+//				},
 //				Authorization: &gkeonprem.VMwareClusterAuthorizationArgs{
 //					AdminUsers: gkeonprem.VMwareClusterAuthorizationAdminUserArray{
 //						&gkeonprem.VMwareClusterAuthorizationAdminUserArgs{
@@ -409,6 +412,9 @@ type VMwareCluster struct {
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time at which VMware User Cluster was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
+	UpgradePolicy VMwareClusterUpgradePolicyPtrOutput `pulumi:"upgradePolicy"`
 	// ValidationCheck represents the result of the preflight check job.
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayOutput `pulumi:"validationChecks"`
@@ -553,6 +559,9 @@ type vmwareClusterState struct {
 	Uid *string `pulumi:"uid"`
 	// The time at which VMware User Cluster was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
+	UpgradePolicy *VMwareClusterUpgradePolicy `pulumi:"upgradePolicy"`
 	// ValidationCheck represents the result of the preflight check job.
 	// Structure is documented below.
 	ValidationChecks []VMwareClusterValidationCheck `pulumi:"validationChecks"`
@@ -656,6 +665,9 @@ type VMwareClusterState struct {
 	Uid pulumi.StringPtrInput
 	// The time at which VMware User Cluster was last updated.
 	UpdateTime pulumi.StringPtrInput
+	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
+	UpgradePolicy VMwareClusterUpgradePolicyPtrInput
 	// ValidationCheck represents the result of the preflight check job.
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayInput
@@ -724,6 +736,9 @@ type vmwareClusterArgs struct {
 	// Storage configuration.
 	// Structure is documented below.
 	Storage *VMwareClusterStorage `pulumi:"storage"`
+	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
+	UpgradePolicy *VMwareClusterUpgradePolicy `pulumi:"upgradePolicy"`
 	// Enable VM tracking.
 	VmTrackingEnabled *bool `pulumi:"vmTrackingEnabled"`
 }
@@ -782,6 +797,9 @@ type VMwareClusterArgs struct {
 	// Storage configuration.
 	// Structure is documented below.
 	Storage VMwareClusterStoragePtrInput
+	// Specifies upgrade policy for the cluster.
+	// Structure is documented below.
+	UpgradePolicy VMwareClusterUpgradePolicyPtrInput
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolPtrInput
 }
@@ -1067,6 +1085,12 @@ func (o VMwareClusterOutput) Uid() pulumi.StringOutput {
 // The time at which VMware User Cluster was last updated.
 func (o VMwareClusterOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Specifies upgrade policy for the cluster.
+// Structure is documented below.
+func (o VMwareClusterOutput) UpgradePolicy() VMwareClusterUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *VMwareCluster) VMwareClusterUpgradePolicyPtrOutput { return v.UpgradePolicy }).(VMwareClusterUpgradePolicyPtrOutput)
 }
 
 // ValidationCheck represents the result of the preflight check job.

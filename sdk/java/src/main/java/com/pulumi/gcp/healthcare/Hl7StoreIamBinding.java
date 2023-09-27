@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding")
 public class Hl7StoreIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={Hl7StoreIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=Hl7StoreIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ Hl7StoreIamBindingCondition> condition;
 
     public Output<Optional<Hl7StoreIamBindingCondition>> condition() {
@@ -170,7 +170,7 @@ public class Hl7StoreIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the HL7v2 store&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -196,7 +196,7 @@ public class Hl7StoreIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="hl7V2StoreId", refs={String.class}, tree="[0]")
+    @Export(name="hl7V2StoreId", type=String.class, parameters={})
     private Output<String> hl7V2StoreId;
 
     /**
@@ -218,7 +218,7 @@ public class Hl7StoreIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> hl7V2StoreId() {
         return this.hl7V2StoreId;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -230,7 +230,7 @@ public class Hl7StoreIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

@@ -129,7 +129,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Output only. Timestamp when the DeployedModel was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -145,7 +145,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="deployedModels", refs={List.class,AiEndpointDeployedModel.class}, tree="[0,1]")
+    @Export(name="deployedModels", type=List.class, parameters={AiEndpointDeployedModel.class})
     private Output<List<AiEndpointDeployedModel>> deployedModels;
 
     /**
@@ -160,7 +160,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * The description of the Endpoint.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -189,7 +189,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionSpec", refs={AiEndpointEncryptionSpec.class}, tree="[0]")
+    @Export(name="encryptionSpec", type=AiEndpointEncryptionSpec.class, parameters={})
     private Output</* @Nullable */ AiEndpointEncryptionSpec> encryptionSpec;
 
     /**
@@ -204,7 +204,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Used to perform consistent read-modify-write updates. If not set, a blind &#34;overwrite&#34; update happens.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -218,7 +218,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -234,7 +234,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -250,7 +250,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      * 
      */
-    @Export(name="modelDeploymentMonitoringJob", refs={String.class}, tree="[0]")
+    @Export(name="modelDeploymentMonitoringJob", type=String.class, parameters={})
     private Output<String> modelDeploymentMonitoringJob;
 
     /**
@@ -264,7 +264,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -278,7 +278,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -293,7 +293,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -308,7 +308,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * The region for the resource
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -322,7 +322,7 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      * Output only. Timestamp when this Endpoint was last updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

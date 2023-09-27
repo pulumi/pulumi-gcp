@@ -282,7 +282,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      * 
      */
-    @Export(name="complexDataTypeReferenceParsing", refs={String.class}, tree="[0]")
+    @Export(name="complexDataTypeReferenceParsing", type=String.class, parameters={})
     private Output<String> complexDataTypeReferenceParsing;
 
     /**
@@ -300,7 +300,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="dataset", refs={String.class}, tree="[0]")
+    @Export(name="dataset", type=String.class, parameters={})
     private Output<String> dataset;
 
     /**
@@ -319,7 +319,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
      * 
      */
-    @Export(name="defaultSearchHandlingStrict", refs={Boolean.class}, tree="[0]")
+    @Export(name="defaultSearchHandlingStrict", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> defaultSearchHandlingStrict;
 
     /**
@@ -340,7 +340,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * ** Changing this property may recreate the FHIR store (removing all data) **
      * 
      */
-    @Export(name="disableReferentialIntegrity", refs={Boolean.class}, tree="[0]")
+    @Export(name="disableReferentialIntegrity", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableReferentialIntegrity;
 
     /**
@@ -364,7 +364,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * ** Changing this property may recreate the FHIR store (removing all data) **
      * 
      */
-    @Export(name="disableResourceVersioning", refs={Boolean.class}, tree="[0]")
+    @Export(name="disableResourceVersioning", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disableResourceVersioning;
 
     /**
@@ -388,7 +388,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
      * 
      */
-    @Export(name="enableHistoryImport", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableHistoryImport", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableHistoryImport;
 
     /**
@@ -412,7 +412,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * notifications.
      * 
      */
-    @Export(name="enableUpdateCreate", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableUpdateCreate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableUpdateCreate;
 
     /**
@@ -438,7 +438,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -460,7 +460,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * ** Changing this property may recreate the FHIR store (removing all data) **
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -476,7 +476,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="notificationConfig", refs={FhirStoreNotificationConfig.class}, tree="[0]")
+    @Export(name="notificationConfig", type=FhirStoreNotificationConfig.class, parameters={})
     private Output</* @Nullable */ FhirStoreNotificationConfig> notificationConfig;
 
     /**
@@ -491,7 +491,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * 
      */
-    @Export(name="notificationConfigs", refs={List.class,FhirStoreNotificationConfig.class}, tree="[0,1]")
+    @Export(name="notificationConfigs", type=List.class, parameters={FhirStoreNotificationConfig.class})
     private Output</* @Nullable */ List<FhirStoreNotificationConfig>> notificationConfigs;
 
     /**
@@ -505,7 +505,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * The fully qualified name of this dataset
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -525,7 +525,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="streamConfigs", refs={List.class,FhirStoreStreamConfig.class}, tree="[0,1]")
+    @Export(name="streamConfigs", type=List.class, parameters={FhirStoreStreamConfig.class})
     private Output</* @Nullable */ List<FhirStoreStreamConfig>> streamConfigs;
 
     /**
@@ -547,7 +547,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      * Possible values are: `DSTU2`, `STU3`, `R4`.
      * 
      */
-    @Export(name="version", refs={String.class}, tree="[0]")
+    @Export(name="version", type=String.class, parameters={})
     private Output</* @Nullable */ String> version;
 
     /**

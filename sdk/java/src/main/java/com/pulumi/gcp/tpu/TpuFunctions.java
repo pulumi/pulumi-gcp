@@ -10,7 +10,13 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsArgs;
 import com.pulumi.gcp.tpu.inputs.GetTensorflowVersionsPlainArgs;
+import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesPlainArgs;
+import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsPlainArgs;
 import com.pulumi.gcp.tpu.outputs.GetTensorflowVersionsResult;
+import com.pulumi.gcp.tpu.outputs.GetV2AcceleratorTypesResult;
+import com.pulumi.gcp.tpu.outputs.GetV2RuntimeVersionsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class TpuFunctions {
@@ -439,5 +445,857 @@ public final class TpuFunctions {
      */
     public static CompletableFuture<GetTensorflowVersionsResult> getTensorflowVersionsPlain(GetTensorflowVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:tpu/getTensorflowVersions:getTensorflowVersions", TypeShape.of(GetTensorflowVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Type
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypes() {
+        return getV2AcceleratorTypes(GetV2AcceleratorTypesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Type
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetV2AcceleratorTypesResult> getV2AcceleratorTypesPlain() {
+        return getV2AcceleratorTypesPlain(GetV2AcceleratorTypesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Type
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(GetV2AcceleratorTypesArgs args) {
+        return getV2AcceleratorTypes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Type
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetV2AcceleratorTypesResult> getV2AcceleratorTypesPlain(GetV2AcceleratorTypesPlainArgs args) {
+        return getV2AcceleratorTypesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Type
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetV2AcceleratorTypesResult> getV2AcceleratorTypes(GetV2AcceleratorTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", TypeShape.of(GetV2AcceleratorTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Type
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableV2AcceleratorTypes = TpuFunctions.getV2AcceleratorTypes();
+     * 
+     *         final var availableV2RuntimeVersions = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(availableV2RuntimeVersions.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .acceleratorType(availableV2AcceleratorTypes.applyValue(getV2AcceleratorTypesResult -&gt; getV2AcceleratorTypesResult.types()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetV2AcceleratorTypesResult> getV2AcceleratorTypesPlain(GetV2AcceleratorTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", TypeShape.of(GetV2AcceleratorTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Version
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetV2RuntimeVersionsResult> getV2RuntimeVersions() {
+        return getV2RuntimeVersions(GetV2RuntimeVersionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Version
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetV2RuntimeVersionsResult> getV2RuntimeVersionsPlain() {
+        return getV2RuntimeVersionsPlain(GetV2RuntimeVersionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Version
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetV2RuntimeVersionsResult> getV2RuntimeVersions(GetV2RuntimeVersionsArgs args) {
+        return getV2RuntimeVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Version
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetV2RuntimeVersionsResult> getV2RuntimeVersionsPlain(GetV2RuntimeVersionsPlainArgs args) {
+        return getV2RuntimeVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Version
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetV2RuntimeVersionsResult> getV2RuntimeVersions(GetV2RuntimeVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", TypeShape.of(GetV2RuntimeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *     }
+     * }
+     * ```
+     * ### Configure Basic TPU VM With Available Version
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tpu.TpuFunctions;
+     * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
+     * import com.pulumi.gcp.tpu.V2Vm;
+     * import com.pulumi.gcp.tpu.V2VmArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = TpuFunctions.getV2RuntimeVersions();
+     * 
+     *         var tpu = new V2Vm(&#34;tpu&#34;, V2VmArgs.builder()        
+     *             .zone(&#34;us-central1-b&#34;)
+     *             .runtimeVersion(available.applyValue(getV2RuntimeVersionsResult -&gt; getV2RuntimeVersionsResult.versions()[0]))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetV2RuntimeVersionsResult> getV2RuntimeVersionsPlain(GetV2RuntimeVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", TypeShape.of(GetV2RuntimeVersionsResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -75,7 +75,7 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
      * 
      */
-    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -89,7 +89,7 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      * The ID of a host project to associate.
      * 
      */
-    @Export(name="hostProject", refs={String.class}, tree="[0]")
+    @Export(name="hostProject", type=String.class, parameters={})
     private Output<String> hostProject;
 
     /**
@@ -103,7 +103,7 @@ public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource
      * The ID of the project that will serve as a Shared VPC service project.
      * 
      */
-    @Export(name="serviceProject", refs={String.class}, tree="[0]")
+    @Export(name="serviceProject", type=String.class, parameters={})
     private Output<String> serviceProject;
 
     /**

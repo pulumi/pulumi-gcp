@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/datasetIamMember:DatasetIamMember")
 public class DatasetIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={DatasetIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=DatasetIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ DatasetIamMemberCondition> condition;
 
     public Output<Optional<DatasetIamMemberCondition>> condition() {
@@ -208,7 +208,7 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="datasetId", refs={String.class}, tree="[0]")
+    @Export(name="datasetId", type=String.class, parameters={})
     private Output<String> datasetId;
 
     /**
@@ -231,7 +231,7 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the dataset&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -241,7 +241,7 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -252,7 +252,7 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -269,7 +269,7 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

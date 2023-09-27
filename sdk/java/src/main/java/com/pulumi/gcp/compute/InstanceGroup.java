@@ -209,7 +209,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * group.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -225,7 +225,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * When adding instances they must all be in the same network and zone as the instance group.
      * 
      */
-    @Export(name="instances", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="instances", type=List.class, parameters={String.class})
     private Output<List<String>> instances;
 
     /**
@@ -243,7 +243,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * include lowercase letters, numbers, and hyphens.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -261,7 +261,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * for details on configuration. Structure is documented below.
      * 
      */
-    @Export(name="namedPorts", refs={List.class,InstanceGroupNamedPort.class}, tree="[0,1]")
+    @Export(name="namedPorts", type=List.class, parameters={InstanceGroupNamedPort.class})
     private Output</* @Nullable */ List<InstanceGroupNamedPort>> namedPorts;
 
     /**
@@ -279,7 +279,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * `network` nor `instances` is specified, this field will be blank).
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -297,7 +297,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -312,7 +312,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -326,7 +326,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * The number of instances in the group.
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -342,7 +342,7 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

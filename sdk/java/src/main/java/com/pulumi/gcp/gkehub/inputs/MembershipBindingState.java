@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.MembershipBindingStateArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +46,21 @@ public final class MembershipBindingState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> deleteTime() {
         return Optional.ofNullable(this.deleteTime);
+    }
+
+    /**
+     * Labels for this Membership binding.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Membership binding.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -197,6 +213,7 @@ public final class MembershipBindingState extends com.pulumi.resources.ResourceA
     private MembershipBindingState(MembershipBindingState $) {
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
+        this.labels = $.labels;
         this.location = $.location;
         this.membershipBindingId = $.membershipBindingId;
         this.membershipId = $.membershipId;
@@ -266,6 +283,27 @@ public final class MembershipBindingState extends com.pulumi.resources.ResourceA
          */
         public Builder deleteTime(String deleteTime) {
             return deleteTime(Output.of(deleteTime));
+        }
+
+        /**
+         * @param labels Labels for this Membership binding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this Membership binding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

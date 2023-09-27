@@ -305,7 +305,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy")
 public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     public Output<String> etag() {
@@ -315,7 +315,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the instance or a fully qualified identifier for the instance.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -325,7 +325,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     public Output<String> policyData() {
@@ -336,7 +336,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -351,7 +351,7 @@ public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
      * The region of the Data Fusion instance.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

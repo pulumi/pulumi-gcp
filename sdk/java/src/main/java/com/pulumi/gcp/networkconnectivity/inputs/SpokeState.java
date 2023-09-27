@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedInterconnectAttachmentsArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
+import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpnTunnelsArgs;
 import java.lang.String;
 import java.util.Map;
@@ -107,6 +108,21 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<SpokeLinkedRouterApplianceInstancesArgs>> linkedRouterApplianceInstances() {
         return Optional.ofNullable(this.linkedRouterApplianceInstances);
+    }
+
+    /**
+     * VPC network that is associated with the spoke.
+     * 
+     */
+    @Import(name="linkedVpcNetwork")
+    private @Nullable Output<SpokeLinkedVpcNetworkArgs> linkedVpcNetwork;
+
+    /**
+     * @return VPC network that is associated with the spoke.
+     * 
+     */
+    public Optional<Output<SpokeLinkedVpcNetworkArgs>> linkedVpcNetwork() {
+        return Optional.ofNullable(this.linkedVpcNetwork);
     }
 
     /**
@@ -223,6 +239,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.linkedInterconnectAttachments = $.linkedInterconnectAttachments;
         this.linkedRouterApplianceInstances = $.linkedRouterApplianceInstances;
+        this.linkedVpcNetwork = $.linkedVpcNetwork;
         this.linkedVpnTunnels = $.linkedVpnTunnels;
         this.location = $.location;
         this.name = $.name;
@@ -374,6 +391,27 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder linkedRouterApplianceInstances(SpokeLinkedRouterApplianceInstancesArgs linkedRouterApplianceInstances) {
             return linkedRouterApplianceInstances(Output.of(linkedRouterApplianceInstances));
+        }
+
+        /**
+         * @param linkedVpcNetwork VPC network that is associated with the spoke.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedVpcNetwork(@Nullable Output<SpokeLinkedVpcNetworkArgs> linkedVpcNetwork) {
+            $.linkedVpcNetwork = linkedVpcNetwork;
+            return this;
+        }
+
+        /**
+         * @param linkedVpcNetwork VPC network that is associated with the spoke.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedVpcNetwork(SpokeLinkedVpcNetworkArgs linkedVpcNetwork) {
+            return linkedVpcNetwork(Output.of(linkedVpcNetwork));
         }
 
         /**

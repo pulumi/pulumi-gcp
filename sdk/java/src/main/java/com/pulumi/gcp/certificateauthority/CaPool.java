@@ -233,7 +233,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="issuancePolicy", refs={CaPoolIssuancePolicy.class}, tree="[0]")
+    @Export(name="issuancePolicy", type=CaPoolIssuancePolicy.class, parameters={})
     private Output</* @Nullable */ CaPoolIssuancePolicy> issuancePolicy;
 
     /**
@@ -250,7 +250,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -269,7 +269,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -286,7 +286,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * The name for this CaPool.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -301,7 +301,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -317,7 +317,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="publishingOptions", refs={CaPoolPublishingOptions.class}, tree="[0]")
+    @Export(name="publishingOptions", type=CaPoolPublishingOptions.class, parameters={})
     private Output</* @Nullable */ CaPoolPublishingOptions> publishingOptions;
 
     /**
@@ -333,7 +333,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENTERPRISE`, `DEVOPS`.
      * 
      */
-    @Export(name="tier", refs={String.class}, tree="[0]")
+    @Export(name="tier", type=String.class, parameters={})
     private Output<String> tier;
 
     /**

@@ -1007,7 +1007,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Node pool configs that apply to auto-provisioned node pools in
+     * Node pool configs that apply to auto-provisioned node pools in
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      * 
@@ -1016,7 +1016,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterNodePoolAutoConfigArgs> nodePoolAutoConfig;
 
     /**
-     * @return ) Node pool configs that apply to auto-provisioned node pools in
+     * @return Node pool configs that apply to auto-provisioned node pools in
      * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
      * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
      * 
@@ -2806,7 +2806,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodePoolAutoConfig ) Node pool configs that apply to auto-provisioned node pools in
+         * @param nodePoolAutoConfig Node pool configs that apply to auto-provisioned node pools in
          * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
          * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
          * 
@@ -2819,7 +2819,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodePoolAutoConfig ) Node pool configs that apply to auto-provisioned node pools in
+         * @param nodePoolAutoConfig Node pool configs that apply to auto-provisioned node pools in
          * [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
          * [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
          * 

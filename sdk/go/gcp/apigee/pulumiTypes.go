@@ -3777,6 +3777,503 @@ func (o SharedflowMetaDataArrayOutput) Index(i pulumi.IntInput) SharedflowMetaDa
 	}).(SharedflowMetaDataOutput)
 }
 
+type TargetServerSSlInfo struct {
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+	Ciphers []string `pulumi:"ciphers"`
+	// Enables two-way TLS.
+	ClientAuthEnabled *bool `pulumi:"clientAuthEnabled"`
+	// The TLS Common Name of the certificate.
+	// Structure is documented below.
+	CommonName *TargetServerSSlInfoCommonName `pulumi:"commonName"`
+	// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+	Enabled bool `pulumi:"enabled"`
+	// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+	IgnoreValidationErrors *bool `pulumi:"ignoreValidationErrors"`
+	// Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+	KeyAlias *string `pulumi:"keyAlias"`
+	// Required if clientAuthEnabled is true. The resource ID of the keystore.
+	KeyStore *string `pulumi:"keyStore"`
+	// The TLS versioins to be used.
+	Protocols []string `pulumi:"protocols"`
+	// The resource ID of the truststore.
+	TrustStore *string `pulumi:"trustStore"`
+}
+
+// TargetServerSSlInfoInput is an input type that accepts TargetServerSSlInfoArgs and TargetServerSSlInfoOutput values.
+// You can construct a concrete instance of `TargetServerSSlInfoInput` via:
+//
+//	TargetServerSSlInfoArgs{...}
+type TargetServerSSlInfoInput interface {
+	pulumi.Input
+
+	ToTargetServerSSlInfoOutput() TargetServerSSlInfoOutput
+	ToTargetServerSSlInfoOutputWithContext(context.Context) TargetServerSSlInfoOutput
+}
+
+type TargetServerSSlInfoArgs struct {
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// Enables two-way TLS.
+	ClientAuthEnabled pulumi.BoolPtrInput `pulumi:"clientAuthEnabled"`
+	// The TLS Common Name of the certificate.
+	// Structure is documented below.
+	CommonName TargetServerSSlInfoCommonNamePtrInput `pulumi:"commonName"`
+	// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+	IgnoreValidationErrors pulumi.BoolPtrInput `pulumi:"ignoreValidationErrors"`
+	// Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+	KeyAlias pulumi.StringPtrInput `pulumi:"keyAlias"`
+	// Required if clientAuthEnabled is true. The resource ID of the keystore.
+	KeyStore pulumi.StringPtrInput `pulumi:"keyStore"`
+	// The TLS versioins to be used.
+	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
+	// The resource ID of the truststore.
+	TrustStore pulumi.StringPtrInput `pulumi:"trustStore"`
+}
+
+func (TargetServerSSlInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetServerSSlInfo)(nil)).Elem()
+}
+
+func (i TargetServerSSlInfoArgs) ToTargetServerSSlInfoOutput() TargetServerSSlInfoOutput {
+	return i.ToTargetServerSSlInfoOutputWithContext(context.Background())
+}
+
+func (i TargetServerSSlInfoArgs) ToTargetServerSSlInfoOutputWithContext(ctx context.Context) TargetServerSSlInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetServerSSlInfoOutput)
+}
+
+func (i TargetServerSSlInfoArgs) ToOutput(ctx context.Context) pulumix.Output[TargetServerSSlInfo] {
+	return pulumix.Output[TargetServerSSlInfo]{
+		OutputState: i.ToTargetServerSSlInfoOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TargetServerSSlInfoArgs) ToTargetServerSSlInfoPtrOutput() TargetServerSSlInfoPtrOutput {
+	return i.ToTargetServerSSlInfoPtrOutputWithContext(context.Background())
+}
+
+func (i TargetServerSSlInfoArgs) ToTargetServerSSlInfoPtrOutputWithContext(ctx context.Context) TargetServerSSlInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetServerSSlInfoOutput).ToTargetServerSSlInfoPtrOutputWithContext(ctx)
+}
+
+// TargetServerSSlInfoPtrInput is an input type that accepts TargetServerSSlInfoArgs, TargetServerSSlInfoPtr and TargetServerSSlInfoPtrOutput values.
+// You can construct a concrete instance of `TargetServerSSlInfoPtrInput` via:
+//
+//	        TargetServerSSlInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetServerSSlInfoPtrInput interface {
+	pulumi.Input
+
+	ToTargetServerSSlInfoPtrOutput() TargetServerSSlInfoPtrOutput
+	ToTargetServerSSlInfoPtrOutputWithContext(context.Context) TargetServerSSlInfoPtrOutput
+}
+
+type targetServerSSlInfoPtrType TargetServerSSlInfoArgs
+
+func TargetServerSSlInfoPtr(v *TargetServerSSlInfoArgs) TargetServerSSlInfoPtrInput {
+	return (*targetServerSSlInfoPtrType)(v)
+}
+
+func (*targetServerSSlInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetServerSSlInfo)(nil)).Elem()
+}
+
+func (i *targetServerSSlInfoPtrType) ToTargetServerSSlInfoPtrOutput() TargetServerSSlInfoPtrOutput {
+	return i.ToTargetServerSSlInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *targetServerSSlInfoPtrType) ToTargetServerSSlInfoPtrOutputWithContext(ctx context.Context) TargetServerSSlInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetServerSSlInfoPtrOutput)
+}
+
+func (i *targetServerSSlInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetServerSSlInfo] {
+	return pulumix.Output[*TargetServerSSlInfo]{
+		OutputState: i.ToTargetServerSSlInfoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TargetServerSSlInfoOutput struct{ *pulumi.OutputState }
+
+func (TargetServerSSlInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetServerSSlInfo)(nil)).Elem()
+}
+
+func (o TargetServerSSlInfoOutput) ToTargetServerSSlInfoOutput() TargetServerSSlInfoOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoOutput) ToTargetServerSSlInfoOutputWithContext(ctx context.Context) TargetServerSSlInfoOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoOutput) ToTargetServerSSlInfoPtrOutput() TargetServerSSlInfoPtrOutput {
+	return o.ToTargetServerSSlInfoPtrOutputWithContext(context.Background())
+}
+
+func (o TargetServerSSlInfoOutput) ToTargetServerSSlInfoPtrOutputWithContext(ctx context.Context) TargetServerSSlInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetServerSSlInfo) *TargetServerSSlInfo {
+		return &v
+	}).(TargetServerSSlInfoPtrOutput)
+}
+
+func (o TargetServerSSlInfoOutput) ToOutput(ctx context.Context) pulumix.Output[TargetServerSSlInfo] {
+	return pulumix.Output[TargetServerSSlInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+func (o TargetServerSSlInfoOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// Enables two-way TLS.
+func (o TargetServerSSlInfoOutput) ClientAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *bool { return v.ClientAuthEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The TLS Common Name of the certificate.
+// Structure is documented below.
+func (o TargetServerSSlInfoOutput) CommonName() TargetServerSSlInfoCommonNamePtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *TargetServerSSlInfoCommonName { return v.CommonName }).(TargetServerSSlInfoCommonNamePtrOutput)
+}
+
+// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+func (o TargetServerSSlInfoOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+func (o TargetServerSSlInfoOutput) IgnoreValidationErrors() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *bool { return v.IgnoreValidationErrors }).(pulumi.BoolPtrOutput)
+}
+
+// Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+func (o TargetServerSSlInfoOutput) KeyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *string { return v.KeyAlias }).(pulumi.StringPtrOutput)
+}
+
+// Required if clientAuthEnabled is true. The resource ID of the keystore.
+func (o TargetServerSSlInfoOutput) KeyStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *string { return v.KeyStore }).(pulumi.StringPtrOutput)
+}
+
+// The TLS versioins to be used.
+func (o TargetServerSSlInfoOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) []string { return v.Protocols }).(pulumi.StringArrayOutput)
+}
+
+// The resource ID of the truststore.
+func (o TargetServerSSlInfoOutput) TrustStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfo) *string { return v.TrustStore }).(pulumi.StringPtrOutput)
+}
+
+type TargetServerSSlInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetServerSSlInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetServerSSlInfo)(nil)).Elem()
+}
+
+func (o TargetServerSSlInfoPtrOutput) ToTargetServerSSlInfoPtrOutput() TargetServerSSlInfoPtrOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoPtrOutput) ToTargetServerSSlInfoPtrOutputWithContext(ctx context.Context) TargetServerSSlInfoPtrOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetServerSSlInfo] {
+	return pulumix.Output[*TargetServerSSlInfo]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TargetServerSSlInfoPtrOutput) Elem() TargetServerSSlInfoOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) TargetServerSSlInfo {
+		if v != nil {
+			return *v
+		}
+		var ret TargetServerSSlInfo
+		return ret
+	}).(TargetServerSSlInfoOutput)
+}
+
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+func (o TargetServerSSlInfoPtrOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ciphers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Enables two-way TLS.
+func (o TargetServerSSlInfoPtrOutput) ClientAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAuthEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The TLS Common Name of the certificate.
+// Structure is documented below.
+func (o TargetServerSSlInfoPtrOutput) CommonName() TargetServerSSlInfoCommonNamePtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *TargetServerSSlInfoCommonName {
+		if v == nil {
+			return nil
+		}
+		return v.CommonName
+	}).(TargetServerSSlInfoCommonNamePtrOutput)
+}
+
+// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+func (o TargetServerSSlInfoPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+func (o TargetServerSSlInfoPtrOutput) IgnoreValidationErrors() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreValidationErrors
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+func (o TargetServerSSlInfoPtrOutput) KeyAlias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyAlias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required if clientAuthEnabled is true. The resource ID of the keystore.
+func (o TargetServerSSlInfoPtrOutput) KeyStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyStore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TLS versioins to be used.
+func (o TargetServerSSlInfoPtrOutput) Protocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// The resource ID of the truststore.
+func (o TargetServerSSlInfoPtrOutput) TrustStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustStore
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetServerSSlInfoCommonName struct {
+	// The TLS Common Name string of the certificate.
+	Value *string `pulumi:"value"`
+	// Indicates whether the cert should be matched against as a wildcard cert.
+	WildcardMatch *bool `pulumi:"wildcardMatch"`
+}
+
+// TargetServerSSlInfoCommonNameInput is an input type that accepts TargetServerSSlInfoCommonNameArgs and TargetServerSSlInfoCommonNameOutput values.
+// You can construct a concrete instance of `TargetServerSSlInfoCommonNameInput` via:
+//
+//	TargetServerSSlInfoCommonNameArgs{...}
+type TargetServerSSlInfoCommonNameInput interface {
+	pulumi.Input
+
+	ToTargetServerSSlInfoCommonNameOutput() TargetServerSSlInfoCommonNameOutput
+	ToTargetServerSSlInfoCommonNameOutputWithContext(context.Context) TargetServerSSlInfoCommonNameOutput
+}
+
+type TargetServerSSlInfoCommonNameArgs struct {
+	// The TLS Common Name string of the certificate.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Indicates whether the cert should be matched against as a wildcard cert.
+	WildcardMatch pulumi.BoolPtrInput `pulumi:"wildcardMatch"`
+}
+
+func (TargetServerSSlInfoCommonNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetServerSSlInfoCommonName)(nil)).Elem()
+}
+
+func (i TargetServerSSlInfoCommonNameArgs) ToTargetServerSSlInfoCommonNameOutput() TargetServerSSlInfoCommonNameOutput {
+	return i.ToTargetServerSSlInfoCommonNameOutputWithContext(context.Background())
+}
+
+func (i TargetServerSSlInfoCommonNameArgs) ToTargetServerSSlInfoCommonNameOutputWithContext(ctx context.Context) TargetServerSSlInfoCommonNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetServerSSlInfoCommonNameOutput)
+}
+
+func (i TargetServerSSlInfoCommonNameArgs) ToOutput(ctx context.Context) pulumix.Output[TargetServerSSlInfoCommonName] {
+	return pulumix.Output[TargetServerSSlInfoCommonName]{
+		OutputState: i.ToTargetServerSSlInfoCommonNameOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TargetServerSSlInfoCommonNameArgs) ToTargetServerSSlInfoCommonNamePtrOutput() TargetServerSSlInfoCommonNamePtrOutput {
+	return i.ToTargetServerSSlInfoCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (i TargetServerSSlInfoCommonNameArgs) ToTargetServerSSlInfoCommonNamePtrOutputWithContext(ctx context.Context) TargetServerSSlInfoCommonNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetServerSSlInfoCommonNameOutput).ToTargetServerSSlInfoCommonNamePtrOutputWithContext(ctx)
+}
+
+// TargetServerSSlInfoCommonNamePtrInput is an input type that accepts TargetServerSSlInfoCommonNameArgs, TargetServerSSlInfoCommonNamePtr and TargetServerSSlInfoCommonNamePtrOutput values.
+// You can construct a concrete instance of `TargetServerSSlInfoCommonNamePtrInput` via:
+//
+//	        TargetServerSSlInfoCommonNameArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetServerSSlInfoCommonNamePtrInput interface {
+	pulumi.Input
+
+	ToTargetServerSSlInfoCommonNamePtrOutput() TargetServerSSlInfoCommonNamePtrOutput
+	ToTargetServerSSlInfoCommonNamePtrOutputWithContext(context.Context) TargetServerSSlInfoCommonNamePtrOutput
+}
+
+type targetServerSSlInfoCommonNamePtrType TargetServerSSlInfoCommonNameArgs
+
+func TargetServerSSlInfoCommonNamePtr(v *TargetServerSSlInfoCommonNameArgs) TargetServerSSlInfoCommonNamePtrInput {
+	return (*targetServerSSlInfoCommonNamePtrType)(v)
+}
+
+func (*targetServerSSlInfoCommonNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetServerSSlInfoCommonName)(nil)).Elem()
+}
+
+func (i *targetServerSSlInfoCommonNamePtrType) ToTargetServerSSlInfoCommonNamePtrOutput() TargetServerSSlInfoCommonNamePtrOutput {
+	return i.ToTargetServerSSlInfoCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (i *targetServerSSlInfoCommonNamePtrType) ToTargetServerSSlInfoCommonNamePtrOutputWithContext(ctx context.Context) TargetServerSSlInfoCommonNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetServerSSlInfoCommonNamePtrOutput)
+}
+
+func (i *targetServerSSlInfoCommonNamePtrType) ToOutput(ctx context.Context) pulumix.Output[*TargetServerSSlInfoCommonName] {
+	return pulumix.Output[*TargetServerSSlInfoCommonName]{
+		OutputState: i.ToTargetServerSSlInfoCommonNamePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TargetServerSSlInfoCommonNameOutput struct{ *pulumi.OutputState }
+
+func (TargetServerSSlInfoCommonNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetServerSSlInfoCommonName)(nil)).Elem()
+}
+
+func (o TargetServerSSlInfoCommonNameOutput) ToTargetServerSSlInfoCommonNameOutput() TargetServerSSlInfoCommonNameOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoCommonNameOutput) ToTargetServerSSlInfoCommonNameOutputWithContext(ctx context.Context) TargetServerSSlInfoCommonNameOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoCommonNameOutput) ToTargetServerSSlInfoCommonNamePtrOutput() TargetServerSSlInfoCommonNamePtrOutput {
+	return o.ToTargetServerSSlInfoCommonNamePtrOutputWithContext(context.Background())
+}
+
+func (o TargetServerSSlInfoCommonNameOutput) ToTargetServerSSlInfoCommonNamePtrOutputWithContext(ctx context.Context) TargetServerSSlInfoCommonNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetServerSSlInfoCommonName) *TargetServerSSlInfoCommonName {
+		return &v
+	}).(TargetServerSSlInfoCommonNamePtrOutput)
+}
+
+func (o TargetServerSSlInfoCommonNameOutput) ToOutput(ctx context.Context) pulumix.Output[TargetServerSSlInfoCommonName] {
+	return pulumix.Output[TargetServerSSlInfoCommonName]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The TLS Common Name string of the certificate.
+func (o TargetServerSSlInfoCommonNameOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfoCommonName) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the cert should be matched against as a wildcard cert.
+func (o TargetServerSSlInfoCommonNameOutput) WildcardMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetServerSSlInfoCommonName) *bool { return v.WildcardMatch }).(pulumi.BoolPtrOutput)
+}
+
+type TargetServerSSlInfoCommonNamePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetServerSSlInfoCommonNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetServerSSlInfoCommonName)(nil)).Elem()
+}
+
+func (o TargetServerSSlInfoCommonNamePtrOutput) ToTargetServerSSlInfoCommonNamePtrOutput() TargetServerSSlInfoCommonNamePtrOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoCommonNamePtrOutput) ToTargetServerSSlInfoCommonNamePtrOutputWithContext(ctx context.Context) TargetServerSSlInfoCommonNamePtrOutput {
+	return o
+}
+
+func (o TargetServerSSlInfoCommonNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetServerSSlInfoCommonName] {
+	return pulumix.Output[*TargetServerSSlInfoCommonName]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TargetServerSSlInfoCommonNamePtrOutput) Elem() TargetServerSSlInfoCommonNameOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfoCommonName) TargetServerSSlInfoCommonName {
+		if v != nil {
+			return *v
+		}
+		var ret TargetServerSSlInfoCommonName
+		return ret
+	}).(TargetServerSSlInfoCommonNameOutput)
+}
+
+// The TLS Common Name string of the certificate.
+func (o TargetServerSSlInfoCommonNamePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfoCommonName) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the cert should be matched against as a wildcard cert.
+func (o TargetServerSSlInfoCommonNamePtrOutput) WildcardMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetServerSSlInfoCommonName) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WildcardMatch
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigArgs{})
@@ -3818,6 +4315,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyArrayInput)(nil)).Elem(), OrganizationPropertiesPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataInput)(nil)).Elem(), SharedflowMetaDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowMetaDataArrayInput)(nil)).Elem(), SharedflowMetaDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoInput)(nil)).Elem(), TargetServerSSlInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoPtrInput)(nil)).Elem(), TargetServerSSlInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoCommonNameInput)(nil)).Elem(), TargetServerSSlInfoCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerSSlInfoCommonNamePtrInput)(nil)).Elem(), TargetServerSSlInfoCommonNameArgs{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigAdvancedApiOpsConfigOutput{})
@@ -3858,4 +4359,8 @@ func init() {
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyArrayOutput{})
 	pulumi.RegisterOutputType(SharedflowMetaDataOutput{})
 	pulumi.RegisterOutputType(SharedflowMetaDataArrayOutput{})
+	pulumi.RegisterOutputType(TargetServerSSlInfoOutput{})
+	pulumi.RegisterOutputType(TargetServerSSlInfoPtrOutput{})
+	pulumi.RegisterOutputType(TargetServerSSlInfoCommonNameOutput{})
+	pulumi.RegisterOutputType(TargetServerSSlInfoCommonNamePtrOutput{})
 }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigSignInArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -115,6 +116,23 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.quota);
     }
 
+    /**
+     * Configuration related to local sign in methods.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="signIn")
+    private @Nullable Output<ConfigSignInArgs> signIn;
+
+    /**
+     * @return Configuration related to local sign in methods.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigSignInArgs>> signIn() {
+        return Optional.ofNullable(this.signIn);
+    }
+
     private ConfigState() {}
 
     private ConfigState(ConfigState $) {
@@ -124,6 +142,7 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.quota = $.quota;
+        this.signIn = $.signIn;
     }
 
     public static Builder builder() {
@@ -284,6 +303,29 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder quota(ConfigQuotaArgs quota) {
             return quota(Output.of(quota));
+        }
+
+        /**
+         * @param signIn Configuration related to local sign in methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signIn(@Nullable Output<ConfigSignInArgs> signIn) {
+            $.signIn = signIn;
+            return this;
+        }
+
+        /**
+         * @param signIn Configuration related to local sign in methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signIn(ConfigSignInArgs signIn) {
+            return signIn(Output.of(signIn));
         }
 
         public ConfigState build() {

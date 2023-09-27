@@ -398,7 +398,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    @Export(name="appEngine", refs={RegionNetworkEndpointGroupAppEngine.class}, tree="[0]")
+    @Export(name="appEngine", type=RegionNetworkEndpointGroupAppEngine.class, parameters={})
     private Output</* @Nullable */ RegionNetworkEndpointGroupAppEngine> appEngine;
 
     /**
@@ -416,7 +416,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    @Export(name="cloudFunction", refs={RegionNetworkEndpointGroupCloudFunction.class}, tree="[0]")
+    @Export(name="cloudFunction", type=RegionNetworkEndpointGroupCloudFunction.class, parameters={})
     private Output</* @Nullable */ RegionNetworkEndpointGroupCloudFunction> cloudFunction;
 
     /**
@@ -434,7 +434,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Structure is documented below.
      * 
      */
-    @Export(name="cloudRun", refs={RegionNetworkEndpointGroupCloudRun.class}, tree="[0]")
+    @Export(name="cloudRun", type=RegionNetworkEndpointGroupCloudRun.class, parameters={})
     private Output</* @Nullable */ RegionNetworkEndpointGroupCloudRun> cloudRun;
 
     /**
@@ -451,7 +451,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -472,7 +472,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -494,7 +494,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * &#34;default&#34; project network if unspecified.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -512,7 +512,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
-    @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
+    @Export(name="networkEndpointType", type=String.class, parameters={})
     private Output</* @Nullable */ String> networkEndpointType;
 
     /**
@@ -529,7 +529,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -545,7 +545,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * a Google API or a PSC Producer Service Attachment.
      * 
      */
-    @Export(name="pscTargetService", refs={String.class}, tree="[0]")
+    @Export(name="pscTargetService", type=String.class, parameters={})
     private Output</* @Nullable */ String> pscTargetService;
 
     /**
@@ -562,7 +562,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -578,7 +578,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -593,7 +593,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * serverlessDeployment may be set.
      * 
      */
-    @Export(name="serverlessDeployment", refs={RegionNetworkEndpointGroupServerlessDeployment.class}, tree="[0]")
+    @Export(name="serverlessDeployment", type=RegionNetworkEndpointGroupServerlessDeployment.class, parameters={})
     private Output</* @Nullable */ RegionNetworkEndpointGroupServerlessDeployment> serverlessDeployment;
 
     /**
@@ -609,7 +609,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      * 
      */
-    @Export(name="subnetwork", refs={String.class}, tree="[0]")
+    @Export(name="subnetwork", type=String.class, parameters={})
     private Output</* @Nullable */ String> subnetwork;
 
     /**

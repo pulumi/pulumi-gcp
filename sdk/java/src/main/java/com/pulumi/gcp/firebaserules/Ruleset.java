@@ -120,7 +120,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * Output only. Time the `Ruleset` was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -134,7 +134,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * Output only. The metadata for this ruleset.
      * 
      */
-    @Export(name="metadatas", refs={List.class,RulesetMetadata.class}, tree="[0,1]")
+    @Export(name="metadatas", type=List.class, parameters={RulesetMetadata.class})
     private Output<List<RulesetMetadata>> metadatas;
 
     /**
@@ -150,7 +150,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -166,7 +166,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -180,7 +180,7 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * `Source` for the `Ruleset`.
      * 
      */
-    @Export(name="source", refs={RulesetSource.class}, tree="[0]")
+    @Export(name="source", type=RulesetSource.class, parameters={})
     private Output<RulesetSource> source;
 
     /**

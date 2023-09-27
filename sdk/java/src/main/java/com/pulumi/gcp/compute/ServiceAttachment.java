@@ -365,7 +365,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="connectedEndpoints", refs={List.class,ServiceAttachmentConnectedEndpoint.class}, tree="[0,1]")
+    @Export(name="connectedEndpoints", type=List.class, parameters={ServiceAttachmentConnectedEndpoint.class})
     private Output<List<ServiceAttachmentConnectedEndpoint>> connectedEndpoints;
 
     /**
@@ -382,7 +382,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * values include &#34;ACCEPT_AUTOMATIC&#34;, &#34;ACCEPT_MANUAL&#34;.
      * 
      */
-    @Export(name="connectionPreference", refs={String.class}, tree="[0]")
+    @Export(name="connectionPreference", type=String.class, parameters={})
     private Output<String> connectionPreference;
 
     /**
@@ -399,7 +399,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="consumerAcceptLists", refs={List.class,ServiceAttachmentConsumerAcceptList.class}, tree="[0,1]")
+    @Export(name="consumerAcceptLists", type=List.class, parameters={ServiceAttachmentConsumerAcceptList.class})
     private Output</* @Nullable */ List<ServiceAttachmentConsumerAcceptList>> consumerAcceptLists;
 
     /**
@@ -416,7 +416,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * attachment.
      * 
      */
-    @Export(name="consumerRejectLists", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="consumerRejectLists", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> consumerRejectLists;
 
     /**
@@ -431,7 +431,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -448,7 +448,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * supported is 1.
      * 
      */
-    @Export(name="domainNames", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="domainNames", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> domainNames;
 
     /**
@@ -469,7 +469,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="enableProxyProtocol", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableProxyProtocol", type=Boolean.class, parameters={})
     private Output<Boolean> enableProxyProtocol;
 
     /**
@@ -488,7 +488,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * updates of this resource.
      * 
      */
-    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
@@ -508,7 +508,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -527,7 +527,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * An array of subnets that is provided for NAT in this service attachment.
      * 
      */
-    @Export(name="natSubnets", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="natSubnets", type=List.class, parameters={String.class})
     private Output<List<String>> natSubnets;
 
     /**
@@ -542,7 +542,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -560,7 +560,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * For newly created service attachment, this boolean defaults to true.
      * 
      */
-    @Export(name="reconcileConnections", refs={Boolean.class}, tree="[0]")
+    @Export(name="reconcileConnections", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> reconcileConnections;
 
     /**
@@ -577,7 +577,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * URL of the region where the resource resides.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -591,7 +591,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -606,7 +606,7 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * this service attachment.
      * 
      */
-    @Export(name="targetService", refs={String.class}, tree="[0]")
+    @Export(name="targetService", type=String.class, parameters={})
     private Output<String> targetService;
 
     /**

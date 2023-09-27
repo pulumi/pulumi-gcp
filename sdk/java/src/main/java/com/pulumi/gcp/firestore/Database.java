@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firestore.DatabaseArgs;
 import com.pulumi.gcp.firestore.inputs.DatabaseState;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -27,6 +28,41 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  * 
  * ## Example Usage
+ * ### Firestore Database With Delete Protection
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(google_project.project().project_id())
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(google_project_service.firestore())
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -52,7 +88,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
-    @Export(name="appEngineIntegrationMode", refs={String.class}, tree="[0]")
+    @Export(name="appEngineIntegrationMode", type=String.class, parameters={})
     private Output<String> appEngineIntegrationMode;
 
     /**
@@ -68,7 +104,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
-    @Export(name="concurrencyMode", refs={String.class}, tree="[0]")
+    @Export(name="concurrencyMode", type=String.class, parameters={})
     private Output<String> concurrencyMode;
 
     /**
@@ -80,30 +116,64 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.concurrencyMode;
     }
     /**
-     * The timestamp at which this database was created.
+     * Output only. The timestamp at which this database was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp at which this database was created.
+     * @return Output only. The timestamp at which this database was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * This checksum is computed by the server based on the value of other fields,
+     * State of delete protection for the database.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
+    @Export(name="deleteProtectionState", type=String.class, parameters={})
+    private Output<String> deleteProtectionState;
+
+    /**
+     * @return State of delete protection for the database.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
+    public Output<String> deleteProtectionState() {
+        return this.deleteProtectionState;
+    }
+    /**
+     * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+     * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="earliestVersionTime", type=String.class, parameters={})
+    private Output<String> earliestVersionTime;
+
+    /**
+     * @return Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
+     * This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> earliestVersionTime() {
+        return this.earliestVersionTime;
+    }
+    /**
+     * Output only. This checksum is computed by the server based on the value of other fields,
      * and may be sent on update and delete requests to ensure the client has an
      * up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return This checksum is computed by the server based on the value of other fields,
+     * @return Output only. This checksum is computed by the server based on the value of other fields,
      * and may be sent on update and delete requests to ensure the client has an
      * up-to-date value before proceeding.
      * 
@@ -118,7 +188,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
      * 
      */
-    @Export(name="keyPrefix", refs={String.class}, tree="[0]")
+    @Export(name="keyPrefix", type=String.class, parameters={})
     private Output<String> keyPrefix;
 
     /**
@@ -132,15 +202,15 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.keyPrefix;
     }
     /**
-     * The location of the database. Available databases are listed at
+     * The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
-    @Export(name="locationId", refs={String.class}, tree="[0]")
+    @Export(name="locationId", type=String.class, parameters={})
     private Output<String> locationId;
 
     /**
-     * @return The location of the database. Available databases are listed at
+     * @return The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
@@ -156,7 +226,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;(default)&#34; database id is also valid.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -172,11 +242,37 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Whether to enable the PITR feature on this database.
+     * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+     * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+     * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+     * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+     * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * 
+     */
+    @Export(name="pointInTimeRecoveryEnablement", type=String.class, parameters={})
+    private Output</* @Nullable */ String> pointInTimeRecoveryEnablement;
+
+    /**
+     * @return Whether to enable the PITR feature on this database.
+     * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+     * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+     * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+     * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+     * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * 
+     */
+    public Output<Optional<String>> pointInTimeRecoveryEnablement() {
+        return Codegen.optional(this.pointInTimeRecoveryEnablement);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -196,7 +292,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -210,6 +306,54 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * Output only. The system-generated UUID4 for this Database.
+     * 
+     */
+    @Export(name="uid", type=String.class, parameters={})
+    private Output<String> uid;
+
+    /**
+     * @return Output only. The system-generated UUID4 for this Database.
+     * 
+     */
+    public Output<String> uid() {
+        return this.uid;
+    }
+    /**
+     * Output only. The timestamp at which this database was most recently updated.
+     * 
+     */
+    @Export(name="updateTime", type=String.class, parameters={})
+    private Output<String> updateTime;
+
+    /**
+     * @return Output only. The timestamp at which this database was most recently updated.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
+    }
+    /**
+     * Output only. The period during which past versions of data are retained in the database.
+     * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+     * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Export(name="versionRetentionPeriod", type=String.class, parameters={})
+    private Output<String> versionRetentionPeriod;
+
+    /**
+     * @return Output only. The period during which past versions of data are retained in the database.
+     * Any read or query can specify a readTime within this window, and will read the state of the database at that time.
+     * If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Output<String> versionRetentionPeriod() {
+        return this.versionRetentionPeriod;
     }
 
     /**

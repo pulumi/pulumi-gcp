@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AzureNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolConfigArgs;
+import com.pulumi.gcp.container.inputs.AzureNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolMaxPodsConstraintArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -138,6 +139,21 @@ public final class AzureNodePoolState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * The Management configuration for this node pool.
+     * 
+     */
+    @Import(name="management")
+    private @Nullable Output<AzureNodePoolManagementArgs> management;
+
+    /**
+     * @return The Management configuration for this node pool.
+     * 
+     */
+    public Optional<Output<AzureNodePoolManagementArgs>> management() {
+        return Optional.ofNullable(this.management);
     }
 
     /**
@@ -286,6 +302,7 @@ public final class AzureNodePoolState extends com.pulumi.resources.ResourceArgs 
         this.createTime = $.createTime;
         this.etag = $.etag;
         this.location = $.location;
+        this.management = $.management;
         this.maxPodsConstraint = $.maxPodsConstraint;
         this.name = $.name;
         this.project = $.project;
@@ -481,6 +498,27 @@ public final class AzureNodePoolState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param management The Management configuration for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(@Nullable Output<AzureNodePoolManagementArgs> management) {
+            $.management = management;
+            return this;
+        }
+
+        /**
+         * @param management The Management configuration for this node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder management(AzureNodePoolManagementArgs management) {
+            return management(Output.of(management));
         }
 
         /**

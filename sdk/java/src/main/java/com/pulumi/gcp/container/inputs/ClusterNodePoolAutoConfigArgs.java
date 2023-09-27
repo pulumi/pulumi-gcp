@@ -16,14 +16,14 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     public static final ClusterNodePoolAutoConfigArgs Empty = new ClusterNodePoolAutoConfigArgs();
 
     /**
-     * ) - The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * The network tag config for the cluster&#39;s automatically provisioned node pools.
      * 
      */
     @Import(name="networkTags")
     private @Nullable Output<ClusterNodePoolAutoConfigNetworkTagsArgs> networkTags;
 
     /**
-     * @return ) - The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * @return The network tag config for the cluster&#39;s automatically provisioned node pools.
      * 
      */
     public Optional<Output<ClusterNodePoolAutoConfigNetworkTagsArgs>> networkTags() {
@@ -55,7 +55,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkTags ) - The network tag config for the cluster&#39;s automatically provisioned node pools.
+         * @param networkTags The network tag config for the cluster&#39;s automatically provisioned node pools.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param networkTags ) - The network tag config for the cluster&#39;s automatically provisioned node pools.
+         * @param networkTags The network tag config for the cluster&#39;s automatically provisioned node pools.
          * 
          * @return builder
          * 

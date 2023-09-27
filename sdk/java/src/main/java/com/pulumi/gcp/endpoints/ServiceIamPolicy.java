@@ -163,7 +163,7 @@ public class ServiceIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -178,7 +178,7 @@ public class ServiceIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**
@@ -189,7 +189,7 @@ public class ServiceIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> policyData() {
         return this.policyData;
     }
-    @Export(name="serviceName", refs={String.class}, tree="[0]")
+    @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     public Output<String> serviceName() {

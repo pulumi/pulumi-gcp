@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding")
 public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={AiFeatureStoreEntityTypeIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=AiFeatureStoreEntityTypeIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ AiFeatureStoreEntityTypeIamBindingCondition> condition;
 
     public Output<Optional<AiFeatureStoreEntityTypeIamBindingCondition>> condition() {
@@ -54,7 +54,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="entitytype", refs={String.class}, tree="[0]")
+    @Export(name="entitytype", type=String.class, parameters={})
     private Output<String> entitytype;
 
     /**
@@ -68,7 +68,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -94,7 +94,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="featurestore", refs={String.class}, tree="[0]")
+    @Export(name="featurestore", type=String.class, parameters={})
     private Output<String> featurestore;
 
     /**
@@ -116,7 +116,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
     public Output<String> featurestore() {
         return this.featurestore;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -128,7 +128,7 @@ public class AiFeatureStoreEntityTypeIamBinding extends com.pulumi.resources.Cus
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

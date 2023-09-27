@@ -301,7 +301,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * The following keywords may be referenced in the expressions:
      * 
      */
-    @Export(name="attributeCondition", refs={String.class}, tree="[0]")
+    @Export(name="attributeCondition", type=String.class, parameters={})
     private Output</* @Nullable */ String> attributeCondition;
 
     /**
@@ -399,7 +399,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * ```
      * 
      */
-    @Export(name="attributeMapping", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="attributeMapping", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> attributeMapping;
 
     /**
@@ -494,7 +494,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * Structure is documented below.
      * 
      */
-    @Export(name="aws", refs={WorkloadIdentityPoolProviderAws.class}, tree="[0]")
+    @Export(name="aws", type=WorkloadIdentityPoolProviderAws.class, parameters={})
     private Output</* @Nullable */ WorkloadIdentityPoolProviderAws> aws;
 
     /**
@@ -509,7 +509,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * A description for the provider. Cannot exceed 256 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -524,7 +524,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * However, existing tokens still grant access.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -539,7 +539,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * A display name for the provider. Cannot exceed 32 characters.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -554,7 +554,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -570,7 +570,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * Structure is documented below.
      * 
      */
-    @Export(name="oidc", refs={WorkloadIdentityPoolProviderOidc.class}, tree="[0]")
+    @Export(name="oidc", type=WorkloadIdentityPoolProviderOidc.class, parameters={})
     private Output</* @Nullable */ WorkloadIdentityPoolProviderOidc> oidc;
 
     /**
@@ -586,7 +586,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -607,7 +607,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      *   until it is permanently deleted.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -629,7 +629,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * `gcp-` is reserved for use by Google, and may not be specified.
      * 
      */
-    @Export(name="workloadIdentityPoolId", refs={String.class}, tree="[0]")
+    @Export(name="workloadIdentityPoolId", type=String.class, parameters={})
     private Output<String> workloadIdentityPoolId;
 
     /**
@@ -649,7 +649,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      * ***
      * 
      */
-    @Export(name="workloadIdentityPoolProviderId", refs={String.class}, tree="[0]")
+    @Export(name="workloadIdentityPoolProviderId", type=String.class, parameters={})
     private Output<String> workloadIdentityPoolProviderId;
 
     /**

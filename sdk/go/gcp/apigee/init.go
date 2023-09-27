@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SharedflowDeployment{}
 	case "gcp:apigee/syncAuthorization:SyncAuthorization":
 		r = &SyncAuthorization{}
+	case "gcp:apigee/targetServer:TargetServer":
+		r = &TargetServer{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -179,6 +181,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/syncAuthorization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/targetServer",
 		&module{version},
 	)
 }

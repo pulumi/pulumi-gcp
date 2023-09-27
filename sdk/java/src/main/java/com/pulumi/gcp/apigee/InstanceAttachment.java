@@ -154,7 +154,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The resource ID of the environment.
      * 
      */
-    @Export(name="environment", refs={String.class}, tree="[0]")
+    @Export(name="environment", type=String.class, parameters={})
     private Output<String> environment;
 
     /**
@@ -171,7 +171,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
     /**
@@ -188,7 +188,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The name of the newly created  attachment (output parameter).
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

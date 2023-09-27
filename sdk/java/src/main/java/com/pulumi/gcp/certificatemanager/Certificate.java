@@ -296,7 +296,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * A human-readable description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -310,7 +310,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the Certificate resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -324,7 +324,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * The Certificate Manager location. If not specified, &#34;global&#34; is used.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -341,7 +341,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="managed", refs={CertificateManaged.class}, tree="[0]")
+    @Export(name="managed", type=CertificateManaged.class, parameters={})
     private Output</* @Nullable */ CertificateManaged> managed;
 
     /**
@@ -362,7 +362,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -381,7 +381,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -402,7 +402,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * see https://cloud.google.com/compute/docs/regions-zones
      * 
      */
-    @Export(name="scope", refs={String.class}, tree="[0]")
+    @Export(name="scope", type=String.class, parameters={})
     private Output</* @Nullable */ String> scope;
 
     /**
@@ -425,7 +425,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="selfManaged", refs={CertificateSelfManaged.class}, tree="[0]")
+    @Export(name="selfManaged", type=CertificateSelfManaged.class, parameters={})
     private Output</* @Nullable */ CertificateSelfManaged> selfManaged;
 
     /**

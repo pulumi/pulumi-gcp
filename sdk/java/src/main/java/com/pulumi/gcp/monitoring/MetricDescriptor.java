@@ -140,7 +140,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * A detailed description of the metric, which can be used in documentation.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -156,7 +156,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -173,7 +173,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="labels", refs={List.class,MetricDescriptorLabel.class}, tree="[0,1]")
+    @Export(name="labels", type=List.class, parameters={MetricDescriptorLabel.class})
     private Output</* @Nullable */ List<MetricDescriptorLabel>> labels;
 
     /**
@@ -189,7 +189,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
-    @Export(name="launchStage", refs={String.class}, tree="[0]")
+    @Export(name="launchStage", type=String.class, parameters={})
     private Output</* @Nullable */ String> launchStage;
 
     /**
@@ -205,7 +205,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metadata", refs={MetricDescriptorMetadata.class}, tree="[0]")
+    @Export(name="metadata", type=MetricDescriptorMetadata.class, parameters={})
     private Output</* @Nullable */ MetricDescriptorMetadata> metadata;
 
     /**
@@ -221,7 +221,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      * 
      */
-    @Export(name="metricKind", refs={String.class}, tree="[0]")
+    @Export(name="metricKind", type=String.class, parameters={})
     private Output<String> metricKind;
 
     /**
@@ -236,7 +236,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      * 
      */
-    @Export(name="monitoredResourceTypes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="monitoredResourceTypes", type=List.class, parameters={String.class})
     private Output<List<String>> monitoredResourceTypes;
 
     /**
@@ -250,7 +250,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * The resource name of the metric descriptor.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -265,7 +265,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -280,7 +280,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, &#39;/&#39; and underscores &#39;_&#39; are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -310,7 +310,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
      * 
      */
-    @Export(name="unit", refs={String.class}, tree="[0]")
+    @Export(name="unit", type=String.class, parameters={})
     private Output</* @Nullable */ String> unit;
 
     /**
@@ -341,7 +341,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
      * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
      */
-    @Export(name="valueType", refs={String.class}, tree="[0]")
+    @Export(name="valueType", type=String.class, parameters={})
     private Output<String> valueType;
 
     /**

@@ -47,7 +47,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="connectionEndpoints", refs={List.class,NetworkAttachmentConnectionEndpoint.class}, tree="[0,1]")
+    @Export(name="connectionEndpoints", type=List.class, parameters={NetworkAttachmentConnectionEndpoint.class})
     private Output<List<NetworkAttachmentConnectionEndpoint>> connectionEndpoints;
 
     /**
@@ -63,7 +63,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
      * 
      */
-    @Export(name="connectionPreference", refs={String.class}, tree="[0]")
+    @Export(name="connectionPreference", type=String.class, parameters={})
     private Output<String> connectionPreference;
 
     /**
@@ -78,7 +78,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -92,7 +92,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * An optional description of this resource. Provide this property when you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * field is used in optimistic locking. An up-to-date fingerprint must be provided in order to patch.
      * 
      */
-    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
@@ -122,7 +122,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Type of the resource.
      * 
      */
-    @Export(name="kind", refs={String.class}, tree="[0]")
+    @Export(name="kind", type=String.class, parameters={})
     private Output<String> kind;
 
     /**
@@ -136,7 +136,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -151,7 +151,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -166,7 +166,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
      * 
      */
-    @Export(name="producerAcceptLists", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="producerAcceptLists", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> producerAcceptLists;
 
     /**
@@ -180,7 +180,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Projects that are not allowed to connect to this network attachment. The project can be specified using its id or number.
      * 
      */
-    @Export(name="producerRejectLists", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="producerRejectLists", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> producerRejectLists;
 
     /**
@@ -195,7 +195,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -212,7 +212,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -228,7 +228,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Server-defined URL for the resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -242,7 +242,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * Server-defined URL for this resource&#39;s resource id.
      * 
      */
-    @Export(name="selfLinkWithId", refs={String.class}, tree="[0]")
+    @Export(name="selfLinkWithId", type=String.class, parameters={})
     private Output<String> selfLinkWithId;
 
     /**
@@ -256,7 +256,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
      * 
      */
-    @Export(name="subnetworks", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="subnetworks", type=List.class, parameters={String.class})
     private Output<List<String>> subnetworks;
 
     /**

@@ -109,7 +109,7 @@ public class EnvGroup extends com.pulumi.resources.CustomResource {
      * Hostnames of the environment group.
      * 
      */
-    @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="hostnames", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> hostnames;
 
     /**
@@ -123,7 +123,7 @@ public class EnvGroup extends com.pulumi.resources.CustomResource {
      * The resource ID of the environment group.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class EnvGroup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="orgId", refs={String.class}, tree="[0]")
+    @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**

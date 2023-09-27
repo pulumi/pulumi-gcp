@@ -337,11 +337,21 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
+        /// 
+        /// &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// Metadata related to network configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.ClusterNetworkConfig> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -479,11 +489,21 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
+        /// 
+        /// &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         /// </summary>
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Metadata related to network configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.ClusterNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -642,11 +662,21 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
+        /// 
+        /// &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Metadata related to network configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.ClusterNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

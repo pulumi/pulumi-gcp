@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:tags/tagKeyIamMember:TagKeyIamMember")
 public class TagKeyIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={TagKeyIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=TagKeyIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ TagKeyIamMemberCondition> condition;
 
     public Output<Optional<TagKeyIamMemberCondition>> condition() {
@@ -171,7 +171,7 @@ public class TagKeyIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -181,7 +181,7 @@ public class TagKeyIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -193,7 +193,7 @@ public class TagKeyIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -221,7 +221,7 @@ public class TagKeyIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="tagKey", refs={String.class}, tree="[0]")
+    @Export(name="tagKey", type=String.class, parameters={})
     private Output<String> tagKey;
 
     /**

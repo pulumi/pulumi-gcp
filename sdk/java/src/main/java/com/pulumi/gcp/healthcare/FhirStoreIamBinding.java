@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding")
 public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={FhirStoreIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=FhirStoreIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ FhirStoreIamBindingCondition> condition;
 
     public Output<Optional<FhirStoreIamBindingCondition>> condition() {
@@ -170,7 +170,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the FHIR store&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -196,7 +196,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="fhirStoreId", refs={String.class}, tree="[0]")
+    @Export(name="fhirStoreId", type=String.class, parameters={})
     private Output<String> fhirStoreId;
 
     /**
@@ -218,7 +218,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> fhirStoreId() {
         return this.fhirStoreId;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -230,7 +230,7 @@ public class FhirStoreIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

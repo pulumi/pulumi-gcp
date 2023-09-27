@@ -339,7 +339,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
@@ -444,7 +444,7 @@ class EdgeCacheKeyset(pulumi.CustomResource):
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,

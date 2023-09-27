@@ -173,6 +173,9 @@ func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataLossPreventionCustomEndpoint")
 }
+func GetDataPipelineCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataPipelineCustomEndpoint")
+}
 func GetDatabaseMigrationServiceCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:databaseMigrationServiceCustomEndpoint")
 }
@@ -217,6 +220,9 @@ func GetDocumentAiCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetDocumentAiWarehouseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:documentAiWarehouseCustomEndpoint")
+}
+func GetEdgenetworkCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:edgenetworkCustomEndpoint")
 }
 func GetEssentialContactsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:essentialContactsCustomEndpoint")
@@ -435,6 +441,9 @@ func GetSqlCustomEndpoint(ctx *pulumi.Context) string {
 func GetStorageCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageCustomEndpoint")
 }
+func GetStorageInsightsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:storageInsightsCustomEndpoint")
+}
 func GetStorageTransferCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageTransferCustomEndpoint")
 }
@@ -446,6 +455,9 @@ func GetTagsLocationCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuCustomEndpoint")
+}
+func GetTpuV2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:tpuV2CustomEndpoint")
 }
 func GetUserProjectOverride(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:userProjectOverride")

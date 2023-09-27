@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterClusterOperationsArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
@@ -16,6 +17,7 @@ import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterOsEnvironmentConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterProxyArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
+import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterUpgradePolicyArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -86,6 +88,23 @@ public final class BareMetalClusterArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<String> bareMetalVersion() {
         return this.bareMetalVersion;
+    }
+
+    /**
+     * Binary Authorization related configurations.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="binaryAuthorization")
+    private @Nullable Output<BareMetalClusterBinaryAuthorizationArgs> binaryAuthorization;
+
+    /**
+     * @return Binary Authorization related configurations.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BareMetalClusterBinaryAuthorizationArgs>> binaryAuthorization() {
+        return Optional.ofNullable(this.binaryAuthorization);
     }
 
     /**
@@ -337,12 +356,30 @@ public final class BareMetalClusterArgs extends com.pulumi.resources.ResourceArg
         return this.storage;
     }
 
+    /**
+     * The cluster upgrade policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="upgradePolicy")
+    private @Nullable Output<BareMetalClusterUpgradePolicyArgs> upgradePolicy;
+
+    /**
+     * @return The cluster upgrade policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BareMetalClusterUpgradePolicyArgs>> upgradePolicy() {
+        return Optional.ofNullable(this.upgradePolicy);
+    }
+
     private BareMetalClusterArgs() {}
 
     private BareMetalClusterArgs(BareMetalClusterArgs $) {
         this.adminClusterMembership = $.adminClusterMembership;
         this.annotations = $.annotations;
         this.bareMetalVersion = $.bareMetalVersion;
+        this.binaryAuthorization = $.binaryAuthorization;
         this.clusterOperations = $.clusterOperations;
         this.controlPlane = $.controlPlane;
         this.description = $.description;
@@ -358,6 +395,7 @@ public final class BareMetalClusterArgs extends com.pulumi.resources.ResourceArg
         this.proxy = $.proxy;
         this.securityConfig = $.securityConfig;
         this.storage = $.storage;
+        this.upgradePolicy = $.upgradePolicy;
     }
 
     public static Builder builder() {
@@ -455,6 +493,29 @@ public final class BareMetalClusterArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder bareMetalVersion(String bareMetalVersion) {
             return bareMetalVersion(Output.of(bareMetalVersion));
+        }
+
+        /**
+         * @param binaryAuthorization Binary Authorization related configurations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(@Nullable Output<BareMetalClusterBinaryAuthorizationArgs> binaryAuthorization) {
+            $.binaryAuthorization = binaryAuthorization;
+            return this;
+        }
+
+        /**
+         * @param binaryAuthorization Binary Authorization related configurations.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(BareMetalClusterBinaryAuthorizationArgs binaryAuthorization) {
+            return binaryAuthorization(Output.of(binaryAuthorization));
         }
 
         /**
@@ -794,6 +855,29 @@ public final class BareMetalClusterArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder storage(BareMetalClusterStorageArgs storage) {
             return storage(Output.of(storage));
+        }
+
+        /**
+         * @param upgradePolicy The cluster upgrade policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(@Nullable Output<BareMetalClusterUpgradePolicyArgs> upgradePolicy) {
+            $.upgradePolicy = upgradePolicy;
+            return this;
+        }
+
+        /**
+         * @param upgradePolicy The cluster upgrade policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(BareMetalClusterUpgradePolicyArgs upgradePolicy) {
+            return upgradePolicy(Output.of(upgradePolicy));
         }
 
         public BareMetalClusterArgs build() {

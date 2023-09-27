@@ -100,7 +100,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +114,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * A short name to identify the entry group, for example, &#34;analytics data - jan 2011&#34;.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -131,7 +131,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="entryGroupId", refs={String.class}, tree="[0]")
+    @Export(name="entryGroupId", type=String.class, parameters={})
     private Output<String> entryGroupId;
 
     /**
@@ -148,7 +148,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -163,7 +163,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -178,7 +178,7 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * EntryGroup location region.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

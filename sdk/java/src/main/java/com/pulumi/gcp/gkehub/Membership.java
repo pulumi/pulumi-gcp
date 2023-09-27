@@ -148,7 +148,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="authority", refs={MembershipAuthority.class}, tree="[0]")
+    @Export(name="authority", type=MembershipAuthority.class, parameters={})
     private Output</* @Nullable */ MembershipAuthority> authority;
 
     /**
@@ -172,7 +172,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* `description` is deprecated and will be removed in a future major release. */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -190,7 +190,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="endpoint", refs={MembershipEndpoint.class}, tree="[0]")
+    @Export(name="endpoint", type=MembershipEndpoint.class, parameters={})
     private Output</* @Nullable */ MembershipEndpoint> endpoint;
 
     /**
@@ -205,7 +205,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * Labels to apply to this membership.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -221,7 +221,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="membershipId", refs={String.class}, tree="[0]")
+    @Export(name="membershipId", type=String.class, parameters={})
     private Output<String> membershipId;
 
     /**
@@ -237,7 +237,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * The unique identifier of the membership.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -252,7 +252,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

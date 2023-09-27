@@ -50,7 +50,24 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location of the database. Available databases are listed at
+     * State of delete protection for the database.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
+    @Import(name="deleteProtectionState")
+    private @Nullable Output<String> deleteProtectionState;
+
+    /**
+     * @return State of delete protection for the database.
+     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> deleteProtectionState() {
+        return Optional.ofNullable(this.deleteProtectionState);
+    }
+
+    /**
+     * The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
@@ -58,7 +75,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> locationId;
 
     /**
-     * @return The location of the database. Available databases are listed at
+     * @return The location of the database. Available locations are listed at
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
@@ -89,6 +106,33 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Whether to enable the PITR feature on this database.
+     * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+     * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+     * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+     * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+     * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * 
+     */
+    @Import(name="pointInTimeRecoveryEnablement")
+    private @Nullable Output<String> pointInTimeRecoveryEnablement;
+
+    /**
+     * @return Whether to enable the PITR feature on this database.
+     * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+     * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+     * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+     * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+     * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+     * 
+     */
+    public Optional<Output<String>> pointInTimeRecoveryEnablement() {
+        return Optional.ofNullable(this.pointInTimeRecoveryEnablement);
     }
 
     /**
@@ -138,8 +182,10 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private DatabaseArgs(DatabaseArgs $) {
         this.appEngineIntegrationMode = $.appEngineIntegrationMode;
         this.concurrencyMode = $.concurrencyMode;
+        this.deleteProtectionState = $.deleteProtectionState;
         this.locationId = $.locationId;
         this.name = $.name;
+        this.pointInTimeRecoveryEnablement = $.pointInTimeRecoveryEnablement;
         this.project = $.project;
         this.type = $.type;
     }
@@ -209,7 +255,30 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locationId The location of the database. Available databases are listed at
+         * @param deleteProtectionState State of delete protection for the database.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteProtectionState(@Nullable Output<String> deleteProtectionState) {
+            $.deleteProtectionState = deleteProtectionState;
+            return this;
+        }
+
+        /**
+         * @param deleteProtectionState State of delete protection for the database.
+         * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteProtectionState(String deleteProtectionState) {
+            return deleteProtectionState(Output.of(deleteProtectionState));
+        }
+
+        /**
+         * @param locationId The location of the database. Available locations are listed at
          * https://cloud.google.com/firestore/docs/locations.
          * 
          * @return builder
@@ -221,7 +290,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locationId The location of the database. Available databases are listed at
+         * @param locationId The location of the database. Available locations are listed at
          * https://cloud.google.com/firestore/docs/locations.
          * 
          * @return builder
@@ -260,6 +329,39 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param pointInTimeRecoveryEnablement Whether to enable the PITR feature on this database.
+         * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+         * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+         * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+         * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+         * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pointInTimeRecoveryEnablement(@Nullable Output<String> pointInTimeRecoveryEnablement) {
+            $.pointInTimeRecoveryEnablement = pointInTimeRecoveryEnablement;
+            return this;
+        }
+
+        /**
+         * @param pointInTimeRecoveryEnablement Whether to enable the PITR feature on this database.
+         * If `POINT_IN_TIME_RECOVERY_ENABLED` is selected, reads are supported on selected versions of the data from within the past 7 days.
+         * versionRetentionPeriod and earliestVersionTime can be used to determine the supported versions. These include reads against any timestamp within the past hour
+         * and reads against 1-minute snapshots beyond 1 hour and within 7 days.
+         * If `POINT_IN_TIME_RECOVERY_DISABLED` is selected, reads are supported on any version of the data from within the past 1 hour.
+         * Default value is `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * Possible values are: `POINT_IN_TIME_RECOVERY_ENABLED`, `POINT_IN_TIME_RECOVERY_DISABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pointInTimeRecoveryEnablement(String pointInTimeRecoveryEnablement) {
+            return pointInTimeRecoveryEnablement(Output.of(pointInTimeRecoveryEnablement));
         }
 
         /**

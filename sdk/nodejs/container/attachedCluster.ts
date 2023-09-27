@@ -128,6 +128,11 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public readonly authorization!: pulumi.Output<outputs.container.AttachedClusterAuthorization | undefined>;
     /**
+     * Binary Authorization configuration.
+     * Structure is documented below.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.container.AttachedClusterBinaryAuthorization>;
+    /**
      * Output only. The region where this cluster runs.
      * For EKS clusters, this is an AWS region. For AKS clusters,
      * this is an Azure region.
@@ -248,6 +253,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             const state = argsOrState as AttachedClusterState | undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["authorization"] = state ? state.authorization : undefined;
+            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["clusterRegion"] = state ? state.clusterRegion : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
@@ -287,6 +293,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["authorization"] = args ? args.authorization : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distribution"] = args ? args.distribution : undefined;
@@ -331,6 +338,11 @@ export interface AttachedClusterState {
      * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
+    /**
+     * Binary Authorization configuration.
+     * Structure is documented below.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
     /**
      * Output only. The region where this cluster runs.
      * For EKS clusters, this is an AWS region. For AKS clusters,
@@ -456,6 +468,11 @@ export interface AttachedClusterArgs {
      * Structure is documented below.
      */
     authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
+    /**
+     * Binary Authorization configuration.
+     * Structure is documented below.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
     /**
      * Policy to determine what flags to send on delete.
      */

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.ScopeStateArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +46,21 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> deleteTime() {
         return Optional.ofNullable(this.deleteTime);
+    }
+
+    /**
+     * Labels for this Scope.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this Scope.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -150,6 +166,7 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
     private ScopeState(ScopeState $) {
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
+        this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
         this.scopeId = $.scopeId;
@@ -216,6 +233,27 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deleteTime(String deleteTime) {
             return deleteTime(Output.of(deleteTime));
+        }
+
+        /**
+         * @param labels Labels for this Scope.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this Scope.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

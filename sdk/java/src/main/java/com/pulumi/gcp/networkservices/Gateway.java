@@ -322,7 +322,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
      * 
      */
-    @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="addresses", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> addresses;
 
     /**
@@ -339,7 +339,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
-    @Export(name="certificateUrls", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="certificateUrls", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> certificateUrls;
 
     /**
@@ -354,7 +354,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Time the AccessPolicy was created in UTC.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -369,7 +369,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
      * 
      */
-    @Export(name="deleteSwgAutogenRouterOnDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="deleteSwgAutogenRouterOnDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deleteSwgAutogenRouterOnDestroy;
 
     /**
@@ -384,7 +384,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -400,7 +400,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
-    @Export(name="gatewaySecurityPolicy", refs={String.class}, tree="[0]")
+    @Export(name="gatewaySecurityPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> gatewaySecurityPolicy;
 
     /**
@@ -416,7 +416,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the Gateway resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -431,7 +431,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -448,7 +448,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -466,7 +466,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output</* @Nullable */ String> network;
 
     /**
@@ -484,7 +484,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * limited to 1 port. Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0 and support multiple ports.
      * 
      */
-    @Export(name="ports", refs={List.class,Integer.class}, tree="[0,1]")
+    @Export(name="ports", type=List.class, parameters={Integer.class})
     private Output<List<Integer>> ports;
 
     /**
@@ -501,7 +501,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -519,7 +519,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
-    @Export(name="scope", refs={String.class}, tree="[0]")
+    @Export(name="scope", type=String.class, parameters={})
     private Output</* @Nullable */ String> scope;
 
     /**
@@ -536,7 +536,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Server-defined URL of this resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -551,7 +551,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * If empty, TLS termination is disabled.
      * 
      */
-    @Export(name="serverTlsPolicy", refs={String.class}, tree="[0]")
+    @Export(name="serverTlsPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> serverTlsPolicy;
 
     /**
@@ -568,7 +568,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
      * 
      */
-    @Export(name="subnetwork", refs={String.class}, tree="[0]")
+    @Export(name="subnetwork", type=String.class, parameters={})
     private Output</* @Nullable */ String> subnetwork;
 
     /**
@@ -585,7 +585,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -600,7 +600,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Time the AccessPolicy was updated in UTC.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

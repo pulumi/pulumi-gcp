@@ -309,6 +309,10 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///         },
     ///         VmTrackingEnabled = true,
     ///         EnableControlPlaneV2 = true,
+    ///         UpgradePolicy = new Gcp.GkeOnPrem.Inputs.VMwareClusterUpgradePolicyArgs
+    ///         {
+    ///             ControlPlaneOnly = true,
+    ///         },
     ///         Authorization = new Gcp.GkeOnPrem.Inputs.VMwareClusterAuthorizationArgs
     ///         {
     ///             AdminUsers = new[]
@@ -554,6 +558,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies upgrade policy for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("upgradePolicy")]
+        public Output<Outputs.VMwareClusterUpgradePolicy?> UpgradePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// ValidationCheck represents the result of the preflight check job.
         /// Structure is documented below.
         /// </summary>
@@ -741,6 +752,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("storage")]
         public Input<Inputs.VMwareClusterStorageArgs>? Storage { get; set; }
+
+        /// <summary>
+        /// Specifies upgrade policy for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.VMwareClusterUpgradePolicyArgs>? UpgradePolicy { get; set; }
 
         /// <summary>
         /// Enable VM tracking.
@@ -972,6 +990,13 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Specifies upgrade policy for the cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("upgradePolicy")]
+        public Input<Inputs.VMwareClusterUpgradePolicyGetArgs>? UpgradePolicy { get; set; }
 
         [Input("validationChecks")]
         private InputList<Inputs.VMwareClusterValidationCheckGetArgs>? _validationChecks;

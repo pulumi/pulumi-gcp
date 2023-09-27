@@ -89,7 +89,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      * 
      */
-    @Export(name="bigqueryOptions", refs={BillingAccountSinkBigqueryOptions.class}, tree="[0]")
+    @Export(name="bigqueryOptions", type=BillingAccountSinkBigqueryOptions.class, parameters={})
     private Output<BillingAccountSinkBigqueryOptions> bigqueryOptions;
 
     /**
@@ -103,7 +103,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * The billing account exported to the sink.
      * 
      */
-    @Export(name="billingAccount", refs={String.class}, tree="[0]")
+    @Export(name="billingAccount", type=String.class, parameters={})
     private Output<String> billingAccount;
 
     /**
@@ -117,7 +117,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * A description of this sink. The maximum length of the description is 8000 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -139,7 +139,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * The writer associated with the sink must have access to write to the above resource.
      * 
      */
-    @Export(name="destination", refs={String.class}, tree="[0]")
+    @Export(name="destination", type=String.class, parameters={})
     private Output<String> destination;
 
     /**
@@ -161,7 +161,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * If set to True, then this sink is disabled and it does not export any log entries.
      * 
      */
-    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="disabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -175,7 +175,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      * 
      */
-    @Export(name="exclusions", refs={List.class,BillingAccountSinkExclusion.class}, tree="[0,1]")
+    @Export(name="exclusions", type=List.class, parameters={BillingAccountSinkExclusion.class})
     private Output</* @Nullable */ List<BillingAccountSinkExclusion>> exclusions;
 
     /**
@@ -191,7 +191,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * write a filter.
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
+    @Export(name="filter", type=String.class, parameters={})
     private Output</* @Nullable */ String> filter;
 
     /**
@@ -207,7 +207,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * The name of the logging sink.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -222,7 +222,7 @@ public class BillingAccountSink extends com.pulumi.resources.CustomResource {
      * configured `destination`.
      * 
      */
-    @Export(name="writerIdentity", refs={String.class}, tree="[0]")
+    @Export(name="writerIdentity", type=String.class, parameters={})
     private Output<String> writerIdentity;
 
     /**

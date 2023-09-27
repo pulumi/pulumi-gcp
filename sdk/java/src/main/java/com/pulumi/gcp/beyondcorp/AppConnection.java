@@ -183,7 +183,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="applicationEndpoint", refs={AppConnectionApplicationEndpoint.class}, tree="[0]")
+    @Export(name="applicationEndpoint", type=AppConnectionApplicationEndpoint.class, parameters={})
     private Output<AppConnectionApplicationEndpoint> applicationEndpoint;
 
     /**
@@ -198,7 +198,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * List of AppConnectors that are authorised to be associated with this AppConnection
      * 
      */
-    @Export(name="connectors", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="connectors", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> connectors;
 
     /**
@@ -212,7 +212,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * An arbitrary user-provided name for the AppConnection.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -227,7 +227,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gateway", refs={AppConnectionGateway.class}, tree="[0]")
+    @Export(name="gateway", type=AppConnectionGateway.class, parameters={})
     private Output<AppConnectionGateway> gateway;
 
     /**
@@ -242,7 +242,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user provided metadata.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -256,7 +256,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * ID of the AppConnection.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -271,7 +271,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -286,7 +286,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * The region of the AppConnection.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -307,7 +307,7 @@ public class AppConnection extends com.pulumi.resources.CustomResource {
      * for a list of possible values.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**

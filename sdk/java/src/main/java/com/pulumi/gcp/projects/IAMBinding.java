@@ -352,7 +352,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={IAMBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=IAMBindingCondition.class, parameters={})
     private Output</* @Nullable */ IAMBindingCondition> condition;
 
     /**
@@ -367,7 +367,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the project&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -377,7 +377,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -388,7 +388,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      * inferred from the provider.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -405,7 +405,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

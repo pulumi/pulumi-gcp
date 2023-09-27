@@ -216,7 +216,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * belong to the default &#34;live&#34; channel
      * 
      */
-    @Export(name="channelId", refs={String.class}, tree="[0]")
+    @Export(name="channelId", type=String.class, parameters={})
     private Output</* @Nullable */ String> channelId;
 
     /**
@@ -231,7 +231,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * The deploy description when the release was created. The value can be up to 512 characters.
      * 
      */
-    @Export(name="message", refs={String.class}, tree="[0]")
+    @Export(name="message", type=String.class, parameters={})
     private Output</* @Nullable */ String> message;
 
     /**
@@ -247,7 +247,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -263,7 +263,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * The unique identifier for the Release.
      * 
      */
-    @Export(name="releaseId", refs={String.class}, tree="[0]")
+    @Export(name="releaseId", type=String.class, parameters={})
     private Output<String> releaseId;
 
     /**
@@ -279,7 +279,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="siteId", refs={String.class}, tree="[0]")
+    @Export(name="siteId", type=String.class, parameters={})
     private Output<String> siteId;
 
     /**
@@ -300,7 +300,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -322,7 +322,7 @@ public class HostingRelease extends com.pulumi.resources.CustomResource {
      * This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
      * 
      */
-    @Export(name="versionName", refs={String.class}, tree="[0]")
+    @Export(name="versionName", type=String.class, parameters={})
     private Output</* @Nullable */ String> versionName;
 
     /**

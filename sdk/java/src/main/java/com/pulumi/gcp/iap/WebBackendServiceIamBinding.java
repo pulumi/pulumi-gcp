@@ -294,7 +294,7 @@ public class WebBackendServiceIamBinding extends com.pulumi.resources.CustomReso
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={WebBackendServiceIamBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=WebBackendServiceIamBindingCondition.class, parameters={})
     private Output</* @Nullable */ WebBackendServiceIamBindingCondition> condition;
 
     /**
@@ -309,7 +309,7 @@ public class WebBackendServiceIamBinding extends com.pulumi.resources.CustomReso
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -319,7 +319,7 @@ public class WebBackendServiceIamBinding extends com.pulumi.resources.CustomReso
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -342,7 +342,7 @@ public class WebBackendServiceIamBinding extends com.pulumi.resources.CustomReso
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -371,7 +371,7 @@ public class WebBackendServiceIamBinding extends com.pulumi.resources.CustomReso
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -387,7 +387,7 @@ public class WebBackendServiceIamBinding extends com.pulumi.resources.CustomReso
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="webBackendService", refs={String.class}, tree="[0]")
+    @Export(name="webBackendService", type=String.class, parameters={})
     private Output<String> webBackendService;
 
     /**

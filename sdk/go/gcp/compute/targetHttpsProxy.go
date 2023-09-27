@@ -88,6 +88,16 @@ type TargetHttpsProxy struct {
 	QuicOverride pulumi.StringPtrOutput `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
 	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
@@ -175,6 +185,16 @@ type targetHttpsProxyState struct {
 	QuicOverride *string `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
 	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates []string `pulumi:"sslCertificates"`
@@ -230,6 +250,16 @@ type TargetHttpsProxyState struct {
 	QuicOverride pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy pulumi.StringPtrInput
 	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
 	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates pulumi.StringArrayInput
@@ -283,6 +313,16 @@ type targetHttpsProxyArgs struct {
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride *string `pulumi:"quicOverride"`
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
 	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates []string `pulumi:"sslCertificates"`
@@ -333,6 +373,16 @@ type TargetHttpsProxyArgs struct {
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrInput
+	// A URL referring to a networksecurity.ServerTlsPolicy
+	// resource that describes how the proxy should authenticate inbound
+	// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+	// attached to globalForwardingRules with the loadBalancingScheme
+	// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+	// For details which ServerTlsPolicy resources are accepted with
+	// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+	// loadBalancingScheme consult ServerTlsPolicy documentation.
+	// If left blank, communications are not encrypted.
+	ServerTlsPolicy pulumi.StringPtrInput
 	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
 	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates pulumi.StringArrayInput
@@ -526,6 +576,19 @@ func (o TargetHttpsProxyOutput) QuicOverride() pulumi.StringPtrOutput {
 // The URI of the created resource.
 func (o TargetHttpsProxyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A URL referring to a networksecurity.ServerTlsPolicy
+// resource that describes how the proxy should authenticate inbound
+// traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
+// attached to globalForwardingRules with the loadBalancingScheme
+// set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
+// For details which ServerTlsPolicy resources are accepted with
+// INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
+// loadBalancingScheme consult ServerTlsPolicy documentation.
+// If left blank, communications are not encrypted.
+func (o TargetHttpsProxyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
 }
 
 // A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate

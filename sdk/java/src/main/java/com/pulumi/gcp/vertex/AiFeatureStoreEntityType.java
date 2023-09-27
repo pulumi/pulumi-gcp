@@ -178,7 +178,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -192,7 +192,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * Optional. Description of the EntityType.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -206,7 +206,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * Used to perform consistent read-modify-write updates.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -222,7 +222,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * ***
      * 
      */
-    @Export(name="featurestore", refs={String.class}, tree="[0]")
+    @Export(name="featurestore", type=String.class, parameters={})
     private Output<String> featurestore;
 
     /**
@@ -238,7 +238,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * A set of key/value label pairs to assign to this EntityType.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -254,7 +254,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * Structure is documented below.
      * 
      */
-    @Export(name="monitoringConfig", refs={AiFeatureStoreEntityTypeMonitoringConfig.class}, tree="[0]")
+    @Export(name="monitoringConfig", type=AiFeatureStoreEntityTypeMonitoringConfig.class, parameters={})
     private Output</* @Nullable */ AiFeatureStoreEntityTypeMonitoringConfig> monitoringConfig;
 
     /**
@@ -270,7 +270,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -286,7 +286,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
-    @Export(name="offlineStorageTtlDays", refs={Integer.class}, tree="[0]")
+    @Export(name="offlineStorageTtlDays", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> offlineStorageTtlDays;
 
     /**
@@ -302,7 +302,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * The region of the EntityType.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -316,7 +316,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
      * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

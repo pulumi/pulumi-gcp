@@ -135,7 +135,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -149,7 +149,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -163,7 +163,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="gatewayId", refs={Integer.class}, tree="[0]")
+    @Export(name="gatewayId", type=Integer.class, parameters={})
     private Output<Integer> gatewayId;
 
     /**
@@ -183,7 +183,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -205,7 +205,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="network", refs={String.class}, tree="[0]")
+    @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
@@ -222,7 +222,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -237,7 +237,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * The region this gateway should sit in.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -251,7 +251,7 @@ public class VPNGateway extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**

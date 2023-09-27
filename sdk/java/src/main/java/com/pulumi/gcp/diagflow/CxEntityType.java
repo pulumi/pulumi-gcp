@@ -119,7 +119,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      *   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      * 
      */
-    @Export(name="autoExpansionMode", refs={String.class}, tree="[0]")
+    @Export(name="autoExpansionMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> autoExpansionMode;
 
     /**
@@ -136,7 +136,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * The human-readable name of the entity type, unique within the agent.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -150,7 +150,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * Enables fuzzy entity extraction during classification.
      * 
      */
-    @Export(name="enableFuzzyExtraction", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableFuzzyExtraction", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableFuzzyExtraction;
 
     /**
@@ -165,7 +165,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="entities", refs={List.class,CxEntityTypeEntity.class}, tree="[0,1]")
+    @Export(name="entities", type=List.class, parameters={CxEntityTypeEntity.class})
     private Output<List<CxEntityTypeEntity>> entities;
 
     /**
@@ -182,7 +182,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="excludedPhrases", refs={List.class,CxEntityTypeExcludedPhrase.class}, tree="[0,1]")
+    @Export(name="excludedPhrases", type=List.class, parameters={CxEntityTypeExcludedPhrase.class})
     private Output</* @Nullable */ List<CxEntityTypeExcludedPhrase>> excludedPhrases;
 
     /**
@@ -202,7 +202,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      * 
      */
-    @Export(name="kind", refs={String.class}, tree="[0]")
+    @Export(name="kind", type=String.class, parameters={})
     private Output<String> kind;
 
     /**
@@ -224,7 +224,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * If not specified, the agent&#39;s default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      * 
      */
-    @Export(name="languageCode", refs={String.class}, tree="[0]")
+    @Export(name="languageCode", type=String.class, parameters={})
     private Output</* @Nullable */ String> languageCode;
 
     /**
@@ -243,7 +243,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -259,7 +259,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -274,7 +274,7 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
      * Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
      * 
      */
-    @Export(name="redact", refs={Boolean.class}, tree="[0]")
+    @Export(name="redact", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> redact;
 
     /**

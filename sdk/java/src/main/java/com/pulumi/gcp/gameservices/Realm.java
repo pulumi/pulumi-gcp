@@ -81,7 +81,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * Human readable description of the realm.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -95,7 +95,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * ETag of the resource.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -109,7 +109,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * The labels associated with this realm. Each label is a key-value pair.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -123,7 +123,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * Location of the Realm.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -139,7 +139,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * example, `projects/my-project/locations/{location}/realms/my-realm`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -156,7 +156,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -173,7 +173,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="realmId", refs={String.class}, tree="[0]")
+    @Export(name="realmId", type=String.class, parameters={})
     private Output<String> realmId;
 
     /**
@@ -191,7 +191,7 @@ public class Realm extends com.pulumi.resources.CustomResource {
      * https://www.iana.org/time-zones.
      * 
      */
-    @Export(name="timeZone", refs={String.class}, tree="[0]")
+    @Export(name="timeZone", type=String.class, parameters={})
     private Output<String> timeZone;
 
     /**

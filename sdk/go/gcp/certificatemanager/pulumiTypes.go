@@ -2137,6 +2137,260 @@ func (o TrustConfigTrustStoreTrustAnchorArrayOutput) Index(i pulumi.IntInput) Tr
 	}).(TrustConfigTrustStoreTrustAnchorOutput)
 }
 
+type GetCertificateMapGclbTarget struct {
+	IpConfigs        []GetCertificateMapGclbTargetIpConfig `pulumi:"ipConfigs"`
+	TargetHttpsProxy string                                `pulumi:"targetHttpsProxy"`
+	TargetSslProxy   string                                `pulumi:"targetSslProxy"`
+}
+
+// GetCertificateMapGclbTargetInput is an input type that accepts GetCertificateMapGclbTargetArgs and GetCertificateMapGclbTargetOutput values.
+// You can construct a concrete instance of `GetCertificateMapGclbTargetInput` via:
+//
+//	GetCertificateMapGclbTargetArgs{...}
+type GetCertificateMapGclbTargetInput interface {
+	pulumi.Input
+
+	ToGetCertificateMapGclbTargetOutput() GetCertificateMapGclbTargetOutput
+	ToGetCertificateMapGclbTargetOutputWithContext(context.Context) GetCertificateMapGclbTargetOutput
+}
+
+type GetCertificateMapGclbTargetArgs struct {
+	IpConfigs        GetCertificateMapGclbTargetIpConfigArrayInput `pulumi:"ipConfigs"`
+	TargetHttpsProxy pulumi.StringInput                            `pulumi:"targetHttpsProxy"`
+	TargetSslProxy   pulumi.StringInput                            `pulumi:"targetSslProxy"`
+}
+
+func (GetCertificateMapGclbTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificateMapGclbTarget)(nil)).Elem()
+}
+
+func (i GetCertificateMapGclbTargetArgs) ToGetCertificateMapGclbTargetOutput() GetCertificateMapGclbTargetOutput {
+	return i.ToGetCertificateMapGclbTargetOutputWithContext(context.Background())
+}
+
+func (i GetCertificateMapGclbTargetArgs) ToGetCertificateMapGclbTargetOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificateMapGclbTargetOutput)
+}
+
+func (i GetCertificateMapGclbTargetArgs) ToOutput(ctx context.Context) pulumix.Output[GetCertificateMapGclbTarget] {
+	return pulumix.Output[GetCertificateMapGclbTarget]{
+		OutputState: i.ToGetCertificateMapGclbTargetOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetCertificateMapGclbTargetArrayInput is an input type that accepts GetCertificateMapGclbTargetArray and GetCertificateMapGclbTargetArrayOutput values.
+// You can construct a concrete instance of `GetCertificateMapGclbTargetArrayInput` via:
+//
+//	GetCertificateMapGclbTargetArray{ GetCertificateMapGclbTargetArgs{...} }
+type GetCertificateMapGclbTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificateMapGclbTargetArrayOutput() GetCertificateMapGclbTargetArrayOutput
+	ToGetCertificateMapGclbTargetArrayOutputWithContext(context.Context) GetCertificateMapGclbTargetArrayOutput
+}
+
+type GetCertificateMapGclbTargetArray []GetCertificateMapGclbTargetInput
+
+func (GetCertificateMapGclbTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificateMapGclbTarget)(nil)).Elem()
+}
+
+func (i GetCertificateMapGclbTargetArray) ToGetCertificateMapGclbTargetArrayOutput() GetCertificateMapGclbTargetArrayOutput {
+	return i.ToGetCertificateMapGclbTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificateMapGclbTargetArray) ToGetCertificateMapGclbTargetArrayOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificateMapGclbTargetArrayOutput)
+}
+
+func (i GetCertificateMapGclbTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificateMapGclbTarget] {
+	return pulumix.Output[[]GetCertificateMapGclbTarget]{
+		OutputState: i.ToGetCertificateMapGclbTargetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetCertificateMapGclbTargetOutput struct{ *pulumi.OutputState }
+
+func (GetCertificateMapGclbTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificateMapGclbTarget)(nil)).Elem()
+}
+
+func (o GetCertificateMapGclbTargetOutput) ToGetCertificateMapGclbTargetOutput() GetCertificateMapGclbTargetOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetOutput) ToGetCertificateMapGclbTargetOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificateMapGclbTarget] {
+	return pulumix.Output[GetCertificateMapGclbTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetCertificateMapGclbTargetOutput) IpConfigs() GetCertificateMapGclbTargetIpConfigArrayOutput {
+	return o.ApplyT(func(v GetCertificateMapGclbTarget) []GetCertificateMapGclbTargetIpConfig { return v.IpConfigs }).(GetCertificateMapGclbTargetIpConfigArrayOutput)
+}
+
+func (o GetCertificateMapGclbTargetOutput) TargetHttpsProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateMapGclbTarget) string { return v.TargetHttpsProxy }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateMapGclbTargetOutput) TargetSslProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateMapGclbTarget) string { return v.TargetSslProxy }).(pulumi.StringOutput)
+}
+
+type GetCertificateMapGclbTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificateMapGclbTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificateMapGclbTarget)(nil)).Elem()
+}
+
+func (o GetCertificateMapGclbTargetArrayOutput) ToGetCertificateMapGclbTargetArrayOutput() GetCertificateMapGclbTargetArrayOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetArrayOutput) ToGetCertificateMapGclbTargetArrayOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetArrayOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificateMapGclbTarget] {
+	return pulumix.Output[[]GetCertificateMapGclbTarget]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetCertificateMapGclbTargetArrayOutput) Index(i pulumi.IntInput) GetCertificateMapGclbTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificateMapGclbTarget {
+		return vs[0].([]GetCertificateMapGclbTarget)[vs[1].(int)]
+	}).(GetCertificateMapGclbTargetOutput)
+}
+
+type GetCertificateMapGclbTargetIpConfig struct {
+	IpAddress string `pulumi:"ipAddress"`
+	Ports     []int  `pulumi:"ports"`
+}
+
+// GetCertificateMapGclbTargetIpConfigInput is an input type that accepts GetCertificateMapGclbTargetIpConfigArgs and GetCertificateMapGclbTargetIpConfigOutput values.
+// You can construct a concrete instance of `GetCertificateMapGclbTargetIpConfigInput` via:
+//
+//	GetCertificateMapGclbTargetIpConfigArgs{...}
+type GetCertificateMapGclbTargetIpConfigInput interface {
+	pulumi.Input
+
+	ToGetCertificateMapGclbTargetIpConfigOutput() GetCertificateMapGclbTargetIpConfigOutput
+	ToGetCertificateMapGclbTargetIpConfigOutputWithContext(context.Context) GetCertificateMapGclbTargetIpConfigOutput
+}
+
+type GetCertificateMapGclbTargetIpConfigArgs struct {
+	IpAddress pulumi.StringInput   `pulumi:"ipAddress"`
+	Ports     pulumi.IntArrayInput `pulumi:"ports"`
+}
+
+func (GetCertificateMapGclbTargetIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificateMapGclbTargetIpConfig)(nil)).Elem()
+}
+
+func (i GetCertificateMapGclbTargetIpConfigArgs) ToGetCertificateMapGclbTargetIpConfigOutput() GetCertificateMapGclbTargetIpConfigOutput {
+	return i.ToGetCertificateMapGclbTargetIpConfigOutputWithContext(context.Background())
+}
+
+func (i GetCertificateMapGclbTargetIpConfigArgs) ToGetCertificateMapGclbTargetIpConfigOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificateMapGclbTargetIpConfigOutput)
+}
+
+func (i GetCertificateMapGclbTargetIpConfigArgs) ToOutput(ctx context.Context) pulumix.Output[GetCertificateMapGclbTargetIpConfig] {
+	return pulumix.Output[GetCertificateMapGclbTargetIpConfig]{
+		OutputState: i.ToGetCertificateMapGclbTargetIpConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetCertificateMapGclbTargetIpConfigArrayInput is an input type that accepts GetCertificateMapGclbTargetIpConfigArray and GetCertificateMapGclbTargetIpConfigArrayOutput values.
+// You can construct a concrete instance of `GetCertificateMapGclbTargetIpConfigArrayInput` via:
+//
+//	GetCertificateMapGclbTargetIpConfigArray{ GetCertificateMapGclbTargetIpConfigArgs{...} }
+type GetCertificateMapGclbTargetIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificateMapGclbTargetIpConfigArrayOutput() GetCertificateMapGclbTargetIpConfigArrayOutput
+	ToGetCertificateMapGclbTargetIpConfigArrayOutputWithContext(context.Context) GetCertificateMapGclbTargetIpConfigArrayOutput
+}
+
+type GetCertificateMapGclbTargetIpConfigArray []GetCertificateMapGclbTargetIpConfigInput
+
+func (GetCertificateMapGclbTargetIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificateMapGclbTargetIpConfig)(nil)).Elem()
+}
+
+func (i GetCertificateMapGclbTargetIpConfigArray) ToGetCertificateMapGclbTargetIpConfigArrayOutput() GetCertificateMapGclbTargetIpConfigArrayOutput {
+	return i.ToGetCertificateMapGclbTargetIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificateMapGclbTargetIpConfigArray) ToGetCertificateMapGclbTargetIpConfigArrayOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificateMapGclbTargetIpConfigArrayOutput)
+}
+
+func (i GetCertificateMapGclbTargetIpConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificateMapGclbTargetIpConfig] {
+	return pulumix.Output[[]GetCertificateMapGclbTargetIpConfig]{
+		OutputState: i.ToGetCertificateMapGclbTargetIpConfigArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetCertificateMapGclbTargetIpConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCertificateMapGclbTargetIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificateMapGclbTargetIpConfig)(nil)).Elem()
+}
+
+func (o GetCertificateMapGclbTargetIpConfigOutput) ToGetCertificateMapGclbTargetIpConfigOutput() GetCertificateMapGclbTargetIpConfigOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetIpConfigOutput) ToGetCertificateMapGclbTargetIpConfigOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetIpConfigOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetIpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificateMapGclbTargetIpConfig] {
+	return pulumix.Output[GetCertificateMapGclbTargetIpConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetCertificateMapGclbTargetIpConfigOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateMapGclbTargetIpConfig) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateMapGclbTargetIpConfigOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetCertificateMapGclbTargetIpConfig) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+type GetCertificateMapGclbTargetIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificateMapGclbTargetIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificateMapGclbTargetIpConfig)(nil)).Elem()
+}
+
+func (o GetCertificateMapGclbTargetIpConfigArrayOutput) ToGetCertificateMapGclbTargetIpConfigArrayOutput() GetCertificateMapGclbTargetIpConfigArrayOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetIpConfigArrayOutput) ToGetCertificateMapGclbTargetIpConfigArrayOutputWithContext(ctx context.Context) GetCertificateMapGclbTargetIpConfigArrayOutput {
+	return o
+}
+
+func (o GetCertificateMapGclbTargetIpConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetCertificateMapGclbTargetIpConfig] {
+	return pulumix.Output[[]GetCertificateMapGclbTargetIpConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetCertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput) GetCertificateMapGclbTargetIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificateMapGclbTargetIpConfig {
+		return vs[0].([]GetCertificateMapGclbTargetIpConfig)[vs[1].(int)]
+	}).(GetCertificateMapGclbTargetIpConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigPtrInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
@@ -2162,6 +2416,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigTrustStoreIntermediateCaArrayInput)(nil)).Elem(), TrustConfigTrustStoreIntermediateCaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigTrustStoreTrustAnchorInput)(nil)).Elem(), TrustConfigTrustStoreTrustAnchorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrustConfigTrustStoreTrustAnchorArrayInput)(nil)).Elem(), TrustConfigTrustStoreTrustAnchorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetInput)(nil)).Elem(), GetCertificateMapGclbTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetArrayInput)(nil)).Elem(), GetCertificateMapGclbTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetIpConfigInput)(nil)).Elem(), GetCertificateMapGclbTargetIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetIpConfigArrayInput)(nil)).Elem(), GetCertificateMapGclbTargetIpConfigArray{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput{})
@@ -2186,4 +2444,8 @@ func init() {
 	pulumi.RegisterOutputType(TrustConfigTrustStoreIntermediateCaArrayOutput{})
 	pulumi.RegisterOutputType(TrustConfigTrustStoreTrustAnchorOutput{})
 	pulumi.RegisterOutputType(TrustConfigTrustStoreTrustAnchorArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificateMapGclbTargetOutput{})
+	pulumi.RegisterOutputType(GetCertificateMapGclbTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificateMapGclbTargetIpConfigOutput{})
+	pulumi.RegisterOutputType(GetCertificateMapGclbTargetIpConfigArrayOutput{})
 }

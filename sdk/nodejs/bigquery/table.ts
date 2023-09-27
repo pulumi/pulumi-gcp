@@ -247,6 +247,11 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Defines the primary key and foreign keys. 
+     * Structure is documented below.
+     */
+    public readonly tableConstraints!: pulumi.Output<outputs.bigquery.TableTableConstraints | undefined>;
+    /**
      * A unique ID for the resource.
      * Changing this forces a new resource to be created.
      */
@@ -302,6 +307,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["rangePartitioning"] = state ? state.rangePartitioning : undefined;
             resourceInputs["schema"] = state ? state.schema : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
             resourceInputs["timePartitioning"] = state ? state.timePartitioning : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -328,6 +334,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
@@ -483,6 +490,11 @@ export interface TableState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * Defines the primary key and foreign keys. 
+     * Structure is documented below.
+     */
+    tableConstraints?: pulumi.Input<inputs.bigquery.TableTableConstraints>;
+    /**
      * A unique ID for the resource.
      * Changing this forces a new resource to be created.
      */
@@ -608,6 +620,11 @@ export interface TableArgs {
      * documented above.
      */
     schema?: pulumi.Input<string>;
+    /**
+     * Defines the primary key and foreign keys. 
+     * Structure is documented below.
+     */
+    tableConstraints?: pulumi.Input<inputs.bigquery.TableTableConstraints>;
     /**
      * A unique ID for the resource.
      * Changing this forces a new resource to be created.

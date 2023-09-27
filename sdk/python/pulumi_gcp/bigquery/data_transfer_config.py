@@ -339,8 +339,9 @@ class _DataTransferConfigState:
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the
-               form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-               Where configId is usually a uuid, but this is not required.
+               form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+               or projects/{projectId}/transferConfigs/{configId},
+               where configId is usually a uuid, but this is not required.
                The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
                associated with this transfer config finish.
@@ -501,8 +502,9 @@ class _DataTransferConfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the transfer config. Transfer config names have the
-        form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-        Where configId is usually a uuid, but this is not required.
+        form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+        or projects/{projectId}/transferConfigs/{configId},
+        where configId is usually a uuid, but this is not required.
         The name is ignored when creating a transfer config.
         """
         return pulumi.get(self, "name")
@@ -908,8 +910,9 @@ class DataTransferConfig(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the transfer config. Transfer config names have the
-               form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-               Where configId is usually a uuid, but this is not required.
+               form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+               or projects/{projectId}/transferConfigs/{configId},
+               where configId is usually a uuid, but this is not required.
                The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
                associated with this transfer config finish.
@@ -1032,8 +1035,9 @@ class DataTransferConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the transfer config. Transfer config names have the
-        form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-        Where configId is usually a uuid, but this is not required.
+        form projects/{projectId}/locations/{location}/transferConfigs/{configId}
+        or projects/{projectId}/transferConfigs/{configId},
+        where configId is usually a uuid, but this is not required.
         The name is ignored when creating a transfer config.
         """
         return pulumi.get(self, "name")

@@ -314,7 +314,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="backupConfig", refs={BackupPlanBackupConfig.class}, tree="[0]")
+    @Export(name="backupConfig", type=BackupPlanBackupConfig.class, parameters={})
     private Output</* @Nullable */ BackupPlanBackupConfig> backupConfig;
 
     /**
@@ -330,7 +330,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="backupSchedule", refs={BackupPlanBackupSchedule.class}, tree="[0]")
+    @Export(name="backupSchedule", type=BackupPlanBackupSchedule.class, parameters={})
     private Output</* @Nullable */ BackupPlanBackupSchedule> backupSchedule;
 
     /**
@@ -345,7 +345,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The source cluster from which Backups will be created via this BackupPlan.
      * 
      */
-    @Export(name="cluster", refs={String.class}, tree="[0]")
+    @Export(name="cluster", type=String.class, parameters={})
     private Output<String> cluster;
 
     /**
@@ -362,7 +362,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * from being created via this BackupPlan (including scheduled Backups).
      * 
      */
-    @Export(name="deactivated", refs={Boolean.class}, tree="[0]")
+    @Export(name="deactivated", type=Boolean.class, parameters={})
     private Output<Boolean> deactivated;
 
     /**
@@ -379,7 +379,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * User specified descriptive string for this BackupPlan.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -398,7 +398,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -419,7 +419,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -437,7 +437,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -453,7 +453,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The full name of the BackupPlan Resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -468,7 +468,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -483,7 +483,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      * 
      */
-    @Export(name="protectedPodCount", refs={Integer.class}, tree="[0]")
+    @Export(name="protectedPodCount", type=Integer.class, parameters={})
     private Output<Integer> protectedPodCount;
 
     /**
@@ -498,7 +498,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="retentionPolicy", refs={BackupPlanRetentionPolicy.class}, tree="[0]")
+    @Export(name="retentionPolicy", type=BackupPlanRetentionPolicy.class, parameters={})
     private Output</* @Nullable */ BackupPlanRetentionPolicy> retentionPolicy;
 
     /**
@@ -513,7 +513,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * The State of the BackupPlan.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -527,7 +527,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Detailed description of why BackupPlan is in its current state.
      * 
      */
-    @Export(name="stateReason", refs={String.class}, tree="[0]")
+    @Export(name="stateReason", type=String.class, parameters={})
     private Output<String> stateReason;
 
     /**
@@ -541,7 +541,7 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
      * Server generated, unique identifier of UUID format.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**

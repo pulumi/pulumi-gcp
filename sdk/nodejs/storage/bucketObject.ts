@@ -85,7 +85,7 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    public readonly content!: pulumi.Output<string>;
     /**
      * [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
      */

@@ -100,7 +100,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="bucketSelfLink", refs={String.class}, tree="[0]")
+    @Export(name="bucketSelfLink", type=String.class, parameters={})
     private Output<String> bucketSelfLink;
 
     /**
@@ -114,7 +114,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The location of the registry. One of `ASIA`, `EU`, `US` or not specified. See [the official documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling#pushing_an_image_to_a_registry) for more information on registry locations.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
@@ -128,7 +128,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

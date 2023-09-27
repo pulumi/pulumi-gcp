@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "keya", "valuea" },
+    ///             { "keyb", "valueb" },
+    ///             { "keyc", "valuec" },
+    ///         },
     ///         ScopeId = "tf-test-scope%{random_suffix}",
     ///     });
     /// 
@@ -67,6 +73,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels for this Scope.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the scope
@@ -155,6 +167,18 @@ namespace Pulumi.Gcp.GkeHub
 
     public sealed class ScopeArgs : global::Pulumi.ResourceArgs
     {
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Scope.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -190,6 +214,18 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels for this Scope.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The unique identifier of the scope

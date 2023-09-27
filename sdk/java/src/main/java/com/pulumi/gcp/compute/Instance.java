@@ -126,7 +126,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
      * 
      */
-    @Export(name="advancedMachineFeatures", refs={InstanceAdvancedMachineFeatures.class}, tree="[0]")
+    @Export(name="advancedMachineFeatures", type=InstanceAdvancedMachineFeatures.class, parameters={})
     private Output</* @Nullable */ InstanceAdvancedMachineFeatures> advancedMachineFeatures;
 
     /**
@@ -141,7 +141,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      * 
      */
-    @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
+    @Export(name="allowStoppingForUpdate", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> allowStoppingForUpdate;
 
     /**
@@ -156,7 +156,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      * 
      */
-    @Export(name="attachedDisks", refs={List.class,InstanceAttachedDisk.class}, tree="[0,1]")
+    @Export(name="attachedDisks", type=List.class, parameters={InstanceAttachedDisk.class})
     private Output</* @Nullable */ List<InstanceAttachedDisk>> attachedDisks;
 
     /**
@@ -171,7 +171,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bootDisk", refs={InstanceBootDisk.class}, tree="[0]")
+    @Export(name="bootDisk", type=InstanceBootDisk.class, parameters={})
     private Output<InstanceBootDisk> bootDisk;
 
     /**
@@ -188,7 +188,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * This defaults to false.
      * 
      */
-    @Export(name="canIpForward", refs={Boolean.class}, tree="[0]")
+    @Export(name="canIpForward", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> canIpForward;
 
     /**
@@ -204,7 +204,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      * 
      */
-    @Export(name="confidentialInstanceConfig", refs={InstanceConfidentialInstanceConfig.class}, tree="[0]")
+    @Export(name="confidentialInstanceConfig", type=InstanceConfidentialInstanceConfig.class, parameters={})
     private Output<InstanceConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
@@ -218,7 +218,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The CPU platform used by this instance.
      * 
      */
-    @Export(name="cpuPlatform", refs={String.class}, tree="[0]")
+    @Export(name="cpuPlatform", type=String.class, parameters={})
     private Output<String> cpuPlatform;
 
     /**
@@ -232,7 +232,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
      * 
      */
-    @Export(name="currentStatus", refs={String.class}, tree="[0]")
+    @Export(name="currentStatus", type=String.class, parameters={})
     private Output<String> currentStatus;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      * 
      */
-    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -262,7 +262,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A brief description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -277,7 +277,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * `&#34;RUNNING&#34;` or `&#34;TERMINATED&#34;`.
      * 
      */
-    @Export(name="desiredStatus", refs={String.class}, tree="[0]")
+    @Export(name="desiredStatus", type=String.class, parameters={})
     private Output</* @Nullable */ String> desiredStatus;
 
     /**
@@ -293,7 +293,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
-    @Export(name="enableDisplay", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableDisplay", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableDisplay;
 
     /**
@@ -309,7 +309,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note:** GPU accelerators can only be used with `on_host_maintenance` option set to TERMINATE.
      * 
      */
-    @Export(name="guestAccelerators", refs={List.class,InstanceGuestAccelerator.class}, tree="[0,1]")
+    @Export(name="guestAccelerators", type=List.class, parameters={InstanceGuestAccelerator.class})
     private Output<List<InstanceGuestAccelerator>> guestAccelerators;
 
     /**
@@ -326,7 +326,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
+    @Export(name="hostname", type=String.class, parameters={})
     private Output</* @Nullable */ String> hostname;
 
     /**
@@ -342,7 +342,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The server-assigned unique identifier of this instance.
      * 
      */
-    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
     /**
@@ -356,7 +356,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the labels.
      * 
      */
-    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
@@ -370,7 +370,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A map of key/value label pairs to assign to the instance.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -390,7 +390,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      * 
      */
-    @Export(name="machineType", refs={String.class}, tree="[0]")
+    @Export(name="machineType", type=String.class, parameters={})
     private Output<String> machineType;
 
     /**
@@ -422,7 +422,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * we provide a special attribute, `metadata_startup_script`, which is documented below.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -448,7 +448,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the metadata.
      * 
      */
-    @Export(name="metadataFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="metadataFingerprint", type=String.class, parameters={})
     private Output<String> metadataFingerprint;
 
     /**
@@ -471,7 +471,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * is desired, you will need to modify your state file.
      * 
      */
-    @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
+    @Export(name="metadataStartupScript", type=String.class, parameters={})
     private Output</* @Nullable */ String> metadataStartupScript;
 
     /**
@@ -496,7 +496,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
-    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
+    @Export(name="minCpuPlatform", type=String.class, parameters={})
     private Output<String> minCpuPlatform;
 
     /**
@@ -513,7 +513,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -531,7 +531,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="networkInterfaces", refs={List.class,InstanceNetworkInterface.class}, tree="[0,1]")
+    @Export(name="networkInterfaces", type=List.class, parameters={InstanceNetworkInterface.class})
     private Output<List<InstanceNetworkInterface>> networkInterfaces;
 
     /**
@@ -552,7 +552,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * in order for this setting to take effect.
      * 
      */
-    @Export(name="networkPerformanceConfig", refs={InstanceNetworkPerformanceConfig.class}, tree="[0]")
+    @Export(name="networkPerformanceConfig", type=InstanceNetworkPerformanceConfig.class, parameters={})
     private Output</* @Nullable */ InstanceNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
@@ -571,7 +571,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * .
      * 
      */
-    @Export(name="params", refs={InstanceParams.class}, tree="[0]")
+    @Export(name="params", type=InstanceParams.class, parameters={})
     private Output</* @Nullable */ InstanceParams> params;
 
     /**
@@ -587,7 +587,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -603,7 +603,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="reservationAffinity", refs={InstanceReservationAffinity.class}, tree="[0]")
+    @Export(name="reservationAffinity", type=InstanceReservationAffinity.class, parameters={})
     private Output<InstanceReservationAffinity> reservationAffinity;
 
     /**
@@ -618,7 +618,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
-    @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
+    @Export(name="resourcePolicies", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourcePolicies;
 
     /**
@@ -633,7 +633,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * this configuration option are detailed below.
      * 
      */
-    @Export(name="scheduling", refs={InstanceScheduling.class}, tree="[0]")
+    @Export(name="scheduling", type=InstanceScheduling.class, parameters={})
     private Output<InstanceScheduling> scheduling;
 
     /**
@@ -649,7 +649,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * specified multiple times for multiple scratch disks. Structure is documented below.
      * 
      */
-    @Export(name="scratchDisks", refs={List.class,InstanceScratchDisk.class}, tree="[0,1]")
+    @Export(name="scratchDisks", type=List.class, parameters={InstanceScratchDisk.class})
     private Output</* @Nullable */ List<InstanceScratchDisk>> scratchDisks;
 
     /**
@@ -664,7 +664,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -680,7 +680,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
-    @Export(name="serviceAccount", refs={InstanceServiceAccount.class}, tree="[0]")
+    @Export(name="serviceAccount", type=InstanceServiceAccount.class, parameters={})
     private Output</* @Nullable */ InstanceServiceAccount> serviceAccount;
 
     /**
@@ -698,7 +698,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
-    @Export(name="shieldedInstanceConfig", refs={InstanceShieldedInstanceConfig.class}, tree="[0]")
+    @Export(name="shieldedInstanceConfig", type=InstanceShieldedInstanceConfig.class, parameters={})
     private Output<InstanceShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -714,7 +714,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of network tags to attach to the instance.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -728,7 +728,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The unique fingerprint of the tags.
      * 
      */
-    @Export(name="tagsFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="tagsFingerprint", type=String.class, parameters={})
     private Output<String> tagsFingerprint;
 
     /**
@@ -742,7 +742,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

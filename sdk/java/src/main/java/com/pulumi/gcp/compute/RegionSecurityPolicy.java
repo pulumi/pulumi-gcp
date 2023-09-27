@@ -167,7 +167,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="ddosProtectionConfig", refs={RegionSecurityPolicyDdosProtectionConfig.class}, tree="[0]")
+    @Export(name="ddosProtectionConfig", type=RegionSecurityPolicyDdosProtectionConfig.class, parameters={})
     private Output</* @Nullable */ RegionSecurityPolicyDdosProtectionConfig> ddosProtectionConfig;
 
     /**
@@ -182,7 +182,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * An optional description of this resource. Provide this property when you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -197,7 +197,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * updates of this resource.
      * 
      */
-    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
@@ -215,7 +215,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -232,7 +232,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
-    @Export(name="policyId", refs={String.class}, tree="[0]")
+    @Export(name="policyId", type=String.class, parameters={})
     private Output<String> policyId;
 
     /**
@@ -247,7 +247,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -263,7 +263,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -278,7 +278,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * Server-defined URL for the resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -292,7 +292,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * Server-defined URL for this resource with the resource id.
      * 
      */
-    @Export(name="selfLinkWithPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="selfLinkWithPolicyId", type=String.class, parameters={})
     private Output<String> selfLinkWithPolicyId;
 
     /**
@@ -311,7 +311,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      *   Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
@@ -333,7 +333,7 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="userDefinedFields", refs={List.class,RegionSecurityPolicyUserDefinedField.class}, tree="[0,1]")
+    @Export(name="userDefinedFields", type=List.class, parameters={RegionSecurityPolicyUserDefinedField.class})
     private Output</* @Nullable */ List<RegionSecurityPolicyUserDefinedField>> userDefinedFields;
 
     /**

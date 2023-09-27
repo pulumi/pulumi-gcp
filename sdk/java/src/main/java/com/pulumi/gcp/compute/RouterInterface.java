@@ -74,7 +74,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
-    @Export(name="interconnectAttachment", refs={String.class}, tree="[0]")
+    @Export(name="interconnectAttachment", type=String.class, parameters={})
     private Output</* @Nullable */ String> interconnectAttachment;
 
     /**
@@ -91,7 +91,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      * 
      */
-    @Export(name="ipRange", refs={String.class}, tree="[0]")
+    @Export(name="ipRange", type=String.class, parameters={})
     private Output<String> ipRange;
 
     /**
@@ -107,7 +107,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * this forces a new interface to be created.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -123,7 +123,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
      * 
      */
-    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="privateIpAddress", type=String.class, parameters={})
     private Output</* @Nullable */ String> privateIpAddress;
 
     /**
@@ -139,7 +139,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -155,7 +155,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * this interface. Changing this forces a new interface to be created.
      * 
      */
-    @Export(name="redundantInterface", refs={String.class}, tree="[0]")
+    @Export(name="redundantInterface", type=String.class, parameters={})
     private Output<String> redundantInterface;
 
     /**
@@ -171,7 +171,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * If not specified, the project region will be used. Changing this forces a new interface to be created.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -191,7 +191,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="router", refs={String.class}, tree="[0]")
+    @Export(name="router", type=String.class, parameters={})
     private Output<String> router;
 
     /**
@@ -211,7 +211,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
-    @Export(name="subnetwork", refs={String.class}, tree="[0]")
+    @Export(name="subnetwork", type=String.class, parameters={})
     private Output</* @Nullable */ String> subnetwork;
 
     /**
@@ -228,7 +228,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
-    @Export(name="vpnTunnel", refs={String.class}, tree="[0]")
+    @Export(name="vpnTunnel", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpnTunnel;
 
     /**

@@ -237,7 +237,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -251,7 +251,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -265,7 +265,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Detailed status message for the VPN tunnel.
      * 
      */
-    @Export(name="detailedStatus", refs={String.class}, tree="[0]")
+    @Export(name="detailedStatus", type=String.class, parameters={})
     private Output<String> detailedStatus;
 
     /**
@@ -281,7 +281,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Acceptable IKE versions are 1 or 2. Default version is 2.
      * 
      */
-    @Export(name="ikeVersion", refs={Integer.class}, tree="[0]")
+    @Export(name="ikeVersion", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ikeVersion;
 
     /**
@@ -297,7 +297,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      * 
      */
-    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
+    @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
@@ -311,7 +311,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Labels to apply to this VpnTunnel.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -328,7 +328,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Only IPv4 is supported.
      * 
      */
-    @Export(name="localTrafficSelectors", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="localTrafficSelectors", type=List.class, parameters={String.class})
     private Output<List<String>> localTrafficSelectors;
 
     /**
@@ -351,7 +351,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -371,7 +371,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * URL of the peer side external VPN gateway to which this VPN tunnel is connected.
      * 
      */
-    @Export(name="peerExternalGateway", refs={String.class}, tree="[0]")
+    @Export(name="peerExternalGateway", type=String.class, parameters={})
     private Output</* @Nullable */ String> peerExternalGateway;
 
     /**
@@ -385,7 +385,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * The interface ID of the external VPN gateway to which this VPN tunnel is connected.
      * 
      */
-    @Export(name="peerExternalGatewayInterface", refs={Integer.class}, tree="[0]")
+    @Export(name="peerExternalGatewayInterface", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> peerExternalGatewayInterface;
 
     /**
@@ -402,7 +402,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      * 
      */
-    @Export(name="peerGcpGateway", refs={String.class}, tree="[0]")
+    @Export(name="peerGcpGateway", type=String.class, parameters={})
     private Output</* @Nullable */ String> peerGcpGateway;
 
     /**
@@ -419,7 +419,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * IP address of the peer VPN gateway. Only IPv4 is supported.
      * 
      */
-    @Export(name="peerIp", refs={String.class}, tree="[0]")
+    @Export(name="peerIp", type=String.class, parameters={})
     private Output<String> peerIp;
 
     /**
@@ -434,7 +434,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -449,7 +449,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -466,7 +466,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Only IPv4 is supported.
      * 
      */
-    @Export(name="remoteTrafficSelectors", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="remoteTrafficSelectors", type=List.class, parameters={String.class})
     private Output<List<String>> remoteTrafficSelectors;
 
     /**
@@ -483,7 +483,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * URL of router resource to be used for dynamic routing.
      * 
      */
-    @Export(name="router", refs={String.class}, tree="[0]")
+    @Export(name="router", type=String.class, parameters={})
     private Output</* @Nullable */ String> router;
 
     /**
@@ -497,7 +497,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -515,7 +515,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="sharedSecret", refs={String.class}, tree="[0]")
+    @Export(name="sharedSecret", type=String.class, parameters={})
     private Output<String> sharedSecret;
 
     /**
@@ -533,7 +533,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * Hash of the shared secret.
      * 
      */
-    @Export(name="sharedSecretHash", refs={String.class}, tree="[0]")
+    @Export(name="sharedSecretHash", type=String.class, parameters={})
     private Output<String> sharedSecretHash;
 
     /**
@@ -548,7 +548,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * associated.
      * 
      */
-    @Export(name="targetVpnGateway", refs={String.class}, tree="[0]")
+    @Export(name="targetVpnGateway", type=String.class, parameters={})
     private Output</* @Nullable */ String> targetVpnGateway;
 
     /**
@@ -563,7 +563,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
-    @Export(name="tunnelId", refs={String.class}, tree="[0]")
+    @Export(name="tunnelId", type=String.class, parameters={})
     private Output<String> tunnelId;
 
     /**
@@ -579,7 +579,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * This field must reference a `gcp.compute.HaVpnGateway` resource.
      * 
      */
-    @Export(name="vpnGateway", refs={String.class}, tree="[0]")
+    @Export(name="vpnGateway", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpnGateway;
 
     /**
@@ -595,7 +595,7 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
      * The interface ID of the VPN gateway with which this VPN tunnel is associated.
      * 
      */
-    @Export(name="vpnGatewayInterface", refs={Integer.class}, tree="[0]")
+    @Export(name="vpnGatewayInterface", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> vpnGatewayInterface;
 
     /**

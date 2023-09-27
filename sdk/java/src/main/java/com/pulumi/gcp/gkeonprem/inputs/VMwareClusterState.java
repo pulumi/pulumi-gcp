@@ -15,6 +15,7 @@ import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStatusArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStorageArgs;
+import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterValidationCheckArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterVcenterArgs;
 import java.lang.Boolean;
@@ -510,6 +511,23 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="upgradePolicy")
+    private @Nullable Output<VMwareClusterUpgradePolicyArgs> upgradePolicy;
+
+    /**
+     * @return Specifies upgrade policy for the cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VMwareClusterUpgradePolicyArgs>> upgradePolicy() {
+        return Optional.ofNullable(this.upgradePolicy);
+    }
+
+    /**
      * ValidationCheck represents the result of the preflight check job.
      * Structure is documented below.
      * 
@@ -590,6 +608,7 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
         this.storage = $.storage;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
+        this.upgradePolicy = $.upgradePolicy;
         this.validationChecks = $.validationChecks;
         this.vcenters = $.vcenters;
         this.vmTrackingEnabled = $.vmTrackingEnabled;
@@ -1275,6 +1294,29 @@ public final class VMwareClusterState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param upgradePolicy Specifies upgrade policy for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(@Nullable Output<VMwareClusterUpgradePolicyArgs> upgradePolicy) {
+            $.upgradePolicy = upgradePolicy;
+            return this;
+        }
+
+        /**
+         * @param upgradePolicy Specifies upgrade policy for the cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradePolicy(VMwareClusterUpgradePolicyArgs upgradePolicy) {
+            return upgradePolicy(Output.of(upgradePolicy));
         }
 
         /**

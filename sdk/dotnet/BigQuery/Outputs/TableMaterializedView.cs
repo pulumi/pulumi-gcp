@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class TableMaterializedView
     {
         /// <summary>
+        /// Allow non incremental materialized view definition.
+        /// The default value is false.
+        /// </summary>
+        public readonly bool? AllowNonIncrementalDefinition;
+        /// <summary>
         /// Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
         /// The default value is true.
         /// </summary>
@@ -30,12 +35,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
         [OutputConstructor]
         private TableMaterializedView(
+            bool? allowNonIncrementalDefinition,
+
             bool? enableRefresh,
 
             string query,
 
             int? refreshIntervalMs)
         {
+            AllowNonIncrementalDefinition = allowNonIncrementalDefinition;
             EnableRefresh = enableRefresh;
             Query = query;
             RefreshIntervalMs = refreshIntervalMs;

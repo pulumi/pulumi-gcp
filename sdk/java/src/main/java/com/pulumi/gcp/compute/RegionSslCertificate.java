@@ -220,7 +220,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="certificate", refs={String.class}, tree="[0]")
+    @Export(name="certificate", type=String.class, parameters={})
     private Output<String> certificate;
 
     /**
@@ -237,7 +237,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="certificateId", refs={Integer.class}, tree="[0]")
+    @Export(name="certificateId", type=Integer.class, parameters={})
     private Output<Integer> certificateId;
 
     /**
@@ -251,7 +251,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -265,7 +265,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -279,7 +279,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * Expire time of the certificate in RFC3339 text format.
      * 
      */
-    @Export(name="expireTime", refs={String.class}, tree="[0]")
+    @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
@@ -301,7 +301,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * These are in the same namespace as the managed SSL certificates.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -324,7 +324,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * specified prefix. Conflicts with `name`.
      * 
      */
-    @Export(name="namePrefix", refs={String.class}, tree="[0]")
+    @Export(name="namePrefix", type=String.class, parameters={})
     private Output<String> namePrefix;
 
     /**
@@ -342,7 +342,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="privateKey", refs={String.class}, tree="[0]")
+    @Export(name="privateKey", type=String.class, parameters={})
     private Output<String> privateKey;
 
     /**
@@ -360,7 +360,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -376,7 +376,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -391,7 +391,7 @@ public class RegionSslCertificate extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**

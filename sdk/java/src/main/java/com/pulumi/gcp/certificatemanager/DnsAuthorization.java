@@ -78,7 +78,7 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      * A human-readable description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -95,7 +95,7 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dnsResourceRecords", refs={List.class,DnsAuthorizationDnsResourceRecord.class}, tree="[0,1]")
+    @Export(name="dnsResourceRecords", type=List.class, parameters={DnsAuthorizationDnsResourceRecord.class})
     private Output<List<DnsAuthorizationDnsResourceRecord>> dnsResourceRecords;
 
     /**
@@ -114,7 +114,7 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      * be used to issue certificates for &#34;example.com&#34; and &#34;*.example.com&#34;.
      * 
      */
-    @Export(name="domain", refs={String.class}, tree="[0]")
+    @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
     /**
@@ -130,7 +130,7 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the DNS Authorization resource.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -148,7 +148,7 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -167,7 +167,7 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**

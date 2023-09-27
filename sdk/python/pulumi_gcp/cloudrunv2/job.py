@@ -755,7 +755,7 @@ class Job(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
@@ -841,6 +841,35 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Cloudrunv2 Job Directvpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            location="us-central1",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/job",
+                    )],
+                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
+                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
+                            network="default",
+                            subnetwork="default",
+                            tags=[
+                                "tag1",
+                                "tag2",
+                                "tag3",
+                            ],
+                        )],
+                        egress="ALL_TRAFFIC",
+                    ),
+                ),
+            ))
+        ```
         ### Cloudrunv2 Job Secret
 
         ```python
@@ -850,7 +879,7 @@ class Job(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,
@@ -1016,7 +1045,7 @@ class Job(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         instance = gcp.sql.DatabaseInstance("instance",
             region="us-central1",
@@ -1102,6 +1131,35 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Cloudrunv2 Job Directvpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            location="us-central1",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/job",
+                    )],
+                    vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
+                        network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
+                            network="default",
+                            subnetwork="default",
+                            tags=[
+                                "tag1",
+                                "tag2",
+                                "tag3",
+                            ],
+                        )],
+                        egress="ALL_TRAFFIC",
+                    ),
+                ),
+            ))
+        ```
         ### Cloudrunv2 Job Secret
 
         ```python
@@ -1111,7 +1169,7 @@ class Job(pulumi.CustomResource):
         secret = gcp.secretmanager.Secret("secret",
             secret_id="secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
-                automatic=True,
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
             ))
         secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
             secret=secret.name,

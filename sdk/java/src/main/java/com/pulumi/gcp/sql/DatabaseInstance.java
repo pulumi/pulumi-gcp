@@ -257,7 +257,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The list of all maintenance versions applicable on the instance.
      * 
      */
-    @Export(name="availableMaintenanceVersions", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="availableMaintenanceVersions", type=List.class, parameters={String.class})
     private Output<List<String>> availableMaintenanceVersions;
 
     /**
@@ -273,7 +273,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * configuration is detailed below.
      * 
      */
-    @Export(name="clone", refs={DatabaseInstanceClone.class}, tree="[0]")
+    @Export(name="clone", type=DatabaseInstanceClone.class, parameters={})
     private Output</* @Nullable */ DatabaseInstanceClone> clone;
 
     /**
@@ -290,7 +290,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      * 
      */
-    @Export(name="connectionName", refs={String.class}, tree="[0]")
+    @Export(name="connectionName", type=String.class, parameters={})
     private Output<String> connectionName;
 
     /**
@@ -313,7 +313,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * includes an up-to-date reference of supported versions.
      * 
      */
-    @Export(name="databaseVersion", refs={String.class}, tree="[0]")
+    @Export(name="databaseVersion", type=String.class, parameters={})
     private Output<String> databaseVersion;
 
     /**
@@ -336,7 +336,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      * 
      */
-    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -351,7 +351,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The dns name of the instance.
      * 
      */
-    @Export(name="dnsName", refs={String.class}, tree="[0]")
+    @Export(name="dnsName", type=String.class, parameters={})
     private Output<String> dnsName;
 
     /**
@@ -372,7 +372,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      * 
      */
-    @Export(name="encryptionKeyName", refs={String.class}, tree="[0]")
+    @Export(name="encryptionKeyName", type=String.class, parameters={})
     private Output<String> encryptionKeyName;
 
     /**
@@ -393,7 +393,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The first IPv4 address of any type assigned.
      * 
      */
-    @Export(name="firstIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="firstIpAddress", type=String.class, parameters={})
     private Output<String> firstIpAddress;
 
     /**
@@ -407,7 +407,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The type of the instance. The supported values are `SQL_INSTANCE_TYPE_UNSPECIFIED`, `CLOUD_SQL_INSTANCE`, `ON_PREMISES_INSTANCE` and `READ_REPLICA_INSTANCE`.
      * 
      */
-    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
@@ -417,7 +417,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     public Output<String> instanceType() {
         return this.instanceType;
     }
-    @Export(name="ipAddresses", refs={List.class,DatabaseInstanceIpAddress.class}, tree="[0,1]")
+    @Export(name="ipAddresses", type=List.class, parameters={DatabaseInstanceIpAddress.class})
     private Output<List<DatabaseInstanceIpAddress>> ipAddresses;
 
     public Output<List<DatabaseInstanceIpAddress>> ipAddresses() {
@@ -427,7 +427,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
      * 
      */
-    @Export(name="maintenanceVersion", refs={String.class}, tree="[0]")
+    @Export(name="maintenanceVersion", type=String.class, parameters={})
     private Output<String> maintenanceVersion;
 
     /**
@@ -443,7 +443,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * have `binary_log_enabled` set, as well as existing backups.
      * 
      */
-    @Export(name="masterInstanceName", refs={String.class}, tree="[0]")
+    @Export(name="masterInstanceName", type=String.class, parameters={})
     private Output<String> masterInstanceName;
 
     /**
@@ -462,7 +462,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -479,7 +479,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The first private (`PRIVATE`) IPv4 address assigned.
      * 
      */
-    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="privateIpAddress", type=String.class, parameters={})
     private Output<String> privateIpAddress;
 
     /**
@@ -494,7 +494,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -509,7 +509,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The link to service attachment of PSC instance.
      * 
      */
-    @Export(name="pscServiceAttachmentLink", refs={String.class}, tree="[0]")
+    @Export(name="pscServiceAttachmentLink", type=String.class, parameters={})
     private Output<String> pscServiceAttachmentLink;
 
     /**
@@ -523,7 +523,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The first public (`PRIMARY`) IPv4 address assigned.
      * 
      */
-    @Export(name="publicIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="publicIpAddress", type=String.class, parameters={})
     private Output<String> publicIpAddress;
 
     /**
@@ -540,7 +540,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -558,7 +558,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * configuration is detailed below. Valid only for MySQL instances.
      * 
      */
-    @Export(name="replicaConfiguration", refs={DatabaseInstanceReplicaConfiguration.class}, tree="[0]")
+    @Export(name="replicaConfiguration", type=DatabaseInstanceReplicaConfiguration.class, parameters={})
     private Output<DatabaseInstanceReplicaConfiguration> replicaConfiguration;
 
     /**
@@ -576,7 +576,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      * 
      */
-    @Export(name="restoreBackupContext", refs={DatabaseInstanceRestoreBackupContext.class}, tree="[0]")
+    @Export(name="restoreBackupContext", type=DatabaseInstanceRestoreBackupContext.class, parameters={})
     private Output</* @Nullable */ DatabaseInstanceRestoreBackupContext> restoreBackupContext;
 
     /**
@@ -593,7 +593,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * Initial root password. Can be updated. Required for MS SQL Server.
      * 
      */
-    @Export(name="rootPassword", refs={String.class}, tree="[0]")
+    @Export(name="rootPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> rootPassword;
 
     /**
@@ -607,7 +607,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -617,7 +617,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     public Output<String> selfLink() {
         return this.selfLink;
     }
-    @Export(name="serverCaCerts", refs={List.class,DatabaseInstanceServerCaCert.class}, tree="[0,1]")
+    @Export(name="serverCaCerts", type=List.class, parameters={DatabaseInstanceServerCaCert.class})
     private Output<List<DatabaseInstanceServerCaCert>> serverCaCerts;
 
     public Output<List<DatabaseInstanceServerCaCert>> serverCaCerts() {
@@ -628,7 +628,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * instance.
      * 
      */
-    @Export(name="serviceAccountEmailAddress", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccountEmailAddress", type=String.class, parameters={})
     private Output<String> serviceAccountEmailAddress;
 
     /**
@@ -644,7 +644,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * configuration is detailed below. Required if `clone` is not set.
      * 
      */
-    @Export(name="settings", refs={DatabaseInstanceSettings.class}, tree="[0]")
+    @Export(name="settings", type=DatabaseInstanceSettings.class, parameters={})
     private Output<DatabaseInstanceSettings> settings;
 
     /**

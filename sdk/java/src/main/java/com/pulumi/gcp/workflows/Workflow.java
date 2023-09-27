@@ -103,7 +103,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * The timestamp of when the workflow was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -118,7 +118,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      * 
      */
-    @Export(name="cryptoKeyName", refs={String.class}, tree="[0]")
+    @Export(name="cryptoKeyName", type=String.class, parameters={})
     private Output</* @Nullable */ String> cryptoKeyName;
 
     /**
@@ -133,7 +133,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -147,7 +147,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this Workflow.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -161,7 +161,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * Name of the Workflow.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * specified prefix. If this and name are unspecified, a random value is chosen for the name.
      * 
      */
-    @Export(name="namePrefix", refs={String.class}, tree="[0]")
+    @Export(name="namePrefix", type=String.class, parameters={})
     private Output<String> namePrefix;
 
     /**
@@ -192,7 +192,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -207,7 +207,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * The region of the workflow.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -221,7 +221,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * The revision of the workflow. A new one is generated if the service account or source contents is changed.
      * 
      */
-    @Export(name="revisionId", refs={String.class}, tree="[0]")
+    @Export(name="revisionId", type=String.class, parameters={})
     private Output<String> revisionId;
 
     /**
@@ -241,7 +241,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * Modifying this field for an existing workflow results in a new workflow revision.
      * 
      */
-    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
@@ -261,7 +261,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * Workflow code to be executed. The size limit is 32KB.
      * 
      */
-    @Export(name="sourceContents", refs={String.class}, tree="[0]")
+    @Export(name="sourceContents", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceContents;
 
     /**
@@ -275,7 +275,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * State of the workflow deployment.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -289,7 +289,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      * The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

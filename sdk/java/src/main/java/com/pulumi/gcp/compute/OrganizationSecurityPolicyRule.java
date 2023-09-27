@@ -107,7 +107,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * &#34;allow&#34;, &#34;deny&#34; or &#34;goto_next&#34;.
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
+    @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
@@ -125,7 +125,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * A description of the rule.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -143,7 +143,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
-    @Export(name="direction", refs={String.class}, tree="[0]")
+    @Export(name="direction", type=String.class, parameters={})
     private Output</* @Nullable */ String> direction;
 
     /**
@@ -160,7 +160,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * configured export destination in Stackdriver.
      * 
      */
-    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableLogging", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
@@ -177,7 +177,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * Structure is documented below.
      * 
      */
-    @Export(name="match", refs={OrganizationSecurityPolicyRuleMatch.class}, tree="[0]")
+    @Export(name="match", type=OrganizationSecurityPolicyRuleMatch.class, parameters={})
     private Output<OrganizationSecurityPolicyRuleMatch> match;
 
     /**
@@ -192,7 +192,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * The ID of the OrganizationSecurityPolicy this rule applies to.
      * 
      */
-    @Export(name="policyId", refs={String.class}, tree="[0]")
+    @Export(name="policyId", type=String.class, parameters={})
     private Output<String> policyId;
 
     /**
@@ -206,7 +206,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * If set to true, the specified action is not enforced.
      * 
      */
-    @Export(name="preview", refs={Boolean.class}, tree="[0]")
+    @Export(name="preview", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> preview;
 
     /**
@@ -222,7 +222,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * highest priority and 2147483647 is the lowest prority.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output<Integer> priority;
 
     /**
@@ -241,7 +241,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * within the organization will receive the rule.
      * 
      */
-    @Export(name="targetResources", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="targetResources", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> targetResources;
 
     /**
@@ -259,7 +259,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      * instances that are applied with this rule.
      * 
      */
-    @Export(name="targetServiceAccounts", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="targetServiceAccounts", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> targetServiceAccounts;
 
     /**

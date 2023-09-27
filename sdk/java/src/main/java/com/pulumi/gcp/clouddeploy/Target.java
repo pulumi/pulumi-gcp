@@ -210,7 +210,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
      */
-    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -224,7 +224,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Information specifying an Anthos Cluster.
      * 
      */
-    @Export(name="anthosCluster", refs={TargetAnthosCluster.class}, tree="[0]")
+    @Export(name="anthosCluster", type=TargetAnthosCluster.class, parameters={})
     private Output</* @Nullable */ TargetAnthosCluster> anthosCluster;
 
     /**
@@ -238,7 +238,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Output only. Time at which the `Target` was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -252,7 +252,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Optional. The deploy parameters to use for this target.
      * 
      */
-    @Export(name="deployParameters", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="deployParameters", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> deployParameters;
 
     /**
@@ -266,7 +266,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Optional. Description of the `Target`. Max length is 255 characters.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -280,7 +280,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -294,7 +294,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
      * 
      */
-    @Export(name="executionConfigs", refs={List.class,TargetExecutionConfig.class}, tree="[0,1]")
+    @Export(name="executionConfigs", type=List.class, parameters={TargetExecutionConfig.class})
     private Output<List<TargetExecutionConfig>> executionConfigs;
 
     /**
@@ -308,7 +308,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Information specifying a GKE Cluster.
      * 
      */
-    @Export(name="gke", refs={TargetGke.class}, tree="[0]")
+    @Export(name="gke", type=TargetGke.class, parameters={})
     private Output</* @Nullable */ TargetGke> gke;
 
     /**
@@ -322,7 +322,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -336,7 +336,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -350,7 +350,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Information specifying a multiTarget.
      * 
      */
-    @Export(name="multiTarget", refs={TargetMultiTarget.class}, tree="[0]")
+    @Export(name="multiTarget", type=TargetMultiTarget.class, parameters={})
     private Output</* @Nullable */ TargetMultiTarget> multiTarget;
 
     /**
@@ -366,7 +366,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -382,7 +382,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -396,7 +396,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Optional. Whether or not the `Target` requires approval.
      * 
      */
-    @Export(name="requireApproval", refs={Boolean.class}, tree="[0]")
+    @Export(name="requireApproval", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> requireApproval;
 
     /**
@@ -410,7 +410,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Information specifying a Cloud Run deployment target.
      * 
      */
-    @Export(name="run", refs={TargetRun.class}, tree="[0]")
+    @Export(name="run", type=TargetRun.class, parameters={})
     private Output</* @Nullable */ TargetRun> run;
 
     /**
@@ -424,7 +424,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Output only. Resource id of the `Target`.
      * 
      */
-    @Export(name="targetId", refs={String.class}, tree="[0]")
+    @Export(name="targetId", type=String.class, parameters={})
     private Output<String> targetId;
 
     /**
@@ -438,7 +438,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Output only. Unique identifier of the `Target`.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -452,7 +452,7 @@ public class Target extends com.pulumi.resources.CustomResource {
      * Output only. Most recent time at which the `Target` was updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

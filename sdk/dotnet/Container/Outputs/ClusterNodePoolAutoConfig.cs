@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolAutoConfig
     {
         /// <summary>
-        /// ) - The network tag config for the cluster's automatically provisioned node pools.
+        /// The network tag config for the cluster's automatically provisioned node pools.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigNetworkTags? NetworkTags;
 

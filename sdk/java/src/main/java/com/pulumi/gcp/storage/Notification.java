@@ -109,7 +109,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * The name of the bucket.
      * 
      */
-    @Export(name="bucket", refs={String.class}, tree="[0]")
+    @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     /**
@@ -123,7 +123,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
      * 
      */
-    @Export(name="customAttributes", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="customAttributes", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customAttributes;
 
     /**
@@ -137,7 +137,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `&#34;OBJECT_FINALIZE&#34;`, `&#34;OBJECT_METADATA_UPDATE&#34;`, `&#34;OBJECT_DELETE&#34;`, `&#34;OBJECT_ARCHIVE&#34;`
      * 
      */
-    @Export(name="eventTypes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="eventTypes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> eventTypes;
 
     /**
@@ -151,7 +151,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * The ID of the created notification.
      * 
      */
-    @Export(name="notificationId", refs={String.class}, tree="[0]")
+    @Export(name="notificationId", type=String.class, parameters={})
     private Output<String> notificationId;
 
     /**
@@ -165,7 +165,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
      * 
      */
-    @Export(name="objectNamePrefix", refs={String.class}, tree="[0]")
+    @Export(name="objectNamePrefix", type=String.class, parameters={})
     private Output</* @Nullable */ String> objectNamePrefix;
 
     /**
@@ -179,7 +179,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * The desired content of the Payload. One of `&#34;JSON_API_V1&#34;` or `&#34;NONE&#34;`.
      * 
      */
-    @Export(name="payloadFormat", refs={String.class}, tree="[0]")
+    @Export(name="payloadFormat", type=String.class, parameters={})
     private Output<String> payloadFormat;
 
     /**
@@ -193,7 +193,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -212,7 +212,7 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="topic", refs={String.class}, tree="[0]")
+    @Export(name="topic", type=String.class, parameters={})
     private Output<String> topic;
 
     /**

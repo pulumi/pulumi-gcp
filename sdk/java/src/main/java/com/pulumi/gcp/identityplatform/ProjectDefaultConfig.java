@@ -95,7 +95,7 @@ public class ProjectDefaultConfig extends com.pulumi.resources.CustomResource {
      * The name of the Config resource. Example: &#34;projects/my-awesome-project/config&#34;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class ProjectDefaultConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -126,7 +126,7 @@ public class ProjectDefaultConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="signIn", refs={ProjectDefaultConfigSignIn.class}, tree="[0]")
+    @Export(name="signIn", type=ProjectDefaultConfigSignIn.class, parameters={})
     private Output</* @Nullable */ ProjectDefaultConfigSignIn> signIn;
 
     /**

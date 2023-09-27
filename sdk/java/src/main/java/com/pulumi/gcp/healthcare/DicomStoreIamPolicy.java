@@ -173,7 +173,7 @@ public class DicomStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="dicomStoreId", refs={String.class}, tree="[0]")
+    @Export(name="dicomStoreId", type=String.class, parameters={})
     private Output<String> dicomStoreId;
 
     /**
@@ -199,7 +199,7 @@ public class DicomStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the DICOM store&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -214,7 +214,7 @@ public class DicomStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", refs={String.class}, tree="[0]")
+    @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
 
     /**

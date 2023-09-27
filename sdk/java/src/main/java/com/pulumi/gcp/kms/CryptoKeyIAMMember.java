@@ -285,7 +285,7 @@ public class CryptoKeyIAMMember extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", refs={CryptoKeyIAMMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=CryptoKeyIAMMemberCondition.class, parameters={})
     private Output</* @Nullable */ CryptoKeyIAMMemberCondition> condition;
 
     /**
@@ -312,7 +312,7 @@ public class CryptoKeyIAMMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="cryptoKeyId", refs={String.class}, tree="[0]")
+    @Export(name="cryptoKeyId", type=String.class, parameters={})
     private Output<String> cryptoKeyId;
 
     /**
@@ -338,7 +338,7 @@ public class CryptoKeyIAMMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the project&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -348,7 +348,7 @@ public class CryptoKeyIAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -359,7 +359,7 @@ public class CryptoKeyIAMMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

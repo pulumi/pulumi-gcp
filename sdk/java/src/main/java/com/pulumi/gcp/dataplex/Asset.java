@@ -125,7 +125,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. The time when the asset was created.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -139,7 +139,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * The zone for the resource
      * 
      */
-    @Export(name="dataplexZone", refs={String.class}, tree="[0]")
+    @Export(name="dataplexZone", type=String.class, parameters={})
     private Output<String> dataplexZone;
 
     /**
@@ -153,7 +153,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Optional. Description of the asset.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -167,7 +167,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
      * 
      */
-    @Export(name="discoverySpec", refs={AssetDiscoverySpec.class}, tree="[0]")
+    @Export(name="discoverySpec", type=AssetDiscoverySpec.class, parameters={})
     private Output<AssetDiscoverySpec> discoverySpec;
 
     /**
@@ -181,7 +181,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. Status of the discovery feature applied to data referenced by this asset.
      * 
      */
-    @Export(name="discoveryStatuses", refs={List.class,AssetDiscoveryStatus.class}, tree="[0,1]")
+    @Export(name="discoveryStatuses", type=List.class, parameters={AssetDiscoveryStatus.class})
     private Output<List<AssetDiscoveryStatus>> discoveryStatuses;
 
     /**
@@ -195,7 +195,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Optional. User friendly display name.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -209,7 +209,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Optional. User defined labels for the asset.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -223,7 +223,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * The lake for the resource
      * 
      */
-    @Export(name="lake", refs={String.class}, tree="[0]")
+    @Export(name="lake", type=String.class, parameters={})
     private Output<String> lake;
 
     /**
@@ -237,7 +237,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -251,7 +251,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * The name of the asset.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -265,7 +265,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -279,7 +279,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Required. Immutable. Specification of the resource that is referenced by this asset.
      * 
      */
-    @Export(name="resourceSpec", refs={AssetResourceSpec.class}, tree="[0]")
+    @Export(name="resourceSpec", type=AssetResourceSpec.class, parameters={})
     private Output<AssetResourceSpec> resourceSpec;
 
     /**
@@ -293,7 +293,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. Status of the resource referenced by this asset.
      * 
      */
-    @Export(name="resourceStatuses", refs={List.class,AssetResourceStatus.class}, tree="[0,1]")
+    @Export(name="resourceStatuses", type=List.class, parameters={AssetResourceStatus.class})
     private Output<List<AssetResourceStatus>> resourceStatuses;
 
     /**
@@ -307,7 +307,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. Status of the security policy applied to resource referenced by this asset.
      * 
      */
-    @Export(name="securityStatuses", refs={List.class,AssetSecurityStatus.class}, tree="[0,1]")
+    @Export(name="securityStatuses", type=List.class, parameters={AssetSecurityStatus.class})
     private Output<List<AssetSecurityStatus>> securityStatuses;
 
     /**
@@ -321,7 +321,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -335,7 +335,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      * 
      */
-    @Export(name="uid", refs={String.class}, tree="[0]")
+    @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
@@ -349,7 +349,7 @@ public class Asset extends com.pulumi.resources.CustomResource {
      * Output only. The time when the asset was last updated.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

@@ -147,7 +147,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * An arbitrary user-provided name for the AppConnector.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -161,7 +161,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user provided metadata.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -175,7 +175,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * ID of the AppConnector.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -190,7 +190,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="principalInfo", refs={AppConnectorPrincipalInfo.class}, tree="[0]")
+    @Export(name="principalInfo", type=AppConnectorPrincipalInfo.class, parameters={})
     private Output<AppConnectorPrincipalInfo> principalInfo;
 
     /**
@@ -206,7 +206,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -221,7 +221,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * The region of the AppConnector.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -235,7 +235,7 @@ public class AppConnector extends com.pulumi.resources.CustomResource {
      * Represents the different states of a AppConnector.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

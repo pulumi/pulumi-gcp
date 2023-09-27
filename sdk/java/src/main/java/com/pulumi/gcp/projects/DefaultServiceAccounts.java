@@ -106,7 +106,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
+    @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
@@ -120,7 +120,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * The project ID where service accounts are created.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -137,7 +137,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
      * 
      */
-    @Export(name="restorePolicy", refs={String.class}, tree="[0]")
+    @Export(name="restorePolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> restorePolicy;
 
     /**
@@ -154,7 +154,7 @@ public class DefaultServiceAccounts extends com.pulumi.resources.CustomResource 
      * The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
      * 
      */
-    @Export(name="serviceAccounts", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="serviceAccounts", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> serviceAccounts;
 
     /**

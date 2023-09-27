@@ -140,7 +140,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * Changing this field will result in deleting/ recreating the resource.
      * 
      */
-    @Export(name="apiKey", refs={String.class}, tree="[0]")
+    @Export(name="apiKey", type=String.class, parameters={})
     private Output<String> apiKey;
 
     /**
@@ -155,7 +155,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig&#39;s resource name.
      * 
      */
-    @Export(name="configId", refs={String.class}, tree="[0]")
+    @Export(name="configId", type=String.class, parameters={})
     private Output<String> configId;
 
     /**
@@ -170,7 +170,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="connectedRepositories", refs={List.class,BitbucketServerConfigConnectedRepository.class}, tree="[0,1]")
+    @Export(name="connectedRepositories", type=List.class, parameters={BitbucketServerConfigConnectedRepository.class})
     private Output</* @Nullable */ List<BitbucketServerConfigConnectedRepository>> connectedRepositories;
 
     /**
@@ -186,7 +186,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * If you need to change it, please create another BitbucketServerConfig.
      * 
      */
-    @Export(name="hostUri", refs={String.class}, tree="[0]")
+    @Export(name="hostUri", type=String.class, parameters={})
     private Output<String> hostUri;
 
     /**
@@ -201,7 +201,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * The location of this bitbucket server config.
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -215,7 +215,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * The resource name for the config.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -232,7 +232,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      * 
      */
-    @Export(name="peeredNetwork", refs={String.class}, tree="[0]")
+    @Export(name="peeredNetwork", type=String.class, parameters={})
     private Output</* @Nullable */ String> peeredNetwork;
 
     /**
@@ -250,7 +250,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -266,7 +266,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="secrets", refs={BitbucketServerConfigSecrets.class}, tree="[0]")
+    @Export(name="secrets", type=BitbucketServerConfigSecrets.class, parameters={})
     private Output<BitbucketServerConfigSecrets> secrets;
 
     /**
@@ -281,7 +281,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
      * 
      */
-    @Export(name="sslCa", refs={String.class}, tree="[0]")
+    @Export(name="sslCa", type=String.class, parameters={})
     private Output</* @Nullable */ String> sslCa;
 
     /**
@@ -295,7 +295,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * Username of the account Cloud Build will use on Bitbucket Server.
      * 
      */
-    @Export(name="username", refs={String.class}, tree="[0]")
+    @Export(name="username", type=String.class, parameters={})
     private Output<String> username;
 
     /**
@@ -309,7 +309,7 @@ public class BitbucketServerConfig extends com.pulumi.resources.CustomResource {
      * Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
      * 
      */
-    @Export(name="webhookKey", refs={String.class}, tree="[0]")
+    @Export(name="webhookKey", type=String.class, parameters={})
     private Output<String> webhookKey;
 
     /**

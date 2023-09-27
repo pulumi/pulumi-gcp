@@ -117,7 +117,7 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
      * Used internally during updates.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -135,7 +135,7 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      * 
      */
-    @Export(name="identities", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="identities", type=List.class, parameters={String.class})
     private Output<List<String>> identities;
 
     /**
@@ -154,7 +154,7 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

@@ -33,6 +33,7 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    private @Nullable Integer internalIpv6PrefixLength;
     /**
      * @return An array of IPv6 access configurations for this interface.
      * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -41,6 +42,7 @@ public final class InstanceTemplateNetworkInterface {
      */
     private @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
     private @Nullable String ipv6AccessType;
+    private @Nullable String ipv6Address;
     /**
      * @return The name of the instance template. If you leave
      * this blank, the provider will auto-generate a unique name.
@@ -112,6 +114,9 @@ public final class InstanceTemplateNetworkInterface {
     public List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges == null ? List.of() : this.aliasIpRanges;
     }
+    public Optional<Integer> internalIpv6PrefixLength() {
+        return Optional.ofNullable(this.internalIpv6PrefixLength);
+    }
     /**
      * @return An array of IPv6 access configurations for this interface.
      * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
@@ -123,6 +128,9 @@ public final class InstanceTemplateNetworkInterface {
     }
     public Optional<String> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
+    }
+    public Optional<String> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
     }
     /**
      * @return The name of the instance template. If you leave
@@ -202,8 +210,10 @@ public final class InstanceTemplateNetworkInterface {
     public static final class Builder {
         private @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private @Nullable Integer internalIpv6PrefixLength;
         private @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
         private @Nullable String ipv6AccessType;
+        private @Nullable String ipv6Address;
         private @Nullable String name;
         private @Nullable String network;
         private @Nullable String networkAttachment;
@@ -218,8 +228,10 @@ public final class InstanceTemplateNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
     	      this.ipv6AccessType = defaults.ipv6AccessType;
+    	      this.ipv6Address = defaults.ipv6Address;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.networkAttachment = defaults.networkAttachment;
@@ -248,6 +260,11 @@ public final class InstanceTemplateNetworkInterface {
             return aliasIpRanges(List.of(aliasIpRanges));
         }
         @CustomType.Setter
+        public Builder internalIpv6PrefixLength(@Nullable Integer internalIpv6PrefixLength) {
+            this.internalIpv6PrefixLength = internalIpv6PrefixLength;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipv6AccessConfigs(@Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
             this.ipv6AccessConfigs = ipv6AccessConfigs;
             return this;
@@ -258,6 +275,11 @@ public final class InstanceTemplateNetworkInterface {
         @CustomType.Setter
         public Builder ipv6AccessType(@Nullable String ipv6AccessType) {
             this.ipv6AccessType = ipv6AccessType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Address(@Nullable String ipv6Address) {
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
@@ -309,8 +331,10 @@ public final class InstanceTemplateNetworkInterface {
             final var o = new InstanceTemplateNetworkInterface();
             o.accessConfigs = accessConfigs;
             o.aliasIpRanges = aliasIpRanges;
+            o.internalIpv6PrefixLength = internalIpv6PrefixLength;
             o.ipv6AccessConfigs = ipv6AccessConfigs;
             o.ipv6AccessType = ipv6AccessType;
+            o.ipv6Address = ipv6Address;
             o.name = name;
             o.network = network;
             o.networkAttachment = networkAttachment;

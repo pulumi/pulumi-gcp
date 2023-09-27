@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:endpoints/consumersIamMember:ConsumersIamMember")
 public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", refs={ConsumersIamMemberCondition.class}, tree="[0]")
+    @Export(name="condition", type=ConsumersIamMemberCondition.class, parameters={})
     private Output</* @Nullable */ ConsumersIamMemberCondition> condition;
 
     public Output<Optional<ConsumersIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
-    @Export(name="consumerProject", refs={String.class}, tree="[0]")
+    @Export(name="consumerProject", type=String.class, parameters={})
     private Output<String> consumerProject;
 
     public Output<String> consumerProject() {
@@ -73,7 +73,7 @@ public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -83,7 +83,7 @@ public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", refs={String.class}, tree="[0]")
+    @Export(name="member", type=String.class, parameters={})
     private Output<String> member;
 
     public Output<String> member() {
@@ -95,7 +95,7 @@ public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
@@ -107,7 +107,7 @@ public class ConsumersIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="serviceName", refs={String.class}, tree="[0]")
+    @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     public Output<String> serviceName() {

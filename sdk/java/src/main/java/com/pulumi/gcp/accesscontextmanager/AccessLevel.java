@@ -102,7 +102,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="basic", refs={AccessLevelBasic.class}, tree="[0]")
+    @Export(name="basic", type=AccessLevelBasic.class, parameters={})
     private Output</* @Nullable */ AccessLevelBasic> basic;
 
     /**
@@ -119,7 +119,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="custom", refs={AccessLevelCustom.class}, tree="[0]")
+    @Export(name="custom", type=AccessLevelCustom.class, parameters={})
     private Output</* @Nullable */ AccessLevelCustom> custom;
 
     /**
@@ -135,7 +135,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -153,7 +153,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -172,7 +172,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * Format: accessPolicies/{policy_id}
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -187,7 +187,7 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
      * Human readable title. Must be unique within the Policy.
      * 
      */
-    @Export(name="title", refs={String.class}, tree="[0]")
+    @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**

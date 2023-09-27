@@ -171,7 +171,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="cluster", refs={String.class}, tree="[0]")
+    @Export(name="cluster", type=String.class, parameters={})
     private Output<String> cluster;
 
     /**
@@ -192,7 +192,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> cluster() {
         return this.cluster;
     }
-    @Export(name="condition", refs={ClusterIAMBindingCondition.class}, tree="[0]")
+    @Export(name="condition", type=ClusterIAMBindingCondition.class, parameters={})
     private Output</* @Nullable */ ClusterIAMBindingCondition> condition;
 
     public Output<Optional<ClusterIAMBindingCondition>> condition() {
@@ -202,7 +202,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the clusters&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -212,7 +212,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -223,7 +223,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
      * is not provided, the provider will use a default.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -239,7 +239,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
      * is not provided, the provider will use a default.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -258,7 +258,7 @@ public class ClusterIAMBinding extends com.pulumi.resources.CustomResource {
      * `gcp.dataproc.ClusterIAMPolicy` only:
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**

@@ -121,7 +121,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * Each certificate must match pattern projects/*{@literal /}locations/*{@literal /}certificates/*.
      * 
      */
-    @Export(name="certificates", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="certificates", type=List.class, parameters={String.class})
     private Output<List<String>> certificates;
 
     /**
@@ -139,7 +139,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -155,7 +155,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * A human-readable description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -171,7 +171,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * selecting a proper certificate.
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
+    @Export(name="hostname", type=String.class, parameters={})
     private Output</* @Nullable */ String> hostname;
 
     /**
@@ -189,7 +189,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> labels;
 
     /**
@@ -207,7 +207,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="map", refs={String.class}, tree="[0]")
+    @Export(name="map", type=String.class, parameters={})
     private Output<String> map;
 
     /**
@@ -223,7 +223,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * A predefined matcher for particular cases, other than SNI selection
      * 
      */
-    @Export(name="matcher", refs={String.class}, tree="[0]")
+    @Export(name="matcher", type=String.class, parameters={})
     private Output</* @Nullable */ String> matcher;
 
     /**
@@ -239,7 +239,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * &#39;projects/*{@literal /}locations/*{@literal /}certificateMaps/*{@literal /}certificateMapEntries/*&#39;
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -256,7 +256,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -271,7 +271,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * A serving state of this Certificate Map Entry.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -287,7 +287,7 @@ public class CertificateMapEntry extends com.pulumi.resources.CustomResource {
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

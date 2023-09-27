@@ -85,7 +85,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
      * 
      */
-    @Export(name="algorithm", refs={String.class}, tree="[0]")
+    @Export(name="algorithm", type=String.class, parameters={})
     private Output<String> algorithm;
 
     /**
@@ -101,7 +101,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="attestations", refs={List.class,CryptoKeyVersionAttestation.class}, tree="[0,1]")
+    @Export(name="attestations", type=List.class, parameters={CryptoKeyVersionAttestation.class})
     private Output<List<CryptoKeyVersionAttestation>> attestations;
 
     /**
@@ -120,7 +120,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="cryptoKey", refs={String.class}, tree="[0]")
+    @Export(name="cryptoKey", type=String.class, parameters={})
     private Output<String> cryptoKey;
 
     /**
@@ -137,7 +137,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * The time this CryptoKeyVersion key material was generated
      * 
      */
-    @Export(name="generateTime", refs={String.class}, tree="[0]")
+    @Export(name="generateTime", type=String.class, parameters={})
     private Output<String> generateTime;
 
     /**
@@ -151,7 +151,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * The resource name for this CryptoKeyVersion.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -165,7 +165,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
      * 
      */
-    @Export(name="protectionLevel", refs={String.class}, tree="[0]")
+    @Export(name="protectionLevel", type=String.class, parameters={})
     private Output<String> protectionLevel;
 
     /**
@@ -180,7 +180,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

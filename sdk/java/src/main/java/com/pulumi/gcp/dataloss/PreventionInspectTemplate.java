@@ -334,7 +334,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * A description of the inspect template.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -348,7 +348,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * User set display name of the inspect template.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -363,7 +363,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * Structure is documented below.
      * 
      */
-    @Export(name="inspectConfig", refs={PreventionInspectTemplateInspectConfig.class}, tree="[0]")
+    @Export(name="inspectConfig", type=PreventionInspectTemplateInspectConfig.class, parameters={})
     private Output</* @Nullable */ PreventionInspectTemplateInspectConfig> inspectConfig;
 
     /**
@@ -399,7 +399,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * or `projects/project-id/storedInfoTypes/432452342`.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -440,7 +440,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * ***
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -462,7 +462,7 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
      * 100 characters. Can be empty to allow the system to generate one.
      * 
      */
-    @Export(name="templateId", refs={String.class}, tree="[0]")
+    @Export(name="templateId", type=String.class, parameters={})
     private Output<String> templateId;
 
     /**

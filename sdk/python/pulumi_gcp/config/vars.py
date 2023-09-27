@@ -233,6 +233,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataLossPreventionCustomEndpoint')
 
     @property
+    def data_pipeline_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataPipelineCustomEndpoint')
+
+    @property
     def database_migration_service_custom_endpoint(self) -> Optional[str]:
         return __config__.get('databaseMigrationServiceCustomEndpoint')
 
@@ -291,6 +295,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def document_ai_warehouse_custom_endpoint(self) -> Optional[str]:
         return __config__.get('documentAiWarehouseCustomEndpoint')
+
+    @property
+    def edgenetwork_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('edgenetworkCustomEndpoint')
 
     @property
     def essential_contacts_custom_endpoint(self) -> Optional[str]:
@@ -561,6 +569,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('storageCustomEndpoint')
 
     @property
+    def storage_insights_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('storageInsightsCustomEndpoint')
+
+    @property
     def storage_transfer_custom_endpoint(self) -> Optional[str]:
         return __config__.get('storageTransferCustomEndpoint')
 
@@ -575,6 +587,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def tpu_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tpuCustomEndpoint')
+
+    @property
+    def tpu_v2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('tpuV2CustomEndpoint')
 
     @property
     def user_project_override(self) -> Optional[bool]:

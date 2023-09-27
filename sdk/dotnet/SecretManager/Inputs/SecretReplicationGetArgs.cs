@@ -14,6 +14,16 @@ namespace Pulumi.Gcp.SecretManager.Inputs
     {
         /// <summary>
         /// The Secret will automatically be replicated without any restrictions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("auto")]
+        public Input<Inputs.SecretReplicationAutoGetArgs>? Auto { get; set; }
+
+        /// <summary>
+        /// (Optional, Deprecated)
+        /// The Secret will automatically be replicated without any restrictions.
+        /// 
+        /// &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
         /// </summary>
         [Input("automatic")]
         public Input<bool>? Automatic { get; set; }

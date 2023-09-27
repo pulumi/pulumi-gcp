@@ -376,7 +376,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="allUpdatesRule", refs={BudgetAllUpdatesRule.class}, tree="[0]")
+    @Export(name="allUpdatesRule", type=BudgetAllUpdatesRule.class, parameters={})
     private Output</* @Nullable */ BudgetAllUpdatesRule> allUpdatesRule;
 
     /**
@@ -394,7 +394,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="amount", refs={BudgetAmount.class}, tree="[0]")
+    @Export(name="amount", type=BudgetAmount.class, parameters={})
     private Output<BudgetAmount> amount;
 
     /**
@@ -409,7 +409,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * ID of the billing account to set a budget on.
      * 
      */
-    @Export(name="billingAccount", refs={String.class}, tree="[0]")
+    @Export(name="billingAccount", type=String.class, parameters={})
     private Output<String> billingAccount;
 
     /**
@@ -425,7 +425,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="budgetFilter", refs={BudgetBudgetFilter.class}, tree="[0]")
+    @Export(name="budgetFilter", type=BudgetBudgetFilter.class, parameters={})
     private Output<BudgetBudgetFilter> budgetFilter;
 
     /**
@@ -441,7 +441,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * User data for display name in UI. Must be &lt;= 60 chars.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -457,7 +457,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -476,7 +476,7 @@ public class Budget extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="thresholdRules", refs={List.class,BudgetThresholdRule.class}, tree="[0,1]")
+    @Export(name="thresholdRules", type=List.class, parameters={BudgetThresholdRule.class})
     private Output</* @Nullable */ List<BudgetThresholdRule>> thresholdRules;
 
     /**

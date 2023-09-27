@@ -78,7 +78,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
@@ -92,7 +92,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * An optional description of this resource. Provide this property when you create the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -106,7 +106,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      * 
      */
-    @Export(name="fingerprint", refs={String.class}, tree="[0]")
+    @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
@@ -122,7 +122,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * ***
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -138,7 +138,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * The project for the resource
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -152,7 +152,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * The location of this resource.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -166,7 +166,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
-    @Export(name="regionNetworkFirewallPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="regionNetworkFirewallPolicyId", type=String.class, parameters={})
     private Output<String> regionNetworkFirewallPolicyId;
 
     /**
@@ -180,7 +180,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      * 
      */
-    @Export(name="ruleTupleCount", refs={Integer.class}, tree="[0]")
+    @Export(name="ruleTupleCount", type=Integer.class, parameters={})
     private Output<Integer> ruleTupleCount;
 
     /**
@@ -194,7 +194,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * Server-defined URL for the resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -208,7 +208,7 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
      * Server-defined URL for this resource with the resource id.
      * 
      */
-    @Export(name="selfLinkWithId", refs={String.class}, tree="[0]")
+    @Export(name="selfLinkWithId", type=String.class, parameters={})
     private Output<String> selfLinkWithId;
 
     /**

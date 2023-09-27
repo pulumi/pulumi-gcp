@@ -38,6 +38,7 @@ __all__ = [
     'JobTemplateTemplateVolumeSecretArgs',
     'JobTemplateTemplateVolumeSecretItemArgs',
     'JobTemplateTemplateVpcAccessArgs',
+    'JobTemplateTemplateVpcAccessNetworkInterfaceArgs',
     'JobTerminalConditionArgs',
     'ServiceBinaryAuthorizationArgs',
     'ServiceConditionArgs',
@@ -68,6 +69,7 @@ __all__ = [
     'ServiceTemplateVolumeSecretArgs',
     'ServiceTemplateVolumeSecretItemArgs',
     'ServiceTemplateVpcAccessArgs',
+    'ServiceTemplateVpcAccessNetworkInterfaceArgs',
     'ServiceTerminalConditionArgs',
     'ServiceTrafficArgs',
     'ServiceTrafficStatusArgs',
@@ -1761,18 +1763,21 @@ class JobTemplateTemplateVolumeSecretItemArgs:
 class JobTemplateTemplateVpcAccessArgs:
     def __init__(__self__, *,
                  connector: Optional[pulumi.Input[str]] = None,
-                 egress: Optional[pulumi.Input[str]] = None):
+                 egress: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
         """
         :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[str] egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-               
-               - - -
+        :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
+               Structure is documented below.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
 
     @property
     @pulumi.getter
@@ -1792,14 +1797,92 @@ class JobTemplateTemplateVpcAccessArgs:
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-
-        - - -
         """
         return pulumi.get(self, "egress")
 
     @egress.setter
     def egress(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "egress", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]:
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+
+@pulumi.input_type
+class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+               looked up from the subnetwork.
+        :param pulumi.Input[str] subnetwork: The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+               subnetwork with the same name with the network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags applied to this Cloud Run job.
+               
+               - - -
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+        looked up from the subnetwork.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+        subnetwork with the same name with the network will be used.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Network tags applied to this Cloud Run job.
+
+        - - -
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -3811,16 +3894,21 @@ class ServiceTemplateVolumeSecretItemArgs:
 class ServiceTemplateVpcAccessArgs:
     def __init__(__self__, *,
                  connector: Optional[pulumi.Input[str]] = None,
-                 egress: Optional[pulumi.Input[str]] = None):
+                 egress: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]] = None):
         """
         :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[str] egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
+               Structure is documented below.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
 
     @property
     @pulumi.getter
@@ -3846,6 +3934,82 @@ class ServiceTemplateVpcAccessArgs:
     @egress.setter
     def egress(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "egress", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]:
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+
+@pulumi.input_type
+class ServiceTemplateVpcAccessNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+               looked up from the subnetwork.
+        :param pulumi.Input[str] subnetwork: The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+               subnetwork with the same name with the network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags applied to this Cloud Run service.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+        looked up from the subnetwork.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+        subnetwork with the same name with the network will be used.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Network tags applied to this Cloud Run service.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type

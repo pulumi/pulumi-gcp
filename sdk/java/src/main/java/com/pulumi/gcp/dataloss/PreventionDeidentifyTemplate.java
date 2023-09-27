@@ -222,7 +222,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * The creation timestamp of an deidentifyTemplate. Set by the server.
      * 
      */
-    @Export(name="createTime", refs={String.class}, tree="[0]")
+    @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
@@ -237,7 +237,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * Structure is documented below.
      * 
      */
-    @Export(name="deidentifyConfig", refs={PreventionDeidentifyTemplateDeidentifyConfig.class}, tree="[0]")
+    @Export(name="deidentifyConfig", type=PreventionDeidentifyTemplateDeidentifyConfig.class, parameters={})
     private Output<PreventionDeidentifyTemplateDeidentifyConfig> deidentifyConfig;
 
     /**
@@ -252,7 +252,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * A description of the template.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -266,7 +266,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * User set display name of the template.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -376,7 +376,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * Name describing the field.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -490,7 +490,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
      */
-    @Export(name="parent", refs={String.class}, tree="[0]")
+    @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
@@ -510,7 +510,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * 100 characters. Can be empty to allow the system to generate one.
      * 
      */
-    @Export(name="templateId", refs={String.class}, tree="[0]")
+    @Export(name="templateId", type=String.class, parameters={})
     private Output<String> templateId;
 
     /**
@@ -526,7 +526,7 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      * The last update timestamp of an deidentifyTemplate. Set by the server.
      * 
      */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**

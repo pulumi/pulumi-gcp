@@ -18,6 +18,23 @@ public final class TableMaterializedViewArgs extends com.pulumi.resources.Resour
     public static final TableMaterializedViewArgs Empty = new TableMaterializedViewArgs();
 
     /**
+     * Allow non incremental materialized view definition.
+     * The default value is false.
+     * 
+     */
+    @Import(name="allowNonIncrementalDefinition")
+    private @Nullable Output<Boolean> allowNonIncrementalDefinition;
+
+    /**
+     * @return Allow non incremental materialized view definition.
+     * The default value is false.
+     * 
+     */
+    public Optional<Output<Boolean>> allowNonIncrementalDefinition() {
+        return Optional.ofNullable(this.allowNonIncrementalDefinition);
+    }
+
+    /**
      * Specifies whether to use BigQuery&#39;s automatic refresh for this materialized view when the base table is updated.
      * The default value is true.
      * 
@@ -69,6 +86,7 @@ public final class TableMaterializedViewArgs extends com.pulumi.resources.Resour
     private TableMaterializedViewArgs() {}
 
     private TableMaterializedViewArgs(TableMaterializedViewArgs $) {
+        this.allowNonIncrementalDefinition = $.allowNonIncrementalDefinition;
         this.enableRefresh = $.enableRefresh;
         this.query = $.query;
         this.refreshIntervalMs = $.refreshIntervalMs;
@@ -90,6 +108,29 @@ public final class TableMaterializedViewArgs extends com.pulumi.resources.Resour
 
         public Builder(TableMaterializedViewArgs defaults) {
             $ = new TableMaterializedViewArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowNonIncrementalDefinition Allow non incremental materialized view definition.
+         * The default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowNonIncrementalDefinition(@Nullable Output<Boolean> allowNonIncrementalDefinition) {
+            $.allowNonIncrementalDefinition = allowNonIncrementalDefinition;
+            return this;
+        }
+
+        /**
+         * @param allowNonIncrementalDefinition Allow non incremental materialized view definition.
+         * The default value is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowNonIncrementalDefinition(Boolean allowNonIncrementalDefinition) {
+            return allowNonIncrementalDefinition(Output.of(allowNonIncrementalDefinition));
         }
 
         /**

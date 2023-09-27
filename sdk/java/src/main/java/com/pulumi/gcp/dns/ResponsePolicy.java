@@ -147,7 +147,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * The description of the response policy, such as `My new response policy`.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -162,7 +162,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="gkeClusters", refs={List.class,ResponsePolicyGkeCluster.class}, tree="[0,1]")
+    @Export(name="gkeClusters", type=List.class, parameters={ResponsePolicyGkeCluster.class})
     private Output</* @Nullable */ List<ResponsePolicyGkeCluster>> gkeClusters;
 
     /**
@@ -178,7 +178,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networks", refs={List.class,ResponsePolicyNetwork.class}, tree="[0,1]")
+    @Export(name="networks", type=List.class, parameters={ResponsePolicyNetwork.class})
     private Output</* @Nullable */ List<ResponsePolicyNetwork>> networks;
 
     /**
@@ -194,7 +194,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -211,7 +211,7 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="responsePolicyName", refs={String.class}, tree="[0]")
+    @Export(name="responsePolicyName", type=String.class, parameters={})
     private Output<String> responsePolicyName;
 
     /**

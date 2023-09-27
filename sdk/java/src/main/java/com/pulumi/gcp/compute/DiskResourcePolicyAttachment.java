@@ -113,7 +113,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * ***
      * 
      */
-    @Export(name="disk", refs={String.class}, tree="[0]")
+    @Export(name="disk", type=String.class, parameters={})
     private Output<String> disk;
 
     /**
@@ -130,7 +130,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * creation. Do not specify the self link.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -146,7 +146,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -161,7 +161,7 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
      * A reference to the zone where the disk resides.
      * 
      */
-    @Export(name="zone", refs={String.class}, tree="[0]")
+    @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**

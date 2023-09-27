@@ -175,7 +175,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * A text description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -190,7 +190,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
      * 
      */
-    @Export(name="guestFlush", refs={Boolean.class}, tree="[0]")
+    @Export(name="guestFlush", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> guestFlush;
 
     /**
@@ -209,7 +209,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="machineImageEncryptionKey", refs={MachineImageMachineImageEncryptionKey.class}, tree="[0]")
+    @Export(name="machineImageEncryptionKey", type=MachineImageMachineImageEncryptionKey.class, parameters={})
     private Output</* @Nullable */ MachineImageMachineImageEncryptionKey> machineImageEncryptionKey;
 
     /**
@@ -227,7 +227,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * Name of the resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -257,7 +257,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", refs={String.class}, tree="[0]")
+    @Export(name="selfLink", type=String.class, parameters={})
     private Output<String> selfLink;
 
     /**
@@ -273,7 +273,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="sourceInstance", refs={String.class}, tree="[0]")
+    @Export(name="sourceInstance", type=String.class, parameters={})
     private Output<String> sourceInstance;
 
     /**
@@ -289,7 +289,7 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
      * The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
      * 
      */
-    @Export(name="storageLocations", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="storageLocations", type=List.class, parameters={String.class})
     private Output<List<String>> storageLocations;
 
     /**

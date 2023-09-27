@@ -109,7 +109,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * The location for the management server (management console)
      * 
      */
-    @Export(name="location", refs={String.class}, tree="[0]")
+    @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
@@ -124,7 +124,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="managementUris", refs={List.class,ManagementServerManagementUri.class}, tree="[0,1]")
+    @Export(name="managementUris", type=List.class, parameters={ManagementServerManagementUri.class})
     private Output<List<ManagementServerManagementUri>> managementUris;
 
     /**
@@ -139,7 +139,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * The name of management server (management console)
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -154,7 +154,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networks", refs={List.class,ManagementServerNetwork.class}, tree="[0,1]")
+    @Export(name="networks", type=List.class, parameters={ManagementServerNetwork.class})
     private Output<List<ManagementServerNetwork>> networks;
 
     /**
@@ -169,7 +169,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * The oauth2ClientId of management console.
      * 
      */
-    @Export(name="oauth2ClientId", refs={String.class}, tree="[0]")
+    @Export(name="oauth2ClientId", type=String.class, parameters={})
     private Output<String> oauth2ClientId;
 
     /**
@@ -184,7 +184,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -201,7 +201,7 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * Possible values are: `BACKUP_RESTORE`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**

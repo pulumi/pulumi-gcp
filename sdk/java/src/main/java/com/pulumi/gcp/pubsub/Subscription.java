@@ -322,7 +322,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * will eventually redeliver the message.
      * 
      */
-    @Export(name="ackDeadlineSeconds", refs={Integer.class}, tree="[0]")
+    @Export(name="ackDeadlineSeconds", type=Integer.class, parameters={})
     private Output<Integer> ackDeadlineSeconds;
 
     /**
@@ -353,7 +353,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="bigqueryConfig", refs={SubscriptionBigqueryConfig.class}, tree="[0]")
+    @Export(name="bigqueryConfig", type=SubscriptionBigqueryConfig.class, parameters={})
     private Output</* @Nullable */ SubscriptionBigqueryConfig> bigqueryConfig;
 
     /**
@@ -373,7 +373,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="cloudStorageConfig", refs={SubscriptionCloudStorageConfig.class}, tree="[0]")
+    @Export(name="cloudStorageConfig", type=SubscriptionCloudStorageConfig.class, parameters={})
     private Output</* @Nullable */ SubscriptionCloudStorageConfig> cloudStorageConfig;
 
     /**
@@ -397,7 +397,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="deadLetterPolicy", refs={SubscriptionDeadLetterPolicy.class}, tree="[0]")
+    @Export(name="deadLetterPolicy", type=SubscriptionDeadLetterPolicy.class, parameters={})
     private Output</* @Nullable */ SubscriptionDeadLetterPolicy> deadLetterPolicy;
 
     /**
@@ -423,7 +423,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      * 
      */
-    @Export(name="enableExactlyOnceDelivery", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableExactlyOnceDelivery", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableExactlyOnceDelivery;
 
     /**
@@ -444,7 +444,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * may be delivered in any order.
      * 
      */
-    @Export(name="enableMessageOrdering", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableMessageOrdering", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableMessageOrdering;
 
     /**
@@ -467,7 +467,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="expirationPolicy", refs={SubscriptionExpirationPolicy.class}, tree="[0]")
+    @Export(name="expirationPolicy", type=SubscriptionExpirationPolicy.class, parameters={})
     private Output<SubscriptionExpirationPolicy> expirationPolicy;
 
     /**
@@ -491,7 +491,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * you can&#39;t modify the filter.
      * 
      */
-    @Export(name="filter", refs={String.class}, tree="[0]")
+    @Export(name="filter", type=String.class, parameters={})
     private Output</* @Nullable */ String> filter;
 
     /**
@@ -508,7 +508,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this Subscription.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -529,7 +529,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
      * 
      */
-    @Export(name="messageRetentionDuration", refs={String.class}, tree="[0]")
+    @Export(name="messageRetentionDuration", type=String.class, parameters={})
     private Output</* @Nullable */ String> messageRetentionDuration;
 
     /**
@@ -550,7 +550,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Name of the subscription.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -565,7 +565,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", refs={String.class}, tree="[0]")
+    @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
@@ -583,7 +583,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pushConfig", refs={SubscriptionPushConfig.class}, tree="[0]")
+    @Export(name="pushConfig", type=SubscriptionPushConfig.class, parameters={})
     private Output</* @Nullable */ SubscriptionPushConfig> pushConfig;
 
     /**
@@ -603,7 +603,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * messageRetentionDuration window.
      * 
      */
-    @Export(name="retainAckedMessages", refs={Boolean.class}, tree="[0]")
+    @Export(name="retainAckedMessages", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> retainAckedMessages;
 
     /**
@@ -623,7 +623,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="retryPolicy", refs={SubscriptionRetryPolicy.class}, tree="[0]")
+    @Export(name="retryPolicy", type=SubscriptionRetryPolicy.class, parameters={})
     private Output</* @Nullable */ SubscriptionRetryPolicy> retryPolicy;
 
     /**
@@ -642,7 +642,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="topic", refs={String.class}, tree="[0]")
+    @Export(name="topic", type=String.class, parameters={})
     private Output<String> topic;
 
     /**

@@ -30,6 +30,8 @@ __all__ = [
     'OrganizationPropertiesArgs',
     'OrganizationPropertiesPropertyArgs',
     'SharedflowMetaDataArgs',
+    'TargetServerSSlInfoArgs',
+    'TargetServerSSlInfoCommonNameArgs',
 ]
 
 @pulumi.input_type
@@ -1390,5 +1392,196 @@ class SharedflowMetaDataArgs:
     @sub_type.setter
     def sub_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_type", value)
+
+
+@pulumi.input_type
+class TargetServerSSlInfoArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 client_auth_enabled: Optional[pulumi.Input[bool]] = None,
+                 common_name: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']] = None,
+                 ignore_validation_errors: Optional[pulumi.Input[bool]] = None,
+                 key_alias: Optional[pulumi.Input[str]] = None,
+                 key_store: Optional[pulumi.Input[str]] = None,
+                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 trust_store: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        :param pulumi.Input[bool] client_auth_enabled: Enables two-way TLS.
+        :param pulumi.Input['TargetServerSSlInfoCommonNameArgs'] common_name: The TLS Common Name of the certificate.
+               Structure is documented below.
+        :param pulumi.Input[bool] ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+        :param pulumi.Input[str] key_alias: Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+        :param pulumi.Input[str] key_store: Required if clientAuthEnabled is true. The resource ID of the keystore.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The TLS versioins to be used.
+        :param pulumi.Input[str] trust_store: The resource ID of the truststore.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if ciphers is not None:
+            pulumi.set(__self__, "ciphers", ciphers)
+        if client_auth_enabled is not None:
+            pulumi.set(__self__, "client_auth_enabled", client_auth_enabled)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if ignore_validation_errors is not None:
+            pulumi.set(__self__, "ignore_validation_errors", ignore_validation_errors)
+        if key_alias is not None:
+            pulumi.set(__self__, "key_alias", key_alias)
+        if key_store is not None:
+            pulumi.set(__self__, "key_store", key_store)
+        if protocols is not None:
+            pulumi.set(__self__, "protocols", protocols)
+        if trust_store is not None:
+            pulumi.set(__self__, "trust_store", trust_store)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @ciphers.setter
+    def ciphers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ciphers", value)
+
+    @property
+    @pulumi.getter(name="clientAuthEnabled")
+    def client_auth_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables two-way TLS.
+        """
+        return pulumi.get(self, "client_auth_enabled")
+
+    @client_auth_enabled.setter
+    def client_auth_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "client_auth_enabled", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']]:
+        """
+        The TLS Common Name of the certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input['TargetServerSSlInfoCommonNameArgs']]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="ignoreValidationErrors")
+    def ignore_validation_errors(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
+        """
+        return pulumi.get(self, "ignore_validation_errors")
+
+    @ignore_validation_errors.setter
+    def ignore_validation_errors(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_validation_errors", value)
+
+    @property
+    @pulumi.getter(name="keyAlias")
+    def key_alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
+        """
+        return pulumi.get(self, "key_alias")
+
+    @key_alias.setter
+    def key_alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_alias", value)
+
+    @property
+    @pulumi.getter(name="keyStore")
+    def key_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if clientAuthEnabled is true. The resource ID of the keystore.
+        """
+        return pulumi.get(self, "key_store")
+
+    @key_store.setter
+    def key_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_store", value)
+
+    @property
+    @pulumi.getter
+    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The TLS versioins to be used.
+        """
+        return pulumi.get(self, "protocols")
+
+    @protocols.setter
+    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "protocols", value)
+
+    @property
+    @pulumi.getter(name="trustStore")
+    def trust_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the truststore.
+        """
+        return pulumi.get(self, "trust_store")
+
+    @trust_store.setter
+    def trust_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trust_store", value)
+
+
+@pulumi.input_type
+class TargetServerSSlInfoCommonNameArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[str]] = None,
+                 wildcard_match: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] value: The TLS Common Name string of the certificate.
+        :param pulumi.Input[bool] wildcard_match: Indicates whether the cert should be matched against as a wildcard cert.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if wildcard_match is not None:
+            pulumi.set(__self__, "wildcard_match", wildcard_match)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TLS Common Name string of the certificate.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="wildcardMatch")
+    def wildcard_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the cert should be matched against as a wildcard cert.
+        """
+        return pulumi.get(self, "wildcard_match")
+
+    @wildcard_match.setter
+    def wildcard_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wildcard_match", value)
 
 
