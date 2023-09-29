@@ -4,8 +4,8 @@ go 1.21
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.2-0.20230928004906-04d27048f0a5
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.2-0.20230928004906-04d27048f0a5
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.2-0.20230929003136-01a023a4341f
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.2-0.20230929003136-01a023a4341f
 	github.com/pulumi/pulumi/pkg/v3 v3.86.0
 	github.com/pulumi/pulumi/sdk/v3 v3.86.0
 )
@@ -249,6 +249,7 @@ require (
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
+	github.com/yuin/goldmark v1.4.13 // indirect
 	github.com/zclconf/go-cty v1.14.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
