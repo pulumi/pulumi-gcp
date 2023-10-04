@@ -1,7 +1,7 @@
-From 33848f89c973001401d2fd9d2c428bbbdd8d6381 Mon Sep 17 00:00:00 2001
+From 2b5e690d3627a7e8ffc5b43ddf1d89351dd12a97 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:16:06 +0000
-Subject: [PATCH 06/10] website/docs/d tweaks
+Subject: [PATCH 07/11] website/docs/d tweaks
 
 ---
  website/docs/d/cloud_run_service.html.markdown      |  2 +-
@@ -80,7 +80,7 @@ index 1e2a68c24..99f557204 100644
 -See [google_compute_global_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule) resource for details of the available attributes.
 +See google_compute_global_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
-index d478a3eca..18998ef79 100644
+index 1d3e8dc06..d2da6cbb6 100644
 --- a/website/docs/d/compute_instance.html.markdown
 +++ b/website/docs/d/compute_instance.html.markdown
 @@ -11,7 +11,6 @@ Get information about a VM instance resource within GCE. For more information se
@@ -132,10 +132,10 @@ index d478a3eca..18998ef79 100644
  <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
  
 diff --git a/website/docs/d/compute_instance_template.html.markdown b/website/docs/d/compute_instance_template.html.markdown
-index 2af65eaae..73497b872 100644
+index 3142f0af8..bca620fc0 100644
 --- a/website/docs/d/compute_instance_template.html.markdown
 +++ b/website/docs/d/compute_instance_template.html.markdown
-@@ -63,7 +63,7 @@ The following arguments are supported:
+@@ -65,7 +65,7 @@ The following arguments are supported:
      To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
  
  * `name` - The name of the instance template. If you leave
@@ -144,7 +144,7 @@ index 2af65eaae..73497b872 100644
  
  * `name_prefix` - Creates a unique name beginning with the specified
    prefix. Conflicts with `name`.
-@@ -209,7 +209,7 @@ The `disk_encryption_key` block supports:
+@@ -210,7 +210,7 @@ The `disk_encryption_key` block supports:
  * `access_config` - Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -503,5 +503,5 @@ index d0494f08b..0ebec0d7e 100644
  For more information see
  [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 -- 
-2.41.0
+2.40.0
 
