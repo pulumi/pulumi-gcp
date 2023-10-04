@@ -1,18 +1,25 @@
-From 2ab8f37c148cb78a4f7bae6ff6de091c04a372e6 Mon Sep 17 00:00:00 2001
-From: Daniel Bradley <daniel@pulumi.com>
-Date: Tue, 7 Mar 2023 11:55:24 +0000
-Subject: [PATCH 03/10] Only set bigquery dataset selflink if available
+From c7140e9b8ab54d50bd91d83e1813f831786dd767 Mon Sep 17 00:00:00 2001
+From: Guinevere Saenger <guinevere@pulumi.com>
+Date: Wed, 4 Oct 2023 12:49:17 -0700
+Subject: [PATCH 04/11] rebase bigquery_dataset
 
 ---
- .../services/bigquery/resource_bigquery_dataset.go       | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ .../services/bigquery/resource_bigquery_dataset.go     | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/google-beta/services/bigquery/resource_bigquery_dataset.go b/google-beta/services/bigquery/resource_bigquery_dataset.go
-index 96cf5c7b6..7086541bd 100644
+index d09ee5b55..e277b5cc1 100644
 --- a/google-beta/services/bigquery/resource_bigquery_dataset.go
 +++ b/google-beta/services/bigquery/resource_bigquery_dataset.go
-@@ -654,8 +654,13 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error
+@@ -676,14 +676,20 @@ func resourceBigQueryDatasetRead(d *schema.ResourceData, meta interface{}) error
  	if err := d.Set("storage_billing_model", flattenBigQueryDatasetStorageBillingModel(res["storageBillingModel"], d, config)); err != nil {
+ 		return fmt.Errorf("Error reading Dataset: %s", err)
+ 	}
++
+ 	if err := d.Set("terraform_labels", flattenBigQueryDatasetTerraformLabels(res["labels"], d, config)); err != nil {
+ 		return fmt.Errorf("Error reading Dataset: %s", err)
+ 	}
+ 	if err := d.Set("effective_labels", flattenBigQueryDatasetEffectiveLabels(res["labels"], d, config)); err != nil {
  		return fmt.Errorf("Error reading Dataset: %s", err)
  	}
 -	if err := d.Set("self_link", tpgresource.ConvertSelfLinkToV1(res["selfLink"].(string))); err != nil {
@@ -28,5 +35,5 @@ index 96cf5c7b6..7086541bd 100644
  
  	return nil
 -- 
-2.41.0
+2.40.0
 

@@ -1,17 +1,17 @@
-From 67fe5f43e052b3cb45b0e3f24a8ad930928a6f52 Mon Sep 17 00:00:00 2001
+From cc4d693fefee3f7aac15c8b8bc196e0407290df9 Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 7 Sep 2023 16:28:00 -0700
-Subject: [PATCH 10/10] Fix #794 with an unconditional read.
+Subject: [PATCH 11/11] Fix #794 with an unconditional read.
 
 ---
  google-beta/services/sql/resource_sql_database_instance.go | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/google-beta/services/sql/resource_sql_database_instance.go b/google-beta/services/sql/resource_sql_database_instance.go
-index 4f9157f90..d57719465 100644
+index 881abed79..3a8eb877f 100644
 --- a/google-beta/services/sql/resource_sql_database_instance.go
 +++ b/google-beta/services/sql/resource_sql_database_instance.go
-@@ -1856,6 +1856,11 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
+@@ -1866,6 +1866,11 @@ func resourceSqlDatabaseInstanceUpdate(d *schema.ResourceData, meta interface{})
  		}
  	}
  
@@ -24,5 +24,5 @@ index 4f9157f90..d57719465 100644
  	instance = &sqladmin.DatabaseInstance{
  		Settings: expandSqlDatabaseInstanceSettings(desiredSetting.([]interface{}), databaseVersion),
 -- 
-2.41.0
+2.40.0
 
