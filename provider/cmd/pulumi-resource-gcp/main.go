@@ -20,7 +20,7 @@ import (
 	"context"
 	_ "embed"
 
-	gcp "github.com/pulumi/pulumi-gcp/provider/v6"
+	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 )
 
