@@ -18,7 +18,7 @@ import (
 	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
-	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
+	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
