@@ -1,17 +1,17 @@
-From 5afdb9c98792a5715107e35b424fdcf8b966041b Mon Sep 17 00:00:00 2001
+From ad3f2a2e6456d5fad26a774fac5797c661a68c9b Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 22 Jun 2023 16:38:12 -0700
-Subject: [PATCH 09/10] Remove duplicative resource token
+Subject: [PATCH 10/11] Remove duplicative resource token
 
 ---
  google-beta/provider/provider.go | 9 +++++++++
  1 file changed, 9 insertions(+)
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index 3a28d7733..039e32fa5 100644
+index 9d0614536..05afbe87f 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
-@@ -846,6 +846,15 @@ func Provider() *schema.Provider {
+@@ -868,6 +868,15 @@ func Provider() *schema.Provider {
  
  func DatasourceMap() map[string]*schema.Resource {
  	datasourceMap, _ := DatasourceMapWithErrors()
@@ -28,5 +28,5 @@ index 3a28d7733..039e32fa5 100644
  }
  
 -- 
-2.41.0
+2.40.0
 
