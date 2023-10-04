@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/provider/v6
+module github.com/pulumi/pulumi-gcp/provider/v7
 
 go 1.21.0
 
@@ -42,7 +42,7 @@ require (
 	github.com/Azure/go-autorest/logger v0.2.1 // indirect
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
 	github.com/BurntSushi/toml v1.2.1 // indirect
-	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.51.0 // indirect
+	github.com/GoogleCloudPlatform/declarative-resource-client-library v1.52.0 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
