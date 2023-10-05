@@ -1,0 +1,36 @@
+provider: gcp
+gcp: true
+major-version: 6
+lint: false
+parallel: 2
+providerVersion: "github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion"
+generate-nightly-test-workflow: true
+env:
+  GOOGLE_CI_SERVICE_ACCOUNT_EMAIL: pulumi-ci@pulumi-ci-gcp-provider.iam.gserviceaccount.com
+  GOOGLE_CI_WORKLOAD_IDENTITY_POOL: pulumi-ci
+  GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER: pulumi-ci
+  GOOGLE_PROJECT: "pulumi-ci-gcp-provider"
+  GOOGLE_PROJECT_NUMBER: 895284651812
+  GOOGLE_REGION: "us-central1"
+  GOOGLE_ZONE: "us-central1-a"
+  PULUMI_MISSING_DOCS_ERROR: true
+upstream-provider-repo: terraform-provider-google-beta
+makeTemplate: bridged
+plugins:
+  - name: random
+    version: "4.8.2"
+  - name: kubernetes
+    version: "3.20.0"
+  - name: tls
+    version: "4.6.0"
+  - name: http
+    version: "0.0.1"
+  - name: time
+    version: "0.0.15"
+team: ecosystem
+goBuildParallelism: 2
+skipGoReleaserHooks: true
+javaGenVersion: v0.9.7
+runner:
+  publish: pulumi-ubuntu-8core
+  buildSdk: pulumi-ubuntu-8core
