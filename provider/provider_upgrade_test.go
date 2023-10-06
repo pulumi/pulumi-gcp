@@ -29,6 +29,7 @@ func TestProviderUpgrade(t *testing.T) {
 		{"serviceaccount-account"},
 		{"storage-bucket"},
 		{"storage-bucketobject"},
+		{"secretmanager-secret"},
 	}
 
 	test := func(t *testing.T, tc testCase) {
