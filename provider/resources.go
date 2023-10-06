@@ -311,6 +311,19 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 	return ""
 }
 
+// httpAutoName provides a schema info with automating set to lowercase names for resources that don't support capital casing in names.
+// This seems to be the case for many resources where a name ends up being in HTTP URLs.
+func httpAutoName() *tfbridge.SchemaInfo {
+	return tfbridge.AutoNameWithCustomOptions("name", tfbridge.AutoNameOptions{
+		Separator: "-",
+		Maxlen:    63,
+		Randlen:   7,
+		Transform: func(name string) string {
+			return strings.ToLower(name)
+		},
+	})
+}
+
 func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
 
 	project := stringValue(vars, "project", []string{
@@ -1074,6 +1087,9 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "compute_backend_service.html.markdown",
 				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": httpAutoName(),
+				},
 			},
 			"google_compute_backend_service_signed_url_key": {
 				Tok: gcpResource(gcpCompute, "BackendServiceSignedUrlKey"),
@@ -1094,14 +1110,24 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_global_network_endpoint_group": {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpointGroup")},
 			"google_compute_ha_vpn_gateway":                {Tok: gcpResource(gcpCompute, "HaVpnGateway")},
 			"google_compute_health_check":                  {Tok: gcpResource(gcpCompute, "HealthCheck")},
-			"google_compute_http_health_check":             {Tok: gcpResource(gcpCompute, "HttpHealthCheck")},
-			"google_compute_https_health_check":            {Tok: gcpResource(gcpCompute, "HttpsHealthCheck")},
-			"google_compute_image":                         {Tok: gcpResource(gcpCompute, "Image")},
-			"google_compute_instance":                      {Tok: gcpResource(gcpCompute, "Instance")},
-			"google_compute_instance_from_template":        {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
-			"google_compute_instance_group":                {Tok: gcpResource(gcpCompute, "InstanceGroup")},
-			"google_compute_instance_group_manager":        {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
-			"google_compute_instance_from_machine_image":   {Tok: gcpResource(gcpCompute, "InstanceFromMachineImage")},
+			"google_compute_http_health_check": {
+				Tok: gcpResource(gcpCompute, "HttpHealthCheck"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": httpAutoName(),
+				},
+			},
+			"google_compute_https_health_check": {
+				Tok: gcpResource(gcpCompute, "HttpsHealthCheck"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": httpAutoName(),
+				},
+			},
+			"google_compute_image":                       {Tok: gcpResource(gcpCompute, "Image")},
+			"google_compute_instance":                    {Tok: gcpResource(gcpCompute, "Instance")},
+			"google_compute_instance_from_template":      {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
+			"google_compute_instance_group":              {Tok: gcpResource(gcpCompute, "InstanceGroup")},
+			"google_compute_instance_group_manager":      {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
+			"google_compute_instance_from_machine_image": {Tok: gcpResource(gcpCompute, "InstanceFromMachineImage")},
 			"google_compute_instance_iam_binding": {
 				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1232,14 +1258,29 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_subnetwork_iam.html.markdown",
 				},
 			},
-			"google_compute_target_http_proxy":   {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
-			"google_compute_target_https_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
-			"google_compute_target_instance":     {Tok: gcpResource(gcpCompute, "TargetInstance")},
-			"google_compute_target_ssl_proxy":    {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
-			"google_compute_target_tcp_proxy":    {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
-			"google_compute_target_pool":         {Tok: gcpResource(gcpCompute, "TargetPool")},
-			"google_compute_target_grpc_proxy":   {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
-			"google_compute_url_map":             {Tok: gcpResource(gcpCompute, "URLMap")},
+			"google_compute_target_http_proxy": {
+				Tok: gcpResource(gcpCompute, "TargetHttpProxy"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": httpAutoName(),
+				},
+			},
+			"google_compute_target_https_proxy": {
+				Tok: gcpResource(gcpCompute, "TargetHttpsProxy"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": httpAutoName(),
+				},
+			},
+			"google_compute_target_instance":   {Tok: gcpResource(gcpCompute, "TargetInstance")},
+			"google_compute_target_ssl_proxy":  {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
+			"google_compute_target_tcp_proxy":  {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
+			"google_compute_target_pool":       {Tok: gcpResource(gcpCompute, "TargetPool")},
+			"google_compute_target_grpc_proxy": {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
+			"google_compute_url_map": {
+				Tok: gcpResource(gcpCompute, "URLMap"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": httpAutoName(),
+				},
+			},
 			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
 			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel")},
 			"google_compute_reservation":         {Tok: gcpResource(gcpCompute, "Reservation")},
