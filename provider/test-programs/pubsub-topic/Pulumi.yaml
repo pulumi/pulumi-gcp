@@ -1,0 +1,22 @@
+name: test
+
+runtime:
+  name: yaml
+
+resources:
+
+  provider:
+    type: pulumi:providers:gcp
+    options:
+      version: 6.67.0
+    properties:
+      project: ${gcp:project}
+
+  tested-resource:
+    type: gcp:pubsub:Topic
+    properties:
+      labels:
+        foo: bar
+      messageRetentionDuration: 86600s
+    options:
+      provider: ${provider}

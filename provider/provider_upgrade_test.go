@@ -27,6 +27,7 @@ func TestProviderUpgrade(t *testing.T) {
 		{"pubsub-subscription"},
 		{"dns-recordset"},
 		{"storage-bucket"},
+		{"pubsub-topic"},
 	}
 
 	test := func(t *testing.T, tc testCase) {
