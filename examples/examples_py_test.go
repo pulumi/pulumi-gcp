@@ -1,4 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
+//go:build python || all
 // +build python all
 
 package examples
@@ -50,7 +51,7 @@ func TestAccMinimalPy(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
-func TestAccWebserver(t *testing.T) {
+func TestAccWebserverPy(t *testing.T) {
 	skipIfShort(t)
 	for _, dir := range []string{"webserver-py", "webserver-py-old"} {
 		t.Run(dir, func(t *testing.T) {
