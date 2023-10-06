@@ -225,11 +225,16 @@ type GrpcRoute struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// Set of label tags associated with the GrpcRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayOutput `pulumi:"meshes"`
@@ -243,6 +248,9 @@ type GrpcRoute struct {
 	Rules GrpcRouteRuleArrayOutput `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the GrpcRoute was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -287,11 +295,16 @@ type grpcRouteState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 	Gateways []string `pulumi:"gateways"`
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames []string `pulumi:"hostnames"`
 	// Set of label tags associated with the GrpcRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes []string `pulumi:"meshes"`
@@ -305,6 +318,9 @@ type grpcRouteState struct {
 	Rules []GrpcRouteRule `pulumi:"rules"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the GrpcRoute was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -314,11 +330,16 @@ type GrpcRouteState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 	Gateways pulumi.StringArrayInput
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames pulumi.StringArrayInput
 	// Set of label tags associated with the GrpcRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayInput
@@ -332,6 +353,9 @@ type GrpcRouteState struct {
 	Rules GrpcRouteRuleArrayInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Time the GrpcRoute was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -348,6 +372,8 @@ type grpcRouteArgs struct {
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames []string `pulumi:"hostnames"`
 	// Set of label tags associated with the GrpcRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes []string `pulumi:"meshes"`
@@ -370,6 +396,8 @@ type GrpcRouteArgs struct {
 	// Required. Service hostnames with an optional port for which this route describes traffic.
 	Hostnames pulumi.StringArrayInput
 	// Set of label tags associated with the GrpcRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
 	Meshes pulumi.StringArrayInput
@@ -504,6 +532,12 @@ func (o GrpcRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o GrpcRouteOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
 func (o GrpcRouteOutput) Gateways() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
@@ -515,6 +549,8 @@ func (o GrpcRouteOutput) Hostnames() pulumi.StringArrayOutput {
 }
 
 // Set of label tags associated with the GrpcRoute resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o GrpcRouteOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -544,6 +580,12 @@ func (o GrpcRouteOutput) Rules() GrpcRouteRuleArrayOutput {
 // Server-defined URL of this resource.
 func (o GrpcRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GrpcRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o GrpcRouteOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GrpcRoute) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the GrpcRoute was updated in UTC.

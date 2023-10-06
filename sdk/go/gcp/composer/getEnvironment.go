@@ -37,13 +37,15 @@ type LookupEnvironmentArgs struct {
 // A collection of values returned by getEnvironment.
 type LookupEnvironmentResult struct {
 	// Configuration parameters for the environment.
-	Configs []GetEnvironmentConfig `pulumi:"configs"`
+	Configs         []GetEnvironmentConfig `pulumi:"configs"`
+	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string            `pulumi:"id"`
-	Labels  map[string]string `pulumi:"labels"`
-	Name    string            `pulumi:"name"`
-	Project *string           `pulumi:"project"`
-	Region  *string           `pulumi:"region"`
+	Id              string            `pulumi:"id"`
+	Labels          map[string]string `pulumi:"labels"`
+	Name            string            `pulumi:"name"`
+	Project         *string           `pulumi:"project"`
+	Region          *string           `pulumi:"region"`
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 func LookupEnvironmentOutput(ctx *pulumi.Context, args LookupEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentResultOutput {
@@ -100,6 +102,10 @@ func (o LookupEnvironmentResultOutput) Configs() GetEnvironmentConfigArrayOutput
 	return o.ApplyT(func(v LookupEnvironmentResult) []GetEnvironmentConfig { return v.Configs }).(GetEnvironmentConfigArrayOutput)
 }
 
+func (o LookupEnvironmentResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
@@ -119,6 +125,10 @@ func (o LookupEnvironmentResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupEnvironmentResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupEnvironmentResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

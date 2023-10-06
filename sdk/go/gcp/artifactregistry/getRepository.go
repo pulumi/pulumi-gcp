@@ -72,6 +72,7 @@ type LookupRepositoryResult struct {
 	CreateTime          string                       `pulumi:"createTime"`
 	Description         string                       `pulumi:"description"`
 	DockerConfigs       []GetRepositoryDockerConfig  `pulumi:"dockerConfigs"`
+	EffectiveLabels     map[string]string            `pulumi:"effectiveLabels"`
 	Format              string                       `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                 `pulumi:"id"`
@@ -84,6 +85,7 @@ type LookupRepositoryResult struct {
 	Project                  *string                                `pulumi:"project"`
 	RemoteRepositoryConfigs  []GetRepositoryRemoteRepositoryConfig  `pulumi:"remoteRepositoryConfigs"`
 	RepositoryId             string                                 `pulumi:"repositoryId"`
+	TerraformLabels          map[string]string                      `pulumi:"terraformLabels"`
 	UpdateTime               string                                 `pulumi:"updateTime"`
 	VirtualRepositoryConfigs []GetRepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfigs"`
 }
@@ -159,6 +161,10 @@ func (o LookupRepositoryResultOutput) DockerConfigs() GetRepositoryDockerConfigA
 	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryDockerConfig { return v.DockerConfigs }).(GetRepositoryDockerConfigArrayOutput)
 }
 
+func (o LookupRepositoryResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupRepositoryResultOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -202,6 +208,10 @@ func (o LookupRepositoryResultOutput) RemoteRepositoryConfigs() GetRepositoryRem
 
 func (o LookupRepositoryResultOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupRepositoryResultOutput) UpdateTime() pulumi.StringOutput {

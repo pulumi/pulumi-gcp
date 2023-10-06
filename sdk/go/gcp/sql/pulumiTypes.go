@@ -23,6 +23,8 @@ type DatabaseInstanceClone struct {
 	//
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	PointInTime *string `pulumi:"pointInTime"`
+	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+	PreferredZone *string `pulumi:"preferredZone"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName string `pulumi:"sourceInstanceName"`
 }
@@ -47,6 +49,8 @@ type DatabaseInstanceCloneArgs struct {
 	//
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
+	// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+	PreferredZone pulumi.StringPtrInput `pulumi:"preferredZone"`
 	// Name of the source instance which will be cloned.
 	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
 }
@@ -163,6 +167,11 @@ func (o DatabaseInstanceCloneOutput) PointInTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PointInTime }).(pulumi.StringPtrOutput)
 }
 
+// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+func (o DatabaseInstanceCloneOutput) PreferredZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PreferredZone }).(pulumi.StringPtrOutput)
+}
+
 // Name of the source instance which will be cloned.
 func (o DatabaseInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) string { return v.SourceInstanceName }).(pulumi.StringOutput)
@@ -227,6 +236,16 @@ func (o DatabaseInstanceClonePtrOutput) PointInTime() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PointInTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+func (o DatabaseInstanceClonePtrOutput) PreferredZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredZone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -396,7 +415,8 @@ type DatabaseInstanceReplicaConfiguration struct {
 	// heartbeats.
 	MasterHeartbeatPeriod *int `pulumi:"masterHeartbeatPeriod"`
 	// Password for the replication connection.
-	Password  *string `pulumi:"password"`
+	Password *string `pulumi:"password"`
+	// Permissible ciphers for use in SSL encryption.
 	SslCipher *string `pulumi:"sslCipher"`
 	// Username for replication connection.
 	Username *string `pulumi:"username"`
@@ -442,7 +462,8 @@ type DatabaseInstanceReplicaConfigurationArgs struct {
 	// heartbeats.
 	MasterHeartbeatPeriod pulumi.IntPtrInput `pulumi:"masterHeartbeatPeriod"`
 	// Password for the replication connection.
-	Password  pulumi.StringPtrInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Permissible ciphers for use in SSL encryption.
 	SslCipher pulumi.StringPtrInput `pulumi:"sslCipher"`
 	// Username for replication connection.
 	Username pulumi.StringPtrInput `pulumi:"username"`
@@ -596,6 +617,7 @@ func (o DatabaseInstanceReplicaConfigurationOutput) Password() pulumi.StringPtrO
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Permissible ciphers for use in SSL encryption.
 func (o DatabaseInstanceReplicaConfigurationOutput) SslCipher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.SslCipher }).(pulumi.StringPtrOutput)
 }
@@ -731,6 +753,7 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) Password() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Permissible ciphers for use in SSL encryption.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) SslCipher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
 		if v == nil {
@@ -5421,6 +5444,7 @@ type GetDatabaseInstanceClone struct {
 	AllocatedIpRange   string   `pulumi:"allocatedIpRange"`
 	DatabaseNames      []string `pulumi:"databaseNames"`
 	PointInTime        string   `pulumi:"pointInTime"`
+	PreferredZone      string   `pulumi:"preferredZone"`
 	SourceInstanceName string   `pulumi:"sourceInstanceName"`
 }
 
@@ -5439,6 +5463,7 @@ type GetDatabaseInstanceCloneArgs struct {
 	AllocatedIpRange   pulumi.StringInput      `pulumi:"allocatedIpRange"`
 	DatabaseNames      pulumi.StringArrayInput `pulumi:"databaseNames"`
 	PointInTime        pulumi.StringInput      `pulumi:"pointInTime"`
+	PreferredZone      pulumi.StringInput      `pulumi:"preferredZone"`
 	SourceInstanceName pulumi.StringInput      `pulumi:"sourceInstanceName"`
 }
 
@@ -5521,6 +5546,10 @@ func (o GetDatabaseInstanceCloneOutput) DatabaseNames() pulumi.StringArrayOutput
 
 func (o GetDatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceCloneOutput) PreferredZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.PreferredZone }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
@@ -8705,6 +8734,7 @@ type GetDatabaseInstancesInstanceClone struct {
 	AllocatedIpRange   string   `pulumi:"allocatedIpRange"`
 	DatabaseNames      []string `pulumi:"databaseNames"`
 	PointInTime        string   `pulumi:"pointInTime"`
+	PreferredZone      string   `pulumi:"preferredZone"`
 	SourceInstanceName string   `pulumi:"sourceInstanceName"`
 }
 
@@ -8723,6 +8753,7 @@ type GetDatabaseInstancesInstanceCloneArgs struct {
 	AllocatedIpRange   pulumi.StringInput      `pulumi:"allocatedIpRange"`
 	DatabaseNames      pulumi.StringArrayInput `pulumi:"databaseNames"`
 	PointInTime        pulumi.StringInput      `pulumi:"pointInTime"`
+	PreferredZone      pulumi.StringInput      `pulumi:"preferredZone"`
 	SourceInstanceName pulumi.StringInput      `pulumi:"sourceInstanceName"`
 }
 
@@ -8805,6 +8836,10 @@ func (o GetDatabaseInstancesInstanceCloneOutput) DatabaseNames() pulumi.StringAr
 
 func (o GetDatabaseInstancesInstanceCloneOutput) PointInTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) PreferredZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.PreferredZone }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstancesInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {

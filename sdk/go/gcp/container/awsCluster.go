@@ -355,17 +355,25 @@ type AwsCluster struct {
 	pulumi.CustomResourceState
 
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationOutput `pulumi:"authorization"`
 	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion pulumi.StringOutput `pulumi:"awsRegion"`
+	// Configuration options for the Binary Authorization feature.
+	BinaryAuthorization AwsClusterBinaryAuthorizationOutput `pulumi:"binaryAuthorization"`
 	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -446,17 +454,25 @@ func GetAwsCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AwsCluster resources.
 type awsClusterState struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization *AwsClusterAuthorization `pulumi:"authorization"`
 	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion *string `pulumi:"awsRegion"`
+	// Configuration options for the Binary Authorization feature.
+	BinaryAuthorization *AwsClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Configuration related to the cluster control plane.
 	ControlPlane *AwsClusterControlPlane `pulumi:"controlPlane"`
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -490,17 +506,25 @@ type awsClusterState struct {
 
 type AwsClusterState struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationPtrInput
 	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion pulumi.StringPtrInput
+	// Configuration options for the Binary Authorization feature.
+	BinaryAuthorization AwsClusterBinaryAuthorizationPtrInput
 	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlanePtrInput
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -538,11 +562,16 @@ func (AwsClusterState) ElementType() reflect.Type {
 
 type awsClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorization `pulumi:"authorization"`
 	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion string `pulumi:"awsRegion"`
+	// Configuration options for the Binary Authorization feature.
+	BinaryAuthorization *AwsClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlane `pulumi:"controlPlane"`
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -567,11 +596,16 @@ type awsClusterArgs struct {
 // The set of arguments for constructing a AwsCluster resource.
 type AwsClusterArgs struct {
 	// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Configuration related to the cluster RBAC settings.
 	Authorization AwsClusterAuthorizationInput
 	// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 	AwsRegion pulumi.StringInput
+	// Configuration options for the Binary Authorization feature.
+	BinaryAuthorization AwsClusterBinaryAuthorizationPtrInput
 	// Configuration related to the cluster control plane.
 	ControlPlane AwsClusterControlPlaneInput
 	// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
@@ -705,6 +739,9 @@ func (o AwsClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsClust
 }
 
 // Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o AwsClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -717,6 +754,11 @@ func (o AwsClusterOutput) Authorization() AwsClusterAuthorizationOutput {
 // The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
 func (o AwsClusterOutput) AwsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+// Configuration options for the Binary Authorization feature.
+func (o AwsClusterOutput) BinaryAuthorization() AwsClusterBinaryAuthorizationOutput {
+	return o.ApplyT(func(v *AwsCluster) AwsClusterBinaryAuthorizationOutput { return v.BinaryAuthorization }).(AwsClusterBinaryAuthorizationOutput)
 }
 
 // Configuration related to the cluster control plane.
@@ -732,6 +774,12 @@ func (o AwsClusterOutput) CreateTime() pulumi.StringOutput {
 // Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 func (o AwsClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o AwsClusterOutput) EffectiveAnnotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *AwsCluster) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }
 
 // Output only. The endpoint of the cluster's API server.

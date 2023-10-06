@@ -53,6 +53,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly allowPscGlobalAccess: boolean;
     readonly baseForwardingRule: string;
     readonly description: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -75,6 +76,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly sourceIpRanges: string[];
     readonly subnetwork: string;
     readonly target: string;
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get a global forwarding rule within GCE from its name.

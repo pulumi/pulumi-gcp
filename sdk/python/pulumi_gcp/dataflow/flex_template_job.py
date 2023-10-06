@@ -446,6 +446,7 @@ class _FlexTemplateJobState:
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autoscaling_algorithm: Optional[pulumi.Input[str]] = None,
                  container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -468,6 +469,7 @@ class _FlexTemplateJobState:
                  state: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_location: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -478,6 +480,8 @@ class _FlexTemplateJobState:
                Template.
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_streaming_engine: Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
         :param pulumi.Input[str] job_id: The unique ID of this job.
@@ -515,6 +519,7 @@ class _FlexTemplateJobState:
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
@@ -525,6 +530,8 @@ class _FlexTemplateJobState:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if container_spec_gcs_path is not None:
             pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_streaming_engine is not None:
             pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
@@ -569,6 +576,8 @@ class _FlexTemplateJobState:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if temp_location is not None:
             pulumi.set(__self__, "temp_location", temp_location)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if transform_name_mapping is not None:
             pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
         if type is not None:
@@ -612,6 +621,19 @@ class _FlexTemplateJobState:
     @container_spec_gcs_path.setter
     def container_spec_gcs_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_spec_gcs_path", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="enableStreamingEngine")
@@ -891,6 +913,18 @@ class _FlexTemplateJobState:
     @temp_location.setter
     def temp_location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "temp_location", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="transformNameMapping")
@@ -1218,8 +1252,10 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["temp_location"] = temp_location
             __props__.__dict__["transform_name_mapping"] = transform_name_mapping
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["job_id"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["type"] = None
         super(FlexTemplateJob, __self__).__init__(
             'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
@@ -1234,6 +1270,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             autoscaling_algorithm: Optional[pulumi.Input[str]] = None,
             container_spec_gcs_path: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
             ip_configuration: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
@@ -1256,6 +1293,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_location: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'FlexTemplateJob':
         """
@@ -1271,6 +1309,8 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_streaming_engine: Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
         :param pulumi.Input[str] job_id: The unique ID of this job.
@@ -1308,6 +1348,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[str] state: The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         :param pulumi.Input[str] subnetwork: The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
                corresponding name prefixes of the new job.
         :param pulumi.Input[str] type: The type of this job, selected from the JobType enum.
@@ -1319,6 +1360,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["additional_experiments"] = additional_experiments
         __props__.__dict__["autoscaling_algorithm"] = autoscaling_algorithm
         __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine
         __props__.__dict__["ip_configuration"] = ip_configuration
         __props__.__dict__["job_id"] = job_id
@@ -1341,6 +1383,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["temp_location"] = temp_location
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["transform_name_mapping"] = transform_name_mapping
         __props__.__dict__["type"] = type
         return FlexTemplateJob(resource_name, opts=opts, __props__=__props__)
@@ -1355,7 +1398,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoscalingAlgorithm")
-    def autoscaling_algorithm(self) -> pulumi.Output[Optional[str]]:
+    def autoscaling_algorithm(self) -> pulumi.Output[str]:
         """
         The algorithm to use for autoscaling
         """
@@ -1371,6 +1414,15 @@ class FlexTemplateJob(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableStreamingEngine")
@@ -1398,7 +1450,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> pulumi.Output[Optional[str]]:
+    def kms_key_name(self) -> pulumi.Output[str]:
         """
         The name for the Cloud KMS key for the job. Key format is:
         projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
@@ -1421,7 +1473,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="launcherMachineType")
-    def launcher_machine_type(self) -> pulumi.Output[Optional[str]]:
+    def launcher_machine_type(self) -> pulumi.Output[str]:
         """
         The machine type to use for launching the job. The default is n1-standard-1.
         """
@@ -1429,7 +1481,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> pulumi.Output[Optional[str]]:
+    def machine_type(self) -> pulumi.Output[str]:
         """
         The machine type to use for the job.
         """
@@ -1437,7 +1489,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> pulumi.Output[Optional[int]]:
+    def max_workers(self) -> pulumi.Output[int]:
         """
         The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
         1000.
@@ -1454,7 +1506,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def network(self) -> pulumi.Output[Optional[str]]:
+    def network(self) -> pulumi.Output[str]:
         """
         The network to which VMs will be assigned. If it is not provided, "default" will be used.
         """
@@ -1462,7 +1514,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> pulumi.Output[Optional[int]]:
+    def num_workers(self) -> pulumi.Output[int]:
         """
         The initial number of Google Compute Engine instances for the job.
         """
@@ -1506,7 +1558,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sdkContainerImage")
-    def sdk_container_image(self) -> pulumi.Output[Optional[str]]:
+    def sdk_container_image(self) -> pulumi.Output[str]:
         """
         Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
         the SDK. Note this field is only valid for portable pipelines.
@@ -1549,7 +1601,7 @@ class FlexTemplateJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subnetwork(self) -> pulumi.Output[Optional[str]]:
+    def subnetwork(self) -> pulumi.Output[str]:
         """
         The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
         """
@@ -1562,6 +1614,14 @@ class FlexTemplateJob(pulumi.CustomResource):
         The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
         """
         return pulumi.get(self, "temp_location")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="transformNameMapping")

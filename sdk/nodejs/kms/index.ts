@@ -95,11 +95,6 @@ export type KeyRingImportJob = import("./keyRingImportJob").KeyRingImportJob;
 export const KeyRingImportJob: typeof import("./keyRingImportJob").KeyRingImportJob = null as any;
 utilities.lazyLoad(exports, ["KeyRingImportJob"], () => require("./keyRingImportJob"));
 
-export { RegistryArgs, RegistryState } from "./registry";
-export type Registry = import("./registry").Registry;
-export const Registry: typeof import("./registry").Registry = null as any;
-utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
-
 export { SecretCiphertextArgs, SecretCiphertextState } from "./secretCiphertext";
 export type SecretCiphertext = import("./secretCiphertext").SecretCiphertext;
 export const SecretCiphertext: typeof import("./secretCiphertext").SecretCiphertext = null as any;
@@ -130,8 +125,6 @@ const _module = {
                 return new KeyRingIAMPolicy(name, <any>undefined, { urn })
             case "gcp:kms/keyRingImportJob:KeyRingImportJob":
                 return new KeyRingImportJob(name, <any>undefined, { urn })
-            case "gcp:kms/registry:Registry":
-                return new Registry(name, <any>undefined, { urn })
             case "gcp:kms/secretCiphertext:SecretCiphertext":
                 return new SecretCiphertext(name, <any>undefined, { urn })
             default:
@@ -149,5 +142,4 @@ pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingImportJob", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/registry", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/secretCiphertext", _module)

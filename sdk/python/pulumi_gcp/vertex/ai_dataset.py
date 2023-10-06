@@ -32,6 +32,9 @@ class AiDatasetArgs:
         :param pulumi.Input['AiDatasetEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
@@ -92,6 +95,9 @@ class AiDatasetArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Workflow.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -130,20 +136,27 @@ class _AiDatasetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_schema_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiDataset resources.
         :param pulumi.Input[str] create_time: The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['AiDatasetEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
                
                
@@ -152,12 +165,16 @@ class _AiDatasetState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_spec is not None:
             pulumi.set(__self__, "encryption_spec", encryption_spec)
         if labels is not None:
@@ -170,6 +187,8 @@ class _AiDatasetState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -198,6 +217,19 @@ class _AiDatasetState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']]:
         """
@@ -215,6 +247,9 @@ class _AiDatasetState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this Workflow.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -275,6 +310,19 @@ class _AiDatasetState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -317,6 +365,9 @@ class AiDataset(pulumi.CustomResource):
 
         dataset = gcp.vertex.AiDataset("dataset",
             display_name="terraform",
+            labels={
+                "env": "test",
+            },
             metadata_schema_uri="gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
             region="us-central1")
         ```
@@ -331,6 +382,9 @@ class AiDataset(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
                
                
@@ -363,6 +417,9 @@ class AiDataset(pulumi.CustomResource):
 
         dataset = gcp.vertex.AiDataset("dataset",
             display_name="terraform",
+            labels={
+                "env": "test",
+            },
             metadata_schema_uri="gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml",
             region="us-central1")
         ```
@@ -412,7 +469,9 @@ class AiDataset(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiDataset, __self__).__init__(
             'gcp:vertex/aiDataset:AiDataset',
@@ -426,12 +485,14 @@ class AiDataset(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiDataset':
         """
         Get an existing AiDataset resource's state with the given name, id, and optional extra
@@ -442,9 +503,14 @@ class AiDataset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
                
                
@@ -453,6 +519,8 @@ class AiDataset(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the dataset. eg us-central1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -461,12 +529,14 @@ class AiDataset(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_spec"] = encryption_spec
         __props__.__dict__["labels"] = labels
         __props__.__dict__["metadata_schema_uri"] = metadata_schema_uri
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiDataset(resource_name, opts=opts, __props__=__props__)
 
@@ -487,6 +557,15 @@ class AiDataset(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> pulumi.Output[Optional['outputs.AiDatasetEncryptionSpec']]:
         """
@@ -497,9 +576,12 @@ class AiDataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this Workflow.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -538,6 +620,15 @@ class AiDataset(pulumi.CustomResource):
         The region of the dataset. eg us-central1
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

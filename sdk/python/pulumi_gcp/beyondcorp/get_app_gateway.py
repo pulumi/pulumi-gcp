@@ -22,13 +22,16 @@ class GetAppGatewayResult:
     """
     A collection of values returned by getAppGateway.
     """
-    def __init__(__self__, allocated_connections=None, display_name=None, host_type=None, id=None, labels=None, name=None, project=None, region=None, state=None, type=None, uri=None):
+    def __init__(__self__, allocated_connections=None, display_name=None, effective_labels=None, host_type=None, id=None, labels=None, name=None, project=None, region=None, state=None, terraform_labels=None, type=None, uri=None):
         if allocated_connections and not isinstance(allocated_connections, list):
             raise TypeError("Expected argument 'allocated_connections' to be a list")
         pulumi.set(__self__, "allocated_connections", allocated_connections)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if host_type and not isinstance(host_type, str):
             raise TypeError("Expected argument 'host_type' to be a str")
         pulumi.set(__self__, "host_type", host_type)
@@ -50,6 +53,9 @@ class GetAppGatewayResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -66,6 +72,11 @@ class GetAppGatewayResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="hostType")
@@ -106,6 +117,11 @@ class GetAppGatewayResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
@@ -124,6 +140,7 @@ class AwaitableGetAppGatewayResult(GetAppGatewayResult):
         return GetAppGatewayResult(
             allocated_connections=self.allocated_connections,
             display_name=self.display_name,
+            effective_labels=self.effective_labels,
             host_type=self.host_type,
             id=self.id,
             labels=self.labels,
@@ -131,6 +148,7 @@ class AwaitableGetAppGatewayResult(GetAppGatewayResult):
             project=self.project,
             region=self.region,
             state=self.state,
+            terraform_labels=self.terraform_labels,
             type=self.type,
             uri=self.uri)
 
@@ -170,6 +188,7 @@ def get_app_gateway(name: Optional[str] = None,
     return AwaitableGetAppGatewayResult(
         allocated_connections=pulumi.get(__ret__, 'allocated_connections'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         host_type=pulumi.get(__ret__, 'host_type'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -177,6 +196,7 @@ def get_app_gateway(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         type=pulumi.get(__ret__, 'type'),
         uri=pulumi.get(__ret__, 'uri'))
 

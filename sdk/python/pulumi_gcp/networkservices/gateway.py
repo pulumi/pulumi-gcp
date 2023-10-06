@@ -48,6 +48,8 @@ class GatewayArgs:
                For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
@@ -196,6 +198,8 @@ class GatewayArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the Gateway resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -309,6 +313,7 @@ class _GatewayState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gateway_security_policy: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -320,6 +325,7 @@ class _GatewayState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -333,10 +339,14 @@ class _GatewayState:
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
                For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
@@ -361,6 +371,8 @@ class _GatewayState:
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
                For example: `projects/*/regions/us-central1/subnetworks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
@@ -375,6 +387,8 @@ class _GatewayState:
             pulumi.set(__self__, "delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if gateway_security_policy is not None:
             pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if labels is not None:
@@ -397,6 +411,8 @@ class _GatewayState:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if update_time is not None:
@@ -467,6 +483,19 @@ class _GatewayState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -485,6 +514,8 @@ class _GatewayState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the Gateway resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -614,6 +645,19 @@ class _GatewayState:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -838,6 +882,8 @@ class Gateway(pulumi.CustomResource):
                For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
@@ -1091,7 +1137,9 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Gateway, __self__).__init__(
             'gcp:networkservices/gateway:Gateway',
@@ -1108,6 +1156,7 @@ class Gateway(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gateway_security_policy: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1119,6 +1168,7 @@ class Gateway(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """
@@ -1137,10 +1187,14 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
                If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
                For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
                This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
@@ -1165,6 +1219,8 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
                For example: `projects/*/regions/us-central1/subnetworks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
@@ -1178,6 +1234,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateway_security_policy"] = gateway_security_policy
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -1189,6 +1246,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["server_tls_policy"] = server_tls_policy
         __props__.__dict__["subnetwork"] = subnetwork
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return Gateway(resource_name, opts=opts, __props__=__props__)
@@ -1238,6 +1296,15 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="gatewaySecurityPolicy")
     def gateway_security_policy(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1252,6 +1319,8 @@ class Gateway(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the Gateway resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1341,6 +1410,15 @@ class Gateway(pulumi.CustomResource):
         Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         """
         return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

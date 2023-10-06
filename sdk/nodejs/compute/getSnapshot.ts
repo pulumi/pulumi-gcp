@@ -75,6 +75,7 @@ export interface GetSnapshotResult {
     readonly creationTimestamp: string;
     readonly description: string;
     readonly diskSizeGb: number;
+    readonly effectiveLabels: {[key: string]: string};
     readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -93,6 +94,7 @@ export interface GetSnapshotResult {
     readonly sourceDiskEncryptionKeys: outputs.compute.GetSnapshotSourceDiskEncryptionKey[];
     readonly storageBytes: number;
     readonly storageLocations: string[];
+    readonly terraformLabels: {[key: string]: string};
     readonly zone: string;
 }
 /**

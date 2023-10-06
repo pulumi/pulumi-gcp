@@ -198,7 +198,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -237,7 +238,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -287,7 +289,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -330,7 +333,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -368,7 +372,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -435,7 +440,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -538,7 +544,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -577,7 +584,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -627,7 +635,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -670,7 +679,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -708,7 +718,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -775,7 +786,8 @@ class RestorePlanIamPolicy(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection="")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",

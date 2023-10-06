@@ -147,6 +147,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      */
@@ -163,6 +168,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -184,6 +192,11 @@ export class Instance extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
@@ -214,6 +227,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fileShares"] = state ? state.fileShares : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
@@ -222,6 +236,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -246,7 +261,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -266,6 +283,11 @@ export interface InstanceState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Server-specified ETag for the instance resource to prevent
      * simultaneous updates from overwriting each other.
      */
@@ -282,6 +304,9 @@ export interface InstanceState {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -303,6 +328,11 @@ export interface InstanceState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
@@ -339,6 +369,9 @@ export interface InstanceArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

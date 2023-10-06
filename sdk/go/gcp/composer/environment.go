@@ -38,11 +38,16 @@ type Environment struct {
 
 	// Configuration parameters for this environment.
 	Config EnvironmentConfigOutput `pulumi:"config"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
 	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
 	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
 	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -50,6 +55,8 @@ type Environment struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -84,11 +91,16 @@ func GetEnvironment(ctx *pulumi.Context,
 type environmentState struct {
 	// Configuration parameters for this environment.
 	Config *EnvironmentConfig `pulumi:"config"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
 	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
 	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
 	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the environment.
 	Name *string `pulumi:"name"`
@@ -96,16 +108,23 @@ type environmentState struct {
 	Project *string `pulumi:"project"`
 	// The location or Compute Engine region for the environment.
 	Region *string `pulumi:"region"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type EnvironmentState struct {
 	// Configuration parameters for this environment.
 	Config EnvironmentConfigPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
 	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
 	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
 	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the environment.
 	Name pulumi.StringPtrInput
@@ -113,6 +132,8 @@ type EnvironmentState struct {
 	Project pulumi.StringPtrInput
 	// The location or Compute Engine region for the environment.
 	Region pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {
@@ -126,7 +147,9 @@ type environmentArgs struct {
 	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
 	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
 	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the environment.
 	Name *string `pulumi:"name"`
@@ -144,7 +167,9 @@ type EnvironmentArgs struct {
 	// are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
 	// must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
 	// characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-	// associated with a given environment. Both keys and values must be <= 128 bytes in size.
+	// associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+	// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+	// 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the environment.
 	Name pulumi.StringPtrInput
@@ -270,11 +295,19 @@ func (o EnvironmentOutput) Config() EnvironmentConfigOutput {
 	return o.ApplyT(func(v *Environment) EnvironmentConfigOutput { return v.Config }).(EnvironmentConfigOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EnvironmentOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map
 // are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and
 // must conform to the following regular expression: [a-z]([-a-z0-9]*[a-z0-9])?. Label values must be between 0 and 63
 // characters long and must conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?. No more than 64 labels can be
-// associated with a given environment. Both keys and values must be <= 128 bytes in size.
+// associated with a given environment. Both keys and values must be <= 128 bytes in size. **Note**: This field is
+// non-authoritative, and will only manage the labels present in your configuration. Please refer to the field
+// 'effective_labels' for all of the labels present on the resource.
 func (o EnvironmentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -292,6 +325,11 @@ func (o EnvironmentOutput) Project() pulumi.StringOutput {
 // The location or Compute Engine region for the environment.
 func (o EnvironmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o EnvironmentOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type EnvironmentArrayOutput struct{ *pulumi.OutputState }

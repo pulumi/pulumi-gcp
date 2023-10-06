@@ -145,16 +145,22 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterConfig!: pulumi.Output<outputs.dataproc.ClusterClusterConfig>;
     /**
+     * The list of labels (key/value pairs) to be applied to
+     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+     * which is the name of the cluster.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
      * terraform apply
      */
     public readonly gracefulDecommissionTimeout!: pulumi.Output<string | undefined>;
     /**
-     * The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field 'effective_labels' for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the cluster, unique within the project and
      * zone.
@@ -172,6 +178,10 @@ export class Cluster extends pulumi.CustomResource {
      * Defaults to `global`.
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Allows you to configure a virtual Dataproc on GKE cluster.
      * Structure defined below.
@@ -192,11 +202,13 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["clusterConfig"] = state ? state.clusterConfig : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gracefulDecommissionTimeout"] = state ? state.gracefulDecommissionTimeout : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["virtualClusterConfig"] = state ? state.virtualClusterConfig : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -207,6 +219,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["virtualClusterConfig"] = args ? args.virtualClusterConfig : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
@@ -223,14 +237,20 @@ export interface ClusterState {
      */
     clusterConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfig>;
     /**
+     * The list of labels (key/value pairs) to be applied to
+     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+     * which is the name of the cluster.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
      * terraform apply
      */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
-     * The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -250,6 +270,10 @@ export interface ClusterState {
      * Defaults to `global`.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Allows you to configure a virtual Dataproc on GKE cluster.
      * Structure defined below.
@@ -272,9 +296,9 @@ export interface ClusterArgs {
      */
     gracefulDecommissionTimeout?: pulumi.Input<string>;
     /**
-     * The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

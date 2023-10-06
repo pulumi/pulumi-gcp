@@ -110,7 +110,12 @@ type TrustConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a trust config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the trust config.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The trust config location.
 	//
@@ -121,6 +126,9 @@ type TrustConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
 	// Structure is documented below.
@@ -170,7 +178,12 @@ type trustConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a trust config.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the trust config.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The trust config location.
 	//
@@ -181,6 +194,9 @@ type trustConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
 	// Structure is documented below.
@@ -198,7 +214,12 @@ type TrustConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// One or more paragraphs of text description of a trust config.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the trust config.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The trust config location.
 	//
@@ -209,6 +230,9 @@ type TrustConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Set of trust stores to perform validation against.
 	// This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
 	// Structure is documented below.
@@ -227,6 +251,8 @@ type trustConfigArgs struct {
 	// One or more paragraphs of text description of a trust config.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the trust config.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The trust config location.
 	//
@@ -248,6 +274,8 @@ type TrustConfigArgs struct {
 	// One or more paragraphs of text description of a trust config.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the trust config.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The trust config location.
 	//
@@ -387,7 +415,15 @@ func (o TrustConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TrustConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the trust config.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o TrustConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -408,6 +444,12 @@ func (o TrustConfigOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o TrustConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o TrustConfigOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrustConfig) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Set of trust stores to perform validation against.

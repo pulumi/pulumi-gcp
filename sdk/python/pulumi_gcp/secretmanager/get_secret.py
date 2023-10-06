@@ -22,13 +22,19 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, topics=None, ttl=None, version_aliases=None):
+    def __init__(__self__, annotations=None, create_time=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, terraform_labels=None, topics=None, ttl=None, version_aliases=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if effective_annotations and not isinstance(effective_annotations, dict):
+            raise TypeError("Expected argument 'effective_annotations' to be a dict")
+        pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
@@ -53,6 +59,9 @@ class GetSecretResult:
         if secret_id and not isinstance(secret_id, str):
             raise TypeError("Expected argument 'secret_id' to be a str")
         pulumi.set(__self__, "secret_id", secret_id)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
@@ -72,6 +81,16 @@ class GetSecretResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="expireTime")
@@ -117,6 +136,11 @@ class GetSecretResult:
         return pulumi.get(self, "secret_id")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
     def topics(self) -> Sequence['outputs.GetSecretTopicResult']:
         return pulumi.get(self, "topics")
@@ -140,6 +164,8 @@ class AwaitableGetSecretResult(GetSecretResult):
         return GetSecretResult(
             annotations=self.annotations,
             create_time=self.create_time,
+            effective_annotations=self.effective_annotations,
+            effective_labels=self.effective_labels,
             expire_time=self.expire_time,
             id=self.id,
             labels=self.labels,
@@ -148,6 +174,7 @@ class AwaitableGetSecretResult(GetSecretResult):
             replications=self.replications,
             rotations=self.rotations,
             secret_id=self.secret_id,
+            terraform_labels=self.terraform_labels,
             topics=self.topics,
             ttl=self.ttl,
             version_aliases=self.version_aliases)
@@ -181,6 +208,8 @@ def get_secret(project: Optional[str] = None,
     return AwaitableGetSecretResult(
         annotations=pulumi.get(__ret__, 'annotations'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -189,6 +218,7 @@ def get_secret(project: Optional[str] = None,
         replications=pulumi.get(__ret__, 'replications'),
         rotations=pulumi.get(__ret__, 'rotations'),
         secret_id=pulumi.get(__ret__, 'secret_id'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         topics=pulumi.get(__ret__, 'topics'),
         ttl=pulumi.get(__ret__, 'ttl'),
         version_aliases=pulumi.get(__ret__, 'version_aliases'))

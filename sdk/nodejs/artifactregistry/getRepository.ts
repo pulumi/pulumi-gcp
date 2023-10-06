@@ -63,6 +63,7 @@ export interface GetRepositoryResult {
     readonly createTime: string;
     readonly description: string;
     readonly dockerConfigs: outputs.artifactregistry.GetRepositoryDockerConfig[];
+    readonly effectiveLabels: {[key: string]: string};
     readonly format: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,6 +78,7 @@ export interface GetRepositoryResult {
     readonly project?: string;
     readonly remoteRepositoryConfigs: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfig[];
     readonly repositoryId: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
     readonly virtualRepositoryConfigs: outputs.artifactregistry.GetRepositoryVirtualRepositoryConfig[];
 }

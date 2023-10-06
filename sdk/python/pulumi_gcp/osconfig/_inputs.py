@@ -6196,14 +6196,18 @@ class PatchDeploymentRecurringScheduleMonthlyArgs:
 class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str],
-                 week_ordinal: pulumi.Input[int]):
+                 week_ordinal: pulumi.Input[int],
+                 day_offset: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] day_of_week: A day of the week.
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input[int] week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param pulumi.Input[int] day_offset: Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "week_ordinal", week_ordinal)
+        if day_offset is not None:
+            pulumi.set(__self__, "day_offset", day_offset)
 
     @property
     @pulumi.getter(name="dayOfWeek")
@@ -6229,6 +6233,18 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs:
     @week_ordinal.setter
     def week_ordinal(self, value: pulumi.Input[int]):
         pulumi.set(self, "week_ordinal", value)
+
+    @property
+    @pulumi.getter(name="dayOffset")
+    def day_offset(self) -> Optional[pulumi.Input[int]]:
+        """
+        Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+        """
+        return pulumi.get(self, "day_offset")
+
+    @day_offset.setter
+    def day_offset(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "day_offset", value)
 
 
 @pulumi.input_type

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:securitycenter/folderCustomModule:FolderCustomModule":
+		r = &FolderCustomModule{}
 	case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
 		r = &InstanceIamBinding{}
 	case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
@@ -31,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MuteConfig{}
 	case "gcp:securitycenter/notificationConfig:NotificationConfig":
 		r = &NotificationConfig{}
+	case "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule":
+		r = &OrganizationCustomModule{}
 	case "gcp:securitycenter/projectCustomModule:ProjectCustomModule":
 		r = &ProjectCustomModule{}
 	case "gcp:securitycenter/source:Source":
@@ -56,6 +60,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"securitycenter/folderCustomModule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"securitycenter/instanceIamBinding",
 		&module{version},
 	)
@@ -77,6 +86,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/notificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/organizationCustomModule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

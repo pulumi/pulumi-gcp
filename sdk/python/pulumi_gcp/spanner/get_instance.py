@@ -21,13 +21,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, config=None, display_name=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, state=None):
+    def __init__(__self__, config=None, display_name=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, state=None, terraform_labels=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if force_destroy and not isinstance(force_destroy, bool):
             raise TypeError("Expected argument 'force_destroy' to be a bool")
         pulumi.set(__self__, "force_destroy", force_destroy)
@@ -52,6 +55,9 @@ class GetInstanceResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -62,6 +68,11 @@ class GetInstanceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -106,6 +117,11 @@ class GetInstanceResult:
     def state(self) -> str:
         return pulumi.get(self, "state")
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
 
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
@@ -115,6 +131,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             config=self.config,
             display_name=self.display_name,
+            effective_labels=self.effective_labels,
             force_destroy=self.force_destroy,
             id=self.id,
             labels=self.labels,
@@ -122,7 +139,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             num_nodes=self.num_nodes,
             processing_units=self.processing_units,
             project=self.project,
-            state=self.state)
+            state=self.state,
+            terraform_labels=self.terraform_labels)
 
 
 def get_instance(config: Optional[str] = None,
@@ -160,6 +178,7 @@ def get_instance(config: Optional[str] = None,
     return AwaitableGetInstanceResult(
         config=pulumi.get(__ret__, 'config'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -167,7 +186,8 @@ def get_instance(config: Optional[str] = None,
         num_nodes=pulumi.get(__ret__, 'num_nodes'),
         processing_units=pulumi.get(__ret__, 'processing_units'),
         project=pulumi.get(__ret__, 'project'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
 
 
 @_utilities.lift_output_func(get_instance)

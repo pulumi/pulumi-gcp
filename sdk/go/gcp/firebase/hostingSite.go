@@ -54,9 +54,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
-//				Project:        pulumi.String("my-project-name"),
-//				DisplayName:    pulumi.String("Test web app for Firebase Hosting"),
-//				DeletionPolicy: pulumi.String("DELETE"),
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Test web app for Firebase Hosting"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err

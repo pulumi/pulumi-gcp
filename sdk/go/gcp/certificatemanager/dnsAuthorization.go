@@ -87,7 +87,12 @@ type DnsAuthorization struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the DNS Authorization resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -98,6 +103,9 @@ type DnsAuthorization struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewDnsAuthorization registers a new resource with the given unique name, arguments, and options.
@@ -144,7 +152,12 @@ type dnsAuthorizationState struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain *string `pulumi:"domain"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the DNS Authorization resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -155,6 +168,9 @@ type dnsAuthorizationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type DnsAuthorizationState struct {
@@ -169,7 +185,12 @@ type DnsAuthorizationState struct {
 	// single domain and its wildcard, e.g. authorization for "example.com" can
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the DNS Authorization resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -180,6 +201,9 @@ type DnsAuthorizationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (DnsAuthorizationState) ElementType() reflect.Type {
@@ -194,6 +218,8 @@ type dnsAuthorizationArgs struct {
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain string `pulumi:"domain"`
 	// Set of label tags associated with the DNS Authorization resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -215,6 +241,8 @@ type DnsAuthorizationArgs struct {
 	// be used to issue certificates for "example.com" and "*.example.com".
 	Domain pulumi.StringInput
 	// Set of label tags associated with the DNS Authorization resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -358,7 +386,15 @@ func (o DnsAuthorizationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DnsAuthorizationOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the DNS Authorization resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DnsAuthorizationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -376,6 +412,12 @@ func (o DnsAuthorizationOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o DnsAuthorizationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DnsAuthorizationOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type DnsAuthorizationArrayOutput struct{ *pulumi.OutputState }

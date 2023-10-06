@@ -48,6 +48,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -112,6 +113,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -189,6 +191,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -259,6 +262,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -322,6 +326,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -424,6 +429,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -532,9 +538,15 @@ type RestorePlan struct {
 	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Restore Plan.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -550,6 +562,9 @@ type RestorePlan struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Detailed description of why RestorePlan is in its current state.
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -607,9 +622,15 @@ type restorePlanState struct {
 	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Restore Plan.
 	Location *string `pulumi:"location"`
@@ -625,6 +646,9 @@ type restorePlanState struct {
 	State *string `pulumi:"state"`
 	// Detailed description of why RestorePlan is in its current state.
 	StateReason *string `pulumi:"stateReason"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Server generated, unique identifier of UUID format.
 	Uid *string `pulumi:"uid"`
 }
@@ -641,9 +665,15 @@ type RestorePlanState struct {
 	// (Optional)
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Restore Plan.
 	Location pulumi.StringPtrInput
@@ -659,6 +689,9 @@ type RestorePlanState struct {
 	State pulumi.StringPtrInput
 	// Detailed description of why RestorePlan is in its current state.
 	StateReason pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringPtrInput
 }
@@ -682,6 +715,9 @@ type restorePlanArgs struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Restore Plan.
 	Location string `pulumi:"location"`
@@ -711,6 +747,9 @@ type RestorePlanArgs struct {
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The region of the Restore Plan.
 	Location pulumi.StringInput
@@ -855,9 +894,18 @@ func (o RestorePlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o RestorePlanOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Description: A set of custom labels supplied by the user.
 // A list of key->value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o RestorePlanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -892,6 +940,12 @@ func (o RestorePlanOutput) State() pulumi.StringOutput {
 // Detailed description of why RestorePlan is in its current state.
 func (o RestorePlanOutput) StateReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RestorePlanOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Server generated, unique identifier of UUID format.

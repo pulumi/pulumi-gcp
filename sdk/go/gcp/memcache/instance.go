@@ -38,9 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			memcacheNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "test-network",
-//			}, nil)
+//			memcacheNetwork, err := compute.NewNetwork(ctx, "memcacheNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -48,13 +46,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      *pulumi.String(memcacheNetwork.Id),
+//				Network:      memcacheNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(memcacheNetwork.Id),
+//				Network: memcacheNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -65,6 +63,9 @@ import (
 //			}
 //			_, err = memcache.NewInstance(ctx, "instance", &memcache.InstanceArgs{
 //				AuthorizedNetwork: privateServiceConnection.Network,
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
 //				NodeConfig: &memcache.InstanceNodeConfigArgs{
 //					CpuCount:     pulumi.Int(1),
 //					MemorySizeMb: pulumi.Int(1024),
@@ -137,7 +138,13 @@ type Instance struct {
 	DiscoveryEndpoint pulumi.StringOutput `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Maintenance policy for an instance.
 	// Structure is documented below.
@@ -171,6 +178,9 @@ type Instance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
@@ -224,7 +234,13 @@ type instanceState struct {
 	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
 	// A user-visible name for the instance.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Maintenance policy for an instance.
 	// Structure is documented below.
@@ -258,6 +274,9 @@ type instanceState struct {
 	Project *string `pulumi:"project"`
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones []string `pulumi:"zones"`
@@ -276,7 +295,13 @@ type InstanceState struct {
 	DiscoveryEndpoint pulumi.StringPtrInput
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Maintenance policy for an instance.
 	// Structure is documented below.
@@ -310,6 +335,9 @@ type InstanceState struct {
 	Project pulumi.StringPtrInput
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayInput
@@ -326,6 +354,9 @@ type instanceArgs struct {
 	// A user-visible name for the instance.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Maintenance policy for an instance.
 	// Structure is documented below.
@@ -364,6 +395,9 @@ type InstanceArgs struct {
 	// A user-visible name for the instance.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Maintenance policy for an instance.
 	// Structure is documented below.
@@ -529,7 +563,16 @@ func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -597,6 +640,12 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 // The region of the Memcache instance. If it is not provided, the provider region is used.
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Zones where memcache nodes should be provisioned.  If not

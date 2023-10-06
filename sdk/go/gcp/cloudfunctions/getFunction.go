@@ -72,9 +72,10 @@ type LookupFunctionResult struct {
 	BuildEnvironmentVariables map[string]interface{} `pulumi:"buildEnvironmentVariables"`
 	BuildWorkerPool           string                 `pulumi:"buildWorkerPool"`
 	// Description of the function.
-	Description      string `pulumi:"description"`
-	DockerRegistry   string `pulumi:"dockerRegistry"`
-	DockerRepository string `pulumi:"dockerRepository"`
+	Description      string            `pulumi:"description"`
+	DockerRegistry   string            `pulumi:"dockerRegistry"`
+	DockerRepository string            `pulumi:"dockerRepository"`
+	EffectiveLabels  map[string]string `pulumi:"effectiveLabels"`
 	// Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint           string                 `pulumi:"entryPoint"`
 	EnvironmentVariables map[string]interface{} `pulumi:"environmentVariables"`
@@ -86,10 +87,9 @@ type LookupFunctionResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Controls what traffic can reach the function.
-	IngressSettings string `pulumi:"ingressSettings"`
-	KmsKeyName      string `pulumi:"kmsKeyName"`
-	// A map of labels applied to this function.
-	Labels map[string]interface{} `pulumi:"labels"`
+	IngressSettings string                 `pulumi:"ingressSettings"`
+	KmsKeyName      string                 `pulumi:"kmsKeyName"`
+	Labels          map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
 	MaxInstances int `pulumi:"maxInstances"`
 	MinInstances int `pulumi:"minInstances"`
@@ -110,6 +110,7 @@ type LookupFunctionResult struct {
 	// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
 	SourceRepositories []GetFunctionSourceRepository `pulumi:"sourceRepositories"`
 	Status             string                        `pulumi:"status"`
+	TerraformLabels    map[string]string             `pulumi:"terraformLabels"`
 	// Function execution timeout (in seconds).
 	Timeout int `pulumi:"timeout"`
 	// If function is triggered by HTTP, this boolean is set.
@@ -198,6 +199,10 @@ func (o LookupFunctionResultOutput) DockerRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.DockerRepository }).(pulumi.StringOutput)
 }
 
+func (o LookupFunctionResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
 func (o LookupFunctionResultOutput) EntryPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.EntryPoint }).(pulumi.StringOutput)
@@ -235,7 +240,6 @@ func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// A map of labels applied to this function.
 func (o LookupFunctionResultOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupFunctionResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
@@ -299,6 +303,10 @@ func (o LookupFunctionResultOutput) SourceRepositories() GetFunctionSourceReposi
 
 func (o LookupFunctionResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFunctionResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Function execution timeout (in seconds).

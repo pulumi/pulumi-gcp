@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -75,6 +76,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -128,6 +130,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -174,6 +177,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -215,6 +219,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -285,6 +290,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -397,9 +403,17 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -429,6 +443,11 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateReason!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Server generated, unique identifier of UUID format.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -449,6 +468,7 @@ export class RestorePlan extends pulumi.CustomResource {
             resourceInputs["backupPlan"] = state ? state.backupPlan : undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -456,6 +476,7 @@ export class RestorePlan extends pulumi.CustomResource {
             resourceInputs["restoreConfig"] = state ? state.restoreConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateReason"] = state ? state.stateReason : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as RestorePlanArgs | undefined;
@@ -479,8 +500,10 @@ export class RestorePlan extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["restoreConfig"] = args ? args.restoreConfig : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateReason"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -510,9 +533,17 @@ export interface RestorePlanState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -541,6 +572,11 @@ export interface RestorePlanState {
      * Detailed description of why RestorePlan is in its current state.
      */
     stateReason?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Server generated, unique identifier of UUID format.
      */
@@ -572,6 +608,9 @@ export interface RestorePlanArgs {
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

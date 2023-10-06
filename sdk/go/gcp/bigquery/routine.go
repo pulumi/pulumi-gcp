@@ -243,7 +243,7 @@ type Routine struct {
 	RoutineId pulumi.StringOutput `pulumi:"routineId"`
 	// The type of routine.
 	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-	RoutineType pulumi.StringPtrOutput `pulumi:"routineType"`
+	RoutineType pulumi.StringOutput `pulumi:"routineType"`
 }
 
 // NewRoutine registers a new resource with the given unique name, arguments, and options.
@@ -261,6 +261,9 @@ func NewRoutine(ctx *pulumi.Context,
 	}
 	if args.RoutineId == nil {
 		return nil, errors.New("invalid value for required argument 'RoutineId'")
+	}
+	if args.RoutineType == nil {
+		return nil, errors.New("invalid value for required argument 'RoutineType'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Routine
@@ -438,7 +441,7 @@ type routineArgs struct {
 	RoutineId string `pulumi:"routineId"`
 	// The type of routine.
 	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-	RoutineType *string `pulumi:"routineType"`
+	RoutineType string `pulumi:"routineType"`
 }
 
 // The set of arguments for constructing a Routine resource.
@@ -486,7 +489,7 @@ type RoutineArgs struct {
 	RoutineId pulumi.StringInput
 	// The type of routine.
 	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-	RoutineType pulumi.StringPtrInput
+	RoutineType pulumi.StringInput
 }
 
 func (RoutineArgs) ElementType() reflect.Type {
@@ -688,8 +691,8 @@ func (o RoutineOutput) RoutineId() pulumi.StringOutput {
 
 // The type of routine.
 // Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-func (o RoutineOutput) RoutineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.RoutineType }).(pulumi.StringPtrOutput)
+func (o RoutineOutput) RoutineType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.RoutineType }).(pulumi.StringOutput)
 }
 
 type RoutineArrayOutput struct{ *pulumi.OutputState }

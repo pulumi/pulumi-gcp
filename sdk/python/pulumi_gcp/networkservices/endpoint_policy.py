@@ -36,6 +36,8 @@ class EndpointPolicyArgs:
         :param pulumi.Input[str] client_tls_policy: A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -129,6 +131,8 @@ class EndpointPolicyArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -194,11 +198,13 @@ class _EndpointPolicyState:
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_matcher: Optional[pulumi.Input['EndpointPolicyEndpointMatcherArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  traffic_port_selector: Optional[pulumi.Input['EndpointPolicyTrafficPortSelectorArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -208,13 +214,19 @@ class _EndpointPolicyState:
         :param pulumi.Input[str] client_tls_policy: A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
         :param pulumi.Input[str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['EndpointPolicyEndpointMatcherArgs'] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['EndpointPolicyTrafficPortSelectorArgs'] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of endpoint policy. This is primarily used to validate the configuration.
@@ -229,6 +241,8 @@ class _EndpointPolicyState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if endpoint_matcher is not None:
             pulumi.set(__self__, "endpoint_matcher", endpoint_matcher)
         if labels is not None:
@@ -239,6 +253,8 @@ class _EndpointPolicyState:
             pulumi.set(__self__, "project", project)
         if server_tls_policy is not None:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if traffic_port_selector is not None:
             pulumi.set(__self__, "traffic_port_selector", traffic_port_selector)
         if type is not None:
@@ -295,6 +311,19 @@ class _EndpointPolicyState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="endpointMatcher")
     def endpoint_matcher(self) -> Optional[pulumi.Input['EndpointPolicyEndpointMatcherArgs']]:
         """
@@ -312,6 +341,8 @@ class _EndpointPolicyState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -355,6 +386,19 @@ class _EndpointPolicyState:
     @server_tls_policy.setter
     def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_tls_policy", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="trafficPortSelector")
@@ -486,6 +530,8 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -617,6 +663,8 @@ class EndpointPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(EndpointPolicy, __self__).__init__(
             'gcp:networkservices/endpointPolicy:EndpointPolicy',
@@ -632,11 +680,13 @@ class EndpointPolicy(pulumi.CustomResource):
             client_tls_policy: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint_matcher: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             traffic_port_selector: Optional[pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'EndpointPolicy':
@@ -651,13 +701,19 @@ class EndpointPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] client_tls_policy: A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
         :param pulumi.Input[str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['EndpointPolicyEndpointMatcherArgs']] endpoint_matcher: Required. A matcher that selects endpoints to which the policies should be applied.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the EndpointPolicy resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] server_tls_policy: A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EndpointPolicyTrafficPortSelectorArgs']] traffic_port_selector: Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of endpoint policy. This is primarily used to validate the configuration.
@@ -672,11 +728,13 @@ class EndpointPolicy(pulumi.CustomResource):
         __props__.__dict__["client_tls_policy"] = client_tls_policy
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint_matcher"] = endpoint_matcher
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["server_tls_policy"] = server_tls_policy
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["traffic_port_selector"] = traffic_port_selector
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
@@ -715,6 +773,15 @@ class EndpointPolicy(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="endpointMatcher")
     def endpoint_matcher(self) -> pulumi.Output['outputs.EndpointPolicyEndpointMatcher']:
         """
@@ -728,6 +795,8 @@ class EndpointPolicy(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -755,6 +824,15 @@ class EndpointPolicy(pulumi.CustomResource):
         A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
         """
         return pulumi.get(self, "server_tls_policy")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="trafficPortSelector")

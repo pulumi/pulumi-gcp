@@ -22,7 +22,7 @@ class GetSubscriptionResult:
     """
     A collection of values returned by getSubscription.
     """
-    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, name=None, project=None, push_configs=None, retain_acked_messages=None, retry_policies=None, topic=None):
+    def __init__(__self__, ack_deadline_seconds=None, bigquery_configs=None, cloud_storage_configs=None, dead_letter_policies=None, effective_labels=None, enable_exactly_once_delivery=None, enable_message_ordering=None, expiration_policies=None, filter=None, id=None, labels=None, message_retention_duration=None, name=None, project=None, push_configs=None, retain_acked_messages=None, retry_policies=None, terraform_labels=None, topic=None):
         if ack_deadline_seconds and not isinstance(ack_deadline_seconds, int):
             raise TypeError("Expected argument 'ack_deadline_seconds' to be a int")
         pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -35,6 +35,9 @@ class GetSubscriptionResult:
         if dead_letter_policies and not isinstance(dead_letter_policies, list):
             raise TypeError("Expected argument 'dead_letter_policies' to be a list")
         pulumi.set(__self__, "dead_letter_policies", dead_letter_policies)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_exactly_once_delivery and not isinstance(enable_exactly_once_delivery, bool):
             raise TypeError("Expected argument 'enable_exactly_once_delivery' to be a bool")
         pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
@@ -71,6 +74,9 @@ class GetSubscriptionResult:
         if retry_policies and not isinstance(retry_policies, list):
             raise TypeError("Expected argument 'retry_policies' to be a list")
         pulumi.set(__self__, "retry_policies", retry_policies)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if topic and not isinstance(topic, str):
             raise TypeError("Expected argument 'topic' to be a str")
         pulumi.set(__self__, "topic", topic)
@@ -94,6 +100,11 @@ class GetSubscriptionResult:
     @pulumi.getter(name="deadLetterPolicies")
     def dead_letter_policies(self) -> Sequence['outputs.GetSubscriptionDeadLetterPolicyResult']:
         return pulumi.get(self, "dead_letter_policies")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableExactlyOnceDelivery")
@@ -159,6 +170,11 @@ class GetSubscriptionResult:
         return pulumi.get(self, "retry_policies")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
     def topic(self) -> str:
         return pulumi.get(self, "topic")
@@ -174,6 +190,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             bigquery_configs=self.bigquery_configs,
             cloud_storage_configs=self.cloud_storage_configs,
             dead_letter_policies=self.dead_letter_policies,
+            effective_labels=self.effective_labels,
             enable_exactly_once_delivery=self.enable_exactly_once_delivery,
             enable_message_ordering=self.enable_message_ordering,
             expiration_policies=self.expiration_policies,
@@ -186,6 +203,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             push_configs=self.push_configs,
             retain_acked_messages=self.retain_acked_messages,
             retry_policies=self.retry_policies,
+            terraform_labels=self.terraform_labels,
             topic=self.topic)
 
 
@@ -224,6 +242,7 @@ def get_subscription(name: Optional[str] = None,
         bigquery_configs=pulumi.get(__ret__, 'bigquery_configs'),
         cloud_storage_configs=pulumi.get(__ret__, 'cloud_storage_configs'),
         dead_letter_policies=pulumi.get(__ret__, 'dead_letter_policies'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_exactly_once_delivery=pulumi.get(__ret__, 'enable_exactly_once_delivery'),
         enable_message_ordering=pulumi.get(__ret__, 'enable_message_ordering'),
         expiration_policies=pulumi.get(__ret__, 'expiration_policies'),
@@ -236,6 +255,7 @@ def get_subscription(name: Optional[str] = None,
         push_configs=pulumi.get(__ret__, 'push_configs'),
         retain_acked_messages=pulumi.get(__ret__, 'retain_acked_messages'),
         retry_policies=pulumi.get(__ret__, 'retry_policies'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         topic=pulumi.get(__ret__, 'topic'))
 
 

@@ -89,7 +89,10 @@ class DatasetArgs:
                By default, this is FALSE, which means the dataset and its table names are
                case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
-               organize and group your datasets
+               organize and group your datasets.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
                
@@ -308,7 +311,10 @@ class DatasetArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels associated with this dataset. You can use these to
-        organize and group your datasets
+        organize and group your datasets.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -390,6 +396,7 @@ class _DatasetState:
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -399,7 +406,8 @@ class _DatasetState:
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 storage_billing_model: Optional[pulumi.Input[str]] = None):
+                 storage_billing_model: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
@@ -455,13 +463,18 @@ class _DatasetState:
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
                case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
-               organize and group your datasets
+               organize and group your datasets.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in
                milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
@@ -482,6 +495,8 @@ class _DatasetState:
                Set this flag value to LOGICAL to use logical bytes for storage billing,
                or to PHYSICAL to use physical bytes instead.
                LOGICAL is the default if this flag isn't specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         if accesses is not None:
             pulumi.set(__self__, "accesses", accesses)
@@ -501,6 +516,8 @@ class _DatasetState:
             pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if friendly_name is not None:
@@ -521,6 +538,8 @@ class _DatasetState:
             pulumi.set(__self__, "self_link", self_link)
         if storage_billing_model is not None:
             pulumi.set(__self__, "storage_billing_model", storage_billing_model)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -675,6 +694,19 @@ class _DatasetState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -717,7 +749,10 @@ class _DatasetState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels associated with this dataset. You can use these to
-        organize and group your datasets
+        organize and group your datasets.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -810,6 +845,19 @@ class _DatasetState:
     @storage_billing_model.setter
     def storage_billing_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_billing_model", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class Dataset(pulumi.CustomResource):
@@ -1058,7 +1106,10 @@ class Dataset(pulumi.CustomResource):
                By default, this is FALSE, which means the dataset and its table names are
                case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
-               organize and group your datasets
+               organize and group your datasets.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
                
@@ -1307,9 +1358,11 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["storage_billing_model"] = storage_billing_model
             __props__.__dict__["creation_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Dataset, __self__).__init__(
             'gcp:bigquery/dataset:Dataset',
             resource_name,
@@ -1329,6 +1382,7 @@ class Dataset(pulumi.CustomResource):
             default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
             delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -1338,7 +1392,8 @@ class Dataset(pulumi.CustomResource):
             max_time_travel_hours: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            storage_billing_model: Optional[pulumi.Input[str]] = None) -> 'Dataset':
+            storage_billing_model: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Dataset':
         """
         Get an existing Dataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1399,13 +1454,18 @@ class Dataset(pulumi.CustomResource):
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
                case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
-               organize and group your datasets
+               organize and group your datasets.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in
                milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
@@ -1426,6 +1486,8 @@ class Dataset(pulumi.CustomResource):
                Set this flag value to LOGICAL to use logical bytes for storage billing,
                or to PHYSICAL to use physical bytes instead.
                LOGICAL is the default if this flag isn't specified.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1440,6 +1502,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
         __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["is_case_insensitive"] = is_case_insensitive
@@ -1450,6 +1513,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["storage_billing_model"] = storage_billing_model
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1569,6 +1633,15 @@ class Dataset(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1596,10 +1669,13 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels associated with this dataset. You can use these to
-        organize and group your datasets
+        organize and group your datasets.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1664,4 +1740,13 @@ class Dataset(pulumi.CustomResource):
         LOGICAL is the default if this flag isn't specified.
         """
         return pulumi.get(self, "storage_billing_model")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

@@ -119,7 +119,12 @@ type ClientTlsPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the ClientTlsPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the client tls policy.
 	// The default value is `global`.
@@ -136,6 +141,9 @@ type ClientTlsPolicy struct {
 	ServerValidationCas ClientTlsPolicyServerValidationCaArrayOutput `pulumi:"serverValidationCas"`
 	// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 	Sni pulumi.StringPtrOutput `pulumi:"sni"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Time the ClientTlsPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -177,7 +185,12 @@ type clientTlsPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the ClientTlsPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the client tls policy.
 	// The default value is `global`.
@@ -194,6 +207,9 @@ type clientTlsPolicyState struct {
 	ServerValidationCas []ClientTlsPolicyServerValidationCa `pulumi:"serverValidationCas"`
 	// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 	Sni *string `pulumi:"sni"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Time the ClientTlsPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -206,7 +222,12 @@ type ClientTlsPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the ClientTlsPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the client tls policy.
 	// The default value is `global`.
@@ -223,6 +244,9 @@ type ClientTlsPolicyState struct {
 	ServerValidationCas ClientTlsPolicyServerValidationCaArrayInput
 	// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 	Sni pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Time the ClientTlsPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -238,6 +262,8 @@ type clientTlsPolicyArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the ClientTlsPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the client tls policy.
 	// The default value is `global`.
@@ -264,6 +290,8 @@ type ClientTlsPolicyArgs struct {
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the ClientTlsPolicy resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the client tls policy.
 	// The default value is `global`.
@@ -409,7 +437,15 @@ func (o ClientTlsPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ClientTlsPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the ClientTlsPolicy resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ClientTlsPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -442,6 +478,12 @@ func (o ClientTlsPolicyOutput) ServerValidationCas() ClientTlsPolicyServerValida
 // Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
 func (o ClientTlsPolicyOutput) Sni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringPtrOutput { return v.Sni }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ClientTlsPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Time the ClientTlsPolicy was updated in UTC.

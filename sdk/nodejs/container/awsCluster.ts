@@ -288,6 +288,9 @@ export class AwsCluster extends pulumi.CustomResource {
 
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -298,6 +301,10 @@ export class AwsCluster extends pulumi.CustomResource {
      * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
     public readonly awsRegion!: pulumi.Output<string>;
+    /**
+     * Configuration options for the Binary Authorization feature.
+     */
+    public readonly binaryAuthorization!: pulumi.Output<outputs.container.AwsClusterBinaryAuthorization>;
     /**
      * Configuration related to the cluster control plane.
      */
@@ -310,6 +317,11 @@ export class AwsCluster extends pulumi.CustomResource {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
@@ -382,9 +394,11 @@ export class AwsCluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["authorization"] = state ? state.authorization : undefined;
             resourceInputs["awsRegion"] = state ? state.awsRegion : undefined;
+            resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fleet"] = state ? state.fleet : undefined;
@@ -421,6 +435,7 @@ export class AwsCluster extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["authorization"] = args ? args.authorization : undefined;
             resourceInputs["awsRegion"] = args ? args.awsRegion : undefined;
+            resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fleet"] = args ? args.fleet : undefined;
@@ -430,6 +445,7 @@ export class AwsCluster extends pulumi.CustomResource {
             resourceInputs["networking"] = args ? args.networking : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -449,6 +465,9 @@ export class AwsCluster extends pulumi.CustomResource {
 export interface AwsClusterState {
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -459,6 +478,10 @@ export interface AwsClusterState {
      * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
     awsRegion?: pulumi.Input<string>;
+    /**
+     * Configuration options for the Binary Authorization feature.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.container.AwsClusterBinaryAuthorization>;
     /**
      * Configuration related to the cluster control plane.
      */
@@ -471,6 +494,11 @@ export interface AwsClusterState {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
@@ -534,6 +562,9 @@ export interface AwsClusterState {
 export interface AwsClusterArgs {
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -544,6 +575,10 @@ export interface AwsClusterArgs {
      * The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
      */
     awsRegion: pulumi.Input<string>;
+    /**
+     * Configuration options for the Binary Authorization feature.
+     */
+    binaryAuthorization?: pulumi.Input<inputs.container.AwsClusterBinaryAuthorization>;
     /**
      * Configuration related to the cluster control plane.
      */

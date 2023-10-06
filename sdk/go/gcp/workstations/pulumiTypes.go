@@ -1181,6 +1181,8 @@ type WorkstationConfigHostGceInstance struct {
 	PoolSize *int `pulumi:"poolSize"`
 	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
 	// A set of Compute Engine Shielded instance options.
 	// Structure is documented below.
 	ShieldedInstanceConfig *WorkstationConfigHostGceInstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -1219,6 +1221,8 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
 	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+	ServiceAccountScopes pulumi.StringArrayInput `pulumi:"serviceAccountScopes"`
 	// A set of Compute Engine Shielded instance options.
 	// Structure is documented below.
 	ShieldedInstanceConfig WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -1368,6 +1372,11 @@ func (o WorkstationConfigHostGceInstanceOutput) ServiceAccount() pulumi.StringPt
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+func (o WorkstationConfigHostGceInstanceOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) []string { return v.ServiceAccountScopes }).(pulumi.StringArrayOutput)
+}
+
 // A set of Compute Engine Shielded instance options.
 // Structure is documented below.
 func (o WorkstationConfigHostGceInstanceOutput) ShieldedInstanceConfig() WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput {
@@ -1492,6 +1501,16 @@ func (o WorkstationConfigHostGceInstancePtrOutput) ServiceAccount() pulumi.Strin
 		}
 		return v.ServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+func (o WorkstationConfigHostGceInstancePtrOutput) ServiceAccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 // A set of Compute Engine Shielded instance options.

@@ -72,7 +72,6 @@ import * as firebase from "./firebase";
 import * as firebaserules from "./firebaserules";
 import * as firestore from "./firestore";
 import * as folder from "./folder";
-import * as gameservices from "./gameservices";
 import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
 import * as gkeonprem from "./gkeonprem";
@@ -80,7 +79,6 @@ import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
 import * as identityplatform from "./identityplatform";
-import * as iot from "./iot";
 import * as kms from "./kms";
 import * as logging from "./logging";
 import * as looker from "./looker";
@@ -181,7 +179,6 @@ export {
     firebaserules,
     firestore,
     folder,
-    gameservices,
     gkebackup,
     gkehub,
     gkeonprem,
@@ -189,7 +186,6 @@ export {
     iam,
     iap,
     identityplatform,
-    iot,
     kms,
     logging,
     looker,

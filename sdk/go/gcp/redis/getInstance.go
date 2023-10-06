@@ -68,16 +68,17 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AlternativeLocationId string `pulumi:"alternativeLocationId"`
-	AuthEnabled           bool   `pulumi:"authEnabled"`
-	AuthString            string `pulumi:"authString"`
-	AuthorizedNetwork     string `pulumi:"authorizedNetwork"`
-	ConnectMode           string `pulumi:"connectMode"`
-	CreateTime            string `pulumi:"createTime"`
-	CurrentLocationId     string `pulumi:"currentLocationId"`
-	CustomerManagedKey    string `pulumi:"customerManagedKey"`
-	DisplayName           string `pulumi:"displayName"`
-	Host                  string `pulumi:"host"`
+	AlternativeLocationId string            `pulumi:"alternativeLocationId"`
+	AuthEnabled           bool              `pulumi:"authEnabled"`
+	AuthString            string            `pulumi:"authString"`
+	AuthorizedNetwork     string            `pulumi:"authorizedNetwork"`
+	ConnectMode           string            `pulumi:"connectMode"`
+	CreateTime            string            `pulumi:"createTime"`
+	CurrentLocationId     string            `pulumi:"currentLocationId"`
+	CustomerManagedKey    string            `pulumi:"customerManagedKey"`
+	DisplayName           string            `pulumi:"displayName"`
+	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
+	Host                  string            `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                           `pulumi:"id"`
 	Labels                 map[string]string                `pulumi:"labels"`
@@ -101,6 +102,7 @@ type LookupInstanceResult struct {
 	ReservedIpRange        string                           `pulumi:"reservedIpRange"`
 	SecondaryIpRange       string                           `pulumi:"secondaryIpRange"`
 	ServerCaCerts          []GetInstanceServerCaCert        `pulumi:"serverCaCerts"`
+	TerraformLabels        map[string]string                `pulumi:"terraformLabels"`
 	Tier                   string                           `pulumi:"tier"`
 	TransitEncryptionMode  string                           `pulumi:"transitEncryptionMode"`
 }
@@ -191,6 +193,10 @@ func (o LookupInstanceResultOutput) CustomerManagedKey() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Host() pulumi.StringOutput {
@@ -284,6 +290,10 @@ func (o LookupInstanceResultOutput) SecondaryIpRange() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) ServerCaCerts() GetInstanceServerCaCertArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceServerCaCert { return v.ServerCaCerts }).(GetInstanceServerCaCertArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Tier() pulumi.StringOutput {

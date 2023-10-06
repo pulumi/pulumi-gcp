@@ -39,6 +39,9 @@ class InstanceArgs:
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
@@ -118,6 +121,9 @@ class InstanceArgs:
         """
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -186,13 +192,15 @@ class _InstanceState:
     def __init__(__self__, *,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
                  processing_units: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] config: The name of the instance's configuration (similar but not
@@ -206,10 +214,15 @@ class _InstanceState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
@@ -222,11 +235,15 @@ class _InstanceState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Instance status: `CREATING` or `READY`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
@@ -241,6 +258,8 @@ class _InstanceState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -276,6 +295,19 @@ class _InstanceState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -294,6 +326,9 @@ class _InstanceState:
         """
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -367,6 +402,19 @@ class _InstanceState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -470,6 +518,9 @@ class Instance(pulumi.CustomResource):
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
@@ -602,7 +653,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["num_nodes"] = num_nodes
             __props__.__dict__["processing_units"] = processing_units
             __props__.__dict__["project"] = project
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Instance, __self__).__init__(
             'gcp:spanner/instance:Instance',
             resource_name,
@@ -615,13 +668,15 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             num_nodes: Optional[pulumi.Input[int]] = None,
             processing_units: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            state: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -640,10 +695,15 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
@@ -656,6 +716,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Instance status: `CREATING` or `READY`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -663,6 +725,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["config"] = config
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -670,6 +733,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["processing_units"] = processing_units
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -698,6 +762,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -712,6 +785,9 @@ class Instance(pulumi.CustomResource):
         """
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -761,4 +837,13 @@ class Instance(pulumi.CustomResource):
         Instance status: `CREATING` or `READY`.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

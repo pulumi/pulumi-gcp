@@ -82,17 +82,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const redis-network = gcp.compute.getNetwork({
- *     name: "redis-test-network",
- * });
+ * // This example assumes this network already exists.
+ * // The API creates a tenant network per network authorized for a
+ * // Redis instance and that network is not deleted when the user-created
+ * // network (authorized_network) is deleted, so this prevents issues
+ * // with tenant network quota.
+ * // If this network hasn't been created and you are using this example in your
+ * // config, add an additional network resource or change
+ * // this from "data"to "resource"
+ * const redis_network = new gcp.compute.Network("redis-network", {});
  * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
- *     network: redis_network.then(redis_network => redis_network.id),
+ *     network: redis_network.id,
  * });
  * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
- *     network: redis_network.then(redis_network => redis_network.id),
+ *     network: redis_network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
  * });
@@ -101,7 +107,7 @@ import * as utilities from "../utilities";
  *     memorySizeGb: 1,
  *     locationId: "us-central1-a",
  *     alternativeLocationId: "us-central1-f",
- *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
+ *     authorizedNetwork: redis_network.id,
  *     connectMode: "PRIVATE_SERVICE_ACCESS",
  *     redisVersion: "REDIS_4_0",
  *     displayName: "Test Instance",
@@ -265,12 +271,19 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -393,6 +406,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -430,6 +448,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["currentLocationId"] = state ? state.currentLocationId : undefined;
             resourceInputs["customerManagedKey"] = state ? state.customerManagedKey : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["locationId"] = state ? state.locationId : undefined;
@@ -452,6 +471,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
             resourceInputs["secondaryIpRange"] = state ? state.secondaryIpRange : undefined;
             resourceInputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
         } else {
@@ -484,6 +504,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentLocationId"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["maintenanceSchedule"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
@@ -492,6 +513,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["readEndpoint"] = undefined /*out*/;
             resourceInputs["readEndpointPort"] = undefined /*out*/;
             resourceInputs["serverCaCerts"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["authString"] };
@@ -558,12 +580,19 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      */
     host?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -686,6 +715,11 @@ export interface InstanceState {
      */
     serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.InstanceServerCaCert>[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -742,6 +776,8 @@ export interface InstanceArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

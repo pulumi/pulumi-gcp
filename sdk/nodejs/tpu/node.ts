@@ -37,17 +37,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const available = gcp.tpu.getTensorflowVersions({});
- * const network = gcp.compute.getNetwork({
- *     name: "default",
- * });
+ * const network = new gcp.compute.Network("network", {});
  * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
- *     network: network.then(network => network.id),
+ *     network: network.id,
  * });
  * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
- *     network: network.then(network => network.id),
+ *     network: network.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [serviceRange.name],
  * });
@@ -135,7 +133,14 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -181,6 +186,11 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly tensorflowVersion!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Whether the VPC peering for the node is set up through Service Networking API.
      * The VPC Peering should be set up before provisioning the node. If this field is set,
      * cidrBlock field should not be specified. If the network that you want to peer the
@@ -208,6 +218,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["acceleratorType"] = state ? state.acceleratorType : undefined;
             resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
@@ -216,6 +227,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["schedulingConfig"] = state ? state.schedulingConfig : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["tensorflowVersion"] = state ? state.tensorflowVersion : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["useServiceNetworking"] = state ? state.useServiceNetworking : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -237,8 +249,10 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["tensorflowVersion"] = args ? args.tensorflowVersion : undefined;
             resourceInputs["useServiceNetworking"] = args ? args.useServiceNetworking : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Node.__pulumiType, name, resourceInputs, opts);
@@ -269,7 +283,14 @@ export interface NodeState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -315,6 +336,11 @@ export interface NodeState {
      */
     tensorflowVersion?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Whether the VPC peering for the node is set up through Service Networking API.
      * The VPC Peering should be set up before provisioning the node. If this field is set,
      * cidrBlock field should not be specified. If the network that you want to peer the
@@ -352,6 +378,8 @@ export interface NodeArgs {
     description?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

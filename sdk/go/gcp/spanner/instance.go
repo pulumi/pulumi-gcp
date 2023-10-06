@@ -150,11 +150,17 @@ type Instance struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
@@ -173,6 +179,9 @@ type Instance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Instance status: `CREATING` or `READY`.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -223,11 +232,17 @@ type instanceState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
@@ -246,6 +261,9 @@ type instanceState struct {
 	Project *string `pulumi:"project"`
 	// Instance status: `CREATING` or `READY`.
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type InstanceState struct {
@@ -261,11 +279,17 @@ type InstanceState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy pulumi.BoolPtrInput
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
@@ -284,6 +308,9 @@ type InstanceState struct {
 	Project pulumi.StringPtrInput
 	// Instance status: `CREATING` or `READY`.
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -308,6 +335,9 @@ type instanceArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
@@ -345,6 +375,9 @@ type InstanceArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
@@ -492,6 +525,12 @@ func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // When deleting a spanner instance, this boolean option will delete all backups of this instance.
 // This must be set to true if you created a backup manually in the console.
 func (o InstanceOutput) ForceDestroy() pulumi.BoolPtrOutput {
@@ -500,6 +539,9 @@ func (o InstanceOutput) ForceDestroy() pulumi.BoolPtrOutput {
 
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -534,6 +576,12 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 // Instance status: `CREATING` or `READY`.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

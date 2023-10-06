@@ -46,6 +46,9 @@ class CertificateArgs:
         :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -150,6 +153,9 @@ class CertificateArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels with user-defined metadata to apply to this resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -217,6 +223,7 @@ class _CertificateState:
                  certificate_template: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  issuer_certificate_authority: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
@@ -224,11 +231,11 @@ class _CertificateState:
                  name: Optional[pulumi.Input[str]] = None,
                  pem_certificate: Optional[pulumi.Input[str]] = None,
                  pem_certificate_chains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  pool: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
@@ -247,8 +254,13 @@ class _CertificateState:
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -260,8 +272,6 @@ class _CertificateState:
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: (Deprecated)
-               Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -269,6 +279,8 @@ class _CertificateState:
         :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
                This is in RFC3339 text format.
         """
@@ -282,6 +294,8 @@ class _CertificateState:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if issuer_certificate_authority is not None:
             pulumi.set(__self__, "issuer_certificate_authority", issuer_certificate_authority)
         if labels is not None:
@@ -296,11 +310,6 @@ class _CertificateState:
             pulumi.set(__self__, "pem_certificate", pem_certificate)
         if pem_certificate_chains is not None:
             pulumi.set(__self__, "pem_certificate_chains", pem_certificate_chains)
-        if pem_certificates is not None:
-            warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
-            pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
-        if pem_certificates is not None:
-            pulumi.set(__self__, "pem_certificates", pem_certificates)
         if pem_csr is not None:
             pulumi.set(__self__, "pem_csr", pem_csr)
         if pool is not None:
@@ -309,6 +318,8 @@ class _CertificateState:
             pulumi.set(__self__, "project", project)
         if revocation_details is not None:
             pulumi.set(__self__, "revocation_details", revocation_details)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -383,6 +394,19 @@ class _CertificateState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="issuerCertificateAuthority")
     def issuer_certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
@@ -399,6 +423,9 @@ class _CertificateState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels with user-defined metadata to apply to this resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -473,22 +500,6 @@ class _CertificateState:
         pulumi.set(self, "pem_certificate_chains", value)
 
     @property
-    @pulumi.getter(name="pemCertificates")
-    def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        (Deprecated)
-        Required. Expected to be in leaf-to-root order according to RFC 5246.
-        """
-        warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
-        pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
-
-        return pulumi.get(self, "pem_certificates")
-
-    @pem_certificates.setter
-    def pem_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "pem_certificates", value)
-
-    @property
     @pulumi.getter(name="pemCsr")
     def pem_csr(self) -> Optional[pulumi.Input[str]]:
         """
@@ -538,6 +549,19 @@ class _CertificateState:
     @revocation_details.setter
     def revocation_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]):
         pulumi.set(self, "revocation_details", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -866,6 +890,9 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -1219,11 +1246,12 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["certificate_descriptions"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["issuer_certificate_authority"] = None
             __props__.__dict__["pem_certificate"] = None
             __props__.__dict__["pem_certificate_chains"] = None
-            __props__.__dict__["pem_certificates"] = None
             __props__.__dict__["revocation_details"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(Certificate, __self__).__init__(
             'gcp:certificateauthority/certificate:Certificate',
@@ -1240,6 +1268,7 @@ class Certificate(pulumi.CustomResource):
             certificate_template: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             issuer_certificate_authority: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lifetime: Optional[pulumi.Input[str]] = None,
@@ -1247,11 +1276,11 @@ class Certificate(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             pem_certificate: Optional[pulumi.Input[str]] = None,
             pem_certificate_chains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            pem_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pem_csr: Optional[pulumi.Input[str]] = None,
             pool: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             revocation_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
@@ -1275,8 +1304,13 @@ class Certificate(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
@@ -1288,8 +1322,6 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: (Deprecated)
-               Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1297,6 +1329,8 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
                considered revoked if and only if this field is present.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
                This is in RFC3339 text format.
         """
@@ -1309,6 +1343,7 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["certificate_template"] = certificate_template
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["issuer_certificate_authority"] = issuer_certificate_authority
         __props__.__dict__["labels"] = labels
         __props__.__dict__["lifetime"] = lifetime
@@ -1316,11 +1351,11 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["pem_certificate"] = pem_certificate
         __props__.__dict__["pem_certificate_chains"] = pem_certificate_chains
-        __props__.__dict__["pem_certificates"] = pem_certificates
         __props__.__dict__["pem_csr"] = pem_csr
         __props__.__dict__["pool"] = pool
         __props__.__dict__["project"] = project
         __props__.__dict__["revocation_details"] = revocation_details
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
@@ -1375,6 +1410,15 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="issuerCertificateAuthority")
     def issuer_certificate_authority(self) -> pulumi.Output[str]:
         """
@@ -1387,6 +1431,9 @@ class Certificate(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels with user-defined metadata to apply to this resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1437,18 +1484,6 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "pem_certificate_chains")
 
     @property
-    @pulumi.getter(name="pemCertificates")
-    def pem_certificates(self) -> pulumi.Output[Sequence[str]]:
-        """
-        (Deprecated)
-        Required. Expected to be in leaf-to-root order according to RFC 5246.
-        """
-        warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
-        pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
-
-        return pulumi.get(self, "pem_certificates")
-
-    @property
     @pulumi.getter(name="pemCsr")
     def pem_csr(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1482,6 +1517,15 @@ class Certificate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "revocation_details")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

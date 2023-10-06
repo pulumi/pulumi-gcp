@@ -119,6 +119,9 @@ type CryptoKey struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringOutput `pulumi:"destroyScheduledDuration"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
@@ -127,6 +130,9 @@ type CryptoKey struct {
 	// ***
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -143,6 +149,9 @@ type CryptoKey struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplateOutput `pulumi:"versionTemplate"`
@@ -184,6 +193,9 @@ type cryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this key may contain imported versions only.
 	ImportOnly *bool `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
@@ -192,6 +204,9 @@ type cryptoKeyState struct {
 	// ***
 	KeyRing *string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
@@ -208,6 +223,9 @@ type cryptoKeyState struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
@@ -217,6 +235,9 @@ type CryptoKeyState struct {
 	// The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
 	// If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Whether this key may contain imported versions only.
 	ImportOnly pulumi.BoolPtrInput
 	// The KeyRing that this key belongs to.
@@ -225,6 +246,9 @@ type CryptoKeyState struct {
 	// ***
 	KeyRing pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the CryptoKey.
 	Name pulumi.StringPtrInput
@@ -241,6 +265,9 @@ type CryptoKeyState struct {
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// A template describing settings for new crypto key versions.
 	// Structure is documented below.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
@@ -262,6 +289,9 @@ type cryptoKeyArgs struct {
 	// ***
 	KeyRing string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
@@ -296,6 +326,9 @@ type CryptoKeyArgs struct {
 	// ***
 	KeyRing pulumi.StringInput
 	// Labels with user-defined metadata to apply to this resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the CryptoKey.
 	Name pulumi.StringPtrInput
@@ -434,6 +467,12 @@ func (o CryptoKeyOutput) DestroyScheduledDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CryptoKeyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether this key may contain imported versions only.
 func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolOutput { return v.ImportOnly }).(pulumi.BoolOutput)
@@ -448,6 +487,9 @@ func (o CryptoKeyOutput) KeyRing() pulumi.StringOutput {
 }
 
 // Labels with user-defined metadata to apply to this resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CryptoKeyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -477,6 +519,12 @@ func (o CryptoKeyOutput) RotationPeriod() pulumi.StringPtrOutput {
 // You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.BoolPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.BoolPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CryptoKeyOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A template describing settings for new crypto key versions.

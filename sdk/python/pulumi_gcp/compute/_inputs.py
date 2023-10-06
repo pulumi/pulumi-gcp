@@ -6918,7 +6918,7 @@ class InstanceBootDiskInitializeParamsArgs:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk. This  
+        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk. This
                field is only applicable for persistent disks.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
@@ -6959,7 +6959,7 @@ class InstanceBootDiskInitializeParamsArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A set of key/value label pairs assigned to the disk. This  
+        A set of key/value label pairs assigned to the disk. This
         field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
@@ -7362,9 +7362,11 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_attachment: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
                  queue_count: Optional[pulumi.Input[int]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -7388,12 +7390,16 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -7478,6 +7484,15 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_attachment", value)
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "network_ip")
@@ -7503,6 +7518,15 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @queue_count.setter
     def queue_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "queue_count", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -7537,13 +7561,16 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None):
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
         if network_tier is not None:
             pulumi.set(__self__, "network_tier", network_tier)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -7571,6 +7598,15 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     @public_ptr_domain_name.setter
     def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
 
 @pulumi.input_type
@@ -7608,7 +7644,8 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
                  external_ipv6: Optional[pulumi.Input[str]] = None,
                  external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
@@ -7622,6 +7659,8 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
             pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
 
     @property
     @pulumi.getter(name="networkTier")
@@ -7671,6 +7710,15 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @public_ptr_domain_name.setter
     def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
 
 @pulumi.input_type
@@ -8414,9 +8462,11 @@ class InstanceFromTemplateNetworkInterfaceArgs:
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_attachment: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
                  queue_count: Optional[pulumi.Input[int]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -8440,12 +8490,16 @@ class InstanceFromTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -8530,6 +8584,15 @@ class InstanceFromTemplateNetworkInterfaceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_attachment", value)
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "network_ip")
@@ -8555,6 +8618,15 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @queue_count.setter
     def queue_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "queue_count", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -8589,13 +8661,16 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None):
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
         if network_tier is not None:
             pulumi.set(__self__, "network_tier", network_tier)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -8623,6 +8698,15 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     @public_ptr_domain_name.setter
     def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
 
 @pulumi.input_type
@@ -8660,7 +8744,8 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
                  external_ipv6: Optional[pulumi.Input[str]] = None,
                  external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
@@ -8674,6 +8759,8 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
             pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
 
     @property
     @pulumi.getter(name="networkTier")
@@ -8723,6 +8810,15 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @public_ptr_domain_name.setter
     def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
 
 @pulumi.input_type
@@ -10027,9 +10123,11 @@ class InstanceNetworkInterfaceArgs:
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_attachment: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
                  queue_count: Optional[pulumi.Input[int]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
@@ -10080,12 +10178,16 @@ class InstanceNetworkInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnetwork is not None:
@@ -10189,6 +10291,15 @@ class InstanceNetworkInterfaceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_attachment", value)
+
+    @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -10224,6 +10335,15 @@ class InstanceNetworkInterfaceArgs:
     @queue_count.setter
     def queue_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "queue_count", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
     @property
     @pulumi.getter(name="stackType")
@@ -10276,7 +10396,8 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
                  nat_ip: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
@@ -10291,6 +10412,8 @@ class InstanceNetworkInterfaceAccessConfigArgs:
             pulumi.set(__self__, "network_tier", network_tier)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
 
     @property
     @pulumi.getter(name="natIp")
@@ -10330,6 +10453,15 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     @public_ptr_domain_name.setter
     def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
 
 @pulumi.input_type
@@ -10387,7 +10519,8 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
                  external_ipv6: Optional[pulumi.Input[str]] = None,
                  external_ipv6_prefix_length: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None):
+                 public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] network_tier: The [networking tier][network-tier] used for configuring this instance.
                This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
@@ -10396,7 +10529,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
                <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
                
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
-        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated 
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated
                with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
                To use a static external IP address, it must be unused and in the same region as the instance's zone.
                If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
@@ -10419,6 +10552,8 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
             pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
 
     @property
     @pulumi.getter(name="networkTier")
@@ -10442,7 +10577,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
         """
-        The first IPv6 address of the external IPv6 range associated 
+        The first IPv6 address of the external IPv6 range associated
         with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
         To use a static external IP address, it must be unused and in the same region as the instance's zone.
         If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
@@ -10494,6 +10629,15 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @public_ptr_domain_name.setter
     def public_ptr_domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
 
 
 @pulumi.input_type
@@ -10644,7 +10788,7 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[bool] preemptible: Specifies if the instance is preemptible.
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
-        :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
                `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -10783,7 +10927,7 @@ class InstanceSchedulingArgs:
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
-        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
         `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
@@ -28032,7 +28176,9 @@ class RouterNatRuleArgs:
 class RouterNatRuleActionArgs:
     def __init__(__self__, *,
                  source_nat_active_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source_nat_drain_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 source_nat_active_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_nat_drain_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source_nat_drain_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
                These IP addresses must be valid static external IP addresses assigned to the project.
@@ -28044,8 +28190,12 @@ class RouterNatRuleActionArgs:
         """
         if source_nat_active_ips is not None:
             pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
+        if source_nat_active_ranges is not None:
+            pulumi.set(__self__, "source_nat_active_ranges", source_nat_active_ranges)
         if source_nat_drain_ips is not None:
             pulumi.set(__self__, "source_nat_drain_ips", source_nat_drain_ips)
+        if source_nat_drain_ranges is not None:
+            pulumi.set(__self__, "source_nat_drain_ranges", source_nat_drain_ranges)
 
     @property
     @pulumi.getter(name="sourceNatActiveIps")
@@ -28062,6 +28212,15 @@ class RouterNatRuleActionArgs:
         pulumi.set(self, "source_nat_active_ips", value)
 
     @property
+    @pulumi.getter(name="sourceNatActiveRanges")
+    def source_nat_active_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "source_nat_active_ranges")
+
+    @source_nat_active_ranges.setter
+    def source_nat_active_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_nat_active_ranges", value)
+
+    @property
     @pulumi.getter(name="sourceNatDrainIps")
     def source_nat_drain_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -28075,6 +28234,15 @@ class RouterNatRuleActionArgs:
     @source_nat_drain_ips.setter
     def source_nat_drain_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_nat_drain_ips", value)
+
+    @property
+    @pulumi.getter(name="sourceNatDrainRanges")
+    def source_nat_drain_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "source_nat_drain_ranges")
+
+    @source_nat_drain_ranges.setter
+    def source_nat_drain_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_nat_drain_ranges", value)
 
 
 @pulumi.input_type

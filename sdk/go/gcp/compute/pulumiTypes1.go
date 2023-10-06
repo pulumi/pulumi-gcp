@@ -12828,12 +12828,14 @@ type GetInstanceNetworkInterface struct {
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
-	Network string `pulumi:"network"`
+	Network           string `pulumi:"network"`
+	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The private IP address assigned to the instance.
-	NetworkIp  string `pulumi:"networkIp"`
-	NicType    string `pulumi:"nicType"`
-	QueueCount int    `pulumi:"queueCount"`
-	StackType  string `pulumi:"stackType"`
+	NetworkIp      string `pulumi:"networkIp"`
+	NicType        string `pulumi:"nicType"`
+	QueueCount     int    `pulumi:"queueCount"`
+	SecurityPolicy string `pulumi:"securityPolicy"`
+	StackType      string `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
 	Subnetwork string `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
@@ -12864,12 +12866,14 @@ type GetInstanceNetworkInterfaceArgs struct {
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
-	Network pulumi.StringInput `pulumi:"network"`
+	Network           pulumi.StringInput `pulumi:"network"`
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The private IP address assigned to the instance.
-	NetworkIp  pulumi.StringInput `pulumi:"networkIp"`
-	NicType    pulumi.StringInput `pulumi:"nicType"`
-	QueueCount pulumi.IntInput    `pulumi:"queueCount"`
-	StackType  pulumi.StringInput `pulumi:"stackType"`
+	NetworkIp      pulumi.StringInput `pulumi:"networkIp"`
+	NicType        pulumi.StringInput `pulumi:"nicType"`
+	QueueCount     pulumi.IntInput    `pulumi:"queueCount"`
+	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
+	StackType      pulumi.StringInput `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
@@ -12984,6 +12988,10 @@ func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
+func (o GetInstanceNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
 // The private IP address assigned to the instance.
 func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
@@ -12995,6 +13003,10 @@ func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 
 func (o GetInstanceNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetInstanceNetworkInterfaceOutput) StackType() pulumi.StringOutput {
@@ -13045,6 +13057,7 @@ type GetInstanceNetworkInterfaceAccessConfig struct {
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+	SecurityPolicy      string `pulumi:"securityPolicy"`
 }
 
 // GetInstanceNetworkInterfaceAccessConfigInput is an input type that accepts GetInstanceNetworkInterfaceAccessConfigArgs and GetInstanceNetworkInterfaceAccessConfigOutput values.
@@ -13066,6 +13079,7 @@ type GetInstanceNetworkInterfaceAccessConfigArgs struct {
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+	SecurityPolicy      pulumi.StringInput `pulumi:"securityPolicy"`
 }
 
 func (GetInstanceNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
@@ -13151,6 +13165,10 @@ func (o GetInstanceNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.Stri
 // The DNS domain name for the public PTR record.
 func (o GetInstanceNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceAccessConfigOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 type GetInstanceNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
@@ -13324,6 +13342,7 @@ type GetInstanceNetworkInterfaceIpv6AccessConfig struct {
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+	SecurityPolicy      string `pulumi:"securityPolicy"`
 }
 
 // GetInstanceNetworkInterfaceIpv6AccessConfigInput is an input type that accepts GetInstanceNetworkInterfaceIpv6AccessConfigArgs and GetInstanceNetworkInterfaceIpv6AccessConfigOutput values.
@@ -13346,6 +13365,7 @@ type GetInstanceNetworkInterfaceIpv6AccessConfigArgs struct {
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+	SecurityPolicy      pulumi.StringInput `pulumi:"securityPolicy"`
 }
 
 func (GetInstanceNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
@@ -13438,6 +13458,10 @@ func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.
 // The DNS domain name for the public PTR record.
 func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) SecurityPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
 type GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput struct{ *pulumi.OutputState }
@@ -24023,8 +24047,10 @@ func (o GetRouterNatRuleArrayOutput) Index(i pulumi.IntInput) GetRouterNatRuleOu
 }
 
 type GetRouterNatRuleAction struct {
-	SourceNatActiveIps []string `pulumi:"sourceNatActiveIps"`
-	SourceNatDrainIps  []string `pulumi:"sourceNatDrainIps"`
+	SourceNatActiveIps    []string `pulumi:"sourceNatActiveIps"`
+	SourceNatActiveRanges []string `pulumi:"sourceNatActiveRanges"`
+	SourceNatDrainIps     []string `pulumi:"sourceNatDrainIps"`
+	SourceNatDrainRanges  []string `pulumi:"sourceNatDrainRanges"`
 }
 
 // GetRouterNatRuleActionInput is an input type that accepts GetRouterNatRuleActionArgs and GetRouterNatRuleActionOutput values.
@@ -24039,8 +24065,10 @@ type GetRouterNatRuleActionInput interface {
 }
 
 type GetRouterNatRuleActionArgs struct {
-	SourceNatActiveIps pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
-	SourceNatDrainIps  pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+	SourceNatActiveIps    pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	SourceNatActiveRanges pulumi.StringArrayInput `pulumi:"sourceNatActiveRanges"`
+	SourceNatDrainIps     pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+	SourceNatDrainRanges  pulumi.StringArrayInput `pulumi:"sourceNatDrainRanges"`
 }
 
 func (GetRouterNatRuleActionArgs) ElementType() reflect.Type {
@@ -24116,8 +24144,16 @@ func (o GetRouterNatRuleActionOutput) SourceNatActiveIps() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatActiveIps }).(pulumi.StringArrayOutput)
 }
 
+func (o GetRouterNatRuleActionOutput) SourceNatActiveRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatActiveRanges }).(pulumi.StringArrayOutput)
+}
+
 func (o GetRouterNatRuleActionOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatDrainIps }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRouterNatRuleActionOutput) SourceNatDrainRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatDrainRanges }).(pulumi.StringArrayOutput)
 }
 
 type GetRouterNatRuleActionArrayOutput struct{ *pulumi.OutputState }

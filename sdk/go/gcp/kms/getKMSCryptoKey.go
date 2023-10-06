@@ -74,7 +74,8 @@ type GetKMSCryptoKeyArgs struct {
 
 // A collection of values returned by getKMSCryptoKey.
 type GetKMSCryptoKeyResult struct {
-	DestroyScheduledDuration string `pulumi:"destroyScheduledDuration"`
+	DestroyScheduledDuration string            `pulumi:"destroyScheduledDuration"`
+	EffectiveLabels          map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string            `pulumi:"id"`
 	ImportOnly bool              `pulumi:"importOnly"`
@@ -88,6 +89,7 @@ type GetKMSCryptoKeyResult struct {
 	// of a decimal number with up to 9 fractional digits, followed by the letter s (seconds).
 	RotationPeriod             string                           `pulumi:"rotationPeriod"`
 	SkipInitialVersionCreation bool                             `pulumi:"skipInitialVersionCreation"`
+	TerraformLabels            map[string]string                `pulumi:"terraformLabels"`
 	VersionTemplates           []GetKMSCryptoKeyVersionTemplate `pulumi:"versionTemplates"`
 }
 
@@ -142,6 +144,10 @@ func (o GetKMSCryptoKeyResultOutput) DestroyScheduledDuration() pulumi.StringOut
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.DestroyScheduledDuration }).(pulumi.StringOutput)
 }
 
+func (o GetKMSCryptoKeyResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o GetKMSCryptoKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) string { return v.Id }).(pulumi.StringOutput)
@@ -177,6 +183,10 @@ func (o GetKMSCryptoKeyResultOutput) RotationPeriod() pulumi.StringOutput {
 
 func (o GetKMSCryptoKeyResultOutput) SkipInitialVersionCreation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyResult) bool { return v.SkipInitialVersionCreation }).(pulumi.BoolOutput)
+}
+
+func (o GetKMSCryptoKeyResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o GetKMSCryptoKeyResultOutput) VersionTemplates() GetKMSCryptoKeyVersionTemplateArrayOutput {

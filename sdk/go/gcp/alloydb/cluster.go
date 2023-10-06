@@ -274,6 +274,12 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyOutput `pulumi:"automatedBackupPolicy"`
@@ -293,6 +299,12 @@ type Cluster struct {
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig ClusterEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
@@ -300,10 +312,14 @@ type Cluster struct {
 	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos ClusterEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
+	// For Resource freshness validation (https://google.aip.dev/154)
+	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrOutput `pulumi:"initialUser"`
 	// User-defined labels for the alloydb cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
 	//
@@ -328,12 +344,21 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+	// This can happen due to user-triggered updates or system actions like failover or maintenance.
+	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource ClusterRestoreBackupSourcePtrOutput `pulumi:"restoreBackupSource"`
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrOutput `pulumi:"restoreContinuousBackupSource"`
+	// Output only. The current serving state of the cluster.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -374,6 +399,12 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations map[string]string `pulumi:"annotations"`
 	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy *ClusterAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
@@ -393,6 +424,12 @@ type clusterState struct {
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
@@ -400,10 +437,14 @@ type clusterState struct {
 	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos []ClusterEncryptionInfo `pulumi:"encryptionInfos"`
+	// For Resource freshness validation (https://google.aip.dev/154)
+	Etag *string `pulumi:"etag"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
 	// User-defined labels for the alloydb cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
 	//
@@ -428,17 +469,32 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+	// This can happen due to user-triggered updates or system actions like failover or maintenance.
+	Reconciling *bool `pulumi:"reconciling"`
 	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource *ClusterRestoreBackupSource `pulumi:"restoreBackupSource"`
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
+	// Output only. The current serving state of the cluster.
+	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 }
 
 type ClusterState struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations pulumi.StringMapInput
 	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrInput
@@ -458,6 +514,12 @@ type ClusterState struct {
 	DatabaseVersion pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig ClusterEncryptionConfigPtrInput
@@ -465,10 +527,14 @@ type ClusterState struct {
 	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos ClusterEncryptionInfoArrayInput
+	// For Resource freshness validation (https://google.aip.dev/154)
+	Etag pulumi.StringPtrInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
 	// User-defined labels for the alloydb cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
 	//
@@ -493,12 +559,21 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+	// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+	// This can happen due to user-triggered updates or system actions like failover or maintenance.
+	Reconciling pulumi.BoolPtrInput
 	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreBackupSource ClusterRestoreBackupSourcePtrInput
 	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
 	// Structure is documented below.
 	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
+	// Output only. The current serving state of the cluster.
+	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 }
@@ -508,6 +583,12 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations map[string]string `pulumi:"annotations"`
 	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy *ClusterAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
@@ -522,10 +603,14 @@ type clusterArgs struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
+	// For Resource freshness validation (https://google.aip.dev/154)
+	Etag *string `pulumi:"etag"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
 	// User-defined labels for the alloydb cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
 	//
@@ -555,6 +640,12 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+	Annotations pulumi.StringMapInput
 	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrInput
@@ -569,10 +660,14 @@ type ClusterArgs struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig ClusterEncryptionConfigPtrInput
+	// For Resource freshness validation (https://google.aip.dev/154)
+	Etag pulumi.StringPtrInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
 	// User-defined labels for the alloydb cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
 	//
@@ -711,6 +806,15 @@ func (o ClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
 	}
 }
 
+// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+func (o ClusterOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 // The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 // Structure is documented below.
 func (o ClusterOutput) AutomatedBackupPolicy() ClusterAutomatedBackupPolicyOutput {
@@ -751,6 +855,18 @@ func (o ClusterOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o ClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 // Structure is documented below.
 func (o ClusterOutput) EncryptionConfig() ClusterEncryptionConfigPtrOutput {
@@ -764,6 +880,11 @@ func (o ClusterOutput) EncryptionInfos() ClusterEncryptionInfoArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEncryptionInfoArrayOutput { return v.EncryptionInfos }).(ClusterEncryptionInfoArrayOutput)
 }
 
+// For Resource freshness validation (https://google.aip.dev/154)
+func (o ClusterOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
 // Initial user to setup during cluster creation.
 // Structure is documented below.
 func (o ClusterOutput) InitialUser() ClusterInitialUserPtrOutput {
@@ -771,6 +892,8 @@ func (o ClusterOutput) InitialUser() ClusterInitialUserPtrOutput {
 }
 
 // User-defined labels for the alloydb cluster.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -816,6 +939,13 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
+// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
+// This can happen due to user-triggered updates or system actions like failover or maintenance.
+func (o ClusterOutput) Reconciling() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
 // The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
 // Structure is documented below.
 func (o ClusterOutput) RestoreBackupSource() ClusterRestoreBackupSourcePtrOutput {
@@ -826,6 +956,17 @@ func (o ClusterOutput) RestoreBackupSource() ClusterRestoreBackupSourcePtrOutput
 // Structure is documented below.
 func (o ClusterOutput) RestoreContinuousBackupSource() ClusterRestoreContinuousBackupSourcePtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterRestoreContinuousBackupSourcePtrOutput { return v.RestoreContinuousBackupSource }).(ClusterRestoreContinuousBackupSourcePtrOutput)
+}
+
+// Output only. The current serving state of the cluster.
+func (o ClusterOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ClusterOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The system-generated UID of the resource.

@@ -19,6 +19,7 @@ class RoutineArgs:
                  dataset_id: pulumi.Input[str],
                  definition_body: pulumi.Input[str],
                  routine_id: pulumi.Input[str],
+                 routine_type: pulumi.Input[str],
                  arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input[str]] = None,
@@ -26,8 +27,7 @@ class RoutineArgs:
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
-                 return_type: Optional[pulumi.Input[str]] = None,
-                 routine_type: Optional[pulumi.Input[str]] = None):
+                 return_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Routine resource.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
@@ -37,6 +37,8 @@ class RoutineArgs:
                
                - - -
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
+        :param pulumi.Input[str] routine_type: The type of routine.
+               Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the routine if defined.
@@ -61,12 +63,11 @@ class RoutineArgs:
                d the order of values or replaced STRUCT field type with RECORD field type, we currently
                cannot suppress the recurring diff this causes. As a workaround, we recommend using
                the schema as returned by the API.
-        :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
         pulumi.set(__self__, "routine_id", routine_id)
+        pulumi.set(__self__, "routine_type", routine_type)
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
         if description is not None:
@@ -83,8 +84,6 @@ class RoutineArgs:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
-        if routine_type is not None:
-            pulumi.set(__self__, "routine_type", routine_type)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -125,6 +124,19 @@ class RoutineArgs:
     @routine_id.setter
     def routine_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "routine_id", value)
+
+    @property
+    @pulumi.getter(name="routineType")
+    def routine_type(self) -> pulumi.Input[str]:
+        """
+        The type of routine.
+        Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
+        """
+        return pulumi.get(self, "routine_type")
+
+    @routine_type.setter
+    def routine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "routine_type", value)
 
     @property
     @pulumi.getter
@@ -237,19 +249,6 @@ class RoutineArgs:
     @return_type.setter
     def return_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "return_type", value)
-
-    @property
-    @pulumi.getter(name="routineType")
-    def routine_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of routine.
-        Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-        """
-        return pulumi.get(self, "routine_type")
-
-    @routine_type.setter
-    def routine_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "routine_type", value)
 
 
 @pulumi.input_type
@@ -835,6 +834,8 @@ class Routine(pulumi.CustomResource):
             if routine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_id'")
             __props__.__dict__["routine_id"] = routine_id
+            if routine_type is None and not opts.urn:
+                raise TypeError("Missing required property 'routine_type'")
             __props__.__dict__["routine_type"] = routine_type
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -1055,7 +1056,7 @@ class Routine(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="routineType")
-    def routine_type(self) -> pulumi.Output[Optional[str]]:
+    def routine_type(self) -> pulumi.Output[str]:
         """
         The type of routine.
         Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.

@@ -146,10 +146,16 @@ type AiTensorboard struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiTensorboardEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// The labels with user-defined metadata to organize your Tensorboards.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the Tensorboard.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -160,6 +166,9 @@ type AiTensorboard struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The number of Runs stored in this Tensorboard.
 	RunCount pulumi.StringOutput `pulumi:"runCount"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -207,10 +216,16 @@ type aiTensorboardState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiTensorboardEncryptionSpec `pulumi:"encryptionSpec"`
 	// The labels with user-defined metadata to organize your Tensorboards.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the Tensorboard.
 	Name *string `pulumi:"name"`
@@ -221,6 +236,9 @@ type aiTensorboardState struct {
 	Region *string `pulumi:"region"`
 	// The number of Runs stored in this Tensorboard.
 	RunCount *string `pulumi:"runCount"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -236,10 +254,16 @@ type AiTensorboardState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiTensorboardEncryptionSpecPtrInput
 	// The labels with user-defined metadata to organize your Tensorboards.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the Tensorboard.
 	Name pulumi.StringPtrInput
@@ -250,6 +274,9 @@ type AiTensorboardState struct {
 	Region pulumi.StringPtrInput
 	// The number of Runs stored in this Tensorboard.
 	RunCount pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -269,6 +296,9 @@ type aiTensorboardArgs struct {
 	// Structure is documented below.
 	EncryptionSpec *AiTensorboardEncryptionSpec `pulumi:"encryptionSpec"`
 	// The labels with user-defined metadata to organize your Tensorboards.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -289,6 +319,9 @@ type AiTensorboardArgs struct {
 	// Structure is documented below.
 	EncryptionSpec AiTensorboardEncryptionSpecPtrInput
 	// The labels with user-defined metadata to organize your Tensorboards.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -430,6 +463,12 @@ func (o AiTensorboardOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiTensorboardOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiTensorboard) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 // Structure is documented below.
 func (o AiTensorboardOutput) EncryptionSpec() AiTensorboardEncryptionSpecPtrOutput {
@@ -437,6 +476,9 @@ func (o AiTensorboardOutput) EncryptionSpec() AiTensorboardEncryptionSpecPtrOutp
 }
 
 // The labels with user-defined metadata to organize your Tensorboards.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiTensorboardOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -460,6 +502,12 @@ func (o AiTensorboardOutput) Region() pulumi.StringOutput {
 // The number of Runs stored in this Tensorboard.
 func (o AiTensorboardOutput) RunCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.RunCount }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiTensorboardOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiTensorboard) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

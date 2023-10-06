@@ -3903,7 +3903,7 @@ type AiIndexMetadata struct {
 	// Index field can be also updated as part of the same call.
 	// The expected structure and format of the files this URI points to is
 	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-	ContentsDeltaUri *string `pulumi:"contentsDeltaUri"`
+	ContentsDeltaUri string `pulumi:"contentsDeltaUri"`
 	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
 	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
 	IsCompleteOverwrite *bool `pulumi:"isCompleteOverwrite"`
@@ -3930,7 +3930,7 @@ type AiIndexMetadataArgs struct {
 	// Index field can be also updated as part of the same call.
 	// The expected structure and format of the files this URI points to is
 	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-	ContentsDeltaUri pulumi.StringPtrInput `pulumi:"contentsDeltaUri"`
+	ContentsDeltaUri pulumi.StringInput `pulumi:"contentsDeltaUri"`
 	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
 	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
 	IsCompleteOverwrite pulumi.BoolPtrInput `pulumi:"isCompleteOverwrite"`
@@ -4043,8 +4043,8 @@ func (o AiIndexMetadataOutput) Config() AiIndexMetadataConfigPtrOutput {
 // Index field can be also updated as part of the same call.
 // The expected structure and format of the files this URI points to is
 // described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-func (o AiIndexMetadataOutput) ContentsDeltaUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AiIndexMetadata) *string { return v.ContentsDeltaUri }).(pulumi.StringPtrOutput)
+func (o AiIndexMetadataOutput) ContentsDeltaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiIndexMetadata) string { return v.ContentsDeltaUri }).(pulumi.StringOutput)
 }
 
 // If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
@@ -4105,7 +4105,7 @@ func (o AiIndexMetadataPtrOutput) ContentsDeltaUri() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.ContentsDeltaUri
+		return &v.ContentsDeltaUri
 	}).(pulumi.StringPtrOutput)
 }
 

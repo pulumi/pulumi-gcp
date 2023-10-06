@@ -88,10 +88,15 @@ type PrivateConnection struct {
 
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The PrivateConnection error in case of failure.
 	// Structure is documented below.
 	Errors PrivateConnectionErrorArrayOutput `pulumi:"errors"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this private connection is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -104,6 +109,9 @@ type PrivateConnection struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the PrivateConnection.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -154,10 +162,15 @@ func GetPrivateConnection(ctx *pulumi.Context,
 type privateConnectionState struct {
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The PrivateConnection error in case of failure.
 	// Structure is documented below.
 	Errors []PrivateConnectionError `pulumi:"errors"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this private connection is located in.
 	Location *string `pulumi:"location"`
@@ -170,6 +183,9 @@ type privateConnectionState struct {
 	Project *string `pulumi:"project"`
 	// State of the PrivateConnection.
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -179,10 +195,15 @@ type privateConnectionState struct {
 type PrivateConnectionState struct {
 	// Display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The PrivateConnection error in case of failure.
 	// Structure is documented below.
 	Errors PrivateConnectionErrorArrayInput
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this private connection is located in.
 	Location pulumi.StringPtrInput
@@ -195,6 +216,9 @@ type PrivateConnectionState struct {
 	Project pulumi.StringPtrInput
 	// State of the PrivateConnection.
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The VPC Peering configuration is used to create VPC peering
 	// between Datastream and the consumer's VPC.
 	// Structure is documented below.
@@ -209,6 +233,8 @@ type privateConnectionArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this private connection is located in.
 	Location string `pulumi:"location"`
@@ -228,6 +254,8 @@ type PrivateConnectionArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this private connection is located in.
 	Location pulumi.StringInput
@@ -358,6 +386,12 @@ func (o PrivateConnectionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o PrivateConnectionOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The PrivateConnection error in case of failure.
 // Structure is documented below.
 func (o PrivateConnectionOutput) Errors() PrivateConnectionErrorArrayOutput {
@@ -365,6 +399,8 @@ func (o PrivateConnectionOutput) Errors() PrivateConnectionErrorArrayOutput {
 }
 
 // Labels.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o PrivateConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -393,6 +429,12 @@ func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
 // State of the PrivateConnection.
 func (o PrivateConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o PrivateConnectionOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The VPC Peering configuration is used to create VPC peering

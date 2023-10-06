@@ -65,13 +65,14 @@ type LookupForwardingRuleArgs struct {
 
 // A collection of values returned by getForwardingRule.
 type LookupForwardingRuleResult struct {
-	AllPorts             bool   `pulumi:"allPorts"`
-	AllowGlobalAccess    bool   `pulumi:"allowGlobalAccess"`
-	AllowPscGlobalAccess bool   `pulumi:"allowPscGlobalAccess"`
-	BackendService       string `pulumi:"backendService"`
-	BaseForwardingRule   string `pulumi:"baseForwardingRule"`
-	CreationTimestamp    string `pulumi:"creationTimestamp"`
-	Description          string `pulumi:"description"`
+	AllPorts             bool              `pulumi:"allPorts"`
+	AllowGlobalAccess    bool              `pulumi:"allowGlobalAccess"`
+	AllowPscGlobalAccess bool              `pulumi:"allowPscGlobalAccess"`
+	BackendService       string            `pulumi:"backendService"`
+	BaseForwardingRule   string            `pulumi:"baseForwardingRule"`
+	CreationTimestamp    string            `pulumi:"creationTimestamp"`
+	Description          string            `pulumi:"description"`
+	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                          `pulumi:"id"`
 	IpAddress                     string                                          `pulumi:"ipAddress"`
@@ -98,6 +99,7 @@ type LookupForwardingRuleResult struct {
 	SourceIpRanges                []string                                        `pulumi:"sourceIpRanges"`
 	Subnetwork                    string                                          `pulumi:"subnetwork"`
 	Target                        string                                          `pulumi:"target"`
+	TerraformLabels               map[string]string                               `pulumi:"terraformLabels"`
 }
 
 func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
@@ -178,6 +180,10 @@ func (o LookupForwardingRuleResultOutput) CreationTimestamp() pulumi.StringOutpu
 
 func (o LookupForwardingRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -281,6 +287,10 @@ func (o LookupForwardingRuleResultOutput) Subnetwork() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

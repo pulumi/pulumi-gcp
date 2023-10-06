@@ -32,7 +32,6 @@ import (
 //	"encoding/json"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,29 +39,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("my-project"),
-//				OrgId:     pulumi.String("123456789"),
-//				Labels: pulumi.StringMap{
-//					"firebase": pulumi.String("enabled"),
-//				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
-//				Project: defaultProject.ProjectId,
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
 //			basicWebApp, err := firebase.NewWebApp(ctx, "basicWebApp", &firebase.WebAppArgs{
-//				Project:        defaultProject.ProjectId,
-//				DisplayName:    pulumi.String("Display Name Basic"),
-//				DeletionPolicy: pulumi.String("DELETE"),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				defaultFirebase / projectProject,
-//			}))
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Display Name Basic"),
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -200,7 +180,7 @@ type WebApp struct {
 	// The URLs where the `WebApp` is hosted.
 	AppUrls pulumi.StringArrayOutput `pulumi:"appUrls"`
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	//
@@ -257,7 +237,7 @@ type webAppState struct {
 	// The URLs where the `WebApp` is hosted.
 	AppUrls []string `pulumi:"appUrls"`
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	//
@@ -282,7 +262,7 @@ type WebAppState struct {
 	// The URLs where the `WebApp` is hosted.
 	AppUrls pulumi.StringArrayInput
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	//
@@ -306,7 +286,7 @@ type webAppArgs struct {
 	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
 	ApiKeyId *string `pulumi:"apiKeyId"`
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	//
@@ -324,7 +304,7 @@ type WebAppArgs struct {
 	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
 	ApiKeyId pulumi.StringPtrInput
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	//
@@ -465,7 +445,7 @@ func (o WebAppOutput) AppUrls() pulumi.StringArrayOutput {
 }
 
 // Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
-// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
+// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'DELETE'
 func (o WebAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

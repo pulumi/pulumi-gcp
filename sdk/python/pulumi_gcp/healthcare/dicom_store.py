@@ -36,6 +36,9 @@ class DicomStoreArgs:
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
         :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
@@ -82,6 +85,9 @@ class DicomStoreArgs:
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -134,11 +140,13 @@ class DicomStoreArgs:
 class _DicomStoreState:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['DicomStoreNotificationConfigArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None):
+                 stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DicomStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -146,6 +154,8 @@ class _DicomStoreState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
                conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -154,6 +164,9 @@ class _DicomStoreState:
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
         :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
@@ -162,9 +175,13 @@ class _DicomStoreState:
         :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -175,6 +192,8 @@ class _DicomStoreState:
             pulumi.set(__self__, "self_link", self_link)
         if stream_configs is not None:
             pulumi.set(__self__, "stream_configs", stream_configs)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -193,6 +212,19 @@ class _DicomStoreState:
         pulumi.set(self, "dataset", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -204,6 +236,9 @@ class _DicomStoreState:
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -262,6 +297,19 @@ class _DicomStoreState:
     @stream_configs.setter
     def stream_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]]]):
         pulumi.set(self, "stream_configs", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class DicomStore(pulumi.CustomResource):
@@ -367,6 +415,9 @@ class DicomStore(pulumi.CustomResource):
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
         :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']] notification_config: A nested object resource
@@ -494,7 +545,9 @@ class DicomStore(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["stream_configs"] = stream_configs
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(DicomStore, __self__).__init__(
             'gcp:healthcare/dicomStore:DicomStore',
             resource_name,
@@ -506,11 +559,13 @@ class DicomStore(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             dataset: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]]] = None) -> 'DicomStore':
+            stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'DicomStore':
         """
         Get an existing DicomStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -523,6 +578,8 @@ class DicomStore(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize DICOM stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
                conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}][\\p{Ll}\\p{Lo}\\p{N}_-]{0,62}
@@ -531,6 +588,9 @@ class DicomStore(pulumi.CustomResource):
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
         :param pulumi.Input[pulumi.InputType['DicomStoreNotificationConfigArgs']] notification_config: A nested object resource
@@ -539,17 +599,21 @@ class DicomStore(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DicomStoreStreamConfigArgs']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DicomStoreState.__new__(_DicomStoreState)
 
         __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["stream_configs"] = stream_configs
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return DicomStore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -565,6 +629,15 @@ class DicomStore(pulumi.CustomResource):
         return pulumi.get(self, "dataset")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
@@ -576,6 +649,9 @@ class DicomStore(pulumi.CustomResource):
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -614,4 +690,13 @@ class DicomStore(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "stream_configs")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

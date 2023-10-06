@@ -81,7 +81,13 @@ type Scope struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the Scope was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels for this Scope.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The unique identifier of the scope
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -95,6 +101,9 @@ type Scope struct {
 	// State of the scope resource.
 	// Structure is documented below.
 	States ScopeStateTypeArrayOutput `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the Scope was updated in UTC.
@@ -138,7 +147,13 @@ type scopeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the Scope was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels for this Scope.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The unique identifier of the scope
 	Name *string `pulumi:"name"`
@@ -152,6 +167,9 @@ type scopeState struct {
 	// State of the scope resource.
 	// Structure is documented below.
 	States []ScopeStateType `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the Scope was updated in UTC.
@@ -163,7 +181,13 @@ type ScopeState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the Scope was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels for this Scope.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The unique identifier of the scope
 	Name pulumi.StringPtrInput
@@ -177,6 +201,9 @@ type ScopeState struct {
 	// State of the scope resource.
 	// Structure is documented below.
 	States ScopeStateTypeArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the Scope was updated in UTC.
@@ -189,6 +216,9 @@ func (ScopeState) ElementType() reflect.Type {
 
 type scopeArgs struct {
 	// Labels for this Scope.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -202,6 +232,9 @@ type scopeArgs struct {
 // The set of arguments for constructing a Scope resource.
 type ScopeArgs struct {
 	// Labels for this Scope.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -333,7 +366,16 @@ func (o ScopeOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ScopeOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels for this Scope.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ScopeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -360,6 +402,12 @@ func (o ScopeOutput) ScopeId() pulumi.StringOutput {
 // Structure is documented below.
 func (o ScopeOutput) States() ScopeStateTypeArrayOutput {
 	return o.ApplyT(func(v *Scope) ScopeStateTypeArrayOutput { return v.States }).(ScopeStateTypeArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ScopeOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Scope) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

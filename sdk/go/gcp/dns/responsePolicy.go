@@ -90,6 +90,7 @@ import (
 //						return &secondaryIpRanges[1].RangeName, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

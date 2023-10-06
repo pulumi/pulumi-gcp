@@ -164,6 +164,9 @@ type DicomStore struct {
 	//
 	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// User-supplied key-value pairs used to organize DICOM stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -172,6 +175,9 @@ type DicomStore struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
@@ -185,6 +191,9 @@ type DicomStore struct {
 	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
 	// Structure is documented below.
 	StreamConfigs DicomStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewDicomStore registers a new resource with the given unique name, arguments, and options.
@@ -225,6 +234,9 @@ type dicomStoreState struct {
 	//
 	// ***
 	Dataset *string `pulumi:"dataset"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// User-supplied key-value pairs used to organize DICOM stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -233,6 +245,9 @@ type dicomStoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
@@ -246,6 +261,9 @@ type dicomStoreState struct {
 	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
 	// Structure is documented below.
 	StreamConfigs []DicomStoreStreamConfig `pulumi:"streamConfigs"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type DicomStoreState struct {
@@ -254,6 +272,9 @@ type DicomStoreState struct {
 	//
 	// ***
 	Dataset pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// User-supplied key-value pairs used to organize DICOM stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 	// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -262,6 +283,9 @@ type DicomStoreState struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
@@ -275,6 +299,9 @@ type DicomStoreState struct {
 	// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
 	// Structure is documented below.
 	StreamConfigs DicomStoreStreamConfigArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (DicomStoreState) ElementType() reflect.Type {
@@ -295,6 +322,9 @@ type dicomStoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
@@ -323,6 +353,9 @@ type DicomStoreArgs struct {
 	// No more than 64 labels can be associated with a given store.
 	// An object containing a list of "key": value pairs.
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
@@ -455,6 +488,12 @@ func (o DicomStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DicomStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // User-supplied key-value pairs used to organize DICOM stores.
 // Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
 // conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -463,6 +502,9 @@ func (o DicomStoreOutput) Dataset() pulumi.StringOutput {
 // No more than 64 labels can be associated with a given store.
 // An object containing a list of "key": value pairs.
 // Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DicomStoreOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -489,6 +531,12 @@ func (o DicomStoreOutput) SelfLink() pulumi.StringOutput {
 // Structure is documented below.
 func (o DicomStoreOutput) StreamConfigs() DicomStoreStreamConfigArrayOutput {
 	return o.ApplyT(func(v *DicomStore) DicomStoreStreamConfigArrayOutput { return v.StreamConfigs }).(DicomStoreStreamConfigArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DicomStoreOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DicomStore) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type DicomStoreArrayOutput struct{ *pulumi.OutputState }

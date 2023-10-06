@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * const nodes = new gcp.compute.NodeGroup("nodes", {
  *     zone: "us-central1-a",
  *     description: "example google_compute_node_group for the Google Provider",
- *     size: 1,
+ *     initialSize: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  * });
  * ```
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  * const nodes = new gcp.compute.NodeGroup("nodes", {
  *     zone: "us-central1-f",
  *     description: "example google_compute_node_group for Terraform Google Provider",
- *     size: 1,
+ *     initialSize: 1,
  *     nodeTemplate: soletenant_tmpl.id,
  *     shareSettings: {
  *         shareType: "SPECIFIC_PROJECTS",
@@ -144,6 +144,7 @@ export class NodeGroup extends pulumi.CustomResource {
     /**
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      */
     public readonly autoscalingPolicy!: pulumi.Output<outputs.compute.NodeGroupAutoscalingPolicy>;
@@ -156,7 +157,7 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
     public readonly initialSize!: pulumi.Output<number | undefined>;
     /**
@@ -194,9 +195,9 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly shareSettings!: pulumi.Output<outputs.compute.NodeGroupShareSettings>;
     /**
-     * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     * The total number of nodes in the node group.
      */
-    public readonly size!: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * Zone where this node group is located
      */
@@ -242,10 +243,10 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["size"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NodeGroup.__pulumiType, name, resourceInputs, opts);
@@ -259,6 +260,7 @@ export interface NodeGroupState {
     /**
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      */
     autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
@@ -271,7 +273,7 @@ export interface NodeGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
     initialSize?: pulumi.Input<number>;
     /**
@@ -309,7 +311,7 @@ export interface NodeGroupState {
      */
     shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings>;
     /**
-     * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     * The total number of nodes in the node group.
      */
     size?: pulumi.Input<number>;
     /**
@@ -325,6 +327,7 @@ export interface NodeGroupArgs {
     /**
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      * Structure is documented below.
      */
     autoscalingPolicy?: pulumi.Input<inputs.compute.NodeGroupAutoscalingPolicy>;
@@ -333,7 +336,7 @@ export interface NodeGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The initial number of nodes in the node group. One of `initialSize` or `size` must be specified.
+     * The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
      */
     initialSize?: pulumi.Input<number>;
     /**
@@ -366,10 +369,6 @@ export interface NodeGroupArgs {
      * Structure is documented below.
      */
     shareSettings?: pulumi.Input<inputs.compute.NodeGroupShareSettings>;
-    /**
-     * The total number of nodes in the node group. One of `initialSize` or `size` must be specified.
-     */
-    size?: pulumi.Input<number>;
     /**
      * Zone where this node group is located
      */

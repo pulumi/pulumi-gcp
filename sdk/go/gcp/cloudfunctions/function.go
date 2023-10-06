@@ -175,6 +175,9 @@ type Function struct {
 	DockerRegistry pulumi.StringOutput `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrOutput `pulumi:"dockerRepository"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrOutput `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
@@ -191,6 +194,9 @@ type Function struct {
 	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntOutput `pulumi:"maxInstances"`
@@ -222,6 +228,8 @@ type Function struct {
 	SourceRepository FunctionSourceRepositoryPtrOutput `pulumi:"sourceRepository"`
 	// Describes the current stage of a deployment.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -277,6 +285,9 @@ type functionState struct {
 	DockerRegistry *string `pulumi:"dockerRegistry"`
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository *string `pulumi:"dockerRepository"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint *string `pulumi:"entryPoint"`
 	// A set of key/value environment variable pairs to assign to the function.
@@ -293,6 +304,9 @@ type functionState struct {
 	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
@@ -324,6 +338,8 @@ type functionState struct {
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
 	// Describes the current stage of a deployment.
 	Status *string `pulumi:"status"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -347,6 +363,9 @@ type FunctionState struct {
 	DockerRegistry pulumi.StringPtrInput
 	// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, Container Registry will be used by default, unless specified otherwise by other means.
 	DockerRepository pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Name of the function that will be executed when the Google Cloud Function is triggered.
 	EntryPoint pulumi.StringPtrInput
 	// A set of key/value environment variable pairs to assign to the function.
@@ -363,6 +382,9 @@ type FunctionState struct {
 	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
@@ -394,6 +416,8 @@ type FunctionState struct {
 	SourceRepository FunctionSourceRepositoryPtrInput
 	// Describes the current stage of a deployment.
 	Status pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -437,6 +461,9 @@ type functionArgs struct {
 	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances *int `pulumi:"maxInstances"`
@@ -506,6 +533,9 @@ type FunctionArgs struct {
 	// If specified, you must also provide an artifact registry repository using the `dockerRepository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.MapInput
 	// The limit on the maximum number of function instances that may coexist at a given time.
 	MaxInstances pulumi.IntPtrInput
@@ -686,6 +716,12 @@ func (o FunctionOutput) DockerRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.DockerRepository }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o FunctionOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Name of the function that will be executed when the Google Cloud Function is triggered.
 func (o FunctionOutput) EntryPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.EntryPoint }).(pulumi.StringPtrOutput)
@@ -723,6 +759,9 @@ func (o FunctionOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 // A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o FunctionOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Function) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }
@@ -794,6 +833,11 @@ func (o FunctionOutput) SourceRepository() FunctionSourceRepositoryPtrOutput {
 // Describes the current stage of a deployment.
 func (o FunctionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o FunctionOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

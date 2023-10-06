@@ -228,6 +228,9 @@ type RegionDisk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -243,6 +246,9 @@ type RegionDisk struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp pulumi.StringOutput `pulumi:"lastAttachTimestamp"`
@@ -313,6 +319,9 @@ type RegionDisk struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -373,6 +382,9 @@ type regionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -388,6 +400,9 @@ type regionDiskState struct {
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp *string `pulumi:"lastAttachTimestamp"`
@@ -458,6 +473,9 @@ type regionDiskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
@@ -486,6 +504,9 @@ type RegionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -501,6 +522,9 @@ type RegionDiskState struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp pulumi.StringPtrInput
@@ -571,6 +595,9 @@ type RegionDiskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
@@ -613,6 +640,9 @@ type regionDiskArgs struct {
 	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
@@ -702,6 +732,9 @@ type RegionDiskArgs struct {
 	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
@@ -902,6 +935,12 @@ func (o RegionDiskOutput) DiskEncryptionKey() RegionDiskDiskEncryptionKeyPtrOutp
 	return o.ApplyT(func(v *RegionDisk) RegionDiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(RegionDiskDiskEncryptionKeyPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o RegionDiskOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A list of features to enable on the guest operating system.
 // Applicable only for bootable disks.
 // Structure is documented below.
@@ -926,6 +965,9 @@ func (o RegionDiskOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this disk.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o RegionDiskOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1044,6 +1086,12 @@ func (o RegionDiskOutput) SourceSnapshotEncryptionKey() RegionDiskSourceSnapshot
 // used.
 func (o RegionDiskOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RegionDiskOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

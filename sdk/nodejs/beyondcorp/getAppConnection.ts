@@ -59,6 +59,7 @@ export interface GetAppConnectionResult {
     readonly applicationEndpoints: outputs.beyondcorp.GetAppConnectionApplicationEndpoint[];
     readonly connectors: string[];
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly gateways: outputs.beyondcorp.GetAppConnectionGateway[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -68,6 +69,7 @@ export interface GetAppConnectionResult {
     readonly name: string;
     readonly project?: string;
     readonly region?: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly type: string;
 }
 /**

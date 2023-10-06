@@ -89,6 +89,7 @@ export interface GetRouterNatResult {
     readonly tcpEstablishedIdleTimeoutSec: number;
     readonly tcpTimeWaitTimeoutSec: number;
     readonly tcpTransitoryIdleTimeoutSec: number;
+    readonly type: string;
     readonly udpIdleTimeoutSec: number;
 }
 /**

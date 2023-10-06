@@ -81,6 +81,9 @@ type InstanceFromMachineImage struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
 	DesiredStatus pulumi.StringOutput `pulumi:"desiredStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -93,7 +96,9 @@ type InstanceFromMachineImage struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the instance.
+	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -141,6 +146,8 @@ type InstanceFromMachineImage struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -211,6 +218,9 @@ type instanceFromMachineImageState struct {
 	Description *string `pulumi:"description"`
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
 	DesiredStatus *string `pulumi:"desiredStatus"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance.
@@ -223,7 +233,9 @@ type instanceFromMachineImageState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the instance.
+	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType *string `pulumi:"machineType"`
@@ -271,6 +283,8 @@ type instanceFromMachineImageState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -309,6 +323,9 @@ type InstanceFromMachineImageState struct {
 	Description pulumi.StringPtrInput
 	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
 	DesiredStatus pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance.
@@ -321,7 +338,9 @@ type InstanceFromMachineImageState struct {
 	InstanceId pulumi.StringPtrInput
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringPtrInput
-	// A set of key/value label pairs assigned to the instance.
+	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringPtrInput
@@ -369,6 +388,8 @@ type InstanceFromMachineImageState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -409,7 +430,9 @@ type instanceFromMachineImageArgs struct {
 	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
 	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
-	// A set of key/value label pairs assigned to the instance.
+	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType *string `pulumi:"machineType"`
@@ -486,7 +509,9 @@ type InstanceFromMachineImageArgs struct {
 	// labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
 	// entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
-	// A set of key/value label pairs assigned to the instance.
+	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+	// the resource.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringPtrInput
@@ -713,6 +738,12 @@ func (o InstanceFromMachineImageOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceFromMachineImageOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether the instance has virtual displays enabled.
 func (o InstanceFromMachineImageOutput) EnableDisplay() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.BoolOutput { return v.EnableDisplay }).(pulumi.BoolOutput)
@@ -742,7 +773,9 @@ func (o InstanceFromMachineImageOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// A set of key/value label pairs assigned to the instance.
+// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+// the resource.
 func (o InstanceFromMachineImageOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -863,6 +896,11 @@ func (o InstanceFromMachineImageOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceFromMachineImageOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o InstanceFromMachineImageOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The zone that the machine should be created in. If not

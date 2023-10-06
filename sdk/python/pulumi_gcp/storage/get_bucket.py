@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, terraform_labels=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -35,6 +35,9 @@ class GetBucketResult:
         if default_event_based_hold and not isinstance(default_event_based_hold, bool):
             raise TypeError("Expected argument 'default_event_based_hold' to be a bool")
         pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if encryptions and not isinstance(encryptions, list):
             raise TypeError("Expected argument 'encryptions' to be a list")
         pulumi.set(__self__, "encryptions", encryptions)
@@ -77,6 +80,9 @@ class GetBucketResult:
         if storage_class and not isinstance(storage_class, str):
             raise TypeError("Expected argument 'storage_class' to be a str")
         pulumi.set(__self__, "storage_class", storage_class)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if uniform_bucket_level_access and not isinstance(uniform_bucket_level_access, bool):
             raise TypeError("Expected argument 'uniform_bucket_level_access' to be a bool")
         pulumi.set(__self__, "uniform_bucket_level_access", uniform_bucket_level_access)
@@ -109,6 +115,11 @@ class GetBucketResult:
     @pulumi.getter(name="defaultEventBasedHold")
     def default_event_based_hold(self) -> bool:
         return pulumi.get(self, "default_event_based_hold")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -184,6 +195,11 @@ class GetBucketResult:
         return pulumi.get(self, "storage_class")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter(name="uniformBucketLevelAccess")
     def uniform_bucket_level_access(self) -> bool:
         return pulumi.get(self, "uniform_bucket_level_access")
@@ -214,6 +230,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             cors=self.cors,
             custom_placement_configs=self.custom_placement_configs,
             default_event_based_hold=self.default_event_based_hold,
+            effective_labels=self.effective_labels,
             encryptions=self.encryptions,
             force_destroy=self.force_destroy,
             id=self.id,
@@ -228,6 +245,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             retention_policies=self.retention_policies,
             self_link=self.self_link,
             storage_class=self.storage_class,
+            terraform_labels=self.terraform_labels,
             uniform_bucket_level_access=self.uniform_bucket_level_access,
             url=self.url,
             versionings=self.versionings,
@@ -264,6 +282,7 @@ def get_bucket(name: Optional[str] = None,
         cors=pulumi.get(__ret__, 'cors'),
         custom_placement_configs=pulumi.get(__ret__, 'custom_placement_configs'),
         default_event_based_hold=pulumi.get(__ret__, 'default_event_based_hold'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         encryptions=pulumi.get(__ret__, 'encryptions'),
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
         id=pulumi.get(__ret__, 'id'),
@@ -278,6 +297,7 @@ def get_bucket(name: Optional[str] = None,
         retention_policies=pulumi.get(__ret__, 'retention_policies'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         uniform_bucket_level_access=pulumi.get(__ret__, 'uniform_bucket_level_access'),
         url=pulumi.get(__ret__, 'url'),
         versionings=pulumi.get(__ret__, 'versionings'),

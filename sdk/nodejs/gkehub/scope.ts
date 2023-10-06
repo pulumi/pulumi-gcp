@@ -85,7 +85,15 @@ export class Scope extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Labels for this Scope.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -110,6 +118,11 @@ export class Scope extends pulumi.CustomResource {
      */
     public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.ScopeState[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Google-generated UUID for this resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -133,11 +146,13 @@ export class Scope extends pulumi.CustomResource {
             const state = argsOrState as ScopeState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["scopeId"] = state ? state.scopeId : undefined;
             resourceInputs["states"] = state ? state.states : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -150,8 +165,10 @@ export class Scope extends pulumi.CustomResource {
             resourceInputs["scopeId"] = args ? args.scopeId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["states"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -173,7 +190,15 @@ export interface ScopeState {
      */
     deleteTime?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Labels for this Scope.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -198,6 +223,11 @@ export interface ScopeState {
      */
     states?: pulumi.Input<pulumi.Input<inputs.gkehub.ScopeState>[]>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Google-generated UUID for this resource.
      */
     uid?: pulumi.Input<string>;
@@ -213,6 +243,9 @@ export interface ScopeState {
 export interface ScopeArgs {
     /**
      * Labels for this Scope.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

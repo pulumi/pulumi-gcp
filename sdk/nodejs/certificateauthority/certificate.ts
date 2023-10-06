@@ -361,11 +361,19 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The resource name of the issuing CertificateAuthority in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      */
     public /*out*/ readonly issuerCertificateAuthority!: pulumi.Output<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -395,13 +403,6 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly pemCertificateChains!: pulumi.Output<string[]>;
     /**
-     * (Deprecated)
-     * Required. Expected to be in leaf-to-root order according to RFC 5246.
-     *
-     * @deprecated `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-     */
-    public /*out*/ readonly pemCertificates!: pulumi.Output<string[]>;
-    /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     public readonly pemCsr!: pulumi.Output<string | undefined>;
@@ -420,6 +421,11 @@ export class Certificate extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly revocationDetails!: pulumi.Output<outputs.certificateauthority.CertificateRevocationDetail[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. The time at which this CertificateAuthority was updated.
      * This is in RFC3339 text format.
@@ -444,6 +450,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["certificateTemplate"] = state ? state.certificateTemplate : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["issuerCertificateAuthority"] = state ? state.issuerCertificateAuthority : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lifetime"] = state ? state.lifetime : undefined;
@@ -451,11 +458,11 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["pemCertificate"] = state ? state.pemCertificate : undefined;
             resourceInputs["pemCertificateChains"] = state ? state.pemCertificateChains : undefined;
-            resourceInputs["pemCertificates"] = state ? state.pemCertificates : undefined;
             resourceInputs["pemCsr"] = state ? state.pemCsr : undefined;
             resourceInputs["pool"] = state ? state.pool : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["revocationDetails"] = state ? state.revocationDetails : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
@@ -477,11 +484,12 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["certificateDescriptions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["issuerCertificateAuthority"] = undefined /*out*/;
             resourceInputs["pemCertificate"] = undefined /*out*/;
             resourceInputs["pemCertificateChains"] = undefined /*out*/;
-            resourceInputs["pemCertificates"] = undefined /*out*/;
             resourceInputs["revocationDetails"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -524,11 +532,19 @@ export interface CertificateState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The resource name of the issuing CertificateAuthority in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      */
     issuerCertificateAuthority?: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -558,13 +574,6 @@ export interface CertificateState {
      */
     pemCertificateChains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Deprecated)
-     * Required. Expected to be in leaf-to-root order according to RFC 5246.
-     *
-     * @deprecated `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
-     */
-    pemCertificates?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
     pemCsr?: pulumi.Input<string>;
@@ -583,6 +592,11 @@ export interface CertificateState {
      * Structure is documented below.
      */
     revocationDetails?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateRevocationDetail>[]>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. The time at which this CertificateAuthority was updated.
      * This is in RFC3339 text format.
@@ -616,6 +630,9 @@ export interface CertificateArgs {
     config?: pulumi.Input<inputs.certificateauthority.CertificateConfig>;
     /**
      * Labels with user-defined metadata to apply to this resource.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

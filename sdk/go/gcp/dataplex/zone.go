@@ -34,10 +34,10 @@ import (
 //				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("Lake for DCL"),
 //				DisplayName: pulumi.String("Lake for DCL"),
+//				Project:     pulumi.String("my-project-name"),
 //				Labels: pulumi.StringMap{
 //					"my-lake": pulumi.String("exists"),
 //				},
-//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,8 +54,8 @@ import (
 //				Type:        pulumi.String("RAW"),
 //				Description: pulumi.String("Zone for DCL"),
 //				DisplayName: pulumi.String("Zone for DCL"),
-//				Labels:      nil,
 //				Project:     pulumi.String("my-project-name"),
+//				Labels:      nil,
 //			})
 //			if err != nil {
 //				return err
@@ -100,7 +100,13 @@ type Zone struct {
 	DiscoverySpec ZoneDiscoverySpecOutput `pulumi:"discoverySpec"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake for the resource
 	Lake pulumi.StringOutput `pulumi:"lake"`
@@ -114,6 +120,8 @@ type Zone struct {
 	ResourceSpec ZoneResourceSpecOutput `pulumi:"resourceSpec"`
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
@@ -177,7 +185,13 @@ type zoneState struct {
 	DiscoverySpec *ZoneDiscoverySpec `pulumi:"discoverySpec"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake *string `pulumi:"lake"`
@@ -191,6 +205,8 @@ type zoneState struct {
 	ResourceSpec *ZoneResourceSpec `pulumi:"resourceSpec"`
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type *string `pulumi:"type"`
 	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
@@ -210,7 +226,13 @@ type ZoneState struct {
 	DiscoverySpec ZoneDiscoverySpecPtrInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringPtrInput
@@ -224,6 +246,8 @@ type ZoneState struct {
 	ResourceSpec ZoneResourceSpecPtrInput
 	// Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type pulumi.StringPtrInput
 	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
@@ -244,6 +268,9 @@ type zoneArgs struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake string `pulumi:"lake"`
@@ -268,6 +295,9 @@ type ZoneArgs struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. User defined labels for the zone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringInput
@@ -419,7 +449,16 @@ func (o ZoneOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ZoneOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional. User defined labels for the zone.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ZoneOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -452,6 +491,11 @@ func (o ZoneOutput) ResourceSpec() ZoneResourceSpecOutput {
 // Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o ZoneOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ZoneOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED

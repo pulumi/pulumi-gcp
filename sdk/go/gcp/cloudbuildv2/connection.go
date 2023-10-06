@@ -227,11 +227,17 @@ type Connection struct {
 	pulumi.CustomResourceState
 
 	// Allows clients to store small amounts of arbitrary data.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Configuration for connections to github.com.
@@ -288,11 +294,17 @@ func GetConnection(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
 	// Allows clients to store small amounts of arbitrary data.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime *string `pulumi:"createTime"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled *bool `pulumi:"disabled"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configuration for connections to github.com.
@@ -317,11 +329,17 @@ type connectionState struct {
 
 type ConnectionState struct {
 	// Allows clients to store small amounts of arbitrary data.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Output only. Server assigned timestamp for when the connection was created.
 	CreateTime pulumi.StringPtrInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled pulumi.BoolPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.MapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configuration for connections to github.com.
@@ -350,6 +368,9 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled *bool `pulumi:"disabled"`
@@ -370,6 +391,9 @@ type connectionArgs struct {
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled pulumi.BoolPtrInput
@@ -499,6 +523,9 @@ func (o ConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*Connecti
 }
 
 // Allows clients to store small amounts of arbitrary data.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ConnectionOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -511,6 +538,12 @@ func (o ConnectionOutput) CreateTime() pulumi.StringOutput {
 // If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 func (o ConnectionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o ConnectionOutput) EffectiveAnnotations() pulumi.MapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.

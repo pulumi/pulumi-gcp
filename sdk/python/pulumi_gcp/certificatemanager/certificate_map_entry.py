@@ -38,6 +38,9 @@ class CertificateMapEntryArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map Entry.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] matcher: A predefined matcher for particular cases, other than SNI selection
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map Entry. Certificate Map Entry
                names must be unique globally and match pattern
@@ -122,6 +125,9 @@ class CertificateMapEntryArgs:
         Set of labels associated with a Certificate Map Entry.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -175,6 +181,7 @@ class _CertificateMapEntryState:
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  map: Optional[pulumi.Input[str]] = None,
@@ -182,6 +189,7 @@ class _CertificateMapEntryState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CertificateMapEntry resources.
@@ -192,12 +200,17 @@ class _CertificateMapEntryState:
                with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
                selecting a proper certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map Entry.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
                
                
@@ -209,6 +222,8 @@ class _CertificateMapEntryState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: A serving state of this Certificate Map Entry.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -219,6 +234,8 @@ class _CertificateMapEntryState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if labels is not None:
@@ -233,6 +250,8 @@ class _CertificateMapEntryState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -277,6 +296,19 @@ class _CertificateMapEntryState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input[str]]:
         """
@@ -297,6 +329,9 @@ class _CertificateMapEntryState:
         Set of labels associated with a Certificate Map Entry.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -369,6 +404,19 @@ class _CertificateMapEntryState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -474,6 +522,9 @@ class CertificateMapEntry(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map Entry.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
                
                
@@ -599,7 +650,9 @@ class CertificateMapEntry(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(CertificateMapEntry, __self__).__init__(
             'gcp:certificatemanager/certificateMapEntry:CertificateMapEntry',
@@ -614,6 +667,7 @@ class CertificateMapEntry(pulumi.CustomResource):
             certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             map: Optional[pulumi.Input[str]] = None,
@@ -621,6 +675,7 @@ class CertificateMapEntry(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'CertificateMapEntry':
         """
         Get an existing CertificateMapEntry resource's state with the given name, id, and optional extra
@@ -636,12 +691,17 @@ class CertificateMapEntry(pulumi.CustomResource):
                with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
                selecting a proper certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map Entry.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] map: A map entry that is inputted into the cetrificate map
                
                
@@ -653,6 +713,8 @@ class CertificateMapEntry(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: A serving state of this Certificate Map Entry.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -664,6 +726,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         __props__.__dict__["certificates"] = certificates
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["labels"] = labels
         __props__.__dict__["map"] = map
@@ -671,6 +734,7 @@ class CertificateMapEntry(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return CertificateMapEntry(resource_name, opts=opts, __props__=__props__)
 
@@ -703,6 +767,15 @@ class CertificateMapEntry(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def hostname(self) -> pulumi.Output[Optional[str]]:
         """
@@ -714,11 +787,14 @@ class CertificateMapEntry(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of labels associated with a Certificate Map Entry.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -767,6 +843,15 @@ class CertificateMapEntry(pulumi.CustomResource):
         A serving state of this Certificate Map Entry.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

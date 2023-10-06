@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -75,6 +76,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -128,6 +130,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -174,6 +177,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -215,6 +219,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -285,6 +290,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
+ *     deletionProtection: "",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,

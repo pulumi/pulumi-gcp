@@ -140,9 +140,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lookerNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "looker-network",
-//			}, nil)
+//			lookerNetwork, err := compute.NewNetwork(ctx, "lookerNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -150,13 +148,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(20),
-//				Network:      *pulumi.String(lookerNetwork.Id),
+//				Network:      lookerNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "lookerVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: *pulumi.String(lookerNetwork.Id),
+//				Network: lookerNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					lookerRange.Name,
@@ -171,7 +169,7 @@ import (
 //				PrivateIpEnabled: pulumi.Bool(true),
 //				PublicIpEnabled:  pulumi.Bool(false),
 //				ReservedRange:    lookerRange.Name,
-//				ConsumerNetwork:  *pulumi.String(lookerNetwork.Id),
+//				ConsumerNetwork:  lookerNetwork.ID(),
 //				AdminSettings: &looker.InstanceAdminSettingsArgs{
 //					AllowedEmailDomains: pulumi.StringArray{
 //						pulumi.String("google.com"),
@@ -312,9 +310,8 @@ type Instance struct {
 	// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
 	// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 	// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-	// - LOOKER_MODELER: standalone modeling service
 	//   Default value is `LOOKER_CORE_TRIAL`.
-	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
 	PlatformEdition pulumi.StringPtrOutput `pulumi:"platformEdition"`
 	// Whether private IP is enabled on the Looker instance.
 	PrivateIpEnabled pulumi.BoolPtrOutput `pulumi:"privateIpEnabled"`
@@ -419,9 +416,8 @@ type instanceState struct {
 	// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
 	// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 	// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-	// - LOOKER_MODELER: standalone modeling service
 	//   Default value is `LOOKER_CORE_TRIAL`.
-	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
 	PlatformEdition *string `pulumi:"platformEdition"`
 	// Whether private IP is enabled on the Looker instance.
 	PrivateIpEnabled *bool `pulumi:"privateIpEnabled"`
@@ -497,9 +493,8 @@ type InstanceState struct {
 	// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
 	// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 	// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-	// - LOOKER_MODELER: standalone modeling service
 	//   Default value is `LOOKER_CORE_TRIAL`.
-	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
 	PlatformEdition pulumi.StringPtrInput
 	// Whether private IP is enabled on the Looker instance.
 	PrivateIpEnabled pulumi.BoolPtrInput
@@ -566,9 +561,8 @@ type instanceArgs struct {
 	// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
 	// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 	// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-	// - LOOKER_MODELER: standalone modeling service
 	//   Default value is `LOOKER_CORE_TRIAL`.
-	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
 	PlatformEdition *string `pulumi:"platformEdition"`
 	// Whether private IP is enabled on the Looker instance.
 	PrivateIpEnabled *bool `pulumi:"privateIpEnabled"`
@@ -629,9 +623,8 @@ type InstanceArgs struct {
 	// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
 	// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 	// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-	// - LOOKER_MODELER: standalone modeling service
 	//   Default value is `LOOKER_CORE_TRIAL`.
-	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+	//   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
 	PlatformEdition pulumi.StringPtrInput
 	// Whether private IP is enabled on the Looker instance.
 	PrivateIpEnabled pulumi.BoolPtrInput
@@ -853,9 +846,8 @@ func (o InstanceOutput) OauthConfig() InstanceOauthConfigPtrOutput {
 //   - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
 //   - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
 //   - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-//   - LOOKER_MODELER: standalone modeling service
 //     Default value is `LOOKER_CORE_TRIAL`.
-//     Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+//     Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
 func (o InstanceOutput) PlatformEdition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PlatformEdition }).(pulumi.StringPtrOutput)
 }

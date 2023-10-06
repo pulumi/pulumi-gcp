@@ -185,6 +185,7 @@ class _WorkflowTemplateState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -192,12 +193,15 @@ class _WorkflowTemplateState:
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
                  placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering WorkflowTemplate resources.
         :param pulumi.Input[str] create_time: Output only. The time template was created.
         :param pulumi.Input[str] dag_timeout: (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
                
@@ -211,6 +215,7 @@ class _WorkflowTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
         :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
@@ -218,6 +223,8 @@ class _WorkflowTemplateState:
             pulumi.set(__self__, "create_time", create_time)
         if dag_timeout is not None:
             pulumi.set(__self__, "dag_timeout", dag_timeout)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
         if labels is not None:
@@ -232,6 +239,8 @@ class _WorkflowTemplateState:
             pulumi.set(__self__, "placement", placement)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if version is not None:
@@ -263,6 +272,19 @@ class _WorkflowTemplateState:
     @dag_timeout.setter
     def dag_timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dag_timeout", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -353,6 +375,18 @@ class _WorkflowTemplateState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -633,6 +667,8 @@ class WorkflowTemplate(pulumi.CustomResource):
                 pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(WorkflowTemplate, __self__).__init__(
             'gcp:dataproc/workflowTemplate:WorkflowTemplate',
@@ -646,6 +682,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             dag_timeout: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -653,6 +690,7 @@ class WorkflowTemplate(pulumi.CustomResource):
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
             placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'WorkflowTemplate':
         """
@@ -664,6 +702,8 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time template was created.
         :param pulumi.Input[str] dag_timeout: (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
                
@@ -677,6 +717,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
         :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
@@ -686,6 +727,7 @@ class WorkflowTemplate(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dag_timeout"] = dag_timeout
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["jobs"] = jobs
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -693,6 +735,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["placement"] = placement
         __props__.__dict__["project"] = project
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["version"] = version
         return WorkflowTemplate(resource_name, opts=opts, __props__=__props__)
@@ -712,6 +755,15 @@ class WorkflowTemplate(pulumi.CustomResource):
         (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -774,6 +826,14 @@ class WorkflowTemplate(pulumi.CustomResource):
         The project for the resource
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

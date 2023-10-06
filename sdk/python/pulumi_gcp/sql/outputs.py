@@ -96,6 +96,8 @@ class DatabaseInstanceClone(dict):
             suggest = "database_names"
         elif key == "pointInTime":
             suggest = "point_in_time"
+        elif key == "preferredZone":
+            suggest = "preferred_zone"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceClone. Access the value via the '{suggest}' property getter instead.")
@@ -112,7 +114,8 @@ class DatabaseInstanceClone(dict):
                  source_instance_name: str,
                  allocated_ip_range: Optional[str] = None,
                  database_names: Optional[Sequence[str]] = None,
-                 point_in_time: Optional[str] = None):
+                 point_in_time: Optional[str] = None,
+                 preferred_zone: Optional[str] = None):
         """
         :param str source_instance_name: Name of the source instance which will be cloned.
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -120,6 +123,7 @@ class DatabaseInstanceClone(dict):
         :param str point_in_time: The timestamp of the point in time that should be restored.
                
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
@@ -128,6 +132,8 @@ class DatabaseInstanceClone(dict):
             pulumi.set(__self__, "database_names", database_names)
         if point_in_time is not None:
             pulumi.set(__self__, "point_in_time", point_in_time)
+        if preferred_zone is not None:
+            pulumi.set(__self__, "preferred_zone", preferred_zone)
 
     @property
     @pulumi.getter(name="sourceInstanceName")
@@ -162,6 +168,14 @@ class DatabaseInstanceClone(dict):
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "point_in_time")
+
+    @property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> Optional[str]:
+        """
+        (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+        """
+        return pulumi.get(self, "preferred_zone")
 
 
 @pulumi.output_type
@@ -278,6 +292,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
         :param int master_heartbeat_period: Time in ms between replication
                heartbeats.
         :param str password: Password for the replication connection.
+        :param str ssl_cipher: Permissible ciphers for use in SSL encryption.
         :param str username: Username for replication connection.
         :param bool verify_server_certificate: True if the master's common name
                value is checked during the SSL handshake.
@@ -382,6 +397,9 @@ class DatabaseInstanceReplicaConfiguration(dict):
     @property
     @pulumi.getter(name="sslCipher")
     def ssl_cipher(self) -> Optional[str]:
+        """
+        Permissible ciphers for use in SSL encryption.
+        """
         return pulumi.get(self, "ssl_cipher")
 
     @property
@@ -2131,10 +2149,12 @@ class GetDatabaseInstanceCloneResult(dict):
                  allocated_ip_range: str,
                  database_names: Sequence[str],
                  point_in_time: str,
+                 preferred_zone: str,
                  source_instance_name: str):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "preferred_zone", preferred_zone)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
 
     @property
@@ -2151,6 +2171,11 @@ class GetDatabaseInstanceCloneResult(dict):
     @pulumi.getter(name="pointInTime")
     def point_in_time(self) -> str:
         return pulumi.get(self, "point_in_time")
+
+    @property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> str:
+        return pulumi.get(self, "preferred_zone")
 
     @property
     @pulumi.getter(name="sourceInstanceName")
@@ -3162,10 +3187,12 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
                  allocated_ip_range: str,
                  database_names: Sequence[str],
                  point_in_time: str,
+                 preferred_zone: str,
                  source_instance_name: str):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "preferred_zone", preferred_zone)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
 
     @property
@@ -3182,6 +3209,11 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
     @pulumi.getter(name="pointInTime")
     def point_in_time(self) -> str:
         return pulumi.get(self, "point_in_time")
+
+    @property
+    @pulumi.getter(name="preferredZone")
+    def preferred_zone(self) -> str:
+        return pulumi.get(self, "preferred_zone")
 
     @property
     @pulumi.getter(name="sourceInstanceName")

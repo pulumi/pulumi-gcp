@@ -71,6 +71,10 @@ import (
 //					Name: pulumi.String("projects/my-project-name/buckets/bucket"),
 //					Type: pulumi.String("STORAGE_BUCKET"),
 //				},
+//				Labels: pulumi.StringMap{
+//					"env":      pulumi.String("foo"),
+//					"my-asset": pulumi.String("exists"),
+//				},
 //				Project: pulumi.String("my-project-name"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				basicBucket,
@@ -120,7 +124,13 @@ type Asset struct {
 	DiscoveryStatuses AssetDiscoveryStatusArrayOutput `pulumi:"discoveryStatuses"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The lake for the resource
 	Lake pulumi.StringOutput `pulumi:"lake"`
@@ -138,6 +148,8 @@ type Asset struct {
 	SecurityStatuses AssetSecurityStatusArrayOutput `pulumi:"securityStatuses"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the asset was last updated.
@@ -201,7 +213,13 @@ type assetState struct {
 	DiscoveryStatuses []AssetDiscoveryStatus `pulumi:"discoveryStatuses"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake *string `pulumi:"lake"`
@@ -219,6 +237,8 @@ type assetState struct {
 	SecurityStatuses []AssetSecurityStatus `pulumi:"securityStatuses"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the asset was last updated.
@@ -238,7 +258,13 @@ type AssetState struct {
 	DiscoveryStatuses AssetDiscoveryStatusArrayInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringPtrInput
@@ -256,6 +282,8 @@ type AssetState struct {
 	SecurityStatuses AssetSecurityStatusArrayInput
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the asset was last updated.
@@ -276,6 +304,9 @@ type assetArgs struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The lake for the resource
 	Lake string `pulumi:"lake"`
@@ -300,6 +331,9 @@ type AssetArgs struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. User defined labels for the asset.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The lake for the resource
 	Lake pulumi.StringInput
@@ -454,7 +488,16 @@ func (o AssetOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AssetOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional. User defined labels for the asset.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AssetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -497,6 +540,11 @@ func (o AssetOutput) SecurityStatuses() AssetSecurityStatusArrayOutput {
 // Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o AssetOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o AssetOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.

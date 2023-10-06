@@ -63,6 +63,9 @@ class ConnectivityTestArgs:
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
                Maximum of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -160,6 +163,9 @@ class ConnectivityTestArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -224,12 +230,14 @@ class _ConnectivityTestState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['ConnectivityTestDestinationArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None):
+                 source: Optional[pulumi.Input['ConnectivityTestSourceArgs']] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectivityTest resources.
         :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test.
@@ -249,7 +257,12 @@ class _ConnectivityTestState:
                is ambiguous. However, the result can include endpoints that you
                don't intend to test.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -276,11 +289,15 @@ class _ConnectivityTestState:
                ambiguous. However, the test result may include endpoints that
                you don't intend to test.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -293,6 +310,8 @@ class _ConnectivityTestState:
             pulumi.set(__self__, "related_projects", related_projects)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -334,10 +353,26 @@ class _ConnectivityTestState:
         pulumi.set(self, "destination", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -426,6 +461,19 @@ class _ConnectivityTestState:
     def source(self, value: Optional[pulumi.Input['ConnectivityTestSourceArgs']]):
         pulumi.set(self, "source", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class ConnectivityTest(pulumi.CustomResource):
     @overload
@@ -491,7 +539,10 @@ class ConnectivityTest(pulumi.CustomResource):
             destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
                 instance=destination.id,
             ),
-            protocol="TCP")
+            protocol="TCP",
+            labels={
+                "env": "test",
+            })
         ```
         ### Network Management Connectivity Test Addresses
 
@@ -565,6 +616,9 @@ class ConnectivityTest(pulumi.CustomResource):
                don't intend to test.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -648,7 +702,10 @@ class ConnectivityTest(pulumi.CustomResource):
             destination=gcp.networkmanagement.ConnectivityTestDestinationArgs(
                 instance=destination.id,
             ),
-            protocol="TCP")
+            protocol="TCP",
+            labels={
+                "env": "test",
+            })
         ```
         ### Network Management Connectivity Test Addresses
 
@@ -746,6 +803,8 @@ class ConnectivityTest(pulumi.CustomResource):
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(ConnectivityTest, __self__).__init__(
             'gcp:networkmanagement/connectivityTest:ConnectivityTest',
             resource_name,
@@ -758,12 +817,14 @@ class ConnectivityTest(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestDestinationArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None) -> 'ConnectivityTest':
+            source: Optional[pulumi.Input[pulumi.InputType['ConnectivityTestSourceArgs']]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConnectivityTest':
         """
         Get an existing ConnectivityTest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -788,7 +849,12 @@ class ConnectivityTest(pulumi.CustomResource):
                is ambiguous. However, the result can include endpoints that you
                don't intend to test.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name for the connectivity test.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -815,6 +881,8 @@ class ConnectivityTest(pulumi.CustomResource):
                ambiguous. However, the test result may include endpoints that
                you don't intend to test.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -822,12 +890,14 @@ class ConnectivityTest(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["destination"] = destination
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["related_projects"] = related_projects
         __props__.__dict__["source"] = source
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return ConnectivityTest(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -862,10 +932,22 @@ class ConnectivityTest(pulumi.CustomResource):
         return pulumi.get(self, "destination")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -929,4 +1011,13 @@ class ConnectivityTest(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

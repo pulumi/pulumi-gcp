@@ -79,11 +79,12 @@ type LookupSnapshotArgs struct {
 
 // A collection of values returned by getSnapshot.
 type LookupSnapshotResult struct {
-	ChainName         string  `pulumi:"chainName"`
-	CreationTimestamp string  `pulumi:"creationTimestamp"`
-	Description       string  `pulumi:"description"`
-	DiskSizeGb        int     `pulumi:"diskSizeGb"`
-	Filter            *string `pulumi:"filter"`
+	ChainName         string            `pulumi:"chainName"`
+	CreationTimestamp string            `pulumi:"creationTimestamp"`
+	Description       string            `pulumi:"description"`
+	DiskSizeGb        int               `pulumi:"diskSizeGb"`
+	EffectiveLabels   map[string]string `pulumi:"effectiveLabels"`
+	Filter            *string           `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                               `pulumi:"id"`
 	LabelFingerprint         string                               `pulumi:"labelFingerprint"`
@@ -99,6 +100,7 @@ type LookupSnapshotResult struct {
 	SourceDiskEncryptionKeys []GetSnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKeys"`
 	StorageBytes             int                                  `pulumi:"storageBytes"`
 	StorageLocations         []string                             `pulumi:"storageLocations"`
+	TerraformLabels          map[string]string                    `pulumi:"terraformLabels"`
 	Zone                     string                               `pulumi:"zone"`
 }
 
@@ -173,6 +175,10 @@ func (o LookupSnapshotResultOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
+func (o LookupSnapshotResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSnapshotResultOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -232,6 +238,10 @@ func (o LookupSnapshotResultOutput) StorageBytes() pulumi.IntOutput {
 
 func (o LookupSnapshotResultOutput) StorageLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) []string { return v.StorageLocations }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupSnapshotResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSnapshotResultOutput) Zone() pulumi.StringOutput {

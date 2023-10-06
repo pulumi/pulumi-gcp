@@ -311,6 +311,142 @@ func (o BackupEncryptionInfoArrayOutput) Index(i pulumi.IntInput) BackupEncrypti
 	}).(BackupEncryptionInfoOutput)
 }
 
+type BackupExpiryQuantity struct {
+	// (Output)
+	// Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+	RetentionCount *int `pulumi:"retentionCount"`
+	// (Output)
+	// Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+	TotalRetentionCount *int `pulumi:"totalRetentionCount"`
+}
+
+// BackupExpiryQuantityInput is an input type that accepts BackupExpiryQuantityArgs and BackupExpiryQuantityOutput values.
+// You can construct a concrete instance of `BackupExpiryQuantityInput` via:
+//
+//	BackupExpiryQuantityArgs{...}
+type BackupExpiryQuantityInput interface {
+	pulumi.Input
+
+	ToBackupExpiryQuantityOutput() BackupExpiryQuantityOutput
+	ToBackupExpiryQuantityOutputWithContext(context.Context) BackupExpiryQuantityOutput
+}
+
+type BackupExpiryQuantityArgs struct {
+	// (Output)
+	// Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+	RetentionCount pulumi.IntPtrInput `pulumi:"retentionCount"`
+	// (Output)
+	// Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+	TotalRetentionCount pulumi.IntPtrInput `pulumi:"totalRetentionCount"`
+}
+
+func (BackupExpiryQuantityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupExpiryQuantity)(nil)).Elem()
+}
+
+func (i BackupExpiryQuantityArgs) ToBackupExpiryQuantityOutput() BackupExpiryQuantityOutput {
+	return i.ToBackupExpiryQuantityOutputWithContext(context.Background())
+}
+
+func (i BackupExpiryQuantityArgs) ToBackupExpiryQuantityOutputWithContext(ctx context.Context) BackupExpiryQuantityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupExpiryQuantityOutput)
+}
+
+func (i BackupExpiryQuantityArgs) ToOutput(ctx context.Context) pulumix.Output[BackupExpiryQuantity] {
+	return pulumix.Output[BackupExpiryQuantity]{
+		OutputState: i.ToBackupExpiryQuantityOutputWithContext(ctx).OutputState,
+	}
+}
+
+// BackupExpiryQuantityArrayInput is an input type that accepts BackupExpiryQuantityArray and BackupExpiryQuantityArrayOutput values.
+// You can construct a concrete instance of `BackupExpiryQuantityArrayInput` via:
+//
+//	BackupExpiryQuantityArray{ BackupExpiryQuantityArgs{...} }
+type BackupExpiryQuantityArrayInput interface {
+	pulumi.Input
+
+	ToBackupExpiryQuantityArrayOutput() BackupExpiryQuantityArrayOutput
+	ToBackupExpiryQuantityArrayOutputWithContext(context.Context) BackupExpiryQuantityArrayOutput
+}
+
+type BackupExpiryQuantityArray []BackupExpiryQuantityInput
+
+func (BackupExpiryQuantityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupExpiryQuantity)(nil)).Elem()
+}
+
+func (i BackupExpiryQuantityArray) ToBackupExpiryQuantityArrayOutput() BackupExpiryQuantityArrayOutput {
+	return i.ToBackupExpiryQuantityArrayOutputWithContext(context.Background())
+}
+
+func (i BackupExpiryQuantityArray) ToBackupExpiryQuantityArrayOutputWithContext(ctx context.Context) BackupExpiryQuantityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupExpiryQuantityArrayOutput)
+}
+
+func (i BackupExpiryQuantityArray) ToOutput(ctx context.Context) pulumix.Output[[]BackupExpiryQuantity] {
+	return pulumix.Output[[]BackupExpiryQuantity]{
+		OutputState: i.ToBackupExpiryQuantityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type BackupExpiryQuantityOutput struct{ *pulumi.OutputState }
+
+func (BackupExpiryQuantityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupExpiryQuantity)(nil)).Elem()
+}
+
+func (o BackupExpiryQuantityOutput) ToBackupExpiryQuantityOutput() BackupExpiryQuantityOutput {
+	return o
+}
+
+func (o BackupExpiryQuantityOutput) ToBackupExpiryQuantityOutputWithContext(ctx context.Context) BackupExpiryQuantityOutput {
+	return o
+}
+
+func (o BackupExpiryQuantityOutput) ToOutput(ctx context.Context) pulumix.Output[BackupExpiryQuantity] {
+	return pulumix.Output[BackupExpiryQuantity]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Output)
+// Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+func (o BackupExpiryQuantityOutput) RetentionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupExpiryQuantity) *int { return v.RetentionCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+func (o BackupExpiryQuantityOutput) TotalRetentionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupExpiryQuantity) *int { return v.TotalRetentionCount }).(pulumi.IntPtrOutput)
+}
+
+type BackupExpiryQuantityArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupExpiryQuantityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupExpiryQuantity)(nil)).Elem()
+}
+
+func (o BackupExpiryQuantityArrayOutput) ToBackupExpiryQuantityArrayOutput() BackupExpiryQuantityArrayOutput {
+	return o
+}
+
+func (o BackupExpiryQuantityArrayOutput) ToBackupExpiryQuantityArrayOutputWithContext(ctx context.Context) BackupExpiryQuantityArrayOutput {
+	return o
+}
+
+func (o BackupExpiryQuantityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BackupExpiryQuantity] {
+	return pulumix.Output[[]BackupExpiryQuantity]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o BackupExpiryQuantityArrayOutput) Index(i pulumi.IntInput) BackupExpiryQuantityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupExpiryQuantity {
+		return vs[0].([]BackupExpiryQuantity)[vs[1].(int)]
+	}).(BackupExpiryQuantityOutput)
+}
+
 type ClusterAutomatedBackupPolicy struct {
 	// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
 	// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
@@ -3564,6 +3700,224 @@ func (o InstanceMachineConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type InstanceQueryInsightsConfig struct {
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
+	// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+	QueryStringLength *int `pulumi:"queryStringLength"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
+	// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+	RecordClientAddress *bool `pulumi:"recordClientAddress"`
+}
+
+// InstanceQueryInsightsConfigInput is an input type that accepts InstanceQueryInsightsConfigArgs and InstanceQueryInsightsConfigOutput values.
+// You can construct a concrete instance of `InstanceQueryInsightsConfigInput` via:
+//
+//	InstanceQueryInsightsConfigArgs{...}
+type InstanceQueryInsightsConfigInput interface {
+	pulumi.Input
+
+	ToInstanceQueryInsightsConfigOutput() InstanceQueryInsightsConfigOutput
+	ToInstanceQueryInsightsConfigOutputWithContext(context.Context) InstanceQueryInsightsConfigOutput
+}
+
+type InstanceQueryInsightsConfigArgs struct {
+	// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
+	// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
+	// Record application tags for an instance. This flag is turned "on" by default.
+	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
+	// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+	RecordClientAddress pulumi.BoolPtrInput `pulumi:"recordClientAddress"`
+}
+
+func (InstanceQueryInsightsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (i InstanceQueryInsightsConfigArgs) ToInstanceQueryInsightsConfigOutput() InstanceQueryInsightsConfigOutput {
+	return i.ToInstanceQueryInsightsConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceQueryInsightsConfigArgs) ToInstanceQueryInsightsConfigOutputWithContext(ctx context.Context) InstanceQueryInsightsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceQueryInsightsConfigOutput)
+}
+
+func (i InstanceQueryInsightsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceQueryInsightsConfig] {
+	return pulumix.Output[InstanceQueryInsightsConfig]{
+		OutputState: i.ToInstanceQueryInsightsConfigOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i InstanceQueryInsightsConfigArgs) ToInstanceQueryInsightsConfigPtrOutput() InstanceQueryInsightsConfigPtrOutput {
+	return i.ToInstanceQueryInsightsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceQueryInsightsConfigArgs) ToInstanceQueryInsightsConfigPtrOutputWithContext(ctx context.Context) InstanceQueryInsightsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceQueryInsightsConfigOutput).ToInstanceQueryInsightsConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceQueryInsightsConfigPtrInput is an input type that accepts InstanceQueryInsightsConfigArgs, InstanceQueryInsightsConfigPtr and InstanceQueryInsightsConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceQueryInsightsConfigPtrInput` via:
+//
+//	        InstanceQueryInsightsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceQueryInsightsConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceQueryInsightsConfigPtrOutput() InstanceQueryInsightsConfigPtrOutput
+	ToInstanceQueryInsightsConfigPtrOutputWithContext(context.Context) InstanceQueryInsightsConfigPtrOutput
+}
+
+type instanceQueryInsightsConfigPtrType InstanceQueryInsightsConfigArgs
+
+func InstanceQueryInsightsConfigPtr(v *InstanceQueryInsightsConfigArgs) InstanceQueryInsightsConfigPtrInput {
+	return (*instanceQueryInsightsConfigPtrType)(v)
+}
+
+func (*instanceQueryInsightsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (i *instanceQueryInsightsConfigPtrType) ToInstanceQueryInsightsConfigPtrOutput() InstanceQueryInsightsConfigPtrOutput {
+	return i.ToInstanceQueryInsightsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceQueryInsightsConfigPtrType) ToInstanceQueryInsightsConfigPtrOutputWithContext(ctx context.Context) InstanceQueryInsightsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceQueryInsightsConfigPtrOutput)
+}
+
+func (i *instanceQueryInsightsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceQueryInsightsConfig] {
+	return pulumix.Output[*InstanceQueryInsightsConfig]{
+		OutputState: i.ToInstanceQueryInsightsConfigPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type InstanceQueryInsightsConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceQueryInsightsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (o InstanceQueryInsightsConfigOutput) ToInstanceQueryInsightsConfigOutput() InstanceQueryInsightsConfigOutput {
+	return o
+}
+
+func (o InstanceQueryInsightsConfigOutput) ToInstanceQueryInsightsConfigOutputWithContext(ctx context.Context) InstanceQueryInsightsConfigOutput {
+	return o
+}
+
+func (o InstanceQueryInsightsConfigOutput) ToInstanceQueryInsightsConfigPtrOutput() InstanceQueryInsightsConfigPtrOutput {
+	return o.ToInstanceQueryInsightsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceQueryInsightsConfigOutput) ToInstanceQueryInsightsConfigPtrOutputWithContext(ctx context.Context) InstanceQueryInsightsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceQueryInsightsConfig) *InstanceQueryInsightsConfig {
+		return &v
+	}).(InstanceQueryInsightsConfigPtrOutput)
+}
+
+func (o InstanceQueryInsightsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceQueryInsightsConfig] {
+	return pulumix.Output[InstanceQueryInsightsConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+func (o InstanceQueryInsightsConfigOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceQueryInsightsConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
+}
+
+// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+func (o InstanceQueryInsightsConfigOutput) QueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceQueryInsightsConfig) *int { return v.QueryStringLength }).(pulumi.IntPtrOutput)
+}
+
+// Record application tags for an instance. This flag is turned "on" by default.
+func (o InstanceQueryInsightsConfigOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceQueryInsightsConfig) *bool { return v.RecordApplicationTags }).(pulumi.BoolPtrOutput)
+}
+
+// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+func (o InstanceQueryInsightsConfigOutput) RecordClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceQueryInsightsConfig) *bool { return v.RecordClientAddress }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceQueryInsightsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceQueryInsightsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceQueryInsightsConfig)(nil)).Elem()
+}
+
+func (o InstanceQueryInsightsConfigPtrOutput) ToInstanceQueryInsightsConfigPtrOutput() InstanceQueryInsightsConfigPtrOutput {
+	return o
+}
+
+func (o InstanceQueryInsightsConfigPtrOutput) ToInstanceQueryInsightsConfigPtrOutputWithContext(ctx context.Context) InstanceQueryInsightsConfigPtrOutput {
+	return o
+}
+
+func (o InstanceQueryInsightsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceQueryInsightsConfig] {
+	return pulumix.Output[*InstanceQueryInsightsConfig]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o InstanceQueryInsightsConfigPtrOutput) Elem() InstanceQueryInsightsConfigOutput {
+	return o.ApplyT(func(v *InstanceQueryInsightsConfig) InstanceQueryInsightsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceQueryInsightsConfig
+		return ret
+	}).(InstanceQueryInsightsConfigOutput)
+}
+
+// Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+func (o InstanceQueryInsightsConfigPtrOutput) QueryPlansPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceQueryInsightsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryPlansPerMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+func (o InstanceQueryInsightsConfigPtrOutput) QueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceQueryInsightsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// Record application tags for an instance. This flag is turned "on" by default.
+func (o InstanceQueryInsightsConfigPtrOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceQueryInsightsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RecordApplicationTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+func (o InstanceQueryInsightsConfigPtrOutput) RecordClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceQueryInsightsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RecordClientAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceReadPoolConfig struct {
 	// Read capacity, i.e. number of nodes in a read pool instance.
 	NodeCount *int `pulumi:"nodeCount"`
@@ -4205,6 +4559,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionConfigPtrInput)(nil)).Elem(), BackupEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionInfoInput)(nil)).Elem(), BackupEncryptionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionInfoArrayInput)(nil)).Elem(), BackupEncryptionInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupExpiryQuantityInput)(nil)).Elem(), BackupExpiryQuantityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupExpiryQuantityArrayInput)(nil)).Elem(), BackupExpiryQuantityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyInput)(nil)).Elem(), ClusterAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyPtrInput)(nil)).Elem(), ClusterAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyEncryptionConfigInput)(nil)).Elem(), ClusterAutomatedBackupPolicyEncryptionConfigArgs{})
@@ -4243,6 +4599,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreContinuousBackupSourcePtrInput)(nil)).Elem(), ClusterRestoreContinuousBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigPtrInput)(nil)).Elem(), InstanceMachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceQueryInsightsConfigPtrInput)(nil)).Elem(), InstanceQueryInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigPtrInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationsLocationInput)(nil)).Elem(), GetLocationsLocationArgs{})
@@ -4255,6 +4613,8 @@ func init() {
 	pulumi.RegisterOutputType(BackupEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackupEncryptionInfoOutput{})
 	pulumi.RegisterOutputType(BackupEncryptionInfoArrayOutput{})
+	pulumi.RegisterOutputType(BackupExpiryQuantityOutput{})
+	pulumi.RegisterOutputType(BackupExpiryQuantityArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyEncryptionConfigOutput{})
@@ -4293,6 +4653,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRestoreContinuousBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceQueryInsightsConfigOutput{})
+	pulumi.RegisterOutputType(InstanceQueryInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetLocationsLocationOutput{})

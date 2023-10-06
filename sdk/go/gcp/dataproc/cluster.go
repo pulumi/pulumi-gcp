@@ -178,12 +178,16 @@ type Cluster struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigOutput `pulumi:"clusterConfig"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -196,6 +200,8 @@ type Cluster struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Allows you to configure a virtual Dataproc on GKE cluster.
 	// Structure defined below.
 	VirtualClusterConfig ClusterVirtualClusterConfigOutput `pulumi:"virtualClusterConfig"`
@@ -234,12 +240,16 @@ type clusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -252,6 +262,8 @@ type clusterState struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region *string `pulumi:"region"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Allows you to configure a virtual Dataproc on GKE cluster.
 	// Structure defined below.
 	VirtualClusterConfig *ClusterVirtualClusterConfig `pulumi:"virtualClusterConfig"`
@@ -261,12 +273,16 @@ type ClusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigPtrInput
-	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
-	// terraform apply
-	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
+	EffectiveLabels pulumi.StringMapInput
+	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
+	// terraform apply
+	GracefulDecommissionTimeout pulumi.StringPtrInput
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -279,6 +295,8 @@ type ClusterState struct {
 	// The region in which the cluster and associated nodes will be created in.
 	// Defaults to `global`.
 	Region pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Allows you to configure a virtual Dataproc on GKE cluster.
 	// Structure defined below.
 	VirtualClusterConfig ClusterVirtualClusterConfigPtrInput
@@ -295,9 +313,9 @@ type clusterArgs struct {
 	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
 	// terraform apply
 	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
-	// The list of labels (key/value pairs) to be applied to
-	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-	// which is the name of the cluster.
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -323,9 +341,9 @@ type ClusterArgs struct {
 	// The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
 	// terraform apply
 	GracefulDecommissionTimeout pulumi.StringPtrInput
-	// The list of labels (key/value pairs) to be applied to
-	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-	// which is the name of the cluster.
+	// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+	// to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
@@ -460,15 +478,22 @@ func (o ClusterOutput) ClusterConfig() ClusterClusterConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClusterConfigOutput { return v.ClusterConfig }).(ClusterClusterConfigOutput)
 }
 
+// The list of labels (key/value pairs) to be applied to
+// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+// which is the name of the cluster.
+func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
 // terraform apply
 func (o ClusterOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GracefulDecommissionTimeout }).(pulumi.StringPtrOutput)
 }
 
-// The list of labels (key/value pairs) to be applied to
-// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-// which is the name of the cluster.
+// The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+// to the field 'effective_labels' for all of the labels present on the resource.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -491,6 +516,11 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 // Defaults to `global`.
 func (o ClusterOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o ClusterOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Allows you to configure a virtual Dataproc on GKE cluster.

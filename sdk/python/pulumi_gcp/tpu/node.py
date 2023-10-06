@@ -44,6 +44,8 @@ class NodeArgs:
                is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
                preexisting Compute Engine network inside of the project on which
@@ -143,6 +145,8 @@ class NodeArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -237,6 +241,7 @@ class _NodeState:
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -245,6 +250,7 @@ class _NodeState:
                  scheduling_config: Optional[pulumi.Input['NodeSchedulingConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  use_service_networking: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -259,7 +265,11 @@ class _NodeState:
                subnetworks in the user's provided network, or the provided network
                is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
                preexisting Compute Engine network inside of the project on which
@@ -281,6 +291,8 @@ class _NodeState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -293,6 +305,8 @@ class _NodeState:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -309,6 +323,8 @@ class _NodeState:
             pulumi.set(__self__, "service_account", service_account)
         if tensorflow_version is not None:
             pulumi.set(__self__, "tensorflow_version", tensorflow_version)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if use_service_networking is not None:
             pulumi.set(__self__, "use_service_networking", use_service_networking)
         if zone is not None:
@@ -358,10 +374,25 @@ class _NodeState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -468,6 +499,19 @@ class _NodeState:
         pulumi.set(self, "tensorflow_version", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="useServiceNetworking")
     def use_service_networking(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -542,7 +586,7 @@ class Node(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         available = gcp.tpu.get_tensorflow_versions()
-        network = gcp.compute.get_network(name="default")
+        network = gcp.compute.Network("network")
         service_range = gcp.compute.GlobalAddress("serviceRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -600,6 +644,8 @@ class Node(pulumi.CustomResource):
                is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
                preexisting Compute Engine network inside of the project on which
@@ -655,7 +701,7 @@ class Node(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         available = gcp.tpu.get_tensorflow_versions()
-        network = gcp.compute.get_network(name="default")
+        network = gcp.compute.Network("network")
         service_range = gcp.compute.GlobalAddress("serviceRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -750,8 +796,10 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["tensorflow_version"] = tensorflow_version
             __props__.__dict__["use_service_networking"] = use_service_networking
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["network_endpoints"] = None
             __props__.__dict__["service_account"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Node, __self__).__init__(
             'gcp:tpu/node:Node',
             resource_name,
@@ -765,6 +813,7 @@ class Node(pulumi.CustomResource):
             accelerator_type: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
@@ -773,6 +822,7 @@ class Node(pulumi.CustomResource):
             scheduling_config: Optional[pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
             tensorflow_version: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             use_service_networking: Optional[pulumi.Input[bool]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Node':
         """
@@ -792,7 +842,11 @@ class Node(pulumi.CustomResource):
                subnetworks in the user's provided network, or the provided network
                is peered with another network that is using that CIDR block.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input[str] network: The name of a network to peer the TPU node to. It must be a
                preexisting Compute Engine network inside of the project on which
@@ -814,6 +868,8 @@ class Node(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -827,6 +883,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["accelerator_type"] = accelerator_type
         __props__.__dict__["cidr_block"] = cidr_block
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -835,6 +892,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["scheduling_config"] = scheduling_config
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["tensorflow_version"] = tensorflow_version
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["use_service_networking"] = use_service_networking
         __props__.__dict__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
@@ -871,10 +929,21 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -947,6 +1016,15 @@ class Node(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "tensorflow_version")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="useServiceNetworking")

@@ -86,7 +86,9 @@ import * as utilities from "../utilities";
  *     location: "us-west1",
  *     description: "test description",
  *     bareMetalVersion: "1.13.4",
- *     annotations: {},
+ *     annotations: {
+ *         env: "test",
+ *     },
  *     networkConfig: {
  *         islandModeCidr: {
  *             serviceAddressCidrBlocks: ["172.26.0.0/16"],
@@ -232,6 +234,9 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -260,6 +265,11 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
      * A human readable description of this Bare Metal Admin Cluster.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * The IP address name of Bare Metal Admin Cluster's API server.
      */
@@ -400,6 +410,7 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["fleets"] = state ? state.fleets : undefined;
@@ -444,6 +455,7 @@ export class BareMetalAdminCluster extends pulumi.CustomResource {
             resourceInputs["storage"] = args ? args.storage : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["fleets"] = undefined /*out*/;
@@ -473,6 +485,9 @@ export interface BareMetalAdminClusterState {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -501,6 +516,11 @@ export interface BareMetalAdminClusterState {
      * A human readable description of this Bare Metal Admin Cluster.
      */
     description?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The IP address name of Bare Metal Admin Cluster's API server.
      */
@@ -635,6 +655,9 @@ export interface BareMetalAdminClusterArgs {
      * Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

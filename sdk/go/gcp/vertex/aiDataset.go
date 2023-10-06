@@ -37,7 +37,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiDataset(ctx, "dataset", &vertex.AiDatasetArgs{
-//				DisplayName:       pulumi.String("terraform"),
+//				DisplayName: pulumi.String("terraform"),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
 //				MetadataSchemaUri: pulumi.String("gs://google-cloud-aiplatform/schema/dataset/metadata/image_1.0.0.yaml"),
 //				Region:            pulumi.String("us-central1"),
 //			})
@@ -60,10 +63,16 @@ type AiDataset struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiDatasetEncryptionSpecPtrOutput `pulumi:"encryptionSpec"`
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
 	//
@@ -76,6 +85,9 @@ type AiDataset struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -120,10 +132,16 @@ type aiDatasetState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec *AiDatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
 	//
@@ -136,6 +154,9 @@ type aiDatasetState struct {
 	Project *string `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region *string `pulumi:"region"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -145,10 +166,16 @@ type AiDatasetState struct {
 	CreateTime pulumi.StringPtrInput
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
 	// Structure is documented below.
 	EncryptionSpec AiDatasetEncryptionSpecPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
 	//
@@ -161,6 +188,9 @@ type AiDatasetState struct {
 	Project pulumi.StringPtrInput
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -176,6 +206,9 @@ type aiDatasetArgs struct {
 	// Structure is documented below.
 	EncryptionSpec *AiDatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
 	//
@@ -196,6 +229,9 @@ type AiDatasetArgs struct {
 	// Structure is documented below.
 	EncryptionSpec AiDatasetEncryptionSpecPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/.
 	//
@@ -329,6 +365,12 @@ func (o AiDatasetOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AiDatasetOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiDataset) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
 // Structure is documented below.
 func (o AiDatasetOutput) EncryptionSpec() AiDatasetEncryptionSpecPtrOutput {
@@ -336,6 +378,9 @@ func (o AiDatasetOutput) EncryptionSpec() AiDatasetEncryptionSpecPtrOutput {
 }
 
 // A set of key/value label pairs to assign to this Workflow.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AiDatasetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -361,6 +406,12 @@ func (o AiDatasetOutput) Project() pulumi.StringOutput {
 // The region of the dataset. eg us-central1
 func (o AiDatasetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o AiDatasetOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AiDataset) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

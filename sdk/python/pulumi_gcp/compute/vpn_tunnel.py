@@ -44,6 +44,8 @@ class VPNTunnelArgs:
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selectors: Local traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
                for example `192.168.0.0/16`. The ranges should be disjoint.
@@ -159,6 +161,8 @@ class VPNTunnelArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this VpnTunnel.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -348,6 +352,7 @@ class _VPNTunnelState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detailed_status: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ike_version: Optional[pulumi.Input[int]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -365,6 +370,7 @@ class _VPNTunnelState:
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  shared_secret_hash: Optional[pulumi.Input[str]] = None,
                  target_vpn_gateway: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tunnel_id: Optional[pulumi.Input[str]] = None,
                  vpn_gateway: Optional[pulumi.Input[str]] = None,
                  vpn_gateway_interface: Optional[pulumi.Input[int]] = None):
@@ -373,11 +379,15 @@ class _VPNTunnelState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] detailed_status: Detailed status message for the VPN tunnel.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selectors: Local traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
                for example `192.168.0.0/16`. The ranges should be disjoint.
@@ -414,6 +424,7 @@ class _VPNTunnelState:
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] tunnel_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
                This must be used if a High Availability VPN gateway resource is created.
@@ -426,6 +437,8 @@ class _VPNTunnelState:
             pulumi.set(__self__, "description", description)
         if detailed_status is not None:
             pulumi.set(__self__, "detailed_status", detailed_status)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if ike_version is not None:
             pulumi.set(__self__, "ike_version", ike_version)
         if label_fingerprint is not None:
@@ -460,6 +473,8 @@ class _VPNTunnelState:
             pulumi.set(__self__, "shared_secret_hash", shared_secret_hash)
         if target_vpn_gateway is not None:
             pulumi.set(__self__, "target_vpn_gateway", target_vpn_gateway)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if tunnel_id is not None:
             pulumi.set(__self__, "tunnel_id", tunnel_id)
         if vpn_gateway is not None:
@@ -504,6 +519,19 @@ class _VPNTunnelState:
         pulumi.set(self, "detailed_status", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[pulumi.Input[int]]:
         """
@@ -534,6 +562,8 @@ class _VPNTunnelState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this VpnTunnel.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -732,6 +762,18 @@ class _VPNTunnelState:
         pulumi.set(self, "target_vpn_gateway", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -920,6 +962,8 @@ class VPNTunnel(pulumi.CustomResource):
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selectors: Local traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
                for example `192.168.0.0/16`. The ranges should be disjoint.
@@ -1147,9 +1191,11 @@ class VPNTunnel(pulumi.CustomResource):
             __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["detailed_status"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret_hash"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["tunnel_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sharedSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1166,6 +1212,7 @@ class VPNTunnel(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             detailed_status: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ike_version: Optional[pulumi.Input[int]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1183,6 +1230,7 @@ class VPNTunnel(pulumi.CustomResource):
             shared_secret: Optional[pulumi.Input[str]] = None,
             shared_secret_hash: Optional[pulumi.Input[str]] = None,
             target_vpn_gateway: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tunnel_id: Optional[pulumi.Input[str]] = None,
             vpn_gateway: Optional[pulumi.Input[str]] = None,
             vpn_gateway_interface: Optional[pulumi.Input[int]] = None) -> 'VPNTunnel':
@@ -1196,11 +1244,15 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] detailed_status: Detailed status message for the VPN tunnel.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] local_traffic_selectors: Local traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
                for example `192.168.0.0/16`. The ranges should be disjoint.
@@ -1237,6 +1289,7 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] shared_secret_hash: Hash of the shared secret.
         :param pulumi.Input[str] target_vpn_gateway: URL of the Target VPN gateway with which this VPN tunnel is
                associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] tunnel_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] vpn_gateway: URL of the VPN gateway with which this VPN tunnel is associated.
                This must be used if a High Availability VPN gateway resource is created.
@@ -1250,6 +1303,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["detailed_status"] = detailed_status
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ike_version"] = ike_version
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
@@ -1267,6 +1321,7 @@ class VPNTunnel(pulumi.CustomResource):
         __props__.__dict__["shared_secret"] = shared_secret
         __props__.__dict__["shared_secret_hash"] = shared_secret_hash
         __props__.__dict__["target_vpn_gateway"] = target_vpn_gateway
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["tunnel_id"] = tunnel_id
         __props__.__dict__["vpn_gateway"] = vpn_gateway
         __props__.__dict__["vpn_gateway_interface"] = vpn_gateway_interface
@@ -1297,6 +1352,15 @@ class VPNTunnel(pulumi.CustomResource):
         return pulumi.get(self, "detailed_status")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> pulumi.Output[Optional[int]]:
         """
@@ -1319,6 +1383,8 @@ class VPNTunnel(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this VpnTunnel.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1455,6 +1521,14 @@ class VPNTunnel(pulumi.CustomResource):
         associated.
         """
         return pulumi.get(self, "target_vpn_gateway")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="tunnelId")

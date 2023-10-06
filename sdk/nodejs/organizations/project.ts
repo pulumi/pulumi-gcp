@@ -102,6 +102,11 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly billingAccount!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
      * specified. If the `folderId` is specified, then the project is
@@ -111,6 +116,8 @@ export class Project extends pulumi.CustomResource {
     public readonly folderId!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -139,6 +146,10 @@ export class Project extends pulumi.CustomResource {
      * without deleting the Project via the Google API.
      */
     public readonly skipDelete!: pulumi.Output<boolean>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -155,6 +166,7 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             resourceInputs["autoCreateNetwork"] = state ? state.autoCreateNetwork : undefined;
             resourceInputs["billingAccount"] = state ? state.billingAccount : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -162,6 +174,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["skipDelete"] = state ? state.skipDelete : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
@@ -175,7 +188,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["skipDelete"] = args ? args.skipDelete : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -201,6 +216,11 @@ export interface ProjectState {
      */
     billingAccount?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The numeric ID of the folder this project should be
      * created under. Only one of `orgId` or `folderId` may be
      * specified. If the `folderId` is specified, then the project is
@@ -210,6 +230,8 @@ export interface ProjectState {
     folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -238,6 +260,10 @@ export interface ProjectState {
      * without deleting the Project via the Google API.
      */
     skipDelete?: pulumi.Input<boolean>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -268,6 +294,8 @@ export interface ProjectArgs {
     folderId?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the project.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

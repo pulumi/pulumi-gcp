@@ -288,6 +288,11 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * A hash of the resource.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -303,9 +308,12 @@ export class Dataset extends pulumi.CustomResource {
     public readonly isCaseInsensitive!: pulumi.Output<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
-     * organize and group your datasets
+     * organize and group your datasets.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The date when this dataset or any of its tables was last modified, in
      * milliseconds since the epoch.
@@ -344,6 +352,11 @@ export class Dataset extends pulumi.CustomResource {
      * LOGICAL is the default if this flag isn't specified.
      */
     public readonly storageBillingModel!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -367,6 +380,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
             resourceInputs["deleteContentsOnDestroy"] = state ? state.deleteContentsOnDestroy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = state ? state.isCaseInsensitive : undefined;
@@ -377,6 +391,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["storageBillingModel"] = state ? state.storageBillingModel : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -398,9 +413,11 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["storageBillingModel"] = args ? args.storageBillingModel : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Dataset.__pulumiType, name, resourceInputs, opts);
@@ -492,6 +509,11 @@ export interface DatasetState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * A hash of the resource.
      */
     etag?: pulumi.Input<string>;
@@ -507,7 +529,10 @@ export interface DatasetState {
     isCaseInsensitive?: pulumi.Input<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
-     * organize and group your datasets
+     * organize and group your datasets.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -548,6 +573,11 @@ export interface DatasetState {
      * LOGICAL is the default if this flag isn't specified.
      */
     storageBillingModel?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -641,7 +671,10 @@ export interface DatasetArgs {
     isCaseInsensitive?: pulumi.Input<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
-     * organize and group your datasets
+     * organize and group your datasets.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

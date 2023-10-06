@@ -34,6 +34,7 @@ __all__ = [
     'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs',
     'ObjectAccessControlProjectTeamArgs',
     'TransferAgentPoolBandwidthLimitArgs',
+    'TransferJobEventStreamArgs',
     'TransferJobNotificationConfigArgs',
     'TransferJobScheduleArgs',
     'TransferJobScheduleScheduleEndDateArgs',
@@ -1218,6 +1219,60 @@ class TransferAgentPoolBandwidthLimitArgs:
     @limit_mbps.setter
     def limit_mbps(self, value: pulumi.Input[str]):
         pulumi.set(self, "limit_mbps", value)
+
+
+@pulumi.input_type
+class TransferJobEventStreamArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 event_stream_expiration_time: Optional[pulumi.Input[str]] = None,
+                 event_stream_start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        :param pulumi.Input[str] event_stream_expiration_time: Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] event_stream_start_time: Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        pulumi.set(__self__, "name", name)
+        if event_stream_expiration_time is not None:
+            pulumi.set(__self__, "event_stream_expiration_time", event_stream_expiration_time)
+        if event_stream_start_time is not None:
+            pulumi.set(__self__, "event_stream_start_time", event_stream_start_time)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="eventStreamExpirationTime")
+    def event_stream_expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "event_stream_expiration_time")
+
+    @event_stream_expiration_time.setter
+    def event_stream_expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_stream_expiration_time", value)
+
+    @property
+    @pulumi.getter(name="eventStreamStartTime")
+    def event_stream_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "event_stream_start_time")
+
+    @event_stream_start_time.setter
+    def event_stream_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_stream_start_time", value)
 
 
 @pulumi.input_type

@@ -334,6 +334,9 @@ type VMwareCluster struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
 	// least three physical hosts in the datacenter.
@@ -357,6 +360,9 @@ type VMwareCluster struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrOutput `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware User Cluster's API server.
@@ -481,6 +487,9 @@ type vmwareClusterState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
 	// least three physical hosts in the datacenter.
@@ -504,6 +513,9 @@ type vmwareClusterState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 *bool `pulumi:"enableControlPlaneV2"`
 	// The DNS name of VMware User Cluster's API server.
@@ -587,6 +599,9 @@ type VMwareClusterState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
 	// least three physical hosts in the datacenter.
@@ -610,6 +625,9 @@ type VMwareClusterState struct {
 	DeleteTime pulumi.StringPtrInput
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// Enable control plane V2. Default to false.
 	EnableControlPlaneV2 pulumi.BoolPtrInput
 	// The DNS name of VMware User Cluster's API server.
@@ -697,6 +715,9 @@ type vmwareClusterArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
 	// least three physical hosts in the datacenter.
@@ -758,6 +779,9 @@ type VMwareClusterArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// AAGConfig specifies whether to spread VMware User Cluster nodes across at
 	// least three physical hosts in the datacenter.
@@ -931,6 +955,9 @@ func (o VMwareClusterOutput) AdminClusterMembership() pulumi.StringOutput {
 // Prefix must be a DNS subdomain.
 // Name must be 63 characters or less, begin and end with alphanumerics,
 // with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o VMwareClusterOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -979,6 +1006,12 @@ func (o VMwareClusterOutput) DeleteTime() pulumi.StringOutput {
 // A human readable description of this VMware User Cluster.
 func (o VMwareClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o VMwareClusterOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VMwareCluster) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // Enable control plane V2. Default to false.

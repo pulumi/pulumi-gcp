@@ -47,6 +47,7 @@ export interface GetAiIndexResult {
     readonly deployedIndexes: outputs.vertex.GetAiIndexDeployedIndex[];
     readonly description: string;
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -60,6 +61,7 @@ export interface GetAiIndexResult {
     readonly name: string;
     readonly project?: string;
     readonly region: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
 }
 /**

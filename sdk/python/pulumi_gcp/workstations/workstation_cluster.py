@@ -36,8 +36,12 @@ class WorkstationClusterArgs:
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster should reside.
         :param pulumi.Input['WorkstationClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for private cluster.
                Structure is documented below.
@@ -106,6 +110,8 @@ class WorkstationClusterArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified annotations. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -130,6 +136,8 @@ class WorkstationClusterArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -184,6 +192,8 @@ class _WorkstationClusterState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  degraded: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -192,20 +202,29 @@ class _WorkstationClusterState:
                  private_cluster_config: Optional[pulumi.Input['WorkstationClusterPrivateClusterConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkstationCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationClusterConditionArgs']]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster should reside.
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed.
@@ -216,6 +235,8 @@ class _WorkstationClusterState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
@@ -232,6 +253,10 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "degraded", degraded)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_annotations is not None:
+            pulumi.set(__self__, "effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -248,6 +273,8 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "project", project)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if workstation_cluster_id is not None:
@@ -258,6 +285,8 @@ class _WorkstationClusterState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified annotations. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -316,6 +345,32 @@ class _WorkstationClusterState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -333,6 +388,8 @@ class _WorkstationClusterState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -415,6 +472,19 @@ class _WorkstationClusterState:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -538,8 +608,12 @@ class WorkstationCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster should reside.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed.
                It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
@@ -687,8 +761,11 @@ class WorkstationCluster(pulumi.CustomResource):
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["degraded"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
         super(WorkstationCluster, __self__).__init__(
             'gcp:workstations/workstationCluster:WorkstationCluster',
@@ -705,6 +782,8 @@ class WorkstationCluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             degraded: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -713,6 +792,7 @@ class WorkstationCluster(pulumi.CustomResource):
             private_cluster_config: Optional[pulumi.Input[pulumi.InputType['WorkstationClusterPrivateClusterConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             workstation_cluster_id: Optional[pulumi.Input[str]] = None) -> 'WorkstationCluster':
         """
@@ -723,15 +803,23 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationClusterConditionArgs']]]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Checksum computed by the server.
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the workstation cluster should reside.
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed.
@@ -742,6 +830,8 @@ class WorkstationCluster(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
@@ -757,6 +847,8 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -765,6 +857,7 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["private_cluster_config"] = private_cluster_config
         __props__.__dict__["project"] = project
         __props__.__dict__["subnetwork"] = subnetwork
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
         return WorkstationCluster(resource_name, opts=opts, __props__=__props__)
@@ -774,6 +867,8 @@ class WorkstationCluster(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Client-specified annotations. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -812,6 +907,24 @@ class WorkstationCluster(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -825,6 +938,8 @@ class WorkstationCluster(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -879,6 +994,15 @@ class WorkstationCluster(pulumi.CustomResource):
         Must be part of the subnetwork specified for this cluster.
         """
         return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

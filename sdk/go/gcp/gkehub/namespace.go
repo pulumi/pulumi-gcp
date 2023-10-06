@@ -51,7 +51,13 @@ type Namespace struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the Namespace was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the namespace
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -75,6 +81,9 @@ type Namespace struct {
 	// State of the namespace resource.
 	// Structure is documented below.
 	States NamespaceStateTypeArrayOutput `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the Namespace was updated in UTC.
@@ -124,7 +133,13 @@ type namespaceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the Namespace was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the namespace
 	Name *string `pulumi:"name"`
@@ -148,6 +163,9 @@ type namespaceState struct {
 	// State of the namespace resource.
 	// Structure is documented below.
 	States []NamespaceStateType `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the Namespace was updated in UTC.
@@ -159,7 +177,13 @@ type NamespaceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the Namespace was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the namespace
 	Name pulumi.StringPtrInput
@@ -183,6 +207,9 @@ type NamespaceState struct {
 	// State of the namespace resource.
 	// Structure is documented below.
 	States NamespaceStateTypeArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the Namespace was updated in UTC.
@@ -195,6 +222,9 @@ func (NamespaceState) ElementType() reflect.Type {
 
 type namespaceArgs struct {
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Namespace-level cluster namespace labels. These labels are applied
 	// to the related namespace of the member clusters bound to the parent
@@ -218,6 +248,9 @@ type namespaceArgs struct {
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
 	// Labels for this Namespace.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Namespace-level cluster namespace labels. These labels are applied
 	// to the related namespace of the member clusters bound to the parent
@@ -359,7 +392,16 @@ func (o NamespaceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o NamespaceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels for this Namespace.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -405,6 +447,12 @@ func (o NamespaceOutput) ScopeNamespaceId() pulumi.StringOutput {
 // Structure is documented below.
 func (o NamespaceOutput) States() NamespaceStateTypeArrayOutput {
 	return o.ApplyT(func(v *Namespace) NamespaceStateTypeArrayOutput { return v.States }).(NamespaceStateTypeArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o NamespaceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

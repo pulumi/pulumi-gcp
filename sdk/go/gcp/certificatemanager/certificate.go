@@ -50,6 +50,9 @@ import (
 //			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
 //				Description: pulumi.String("The default cert"),
 //				Scope:       pulumi.String("EDGE_CACHE"),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
 //				Managed: &certificatemanager.CertificateManagedArgs{
 //					Domains: pulumi.StringArray{
 //						instance.Domain,
@@ -283,7 +286,12 @@ type Certificate struct {
 
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the Certificate resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The Certificate Manager location. If not specified, "global" is used.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -314,6 +322,9 @@ type Certificate struct {
 	// certificates before they expire remains the user's responsibility.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrOutput `pulumi:"selfManaged"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewCertificate registers a new resource with the given unique name, arguments, and options.
@@ -348,7 +359,12 @@ func GetCertificate(ctx *pulumi.Context,
 type certificateState struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the Certificate resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The Certificate Manager location. If not specified, "global" is used.
 	Location *string `pulumi:"location"`
@@ -379,12 +395,20 @@ type certificateState struct {
 	// certificates before they expire remains the user's responsibility.
 	// Structure is documented below.
 	SelfManaged *CertificateSelfManaged `pulumi:"selfManaged"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type CertificateState struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the Certificate resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The Certificate Manager location. If not specified, "global" is used.
 	Location pulumi.StringPtrInput
@@ -415,6 +439,9 @@ type CertificateState struct {
 	// certificates before they expire remains the user's responsibility.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (CertificateState) ElementType() reflect.Type {
@@ -425,6 +452,8 @@ type certificateArgs struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the Certificate resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The Certificate Manager location. If not specified, "global" is used.
 	Location *string `pulumi:"location"`
@@ -462,6 +491,8 @@ type CertificateArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the Certificate resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The Certificate Manager location. If not specified, "global" is used.
 	Location pulumi.StringPtrInput
@@ -610,7 +641,15 @@ func (o CertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the Certificate resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -660,6 +699,12 @@ func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o CertificateOutput) SelfManaged() CertificateSelfManagedPtrOutput {
 	return o.ApplyT(func(v *Certificate) CertificateSelfManagedPtrOutput { return v.SelfManaged }).(CertificateSelfManagedPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type CertificateArrayOutput struct{ *pulumi.OutputState }

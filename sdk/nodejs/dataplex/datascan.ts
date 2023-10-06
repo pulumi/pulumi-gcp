@@ -277,26 +277,10 @@ export class Datascan extends pulumi.CustomResource {
      */
     public readonly data!: pulumi.Output<outputs.dataplex.DatascanData>;
     /**
-     * (Deprecated)
-     * The result of the data profile scan.
-     * Structure is documented below.
-     *
-     * @deprecated `data_profile_result` is deprecated and will be removed in a future major release.
-     */
-    public /*out*/ readonly dataProfileResults!: pulumi.Output<outputs.dataplex.DatascanDataProfileResult[]>;
-    /**
      * DataProfileScan related setting.
      * Structure is documented below.
      */
     public readonly dataProfileSpec!: pulumi.Output<outputs.dataplex.DatascanDataProfileSpec | undefined>;
-    /**
-     * (Deprecated)
-     * The result of the data quality scan.
-     * Structure is documented below.
-     *
-     * @deprecated `data_quality_result` is deprecated and will be removed in a future major release.
-     */
-    public /*out*/ readonly dataQualityResults!: pulumi.Output<outputs.dataplex.DatascanDataQualityResult[]>;
     /**
      * DataQualityScan related setting.
      * Structure is documented below.
@@ -319,6 +303,11 @@ export class Datascan extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * DataScan execution settings.
      * Structure is documented below.
      */
@@ -330,6 +319,9 @@ export class Datascan extends pulumi.CustomResource {
     public /*out*/ readonly executionStatuses!: pulumi.Output<outputs.dataplex.DatascanExecutionStatus[]>;
     /**
      * User-defined labels for the scan. A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -354,7 +346,12 @@ export class Datascan extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The field data type.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The type of DataScan.
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -381,13 +378,12 @@ export class Datascan extends pulumi.CustomResource {
             const state = argsOrState as DatascanState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["dataProfileResults"] = state ? state.dataProfileResults : undefined;
             resourceInputs["dataProfileSpec"] = state ? state.dataProfileSpec : undefined;
-            resourceInputs["dataQualityResults"] = state ? state.dataQualityResults : undefined;
             resourceInputs["dataQualitySpec"] = state ? state.dataQualitySpec : undefined;
             resourceInputs["dataScanId"] = state ? state.dataScanId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["executionSpec"] = state ? state.executionSpec : undefined;
             resourceInputs["executionStatuses"] = state ? state.executionStatuses : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -395,6 +391,7 @@ export class Datascan extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -423,11 +420,11 @@ export class Datascan extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["dataProfileResults"] = undefined /*out*/;
-            resourceInputs["dataQualityResults"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["executionStatuses"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -451,26 +448,10 @@ export interface DatascanState {
      */
     data?: pulumi.Input<inputs.dataplex.DatascanData>;
     /**
-     * (Deprecated)
-     * The result of the data profile scan.
-     * Structure is documented below.
-     *
-     * @deprecated `data_profile_result` is deprecated and will be removed in a future major release.
-     */
-    dataProfileResults?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataProfileResult>[]>;
-    /**
      * DataProfileScan related setting.
      * Structure is documented below.
      */
     dataProfileSpec?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpec>;
-    /**
-     * (Deprecated)
-     * The result of the data quality scan.
-     * Structure is documented below.
-     *
-     * @deprecated `data_quality_result` is deprecated and will be removed in a future major release.
-     */
-    dataQualityResults?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataQualityResult>[]>;
     /**
      * DataQualityScan related setting.
      * Structure is documented below.
@@ -493,6 +474,11 @@ export interface DatascanState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * DataScan execution settings.
      * Structure is documented below.
      */
@@ -504,6 +490,9 @@ export interface DatascanState {
     executionStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanExecutionStatus>[]>;
     /**
      * User-defined labels for the scan. A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -528,7 +517,12 @@ export interface DatascanState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The field data type.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of DataScan.
      */
     type?: pulumi.Input<string>;
     /**
@@ -583,6 +577,9 @@ export interface DatascanArgs {
     executionSpec: pulumi.Input<inputs.dataplex.DatascanExecutionSpec>;
     /**
      * User-defined labels for the scan. A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

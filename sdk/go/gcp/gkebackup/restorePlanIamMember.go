@@ -48,6 +48,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -112,6 +113,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -189,6 +191,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -259,6 +262,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -322,6 +326,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err
@@ -424,6 +429,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
+//				DeletionProtection: pulumi.Bool(""),
 //			})
 //			if err != nil {
 //				return err

@@ -330,21 +330,9 @@ type Datascan struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataOutput `pulumi:"data"`
-	// (Deprecated)
-	// The result of the data profile scan.
-	// Structure is documented below.
-	//
-	// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
-	DataProfileResults DatascanDataProfileResultArrayOutput `pulumi:"dataProfileResults"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrOutput `pulumi:"dataProfileSpec"`
-	// (Deprecated)
-	// The result of the data quality scan.
-	// Structure is documented below.
-	//
-	// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
-	DataQualityResults DatascanDataQualityResultArrayOutput `pulumi:"dataQualityResults"`
 	// DataQualityScan related setting.
 	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrOutput `pulumi:"dataQualitySpec"`
@@ -358,6 +346,9 @@ type Datascan struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecOutput `pulumi:"executionSpec"`
@@ -365,6 +356,9 @@ type Datascan struct {
 	// Structure is documented below.
 	ExecutionStatuses DatascanExecutionStatusArrayOutput `pulumi:"executionStatuses"`
 	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -379,7 +373,10 @@ type Datascan struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Current state of the DataScan.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The field data type.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
+	// The type of DataScan.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -434,21 +431,9 @@ type datascanState struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data *DatascanData `pulumi:"data"`
-	// (Deprecated)
-	// The result of the data profile scan.
-	// Structure is documented below.
-	//
-	// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
-	DataProfileResults []DatascanDataProfileResult `pulumi:"dataProfileResults"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
-	// (Deprecated)
-	// The result of the data quality scan.
-	// Structure is documented below.
-	//
-	// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
-	DataQualityResults []DatascanDataQualityResult `pulumi:"dataQualityResults"`
 	// DataQualityScan related setting.
 	// Structure is documented below.
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
@@ -462,6 +447,9 @@ type datascanState struct {
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec *DatascanExecutionSpec `pulumi:"executionSpec"`
@@ -469,6 +457,9 @@ type datascanState struct {
 	// Structure is documented below.
 	ExecutionStatuses []DatascanExecutionStatus `pulumi:"executionStatuses"`
 	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location *string `pulumi:"location"`
@@ -483,7 +474,10 @@ type datascanState struct {
 	Project *string `pulumi:"project"`
 	// Current state of the DataScan.
 	State *string `pulumi:"state"`
-	// The field data type.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
+	// The type of DataScan.
 	Type *string `pulumi:"type"`
 	// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
@@ -497,21 +491,9 @@ type DatascanState struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataPtrInput
-	// (Deprecated)
-	// The result of the data profile scan.
-	// Structure is documented below.
-	//
-	// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
-	DataProfileResults DatascanDataProfileResultArrayInput
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
-	// (Deprecated)
-	// The result of the data quality scan.
-	// Structure is documented below.
-	//
-	// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
-	DataQualityResults DatascanDataQualityResultArrayInput
 	// DataQualityScan related setting.
 	// Structure is documented below.
 	DataQualitySpec DatascanDataQualitySpecPtrInput
@@ -525,6 +507,9 @@ type DatascanState struct {
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// DataScan execution settings.
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecPtrInput
@@ -532,6 +517,9 @@ type DatascanState struct {
 	// Structure is documented below.
 	ExecutionStatuses DatascanExecutionStatusArrayInput
 	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringPtrInput
@@ -546,7 +534,10 @@ type DatascanState struct {
 	Project pulumi.StringPtrInput
 	// Current state of the DataScan.
 	State pulumi.StringPtrInput
-	// The field data type.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
+	// The type of DataScan.
 	Type pulumi.StringPtrInput
 	// System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
@@ -582,6 +573,9 @@ type datascanArgs struct {
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpec `pulumi:"executionSpec"`
 	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location string `pulumi:"location"`
@@ -615,6 +609,9 @@ type DatascanArgs struct {
 	// Structure is documented below.
 	ExecutionSpec DatascanExecutionSpecInput
 	// User-defined labels for the scan. A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringInput
@@ -745,28 +742,10 @@ func (o DatascanOutput) Data() DatascanDataOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataOutput { return v.Data }).(DatascanDataOutput)
 }
 
-// (Deprecated)
-// The result of the data profile scan.
-// Structure is documented below.
-//
-// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
-func (o DatascanOutput) DataProfileResults() DatascanDataProfileResultArrayOutput {
-	return o.ApplyT(func(v *Datascan) DatascanDataProfileResultArrayOutput { return v.DataProfileResults }).(DatascanDataProfileResultArrayOutput)
-}
-
 // DataProfileScan related setting.
 // Structure is documented below.
 func (o DatascanOutput) DataProfileSpec() DatascanDataProfileSpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataProfileSpecPtrOutput { return v.DataProfileSpec }).(DatascanDataProfileSpecPtrOutput)
-}
-
-// (Deprecated)
-// The result of the data quality scan.
-// Structure is documented below.
-//
-// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
-func (o DatascanOutput) DataQualityResults() DatascanDataQualityResultArrayOutput {
-	return o.ApplyT(func(v *Datascan) DatascanDataQualityResultArrayOutput { return v.DataQualityResults }).(DatascanDataQualityResultArrayOutput)
 }
 
 // DataQualityScan related setting.
@@ -794,6 +773,12 @@ func (o DatascanOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DatascanOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // DataScan execution settings.
 // Structure is documented below.
 func (o DatascanOutput) ExecutionSpec() DatascanExecutionSpecOutput {
@@ -807,6 +792,9 @@ func (o DatascanOutput) ExecutionStatuses() DatascanExecutionStatusArrayOutput {
 }
 
 // User-defined labels for the scan. A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DatascanOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -836,7 +824,13 @@ func (o DatascanOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The field data type.
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DatascanOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Datascan) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
+}
+
+// The type of DataScan.
 func (o DatascanOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

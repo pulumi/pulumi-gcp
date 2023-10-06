@@ -125,11 +125,17 @@ type Trigger struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationOutput `pulumi:"destination"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType pulumi.StringOutput `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -141,6 +147,8 @@ type Trigger struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayOutput `pulumi:"transports"`
 	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -196,11 +204,17 @@ type triggerState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination *TriggerDestination `pulumi:"destination"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -212,6 +226,8 @@ type triggerState struct {
 	Project *string `pulumi:"project"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports []TriggerTransport `pulumi:"transports"`
 	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -229,11 +245,17 @@ type TriggerState struct {
 	CreateTime pulumi.StringPtrInput
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -245,6 +267,8 @@ type TriggerState struct {
 	Project pulumi.StringPtrInput
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayInput
 	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -265,6 +289,9 @@ type triggerArgs struct {
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -289,6 +316,9 @@ type TriggerArgs struct {
 	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
 	EventDataContentType pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -435,6 +465,12 @@ func (o TriggerOutput) Destination() TriggerDestinationOutput {
 	return o.ApplyT(func(v *Trigger) TriggerDestinationOutput { return v.Destination }).(TriggerDestinationOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TriggerOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 func (o TriggerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -446,6 +482,9 @@ func (o TriggerOutput) EventDataContentType() pulumi.StringOutput {
 }
 
 // Optional. User labels attached to the triggers that can be used to group resources.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o TriggerOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -473,6 +512,11 @@ func (o TriggerOutput) Project() pulumi.StringOutput {
 // Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
 func (o TriggerOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o TriggerOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.

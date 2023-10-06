@@ -466,110 +466,104 @@ class MetricBucketOptionsExplicitBucketsArgs:
 @pulumi.input_type
 class MetricBucketOptionsExponentialBucketsArgs:
     def __init__(__self__, *,
-                 growth_factor: Optional[pulumi.Input[float]] = None,
-                 num_finite_buckets: Optional[pulumi.Input[int]] = None,
-                 scale: Optional[pulumi.Input[float]] = None):
+                 growth_factor: pulumi.Input[float],
+                 num_finite_buckets: pulumi.Input[int],
+                 scale: pulumi.Input[float]):
         """
         :param pulumi.Input[float] growth_factor: Must be greater than 1.
         :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] scale: Must be greater than 0.
         """
-        if growth_factor is not None:
-            pulumi.set(__self__, "growth_factor", growth_factor)
-        if num_finite_buckets is not None:
-            pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
-        if scale is not None:
-            pulumi.set(__self__, "scale", scale)
+        pulumi.set(__self__, "growth_factor", growth_factor)
+        pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
+        pulumi.set(__self__, "scale", scale)
 
     @property
     @pulumi.getter(name="growthFactor")
-    def growth_factor(self) -> Optional[pulumi.Input[float]]:
+    def growth_factor(self) -> pulumi.Input[float]:
         """
         Must be greater than 1.
         """
         return pulumi.get(self, "growth_factor")
 
     @growth_factor.setter
-    def growth_factor(self, value: Optional[pulumi.Input[float]]):
+    def growth_factor(self, value: pulumi.Input[float]):
         pulumi.set(self, "growth_factor", value)
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
-    def num_finite_buckets(self) -> Optional[pulumi.Input[int]]:
+    def num_finite_buckets(self) -> pulumi.Input[int]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "num_finite_buckets")
 
     @num_finite_buckets.setter
-    def num_finite_buckets(self, value: Optional[pulumi.Input[int]]):
+    def num_finite_buckets(self, value: pulumi.Input[int]):
         pulumi.set(self, "num_finite_buckets", value)
 
     @property
     @pulumi.getter
-    def scale(self) -> Optional[pulumi.Input[float]]:
+    def scale(self) -> pulumi.Input[float]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "scale")
 
     @scale.setter
-    def scale(self, value: Optional[pulumi.Input[float]]):
+    def scale(self, value: pulumi.Input[float]):
         pulumi.set(self, "scale", value)
 
 
 @pulumi.input_type
 class MetricBucketOptionsLinearBucketsArgs:
     def __init__(__self__, *,
-                 num_finite_buckets: Optional[pulumi.Input[int]] = None,
-                 offset: Optional[pulumi.Input[float]] = None,
-                 width: Optional[pulumi.Input[float]] = None):
+                 num_finite_buckets: pulumi.Input[int],
+                 offset: pulumi.Input[float],
+                 width: pulumi.Input[float]):
         """
         :param pulumi.Input[int] num_finite_buckets: Must be greater than 0.
         :param pulumi.Input[float] offset: Lower bound of the first bucket.
         :param pulumi.Input[float] width: Must be greater than 0.
         """
-        if num_finite_buckets is not None:
-            pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
-        if offset is not None:
-            pulumi.set(__self__, "offset", offset)
-        if width is not None:
-            pulumi.set(__self__, "width", width)
+        pulumi.set(__self__, "num_finite_buckets", num_finite_buckets)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "width", width)
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
-    def num_finite_buckets(self) -> Optional[pulumi.Input[int]]:
+    def num_finite_buckets(self) -> pulumi.Input[int]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "num_finite_buckets")
 
     @num_finite_buckets.setter
-    def num_finite_buckets(self, value: Optional[pulumi.Input[int]]):
+    def num_finite_buckets(self, value: pulumi.Input[int]):
         pulumi.set(self, "num_finite_buckets", value)
 
     @property
     @pulumi.getter
-    def offset(self) -> Optional[pulumi.Input[float]]:
+    def offset(self) -> pulumi.Input[float]:
         """
         Lower bound of the first bucket.
         """
         return pulumi.get(self, "offset")
 
     @offset.setter
-    def offset(self, value: Optional[pulumi.Input[float]]):
+    def offset(self, value: pulumi.Input[float]):
         pulumi.set(self, "offset", value)
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[pulumi.Input[float]]:
+    def width(self) -> pulumi.Input[float]:
         """
         Must be greater than 0.
         """
         return pulumi.get(self, "width")
 
     @width.setter
-    def width(self, value: Optional[pulumi.Input[float]]):
+    def width(self, value: pulumi.Input[float]):
         pulumi.set(self, "width", value)
 
 

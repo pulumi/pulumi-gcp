@@ -136,7 +136,11 @@ type Schema struct {
 
 	// The definition of the schema.
 	// This should contain a string representing the full definition of the schema
-	// that is a valid schema definition of the type specified in type.
+	// that is a valid schema definition of the type specified in type. Changes
+	// to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+	// A schema can only have up to 20 revisions, so updates that fail with an
+	// error indicating that the limit has been reached require manually
+	// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 	Definition pulumi.StringPtrOutput `pulumi:"definition"`
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
 	//
@@ -183,7 +187,11 @@ func GetSchema(ctx *pulumi.Context,
 type schemaState struct {
 	// The definition of the schema.
 	// This should contain a string representing the full definition of the schema
-	// that is a valid schema definition of the type specified in type.
+	// that is a valid schema definition of the type specified in type. Changes
+	// to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+	// A schema can only have up to 20 revisions, so updates that fail with an
+	// error indicating that the limit has been reached require manually
+	// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 	Definition *string `pulumi:"definition"`
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
 	//
@@ -201,7 +209,11 @@ type schemaState struct {
 type SchemaState struct {
 	// The definition of the schema.
 	// This should contain a string representing the full definition of the schema
-	// that is a valid schema definition of the type specified in type.
+	// that is a valid schema definition of the type specified in type. Changes
+	// to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+	// A schema can only have up to 20 revisions, so updates that fail with an
+	// error indicating that the limit has been reached require manually
+	// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 	Definition pulumi.StringPtrInput
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
 	//
@@ -223,7 +235,11 @@ func (SchemaState) ElementType() reflect.Type {
 type schemaArgs struct {
 	// The definition of the schema.
 	// This should contain a string representing the full definition of the schema
-	// that is a valid schema definition of the type specified in type.
+	// that is a valid schema definition of the type specified in type. Changes
+	// to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+	// A schema can only have up to 20 revisions, so updates that fail with an
+	// error indicating that the limit has been reached require manually
+	// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 	Definition *string `pulumi:"definition"`
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
 	//
@@ -242,7 +258,11 @@ type schemaArgs struct {
 type SchemaArgs struct {
 	// The definition of the schema.
 	// This should contain a string representing the full definition of the schema
-	// that is a valid schema definition of the type specified in type.
+	// that is a valid schema definition of the type specified in type. Changes
+	// to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+	// A schema can only have up to 20 revisions, so updates that fail with an
+	// error indicating that the limit has been reached require manually
+	// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 	Definition pulumi.StringPtrInput
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
 	//
@@ -370,7 +390,11 @@ func (o SchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*Schema] {
 
 // The definition of the schema.
 // This should contain a string representing the full definition of the schema
-// that is a valid schema definition of the type specified in type.
+// that is a valid schema definition of the type specified in type. Changes
+// to the definition commit new [schema revisions](https://cloud.google.com/pubsub/docs/commit-schema-revision).
+// A schema can only have up to 20 revisions, so updates that fail with an
+// error indicating that the limit has been reached require manually
+// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
 func (o SchemaOutput) Definition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.Definition }).(pulumi.StringPtrOutput)
 }

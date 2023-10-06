@@ -317,6 +317,9 @@ type Instance struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name for an instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrOutput `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
@@ -330,6 +333,9 @@ type Instance struct {
 	GcsBucket pulumi.StringOutput `pulumi:"gcsBucket"`
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -362,6 +368,9 @@ type Instance struct {
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringOutput `pulumi:"tenantProjectId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -435,6 +444,9 @@ type instanceState struct {
 	Description *string `pulumi:"description"`
 	// Display name for an instance.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Option to enable granular role-based access control.
 	EnableRbac *bool `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
@@ -448,6 +460,9 @@ type instanceState struct {
 	GcsBucket *string `pulumi:"gcsBucket"`
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -480,6 +495,9 @@ type instanceState struct {
 	StateMessage *string `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId *string `pulumi:"tenantProjectId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -521,6 +539,9 @@ type InstanceState struct {
 	Description pulumi.StringPtrInput
 	// Display name for an instance.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrInput
 	// Option to enable Stackdriver Logging.
@@ -534,6 +555,9 @@ type InstanceState struct {
 	GcsBucket pulumi.StringPtrInput
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -566,6 +590,9 @@ type InstanceState struct {
 	StateMessage pulumi.StringPtrInput
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Represents the type of Data Fusion instance. Each type is configured with
 	// the default settings for processing and memory.
 	// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -618,6 +645,9 @@ type instanceArgs struct {
 	EventPublishConfig *InstanceEventPublishConfig `pulumi:"eventPublishConfig"`
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -682,6 +712,9 @@ type InstanceArgs struct {
 	EventPublishConfig InstanceEventPublishConfigPtrInput
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -869,6 +902,12 @@ func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Option to enable granular role-based access control.
 func (o InstanceOutput) EnableRbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableRbac }).(pulumi.BoolPtrOutput)
@@ -897,6 +936,9 @@ func (o InstanceOutput) GcsBucket() pulumi.StringOutput {
 
 // The resource labels for instance to use to annotate any related underlying resources,
 // such as Compute Engine VMs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -966,6 +1008,12 @@ func (o InstanceOutput) StateMessage() pulumi.StringOutput {
 // The name of the tenant project.
 func (o InstanceOutput) TenantProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TenantProjectId }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o InstanceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Represents the type of Data Fusion instance. Each type is configured with

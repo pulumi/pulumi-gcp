@@ -835,7 +835,12 @@ type Stream struct {
 	DestinationConfig StreamDestinationConfigOutput `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -851,6 +856,9 @@ type Stream struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The stream identifier.
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewStream registers a new resource with the given unique name, arguments, and options.
@@ -913,7 +921,12 @@ type streamState struct {
 	DestinationConfig *StreamDestinationConfig `pulumi:"destinationConfig"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location *string `pulumi:"location"`
@@ -929,6 +942,9 @@ type streamState struct {
 	State *string `pulumi:"state"`
 	// The stream identifier.
 	StreamId *string `pulumi:"streamId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type StreamState struct {
@@ -947,7 +963,12 @@ type StreamState struct {
 	DestinationConfig StreamDestinationConfigPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this stream is located in.
 	Location pulumi.StringPtrInput
@@ -963,6 +984,9 @@ type StreamState struct {
 	State pulumi.StringPtrInput
 	// The stream identifier.
 	StreamId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (StreamState) ElementType() reflect.Type {
@@ -986,6 +1010,8 @@ type streamArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this stream is located in.
 	Location string `pulumi:"location"`
@@ -1017,6 +1043,8 @@ type StreamArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Labels.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location this stream is located in.
 	Location pulumi.StringInput
@@ -1174,7 +1202,15 @@ func (o StreamOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o StreamOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Labels.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o StreamOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1209,6 +1245,12 @@ func (o StreamOutput) State() pulumi.StringOutput {
 // The stream identifier.
 func (o StreamOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o StreamOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type StreamArrayOutput struct{ *pulumi.OutputState }

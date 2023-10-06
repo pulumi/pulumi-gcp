@@ -58,6 +58,9 @@ class BareMetalClusterArgs:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['BareMetalClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
                Structure is documented below.
         :param pulumi.Input['BareMetalClusterClusterOperationsArgs'] cluster_operations: Specifies the User Cluster's observability infrastructure.
@@ -216,6 +219,9 @@ class BareMetalClusterArgs:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -390,6 +396,7 @@ class _BareMetalClusterState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  fleets: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalClusterFleetArgs']]]] = None,
@@ -425,6 +432,9 @@ class _BareMetalClusterState:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input['BareMetalClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization related configurations.
                Structure is documented below.
@@ -435,6 +445,8 @@ class _BareMetalClusterState:
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] description: A human readable description of this Bare Metal User Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: The IP address name of Bare Metal User Cluster's API server.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -511,6 +523,8 @@ class _BareMetalClusterState:
             pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_annotations is not None:
+            pulumi.set(__self__, "effective_annotations", effective_annotations)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if etag is not None:
@@ -583,6 +597,9 @@ class _BareMetalClusterState:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -676,6 +693,19 @@ class _BareMetalClusterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -1327,6 +1357,9 @@ class BareMetalCluster(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
                Structure is documented below.
@@ -1747,6 +1780,7 @@ class BareMetalCluster(pulumi.CustomResource):
             __props__.__dict__["upgrade_policy"] = upgrade_policy
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["fleets"] = None
@@ -1776,6 +1810,7 @@ class BareMetalCluster(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             fleets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BareMetalClusterFleetArgs']]]]] = None,
@@ -1816,6 +1851,9 @@ class BareMetalCluster(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] bare_metal_version: A human readable description of this Bare Metal User Cluster.
         :param pulumi.Input[pulumi.InputType['BareMetalClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization related configurations.
                Structure is documented below.
@@ -1826,6 +1864,8 @@ class BareMetalCluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] description: A human readable description of this Bare Metal User Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] endpoint: The IP address name of Bare Metal User Cluster's API server.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
@@ -1897,6 +1937,7 @@ class BareMetalCluster(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["etag"] = etag
         __props__.__dict__["fleets"] = fleets
@@ -1933,7 +1974,7 @@ class BareMetalCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Annotations on the Bare Metal User Cluster.
         This field has the same restrictions as Kubernetes annotations.
@@ -1943,6 +1984,9 @@ class BareMetalCluster(pulumi.CustomResource):
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -2004,6 +2048,15 @@ class BareMetalCluster(pulumi.CustomResource):
         A human readable description of this Bare Metal User Cluster.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

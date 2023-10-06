@@ -103,6 +103,9 @@ type Job struct {
 	DriverControlsFilesUri pulumi.StringOutput `pulumi:"driverControlsFilesUri"`
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri pulumi.StringOutput `pulumi:"driverOutputResourceUri"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
@@ -112,10 +115,8 @@ type Job struct {
 	// The config of hive job
 	HiveConfig JobHiveConfigPtrOutput `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
-	//
-	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-	//
-	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The config of pag job.
 	PigConfig JobPigConfigPtrOutput `pulumi:"pigConfig"`
@@ -141,6 +142,8 @@ type Job struct {
 	SparksqlConfig JobSparksqlConfigPtrOutput `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +183,9 @@ type jobState struct {
 	DriverControlsFilesUri *string `pulumi:"driverControlsFilesUri"`
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri *string `pulumi:"driverOutputResourceUri"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
@@ -189,10 +195,8 @@ type jobState struct {
 	// The config of hive job
 	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
-	//
-	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-	//
-	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The config of pag job.
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
@@ -218,6 +222,8 @@ type jobState struct {
 	SparksqlConfig *JobSparksqlConfig `pulumi:"sparksqlConfig"`
 	// The status of the job.
 	Statuses []JobStatus `pulumi:"statuses"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type JobState struct {
@@ -225,6 +231,9 @@ type JobState struct {
 	DriverControlsFilesUri pulumi.StringPtrInput
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// By default, you can only delete inactive jobs within
 	// Dataproc. Setting this to true, and calling destroy, will ensure that the
 	// job is first cancelled before issuing the delete.
@@ -234,10 +243,8 @@ type JobState struct {
 	// The config of hive job
 	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
-	//
-	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-	//
-	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The config of pag job.
 	PigConfig JobPigConfigPtrInput
@@ -263,6 +270,8 @@ type JobState struct {
 	SparksqlConfig JobSparksqlConfigPtrInput
 	// The status of the job.
 	Statuses JobStatusArrayInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -279,10 +288,8 @@ type jobArgs struct {
 	// The config of hive job
 	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
-	//
-	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-	//
-	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The config of pag job.
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
@@ -319,10 +326,8 @@ type JobArgs struct {
 	// The config of hive job
 	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
-	//
-	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-	//
-	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The config of pag job.
 	PigConfig JobPigConfigPtrInput
@@ -469,6 +474,12 @@ func (o JobOutput) DriverOutputResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DriverOutputResourceUri }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // By default, you can only delete inactive jobs within
 // Dataproc. Setting this to true, and calling destroy, will ensure that the
 // job is first cancelled before issuing the delete.
@@ -487,10 +498,8 @@ func (o JobOutput) HiveConfig() JobHiveConfigPtrOutput {
 }
 
 // The list of labels (key/value pairs) to add to the job.
-//
-// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-//
-// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -550,6 +559,11 @@ func (o JobOutput) SparksqlConfig() JobSparksqlConfigPtrOutput {
 // The status of the job.
 func (o JobOutput) Statuses() JobStatusArrayOutput {
 	return o.ApplyT(func(v *Job) JobStatusArrayOutput { return v.Statuses }).(JobStatusArrayOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o JobOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type JobArrayOutput struct{ *pulumi.OutputState }

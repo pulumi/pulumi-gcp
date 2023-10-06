@@ -80,7 +80,13 @@ type Api struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
@@ -90,6 +96,9 @@ type Api struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewApi registers a new resource with the given unique name, arguments, and options.
@@ -133,7 +142,13 @@ type apiState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
@@ -143,6 +158,9 @@ type apiState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ApiState struct {
@@ -154,7 +172,13 @@ type ApiState struct {
 	CreateTime pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
@@ -164,6 +188,9 @@ type ApiState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (ApiState) ElementType() reflect.Type {
@@ -178,6 +205,9 @@ type apiArgs struct {
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
@@ -196,6 +226,9 @@ type ApiArgs struct {
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
@@ -333,7 +366,16 @@ func (o ApiOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ApiOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ApiOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -353,6 +395,12 @@ func (o ApiOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ApiOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ApiOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ApiArrayOutput struct{ *pulumi.OutputState }

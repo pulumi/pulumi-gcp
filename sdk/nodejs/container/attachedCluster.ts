@@ -120,6 +120,9 @@ export class AttachedCluster extends pulumi.CustomResource {
      * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -156,6 +159,11 @@ export class AttachedCluster extends pulumi.CustomResource {
      * "eks", "aks".
      */
     public readonly distribution!: pulumi.Output<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * A set of errors found in the cluster.
      * Structure is documented below.
@@ -259,6 +267,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["distribution"] = state ? state.distribution : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["errors"] = state ? state.errors : undefined;
             resourceInputs["fleet"] = state ? state.fleet : undefined;
             resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
@@ -307,6 +316,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["clusterRegion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["kubernetesVersion"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -331,6 +341,9 @@ export interface AttachedClusterState {
      * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -367,6 +380,11 @@ export interface AttachedClusterState {
      * "eks", "aks".
      */
     distribution?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A set of errors found in the cluster.
      * Structure is documented below.
@@ -461,6 +479,9 @@ export interface AttachedClusterArgs {
      * and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

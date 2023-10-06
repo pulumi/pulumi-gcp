@@ -183,9 +183,15 @@ type Spoke struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrOutput `pulumi:"linkedInterconnectAttachments"`
@@ -203,6 +209,8 @@ type Spoke struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
 	// Output only. The time the spoke was last updated.
@@ -249,9 +257,15 @@ type spokeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
@@ -269,6 +283,8 @@ type spokeState struct {
 	Project *string `pulumi:"project"`
 	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId *string `pulumi:"uniqueId"`
 	// Output only. The time the spoke was last updated.
@@ -280,9 +296,15 @@ type SpokeState struct {
 	CreateTime pulumi.StringPtrInput
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
@@ -300,6 +322,8 @@ type SpokeState struct {
 	Project pulumi.StringPtrInput
 	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId pulumi.StringPtrInput
 	// Output only. The time the spoke was last updated.
@@ -316,6 +340,9 @@ type spokeArgs struct {
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
@@ -340,6 +367,9 @@ type SpokeArgs struct {
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
@@ -478,12 +508,21 @@ func (o SpokeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o SpokeOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Immutable. The URI of the hub that this spoke is attached to.
 func (o SpokeOutput) Hub() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
 }
 
 // Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SpokeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -526,6 +565,11 @@ func (o SpokeOutput) Project() pulumi.StringOutput {
 // Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 func (o SpokeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o SpokeOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.

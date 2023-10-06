@@ -51,9 +51,15 @@ type CertificateTemplate struct {
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrOutput `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -65,6 +71,8 @@ type CertificateTemplate struct {
 	PredefinedValues CertificateTemplatePredefinedValuesPtrOutput `pulumi:"predefinedValues"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -109,9 +117,15 @@ type certificateTemplateState struct {
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -123,6 +137,8 @@ type certificateTemplateState struct {
 	PredefinedValues *CertificateTemplatePredefinedValues `pulumi:"predefinedValues"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -135,9 +151,15 @@ type CertificateTemplateState struct {
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
 	// Optional. Labels with user-defined metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -149,6 +171,8 @@ type CertificateTemplateState struct {
 	PredefinedValues CertificateTemplatePredefinedValuesPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 	// Output only. The time at which this CertificateTemplate was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -166,6 +190,9 @@ type certificateTemplateArgs struct {
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -189,6 +216,9 @@ type CertificateTemplateArgs struct {
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
 	// Optional. Labels with user-defined metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -326,6 +356,12 @@ func (o CertificateTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateTemplateOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 func (o CertificateTemplateOutput) IdentityConstraints() CertificateTemplateIdentityConstraintsPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplate) CertificateTemplateIdentityConstraintsPtrOutput {
@@ -334,6 +370,9 @@ func (o CertificateTemplateOutput) IdentityConstraints() CertificateTemplateIden
 }
 
 // Optional. Labels with user-defined metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -363,6 +402,11 @@ func (o CertificateTemplateOutput) PredefinedValues() CertificateTemplatePredefi
 // The project for the resource
 func (o CertificateTemplateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o CertificateTemplateOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. The time at which this CertificateTemplate was updated.

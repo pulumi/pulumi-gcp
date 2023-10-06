@@ -96,7 +96,12 @@ type Peering struct {
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
 	DomainResource pulumi.StringOutput `pulumi:"domainResource"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -109,6 +114,9 @@ type Peering struct {
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Additional information about the current status of this peering, if available.
 	StatusMessage pulumi.StringPtrOutput `pulumi:"statusMessage"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewPeering registers a new resource with the given unique name, arguments, and options.
@@ -154,7 +162,12 @@ type peeringState struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
 	DomainResource *string `pulumi:"domainResource"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name *string `pulumi:"name"`
@@ -167,6 +180,9 @@ type peeringState struct {
 	Status *string `pulumi:"status"`
 	// Additional information about the current status of this peering, if available.
 	StatusMessage *string `pulumi:"statusMessage"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type PeeringState struct {
@@ -174,7 +190,12 @@ type PeeringState struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
 	DomainResource pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringPtrInput
@@ -187,6 +208,9 @@ type PeeringState struct {
 	Status pulumi.StringPtrInput
 	// Additional information about the current status of this peering, if available.
 	StatusMessage pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (PeeringState) ElementType() reflect.Type {
@@ -199,6 +223,8 @@ type peeringArgs struct {
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
 	DomainResource string `pulumi:"domainResource"`
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// ***
 	PeeringId string `pulumi:"peeringId"`
@@ -218,6 +244,8 @@ type PeeringArgs struct {
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
 	DomainResource pulumi.StringInput
 	// Resource labels that can contain user-provided metadata
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// ***
 	PeeringId pulumi.StringInput
@@ -351,7 +379,15 @@ func (o PeeringOutput) DomainResource() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.DomainResource }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o PeeringOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource labels that can contain user-provided metadata
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o PeeringOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -380,6 +416,12 @@ func (o PeeringOutput) Status() pulumi.StringPtrOutput {
 // Additional information about the current status of this peering, if available.
 func (o PeeringOutput) StatusMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringPtrOutput { return v.StatusMessage }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o PeeringOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type PeeringArrayOutput struct{ *pulumi.OutputState }

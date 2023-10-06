@@ -76,6 +76,11 @@ export class CaPool extends pulumi.CustomResource {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
      */
@@ -84,6 +89,9 @@ export class CaPool extends pulumi.CustomResource {
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
      * "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -109,6 +117,11 @@ export class CaPool extends pulumi.CustomResource {
      */
     public readonly publishingOptions!: pulumi.Output<outputs.certificateauthority.CaPoolPublishingOptions | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The Tier of this CaPool.
      * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
@@ -127,12 +140,14 @@ export class CaPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaPoolState | undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["issuancePolicy"] = state ? state.issuancePolicy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publishingOptions"] = state ? state.publishingOptions : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
         } else {
             const args = argsOrState as CaPoolArgs | undefined;
@@ -149,6 +164,8 @@ export class CaPool extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publishingOptions"] = args ? args.publishingOptions : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CaPool.__pulumiType, name, resourceInputs, opts);
@@ -160,6 +177,11 @@ export class CaPool extends pulumi.CustomResource {
  */
 export interface CaPoolState {
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The IssuancePolicy to control how Certificates will be issued from this CaPool.
      * Structure is documented below.
      */
@@ -168,6 +190,9 @@ export interface CaPoolState {
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
      * "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -193,6 +218,11 @@ export interface CaPoolState {
      */
     publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The Tier of this CaPool.
      * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
@@ -212,6 +242,9 @@ export interface CaPoolArgs {
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
      * "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

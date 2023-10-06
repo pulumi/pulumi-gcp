@@ -33,6 +33,9 @@ class MembershipBindingArgs:
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -102,6 +105,9 @@ class MembershipBindingArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for this Membership binding.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -128,6 +134,7 @@ class _MembershipBindingState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership_binding_id: Optional[pulumi.Input[str]] = None,
@@ -136,13 +143,19 @@ class _MembershipBindingState:
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MembershipBinding resources.
         :param pulumi.Input[str] create_time: Time the MembershipBinding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the MembershipBinding was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the membership
                
                
@@ -156,6 +169,8 @@ class _MembershipBindingState:
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]] states: State of the membership binding resource.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.
         """
@@ -163,6 +178,8 @@ class _MembershipBindingState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -179,6 +196,8 @@ class _MembershipBindingState:
             pulumi.set(__self__, "scope", scope)
         if states is not None:
             pulumi.set(__self__, "states", states)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -209,10 +228,26 @@ class _MembershipBindingState:
         pulumi.set(self, "delete_time", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for this Membership binding.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -311,6 +346,19 @@ class _MembershipBindingState:
         pulumi.set(self, "states", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -377,6 +425,9 @@ class MembershipBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the membership
                
                
@@ -467,8 +518,10 @@ class MembershipBinding(pulumi.CustomResource):
             __props__.__dict__["scope"] = scope
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["states"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(MembershipBinding, __self__).__init__(
@@ -483,6 +536,7 @@ class MembershipBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             membership_binding_id: Optional[pulumi.Input[str]] = None,
@@ -491,6 +545,7 @@ class MembershipBinding(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'MembershipBinding':
         """
@@ -502,7 +557,12 @@ class MembershipBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the MembershipBinding was created in UTC.
         :param pulumi.Input[str] delete_time: Time the MembershipBinding was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Membership binding.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the membership
                
                
@@ -516,6 +576,8 @@ class MembershipBinding(pulumi.CustomResource):
                `projects/*/locations/*/scopes/*`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]] states: State of the membership binding resource.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.
         """
@@ -525,6 +587,7 @@ class MembershipBinding(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["membership_binding_id"] = membership_binding_id
@@ -533,6 +596,7 @@ class MembershipBinding(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["scope"] = scope
         __props__.__dict__["states"] = states
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return MembershipBinding(resource_name, opts=opts, __props__=__props__)
@@ -554,10 +618,22 @@ class MembershipBinding(pulumi.CustomResource):
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels for this Membership binding.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -622,6 +698,15 @@ class MembershipBinding(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "states")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

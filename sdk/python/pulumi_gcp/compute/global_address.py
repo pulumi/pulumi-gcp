@@ -38,6 +38,9 @@ class GlobalAddressArgs:
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -143,6 +146,9 @@ class GlobalAddressArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -236,6 +242,7 @@ class _GlobalAddressState:
                  address_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -244,7 +251,8 @@ class _GlobalAddressState:
                  prefix_length: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GlobalAddress resources.
         :param pulumi.Input[str] address: The IP address or beginning of the address range represented by this
@@ -257,10 +265,15 @@ class _GlobalAddressState:
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -285,6 +298,7 @@ class _GlobalAddressState:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -294,6 +308,8 @@ class _GlobalAddressState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if label_fingerprint is not None:
@@ -312,6 +328,8 @@ class _GlobalAddressState:
             pulumi.set(__self__, "purpose", purpose)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -368,6 +386,19 @@ class _GlobalAddressState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -397,6 +428,9 @@ class _GlobalAddressState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -494,6 +528,18 @@ class _GlobalAddressState:
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class GlobalAddress(pulumi.CustomResource):
     @overload
@@ -576,6 +622,9 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -702,8 +751,10 @@ class GlobalAddress(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(GlobalAddress, __self__).__init__(
             'gcp:compute/globalAddress:GlobalAddress',
             resource_name,
@@ -718,6 +769,7 @@ class GlobalAddress(pulumi.CustomResource):
             address_type: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -726,7 +778,8 @@ class GlobalAddress(pulumi.CustomResource):
             prefix_length: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'GlobalAddress':
+            self_link: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GlobalAddress':
         """
         Get an existing GlobalAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -744,10 +797,15 @@ class GlobalAddress(pulumi.CustomResource):
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -772,6 +830,7 @@ class GlobalAddress(pulumi.CustomResource):
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -781,6 +840,7 @@ class GlobalAddress(pulumi.CustomResource):
         __props__.__dict__["address_type"] = address_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
@@ -790,6 +850,7 @@ class GlobalAddress(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return GlobalAddress(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -831,6 +892,15 @@ class GlobalAddress(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[Optional[str]]:
         """
@@ -852,6 +922,9 @@ class GlobalAddress(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -920,4 +993,12 @@ class GlobalAddress(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

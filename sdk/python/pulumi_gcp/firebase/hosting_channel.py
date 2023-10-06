@@ -31,6 +31,8 @@ class HostingChannelArgs:
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided
@@ -94,6 +96,8 @@ class HostingChannelArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Text labels used for extra metadata and/or filtering
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -133,11 +137,13 @@ class HostingChannelArgs:
 class _HostingChannelState:
     def __init__(__self__, *,
                  channel_id: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering HostingChannel resources.
@@ -145,21 +151,29 @@ class _HostingChannelState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided
                duration past the time of the request. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "86400s" (one day).
         """
         if channel_id is not None:
             pulumi.set(__self__, "channel_id", channel_id)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -170,6 +184,8 @@ class _HostingChannelState:
             pulumi.set(__self__, "retained_release_count", retained_release_count)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -187,6 +203,19 @@ class _HostingChannelState:
     @channel_id.setter
     def channel_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "channel_id", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -207,6 +236,8 @@ class _HostingChannelState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Text labels used for extra metadata and/or filtering
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -251,6 +282,19 @@ class _HostingChannelState:
     @site_id.setter
     def site_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "site_id", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -339,6 +383,8 @@ class HostingChannel(pulumi.CustomResource):
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
@@ -442,7 +488,9 @@ class HostingChannel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(HostingChannel, __self__).__init__(
             'gcp:firebase/hostingChannel:HostingChannel',
             resource_name,
@@ -454,11 +502,13 @@ class HostingChannel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             channel_id: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             retained_release_count: Optional[pulumi.Input[int]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ttl: Optional[pulumi.Input[str]] = None) -> 'HostingChannel':
         """
         Get an existing HostingChannel resource's state with the given name, id, and optional extra
@@ -471,15 +521,21 @@ class HostingChannel(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format:
                sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided
                duration past the time of the request. A duration in seconds with up to nine fractional
                digits, terminated by 's'. Example: "86400s" (one day).
@@ -489,11 +545,13 @@ class HostingChannel(pulumi.CustomResource):
         __props__ = _HostingChannelState.__new__(_HostingChannelState)
 
         __props__.__dict__["channel_id"] = channel_id
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["retained_release_count"] = retained_release_count
         __props__.__dict__["site_id"] = site_id
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["ttl"] = ttl
         return HostingChannel(resource_name, opts=opts, __props__=__props__)
 
@@ -507,6 +565,15 @@ class HostingChannel(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "channel_id")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="expireTime")
@@ -523,6 +590,8 @@ class HostingChannel(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Text labels used for extra metadata and/or filtering
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -551,6 +620,15 @@ class HostingChannel(pulumi.CustomResource):
         Required. The ID of the site in which to create this channel.
         """
         return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

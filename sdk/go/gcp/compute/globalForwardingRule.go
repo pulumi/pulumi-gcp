@@ -239,6 +239,9 @@ type GlobalForwardingRule struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target`.
@@ -290,6 +293,9 @@ type GlobalForwardingRule struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -385,6 +391,9 @@ type GlobalForwardingRule struct {
 	//
 	// ***
 	Target pulumi.StringOutput `pulumi:"target"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewGlobalForwardingRule registers a new resource with the given unique name, arguments, and options.
@@ -427,6 +436,9 @@ type globalForwardingRuleState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target`.
@@ -478,6 +490,9 @@ type globalForwardingRuleState struct {
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -573,6 +588,9 @@ type globalForwardingRuleState struct {
 	//
 	// ***
 	Target *string `pulumi:"target"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type GlobalForwardingRuleState struct {
@@ -583,6 +601,9 @@ type GlobalForwardingRuleState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target`.
@@ -634,6 +655,9 @@ type GlobalForwardingRuleState struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -729,6 +753,9 @@ type GlobalForwardingRuleState struct {
 	//
 	// ***
 	Target pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (GlobalForwardingRuleState) ElementType() reflect.Type {
@@ -789,6 +816,9 @@ type globalForwardingRuleArgs struct {
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -935,6 +965,9 @@ type GlobalForwardingRuleArgs struct {
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -1153,6 +1186,12 @@ func (o GlobalForwardingRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o GlobalForwardingRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // IP address for which this forwarding rule accepts traffic. When a client
 // sends traffic to this IP address, the forwarding rule directs the traffic
 // to the referenced `target`.
@@ -1216,6 +1255,9 @@ func (o GlobalForwardingRuleOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this forwarding rule.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1351,6 +1393,12 @@ func (o GlobalForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
 // ***
 func (o GlobalForwardingRuleOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o GlobalForwardingRuleOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type GlobalForwardingRuleArrayOutput struct{ *pulumi.OutputState }

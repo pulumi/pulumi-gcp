@@ -98,8 +98,7 @@ type ServiceAttachment struct {
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-	// For newly created service attachment, this boolean defaults to true.
-	ReconcileConnections pulumi.BoolPtrOutput `pulumi:"reconcileConnections"`
+	ReconcileConnections pulumi.BoolOutput `pulumi:"reconcileConnections"`
 	// URL of the region where the resource resides.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
@@ -196,7 +195,6 @@ type serviceAttachmentState struct {
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-	// For newly created service attachment, this boolean defaults to true.
 	ReconcileConnections *bool `pulumi:"reconcileConnections"`
 	// URL of the region where the resource resides.
 	Region *string `pulumi:"region"`
@@ -253,7 +251,6 @@ type ServiceAttachmentState struct {
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-	// For newly created service attachment, this boolean defaults to true.
 	ReconcileConnections pulumi.BoolPtrInput
 	// URL of the region where the resource resides.
 	Region pulumi.StringPtrInput
@@ -307,7 +304,6 @@ type serviceAttachmentArgs struct {
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-	// For newly created service attachment, this boolean defaults to true.
 	ReconcileConnections *bool `pulumi:"reconcileConnections"`
 	// URL of the region where the resource resides.
 	Region *string `pulumi:"region"`
@@ -356,7 +352,6 @@ type ServiceAttachmentArgs struct {
 	// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 	// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 	// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-	// For newly created service attachment, this boolean defaults to true.
 	ReconcileConnections pulumi.BoolPtrInput
 	// URL of the region where the resource resides.
 	Region pulumi.StringPtrInput
@@ -556,9 +551,8 @@ func (o ServiceAttachmentOutput) Project() pulumi.StringOutput {
 // This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
 // If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
 // If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
-// For newly created service attachment, this boolean defaults to true.
-func (o ServiceAttachmentOutput) ReconcileConnections() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolPtrOutput { return v.ReconcileConnections }).(pulumi.BoolPtrOutput)
+func (o ServiceAttachmentOutput) ReconcileConnections() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolOutput { return v.ReconcileConnections }).(pulumi.BoolOutput)
 }
 
 // URL of the region where the resource resides.

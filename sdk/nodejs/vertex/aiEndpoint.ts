@@ -22,17 +22,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vertexNetwork = gcp.compute.getNetwork({
- *     name: "network-name",
- * });
+ * const vertexNetwork = new gcp.compute.Network("vertexNetwork", {});
  * const vertexRange = new gcp.compute.GlobalAddress("vertexRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 24,
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
+ *     network: vertexNetwork.id,
  * });
  * const vertexVpcConnection = new gcp.servicenetworking.Connection("vertexVpcConnection", {
- *     network: vertexNetwork.then(vertexNetwork => vertexNetwork.id),
+ *     network: vertexNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [vertexRange.name],
  * });
@@ -45,7 +43,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "label-one": "value-one",
  *     },
- *     network: Promise.all([project, vertexNetwork]).then(([project, vertexNetwork]) => `projects/${project.number}/global/networks/${vertexNetwork.name}`),
+ *     network: pulumi.all([project, vertexNetwork.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
@@ -122,6 +120,11 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
      * Structure is documented below.
      */
@@ -132,6 +135,8 @@ export class AiEndpoint extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -163,6 +168,11 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -184,6 +194,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["deployedModels"] = state ? state.deployedModels : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -193,6 +204,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiEndpointArgs | undefined;
@@ -213,8 +225,10 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deployedModels"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["modelDeploymentMonitoringJob"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -245,6 +259,11 @@ export interface AiEndpointState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
      * Structure is documented below.
      */
@@ -255,6 +274,8 @@ export interface AiEndpointState {
     etag?: pulumi.Input<string>;
     /**
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -286,6 +307,11 @@ export interface AiEndpointState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -310,6 +336,8 @@ export interface AiEndpointArgs {
     encryptionSpec?: pulumi.Input<inputs.vertex.AiEndpointEncryptionSpec>;
     /**
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

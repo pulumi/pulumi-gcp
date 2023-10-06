@@ -19553,6 +19553,8 @@ type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth struct {
 	// A day of the week.
 	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+	DayOffset *int `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
@@ -19572,6 +19574,8 @@ type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs struct {
 	// A day of the week.
 	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+	DayOffset pulumi.IntPtrInput `pulumi:"dayOffset"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
@@ -19677,6 +19681,11 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) DayOfWeek()
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
+// Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) DayOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *int { return v.DayOffset }).(pulumi.IntPtrOutput)
+}
+
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) WeekOrdinal() pulumi.IntOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) int { return v.WeekOrdinal }).(pulumi.IntOutput)
@@ -19721,6 +19730,16 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) DayOfWee
 		}
 		return &v.DayOfWeek
 	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) DayOffset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DayOffset
+	}).(pulumi.IntPtrOutput)
 }
 
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.

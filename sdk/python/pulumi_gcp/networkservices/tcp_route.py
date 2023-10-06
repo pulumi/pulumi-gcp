@@ -32,6 +32,8 @@ class TcpRouteArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
                Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
                Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
@@ -97,6 +99,8 @@ class TcpRouteArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -149,6 +153,7 @@ class _TcpRouteState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -156,14 +161,19 @@ class _TcpRouteState:
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TcpRoute resources.
         :param pulumi.Input[str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
                Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
                Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
@@ -174,12 +184,16 @@ class _TcpRouteState:
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the TcpRoute was updated in UTC.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if gateways is not None:
             pulumi.set(__self__, "gateways", gateways)
         if labels is not None:
@@ -194,6 +208,8 @@ class _TcpRouteState:
             pulumi.set(__self__, "rules", rules)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -222,6 +238,19 @@ class _TcpRouteState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -239,6 +268,8 @@ class _TcpRouteState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -312,6 +343,19 @@ class _TcpRouteState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -362,6 +406,8 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
                Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
                Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
@@ -438,7 +484,9 @@ class TcpRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(TcpRoute, __self__).__init__(
             'gcp:networkservices/tcpRoute:TcpRoute',
@@ -452,6 +500,7 @@ class TcpRoute(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -459,6 +508,7 @@ class TcpRoute(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TcpRouteRuleArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TcpRoute':
         """
         Get an existing TcpRoute resource's state with the given name, id, and optional extra
@@ -469,9 +519,13 @@ class TcpRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the TcpRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
                Each gateway reference should match the pattern: projects/*/locations/global/gateways/<gateway_name>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the TcpRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
                Each mesh reference should match the pattern: projects/*/locations/global/meshes/<mesh_name>
                The attached Mesh should be of a type SIDECAR
@@ -482,6 +536,8 @@ class TcpRoute(pulumi.CustomResource):
                If there are multiple rules then the action taken will be the first rule to match.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the TcpRoute was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -490,6 +546,7 @@ class TcpRoute(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateways"] = gateways
         __props__.__dict__["labels"] = labels
         __props__.__dict__["meshes"] = meshes
@@ -497,6 +554,7 @@ class TcpRoute(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return TcpRoute(resource_name, opts=opts, __props__=__props__)
 
@@ -517,6 +575,15 @@ class TcpRoute(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def gateways(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -530,6 +597,8 @@ class TcpRoute(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the TcpRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -577,6 +646,15 @@ class TcpRoute(pulumi.CustomResource):
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

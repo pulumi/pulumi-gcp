@@ -41,8 +41,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KeyRingIAMPolicy{}
 	case "gcp:kms/keyRingImportJob:KeyRingImportJob":
 		r = &KeyRingImportJob{}
-	case "gcp:kms/registry:Registry":
-		r = &Registry{}
 	case "gcp:kms/secretCiphertext:SecretCiphertext":
 		r = &SecretCiphertext{}
 	default:
@@ -106,11 +104,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"kms/keyRingImportJob",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"kms/registry",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

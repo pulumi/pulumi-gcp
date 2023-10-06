@@ -98,6 +98,7 @@ export interface GetInstanceResult {
      */
     readonly description: string;
     readonly desiredStatus: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * Whether the instance has virtual displays enabled.
      */
@@ -181,6 +182,7 @@ export interface GetInstanceResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly zone?: string;
 }
 /**

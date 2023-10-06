@@ -45,6 +45,9 @@ class BackupPlanArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -157,6 +160,9 @@ class BackupPlanArgs:
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -211,6 +217,7 @@ class _BackupPlanState:
                  cluster: Optional[pulumi.Input[str]] = None,
                  deactivated: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -220,6 +227,7 @@ class _BackupPlanState:
                  retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_reason: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
@@ -233,6 +241,8 @@ class _BackupPlanState:
                (except deletes), including the deactivated field itself. It also prevents any new Backups
                from being created via this BackupPlan (including scheduled Backups).
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
                updates of a backup plan from overwriting each other. It is strongly suggested that
                systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -242,6 +252,9 @@ class _BackupPlanState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Backup Plan.
                
                
@@ -254,6 +267,8 @@ class _BackupPlanState:
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
         if backup_config is not None:
@@ -266,6 +281,8 @@ class _BackupPlanState:
             pulumi.set(__self__, "deactivated", deactivated)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
@@ -284,6 +301,8 @@ class _BackupPlanState:
             pulumi.set(__self__, "state", state)
         if state_reason is not None:
             pulumi.set(__self__, "state_reason", state_reason)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -353,6 +372,19 @@ class _BackupPlanState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -376,6 +408,9 @@ class _BackupPlanState:
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -473,6 +508,19 @@ class _BackupPlanState:
         pulumi.set(self, "state_reason", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -527,7 +575,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -554,7 +603,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
@@ -580,7 +630,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
@@ -616,7 +667,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
@@ -676,6 +728,9 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Backup Plan.
                
                
@@ -718,7 +773,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -745,7 +801,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
@@ -771,7 +828,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
@@ -807,7 +865,8 @@ class BackupPlan(pulumi.CustomResource):
                 gke_backup_agent_config=gcp.container.ClusterAddonsConfigGkeBackupAgentConfigArgs(
                     enabled=True,
                 ),
-            ))
+            ),
+            deletion_protection=True)
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
@@ -900,10 +959,12 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["retention_policy"] = retention_policy
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["protected_pod_count"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_reason"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
         super(BackupPlan, __self__).__init__(
             'gcp:gkebackup/backupPlan:BackupPlan',
@@ -920,6 +981,7 @@ class BackupPlan(pulumi.CustomResource):
             cluster: Optional[pulumi.Input[str]] = None,
             deactivated: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -929,6 +991,7 @@ class BackupPlan(pulumi.CustomResource):
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_reason: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'BackupPlan':
         """
         Get an existing BackupPlan resource's state with the given name, id, and optional extra
@@ -947,6 +1010,8 @@ class BackupPlan(pulumi.CustomResource):
                (except deletes), including the deactivated field itself. It also prevents any new Backups
                from being created via this BackupPlan (including scheduled Backups).
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
                updates of a backup plan from overwriting each other. It is strongly suggested that
                systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
@@ -956,6 +1021,9 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The region of the Backup Plan.
                
                
@@ -968,6 +1036,8 @@ class BackupPlan(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] state: The State of the BackupPlan.
         :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -979,6 +1049,7 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["deactivated"] = deactivated
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -988,6 +1059,7 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["retention_policy"] = retention_policy
         __props__.__dict__["state"] = state
         __props__.__dict__["state_reason"] = state_reason
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
@@ -1037,6 +1109,15 @@ class BackupPlan(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1056,6 +1137,9 @@ class BackupPlan(pulumi.CustomResource):
         Description: A set of custom labels supplied by the user.
         A list of key->value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1119,6 +1203,15 @@ class BackupPlan(pulumi.CustomResource):
         Detailed description of why BackupPlan is in its current state.
         """
         return pulumi.get(self, "state_reason")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

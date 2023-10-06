@@ -617,7 +617,14 @@ export class Stream extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -646,6 +653,11 @@ export class Stream extends pulumi.CustomResource {
      * The stream identifier.
      */
     public readonly streamId!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -666,6 +678,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -673,6 +686,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["sourceConfig"] = state ? state.sourceConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["streamId"] = state ? state.streamId : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as StreamArgs | undefined;
             if ((!args || args.destinationConfig === undefined) && !opts.urn) {
@@ -701,8 +715,10 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sourceConfig"] = args ? args.sourceConfig : undefined;
             resourceInputs["streamId"] = args ? args.streamId : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Stream.__pulumiType, name, resourceInputs, opts);
@@ -741,7 +757,14 @@ export interface StreamState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -770,6 +793,11 @@ export interface StreamState {
      * The stream identifier.
      */
     streamId?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -805,6 +833,8 @@ export interface StreamArgs {
     displayName: pulumi.Input<string>;
     /**
      * Labels.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

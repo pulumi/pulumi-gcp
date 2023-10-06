@@ -46,8 +46,7 @@ class JobArgs:
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-               **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-               Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -181,8 +180,7 @@ class JobArgs:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-        Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -351,6 +349,7 @@ class JobArgs:
 class _JobState:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -370,20 +369,22 @@ class _JobState:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  temp_gcs_location: Optional[pulumi.Input[str]] = None,
                  template_gcs_path: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-               **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-               Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -400,12 +401,15 @@ class _JobState:
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
         """
         if additional_experiments is not None:
             pulumi.set(__self__, "additional_experiments", additional_experiments)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_streaming_engine is not None:
             pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
@@ -444,6 +448,8 @@ class _JobState:
             pulumi.set(__self__, "temp_gcs_location", temp_gcs_location)
         if template_gcs_path is not None:
             pulumi.set(__self__, "template_gcs_path", template_gcs_path)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if transform_name_mapping is not None:
             pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
         if type is not None:
@@ -462,6 +468,19 @@ class _JobState:
     @additional_experiments.setter
     def additional_experiments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_experiments", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="enableStreamingEngine")
@@ -517,8 +536,7 @@ class _JobState:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-        Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -697,6 +715,18 @@ class _JobState:
         pulumi.set(self, "template_gcs_path", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter(name="transformNameMapping")
     def transform_name_mapping(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -856,8 +886,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-               **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-               Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -1039,8 +1068,10 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["template_gcs_path"] = template_gcs_path
             __props__.__dict__["transform_name_mapping"] = transform_name_mapping
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["job_id"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["type"] = None
         super(Job, __self__).__init__(
             'gcp:dataflow/job:Job',
@@ -1053,6 +1084,7 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
             ip_configuration: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
@@ -1072,6 +1104,7 @@ class Job(pulumi.CustomResource):
             subnetwork: Optional[pulumi.Input[str]] = None,
             temp_gcs_location: Optional[pulumi.Input[str]] = None,
             template_gcs_path: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             transform_name_mapping: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Job':
@@ -1083,14 +1116,15 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
                specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-               **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-               Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] machine_type: The machine type to use for the job.
         :param pulumi.Input[int] max_workers: The number of workers permitted to work on the job.  More workers may improve processing speed at additional cost.
         :param pulumi.Input[str] name: A unique name for the resource, required by Dataflow.
@@ -1107,6 +1141,7 @@ class Job(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] template_gcs_path: The GCS path to the Dataflow job template.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Mapping[str, Any]] transform_name_mapping: Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
         :param pulumi.Input[str] type: The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
         :param pulumi.Input[str] zone: The zone in which the created job should run. If it is not provided, the provider zone is used.
@@ -1116,6 +1151,7 @@ class Job(pulumi.CustomResource):
         __props__ = _JobState.__new__(_JobState)
 
         __props__.__dict__["additional_experiments"] = additional_experiments
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine
         __props__.__dict__["ip_configuration"] = ip_configuration
         __props__.__dict__["job_id"] = job_id
@@ -1135,6 +1171,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["temp_gcs_location"] = temp_gcs_location
         __props__.__dict__["template_gcs_path"] = template_gcs_path
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["transform_name_mapping"] = transform_name_mapping
         __props__.__dict__["type"] = type
         __props__.__dict__["zone"] = zone
@@ -1147,6 +1184,15 @@ class Job(pulumi.CustomResource):
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """
         return pulumi.get(self, "additional_experiments")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="enableStreamingEngine")
@@ -1182,12 +1228,11 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-        **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-        Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1304,6 +1349,14 @@ class Job(pulumi.CustomResource):
         The GCS path to the Dataflow job template.
         """
         return pulumi.get(self, "template_gcs_path")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="transformNameMapping")

@@ -65,15 +65,17 @@ type LookupAppConnectorArgs struct {
 
 // A collection of values returned by getAppConnector.
 type LookupAppConnectorResult struct {
-	DisplayName string `pulumi:"displayName"`
+	DisplayName     string            `pulumi:"displayName"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                         `pulumi:"id"`
-	Labels         map[string]string              `pulumi:"labels"`
-	Name           string                         `pulumi:"name"`
-	PrincipalInfos []GetAppConnectorPrincipalInfo `pulumi:"principalInfos"`
-	Project        *string                        `pulumi:"project"`
-	Region         *string                        `pulumi:"region"`
-	State          string                         `pulumi:"state"`
+	Id              string                         `pulumi:"id"`
+	Labels          map[string]string              `pulumi:"labels"`
+	Name            string                         `pulumi:"name"`
+	PrincipalInfos  []GetAppConnectorPrincipalInfo `pulumi:"principalInfos"`
+	Project         *string                        `pulumi:"project"`
+	Region          *string                        `pulumi:"region"`
+	State           string                         `pulumi:"state"`
+	TerraformLabels map[string]string              `pulumi:"terraformLabels"`
 }
 
 func LookupAppConnectorOutput(ctx *pulumi.Context, args LookupAppConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectorResultOutput {
@@ -132,6 +134,10 @@ func (o LookupAppConnectorResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupAppConnectorResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppConnectorResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAppConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -159,6 +165,10 @@ func (o LookupAppConnectorResultOutput) Region() pulumi.StringPtrOutput {
 
 func (o LookupAppConnectorResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppConnectorResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupAppConnectorResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAppConnectorResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

@@ -82,6 +82,7 @@ type LookupDiskResult struct {
 	// The optional description of this resource.
 	Description               string                     `pulumi:"description"`
 	DiskEncryptionKeys        []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	EffectiveLabels           map[string]string          `pulumi:"effectiveLabels"`
 	EnableConfidentialCompute bool                       `pulumi:"enableConfidentialCompute"`
 	GuestOsFeatures           []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
@@ -91,9 +92,8 @@ type LookupDiskResult struct {
 	Interface string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
-	LabelFingerprint string `pulumi:"labelFingerprint"`
-	// A map of labels applied to this disk.
-	Labels map[string]string `pulumi:"labels"`
+	LabelFingerprint string            `pulumi:"labelFingerprint"`
+	Labels           map[string]string `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
@@ -131,7 +131,8 @@ type LookupDiskResult struct {
 	// that was later deleted and recreated under the same name, the source
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
-	SourceSnapshotId string `pulumi:"sourceSnapshotId"`
+	SourceSnapshotId string            `pulumi:"sourceSnapshotId"`
+	TerraformLabels  map[string]string `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk.
 	Type string `pulumi:"type"`
@@ -211,6 +212,10 @@ func (o LookupDiskResultOutput) DiskEncryptionKeys() GetDiskDiskEncryptionKeyArr
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskDiskEncryptionKey { return v.DiskEncryptionKeys }).(GetDiskDiskEncryptionKeyArrayOutput)
 }
 
+func (o LookupDiskResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -239,7 +244,6 @@ func (o LookupDiskResultOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// A map of labels applied to this disk.
 func (o LookupDiskResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -337,6 +341,10 @@ func (o LookupDiskResultOutput) SourceSnapshotEncryptionKeys() GetDiskSourceSnap
 // used.
 func (o LookupDiskResultOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

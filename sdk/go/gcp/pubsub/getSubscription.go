@@ -68,6 +68,7 @@ type LookupSubscriptionResult struct {
 	BigqueryConfigs           []GetSubscriptionBigqueryConfig     `pulumi:"bigqueryConfigs"`
 	CloudStorageConfigs       []GetSubscriptionCloudStorageConfig `pulumi:"cloudStorageConfigs"`
 	DeadLetterPolicies        []GetSubscriptionDeadLetterPolicy   `pulumi:"deadLetterPolicies"`
+	EffectiveLabels           map[string]string                   `pulumi:"effectiveLabels"`
 	EnableExactlyOnceDelivery bool                                `pulumi:"enableExactlyOnceDelivery"`
 	EnableMessageOrdering     bool                                `pulumi:"enableMessageOrdering"`
 	ExpirationPolicies        []GetSubscriptionExpirationPolicy   `pulumi:"expirationPolicies"`
@@ -81,6 +82,7 @@ type LookupSubscriptionResult struct {
 	PushConfigs              []GetSubscriptionPushConfig  `pulumi:"pushConfigs"`
 	RetainAckedMessages      bool                         `pulumi:"retainAckedMessages"`
 	RetryPolicies            []GetSubscriptionRetryPolicy `pulumi:"retryPolicies"`
+	TerraformLabels          map[string]string            `pulumi:"terraformLabels"`
 	Topic                    string                       `pulumi:"topic"`
 }
 
@@ -149,6 +151,10 @@ func (o LookupSubscriptionResultOutput) DeadLetterPolicies() GetSubscriptionDead
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionDeadLetterPolicy { return v.DeadLetterPolicies }).(GetSubscriptionDeadLetterPolicyArrayOutput)
 }
 
+func (o LookupSubscriptionResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupSubscriptionResultOutput) EnableExactlyOnceDelivery() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) bool { return v.EnableExactlyOnceDelivery }).(pulumi.BoolOutput)
 }
@@ -196,6 +202,10 @@ func (o LookupSubscriptionResultOutput) RetainAckedMessages() pulumi.BoolOutput 
 
 func (o LookupSubscriptionResultOutput) RetryPolicies() GetSubscriptionRetryPolicyArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionRetryPolicy { return v.RetryPolicies }).(GetSubscriptionRetryPolicyArrayOutput)
+}
+
+func (o LookupSubscriptionResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSubscriptionResultOutput) Topic() pulumi.StringOutput {

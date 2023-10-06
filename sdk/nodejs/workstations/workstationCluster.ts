@@ -122,6 +122,8 @@ export class WorkstationCluster extends pulumi.CustomResource {
 
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -143,12 +145,24 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -180,6 +194,11 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The system-generated UID of the resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -209,6 +228,8 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["degraded"] = state ? state.degraded : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -217,6 +238,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
         } else {
@@ -242,8 +264,11 @@ export class WorkstationCluster extends pulumi.CustomResource {
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["degraded"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -257,6 +282,8 @@ export class WorkstationCluster extends pulumi.CustomResource {
 export interface WorkstationClusterState {
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -278,12 +305,24 @@ export interface WorkstationClusterState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -315,6 +354,11 @@ export interface WorkstationClusterState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The system-generated UID of the resource.
      */
     uid?: pulumi.Input<string>;
@@ -333,6 +377,8 @@ export interface WorkstationClusterState {
 export interface WorkstationClusterArgs {
     /**
      * Client-specified annotations. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -341,6 +387,8 @@ export interface WorkstationClusterArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

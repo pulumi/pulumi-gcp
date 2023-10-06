@@ -1589,11 +1589,11 @@ func (o MetricBucketOptionsExplicitBucketsPtrOutput) Bounds() pulumi.Float64Arra
 
 type MetricBucketOptionsExponentialBuckets struct {
 	// Must be greater than 1.
-	GrowthFactor *float64 `pulumi:"growthFactor"`
+	GrowthFactor float64 `pulumi:"growthFactor"`
 	// Must be greater than 0.
-	NumFiniteBuckets *int `pulumi:"numFiniteBuckets"`
+	NumFiniteBuckets int `pulumi:"numFiniteBuckets"`
 	// Must be greater than 0.
-	Scale *float64 `pulumi:"scale"`
+	Scale float64 `pulumi:"scale"`
 }
 
 // MetricBucketOptionsExponentialBucketsInput is an input type that accepts MetricBucketOptionsExponentialBucketsArgs and MetricBucketOptionsExponentialBucketsOutput values.
@@ -1609,11 +1609,11 @@ type MetricBucketOptionsExponentialBucketsInput interface {
 
 type MetricBucketOptionsExponentialBucketsArgs struct {
 	// Must be greater than 1.
-	GrowthFactor pulumi.Float64PtrInput `pulumi:"growthFactor"`
+	GrowthFactor pulumi.Float64Input `pulumi:"growthFactor"`
 	// Must be greater than 0.
-	NumFiniteBuckets pulumi.IntPtrInput `pulumi:"numFiniteBuckets"`
+	NumFiniteBuckets pulumi.IntInput `pulumi:"numFiniteBuckets"`
 	// Must be greater than 0.
-	Scale pulumi.Float64PtrInput `pulumi:"scale"`
+	Scale pulumi.Float64Input `pulumi:"scale"`
 }
 
 func (MetricBucketOptionsExponentialBucketsArgs) ElementType() reflect.Type {
@@ -1712,18 +1712,18 @@ func (o MetricBucketOptionsExponentialBucketsOutput) ToOutput(ctx context.Contex
 }
 
 // Must be greater than 1.
-func (o MetricBucketOptionsExponentialBucketsOutput) GrowthFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.GrowthFactor }).(pulumi.Float64PtrOutput)
+func (o MetricBucketOptionsExponentialBucketsOutput) GrowthFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) float64 { return v.GrowthFactor }).(pulumi.Float64Output)
 }
 
 // Must be greater than 0.
-func (o MetricBucketOptionsExponentialBucketsOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+func (o MetricBucketOptionsExponentialBucketsOutput) NumFiniteBuckets() pulumi.IntOutput {
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) int { return v.NumFiniteBuckets }).(pulumi.IntOutput)
 }
 
 // Must be greater than 0.
-func (o MetricBucketOptionsExponentialBucketsOutput) Scale() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) *float64 { return v.Scale }).(pulumi.Float64PtrOutput)
+func (o MetricBucketOptionsExponentialBucketsOutput) Scale() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricBucketOptionsExponentialBuckets) float64 { return v.Scale }).(pulumi.Float64Output)
 }
 
 type MetricBucketOptionsExponentialBucketsPtrOutput struct{ *pulumi.OutputState }
@@ -1762,7 +1762,7 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) GrowthFactor() pulumi.Fl
 		if v == nil {
 			return nil
 		}
-		return v.GrowthFactor
+		return &v.GrowthFactor
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -1772,7 +1772,7 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) NumFiniteBuckets() pulum
 		if v == nil {
 			return nil
 		}
-		return v.NumFiniteBuckets
+		return &v.NumFiniteBuckets
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1782,17 +1782,17 @@ func (o MetricBucketOptionsExponentialBucketsPtrOutput) Scale() pulumi.Float64Pt
 		if v == nil {
 			return nil
 		}
-		return v.Scale
+		return &v.Scale
 	}).(pulumi.Float64PtrOutput)
 }
 
 type MetricBucketOptionsLinearBuckets struct {
 	// Must be greater than 0.
-	NumFiniteBuckets *int `pulumi:"numFiniteBuckets"`
+	NumFiniteBuckets int `pulumi:"numFiniteBuckets"`
 	// Lower bound of the first bucket.
-	Offset *float64 `pulumi:"offset"`
+	Offset float64 `pulumi:"offset"`
 	// Must be greater than 0.
-	Width *float64 `pulumi:"width"`
+	Width float64 `pulumi:"width"`
 }
 
 // MetricBucketOptionsLinearBucketsInput is an input type that accepts MetricBucketOptionsLinearBucketsArgs and MetricBucketOptionsLinearBucketsOutput values.
@@ -1808,11 +1808,11 @@ type MetricBucketOptionsLinearBucketsInput interface {
 
 type MetricBucketOptionsLinearBucketsArgs struct {
 	// Must be greater than 0.
-	NumFiniteBuckets pulumi.IntPtrInput `pulumi:"numFiniteBuckets"`
+	NumFiniteBuckets pulumi.IntInput `pulumi:"numFiniteBuckets"`
 	// Lower bound of the first bucket.
-	Offset pulumi.Float64PtrInput `pulumi:"offset"`
+	Offset pulumi.Float64Input `pulumi:"offset"`
 	// Must be greater than 0.
-	Width pulumi.Float64PtrInput `pulumi:"width"`
+	Width pulumi.Float64Input `pulumi:"width"`
 }
 
 func (MetricBucketOptionsLinearBucketsArgs) ElementType() reflect.Type {
@@ -1911,18 +1911,18 @@ func (o MetricBucketOptionsLinearBucketsOutput) ToOutput(ctx context.Context) pu
 }
 
 // Must be greater than 0.
-func (o MetricBucketOptionsLinearBucketsOutput) NumFiniteBuckets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *int { return v.NumFiniteBuckets }).(pulumi.IntPtrOutput)
+func (o MetricBucketOptionsLinearBucketsOutput) NumFiniteBuckets() pulumi.IntOutput {
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) int { return v.NumFiniteBuckets }).(pulumi.IntOutput)
 }
 
 // Lower bound of the first bucket.
-func (o MetricBucketOptionsLinearBucketsOutput) Offset() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Offset }).(pulumi.Float64PtrOutput)
+func (o MetricBucketOptionsLinearBucketsOutput) Offset() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) float64 { return v.Offset }).(pulumi.Float64Output)
 }
 
 // Must be greater than 0.
-func (o MetricBucketOptionsLinearBucketsOutput) Width() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) *float64 { return v.Width }).(pulumi.Float64PtrOutput)
+func (o MetricBucketOptionsLinearBucketsOutput) Width() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricBucketOptionsLinearBuckets) float64 { return v.Width }).(pulumi.Float64Output)
 }
 
 type MetricBucketOptionsLinearBucketsPtrOutput struct{ *pulumi.OutputState }
@@ -1961,7 +1961,7 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) NumFiniteBuckets() pulumi.Int
 		if v == nil {
 			return nil
 		}
-		return v.NumFiniteBuckets
+		return &v.NumFiniteBuckets
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1971,7 +1971,7 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) Offset() pulumi.Float64PtrOut
 		if v == nil {
 			return nil
 		}
-		return v.Offset
+		return &v.Offset
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -1981,7 +1981,7 @@ func (o MetricBucketOptionsLinearBucketsPtrOutput) Width() pulumi.Float64PtrOutp
 		if v == nil {
 			return nil
 		}
-		return v.Width
+		return &v.Width
 	}).(pulumi.Float64PtrOutput)
 }
 

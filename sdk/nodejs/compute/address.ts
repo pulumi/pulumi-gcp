@@ -178,6 +178,11 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
@@ -195,6 +200,9 @@ export class Address extends pulumi.CustomResource {
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -265,6 +273,10 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly subnetwork!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The URLs of the resources that are using this address.
      */
     public /*out*/ readonly users!: pulumi.Output<string[]>;
@@ -286,6 +298,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["ipv6EndpointType"] = state ? state.ipv6EndpointType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
@@ -299,6 +312,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as AddressArgs | undefined;
@@ -317,8 +331,10 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -352,6 +368,11 @@ export interface AddressState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
@@ -369,6 +390,9 @@ export interface AddressState {
     labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -439,6 +463,10 @@ export interface AddressState {
      */
     subnetwork?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The URLs of the resources that are using this address.
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
@@ -479,6 +507,9 @@ export interface AddressArgs {
     ipv6EndpointType?: pulumi.Input<string>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

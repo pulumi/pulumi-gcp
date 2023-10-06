@@ -100,11 +100,17 @@ type ServiceConnectionPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The type of underlying resources used to create the connection.
 	Infrastructure pulumi.StringOutput `pulumi:"infrastructure"`
 	// User-defined labels.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the ServiceConnectionPolicy.
 	//
@@ -126,6 +132,9 @@ type ServiceConnectionPolicy struct {
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass pulumi.StringOutput `pulumi:"serviceClass"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -173,11 +182,17 @@ type serviceConnectionPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The type of underlying resources used to create the connection.
 	Infrastructure *string `pulumi:"infrastructure"`
 	// User-defined labels.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the ServiceConnectionPolicy.
 	//
@@ -199,6 +214,9 @@ type serviceConnectionPolicyState struct {
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass *string `pulumi:"serviceClass"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The timestamp when the resource was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -208,11 +226,17 @@ type ServiceConnectionPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The type of underlying resources used to create the connection.
 	Infrastructure pulumi.StringPtrInput
 	// User-defined labels.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the ServiceConnectionPolicy.
 	//
@@ -234,6 +258,9 @@ type ServiceConnectionPolicyState struct {
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -246,6 +273,9 @@ type serviceConnectionPolicyArgs struct {
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// User-defined labels.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the ServiceConnectionPolicy.
 	//
@@ -271,6 +301,9 @@ type ServiceConnectionPolicyArgs struct {
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
 	// User-defined labels.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the ServiceConnectionPolicy.
 	//
@@ -412,6 +445,12 @@ func (o ServiceConnectionPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ServiceConnectionPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o ServiceConnectionPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -423,6 +462,9 @@ func (o ServiceConnectionPolicyOutput) Infrastructure() pulumi.StringOutput {
 }
 
 // User-defined labels.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ServiceConnectionPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -468,6 +510,12 @@ func (o ServiceConnectionPolicyOutput) PscConnections() ServiceConnectionPolicyP
 // It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 func (o ServiceConnectionPolicyOutput) ServiceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.ServiceClass }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ServiceConnectionPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The timestamp when the resource was updated.

@@ -63,6 +63,7 @@ import (
 //					ClusterIpv4CidrBlock:  pulumi.String("/19"),
 //					ServicesIpv4CidrBlock: pulumi.String("/22"),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

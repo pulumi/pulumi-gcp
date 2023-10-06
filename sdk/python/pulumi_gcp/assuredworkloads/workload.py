@@ -38,6 +38,9 @@ class WorkloadArgs:
                - - -
         :param pulumi.Input['WorkloadKmsSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
@@ -136,6 +139,9 @@ class WorkloadArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels applied to the workload.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -175,6 +181,7 @@ class _WorkloadState:
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  kms_settings: Optional[pulumi.Input['WorkloadKmsSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -182,15 +189,21 @@ class _WorkloadState:
                  organization: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Workload resources.
         :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, 'billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
         :param pulumi.Input[str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['WorkloadKmsSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workload.
         :param pulumi.Input[str] organization: The organization for the resource
@@ -201,6 +214,7 @@ class _WorkloadState:
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
@@ -210,6 +224,8 @@ class _WorkloadState:
             pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if kms_settings is not None:
             pulumi.set(__self__, "kms_settings", kms_settings)
         if labels is not None:
@@ -226,6 +242,8 @@ class _WorkloadState:
             pulumi.set(__self__, "resource_settings", resource_settings)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -276,6 +294,19 @@ class _WorkloadState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="kmsSettings")
     def kms_settings(self) -> Optional[pulumi.Input['WorkloadKmsSettingsArgs']]:
         """
@@ -292,6 +323,9 @@ class _WorkloadState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels applied to the workload.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -375,6 +409,18 @@ class _WorkloadState:
     def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Workload(pulumi.CustomResource):
     @overload
@@ -448,6 +494,9 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] organization: The organization for the resource
                
@@ -566,8 +615,10 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["resources"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Workload, __self__).__init__(
             'gcp:assuredworkloads/workload:Workload',
             resource_name,
@@ -582,6 +633,7 @@ class Workload(pulumi.CustomResource):
             compliance_regime: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             kms_settings: Optional[pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -589,7 +641,8 @@ class Workload(pulumi.CustomResource):
             organization: Optional[pulumi.Input[str]] = None,
             provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
             resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]]] = None) -> 'Workload':
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -601,8 +654,13 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
         :param pulumi.Input[str] create_time: Output only. Immutable. The Workload creation timestamp.
         :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['WorkloadKmsSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workload.
         :param pulumi.Input[str] organization: The organization for the resource
@@ -613,6 +671,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -622,6 +681,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["compliance_regime"] = compliance_regime
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["kms_settings"] = kms_settings
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -630,6 +690,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
         __props__.__dict__["resource_settings"] = resource_settings
         __props__.__dict__["resources"] = resources
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Workload(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -665,6 +726,15 @@ class Workload(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="kmsSettings")
     def kms_settings(self) -> pulumi.Output[Optional['outputs.WorkloadKmsSettings']]:
         """
@@ -677,6 +747,9 @@ class Workload(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Labels applied to the workload.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -731,4 +804,12 @@ class Workload(pulumi.CustomResource):
         Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

@@ -45,6 +45,9 @@ class AddressArgs:
                the external IPv6 address reservation.
                Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -188,6 +191,9 @@ class AddressArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -330,6 +336,7 @@ class _AddressState:
                  address_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
                  ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -343,6 +350,7 @@ class _AddressState:
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Address resources.
@@ -355,6 +363,8 @@ class _AddressState:
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
@@ -363,6 +373,9 @@ class _AddressState:
                Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -403,6 +416,7 @@ class _AddressState:
                address is specified, it must be within the subnetwork's IP range.
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
         """
         if address is not None:
@@ -413,6 +427,8 @@ class _AddressState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_endpoint_type is not None:
@@ -439,6 +455,8 @@ class _AddressState:
             pulumi.set(__self__, "self_link", self_link)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if users is not None:
             pulumi.set(__self__, "users", users)
 
@@ -496,6 +514,19 @@ class _AddressState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -540,6 +571,9 @@ class _AddressState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -685,6 +719,18 @@ class _AddressState:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -853,6 +899,9 @@ class Address(pulumi.CustomResource):
                the external IPv6 address reservation.
                Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -1069,8 +1118,10 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["users"] = None
         super(Address, __self__).__init__(
             'gcp:compute/address:Address',
@@ -1086,6 +1137,7 @@ class Address(pulumi.CustomResource):
             address_type: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
             ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1099,6 +1151,7 @@ class Address(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Address':
         """
         Get an existing Address resource's state with the given name, id, and optional extra
@@ -1116,6 +1169,8 @@ class Address(pulumi.CustomResource):
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
@@ -1124,6 +1179,9 @@ class Address(pulumi.CustomResource):
                Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -1164,6 +1222,7 @@ class Address(pulumi.CustomResource):
                address is specified, it must be within the subnetwork's IP range.
                This field can only be used with INTERNAL type with
                GCE_ENDPOINT/DNS_RESOLVER purposes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The URLs of the resources that are using this address.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1174,6 +1233,7 @@ class Address(pulumi.CustomResource):
         __props__.__dict__["address_type"] = address_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["ipv6_endpoint_type"] = ipv6_endpoint_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -1187,6 +1247,7 @@ class Address(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["subnetwork"] = subnetwork
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["users"] = users
         return Address(resource_name, opts=opts, __props__=__props__)
 
@@ -1228,6 +1289,15 @@ class Address(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1260,6 +1330,9 @@ class Address(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1365,6 +1438,14 @@ class Address(pulumi.CustomResource):
         GCE_ENDPOINT/DNS_RESOLVER purposes.
         """
         return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

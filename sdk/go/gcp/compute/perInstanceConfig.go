@@ -185,7 +185,7 @@ type PerInstanceConfig struct {
 	// State will be removed on the next instance recreation or update.
 	RemoveInstanceStateOnDestroy pulumi.BoolPtrOutput `pulumi:"removeInstanceStateOnDestroy"`
 	// Zone where the containing instance group manager is located
-	Zone pulumi.StringPtrOutput `pulumi:"zone"`
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewPerInstanceConfig registers a new resource with the given unique name, arguments, and options.
@@ -528,8 +528,8 @@ func (o PerInstanceConfigOutput) RemoveInstanceStateOnDestroy() pulumi.BoolPtrOu
 }
 
 // Zone where the containing instance group manager is located
-func (o PerInstanceConfigOutput) Zone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PerInstanceConfig) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
+func (o PerInstanceConfigOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerInstanceConfig) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type PerInstanceConfigArrayOutput struct{ *pulumi.OutputState }

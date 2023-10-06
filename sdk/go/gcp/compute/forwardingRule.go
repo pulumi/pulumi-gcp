@@ -174,6 +174,9 @@ type ForwardingRule struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target` or `backendService`.
@@ -237,6 +240,9 @@ type ForwardingRule struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -367,6 +373,9 @@ type ForwardingRule struct {
 	//
 	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrOutput `pulumi:"target"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewForwardingRule registers a new resource with the given unique name, arguments, and options.
@@ -433,6 +442,9 @@ type forwardingRuleState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target` or `backendService`.
@@ -496,6 +508,9 @@ type forwardingRuleState struct {
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -626,6 +641,9 @@ type forwardingRuleState struct {
 	//
 	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target *string `pulumi:"target"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type ForwardingRuleState struct {
@@ -663,6 +681,9 @@ type ForwardingRuleState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target` or `backendService`.
@@ -726,6 +747,9 @@ type ForwardingRuleState struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -856,6 +880,9 @@ type ForwardingRuleState struct {
 	//
 	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	Target pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (ForwardingRuleState) ElementType() reflect.Type {
@@ -953,6 +980,9 @@ type forwardingRuleArgs struct {
 	// `loadBalancingScheme` set to `INTERNAL`.
 	IsMirroringCollector *bool `pulumi:"isMirroringCollector"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -1168,6 +1198,9 @@ type ForwardingRuleArgs struct {
 	// `loadBalancingScheme` set to `INTERNAL`.
 	IsMirroringCollector pulumi.BoolPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the forwarding rule type.
 	// For more information about forwarding rules, refer to
@@ -1457,6 +1490,12 @@ func (o ForwardingRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ForwardingRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // IP address for which this forwarding rule accepts traffic. When a client
 // sends traffic to this IP address, the forwarding rule directs the traffic
 // to the referenced `target` or `backendService`.
@@ -1535,6 +1574,9 @@ func (o ForwardingRuleOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this forwarding rule.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1722,6 +1764,12 @@ func (o ForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
 // For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 func (o ForwardingRuleOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ForwardingRuleOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type ForwardingRuleArrayOutput struct{ *pulumi.OutputState }

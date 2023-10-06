@@ -64,6 +64,7 @@ type LookupBucketResult struct {
 	Cors                   []GetBucketCor                   `pulumi:"cors"`
 	CustomPlacementConfigs []GetBucketCustomPlacementConfig `pulumi:"customPlacementConfigs"`
 	DefaultEventBasedHold  bool                             `pulumi:"defaultEventBasedHold"`
+	EffectiveLabels        map[string]string                `pulumi:"effectiveLabels"`
 	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
 	ForceDestroy           bool                             `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
@@ -79,6 +80,7 @@ type LookupBucketResult struct {
 	RetentionPolicies        []GetBucketRetentionPolicy `pulumi:"retentionPolicies"`
 	SelfLink                 string                     `pulumi:"selfLink"`
 	StorageClass             string                     `pulumi:"storageClass"`
+	TerraformLabels          map[string]string          `pulumi:"terraformLabels"`
 	UniformBucketLevelAccess bool                       `pulumi:"uniformBucketLevelAccess"`
 	Url                      string                     `pulumi:"url"`
 	Versionings              []GetBucketVersioning      `pulumi:"versionings"`
@@ -145,6 +147,10 @@ func (o LookupBucketResultOutput) DefaultEventBasedHold() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.DefaultEventBasedHold }).(pulumi.BoolOutput)
 }
 
+func (o LookupBucketResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupBucketResultOutput) Encryptions() GetBucketEncryptionArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []GetBucketEncryption { return v.Encryptions }).(GetBucketEncryptionArrayOutput)
 }
@@ -200,6 +206,10 @@ func (o LookupBucketResultOutput) SelfLink() pulumi.StringOutput {
 
 func (o LookupBucketResultOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketResult) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+func (o LookupBucketResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupBucketResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupBucketResultOutput) UniformBucketLevelAccess() pulumi.BoolOutput {

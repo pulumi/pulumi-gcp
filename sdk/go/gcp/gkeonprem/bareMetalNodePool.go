@@ -288,6 +288,9 @@ type BareMetalNodePool struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The cluster this node pool belongs to.
 	BareMetalCluster pulumi.StringOutput `pulumi:"bareMetalCluster"`
@@ -297,6 +300,9 @@ type BareMetalNodePool struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The display name for the Bare Metal Node Pool.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -374,6 +380,9 @@ type bareMetalNodePoolState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster this node pool belongs to.
 	BareMetalCluster *string `pulumi:"bareMetalCluster"`
@@ -383,6 +392,9 @@ type bareMetalNodePoolState struct {
 	DeleteTime *string `pulumi:"deleteTime"`
 	// The display name for the Bare Metal Node Pool.
 	DisplayName *string `pulumi:"displayName"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -422,6 +434,9 @@ type BareMetalNodePoolState struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The cluster this node pool belongs to.
 	BareMetalCluster pulumi.StringPtrInput
@@ -431,6 +446,9 @@ type BareMetalNodePoolState struct {
 	DeleteTime pulumi.StringPtrInput
 	// The display name for the Bare Metal Node Pool.
 	DisplayName pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other
 	// fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
@@ -474,6 +492,9 @@ type bareMetalNodePoolArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// The cluster this node pool belongs to.
 	BareMetalCluster string `pulumi:"bareMetalCluster"`
@@ -501,6 +522,9 @@ type BareMetalNodePoolArgs struct {
 	// Prefix must be a DNS subdomain.
 	// Name must be 63 characters or less, begin and end with alphanumerics,
 	// with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// The cluster this node pool belongs to.
 	BareMetalCluster pulumi.StringInput
@@ -637,6 +661,9 @@ func (o BareMetalNodePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*B
 // Prefix must be a DNS subdomain.
 // Name must be 63 characters or less, begin and end with alphanumerics,
 // with dashes (-), underscores (_), dots (.), and alphanumerics between.
+//
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o BareMetalNodePoolOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -659,6 +686,12 @@ func (o BareMetalNodePoolOutput) DeleteTime() pulumi.StringOutput {
 // The display name for the Bare Metal Node Pool.
 func (o BareMetalNodePoolOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o BareMetalNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BareMetalNodePool) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // This checksum is computed by the server based on the value of other

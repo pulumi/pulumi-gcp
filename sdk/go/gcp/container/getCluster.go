@@ -82,10 +82,10 @@ type LookupClusterResult struct {
 	DatapathProvider           string                                `pulumi:"datapathProvider"`
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
 	DefaultSnatStatuses        []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
+	DeletionProtection         bool                                  `pulumi:"deletionProtection"`
 	Description                string                                `pulumi:"description"`
 	DnsConfigs                 []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
 	EnableAutopilot            bool                                  `pulumi:"enableAutopilot"`
-	EnableBinaryAuthorization  bool                                  `pulumi:"enableBinaryAuthorization"`
 	EnableFqdnNetworkPolicy    bool                                  `pulumi:"enableFqdnNetworkPolicy"`
 	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`
 	EnableK8sBetaApis          []GetClusterEnableK8sBetaApi          `pulumi:"enableK8sBetaApis"`
@@ -249,6 +249,10 @@ func (o LookupClusterResultOutput) DefaultSnatStatuses() GetClusterDefaultSnatSt
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterDefaultSnatStatus { return v.DefaultSnatStatuses }).(GetClusterDefaultSnatStatusArrayOutput)
 }
 
+func (o LookupClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
 func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -259,10 +263,6 @@ func (o LookupClusterResultOutput) DnsConfigs() GetClusterDnsConfigArrayOutput {
 
 func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableAutopilot }).(pulumi.BoolOutput)
-}
-
-func (o LookupClusterResultOutput) EnableBinaryAuthorization() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableBinaryAuthorization }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) EnableFqdnNetworkPolicy() pulumi.BoolOutput {

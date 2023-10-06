@@ -22,22 +22,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = gcp.compute.getNetwork({
- *     name: "alloydb-network",
- * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  * });
  * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
@@ -62,22 +60,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = gcp.compute.getNetwork({
- *     name: "alloydb-network",
- * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  * });
  * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  * });
  * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
+ *     network: defaultNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
@@ -93,6 +89,7 @@ import * as utilities from "../utilities";
  *     backupId: "alloydb-backup",
  *     clusterName: defaultCluster.name,
  *     description: "example description",
+ *     type: "ON_DEMAND",
  *     labels: {
  *         label: "key",
  *     },
@@ -146,6 +143,14 @@ export class Backup extends pulumi.CustomResource {
     }
 
     /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The ID of the alloydb backup.
      */
     public readonly backupId!: pulumi.Output<string>;
@@ -154,13 +159,37 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly clusterName!: pulumi.Output<string>;
     /**
-     * Time the Backup was created in UTC.
+     * Output only. The system-generated UID of the cluster which was used to create this resource.
+     */
+    public /*out*/ readonly clusterUid!: pulumi.Output<string>;
+    /**
+     * Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
      * User-provided description of the backup.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * User-settable and human-readable display name for the Backup.
+     */
+    public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
@@ -172,11 +201,25 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.BackupEncryptionInfo[]>;
     /**
-     * A hash of the resource.
+     * For Resource freshness validation (https://google.aip.dev/154)
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * User-defined labels for the alloydb backup.
+     * Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+     * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly expiryQuantities!: pulumi.Output<outputs.alloydb.BackupExpiryQuantity[]>;
+    /**
+     * Output only. The time at which after the backup is eligible to be garbage collected.
+     * It is the duration specified by the backup's retention policy, added to the backup's createTime.
+     */
+    public /*out*/ readonly expiryTime!: pulumi.Output<string>;
+    /**
+     * User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -196,19 +239,35 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+     * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * The current state of the backup.
+     * Output only. The size of the backup in bytes.
+     */
+    public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
+    /**
+     * Output only. The current state of the backup.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     */
+    public readonly type!: pulumi.Output<string>;
     /**
      * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * Time the Backup was updated in UTC.
+     * Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -225,19 +284,30 @@ export class Backup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupState | undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["backupId"] = state ? state.backupId : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
+            resourceInputs["clusterUid"] = state ? state.clusterUid : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["encryptionInfos"] = state ? state.encryptionInfos : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["expiryQuantities"] = state ? state.expiryQuantities : undefined;
+            resourceInputs["expiryTime"] = state ? state.expiryTime : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
+            resourceInputs["sizeBytes"] = state ? state.sizeBytes : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -251,19 +321,30 @@ export class Backup extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["clusterUid"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionInfos"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["expiryQuantities"] = undefined /*out*/;
+            resourceInputs["expiryTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
+            resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -277,6 +358,14 @@ export class Backup extends pulumi.CustomResource {
  */
 export interface BackupState {
     /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The ID of the alloydb backup.
      */
     backupId?: pulumi.Input<string>;
@@ -285,13 +374,37 @@ export interface BackupState {
      */
     clusterName?: pulumi.Input<string>;
     /**
-     * Time the Backup was created in UTC.
+     * Output only. The system-generated UID of the cluster which was used to create this resource.
+     */
+    clusterUid?: pulumi.Input<string>;
+    /**
+     * Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Output only. Delete time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    deleteTime?: pulumi.Input<string>;
     /**
      * User-provided description of the backup.
      */
     description?: pulumi.Input<string>;
+    /**
+     * User-settable and human-readable display name for the Backup.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
@@ -303,11 +416,25 @@ export interface BackupState {
      */
     encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.BackupEncryptionInfo>[]>;
     /**
-     * A hash of the resource.
+     * For Resource freshness validation (https://google.aip.dev/154)
      */
     etag?: pulumi.Input<string>;
     /**
-     * User-defined labels for the alloydb backup.
+     * Output only. The QuantityBasedExpiry of the backup, specified by the backup's retention policy.
+     * Once the expiry quantity is over retention, the backup is eligible to be garbage collected.
+     * Structure is documented below.
+     */
+    expiryQuantities?: pulumi.Input<pulumi.Input<inputs.alloydb.BackupExpiryQuantity>[]>;
+    /**
+     * Output only. The time at which after the backup is eligible to be garbage collected.
+     * It is the duration specified by the backup's retention policy, added to the backup's createTime.
+     */
+    expiryTime?: pulumi.Input<string>;
+    /**
+     * User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -327,19 +454,35 @@ export interface BackupState {
      */
     project?: pulumi.Input<string>;
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
+     * Output only. Reconciling (https://google.aip.dev/128#reconciliation), if true, indicates that the service is actively updating the resource.
+     * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The current state of the backup.
+     * Output only. The size of the backup in bytes.
+     */
+    sizeBytes?: pulumi.Input<string>;
+    /**
+     * Output only. The current state of the backup.
      */
     state?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      */
     uid?: pulumi.Input<string>;
     /**
-     * Time the Backup was updated in UTC.
+     * Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -348,6 +491,14 @@ export interface BackupState {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
+    /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the alloydb backup.
      */
@@ -361,12 +512,19 @@ export interface BackupArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * User-settable and human-readable display name for the Backup.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
     encryptionConfig?: pulumi.Input<inputs.alloydb.BackupEncryptionConfig>;
     /**
-     * User-defined labels for the alloydb backup.
+     * User-defined labels for the alloydb backup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -381,4 +539,9 @@ export interface BackupArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     */
+    type?: pulumi.Input<string>;
 }

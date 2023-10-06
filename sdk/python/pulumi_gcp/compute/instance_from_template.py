@@ -70,7 +70,9 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
                entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+               the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -327,7 +329,9 @@ class InstanceFromTemplateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of key/value label pairs assigned to the instance.
+        A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+        the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -562,6 +566,7 @@ class _InstanceFromTemplateState:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  desired_status: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -588,6 +593,7 @@ class _InstanceFromTemplateState:
                  source_instance_template: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags_fingerprint: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromTemplate resources.
@@ -606,6 +612,8 @@ class _InstanceFromTemplateState:
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
@@ -613,7 +621,9 @@ class _InstanceFromTemplateState:
                entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+               the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -641,6 +651,7 @@ class _InstanceFromTemplateState:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -670,6 +681,8 @@ class _InstanceFromTemplateState:
             pulumi.set(__self__, "description", description)
         if desired_status is not None:
             pulumi.set(__self__, "desired_status", desired_status)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_display is not None:
             pulumi.set(__self__, "enable_display", enable_display)
         if guest_accelerators is not None:
@@ -722,6 +735,8 @@ class _InstanceFromTemplateState:
             pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if terraform_labels is not None:
+            pulumi.set(__self__, "terraform_labels", terraform_labels)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -862,6 +877,19 @@ class _InstanceFromTemplateState:
         pulumi.set(self, "desired_status", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -927,7 +955,9 @@ class _InstanceFromTemplateState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of key/value label pairs assigned to the instance.
+        A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+        the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1183,6 +1213,18 @@ class _InstanceFromTemplateState:
         pulumi.set(self, "tags_fingerprint", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1299,7 +1341,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The
                entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+               the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -1471,11 +1515,13 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__.__dict__["zone"] = zone
             __props__.__dict__["cpu_platform"] = None
             __props__.__dict__["current_status"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["instance_id"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["metadata_fingerprint"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["tags_fingerprint"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(InstanceFromTemplate, __self__).__init__(
             'gcp:compute/instanceFromTemplate:InstanceFromTemplate',
             resource_name,
@@ -1497,6 +1543,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             desired_status: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_display: Optional[pulumi.Input[bool]] = None,
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateGuestAcceleratorArgs']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -1523,6 +1570,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             source_instance_template: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags_fingerprint: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'InstanceFromTemplate':
         """
         Get an existing InstanceFromTemplate resource's state with the given name, id, and optional extra
@@ -1546,6 +1594,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceFromTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
@@ -1553,7 +1603,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
                entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+               the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+               the resource.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1581,6 +1633,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -1603,6 +1656,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["desired_status"] = desired_status
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_display"] = enable_display
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["hostname"] = hostname
@@ -1629,6 +1683,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__.__dict__["source_instance_template"] = source_instance_template
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["zone"] = zone
         return InstanceFromTemplate(resource_name, opts=opts, __props__=__props__)
 
@@ -1725,6 +1780,15 @@ class InstanceFromTemplate(pulumi.CustomResource):
         return pulumi.get(self, "desired_status")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> pulumi.Output[bool]:
         """
@@ -1770,7 +1834,9 @@ class InstanceFromTemplate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A set of key/value label pairs assigned to the instance.
+        A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+        the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
+        the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1940,6 +2006,14 @@ class InstanceFromTemplate(pulumi.CustomResource):
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
