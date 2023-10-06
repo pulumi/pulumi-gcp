@@ -13,7 +13,14 @@ resources:
   tested-resource:
     type: gcp:serviceAccount:Account
     properties:
-      accountId: sa${pulumi.stack}
+      accountId:
+        fn::invoke:
+          function: str:replace
+          arguments:
+            old: "p-it-"
+            new: ""
+            string: ${pulumi.stack}
+          return: result
       displayName: Test Service Account
       project: ${gcp:project}
     options:
