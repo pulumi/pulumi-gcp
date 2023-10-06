@@ -23,7 +23,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	return baseJS
 }
 
-func TestAccWebserver(t *testing.T) {
+func TestAccWebserverNode(t *testing.T) {
 	skipIfShort(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
