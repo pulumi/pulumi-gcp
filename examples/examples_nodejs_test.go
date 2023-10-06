@@ -23,7 +23,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	return baseJS
 }
 
-func TestAccWebserver(t *testing.T) {
+func TestAccWebserverNode(t *testing.T) {
 	skipIfShort(t)
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
@@ -99,6 +99,14 @@ func TestAccServerless(t *testing.T) {
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, "Hello World!", body)
 			}),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+func TestBigqueryDataset(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "bigquery-dataset-ts"),
 		})
 
 	integration.ProgramTest(t, &test)
