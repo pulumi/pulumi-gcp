@@ -1,7 +1,7 @@
-From c7140e9b8ab54d50bd91d83e1813f831786dd767 Mon Sep 17 00:00:00 2001
+From 29043cce037e5bb734b3c9eab1af86bef9bdb345 Mon Sep 17 00:00:00 2001
 From: Guinevere Saenger <guinevere@pulumi.com>
 Date: Wed, 4 Oct 2023 12:49:17 -0700
-Subject: [PATCH 04/11] rebase bigquery_dataset
+Subject: [PATCH 3/9] rebase bigquery_dataset
 
 ---
  .../services/bigquery/resource_bigquery_dataset.go     | 10 ++++++++--
