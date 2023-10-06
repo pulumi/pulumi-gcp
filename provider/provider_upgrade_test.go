@@ -24,6 +24,7 @@ func TestProviderUpgrade(t *testing.T) {
 
 	testCases := []testCase{
 		{"serviceaccount-account"},
+		{"pubsub-subscription"},
 	}
 
 	test := func(t *testing.T, tc testCase) {
