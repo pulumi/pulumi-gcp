@@ -1601,7 +1601,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_firebase_project_location":  {Tok: gcpResource(gcpFirebase, "ProjectLocation")},
 			"google_firebase_android_app":       {Tok: gcpResource(gcpFirebase, "AndroidApp")},
 			"google_firebase_apple_app":         {Tok: gcpResource(gcpFirebase, "AppleApp")},
 			"google_firebase_web_app":           {Tok: gcpResource(gcpFirebase, "WebApp")},
@@ -2163,15 +2162,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iap_brand":  {Tok: gcpResource(gcpIAP, "Brand")},
 			"google_iap_client": {Tok: gcpResource(gcpIAP, "Client")},
 
-			// Game Services Resources
-			"google_game_services_game_server_cluster":    {Tok: gcpResource(gcpGameServices, "GameServerCluster")},
-			"google_game_services_game_server_config":     {Tok: gcpResource(gcpGameServices, "GameServerConfig")},
-			"google_game_services_game_server_deployment": {Tok: gcpResource(gcpGameServices, "GameServerDeployment")},
-			"google_game_services_realm":                  {Tok: gcpResource(gcpGameServices, "Realm")},
-			"google_game_services_game_server_deployment_rollout": {
-				Tok: gcpResource(gcpGameServices, "GameServerDeploymentRollout"),
-			},
-
 			// Healthcare resources
 			"google_healthcare_dataset": {
 				Tok: gcpResource(gcpHealthcare, "Dataset"),
@@ -2726,27 +2716,6 @@ func Provider() tfbridge.ProviderInfo {
 			// CloudIdentity
 			"google_cloud_identity_group_membership": {Tok: gcpResource(gcpCloudIdentity, "GroupMembership")},
 			"google_cloud_identity_group":            {Tok: gcpResource(gcpCloudIdentity, "Group")},
-
-			// CloudIOT
-			"google_cloudiot_device": {Tok: gcpResource(gcpIot, "Device")},
-			"google_cloudiot_registry_iam_binding": {
-				Tok: gcpResource(gcpIot, "RegistryIamBinding"),
-				Docs: &tfbridge.DocInfo{
-					Source: "cloudiot_registry_iam.html.markdown",
-				},
-			},
-			"google_cloudiot_registry_iam_member": {
-				Tok: gcpResource(gcpIot, "RegistryIamMember"),
-				Docs: &tfbridge.DocInfo{
-					Source: "cloudiot_registry_iam.html.markdown",
-				},
-			},
-			"google_cloudiot_registry_iam_policy": {
-				Tok: gcpResource(gcpIot, "RegistryIamPolicy"),
-				Docs: &tfbridge.DocInfo{
-					Source: "cloudiot_registry_iam.html.markdown",
-				},
-			},
 
 			// CloudAsset
 			"google_cloud_asset_folder_feed":       {Tok: gcpResource(gcpCloudAsset, "FolderFeed")},
@@ -3764,11 +3733,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			// GameServices
-			"google_game_services_game_server_deployment_rollout": {
-				Tok: gcpDataSource(gcpGameServices, "getGameServerDeploymentRollout"),
-			},
-
 			// Source repo
 			"google_sourcerepo_repository": {
 				Tok: gcpDataSource(gcpSourceRepo, "getRepository"),
@@ -3870,25 +3834,6 @@ func Provider() tfbridge.ProviderInfo {
 				Source: "storage_transfer_project_service_account.html.markdown",
 			},
 		})
-
-	prov.RenameResourceWithAlias("google_cloudiot_registry", gcpResource(gcpKMS,
-		"Registry"), gcpResource(gcpIot, "Registry"), gcpKMS, gcpIot, &tfbridge.ResourceInfo{
-		Fields: map[string]*tfbridge.SchemaInfo{
-			// This property's nested type name conflicts with the nested type of the existing (now deprecated)
-			// `event_notification_config` property (singular, a TypeMap). A conflict occurs because the new
-			// `event_notification_configs` property (plural, a TypeList) is a TypeList, which we singularize.
-			// To avoid the conflict, we override the nested type name for the new property, appending an "Item"
-			// suffix.
-			"event_notification_configs": {
-				Elem: &tfbridge.SchemaInfo{
-					NestedType: "RegistryEventNotificationConfigItem",
-				},
-			},
-		},
-		Docs: &tfbridge.DocInfo{
-			Source: "cloudiot_registry.html.markdown",
-		},
-	})
 
 	err := x.ComputeDefaults(&prov, x.TokensMappedModules("google_", "",
 		moduleMapping, func(module, name string) (string, error) {
