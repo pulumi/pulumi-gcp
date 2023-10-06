@@ -1,7 +1,7 @@
-From ad3f2a2e6456d5fad26a774fac5797c661a68c9b Mon Sep 17 00:00:00 2001
+From 8061bfbeba546f2fd97641c9290e9a9c0c5645db Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 22 Jun 2023 16:38:12 -0700
-Subject: [PATCH 10/11] Remove duplicative resource token
+Subject: [PATCH 8/9] Remove duplicative resource token
 
 ---
  google-beta/provider/provider.go | 9 +++++++++

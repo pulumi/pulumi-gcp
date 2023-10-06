@@ -1,7 +1,7 @@
-From cc4d693fefee3f7aac15c8b8bc196e0407290df9 Mon Sep 17 00:00:00 2001
+From 132123056103510c28111b5ae99122a83f6b0e4b Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 7 Sep 2023 16:28:00 -0700
-Subject: [PATCH 11/11] Fix #794 with an unconditional read.
+Subject: [PATCH 9/9] Fix #794 with an unconditional read.
 
 ---
  google-beta/services/sql/resource_sql_database_instance.go | 5 +++++
