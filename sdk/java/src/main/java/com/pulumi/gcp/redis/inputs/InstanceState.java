@@ -194,6 +194,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Hostname or IP address of the exposed Redis endpoint used by clients
      * to connect to the service.
      * 
@@ -212,6 +229,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -219,6 +238,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Resource labels to represent user provided metadata.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -270,16 +291,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="maintenanceSchedule")
-    private @Nullable Output<InstanceMaintenanceScheduleArgs> maintenanceSchedule;
+    @Import(name="maintenanceSchedules")
+    private @Nullable Output<List<InstanceMaintenanceScheduleArgs>> maintenanceSchedules;
 
     /**
      * @return Upcoming maintenance schedule.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<InstanceMaintenanceScheduleArgs>> maintenanceSchedule() {
-        return Optional.ofNullable(this.maintenanceSchedule);
+    public Optional<Output<List<InstanceMaintenanceScheduleArgs>>> maintenanceSchedules() {
+        return Optional.ofNullable(this.maintenanceSchedules);
     }
 
     /**
@@ -602,6 +623,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -657,11 +695,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.currentLocationId = $.currentLocationId;
         this.customerManagedKey = $.customerManagedKey;
         this.displayName = $.displayName;
+        this.effectiveLabels = $.effectiveLabels;
         this.host = $.host;
         this.labels = $.labels;
         this.locationId = $.locationId;
         this.maintenancePolicy = $.maintenancePolicy;
-        this.maintenanceSchedule = $.maintenanceSchedule;
+        this.maintenanceSchedules = $.maintenanceSchedules;
         this.memorySizeGb = $.memorySizeGb;
         this.name = $.name;
         this.nodes = $.nodes;
@@ -679,6 +718,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.reservedIpRange = $.reservedIpRange;
         this.secondaryIpRange = $.secondaryIpRange;
         this.serverCaCerts = $.serverCaCerts;
+        this.terraformLabels = $.terraformLabels;
         this.tier = $.tier;
         this.transitEncryptionMode = $.transitEncryptionMode;
     }
@@ -925,6 +965,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param host Hostname or IP address of the exposed Redis endpoint used by clients
          * to connect to the service.
          * 
@@ -949,6 +1012,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Resource labels to represent user provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -960,6 +1025,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Resource labels to represent user provided metadata.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1021,26 +1088,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceSchedule Upcoming maintenance schedule.
+         * @param maintenanceSchedules Upcoming maintenance schedule.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder maintenanceSchedule(@Nullable Output<InstanceMaintenanceScheduleArgs> maintenanceSchedule) {
-            $.maintenanceSchedule = maintenanceSchedule;
+        public Builder maintenanceSchedules(@Nullable Output<List<InstanceMaintenanceScheduleArgs>> maintenanceSchedules) {
+            $.maintenanceSchedules = maintenanceSchedules;
             return this;
         }
 
         /**
-         * @param maintenanceSchedule Upcoming maintenance schedule.
+         * @param maintenanceSchedules Upcoming maintenance schedule.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder maintenanceSchedule(InstanceMaintenanceScheduleArgs maintenanceSchedule) {
-            return maintenanceSchedule(Output.of(maintenanceSchedule));
+        public Builder maintenanceSchedules(List<InstanceMaintenanceScheduleArgs> maintenanceSchedules) {
+            return maintenanceSchedules(Output.of(maintenanceSchedules));
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(InstanceMaintenanceScheduleArgs... maintenanceSchedules) {
+            return maintenanceSchedules(List.of(maintenanceSchedules));
         }
 
         /**
@@ -1484,6 +1562,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverCaCerts(InstanceServerCaCertArgs... serverCaCerts) {
             return serverCaCerts(List.of(serverCaCerts));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

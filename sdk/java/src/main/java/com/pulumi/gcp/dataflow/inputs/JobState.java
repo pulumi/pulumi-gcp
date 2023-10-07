@@ -36,6 +36,23 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      * 
      */
@@ -98,8 +115,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -108,8 +124,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -331,6 +346,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
      * 
      */
@@ -379,6 +409,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     private JobState(JobState $) {
         this.additionalExperiments = $.additionalExperiments;
+        this.effectiveLabels = $.effectiveLabels;
         this.enableStreamingEngine = $.enableStreamingEngine;
         this.ipConfiguration = $.ipConfiguration;
         this.jobId = $.jobId;
@@ -398,6 +429,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.subnetwork = $.subnetwork;
         this.tempGcsLocation = $.tempGcsLocation;
         this.templateGcsPath = $.templateGcsPath;
+        this.terraformLabels = $.terraformLabels;
         this.transformNameMapping = $.transformNameMapping;
         this.type = $.type;
         this.zone = $.zone;
@@ -450,6 +482,29 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder additionalExperiments(String... additionalExperiments) {
             return additionalExperiments(List.of(additionalExperiments));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -539,8 +594,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User labels to be specified for the job. Keys and values should follow the restrictions
          * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-         * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-         * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -553,8 +607,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User labels to be specified for the job. Keys and values should follow the restrictions
          * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-         * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-         * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -859,6 +912,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder templateGcsPath(String templateGcsPath) {
             return templateGcsPath(Output.of(templateGcsPath));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

@@ -1857,14 +1857,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "compute/autoscalar",
-  "fqn": "pulumi_gcp.compute",
-  "classes": {
-   "gcp:compute/autoscalar:Autoscalar": "Autoscalar"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "compute/autoscaler",
   "fqn": "pulumi_gcp.compute",
   "classes": {

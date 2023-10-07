@@ -11,12 +11,14 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.container.AwsClusterArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterState;
 import com.pulumi.gcp.container.outputs.AwsClusterAuthorization;
+import com.pulumi.gcp.container.outputs.AwsClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.AwsClusterControlPlane;
 import com.pulumi.gcp.container.outputs.AwsClusterFleet;
 import com.pulumi.gcp.container.outputs.AwsClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.AwsClusterNetworking;
 import com.pulumi.gcp.container.outputs.AwsClusterWorkloadIdentityConfig;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -374,12 +376,18 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -412,6 +420,20 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> awsRegion() {
         return this.awsRegion;
+    }
+    /**
+     * Configuration options for the Binary Authorization feature.
+     * 
+     */
+    @Export(name="binaryAuthorization", refs={AwsClusterBinaryAuthorization.class}, tree="[0]")
+    private Output<AwsClusterBinaryAuthorization> binaryAuthorization;
+
+    /**
+     * @return Configuration options for the Binary Authorization feature.
+     * 
+     */
+    public Output<AwsClusterBinaryAuthorization> binaryAuthorization() {
+        return this.binaryAuthorization;
     }
     /**
      * Configuration related to the cluster control plane.
@@ -454,6 +476,22 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * Output only. The endpoint of the cluster&#39;s API server.

@@ -55,6 +55,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
+
         [Input("networkIp")]
         public Input<string>? NetworkIp { get; set; }
 
@@ -63,6 +66,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("queueCount")]
         public Input<int>? QueueCount { get; set; }
+
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
 
         [Input("stackType")]
         public Input<string>? StackType { get; set; }

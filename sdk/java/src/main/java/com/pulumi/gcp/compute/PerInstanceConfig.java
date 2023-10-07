@@ -285,14 +285,14 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zone;
+    private Output<String> zone;
 
     /**
      * @return Zone where the containing instance group manager is located
      * 
      */
-    public Output<Optional<String>> zone() {
-        return Codegen.optional(this.zone);
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

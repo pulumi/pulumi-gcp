@@ -233,6 +233,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -240,6 +242,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A map of key/value label pairs to assign to the instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -941,6 +945,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A map of key/value label pairs to assign to the instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -952,6 +958,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A map of key/value label pairs to assign to the instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 

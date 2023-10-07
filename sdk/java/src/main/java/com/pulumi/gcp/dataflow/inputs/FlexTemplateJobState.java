@@ -72,6 +72,23 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Indicates if the job should use the streaming engine feature.
      * 
      */
@@ -432,6 +449,21 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
      * corresponding name prefixes of the new job.
      * 
@@ -469,6 +501,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.additionalExperiments = $.additionalExperiments;
         this.autoscalingAlgorithm = $.autoscalingAlgorithm;
         this.containerSpecGcsPath = $.containerSpecGcsPath;
+        this.effectiveLabels = $.effectiveLabels;
         this.enableStreamingEngine = $.enableStreamingEngine;
         this.ipConfiguration = $.ipConfiguration;
         this.jobId = $.jobId;
@@ -491,6 +524,7 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         this.state = $.state;
         this.subnetwork = $.subnetwork;
         this.tempLocation = $.tempLocation;
+        this.terraformLabels = $.terraformLabels;
         this.transformNameMapping = $.transformNameMapping;
         this.type = $.type;
     }
@@ -590,6 +624,29 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder containerSpecGcsPath(String containerSpecGcsPath) {
             return containerSpecGcsPath(Output.of(containerSpecGcsPath));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -1082,6 +1139,27 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder tempLocation(String tempLocation) {
             return tempLocation(Output.of(tempLocation));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

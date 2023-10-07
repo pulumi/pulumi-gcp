@@ -51,6 +51,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
      * 
      */
     private @Nullable String publicPtrDomainName;
+    private @Nullable String securityPolicy;
 
     private InstanceNetworkInterfaceIpv6AccessConfig() {}
     /**
@@ -103,6 +104,9 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
+    public Optional<String> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -118,6 +122,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
         private @Nullable String name;
         private String networkTier;
         private @Nullable String publicPtrDomainName;
+        private @Nullable String securityPolicy;
         public Builder() {}
         public Builder(InstanceNetworkInterfaceIpv6AccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -126,6 +131,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
     	      this.name = defaults.name;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
+    	      this.securityPolicy = defaults.securityPolicy;
         }
 
         @CustomType.Setter
@@ -153,6 +159,11 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
+        @CustomType.Setter
+        public Builder securityPolicy(@Nullable String securityPolicy) {
+            this.securityPolicy = securityPolicy;
+            return this;
+        }
         public InstanceNetworkInterfaceIpv6AccessConfig build() {
             final var o = new InstanceNetworkInterfaceIpv6AccessConfig();
             o.externalIpv6 = externalIpv6;
@@ -160,6 +171,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfig {
             o.name = name;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
+            o.securityPolicy = securityPolicy;
             return o;
         }
     }

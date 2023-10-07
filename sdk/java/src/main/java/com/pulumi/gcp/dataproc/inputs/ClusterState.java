@@ -36,6 +36,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The list of labels (key/value pairs) to be applied to
+     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+     * which is the name of the cluster.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return The list of labels (key/value pairs) to be applied to
+     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+     * which is the name of the cluster.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
      * terraform apply
      * 
@@ -53,18 +72,18 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return The list of labels (key/value pairs) to be applied to
-     * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-     * which is the name of the cluster.
+     * @return The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+     * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -127,6 +146,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Allows you to configure a virtual Dataproc on GKE cluster.
      * Structure defined below.
      * 
@@ -147,11 +181,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     private ClusterState(ClusterState $) {
         this.clusterConfig = $.clusterConfig;
+        this.effectiveLabels = $.effectiveLabels;
         this.gracefulDecommissionTimeout = $.gracefulDecommissionTimeout;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
+        this.terraformLabels = $.terraformLabels;
         this.virtualClusterConfig = $.virtualClusterConfig;
     }
 
@@ -197,6 +233,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels The list of labels (key/value pairs) to be applied to
+         * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+         * which is the name of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels The list of labels (key/value pairs) to be applied to
+         * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
+         * which is the name of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param gracefulDecommissionTimeout The timeout duration which allows graceful decomissioning when you change the number of worker nodes directly through a
          * terraform apply
          * 
@@ -220,9 +281,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The list of labels (key/value pairs) to be applied to
-         * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-         * which is the name of the cluster.
+         * @param labels The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+         * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -233,9 +294,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels The list of labels (key/value pairs) to be applied to
-         * instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
-         * which is the name of the cluster.
+         * @param labels The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer
+         * to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -315,6 +376,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

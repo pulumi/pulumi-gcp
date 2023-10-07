@@ -142,6 +142,13 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Required. A matcher that selects endpoints to which the policies should be applied.
         /// Structure is documented below.
         /// </summary>
@@ -150,6 +157,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Set of label tags associated with the TcpRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -172,6 +181,13 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
@@ -269,6 +285,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Set of label tags associated with the TcpRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -341,6 +359,19 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Required. A matcher that selects endpoints to which the policies should be applied.
         /// Structure is documented below.
@@ -353,6 +384,8 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Set of label tags associated with the TcpRoute resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -378,6 +411,19 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.eventarc.inputs.TriggerDestinationArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerMatchingCriteriaArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerTransportArgs;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -81,6 +82,23 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
@@ -113,12 +131,18 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Optional. User labels attached to the triggers that can be used to group resources.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -201,18 +225,33 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    @Import(name="transports")
-    private @Nullable Output<List<TriggerTransportArgs>> transports;
+    @Import(name="transport")
+    private @Nullable Output<TriggerTransportArgs> transport;
 
     /**
      * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    public Optional<Output<List<TriggerTransportArgs>>> transports() {
-        return Optional.ofNullable(this.transports);
+    public Optional<Output<TriggerTransportArgs>> transport() {
+        return Optional.ofNullable(this.transport);
     }
 
     /**
@@ -252,6 +291,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         this.conditions = $.conditions;
         this.createTime = $.createTime;
         this.destination = $.destination;
+        this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
         this.eventDataContentType = $.eventDataContentType;
         this.labels = $.labels;
@@ -260,7 +300,8 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.serviceAccount = $.serviceAccount;
-        this.transports = $.transports;
+        this.terraformLabels = $.terraformLabels;
+        this.transport = $.transport;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -368,6 +409,29 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param etag Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -412,6 +476,9 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -422,6 +489,9 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. User labels attached to the triggers that can be used to group resources.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -546,34 +616,45 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder transports(@Nullable Output<List<TriggerTransportArgs>> transports) {
-            $.transports = transports;
+        public Builder terraformLabels(@Nullable Output<Map<String,Object>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
             return this;
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
          */
-        public Builder transports(List<TriggerTransportArgs> transports) {
-            return transports(Output.of(transports));
+        public Builder terraformLabels(Map<String,Object> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**
-         * @param transports Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
          * 
          * @return builder
          * 
          */
-        public Builder transports(TriggerTransportArgs... transports) {
-            return transports(List.of(transports));
+        public Builder transport(@Nullable Output<TriggerTransportArgs> transport) {
+            $.transport = transport;
+            return this;
+        }
+
+        /**
+         * @param transport Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transport(TriggerTransportArgs transport) {
+            return transport(Output.of(transport));
         }
 
         /**

@@ -11,9 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataplex.DatascanArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanState;
 import com.pulumi.gcp.dataplex.outputs.DatascanData;
-import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileResult;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataProfileSpec;
-import com.pulumi.gcp.dataplex.outputs.DatascanDataQualityResult;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpec;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionStatus;
@@ -388,28 +386,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.data;
     }
     /**
-     * (Deprecated)
-     * The result of the data profile scan.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `data_profile_result` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-    @Export(name="dataProfileResults", refs={List.class,DatascanDataProfileResult.class}, tree="[0,1]")
-    private Output<List<DatascanDataProfileResult>> dataProfileResults;
-
-    /**
-     * @return (Deprecated)
-     * The result of the data profile scan.
-     * Structure is documented below.
-     * 
-     */
-    public Output<List<DatascanDataProfileResult>> dataProfileResults() {
-        return this.dataProfileResults;
-    }
-    /**
      * DataProfileScan related setting.
      * Structure is documented below.
      * 
@@ -424,28 +400,6 @@ public class Datascan extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DatascanDataProfileSpec>> dataProfileSpec() {
         return Codegen.optional(this.dataProfileSpec);
-    }
-    /**
-     * (Deprecated)
-     * The result of the data quality scan.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `data_quality_result` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-    @Export(name="dataQualityResults", refs={List.class,DatascanDataQualityResult.class}, tree="[0,1]")
-    private Output<List<DatascanDataQualityResult>> dataQualityResults;
-
-    /**
-     * @return (Deprecated)
-     * The result of the data quality scan.
-     * Structure is documented below.
-     * 
-     */
-    public Output<List<DatascanDataQualityResult>> dataQualityResults() {
-        return this.dataQualityResults;
     }
     /**
      * DataQualityScan related setting.
@@ -514,6 +468,22 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * DataScan execution settings.
      * Structure is documented below.
      * 
@@ -548,12 +518,18 @@ public class Datascan extends com.pulumi.resources.CustomResource {
     /**
      * User-defined labels for the scan. A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return User-defined labels for the scan. A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -626,14 +602,30 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * The field data type.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
+    }
+    /**
+     * The type of DataScan.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The field data type.
+     * @return The type of DataScan.
      * 
      */
     public Output<String> type() {

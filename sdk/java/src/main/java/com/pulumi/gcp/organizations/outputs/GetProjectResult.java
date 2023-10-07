@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetProjectResult {
     private Boolean autoCreateNetwork;
     private String billingAccount;
+    private Map<String,String> effectiveLabels;
     private String folderId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -31,6 +32,7 @@ public final class GetProjectResult {
     private String orgId;
     private @Nullable String projectId;
     private Boolean skipDelete;
+    private Map<String,String> terraformLabels;
 
     private GetProjectResult() {}
     public Boolean autoCreateNetwork() {
@@ -38,6 +40,9 @@ public final class GetProjectResult {
     }
     public String billingAccount() {
         return this.billingAccount;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String folderId() {
         return this.folderId;
@@ -71,6 +76,9 @@ public final class GetProjectResult {
     public Boolean skipDelete() {
         return this.skipDelete;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -83,6 +91,7 @@ public final class GetProjectResult {
     public static final class Builder {
         private Boolean autoCreateNetwork;
         private String billingAccount;
+        private Map<String,String> effectiveLabels;
         private String folderId;
         private String id;
         private Map<String,String> labels;
@@ -91,11 +100,13 @@ public final class GetProjectResult {
         private String orgId;
         private @Nullable String projectId;
         private Boolean skipDelete;
+        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoCreateNetwork = defaults.autoCreateNetwork;
     	      this.billingAccount = defaults.billingAccount;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.folderId = defaults.folderId;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -104,6 +115,7 @@ public final class GetProjectResult {
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.skipDelete = defaults.skipDelete;
+    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
@@ -114,6 +126,11 @@ public final class GetProjectResult {
         @CustomType.Setter
         public Builder billingAccount(String billingAccount) {
             this.billingAccount = Objects.requireNonNull(billingAccount);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -156,10 +173,16 @@ public final class GetProjectResult {
             this.skipDelete = Objects.requireNonNull(skipDelete);
             return this;
         }
+        @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
         public GetProjectResult build() {
             final var o = new GetProjectResult();
             o.autoCreateNetwork = autoCreateNetwork;
             o.billingAccount = billingAccount;
+            o.effectiveLabels = effectiveLabels;
             o.folderId = folderId;
             o.id = id;
             o.labels = labels;
@@ -168,6 +191,7 @@ public final class GetProjectResult {
             o.orgId = orgId;
             o.projectId = projectId;
             o.skipDelete = skipDelete;
+            o.terraformLabels = terraformLabels;
             return o;
         }
     }

@@ -343,27 +343,11 @@ namespace Pulumi.Gcp.DataPlex
         public Output<Outputs.DatascanData> Data { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated)
-        /// The result of the data profile scan.
-        /// Structure is documented below.
-        /// </summary>
-        [Output("dataProfileResults")]
-        public Output<ImmutableArray<Outputs.DatascanDataProfileResult>> DataProfileResults { get; private set; } = null!;
-
-        /// <summary>
         /// DataProfileScan related setting.
         /// Structure is documented below.
         /// </summary>
         [Output("dataProfileSpec")]
         public Output<Outputs.DatascanDataProfileSpec?> DataProfileSpec { get; private set; } = null!;
-
-        /// <summary>
-        /// (Deprecated)
-        /// The result of the data quality scan.
-        /// Structure is documented below.
-        /// </summary>
-        [Output("dataQualityResults")]
-        public Output<ImmutableArray<Outputs.DatascanDataQualityResult>> DataQualityResults { get; private set; } = null!;
 
         /// <summary>
         /// DataQualityScan related setting.
@@ -395,6 +379,13 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// DataScan execution settings.
         /// Structure is documented below.
         /// </summary>
@@ -410,6 +401,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// User-defined labels for the scan. A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -444,7 +438,14 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The field data type.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of DataScan.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -562,6 +563,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// User-defined labels for the scan. A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -603,42 +607,12 @@ namespace Pulumi.Gcp.DataPlex
         [Input("data")]
         public Input<Inputs.DatascanDataGetArgs>? Data { get; set; }
 
-        [Input("dataProfileResults")]
-        private InputList<Inputs.DatascanDataProfileResultGetArgs>? _dataProfileResults;
-
-        /// <summary>
-        /// (Deprecated)
-        /// The result of the data profile scan.
-        /// Structure is documented below.
-        /// </summary>
-        [Obsolete(@"`data_profile_result` is deprecated and will be removed in a future major release.")]
-        public InputList<Inputs.DatascanDataProfileResultGetArgs> DataProfileResults
-        {
-            get => _dataProfileResults ?? (_dataProfileResults = new InputList<Inputs.DatascanDataProfileResultGetArgs>());
-            set => _dataProfileResults = value;
-        }
-
         /// <summary>
         /// DataProfileScan related setting.
         /// Structure is documented below.
         /// </summary>
         [Input("dataProfileSpec")]
         public Input<Inputs.DatascanDataProfileSpecGetArgs>? DataProfileSpec { get; set; }
-
-        [Input("dataQualityResults")]
-        private InputList<Inputs.DatascanDataQualityResultGetArgs>? _dataQualityResults;
-
-        /// <summary>
-        /// (Deprecated)
-        /// The result of the data quality scan.
-        /// Structure is documented below.
-        /// </summary>
-        [Obsolete(@"`data_quality_result` is deprecated and will be removed in a future major release.")]
-        public InputList<Inputs.DatascanDataQualityResultGetArgs> DataQualityResults
-        {
-            get => _dataQualityResults ?? (_dataQualityResults = new InputList<Inputs.DatascanDataQualityResultGetArgs>());
-            set => _dataQualityResults = value;
-        }
 
         /// <summary>
         /// DataQualityScan related setting.
@@ -669,6 +643,19 @@ namespace Pulumi.Gcp.DataPlex
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// DataScan execution settings.
         /// Structure is documented below.
@@ -694,6 +681,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// User-defined labels for the scan. A list of key-&gt;value pairs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -730,8 +720,21 @@ namespace Pulumi.Gcp.DataPlex
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
         /// <summary>
-        /// The field data type.
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
+
+        /// <summary>
+        /// The type of DataScan.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

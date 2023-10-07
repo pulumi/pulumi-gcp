@@ -426,15 +426,15 @@ public class Routine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="routineType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routineType;
+    private Output<String> routineType;
 
     /**
      * @return The type of routine.
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
-    public Output<Optional<String>> routineType() {
-        return Codegen.optional(this.routineType);
+    public Output<String> routineType() {
+        return this.routineType;
     }
 
     /**

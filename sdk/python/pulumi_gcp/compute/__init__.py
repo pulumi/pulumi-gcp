@@ -7,7 +7,6 @@ import typing
 # Export this package's modules as members:
 from .address import *
 from .attached_disk import *
-from .autoscalar import *
 from .autoscaler import *
 from .backend_bucket import *
 from .backend_bucket_iam_binding import *

@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class GetKMSCryptoKeyResult
     {
         public readonly string DestroyScheduledDuration;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -161,11 +162,14 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public readonly string RotationPeriod;
         public readonly bool SkipInitialVersionCreation;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> VersionTemplates;
 
         [OutputConstructor]
         private GetKMSCryptoKeyResult(
             string destroyScheduledDuration,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
 
@@ -183,9 +187,12 @@ namespace Pulumi.Gcp.Kms
 
             bool skipInitialVersionCreation,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             ImmutableArray<Outputs.GetKMSCryptoKeyVersionTemplateResult> versionTemplates)
         {
             DestroyScheduledDuration = destroyScheduledDuration;
+            EffectiveLabels = effectiveLabels;
             Id = id;
             ImportOnly = importOnly;
             KeyRing = keyRing;
@@ -194,6 +201,7 @@ namespace Pulumi.Gcp.Kms
             Purpose = purpose;
             RotationPeriod = rotationPeriod;
             SkipInitialVersionCreation = skipInitialVersionCreation;
+            TerraformLabels = terraformLabels;
             VersionTemplates = versionTemplates;
         }
     }

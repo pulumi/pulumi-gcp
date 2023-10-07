@@ -60,6 +60,13 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
         return Optional.ofNullable(this.publicPtrDomainName);
     }
 
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
     private InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs() {}
 
     private InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs(InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs $) {
@@ -68,6 +75,7 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
         this.name = $.name;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
+        this.securityPolicy = $.securityPolicy;
     }
 
     public static Builder builder() {
@@ -145,6 +153,15 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
 
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
+        }
+
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         public InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs build() {

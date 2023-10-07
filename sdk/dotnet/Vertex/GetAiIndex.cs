@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Vertex
         public readonly ImmutableArray<Outputs.GetAiIndexDeployedIndexResult> DeployedIndexes;
         public readonly string Description;
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -102,6 +103,7 @@ namespace Pulumi.Gcp.Vertex
         public readonly string Name;
         public readonly string? Project;
         public readonly string Region;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -113,6 +115,8 @@ namespace Pulumi.Gcp.Vertex
             string description,
 
             string displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string etag,
 
@@ -134,12 +138,15 @@ namespace Pulumi.Gcp.Vertex
 
             string region,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string updateTime)
         {
             CreateTime = createTime;
             DeployedIndexes = deployedIndexes;
             Description = description;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Etag = etag;
             Id = id;
             IndexStats = indexStats;
@@ -150,6 +157,7 @@ namespace Pulumi.Gcp.Vertex
             Name = name;
             Project = project;
             Region = region;
+            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
         }
     }

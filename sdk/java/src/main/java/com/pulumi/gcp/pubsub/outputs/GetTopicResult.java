@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTopicResult {
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -27,8 +28,12 @@ public final class GetTopicResult {
     private String name;
     private @Nullable String project;
     private List<GetTopicSchemaSetting> schemaSettings;
+    private Map<String,String> terraformLabels;
 
     private GetTopicResult() {}
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -57,6 +62,9 @@ public final class GetTopicResult {
     public List<GetTopicSchemaSetting> schemaSettings() {
         return this.schemaSettings;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,6 +75,7 @@ public final class GetTopicResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Map<String,String> effectiveLabels;
         private String id;
         private String kmsKeyName;
         private Map<String,String> labels;
@@ -75,9 +84,11 @@ public final class GetTopicResult {
         private String name;
         private @Nullable String project;
         private List<GetTopicSchemaSetting> schemaSettings;
+        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.labels = defaults.labels;
@@ -86,8 +97,14 @@ public final class GetTopicResult {
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.schemaSettings = defaults.schemaSettings;
+    	      this.terraformLabels = defaults.terraformLabels;
         }
 
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -134,8 +151,14 @@ public final class GetTopicResult {
         public Builder schemaSettings(GetTopicSchemaSetting... schemaSettings) {
             return schemaSettings(List.of(schemaSettings));
         }
+        @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
         public GetTopicResult build() {
             final var o = new GetTopicResult();
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.kmsKeyName = kmsKeyName;
             o.labels = labels;
@@ -144,6 +167,7 @@ public final class GetTopicResult {
             o.name = name;
             o.project = project;
             o.schemaSettings = schemaSettings;
+            o.terraformLabels = terraformLabels;
             return o;
         }
     }

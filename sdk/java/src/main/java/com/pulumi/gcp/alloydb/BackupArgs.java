@@ -18,6 +18,29 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     public static final BackupArgs Empty = new BackupArgs();
 
     /**
+     * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<Map<String,String>> annotations;
+
+    /**
+     * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> annotations() {
+        return Optional.ofNullable(this.annotations);
+    }
+
+    /**
      * The ID of the alloydb backup.
      * 
      */
@@ -63,6 +86,21 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * User-settable and human-readable display name for the Backup.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return User-settable and human-readable display name for the Backup.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      * 
@@ -80,14 +118,20 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined labels for the alloydb backup.
+     * User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return User-defined labels for the alloydb backup.
+     * @return User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -130,16 +174,36 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The backup type, which suggests the trigger for the backup.
+     * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private BackupArgs() {}
 
     private BackupArgs(BackupArgs $) {
+        this.annotations = $.annotations;
         this.backupId = $.backupId;
         this.clusterName = $.clusterName;
         this.description = $.description;
+        this.displayName = $.displayName;
         this.encryptionConfig = $.encryptionConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -158,6 +222,35 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupArgs defaults) {
             $ = new BackupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(Map<String,String> annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**
@@ -224,6 +317,27 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param displayName User-settable and human-readable display name for the Backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName User-settable and human-readable display name for the Backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
          * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
          * Structure is documented below.
          * 
@@ -247,7 +361,10 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the alloydb backup.
+         * @param labels User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -258,7 +375,10 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels User-defined labels for the alloydb backup.
+         * @param labels User-defined labels for the alloydb backup. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -313,6 +433,29 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param type The backup type, which suggests the trigger for the backup.
+         * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The backup type, which suggests the trigger for the backup.
+         * Possible values are: `TYPE_UNSPECIFIED`, `ON_DEMAND`, `AUTOMATED`, `CONTINUOUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public BackupArgs build() {

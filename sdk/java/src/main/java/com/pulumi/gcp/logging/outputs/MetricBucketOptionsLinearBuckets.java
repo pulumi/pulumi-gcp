@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class MetricBucketOptionsLinearBuckets {
@@ -16,39 +14,39 @@ public final class MetricBucketOptionsLinearBuckets {
      * @return Must be greater than 0.
      * 
      */
-    private @Nullable Integer numFiniteBuckets;
+    private Integer numFiniteBuckets;
     /**
      * @return Lower bound of the first bucket.
      * 
      */
-    private @Nullable Double offset;
+    private Double offset;
     /**
      * @return Must be greater than 0.
      * 
      */
-    private @Nullable Double width;
+    private Double width;
 
     private MetricBucketOptionsLinearBuckets() {}
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Integer> numFiniteBuckets() {
-        return Optional.ofNullable(this.numFiniteBuckets);
+    public Integer numFiniteBuckets() {
+        return this.numFiniteBuckets;
     }
     /**
      * @return Lower bound of the first bucket.
      * 
      */
-    public Optional<Double> offset() {
-        return Optional.ofNullable(this.offset);
+    public Double offset() {
+        return this.offset;
     }
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Double> width() {
-        return Optional.ofNullable(this.width);
+    public Double width() {
+        return this.width;
     }
 
     public static Builder builder() {
@@ -60,9 +58,9 @@ public final class MetricBucketOptionsLinearBuckets {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer numFiniteBuckets;
-        private @Nullable Double offset;
-        private @Nullable Double width;
+        private Integer numFiniteBuckets;
+        private Double offset;
+        private Double width;
         public Builder() {}
         public Builder(MetricBucketOptionsLinearBuckets defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,18 +70,18 @@ public final class MetricBucketOptionsLinearBuckets {
         }
 
         @CustomType.Setter
-        public Builder numFiniteBuckets(@Nullable Integer numFiniteBuckets) {
-            this.numFiniteBuckets = numFiniteBuckets;
+        public Builder numFiniteBuckets(Integer numFiniteBuckets) {
+            this.numFiniteBuckets = Objects.requireNonNull(numFiniteBuckets);
             return this;
         }
         @CustomType.Setter
-        public Builder offset(@Nullable Double offset) {
-            this.offset = offset;
+        public Builder offset(Double offset) {
+            this.offset = Objects.requireNonNull(offset);
             return this;
         }
         @CustomType.Setter
-        public Builder width(@Nullable Double width) {
-            this.width = width;
+        public Builder width(Double width) {
+            this.width = Objects.requireNonNull(width);
             return this;
         }
         public MetricBucketOptionsLinearBuckets build() {

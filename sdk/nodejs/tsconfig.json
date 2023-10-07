@@ -286,7 +286,6 @@
         "composer/index.ts",
         "compute/address.ts",
         "compute/attachedDisk.ts",
-        "compute/autoscalar.ts",
         "compute/autoscaler.ts",
         "compute/backendBucket.ts",
         "compute/backendBucketIamBinding.ts",

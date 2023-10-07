@@ -6,6 +6,7 @@ package com.pulumi.gcp.container;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+import com.pulumi.gcp.container.inputs.AwsClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterLoggingConfigArgs;
@@ -24,12 +25,18 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -64,6 +71,21 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> awsRegion() {
         return this.awsRegion;
+    }
+
+    /**
+     * Configuration options for the Binary Authorization feature.
+     * 
+     */
+    @Import(name="binaryAuthorization")
+    private @Nullable Output<AwsClusterBinaryAuthorizationArgs> binaryAuthorization;
+
+    /**
+     * @return Configuration options for the Binary Authorization feature.
+     * 
+     */
+    public Optional<Output<AwsClusterBinaryAuthorizationArgs>> binaryAuthorization() {
+        return Optional.ofNullable(this.binaryAuthorization);
     }
 
     /**
@@ -198,6 +220,7 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.authorization = $.authorization;
         this.awsRegion = $.awsRegion;
+        this.binaryAuthorization = $.binaryAuthorization;
         this.controlPlane = $.controlPlane;
         this.description = $.description;
         this.fleet = $.fleet;
@@ -229,6 +252,9 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -239,6 +265,9 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -287,6 +316,27 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder awsRegion(String awsRegion) {
             return awsRegion(Output.of(awsRegion));
+        }
+
+        /**
+         * @param binaryAuthorization Configuration options for the Binary Authorization feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(@Nullable Output<AwsClusterBinaryAuthorizationArgs> binaryAuthorization) {
+            $.binaryAuthorization = binaryAuthorization;
+            return this;
+        }
+
+        /**
+         * @param binaryAuthorization Configuration options for the Binary Authorization feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(AwsClusterBinaryAuthorizationArgs binaryAuthorization) {
+            return binaryAuthorization(Output.of(binaryAuthorization));
         }
 
         /**

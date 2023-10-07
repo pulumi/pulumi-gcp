@@ -21,6 +21,7 @@ public final class GetSnapshotResult {
     private String creationTimestamp;
     private String description;
     private Integer diskSizeGb;
+    private Map<String,String> effectiveLabels;
     private @Nullable String filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -40,6 +41,7 @@ public final class GetSnapshotResult {
     private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
     private Integer storageBytes;
     private List<String> storageLocations;
+    private Map<String,String> terraformLabels;
     private String zone;
 
     private GetSnapshotResult() {}
@@ -54,6 +56,9 @@ public final class GetSnapshotResult {
     }
     public Integer diskSizeGb() {
         return this.diskSizeGb;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
@@ -104,6 +109,9 @@ public final class GetSnapshotResult {
     public List<String> storageLocations() {
         return this.storageLocations;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String zone() {
         return this.zone;
     }
@@ -121,6 +129,7 @@ public final class GetSnapshotResult {
         private String creationTimestamp;
         private String description;
         private Integer diskSizeGb;
+        private Map<String,String> effectiveLabels;
         private @Nullable String filter;
         private String id;
         private String labelFingerprint;
@@ -136,6 +145,7 @@ public final class GetSnapshotResult {
         private List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys;
         private Integer storageBytes;
         private List<String> storageLocations;
+        private Map<String,String> terraformLabels;
         private String zone;
         public Builder() {}
         public Builder(GetSnapshotResult defaults) {
@@ -144,6 +154,7 @@ public final class GetSnapshotResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskSizeGb = defaults.diskSizeGb;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.labelFingerprint = defaults.labelFingerprint;
@@ -159,6 +170,7 @@ public final class GetSnapshotResult {
     	      this.sourceDiskEncryptionKeys = defaults.sourceDiskEncryptionKeys;
     	      this.storageBytes = defaults.storageBytes;
     	      this.storageLocations = defaults.storageLocations;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.zone = defaults.zone;
         }
 
@@ -180,6 +192,11 @@ public final class GetSnapshotResult {
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -270,6 +287,11 @@ public final class GetSnapshotResult {
             return storageLocations(List.of(storageLocations));
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
@@ -280,6 +302,7 @@ public final class GetSnapshotResult {
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.diskSizeGb = diskSizeGb;
+            o.effectiveLabels = effectiveLabels;
             o.filter = filter;
             o.id = id;
             o.labelFingerprint = labelFingerprint;
@@ -295,6 +318,7 @@ public final class GetSnapshotResult {
             o.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             o.storageBytes = storageBytes;
             o.storageLocations = storageLocations;
+            o.terraformLabels = terraformLabels;
             o.zone = zone;
             return o;
         }

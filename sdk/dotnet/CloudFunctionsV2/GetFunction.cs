@@ -139,6 +139,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     {
         public readonly ImmutableArray<Outputs.GetFunctionBuildConfigResult> BuildConfigs;
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Environment;
         public readonly ImmutableArray<Outputs.GetFunctionEventTriggerResult> EventTriggers;
         /// <summary>
@@ -152,6 +153,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigResult> ServiceConfigs;
         public readonly string State;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
         public readonly string Url;
 
@@ -160,6 +162,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             ImmutableArray<Outputs.GetFunctionBuildConfigResult> buildConfigs,
 
             string description,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string environment,
 
@@ -181,12 +185,15 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 
             string state,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string updateTime,
 
             string url)
         {
             BuildConfigs = buildConfigs;
             Description = description;
+            EffectiveLabels = effectiveLabels;
             Environment = environment;
             EventTriggers = eventTriggers;
             Id = id;
@@ -197,6 +204,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             Project = project;
             ServiceConfigs = serviceConfigs;
             State = state;
+            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
             Url = url;
         }

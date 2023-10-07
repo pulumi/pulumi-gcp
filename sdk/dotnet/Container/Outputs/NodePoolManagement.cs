@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolManagement
     {
         /// <summary>
-        /// Whether the nodes will be automatically repaired.
+        /// Whether the nodes will be automatically repaired. Enabled by default.
         /// </summary>
         public readonly bool? AutoRepair;
         /// <summary>
-        /// Whether the nodes will be automatically upgraded.
+        /// Whether the nodes will be automatically upgraded. Enabled by default.
         /// </summary>
         public readonly bool? AutoUpgrade;
 

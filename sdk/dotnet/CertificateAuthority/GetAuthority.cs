@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly string CreateTime;
         public readonly bool DeletionProtection;
         public readonly string DesiredState;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string GcsBucket;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -183,6 +184,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public readonly bool SkipGracePeriod;
         public readonly string State;
         public readonly ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> SubordinateConfigs;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Type;
         public readonly string UpdateTime;
 
@@ -199,6 +201,8 @@ namespace Pulumi.Gcp.CertificateAuthority
             bool deletionProtection,
 
             string desiredState,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string gcsBucket,
 
@@ -232,6 +236,8 @@ namespace Pulumi.Gcp.CertificateAuthority
 
             ImmutableArray<Outputs.GetAuthoritySubordinateConfigResult> subordinateConfigs,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string type,
 
             string updateTime)
@@ -242,6 +248,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             CreateTime = createTime;
             DeletionProtection = deletionProtection;
             DesiredState = desiredState;
+            EffectiveLabels = effectiveLabels;
             GcsBucket = gcsBucket;
             Id = id;
             IgnoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
@@ -258,6 +265,7 @@ namespace Pulumi.Gcp.CertificateAuthority
             SkipGracePeriod = skipGracePeriod;
             State = state;
             SubordinateConfigs = subordinateConfigs;
+            TerraformLabels = terraformLabels;
             Type = type;
             UpdateTime = updateTime;
         }

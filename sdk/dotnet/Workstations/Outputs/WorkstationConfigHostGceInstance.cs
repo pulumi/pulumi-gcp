@@ -49,6 +49,10 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>
+        /// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+        /// </summary>
+        public readonly ImmutableArray<string> ServiceAccountScopes;
+        /// <summary>
         /// A set of Compute Engine Shielded instance options.
         /// Structure is documented below.
         /// </summary>
@@ -76,6 +80,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             string? serviceAccount,
 
+            ImmutableArray<string> serviceAccountScopes,
+
             Outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig? shieldedInstanceConfig,
 
             ImmutableArray<string> tags)
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             MachineType = machineType;
             PoolSize = poolSize;
             ServiceAccount = serviceAccount;
+            ServiceAccountScopes = serviceAccountScopes;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Tags = tags;
         }

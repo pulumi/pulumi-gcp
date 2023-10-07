@@ -14,6 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKMSCryptoKeyResult {
     private String destroyScheduledDuration;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -36,11 +37,15 @@ public final class GetKMSCryptoKeyResult {
      */
     private String rotationPeriod;
     private Boolean skipInitialVersionCreation;
+    private Map<String,String> terraformLabels;
     private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
 
     private GetKMSCryptoKeyResult() {}
     public String destroyScheduledDuration() {
         return this.destroyScheduledDuration;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -80,6 +85,9 @@ public final class GetKMSCryptoKeyResult {
     public Boolean skipInitialVersionCreation() {
         return this.skipInitialVersionCreation;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public List<GetKMSCryptoKeyVersionTemplate> versionTemplates() {
         return this.versionTemplates;
     }
@@ -94,6 +102,7 @@ public final class GetKMSCryptoKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String destroyScheduledDuration;
+        private Map<String,String> effectiveLabels;
         private String id;
         private Boolean importOnly;
         private String keyRing;
@@ -102,11 +111,13 @@ public final class GetKMSCryptoKeyResult {
         private String purpose;
         private String rotationPeriod;
         private Boolean skipInitialVersionCreation;
+        private Map<String,String> terraformLabels;
         private List<GetKMSCryptoKeyVersionTemplate> versionTemplates;
         public Builder() {}
         public Builder(GetKMSCryptoKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destroyScheduledDuration = defaults.destroyScheduledDuration;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.importOnly = defaults.importOnly;
     	      this.keyRing = defaults.keyRing;
@@ -115,12 +126,18 @@ public final class GetKMSCryptoKeyResult {
     	      this.purpose = defaults.purpose;
     	      this.rotationPeriod = defaults.rotationPeriod;
     	      this.skipInitialVersionCreation = defaults.skipInitialVersionCreation;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.versionTemplates = defaults.versionTemplates;
         }
 
         @CustomType.Setter
         public Builder destroyScheduledDuration(String destroyScheduledDuration) {
             this.destroyScheduledDuration = Objects.requireNonNull(destroyScheduledDuration);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -164,6 +181,11 @@ public final class GetKMSCryptoKeyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder versionTemplates(List<GetKMSCryptoKeyVersionTemplate> versionTemplates) {
             this.versionTemplates = Objects.requireNonNull(versionTemplates);
             return this;
@@ -174,6 +196,7 @@ public final class GetKMSCryptoKeyResult {
         public GetKMSCryptoKeyResult build() {
             final var o = new GetKMSCryptoKeyResult();
             o.destroyScheduledDuration = destroyScheduledDuration;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.importOnly = importOnly;
             o.keyRing = keyRing;
@@ -182,6 +205,7 @@ public final class GetKMSCryptoKeyResult {
             o.purpose = purpose;
             o.rotationPeriod = rotationPeriod;
             o.skipInitialVersionCreation = skipInitialVersionCreation;
+            o.terraformLabels = terraformLabels;
             o.versionTemplates = versionTemplates;
             return o;
         }

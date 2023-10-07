@@ -64,16 +64,16 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      * 
      */
     @Import(name="enableEndpointIndependentMapping")
     private @Nullable Output<Boolean> enableEndpointIndependentMapping;
 
     /**
-     * @return Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     * @return Enable endpoint independent mapping.
+     * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
      * 
      */
     public Optional<Output<Boolean>> enableEndpointIndependentMapping() {
@@ -373,6 +373,25 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      * 
      */
@@ -409,6 +428,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         this.tcpEstablishedIdleTimeoutSec = $.tcpEstablishedIdleTimeoutSec;
         this.tcpTimeWaitTimeoutSec = $.tcpTimeWaitTimeoutSec;
         this.tcpTransitoryIdleTimeoutSec = $.tcpTransitoryIdleTimeoutSec;
+        this.type = $.type;
         this.udpIdleTimeoutSec = $.udpIdleTimeoutSec;
     }
 
@@ -496,8 +516,8 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableEndpointIndependentMapping Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-         * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+         * @param enableEndpointIndependentMapping Enable endpoint independent mapping.
+         * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
          * 
          * @return builder
          * 
@@ -508,8 +528,8 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableEndpointIndependentMapping Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-         * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+         * @param enableEndpointIndependentMapping Enable endpoint independent mapping.
+         * For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
          * 
          * @return builder
          * 
@@ -938,6 +958,31 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tcpTransitoryIdleTimeoutSec(Integer tcpTransitoryIdleTimeoutSec) {
             return tcpTransitoryIdleTimeoutSec(Output.of(tcpTransitoryIdleTimeoutSec));
+        }
+
+        /**
+         * @param type Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+         * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+         * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
+         * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
+         * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

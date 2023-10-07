@@ -487,7 +487,7 @@ class _InstanceState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
@@ -550,7 +550,7 @@ class _InstanceState:
                be different from [locationId].
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
@@ -642,8 +642,8 @@ class _InstanceState:
             pulumi.set(__self__, "location_id", location_id)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
-        if maintenance_schedule is not None:
-            pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
+        if maintenance_schedules is not None:
+            pulumi.set(__self__, "maintenance_schedules", maintenance_schedules)
         if memory_size_gb is not None:
             pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if name is not None:
@@ -880,17 +880,17 @@ class _InstanceState:
         pulumi.set(self, "maintenance_policy", value)
 
     @property
-    @pulumi.getter(name="maintenanceSchedule")
-    def maintenance_schedule(self) -> Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]:
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
         """
-        return pulumi.get(self, "maintenance_schedule")
+        return pulumi.get(self, "maintenance_schedules")
 
-    @maintenance_schedule.setter
-    def maintenance_schedule(self, value: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]):
-        pulumi.set(self, "maintenance_schedule", value)
+    @maintenance_schedules.setter
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+        pulumi.set(self, "maintenance_schedules", value)
 
     @property
     @pulumi.getter(name="memorySizeGb")
@@ -1695,7 +1695,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["current_location_id"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["host"] = None
-            __props__.__dict__["maintenance_schedule"] = None
+            __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["nodes"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
@@ -1729,7 +1729,7 @@ class Instance(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-            maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]]] = None,
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
@@ -1797,7 +1797,7 @@ class Instance(pulumi.CustomResource):
                be different from [locationId].
         :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']] maintenance_schedule: Upcoming maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
@@ -1879,7 +1879,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location_id"] = location_id
         __props__.__dict__["maintenance_policy"] = maintenance_policy
-        __props__.__dict__["maintenance_schedule"] = maintenance_schedule
+        __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["memory_size_gb"] = memory_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["nodes"] = nodes
@@ -2041,13 +2041,13 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "maintenance_policy")
 
     @property
-    @pulumi.getter(name="maintenanceSchedule")
-    def maintenance_schedule(self) -> pulumi.Output['outputs.InstanceMaintenanceSchedule']:
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.InstanceMaintenanceSchedule']]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
         """
-        return pulumi.get(self, "maintenance_schedule")
+        return pulumi.get(self, "maintenance_schedules")
 
     @property
     @pulumi.getter(name="memorySizeGb")

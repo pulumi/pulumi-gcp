@@ -6,7 +6,6 @@ package com.pulumi.gcp.secretmanager.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.secretmanager.outputs.SecretReplicationAuto;
 import com.pulumi.gcp.secretmanager.outputs.SecretReplicationUserManaged;
-import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,18 +18,6 @@ public final class SecretReplication {
      * 
      */
     private @Nullable SecretReplicationAuto auto;
-    /**
-     * @return (Optional, Deprecated)
-     * The Secret will automatically be replicated without any restrictions.
-     * 
-     * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     * @deprecated
-     * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     */
-    @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
-    private @Nullable Boolean automatic;
     /**
      * @return The Secret will be replicated to the regions specified by the user.
      * Structure is documented below.
@@ -46,20 +33,6 @@ public final class SecretReplication {
      */
     public Optional<SecretReplicationAuto> auto() {
         return Optional.ofNullable(this.auto);
-    }
-    /**
-     * @return (Optional, Deprecated)
-     * The Secret will automatically be replicated without any restrictions.
-     * 
-     * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     * @deprecated
-     * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     */
-    @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
-    public Optional<Boolean> automatic() {
-        return Optional.ofNullable(this.automatic);
     }
     /**
      * @return The Secret will be replicated to the regions specified by the user.
@@ -80,24 +53,17 @@ public final class SecretReplication {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable SecretReplicationAuto auto;
-        private @Nullable Boolean automatic;
         private @Nullable SecretReplicationUserManaged userManaged;
         public Builder() {}
         public Builder(SecretReplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auto = defaults.auto;
-    	      this.automatic = defaults.automatic;
     	      this.userManaged = defaults.userManaged;
         }
 
         @CustomType.Setter
         public Builder auto(@Nullable SecretReplicationAuto auto) {
             this.auto = auto;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder automatic(@Nullable Boolean automatic) {
-            this.automatic = automatic;
             return this;
         }
         @CustomType.Setter
@@ -108,7 +74,6 @@ public final class SecretReplication {
         public SecretReplication build() {
             final var o = new SecretReplication();
             o.auto = auto;
-            o.automatic = automatic;
             o.userManaged = userManaged;
             return o;
         }

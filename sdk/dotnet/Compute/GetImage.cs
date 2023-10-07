@@ -230,9 +230,6 @@ namespace Pulumi.Gcp.Compute
         /// A fingerprint for the labels being applied to this image.
         /// </summary>
         public readonly string LabelFingerprint;
-        /// <summary>
-        /// A map of labels applied to this image.
-        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// A list of applicable license URI.

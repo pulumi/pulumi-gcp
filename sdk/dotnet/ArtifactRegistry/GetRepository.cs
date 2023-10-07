@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string CreateTime;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetRepositoryDockerConfigResult> DockerConfigs;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Format;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -156,6 +157,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigResult> RemoteRepositoryConfigs;
         public readonly string RepositoryId;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
         public readonly ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> VirtualRepositoryConfigs;
 
@@ -170,6 +172,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
             string description,
 
             ImmutableArray<Outputs.GetRepositoryDockerConfigResult> dockerConfigs,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string format,
 
@@ -193,6 +197,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             string repositoryId,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string updateTime,
 
             ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> virtualRepositoryConfigs)
@@ -202,6 +208,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             CreateTime = createTime;
             Description = description;
             DockerConfigs = dockerConfigs;
+            EffectiveLabels = effectiveLabels;
             Format = format;
             Id = id;
             KmsKeyName = kmsKeyName;
@@ -213,6 +220,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             Project = project;
             RemoteRepositoryConfigs = remoteRepositoryConfigs;
             RepositoryId = repositoryId;
+            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
             VirtualRepositoryConfigs = virtualRepositoryConfigs;
         }

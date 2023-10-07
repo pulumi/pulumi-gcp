@@ -164,6 +164,13 @@ namespace Pulumi.Gcp.Compute
         public Output<int> DiskSizeGb { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used
         /// internally during updates.
         /// </summary>
@@ -172,6 +179,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this Snapshot.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -265,6 +274,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
 
         /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
+
+        /// <summary>
         /// A reference to the zone where the disk is hosted.
         /// </summary>
         [Output("zone")]
@@ -338,6 +354,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this Snapshot.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -453,6 +471,19 @@ namespace Pulumi.Gcp.Compute
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used
         /// internally during updates.
@@ -465,6 +496,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Labels to apply to this Snapshot.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -570,6 +603,19 @@ namespace Pulumi.Gcp.Compute
         {
             get => _storageLocations ?? (_storageLocations = new InputList<string>());
             set => _storageLocations = value;
+        }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
         }
 
         /// <summary>

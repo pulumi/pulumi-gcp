@@ -57,8 +57,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
 
     /**
      * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-     * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-     * deprecated `enable_binary_authorization` parameter being set to `true`.
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
      * 
      */
     @Import(name="evaluationMode")
@@ -66,8 +65,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
 
     /**
      * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-     * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-     * deprecated `enable_binary_authorization` parameter being set to `true`.
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
      * 
      */
     public Optional<Output<String>> evaluationMode() {
@@ -146,8 +144,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
 
         /**
          * @param evaluationMode Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-         * deprecated `enable_binary_authorization` parameter being set to `true`.
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          * 
          * @return builder
          * 
@@ -159,8 +156,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
 
         /**
          * @param evaluationMode Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-         * and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-         * deprecated `enable_binary_authorization` parameter being set to `true`.
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          * 
          * @return builder
          * 

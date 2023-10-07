@@ -121,6 +121,7 @@ namespace Pulumi.Gcp.CertificateManager
     {
         public readonly string CreateTime;
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetCertificateMapGclbTargetResult> GclbTargets;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -129,6 +130,7 @@ namespace Pulumi.Gcp.CertificateManager
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         public readonly string? Project;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string UpdateTime;
 
         [OutputConstructor]
@@ -136,6 +138,8 @@ namespace Pulumi.Gcp.CertificateManager
             string createTime,
 
             string description,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             ImmutableArray<Outputs.GetCertificateMapGclbTargetResult> gclbTargets,
 
@@ -147,15 +151,19 @@ namespace Pulumi.Gcp.CertificateManager
 
             string? project,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string updateTime)
         {
             CreateTime = createTime;
             Description = description;
+            EffectiveLabels = effectiveLabels;
             GclbTargets = gclbTargets;
             Id = id;
             Labels = labels;
             Name = name;
             Project = project;
+            TerraformLabels = terraformLabels;
             UpdateTime = updateTime;
         }
     }

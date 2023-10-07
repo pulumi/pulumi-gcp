@@ -21,6 +21,9 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
      * labels can be associated with a given resource. Label keys and values can
      * be no longer than 63 characters.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
@@ -29,6 +32,9 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
      * @return Resource labels associated with this Namespace. No more than 64 user
      * labels can be associated with a given resource. Label keys and values can
      * be no longer than 63 characters.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -124,6 +130,9 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
          * labels can be associated with a given resource. Label keys and values can
          * be no longer than 63 characters.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -136,6 +145,9 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
          * @param labels Resource labels associated with this Namespace. No more than 64 user
          * labels can be associated with a given resource. Label keys and values can
          * be no longer than 63 characters.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

@@ -80,6 +80,9 @@ namespace Pulumi.Gcp.Sql.Inputs
             }
         }
 
+        /// <summary>
+        /// Permissible ciphers for use in SSL encryption.
+        /// </summary>
         [Input("sslCipher")]
         public Input<string>? SslCipher { get; set; }
 

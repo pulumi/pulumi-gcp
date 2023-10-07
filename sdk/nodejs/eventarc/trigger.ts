@@ -163,7 +163,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    public readonly transports!: pulumi.Output<outputs.eventarc.TriggerTransport[]>;
+    public readonly transport!: pulumi.Output<outputs.eventarc.TriggerTransport>;
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
@@ -200,7 +200,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
-            resourceInputs["transports"] = state ? state.transports : undefined;
+            resourceInputs["transport"] = state ? state.transport : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -223,7 +223,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["transports"] = args ? args.transports : undefined;
+            resourceInputs["transport"] = args ? args.transport : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -304,7 +304,7 @@ export interface TriggerState {
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
+    transport?: pulumi.Input<inputs.eventarc.TriggerTransport>;
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
@@ -361,5 +361,5 @@ export interface TriggerArgs {
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
+    transport?: pulumi.Input<inputs.eventarc.TriggerTransport>;
 }

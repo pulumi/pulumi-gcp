@@ -160,10 +160,10 @@ namespace Pulumi.Gcp.Container
         public readonly string DatapathProvider;
         public readonly int DefaultMaxPodsPerNode;
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
+        public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
         public readonly bool EnableAutopilot;
-        public readonly bool EnableBinaryAuthorization;
         public readonly bool EnableFqdnNetworkPolicy;
         public readonly bool EnableIntranodeVisibility;
         public readonly ImmutableArray<Outputs.GetClusterEnableK8sBetaApiResult> EnableK8sBetaApis;
@@ -253,13 +253,13 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> defaultSnatStatuses,
 
+            bool deletionProtection,
+
             string description,
 
             ImmutableArray<Outputs.GetClusterDnsConfigResult> dnsConfigs,
 
             bool enableAutopilot,
-
-            bool enableBinaryAuthorization,
 
             bool enableFqdnNetworkPolicy,
 
@@ -388,10 +388,10 @@ namespace Pulumi.Gcp.Container
             DatapathProvider = datapathProvider;
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             DefaultSnatStatuses = defaultSnatStatuses;
+            DeletionProtection = deletionProtection;
             Description = description;
             DnsConfigs = dnsConfigs;
             EnableAutopilot = enableAutopilot;
-            EnableBinaryAuthorization = enableBinaryAuthorization;
             EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             EnableIntranodeVisibility = enableIntranodeVisibility;
             EnableK8sBetaApis = enableK8sBetaApis;

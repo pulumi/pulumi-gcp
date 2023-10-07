@@ -37,6 +37,23 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The time at which the channel will be automatically deleted. If null, the channel
      * will not be automatically deleted. This field is present in the output whether it&#39;s
      * set directly or via the `ttl` field.
@@ -57,6 +74,8 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Text labels used for extra metadata and/or filtering
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -64,6 +83,8 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Text labels used for extra metadata and/or filtering
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -120,6 +141,23 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * Input only. A time-to-live for this channel. Sets `expire_time` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by &#39;s&#39;. Example: &#34;86400s&#34; (one day).
@@ -142,11 +180,13 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
 
     private HostingChannelState(HostingChannelState $) {
         this.channelId = $.channelId;
+        this.effectiveLabels = $.effectiveLabels;
         this.expireTime = $.expireTime;
         this.labels = $.labels;
         this.name = $.name;
         this.retainedReleaseCount = $.retainedReleaseCount;
         this.siteId = $.siteId;
+        this.terraformLabels = $.terraformLabels;
         this.ttl = $.ttl;
     }
 
@@ -194,6 +234,29 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param expireTime The time at which the channel will be automatically deleted. If null, the channel
          * will not be automatically deleted. This field is present in the output whether it&#39;s
          * set directly or via the `ttl` field.
@@ -220,6 +283,8 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param labels Text labels used for extra metadata and/or filtering
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -231,6 +296,8 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param labels Text labels used for extra metadata and/or filtering
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -304,6 +371,29 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
          */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

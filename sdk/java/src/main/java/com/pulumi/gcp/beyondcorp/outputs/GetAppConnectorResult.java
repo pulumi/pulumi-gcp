@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppConnectorResult {
     private String displayName;
+    private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,10 +27,14 @@ public final class GetAppConnectorResult {
     private @Nullable String project;
     private @Nullable String region;
     private String state;
+    private Map<String,String> terraformLabels;
 
     private GetAppConnectorResult() {}
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -56,6 +61,9 @@ public final class GetAppConnectorResult {
     public String state() {
         return this.state;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,6 +75,7 @@ public final class GetAppConnectorResult {
     @CustomType.Builder
     public static final class Builder {
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private String id;
         private Map<String,String> labels;
         private String name;
@@ -74,10 +83,12 @@ public final class GetAppConnectorResult {
         private @Nullable String project;
         private @Nullable String region;
         private String state;
+        private Map<String,String> terraformLabels;
         public Builder() {}
         public Builder(GetAppConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
@@ -85,11 +96,17 @@ public final class GetAppConnectorResult {
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
+    	      this.terraformLabels = defaults.terraformLabels;
         }
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -130,9 +147,15 @@ public final class GetAppConnectorResult {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
         public GetAppConnectorResult build() {
             final var o = new GetAppConnectorResult();
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.id = id;
             o.labels = labels;
             o.name = name;
@@ -140,6 +163,7 @@ public final class GetAppConnectorResult {
             o.project = project;
             o.region = region;
             o.state = state;
+            o.terraformLabels = terraformLabels;
             return o;
         }
     }

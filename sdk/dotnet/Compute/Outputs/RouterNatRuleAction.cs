@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// This field is used for public NAT.
         /// </summary>
         public readonly ImmutableArray<string> SourceNatActiveIps;
+        public readonly ImmutableArray<string> SourceNatActiveRanges;
         /// <summary>
         /// A list of URLs of the IP resources to be drained.
         /// These IPs must be valid static external IPs that have been assigned to the NAT.
@@ -26,15 +27,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// This field is used for public NAT.
         /// </summary>
         public readonly ImmutableArray<string> SourceNatDrainIps;
+        public readonly ImmutableArray<string> SourceNatDrainRanges;
 
         [OutputConstructor]
         private RouterNatRuleAction(
             ImmutableArray<string> sourceNatActiveIps,
 
-            ImmutableArray<string> sourceNatDrainIps)
+            ImmutableArray<string> sourceNatActiveRanges,
+
+            ImmutableArray<string> sourceNatDrainIps,
+
+            ImmutableArray<string> sourceNatDrainRanges)
         {
             SourceNatActiveIps = sourceNatActiveIps;
+            SourceNatActiveRanges = sourceNatActiveRanges;
             SourceNatDrainIps = sourceNatDrainIps;
+            SourceNatDrainRanges = sourceNatDrainRanges;
         }
     }
 }

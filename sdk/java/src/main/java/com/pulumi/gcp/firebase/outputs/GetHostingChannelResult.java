@@ -12,6 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHostingChannelResult {
     private String channelId;
+    private Map<String,String> effectiveLabels;
     private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -26,11 +27,15 @@ public final class GetHostingChannelResult {
     private String name;
     private Integer retainedReleaseCount;
     private String siteId;
+    private Map<String,String> terraformLabels;
     private String ttl;
 
     private GetHostingChannelResult() {}
     public String channelId() {
         return this.channelId;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String expireTime() {
         return this.expireTime;
@@ -58,6 +63,9 @@ public final class GetHostingChannelResult {
     public String siteId() {
         return this.siteId;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String ttl() {
         return this.ttl;
     }
@@ -72,29 +80,38 @@ public final class GetHostingChannelResult {
     @CustomType.Builder
     public static final class Builder {
         private String channelId;
+        private Map<String,String> effectiveLabels;
         private String expireTime;
         private String id;
         private Map<String,String> labels;
         private String name;
         private Integer retainedReleaseCount;
         private String siteId;
+        private Map<String,String> terraformLabels;
         private String ttl;
         public Builder() {}
         public Builder(GetHostingChannelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channelId = defaults.channelId;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.retainedReleaseCount = defaults.retainedReleaseCount;
     	      this.siteId = defaults.siteId;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.ttl = defaults.ttl;
         }
 
         @CustomType.Setter
         public Builder channelId(String channelId) {
             this.channelId = Objects.requireNonNull(channelId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -128,6 +145,11 @@ public final class GetHostingChannelResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder ttl(String ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
@@ -135,12 +157,14 @@ public final class GetHostingChannelResult {
         public GetHostingChannelResult build() {
             final var o = new GetHostingChannelResult();
             o.channelId = channelId;
+            o.effectiveLabels = effectiveLabels;
             o.expireTime = expireTime;
             o.id = id;
             o.labels = labels;
             o.name = name;
             o.retainedReleaseCount = retainedReleaseCount;
             o.siteId = siteId;
+            o.terraformLabels = terraformLabels;
             o.ttl = ttl;
             return o;
         }

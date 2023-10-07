@@ -303,7 +303,7 @@ export class Instance extends pulumi.CustomResource {
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule>;
+    public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule[]>;
     /**
      * Redis memory size in GiB.
      *
@@ -453,7 +453,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["locationId"] = state ? state.locationId : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["maintenanceSchedule"] = state ? state.maintenanceSchedule : undefined;
+            resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
             resourceInputs["memorySizeGb"] = state ? state.memorySizeGb : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
@@ -506,7 +506,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["currentLocationId"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
-            resourceInputs["maintenanceSchedule"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedules"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
             resourceInputs["persistenceIamIdentity"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
@@ -612,7 +612,7 @@ export interface InstanceState {
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    maintenanceSchedule?: pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>;
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>[]>;
     /**
      * Redis memory size in GiB.
      *

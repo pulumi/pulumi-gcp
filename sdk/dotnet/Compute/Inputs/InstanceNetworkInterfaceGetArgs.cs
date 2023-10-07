@@ -76,6 +76,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
+
         /// <summary>
         /// The private IP address to assign to the instance. If
         /// empty, the address will be automatically assigned.
@@ -94,6 +97,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("queueCount")]
         public Input<int>? QueueCount { get; set; }
+
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.

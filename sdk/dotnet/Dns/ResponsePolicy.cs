@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.Dns
     ///             ClusterSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
     ///             ServicesSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     ///     var example_response_policy = new Gcp.Dns.ResponsePolicy("example-response-policy", new()

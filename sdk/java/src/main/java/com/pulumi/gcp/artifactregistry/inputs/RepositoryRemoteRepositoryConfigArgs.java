@@ -5,10 +5,12 @@ package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigMavenRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNpmRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +20,23 @@ import javax.annotation.Nullable;
 public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RepositoryRemoteRepositoryConfigArgs Empty = new RepositoryRemoteRepositoryConfigArgs();
+
+    /**
+     * Specific settings for an Apt remote repository.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="aptRepository")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigAptRepositoryArgs> aptRepository;
+
+    /**
+     * @return Specific settings for an Apt remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigAptRepositoryArgs>> aptRepository() {
+        return Optional.ofNullable(this.aptRepository);
+    }
 
     /**
      * The description of the remote source.
@@ -102,14 +121,33 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
         return Optional.ofNullable(this.pythonRepository);
     }
 
+    /**
+     * Specific settings for an Yum remote repository.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="yumRepository")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigYumRepositoryArgs> yumRepository;
+
+    /**
+     * @return Specific settings for an Yum remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigYumRepositoryArgs>> yumRepository() {
+        return Optional.ofNullable(this.yumRepository);
+    }
+
     private RepositoryRemoteRepositoryConfigArgs() {}
 
     private RepositoryRemoteRepositoryConfigArgs(RepositoryRemoteRepositoryConfigArgs $) {
+        this.aptRepository = $.aptRepository;
         this.description = $.description;
         this.dockerRepository = $.dockerRepository;
         this.mavenRepository = $.mavenRepository;
         this.npmRepository = $.npmRepository;
         this.pythonRepository = $.pythonRepository;
+        this.yumRepository = $.yumRepository;
     }
 
     public static Builder builder() {
@@ -128,6 +166,29 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
 
         public Builder(RepositoryRemoteRepositoryConfigArgs defaults) {
             $ = new RepositoryRemoteRepositoryConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aptRepository Specific settings for an Apt remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aptRepository(@Nullable Output<RepositoryRemoteRepositoryConfigAptRepositoryArgs> aptRepository) {
+            $.aptRepository = aptRepository;
+            return this;
+        }
+
+        /**
+         * @param aptRepository Specific settings for an Apt remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aptRepository(RepositoryRemoteRepositoryConfigAptRepositoryArgs aptRepository) {
+            return aptRepository(Output.of(aptRepository));
         }
 
         /**
@@ -241,6 +302,29 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
          */
         public Builder pythonRepository(RepositoryRemoteRepositoryConfigPythonRepositoryArgs pythonRepository) {
             return pythonRepository(Output.of(pythonRepository));
+        }
+
+        /**
+         * @param yumRepository Specific settings for an Yum remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yumRepository(@Nullable Output<RepositoryRemoteRepositoryConfigYumRepositoryArgs> yumRepository) {
+            $.yumRepository = yumRepository;
+            return this;
+        }
+
+        /**
+         * @param yumRepository Specific settings for an Yum remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yumRepository(RepositoryRemoteRepositoryConfigYumRepositoryArgs yumRepository) {
+            return yumRepository(Output.of(yumRepository));
         }
 
         public RepositoryRemoteRepositoryConfigArgs build() {

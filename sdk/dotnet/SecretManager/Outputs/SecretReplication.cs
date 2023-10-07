@@ -19,13 +19,6 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// </summary>
         public readonly Outputs.SecretReplicationAuto? Auto;
         /// <summary>
-        /// (Optional, Deprecated)
-        /// The Secret will automatically be replicated without any restrictions.
-        /// 
-        /// &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-        /// </summary>
-        public readonly bool? Automatic;
-        /// <summary>
         /// The Secret will be replicated to the regions specified by the user.
         /// Structure is documented below.
         /// </summary>
@@ -35,12 +28,9 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         private SecretReplication(
             Outputs.SecretReplicationAuto? auto,
 
-            bool? automatic,
-
             Outputs.SecretReplicationUserManaged? userManaged)
         {
             Auto = auto;
-            Automatic = automatic;
             UserManaged = userManaged;
         }
     }

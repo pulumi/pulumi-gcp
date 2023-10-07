@@ -67,6 +67,23 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
      * to the referenced `target`.
@@ -213,12 +230,18 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     /**
      * Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -556,12 +579,30 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.target);
     }
 
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
     private GlobalForwardingRuleState() {}
 
     private GlobalForwardingRuleState(GlobalForwardingRuleState $) {
         this.allowPscGlobalAccess = $.allowPscGlobalAccess;
         this.baseForwardingRule = $.baseForwardingRule;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.ipAddress = $.ipAddress;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
@@ -580,6 +621,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         this.sourceIpRanges = $.sourceIpRanges;
         this.subnetwork = $.subnetwork;
         this.target = $.target;
+        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -663,6 +705,29 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -836,6 +901,9 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         /**
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -846,6 +914,9 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
 
         /**
          * @param labels Labels to apply to this forwarding rule.  A list of key-&gt;value pairs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -1295,6 +1366,29 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          */
         public Builder target(String target) {
             return target(Output.of(target));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         public GlobalForwardingRuleState build() {

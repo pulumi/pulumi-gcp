@@ -45,6 +45,14 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        [Input("effectiveTaints")]
+        private InputList<Inputs.ClusterNodeConfigEffectiveTaintArgs>? _effectiveTaints;
+        public InputList<Inputs.ClusterNodeConfigEffectiveTaintArgs> EffectiveTaints
+        {
+            get => _effectiveTaints ?? (_effectiveTaints = new InputList<Inputs.ClusterNodeConfigEffectiveTaintArgs>());
+            set => _effectiveTaints = value;
+        }
+
         /// <summary>
         /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 

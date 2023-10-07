@@ -142,10 +142,8 @@ namespace Pulumi.Gcp.Monitoring
     public partial class Dashboard : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-        /// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-        /// 
-        /// - - -
+        /// The JSON representation of a dashboard, following the format at
+        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         /// </summary>
         [Output("dashboardJson")]
         public Output<string> DashboardJson { get; private set; } = null!;
@@ -204,10 +202,8 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-        /// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-        /// 
-        /// - - -
+        /// The JSON representation of a dashboard, following the format at
+        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         /// </summary>
         [Input("dashboardJson", required: true)]
         public Input<string> DashboardJson { get; set; } = null!;
@@ -228,10 +224,8 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class DashboardState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
-        /// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
-        /// 
-        /// - - -
+        /// The JSON representation of a dashboard, following the format at
+        /// https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         /// </summary>
         [Input("dashboardJson")]
         public Input<string>? DashboardJson { get; set; }

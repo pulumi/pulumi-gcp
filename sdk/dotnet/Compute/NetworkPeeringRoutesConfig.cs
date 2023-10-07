@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.Compute
     ///             ClusterSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
     ///             ServicesSecondaryRangeName = containerSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     ///     var peeringGkeRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringGkeRoutes", new()

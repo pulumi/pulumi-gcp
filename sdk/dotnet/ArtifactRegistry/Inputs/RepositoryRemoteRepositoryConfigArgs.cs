@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryRemoteRepositoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specific settings for an Apt remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("aptRepository")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs>? AptRepository { get; set; }
+
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         [Input("description")]
@@ -45,6 +52,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         /// </summary>
         [Input("pythonRepository")]
         public Input<Inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs>? PythonRepository { get; set; }
+
+        /// <summary>
+        /// Specific settings for an Yum remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("yumRepository")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs>? YumRepository { get; set; }
 
         public RepositoryRemoteRepositoryConfigArgs()
         {

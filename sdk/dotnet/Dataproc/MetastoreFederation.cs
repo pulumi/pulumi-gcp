@@ -139,6 +139,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.MetastoreFederationBackendMetastore>> BackendMetastores { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the endpoint used to access the metastore federation.
         /// </summary>
         [Output("endpointUri")]
@@ -154,6 +161,8 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// User-defined labels for the metastore federation.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -188,6 +197,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("stateMessage")]
         public Output<string> StateMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The globally unique resource identifier of the metastore federation.
@@ -273,6 +289,8 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// User-defined labels for the metastore federation.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -320,6 +338,19 @@ namespace Pulumi.Gcp.Dataproc
             set => _backendMetastores = value;
         }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The URI of the endpoint used to access the metastore federation.
         /// </summary>
@@ -339,6 +370,8 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// User-defined labels for the metastore federation.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -376,6 +409,19 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("stateMessage")]
         public Input<string>? StateMessage { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// The globally unique resource identifier of the metastore federation.

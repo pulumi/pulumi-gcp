@@ -225,16 +225,16 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
-    @Import(name="routineType")
-    private @Nullable Output<String> routineType;
+    @Import(name="routineType", required=true)
+    private Output<String> routineType;
 
     /**
      * @return The type of routine.
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
-    public Optional<Output<String>> routineType() {
-        return Optional.ofNullable(this.routineType);
+    public Output<String> routineType() {
+        return this.routineType;
     }
 
     private RoutineArgs() {}
@@ -570,7 +570,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder routineType(@Nullable Output<String> routineType) {
+        public Builder routineType(Output<String> routineType) {
             $.routineType = routineType;
             return this;
         }
@@ -590,6 +590,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
             $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
             $.definitionBody = Objects.requireNonNull($.definitionBody, "expected parameter 'definitionBody' to be non-null");
             $.routineId = Objects.requireNonNull($.routineId, "expected parameter 'routineId' to be non-null");
+            $.routineType = Objects.requireNonNull($.routineType, "expected parameter 'routineType' to be non-null");
             return $;
         }
     }

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 public final class GetSecretResult {
     private Map<String,String> annotations;
     private String createTime;
+    private Map<String,String> effectiveAnnotations;
+    private Map<String,String> effectiveLabels;
     private String expireTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -30,6 +32,7 @@ public final class GetSecretResult {
     private List<GetSecretReplication> replications;
     private List<GetSecretRotation> rotations;
     private String secretId;
+    private Map<String,String> terraformLabels;
     private List<GetSecretTopic> topics;
     private String ttl;
     private Map<String,String> versionAliases;
@@ -40,6 +43,12 @@ public final class GetSecretResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public Map<String,String> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String expireTime() {
         return this.expireTime;
@@ -69,6 +78,9 @@ public final class GetSecretResult {
     public String secretId() {
         return this.secretId;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public List<GetSecretTopic> topics() {
         return this.topics;
     }
@@ -90,6 +102,8 @@ public final class GetSecretResult {
     public static final class Builder {
         private Map<String,String> annotations;
         private String createTime;
+        private Map<String,String> effectiveAnnotations;
+        private Map<String,String> effectiveLabels;
         private String expireTime;
         private String id;
         private Map<String,String> labels;
@@ -98,6 +112,7 @@ public final class GetSecretResult {
         private List<GetSecretReplication> replications;
         private List<GetSecretRotation> rotations;
         private String secretId;
+        private Map<String,String> terraformLabels;
         private List<GetSecretTopic> topics;
         private String ttl;
         private Map<String,String> versionAliases;
@@ -106,6 +121,8 @@ public final class GetSecretResult {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
+    	      this.effectiveAnnotations = defaults.effectiveAnnotations;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -114,6 +131,7 @@ public final class GetSecretResult {
     	      this.replications = defaults.replications;
     	      this.rotations = defaults.rotations;
     	      this.secretId = defaults.secretId;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
     	      this.versionAliases = defaults.versionAliases;
@@ -127,6 +145,16 @@ public final class GetSecretResult {
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -176,6 +204,11 @@ public final class GetSecretResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder topics(List<GetSecretTopic> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
@@ -197,6 +230,8 @@ public final class GetSecretResult {
             final var o = new GetSecretResult();
             o.annotations = annotations;
             o.createTime = createTime;
+            o.effectiveAnnotations = effectiveAnnotations;
+            o.effectiveLabels = effectiveLabels;
             o.expireTime = expireTime;
             o.id = id;
             o.labels = labels;
@@ -205,6 +240,7 @@ public final class GetSecretResult {
             o.replications = replications;
             o.rotations = rotations;
             o.secretId = secretId;
+            o.terraformLabels = terraformLabels;
             o.topics = topics;
             o.ttl = ttl;
             o.versionAliases = versionAliases;

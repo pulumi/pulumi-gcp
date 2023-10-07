@@ -25,6 +25,7 @@ public final class GetBucketResult {
     private List<GetBucketCor> cors;
     private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
     private Boolean defaultEventBasedHold;
+    private Map<String,String> effectiveLabels;
     private List<GetBucketEncryption> encryptions;
     private Boolean forceDestroy;
     /**
@@ -43,6 +44,7 @@ public final class GetBucketResult {
     private List<GetBucketRetentionPolicy> retentionPolicies;
     private String selfLink;
     private String storageClass;
+    private Map<String,String> terraformLabels;
     private Boolean uniformBucketLevelAccess;
     private String url;
     private List<GetBucketVersioning> versionings;
@@ -60,6 +62,9 @@ public final class GetBucketResult {
     }
     public Boolean defaultEventBasedHold() {
         return this.defaultEventBasedHold;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public List<GetBucketEncryption> encryptions() {
         return this.encryptions;
@@ -107,6 +112,9 @@ public final class GetBucketResult {
     public String storageClass() {
         return this.storageClass;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public Boolean uniformBucketLevelAccess() {
         return this.uniformBucketLevelAccess;
     }
@@ -133,6 +141,7 @@ public final class GetBucketResult {
         private List<GetBucketCor> cors;
         private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
         private Boolean defaultEventBasedHold;
+        private Map<String,String> effectiveLabels;
         private List<GetBucketEncryption> encryptions;
         private Boolean forceDestroy;
         private String id;
@@ -147,6 +156,7 @@ public final class GetBucketResult {
         private List<GetBucketRetentionPolicy> retentionPolicies;
         private String selfLink;
         private String storageClass;
+        private Map<String,String> terraformLabels;
         private Boolean uniformBucketLevelAccess;
         private String url;
         private List<GetBucketVersioning> versionings;
@@ -158,6 +168,7 @@ public final class GetBucketResult {
     	      this.cors = defaults.cors;
     	      this.customPlacementConfigs = defaults.customPlacementConfigs;
     	      this.defaultEventBasedHold = defaults.defaultEventBasedHold;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.encryptions = defaults.encryptions;
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.id = defaults.id;
@@ -172,6 +183,7 @@ public final class GetBucketResult {
     	      this.retentionPolicies = defaults.retentionPolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.storageClass = defaults.storageClass;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.uniformBucketLevelAccess = defaults.uniformBucketLevelAccess;
     	      this.url = defaults.url;
     	      this.versionings = defaults.versionings;
@@ -205,6 +217,11 @@ public final class GetBucketResult {
         @CustomType.Setter
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
             this.defaultEventBasedHold = Objects.requireNonNull(defaultEventBasedHold);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -290,6 +307,11 @@ public final class GetBucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder uniformBucketLevelAccess(Boolean uniformBucketLevelAccess) {
             this.uniformBucketLevelAccess = Objects.requireNonNull(uniformBucketLevelAccess);
             return this;
@@ -321,6 +343,7 @@ public final class GetBucketResult {
             o.cors = cors;
             o.customPlacementConfigs = customPlacementConfigs;
             o.defaultEventBasedHold = defaultEventBasedHold;
+            o.effectiveLabels = effectiveLabels;
             o.encryptions = encryptions;
             o.forceDestroy = forceDestroy;
             o.id = id;
@@ -335,6 +358,7 @@ public final class GetBucketResult {
             o.retentionPolicies = retentionPolicies;
             o.selfLink = selfLink;
             o.storageClass = storageClass;
+            o.terraformLabels = terraformLabels;
             o.uniformBucketLevelAccess = uniformBucketLevelAccess;
             o.url = url;
             o.versionings = versionings;

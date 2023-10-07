@@ -385,6 +385,9 @@ namespace Pulumi.Gcp.Container
     {
         /// <summary>
         /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
@@ -400,6 +403,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("awsRegion")]
         public Output<string> AwsRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration options for the Binary Authorization feature.
+        /// </summary>
+        [Output("binaryAuthorization")]
+        public Output<Outputs.AwsClusterBinaryAuthorization> BinaryAuthorization { get; private set; } = null!;
 
         /// <summary>
         /// Configuration related to the cluster control plane.
@@ -418,6 +427,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        [Output("effectiveAnnotations")]
+        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The endpoint of the cluster's API server.
@@ -551,6 +567,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -569,6 +588,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("awsRegion", required: true)]
         public Input<string> AwsRegion { get; set; } = null!;
+
+        /// <summary>
+        /// Configuration options for the Binary Authorization feature.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.AwsClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Configuration related to the cluster control plane.
@@ -634,6 +659,9 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -654,6 +682,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? AwsRegion { get; set; }
 
         /// <summary>
+        /// Configuration options for the Binary Authorization feature.
+        /// </summary>
+        [Input("binaryAuthorization")]
+        public Input<Inputs.AwsClusterBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
+
+        /// <summary>
         /// Configuration related to the cluster control plane.
         /// </summary>
         [Input("controlPlane")]
@@ -670,6 +704,19 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("effectiveAnnotations")]
+        private InputMap<object>? _effectiveAnnotations;
+
+        /// <summary>
+        /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        /// Terraform, other clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveAnnotations
+        {
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            set => _effectiveAnnotations = value;
+        }
 
         /// <summary>
         /// Output only. The endpoint of the cluster's API server.

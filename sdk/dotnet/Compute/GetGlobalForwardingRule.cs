@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Compute
         public readonly bool AllowPscGlobalAccess;
         public readonly string BaseForwardingRule;
         public readonly string Description;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -144,6 +145,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<string> SourceIpRanges;
         public readonly string Subnetwork;
         public readonly string Target;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetGlobalForwardingRuleResult(
@@ -152,6 +154,8 @@ namespace Pulumi.Gcp.Compute
             string baseForwardingRule,
 
             string description,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
 
@@ -189,11 +193,14 @@ namespace Pulumi.Gcp.Compute
 
             string subnetwork,
 
-            string target)
+            string target,
+
+            ImmutableDictionary<string, string> terraformLabels)
         {
             AllowPscGlobalAccess = allowPscGlobalAccess;
             BaseForwardingRule = baseForwardingRule;
             Description = description;
+            EffectiveLabels = effectiveLabels;
             Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
@@ -213,6 +220,7 @@ namespace Pulumi.Gcp.Compute
             SourceIpRanges = sourceIpRanges;
             Subnetwork = subnetwork;
             Target = target;
+            TerraformLabels = terraformLabels;
         }
     }
 }

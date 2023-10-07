@@ -91,6 +91,23 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      * 
@@ -109,6 +126,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Labels to apply to this Snapshot.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -116,6 +135,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Labels to apply to this Snapshot.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -327,6 +348,23 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * A reference to the zone where the disk is hosted.
      * 
      */
@@ -348,6 +386,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskSizeGb = $.diskSizeGb;
+        this.effectiveLabels = $.effectiveLabels;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.licenses = $.licenses;
@@ -360,6 +399,7 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         this.sourceDiskEncryptionKey = $.sourceDiskEncryptionKey;
         this.storageBytes = $.storageBytes;
         this.storageLocations = $.storageLocations;
+        this.terraformLabels = $.terraformLabels;
         this.zone = $.zone;
     }
 
@@ -476,6 +516,29 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used
          * internally during updates.
          * 
@@ -500,6 +563,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Labels to apply to this Snapshot.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -511,6 +576,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Labels to apply to this Snapshot.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -804,6 +871,29 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storageLocations(String... storageLocations) {
             return storageLocations(List.of(storageLocations));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

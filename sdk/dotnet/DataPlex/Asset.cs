@@ -65,6 +65,11 @@ namespace Pulumi.Gcp.DataPlex
     ///             Name = "projects/my-project-name/buckets/bucket",
     ///             Type = "STORAGE_BUCKET",
     ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "env", "foo" },
+    ///             { "my-asset", "exists" },
+    ///         },
     ///         Project = "my-project-name",
     ///     }, new CustomResourceOptions
     ///     {
@@ -133,7 +138,17 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. User defined labels for the asset.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -185,6 +200,12 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
@@ -273,6 +294,9 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Optional. User defined labels for the asset.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -360,11 +384,27 @@ namespace Pulumi.Gcp.DataPlex
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set => _effectiveLabels = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Optional. User defined labels for the asset.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -431,6 +471,18 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<object>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.

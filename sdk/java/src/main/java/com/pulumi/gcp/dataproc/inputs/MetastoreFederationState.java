@@ -36,6 +36,23 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The URI of the endpoint used to access the metastore federation.
      * 
      */
@@ -71,6 +88,8 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
     /**
      * User-defined labels for the metastore federation.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -78,6 +97,8 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
     /**
      * @return User-defined labels for the metastore federation.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -162,6 +183,23 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The globally unique resource identifier of the metastore federation.
      * 
      */
@@ -195,6 +233,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
     private MetastoreFederationState(MetastoreFederationState $) {
         this.backendMetastores = $.backendMetastores;
+        this.effectiveLabels = $.effectiveLabels;
         this.endpointUri = $.endpointUri;
         this.federationId = $.federationId;
         this.labels = $.labels;
@@ -203,6 +242,7 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         this.project = $.project;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
+        this.terraformLabels = $.terraformLabels;
         this.uid = $.uid;
         this.version = $.version;
     }
@@ -260,6 +300,29 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param endpointUri The URI of the endpoint used to access the metastore federation.
          * 
          * @return builder
@@ -307,6 +370,8 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
         /**
          * @param labels User-defined labels for the metastore federation.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -318,6 +383,8 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
 
         /**
          * @param labels User-defined labels for the metastore federation.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -431,6 +498,29 @@ public final class MetastoreFederationState extends com.pulumi.resources.Resourc
          */
         public Builder stateMessage(String stateMessage) {
             return stateMessage(Output.of(stateMessage));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

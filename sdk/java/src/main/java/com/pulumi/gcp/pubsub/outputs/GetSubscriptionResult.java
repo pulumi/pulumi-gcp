@@ -25,6 +25,7 @@ public final class GetSubscriptionResult {
     private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
     private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
     private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+    private Map<String,String> effectiveLabels;
     private Boolean enableExactlyOnceDelivery;
     private Boolean enableMessageOrdering;
     private List<GetSubscriptionExpirationPolicy> expirationPolicies;
@@ -41,6 +42,7 @@ public final class GetSubscriptionResult {
     private List<GetSubscriptionPushConfig> pushConfigs;
     private Boolean retainAckedMessages;
     private List<GetSubscriptionRetryPolicy> retryPolicies;
+    private Map<String,String> terraformLabels;
     private String topic;
 
     private GetSubscriptionResult() {}
@@ -55,6 +57,9 @@ public final class GetSubscriptionResult {
     }
     public List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies() {
         return this.deadLetterPolicies;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public Boolean enableExactlyOnceDelivery() {
         return this.enableExactlyOnceDelivery;
@@ -96,6 +101,9 @@ public final class GetSubscriptionResult {
     public List<GetSubscriptionRetryPolicy> retryPolicies() {
         return this.retryPolicies;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String topic() {
         return this.topic;
     }
@@ -113,6 +121,7 @@ public final class GetSubscriptionResult {
         private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
         private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
         private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
+        private Map<String,String> effectiveLabels;
         private Boolean enableExactlyOnceDelivery;
         private Boolean enableMessageOrdering;
         private List<GetSubscriptionExpirationPolicy> expirationPolicies;
@@ -125,6 +134,7 @@ public final class GetSubscriptionResult {
         private List<GetSubscriptionPushConfig> pushConfigs;
         private Boolean retainAckedMessages;
         private List<GetSubscriptionRetryPolicy> retryPolicies;
+        private Map<String,String> terraformLabels;
         private String topic;
         public Builder() {}
         public Builder(GetSubscriptionResult defaults) {
@@ -133,6 +143,7 @@ public final class GetSubscriptionResult {
     	      this.bigqueryConfigs = defaults.bigqueryConfigs;
     	      this.cloudStorageConfigs = defaults.cloudStorageConfigs;
     	      this.deadLetterPolicies = defaults.deadLetterPolicies;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableExactlyOnceDelivery = defaults.enableExactlyOnceDelivery;
     	      this.enableMessageOrdering = defaults.enableMessageOrdering;
     	      this.expirationPolicies = defaults.expirationPolicies;
@@ -145,6 +156,7 @@ public final class GetSubscriptionResult {
     	      this.pushConfigs = defaults.pushConfigs;
     	      this.retainAckedMessages = defaults.retainAckedMessages;
     	      this.retryPolicies = defaults.retryPolicies;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.topic = defaults.topic;
         }
 
@@ -176,6 +188,11 @@ public final class GetSubscriptionResult {
         }
         public Builder deadLetterPolicies(GetSubscriptionDeadLetterPolicy... deadLetterPolicies) {
             return deadLetterPolicies(List.of(deadLetterPolicies));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder enableExactlyOnceDelivery(Boolean enableExactlyOnceDelivery) {
@@ -247,6 +264,11 @@ public final class GetSubscriptionResult {
             return retryPolicies(List.of(retryPolicies));
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
@@ -257,6 +279,7 @@ public final class GetSubscriptionResult {
             o.bigqueryConfigs = bigqueryConfigs;
             o.cloudStorageConfigs = cloudStorageConfigs;
             o.deadLetterPolicies = deadLetterPolicies;
+            o.effectiveLabels = effectiveLabels;
             o.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
             o.enableMessageOrdering = enableMessageOrdering;
             o.expirationPolicies = expirationPolicies;
@@ -269,6 +292,7 @@ public final class GetSubscriptionResult {
             o.pushConfigs = pushConfigs;
             o.retainAckedMessages = retainAckedMessages;
             o.retryPolicies = retryPolicies;
+            o.terraformLabels = terraformLabels;
             o.topic = topic;
             return o;
         }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,8 +54,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -110,7 +110,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -142,9 +142,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicenetworking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -201,8 +201,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -246,9 +246,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/redis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/redis"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -383,7 +383,7 @@ type Instance struct {
 	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule InstanceMaintenanceScheduleOutput `pulumi:"maintenanceSchedule"`
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -559,7 +559,7 @@ type instanceState struct {
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
+	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -699,7 +699,7 @@ type InstanceState struct {
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
+	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -1186,8 +1186,8 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 
 // Upcoming maintenance schedule.
 // Structure is documented below.
-func (o InstanceOutput) MaintenanceSchedule() InstanceMaintenanceScheduleOutput {
-	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleOutput { return v.MaintenanceSchedule }).(InstanceMaintenanceScheduleOutput)
+func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
 }
 
 // Redis memory size in GiB.

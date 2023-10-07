@@ -50,7 +50,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
-     * A set of key/value label pairs assigned to the disk. This\
+     * A set of key/value label pairs assigned to the disk. This
      * field is only applicable for persistent disks.
      * 
      */
@@ -58,7 +58,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     private @Nullable Output<Map<String,Object>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the disk. This\
+     * @return A set of key/value label pairs assigned to the disk. This
      * field is only applicable for persistent disks.
      * 
      */
@@ -171,7 +171,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the disk. This\
+         * @param labels A set of key/value label pairs assigned to the disk. This
          * field is only applicable for persistent disks.
          * 
          * @return builder
@@ -183,7 +183,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the disk. This\
+         * @param labels A set of key/value label pairs assigned to the disk. This
          * field is only applicable for persistent disks.
          * 
          * @return builder

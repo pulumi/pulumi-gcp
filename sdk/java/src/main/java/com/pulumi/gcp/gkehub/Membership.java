@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var primary = new Cluster(&#34;primary&#34;, ClusterArgs.builder()        
+ *             .deletionProtection(&#34;true&#34;)
  *             .initialNodeCount(1)
  *             .location(&#34;us-central1-a&#34;)
  *             .build());
@@ -64,6 +65,7 @@ import javax.annotation.Nullable;
  *                     .resourceLink(primary.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
  *                     .build())
  *                 .build())
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .membershipId(&#34;basic&#34;)
  *             .build());
  * 
@@ -104,6 +106,7 @@ import javax.annotation.Nullable;
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
  *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
@@ -186,6 +189,22 @@ public class Membership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.
      * 
@@ -204,12 +223,18 @@ public class Membership extends com.pulumi.resources.CustomResource {
     /**
      * Labels to apply to this membership.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return Labels to apply to this membership.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -262,6 +287,22 @@ public class Membership extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
 
     /**

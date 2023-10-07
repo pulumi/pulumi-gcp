@@ -345,6 +345,22 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The environment the function is hosted on.
      * 
      */
@@ -395,12 +411,18 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs associated with this Cloud Function.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -409,22 +431,24 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * The location of this cloud function.
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return The location of this cloud function.
      * 
+     * ***
+     * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-     * 
-     * ***
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -433,8 +457,6 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * @return A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -487,6 +509,22 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
+    }
+    /**
      * The last update timestamp of a Cloud Function.
      * 
      */
@@ -527,7 +565,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Function(String name, @Nullable FunctionArgs args) {
+    public Function(String name, FunctionArgs args) {
         this(name, args, null);
     }
     /**
@@ -536,7 +574,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Function(String name, @Nullable FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Function(String name, FunctionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:cloudfunctionsv2/function:Function", name, args == null ? FunctionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

@@ -34,6 +34,7 @@ public final class GetFunctionResult {
     private String description;
     private String dockerRegistry;
     private String dockerRepository;
+    private Map<String,String> effectiveLabels;
     /**
      * @return Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      * 
@@ -62,10 +63,6 @@ public final class GetFunctionResult {
      */
     private String ingressSettings;
     private String kmsKeyName;
-    /**
-     * @return A map of labels applied to this function.
-     * 
-     */
     private Map<String,Object> labels;
     /**
      * @return The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
@@ -108,6 +105,7 @@ public final class GetFunctionResult {
      */
     private List<GetFunctionSourceRepository> sourceRepositories;
     private String status;
+    private Map<String,String> terraformLabels;
     /**
      * @return Function execution timeout (in seconds).
      * 
@@ -156,6 +154,9 @@ public final class GetFunctionResult {
     public String dockerRepository() {
         return this.dockerRepository;
     }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
+    }
     /**
      * @return Name of a JavaScript function that will be executed when the Google Cloud Function is triggered.
      * 
@@ -200,10 +201,6 @@ public final class GetFunctionResult {
     public String kmsKeyName() {
         return this.kmsKeyName;
     }
-    /**
-     * @return A map of labels applied to this function.
-     * 
-     */
     public Map<String,Object> labels() {
         return this.labels;
     }
@@ -274,6 +271,9 @@ public final class GetFunctionResult {
     public String status() {
         return this.status;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     /**
      * @return Function execution timeout (in seconds).
      * 
@@ -318,6 +318,7 @@ public final class GetFunctionResult {
         private String description;
         private String dockerRegistry;
         private String dockerRepository;
+        private Map<String,String> effectiveLabels;
         private String entryPoint;
         private Map<String,Object> environmentVariables;
         private List<GetFunctionEventTrigger> eventTriggers;
@@ -340,6 +341,7 @@ public final class GetFunctionResult {
         private String sourceArchiveObject;
         private List<GetFunctionSourceRepository> sourceRepositories;
         private String status;
+        private Map<String,String> terraformLabels;
         private Integer timeout;
         private Boolean triggerHttp;
         private String vpcConnector;
@@ -353,6 +355,7 @@ public final class GetFunctionResult {
     	      this.description = defaults.description;
     	      this.dockerRegistry = defaults.dockerRegistry;
     	      this.dockerRepository = defaults.dockerRepository;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.entryPoint = defaults.entryPoint;
     	      this.environmentVariables = defaults.environmentVariables;
     	      this.eventTriggers = defaults.eventTriggers;
@@ -375,6 +378,7 @@ public final class GetFunctionResult {
     	      this.sourceArchiveObject = defaults.sourceArchiveObject;
     	      this.sourceRepositories = defaults.sourceRepositories;
     	      this.status = defaults.status;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.timeout = defaults.timeout;
     	      this.triggerHttp = defaults.triggerHttp;
     	      this.vpcConnector = defaults.vpcConnector;
@@ -409,6 +413,11 @@ public final class GetFunctionResult {
         @CustomType.Setter
         public Builder dockerRepository(String dockerRepository) {
             this.dockerRepository = Objects.requireNonNull(dockerRepository);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -534,6 +543,11 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
@@ -561,6 +575,7 @@ public final class GetFunctionResult {
             o.description = description;
             o.dockerRegistry = dockerRegistry;
             o.dockerRepository = dockerRepository;
+            o.effectiveLabels = effectiveLabels;
             o.entryPoint = entryPoint;
             o.environmentVariables = environmentVariables;
             o.eventTriggers = eventTriggers;
@@ -583,6 +598,7 @@ public final class GetFunctionResult {
             o.sourceArchiveObject = sourceArchiveObject;
             o.sourceRepositories = sourceRepositories;
             o.status = status;
+            o.terraformLabels = terraformLabels;
             o.timeout = timeout;
             o.triggerHttp = triggerHttp;
             o.vpcConnector = vpcConnector;

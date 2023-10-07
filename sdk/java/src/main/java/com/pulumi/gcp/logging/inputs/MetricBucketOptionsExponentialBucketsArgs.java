@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,45 +18,45 @@ public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.
      * Must be greater than 1.
      * 
      */
-    @Import(name="growthFactor")
-    private @Nullable Output<Double> growthFactor;
+    @Import(name="growthFactor", required=true)
+    private Output<Double> growthFactor;
 
     /**
      * @return Must be greater than 1.
      * 
      */
-    public Optional<Output<Double>> growthFactor() {
-        return Optional.ofNullable(this.growthFactor);
+    public Output<Double> growthFactor() {
+        return this.growthFactor;
     }
 
     /**
      * Must be greater than 0.
      * 
      */
-    @Import(name="numFiniteBuckets")
-    private @Nullable Output<Integer> numFiniteBuckets;
+    @Import(name="numFiniteBuckets", required=true)
+    private Output<Integer> numFiniteBuckets;
 
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Output<Integer>> numFiniteBuckets() {
-        return Optional.ofNullable(this.numFiniteBuckets);
+    public Output<Integer> numFiniteBuckets() {
+        return this.numFiniteBuckets;
     }
 
     /**
      * Must be greater than 0.
      * 
      */
-    @Import(name="scale")
-    private @Nullable Output<Double> scale;
+    @Import(name="scale", required=true)
+    private Output<Double> scale;
 
     /**
      * @return Must be greater than 0.
      * 
      */
-    public Optional<Output<Double>> scale() {
-        return Optional.ofNullable(this.scale);
+    public Output<Double> scale() {
+        return this.scale;
     }
 
     private MetricBucketOptionsExponentialBucketsArgs() {}
@@ -93,7 +91,7 @@ public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder growthFactor(@Nullable Output<Double> growthFactor) {
+        public Builder growthFactor(Output<Double> growthFactor) {
             $.growthFactor = growthFactor;
             return this;
         }
@@ -114,7 +112,7 @@ public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder numFiniteBuckets(@Nullable Output<Integer> numFiniteBuckets) {
+        public Builder numFiniteBuckets(Output<Integer> numFiniteBuckets) {
             $.numFiniteBuckets = numFiniteBuckets;
             return this;
         }
@@ -135,7 +133,7 @@ public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder scale(@Nullable Output<Double> scale) {
+        public Builder scale(Output<Double> scale) {
             $.scale = scale;
             return this;
         }
@@ -151,6 +149,9 @@ public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.
         }
 
         public MetricBucketOptionsExponentialBucketsArgs build() {
+            $.growthFactor = Objects.requireNonNull($.growthFactor, "expected parameter 'growthFactor' to be non-null");
+            $.numFiniteBuckets = Objects.requireNonNull($.numFiniteBuckets, "expected parameter 'numFiniteBuckets' to be non-null");
+            $.scale = Objects.requireNonNull($.scale, "expected parameter 'scale' to be non-null");
             return $;
         }
     }

@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetAppGatewayResult {
     private List<GetAppGatewayAllocatedConnection> allocatedConnections;
     private String displayName;
+    private Map<String,String> effectiveLabels;
     private String hostType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -27,6 +28,7 @@ public final class GetAppGatewayResult {
     private @Nullable String project;
     private @Nullable String region;
     private String state;
+    private Map<String,String> terraformLabels;
     private String type;
     private String uri;
 
@@ -36,6 +38,9 @@ public final class GetAppGatewayResult {
     }
     public String displayName() {
         return this.displayName;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String hostType() {
         return this.hostType;
@@ -62,6 +67,9 @@ public final class GetAppGatewayResult {
     public String state() {
         return this.state;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String type() {
         return this.type;
     }
@@ -80,6 +88,7 @@ public final class GetAppGatewayResult {
     public static final class Builder {
         private List<GetAppGatewayAllocatedConnection> allocatedConnections;
         private String displayName;
+        private Map<String,String> effectiveLabels;
         private String hostType;
         private String id;
         private Map<String,String> labels;
@@ -87,6 +96,7 @@ public final class GetAppGatewayResult {
         private @Nullable String project;
         private @Nullable String region;
         private String state;
+        private Map<String,String> terraformLabels;
         private String type;
         private String uri;
         public Builder() {}
@@ -94,6 +104,7 @@ public final class GetAppGatewayResult {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedConnections = defaults.allocatedConnections;
     	      this.displayName = defaults.displayName;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.hostType = defaults.hostType;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -101,6 +112,7 @@ public final class GetAppGatewayResult {
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.type = defaults.type;
     	      this.uri = defaults.uri;
         }
@@ -116,6 +128,11 @@ public final class GetAppGatewayResult {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -154,6 +171,11 @@ public final class GetAppGatewayResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
@@ -167,6 +189,7 @@ public final class GetAppGatewayResult {
             final var o = new GetAppGatewayResult();
             o.allocatedConnections = allocatedConnections;
             o.displayName = displayName;
+            o.effectiveLabels = effectiveLabels;
             o.hostType = hostType;
             o.id = id;
             o.labels = labels;
@@ -174,6 +197,7 @@ public final class GetAppGatewayResult {
             o.project = project;
             o.region = region;
             o.state = state;
+            o.terraformLabels = terraformLabels;
             o.type = type;
             o.uri = uri;
             return o;

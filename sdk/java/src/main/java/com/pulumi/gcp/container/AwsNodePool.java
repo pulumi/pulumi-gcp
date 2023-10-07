@@ -14,7 +14,9 @@ import com.pulumi.gcp.container.outputs.AwsNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfig;
 import com.pulumi.gcp.container.outputs.AwsNodePoolManagement;
 import com.pulumi.gcp.container.outputs.AwsNodePoolMaxPodsConstraint;
+import com.pulumi.gcp.container.outputs.AwsNodePoolUpdateSettings;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -528,12 +530,18 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -594,6 +602,22 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -734,6 +758,20 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * 
+     */
+    @Export(name="updateSettings", refs={AwsNodePoolUpdateSettings.class}, tree="[0]")
+    private Output<AwsNodePoolUpdateSettings> updateSettings;
+
+    /**
+     * @return (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * 
+     */
+    public Output<AwsNodePoolUpdateSettings> updateSettings() {
+        return this.updateSettings;
     }
     /**
      * Output only. The time at which this node pool was last updated.

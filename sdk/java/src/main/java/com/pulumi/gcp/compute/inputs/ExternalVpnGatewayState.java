@@ -34,6 +34,23 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * A list of interfaces on this external VPN gateway.
      * Structure is documented below.
      * 
@@ -69,6 +86,8 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
     /**
      * Labels for the external VPN gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -76,6 +95,8 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
     /**
      * @return Labels for the external VPN gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -162,10 +183,28 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.selfLink);
     }
 
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
     private ExternalVpnGatewayState() {}
 
     private ExternalVpnGatewayState(ExternalVpnGatewayState $) {
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.interfaces = $.interfaces;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
@@ -173,6 +212,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
         this.project = $.project;
         this.redundancyType = $.redundancyType;
         this.selfLink = $.selfLink;
+        this.terraformLabels = $.terraformLabels;
     }
 
     public static Builder builder() {
@@ -212,6 +252,29 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -273,6 +336,8 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
         /**
          * @param labels Labels for the external VPN gateway resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -284,6 +349,8 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
         /**
          * @param labels Labels for the external VPN gateway resource.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -394,6 +461,29 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         public ExternalVpnGatewayState build() {

@@ -9,6 +9,7 @@ import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyAndroidSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyIosSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -70,6 +71,23 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Settings for keys that can be used by iOS apps.
      * 
      */
@@ -87,12 +105,18 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -127,6 +151,21 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
     }
 
     /**
@@ -165,10 +204,12 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         this.androidSettings = $.androidSettings;
         this.createTime = $.createTime;
         this.displayName = $.displayName;
+        this.effectiveLabels = $.effectiveLabels;
         this.iosSettings = $.iosSettings;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
+        this.terraformLabels = $.terraformLabels;
         this.testingOptions = $.testingOptions;
         this.webSettings = $.webSettings;
     }
@@ -259,6 +300,29 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,Object>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,Object> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param iosSettings Settings for keys that can be used by iOS apps.
          * 
          * @return builder
@@ -282,6 +346,9 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param labels See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -292,6 +359,9 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param labels See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -340,6 +410,27 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,Object>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,Object> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

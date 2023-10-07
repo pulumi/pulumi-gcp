@@ -53,21 +53,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
             set => _certFingerprints = value;
         }
 
-        [Input("configValues")]
-        private InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>? _configValues;
-
-        /// <summary>
-        /// (Output, Deprecated)
-        /// Describes some of the technical fields in a certificate.
-        /// Structure is documented below.
-        /// </summary>
-        [Obsolete(@"`config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.")]
-        public InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs> ConfigValues
-        {
-            get => _configValues ?? (_configValues = new InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>());
-            set => _configValues = value;
-        }
-
         [Input("crlDistributionPoints")]
         private InputList<string>? _crlDistributionPoints;
 

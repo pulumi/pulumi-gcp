@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.BigQuery
         /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Output("routineType")]
-        public Output<string?> RoutineType { get; private set; } = null!;
+        public Output<string> RoutineType { get; private set; } = null!;
 
 
         /// <summary>
@@ -414,8 +414,8 @@ namespace Pulumi.Gcp.BigQuery
         /// The type of routine.
         /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         /// </summary>
-        [Input("routineType")]
-        public Input<string>? RoutineType { get; set; }
+        [Input("routineType", required: true)]
+        public Input<string> RoutineType { get; set; } = null!;
 
         public RoutineArgs()
         {

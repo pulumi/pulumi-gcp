@@ -4,23 +4,30 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigAptRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigMavenRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigNpmRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigPythonRepository;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigYumRepository;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfig {
+    private List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
     private String description;
     private List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
     private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
     private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
     private List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
+    private List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories;
 
     private GetRepositoryRemoteRepositoryConfig() {}
+    public List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories() {
+        return this.aptRepositories;
+    }
     public String description() {
         return this.description;
     }
@@ -36,6 +43,9 @@ public final class GetRepositoryRemoteRepositoryConfig {
     public List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories() {
         return this.pythonRepositories;
     }
+    public List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories() {
+        return this.yumRepositories;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -46,21 +56,33 @@ public final class GetRepositoryRemoteRepositoryConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
         private String description;
         private List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
         private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
         private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
         private List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
+        private List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories;
         public Builder() {}
         public Builder(GetRepositoryRemoteRepositoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aptRepositories = defaults.aptRepositories;
     	      this.description = defaults.description;
     	      this.dockerRepositories = defaults.dockerRepositories;
     	      this.mavenRepositories = defaults.mavenRepositories;
     	      this.npmRepositories = defaults.npmRepositories;
     	      this.pythonRepositories = defaults.pythonRepositories;
+    	      this.yumRepositories = defaults.yumRepositories;
         }
 
+        @CustomType.Setter
+        public Builder aptRepositories(List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories) {
+            this.aptRepositories = Objects.requireNonNull(aptRepositories);
+            return this;
+        }
+        public Builder aptRepositories(GetRepositoryRemoteRepositoryConfigAptRepository... aptRepositories) {
+            return aptRepositories(List.of(aptRepositories));
+        }
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
@@ -98,13 +120,23 @@ public final class GetRepositoryRemoteRepositoryConfig {
         public Builder pythonRepositories(GetRepositoryRemoteRepositoryConfigPythonRepository... pythonRepositories) {
             return pythonRepositories(List.of(pythonRepositories));
         }
+        @CustomType.Setter
+        public Builder yumRepositories(List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories) {
+            this.yumRepositories = Objects.requireNonNull(yumRepositories);
+            return this;
+        }
+        public Builder yumRepositories(GetRepositoryRemoteRepositoryConfigYumRepository... yumRepositories) {
+            return yumRepositories(List.of(yumRepositories));
+        }
         public GetRepositoryRemoteRepositoryConfig build() {
             final var o = new GetRepositoryRemoteRepositoryConfig();
+            o.aptRepositories = aptRepositories;
             o.description = description;
             o.dockerRepositories = dockerRepositories;
             o.mavenRepositories = mavenRepositories;
             o.npmRepositories = npmRepositories;
             o.pythonRepositories = pythonRepositories;
+            o.yumRepositories = yumRepositories;
             return o;
         }
     }

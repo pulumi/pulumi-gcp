@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -22,9 +22,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/eventarc"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/eventarc"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -150,7 +150,7 @@ type Trigger struct {
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transports TriggerTransportArrayOutput `pulumi:"transports"`
+	Transport TriggerTransportOutput `pulumi:"transport"`
 	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The last-modified time.
@@ -229,7 +229,7 @@ type triggerState struct {
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transports []TriggerTransport `pulumi:"transports"`
+	Transport *TriggerTransport `pulumi:"transport"`
 	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
 	// Output only. The last-modified time.
@@ -270,7 +270,7 @@ type TriggerState struct {
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	TerraformLabels pulumi.MapInput
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transports TriggerTransportArrayInput
+	Transport TriggerTransportPtrInput
 	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
 	// Output only. The last-modified time.
@@ -304,7 +304,7 @@ type triggerArgs struct {
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transports []TriggerTransport `pulumi:"transports"`
+	Transport *TriggerTransport `pulumi:"transport"`
 }
 
 // The set of arguments for constructing a Trigger resource.
@@ -331,7 +331,7 @@ type TriggerArgs struct {
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-	Transports TriggerTransportArrayInput
+	Transport TriggerTransportPtrInput
 }
 
 func (TriggerArgs) ElementType() reflect.Type {
@@ -520,8 +520,8 @@ func (o TriggerOutput) TerraformLabels() pulumi.MapOutput {
 }
 
 // Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
-func (o TriggerOutput) Transports() TriggerTransportArrayOutput {
-	return o.ApplyT(func(v *Trigger) TriggerTransportArrayOutput { return v.Transports }).(TriggerTransportArrayOutput)
+func (o TriggerOutput) Transport() TriggerTransportOutput {
+	return o.ApplyT(func(v *Trigger) TriggerTransportOutput { return v.Transport }).(TriggerTransportOutput)
 }
 
 // Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.

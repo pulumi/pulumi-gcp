@@ -13,19 +13,15 @@ namespace Pulumi.Gcp.SecretManager.Outputs
     [OutputType]
     public sealed class GetSecretReplicationResult
     {
-        public readonly bool Automatic;
         public readonly ImmutableArray<Outputs.GetSecretReplicationAutoResult> Autos;
         public readonly ImmutableArray<Outputs.GetSecretReplicationUserManagedResult> UserManageds;
 
         [OutputConstructor]
         private GetSecretReplicationResult(
-            bool automatic,
-
             ImmutableArray<Outputs.GetSecretReplicationAutoResult> autos,
 
             ImmutableArray<Outputs.GetSecretReplicationUserManagedResult> userManageds)
         {
-            Automatic = automatic;
             Autos = autos;
             UserManageds = userManageds;
         }

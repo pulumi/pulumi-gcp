@@ -205,6 +205,23 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Whether the instance has virtual displays enabled.
      * 
      */
@@ -284,14 +301,18 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     }
 
     /**
-     * A set of key/value label pairs assigned to the instance.
+     * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+     * the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the instance.
+     * @return A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+     * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+     * the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -611,6 +632,21 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
@@ -653,6 +689,7 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.desiredStatus = $.desiredStatus;
+        this.effectiveLabels = $.effectiveLabels;
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
@@ -679,6 +716,7 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         this.sourceMachineImage = $.sourceMachineImage;
         this.tags = $.tags;
         this.tagsFingerprint = $.tagsFingerprint;
+        this.terraformLabels = $.terraformLabels;
         this.zone = $.zone;
     }
 
@@ -960,6 +998,29 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param enableDisplay Whether the instance has virtual displays enabled.
          * 
          * @return builder
@@ -1079,7 +1140,9 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the instance.
+         * @param labels A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+         * the resource.
          * 
          * @return builder
          * 
@@ -1090,7 +1153,9 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the instance.
+         * @param labels A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
+         * the labels present in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on
+         * the resource.
          * 
          * @return builder
          * 
@@ -1559,6 +1624,27 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          */
         public Builder tagsFingerprint(String tagsFingerprint) {
             return tagsFingerprint(Output.of(tagsFingerprint));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

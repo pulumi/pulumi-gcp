@@ -29,6 +29,7 @@ public final class InstanceNetworkInterfaceAccessConfig {
      * 
      */
     private @Nullable String publicPtrDomainName;
+    private @Nullable String securityPolicy;
 
     private InstanceNetworkInterfaceAccessConfig() {}
     /**
@@ -55,6 +56,9 @@ public final class InstanceNetworkInterfaceAccessConfig {
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
+    public Optional<String> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -68,12 +72,14 @@ public final class InstanceNetworkInterfaceAccessConfig {
         private @Nullable String natIp;
         private @Nullable String networkTier;
         private @Nullable String publicPtrDomainName;
+        private @Nullable String securityPolicy;
         public Builder() {}
         public Builder(InstanceNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
+    	      this.securityPolicy = defaults.securityPolicy;
         }
 
         @CustomType.Setter
@@ -91,11 +97,17 @@ public final class InstanceNetworkInterfaceAccessConfig {
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
+        @CustomType.Setter
+        public Builder securityPolicy(@Nullable String securityPolicy) {
+            this.securityPolicy = securityPolicy;
+            return this;
+        }
         public InstanceNetworkInterfaceAccessConfig build() {
             final var o = new InstanceNetworkInterfaceAccessConfig();
             o.natIp = natIp;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
+            o.securityPolicy = securityPolicy;
             return o;
         }
     }

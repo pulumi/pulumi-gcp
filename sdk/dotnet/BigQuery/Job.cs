@@ -372,6 +372,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.JobCopy?> Copy { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Configures an extract job.
         /// </summary>
         [Output("extract")]
@@ -398,6 +405,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -433,6 +443,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("statuses")]
         public Output<ImmutableArray<Outputs.JobStatus>> Statuses { get; private set; } = null!;
+
+        /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Email address of the user who ran the job.
@@ -515,6 +533,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -561,6 +582,19 @@ namespace Pulumi.Gcp.BigQuery
         [Input("copy")]
         public Input<Inputs.JobCopyGetArgs>? Copy { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Configures an extract job.
         /// </summary>
@@ -591,6 +625,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The labels associated with this job. You can use these to organize and group your jobs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -634,6 +671,20 @@ namespace Pulumi.Gcp.BigQuery
         {
             get => _statuses ?? (_statuses = new InputList<Inputs.JobStatusGetArgs>());
             set => _statuses = value;
+        }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// (Output)
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
         }
 
         /// <summary>

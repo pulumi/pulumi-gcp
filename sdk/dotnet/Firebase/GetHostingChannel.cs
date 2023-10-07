@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetHostingChannelResult
     {
         public readonly string ChannelId;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExpireTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -76,11 +77,14 @@ namespace Pulumi.Gcp.Firebase
         public readonly string Name;
         public readonly int RetainedReleaseCount;
         public readonly string SiteId;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Ttl;
 
         [OutputConstructor]
         private GetHostingChannelResult(
             string channelId,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string expireTime,
 
@@ -94,15 +98,19 @@ namespace Pulumi.Gcp.Firebase
 
             string siteId,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string ttl)
         {
             ChannelId = channelId;
+            EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;
             Id = id;
             Labels = labels;
             Name = name;
             RetainedReleaseCount = retainedReleaseCount;
             SiteId = siteId;
+            TerraformLabels = terraformLabels;
             Ttl = ttl;
         }
     }

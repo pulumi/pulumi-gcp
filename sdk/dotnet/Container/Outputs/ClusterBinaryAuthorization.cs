@@ -35,8 +35,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly bool? Enabled;
         /// <summary>
         /// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
-        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
-        /// deprecated `enable_binary_authorization` parameter being set to `true`.
+        /// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         /// </summary>
         public readonly string? EvaluationMode;
 

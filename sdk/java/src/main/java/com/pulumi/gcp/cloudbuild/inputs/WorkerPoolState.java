@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolNetworkConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -20,7 +21,8 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -28,7 +30,8 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-     * limitations.
+     * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+     * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -78,6 +81,23 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
     }
 
     /**
@@ -211,6 +231,7 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
         this.displayName = $.displayName;
+        this.effectiveAnnotations = $.effectiveAnnotations;
         this.location = $.location;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
@@ -241,7 +262,8 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-         * limitations.
+         * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+         * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -253,7 +275,8 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
-         * limitations.
+         * limitations. **Note**: This field is non-authoritative, and will only manage the annotations present in your
+         * configuration. Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -323,6 +346,29 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
         /**
