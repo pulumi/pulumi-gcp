@@ -1,0 +1,11 @@
+{
+  "name": "typescript",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/node": "^16"
+  },
+  "dependencies": {
+    "@pulumi/gcp": "^6.67.0",
+    "@pulumi/pulumi": "^3.0.0"
+  }
+}
