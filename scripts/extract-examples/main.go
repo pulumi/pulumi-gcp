@@ -55,6 +55,10 @@ runtime:
 	var data map[string]any
 	noerr(yaml.Unmarshal([]byte(y), &data))
 
+	if _, ok := data["resources"]; !ok {
+		return y
+	}
+
 	res := data["resources"].(map[string]interface{})
 
 	for rname, r := range res {
