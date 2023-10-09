@@ -97,8 +97,6 @@ runtime:
 	back, err := yaml.Marshal(data)
 	noerr(err)
 
-	// fmt.Println(string(back))
-
 	return string(back)
 }
 
@@ -106,7 +104,7 @@ func matches(typeToken string, t string) bool {
 	if typeToken == t {
 		return true
 	}
-	if examplePlacement(typeToken, 0) == examplePlacement(typeToken, 0) {
+	if examplePlacement(typeToken, 0) == examplePlacement(t, 0) {
 		return true
 	}
 	return false
