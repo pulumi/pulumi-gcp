@@ -23,6 +23,7 @@ func TestProviderUpgrade(t *testing.T) {
 	}
 
 	testCases := []testCase{
+		// handcrafted
 		{"dns-recordset"},
 		{"pubsub-subscription"},
 		{"pubsub-topic"},
@@ -30,6 +31,17 @@ func TestProviderUpgrade(t *testing.T) {
 		{"storage-bucket"},
 		{"storage-bucketobject"},
 		{"secretmanager-secret"},
+
+		// extracted as-is from schema examples
+		{"bigquery-datasetaccess-3"},
+		{"bigquery-routine-1"},
+		{"bigquery-routine-2"},
+		{"cloudrunv2-job-6"},
+		{"cloudrunv2-service-4"},
+		{"cloudrunv2-service-5"},
+		{"cloudrunv2-service-7"},
+		{"compute-disk-1"},
+		{"compute-disk-3"},
 	}
 
 	test := func(t *testing.T, tc testCase) {

@@ -1,0 +1,278 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-09T18:08:20.189501-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:QNO5wKZJOZ0=:v1:/09xJRBbgnH5Gx/C:8Y2w2AW2aQ4HRf+bb00ncx9ySqP8zA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-d-d30c5f9c",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-09T22:08:16.997953Z",
+                "modified": "2023-10-09T22:08:16.997953Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "6857830f-ebce-4fc1-be63-db4c6e5a910a",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-d-d30c5f9c",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-09T22:08:18.062814Z",
+                "modified": "2023-10-09T22:08:18.062814Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/dataset:Dataset::public",
+                "custom": true,
+                "id": "projects/pulumi-development/datasets/public",
+                "type": "gcp:bigquery/dataset:Dataset",
+                "inputs": {
+                    "__defaults": [
+                        "deleteContentsOnDestroy",
+                        "location"
+                    ],
+                    "datasetId": "public",
+                    "deleteContentsOnDestroy": false,
+                    "location": "US"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "accesses": [
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
+                            "specialGroup": "",
+                            "userByEmail": "anton@pulumi.com",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "READER",
+                            "routine": null,
+                            "specialGroup": "projectReaders",
+                            "userByEmail": "",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "WRITER",
+                            "routine": null,
+                            "specialGroup": "projectWriters",
+                            "userByEmail": "",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
+                            "specialGroup": "projectOwners",
+                            "userByEmail": "",
+                            "view": null
+                        }
+                    ],
+                    "creationTime": 1696889298736,
+                    "datasetId": "public",
+                    "defaultCollation": "",
+                    "defaultEncryptionConfiguration": null,
+                    "defaultPartitionExpirationMs": 0,
+                    "defaultTableExpirationMs": 0,
+                    "deleteContentsOnDestroy": false,
+                    "description": "",
+                    "etag": "aDH0QwXmcn91oPJmar822A==",
+                    "friendlyName": "",
+                    "id": "projects/pulumi-development/datasets/public",
+                    "isCaseInsensitive": false,
+                    "labels": {},
+                    "lastModifiedTime": 1696889298736,
+                    "location": "US",
+                    "maxTimeTravelHours": "",
+                    "project": "pulumi-development",
+                    "selfLink": "https://bigquery.googleapis.com/bigquery/v2/projects/pulumi-development/datasets/public",
+                    "storageBillingModel": ""
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-d-d30c5f9c",
+                "provider": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:providers:gcp::provider::6857830f-ebce-4fc1-be63-db4c6e5a910a",
+                "propertyDependencies": {
+                    "datasetId": null
+                },
+                "created": "2023-10-09T22:08:18.998091Z",
+                "modified": "2023-10-09T22:08:18.998091Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/dataset:Dataset::private",
+                "custom": true,
+                "id": "projects/pulumi-development/datasets/private",
+                "type": "gcp:bigquery/dataset:Dataset",
+                "inputs": {
+                    "__defaults": [
+                        "deleteContentsOnDestroy",
+                        "location"
+                    ],
+                    "datasetId": "private",
+                    "deleteContentsOnDestroy": false,
+                    "location": "US"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "accesses": [
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
+                            "specialGroup": "",
+                            "userByEmail": "anton@pulumi.com",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "READER",
+                            "routine": null,
+                            "specialGroup": "projectReaders",
+                            "userByEmail": "",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "WRITER",
+                            "routine": null,
+                            "specialGroup": "projectWriters",
+                            "userByEmail": "",
+                            "view": null
+                        },
+                        {
+                            "dataset": null,
+                            "domain": "",
+                            "groupByEmail": "",
+                            "role": "OWNER",
+                            "routine": null,
+                            "specialGroup": "projectOwners",
+                            "userByEmail": "",
+                            "view": null
+                        }
+                    ],
+                    "creationTime": 1696889298836,
+                    "datasetId": "private",
+                    "defaultCollation": "",
+                    "defaultEncryptionConfiguration": null,
+                    "defaultPartitionExpirationMs": 0,
+                    "defaultTableExpirationMs": 0,
+                    "deleteContentsOnDestroy": false,
+                    "description": "",
+                    "etag": "lov1fMcHYdVTAia2Wmr16A==",
+                    "friendlyName": "",
+                    "id": "projects/pulumi-development/datasets/private",
+                    "isCaseInsensitive": false,
+                    "labels": {},
+                    "lastModifiedTime": 1696889298836,
+                    "location": "US",
+                    "maxTimeTravelHours": "",
+                    "project": "pulumi-development",
+                    "selfLink": "https://bigquery.googleapis.com/bigquery/v2/projects/pulumi-development/datasets/private",
+                    "storageBillingModel": ""
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-d-d30c5f9c",
+                "provider": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:providers:gcp::provider::6857830f-ebce-4fc1-be63-db4c6e5a910a",
+                "propertyDependencies": {
+                    "datasetId": null
+                },
+                "created": "2023-10-09T22:08:19.090624Z",
+                "modified": "2023-10-09T22:08:19.090624Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/datasetAccess:DatasetAccess::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/datasets/private",
+                "type": "gcp:bigquery/datasetAccess:DatasetAccess",
+                "inputs": {
+                    "__defaults": [],
+                    "authorizedDataset": {
+                        "__defaults": [],
+                        "dataset": {
+                            "__defaults": [],
+                            "datasetId": "public",
+                            "projectId": "pulumi-development"
+                        },
+                        "targetTypes": [
+                            "VIEWS"
+                        ]
+                    },
+                    "datasetId": "private"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000}}",
+                    "apiUpdatedMember": false,
+                    "authorizedDataset": {
+                        "dataset": {
+                            "datasetId": "public",
+                            "projectId": "pulumi-development"
+                        },
+                        "targetTypes": [
+                            "VIEWS"
+                        ]
+                    },
+                    "datasetId": "private",
+                    "domain": "",
+                    "groupByEmail": "",
+                    "iamMember": "",
+                    "id": "projects/pulumi-development/datasets/private",
+                    "project": "pulumi-development",
+                    "role": "",
+                    "routine": null,
+                    "specialGroup": "",
+                    "userByEmail": "",
+                    "view": null
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-bigquery-d-d30c5f9c",
+                "dependencies": [
+                    "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/dataset:Dataset::private",
+                    "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/dataset:Dataset::public"
+                ],
+                "provider": "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::pulumi:providers:gcp::provider::6857830f-ebce-4fc1-be63-db4c6e5a910a",
+                "propertyDependencies": {
+                    "authorizedDataset": [
+                        "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/dataset:Dataset::public"
+                    ],
+                    "datasetId": [
+                        "urn:pulumi:p-it-antons-mac-bigquery-d-d30c5f9c::test::gcp:bigquery/dataset:Dataset::private"
+                    ]
+                },
+                "created": "2023-10-09T22:08:20.18946Z",
+                "modified": "2023-10-09T22:08:20.18946Z"
+            }
+        ]
+    }
+}

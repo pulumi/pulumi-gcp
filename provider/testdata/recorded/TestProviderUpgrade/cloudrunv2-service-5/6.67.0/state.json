@@ -1,0 +1,250 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-09T18:08:29.36066-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:mkW70ikwqvE=:v1:qbQ02fNEKicGjpGX:fnzJ2Cs8eTK+qlVNFxtaV6izHez4TA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-b247775c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-b247775c",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-09T22:08:17.005163Z",
+                "modified": "2023-10-09T22:08:17.005163Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-b247775c::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "73f0d8d9-45c4-49c1-aa39-90c280d30c37",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudrunv2-b247775c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-b247775c",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-09T22:08:18.073167Z",
+                "modified": "2023-10-09T22:08:18.073167Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-b247775c::test::gcp:cloudrunv2/service:Service::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/locations/us-central1/services/tested-resource-7fb9bf1",
+                "type": "gcp:cloudrunv2/service:Service",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "location": "us-central1",
+                    "name": "tested-resource-7fb9bf1",
+                    "template": {
+                        "__defaults": [],
+                        "containers": [
+                            {
+                                "__defaults": [],
+                                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                "livenessProbe": {
+                                    "__defaults": [
+                                        "failureThreshold",
+                                        "initialDelaySeconds",
+                                        "periodSeconds",
+                                        "timeoutSeconds"
+                                    ],
+                                    "failureThreshold": 3,
+                                    "httpGet": {
+                                        "__defaults": [],
+                                        "path": "/"
+                                    },
+                                    "initialDelaySeconds": 0,
+                                    "periodSeconds": 10,
+                                    "timeoutSeconds": 1
+                                },
+                                "startupProbe": {
+                                    "__defaults": [],
+                                    "failureThreshold": 1,
+                                    "initialDelaySeconds": 0,
+                                    "periodSeconds": 3,
+                                    "tcpSocket": {
+                                        "__defaults": [],
+                                        "port": 8080
+                                    },
+                                    "timeoutSeconds": 1
+                                }
+                            }
+                        ]
+                    }
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "annotations": {},
+                    "binaryAuthorization": null,
+                    "client": "",
+                    "clientVersion": "",
+                    "conditions": [
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:27.279964Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "RoutesReady"
+                        },
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:18.919061Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "ConfigurationsReady"
+                        }
+                    ],
+                    "createTime": "2023-10-09T22:08:18.667532Z",
+                    "creator": "anton@pulumi.com",
+                    "customAudiences": [],
+                    "deleteTime": "",
+                    "description": "",
+                    "etag": "\"CNLzkakGEOD1pr4C/cHJvamVjdHMvcHVsdW1pLWRldmVsb3BtZW50L2xvY2F0aW9ucy91cy1jZW50cmFsMS9zZXJ2aWNlcy90ZXN0ZWQtcmVzb3VyY2UtN2ZiOWJmMQ\"",
+                    "expireTime": "",
+                    "generation": "1",
+                    "id": "projects/pulumi-development/locations/us-central1/services/tested-resource-7fb9bf1",
+                    "ingress": "INGRESS_TRAFFIC_ALL",
+                    "labels": {},
+                    "lastModifier": "anton@pulumi.com",
+                    "latestCreatedRevision": "projects/pulumi-development/locations/us-central1/services/tested-resource-7fb9bf1/revisions/tested-resource-7fb9bf1-00001-flr",
+                    "latestReadyRevision": "projects/pulumi-development/locations/us-central1/services/tested-resource-7fb9bf1/revisions/tested-resource-7fb9bf1-00001-flr",
+                    "launchStage": "GA",
+                    "location": "us-central1",
+                    "name": "tested-resource-7fb9bf1",
+                    "observedGeneration": "1",
+                    "project": "pulumi-development",
+                    "reconciling": false,
+                    "template": {
+                        "annotations": {},
+                        "containers": [
+                            {
+                                "args": [],
+                                "commands": [],
+                                "dependsOns": [],
+                                "envs": [],
+                                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                "livenessProbe": {
+                                    "failureThreshold": 3,
+                                    "grpc": null,
+                                    "httpGet": {
+                                        "httpHeaders": [],
+                                        "path": "/",
+                                        "port": 8080
+                                    },
+                                    "initialDelaySeconds": 0,
+                                    "periodSeconds": 10,
+                                    "tcpSocket": null,
+                                    "timeoutSeconds": 1
+                                },
+                                "name": "",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "name": "http1"
+                                    }
+                                ],
+                                "resources": {
+                                    "cpuIdle": true,
+                                    "limits": {
+                                        "cpu": "1000m",
+                                        "memory": "512Mi"
+                                    },
+                                    "startupCpuBoost": true
+                                },
+                                "startupProbe": {
+                                    "failureThreshold": 1,
+                                    "grpc": null,
+                                    "httpGet": null,
+                                    "initialDelaySeconds": 0,
+                                    "periodSeconds": 3,
+                                    "tcpSocket": {
+                                        "port": 8080
+                                    },
+                                    "timeoutSeconds": 1
+                                },
+                                "volumeMounts": [],
+                                "workingDir": ""
+                            }
+                        ],
+                        "encryptionKey": "",
+                        "executionEnvironment": "",
+                        "labels": {},
+                        "maxInstanceRequestConcurrency": 80,
+                        "revision": "",
+                        "scaling": {
+                            "maxInstanceCount": 100,
+                            "minInstanceCount": 0
+                        },
+                        "serviceAccount": "921927215178-compute@developer.gserviceaccount.com",
+                        "sessionAffinity": false,
+                        "timeout": "300s",
+                        "volumes": [],
+                        "vpcAccess": null
+                    },
+                    "terminalConditions": [
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:27.279964Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "Ready"
+                        }
+                    ],
+                    "trafficStatuses": [
+                        {
+                            "percent": 100,
+                            "revision": "",
+                            "tag": "",
+                            "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
+                            "uri": ""
+                        }
+                    ],
+                    "traffics": [
+                        {
+                            "percent": 100,
+                            "revision": "",
+                            "tag": "",
+                            "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+                        }
+                    ],
+                    "uid": "07388d50-bb80-4e7f-9785-c31a8456dc5f",
+                    "updateTime": "2023-10-09T22:08:18.667532Z",
+                    "uri": "https://tested-resource-7fb9bf1-q5wszdxb2a-uc.a.run.app"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudrunv2-b247775c::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-b247775c",
+                "provider": "urn:pulumi:p-it-antons-mac-cloudrunv2-b247775c::test::pulumi:providers:gcp::provider::73f0d8d9-45c4-49c1-aa39-90c280d30c37",
+                "propertyDependencies": {
+                    "location": null,
+                    "template": null
+                },
+                "created": "2023-10-09T22:08:29.360555Z",
+                "modified": "2023-10-09T22:08:29.360555Z"
+            }
+        ]
+    }
+}

@@ -1,0 +1,34 @@
+name: test
+resources:
+    private:
+        options:
+            provider: ${provider}
+        properties:
+            datasetId: private
+        type: gcp:bigquery:Dataset
+    provider:
+        options:
+            version: 6.67.0
+        properties:
+            project: ${gcp:project}
+        type: pulumi:providers:gcp
+    public:
+        options:
+            provider: ${provider}
+        properties:
+            datasetId: public
+        type: gcp:bigquery:Dataset
+    tested-resource:
+        options:
+            provider: ${provider}
+        properties:
+            authorizedDataset:
+                dataset:
+                    datasetId: ${public.datasetId}
+                    projectId: ${public.project}
+                targetTypes:
+                    - VIEWS
+            datasetId: ${private.datasetId}
+        type: gcp:bigquery:DatasetAccess
+runtime:
+    name: yaml

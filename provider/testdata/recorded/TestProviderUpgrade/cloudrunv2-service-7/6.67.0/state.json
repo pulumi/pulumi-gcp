@@ -1,0 +1,286 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-09T18:08:40.812543-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:6/DThKM9zCA=:v1:bL7plskfQ8XjbzOW:Bya/Jp+yFIPm8WYoSqz9sm+cQAp2pg=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-6f5db486::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-6f5db486",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-09T22:08:16.982186Z",
+                "modified": "2023-10-09T22:08:16.982186Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-6f5db486::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "e85bcac1-ff92-42fd-a6d2-be1d06b9bb6d",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudrunv2-6f5db486::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-6f5db486",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-09T22:08:18.066706Z",
+                "modified": "2023-10-09T22:08:18.066706Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-cloudrunv2-6f5db486::test::gcp:cloudrunv2/service:Service::tested-resource",
+                "custom": true,
+                "id": "projects/pulumi-development/locations/us-central1/services/tested-resource-2169e11",
+                "type": "gcp:cloudrunv2/service:Service",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "ingress": "INGRESS_TRAFFIC_ALL",
+                    "launchStage": "BETA",
+                    "location": "us-central1",
+                    "name": "tested-resource-2169e11",
+                    "template": {
+                        "__defaults": [],
+                        "containers": [
+                            {
+                                "__defaults": [],
+                                "dependsOns": [
+                                    "hello-2"
+                                ],
+                                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                "name": "hello-1",
+                                "ports": [
+                                    {
+                                        "__defaults": [],
+                                        "containerPort": 8080
+                                    }
+                                ],
+                                "volumeMounts": [
+                                    {
+                                        "__defaults": [],
+                                        "mountPath": "/mnt",
+                                        "name": "empty-dir-volume"
+                                    }
+                                ]
+                            },
+                            {
+                                "__defaults": [],
+                                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                "name": "hello-2"
+                            }
+                        ],
+                        "volumes": [
+                            {
+                                "__defaults": [],
+                                "emptyDir": {
+                                    "__defaults": [],
+                                    "medium": "MEMORY",
+                                    "sizeLimit": "256Mi"
+                                },
+                                "name": "empty-dir-volume"
+                            }
+                        ]
+                    }
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "annotations": {},
+                    "binaryAuthorization": null,
+                    "client": "",
+                    "clientVersion": "",
+                    "conditions": [
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:38.349673Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "RoutesReady"
+                        },
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:18.902313Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "ConfigurationsReady"
+                        }
+                    ],
+                    "createTime": "2023-10-09T22:08:18.668896Z",
+                    "creator": "anton@pulumi.com",
+                    "customAudiences": [],
+                    "deleteTime": "",
+                    "description": "",
+                    "etag": "\"CNLzkakGEICW-r4C/cHJvamVjdHMvcHVsdW1pLWRldmVsb3BtZW50L2xvY2F0aW9ucy91cy1jZW50cmFsMS9zZXJ2aWNlcy90ZXN0ZWQtcmVzb3VyY2UtMjE2OWUxMQ\"",
+                    "expireTime": "",
+                    "generation": "1",
+                    "id": "projects/pulumi-development/locations/us-central1/services/tested-resource-2169e11",
+                    "ingress": "INGRESS_TRAFFIC_ALL",
+                    "labels": {},
+                    "lastModifier": "anton@pulumi.com",
+                    "latestCreatedRevision": "projects/pulumi-development/locations/us-central1/services/tested-resource-2169e11/revisions/tested-resource-2169e11-00001-8cg",
+                    "latestReadyRevision": "projects/pulumi-development/locations/us-central1/services/tested-resource-2169e11/revisions/tested-resource-2169e11-00001-8cg",
+                    "launchStage": "BETA",
+                    "location": "us-central1",
+                    "name": "tested-resource-2169e11",
+                    "observedGeneration": "1",
+                    "project": "pulumi-development",
+                    "reconciling": false,
+                    "template": {
+                        "annotations": {},
+                        "containers": [
+                            {
+                                "args": [],
+                                "commands": [],
+                                "dependsOns": [
+                                    "hello-2"
+                                ],
+                                "envs": [],
+                                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                "livenessProbe": null,
+                                "name": "hello-1",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080,
+                                        "name": "http1"
+                                    }
+                                ],
+                                "resources": {
+                                    "cpuIdle": true,
+                                    "limits": {
+                                        "cpu": "1000m",
+                                        "memory": "512Mi"
+                                    },
+                                    "startupCpuBoost": true
+                                },
+                                "startupProbe": {
+                                    "failureThreshold": 1,
+                                    "grpc": null,
+                                    "httpGet": null,
+                                    "initialDelaySeconds": 0,
+                                    "periodSeconds": 240,
+                                    "tcpSocket": {
+                                        "port": 8080
+                                    },
+                                    "timeoutSeconds": 240
+                                },
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/mnt",
+                                        "name": "empty-dir-volume"
+                                    }
+                                ],
+                                "workingDir": ""
+                            },
+                            {
+                                "args": [],
+                                "commands": [],
+                                "dependsOns": [],
+                                "envs": [],
+                                "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                                "livenessProbe": null,
+                                "name": "hello-2",
+                                "ports": [],
+                                "resources": {
+                                    "cpuIdle": true,
+                                    "limits": {
+                                        "cpu": "1000m",
+                                        "memory": "256Mi"
+                                    },
+                                    "startupCpuBoost": true
+                                },
+                                "startupProbe": null,
+                                "volumeMounts": [],
+                                "workingDir": ""
+                            }
+                        ],
+                        "encryptionKey": "",
+                        "executionEnvironment": "",
+                        "labels": {},
+                        "maxInstanceRequestConcurrency": 80,
+                        "revision": "",
+                        "scaling": {
+                            "maxInstanceCount": 100,
+                            "minInstanceCount": 0
+                        },
+                        "serviceAccount": "921927215178-compute@developer.gserviceaccount.com",
+                        "sessionAffinity": false,
+                        "timeout": "300s",
+                        "volumes": [
+                            {
+                                "cloudSqlInstance": null,
+                                "emptyDir": {
+                                    "medium": "MEMORY",
+                                    "sizeLimit": "256Mi"
+                                },
+                                "name": "empty-dir-volume",
+                                "secret": null
+                            }
+                        ],
+                        "vpcAccess": null
+                    },
+                    "terminalConditions": [
+                        {
+                            "executionReason": "",
+                            "lastTransitionTime": "2023-10-09T22:08:38.349673Z",
+                            "message": "",
+                            "reason": "",
+                            "revisionReason": "",
+                            "severity": "",
+                            "state": "CONDITION_SUCCEEDED",
+                            "type": "Ready"
+                        }
+                    ],
+                    "trafficStatuses": [
+                        {
+                            "percent": 100,
+                            "revision": "",
+                            "tag": "",
+                            "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
+                            "uri": ""
+                        }
+                    ],
+                    "traffics": [
+                        {
+                            "percent": 100,
+                            "revision": "",
+                            "tag": "",
+                            "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+                        }
+                    ],
+                    "uid": "8737cf96-244c-4e23-98d2-b2fcfc69562c",
+                    "updateTime": "2023-10-09T22:08:18.668896Z",
+                    "uri": "https://tested-resource-2169e11-q5wszdxb2a-uc.a.run.app"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-cloudrunv2-6f5db486::test::pulumi:pulumi:Stack::test-p-it-antons-mac-cloudrunv2-6f5db486",
+                "provider": "urn:pulumi:p-it-antons-mac-cloudrunv2-6f5db486::test::pulumi:providers:gcp::provider::e85bcac1-ff92-42fd-a6d2-be1d06b9bb6d",
+                "propertyDependencies": {
+                    "ingress": null,
+                    "launchStage": null,
+                    "location": null,
+                    "template": null
+                },
+                "created": "2023-10-09T22:08:40.812461Z",
+                "modified": "2023-10-09T22:08:40.812461Z"
+            }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+name: test
+resources:
+    provider:
+        options:
+            version: 6.67.0
+        properties:
+            project: ${gcp:project}
+        type: pulumi:providers:gcp
+    tested-resource:
+        options:
+            provider: ${provider}
+        properties:
+            image: debian-11-bullseye-v20220719
+            labels:
+                environment: dev
+            physicalBlockSizeBytes: 4096
+            type: pd-ssd
+            zone: us-central1-a
+        type: gcp:compute:Disk
+runtime:
+    name: yaml
