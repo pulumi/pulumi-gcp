@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	nTop := 10
+	nTop := 100
 	s := readSchema()
 	ms := readMetrics()
 	for _, r := range ms.Top(nTop) {
