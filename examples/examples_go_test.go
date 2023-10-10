@@ -22,7 +22,6 @@ import (
 )
 
 func TestAccBucketGo(t *testing.T) {
-	t.Skip("Skipping while major release in progress")
 	test := getGoBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "bucket-go"),
@@ -33,13 +32,13 @@ func TestAccBucketGo(t *testing.T) {
 
 func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
-	csharpBase := base.With(integration.ProgramTestOptions{
+	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp/sdk/v5",
+			"github.com/pulumi/pulumi-gcp/sdk/v7",
 		},
 	})
 
-	return csharpBase
+	return goBase
 }
 
 // Regression test for issue #794.
