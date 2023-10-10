@@ -66,12 +66,20 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         return Optional.ofNullable(this.publicPtrDomainName);
     }
 
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
     private InstanceNetworkInterfaceAccessConfigArgs() {}
 
     private InstanceNetworkInterfaceAccessConfigArgs(InstanceNetworkInterfaceAccessConfigArgs $) {
         this.natIp = $.natIp;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
+        this.securityPolicy = $.securityPolicy;
     }
 
     public static Builder builder() {
@@ -159,6 +167,15 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
          */
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
+        }
+
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         public InstanceNetworkInterfaceAccessConfigArgs build() {

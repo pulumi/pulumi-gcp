@@ -5,8 +5,8 @@ package com.pulumi.gcp.eventarc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.eventarc.outputs.TriggerTransportPubsub;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -15,15 +15,15 @@ public final class TriggerTransport {
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
      * 
      */
-    private @Nullable List<TriggerTransportPubsub> pubsubs;
+    private @Nullable TriggerTransportPubsub pubsub;
 
     private TriggerTransport() {}
     /**
      * @return The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
      * 
      */
-    public List<TriggerTransportPubsub> pubsubs() {
-        return this.pubsubs == null ? List.of() : this.pubsubs;
+    public Optional<TriggerTransportPubsub> pubsub() {
+        return Optional.ofNullable(this.pubsub);
     }
 
     public static Builder builder() {
@@ -35,24 +35,21 @@ public final class TriggerTransport {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<TriggerTransportPubsub> pubsubs;
+        private @Nullable TriggerTransportPubsub pubsub;
         public Builder() {}
         public Builder(TriggerTransport defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.pubsubs = defaults.pubsubs;
+    	      this.pubsub = defaults.pubsub;
         }
 
         @CustomType.Setter
-        public Builder pubsubs(@Nullable List<TriggerTransportPubsub> pubsubs) {
-            this.pubsubs = pubsubs;
+        public Builder pubsub(@Nullable TriggerTransportPubsub pubsub) {
+            this.pubsub = pubsub;
             return this;
-        }
-        public Builder pubsubs(TriggerTransportPubsub... pubsubs) {
-            return pubsubs(List.of(pubsubs));
         }
         public TriggerTransport build() {
             final var o = new TriggerTransport();
-            o.pubsubs = pubsubs;
+            o.pubsub = pubsub;
             return o;
         }
     }

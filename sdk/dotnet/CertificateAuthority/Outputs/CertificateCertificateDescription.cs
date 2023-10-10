@@ -31,12 +31,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionCertFingerprint> CertFingerprints;
         /// <summary>
-        /// (Output, Deprecated)
-        /// Describes some of the technical fields in a certificate.
-        /// Structure is documented below.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionConfigValue> ConfigValues;
-        /// <summary>
         /// (Output)
         /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
         /// </summary>
@@ -76,8 +70,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
 
             ImmutableArray<Outputs.CertificateCertificateDescriptionCertFingerprint> certFingerprints,
 
-            ImmutableArray<Outputs.CertificateCertificateDescriptionConfigValue> configValues,
-
             ImmutableArray<string> crlDistributionPoints,
 
             ImmutableArray<Outputs.CertificateCertificateDescriptionPublicKey> publicKeys,
@@ -91,7 +83,6 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
             AiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
             AuthorityKeyIds = authorityKeyIds;
             CertFingerprints = certFingerprints;
-            ConfigValues = configValues;
             CrlDistributionPoints = crlDistributionPoints;
             PublicKeys = publicKeys;
             SubjectDescriptions = subjectDescriptions;

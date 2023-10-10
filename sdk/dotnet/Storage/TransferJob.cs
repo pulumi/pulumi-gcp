@@ -173,13 +173,19 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        /// </summary>
+        [Output("eventStream")]
+        public Output<Outputs.TransferJobEventStream?> EventStream { get; private set; } = null!;
+
+        /// <summary>
         /// When the Transfer Job was last modified.
         /// </summary>
         [Output("lastModificationTime")]
         public Output<string> LastModificationTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Transfer Job.
+        /// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -198,9 +204,7 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-        /// 
-        /// - - -
+        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.TransferJobSchedule?> Schedule { get; private set; } = null!;
@@ -213,6 +217,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Transfer specification. Structure documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Output("transferSpec")]
         public Output<Outputs.TransferJobTransferSpec> TransferSpec { get; private set; } = null!;
@@ -270,6 +276,12 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
+        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        /// </summary>
+        [Input("eventStream")]
+        public Input<Inputs.TransferJobEventStreamArgs>? EventStream { get; set; }
+
+        /// <summary>
         /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         /// </summary>
         [Input("notificationConfig")]
@@ -283,9 +295,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-        /// 
-        /// - - -
+        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleArgs>? Schedule { get; set; }
@@ -298,6 +308,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Transfer specification. Structure documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Input("transferSpec", required: true)]
         public Input<Inputs.TransferJobTransferSpecArgs> TransferSpec { get; set; } = null!;
@@ -329,13 +341,19 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+        /// </summary>
+        [Input("eventStream")]
+        public Input<Inputs.TransferJobEventStreamGetArgs>? EventStream { get; set; }
+
+        /// <summary>
         /// When the Transfer Job was last modified.
         /// </summary>
         [Input("lastModificationTime")]
         public Input<string>? LastModificationTime { get; set; }
 
         /// <summary>
-        /// The name of the Transfer Job.
+        /// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -354,9 +372,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-        /// 
-        /// - - -
+        /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleGetArgs>? Schedule { get; set; }
@@ -369,6 +385,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Transfer specification. Structure documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Input("transferSpec")]
         public Input<Inputs.TransferJobTransferSpecGetArgs>? TransferSpec { get; set; }

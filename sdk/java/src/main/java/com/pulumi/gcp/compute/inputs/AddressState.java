@@ -89,6 +89,23 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      * 
@@ -144,12 +161,18 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     /**
      * Labels to apply to this address.  A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Labels to apply to this address.  A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -352,6 +375,21 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The URLs of the resources that are using this address.
      * 
      */
@@ -373,6 +411,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         this.addressType = $.addressType;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.effectiveLabels = $.effectiveLabels;
         this.ipVersion = $.ipVersion;
         this.ipv6EndpointType = $.ipv6EndpointType;
         this.labelFingerprint = $.labelFingerprint;
@@ -386,6 +425,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.selfLink = $.selfLink;
         this.subnetwork = $.subnetwork;
+        this.terraformLabels = $.terraformLabels;
         this.users = $.users;
     }
 
@@ -502,6 +542,29 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param ipVersion The IP Version that will be used by this address. The default value is `IPV4`.
          * Possible values are: `IPV4`, `IPV6`.
          * 
@@ -575,6 +638,9 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels to apply to this address.  A list of key-&gt;value pairs.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -585,6 +651,9 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Labels to apply to this address.  A list of key-&gt;value pairs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -840,6 +909,27 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subnetwork(String subnetwork) {
             return subnetwork(Output.of(subnetwork));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

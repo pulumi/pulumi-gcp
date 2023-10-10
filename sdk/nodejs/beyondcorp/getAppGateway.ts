@@ -58,6 +58,7 @@ export interface GetAppGatewayArgs {
 export interface GetAppGatewayResult {
     readonly allocatedConnections: outputs.beyondcorp.GetAppGatewayAllocatedConnection[];
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly hostType: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -68,6 +69,7 @@ export interface GetAppGatewayResult {
     readonly project?: string;
     readonly region?: string;
     readonly state: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly type: string;
     readonly uri: string;
 }

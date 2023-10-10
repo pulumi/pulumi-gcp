@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -815,7 +815,7 @@ func (o TriggerMatchingCriteriaArrayOutput) Index(i pulumi.IntInput) TriggerMatc
 
 type TriggerTransport struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-	Pubsubs []TriggerTransportPubsub `pulumi:"pubsubs"`
+	Pubsub *TriggerTransportPubsub `pulumi:"pubsub"`
 }
 
 // TriggerTransportInput is an input type that accepts TriggerTransportArgs and TriggerTransportOutput values.
@@ -831,7 +831,7 @@ type TriggerTransportInput interface {
 
 type TriggerTransportArgs struct {
 	// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-	Pubsubs TriggerTransportPubsubArrayInput `pulumi:"pubsubs"`
+	Pubsub TriggerTransportPubsubPtrInput `pulumi:"pubsub"`
 }
 
 func (TriggerTransportArgs) ElementType() reflect.Type {
@@ -852,34 +852,50 @@ func (i TriggerTransportArgs) ToOutput(ctx context.Context) pulumix.Output[Trigg
 	}
 }
 
-// TriggerTransportArrayInput is an input type that accepts TriggerTransportArray and TriggerTransportArrayOutput values.
-// You can construct a concrete instance of `TriggerTransportArrayInput` via:
+func (i TriggerTransportArgs) ToTriggerTransportPtrOutput() TriggerTransportPtrOutput {
+	return i.ToTriggerTransportPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerTransportArgs) ToTriggerTransportPtrOutputWithContext(ctx context.Context) TriggerTransportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportOutput).ToTriggerTransportPtrOutputWithContext(ctx)
+}
+
+// TriggerTransportPtrInput is an input type that accepts TriggerTransportArgs, TriggerTransportPtr and TriggerTransportPtrOutput values.
+// You can construct a concrete instance of `TriggerTransportPtrInput` via:
 //
-//	TriggerTransportArray{ TriggerTransportArgs{...} }
-type TriggerTransportArrayInput interface {
+//	        TriggerTransportArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerTransportPtrInput interface {
 	pulumi.Input
 
-	ToTriggerTransportArrayOutput() TriggerTransportArrayOutput
-	ToTriggerTransportArrayOutputWithContext(context.Context) TriggerTransportArrayOutput
+	ToTriggerTransportPtrOutput() TriggerTransportPtrOutput
+	ToTriggerTransportPtrOutputWithContext(context.Context) TriggerTransportPtrOutput
 }
 
-type TriggerTransportArray []TriggerTransportInput
+type triggerTransportPtrType TriggerTransportArgs
 
-func (TriggerTransportArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerTransport)(nil)).Elem()
+func TriggerTransportPtr(v *TriggerTransportArgs) TriggerTransportPtrInput {
+	return (*triggerTransportPtrType)(v)
 }
 
-func (i TriggerTransportArray) ToTriggerTransportArrayOutput() TriggerTransportArrayOutput {
-	return i.ToTriggerTransportArrayOutputWithContext(context.Background())
+func (*triggerTransportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerTransport)(nil)).Elem()
 }
 
-func (i TriggerTransportArray) ToTriggerTransportArrayOutputWithContext(ctx context.Context) TriggerTransportArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportArrayOutput)
+func (i *triggerTransportPtrType) ToTriggerTransportPtrOutput() TriggerTransportPtrOutput {
+	return i.ToTriggerTransportPtrOutputWithContext(context.Background())
 }
 
-func (i TriggerTransportArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransport] {
-	return pulumix.Output[[]TriggerTransport]{
-		OutputState: i.ToTriggerTransportArrayOutputWithContext(ctx).OutputState,
+func (i *triggerTransportPtrType) ToTriggerTransportPtrOutputWithContext(ctx context.Context) TriggerTransportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportPtrOutput)
+}
+
+func (i *triggerTransportPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerTransport] {
+	return pulumix.Output[*TriggerTransport]{
+		OutputState: i.ToTriggerTransportPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -897,6 +913,16 @@ func (o TriggerTransportOutput) ToTriggerTransportOutputWithContext(ctx context.
 	return o
 }
 
+func (o TriggerTransportOutput) ToTriggerTransportPtrOutput() TriggerTransportPtrOutput {
+	return o.ToTriggerTransportPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerTransportOutput) ToTriggerTransportPtrOutputWithContext(ctx context.Context) TriggerTransportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerTransport) *TriggerTransport {
+		return &v
+	}).(TriggerTransportPtrOutput)
+}
+
 func (o TriggerTransportOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerTransport] {
 	return pulumix.Output[TriggerTransport]{
 		OutputState: o.OutputState,
@@ -904,34 +930,48 @@ func (o TriggerTransportOutput) ToOutput(ctx context.Context) pulumix.Output[Tri
 }
 
 // The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
-func (o TriggerTransportOutput) Pubsubs() TriggerTransportPubsubArrayOutput {
-	return o.ApplyT(func(v TriggerTransport) []TriggerTransportPubsub { return v.Pubsubs }).(TriggerTransportPubsubArrayOutput)
+func (o TriggerTransportOutput) Pubsub() TriggerTransportPubsubPtrOutput {
+	return o.ApplyT(func(v TriggerTransport) *TriggerTransportPubsub { return v.Pubsub }).(TriggerTransportPubsubPtrOutput)
 }
 
-type TriggerTransportArrayOutput struct{ *pulumi.OutputState }
+type TriggerTransportPtrOutput struct{ *pulumi.OutputState }
 
-func (TriggerTransportArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerTransport)(nil)).Elem()
+func (TriggerTransportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerTransport)(nil)).Elem()
 }
 
-func (o TriggerTransportArrayOutput) ToTriggerTransportArrayOutput() TriggerTransportArrayOutput {
+func (o TriggerTransportPtrOutput) ToTriggerTransportPtrOutput() TriggerTransportPtrOutput {
 	return o
 }
 
-func (o TriggerTransportArrayOutput) ToTriggerTransportArrayOutputWithContext(ctx context.Context) TriggerTransportArrayOutput {
+func (o TriggerTransportPtrOutput) ToTriggerTransportPtrOutputWithContext(ctx context.Context) TriggerTransportPtrOutput {
 	return o
 }
 
-func (o TriggerTransportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransport] {
-	return pulumix.Output[[]TriggerTransport]{
+func (o TriggerTransportPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerTransport] {
+	return pulumix.Output[*TriggerTransport]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o TriggerTransportArrayOutput) Index(i pulumi.IntInput) TriggerTransportOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerTransport {
-		return vs[0].([]TriggerTransport)[vs[1].(int)]
+func (o TriggerTransportPtrOutput) Elem() TriggerTransportOutput {
+	return o.ApplyT(func(v *TriggerTransport) TriggerTransport {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerTransport
+		return ret
 	}).(TriggerTransportOutput)
+}
+
+// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+func (o TriggerTransportPtrOutput) Pubsub() TriggerTransportPubsubPtrOutput {
+	return o.ApplyT(func(v *TriggerTransport) *TriggerTransportPubsub {
+		if v == nil {
+			return nil
+		}
+		return v.Pubsub
+	}).(TriggerTransportPubsubPtrOutput)
 }
 
 type TriggerTransportPubsub struct {
@@ -977,34 +1017,50 @@ func (i TriggerTransportPubsubArgs) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
-// TriggerTransportPubsubArrayInput is an input type that accepts TriggerTransportPubsubArray and TriggerTransportPubsubArrayOutput values.
-// You can construct a concrete instance of `TriggerTransportPubsubArrayInput` via:
+func (i TriggerTransportPubsubArgs) ToTriggerTransportPubsubPtrOutput() TriggerTransportPubsubPtrOutput {
+	return i.ToTriggerTransportPubsubPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerTransportPubsubArgs) ToTriggerTransportPubsubPtrOutputWithContext(ctx context.Context) TriggerTransportPubsubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportPubsubOutput).ToTriggerTransportPubsubPtrOutputWithContext(ctx)
+}
+
+// TriggerTransportPubsubPtrInput is an input type that accepts TriggerTransportPubsubArgs, TriggerTransportPubsubPtr and TriggerTransportPubsubPtrOutput values.
+// You can construct a concrete instance of `TriggerTransportPubsubPtrInput` via:
 //
-//	TriggerTransportPubsubArray{ TriggerTransportPubsubArgs{...} }
-type TriggerTransportPubsubArrayInput interface {
+//	        TriggerTransportPubsubArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerTransportPubsubPtrInput interface {
 	pulumi.Input
 
-	ToTriggerTransportPubsubArrayOutput() TriggerTransportPubsubArrayOutput
-	ToTriggerTransportPubsubArrayOutputWithContext(context.Context) TriggerTransportPubsubArrayOutput
+	ToTriggerTransportPubsubPtrOutput() TriggerTransportPubsubPtrOutput
+	ToTriggerTransportPubsubPtrOutputWithContext(context.Context) TriggerTransportPubsubPtrOutput
 }
 
-type TriggerTransportPubsubArray []TriggerTransportPubsubInput
+type triggerTransportPubsubPtrType TriggerTransportPubsubArgs
 
-func (TriggerTransportPubsubArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerTransportPubsub)(nil)).Elem()
+func TriggerTransportPubsubPtr(v *TriggerTransportPubsubArgs) TriggerTransportPubsubPtrInput {
+	return (*triggerTransportPubsubPtrType)(v)
 }
 
-func (i TriggerTransportPubsubArray) ToTriggerTransportPubsubArrayOutput() TriggerTransportPubsubArrayOutput {
-	return i.ToTriggerTransportPubsubArrayOutputWithContext(context.Background())
+func (*triggerTransportPubsubPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerTransportPubsub)(nil)).Elem()
 }
 
-func (i TriggerTransportPubsubArray) ToTriggerTransportPubsubArrayOutputWithContext(ctx context.Context) TriggerTransportPubsubArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportPubsubArrayOutput)
+func (i *triggerTransportPubsubPtrType) ToTriggerTransportPubsubPtrOutput() TriggerTransportPubsubPtrOutput {
+	return i.ToTriggerTransportPubsubPtrOutputWithContext(context.Background())
 }
 
-func (i TriggerTransportPubsubArray) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransportPubsub] {
-	return pulumix.Output[[]TriggerTransportPubsub]{
-		OutputState: i.ToTriggerTransportPubsubArrayOutputWithContext(ctx).OutputState,
+func (i *triggerTransportPubsubPtrType) ToTriggerTransportPubsubPtrOutputWithContext(ctx context.Context) TriggerTransportPubsubPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerTransportPubsubPtrOutput)
+}
+
+func (i *triggerTransportPubsubPtrType) ToOutput(ctx context.Context) pulumix.Output[*TriggerTransportPubsub] {
+	return pulumix.Output[*TriggerTransportPubsub]{
+		OutputState: i.ToTriggerTransportPubsubPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
@@ -1020,6 +1076,16 @@ func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubOutput() TriggerTr
 
 func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubOutputWithContext(ctx context.Context) TriggerTransportPubsubOutput {
 	return o
+}
+
+func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubPtrOutput() TriggerTransportPubsubPtrOutput {
+	return o.ToTriggerTransportPubsubPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubPtrOutputWithContext(ctx context.Context) TriggerTransportPubsubPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerTransportPubsub) *TriggerTransportPubsub {
+		return &v
+	}).(TriggerTransportPubsubPtrOutput)
 }
 
 func (o TriggerTransportPubsubOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerTransportPubsub] {
@@ -1038,30 +1104,54 @@ func (o TriggerTransportPubsubOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTransportPubsub) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
 
-type TriggerTransportPubsubArrayOutput struct{ *pulumi.OutputState }
+type TriggerTransportPubsubPtrOutput struct{ *pulumi.OutputState }
 
-func (TriggerTransportPubsubArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TriggerTransportPubsub)(nil)).Elem()
+func (TriggerTransportPubsubPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerTransportPubsub)(nil)).Elem()
 }
 
-func (o TriggerTransportPubsubArrayOutput) ToTriggerTransportPubsubArrayOutput() TriggerTransportPubsubArrayOutput {
+func (o TriggerTransportPubsubPtrOutput) ToTriggerTransportPubsubPtrOutput() TriggerTransportPubsubPtrOutput {
 	return o
 }
 
-func (o TriggerTransportPubsubArrayOutput) ToTriggerTransportPubsubArrayOutputWithContext(ctx context.Context) TriggerTransportPubsubArrayOutput {
+func (o TriggerTransportPubsubPtrOutput) ToTriggerTransportPubsubPtrOutputWithContext(ctx context.Context) TriggerTransportPubsubPtrOutput {
 	return o
 }
 
-func (o TriggerTransportPubsubArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TriggerTransportPubsub] {
-	return pulumix.Output[[]TriggerTransportPubsub]{
+func (o TriggerTransportPubsubPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerTransportPubsub] {
+	return pulumix.Output[*TriggerTransportPubsub]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o TriggerTransportPubsubArrayOutput) Index(i pulumi.IntInput) TriggerTransportPubsubOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerTransportPubsub {
-		return vs[0].([]TriggerTransportPubsub)[vs[1].(int)]
+func (o TriggerTransportPubsubPtrOutput) Elem() TriggerTransportPubsubOutput {
+	return o.ApplyT(func(v *TriggerTransportPubsub) TriggerTransportPubsub {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerTransportPubsub
+		return ret
 	}).(TriggerTransportPubsubOutput)
+}
+
+// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+func (o TriggerTransportPubsubPtrOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerTransportPubsub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subscription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
+func (o TriggerTransportPubsubPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerTransportPubsub) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
@@ -1074,9 +1164,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaInput)(nil)).Elem(), TriggerMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaArrayInput)(nil)).Elem(), TriggerMatchingCriteriaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportInput)(nil)).Elem(), TriggerTransportArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportArrayInput)(nil)).Elem(), TriggerTransportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPtrInput)(nil)).Elem(), TriggerTransportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubArrayInput)(nil)).Elem(), TriggerTransportPubsubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportPubsubPtrInput)(nil)).Elem(), TriggerTransportPubsubArgs{})
 	pulumi.RegisterOutputType(TriggerDestinationOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationPtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServiceOutput{})
@@ -1086,7 +1176,7 @@ func init() {
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaArrayOutput{})
 	pulumi.RegisterOutputType(TriggerTransportOutput{})
-	pulumi.RegisterOutputType(TriggerTransportArrayOutput{})
+	pulumi.RegisterOutputType(TriggerTransportPtrOutput{})
 	pulumi.RegisterOutputType(TriggerTransportPubsubOutput{})
-	pulumi.RegisterOutputType(TriggerTransportPubsubArrayOutput{})
+	pulumi.RegisterOutputType(TriggerTransportPubsubPtrOutput{})
 }

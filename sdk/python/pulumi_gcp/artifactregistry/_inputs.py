@@ -18,10 +18,14 @@ __all__ = [
     'RepositoryIamMemberConditionArgs',
     'RepositoryMavenConfigArgs',
     'RepositoryRemoteRepositoryConfigArgs',
+    'RepositoryRemoteRepositoryConfigAptRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs',
     'RepositoryRemoteRepositoryConfigDockerRepositoryArgs',
     'RepositoryRemoteRepositoryConfigMavenRepositoryArgs',
     'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
     'RepositoryRemoteRepositoryConfigPythonRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigYumRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs',
     'RepositoryVirtualRepositoryConfigArgs',
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
 ]
@@ -430,12 +434,16 @@ class RepositoryMavenConfigArgs:
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigArgs:
     def __init__(__self__, *,
+                 apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
                  maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
                  npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
-                 python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None):
+                 python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
+                 yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None):
         """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the remote source.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs'] docker_repository: Specific settings for a Docker remote repository.
                Structure is documented below.
@@ -445,24 +453,32 @@ class RepositoryRemoteRepositoryConfigArgs:
                Structure is documented below.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repository: Specific settings for a Python remote repository.
                Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs'] yum_repository: Specific settings for an Yum remote repository.
+               Structure is documented below.
         """
         RepositoryRemoteRepositoryConfigArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            apt_repository=apt_repository,
             description=description,
             docker_repository=docker_repository,
             maven_repository=maven_repository,
             npm_repository=npm_repository,
             python_repository=python_repository,
+            yum_repository=yum_repository,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
              maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
              npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
              python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
+             yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
+        if apt_repository is not None:
+            _setter("apt_repository", apt_repository)
         if description is not None:
             _setter("description", description)
         if docker_repository is not None:
@@ -473,6 +489,21 @@ class RepositoryRemoteRepositoryConfigArgs:
             _setter("npm_repository", npm_repository)
         if python_repository is not None:
             _setter("python_repository", python_repository)
+        if yum_repository is not None:
+            _setter("yum_repository", yum_repository)
+
+    @property
+    @pulumi.getter(name="aptRepository")
+    def apt_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]:
+        """
+        Specific settings for an Apt remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "apt_repository")
+
+    @apt_repository.setter
+    def apt_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]):
+        pulumi.set(self, "apt_repository", value)
 
     @property
     @pulumi.getter
@@ -537,6 +568,103 @@ class RepositoryRemoteRepositoryConfigArgs:
     @python_repository.setter
     def python_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]):
         pulumi.set(self, "python_repository", value)
+
+    @property
+    @pulumi.getter(name="yumRepository")
+    def yum_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]:
+        """
+        Specific settings for an Yum remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "yum_repository")
+
+    @yum_repository.setter
+    def yum_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]):
+        pulumi.set(self, "yum_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']] = None):
+        """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
+               Structure is documented below.
+        """
+        RepositoryRemoteRepositoryConfigAptRepositoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if public_repository is not None:
+            _setter("public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]:
+        """
+        One of the publicly available Apt repositories supported by Artifact Registry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]):
+        pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
+    def __init__(__self__, *,
+                 repository_base: pulumi.Input[str],
+                 repository_path: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] repository_base: A common public repository base for Yum.
+               Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        :param pulumi.Input[str] repository_path: Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repository_base=repository_base,
+            repository_path=repository_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repository_base: pulumi.Input[str],
+             repository_path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("repository_base", repository_base)
+        _setter("repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> pulumi.Input[str]:
+        """
+        A common public repository base for Yum.
+        Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @repository_base.setter
+    def repository_base(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_base", value)
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> pulumi.Input[str]:
+        """
+        Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_path", value)
 
 
 @pulumi.input_type
@@ -681,6 +809,90 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     @public_repository.setter
     def public_repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
+    def __init__(__self__, *,
+                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']] = None):
+        """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
+               Structure is documented below.
+        """
+        RepositoryRemoteRepositoryConfigYumRepositoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_repository=public_repository,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if public_repository is not None:
+            _setter("public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]:
+        """
+        One of the publicly available Yum repositories supported by Artifact Registry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_repository")
+
+    @public_repository.setter
+    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]):
+        pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
+    def __init__(__self__, *,
+                 repository_base: pulumi.Input[str],
+                 repository_path: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] repository_base: A common public repository base for Yum.
+               Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        :param pulumi.Input[str] repository_path: Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repository_base=repository_base,
+            repository_path=repository_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repository_base: pulumi.Input[str],
+             repository_path: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("repository_base", repository_base)
+        _setter("repository_path", repository_path)
+
+    @property
+    @pulumi.getter(name="repositoryBase")
+    def repository_base(self) -> pulumi.Input[str]:
+        """
+        A common public repository base for Yum.
+        Possible values are: `CENTOS`, `CENTOS_DEBUG`, `CENTOS_VAULT`, `CENTOS_STREAM`, `ROCKY`, `EPEL`.
+        """
+        return pulumi.get(self, "repository_base")
+
+    @repository_base.setter
+    def repository_base(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_base", value)
+
+    @property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> pulumi.Input[str]:
+        """
+        Specific repository from the base, e.g. `"8-stream/BaseOs/x86_64/os"`
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repository_path", value)
 
 
 @pulumi.input_type

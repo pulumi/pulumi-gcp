@@ -28,8 +28,14 @@ class DeliveryPipelineArgs:
         The set of arguments for constructing a DeliveryPipeline resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -91,6 +97,9 @@ class DeliveryPipelineArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -115,6 +124,9 @@ class DeliveryPipelineArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -178,6 +190,8 @@ class _DeliveryPipelineState:
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -185,21 +199,33 @@ class _DeliveryPipelineState:
                  project: Optional[pulumi.Input[str]] = None,
                  serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DeliveryPipeline resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
         """
@@ -209,6 +235,8 @@ class _DeliveryPipelineState:
             conditions=conditions,
             create_time=create_time,
             description=description,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
             etag=etag,
             labels=labels,
             location=location,
@@ -216,6 +244,7 @@ class _DeliveryPipelineState:
             project=project,
             serial_pipeline=serial_pipeline,
             suspended=suspended,
+            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -226,6 +255,8 @@ class _DeliveryPipelineState:
              conditions: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
@@ -233,6 +264,7 @@ class _DeliveryPipelineState:
              project: Optional[pulumi.Input[str]] = None,
              serial_pipeline: Optional[pulumi.Input['DeliveryPipelineSerialPipelineArgs']] = None,
              suspended: Optional[pulumi.Input[bool]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -244,6 +276,10 @@ class _DeliveryPipelineState:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if labels is not None:
@@ -258,6 +294,8 @@ class _DeliveryPipelineState:
             _setter("serial_pipeline", serial_pipeline)
         if suspended is not None:
             _setter("suspended", suspended)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -268,6 +306,9 @@ class _DeliveryPipelineState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -312,6 +353,32 @@ class _DeliveryPipelineState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -328,6 +395,9 @@ class _DeliveryPipelineState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -396,6 +466,18 @@ class _DeliveryPipelineState:
         pulumi.set(self, "suspended", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -446,15 +528,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -477,6 +551,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Canary_service_networking_delivery_pipeline
@@ -487,15 +569,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -518,6 +592,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Canaryrun_delivery_pipeline
@@ -528,15 +610,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -559,6 +633,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Delivery_pipeline
@@ -609,15 +691,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -640,6 +714,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -662,8 +744,14 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
@@ -688,15 +776,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -719,6 +799,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Canary_service_networking_delivery_pipeline
@@ -729,15 +817,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -760,6 +840,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Canaryrun_delivery_pipeline
@@ -770,15 +858,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -801,6 +881,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Delivery_pipeline
@@ -851,15 +939,7 @@ class DeliveryPipeline(pulumi.CustomResource):
 
         primary = gcp.clouddeploy.DeliveryPipeline("primary",
             location="us-west1",
-            annotations={
-                "my_first_annotation": "example-annotation-1",
-                "my_second_annotation": "example-annotation-2",
-            },
             description="basic description",
-            labels={
-                "my_first_label": "example-label-1",
-                "my_second_label": "example-label-2",
-            },
             project="my-project-name",
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
@@ -882,6 +962,14 @@ class DeliveryPipeline(pulumi.CustomResource):
                     ),
                 ],
             ),
+            annotations={
+                "my_first_annotation": "example-annotation-1",
+                "my_second_annotation": "example-annotation-2",
+            },
+            labels={
+                "my_first_label": "example-label-1",
+                "my_second_label": "example-label-2",
+            },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -954,7 +1042,10 @@ class DeliveryPipeline(pulumi.CustomResource):
             __props__.__dict__["suspended"] = suspended
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(DeliveryPipeline, __self__).__init__(
@@ -971,6 +1062,8 @@ class DeliveryPipeline(pulumi.CustomResource):
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeliveryPipelineConditionArgs']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -978,6 +1071,7 @@ class DeliveryPipeline(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             serial_pipeline: Optional[pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']]] = None,
             suspended: Optional[pulumi.Input[bool]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'DeliveryPipeline':
         """
@@ -988,16 +1082,27 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeliveryPipelineConditionArgs']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['DeliveryPipelineSerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `DeliveryPipeline`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
         """
@@ -1009,6 +1114,8 @@ class DeliveryPipeline(pulumi.CustomResource):
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -1016,6 +1123,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["serial_pipeline"] = serial_pipeline
         __props__.__dict__["suspended"] = suspended
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return DeliveryPipeline(resource_name, opts=opts, __props__=__props__)
@@ -1025,6 +1133,9 @@ class DeliveryPipeline(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1053,6 +1164,24 @@ class DeliveryPipeline(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1065,6 +1194,9 @@ class DeliveryPipeline(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1107,6 +1239,14 @@ class DeliveryPipeline(pulumi.CustomResource):
         When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
         """
         return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

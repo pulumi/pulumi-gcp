@@ -28,7 +28,7 @@ public final class AiIndexMetadata {
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    private @Nullable String contentsDeltaUri;
+    private String contentsDeltaUri;
     /**
      * @return If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
      * then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -54,8 +54,8 @@ public final class AiIndexMetadata {
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    public Optional<String> contentsDeltaUri() {
-        return Optional.ofNullable(this.contentsDeltaUri);
+    public String contentsDeltaUri() {
+        return this.contentsDeltaUri;
     }
     /**
      * @return If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
@@ -76,7 +76,7 @@ public final class AiIndexMetadata {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AiIndexMetadataConfig config;
-        private @Nullable String contentsDeltaUri;
+        private String contentsDeltaUri;
         private @Nullable Boolean isCompleteOverwrite;
         public Builder() {}
         public Builder(AiIndexMetadata defaults) {
@@ -92,8 +92,8 @@ public final class AiIndexMetadata {
             return this;
         }
         @CustomType.Setter
-        public Builder contentsDeltaUri(@Nullable String contentsDeltaUri) {
-            this.contentsDeltaUri = contentsDeltaUri;
+        public Builder contentsDeltaUri(String contentsDeltaUri) {
+            this.contentsDeltaUri = Objects.requireNonNull(contentsDeltaUri);
             return this;
         }
         @CustomType.Setter

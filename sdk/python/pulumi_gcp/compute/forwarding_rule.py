@@ -35,7 +35,7 @@ class ForwardingRuleArgs:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
+                 service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -123,6 +123,9 @@ class ForwardingRuleArgs:
                This can only be set to true for load balancers that have their
                `loadBalancingScheme` set to `INTERNAL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -199,7 +202,7 @@ class ForwardingRuleArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
-        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -280,7 +283,7 @@ class ForwardingRuleArgs:
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
+             service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
              service_label: Optional[pulumi.Input[str]] = None,
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
@@ -519,6 +522,9 @@ class ForwardingRuleArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -703,7 +709,7 @@ class ForwardingRuleArgs:
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]:
+    def service_directory_registrations(self) -> Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -712,7 +718,7 @@ class ForwardingRuleArgs:
         return pulumi.get(self, "service_directory_registrations")
 
     @service_directory_registrations.setter
-    def service_directory_registrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]):
+    def service_directory_registrations(self, value: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]):
         pulumi.set(self, "service_directory_registrations", value)
 
     @property
@@ -798,6 +804,7 @@ class _ForwardingRuleState:
                  base_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
@@ -816,12 +823,13 @@ class _ForwardingRuleState:
                  psc_connection_status: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
+                 service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ForwardingRule resources.
         :param pulumi.Input[bool] all_ports: This field can only be used:
@@ -851,6 +859,8 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
                to the referenced `target` or `backendService`.
@@ -909,6 +919,9 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -988,7 +1001,7 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -1021,6 +1034,8 @@ class _ForwardingRuleState:
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _ForwardingRuleState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1031,6 +1046,7 @@ class _ForwardingRuleState:
             base_forwarding_rule=base_forwarding_rule,
             creation_timestamp=creation_timestamp,
             description=description,
+            effective_labels=effective_labels,
             ip_address=ip_address,
             ip_protocol=ip_protocol,
             ip_version=ip_version,
@@ -1055,6 +1071,7 @@ class _ForwardingRuleState:
             source_ip_ranges=source_ip_ranges,
             subnetwork=subnetwork,
             target=target,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -1066,6 +1083,7 @@ class _ForwardingRuleState:
              base_forwarding_rule: Optional[pulumi.Input[str]] = None,
              creation_timestamp: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              ip_protocol: Optional[pulumi.Input[str]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
@@ -1084,12 +1102,13 @@ class _ForwardingRuleState:
              psc_connection_status: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
-             service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
+             service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
              service_label: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if all_ports is not None:
             _setter("all_ports", all_ports)
@@ -1105,6 +1124,8 @@ class _ForwardingRuleState:
             _setter("creation_timestamp", creation_timestamp)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if ip_protocol is not None:
@@ -1153,6 +1174,8 @@ class _ForwardingRuleState:
             _setter("subnetwork", subnetwork)
         if target is not None:
             _setter("target", target)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="allPorts")
@@ -1257,6 +1280,19 @@ class _ForwardingRuleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1375,6 +1411,9 @@ class _ForwardingRuleState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1595,7 +1634,7 @@ class _ForwardingRuleState:
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]:
+    def service_directory_registrations(self) -> Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -1604,7 +1643,7 @@ class _ForwardingRuleState:
         return pulumi.get(self, "service_directory_registrations")
 
     @service_directory_registrations.setter
-    def service_directory_registrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]):
+    def service_directory_registrations(self, value: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]):
         pulumi.set(self, "service_directory_registrations", value)
 
     @property
@@ -1692,6 +1731,19 @@ class _ForwardingRuleState:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class ForwardingRule(pulumi.CustomResource):
     @overload
@@ -1717,7 +1769,7 @@ class ForwardingRule(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1876,6 +1928,9 @@ class ForwardingRule(pulumi.CustomResource):
                This can only be set to true for load balancers that have their
                `loadBalancingScheme` set to `INTERNAL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -1952,7 +2007,7 @@ class ForwardingRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -2098,7 +2153,7 @@ class ForwardingRule(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -2131,6 +2186,11 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["ports"] = ports
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            if service_directory_registrations is not None and not isinstance(service_directory_registrations, ForwardingRuleServiceDirectoryRegistrationsArgs):
+                service_directory_registrations = service_directory_registrations or {}
+                def _setter(key, value):
+                    service_directory_registrations[key] = value
+                ForwardingRuleServiceDirectoryRegistrationsArgs._configure(_setter, **service_directory_registrations)
             __props__.__dict__["service_directory_registrations"] = service_directory_registrations
             __props__.__dict__["service_label"] = service_label
             __props__.__dict__["source_ip_ranges"] = source_ip_ranges
@@ -2138,11 +2198,13 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["target"] = target
             __props__.__dict__["base_forwarding_rule"] = None
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["psc_connection_id"] = None
             __props__.__dict__["psc_connection_status"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["service_name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(ForwardingRule, __self__).__init__(
             'gcp:compute/forwardingRule:ForwardingRule',
             resource_name,
@@ -2160,6 +2222,7 @@ class ForwardingRule(pulumi.CustomResource):
             base_forwarding_rule: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
@@ -2178,12 +2241,13 @@ class ForwardingRule(pulumi.CustomResource):
             psc_connection_status: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
+            service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
             service_label: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            target: Optional[pulumi.Input[str]] = None) -> 'ForwardingRule':
+            target: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ForwardingRule':
         """
         Get an existing ForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2218,6 +2282,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
                to the referenced `target` or `backendService`.
@@ -2276,6 +2342,9 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -2355,7 +2424,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -2388,6 +2457,8 @@ class ForwardingRule(pulumi.CustomResource):
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
                
                For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2400,6 +2471,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["base_forwarding_rule"] = base_forwarding_rule
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ip_protocol"] = ip_protocol
         __props__.__dict__["ip_version"] = ip_version
@@ -2424,6 +2496,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["source_ip_ranges"] = source_ip_ranges
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["target"] = target
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return ForwardingRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2501,6 +2574,15 @@ class ForwardingRule(pulumi.CustomResource):
         you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -2599,6 +2681,9 @@ class ForwardingRule(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2767,7 +2852,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> pulumi.Output[Sequence['outputs.ForwardingRuleServiceDirectoryRegistration']]:
+    def service_directory_registrations(self) -> pulumi.Output['outputs.ForwardingRuleServiceDirectoryRegistrations']:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -2839,4 +2924,13 @@ class ForwardingRule(pulumi.CustomResource):
         For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

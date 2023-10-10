@@ -57,6 +57,7 @@ export interface GetAppConnectorArgs {
  */
 export interface GetAppConnectorResult {
     readonly displayName: string;
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -67,6 +68,7 @@ export interface GetAppConnectorResult {
     readonly project?: string;
     readonly region?: string;
     readonly state: string;
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get information about a Google BeyondCorp App Connector.

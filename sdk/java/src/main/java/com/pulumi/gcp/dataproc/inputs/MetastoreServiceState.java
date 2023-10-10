@@ -59,6 +59,23 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.
      * Structure is documented below.
@@ -113,6 +130,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
     /**
      * User-defined labels for the metastore service.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -120,6 +139,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return User-defined labels for the metastore service.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -367,6 +388,23 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The tier of the service.
      * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
@@ -403,6 +441,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     private MetastoreServiceState(MetastoreServiceState $) {
         this.artifactGcsUri = $.artifactGcsUri;
         this.databaseType = $.databaseType;
+        this.effectiveLabels = $.effectiveLabels;
         this.encryptionConfig = $.encryptionConfig;
         this.endpointUri = $.endpointUri;
         this.hiveMetastoreConfig = $.hiveMetastoreConfig;
@@ -421,6 +460,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.state = $.state;
         this.stateMessage = $.stateMessage;
         this.telemetryConfig = $.telemetryConfig;
+        this.terraformLabels = $.terraformLabels;
         this.tier = $.tier;
         this.uid = $.uid;
     }
@@ -487,6 +527,29 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder databaseType(String databaseType) {
             return databaseType(Output.of(databaseType));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
         }
 
         /**
@@ -562,6 +625,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param labels User-defined labels for the metastore service.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -573,6 +638,8 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param labels User-defined labels for the metastore service.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -903,6 +970,29 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder telemetryConfig(MetastoreServiceTelemetryConfigArgs telemetryConfig) {
             return telemetryConfig(Output.of(telemetryConfig));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

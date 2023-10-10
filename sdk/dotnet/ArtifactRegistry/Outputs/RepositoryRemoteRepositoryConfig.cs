@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class RepositoryRemoteRepositoryConfig
     {
         /// <summary>
+        /// Specific settings for an Apt remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigAptRepository? AptRepository;
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         public readonly string? Description;
@@ -37,9 +42,16 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RepositoryRemoteRepositoryConfigPythonRepository? PythonRepository;
+        /// <summary>
+        /// Specific settings for an Yum remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigYumRepository? YumRepository;
 
         [OutputConstructor]
         private RepositoryRemoteRepositoryConfig(
+            Outputs.RepositoryRemoteRepositoryConfigAptRepository? aptRepository,
+
             string? description,
 
             Outputs.RepositoryRemoteRepositoryConfigDockerRepository? dockerRepository,
@@ -48,13 +60,17 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             Outputs.RepositoryRemoteRepositoryConfigNpmRepository? npmRepository,
 
-            Outputs.RepositoryRemoteRepositoryConfigPythonRepository? pythonRepository)
+            Outputs.RepositoryRemoteRepositoryConfigPythonRepository? pythonRepository,
+
+            Outputs.RepositoryRemoteRepositoryConfigYumRepository? yumRepository)
         {
+            AptRepository = aptRepository;
             Description = description;
             DockerRepository = dockerRepository;
             MavenRepository = mavenRepository;
             NpmRepository = npmRepository;
             PythonRepository = pythonRepository;
+            YumRepository = yumRepository;
         }
     }
 }

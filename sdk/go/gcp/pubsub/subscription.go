@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -33,7 +33,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,7 +72,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -114,7 +114,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -146,7 +146,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -185,10 +185,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -326,6 +326,9 @@ type Subscription struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
 	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -352,6 +355,9 @@ type Subscription struct {
 	// you can't modify the filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// A set of key/value label pairs to assign to this Subscription.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// How long to retain unacknowledged messages in the subscription's
 	// backlog, from the moment a message is published. If
@@ -382,6 +388,9 @@ type Subscription struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrOutput `pulumi:"retryPolicy"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// A reference to a Topic resource.
 	//
 	// ***
@@ -456,6 +465,9 @@ type subscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
 	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -482,6 +494,9 @@ type subscriptionState struct {
 	// you can't modify the filter.
 	Filter *string `pulumi:"filter"`
 	// A set of key/value label pairs to assign to this Subscription.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// How long to retain unacknowledged messages in the subscription's
 	// backlog, from the moment a message is published. If
@@ -512,6 +527,9 @@ type subscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// A reference to a Topic resource.
 	//
 	// ***
@@ -554,6 +572,9 @@ type SubscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
 	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -580,6 +601,9 @@ type SubscriptionState struct {
 	// you can't modify the filter.
 	Filter pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Subscription.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// How long to retain unacknowledged messages in the subscription's
 	// backlog, from the moment a message is published. If
@@ -610,6 +634,9 @@ type SubscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// A reference to a Topic resource.
 	//
 	// ***
@@ -682,6 +709,9 @@ type subscriptionArgs struct {
 	// you can't modify the filter.
 	Filter *string `pulumi:"filter"`
 	// A set of key/value label pairs to assign to this Subscription.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// How long to retain unacknowledged messages in the subscription's
 	// backlog, from the moment a message is published. If
@@ -781,6 +811,9 @@ type SubscriptionArgs struct {
 	// you can't modify the filter.
 	Filter pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Subscription.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// How long to retain unacknowledged messages in the subscription's
 	// backlog, from the moment a message is published. If
@@ -975,6 +1008,12 @@ func (o SubscriptionOutput) DeadLetterPolicy() SubscriptionDeadLetterPolicyPtrOu
 	return o.ApplyT(func(v *Subscription) SubscriptionDeadLetterPolicyPtrOutput { return v.DeadLetterPolicy }).(SubscriptionDeadLetterPolicyPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o SubscriptionOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // If `true`, Pub/Sub provides the following guarantees for the delivery
 // of a message with a given value of messageId on this Subscriptions':
 //   - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -1013,6 +1052,9 @@ func (o SubscriptionOutput) Filter() pulumi.StringPtrOutput {
 }
 
 // A set of key/value label pairs to assign to this Subscription.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SubscriptionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1062,6 +1104,12 @@ func (o SubscriptionOutput) RetainAckedMessages() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionRetryPolicyPtrOutput { return v.RetryPolicy }).(SubscriptionRetryPolicyPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SubscriptionOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // A reference to a Topic resource.

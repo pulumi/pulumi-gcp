@@ -109,12 +109,20 @@ export class AddressGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * List of items.
      */
     public readonly items!: pulumi.Output<string[] | undefined>;
     /**
      * Set of label tags associated with the AddressGroup resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -133,6 +141,11 @@ export class AddressGroup extends pulumi.CustomResource {
      * The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
      */
     public readonly parent!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.
@@ -161,11 +174,13 @@ export class AddressGroup extends pulumi.CustomResource {
             resourceInputs["capacity"] = state ? state.capacity : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["items"] = state ? state.items : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -188,6 +203,8 @@ export class AddressGroup extends pulumi.CustomResource {
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -214,12 +231,20 @@ export interface AddressGroupState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * List of items.
      */
     items?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of label tags associated with the AddressGroup resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -238,6 +263,11 @@ export interface AddressGroupState {
      * The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
      */
     parent?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of the Address Group. Possible values are "IPV4" or "IPV6".
      * Possible values are: `IPV4`, `IPV6`.
@@ -270,6 +300,9 @@ export interface AddressGroupArgs {
     /**
      * Set of label tags associated with the AddressGroup resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolManagement {
     /**
-     * @return Whether the nodes will be automatically repaired.
+     * @return Whether the nodes will be automatically repaired. Enabled by default.
      * 
      */
     private @Nullable Boolean autoRepair;
     /**
-     * @return Whether the nodes will be automatically upgraded.
+     * @return Whether the nodes will be automatically upgraded. Enabled by default.
      * 
      */
     private @Nullable Boolean autoUpgrade;
 
     private NodePoolManagement() {}
     /**
-     * @return Whether the nodes will be automatically repaired.
+     * @return Whether the nodes will be automatically repaired. Enabled by default.
      * 
      */
     public Optional<Boolean> autoRepair() {
         return Optional.ofNullable(this.autoRepair);
     }
     /**
-     * @return Whether the nodes will be automatically upgraded.
+     * @return Whether the nodes will be automatically upgraded. Enabled by default.
      * 
      */
     public Optional<Boolean> autoUpgrade() {

@@ -115,6 +115,8 @@ namespace Pulumi.Gcp.SecretManager
     {
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string CreateTime;
+        public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExpireTime;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -126,6 +128,7 @@ namespace Pulumi.Gcp.SecretManager
         public readonly ImmutableArray<Outputs.GetSecretReplicationResult> Replications;
         public readonly ImmutableArray<Outputs.GetSecretRotationResult> Rotations;
         public readonly string SecretId;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly ImmutableArray<Outputs.GetSecretTopicResult> Topics;
         public readonly string Ttl;
         public readonly ImmutableDictionary<string, string> VersionAliases;
@@ -135,6 +138,10 @@ namespace Pulumi.Gcp.SecretManager
             ImmutableDictionary<string, string> annotations,
 
             string createTime,
+
+            ImmutableDictionary<string, string> effectiveAnnotations,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string expireTime,
 
@@ -152,6 +159,8 @@ namespace Pulumi.Gcp.SecretManager
 
             string secretId,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             ImmutableArray<Outputs.GetSecretTopicResult> topics,
 
             string ttl,
@@ -160,6 +169,8 @@ namespace Pulumi.Gcp.SecretManager
         {
             Annotations = annotations;
             CreateTime = createTime;
+            EffectiveAnnotations = effectiveAnnotations;
+            EffectiveLabels = effectiveLabels;
             ExpireTime = expireTime;
             Id = id;
             Labels = labels;
@@ -168,6 +179,7 @@ namespace Pulumi.Gcp.SecretManager
             Replications = replications;
             Rotations = rotations;
             SecretId = secretId;
+            TerraformLabels = terraformLabels;
             Topics = topics;
             Ttl = ttl;
             VersionAliases = versionAliases;

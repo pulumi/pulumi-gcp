@@ -89,17 +89,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const lookerNetwork = gcp.compute.getNetwork({
- *     name: "looker-network",
- * });
+ * const lookerNetwork = new gcp.compute.Network("lookerNetwork", {});
  * const lookerRange = new gcp.compute.GlobalAddress("lookerRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 20,
- *     network: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
+ *     network: lookerNetwork.id,
  * });
  * const lookerVpcConnection = new gcp.servicenetworking.Connection("lookerVpcConnection", {
- *     network: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
+ *     network: lookerNetwork.id,
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [lookerRange.name],
  * });
@@ -109,7 +107,7 @@ import * as utilities from "../utilities";
  *     privateIpEnabled: true,
  *     publicIpEnabled: false,
  *     reservedRange: lookerRange.name,
- *     consumerNetwork: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
+ *     consumerNetwork: lookerNetwork.id,
  *     adminSettings: {
  *         allowedEmailDomains: ["google.com"],
  *     },
@@ -281,9 +279,8 @@ export class Instance extends pulumi.CustomResource {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_MODELER: standalone modeling service
      * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      */
     public readonly platformEdition!: pulumi.Output<string | undefined>;
     /**
@@ -467,9 +464,8 @@ export interface InstanceState {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_MODELER: standalone modeling service
      * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      */
     platformEdition?: pulumi.Input<string>;
     /**
@@ -566,9 +562,8 @@ export interface InstanceArgs {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * - LOOKER_MODELER: standalone modeling service
      * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
+     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      */
     platformEdition?: pulumi.Input<string>;
     /**

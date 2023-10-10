@@ -36,14 +36,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? PeriodSeconds;
         /// <summary>
-        /// (Optional, Deprecated)
-        /// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-        /// Structure is documented below.
-        /// 
-        /// &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        /// </summary>
-        public readonly Outputs.ServiceTemplateContainerLivenessProbeTcpSocket? TcpSocket;
-        /// <summary>
         /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         public readonly int? TimeoutSeconds;
@@ -60,8 +52,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             int? periodSeconds,
 
-            Outputs.ServiceTemplateContainerLivenessProbeTcpSocket? tcpSocket,
-
             int? timeoutSeconds)
         {
             FailureThreshold = failureThreshold;
@@ -69,7 +59,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             HttpGet = httpGet;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;
-            TcpSocket = tcpSocket;
             TimeoutSeconds = timeoutSeconds;
         }
     }

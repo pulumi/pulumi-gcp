@@ -128,12 +128,20 @@ export class AiTensorboard extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
      * Structure is documented below.
      */
     public readonly encryptionSpec!: pulumi.Output<outputs.vertex.AiTensorboardEncryptionSpec | undefined>;
     /**
      * The labels with user-defined metadata to organize your Tensorboards.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -153,6 +161,11 @@ export class AiTensorboard extends pulumi.CustomResource {
      * The number of Runs stored in this Tensorboard.
      */
     public /*out*/ readonly runCount!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
@@ -175,12 +188,14 @@ export class AiTensorboard extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionSpec"] = state ? state.encryptionSpec : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["runCount"] = state ? state.runCount : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiTensorboardArgs | undefined;
@@ -195,8 +210,10 @@ export class AiTensorboard extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["blobStoragePathPrefix"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["runCount"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -228,12 +245,20 @@ export interface AiTensorboardState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.vertex.AiTensorboardEncryptionSpec>;
     /**
      * The labels with user-defined metadata to organize your Tensorboards.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -253,6 +278,11 @@ export interface AiTensorboardState {
      * The number of Runs stored in this Tensorboard.
      */
     runCount?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
@@ -281,6 +311,9 @@ export interface AiTensorboardArgs {
     encryptionSpec?: pulumi.Input<inputs.vertex.AiTensorboardEncryptionSpec>;
     /**
      * The labels with user-defined metadata to organize your Tensorboards.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -209,6 +209,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Option to enable granular role-based access control.
      */
     public readonly enableRbac!: pulumi.Output<boolean | undefined>;
@@ -232,6 +237,9 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The resource labels for instance to use to annotate any related underlying resources,
      * such as Compute Engine VMs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -290,6 +298,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly tenantProjectId!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
      * - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
@@ -339,6 +352,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dataprocServiceAccount"] = state ? state.dataprocServiceAccount : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableRbac"] = state ? state.enableRbac : undefined;
             resourceInputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
             resourceInputs["enableStackdriverMonitoring"] = state ? state.enableStackdriverMonitoring : undefined;
@@ -357,6 +371,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
             resourceInputs["tenantProjectId"] = state ? state.tenantProjectId : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -387,6 +402,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["apiEndpoint"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["gcsBucket"] = undefined /*out*/;
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
@@ -394,6 +410,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["tenantProjectId"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -438,6 +455,11 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Option to enable granular role-based access control.
      */
     enableRbac?: pulumi.Input<boolean>;
@@ -461,6 +483,9 @@ export interface InstanceState {
     /**
      * The resource labels for instance to use to annotate any related underlying resources,
      * such as Compute Engine VMs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -518,6 +543,11 @@ export interface InstanceState {
      * The name of the tenant project.
      */
     tenantProjectId?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
@@ -597,6 +627,9 @@ export interface InstanceArgs {
     /**
      * The resource labels for instance to use to annotate any related underlying resources,
      * such as Compute Engine VMs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

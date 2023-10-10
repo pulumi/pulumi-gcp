@@ -28,6 +28,9 @@ class ConnectionArgs:
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
@@ -91,6 +94,9 @@ class ConnectionArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Allows clients to store small amounts of arbitrary data.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -177,6 +183,7 @@ class _ConnectionState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
                  github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
@@ -190,8 +197,13 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
@@ -208,6 +220,7 @@ class _ConnectionState:
             annotations=annotations,
             create_time=create_time,
             disabled=disabled,
+            effective_annotations=effective_annotations,
             etag=etag,
             github_config=github_config,
             github_enterprise_config=github_enterprise_config,
@@ -225,6 +238,7 @@ class _ConnectionState:
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
              github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
@@ -242,6 +256,8 @@ class _ConnectionState:
             _setter("create_time", create_time)
         if disabled is not None:
             _setter("disabled", disabled)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if etag is not None:
             _setter("etag", etag)
         if github_config is not None:
@@ -268,6 +284,9 @@ class _ConnectionState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Allows clients to store small amounts of arbitrary data.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -298,6 +317,19 @@ class _ConnectionState:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -534,6 +566,9 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
@@ -707,6 +742,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["installation_states"] = None
             __props__.__dict__["reconciling"] = None
@@ -724,6 +760,7 @@ class Connection(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
             github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
@@ -742,8 +779,13 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
@@ -762,6 +804,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
         __props__.__dict__["github_config"] = github_config
         __props__.__dict__["github_enterprise_config"] = github_enterprise_config
@@ -779,6 +822,9 @@ class Connection(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Allows clients to store small amounts of arbitrary data.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -797,6 +843,15 @@ class Connection(pulumi.CustomResource):
         If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

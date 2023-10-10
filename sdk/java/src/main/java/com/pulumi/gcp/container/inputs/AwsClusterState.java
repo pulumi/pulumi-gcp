@@ -6,12 +6,14 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+import com.pulumi.gcp.container.inputs.AwsClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,12 +29,18 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
      * @return Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -67,6 +75,21 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> awsRegion() {
         return Optional.ofNullable(this.awsRegion);
+    }
+
+    /**
+     * Configuration options for the Binary Authorization feature.
+     * 
+     */
+    @Import(name="binaryAuthorization")
+    private @Nullable Output<AwsClusterBinaryAuthorizationArgs> binaryAuthorization;
+
+    /**
+     * @return Configuration options for the Binary Authorization feature.
+     * 
+     */
+    public Optional<Output<AwsClusterBinaryAuthorizationArgs>> binaryAuthorization() {
+        return Optional.ofNullable(this.binaryAuthorization);
     }
 
     /**
@@ -112,6 +135,23 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
     }
 
     /**
@@ -315,9 +355,11 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.authorization = $.authorization;
         this.awsRegion = $.awsRegion;
+        this.binaryAuthorization = $.binaryAuthorization;
         this.controlPlane = $.controlPlane;
         this.createTime = $.createTime;
         this.description = $.description;
+        this.effectiveAnnotations = $.effectiveAnnotations;
         this.endpoint = $.endpoint;
         this.etag = $.etag;
         this.fleet = $.fleet;
@@ -354,6 +396,9 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -364,6 +409,9 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -412,6 +460,27 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder awsRegion(String awsRegion) {
             return awsRegion(Output.of(awsRegion));
+        }
+
+        /**
+         * @param binaryAuthorization Configuration options for the Binary Authorization feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(@Nullable Output<AwsClusterBinaryAuthorizationArgs> binaryAuthorization) {
+            $.binaryAuthorization = binaryAuthorization;
+            return this;
+        }
+
+        /**
+         * @param binaryAuthorization Configuration options for the Binary Authorization feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryAuthorization(AwsClusterBinaryAuthorizationArgs binaryAuthorization) {
+            return binaryAuthorization(Output.of(binaryAuthorization));
         }
 
         /**
@@ -475,6 +544,29 @@ public final class AwsClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
         /**

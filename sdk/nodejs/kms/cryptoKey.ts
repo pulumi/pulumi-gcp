@@ -98,6 +98,11 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly destroyScheduledDuration!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Whether this key may contain imported versions only.
      */
     public readonly importOnly!: pulumi.Output<boolean>;
@@ -111,6 +116,9 @@ export class CryptoKey extends pulumi.CustomResource {
     public readonly keyRing!: pulumi.Output<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -137,6 +145,11 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly skipInitialVersionCreation!: pulumi.Output<boolean | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
      */
@@ -156,6 +169,7 @@ export class CryptoKey extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
             resourceInputs["destroyScheduledDuration"] = state ? state.destroyScheduledDuration : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["importOnly"] = state ? state.importOnly : undefined;
             resourceInputs["keyRing"] = state ? state.keyRing : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -163,6 +177,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["purpose"] = state ? state.purpose : undefined;
             resourceInputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
             resourceInputs["skipInitialVersionCreation"] = state ? state.skipInitialVersionCreation : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
@@ -178,6 +193,8 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
             resourceInputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
             resourceInputs["versionTemplate"] = args ? args.versionTemplate : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CryptoKey.__pulumiType, name, resourceInputs, opts);
@@ -194,6 +211,11 @@ export interface CryptoKeyState {
      */
     destroyScheduledDuration?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Whether this key may contain imported versions only.
      */
     importOnly?: pulumi.Input<boolean>;
@@ -207,6 +229,9 @@ export interface CryptoKeyState {
     keyRing?: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -232,6 +257,11 @@ export interface CryptoKeyState {
      * You must use the `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
      */
     skipInitialVersionCreation?: pulumi.Input<boolean>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A template describing settings for new crypto key versions.
      * Structure is documented below.
@@ -262,6 +292,9 @@ export interface CryptoKeyArgs {
     keyRing: pulumi.Input<string>;
     /**
      * Labels with user-defined metadata to apply to this resource.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

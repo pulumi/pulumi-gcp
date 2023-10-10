@@ -13,6 +13,7 @@ import com.pulumi.gcp.eventarc.inputs.TriggerState;
 import com.pulumi.gcp.eventarc.outputs.TriggerDestination;
 import com.pulumi.gcp.eventarc.outputs.TriggerMatchingCriteria;
 import com.pulumi.gcp.eventarc.outputs.TriggerTransport;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -175,6 +176,22 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.destination;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
@@ -205,12 +222,18 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return Optional. User labels attached to the triggers that can be used to group resources.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -287,18 +310,32 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceAccount);
     }
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> terraformLabels() {
+        return this.terraformLabels;
+    }
+    /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    @Export(name="transports", refs={List.class,TriggerTransport.class}, tree="[0,1]")
-    private Output<List<TriggerTransport>> transports;
+    @Export(name="transport", refs={TriggerTransport.class}, tree="[0]")
+    private Output<TriggerTransport> transport;
 
     /**
      * @return Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * 
      */
-    public Output<List<TriggerTransport>> transports() {
-        return this.transports;
+    public Output<TriggerTransport> transport() {
+        return this.transport;
     }
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.

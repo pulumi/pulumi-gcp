@@ -30,6 +30,9 @@ class AiFeatureStoreEntityTypeArgs:
                - - -
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
@@ -101,6 +104,9 @@ class AiFeatureStoreEntityTypeArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this EntityType.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -154,6 +160,7 @@ class _AiFeatureStoreEntityTypeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  featurestore: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -161,17 +168,23 @@ class _AiFeatureStoreEntityTypeState:
                  name: Optional[pulumi.Input[str]] = None,
                  offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
                
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
@@ -180,12 +193,15 @@ class _AiFeatureStoreEntityTypeState:
                storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
                since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         :param pulumi.Input[str] region: The region of the EntityType.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         _AiFeatureStoreEntityTypeState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             create_time=create_time,
             description=description,
+            effective_labels=effective_labels,
             etag=etag,
             featurestore=featurestore,
             labels=labels,
@@ -193,6 +209,7 @@ class _AiFeatureStoreEntityTypeState:
             name=name,
             offline_storage_ttl_days=offline_storage_ttl_days,
             region=region,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -200,6 +217,7 @@ class _AiFeatureStoreEntityTypeState:
              _setter: Callable[[Any, Any], None],
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              featurestore: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -207,12 +225,15 @@ class _AiFeatureStoreEntityTypeState:
              name: Optional[pulumi.Input[str]] = None,
              offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if featurestore is not None:
@@ -227,6 +248,8 @@ class _AiFeatureStoreEntityTypeState:
             _setter("offline_storage_ttl_days", offline_storage_ttl_days)
         if region is not None:
             _setter("region", region)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -253,6 +276,19 @@ class _AiFeatureStoreEntityTypeState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -286,6 +322,9 @@ class _AiFeatureStoreEntityTypeState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A set of key/value label pairs to assign to this EntityType.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -344,6 +383,19 @@ class _AiFeatureStoreEntityTypeState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -476,6 +528,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
@@ -636,8 +691,10 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["region"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiFeatureStoreEntityType, __self__).__init__(
             'gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType',
@@ -651,6 +708,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             featurestore: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -658,6 +716,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             offline_storage_ttl_days: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStoreEntityType':
         """
         Get an existing AiFeatureStoreEntityType resource's state with the given name, id, and optional extra
@@ -668,12 +727,17 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
                
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
@@ -682,6 +746,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
                since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         :param pulumi.Input[str] region: The region of the EntityType.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -690,6 +756,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["featurestore"] = featurestore
         __props__.__dict__["labels"] = labels
@@ -697,6 +764,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["offline_storage_ttl_days"] = offline_storage_ttl_days
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiFeatureStoreEntityType(resource_name, opts=opts, __props__=__props__)
 
@@ -715,6 +783,15 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         Optional. Description of the EntityType.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -740,6 +817,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A set of key/value label pairs to assign to this EntityType.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -778,6 +858,15 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         The region of the EntityType.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

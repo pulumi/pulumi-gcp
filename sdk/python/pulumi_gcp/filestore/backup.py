@@ -31,6 +31,9 @@ class BackupArgs:
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the backup. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -130,6 +133,9 @@ class BackupArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -176,6 +182,7 @@ class _BackupState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  download_bytes: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -185,15 +192,21 @@ class _BackupState:
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_tier: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 storage_bytes: Optional[pulumi.Input[str]] = None):
+                 storage_bytes: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
         :param pulumi.Input[str] capacity_gb: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[str] download_bytes: Amount of bytes that will be downloaded if the backup is restored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
                
                
@@ -212,6 +225,8 @@ class _BackupState:
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
         :param pulumi.Input[str] state: The backup state.
         :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _BackupState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -219,6 +234,7 @@ class _BackupState:
             create_time=create_time,
             description=description,
             download_bytes=download_bytes,
+            effective_labels=effective_labels,
             kms_key_name=kms_key_name,
             labels=labels,
             location=location,
@@ -229,6 +245,7 @@ class _BackupState:
             source_instance_tier=source_instance_tier,
             state=state,
             storage_bytes=storage_bytes,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -237,6 +254,7 @@ class _BackupState:
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              download_bytes: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              kms_key_name: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
@@ -247,6 +265,7 @@ class _BackupState:
              source_instance_tier: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              storage_bytes: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if capacity_gb is not None:
             _setter("capacity_gb", capacity_gb)
@@ -256,6 +275,8 @@ class _BackupState:
             _setter("description", description)
         if download_bytes is not None:
             _setter("download_bytes", download_bytes)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if kms_key_name is not None:
             _setter("kms_key_name", kms_key_name)
         if labels is not None:
@@ -276,6 +297,8 @@ class _BackupState:
             _setter("state", state)
         if storage_bytes is not None:
             _setter("storage_bytes", storage_bytes)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -326,6 +349,19 @@ class _BackupState:
         pulumi.set(self, "download_bytes", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -342,6 +378,9 @@ class _BackupState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -455,6 +494,19 @@ class _BackupState:
     def storage_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_bytes", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Backup(pulumi.CustomResource):
     @overload
@@ -529,6 +581,9 @@ class Backup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
                
                
@@ -658,10 +713,12 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["capacity_gb"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["download_bytes"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["kms_key_name"] = None
             __props__.__dict__["source_instance_tier"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["storage_bytes"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Backup, __self__).__init__(
             'gcp:filestore/backup:Backup',
             resource_name,
@@ -676,6 +733,7 @@ class Backup(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             download_bytes: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -685,7 +743,8 @@ class Backup(pulumi.CustomResource):
             source_instance: Optional[pulumi.Input[str]] = None,
             source_instance_tier: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            storage_bytes: Optional[pulumi.Input[str]] = None) -> 'Backup':
+            storage_bytes: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Backup':
         """
         Get an existing Backup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -697,8 +756,13 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[str] download_bytes: Amount of bytes that will be downloaded if the backup is restored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
                
                
@@ -717,6 +781,8 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
         :param pulumi.Input[str] state: The backup state.
         :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -726,6 +792,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["download_bytes"] = download_bytes
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -736,6 +803,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["source_instance_tier"] = source_instance_tier
         __props__.__dict__["state"] = state
         __props__.__dict__["storage_bytes"] = storage_bytes
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Backup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -771,6 +839,15 @@ class Backup(pulumi.CustomResource):
         return pulumi.get(self, "download_bytes")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[str]:
         """
@@ -783,6 +860,9 @@ class Backup(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -859,4 +939,13 @@ class Backup(pulumi.CustomResource):
         The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

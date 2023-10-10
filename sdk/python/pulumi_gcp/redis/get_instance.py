@@ -22,7 +22,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, auth_string=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, customer_managed_key=None, display_name=None, effective_labels=None, host=None, id=None, labels=None, location_id=None, maintenance_policies=None, maintenance_schedules=None, memory_size_gb=None, name=None, nodes=None, persistence_configs=None, persistence_iam_identity=None, port=None, project=None, read_endpoint=None, read_endpoint_port=None, read_replicas_mode=None, redis_configs=None, redis_version=None, region=None, replica_count=None, reserved_ip_range=None, secondary_ip_range=None, server_ca_certs=None, terraform_labels=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -50,6 +50,9 @@ class GetInstanceResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
@@ -119,6 +122,9 @@ class GetInstanceResult:
         if server_ca_certs and not isinstance(server_ca_certs, list):
             raise TypeError("Expected argument 'server_ca_certs' to be a list")
         pulumi.set(__self__, "server_ca_certs", server_ca_certs)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -170,6 +176,11 @@ class GetInstanceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -290,6 +301,11 @@ class GetInstanceResult:
         return pulumi.get(self, "server_ca_certs")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
     def tier(self) -> str:
         return pulumi.get(self, "tier")
@@ -315,6 +331,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             current_location_id=self.current_location_id,
             customer_managed_key=self.customer_managed_key,
             display_name=self.display_name,
+            effective_labels=self.effective_labels,
             host=self.host,
             id=self.id,
             labels=self.labels,
@@ -338,6 +355,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             reserved_ip_range=self.reserved_ip_range,
             secondary_ip_range=self.secondary_ip_range,
             server_ca_certs=self.server_ca_certs,
+            terraform_labels=self.terraform_labels,
             tier=self.tier,
             transit_encryption_mode=self.transit_encryption_mode)
 
@@ -387,6 +405,7 @@ def get_instance(name: Optional[str] = None,
         current_location_id=pulumi.get(__ret__, 'current_location_id'),
         customer_managed_key=pulumi.get(__ret__, 'customer_managed_key'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -410,6 +429,7 @@ def get_instance(name: Optional[str] = None,
         reserved_ip_range=pulumi.get(__ret__, 'reserved_ip_range'),
         secondary_ip_range=pulumi.get(__ret__, 'secondary_ip_range'),
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         tier=pulumi.get(__ret__, 'tier'),
         transit_encryption_mode=pulumi.get(__ret__, 'transit_encryption_mode'))
 

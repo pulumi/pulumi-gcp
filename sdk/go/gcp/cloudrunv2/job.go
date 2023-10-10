@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,10 +65,10 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -174,9 +174,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vpcaccess"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vpcaccess"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -240,7 +240,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -291,9 +291,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -382,7 +382,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -454,6 +454,8 @@ type Job struct {
 	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
 	// All system annotations in v1 now have a corresponding field in v2 Job.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
@@ -473,6 +475,12 @@ type Job struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Number of executions created for this job.
@@ -485,6 +493,8 @@ type Job struct {
 	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
@@ -516,6 +526,9 @@ type Job struct {
 	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
 	// Structure is documented below.
 	TerminalConditions JobTerminalConditionArrayOutput `pulumi:"terminalConditions"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
@@ -559,6 +572,8 @@ type jobState struct {
 	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
 	// All system annotations in v1 now have a corresponding field in v2 Job.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
@@ -578,6 +593,12 @@ type jobState struct {
 	Creator *string `pulumi:"creator"`
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag *string `pulumi:"etag"`
 	// Number of executions created for this job.
@@ -590,6 +611,8 @@ type jobState struct {
 	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Email address of the last authenticated modifier.
 	LastModifier *string `pulumi:"lastModifier"`
@@ -621,6 +644,9 @@ type jobState struct {
 	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
 	// Structure is documented below.
 	TerminalConditions []JobTerminalCondition `pulumi:"terminalConditions"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
 	// The last-modified time.
@@ -632,6 +658,8 @@ type JobState struct {
 	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
 	// All system annotations in v1 now have a corresponding field in v2 Job.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
@@ -651,6 +679,12 @@ type JobState struct {
 	Creator pulumi.StringPtrInput
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
+	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+	// Terraform, other clients and services.
+	EffectiveAnnotations pulumi.StringMapInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringPtrInput
 	// Number of executions created for this job.
@@ -663,6 +697,8 @@ type JobState struct {
 	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Email address of the last authenticated modifier.
 	LastModifier pulumi.StringPtrInput
@@ -694,6 +730,9 @@ type JobState struct {
 	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
 	// Structure is documented below.
 	TerminalConditions JobTerminalConditionArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
 	// The last-modified time.
@@ -709,6 +748,8 @@ type jobArgs struct {
 	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
 	// All system annotations in v1 now have a corresponding field in v2 Job.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
@@ -721,6 +762,8 @@ type jobArgs struct {
 	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
 	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -745,6 +788,8 @@ type JobArgs struct {
 	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
 	// All system annotations in v1 now have a corresponding field in v2 Job.
 	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
 	// Structure is documented below.
@@ -757,6 +802,8 @@ type JobArgs struct {
 	// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
 	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -890,6 +937,8 @@ func (o JobOutput) ToOutput(ctx context.Context) pulumix.Output[*Job] {
 // Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
 // All system annotations in v1 now have a corresponding field in v2 Job.
 // This field follows Kubernetes annotations' namespacing, limits, and rules.
+// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o JobOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -933,6 +982,18 @@ func (o JobOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+// Terraform, other clients and services.
+func (o JobOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 func (o JobOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -957,6 +1018,8 @@ func (o JobOutput) Generation() pulumi.StringOutput {
 // environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
 // Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 // All system labels in v1 now have a corresponding field in v2 Job.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1019,6 +1082,12 @@ func (o JobOutput) Template() JobTemplateOutput {
 // Structure is documented below.
 func (o JobOutput) TerminalConditions() JobTerminalConditionArrayOutput {
 	return o.ApplyT(func(v *Job) JobTerminalConditionArrayOutput { return v.TerminalConditions }).(JobTerminalConditionArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o JobOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.

@@ -22,7 +22,7 @@ class GetRouterNatResult:
     """
     A collection of values returned by getRouterNat.
     """
-    def __init__(__self__, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, udp_idle_timeout_sec=None):
+    def __init__(__self__, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
         if drain_nat_ips and not isinstance(drain_nat_ips, list):
             raise TypeError("Expected argument 'drain_nat_ips' to be a list")
         pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
@@ -83,6 +83,9 @@ class GetRouterNatResult:
         if tcp_transitory_idle_timeout_sec and not isinstance(tcp_transitory_idle_timeout_sec, int):
             raise TypeError("Expected argument 'tcp_transitory_idle_timeout_sec' to be a int")
         pulumi.set(__self__, "tcp_transitory_idle_timeout_sec", tcp_transitory_idle_timeout_sec)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if udp_idle_timeout_sec and not isinstance(udp_idle_timeout_sec, int):
             raise TypeError("Expected argument 'udp_idle_timeout_sec' to be a int")
         pulumi.set(__self__, "udp_idle_timeout_sec", udp_idle_timeout_sec)
@@ -191,6 +194,11 @@ class GetRouterNatResult:
         return pulumi.get(self, "tcp_transitory_idle_timeout_sec")
 
     @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
     @pulumi.getter(name="udpIdleTimeoutSec")
     def udp_idle_timeout_sec(self) -> int:
         return pulumi.get(self, "udp_idle_timeout_sec")
@@ -222,6 +230,7 @@ class AwaitableGetRouterNatResult(GetRouterNatResult):
             tcp_established_idle_timeout_sec=self.tcp_established_idle_timeout_sec,
             tcp_time_wait_timeout_sec=self.tcp_time_wait_timeout_sec,
             tcp_transitory_idle_timeout_sec=self.tcp_transitory_idle_timeout_sec,
+            type=self.type,
             udp_idle_timeout_sec=self.udp_idle_timeout_sec)
 
 
@@ -286,6 +295,7 @@ def get_router_nat(name: Optional[str] = None,
         tcp_established_idle_timeout_sec=pulumi.get(__ret__, 'tcp_established_idle_timeout_sec'),
         tcp_time_wait_timeout_sec=pulumi.get(__ret__, 'tcp_time_wait_timeout_sec'),
         tcp_transitory_idle_timeout_sec=pulumi.get(__ret__, 'tcp_transitory_idle_timeout_sec'),
+        type=pulumi.get(__ret__, 'type'),
         udp_idle_timeout_sec=pulumi.get(__ret__, 'udp_idle_timeout_sec'))
 
 

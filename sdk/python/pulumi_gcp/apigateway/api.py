@@ -27,6 +27,9 @@ class ApiArgs:
                - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -91,6 +94,9 @@ class ApiArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -131,10 +137,12 @@ class _ApiState:
                  api_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  managed_service: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Api resources.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
@@ -143,22 +151,31 @@ class _ApiState:
                - - -
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] name: The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _ApiState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             api_id=api_id,
             create_time=create_time,
             display_name=display_name,
+            effective_labels=effective_labels,
             labels=labels,
             managed_service=managed_service,
             name=name,
             project=project,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -166,10 +183,12 @@ class _ApiState:
              api_id: Optional[pulumi.Input[str]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              managed_service: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if api_id is not None:
             _setter("api_id", api_id)
@@ -177,6 +196,8 @@ class _ApiState:
             _setter("create_time", create_time)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if managed_service is not None:
@@ -185,6 +206,8 @@ class _ApiState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="apiId")
@@ -226,10 +249,26 @@ class _ApiState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -274,6 +313,19 @@ class _ApiState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class Api(pulumi.CustomResource):
@@ -331,6 +383,9 @@ class Api(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -419,7 +474,9 @@ class Api(pulumi.CustomResource):
             __props__.__dict__["managed_service"] = managed_service
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Api, __self__).__init__(
             'gcp:apigateway/api:Api',
             resource_name,
@@ -433,10 +490,12 @@ class Api(pulumi.CustomResource):
             api_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             managed_service: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'Api':
+            project: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Api':
         """
         Get an existing Api resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -450,12 +509,19 @@ class Api(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
                If not specified, a new Service will automatically be created in the same project as this API.
         :param pulumi.Input[str] name: The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -464,10 +530,12 @@ class Api(pulumi.CustomResource):
         __props__.__dict__["api_id"] = api_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["managed_service"] = managed_service
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Api(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -498,10 +566,22 @@ class Api(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -530,4 +610,13 @@ class Api(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -56,9 +56,9 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -122,7 +122,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataflow"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -177,6 +177,9 @@ type Job struct {
 
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayOutput `pulumi:"additionalExperiments"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 	EnableStreamingEngine pulumi.BoolPtrOutput `pulumi:"enableStreamingEngine"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -187,8 +190,7 @@ type Job struct {
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrOutput `pulumi:"machineType"`
@@ -220,6 +222,8 @@ type Job struct {
 	TempGcsLocation pulumi.StringOutput `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
 	TransformNameMapping pulumi.MapOutput `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -266,6 +270,9 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -276,8 +283,7 @@ type jobState struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType *string `pulumi:"machineType"`
@@ -309,6 +315,8 @@ type jobState struct {
 	TempGcsLocation *string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
 	TransformNameMapping map[string]interface{} `pulumi:"transformNameMapping"`
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -320,6 +328,9 @@ type jobState struct {
 type JobState struct {
 	// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
 	AdditionalExperiments pulumi.StringArrayInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 	EnableStreamingEngine pulumi.BoolPtrInput
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -330,8 +341,7 @@ type JobState struct {
 	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.MapInput
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrInput
@@ -363,6 +373,8 @@ type JobState struct {
 	TempGcsLocation pulumi.StringPtrInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
 	TransformNameMapping pulumi.MapInput
 	// The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
@@ -386,8 +398,7 @@ type jobArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]interface{} `pulumi:"labels"`
 	// The machine type to use for the job.
 	MachineType *string `pulumi:"machineType"`
@@ -435,8 +446,7 @@ type JobArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-	// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.MapInput
 	// The machine type to use for the job.
 	MachineType pulumi.StringPtrInput
@@ -588,6 +598,12 @@ func (o JobOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringArrayOutput { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
 func (o JobOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.EnableStreamingEngine }).(pulumi.BoolPtrOutput)
@@ -610,8 +626,7 @@ func (o JobOutput) KmsKeyName() pulumi.StringPtrOutput {
 
 // User labels to be specified for the job. Keys and values should follow the restrictions
 // specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o JobOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v *Job) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
 }
@@ -686,6 +701,11 @@ func (o JobOutput) TempGcsLocation() pulumi.StringOutput {
 // The GCS path to the Dataflow job template.
 func (o JobOutput) TemplateGcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.TemplateGcsPath }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o JobOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.

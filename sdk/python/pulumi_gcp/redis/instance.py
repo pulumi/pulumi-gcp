@@ -61,6 +61,8 @@ class InstanceArgs:
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
                the service will choose a zone for the instance. For STANDARD_HA tier,
                instances will be created across two zones for protection against
@@ -307,6 +309,8 @@ class InstanceArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -529,11 +533,12 @@ class _InstanceState:
                  current_location_id: Optional[pulumi.Input[str]] = None,
                  customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
@@ -551,6 +556,7 @@ class _InstanceState:
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  secondary_ip_range: Optional[pulumi.Input[str]] = None,
                  server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  transit_encryption_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -581,9 +587,13 @@ class _InstanceState:
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients
                to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
                the service will choose a zone for the instance. For STANDARD_HA tier,
                instances will be created across two zones for protection against
@@ -591,7 +601,7 @@ class _InstanceState:
                be different from [locationId].
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
@@ -643,6 +653,8 @@ class _InstanceState:
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -664,11 +676,12 @@ class _InstanceState:
             current_location_id=current_location_id,
             customer_managed_key=customer_managed_key,
             display_name=display_name,
+            effective_labels=effective_labels,
             host=host,
             labels=labels,
             location_id=location_id,
             maintenance_policy=maintenance_policy,
-            maintenance_schedule=maintenance_schedule,
+            maintenance_schedules=maintenance_schedules,
             memory_size_gb=memory_size_gb,
             name=name,
             nodes=nodes,
@@ -686,6 +699,7 @@ class _InstanceState:
             reserved_ip_range=reserved_ip_range,
             secondary_ip_range=secondary_ip_range,
             server_ca_certs=server_ca_certs,
+            terraform_labels=terraform_labels,
             tier=tier,
             transit_encryption_mode=transit_encryption_mode,
         )
@@ -701,11 +715,12 @@ class _InstanceState:
              current_location_id: Optional[pulumi.Input[str]] = None,
              customer_managed_key: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              host: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location_id: Optional[pulumi.Input[str]] = None,
              maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-             maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
+             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
              memory_size_gb: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
@@ -723,6 +738,7 @@ class _InstanceState:
              reserved_ip_range: Optional[pulumi.Input[str]] = None,
              secondary_ip_range: Optional[pulumi.Input[str]] = None,
              server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              tier: Optional[pulumi.Input[str]] = None,
              transit_encryption_mode: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -744,6 +760,8 @@ class _InstanceState:
             _setter("customer_managed_key", customer_managed_key)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if host is not None:
             _setter("host", host)
         if labels is not None:
@@ -752,8 +770,8 @@ class _InstanceState:
             _setter("location_id", location_id)
         if maintenance_policy is not None:
             _setter("maintenance_policy", maintenance_policy)
-        if maintenance_schedule is not None:
-            _setter("maintenance_schedule", maintenance_schedule)
+        if maintenance_schedules is not None:
+            _setter("maintenance_schedules", maintenance_schedules)
         if memory_size_gb is not None:
             _setter("memory_size_gb", memory_size_gb)
         if name is not None:
@@ -788,6 +806,8 @@ class _InstanceState:
             _setter("secondary_ip_range", secondary_ip_range)
         if server_ca_certs is not None:
             _setter("server_ca_certs", server_ca_certs)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if tier is not None:
             _setter("tier", tier)
         if transit_encryption_mode is not None:
@@ -919,6 +939,19 @@ class _InstanceState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
@@ -936,6 +969,8 @@ class _InstanceState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -973,17 +1008,17 @@ class _InstanceState:
         pulumi.set(self, "maintenance_policy", value)
 
     @property
-    @pulumi.getter(name="maintenanceSchedule")
-    def maintenance_schedule(self) -> Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]:
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
         """
-        return pulumi.get(self, "maintenance_schedule")
+        return pulumi.get(self, "maintenance_schedules")
 
-    @maintenance_schedule.setter
-    def maintenance_schedule(self, value: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]):
-        pulumi.set(self, "maintenance_schedule", value)
+    @maintenance_schedules.setter
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+        pulumi.set(self, "maintenance_schedules", value)
 
     @property
     @pulumi.getter(name="memorySizeGb")
@@ -1223,6 +1258,19 @@ class _InstanceState:
         pulumi.set(self, "server_ca_certs", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1354,7 +1402,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        redis_network = gcp.compute.get_network(name="redis-test-network")
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
+        redis_network = gcp.compute.Network("redis-network")
         service_range = gcp.compute.GlobalAddress("serviceRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -1462,6 +1518,8 @@ class Instance(pulumi.CustomResource):
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
                the service will choose a zone for the instance. For STANDARD_HA tier,
                instances will be created across two zones for protection against
@@ -1593,7 +1651,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        redis_network = gcp.compute.get_network(name="redis-test-network")
+        # This example assumes this network already exists.
+        # The API creates a tenant network per network authorized for a
+        # Redis instance and that network is not deleted when the user-created
+        # network (authorized_network) is deleted, so this prevents issues
+        # with tenant network quota.
+        # If this network hasn't been created and you are using this example in your
+        # config, add an additional network resource or change
+        # this from "data"to "resource"
+        redis_network = gcp.compute.Network("redis-network")
         service_range = gcp.compute.GlobalAddress("serviceRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -1769,14 +1835,16 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["auth_string"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_location_id"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["host"] = None
-            __props__.__dict__["maintenance_schedule"] = None
+            __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["nodes"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["read_endpoint"] = None
             __props__.__dict__["read_endpoint_port"] = None
             __props__.__dict__["server_ca_certs"] = None
+            __props__.__dict__["terraform_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authString"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
@@ -1798,11 +1866,12 @@ class Instance(pulumi.CustomResource):
             current_location_id: Optional[pulumi.Input[str]] = None,
             customer_managed_key: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             host: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location_id: Optional[pulumi.Input[str]] = None,
             maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-            maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]]] = None,
             memory_size_gb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]]] = None,
@@ -1820,6 +1889,7 @@ class Instance(pulumi.CustomResource):
             reserved_ip_range: Optional[pulumi.Input[str]] = None,
             secondary_ip_range: Optional[pulumi.Input[str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             transit_encryption_mode: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -1855,9 +1925,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients
                to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
                the service will choose a zone for the instance. For STANDARD_HA tier,
                instances will be created across two zones for protection against
@@ -1865,7 +1939,7 @@ class Instance(pulumi.CustomResource):
                be different from [locationId].
         :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']] maintenance_schedule: Upcoming maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
@@ -1917,6 +1991,8 @@ class Instance(pulumi.CustomResource):
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]] server_ca_certs: List of server CA certificates for the instance.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -1940,11 +2016,12 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["current_location_id"] = current_location_id
         __props__.__dict__["customer_managed_key"] = customer_managed_key
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["host"] = host
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location_id"] = location_id
         __props__.__dict__["maintenance_policy"] = maintenance_policy
-        __props__.__dict__["maintenance_schedule"] = maintenance_schedule
+        __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["memory_size_gb"] = memory_size_gb
         __props__.__dict__["name"] = name
         __props__.__dict__["nodes"] = nodes
@@ -1962,6 +2039,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["reserved_ip_range"] = reserved_ip_range
         __props__.__dict__["secondary_ip_range"] = secondary_ip_range
         __props__.__dict__["server_ca_certs"] = server_ca_certs
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["tier"] = tier
         __props__.__dict__["transit_encryption_mode"] = transit_encryption_mode
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -2056,6 +2134,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
@@ -2069,6 +2156,8 @@ class Instance(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user provided metadata.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2094,13 +2183,13 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "maintenance_policy")
 
     @property
-    @pulumi.getter(name="maintenanceSchedule")
-    def maintenance_schedule(self) -> pulumi.Output['outputs.InstanceMaintenanceSchedule']:
+    @pulumi.getter(name="maintenanceSchedules")
+    def maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.InstanceMaintenanceSchedule']]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
         """
-        return pulumi.get(self, "maintenance_schedule")
+        return pulumi.get(self, "maintenance_schedules")
 
     @property
     @pulumi.getter(name="memorySizeGb")
@@ -2270,6 +2359,15 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "server_ca_certs")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

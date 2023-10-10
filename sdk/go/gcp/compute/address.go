@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -41,7 +41,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,7 +64,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -104,7 +104,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -130,7 +130,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -182,7 +182,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -254,6 +254,9 @@ type Address struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
@@ -265,6 +268,9 @@ type Address struct {
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -314,6 +320,8 @@ type Address struct {
 	// This field can only be used with INTERNAL type with
 	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 }
@@ -361,6 +369,9 @@ type addressState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -372,6 +383,9 @@ type addressState struct {
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -421,6 +435,8 @@ type addressState struct {
 	// This field can only be used with INTERNAL type with
 	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork *string `pulumi:"subnetwork"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The URLs of the resources that are using this address.
 	Users []string `pulumi:"users"`
 }
@@ -439,6 +455,9 @@ type AddressState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
@@ -450,6 +469,9 @@ type AddressState struct {
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -499,6 +521,8 @@ type AddressState struct {
 	// This field can only be used with INTERNAL type with
 	// GCE_ENDPOINT/DNS_RESOLVER purposes.
 	Subnetwork pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The URLs of the resources that are using this address.
 	Users pulumi.StringArrayInput
 }
@@ -528,6 +552,9 @@ type addressArgs struct {
 	// Possible values are: `VM`, `NETLB`.
 	Ipv6EndpointType *string `pulumi:"ipv6EndpointType"`
 	// Labels to apply to this address.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -599,6 +626,9 @@ type AddressArgs struct {
 	// Possible values are: `VM`, `NETLB`.
 	Ipv6EndpointType pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -784,6 +814,12 @@ func (o AddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o AddressOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The IP Version that will be used by this address. The default value is `IPV4`.
 // Possible values are: `IPV4`, `IPV6`.
 func (o AddressOutput) IpVersion() pulumi.StringPtrOutput {
@@ -804,6 +840,9 @@ func (o AddressOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this address.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o AddressOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -881,6 +920,11 @@ func (o AddressOutput) SelfLink() pulumi.StringOutput {
 // GCE_ENDPOINT/DNS_RESOLVER purposes.
 func (o AddressOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o AddressOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The URLs of the resources that are using this address.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,7 +32,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -81,7 +81,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -125,7 +125,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -176,6 +176,9 @@ type Bucket struct {
 	CustomPlacementConfig BucketCustomPlacementConfigPtrOutput `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrOutput `pulumi:"defaultEventBasedHold"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrOutput `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -207,6 +210,8 @@ type Bucket struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolOutput `pulumi:"uniformBucketLevelAccess"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
@@ -258,6 +263,9 @@ type bucketState struct {
 	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption *BucketEncryption `pulumi:"encryption"`
 	// When deleting a bucket, this
@@ -289,6 +297,8 @@ type bucketState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess *bool `pulumi:"uniformBucketLevelAccess"`
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
@@ -308,6 +318,9 @@ type BucketState struct {
 	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
 	DefaultEventBasedHold pulumi.BoolPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The bucket's encryption configuration. Structure is documented below.
 	Encryption BucketEncryptionPtrInput
 	// When deleting a bucket, this
@@ -339,6 +352,8 @@ type BucketState struct {
 	SelfLink pulumi.StringPtrInput
 	// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
 	UniformBucketLevelAccess pulumi.BoolPtrInput
 	// The base URL of the bucket, in the format `gs://<bucket-name>`.
@@ -577,6 +592,12 @@ func (o BucketOutput) DefaultEventBasedHold() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.DefaultEventBasedHold }).(pulumi.BoolPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o BucketOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The bucket's encryption configuration. Structure is documented below.
 func (o BucketOutput) Encryption() BucketEncryptionPtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketEncryptionPtrOutput { return v.Encryption }).(BucketEncryptionPtrOutput)
@@ -645,6 +666,11 @@ func (o BucketOutput) SelfLink() pulumi.StringOutput {
 // The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 func (o BucketOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o BucketOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.

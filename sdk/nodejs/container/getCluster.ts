@@ -73,10 +73,10 @@ export interface GetClusterResult {
     readonly datapathProvider: string;
     readonly defaultMaxPodsPerNode: number;
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
+    readonly deletionProtection: boolean;
     readonly description: string;
     readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
     readonly enableAutopilot: boolean;
-    readonly enableBinaryAuthorization: boolean;
     readonly enableFqdnNetworkPolicy: boolean;
     readonly enableIntranodeVisibility: boolean;
     readonly enableK8sBetaApis: outputs.container.GetClusterEnableK8sBetaApi[];

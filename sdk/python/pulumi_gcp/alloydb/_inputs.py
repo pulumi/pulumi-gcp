@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'BackupEncryptionConfigArgs',
     'BackupEncryptionInfoArgs',
+    'BackupExpiryQuantityArgs',
     'ClusterAutomatedBackupPolicyArgs',
     'ClusterAutomatedBackupPolicyEncryptionConfigArgs',
     'ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs',
@@ -31,6 +32,7 @@ __all__ = [
     'ClusterRestoreBackupSourceArgs',
     'ClusterRestoreContinuousBackupSourceArgs',
     'InstanceMachineConfigArgs',
+    'InstanceQueryInsightsConfigArgs',
     'InstanceReadPoolConfigArgs',
 ]
 
@@ -118,6 +120,60 @@ class BackupEncryptionInfoArgs:
     @kms_key_versions.setter
     def kms_key_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "kms_key_versions", value)
+
+
+@pulumi.input_type
+class BackupExpiryQuantityArgs:
+    def __init__(__self__, *,
+                 retention_count: Optional[pulumi.Input[int]] = None,
+                 total_retention_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] retention_count: (Output)
+               Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+        :param pulumi.Input[int] total_retention_count: (Output)
+               Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+        """
+        BackupExpiryQuantityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            retention_count=retention_count,
+            total_retention_count=total_retention_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             retention_count: Optional[pulumi.Input[int]] = None,
+             total_retention_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if retention_count is not None:
+            _setter("retention_count", retention_count)
+        if total_retention_count is not None:
+            _setter("total_retention_count", total_retention_count)
+
+    @property
+    @pulumi.getter(name="retentionCount")
+    def retention_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Output only. The backup's position among its backups with the same source cluster and type, by descending chronological order create time (i.e. newest first).
+        """
+        return pulumi.get(self, "retention_count")
+
+    @retention_count.setter
+    def retention_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_count", value)
+
+    @property
+    @pulumi.getter(name="totalRetentionCount")
+    def total_retention_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Output only. The length of the quantity-based queue, specified by the backup's retention policy.
+        """
+        return pulumi.get(self, "total_retention_count")
+
+    @total_retention_count.setter
+    def total_retention_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_retention_count", value)
 
 
 @pulumi.input_type
@@ -1181,6 +1237,92 @@ class InstanceMachineConfigArgs:
     @cpu_count.setter
     def cpu_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu_count", value)
+
+
+@pulumi.input_type
+class InstanceQueryInsightsConfigArgs:
+    def __init__(__self__, *,
+                 query_plans_per_minute: Optional[pulumi.Input[int]] = None,
+                 query_string_length: Optional[pulumi.Input[int]] = None,
+                 record_application_tags: Optional[pulumi.Input[bool]] = None,
+                 record_client_address: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[int] query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+        :param pulumi.Input[int] query_string_length: Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+        :param pulumi.Input[bool] record_application_tags: Record application tags for an instance. This flag is turned "on" by default.
+        :param pulumi.Input[bool] record_client_address: Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+        """
+        InstanceQueryInsightsConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            query_plans_per_minute=query_plans_per_minute,
+            query_string_length=query_string_length,
+            record_application_tags=record_application_tags,
+            record_client_address=record_client_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             query_plans_per_minute: Optional[pulumi.Input[int]] = None,
+             query_string_length: Optional[pulumi.Input[int]] = None,
+             record_application_tags: Optional[pulumi.Input[bool]] = None,
+             record_client_address: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        if query_plans_per_minute is not None:
+            _setter("query_plans_per_minute", query_plans_per_minute)
+        if query_string_length is not None:
+            _setter("query_string_length", query_string_length)
+        if record_application_tags is not None:
+            _setter("record_application_tags", record_application_tags)
+        if record_client_address is not None:
+            _setter("record_client_address", record_client_address)
+
+    @property
+    @pulumi.getter(name="queryPlansPerMinute")
+    def query_plans_per_minute(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. The default value is 5. Any integer between 0 and 20 is considered valid.
+        """
+        return pulumi.get(self, "query_plans_per_minute")
+
+    @query_plans_per_minute.setter
+    def query_plans_per_minute(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_plans_per_minute", value)
+
+    @property
+    @pulumi.getter(name="queryStringLength")
+    def query_string_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Query string length. The default value is 1024. Any integer between 256 and 4500 is considered valid.
+        """
+        return pulumi.get(self, "query_string_length")
+
+    @query_string_length.setter
+    def query_string_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_string_length", value)
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Record application tags for an instance. This flag is turned "on" by default.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @record_application_tags.setter
+    def record_application_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "record_application_tags", value)
+
+    @property
+    @pulumi.getter(name="recordClientAddress")
+    def record_client_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Record client address for an instance. Client address is PII information. This flag is turned "on" by default.
+        """
+        return pulumi.get(self, "record_client_address")
+
+    @record_client_address.setter
+    def record_client_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "record_client_address", value)
 
 
 @pulumi.input_type

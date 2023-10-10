@@ -225,12 +225,20 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Output only. The error details in case of state FAILED.
      * Structure is documented below.
      */
     public /*out*/ readonly errors!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileError[]>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -260,6 +268,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * The current connection profile state.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -280,6 +293,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dbprovider"] = state ? state.dbprovider : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["errors"] = state ? state.errors : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -288,6 +302,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["postgresql"] = state ? state.postgresql : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
@@ -304,9 +319,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbprovider"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectionProfile.__pulumiType, name, resourceInputs, opts);
@@ -347,12 +364,20 @@ export interface ConnectionProfileState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Output only. The error details in case of state FAILED.
      * Structure is documented below.
      */
     errors?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.ConnectionProfileError>[]>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -382,6 +407,11 @@ export interface ConnectionProfileState {
      * The current connection profile state.
      */
     state?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -411,6 +441,9 @@ export interface ConnectionProfileArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -42,6 +42,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileOracleProfileArgs'] oracle_profile: Oracle database profile.
@@ -188,6 +190,8 @@ class ConnectionProfileArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -267,6 +271,7 @@ class _ConnectionProfileState:
                  bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
                  gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -276,17 +281,22 @@ class _ConnectionProfileState:
                  oracle_profile: Optional[pulumi.Input['ConnectionProfileOracleProfileArgs']] = None,
                  postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
                  private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ConnectionProfile resources.
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
                
                
@@ -302,12 +312,15 @@ class _ConnectionProfileState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _ConnectionProfileState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             bigquery_profile=bigquery_profile,
             connection_profile_id=connection_profile_id,
             display_name=display_name,
+            effective_labels=effective_labels,
             forward_ssh_connectivity=forward_ssh_connectivity,
             gcs_profile=gcs_profile,
             labels=labels,
@@ -318,6 +331,7 @@ class _ConnectionProfileState:
             postgresql_profile=postgresql_profile,
             private_connectivity=private_connectivity,
             project=project,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -325,6 +339,7 @@ class _ConnectionProfileState:
              bigquery_profile: Optional[pulumi.Input['ConnectionProfileBigqueryProfileArgs']] = None,
              connection_profile_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']] = None,
              gcs_profile: Optional[pulumi.Input['ConnectionProfileGcsProfileArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -335,6 +350,7 @@ class _ConnectionProfileState:
              postgresql_profile: Optional[pulumi.Input['ConnectionProfilePostgresqlProfileArgs']] = None,
              private_connectivity: Optional[pulumi.Input['ConnectionProfilePrivateConnectivityArgs']] = None,
              project: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if bigquery_profile is not None:
             _setter("bigquery_profile", bigquery_profile)
@@ -342,6 +358,8 @@ class _ConnectionProfileState:
             _setter("connection_profile_id", connection_profile_id)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if forward_ssh_connectivity is not None:
             _setter("forward_ssh_connectivity", forward_ssh_connectivity)
         if gcs_profile is not None:
@@ -362,6 +380,8 @@ class _ConnectionProfileState:
             _setter("private_connectivity", private_connectivity)
         if project is not None:
             _setter("project", project)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="bigqueryProfile")
@@ -400,6 +420,19 @@ class _ConnectionProfileState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="forwardSshConnectivity")
     def forward_ssh_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileForwardSshConnectivityArgs']]:
         """
@@ -430,6 +463,8 @@ class _ConnectionProfileState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -528,6 +563,19 @@ class _ConnectionProfileState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class ConnectionProfile(pulumi.CustomResource):
@@ -706,6 +754,8 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
                
                
@@ -968,7 +1018,9 @@ class ConnectionProfile(pulumi.CustomResource):
                 ConnectionProfilePrivateConnectivityArgs._configure(_setter, **private_connectivity)
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(ConnectionProfile, __self__).__init__(
             'gcp:datastream/connectionProfile:ConnectionProfile',
             resource_name,
@@ -982,6 +1034,7 @@ class ConnectionProfile(pulumi.CustomResource):
             bigquery_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']]] = None,
             connection_profile_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']]] = None,
             gcs_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -991,7 +1044,8 @@ class ConnectionProfile(pulumi.CustomResource):
             oracle_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']]] = None,
             postgresql_profile: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePostgresqlProfileArgs']]] = None,
             private_connectivity: Optional[pulumi.Input[pulumi.InputType['ConnectionProfilePrivateConnectivityArgs']]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'ConnectionProfile':
+            project: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1002,11 +1056,15 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionProfileBigqueryProfileArgs']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileForwardSshConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileGcsProfileArgs']] gcs_profile: Cloud Storage bucket profile.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
                
                
@@ -1022,6 +1080,8 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1030,6 +1090,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["bigquery_profile"] = bigquery_profile
         __props__.__dict__["connection_profile_id"] = connection_profile_id
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["forward_ssh_connectivity"] = forward_ssh_connectivity
         __props__.__dict__["gcs_profile"] = gcs_profile
         __props__.__dict__["labels"] = labels
@@ -1040,6 +1101,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["postgresql_profile"] = postgresql_profile
         __props__.__dict__["private_connectivity"] = private_connectivity
         __props__.__dict__["project"] = project
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1067,6 +1129,15 @@ class ConnectionProfile(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="forwardSshConnectivity")
     def forward_ssh_connectivity(self) -> pulumi.Output[Optional['outputs.ConnectionProfileForwardSshConnectivity']]:
         """
@@ -1089,6 +1160,8 @@ class ConnectionProfile(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1155,4 +1228,13 @@ class ConnectionProfile(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

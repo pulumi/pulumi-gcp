@@ -34,6 +34,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         /// - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
         /// when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+        /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -55,6 +57,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// Map of string keys and values that can be used to organize and categorize
         /// (scope and select) objects. May match selectors of replication controllers
         /// and routes.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {

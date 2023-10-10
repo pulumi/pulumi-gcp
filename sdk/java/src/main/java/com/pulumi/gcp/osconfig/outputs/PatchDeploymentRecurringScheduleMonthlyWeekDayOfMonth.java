@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
@@ -16,6 +18,11 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
      * 
      */
     private String dayOfWeek;
+    /**
+     * @return Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+     * 
+     */
+    private @Nullable Integer dayOffset;
     /**
      * @return Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
      * 
@@ -30,6 +37,13 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
      */
     public String dayOfWeek() {
         return this.dayOfWeek;
+    }
+    /**
+     * @return Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+     * 
+     */
+    public Optional<Integer> dayOffset() {
+        return Optional.ofNullable(this.dayOffset);
     }
     /**
      * @return Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
@@ -49,17 +63,24 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
     @CustomType.Builder
     public static final class Builder {
         private String dayOfWeek;
+        private @Nullable Integer dayOffset;
         private Integer weekOrdinal;
         public Builder() {}
         public Builder(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dayOfWeek = defaults.dayOfWeek;
+    	      this.dayOffset = defaults.dayOffset;
     	      this.weekOrdinal = defaults.weekOrdinal;
         }
 
         @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
             this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dayOffset(@Nullable Integer dayOffset) {
+            this.dayOffset = dayOffset;
             return this;
         }
         @CustomType.Setter
@@ -70,6 +91,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
         public PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth build() {
             final var o = new PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth();
             o.dayOfWeek = dayOfWeek;
+            o.dayOffset = dayOffset;
             o.weekOrdinal = weekOrdinal;
             return o;
         }

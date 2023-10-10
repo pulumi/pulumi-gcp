@@ -154,14 +154,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="autoscalingAlgorithm", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> autoscalingAlgorithm;
+    private Output<String> autoscalingAlgorithm;
 
     /**
      * @return The algorithm to use for autoscaling
      * 
      */
-    public Output<Optional<String>> autoscalingAlgorithm() {
-        return Codegen.optional(this.autoscalingAlgorithm);
+    public Output<String> autoscalingAlgorithm() {
+        return this.autoscalingAlgorithm;
     }
     /**
      * The GCS path to the Dataflow job Flex
@@ -182,6 +182,22 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> containerSpecGcsPath() {
         return this.containerSpecGcsPath;
+    }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
     }
     /**
      * Indicates if the job should use the streaming engine feature.
@@ -231,15 +247,15 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kmsKeyName;
+    private Output<String> kmsKeyName;
 
     /**
      * @return The name for the Cloud KMS key for the job. Key format is:
      * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
      * 
      */
-    public Output<Optional<String>> kmsKeyName() {
-        return Codegen.optional(this.kmsKeyName);
+    public Output<String> kmsKeyName() {
+        return this.kmsKeyName;
     }
     /**
      * User labels to be specified for the job. Keys and values
@@ -272,28 +288,28 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="launcherMachineType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> launcherMachineType;
+    private Output<String> launcherMachineType;
 
     /**
      * @return The machine type to use for launching the job. The default is n1-standard-1.
      * 
      */
-    public Output<Optional<String>> launcherMachineType() {
-        return Codegen.optional(this.launcherMachineType);
+    public Output<String> launcherMachineType() {
+        return this.launcherMachineType;
     }
     /**
      * The machine type to use for the job.
      * 
      */
     @Export(name="machineType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> machineType;
+    private Output<String> machineType;
 
     /**
      * @return The machine type to use for the job.
      * 
      */
-    public Output<Optional<String>> machineType() {
-        return Codegen.optional(this.machineType);
+    public Output<String> machineType() {
+        return this.machineType;
     }
     /**
      * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
@@ -301,15 +317,15 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxWorkers", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxWorkers;
+    private Output<Integer> maxWorkers;
 
     /**
      * @return The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
      * 1000.
      * 
      */
-    public Output<Optional<Integer>> maxWorkers() {
-        return Codegen.optional(this.maxWorkers);
+    public Output<Integer> maxWorkers() {
+        return this.maxWorkers;
     }
     /**
      * A unique name for the resource, required by Dataflow.
@@ -330,28 +346,28 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> network;
+    private Output<String> network;
 
     /**
      * @return The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
      * 
      */
-    public Output<Optional<String>> network() {
-        return Codegen.optional(this.network);
+    public Output<String> network() {
+        return this.network;
     }
     /**
      * The initial number of Google Compute Engine instances for the job.
      * 
      */
     @Export(name="numWorkers", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> numWorkers;
+    private Output<Integer> numWorkers;
 
     /**
      * @return The initial number of Google Compute Engine instances for the job.
      * 
      */
-    public Output<Optional<Integer>> numWorkers() {
-        return Codegen.optional(this.numWorkers);
+    public Output<Integer> numWorkers() {
+        return this.numWorkers;
     }
     /**
      * One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
@@ -423,15 +439,15 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sdkContainerImage", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sdkContainerImage;
+    private Output<String> sdkContainerImage;
 
     /**
      * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
      * the SDK. Note this field is only valid for portable pipelines.
      * 
      */
-    public Output<Optional<String>> sdkContainerImage() {
-        return Codegen.optional(this.sdkContainerImage);
+    public Output<String> sdkContainerImage() {
+        return this.sdkContainerImage;
     }
     /**
      * The Service Account email used to create the job.
@@ -498,14 +514,14 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="subnetwork", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> subnetwork;
+    private Output<String> subnetwork;
 
     /**
      * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
      * 
      */
-    public Output<Optional<String>> subnetwork() {
-        return Codegen.optional(this.subnetwork);
+    public Output<String> subnetwork() {
+        return this.subnetwork;
     }
     /**
      * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
@@ -520,6 +536,20 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tempLocation() {
         return this.tempLocation;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the

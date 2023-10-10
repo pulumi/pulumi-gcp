@@ -32,6 +32,8 @@ class GrpcRouteArgs:
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -129,6 +131,8 @@ class GrpcRouteArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the GrpcRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -179,6 +183,7 @@ class _GrpcRouteState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -187,14 +192,19 @@ class _GrpcRouteState:
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GrpcRoute resources.
         :param pulumi.Input[str] create_time: Time the GrpcRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -202,12 +212,15 @@ class _GrpcRouteState:
         :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the GrpcRoute was updated in UTC.
         """
         _GrpcRouteState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             create_time=create_time,
             description=description,
+            effective_labels=effective_labels,
             gateways=gateways,
             hostnames=hostnames,
             labels=labels,
@@ -216,6 +229,7 @@ class _GrpcRouteState:
             project=project,
             rules=rules,
             self_link=self_link,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -223,6 +237,7 @@ class _GrpcRouteState:
              _setter: Callable[[Any, Any], None],
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -231,12 +246,15 @@ class _GrpcRouteState:
              project: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleArgs']]]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if gateways is not None:
             _setter("gateways", gateways)
         if hostnames is not None:
@@ -253,6 +271,8 @@ class _GrpcRouteState:
             _setter("rules", rules)
         if self_link is not None:
             _setter("self_link", self_link)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -279,6 +299,19 @@ class _GrpcRouteState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -309,6 +342,8 @@ class _GrpcRouteState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the GrpcRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -377,6 +412,19 @@ class _GrpcRouteState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -541,6 +589,8 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -733,7 +783,9 @@ class GrpcRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(GrpcRoute, __self__).__init__(
             'gcp:networkservices/grpcRoute:GrpcRoute',
@@ -747,6 +799,7 @@ class GrpcRoute(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -755,6 +808,7 @@ class GrpcRoute(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GrpcRoute':
         """
         Get an existing GrpcRoute resource's state with the given name, id, and optional extra
@@ -765,9 +819,13 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the GrpcRoute was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: List of gateways this GrpcRoute is attached to, as one of the routing rules to route the requests served by the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Service hostnames with an optional port for which this route describes traffic.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the GrpcRoute resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: List of meshes this GrpcRoute is attached to, as one of the routing rules to route the requests served by the mesh.
         :param pulumi.Input[str] name: Name of the GrpcRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -775,6 +833,8 @@ class GrpcRoute(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrpcRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the GrpcRoute was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -783,6 +843,7 @@ class GrpcRoute(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateways"] = gateways
         __props__.__dict__["hostnames"] = hostnames
         __props__.__dict__["labels"] = labels
@@ -791,6 +852,7 @@ class GrpcRoute(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return GrpcRoute(resource_name, opts=opts, __props__=__props__)
 
@@ -809,6 +871,15 @@ class GrpcRoute(pulumi.CustomResource):
         A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -831,6 +902,8 @@ class GrpcRoute(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the GrpcRoute resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -875,6 +948,15 @@ class GrpcRoute(pulumi.CustomResource):
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

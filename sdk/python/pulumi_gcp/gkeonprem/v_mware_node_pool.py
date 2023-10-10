@@ -38,6 +38,9 @@ class VMwareNodePoolArgs:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] display_name: The display name for the node pool.
         :param pulumi.Input[str] name: The vmware node pool name.
         :param pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs'] node_pool_autoscaling: Node Pool autoscaling config for the node pool.
@@ -131,6 +134,9 @@ class VMwareNodePoolArgs:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -197,6 +203,7 @@ class _VMwareNodePoolState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -219,11 +226,16 @@ class _VMwareNodePoolState:
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['VMwareNodePoolConfigArgs'] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: The display name for the node pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -252,6 +264,7 @@ class _VMwareNodePoolState:
             create_time=create_time,
             delete_time=delete_time,
             display_name=display_name,
+            effective_annotations=effective_annotations,
             etag=etag,
             location=location,
             name=name,
@@ -273,6 +286,7 @@ class _VMwareNodePoolState:
              create_time: Optional[pulumi.Input[str]] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -296,6 +310,8 @@ class _VMwareNodePoolState:
             _setter("delete_time", delete_time)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if etag is not None:
             _setter("etag", etag)
         if location is not None:
@@ -333,6 +349,9 @@ class _VMwareNodePoolState:
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -388,6 +407,19 @@ class _VMwareNodePoolState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -714,6 +746,9 @@ class VMwareNodePool(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] display_name: The display name for the node pool.
@@ -941,6 +976,7 @@ class VMwareNodePool(pulumi.CustomResource):
             __props__.__dict__["vmware_cluster"] = vmware_cluster
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["on_prem_version"] = None
             __props__.__dict__["reconciling"] = None
@@ -963,6 +999,7 @@ class VMwareNodePool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -990,11 +1027,16 @@ class VMwareNodePool(pulumi.CustomResource):
                Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['VMwareNodePoolConfigArgs']] config: The node configuration of the node pool.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time the cluster was created, in RFC3339 text format.
         :param pulumi.Input[str] delete_time: The time the cluster was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: The display name for the node pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other
                fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
@@ -1025,6 +1067,7 @@ class VMwareNodePool(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1041,7 +1084,7 @@ class VMwareNodePool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Annotations on the node Pool.
         This field has the same restrictions as Kubernetes annotations.
@@ -1051,6 +1094,9 @@ class VMwareNodePool(pulumi.CustomResource):
         Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1086,6 +1132,15 @@ class VMwareNodePool(pulumi.CustomResource):
         The display name for the node pool.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

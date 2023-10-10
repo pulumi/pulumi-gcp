@@ -24,6 +24,7 @@ public final class GetRepositoryResult {
     private String createTime;
     private String description;
     private List<GetRepositoryDockerConfig> dockerConfigs;
+    private Map<String,String> effectiveLabels;
     private String format;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -39,6 +40,7 @@ public final class GetRepositoryResult {
     private @Nullable String project;
     private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
     private String repositoryId;
+    private Map<String,String> terraformLabels;
     private String updateTime;
     private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
 
@@ -57,6 +59,9 @@ public final class GetRepositoryResult {
     }
     public List<GetRepositoryDockerConfig> dockerConfigs() {
         return this.dockerConfigs;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String format() {
         return this.format;
@@ -95,6 +100,9 @@ public final class GetRepositoryResult {
     public String repositoryId() {
         return this.repositoryId;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -116,6 +124,7 @@ public final class GetRepositoryResult {
         private String createTime;
         private String description;
         private List<GetRepositoryDockerConfig> dockerConfigs;
+        private Map<String,String> effectiveLabels;
         private String format;
         private String id;
         private String kmsKeyName;
@@ -127,6 +136,7 @@ public final class GetRepositoryResult {
         private @Nullable String project;
         private List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs;
         private String repositoryId;
+        private Map<String,String> terraformLabels;
         private String updateTime;
         private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
         public Builder() {}
@@ -137,6 +147,7 @@ public final class GetRepositoryResult {
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.dockerConfigs = defaults.dockerConfigs;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
@@ -148,6 +159,7 @@ public final class GetRepositoryResult {
     	      this.project = defaults.project;
     	      this.remoteRepositoryConfigs = defaults.remoteRepositoryConfigs;
     	      this.repositoryId = defaults.repositoryId;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.updateTime = defaults.updateTime;
     	      this.virtualRepositoryConfigs = defaults.virtualRepositoryConfigs;
         }
@@ -182,6 +194,11 @@ public final class GetRepositoryResult {
         }
         public Builder dockerConfigs(GetRepositoryDockerConfig... dockerConfigs) {
             return dockerConfigs(List.of(dockerConfigs));
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            return this;
         }
         @CustomType.Setter
         public Builder format(String format) {
@@ -245,6 +262,11 @@ public final class GetRepositoryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
@@ -264,6 +286,7 @@ public final class GetRepositoryResult {
             o.createTime = createTime;
             o.description = description;
             o.dockerConfigs = dockerConfigs;
+            o.effectiveLabels = effectiveLabels;
             o.format = format;
             o.id = id;
             o.kmsKeyName = kmsKeyName;
@@ -275,6 +298,7 @@ public final class GetRepositoryResult {
             o.project = project;
             o.remoteRepositoryConfigs = remoteRepositoryConfigs;
             o.repositoryId = repositoryId;
+            o.terraformLabels = terraformLabels;
             o.updateTime = updateTime;
             o.virtualRepositoryConfigs = virtualRepositoryConfigs;
             return o;

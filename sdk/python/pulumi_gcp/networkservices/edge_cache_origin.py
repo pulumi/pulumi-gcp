@@ -44,6 +44,8 @@ class EdgeCacheOriginArgs:
                The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
                A reference to a Topic resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] max_attempts: The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
                Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
                retryConditions and failoverOrigin to control its own cache fill failures.
@@ -210,6 +212,8 @@ class EdgeCacheOriginArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -364,6 +368,7 @@ class _EdgeCacheOriginState:
     def __init__(__self__, *,
                  aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_attempts: Optional[pulumi.Input[int]] = None,
@@ -375,17 +380,22 @@ class _EdgeCacheOriginState:
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
         """
         Input properties used for looking up and filtering EdgeCacheOrigin resources.
         :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
                The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
                A reference to a Topic resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] max_attempts: The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
                Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
                retryConditions and failoverOrigin to control its own cache fill failures.
@@ -430,6 +440,8 @@ class _EdgeCacheOriginState:
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -437,6 +449,7 @@ class _EdgeCacheOriginState:
             lambda key, value: pulumi.set(__self__, key, value),
             aws_v4_authentication=aws_v4_authentication,
             description=description,
+            effective_labels=effective_labels,
             failover_origin=failover_origin,
             labels=labels,
             max_attempts=max_attempts,
@@ -448,6 +461,7 @@ class _EdgeCacheOriginState:
             project=project,
             protocol=protocol,
             retry_conditions=retry_conditions,
+            terraform_labels=terraform_labels,
             timeout=timeout,
         )
     @staticmethod
@@ -455,6 +469,7 @@ class _EdgeCacheOriginState:
              _setter: Callable[[Any, Any], None],
              aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              failover_origin: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              max_attempts: Optional[pulumi.Input[int]] = None,
@@ -466,12 +481,15 @@ class _EdgeCacheOriginState:
              project: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if aws_v4_authentication is not None:
             _setter("aws_v4_authentication", aws_v4_authentication)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if failover_origin is not None:
             _setter("failover_origin", failover_origin)
         if labels is not None:
@@ -494,6 +512,8 @@ class _EdgeCacheOriginState:
             _setter("protocol", protocol)
         if retry_conditions is not None:
             _setter("retry_conditions", retry_conditions)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if timeout is not None:
             _setter("timeout", timeout)
 
@@ -523,6 +543,19 @@ class _EdgeCacheOriginState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="failoverOrigin")
     def failover_origin(self) -> Optional[pulumi.Input[str]]:
         """
@@ -542,6 +575,8 @@ class _EdgeCacheOriginState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -691,6 +726,19 @@ class _EdgeCacheOriginState:
     @retry_conditions.setter
     def retry_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "retry_conditions", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -851,6 +899,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
                A reference to a Topic resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] max_attempts: The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
                Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
                retryConditions and failoverOrigin to control its own cache fill failures.
@@ -1097,6 +1147,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                     timeout[key] = value
                 EdgeCacheOriginTimeoutArgs._configure(_setter, **timeout)
             __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(EdgeCacheOrigin, __self__).__init__(
             'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
             resource_name,
@@ -1109,6 +1161,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             failover_origin: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             max_attempts: Optional[pulumi.Input[int]] = None,
@@ -1120,6 +1173,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']]] = None) -> 'EdgeCacheOrigin':
         """
         Get an existing EdgeCacheOrigin resource's state with the given name, id, and optional extra
@@ -1131,11 +1185,15 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
                After maxAttempts is reached, the configured failoverOrigin will be used to fulfil the request.
                The value of timeout.maxAttemptsTimeout dictates the timeout across all origins.
                A reference to a Topic resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[int] max_attempts: The maximum number of attempts to cache fill from this origin. Another attempt is made when a cache fill fails with one of the retryConditions.
                Once maxAttempts to this origin have failed the failoverOrigin will be used, if one is specified. That failoverOrigin may specify its own maxAttempts,
                retryConditions and failoverOrigin to control its own cache fill failures.
@@ -1180,6 +1238,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1189,6 +1249,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["failover_origin"] = failover_origin
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_attempts"] = max_attempts
@@ -1200,6 +1261,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["retry_conditions"] = retry_conditions
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["timeout"] = timeout
         return EdgeCacheOrigin(resource_name, opts=opts, __props__=__props__)
 
@@ -1221,6 +1283,15 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="failoverOrigin")
     def failover_origin(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1236,6 +1307,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the EdgeCache resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1345,6 +1418,15 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

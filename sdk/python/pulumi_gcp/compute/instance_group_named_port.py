@@ -282,7 +282,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_ipv4_cidr_block="/19",
                 services_ipv4_cidr_block="/22",
-            ))
+            ),
+            deletion_protection=True)
         my_port = gcp.compute.InstanceGroupNamedPort("myPort",
             group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",
@@ -364,7 +365,8 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_ipv4_cidr_block="/19",
                 services_ipv4_cidr_block="/22",
-            ))
+            ),
+            deletion_protection=True)
         my_port = gcp.compute.InstanceGroupNamedPort("myPort",
             group=my_cluster.node_pools[0].instance_group_urls[0],
             zone="us-central1-a",

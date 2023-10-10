@@ -386,6 +386,7 @@ class _BucketState:
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
                  custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -399,6 +400,7 @@ class _BucketState:
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
@@ -409,6 +411,8 @@ class _BucketState:
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -427,6 +431,7 @@ class _BucketState:
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -438,6 +443,7 @@ class _BucketState:
             cors=cors,
             custom_placement_config=custom_placement_config,
             default_event_based_hold=default_event_based_hold,
+            effective_labels=effective_labels,
             encryption=encryption,
             force_destroy=force_destroy,
             labels=labels,
@@ -451,6 +457,7 @@ class _BucketState:
             retention_policy=retention_policy,
             self_link=self_link,
             storage_class=storage_class,
+            terraform_labels=terraform_labels,
             uniform_bucket_level_access=uniform_bucket_level_access,
             url=url,
             versioning=versioning,
@@ -463,6 +470,7 @@ class _BucketState:
              cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
              custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
              default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
              force_destroy: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -476,6 +484,7 @@ class _BucketState:
              retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
              self_link: Optional[pulumi.Input[str]] = None,
              storage_class: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
              url: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
@@ -489,6 +498,8 @@ class _BucketState:
             _setter("custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             _setter("default_event_based_hold", default_event_based_hold)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if encryption is not None:
             _setter("encryption", encryption)
         if force_destroy is not None:
@@ -515,6 +526,8 @@ class _BucketState:
             _setter("self_link", self_link)
         if storage_class is not None:
             _setter("storage_class", storage_class)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uniform_bucket_level_access is not None:
             _setter("uniform_bucket_level_access", uniform_bucket_level_access)
         if url is not None:
@@ -571,6 +584,19 @@ class _BucketState:
     @default_event_based_hold.setter
     def default_event_based_hold(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "default_event_based_hold", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -732,6 +758,18 @@ class _BucketState:
     @storage_class.setter
     def storage_class(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_class", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="uniformBucketLevelAccess")
@@ -1135,7 +1173,9 @@ class Bucket(pulumi.CustomResource):
                     website[key] = value
                 BucketWebsiteArgs._configure(_setter, **website)
             __props__.__dict__["website"] = website
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["url"] = None
         super(Bucket, __self__).__init__(
             'gcp:storage/bucket:Bucket',
@@ -1151,6 +1191,7 @@ class Bucket(pulumi.CustomResource):
             cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]]] = None,
             custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
             default_event_based_hold: Optional[pulumi.Input[bool]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1164,6 +1205,7 @@ class Bucket(pulumi.CustomResource):
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             storage_class: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uniform_bucket_level_access: Optional[pulumi.Input[bool]] = None,
             url: Optional[pulumi.Input[str]] = None,
             versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
@@ -1179,6 +1221,8 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorArgs']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
@@ -1197,6 +1241,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] storage_class: The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] uniform_bucket_level_access: Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
         :param pulumi.Input[str] url: The base URL of the bucket, in the format `gs://<bucket-name>`.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
@@ -1210,6 +1255,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["cors"] = cors
         __props__.__dict__["custom_placement_config"] = custom_placement_config
         __props__.__dict__["default_event_based_hold"] = default_event_based_hold
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
@@ -1223,6 +1269,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["retention_policy"] = retention_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["storage_class"] = storage_class
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uniform_bucket_level_access"] = uniform_bucket_level_access
         __props__.__dict__["url"] = url
         __props__.__dict__["versioning"] = versioning
@@ -1262,6 +1309,15 @@ class Bucket(pulumi.CustomResource):
         return pulumi.get(self, "default_event_based_hold")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def encryption(self) -> pulumi.Output[Optional['outputs.BucketEncryption']]:
         """
@@ -1281,7 +1337,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of key/value label pairs to assign to the bucket.
         """
@@ -1369,6 +1425,14 @@ class Bucket(pulumi.CustomResource):
         The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="uniformBucketLevelAccess")

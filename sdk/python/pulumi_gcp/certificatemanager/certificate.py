@@ -28,6 +28,8 @@ class CertificateArgs:
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
@@ -110,6 +112,8 @@ class CertificateArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the Certificate resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -212,17 +216,23 @@ class CertificateArgs:
 class _CertificateState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
+                 self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
@@ -247,10 +257,13 @@ class _CertificateState:
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _CertificateState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             description=description,
+            effective_labels=effective_labels,
             labels=labels,
             location=location,
             managed=managed,
@@ -258,11 +271,13 @@ class _CertificateState:
             project=project,
             scope=scope,
             self_managed=self_managed,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
@@ -270,9 +285,12 @@ class _CertificateState:
              project: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if location is not None:
@@ -287,6 +305,8 @@ class _CertificateState:
             _setter("scope", scope)
         if self_managed is not None:
             _setter("self_managed", self_managed)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -301,10 +321,25 @@ class _CertificateState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the Certificate resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -402,6 +437,19 @@ class _CertificateState:
     def self_managed(self, value: Optional[pulumi.Input['CertificateSelfManagedArgs']]):
         pulumi.set(self, "self_managed", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Certificate(pulumi.CustomResource):
     @overload
@@ -440,6 +488,9 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="The default cert",
             scope="EDGE_CACHE",
+            labels={
+                "env": "test",
+            },
             managed=gcp.certificatemanager.CertificateManagedArgs(
                 domains=[
                     instance.domain,
@@ -576,6 +627,8 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
@@ -630,6 +683,9 @@ class Certificate(pulumi.CustomResource):
         default = gcp.certificatemanager.Certificate("default",
             description="The default cert",
             scope="EDGE_CACHE",
+            labels={
+                "env": "test",
+            },
             managed=gcp.certificatemanager.CertificateManagedArgs(
                 domains=[
                     instance.domain,
@@ -816,6 +872,8 @@ class Certificate(pulumi.CustomResource):
                     self_managed[key] = value
                 CertificateSelfManagedArgs._configure(_setter, **self_managed)
             __props__.__dict__["self_managed"] = self_managed
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Certificate, __self__).__init__(
             'gcp:certificatemanager/certificate:Certificate',
             resource_name,
@@ -827,13 +885,15 @@ class Certificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None) -> 'Certificate':
+            self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -842,7 +902,11 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
@@ -867,12 +931,15 @@ class Certificate(pulumi.CustomResource):
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CertificateState.__new__(_CertificateState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["managed"] = managed
@@ -880,6 +947,7 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["scope"] = scope
         __props__.__dict__["self_managed"] = self_managed
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -891,10 +959,21 @@ class Certificate(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the Certificate resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -963,4 +1042,13 @@ class Certificate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "self_managed")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,7 +32,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -67,8 +67,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -140,7 +140,12 @@ type EdgeCacheKeyset struct {
 
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -159,6 +164,9 @@ type EdgeCacheKeyset struct {
 	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayOutput `pulumi:"publicKeys"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
 	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -199,7 +207,12 @@ func GetEdgeCacheKeyset(ctx *pulumi.Context,
 type edgeCacheKeysetState struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -218,6 +231,9 @@ type edgeCacheKeysetState struct {
 	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys []EdgeCacheKeysetPublicKey `pulumi:"publicKeys"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
 	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -229,7 +245,12 @@ type edgeCacheKeysetState struct {
 type EdgeCacheKeysetState struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -248,6 +269,9 @@ type EdgeCacheKeysetState struct {
 	// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
 	// Structure is documented below.
 	PublicKeys EdgeCacheKeysetPublicKeyArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// An ordered list of shared keys to use for validating signed requests.
 	// Shared keys are secret.  Ensure that only authorized users can add `validationSharedKeys` to a keyset.
 	// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
@@ -264,6 +288,8 @@ type edgeCacheKeysetArgs struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -295,6 +321,8 @@ type EdgeCacheKeysetArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -437,7 +465,15 @@ func (o EdgeCacheKeysetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EdgeCacheKeysetOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set of label tags associated with the EdgeCache resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EdgeCacheKeysetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -466,6 +502,12 @@ func (o EdgeCacheKeysetOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o EdgeCacheKeysetOutput) PublicKeys() EdgeCacheKeysetPublicKeyArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheKeyset) EdgeCacheKeysetPublicKeyArrayOutput { return v.PublicKeys }).(EdgeCacheKeysetPublicKeyArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EdgeCacheKeysetOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheKeyset) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // An ordered list of shared keys to use for validating signed requests.

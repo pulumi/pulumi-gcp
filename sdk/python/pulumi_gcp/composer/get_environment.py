@@ -22,10 +22,13 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, configs=None, id=None, labels=None, name=None, project=None, region=None):
+    def __init__(__self__, configs=None, effective_labels=None, id=None, labels=None, name=None, project=None, region=None, terraform_labels=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -41,6 +44,9 @@ class GetEnvironmentResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -49,6 +55,11 @@ class GetEnvironmentResult:
         Configuration parameters for the environment.
         """
         return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -78,6 +89,11 @@ class GetEnvironmentResult:
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
 
 class AwaitableGetEnvironmentResult(GetEnvironmentResult):
     # pylint: disable=using-constant-test
@@ -86,11 +102,13 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             yield self
         return GetEnvironmentResult(
             configs=self.configs,
+            effective_labels=self.effective_labels,
             id=self.id,
             labels=self.labels,
             name=self.name,
             project=self.project,
-            region=self.region)
+            region=self.region,
+            terraform_labels=self.terraform_labels)
 
 
 def get_environment(name: Optional[str] = None,
@@ -115,11 +133,13 @@ def get_environment(name: Optional[str] = None,
 
     return AwaitableGetEnvironmentResult(
         configs=pulumi.get(__ret__, 'configs'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
-        region=pulumi.get(__ret__, 'region'))
+        region=pulumi.get(__ret__, 'region'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'))
 
 
 @_utilities.lift_output_func(get_environment)

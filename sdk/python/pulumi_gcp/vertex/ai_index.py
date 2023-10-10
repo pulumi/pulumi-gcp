@@ -34,6 +34,8 @@ class AiIndexArgs:
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -121,6 +123,8 @@ class AiIndexArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -174,6 +178,7 @@ class _AiIndexState:
                  deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
                  index_update_method: Optional[pulumi.Input[str]] = None,
@@ -183,6 +188,7 @@ class _AiIndexState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiIndex resources.
@@ -194,6 +200,8 @@ class _AiIndexState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]] index_stats: Stats of the index resource.
                Structure is documented below.
@@ -201,6 +209,8 @@ class _AiIndexState:
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
@@ -208,6 +218,8 @@ class _AiIndexState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the index. eg us-central1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         _AiIndexState._configure(
@@ -216,6 +228,7 @@ class _AiIndexState:
             deployed_indexes=deployed_indexes,
             description=description,
             display_name=display_name,
+            effective_labels=effective_labels,
             etag=etag,
             index_stats=index_stats,
             index_update_method=index_update_method,
@@ -225,6 +238,7 @@ class _AiIndexState:
             name=name,
             project=project,
             region=region,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -234,6 +248,7 @@ class _AiIndexState:
              deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
              index_update_method: Optional[pulumi.Input[str]] = None,
@@ -243,6 +258,7 @@ class _AiIndexState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
@@ -253,6 +269,8 @@ class _AiIndexState:
             _setter("description", description)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if index_stats is not None:
@@ -271,6 +289,8 @@ class _AiIndexState:
             _setter("project", project)
         if region is not None:
             _setter("region", region)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -327,6 +347,19 @@ class _AiIndexState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -370,6 +403,8 @@ class _AiIndexState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -438,6 +473,19 @@ class _AiIndexState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -582,6 +630,8 @@ class AiIndex(pulumi.CustomResource):
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -751,10 +801,12 @@ class AiIndex(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deployed_indexes"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["index_stats"] = None
             __props__.__dict__["metadata_schema_uri"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AiIndex, __self__).__init__(
             'gcp:vertex/aiIndex:AiIndex',
@@ -770,6 +822,7 @@ class AiIndex(pulumi.CustomResource):
             deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             index_stats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArgs']]]]] = None,
             index_update_method: Optional[pulumi.Input[str]] = None,
@@ -779,6 +832,7 @@ class AiIndex(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiIndex':
         """
         Get an existing AiIndex resource's state with the given name, id, and optional extra
@@ -795,6 +849,8 @@ class AiIndex(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArgs']]]] index_stats: Stats of the index resource.
                Structure is documented below.
@@ -802,6 +858,8 @@ class AiIndex(pulumi.CustomResource):
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']] metadata: An additional information about the Index
                Structure is documented below.
         :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
@@ -809,6 +867,8 @@ class AiIndex(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the index. eg us-central1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -819,6 +879,7 @@ class AiIndex(pulumi.CustomResource):
         __props__.__dict__["deployed_indexes"] = deployed_indexes
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["index_stats"] = index_stats
         __props__.__dict__["index_update_method"] = index_update_method
@@ -828,6 +889,7 @@ class AiIndex(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AiIndex(resource_name, opts=opts, __props__=__props__)
 
@@ -868,6 +930,15 @@ class AiIndex(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -899,6 +970,8 @@ class AiIndex(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -943,6 +1016,15 @@ class AiIndex(pulumi.CustomResource):
         The region of the index. eg us-central1
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

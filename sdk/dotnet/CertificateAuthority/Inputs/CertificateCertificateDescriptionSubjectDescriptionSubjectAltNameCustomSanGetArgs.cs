@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// (Output)
-        /// Required. Describes how some of the technical fields in a certificate should be populated.
+        /// Describes how some of the technical fields in a certificate should be populated.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdGetArgs> ObectIds

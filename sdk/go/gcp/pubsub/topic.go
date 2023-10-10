@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,8 +59,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,7 +97,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -126,7 +126,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -197,6 +197,9 @@ import (
 type Topic struct {
 	pulumi.CustomResourceState
 
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -204,6 +207,9 @@ type Topic struct {
 	// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to this Topic.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Indicates the minimum duration to retain a message after it is published
 	// to the topic. If this field is set, messages published to the topic in
@@ -228,6 +234,9 @@ type Topic struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsOutput `pulumi:"schemaSettings"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewTopic registers a new resource with the given unique name, arguments, and options.
@@ -260,6 +269,9 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -267,6 +279,9 @@ type topicState struct {
 	// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to this Topic.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Indicates the minimum duration to retain a message after it is published
 	// to the topic. If this field is set, messages published to the topic in
@@ -291,9 +306,15 @@ type topicState struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings *TopicSchemaSettings `pulumi:"schemaSettings"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type TopicState struct {
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The resource name of the Cloud KMS CryptoKey to be used to protect access
 	// to messages published on this topic. Your project's PubSub service account
 	// (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -301,6 +322,9 @@ type TopicState struct {
 	// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Topic.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Indicates the minimum duration to retain a message after it is published
 	// to the topic. If this field is set, messages published to the topic in
@@ -325,6 +349,9 @@ type TopicState struct {
 	// Settings for validating messages published against a schema.
 	// Structure is documented below.
 	SchemaSettings TopicSchemaSettingsPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (TopicState) ElementType() reflect.Type {
@@ -339,6 +366,9 @@ type topicArgs struct {
 	// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs to assign to this Topic.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Indicates the minimum duration to retain a message after it is published
 	// to the topic. If this field is set, messages published to the topic in
@@ -374,6 +404,9 @@ type TopicArgs struct {
 	// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`
 	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Topic.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Indicates the minimum duration to retain a message after it is published
 	// to the topic. If this field is set, messages published to the topic in
@@ -511,6 +544,12 @@ func (o TopicOutput) ToOutput(ctx context.Context) pulumix.Output[*Topic] {
 	}
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o TopicOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The resource name of the Cloud KMS CryptoKey to be used to protect access
 // to messages published on this topic. Your project's PubSub service account
 // (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -521,6 +560,9 @@ func (o TopicOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 // A set of key/value label pairs to assign to this Topic.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o TopicOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -561,6 +603,12 @@ func (o TopicOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o TopicOutput) SchemaSettings() TopicSchemaSettingsOutput {
 	return o.ApplyT(func(v *Topic) TopicSchemaSettingsOutput { return v.SchemaSettings }).(TopicSchemaSettingsOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o TopicOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type TopicArrayOutput struct{ *pulumi.OutputState }

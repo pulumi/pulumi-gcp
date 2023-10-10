@@ -30,6 +30,11 @@ public final class DatabaseInstanceClone {
      */
     private @Nullable String pointInTime;
     /**
+     * @return (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+     * 
+     */
+    private @Nullable String preferredZone;
+    /**
      * @return Name of the source instance which will be cloned.
      * 
      */
@@ -60,6 +65,13 @@ public final class DatabaseInstanceClone {
         return Optional.ofNullable(this.pointInTime);
     }
     /**
+     * @return (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+     * 
+     */
+    public Optional<String> preferredZone() {
+        return Optional.ofNullable(this.preferredZone);
+    }
+    /**
      * @return Name of the source instance which will be cloned.
      * 
      */
@@ -79,6 +91,7 @@ public final class DatabaseInstanceClone {
         private @Nullable String allocatedIpRange;
         private @Nullable List<String> databaseNames;
         private @Nullable String pointInTime;
+        private @Nullable String preferredZone;
         private String sourceInstanceName;
         public Builder() {}
         public Builder(DatabaseInstanceClone defaults) {
@@ -86,6 +99,7 @@ public final class DatabaseInstanceClone {
     	      this.allocatedIpRange = defaults.allocatedIpRange;
     	      this.databaseNames = defaults.databaseNames;
     	      this.pointInTime = defaults.pointInTime;
+    	      this.preferredZone = defaults.preferredZone;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
 
@@ -108,6 +122,11 @@ public final class DatabaseInstanceClone {
             return this;
         }
         @CustomType.Setter
+        public Builder preferredZone(@Nullable String preferredZone) {
+            this.preferredZone = preferredZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
             this.sourceInstanceName = Objects.requireNonNull(sourceInstanceName);
             return this;
@@ -117,6 +136,7 @@ public final class DatabaseInstanceClone {
             o.allocatedIpRange = allocatedIpRange;
             o.databaseNames = databaseNames;
             o.pointInTime = pointInTime;
+            o.preferredZone = preferredZone;
             o.sourceInstanceName = sourceInstanceName;
             return o;
         }

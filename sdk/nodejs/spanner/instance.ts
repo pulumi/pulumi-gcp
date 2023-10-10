@@ -123,6 +123,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * When deleting a spanner instance, this boolean option will delete all backups of this instance.
      * This must be set to true if you created a backup manually in the console.
      */
@@ -130,6 +135,9 @@ export class Instance extends pulumi.CustomResource {
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -159,6 +167,11 @@ export class Instance extends pulumi.CustomResource {
      * Instance status: `CREATING` or `READY`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -175,6 +188,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -182,6 +196,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["processingUnits"] = state ? state.processingUnits : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
@@ -198,7 +213,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["numNodes"] = args ? args.numNodes : undefined;
             resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -227,6 +244,11 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * When deleting a spanner instance, this boolean option will delete all backups of this instance.
      * This must be set to true if you created a backup manually in the console.
      */
@@ -234,6 +256,9 @@ export interface InstanceState {
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -263,6 +288,11 @@ export interface InstanceState {
      * Instance status: `CREATING` or `READY`.
      */
     state?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -294,6 +324,9 @@ export interface InstanceArgs {
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

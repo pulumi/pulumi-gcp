@@ -26,6 +26,7 @@ class InstanceArgs:
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
+                 query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
                  read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -38,6 +39,8 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
                Note that primary and read instances can have different availability types.
                Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
@@ -49,7 +52,11 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InstanceMachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
+               Structure is documented below.
+        :param pulumi.Input['InstanceQueryInsightsConfigArgs'] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
@@ -66,6 +73,7 @@ class InstanceArgs:
             gce_zone=gce_zone,
             labels=labels,
             machine_config=machine_config,
+            query_insights_config=query_insights_config,
             read_pool_config=read_pool_config,
         )
     @staticmethod
@@ -81,6 +89,7 @@ class InstanceArgs:
              gce_zone: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
+             query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
              read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         _setter("cluster", cluster)
@@ -100,6 +109,8 @@ class InstanceArgs:
             _setter("labels", labels)
         if machine_config is not None:
             _setter("machine_config", machine_config)
+        if query_insights_config is not None:
+            _setter("query_insights_config", query_insights_config)
         if read_pool_config is not None:
             _setter("read_pool_config", read_pool_config)
 
@@ -149,6 +160,8 @@ class InstanceArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -215,6 +228,8 @@ class InstanceArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the alloydb instance.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -234,6 +249,19 @@ class InstanceArgs:
     @machine_config.setter
     def machine_config(self, value: Optional[pulumi.Input['InstanceMachineConfigArgs']]):
         pulumi.set(self, "machine_config", value)
+
+    @property
+    @pulumi.getter(name="queryInsightsConfig")
+    def query_insights_config(self) -> Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']]:
+        """
+        Configuration for query insights.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_insights_config")
+
+    @query_insights_config.setter
+    def query_insights_config(self, value: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']]):
+        pulumi.set(self, "query_insights_config", value)
 
     @property
     @pulumi.getter(name="readPoolConfig")
@@ -258,6 +286,8 @@ class _InstanceState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -265,14 +295,18 @@ class _InstanceState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
                  read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
                Note that primary and read instances can have different availability types.
                Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
@@ -285,6 +319,10 @@ class _InstanceState:
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
                
@@ -294,13 +332,19 @@ class _InstanceState:
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['InstanceMachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
+        :param pulumi.Input['InstanceQueryInsightsConfigArgs'] query_insights_config: Configuration for query insights.
+               Structure is documented below.
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
@@ -312,6 +356,8 @@ class _InstanceState:
             create_time=create_time,
             database_flags=database_flags,
             display_name=display_name,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
             gce_zone=gce_zone,
             instance_id=instance_id,
             instance_type=instance_type,
@@ -319,9 +365,11 @@ class _InstanceState:
             labels=labels,
             machine_config=machine_config,
             name=name,
+            query_insights_config=query_insights_config,
             read_pool_config=read_pool_config,
             reconciling=reconciling,
             state=state,
+            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -334,6 +382,8 @@ class _InstanceState:
              create_time: Optional[pulumi.Input[str]] = None,
              database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              gce_zone: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
@@ -341,9 +391,11 @@ class _InstanceState:
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              machine_config: Optional[pulumi.Input['InstanceMachineConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
+             query_insights_config: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']] = None,
              read_pool_config: Optional[pulumi.Input['InstanceReadPoolConfigArgs']] = None,
              reconciling: Optional[pulumi.Input[bool]] = None,
              state: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -359,6 +411,10 @@ class _InstanceState:
             _setter("database_flags", database_flags)
         if display_name is not None:
             _setter("display_name", display_name)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if gce_zone is not None:
             _setter("gce_zone", gce_zone)
         if instance_id is not None:
@@ -373,12 +429,16 @@ class _InstanceState:
             _setter("machine_config", machine_config)
         if name is not None:
             _setter("name", name)
+        if query_insights_config is not None:
+            _setter("query_insights_config", query_insights_config)
         if read_pool_config is not None:
             _setter("read_pool_config", read_pool_config)
         if reconciling is not None:
             _setter("reconciling", reconciling)
         if state is not None:
             _setter("state", state)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -389,6 +449,8 @@ class _InstanceState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -464,6 +526,32 @@ class _InstanceState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -520,6 +608,8 @@ class _InstanceState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined labels for the alloydb instance.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -551,6 +641,19 @@ class _InstanceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="queryInsightsConfig")
+    def query_insights_config(self) -> Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']]:
+        """
+        Configuration for query insights.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_insights_config")
+
+    @query_insights_config.setter
+    def query_insights_config(self, value: Optional[pulumi.Input['InstanceQueryInsightsConfigArgs']]):
+        pulumi.set(self, "query_insights_config", value)
 
     @property
     @pulumi.getter(name="readPoolConfig")
@@ -588,6 +691,19 @@ class _InstanceState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -629,6 +745,7 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
+                 query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']]] = None,
                  __props__=None):
         """
@@ -647,7 +764,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="alloydb-network")
+        default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -694,6 +811,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
                Note that primary and read instances can have different availability types.
                Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
@@ -713,7 +832,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']] query_insights_config: Configuration for query insights.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
@@ -740,7 +863,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.get_network(name="alloydb-network")
+        default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -813,6 +936,7 @@ class Instance(pulumi.CustomResource):
                  instance_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
+                 query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
                  read_pool_config: Optional[pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -844,6 +968,12 @@ class Instance(pulumi.CustomResource):
                     machine_config[key] = value
                 InstanceMachineConfigArgs._configure(_setter, **machine_config)
             __props__.__dict__["machine_config"] = machine_config
+            if query_insights_config is not None and not isinstance(query_insights_config, InstanceQueryInsightsConfigArgs):
+                query_insights_config = query_insights_config or {}
+                def _setter(key, value):
+                    query_insights_config[key] = value
+                InstanceQueryInsightsConfigArgs._configure(_setter, **query_insights_config)
+            __props__.__dict__["query_insights_config"] = query_insights_config
             if read_pool_config is not None and not isinstance(read_pool_config, InstanceReadPoolConfigArgs):
                 read_pool_config = read_pool_config or {}
                 def _setter(key, value):
@@ -851,10 +981,13 @@ class Instance(pulumi.CustomResource):
                 InstanceReadPoolConfigArgs._configure(_setter, **read_pool_config)
             __props__.__dict__["read_pool_config"] = read_pool_config
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Instance, __self__).__init__(
@@ -873,6 +1006,8 @@ class Instance(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gce_zone: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
@@ -880,9 +1015,11 @@ class Instance(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_config: Optional[pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            query_insights_config: Optional[pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']]] = None,
             read_pool_config: Optional[pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -893,6 +1030,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
                Note that primary and read instances can have different availability types.
                Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
@@ -905,6 +1044,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
                
@@ -914,13 +1057,19 @@ class Instance(pulumi.CustomResource):
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
+        :param pulumi.Input[pulumi.InputType['InstanceQueryInsightsConfigArgs']] query_insights_config: Configuration for query insights.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
@@ -934,6 +1083,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database_flags"] = database_flags
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gce_zone"] = gce_zone
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["instance_type"] = instance_type
@@ -941,9 +1092,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["machine_config"] = machine_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["query_insights_config"] = query_insights_config
         __props__.__dict__["read_pool_config"] = read_pool_config
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -953,6 +1106,8 @@ class Instance(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1004,6 +1159,24 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="gceZone")
     def gce_zone(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1044,6 +1217,8 @@ class Instance(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined labels for the alloydb instance.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1063,6 +1238,15 @@ class Instance(pulumi.CustomResource):
         The name of the instance resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="queryInsightsConfig")
+    def query_insights_config(self) -> pulumi.Output['outputs.InstanceQueryInsightsConfig']:
+        """
+        Configuration for query insights.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_insights_config")
 
     @property
     @pulumi.getter(name="readPoolConfig")
@@ -1088,6 +1272,15 @@ class Instance(pulumi.CustomResource):
         The current state of the alloydb instance.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

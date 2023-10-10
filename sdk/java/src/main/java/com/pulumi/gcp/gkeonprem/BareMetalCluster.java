@@ -485,9 +485,12 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> annotations;
+    private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
      * @return Annotations on the Bare Metal User Cluster.
@@ -499,9 +502,12 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      * Name must be 63 characters or less, begin and end with alphanumerics,
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
-    public Output<Map<String,String>> annotations() {
-        return this.annotations;
+    public Output<Optional<Map<String,String>>> annotations() {
+        return Codegen.optional(this.annotations);
     }
     /**
      * A human readable description of this Bare Metal User Cluster.
@@ -606,6 +612,22 @@ public class BareMetalCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
     }
     /**
      * The IP address name of Bare Metal User Cluster&#39;s API server.

@@ -44,6 +44,7 @@ export interface GetProjectArgs {
 export interface GetProjectResult {
     readonly autoCreateNetwork: boolean;
     readonly billingAccount: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly folderId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -58,6 +59,7 @@ export interface GetProjectResult {
     readonly orgId: string;
     readonly projectId?: string;
     readonly skipDelete: boolean;
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Use this data source to get project details.

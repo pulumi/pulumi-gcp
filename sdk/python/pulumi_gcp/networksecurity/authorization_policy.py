@@ -29,6 +29,8 @@ class AuthorizationPolicyArgs:
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AuthorizationPolicy resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
@@ -106,6 +108,8 @@ class AuthorizationPolicyArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the AuthorizationPolicy resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -175,11 +179,13 @@ class _AuthorizationPolicyState:
                  action: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AuthorizationPolicy resources.
@@ -187,7 +193,11 @@ class _AuthorizationPolicyState:
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] create_time: Time the AuthorizationPolicy was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AuthorizationPolicy resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
@@ -199,6 +209,8 @@ class _AuthorizationPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the AuthorizationPolicy was updated in UTC.
         """
         _AuthorizationPolicyState._configure(
@@ -206,11 +218,13 @@ class _AuthorizationPolicyState:
             action=action,
             create_time=create_time,
             description=description,
+            effective_labels=effective_labels,
             labels=labels,
             location=location,
             name=name,
             project=project,
             rules=rules,
+            terraform_labels=terraform_labels,
             update_time=update_time,
         )
     @staticmethod
@@ -219,11 +233,13 @@ class _AuthorizationPolicyState:
              action: Optional[pulumi.Input[str]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
@@ -232,6 +248,8 @@ class _AuthorizationPolicyState:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if location is not None:
@@ -242,6 +260,8 @@ class _AuthorizationPolicyState:
             _setter("project", project)
         if rules is not None:
             _setter("rules", rules)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if update_time is not None:
             _setter("update_time", update_time)
 
@@ -283,10 +303,25 @@ class _AuthorizationPolicyState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Set of label tags associated with the AuthorizationPolicy resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -348,6 +383,19 @@ class _AuthorizationPolicyState:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -449,6 +497,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AuthorizationPolicy resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
@@ -580,6 +630,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["rules"] = rules
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AuthorizationPolicy, __self__).__init__(
             'gcp:networksecurity/authorizationPolicy:AuthorizationPolicy',
@@ -594,11 +646,13 @@ class AuthorizationPolicy(pulumi.CustomResource):
             action: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AuthorizationPolicy':
         """
         Get an existing AuthorizationPolicy resource's state with the given name, id, and optional extra
@@ -611,7 +665,11 @@ class AuthorizationPolicy(pulumi.CustomResource):
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] create_time: Time the AuthorizationPolicy was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AuthorizationPolicy resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the authorization policy.
                The default value is `global`.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource.
@@ -623,6 +681,8 @@ class AuthorizationPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPolicyRuleArgs']]]] rules: List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
                A rule is a match if there is a matching source and destination. If left blank, the action specified in the action field will be applied on every request.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Time the AuthorizationPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -632,11 +692,13 @@ class AuthorizationPolicy(pulumi.CustomResource):
         __props__.__dict__["action"] = action
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["rules"] = rules
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["update_time"] = update_time
         return AuthorizationPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -666,10 +728,21 @@ class AuthorizationPolicy(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Set of label tags associated with the AuthorizationPolicy resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -711,6 +784,15 @@ class AuthorizationPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter(name="updateTime")

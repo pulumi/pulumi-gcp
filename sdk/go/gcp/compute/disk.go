@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -42,7 +42,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,7 +73,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,7 +111,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -198,6 +198,9 @@ type Disk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 	// required when setting to true
 	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
@@ -226,6 +229,9 @@ type Disk struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp pulumi.StringOutput `pulumi:"lastAttachTimestamp"`
@@ -323,6 +329,9 @@ type Disk struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -382,6 +391,9 @@ type diskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 	// required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
@@ -410,6 +422,9 @@ type diskState struct {
 	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp *string `pulumi:"lastAttachTimestamp"`
@@ -507,6 +522,9 @@ type diskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
@@ -537,6 +555,9 @@ type DiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 	// required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
@@ -565,6 +586,9 @@ type DiskState struct {
 	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp pulumi.StringPtrInput
@@ -662,6 +686,9 @@ type DiskState struct {
 	// snapshot ID would identify the exact version of the snapshot that was
 	// used.
 	SourceSnapshotId pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
@@ -719,6 +746,9 @@ type diskArgs struct {
 	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Any applicable license URI.
 	Licenses []string `pulumi:"licenses"`
@@ -844,6 +874,9 @@ type DiskArgs struct {
 	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Any applicable license URI.
 	Licenses pulumi.StringArrayInput
@@ -1067,6 +1100,12 @@ func (o DiskOutput) DiskEncryptionKey() DiskDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(DiskDiskEncryptionKeyPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o DiskOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
 // required when setting to true
 func (o DiskOutput) EnableConfidentialCompute() pulumi.BoolOutput {
@@ -1110,6 +1149,9 @@ func (o DiskOutput) LabelFingerprint() pulumi.StringOutput {
 }
 
 // Labels to apply to this disk.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o DiskOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1265,6 +1307,12 @@ func (o DiskOutput) SourceSnapshotEncryptionKey() DiskSourceSnapshotEncryptionKe
 // used.
 func (o DiskOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o DiskOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // URL of the disk type resource describing which disk type to use to

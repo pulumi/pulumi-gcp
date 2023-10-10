@@ -25,7 +25,6 @@ class NodeGroupArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
-                 size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
@@ -35,9 +34,10 @@ class NodeGroupArgs:
                - - -
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
+               One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
-        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -46,7 +46,6 @@ class NodeGroupArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['NodeGroupShareSettingsArgs'] share_settings: Share settings for the node group.
                Structure is documented below.
-        :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
         NodeGroupArgs._configure(
@@ -60,7 +59,6 @@ class NodeGroupArgs:
             name=name,
             project=project,
             share_settings=share_settings,
-            size=size,
             zone=zone,
         )
     @staticmethod
@@ -75,7 +73,6 @@ class NodeGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              share_settings: Optional[pulumi.Input['NodeGroupShareSettingsArgs']] = None,
-             size: Optional[pulumi.Input[int]] = None,
              zone: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         _setter("node_template", node_template)
@@ -95,8 +92,6 @@ class NodeGroupArgs:
             _setter("project", project)
         if share_settings is not None:
             _setter("share_settings", share_settings)
-        if size is not None:
-            _setter("size", size)
         if zone is not None:
             _setter("zone", zone)
 
@@ -121,6 +116,7 @@ class NodeGroupArgs:
         """
         If you use sole-tenant nodes for your workloads, you can use the node
         group autoscaler to automatically manage the sizes of your node groups.
+        One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
@@ -145,7 +141,7 @@ class NodeGroupArgs:
     @pulumi.getter(name="initialSize")
     def initial_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         """
         return pulumi.get(self, "initial_size")
 
@@ -218,18 +214,6 @@ class NodeGroupArgs:
 
     @property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
-        """
-        return pulumi.get(self, "size")
-
-    @size.setter
-    def size(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "size", value)
-
-    @property
-    @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         Zone where this node group is located
@@ -261,10 +245,11 @@ class _NodeGroupState:
         Input properties used for looking up and filtering NodeGroup resources.
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
+               One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
-        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -278,7 +263,7 @@ class _NodeGroupState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input['NodeGroupShareSettingsArgs'] share_settings: Share settings for the node group.
                Structure is documented below.
-        :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        :param pulumi.Input[int] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
         _NodeGroupState._configure(
@@ -347,6 +332,7 @@ class _NodeGroupState:
         """
         If you use sole-tenant nodes for your workloads, you can use the node
         group autoscaler to automatically manage the sizes of your node groups.
+        One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
@@ -383,7 +369,7 @@ class _NodeGroupState:
     @pulumi.getter(name="initialSize")
     def initial_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         """
         return pulumi.get(self, "initial_size")
 
@@ -485,7 +471,7 @@ class _NodeGroupState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        The total number of nodes in the node group.
         """
         return pulumi.get(self, "size")
 
@@ -520,7 +506,6 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
-                 size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -550,7 +535,7 @@ class NodeGroup(pulumi.CustomResource):
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-a",
             description="example google_compute_node_group for the Google Provider",
-            size=1,
+            initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
         ### Node Group Autoscaling Policy
@@ -592,7 +577,7 @@ class NodeGroup(pulumi.CustomResource):
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-f",
             description="example google_compute_node_group for Terraform Google Provider",
-            size=1,
+            initial_size=1,
             node_template=soletenant_tmpl.id,
             share_settings=gcp.compute.NodeGroupShareSettingsArgs(
                 share_type="SPECIFIC_PROJECTS",
@@ -627,9 +612,10 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
+               One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional textual description of the resource.
-        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -642,7 +628,6 @@ class NodeGroup(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
                Structure is documented below.
-        :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
         ...
@@ -678,7 +663,7 @@ class NodeGroup(pulumi.CustomResource):
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-a",
             description="example google_compute_node_group for the Google Provider",
-            size=1,
+            initial_size=1,
             node_template=soletenant_tmpl.id)
         ```
         ### Node Group Autoscaling Policy
@@ -720,7 +705,7 @@ class NodeGroup(pulumi.CustomResource):
         nodes = gcp.compute.NodeGroup("nodes",
             zone="us-central1-f",
             description="example google_compute_node_group for Terraform Google Provider",
-            size=1,
+            initial_size=1,
             node_template=soletenant_tmpl.id,
             share_settings=gcp.compute.NodeGroupShareSettingsArgs(
                 share_type="SPECIFIC_PROJECTS",
@@ -779,7 +764,6 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']]] = None,
-                 size: Optional[pulumi.Input[int]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -816,10 +800,10 @@ class NodeGroup(pulumi.CustomResource):
                     share_settings[key] = value
                 NodeGroupShareSettingsArgs._configure(_setter, **share_settings)
             __props__.__dict__["share_settings"] = share_settings
-            __props__.__dict__["size"] = size
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["size"] = None
         super(NodeGroup, __self__).__init__(
             'gcp:compute/nodeGroup:NodeGroup',
             resource_name,
@@ -852,10 +836,11 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
+               One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
-        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        :param pulumi.Input[int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -869,7 +854,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
                Structure is documented below.
-        :param pulumi.Input[int] size: The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        :param pulumi.Input[int] size: The total number of nodes in the node group.
         :param pulumi.Input[str] zone: Zone where this node group is located
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -897,6 +882,7 @@ class NodeGroup(pulumi.CustomResource):
         """
         If you use sole-tenant nodes for your workloads, you can use the node
         group autoscaler to automatically manage the sizes of your node groups.
+        One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policy")
@@ -921,7 +907,7 @@ class NodeGroup(pulumi.CustomResource):
     @pulumi.getter(name="initialSize")
     def initial_size(self) -> pulumi.Output[Optional[int]]:
         """
-        The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         """
         return pulumi.get(self, "initial_size")
 
@@ -991,7 +977,7 @@ class NodeGroup(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
         """
-        The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+        The total number of nodes in the node group.
         """
         return pulumi.get(self, "size")
 

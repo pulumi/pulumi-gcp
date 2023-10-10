@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,7 +66,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -131,10 +131,15 @@ type EndpointPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcherOutput `pulumi:"endpointMatcher"`
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the EndpointPolicy resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -143,6 +148,9 @@ type EndpointPolicy struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrOutput `pulumi:"trafficPortSelector"`
@@ -197,10 +205,15 @@ type endpointPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher *EndpointPolicyEndpointMatcher `pulumi:"endpointMatcher"`
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the EndpointPolicy resource.
 	Name *string `pulumi:"name"`
@@ -209,6 +222,9 @@ type endpointPolicyState struct {
 	Project *string `pulumi:"project"`
 	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 	// Structure is documented below.
 	TrafficPortSelector *EndpointPolicyTrafficPortSelector `pulumi:"trafficPortSelector"`
@@ -228,10 +244,15 @@ type EndpointPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Required. A matcher that selects endpoints to which the policies should be applied.
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcherPtrInput
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the EndpointPolicy resource.
 	Name pulumi.StringPtrInput
@@ -240,6 +261,9 @@ type EndpointPolicyState struct {
 	Project pulumi.StringPtrInput
 	// A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 	ServerTlsPolicy pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 	// Structure is documented below.
 	TrafficPortSelector EndpointPolicyTrafficPortSelectorPtrInput
@@ -265,6 +289,8 @@ type endpointPolicyArgs struct {
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcher `pulumi:"endpointMatcher"`
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the EndpointPolicy resource.
 	Name *string `pulumi:"name"`
@@ -293,6 +319,8 @@ type EndpointPolicyArgs struct {
 	// Structure is documented below.
 	EndpointMatcher EndpointPolicyEndpointMatcherInput
 	// Set of label tags associated with the TcpRoute resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Name of the EndpointPolicy resource.
 	Name pulumi.StringPtrInput
@@ -440,6 +468,12 @@ func (o EndpointPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EndpointPolicyOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Required. A matcher that selects endpoints to which the policies should be applied.
 // Structure is documented below.
 func (o EndpointPolicyOutput) EndpointMatcher() EndpointPolicyEndpointMatcherOutput {
@@ -447,6 +481,8 @@ func (o EndpointPolicyOutput) EndpointMatcher() EndpointPolicyEndpointMatcherOut
 }
 
 // Set of label tags associated with the TcpRoute resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EndpointPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -465,6 +501,12 @@ func (o EndpointPolicyOutput) Project() pulumi.StringOutput {
 // A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
 func (o EndpointPolicyOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EndpointPolicyOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EndpointPolicy) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.

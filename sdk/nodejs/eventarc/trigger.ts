@@ -117,6 +117,11 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<outputs.eventarc.TriggerDestination>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -126,6 +131,9 @@ export class Trigger extends pulumi.CustomResource {
     public readonly eventDataContentType!: pulumi.Output<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -149,9 +157,13 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string | undefined>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    public readonly transports!: pulumi.Output<outputs.eventarc.TriggerTransport[]>;
+    public readonly transport!: pulumi.Output<outputs.eventarc.TriggerTransport>;
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
@@ -178,6 +190,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["conditions"] = state ? state.conditions : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["eventDataContentType"] = state ? state.eventDataContentType : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -186,7 +199,8 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
-            resourceInputs["transports"] = state ? state.transports : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
+            resourceInputs["transport"] = state ? state.transport : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -209,10 +223,12 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
-            resourceInputs["transports"] = args ? args.transports : undefined;
+            resourceInputs["transport"] = args ? args.transport : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -242,6 +258,11 @@ export interface TriggerState {
      */
     destination?: pulumi.Input<inputs.eventarc.TriggerDestination>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
@@ -251,6 +272,9 @@ export interface TriggerState {
     eventDataContentType?: pulumi.Input<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -274,9 +298,13 @@ export interface TriggerState {
      */
     serviceAccount?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
+    transport?: pulumi.Input<inputs.eventarc.TriggerTransport>;
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
@@ -305,6 +333,9 @@ export interface TriggerArgs {
     eventDataContentType?: pulumi.Input<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -330,5 +361,5 @@ export interface TriggerArgs {
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
+    transport?: pulumi.Input<inputs.eventarc.TriggerTransport>;
 }

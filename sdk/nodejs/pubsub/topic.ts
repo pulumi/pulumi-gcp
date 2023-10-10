@@ -129,6 +129,11 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
      * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -138,6 +143,9 @@ export class Topic extends pulumi.CustomResource {
     public readonly kmsKeyName!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Topic.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -174,6 +182,11 @@ export class Topic extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly schemaSettings!: pulumi.Output<outputs.pubsub.TopicSchemaSettings>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -188,6 +201,7 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["messageRetentionDuration"] = state ? state.messageRetentionDuration : undefined;
@@ -195,6 +209,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["schemaSettings"] = state ? state.schemaSettings : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -204,6 +219,8 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schemaSettings"] = args ? args.schemaSettings : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
@@ -215,6 +232,11 @@ export class Topic extends pulumi.CustomResource {
  */
 export interface TopicState {
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
      * (`service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com`) must have
@@ -224,6 +246,9 @@ export interface TopicState {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Topic.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -260,6 +285,11 @@ export interface TopicState {
      * Structure is documented below.
      */
     schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -276,6 +306,9 @@ export interface TopicArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Topic.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

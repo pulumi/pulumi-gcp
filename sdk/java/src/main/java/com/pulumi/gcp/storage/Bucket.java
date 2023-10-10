@@ -245,6 +245,22 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultEventBasedHold);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The bucket&#39;s encryption configuration. Structure is documented below.
      * 
      */
@@ -281,14 +297,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> labels;
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return A map of key/value label pairs to assign to the bucket.
      * 
      */
-    public Output<Map<String,String>> labels() {
-        return this.labels;
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The bucket&#39;s [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -435,6 +451,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> storageClass() {
         return Codegen.optional(this.storageClass);
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.

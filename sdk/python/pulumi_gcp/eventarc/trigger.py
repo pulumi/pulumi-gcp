@@ -25,7 +25,7 @@ class TriggerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None):
+                 transport: Optional[pulumi.Input['TriggerTransportArgs']] = None):
         """
         The set of arguments for constructing a Trigger resource.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
@@ -34,10 +34,13 @@ class TriggerArgs:
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input['TriggerTransportArgs'] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
         TriggerArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -50,7 +53,7 @@ class TriggerArgs:
             name=name,
             project=project,
             service_account=service_account,
-            transports=transports,
+            transport=transport,
         )
     @staticmethod
     def _configure(
@@ -64,7 +67,7 @@ class TriggerArgs:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
-             transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
+             transport: Optional[pulumi.Input['TriggerTransportArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         _setter("destination", destination)
         _setter("location", location)
@@ -81,8 +84,8 @@ class TriggerArgs:
             _setter("project", project)
         if service_account is not None:
             _setter("service_account", service_account)
-        if transports is not None:
-            _setter("transports", transports)
+        if transport is not None:
+            _setter("transport", transport)
 
     @property
     @pulumi.getter
@@ -149,6 +152,9 @@ class TriggerArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -194,15 +200,15 @@ class TriggerArgs:
 
     @property
     @pulumi.getter
-    def transports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]]:
+    def transport(self) -> Optional[pulumi.Input['TriggerTransportArgs']]:
         """
         Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
-        return pulumi.get(self, "transports")
+        return pulumi.get(self, "transport")
 
-    @transports.setter
-    def transports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]]):
-        pulumi.set(self, "transports", value)
+    @transport.setter
+    def transport(self, value: Optional[pulumi.Input['TriggerTransportArgs']]):
+        pulumi.set(self, "transport", value)
 
 
 @pulumi.input_type
@@ -212,6 +218,7 @@ class _TriggerState:
                  conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -220,7 +227,8 @@ class _TriggerState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 transport: Optional[pulumi.Input['TriggerTransportArgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -229,15 +237,21 @@ class _TriggerState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input['TriggerTransportArgs'] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
@@ -247,6 +261,7 @@ class _TriggerState:
             conditions=conditions,
             create_time=create_time,
             destination=destination,
+            effective_labels=effective_labels,
             etag=etag,
             event_data_content_type=event_data_content_type,
             labels=labels,
@@ -255,7 +270,8 @@ class _TriggerState:
             name=name,
             project=project,
             service_account=service_account,
-            transports=transports,
+            terraform_labels=terraform_labels,
+            transport=transport,
             uid=uid,
             update_time=update_time,
         )
@@ -266,6 +282,7 @@ class _TriggerState:
              conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              event_data_content_type: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -274,7 +291,8 @@ class _TriggerState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              service_account: Optional[pulumi.Input[str]] = None,
-             transports: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transport: Optional[pulumi.Input['TriggerTransportArgs']] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -286,6 +304,8 @@ class _TriggerState:
             _setter("create_time", create_time)
         if destination is not None:
             _setter("destination", destination)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if etag is not None:
             _setter("etag", etag)
         if event_data_content_type is not None:
@@ -302,8 +322,10 @@ class _TriggerState:
             _setter("project", project)
         if service_account is not None:
             _setter("service_account", service_account)
-        if transports is not None:
-            _setter("transports", transports)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
+        if transport is not None:
+            _setter("transport", transport)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -358,6 +380,19 @@ class _TriggerState:
         pulumi.set(self, "destination", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -386,6 +421,9 @@ class _TriggerState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -454,16 +492,28 @@ class _TriggerState:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
-    def transports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]]:
+    def transport(self) -> Optional[pulumi.Input['TriggerTransportArgs']]:
         """
         Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
-        return pulumi.get(self, "transports")
+        return pulumi.get(self, "transport")
 
-    @transports.setter
-    def transports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerTransportArgs']]]]):
-        pulumi.set(self, "transports", value)
+    @transport.setter
+    def transport(self, value: Optional[pulumi.Input['TriggerTransportArgs']]):
+        pulumi.set(self, "transport", value)
 
     @property
     @pulumi.getter
@@ -504,7 +554,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
+                 transport: Optional[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]] = None,
                  __props__=None):
         """
         The Eventarc Trigger resource
@@ -576,12 +626,15 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[pulumi.InputType['TriggerTransportArgs']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
         ...
     @overload
@@ -681,7 +734,7 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
+                 transport: Optional[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -711,10 +764,17 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
-            __props__.__dict__["transports"] = transports
+            if transport is not None and not isinstance(transport, TriggerTransportArgs):
+                transport = transport or {}
+                def _setter(key, value):
+                    transport[key] = value
+                TriggerTransportArgs._configure(_setter, **transport)
+            __props__.__dict__["transport"] = transport
             __props__.__dict__["conditions"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Trigger, __self__).__init__(
@@ -731,6 +791,7 @@ class Trigger(pulumi.CustomResource):
             conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             event_data_content_type: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -739,7 +800,8 @@ class Trigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
-            transports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            transport: Optional[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Trigger':
         """
@@ -753,15 +815,21 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] conditions: Output only. The reason(s) why a trigger is in FAILED state.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerTransportArgs']]]] transports: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        :param pulumi.Input[Mapping[str, Any]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[pulumi.InputType['TriggerTransportArgs']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
@@ -773,6 +841,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["destination"] = destination
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["event_data_content_type"] = event_data_content_type
         __props__.__dict__["labels"] = labels
@@ -781,7 +850,8 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["service_account"] = service_account
-        __props__.__dict__["transports"] = transports
+        __props__.__dict__["terraform_labels"] = terraform_labels
+        __props__.__dict__["transport"] = transport
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Trigger(resource_name, opts=opts, __props__=__props__)
@@ -819,6 +889,15 @@ class Trigger(pulumi.CustomResource):
         return pulumi.get(self, "destination")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -839,6 +918,9 @@ class Trigger(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -883,12 +965,20 @@ class Trigger(pulumi.CustomResource):
         return pulumi.get(self, "service_account")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
-    def transports(self) -> pulumi.Output[Sequence['outputs.TriggerTransport']]:
+    def transport(self) -> pulumi.Output['outputs.TriggerTransport']:
         """
         Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
-        return pulumi.get(self, "transports")
+        return pulumi.get(self, "transport")
 
     @property
     @pulumi.getter

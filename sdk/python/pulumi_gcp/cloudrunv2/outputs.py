@@ -22,16 +22,8 @@ __all__ = [
     'JobTemplateTemplateContainerEnv',
     'JobTemplateTemplateContainerEnvValueSource',
     'JobTemplateTemplateContainerEnvValueSourceSecretKeyRef',
-    'JobTemplateTemplateContainerLivenessProbe',
-    'JobTemplateTemplateContainerLivenessProbeHttpGet',
-    'JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader',
-    'JobTemplateTemplateContainerLivenessProbeTcpSocket',
     'JobTemplateTemplateContainerPort',
     'JobTemplateTemplateContainerResources',
-    'JobTemplateTemplateContainerStartupProbe',
-    'JobTemplateTemplateContainerStartupProbeHttpGet',
-    'JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader',
-    'JobTemplateTemplateContainerStartupProbeTcpSocket',
     'JobTemplateTemplateContainerVolumeMount',
     'JobTemplateTemplateVolume',
     'JobTemplateTemplateVolumeCloudSqlInstance',
@@ -54,7 +46,6 @@ __all__ = [
     'ServiceTemplateContainerLivenessProbeGrpc',
     'ServiceTemplateContainerLivenessProbeHttpGet',
     'ServiceTemplateContainerLivenessProbeHttpGetHttpHeader',
-    'ServiceTemplateContainerLivenessProbeTcpSocket',
     'ServiceTemplateContainerPort',
     'ServiceTemplateContainerResources',
     'ServiceTemplateContainerStartupProbe',
@@ -747,11 +738,7 @@ class JobTemplateTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "livenessProbe":
-            suggest = "liveness_probe"
-        elif key == "startupProbe":
-            suggest = "startup_probe"
-        elif key == "volumeMounts":
+        if key == "volumeMounts":
             suggest = "volume_mounts"
         elif key == "workingDir":
             suggest = "working_dir"
@@ -772,11 +759,9 @@ class JobTemplateTemplateContainer(dict):
                  args: Optional[Sequence[str]] = None,
                  commands: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.JobTemplateTemplateContainerEnv']] = None,
-                 liveness_probe: Optional['outputs.JobTemplateTemplateContainerLivenessProbe'] = None,
                  name: Optional[str] = None,
                  ports: Optional[Sequence['outputs.JobTemplateTemplateContainerPort']] = None,
                  resources: Optional['outputs.JobTemplateTemplateContainerResources'] = None,
-                 startup_probe: Optional['outputs.JobTemplateTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.JobTemplateTemplateContainerVolumeMount']] = None,
                  working_dir: Optional[str] = None):
         """
@@ -785,24 +770,12 @@ class JobTemplateTemplateContainer(dict):
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence['JobTemplateTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param 'JobTemplateTemplateContainerLivenessProbeArgs' liveness_probe: (Optional, Deprecated)
-               Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-               This field is not supported in Cloud Run Job currently.
-               Structure is documented below.
-               
-               > **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param str name: Name of the container specified as a DNS_LABEL.
         :param Sequence['JobTemplateTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
         :param 'JobTemplateTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
-        :param 'JobTemplateTemplateContainerStartupProbeArgs' startup_probe: (Optional, Deprecated)
-               Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-               This field is not supported in Cloud Run Job currently.
-               Structure is documented below.
-               
-               > **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param Sequence['JobTemplateTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -813,11 +786,9 @@ class JobTemplateTemplateContainer(dict):
             args=args,
             commands=commands,
             envs=envs,
-            liveness_probe=liveness_probe,
             name=name,
             ports=ports,
             resources=resources,
-            startup_probe=startup_probe,
             volume_mounts=volume_mounts,
             working_dir=working_dir,
         )
@@ -828,11 +799,9 @@ class JobTemplateTemplateContainer(dict):
              args: Optional[Sequence[str]] = None,
              commands: Optional[Sequence[str]] = None,
              envs: Optional[Sequence['outputs.JobTemplateTemplateContainerEnv']] = None,
-             liveness_probe: Optional['outputs.JobTemplateTemplateContainerLivenessProbe'] = None,
              name: Optional[str] = None,
              ports: Optional[Sequence['outputs.JobTemplateTemplateContainerPort']] = None,
              resources: Optional['outputs.JobTemplateTemplateContainerResources'] = None,
-             startup_probe: Optional['outputs.JobTemplateTemplateContainerStartupProbe'] = None,
              volume_mounts: Optional[Sequence['outputs.JobTemplateTemplateContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -843,16 +812,12 @@ class JobTemplateTemplateContainer(dict):
             _setter("commands", commands)
         if envs is not None:
             _setter("envs", envs)
-        if liveness_probe is not None:
-            _setter("liveness_probe", liveness_probe)
         if name is not None:
             _setter("name", name)
         if ports is not None:
             _setter("ports", ports)
         if resources is not None:
             _setter("resources", resources)
-        if startup_probe is not None:
-            _setter("startup_probe", startup_probe)
         if volume_mounts is not None:
             _setter("volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -892,22 +857,6 @@ class JobTemplateTemplateContainer(dict):
         return pulumi.get(self, "envs")
 
     @property
-    @pulumi.getter(name="livenessProbe")
-    def liveness_probe(self) -> Optional['outputs.JobTemplateTemplateContainerLivenessProbe']:
-        """
-        (Optional, Deprecated)
-        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        This field is not supported in Cloud Run Job currently.
-        Structure is documented below.
-
-        > **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        """
-        warnings.warn("""`liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
-        pulumi.log.warn("""liveness_probe is deprecated: `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
-
-        return pulumi.get(self, "liveness_probe")
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
@@ -933,22 +882,6 @@ class JobTemplateTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
-
-    @property
-    @pulumi.getter(name="startupProbe")
-    def startup_probe(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbe']:
-        """
-        (Optional, Deprecated)
-        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        This field is not supported in Cloud Run Job currently.
-        Structure is documented below.
-
-        > **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        """
-        warnings.warn("""`startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
-        pulumi.log.warn("""startup_probe is deprecated: `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
-
-        return pulumi.get(self, "startup_probe")
 
     @property
     @pulumi.getter(name="volumeMounts")
@@ -1130,265 +1063,6 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRef(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerLivenessProbe(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failureThreshold":
-            suggest = "failure_threshold"
-        elif key == "httpGet":
-            suggest = "http_get"
-        elif key == "initialDelaySeconds":
-            suggest = "initial_delay_seconds"
-        elif key == "periodSeconds":
-            suggest = "period_seconds"
-        elif key == "tcpSocket":
-            suggest = "tcp_socket"
-        elif key == "timeoutSeconds":
-            suggest = "timeout_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateContainerLivenessProbe. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobTemplateTemplateContainerLivenessProbe.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobTemplateTemplateContainerLivenessProbe.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 failure_threshold: Optional[int] = None,
-                 http_get: Optional['outputs.JobTemplateTemplateContainerLivenessProbeHttpGet'] = None,
-                 initial_delay_seconds: Optional[int] = None,
-                 period_seconds: Optional[int] = None,
-                 tcp_socket: Optional['outputs.JobTemplateTemplateContainerLivenessProbeTcpSocket'] = None,
-                 timeout_seconds: Optional[int] = None):
-        """
-        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'JobTemplateTemplateContainerLivenessProbeHttpGetArgs' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
-               Structure is documented below.
-        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        :param 'JobTemplateTemplateContainerLivenessProbeTcpSocketArgs' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
-               Structure is documented below.
-        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        """
-        JobTemplateTemplateContainerLivenessProbe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            failure_threshold=failure_threshold,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             failure_threshold: Optional[int] = None,
-             http_get: Optional['outputs.JobTemplateTemplateContainerLivenessProbeHttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.JobTemplateTemplateContainerLivenessProbeTcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
-        if http_get is not None:
-            _setter("http_get", http_get)
-        if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
-        if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
-        if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
-        if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
-
-    @property
-    @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[int]:
-        """
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        """
-        return pulumi.get(self, "failure_threshold")
-
-    @property
-    @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional['outputs.JobTemplateTemplateContainerLivenessProbeHttpGet']:
-        """
-        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "http_get")
-
-    @property
-    @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[int]:
-        """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        """
-        return pulumi.get(self, "initial_delay_seconds")
-
-    @property
-    @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[int]:
-        """
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        """
-        return pulumi.get(self, "period_seconds")
-
-    @property
-    @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional['outputs.JobTemplateTemplateContainerLivenessProbeTcpSocket']:
-        """
-        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "tcp_socket")
-
-    @property
-    @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[int]:
-        """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        """
-        return pulumi.get(self, "timeout_seconds")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerLivenessProbeHttpGet(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpHeaders":
-            suggest = "http_headers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateContainerLivenessProbeHttpGet. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobTemplateTemplateContainerLivenessProbeHttpGet.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobTemplateTemplateContainerLivenessProbeHttpGet.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
-                 path: Optional[str] = None):
-        """
-        :param Sequence['JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
-               Structure is documented below.
-        :param str path: Path to access on the HTTP server. Defaults to '/'.
-        """
-        JobTemplateTemplateContainerLivenessProbeHttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_headers=http_headers,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if http_headers is not None:
-            _setter("http_headers", http_headers)
-        if path is not None:
-            _setter("path", path)
-
-    @property
-    @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[Sequence['outputs.JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader']]:
-        """
-        Custom headers to set in the request. HTTP allows repeated headers.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "http_headers")
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[str]:
-        """
-        Path to access on the HTTP server. Defaults to '/'.
-        """
-        return pulumi.get(self, "path")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 value: Optional[str] = None):
-        """
-        :param str name: The header field name
-        :param str value: The header field value
-        """
-        JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: str,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("name", name)
-        if value is not None:
-            _setter("value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The header field name
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        The header field value
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerLivenessProbeTcpSocket(dict):
-    def __init__(__self__, *,
-                 port: Optional[int] = None):
-        """
-        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
-        """
-        JobTemplateTemplateContainerLivenessProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if port is not None:
-            _setter("port", port)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[int]:
-        """
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
-        """
-        return pulumi.get(self, "port")
-
-
-@pulumi.output_type
 class JobTemplateTemplateContainerPort(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1473,265 +1147,6 @@ class JobTemplateTemplateContainerResources(dict):
         Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerStartupProbe(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "failureThreshold":
-            suggest = "failure_threshold"
-        elif key == "httpGet":
-            suggest = "http_get"
-        elif key == "initialDelaySeconds":
-            suggest = "initial_delay_seconds"
-        elif key == "periodSeconds":
-            suggest = "period_seconds"
-        elif key == "tcpSocket":
-            suggest = "tcp_socket"
-        elif key == "timeoutSeconds":
-            suggest = "timeout_seconds"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateContainerStartupProbe. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobTemplateTemplateContainerStartupProbe.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobTemplateTemplateContainerStartupProbe.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 failure_threshold: Optional[int] = None,
-                 http_get: Optional['outputs.JobTemplateTemplateContainerStartupProbeHttpGet'] = None,
-                 initial_delay_seconds: Optional[int] = None,
-                 period_seconds: Optional[int] = None,
-                 tcp_socket: Optional['outputs.JobTemplateTemplateContainerStartupProbeTcpSocket'] = None,
-                 timeout_seconds: Optional[int] = None):
-        """
-        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'JobTemplateTemplateContainerStartupProbeHttpGetArgs' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
-               Structure is documented below.
-        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        :param 'JobTemplateTemplateContainerStartupProbeTcpSocketArgs' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
-               Structure is documented below.
-        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        """
-        JobTemplateTemplateContainerStartupProbe._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            failure_threshold=failure_threshold,
-            http_get=http_get,
-            initial_delay_seconds=initial_delay_seconds,
-            period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             failure_threshold: Optional[int] = None,
-             http_get: Optional['outputs.JobTemplateTemplateContainerStartupProbeHttpGet'] = None,
-             initial_delay_seconds: Optional[int] = None,
-             period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.JobTemplateTemplateContainerStartupProbeTcpSocket'] = None,
-             timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if failure_threshold is not None:
-            _setter("failure_threshold", failure_threshold)
-        if http_get is not None:
-            _setter("http_get", http_get)
-        if initial_delay_seconds is not None:
-            _setter("initial_delay_seconds", initial_delay_seconds)
-        if period_seconds is not None:
-            _setter("period_seconds", period_seconds)
-        if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
-        if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
-
-    @property
-    @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[int]:
-        """
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        """
-        return pulumi.get(self, "failure_threshold")
-
-    @property
-    @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbeHttpGet']:
-        """
-        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "http_get")
-
-    @property
-    @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[int]:
-        """
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        """
-        return pulumi.get(self, "initial_delay_seconds")
-
-    @property
-    @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[int]:
-        """
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        """
-        return pulumi.get(self, "period_seconds")
-
-    @property
-    @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional['outputs.JobTemplateTemplateContainerStartupProbeTcpSocket']:
-        """
-        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "tcp_socket")
-
-    @property
-    @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[int]:
-        """
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        """
-        return pulumi.get(self, "timeout_seconds")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerStartupProbeHttpGet(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "httpHeaders":
-            suggest = "http_headers"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateContainerStartupProbeHttpGet. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        JobTemplateTemplateContainerStartupProbeHttpGet.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        JobTemplateTemplateContainerStartupProbeHttpGet.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
-                 path: Optional[str] = None):
-        """
-        :param Sequence['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
-               Structure is documented below.
-        :param str path: Path to access on the HTTP server. Defaults to '/'.
-        """
-        JobTemplateTemplateContainerStartupProbeHttpGet._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            http_headers=http_headers,
-            path=path,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             http_headers: Optional[Sequence['outputs.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
-             path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if http_headers is not None:
-            _setter("http_headers", http_headers)
-        if path is not None:
-            _setter("path", path)
-
-    @property
-    @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[Sequence['outputs.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader']]:
-        """
-        Custom headers to set in the request. HTTP allows repeated headers.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "http_headers")
-
-    @property
-    @pulumi.getter
-    def path(self) -> Optional[str]:
-        """
-        Path to access on the HTTP server. Defaults to '/'.
-        """
-        return pulumi.get(self, "path")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader(dict):
-    def __init__(__self__, *,
-                 name: str,
-                 value: Optional[str] = None):
-        """
-        :param str name: The header field name
-        :param str value: The header field value
-        """
-        JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: str,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("name", name)
-        if value is not None:
-            _setter("value", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        """
-        The header field name
-        """
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        The header field value
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class JobTemplateTemplateContainerStartupProbeTcpSocket(dict):
-    def __init__(__self__, *,
-                 port: Optional[int] = None):
-        """
-        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
-        """
-        JobTemplateTemplateContainerStartupProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if port is not None:
-            _setter("port", port)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[int]:
-        """
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
-        """
-        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -3352,8 +2767,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
             suggest = "initial_delay_seconds"
         elif key == "periodSeconds":
             suggest = "period_seconds"
-        elif key == "tcpSocket":
-            suggest = "tcp_socket"
         elif key == "timeoutSeconds":
             suggest = "timeout_seconds"
 
@@ -3374,7 +2787,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
                  http_get: Optional['outputs.ServiceTemplateContainerLivenessProbeHttpGet'] = None,
                  initial_delay_seconds: Optional[int] = None,
                  period_seconds: Optional[int] = None,
-                 tcp_socket: Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket'] = None,
                  timeout_seconds: Optional[int] = None):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -3384,11 +2796,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        :param 'ServiceTemplateContainerLivenessProbeTcpSocketArgs' tcp_socket: (Optional, Deprecated)
-               TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-               Structure is documented below.
-               
-               > **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         ServiceTemplateContainerLivenessProbe._configure(
@@ -3398,7 +2805,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
             http_get=http_get,
             initial_delay_seconds=initial_delay_seconds,
             period_seconds=period_seconds,
-            tcp_socket=tcp_socket,
             timeout_seconds=timeout_seconds,
         )
     @staticmethod
@@ -3409,7 +2815,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
              http_get: Optional['outputs.ServiceTemplateContainerLivenessProbeHttpGet'] = None,
              initial_delay_seconds: Optional[int] = None,
              period_seconds: Optional[int] = None,
-             tcp_socket: Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket'] = None,
              timeout_seconds: Optional[int] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if failure_threshold is not None:
@@ -3422,8 +2827,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
             _setter("initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
             _setter("period_seconds", period_seconds)
-        if tcp_socket is not None:
-            _setter("tcp_socket", tcp_socket)
         if timeout_seconds is not None:
             _setter("timeout_seconds", timeout_seconds)
 
@@ -3468,21 +2871,6 @@ class ServiceTemplateContainerLivenessProbe(dict):
         How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
         """
         return pulumi.get(self, "period_seconds")
-
-    @property
-    @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket']:
-        """
-        (Optional, Deprecated)
-        TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
-        Structure is documented below.
-
-        > **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        """
-        warnings.warn("""`tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
-        pulumi.log.warn("""tcp_socket is deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
-
-        return pulumi.get(self, "tcp_socket")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -3657,36 +3045,6 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
         The header field value
         """
         return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class ServiceTemplateContainerLivenessProbeTcpSocket(dict):
-    def __init__(__self__, *,
-                 port: Optional[int] = None):
-        """
-        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
-               If not specified, defaults to the same value as container.ports[0].containerPort.
-        """
-        ServiceTemplateContainerLivenessProbeTcpSocket._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port=port,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if port is not None:
-            _setter("port", port)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[int]:
-        """
-        Port number to access on the container. Must be in the range 1 to 65535.
-        If not specified, defaults to the same value as container.ports[0].containerPort.
-        """
-        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

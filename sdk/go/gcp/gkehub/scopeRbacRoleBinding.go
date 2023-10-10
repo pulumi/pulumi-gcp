@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -51,11 +51,17 @@ type ScopeRbacRoleBinding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Principal that is be authorized in the cluster (at least of one the oneof
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the RBAC Role Binding
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -72,6 +78,9 @@ type ScopeRbacRoleBinding struct {
 	// State of the RBAC Role Binding resource.
 	// Structure is documented below.
 	States ScopeRbacRoleBindingStateTypeArrayOutput `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the RBAC Role Binding was updated in UTC.
@@ -126,11 +135,17 @@ type scopeRbacRoleBindingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Principal that is be authorized in the cluster (at least of one the oneof
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group *string `pulumi:"group"`
 	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the RBAC Role Binding
 	Name *string `pulumi:"name"`
@@ -147,6 +162,9 @@ type scopeRbacRoleBindingState struct {
 	// State of the RBAC Role Binding resource.
 	// Structure is documented below.
 	States []ScopeRbacRoleBindingStateType `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// Time the RBAC Role Binding was updated in UTC.
@@ -163,11 +181,17 @@ type ScopeRbacRoleBindingState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Principal that is be authorized in the cluster (at least of one the oneof
 	// is required). Updating one will unset the other automatically.
 	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrInput
 	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The resource name for the RBAC Role Binding
 	Name pulumi.StringPtrInput
@@ -184,6 +208,9 @@ type ScopeRbacRoleBindingState struct {
 	// State of the RBAC Role Binding resource.
 	// Structure is documented below.
 	States ScopeRbacRoleBindingStateTypeArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// Time the RBAC Role Binding was updated in UTC.
@@ -205,6 +232,9 @@ type scopeRbacRoleBindingArgs struct {
 	// group is the group, as seen by the kubernetes cluster.
 	Group *string `pulumi:"group"`
 	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -230,6 +260,9 @@ type ScopeRbacRoleBindingArgs struct {
 	// group is the group, as seen by the kubernetes cluster.
 	Group pulumi.StringPtrInput
 	// Labels for this ScopeRBACRoleBinding.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -369,6 +402,12 @@ func (o ScopeRbacRoleBindingOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ScopeRbacRoleBindingOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Principal that is be authorized in the cluster (at least of one the oneof
 // is required). Updating one will unset the other automatically.
 // group is the group, as seen by the kubernetes cluster.
@@ -377,6 +416,9 @@ func (o ScopeRbacRoleBindingOutput) Group() pulumi.StringPtrOutput {
 }
 
 // Labels for this ScopeRBACRoleBinding.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ScopeRbacRoleBindingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -412,6 +454,12 @@ func (o ScopeRbacRoleBindingOutput) ScopeRbacRoleBindingId() pulumi.StringOutput
 // Structure is documented below.
 func (o ScopeRbacRoleBindingOutput) States() ScopeRbacRoleBindingStateTypeArrayOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBinding) ScopeRbacRoleBindingStateTypeArrayOutput { return v.States }).(ScopeRbacRoleBindingStateTypeArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ScopeRbacRoleBindingOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBinding) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Google-generated UUID for this resource.

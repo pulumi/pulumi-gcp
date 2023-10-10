@@ -49,6 +49,7 @@ export interface GetBucketResult {
     readonly cors: outputs.storage.GetBucketCor[];
     readonly customPlacementConfigs: outputs.storage.GetBucketCustomPlacementConfig[];
     readonly defaultEventBasedHold: boolean;
+    readonly effectiveLabels: {[key: string]: string};
     readonly encryptions: outputs.storage.GetBucketEncryption[];
     readonly forceDestroy: boolean;
     /**
@@ -66,6 +67,7 @@ export interface GetBucketResult {
     readonly retentionPolicies: outputs.storage.GetBucketRetentionPolicy[];
     readonly selfLink: string;
     readonly storageClass: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly uniformBucketLevelAccess: boolean;
     readonly url: string;
     readonly versionings: outputs.storage.GetBucketVersioning[];

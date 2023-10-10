@@ -28,7 +28,7 @@ public final class InstanceBootDiskInitializeParams {
      */
     private @Nullable String image;
     /**
-     * @return A set of key/value label pairs assigned to the disk. This\
+     * @return A set of key/value label pairs assigned to the disk. This
      * field is only applicable for persistent disks.
      * 
      */
@@ -63,7 +63,7 @@ public final class InstanceBootDiskInitializeParams {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return A set of key/value label pairs assigned to the disk. This\
+     * @return A set of key/value label pairs assigned to the disk. This
      * field is only applicable for persistent disks.
      * 
      */

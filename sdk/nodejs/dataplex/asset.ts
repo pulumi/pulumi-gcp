@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *         name: "projects/my-project-name/buckets/bucket",
  *         type: "STORAGE_BUCKET",
  *     },
+ *     labels: {
+ *         env: "foo",
+ *         "my-asset": "exists",
+ *     },
  *     project: "my-project-name",
  * }, {
  *     dependsOn: [basicBucket],
@@ -122,7 +126,15 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -158,6 +170,10 @@ export class Asset extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: any}>;
+    /**
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -185,6 +201,7 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["discoverySpec"] = state ? state.discoverySpec : undefined;
             resourceInputs["discoveryStatuses"] = state ? state.discoveryStatuses : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lake"] = state ? state.lake : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -194,6 +211,7 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["resourceStatuses"] = state ? state.resourceStatuses : undefined;
             resourceInputs["securityStatuses"] = state ? state.securityStatuses : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -225,9 +243,11 @@ export class Asset extends pulumi.CustomResource {
             resourceInputs["resourceSpec"] = args ? args.resourceSpec : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryStatuses"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["resourceStatuses"] = undefined /*out*/;
             resourceInputs["securityStatuses"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -265,7 +285,15 @@ export interface AssetState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -301,6 +329,10 @@ export interface AssetState {
      */
     state?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: any}>;
+    /**
      * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
     uid?: pulumi.Input<string>;
@@ -332,6 +364,9 @@ export interface AssetArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Optional. User defined labels for the asset.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

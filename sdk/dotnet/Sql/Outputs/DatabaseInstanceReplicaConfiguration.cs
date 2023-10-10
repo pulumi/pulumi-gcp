@@ -55,6 +55,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Password for the replication connection.
         /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// Permissible ciphers for use in SSL encryption.
+        /// </summary>
         public readonly string? SslCipher;
         /// <summary>
         /// Username for replication connection.

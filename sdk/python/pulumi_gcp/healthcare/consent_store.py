@@ -37,6 +37,9 @@ class ConsentStoreArgs:
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
         """
@@ -120,6 +123,9 @@ class ConsentStoreArgs:
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -146,9 +152,11 @@ class _ConsentStoreState:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input[str]] = None,
                  default_consent_ttl: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ConsentStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -158,6 +166,8 @@ class _ConsentStoreState:
                - - -
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize Consent stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -167,36 +177,49 @@ class _ConsentStoreState:
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _ConsentStoreState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             dataset=dataset,
             default_consent_ttl=default_consent_ttl,
+            effective_labels=effective_labels,
             enable_consent_create_on_update=enable_consent_create_on_update,
             labels=labels,
             name=name,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              dataset: Optional[pulumi.Input[str]] = None,
              default_consent_ttl: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if dataset is not None:
             _setter("dataset", dataset)
         if default_consent_ttl is not None:
             _setter("default_consent_ttl", default_consent_ttl)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if enable_consent_create_on_update is not None:
             _setter("enable_consent_create_on_update", enable_consent_create_on_update)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
             _setter("name", name)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -228,6 +251,19 @@ class _ConsentStoreState:
         pulumi.set(self, "default_consent_ttl", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="enableConsentCreateOnUpdate")
     def enable_consent_create_on_update(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -251,6 +287,9 @@ class _ConsentStoreState:
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -270,6 +309,19 @@ class _ConsentStoreState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class ConsentStore(pulumi.CustomResource):
@@ -361,6 +413,9 @@ class ConsentStore(pulumi.CustomResource):
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
         """
@@ -470,6 +525,8 @@ class ConsentStore(pulumi.CustomResource):
             __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(ConsentStore, __self__).__init__(
             'gcp:healthcare/consentStore:ConsentStore',
             resource_name,
@@ -482,9 +539,11 @@ class ConsentStore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dataset: Optional[pulumi.Input[str]] = None,
             default_consent_ttl: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'ConsentStore':
+            name: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ConsentStore':
         """
         Get an existing ConsentStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -499,6 +558,8 @@ class ConsentStore(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize Consent stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -508,8 +569,13 @@ class ConsentStore(pulumi.CustomResource):
                No more than 64 labels can be associated with a given store.
                An object containing a list of "key": value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name of this ConsentStore, for example:
                "consent1"
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -517,9 +583,11 @@ class ConsentStore(pulumi.CustomResource):
 
         __props__.__dict__["dataset"] = dataset
         __props__.__dict__["default_consent_ttl"] = default_consent_ttl
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return ConsentStore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -544,6 +612,15 @@ class ConsentStore(pulumi.CustomResource):
         return pulumi.get(self, "default_consent_ttl")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="enableConsentCreateOnUpdate")
     def enable_consent_create_on_update(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -563,6 +640,9 @@ class ConsentStore(pulumi.CustomResource):
         No more than 64 labels can be associated with a given store.
         An object containing a list of "key": value pairs.
         Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -574,4 +654,13 @@ class ConsentStore(pulumi.CustomResource):
         "consent1"
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

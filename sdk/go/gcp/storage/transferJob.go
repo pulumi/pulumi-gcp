@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -33,8 +33,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -160,22 +160,24 @@ type TransferJob struct {
 	DeletionTime pulumi.StringOutput `pulumi:"deletionTime"`
 	// Unique description to identify the Transfer Job.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+	EventStream TransferJobEventStreamPtrOutput `pulumi:"eventStream"`
 	// When the Transfer Job was last modified.
 	LastModificationTime pulumi.StringOutput `pulumi:"lastModificationTime"`
-	// The name of the Transfer Job.
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig TransferJobNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-	//
-	// ***
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrOutput `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Transfer specification. Structure documented below.
+	//
+	// ***
 	TransferSpec TransferJobTransferSpecOutput `pulumi:"transferSpec"`
 }
 
@@ -221,22 +223,24 @@ type transferJobState struct {
 	DeletionTime *string `pulumi:"deletionTime"`
 	// Unique description to identify the Transfer Job.
 	Description *string `pulumi:"description"`
+	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+	EventStream *TransferJobEventStream `pulumi:"eventStream"`
 	// When the Transfer Job was last modified.
 	LastModificationTime *string `pulumi:"lastModificationTime"`
-	// The name of the Transfer Job.
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
 	Name *string `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig *TransferJobNotificationConfig `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-	//
-	// ***
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
 	// Transfer specification. Structure documented below.
+	//
+	// ***
 	TransferSpec *TransferJobTransferSpec `pulumi:"transferSpec"`
 }
 
@@ -247,22 +251,24 @@ type TransferJobState struct {
 	DeletionTime pulumi.StringPtrInput
 	// Unique description to identify the Transfer Job.
 	Description pulumi.StringPtrInput
+	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+	EventStream TransferJobEventStreamPtrInput
 	// When the Transfer Job was last modified.
 	LastModificationTime pulumi.StringPtrInput
-	// The name of the Transfer Job.
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
 	Name pulumi.StringPtrInput
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig TransferJobNotificationConfigPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-	//
-	// ***
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
 	// Transfer specification. Structure documented below.
+	//
+	// ***
 	TransferSpec TransferJobTransferSpecPtrInput
 }
 
@@ -273,18 +279,20 @@ func (TransferJobState) ElementType() reflect.Type {
 type transferJobArgs struct {
 	// Unique description to identify the Transfer Job.
 	Description string `pulumi:"description"`
+	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+	EventStream *TransferJobEventStream `pulumi:"eventStream"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig *TransferJobNotificationConfig `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-	//
-	// ***
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
 	// Transfer specification. Structure documented below.
+	//
+	// ***
 	TransferSpec TransferJobTransferSpec `pulumi:"transferSpec"`
 }
 
@@ -292,18 +300,20 @@ type transferJobArgs struct {
 type TransferJobArgs struct {
 	// Unique description to identify the Transfer Job.
 	Description pulumi.StringInput
+	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+	EventStream TransferJobEventStreamPtrInput
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig TransferJobNotificationConfigPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-	//
-	// ***
+	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
 	// Transfer specification. Structure documented below.
+	//
+	// ***
 	TransferSpec TransferJobTransferSpecInput
 }
 
@@ -433,12 +443,17 @@ func (o TransferJobOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
+func (o TransferJobOutput) EventStream() TransferJobEventStreamPtrOutput {
+	return o.ApplyT(func(v *TransferJob) TransferJobEventStreamPtrOutput { return v.EventStream }).(TransferJobEventStreamPtrOutput)
+}
+
 // When the Transfer Job was last modified.
 func (o TransferJobOutput) LastModificationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.LastModificationTime }).(pulumi.StringOutput)
 }
 
-// The name of the Transfer Job.
+// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
 func (o TransferJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -454,9 +469,7 @@ func (o TransferJobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-//
-// ***
+// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 func (o TransferJobOutput) Schedule() TransferJobSchedulePtrOutput {
 	return o.ApplyT(func(v *TransferJob) TransferJobSchedulePtrOutput { return v.Schedule }).(TransferJobSchedulePtrOutput)
 }
@@ -467,6 +480,8 @@ func (o TransferJobOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Transfer specification. Structure documented below.
+//
+// ***
 func (o TransferJobOutput) TransferSpec() TransferJobTransferSpecOutput {
 	return o.ApplyT(func(v *TransferJob) TransferJobTransferSpecOutput { return v.TransferSpec }).(TransferJobTransferSpecOutput)
 }

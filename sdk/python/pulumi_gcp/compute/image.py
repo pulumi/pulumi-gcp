@@ -49,6 +49,8 @@ class ImageArgs:
                disk from the image)
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -224,6 +226,8 @@ class ImageArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this Image.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -361,6 +365,7 @@ class _ImageState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  family: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
                  image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
@@ -374,7 +379,8 @@ class _ImageState:
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in
@@ -383,6 +389,8 @@ class _ImageState:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can
                create disks by specifying an image family instead of a specific
                image name. The image family always returns its latest image that is
@@ -399,6 +407,8 @@ class _ImageState:
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -434,6 +444,8 @@ class _ImageState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _ImageState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -441,6 +453,7 @@ class _ImageState:
             creation_timestamp=creation_timestamp,
             description=description,
             disk_size_gb=disk_size_gb,
+            effective_labels=effective_labels,
             family=family,
             guest_os_features=guest_os_features,
             image_encryption_key=image_encryption_key,
@@ -455,6 +468,7 @@ class _ImageState:
             source_image=source_image,
             source_snapshot=source_snapshot,
             storage_locations=storage_locations,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -463,6 +477,7 @@ class _ImageState:
              creation_timestamp: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_size_gb: Optional[pulumi.Input[int]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              family: Optional[pulumi.Input[str]] = None,
              guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['ImageGuestOsFeatureArgs']]]] = None,
              image_encryption_key: Optional[pulumi.Input['ImageImageEncryptionKeyArgs']] = None,
@@ -477,6 +492,7 @@ class _ImageState:
              source_image: Optional[pulumi.Input[str]] = None,
              source_snapshot: Optional[pulumi.Input[str]] = None,
              storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if archive_size_bytes is not None:
             _setter("archive_size_bytes", archive_size_bytes)
@@ -486,6 +502,8 @@ class _ImageState:
             _setter("description", description)
         if disk_size_gb is not None:
             _setter("disk_size_gb", disk_size_gb)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if family is not None:
             _setter("family", family)
         if guest_os_features is not None:
@@ -514,6 +532,8 @@ class _ImageState:
             _setter("source_snapshot", source_snapshot)
         if storage_locations is not None:
             _setter("storage_locations", storage_locations)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -564,6 +584,19 @@ class _ImageState:
     @disk_size_gb.setter
     def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -629,6 +662,8 @@ class _ImageState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this Image.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -770,6 +805,19 @@ class _ImageState:
     def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "storage_locations", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Image(pulumi.CustomResource):
     @overload
@@ -893,6 +941,8 @@ class Image(pulumi.CustomResource):
                disk from the image)
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1085,8 +1135,10 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["archive_size_bytes"] = None
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Image, __self__).__init__(
             'gcp:compute/image:Image',
             resource_name,
@@ -1101,6 +1153,7 @@ class Image(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_size_gb: Optional[pulumi.Input[int]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             family: Optional[pulumi.Input[str]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageGuestOsFeatureArgs']]]]] = None,
             image_encryption_key: Optional[pulumi.Input[pulumi.InputType['ImageImageEncryptionKeyArgs']]] = None,
@@ -1114,7 +1167,8 @@ class Image(pulumi.CustomResource):
             source_disk: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
             source_snapshot: Optional[pulumi.Input[str]] = None,
-            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Image':
+            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1128,6 +1182,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[int] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can
                create disks by specifying an image family instead of a specific
                image name. The image family always returns its latest image that is
@@ -1144,6 +1200,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1179,6 +1237,8 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
                (regional or multi-regional).
                Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1188,6 +1248,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size_gb"] = disk_size_gb
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["family"] = family
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["image_encryption_key"] = image_encryption_key
@@ -1202,6 +1263,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["source_image"] = source_image
         __props__.__dict__["source_snapshot"] = source_snapshot
         __props__.__dict__["storage_locations"] = storage_locations
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Image(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1237,6 +1299,15 @@ class Image(pulumi.CustomResource):
         Size of the image when restored onto a persistent disk (in GB).
         """
         return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -1286,6 +1357,8 @@ class Image(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this Image.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1386,4 +1459,13 @@ class Image(pulumi.CustomResource):
         Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
         return pulumi.get(self, "storage_locations")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

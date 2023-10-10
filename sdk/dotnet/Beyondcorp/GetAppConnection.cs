@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly ImmutableArray<Outputs.GetAppConnectionApplicationEndpointResult> ApplicationEndpoints;
         public readonly ImmutableArray<string> Connectors;
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetAppConnectionGatewayResult> Gateways;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -145,6 +146,7 @@ namespace Pulumi.Gcp.Beyondcorp
         public readonly string Name;
         public readonly string? Project;
         public readonly string? Region;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Type;
 
         [OutputConstructor]
@@ -154,6 +156,8 @@ namespace Pulumi.Gcp.Beyondcorp
             ImmutableArray<string> connectors,
 
             string displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             ImmutableArray<Outputs.GetAppConnectionGatewayResult> gateways,
 
@@ -167,17 +171,21 @@ namespace Pulumi.Gcp.Beyondcorp
 
             string? region,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string type)
         {
             ApplicationEndpoints = applicationEndpoints;
             Connectors = connectors;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Gateways = gateways;
             Id = id;
             Labels = labels;
             Name = name;
             Project = project;
             Region = region;
+            TerraformLabels = terraformLabels;
             Type = type;
         }
     }

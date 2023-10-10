@@ -13,6 +13,7 @@ import com.pulumi.gcp.assuredworkloads.inputs.WorkloadState;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadKmsSettings;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadResource;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadResourceSetting;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -149,6 +150,22 @@ public class Workload extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      * 
      */
@@ -165,12 +182,18 @@ public class Workload extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Labels applied to the workload.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return Optional. Labels applied to the workload.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -263,6 +286,20 @@ public class Workload extends com.pulumi.resources.CustomResource {
      */
     public Output<List<WorkloadResource>> resources() {
         return this.resources;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> terraformLabels() {
+        return this.terraformLabels;
     }
 
     /**

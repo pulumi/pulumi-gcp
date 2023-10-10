@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/spanner"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/spanner"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,9 +64,10 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	Config       *string `pulumi:"config"`
-	DisplayName  *string `pulumi:"displayName"`
-	ForceDestroy bool    `pulumi:"forceDestroy"`
+	Config          *string           `pulumi:"config"`
+	DisplayName     *string           `pulumi:"displayName"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	ForceDestroy    bool              `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string            `pulumi:"id"`
 	Labels          map[string]string `pulumi:"labels"`
@@ -75,6 +76,7 @@ type LookupInstanceResult struct {
 	ProcessingUnits int               `pulumi:"processingUnits"`
 	Project         *string           `pulumi:"project"`
 	State           string            `pulumi:"state"`
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -136,6 +138,10 @@ func (o LookupInstanceResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupInstanceResultOutput) ForceDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.ForceDestroy }).(pulumi.BoolOutput)
 }
@@ -167,6 +173,10 @@ func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

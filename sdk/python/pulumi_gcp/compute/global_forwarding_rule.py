@@ -96,6 +96,9 @@ class GlobalForwardingRuleArgs:
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -365,6 +368,9 @@ class GlobalForwardingRuleArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -543,6 +549,7 @@ class _GlobalForwardingRuleState:
                  allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
                  base_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
@@ -560,13 +567,16 @@ class _GlobalForwardingRuleState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 target: Optional[pulumi.Input[str]] = None):
+                 target: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering GlobalForwardingRule resources.
         :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
                to the referenced `target`.
@@ -614,6 +624,9 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -696,12 +709,15 @@ class _GlobalForwardingRuleState:
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _GlobalForwardingRuleState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             allow_psc_global_access=allow_psc_global_access,
             base_forwarding_rule=base_forwarding_rule,
             description=description,
+            effective_labels=effective_labels,
             ip_address=ip_address,
             ip_protocol=ip_protocol,
             ip_version=ip_version,
@@ -720,6 +736,7 @@ class _GlobalForwardingRuleState:
             source_ip_ranges=source_ip_ranges,
             subnetwork=subnetwork,
             target=target,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
@@ -727,6 +744,7 @@ class _GlobalForwardingRuleState:
              allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
              base_forwarding_rule: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              ip_protocol: Optional[pulumi.Input[str]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
@@ -745,6 +763,7 @@ class _GlobalForwardingRuleState:
              source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              subnetwork: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if allow_psc_global_access is not None:
             _setter("allow_psc_global_access", allow_psc_global_access)
@@ -752,6 +771,8 @@ class _GlobalForwardingRuleState:
             _setter("base_forwarding_rule", base_forwarding_rule)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if ip_protocol is not None:
@@ -788,6 +809,8 @@ class _GlobalForwardingRuleState:
             _setter("subnetwork", subnetwork)
         if target is not None:
             _setter("target", target)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="allowPscGlobalAccess")
@@ -825,6 +848,19 @@ class _GlobalForwardingRuleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -921,6 +957,9 @@ class _GlobalForwardingRuleState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1153,6 +1192,19 @@ class _GlobalForwardingRuleState:
     def target(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class GlobalForwardingRule(pulumi.CustomResource):
     @overload
@@ -1352,6 +1404,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -1627,10 +1682,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target
             __props__.__dict__["base_forwarding_rule"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["psc_connection_id"] = None
             __props__.__dict__["psc_connection_status"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(GlobalForwardingRule, __self__).__init__(
             'gcp:compute/globalForwardingRule:GlobalForwardingRule',
             resource_name,
@@ -1644,6 +1701,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             allow_psc_global_access: Optional[pulumi.Input[bool]] = None,
             base_forwarding_rule: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
@@ -1661,7 +1719,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
-            target: Optional[pulumi.Input[str]] = None) -> 'GlobalForwardingRule':
+            target: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'GlobalForwardingRule':
         """
         Get an existing GlobalForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1673,6 +1732,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
                to the referenced `target`.
@@ -1720,6 +1781,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type.
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
@@ -1802,6 +1866,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1810,6 +1876,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
         __props__.__dict__["base_forwarding_rule"] = base_forwarding_rule
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ip_protocol"] = ip_protocol
         __props__.__dict__["ip_version"] = ip_version
@@ -1828,6 +1895,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["source_ip_ranges"] = source_ip_ranges
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["target"] = target
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return GlobalForwardingRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1854,6 +1922,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
         you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -1934,6 +2011,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2109,4 +2189,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

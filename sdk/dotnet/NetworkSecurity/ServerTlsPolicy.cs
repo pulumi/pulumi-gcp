@@ -174,7 +174,16 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Set of label tags associated with the ServerTlsPolicy resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -216,6 +225,13 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("serverCertificate")]
         public Output<Outputs.ServerTlsPolicyServerCertificate?> ServerCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Time the ServerTlsPolicy was updated in UTC.
@@ -288,6 +304,8 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Set of label tags associated with the ServerTlsPolicy resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -361,11 +379,26 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Set of label tags associated with the ServerTlsPolicy resource.
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -410,6 +443,19 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("serverCertificate")]
         public Input<Inputs.ServerTlsPolicyServerCertificateGetArgs>? ServerCertificate { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Time the ServerTlsPolicy was updated in UTC.

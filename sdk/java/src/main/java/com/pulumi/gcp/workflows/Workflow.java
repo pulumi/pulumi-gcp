@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .description(&#34;Magic&#34;)
  *             .serviceAccount(testAccount.id())
+ *             .labels(Map.of(&#34;env&#34;, &#34;test&#34;))
  *             .sourceContents(&#34;&#34;&#34;
  * # This is a sample workflow. You can replace it with your source code.
  * #
@@ -144,7 +145,26 @@ public class Workflow extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * A set of key/value label pairs to assign to this Workflow.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -152,6 +172,9 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A set of key/value label pairs to assign to this Workflow.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -284,6 +307,22 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.

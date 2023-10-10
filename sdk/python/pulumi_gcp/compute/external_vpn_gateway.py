@@ -28,6 +28,8 @@ class ExternalVpnGatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -105,6 +107,8 @@ class ExternalVpnGatewayArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the external VPN gateway resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -164,21 +168,27 @@ class ExternalVpnGatewayArgs:
 class _ExternalVpnGatewayState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ExternalVpnGateway resources.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -194,10 +204,13 @@ class _ExternalVpnGatewayState:
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
                Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _ExternalVpnGatewayState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             description=description,
+            effective_labels=effective_labels,
             interfaces=interfaces,
             label_fingerprint=label_fingerprint,
             labels=labels,
@@ -205,11 +218,13 @@ class _ExternalVpnGatewayState:
             project=project,
             redundancy_type=redundancy_type,
             self_link=self_link,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
              label_fingerprint: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -217,9 +232,12 @@ class _ExternalVpnGatewayState:
              project: Optional[pulumi.Input[str]] = None,
              redundancy_type: Optional[pulumi.Input[str]] = None,
              self_link: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if interfaces is not None:
             _setter("interfaces", interfaces)
         if label_fingerprint is not None:
@@ -234,6 +252,8 @@ class _ExternalVpnGatewayState:
             _setter("redundancy_type", redundancy_type)
         if self_link is not None:
             _setter("self_link", self_link)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -246,6 +266,19 @@ class _ExternalVpnGatewayState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter
@@ -278,6 +311,8 @@ class _ExternalVpnGatewayState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for the external VPN gateway resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -343,6 +378,19 @@ class _ExternalVpnGatewayState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class ExternalVpnGateway(pulumi.CustomResource):
@@ -461,6 +509,8 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -620,8 +670,10 @@ class ExternalVpnGateway(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy_type"] = redundancy_type
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(ExternalVpnGateway, __self__).__init__(
             'gcp:compute/externalVpnGateway:ExternalVpnGateway',
             resource_name,
@@ -633,13 +685,15 @@ class ExternalVpnGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             redundancy_type: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'ExternalVpnGateway':
+            self_link: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ExternalVpnGateway':
         """
         Get an existing ExternalVpnGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -648,11 +702,15 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -668,12 +726,15 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
                Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ExternalVpnGatewayState.__new__(_ExternalVpnGatewayState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["interfaces"] = interfaces
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
@@ -681,6 +742,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["redundancy_type"] = redundancy_type
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return ExternalVpnGateway(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -690,6 +752,15 @@ class ExternalVpnGateway(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -714,6 +785,8 @@ class ExternalVpnGateway(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels for the external VPN gateway resource.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -759,4 +832,13 @@ class ExternalVpnGateway(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

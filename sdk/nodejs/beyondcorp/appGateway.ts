@@ -106,6 +106,11 @@ export class AppGateway extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
      * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
@@ -113,6 +118,9 @@ export class AppGateway extends pulumi.CustomResource {
     public readonly hostType!: pulumi.Output<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -135,6 +143,11 @@ export class AppGateway extends pulumi.CustomResource {
      * Represents the different states of a AppGateway.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
@@ -161,12 +174,14 @@ export class AppGateway extends pulumi.CustomResource {
             const state = argsOrState as AppGatewayState | undefined;
             resourceInputs["allocatedConnections"] = state ? state.allocatedConnections : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["hostType"] = state ? state.hostType : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
         } else {
@@ -179,7 +194,9 @@ export class AppGateway extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["allocatedConnections"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -201,6 +218,11 @@ export interface AppGatewayState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
      * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
@@ -208,6 +230,9 @@ export interface AppGatewayState {
     hostType?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -230,6 +255,11 @@ export interface AppGatewayState {
      * Represents the different states of a AppGateway.
      */
     state?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
@@ -258,6 +288,9 @@ export interface AppGatewayArgs {
     hostType?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

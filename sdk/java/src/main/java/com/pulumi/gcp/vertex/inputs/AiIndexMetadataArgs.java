@@ -43,8 +43,8 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    @Import(name="contentsDeltaUri")
-    private @Nullable Output<String> contentsDeltaUri;
+    @Import(name="contentsDeltaUri", required=true)
+    private Output<String> contentsDeltaUri;
 
     /**
      * @return Allows inserting, updating  or deleting the contents of the Matching Engine Index.
@@ -55,8 +55,8 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    public Optional<Output<String>> contentsDeltaUri() {
-        return Optional.ofNullable(this.contentsDeltaUri);
+    public Output<String> contentsDeltaUri() {
+        return this.contentsDeltaUri;
     }
 
     /**
@@ -136,7 +136,7 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder contentsDeltaUri(@Nullable Output<String> contentsDeltaUri) {
+        public Builder contentsDeltaUri(Output<String> contentsDeltaUri) {
             $.contentsDeltaUri = contentsDeltaUri;
             return this;
         }
@@ -180,6 +180,7 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AiIndexMetadataArgs build() {
+            $.contentsDeltaUri = Objects.requireNonNull($.contentsDeltaUri, "expected parameter 'contentsDeltaUri' to be non-null");
             return $;
         }
     }

@@ -123,6 +123,7 @@ namespace Pulumi.Gcp.PubSub
     [OutputType]
     public sealed class GetTopicResult
     {
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -134,9 +135,12 @@ namespace Pulumi.Gcp.PubSub
         public readonly string Name;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetTopicSchemaSettingResult> SchemaSettings;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
 
         [OutputConstructor]
         private GetTopicResult(
+            ImmutableDictionary<string, string> effectiveLabels,
+
             string id,
 
             string kmsKeyName,
@@ -151,8 +155,11 @@ namespace Pulumi.Gcp.PubSub
 
             string? project,
 
-            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings)
+            ImmutableArray<Outputs.GetTopicSchemaSettingResult> schemaSettings,
+
+            ImmutableDictionary<string, string> terraformLabels)
         {
+            EffectiveLabels = effectiveLabels;
             Id = id;
             KmsKeyName = kmsKeyName;
             Labels = labels;
@@ -161,6 +168,7 @@ namespace Pulumi.Gcp.PubSub
             Name = name;
             Project = project;
             SchemaSettings = schemaSettings;
+            TerraformLabels = terraformLabels;
         }
     }
 }

@@ -6,7 +6,6 @@ package com.pulumi.gcp.certificateauthority.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionAuthorityKeyId;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionCertFingerprint;
-import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionConfigValue;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionPublicKey;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionSubjectDescription;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateCertificateDescriptionSubjectKeyId;
@@ -38,17 +37,6 @@ public final class CertificateCertificateDescription {
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints;
-    /**
-     * @return (Output, Deprecated)
-     * Describes some of the technical fields in a certificate.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-     * 
-     */
-    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-    private @Nullable List<CertificateCertificateDescriptionConfigValue> configValues;
     /**
      * @return (Output)
      * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
@@ -113,19 +101,6 @@ public final class CertificateCertificateDescription {
         return this.certFingerprints == null ? List.of() : this.certFingerprints;
     }
     /**
-     * @return (Output, Deprecated)
-     * Describes some of the technical fields in a certificate.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
-     * 
-     */
-    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
-    public List<CertificateCertificateDescriptionConfigValue> configValues() {
-        return this.configValues == null ? List.of() : this.configValues;
-    }
-    /**
      * @return (Output)
      * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
      * 
@@ -183,7 +158,6 @@ public final class CertificateCertificateDescription {
         private @Nullable List<String> aiaIssuingCertificateUrls;
         private @Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds;
         private @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints;
-        private @Nullable List<CertificateCertificateDescriptionConfigValue> configValues;
         private @Nullable List<String> crlDistributionPoints;
         private @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys;
         private @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions;
@@ -195,7 +169,6 @@ public final class CertificateCertificateDescription {
     	      this.aiaIssuingCertificateUrls = defaults.aiaIssuingCertificateUrls;
     	      this.authorityKeyIds = defaults.authorityKeyIds;
     	      this.certFingerprints = defaults.certFingerprints;
-    	      this.configValues = defaults.configValues;
     	      this.crlDistributionPoints = defaults.crlDistributionPoints;
     	      this.publicKeys = defaults.publicKeys;
     	      this.subjectDescriptions = defaults.subjectDescriptions;
@@ -226,14 +199,6 @@ public final class CertificateCertificateDescription {
         }
         public Builder certFingerprints(CertificateCertificateDescriptionCertFingerprint... certFingerprints) {
             return certFingerprints(List.of(certFingerprints));
-        }
-        @CustomType.Setter
-        public Builder configValues(@Nullable List<CertificateCertificateDescriptionConfigValue> configValues) {
-            this.configValues = configValues;
-            return this;
-        }
-        public Builder configValues(CertificateCertificateDescriptionConfigValue... configValues) {
-            return configValues(List.of(configValues));
         }
         @CustomType.Setter
         public Builder crlDistributionPoints(@Nullable List<String> crlDistributionPoints) {
@@ -280,7 +245,6 @@ public final class CertificateCertificateDescription {
             o.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
             o.authorityKeyIds = authorityKeyIds;
             o.certFingerprints = certFingerprints;
-            o.configValues = configValues;
             o.crlDistributionPoints = crlDistributionPoints;
             o.publicKeys = publicKeys;
             o.subjectDescriptions = subjectDescriptions;

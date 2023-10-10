@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
-import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,35 +34,6 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Deprecated)
-     * The Secret will automatically be replicated without any restrictions.
-     * 
-     * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     * @deprecated
-     * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     */
-    @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
-    @Import(name="automatic")
-    private @Nullable Output<Boolean> automatic;
-
-    /**
-     * @return (Optional, Deprecated)
-     * The Secret will automatically be replicated without any restrictions.
-     * 
-     * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     * @deprecated
-     * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-     * 
-     */
-    @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
-    public Optional<Output<Boolean>> automatic() {
-        return Optional.ofNullable(this.automatic);
-    }
-
-    /**
      * The Secret will be replicated to the regions specified by the user.
      * Structure is documented below.
      * 
@@ -84,7 +54,6 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
 
     private SecretReplicationArgs(SecretReplicationArgs $) {
         this.auto = $.auto;
-        this.automatic = $.automatic;
         this.userManaged = $.userManaged;
     }
 
@@ -127,41 +96,6 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder auto(SecretReplicationAutoArgs auto) {
             return auto(Output.of(auto));
-        }
-
-        /**
-         * @param automatic (Optional, Deprecated)
-         * The Secret will automatically be replicated without any restrictions.
-         * 
-         * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-         * 
-         */
-        @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
-        public Builder automatic(@Nullable Output<Boolean> automatic) {
-            $.automatic = automatic;
-            return this;
-        }
-
-        /**
-         * @param automatic (Optional, Deprecated)
-         * The Secret will automatically be replicated without any restrictions.
-         * 
-         * &gt; **Warning:** `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `automatic` is deprecated and will be removed in a future major release. Use `auto` instead.
-         * 
-         */
-        @Deprecated /* `automatic` is deprecated and will be removed in a future major release. Use `auto` instead. */
-        public Builder automatic(Boolean automatic) {
-            return automatic(Output.of(automatic));
         }
 
         /**

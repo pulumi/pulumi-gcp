@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string CurrentLocationId;
         public readonly string CustomerManagedKey;
         public readonly string DisplayName;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Host;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -180,6 +181,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string ReservedIpRange;
         public readonly string SecondaryIpRange;
         public readonly ImmutableArray<Outputs.GetInstanceServerCaCertResult> ServerCaCerts;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Tier;
         public readonly string TransitEncryptionMode;
 
@@ -202,6 +204,8 @@ namespace Pulumi.Gcp.Redis
             string customerManagedKey,
 
             string displayName,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string host,
 
@@ -249,6 +253,8 @@ namespace Pulumi.Gcp.Redis
 
             ImmutableArray<Outputs.GetInstanceServerCaCertResult> serverCaCerts,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string tier,
 
             string transitEncryptionMode)
@@ -262,6 +268,7 @@ namespace Pulumi.Gcp.Redis
             CurrentLocationId = currentLocationId;
             CustomerManagedKey = customerManagedKey;
             DisplayName = displayName;
+            EffectiveLabels = effectiveLabels;
             Host = host;
             Id = id;
             Labels = labels;
@@ -285,6 +292,7 @@ namespace Pulumi.Gcp.Redis
             ReservedIpRange = reservedIpRange;
             SecondaryIpRange = secondaryIpRange;
             ServerCaCerts = serverCaCerts;
+            TerraformLabels = terraformLabels;
             Tier = tier;
             TransitEncryptionMode = transitEncryptionMode;
         }

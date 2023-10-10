@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/filestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,7 +75,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/filestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/filestore"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -146,6 +146,9 @@ type Snapshot struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes pulumi.StringOutput `pulumi:"filesystemUsedBytes"`
 	// The resource name of the filestore instance.
@@ -153,6 +156,9 @@ type Snapshot struct {
 	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -169,6 +175,9 @@ type Snapshot struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The snapshot state.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewSnapshot registers a new resource with the given unique name, arguments, and options.
@@ -211,6 +220,9 @@ type snapshotState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes *string `pulumi:"filesystemUsedBytes"`
 	// The resource name of the filestore instance.
@@ -218,6 +230,9 @@ type snapshotState struct {
 	// ***
 	Instance *string `pulumi:"instance"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
@@ -234,6 +249,9 @@ type snapshotState struct {
 	Project *string `pulumi:"project"`
 	// The snapshot state.
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type SnapshotState struct {
@@ -241,6 +259,9 @@ type SnapshotState struct {
 	CreateTime pulumi.StringPtrInput
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes pulumi.StringPtrInput
 	// The resource name of the filestore instance.
@@ -248,6 +269,9 @@ type SnapshotState struct {
 	// ***
 	Instance pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
@@ -264,6 +288,9 @@ type SnapshotState struct {
 	Project pulumi.StringPtrInput
 	// The snapshot state.
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (SnapshotState) ElementType() reflect.Type {
@@ -278,6 +305,9 @@ type snapshotArgs struct {
 	// ***
 	Instance string `pulumi:"instance"`
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location string `pulumi:"location"`
@@ -303,6 +333,9 @@ type SnapshotArgs struct {
 	// ***
 	Instance pulumi.StringInput
 	// Resource labels to represent user-provided metadata.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringInput
@@ -440,6 +473,12 @@ func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o SnapshotOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The amount of bytes needed to allocate a full copy of the snapshot content.
 func (o SnapshotOutput) FilesystemUsedBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.FilesystemUsedBytes }).(pulumi.StringOutput)
@@ -453,6 +492,9 @@ func (o SnapshotOutput) Instance() pulumi.StringOutput {
 }
 
 // Resource labels to represent user-provided metadata.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -482,6 +524,12 @@ func (o SnapshotOutput) Project() pulumi.StringOutput {
 // The snapshot state.
 func (o SnapshotOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o SnapshotOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type SnapshotArrayOutput struct{ *pulumi.OutputState }

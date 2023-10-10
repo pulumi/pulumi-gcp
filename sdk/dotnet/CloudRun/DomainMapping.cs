@@ -182,8 +182,8 @@ namespace Pulumi.Gcp.CloudRun
         /// Metadata associated with this DomainMapping.
         /// Structure is documented below.
         /// </summary>
-        [Input("metadata", required: true)]
-        public Input<Inputs.DomainMappingMetadataArgs> Metadata { get; set; } = null!;
+        [Input("metadata")]
+        public Input<Inputs.DomainMappingMetadataArgs>? Metadata { get; set; }
 
         /// <summary>
         /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain

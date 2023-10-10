@@ -13,6 +13,7 @@ import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineState;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineCondition;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipeline;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,15 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
- *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
- *             ))
  *             .description(&#34;basic description&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
- *             ))
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
@@ -77,6 +70,14 @@ import javax.annotation.Nullable;
  *                         .targetId(&#34;example-target-two&#34;)
  *                         .build())
  *                 .build())
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -111,15 +112,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
- *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
- *             ))
  *             .description(&#34;basic description&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
- *             ))
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
@@ -138,6 +131,14 @@ import javax.annotation.Nullable;
  *                         .targetId(&#34;example-target-two&#34;)
  *                         .build())
  *                 .build())
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -172,15 +173,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
- *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
- *             ))
  *             .description(&#34;basic description&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
- *             ))
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
@@ -199,6 +192,14 @@ import javax.annotation.Nullable;
  *                         .targetId(&#34;example-target-two&#34;)
  *                         .build())
  *                 .build())
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -291,15 +292,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
  *             .location(&#34;us-west1&#34;)
- *             .annotations(Map.ofEntries(
- *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
- *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
- *             ))
  *             .description(&#34;basic description&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
- *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
- *             ))
  *             .project(&#34;my-project-name&#34;)
  *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
  *                 .stages(                
@@ -318,6 +311,14 @@ import javax.annotation.Nullable;
  *                         .targetId(&#34;example-target-two&#34;)
  *                         .build())
  *                 .build())
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -348,12 +349,18 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
     /**
      * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+     * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
      * @return User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> annotations() {
@@ -402,6 +409,38 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveAnnotations() {
+        return this.effectiveAnnotations;
+    }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
@@ -418,12 +457,18 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
     /**
      * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -498,6 +543,20 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> suspended() {
         return Codegen.optional(this.suspended);
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Output only. Unique identifier of the `DeliveryPipeline`.

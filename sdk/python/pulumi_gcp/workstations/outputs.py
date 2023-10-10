@@ -503,6 +503,8 @@ class WorkstationConfigHostGceInstance(dict):
             suggest = "pool_size"
         elif key == "serviceAccount":
             suggest = "service_account"
+        elif key == "serviceAccountScopes":
+            suggest = "service_account_scopes"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
 
@@ -526,6 +528,7 @@ class WorkstationConfigHostGceInstance(dict):
                  machine_type: Optional[str] = None,
                  pool_size: Optional[int] = None,
                  service_account: Optional[str] = None,
+                 service_account_scopes: Optional[Sequence[str]] = None,
                  shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
                  tags: Optional[Sequence[str]] = None):
         """
@@ -540,6 +543,7 @@ class WorkstationConfigHostGceInstance(dict):
         :param str machine_type: The name of a Compute Engine machine type.
         :param int pool_size: Number of instances to pool for faster workstation startup.
         :param str service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        :param Sequence[str] service_account_scopes: Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
         :param 'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs' shielded_instance_config: A set of Compute Engine Shielded instance options.
                Structure is documented below.
         :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
@@ -554,6 +558,7 @@ class WorkstationConfigHostGceInstance(dict):
             machine_type=machine_type,
             pool_size=pool_size,
             service_account=service_account,
+            service_account_scopes=service_account_scopes,
             shielded_instance_config=shielded_instance_config,
             tags=tags,
         )
@@ -568,6 +573,7 @@ class WorkstationConfigHostGceInstance(dict):
              machine_type: Optional[str] = None,
              pool_size: Optional[int] = None,
              service_account: Optional[str] = None,
+             service_account_scopes: Optional[Sequence[str]] = None,
              shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
              tags: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -587,6 +593,8 @@ class WorkstationConfigHostGceInstance(dict):
             _setter("pool_size", pool_size)
         if service_account is not None:
             _setter("service_account", service_account)
+        if service_account_scopes is not None:
+            _setter("service_account_scopes", service_account_scopes)
         if shielded_instance_config is not None:
             _setter("shielded_instance_config", shielded_instance_config)
         if tags is not None:
@@ -658,6 +666,14 @@ class WorkstationConfigHostGceInstance(dict):
         Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="serviceAccountScopes")
+    def service_account_scopes(self) -> Optional[Sequence[str]]:
+        """
+        Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+        """
+        return pulumi.get(self, "service_account_scopes")
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")

@@ -209,6 +209,13 @@ namespace Pulumi.Gcp.Recaptcha
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, object>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for keys that can be used by iOS apps.
         /// </summary>
         [Output("iosSettings")]
@@ -216,6 +223,9 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -231,6 +241,12 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, object>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Options for user acceptance testing.
@@ -317,6 +333,9 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -372,6 +391,19 @@ namespace Pulumi.Gcp.Recaptcha
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<object>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<object> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<object>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Settings for keys that can be used by iOS apps.
         /// </summary>
@@ -383,6 +415,9 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -401,6 +436,18 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<object>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
+        /// </summary>
+        public InputMap<object> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<object>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Options for user acceptance testing.

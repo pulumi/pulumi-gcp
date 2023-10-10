@@ -83,8 +83,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -93,8 +92,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
      * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-     * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-     * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> labels() {
@@ -470,8 +468,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User labels to be specified for the job. Keys and values should follow the restrictions
          * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-         * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-         * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -484,8 +481,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User labels to be specified for the job. Keys and values should follow the restrictions
          * specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-         * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
-         * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

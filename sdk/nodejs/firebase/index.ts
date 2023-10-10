@@ -85,11 +85,6 @@ export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
-export { ProjectLocationArgs, ProjectLocationState } from "./projectLocation";
-export type ProjectLocation = import("./projectLocation").ProjectLocation;
-export const ProjectLocation: typeof import("./projectLocation").ProjectLocation = null as any;
-utilities.lazyLoad(exports, ["ProjectLocation"], () => require("./projectLocation"));
-
 export { StorageBucketArgs, StorageBucketState } from "./storageBucket";
 export type StorageBucket = import("./storageBucket").StorageBucket;
 export const StorageBucket: typeof import("./storageBucket").StorageBucket = null as any;
@@ -123,8 +118,6 @@ const _module = {
                 return new HostingVersion(name, <any>undefined, { urn })
             case "gcp:firebase/project:Project":
                 return new Project(name, <any>undefined, { urn })
-            case "gcp:firebase/projectLocation:ProjectLocation":
-                return new ProjectLocation(name, <any>undefined, { urn })
             case "gcp:firebase/storageBucket:StorageBucket":
                 return new StorageBucket(name, <any>undefined, { urn })
             case "gcp:firebase/webApp:WebApp":
@@ -143,6 +136,5 @@ pulumi.runtime.registerResourceModule("gcp", "firebase/hostingRelease", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingSite", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/hostingVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/project", _module)
-pulumi.runtime.registerResourceModule("gcp", "firebase/projectLocation", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/storageBucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/webApp", _module)

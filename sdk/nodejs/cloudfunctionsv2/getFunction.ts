@@ -60,6 +60,7 @@ export interface GetFunctionArgs {
 export interface GetFunctionResult {
     readonly buildConfigs: outputs.cloudfunctionsv2.GetFunctionBuildConfig[];
     readonly description: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly environment: string;
     readonly eventTriggers: outputs.cloudfunctionsv2.GetFunctionEventTrigger[];
     /**
@@ -73,6 +74,7 @@ export interface GetFunctionResult {
     readonly project?: string;
     readonly serviceConfigs: outputs.cloudfunctionsv2.GetFunctionServiceConfig[];
     readonly state: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly updateTime: string;
     readonly url: string;
 }

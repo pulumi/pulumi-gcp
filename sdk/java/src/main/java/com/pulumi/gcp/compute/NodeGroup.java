@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
  *             .zone(&#34;us-central1-a&#34;)
  *             .description(&#34;example google_compute_node_group for the Google Provider&#34;)
- *             .size(1)
+ *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .build());
  * 
@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  *         var nodes = new NodeGroup(&#34;nodes&#34;, NodeGroupArgs.builder()        
  *             .zone(&#34;us-central1-f&#34;)
  *             .description(&#34;example google_compute_node_group for Terraform Google Provider&#34;)
- *             .size(1)
+ *             .initialSize(1)
  *             .nodeTemplate(soletenant_tmpl.id())
  *             .shareSettings(NodeGroupShareSettingsArgs.builder()
  *                 .shareType(&#34;SPECIFIC_PROJECTS&#34;)
@@ -203,6 +203,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     /**
      * If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * Structure is documented below.
      * 
      */
@@ -212,6 +213,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return If you use sole-tenant nodes for your workloads, you can use the node
      * group autoscaler to automatically manage the sizes of your node groups.
+     * One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * Structure is documented below.
      * 
      */
@@ -247,14 +249,14 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+     * The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * 
      */
     @Export(name="initialSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> initialSize;
 
     /**
-     * @return The initial number of nodes in the node group. One of `initial_size` or `size` must be specified.
+     * @return The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
      * 
      */
     public Output<Optional<Integer>> initialSize() {
@@ -369,14 +371,14 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
         return this.shareSettings;
     }
     /**
-     * The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+     * The total number of nodes in the node group.
      * 
      */
     @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
-     * @return The total number of nodes in the node group. One of `initial_size` or `size` must be specified.
+     * @return The total number of nodes in the node group.
      * 
      */
     public Output<Integer> size() {

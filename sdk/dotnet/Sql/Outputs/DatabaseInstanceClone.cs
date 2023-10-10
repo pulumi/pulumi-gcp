@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? PointInTime;
         /// <summary>
+        /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
+        /// </summary>
+        public readonly string? PreferredZone;
+        /// <summary>
         /// Name of the source instance which will be cloned.
         /// </summary>
         public readonly string SourceInstanceName;
@@ -40,11 +44,14 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? pointInTime,
 
+            string? preferredZone,
+
             string sourceInstanceName)
         {
             AllocatedIpRange = allocatedIpRange;
             DatabaseNames = databaseNames;
             PointInTime = pointInTime;
+            PreferredZone = preferredZone;
             SourceInstanceName = sourceInstanceName;
         }
     }

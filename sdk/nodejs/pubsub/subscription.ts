@@ -227,6 +227,11 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly deadLetterPolicy!: pulumi.Output<outputs.pubsub.SubscriptionDeadLetterPolicy | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If `true`, Pub/Sub provides the following guarantees for the delivery
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -261,6 +266,9 @@ export class Subscription extends pulumi.CustomResource {
     public readonly filter!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Subscription.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -305,6 +313,11 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * A reference to a Topic resource.
      *
      *
@@ -329,6 +342,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["bigqueryConfig"] = state ? state.bigqueryConfig : undefined;
             resourceInputs["cloudStorageConfig"] = state ? state.cloudStorageConfig : undefined;
             resourceInputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = state ? state.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = state ? state.enableMessageOrdering : undefined;
             resourceInputs["expirationPolicy"] = state ? state.expirationPolicy : undefined;
@@ -340,6 +354,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["pushConfig"] = state ? state.pushConfig : undefined;
             resourceInputs["retainAckedMessages"] = state ? state.retainAckedMessages : undefined;
             resourceInputs["retryPolicy"] = state ? state.retryPolicy : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
@@ -362,6 +377,8 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
             resourceInputs["retryPolicy"] = args ? args.retryPolicy : undefined;
             resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Subscription.__pulumiType, name, resourceInputs, opts);
@@ -416,6 +433,11 @@ export interface SubscriptionState {
      */
     deadLetterPolicy?: pulumi.Input<inputs.pubsub.SubscriptionDeadLetterPolicy>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If `true`, Pub/Sub provides the following guarantees for the delivery
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -450,6 +472,9 @@ export interface SubscriptionState {
     filter?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Subscription.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -493,6 +518,11 @@ export interface SubscriptionState {
      * Structure is documented below.
      */
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to a Topic resource.
      *
@@ -584,6 +614,9 @@ export interface SubscriptionArgs {
     filter?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to this Subscription.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

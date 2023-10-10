@@ -395,6 +395,22 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
      * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
      * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
@@ -414,6 +430,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -421,6 +439,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Set of label tags associated with the Gateway resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -579,6 +599,22 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> subnetwork() {
         return Codegen.optional(this.subnetwork);
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

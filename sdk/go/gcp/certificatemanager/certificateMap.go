@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -76,10 +76,16 @@ type CertificateMapResource struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of target proxies that use this Certificate Map
 	// Structure is documented below.
 	GclbTargets CertificateMapGclbTargetArrayOutput `pulumi:"gclbTargets"`
 	// Set of labels associated with a Certificate Map resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -89,6 +95,9 @@ type CertificateMapResource struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -131,10 +140,16 @@ type certificateMapResourceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A list of target proxies that use this Certificate Map
 	// Structure is documented below.
 	GclbTargets []CertificateMapGclbTarget `pulumi:"gclbTargets"`
 	// Set of labels associated with a Certificate Map resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -144,6 +159,9 @@ type certificateMapResourceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -157,10 +175,16 @@ type CertificateMapResourceState struct {
 	CreateTime pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// A list of target proxies that use this Certificate Map
 	// Structure is documented below.
 	GclbTargets CertificateMapGclbTargetArrayInput
 	// Set of labels associated with a Certificate Map resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -170,6 +194,9 @@ type CertificateMapResourceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -184,6 +211,9 @@ type certificateMapResourceArgs struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Set of labels associated with a Certificate Map resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -200,6 +230,9 @@ type CertificateMapResourceArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Set of labels associated with a Certificate Map resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// A user-defined name of the Certificate Map. Certificate Map names must be unique
 	// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
@@ -334,6 +367,12 @@ func (o CertificateMapResourceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateMapResourceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // A list of target proxies that use this Certificate Map
 // Structure is documented below.
 func (o CertificateMapResourceOutput) GclbTargets() CertificateMapGclbTargetArrayOutput {
@@ -341,6 +380,9 @@ func (o CertificateMapResourceOutput) GclbTargets() CertificateMapGclbTargetArra
 }
 
 // Set of labels associated with a Certificate Map resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateMapResourceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -357,6 +399,12 @@ func (o CertificateMapResourceOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o CertificateMapResourceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateMapResourceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,

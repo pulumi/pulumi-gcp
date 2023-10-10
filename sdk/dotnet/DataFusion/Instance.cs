@@ -279,6 +279,13 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Option to enable granular role-based access control.
         /// </summary>
         [Output("enableRbac")]
@@ -312,6 +319,9 @@ namespace Pulumi.Gcp.DataFusion
         /// <summary>
         /// The resource labels for instance to use to annotate any related underlying resources,
         /// such as Compute Engine VMs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -392,6 +402,13 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Output("tenantProjectId")]
         public Output<string> TenantProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// Represents the type of Data Fusion instance. Each type is configured with
@@ -547,6 +564,9 @@ namespace Pulumi.Gcp.DataFusion
         /// <summary>
         /// The resource labels for instance to use to annotate any related underlying resources,
         /// such as Compute Engine VMs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -691,6 +711,19 @@ namespace Pulumi.Gcp.DataFusion
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// Option to enable granular role-based access control.
         /// </summary>
@@ -728,6 +761,9 @@ namespace Pulumi.Gcp.DataFusion
         /// <summary>
         /// The resource labels for instance to use to annotate any related underlying resources,
         /// such as Compute Engine VMs.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -817,6 +853,19 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("tenantProjectId")]
         public Input<string>? TenantProjectId { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// Represents the type of Data Fusion instance. Each type is configured with

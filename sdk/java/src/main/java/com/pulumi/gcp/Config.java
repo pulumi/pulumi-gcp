@@ -9,6 +9,7 @@ import com.pulumi.gcp.config.inputs.Batching;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public final class Config {
@@ -113,9 +114,6 @@ public final class Config {
     public Optional<String> cloudIdsCustomEndpoint() {
         return Codegen.stringProp("cloudIdsCustomEndpoint").config(config).get();
     }
-    public Optional<String> cloudIotCustomEndpoint() {
-        return Codegen.stringProp("cloudIotCustomEndpoint").config(config).get();
-    }
     public Optional<String> cloudResourceManagerCustomEndpoint() {
         return Codegen.stringProp("cloudResourceManagerCustomEndpoint").config(config).get();
     }
@@ -203,6 +201,9 @@ public final class Config {
     public Optional<String> datastreamCustomEndpoint() {
         return Codegen.stringProp("datastreamCustomEndpoint").config(config).get();
     }
+    public Optional<Map<String,String>> defaultLabels() {
+        return Codegen.objectProp("defaultLabels", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
+    }
     public Optional<String> deploymentManagerCustomEndpoint() {
         return Codegen.stringProp("deploymentManagerCustomEndpoint").config(config).get();
     }
@@ -256,9 +257,6 @@ public final class Config {
     }
     public Optional<String> firestoreCustomEndpoint() {
         return Codegen.stringProp("firestoreCustomEndpoint").config(config).get();
-    }
-    public Optional<String> gameServicesCustomEndpoint() {
-        return Codegen.stringProp("gameServicesCustomEndpoint").config(config).get();
     }
     public Optional<String> gkeBackupCustomEndpoint() {
         return Codegen.stringProp("gkeBackupCustomEndpoint").config(config).get();

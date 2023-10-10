@@ -41,6 +41,7 @@ public final class GetRouterNatResult {
     private Integer tcpEstablishedIdleTimeoutSec;
     private Integer tcpTimeWaitTimeoutSec;
     private Integer tcpTransitoryIdleTimeoutSec;
+    private String type;
     private Integer udpIdleTimeoutSec;
 
     private GetRouterNatResult() {}
@@ -108,6 +109,9 @@ public final class GetRouterNatResult {
     public Integer tcpTransitoryIdleTimeoutSec() {
         return this.tcpTransitoryIdleTimeoutSec;
     }
+    public String type() {
+        return this.type;
+    }
     public Integer udpIdleTimeoutSec() {
         return this.udpIdleTimeoutSec;
     }
@@ -141,6 +145,7 @@ public final class GetRouterNatResult {
         private Integer tcpEstablishedIdleTimeoutSec;
         private Integer tcpTimeWaitTimeoutSec;
         private Integer tcpTransitoryIdleTimeoutSec;
+        private String type;
         private Integer udpIdleTimeoutSec;
         public Builder() {}
         public Builder(GetRouterNatResult defaults) {
@@ -165,6 +170,7 @@ public final class GetRouterNatResult {
     	      this.tcpEstablishedIdleTimeoutSec = defaults.tcpEstablishedIdleTimeoutSec;
     	      this.tcpTimeWaitTimeoutSec = defaults.tcpTimeWaitTimeoutSec;
     	      this.tcpTransitoryIdleTimeoutSec = defaults.tcpTransitoryIdleTimeoutSec;
+    	      this.type = defaults.type;
     	      this.udpIdleTimeoutSec = defaults.udpIdleTimeoutSec;
         }
 
@@ -284,6 +290,11 @@ public final class GetRouterNatResult {
             return this;
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
+            return this;
+        }
+        @CustomType.Setter
         public Builder udpIdleTimeoutSec(Integer udpIdleTimeoutSec) {
             this.udpIdleTimeoutSec = Objects.requireNonNull(udpIdleTimeoutSec);
             return this;
@@ -310,6 +321,7 @@ public final class GetRouterNatResult {
             o.tcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             o.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             o.tcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
+            o.type = type;
             o.udpIdleTimeoutSec = udpIdleTimeoutSec;
             return o;
         }

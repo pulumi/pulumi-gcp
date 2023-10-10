@@ -306,6 +306,11 @@ export class HttpRoute extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
      */
@@ -316,6 +321,8 @@ export class HttpRoute extends pulumi.CustomResource {
     public readonly hostnames!: pulumi.Output<string[]>;
     /**
      * Set of label tags associated with the HttpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -343,6 +350,11 @@ export class HttpRoute extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Time the HttpRoute was updated in UTC.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -362,6 +374,7 @@ export class HttpRoute extends pulumi.CustomResource {
             const state = argsOrState as HttpRouteState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gateways"] = state ? state.gateways : undefined;
             resourceInputs["hostnames"] = state ? state.hostnames : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -370,6 +383,7 @@ export class HttpRoute extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as HttpRouteArgs | undefined;
@@ -388,7 +402,9 @@ export class HttpRoute extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -409,6 +425,11 @@ export interface HttpRouteState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
      */
@@ -419,6 +440,8 @@ export interface HttpRouteState {
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of label tags associated with the HttpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -446,6 +469,11 @@ export interface HttpRouteState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Time the HttpRoute was updated in UTC.
      */
     updateTime?: pulumi.Input<string>;
@@ -470,6 +498,8 @@ export interface HttpRouteArgs {
     hostnames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of label tags associated with the HttpRoute resource.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

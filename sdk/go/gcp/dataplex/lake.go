@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataplex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,7 +80,13 @@ type Lake struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
 	// Optional. User-defined labels for the lake.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -98,6 +104,8 @@ type Lake struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapOutput `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the lake was last updated.
@@ -145,7 +153,13 @@ type lakeState struct {
 	Description *string `pulumi:"description"`
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
 	// Optional. User-defined labels for the lake.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -163,6 +177,8 @@ type lakeState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels map[string]interface{} `pulumi:"terraformLabels"`
 	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the lake was last updated.
@@ -178,7 +194,13 @@ type LakeState struct {
 	Description pulumi.StringPtrInput
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.MapInput
 	// Optional. User-defined labels for the lake.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -196,6 +218,8 @@ type LakeState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	TerraformLabels pulumi.MapInput
 	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the lake was last updated.
@@ -212,6 +236,9 @@ type lakeArgs struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. User-defined labels for the lake.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
@@ -232,6 +259,9 @@ type LakeArgs struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. User-defined labels for the lake.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
@@ -376,7 +406,16 @@ func (o LakeOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o LakeOutput) EffectiveLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.EffectiveLabels }).(pulumi.MapOutput)
+}
+
 // Optional. User-defined labels for the lake.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o LakeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -416,6 +455,11 @@ func (o LakeOutput) ServiceAccount() pulumi.StringOutput {
 // Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o LakeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource and default labels configured on the provider.
+func (o LakeOutput) TerraformLabels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Lake) pulumi.MapOutput { return v.TerraformLabels }).(pulumi.MapOutput)
 }
 
 // Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.

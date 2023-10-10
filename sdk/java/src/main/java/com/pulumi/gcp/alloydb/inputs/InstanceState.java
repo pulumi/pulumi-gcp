@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -21,6 +22,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     @Import(name="annotations")
@@ -28,6 +31,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -124,6 +129,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    @Import(name="effectiveAnnotations")
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
+
+    /**
+     * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
+        return Optional.ofNullable(this.effectiveAnnotations);
+    }
+
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      * 
      */
@@ -191,6 +230,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     @Import(name="labels")
@@ -198,6 +239,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-defined labels for the alloydb instance.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -234,6 +277,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Configuration for query insights.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="queryInsightsConfig")
+    private @Nullable Output<InstanceQueryInsightsConfigArgs> queryInsightsConfig;
+
+    /**
+     * @return Configuration for query insights.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceQueryInsightsConfigArgs>> queryInsightsConfig() {
+        return Optional.ofNullable(this.queryInsightsConfig);
     }
 
     /**
@@ -284,6 +344,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The system-generated UID of the resource.
      * 
      */
@@ -322,6 +399,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.databaseFlags = $.databaseFlags;
         this.displayName = $.displayName;
+        this.effectiveAnnotations = $.effectiveAnnotations;
+        this.effectiveLabels = $.effectiveLabels;
         this.gceZone = $.gceZone;
         this.instanceId = $.instanceId;
         this.instanceType = $.instanceType;
@@ -329,9 +408,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
         this.name = $.name;
+        this.queryInsightsConfig = $.queryInsightsConfig;
         this.readPoolConfig = $.readPoolConfig;
         this.reconciling = $.reconciling;
         this.state = $.state;
+        this.terraformLabels = $.terraformLabels;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -356,6 +437,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -367,6 +450,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
+         * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+         * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
          * @return builder
          * 
@@ -495,6 +580,52 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
+            $.effectiveAnnotations = effectiveAnnotations;
+            return this;
+        }
+
+        /**
+         * @param effectiveAnnotations All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+         * Terraform, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
+            return effectiveAnnotations(Output.of(effectiveAnnotations));
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param gceZone The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
          * 
          * @return builder
@@ -586,6 +717,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the alloydb instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -597,6 +730,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the alloydb instance.
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -647,6 +782,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param queryInsightsConfig Configuration for query insights.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryInsightsConfig(@Nullable Output<InstanceQueryInsightsConfigArgs> queryInsightsConfig) {
+            $.queryInsightsConfig = queryInsightsConfig;
+            return this;
+        }
+
+        /**
+         * @param queryInsightsConfig Configuration for query insights.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queryInsightsConfig(InstanceQueryInsightsConfigArgs queryInsightsConfig) {
+            return queryInsightsConfig(Output.of(queryInsightsConfig));
         }
 
         /**
@@ -712,6 +870,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,8 +31,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -83,7 +83,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,7 +111,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -136,7 +136,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -170,7 +170,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -204,7 +204,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -263,7 +263,12 @@ type Feature struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	//
@@ -284,6 +289,9 @@ type Feature struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	// Structure is documented below.
 	States FeatureStateTypeArrayOutput `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// (Output)
 	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -326,7 +334,12 @@ type featureState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. When the Feature resource was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	//
@@ -347,6 +360,9 @@ type featureState struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	// Structure is documented below.
 	States []FeatureStateType `pulumi:"states"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// (Output)
 	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime *string `pulumi:"updateTime"`
@@ -357,7 +373,12 @@ type FeatureState struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. When the Feature resource was deleted.
 	DeleteTime pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	//
@@ -378,6 +399,9 @@ type FeatureState struct {
 	// Output only. The "running state" of the Feature in this Hub.
 	// Structure is documented below.
 	States FeatureStateTypeArrayInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// (Output)
 	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringPtrInput
@@ -389,6 +413,8 @@ func (FeatureState) ElementType() reflect.Type {
 
 type featureArgs struct {
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	//
@@ -407,6 +433,8 @@ type featureArgs struct {
 // The set of arguments for constructing a Feature resource.
 type FeatureArgs struct {
 	// GCP labels for this Feature.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	//
@@ -543,7 +571,15 @@ func (o FeatureOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o FeatureOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // GCP labels for this Feature.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o FeatureOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -583,6 +619,12 @@ func (o FeatureOutput) Spec() FeatureSpecPtrOutput {
 // Structure is documented below.
 func (o FeatureOutput) States() FeatureStateTypeArrayOutput {
 	return o.ApplyT(func(v *Feature) FeatureStateTypeArrayOutput { return v.States }).(FeatureStateTypeArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o FeatureOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // (Output)

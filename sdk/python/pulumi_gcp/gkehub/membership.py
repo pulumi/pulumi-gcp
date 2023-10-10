@@ -39,6 +39,9 @@ class MembershipArgs:
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -142,6 +145,9 @@ class MembershipArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this membership.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -168,11 +174,13 @@ class _MembershipState:
     def __init__(__self__, *,
                  authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Membership resources.
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
@@ -183,9 +191,14 @@ class _MembershipState:
                The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
                
                
@@ -193,27 +206,33 @@ class _MembershipState:
         :param pulumi.Input[str] name: The unique identifier of the membership.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _MembershipState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             authority=authority,
             description=description,
+            effective_labels=effective_labels,
             endpoint=endpoint,
             labels=labels,
             membership_id=membership_id,
             name=name,
             project=project,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              authority: Optional[pulumi.Input['MembershipAuthorityArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              membership_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if authority is not None:
             _setter("authority", authority)
@@ -222,6 +241,8 @@ class _MembershipState:
             pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if labels is not None:
@@ -232,6 +253,8 @@ class _MembershipState:
             _setter("name", name)
         if project is not None:
             _setter("project", project)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter
@@ -267,6 +290,19 @@ class _MembershipState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input['MembershipEndpointArgs']]:
         """
@@ -284,6 +320,9 @@ class _MembershipState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this membership.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -331,6 +370,19 @@ class _MembershipState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Membership(pulumi.CustomResource):
     @overload
@@ -361,6 +413,7 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            deletion_protection=True,
             initial_node_count=1,
             location="us-central1-a")
         membership = gcp.gkehub.Membership("membership",
@@ -369,6 +422,9 @@ class Membership(pulumi.CustomResource):
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ),
+            labels={
+                "env": "test",
+            },
             membership_id="basic")
         ```
         ### Gkehub Membership Issuer
@@ -382,7 +438,8 @@ class Membership(pulumi.CustomResource):
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
                 workload_pool="my-project-name.svc.id.goog",
-            ))
+            ),
+            deletion_protection=True)
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
@@ -424,6 +481,9 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
                
                
@@ -454,6 +514,7 @@ class Membership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         primary = gcp.container.Cluster("primary",
+            deletion_protection=True,
             initial_node_count=1,
             location="us-central1-a")
         membership = gcp.gkehub.Membership("membership",
@@ -462,6 +523,9 @@ class Membership(pulumi.CustomResource):
                     resource_link=primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ),
+            labels={
+                "env": "test",
+            },
             membership_id="basic")
         ```
         ### Gkehub Membership Issuer
@@ -475,7 +539,8 @@ class Membership(pulumi.CustomResource):
             initial_node_count=1,
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
                 workload_pool="my-project-name.svc.id.goog",
-            ))
+            ),
+            deletion_protection=True)
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
@@ -556,7 +621,9 @@ class Membership(pulumi.CustomResource):
                 raise TypeError("Missing required property 'membership_id'")
             __props__.__dict__["membership_id"] = membership_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Membership, __self__).__init__(
             'gcp:gkehub/membership:Membership',
             resource_name,
@@ -569,11 +636,13 @@ class Membership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authority: Optional[pulumi.Input[pulumi.InputType['MembershipAuthorityArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             endpoint: Optional[pulumi.Input[pulumi.InputType['MembershipEndpointArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             membership_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'Membership':
+            project: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Membership':
         """
         Get an existing Membership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -589,9 +658,14 @@ class Membership(pulumi.CustomResource):
                The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
                
                
@@ -599,6 +673,8 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] name: The unique identifier of the membership.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -606,11 +682,13 @@ class Membership(pulumi.CustomResource):
 
         __props__.__dict__["authority"] = authority
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["membership_id"] = membership_id
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Membership(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -639,6 +717,15 @@ class Membership(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[Optional['outputs.MembershipEndpoint']]:
         """
@@ -652,6 +739,9 @@ class Membership(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this membership.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -682,4 +772,13 @@ class Membership(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

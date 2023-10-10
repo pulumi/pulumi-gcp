@@ -6,9 +6,7 @@ package com.pulumi.gcp.dataplex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
-import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileResultArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
-import com.pulumi.gcp.dataplex.inputs.DatascanDataQualityResultArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionStatusArgs;
@@ -57,33 +55,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated)
-     * The result of the data profile scan.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `data_profile_result` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-    @Import(name="dataProfileResults")
-    private @Nullable Output<List<DatascanDataProfileResultArgs>> dataProfileResults;
-
-    /**
-     * @return (Deprecated)
-     * The result of the data profile scan.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `data_profile_result` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-    public Optional<Output<List<DatascanDataProfileResultArgs>>> dataProfileResults() {
-        return Optional.ofNullable(this.dataProfileResults);
-    }
-
-    /**
      * DataProfileScan related setting.
      * Structure is documented below.
      * 
@@ -98,33 +69,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<DatascanDataProfileSpecArgs>> dataProfileSpec() {
         return Optional.ofNullable(this.dataProfileSpec);
-    }
-
-    /**
-     * (Deprecated)
-     * The result of the data quality scan.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `data_quality_result` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-    @Import(name="dataQualityResults")
-    private @Nullable Output<List<DatascanDataQualityResultArgs>> dataQualityResults;
-
-    /**
-     * @return (Deprecated)
-     * The result of the data quality scan.
-     * Structure is documented below.
-     * 
-     * @deprecated
-     * `data_quality_result` is deprecated and will be removed in a future major release.
-     * 
-     */
-    @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-    public Optional<Output<List<DatascanDataQualityResultArgs>>> dataQualityResults() {
-        return Optional.ofNullable(this.dataQualityResults);
     }
 
     /**
@@ -192,6 +136,23 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * DataScan execution settings.
      * Structure is documented below.
      * 
@@ -228,12 +189,18 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     /**
      * User-defined labels for the scan. A list of key-&gt;value pairs.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return User-defined labels for the scan. A list of key-&gt;value pairs.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -311,14 +278,31 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The field data type.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
+     * The type of DataScan.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The field data type.
+     * @return The type of DataScan.
      * 
      */
     public Optional<Output<String>> type() {
@@ -360,13 +344,12 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     private DatascanState(DatascanState $) {
         this.createTime = $.createTime;
         this.data = $.data;
-        this.dataProfileResults = $.dataProfileResults;
         this.dataProfileSpec = $.dataProfileSpec;
-        this.dataQualityResults = $.dataQualityResults;
         this.dataQualitySpec = $.dataQualitySpec;
         this.dataScanId = $.dataScanId;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.effectiveLabels = $.effectiveLabels;
         this.executionSpec = $.executionSpec;
         this.executionStatuses = $.executionStatuses;
         this.labels = $.labels;
@@ -374,6 +357,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.state = $.state;
+        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
@@ -442,55 +426,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataProfileResults (Deprecated)
-         * The result of the data profile scan.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `data_profile_result` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-        public Builder dataProfileResults(@Nullable Output<List<DatascanDataProfileResultArgs>> dataProfileResults) {
-            $.dataProfileResults = dataProfileResults;
-            return this;
-        }
-
-        /**
-         * @param dataProfileResults (Deprecated)
-         * The result of the data profile scan.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `data_profile_result` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-        public Builder dataProfileResults(List<DatascanDataProfileResultArgs> dataProfileResults) {
-            return dataProfileResults(Output.of(dataProfileResults));
-        }
-
-        /**
-         * @param dataProfileResults (Deprecated)
-         * The result of the data profile scan.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `data_profile_result` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
-        public Builder dataProfileResults(DatascanDataProfileResultArgs... dataProfileResults) {
-            return dataProfileResults(List.of(dataProfileResults));
-        }
-
-        /**
          * @param dataProfileSpec DataProfileScan related setting.
          * Structure is documented below.
          * 
@@ -511,55 +446,6 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataProfileSpec(DatascanDataProfileSpecArgs dataProfileSpec) {
             return dataProfileSpec(Output.of(dataProfileSpec));
-        }
-
-        /**
-         * @param dataQualityResults (Deprecated)
-         * The result of the data quality scan.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `data_quality_result` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-        public Builder dataQualityResults(@Nullable Output<List<DatascanDataQualityResultArgs>> dataQualityResults) {
-            $.dataQualityResults = dataQualityResults;
-            return this;
-        }
-
-        /**
-         * @param dataQualityResults (Deprecated)
-         * The result of the data quality scan.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `data_quality_result` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-        public Builder dataQualityResults(List<DatascanDataQualityResultArgs> dataQualityResults) {
-            return dataQualityResults(Output.of(dataQualityResults));
-        }
-
-        /**
-         * @param dataQualityResults (Deprecated)
-         * The result of the data quality scan.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `data_quality_result` is deprecated and will be removed in a future major release.
-         * 
-         */
-        @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
-        public Builder dataQualityResults(DatascanDataQualityResultArgs... dataQualityResults) {
-            return dataQualityResults(List.of(dataQualityResults));
         }
 
         /**
@@ -651,6 +537,29 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param executionSpec DataScan execution settings.
          * Structure is documented below.
          * 
@@ -710,6 +619,9 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels User-defined labels for the scan. A list of key-&gt;value pairs.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -720,6 +632,9 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels User-defined labels for the scan. A list of key-&gt;value pairs.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -823,7 +738,30 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The field data type.
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
+        }
+
+        /**
+         * @param type The type of DataScan.
          * 
          * @return builder
          * 
@@ -834,7 +772,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The field data type.
+         * @param type The type of DataScan.
          * 
          * @return builder
          * 

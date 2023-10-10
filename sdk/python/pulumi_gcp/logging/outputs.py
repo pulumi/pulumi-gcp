@@ -619,9 +619,9 @@ class MetricBucketOptionsExponentialBuckets(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 growth_factor: Optional[float] = None,
-                 num_finite_buckets: Optional[int] = None,
-                 scale: Optional[float] = None):
+                 growth_factor: float,
+                 num_finite_buckets: int,
+                 scale: float):
         """
         :param float growth_factor: Must be greater than 1.
         :param int num_finite_buckets: Must be greater than 0.
@@ -636,20 +636,17 @@ class MetricBucketOptionsExponentialBuckets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             growth_factor: Optional[float] = None,
-             num_finite_buckets: Optional[int] = None,
-             scale: Optional[float] = None,
+             growth_factor: float,
+             num_finite_buckets: int,
+             scale: float,
              opts: Optional[pulumi.ResourceOptions]=None):
-        if growth_factor is not None:
-            _setter("growth_factor", growth_factor)
-        if num_finite_buckets is not None:
-            _setter("num_finite_buckets", num_finite_buckets)
-        if scale is not None:
-            _setter("scale", scale)
+        _setter("growth_factor", growth_factor)
+        _setter("num_finite_buckets", num_finite_buckets)
+        _setter("scale", scale)
 
     @property
     @pulumi.getter(name="growthFactor")
-    def growth_factor(self) -> Optional[float]:
+    def growth_factor(self) -> float:
         """
         Must be greater than 1.
         """
@@ -657,7 +654,7 @@ class MetricBucketOptionsExponentialBuckets(dict):
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
-    def num_finite_buckets(self) -> Optional[int]:
+    def num_finite_buckets(self) -> int:
         """
         Must be greater than 0.
         """
@@ -665,7 +662,7 @@ class MetricBucketOptionsExponentialBuckets(dict):
 
     @property
     @pulumi.getter
-    def scale(self) -> Optional[float]:
+    def scale(self) -> float:
         """
         Must be greater than 0.
         """
@@ -692,9 +689,9 @@ class MetricBucketOptionsLinearBuckets(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 num_finite_buckets: Optional[int] = None,
-                 offset: Optional[float] = None,
-                 width: Optional[float] = None):
+                 num_finite_buckets: int,
+                 offset: float,
+                 width: float):
         """
         :param int num_finite_buckets: Must be greater than 0.
         :param float offset: Lower bound of the first bucket.
@@ -709,20 +706,17 @@ class MetricBucketOptionsLinearBuckets(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             num_finite_buckets: Optional[int] = None,
-             offset: Optional[float] = None,
-             width: Optional[float] = None,
+             num_finite_buckets: int,
+             offset: float,
+             width: float,
              opts: Optional[pulumi.ResourceOptions]=None):
-        if num_finite_buckets is not None:
-            _setter("num_finite_buckets", num_finite_buckets)
-        if offset is not None:
-            _setter("offset", offset)
-        if width is not None:
-            _setter("width", width)
+        _setter("num_finite_buckets", num_finite_buckets)
+        _setter("offset", offset)
+        _setter("width", width)
 
     @property
     @pulumi.getter(name="numFiniteBuckets")
-    def num_finite_buckets(self) -> Optional[int]:
+    def num_finite_buckets(self) -> int:
         """
         Must be greater than 0.
         """
@@ -730,7 +724,7 @@ class MetricBucketOptionsLinearBuckets(dict):
 
     @property
     @pulumi.getter
-    def offset(self) -> Optional[float]:
+    def offset(self) -> float:
         """
         Lower bound of the first bucket.
         """
@@ -738,7 +732,7 @@ class MetricBucketOptionsLinearBuckets(dict):
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[float]:
+    def width(self) -> float:
         """
         Must be greater than 0.
         """

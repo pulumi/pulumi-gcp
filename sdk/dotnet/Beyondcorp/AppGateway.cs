@@ -103,6 +103,13 @@ namespace Pulumi.Gcp.Beyondcorp
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// The type of hosting used by the AppGateway.
         /// Default value is `HOST_TYPE_UNSPECIFIED`.
         /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
@@ -112,6 +119,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// Resource labels to represent user provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -143,6 +153,13 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("terraformLabels")]
+        public Output<ImmutableDictionary<string, string>> TerraformLabels { get; private set; } = null!;
 
         /// <summary>
         /// The type of network connectivity used by the AppGateway.
@@ -223,6 +240,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// Resource labels to represent user provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -287,6 +307,19 @@ namespace Pulumi.Gcp.Beyondcorp
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set => _effectiveLabels = value;
+        }
+
         /// <summary>
         /// The type of hosting used by the AppGateway.
         /// Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -300,6 +333,9 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// Resource labels to represent user provided metadata.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -334,6 +370,19 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("terraformLabels")]
+        private InputMap<string>? _terraformLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> TerraformLabels
+        {
+            get => _terraformLabels ?? (_terraformLabels = new InputMap<string>());
+            set => _terraformLabels = value;
+        }
 
         /// <summary>
         /// The type of network connectivity used by the AppGateway.

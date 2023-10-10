@@ -42,6 +42,9 @@ class SecretArgs:
                The total size of annotation keys and values must be less than 16KiB.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
@@ -52,6 +55,9 @@ class SecretArgs:
                No more than 64 labels can be assigned to a given resource.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
@@ -154,6 +160,9 @@ class SecretArgs:
         The total size of annotation keys and values must be less than 16KiB.
         An object containing a list of "key": value pairs. Example:
         { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -186,6 +195,9 @@ class SecretArgs:
         No more than 64 labels can be assigned to a given resource.
         An object containing a list of "key": value pairs. Example:
         { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -269,6 +281,8 @@ class _SecretState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -276,6 +290,7 @@ class _SecretState:
                  replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
                  rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
                  secret_id: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -291,7 +306,14 @@ class _SecretState:
                The total size of annotation keys and values must be less than 16KiB.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
@@ -302,6 +324,9 @@ class _SecretState:
                No more than 64 labels can be assigned to a given resource.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
                For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -312,6 +337,8 @@ class _SecretState:
         :param pulumi.Input['SecretRotationArgs'] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
@@ -328,6 +355,8 @@ class _SecretState:
             lambda key, value: pulumi.set(__self__, key, value),
             annotations=annotations,
             create_time=create_time,
+            effective_annotations=effective_annotations,
+            effective_labels=effective_labels,
             expire_time=expire_time,
             labels=labels,
             name=name,
@@ -335,6 +364,7 @@ class _SecretState:
             replication=replication,
             rotation=rotation,
             secret_id=secret_id,
+            terraform_labels=terraform_labels,
             topics=topics,
             ttl=ttl,
             version_aliases=version_aliases,
@@ -344,6 +374,8 @@ class _SecretState:
              _setter: Callable[[Any, Any], None],
              annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              expire_time: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -351,6 +383,7 @@ class _SecretState:
              replication: Optional[pulumi.Input['SecretReplicationArgs']] = None,
              rotation: Optional[pulumi.Input['SecretRotationArgs']] = None,
              secret_id: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              topics: Optional[pulumi.Input[Sequence[pulumi.Input['SecretTopicArgs']]]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
              version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -359,6 +392,10 @@ class _SecretState:
             _setter("annotations", annotations)
         if create_time is not None:
             _setter("create_time", create_time)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if expire_time is not None:
             _setter("expire_time", expire_time)
         if labels is not None:
@@ -373,6 +410,8 @@ class _SecretState:
             _setter("rotation", rotation)
         if secret_id is not None:
             _setter("secret_id", secret_id)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if topics is not None:
             _setter("topics", topics)
         if ttl is not None:
@@ -394,6 +433,9 @@ class _SecretState:
         The total size of annotation keys and values must be less than 16KiB.
         An object containing a list of "key": value pairs. Example:
         { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -412,6 +454,32 @@ class _SecretState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -438,6 +506,9 @@ class _SecretState:
         No more than 64 labels can be assigned to a given resource.
         An object containing a list of "key": value pairs. Example:
         { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -509,6 +580,19 @@ class _SecretState:
     @secret_id.setter
     def secret_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_id", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -676,6 +760,9 @@ class Secret(pulumi.CustomResource):
                The total size of annotation keys and values must be less than 16KiB.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
@@ -686,6 +773,9 @@ class Secret(pulumi.CustomResource):
                No more than 64 labels can be assigned to a given resource.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecretReplicationArgs']] replication: The replication policy of the secret data attached to the Secret. It cannot be changed
@@ -868,7 +958,10 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["version_aliases"] = version_aliases
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Secret, __self__).__init__(
             'gcp:secretmanager/secret:Secret',
             resource_name,
@@ -881,6 +974,8 @@ class Secret(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -888,6 +983,7 @@ class Secret(pulumi.CustomResource):
             replication: Optional[pulumi.Input[pulumi.InputType['SecretReplicationArgs']]] = None,
             rotation: Optional[pulumi.Input[pulumi.InputType['SecretRotationArgs']]] = None,
             secret_id: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]]] = None,
             ttl: Optional[pulumi.Input[str]] = None,
             version_aliases: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Secret':
@@ -908,7 +1004,14 @@ class Secret(pulumi.CustomResource):
                The total size of annotation keys and values must be less than 16KiB.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
@@ -919,6 +1022,9 @@ class Secret(pulumi.CustomResource):
                No more than 64 labels can be assigned to a given resource.
                An object containing a list of "key": value pairs. Example:
                { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
                For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -929,6 +1035,8 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SecretRotationArgs']] rotation: The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretTopicArgs']]]] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
                Structure is documented below.
         :param pulumi.Input[str] ttl: The TTL for the Secret.
@@ -947,6 +1055,8 @@ class Secret(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["effective_annotations"] = effective_annotations
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -954,6 +1064,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["replication"] = replication
         __props__.__dict__["rotation"] = rotation
         __props__.__dict__["secret_id"] = secret_id
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["topics"] = topics
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["version_aliases"] = version_aliases
@@ -973,6 +1084,9 @@ class Secret(pulumi.CustomResource):
         The total size of annotation keys and values must be less than 16KiB.
         An object containing a list of "key": value pairs. Example:
         { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -983,6 +1097,24 @@ class Secret(pulumi.CustomResource):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="expireTime")
@@ -1005,6 +1137,9 @@ class Secret(pulumi.CustomResource):
         No more than 64 labels can be assigned to a given resource.
         An object containing a list of "key": value pairs. Example:
         { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1052,6 +1187,15 @@ class Secret(pulumi.CustomResource):
         This must be unique within the project.
         """
         return pulumi.get(self, "secret_id")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

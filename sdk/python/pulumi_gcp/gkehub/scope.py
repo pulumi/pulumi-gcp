@@ -26,6 +26,9 @@ class ScopeArgs:
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -68,6 +71,9 @@ class ScopeArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for this Scope.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -94,18 +100,25 @@ class _ScopeState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope_id: Optional[pulumi.Input[str]] = None,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Scope resources.
         :param pulumi.Input[str] create_time: Time the Scope was created in UTC.
         :param pulumi.Input[str] delete_time: Time the Scope was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The unique identifier of the scope
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -115,6 +128,8 @@ class _ScopeState:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]] states: State of the scope resource.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Scope was updated in UTC.
         """
@@ -122,11 +137,13 @@ class _ScopeState:
             lambda key, value: pulumi.set(__self__, key, value),
             create_time=create_time,
             delete_time=delete_time,
+            effective_labels=effective_labels,
             labels=labels,
             name=name,
             project=project,
             scope_id=scope_id,
             states=states,
+            terraform_labels=terraform_labels,
             uid=uid,
             update_time=update_time,
         )
@@ -135,11 +152,13 @@ class _ScopeState:
              _setter: Callable[[Any, Any], None],
              create_time: Optional[pulumi.Input[str]] = None,
              delete_time: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              scope_id: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -147,6 +166,8 @@ class _ScopeState:
             _setter("create_time", create_time)
         if delete_time is not None:
             _setter("delete_time", delete_time)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -157,6 +178,8 @@ class _ScopeState:
             _setter("scope_id", scope_id)
         if states is not None:
             _setter("states", states)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if uid is not None:
             _setter("uid", uid)
         if update_time is not None:
@@ -187,10 +210,26 @@ class _ScopeState:
         pulumi.set(self, "delete_time", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels for this Scope.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -250,6 +289,19 @@ class _ScopeState:
     @states.setter
     def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScopeStateArgs']]]]):
         pulumi.set(self, "states", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -329,6 +381,9 @@ class Scope(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope_id: The client-provided identifier of the scope.
@@ -421,8 +476,10 @@ class Scope(pulumi.CustomResource):
             __props__.__dict__["scope_id"] = scope_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["states"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         super(Scope, __self__).__init__(
@@ -437,11 +494,13 @@ class Scope(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             scope_id: Optional[pulumi.Input[str]] = None,
             states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Scope':
         """
@@ -453,7 +512,12 @@ class Scope(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Scope was created in UTC.
         :param pulumi.Input[str] delete_time: Time the Scope was deleted in UTC.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this Scope.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The unique identifier of the scope
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -463,6 +527,8 @@ class Scope(pulumi.CustomResource):
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScopeStateArgs']]]] states: State of the scope resource.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the Scope was updated in UTC.
         """
@@ -472,11 +538,13 @@ class Scope(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["scope_id"] = scope_id
         __props__.__dict__["states"] = states
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return Scope(resource_name, opts=opts, __props__=__props__)
@@ -498,10 +566,22 @@ class Scope(pulumi.CustomResource):
         return pulumi.get(self, "delete_time")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels for this Scope.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -541,6 +621,15 @@ class Scope(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "states")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

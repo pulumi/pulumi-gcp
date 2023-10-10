@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetFunctionResult {
     private List<GetFunctionBuildConfig> buildConfigs;
     private String description;
+    private Map<String,String> effectiveLabels;
     private String environment;
     private List<GetFunctionEventTrigger> eventTriggers;
     /**
@@ -32,6 +33,7 @@ public final class GetFunctionResult {
     private @Nullable String project;
     private List<GetFunctionServiceConfig> serviceConfigs;
     private String state;
+    private Map<String,String> terraformLabels;
     private String updateTime;
     private String url;
 
@@ -41,6 +43,9 @@ public final class GetFunctionResult {
     }
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public String environment() {
         return this.environment;
@@ -76,6 +81,9 @@ public final class GetFunctionResult {
     public String state() {
         return this.state;
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -94,6 +102,7 @@ public final class GetFunctionResult {
     public static final class Builder {
         private List<GetFunctionBuildConfig> buildConfigs;
         private String description;
+        private Map<String,String> effectiveLabels;
         private String environment;
         private List<GetFunctionEventTrigger> eventTriggers;
         private String id;
@@ -104,6 +113,7 @@ public final class GetFunctionResult {
         private @Nullable String project;
         private List<GetFunctionServiceConfig> serviceConfigs;
         private String state;
+        private Map<String,String> terraformLabels;
         private String updateTime;
         private String url;
         public Builder() {}
@@ -111,6 +121,7 @@ public final class GetFunctionResult {
     	      Objects.requireNonNull(defaults);
     	      this.buildConfigs = defaults.buildConfigs;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.environment = defaults.environment;
     	      this.eventTriggers = defaults.eventTriggers;
     	      this.id = defaults.id;
@@ -121,6 +132,7 @@ public final class GetFunctionResult {
     	      this.project = defaults.project;
     	      this.serviceConfigs = defaults.serviceConfigs;
     	      this.state = defaults.state;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.updateTime = defaults.updateTime;
     	      this.url = defaults.url;
         }
@@ -136,6 +148,11 @@ public final class GetFunctionResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -195,6 +212,11 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
@@ -208,6 +230,7 @@ public final class GetFunctionResult {
             final var o = new GetFunctionResult();
             o.buildConfigs = buildConfigs;
             o.description = description;
+            o.effectiveLabels = effectiveLabels;
             o.environment = environment;
             o.eventTriggers = eventTriggers;
             o.id = id;
@@ -218,6 +241,7 @@ public final class GetFunctionResult {
             o.project = project;
             o.serviceConfigs = serviceConfigs;
             o.state = state;
+            o.terraformLabels = terraformLabels;
             o.updateTime = updateTime;
             o.url = url;
             return o;

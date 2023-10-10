@@ -39,10 +39,8 @@ class JobArgs:
         :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
         :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
-               
-               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-               
-               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
         :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
@@ -173,10 +171,8 @@ class JobArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of labels (key/value pairs) to add to the job.
-
-        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-
-        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -300,6 +296,7 @@ class _JobState:
     def __init__(__self__, *,
                  driver_controls_files_uri: Optional[pulumi.Input[str]] = None,
                  driver_output_resource_uri: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
                  hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
@@ -314,21 +311,22 @@ class _JobState:
                  scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
                  spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
                  sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
         :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
         :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
-               
-               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-               
-               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
         :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
@@ -342,11 +340,13 @@ class _JobState:
         :param pulumi.Input['JobSparkConfigArgs'] spark_config: The config of the Spark job.
         :param pulumi.Input['JobSparksqlConfigArgs'] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of the job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         _JobState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             driver_controls_files_uri=driver_controls_files_uri,
             driver_output_resource_uri=driver_output_resource_uri,
+            effective_labels=effective_labels,
             force_delete=force_delete,
             hadoop_config=hadoop_config,
             hive_config=hive_config,
@@ -362,12 +362,14 @@ class _JobState:
             spark_config=spark_config,
             sparksql_config=sparksql_config,
             statuses=statuses,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              driver_controls_files_uri: Optional[pulumi.Input[str]] = None,
              driver_output_resource_uri: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              force_delete: Optional[pulumi.Input[bool]] = None,
              hadoop_config: Optional[pulumi.Input['JobHadoopConfigArgs']] = None,
              hive_config: Optional[pulumi.Input['JobHiveConfigArgs']] = None,
@@ -383,11 +385,14 @@ class _JobState:
              spark_config: Optional[pulumi.Input['JobSparkConfigArgs']] = None,
              sparksql_config: Optional[pulumi.Input['JobSparksqlConfigArgs']] = None,
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if driver_controls_files_uri is not None:
             _setter("driver_controls_files_uri", driver_controls_files_uri)
         if driver_output_resource_uri is not None:
             _setter("driver_output_resource_uri", driver_output_resource_uri)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if force_delete is not None:
             _setter("force_delete", force_delete)
         if hadoop_config is not None:
@@ -418,6 +423,8 @@ class _JobState:
             _setter("sparksql_config", sparksql_config)
         if statuses is not None:
             _setter("statuses", statuses)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="driverControlsFilesUri")
@@ -442,6 +449,19 @@ class _JobState:
     @driver_output_resource_uri.setter
     def driver_output_resource_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "driver_output_resource_uri", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -486,10 +506,8 @@ class _JobState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of labels (key/value pairs) to add to the job.
-
-        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-
-        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -631,6 +649,18 @@ class _JobState:
     def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Job(pulumi.CustomResource):
     @overload
@@ -714,10 +744,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobHadoopConfigArgs']] hadoop_config: The config of Hadoop job
         :param pulumi.Input[pulumi.InputType['JobHiveConfigArgs']] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
-               
-               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-               
-               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['JobPigConfigArgs']] pig_config: The config of pag job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: The config of job placement.
         :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
@@ -901,7 +929,9 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["sparksql_config"] = sparksql_config
             __props__.__dict__["driver_controls_files_uri"] = None
             __props__.__dict__["driver_output_resource_uri"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["statuses"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Job, __self__).__init__(
             'gcp:dataproc/job:Job',
             resource_name,
@@ -914,6 +944,7 @@ class Job(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             driver_controls_files_uri: Optional[pulumi.Input[str]] = None,
             driver_output_resource_uri: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             hadoop_config: Optional[pulumi.Input[pulumi.InputType['JobHadoopConfigArgs']]] = None,
             hive_config: Optional[pulumi.Input[pulumi.InputType['JobHiveConfigArgs']]] = None,
@@ -928,7 +959,8 @@ class Job(pulumi.CustomResource):
             scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
             spark_config: Optional[pulumi.Input[pulumi.InputType['JobSparkConfigArgs']]] = None,
             sparksql_config: Optional[pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None) -> 'Job':
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -938,16 +970,16 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
         :param pulumi.Input[pulumi.InputType['JobHadoopConfigArgs']] hadoop_config: The config of Hadoop job
         :param pulumi.Input[pulumi.InputType['JobHiveConfigArgs']] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
-               
-               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-               
-               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[pulumi.InputType['JobPigConfigArgs']] pig_config: The config of pag job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: The config of job placement.
         :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
@@ -961,6 +993,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobSparkConfigArgs']] spark_config: The config of the Spark job.
         :param pulumi.Input[pulumi.InputType['JobSparksqlConfigArgs']] sparksql_config: The config of SparkSql job
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of the job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -968,6 +1001,7 @@ class Job(pulumi.CustomResource):
 
         __props__.__dict__["driver_controls_files_uri"] = driver_controls_files_uri
         __props__.__dict__["driver_output_resource_uri"] = driver_output_resource_uri
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["hadoop_config"] = hadoop_config
         __props__.__dict__["hive_config"] = hive_config
@@ -983,6 +1017,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["spark_config"] = spark_config
         __props__.__dict__["sparksql_config"] = sparksql_config
         __props__.__dict__["statuses"] = statuses
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1000,6 +1035,15 @@ class Job(pulumi.CustomResource):
         A URI pointing to the location of the stdout of the job's driver program.
         """
         return pulumi.get(self, "driver_output_resource_uri")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -1032,10 +1076,8 @@ class Job(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of labels (key/value pairs) to add to the job.
-
-        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-
-        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1128,4 +1170,12 @@ class Job(pulumi.CustomResource):
         The status of the job.
         """
         return pulumi.get(self, "statuses")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

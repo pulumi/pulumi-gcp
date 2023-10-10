@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -25,8 +25,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,8 +111,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -398,11 +398,16 @@ type EdgeCacheService struct {
 	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayOutput `pulumi:"edgeSslCertificates"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv4Addresses pulumi.StringArrayOutput `pulumi:"ipv4Addresses"`
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -424,6 +429,9 @@ type EdgeCacheService struct {
 	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
 	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrOutput `pulumi:"sslPolicy"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewEdgeCacheService registers a new resource with the given unique name, arguments, and options.
@@ -472,11 +480,16 @@ type edgeCacheServiceState struct {
 	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates []string `pulumi:"edgeSslCertificates"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -498,6 +511,9 @@ type edgeCacheServiceState struct {
 	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
 	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy *string `pulumi:"sslPolicy"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type EdgeCacheServiceState struct {
@@ -514,11 +530,16 @@ type EdgeCacheServiceState struct {
 	// URLs to sslCertificate resources that are used to authenticate connections between users and the EdgeCacheService.
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv4Addresses pulumi.StringArrayInput
 	// The IPv6 addresses associated with this service. Addresses are static for the lifetime of the service.
 	Ipv6Addresses pulumi.StringArrayInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -540,6 +561,9 @@ type EdgeCacheServiceState struct {
 	// URL of the SslPolicy resource that will be associated with the EdgeCacheService.
 	// If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 	SslPolicy pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (EdgeCacheServiceState) ElementType() reflect.Type {
@@ -561,6 +585,8 @@ type edgeCacheServiceArgs struct {
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates []string `pulumi:"edgeSslCertificates"`
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -600,6 +626,8 @@ type EdgeCacheServiceArgs struct {
 	// Note that only "global" certificates with a "scope" of "EDGE_CACHE" can be attached to an EdgeCacheService.
 	EdgeSslCertificates pulumi.StringArrayInput
 	// Set of label tags associated with the EdgeCache resource.
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
@@ -762,6 +790,12 @@ func (o EdgeCacheServiceOutput) EdgeSslCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringArrayOutput { return v.EdgeSslCertificates }).(pulumi.StringArrayOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o EdgeCacheServiceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
 func (o EdgeCacheServiceOutput) Ipv4Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringArrayOutput { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
@@ -773,6 +807,8 @@ func (o EdgeCacheServiceOutput) Ipv6Addresses() pulumi.StringArrayOutput {
 }
 
 // Set of label tags associated with the EdgeCache resource.
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o EdgeCacheServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -813,6 +849,12 @@ func (o EdgeCacheServiceOutput) Routing() EdgeCacheServiceRoutingOutput {
 // If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
 func (o EdgeCacheServiceOutput) SslPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.SslPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o EdgeCacheServiceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type EdgeCacheServiceArrayOutput struct{ *pulumi.OutputState }

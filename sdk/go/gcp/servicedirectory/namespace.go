@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicedirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -78,9 +78,15 @@ import (
 type Namespace struct {
 	pulumi.CustomResourceState
 
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
 	// be no longer than 63 characters.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the Namespace.
 	// A full list of valid locations can be found by running
@@ -97,6 +103,9 @@ type Namespace struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 }
 
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
@@ -135,9 +144,15 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
 	// be no longer than 63 characters.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the Namespace.
 	// A full list of valid locations can be found by running
@@ -154,12 +169,21 @@ type namespaceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 }
 
 type NamespaceState struct {
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
 	// be no longer than 63 characters.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the Namespace.
 	// A full list of valid locations can be found by running
@@ -176,6 +200,9 @@ type NamespaceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 }
 
 func (NamespaceState) ElementType() reflect.Type {
@@ -186,6 +213,9 @@ type namespaceArgs struct {
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
 	// be no longer than 63 characters.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the Namespace.
 	// A full list of valid locations can be found by running
@@ -206,6 +236,9 @@ type NamespaceArgs struct {
 	// Resource labels associated with this Namespace. No more than 64 user
 	// labels can be associated with a given resource. Label keys and values can
 	// be no longer than 63 characters.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the Namespace.
 	// A full list of valid locations can be found by running
@@ -332,9 +365,18 @@ func (o NamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*Namespace
 	}
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o NamespaceOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Resource labels associated with this Namespace. No more than 64 user
 // labels can be associated with a given resource. Label keys and values can
 // be no longer than 63 characters.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o NamespaceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -364,6 +406,12 @@ func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o NamespaceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o NamespaceOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

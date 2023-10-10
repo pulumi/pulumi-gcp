@@ -49,6 +49,8 @@ export interface GetSecretArgs {
 export interface GetSecretResult {
     readonly annotations: {[key: string]: string};
     readonly createTime: string;
+    readonly effectiveAnnotations: {[key: string]: string};
+    readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -60,6 +62,7 @@ export interface GetSecretResult {
     readonly replications: outputs.secretmanager.GetSecretReplication[];
     readonly rotations: outputs.secretmanager.GetSecretRotation[];
     readonly secretId: string;
+    readonly terraformLabels: {[key: string]: string};
     readonly topics: outputs.secretmanager.GetSecretTopic[];
     readonly ttl: string;
     readonly versionAliases: {[key: string]: string};

@@ -139,6 +139,11 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Specifies how the table should be encrypted.
      * If left blank, the table will be encrypted with a Google-managed key; that process
      * is transparent to the user.  Structure is documented below.
@@ -169,20 +174,8 @@ export class Table extends pulumi.CustomResource {
     /**
      * A mapping of labels to assign to the resource.
      *
-     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-     *
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
-     *
-     * ~>**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -257,6 +250,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly tableId!: pulumi.Output<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
@@ -290,6 +287,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["datasetId"] = state ? state.datasetId : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
@@ -309,6 +307,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["timePartitioning"] = state ? state.timePartitioning : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["view"] = state ? state.view : undefined;
@@ -339,6 +338,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -346,6 +346,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["numLongTermBytes"] = undefined /*out*/;
             resourceInputs["numRows"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -382,6 +383,11 @@ export interface TableState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Specifies how the table should be encrypted.
      * If left blank, the table will be encrypted with a Google-managed key; that process
      * is transparent to the user.  Structure is documented below.
@@ -412,20 +418,8 @@ export interface TableState {
     /**
      * A mapping of labels to assign to the resource.
      *
-     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-     *
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
-     *
-     * ~>**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -500,6 +494,10 @@ export interface TableState {
      */
     tableId?: pulumi.Input<string>;
     /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
@@ -567,20 +565,8 @@ export interface TableArgs {
     /**
      * A mapping of labels to assign to the resource.
      *
-     * * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
-     *
-     * ~>**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn't changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
-     *
-     * ~>**NOTE:**  If you use `externalDataConfiguration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

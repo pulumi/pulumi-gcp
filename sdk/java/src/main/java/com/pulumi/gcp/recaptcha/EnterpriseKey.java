@@ -14,6 +14,7 @@ import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyAndroidSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyIosSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyTestingOptions;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWebSettings;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -296,6 +297,22 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Output<Map<String,Object>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Settings for keys that can be used by iOS apps.
      * 
      */
@@ -312,12 +329,18 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -350,6 +373,20 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    @Export(name="terraformLabels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    private Output<Map<String,Object>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,Object>> terraformLabels() {
+        return this.terraformLabels;
     }
     /**
      * Options for user acceptance testing.

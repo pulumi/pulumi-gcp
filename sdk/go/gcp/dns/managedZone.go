@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -31,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,8 +60,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -113,8 +113,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -176,9 +176,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -236,6 +236,7 @@ import (
 //						return &secondaryIpRanges[1].RangeName, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -270,8 +271,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -322,9 +323,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicedirectory"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/servicedirectory"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -369,7 +370,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -432,6 +433,9 @@ type ManagedZone struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrOutput `pulumi:"dnssecConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set this true to delete all records in the zone.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The presence for this field indicates that outbound forwarding is enabled
@@ -440,6 +444,9 @@ type ManagedZone struct {
 	// Structure is documented below.
 	ForwardingConfig ManagedZoneForwardingConfigPtrOutput `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique identifier for the resource; defined by the server.
 	ManagedZoneId pulumi.IntOutput `pulumi:"managedZoneId"`
@@ -469,6 +476,9 @@ type ManagedZone struct {
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrOutput `pulumi:"serviceDirectoryConfig"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
@@ -525,6 +535,9 @@ type managedZoneState struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig *ManagedZoneDnssecConfig `pulumi:"dnssecConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Set this true to delete all records in the zone.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The presence for this field indicates that outbound forwarding is enabled
@@ -533,6 +546,9 @@ type managedZoneState struct {
 	// Structure is documented below.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Unique identifier for the resource; defined by the server.
 	ManagedZoneId *int `pulumi:"managedZoneId"`
@@ -562,6 +578,9 @@ type managedZoneState struct {
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig *ManagedZoneServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
@@ -583,6 +602,9 @@ type ManagedZoneState struct {
 	// DNSSEC configuration
 	// Structure is documented below.
 	DnssecConfig ManagedZoneDnssecConfigPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Set this true to delete all records in the zone.
 	ForceDestroy pulumi.BoolPtrInput
 	// The presence for this field indicates that outbound forwarding is enabled
@@ -591,6 +613,9 @@ type ManagedZoneState struct {
 	// Structure is documented below.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Unique identifier for the resource; defined by the server.
 	ManagedZoneId pulumi.IntPtrInput
@@ -620,6 +645,9 @@ type ManagedZoneState struct {
 	// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 	// Structure is documented below.
 	ServiceDirectoryConfig ManagedZoneServiceDirectoryConfigPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
@@ -650,6 +678,9 @@ type managedZoneArgs struct {
 	// Structure is documented below.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
 	// A set of key/value label pairs to assign to this ManagedZone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// User assigned name for this resource.
 	// Must be unique within the project.
@@ -701,6 +732,9 @@ type ManagedZoneArgs struct {
 	// Structure is documented below.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
 	// A set of key/value label pairs to assign to this ManagedZone.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// User assigned name for this resource.
 	// Must be unique within the project.
@@ -871,6 +905,12 @@ func (o ManagedZoneOutput) DnssecConfig() ManagedZoneDnssecConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneDnssecConfigPtrOutput { return v.DnssecConfig }).(ManagedZoneDnssecConfigPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o ManagedZoneOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Set this true to delete all records in the zone.
 func (o ManagedZoneOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
@@ -885,6 +925,9 @@ func (o ManagedZoneOutput) ForwardingConfig() ManagedZoneForwardingConfigPtrOutp
 }
 
 // A set of key/value label pairs to assign to this ManagedZone.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ManagedZoneOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -939,6 +982,12 @@ func (o ManagedZoneOutput) ReverseLookup() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o ManagedZoneOutput) ServiceDirectoryConfig() ManagedZoneServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneServiceDirectoryConfigPtrOutput { return v.ServiceDirectoryConfig }).(ManagedZoneServiceDirectoryConfigPtrOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o ManagedZoneOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The zone's visibility: public zones are exposed to the Internet,

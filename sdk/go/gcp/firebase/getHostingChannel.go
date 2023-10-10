@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -32,16 +32,18 @@ type LookupHostingChannelArgs struct {
 
 // A collection of values returned by getHostingChannel.
 type LookupHostingChannelResult struct {
-	ChannelId  string `pulumi:"channelId"`
-	ExpireTime string `pulumi:"expireTime"`
+	ChannelId       string            `pulumi:"channelId"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	ExpireTime      string            `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string            `pulumi:"id"`
 	Labels map[string]string `pulumi:"labels"`
 	// The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
-	Name                 string `pulumi:"name"`
-	RetainedReleaseCount int    `pulumi:"retainedReleaseCount"`
-	SiteId               string `pulumi:"siteId"`
-	Ttl                  string `pulumi:"ttl"`
+	Name                 string            `pulumi:"name"`
+	RetainedReleaseCount int               `pulumi:"retainedReleaseCount"`
+	SiteId               string            `pulumi:"siteId"`
+	TerraformLabels      map[string]string `pulumi:"terraformLabels"`
+	Ttl                  string            `pulumi:"ttl"`
 }
 
 func LookupHostingChannelOutput(ctx *pulumi.Context, args LookupHostingChannelOutputArgs, opts ...pulumi.InvokeOption) LookupHostingChannelResultOutput {
@@ -94,6 +96,10 @@ func (o LookupHostingChannelResultOutput) ChannelId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.ChannelId }).(pulumi.StringOutput)
 }
 
+func (o LookupHostingChannelResultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHostingChannelResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 func (o LookupHostingChannelResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -118,6 +124,10 @@ func (o LookupHostingChannelResultOutput) RetainedReleaseCount() pulumi.IntOutpu
 
 func (o LookupHostingChannelResultOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostingChannelResult) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+func (o LookupHostingChannelResultOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHostingChannelResult) map[string]string { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 func (o LookupHostingChannelResultOutput) Ttl() pulumi.StringOutput {

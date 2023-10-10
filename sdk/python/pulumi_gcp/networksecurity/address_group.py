@@ -36,6 +36,9 @@ class AddressGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: List of items.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AddressGroup resource.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         """
@@ -147,6 +150,9 @@ class AddressGroupArgs:
         """
         Set of label tags associated with the AddressGroup resource.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -185,11 +191,13 @@ class _AddressGroupState:
                  capacity: Optional[pulumi.Input[int]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -199,9 +207,14 @@ class _AddressGroupState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         :param pulumi.Input[str] description: Free-text description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: List of items.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AddressGroup resource.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
                
@@ -209,6 +222,8 @@ class _AddressGroupState:
                - - -
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -220,11 +235,13 @@ class _AddressGroupState:
             capacity=capacity,
             create_time=create_time,
             description=description,
+            effective_labels=effective_labels,
             items=items,
             labels=labels,
             location=location,
             name=name,
             parent=parent,
+            terraform_labels=terraform_labels,
             type=type,
             update_time=update_time,
         )
@@ -234,11 +251,13 @@ class _AddressGroupState:
              capacity: Optional[pulumi.Input[int]] = None,
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              location: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -248,6 +267,8 @@ class _AddressGroupState:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if items is not None:
             _setter("items", items)
         if labels is not None:
@@ -258,6 +279,8 @@ class _AddressGroupState:
             _setter("name", name)
         if parent is not None:
             _setter("parent", parent)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if update_time is not None:
@@ -302,6 +325,19 @@ class _AddressGroupState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -319,6 +355,9 @@ class _AddressGroupState:
         """
         Set of label tags associated with the AddressGroup resource.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -365,6 +404,19 @@ class _AddressGroupState:
     @parent.setter
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
     @property
     @pulumi.getter
@@ -474,6 +526,9 @@ class AddressGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: List of items.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AddressGroup resource.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
                
@@ -600,6 +655,8 @@ class AddressGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["update_time"] = None
         super(AddressGroup, __self__).__init__(
             'gcp:networksecurity/addressGroup:AddressGroup',
@@ -614,11 +671,13 @@ class AddressGroup(pulumi.CustomResource):
             capacity: Optional[pulumi.Input[int]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AddressGroup':
         """
@@ -633,9 +692,14 @@ class AddressGroup(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         :param pulumi.Input[str] description: Free-text description of the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: List of items.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the AddressGroup resource.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
                
@@ -643,6 +707,8 @@ class AddressGroup(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -656,11 +722,13 @@ class AddressGroup(pulumi.CustomResource):
         __props__.__dict__["capacity"] = capacity
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["items"] = items
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return AddressGroup(resource_name, opts=opts, __props__=__props__)
@@ -692,6 +760,15 @@ class AddressGroup(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def items(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -705,6 +782,9 @@ class AddressGroup(pulumi.CustomResource):
         """
         Set of label tags associated with the AddressGroup resource.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -735,6 +815,15 @@ class AddressGroup(pulumi.CustomResource):
         The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter

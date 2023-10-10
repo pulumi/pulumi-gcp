@@ -102,7 +102,14 @@ export class EngineModel extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * One or more labels that you can add, to organize your models.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -130,6 +137,11 @@ export class EngineModel extends pulumi.CustomResource {
      * Currently only one region per model is supported
      */
     public readonly regions!: pulumi.Output<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a EngineModel resource with the given unique name, arguments, and options.
@@ -146,12 +158,14 @@ export class EngineModel extends pulumi.CustomResource {
             const state = argsOrState as EngineModelState | undefined;
             resourceInputs["defaultVersion"] = state ? state.defaultVersion : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["onlinePredictionConsoleLogging"] = state ? state.onlinePredictionConsoleLogging : undefined;
             resourceInputs["onlinePredictionLogging"] = state ? state.onlinePredictionLogging : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as EngineModelArgs | undefined;
             resourceInputs["defaultVersion"] = args ? args.defaultVersion : undefined;
@@ -162,6 +176,8 @@ export class EngineModel extends pulumi.CustomResource {
             resourceInputs["onlinePredictionLogging"] = args ? args.onlinePredictionLogging : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EngineModel.__pulumiType, name, resourceInputs, opts);
@@ -183,7 +199,14 @@ export interface EngineModelState {
      */
     description?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * One or more labels that you can add, to organize your models.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -211,6 +234,11 @@ export interface EngineModelState {
      * Currently only one region per model is supported
      */
     regions?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -229,6 +257,8 @@ export interface EngineModelArgs {
     description?: pulumi.Input<string>;
     /**
      * One or more labels that you can add, to organize your models.
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

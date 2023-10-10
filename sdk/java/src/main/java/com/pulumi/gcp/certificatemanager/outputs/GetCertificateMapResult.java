@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class GetCertificateMapResult {
     private String createTime;
     private String description;
+    private Map<String,String> effectiveLabels;
     private List<GetCertificateMapGclbTarget> gclbTargets;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,6 +26,7 @@ public final class GetCertificateMapResult {
     private Map<String,String> labels;
     private String name;
     private @Nullable String project;
+    private Map<String,String> terraformLabels;
     private String updateTime;
 
     private GetCertificateMapResult() {}
@@ -33,6 +35,9 @@ public final class GetCertificateMapResult {
     }
     public String description() {
         return this.description;
+    }
+    public Map<String,String> effectiveLabels() {
+        return this.effectiveLabels;
     }
     public List<GetCertificateMapGclbTarget> gclbTargets() {
         return this.gclbTargets;
@@ -53,6 +58,9 @@ public final class GetCertificateMapResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public Map<String,String> terraformLabels() {
+        return this.terraformLabels;
+    }
     public String updateTime() {
         return this.updateTime;
     }
@@ -68,22 +76,26 @@ public final class GetCertificateMapResult {
     public static final class Builder {
         private String createTime;
         private String description;
+        private Map<String,String> effectiveLabels;
         private List<GetCertificateMapGclbTarget> gclbTargets;
         private String id;
         private Map<String,String> labels;
         private String name;
         private @Nullable String project;
+        private Map<String,String> terraformLabels;
         private String updateTime;
         public Builder() {}
         public Builder(GetCertificateMapResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gclbTargets = defaults.gclbTargets;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
+    	      this.terraformLabels = defaults.terraformLabels;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -95,6 +107,11 @@ public final class GetCertificateMapResult {
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
             return this;
         }
         @CustomType.Setter
@@ -126,6 +143,11 @@ public final class GetCertificateMapResult {
             return this;
         }
         @CustomType.Setter
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            this.terraformLabels = Objects.requireNonNull(terraformLabels);
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
@@ -134,11 +156,13 @@ public final class GetCertificateMapResult {
             final var o = new GetCertificateMapResult();
             o.createTime = createTime;
             o.description = description;
+            o.effectiveLabels = effectiveLabels;
             o.gclbTargets = gclbTargets;
             o.id = id;
             o.labels = labels;
             o.name = name;
             o.project = project;
+            o.terraformLabels = terraformLabels;
             o.updateTime = updateTime;
             return o;
         }

@@ -27,6 +27,8 @@ class PeeringArgs:
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
         :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] status: The current state of this Peering.
@@ -106,6 +108,8 @@ class PeeringArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels that can contain user-provided metadata
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -156,51 +160,65 @@ class _PeeringState:
     def __init__(__self__, *,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  domain_resource: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peering_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 status_message: Optional[pulumi.Input[str]] = None):
+                 status_message: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Peering resources.
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
         :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] status: The current state of this Peering.
         :param pulumi.Input[str] status_message: Additional information about the current status of this peering, if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _PeeringState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             authorized_network=authorized_network,
             domain_resource=domain_resource,
+            effective_labels=effective_labels,
             labels=labels,
             name=name,
             peering_id=peering_id,
             project=project,
             status=status,
             status_message=status_message,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              authorized_network: Optional[pulumi.Input[str]] = None,
              domain_resource: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              peering_id: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              status_message: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_network is not None:
             _setter("authorized_network", authorized_network)
         if domain_resource is not None:
             _setter("domain_resource", domain_resource)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -213,6 +231,8 @@ class _PeeringState:
             _setter("status", status)
         if status_message is not None:
             _setter("status_message", status_message)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -239,10 +259,25 @@ class _PeeringState:
         pulumi.set(self, "domain_resource", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels that can contain user-provided metadata
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -311,6 +346,19 @@ class _PeeringState:
     def status_message(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status_message", value)
 
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
 
 class Peering(pulumi.CustomResource):
     @overload
@@ -370,6 +418,8 @@ class Peering(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -470,7 +520,9 @@ class Peering(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["status"] = status
             __props__.__dict__["status_message"] = status_message
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Peering, __self__).__init__(
             'gcp:activedirectory/peering:Peering',
             resource_name,
@@ -483,12 +535,14 @@ class Peering(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorized_network: Optional[pulumi.Input[str]] = None,
             domain_resource: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             peering_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            status_message: Optional[pulumi.Input[str]] = None) -> 'Peering':
+            status_message: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Peering':
         """
         Get an existing Peering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -498,13 +552,19 @@ class Peering(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
         :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] status: The current state of this Peering.
         :param pulumi.Input[str] status_message: Additional information about the current status of this peering, if available.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -512,12 +572,14 @@ class Peering(pulumi.CustomResource):
 
         __props__.__dict__["authorized_network"] = authorized_network
         __props__.__dict__["domain_resource"] = domain_resource
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["peering_id"] = peering_id
         __props__.__dict__["project"] = project
         __props__.__dict__["status"] = status
         __props__.__dict__["status_message"] = status_message
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Peering(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -537,10 +599,21 @@ class Peering(pulumi.CustomResource):
         return pulumi.get(self, "domain_resource")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels that can contain user-provided metadata
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -584,4 +657,13 @@ class Peering(pulumi.CustomResource):
         Additional information about the current status of this peering, if available.
         """
         return pulumi.get(self, "status_message")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

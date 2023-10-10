@@ -306,7 +306,8 @@ class ResponsePolicy(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ))
+            ),
+            deletion_protection=True)
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
@@ -407,7 +408,8 @@ class ResponsePolicy(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ))
+            ),
+            deletion_protection=True)
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[

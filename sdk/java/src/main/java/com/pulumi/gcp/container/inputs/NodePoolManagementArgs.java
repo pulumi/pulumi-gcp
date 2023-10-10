@@ -16,14 +16,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     public static final NodePoolManagementArgs Empty = new NodePoolManagementArgs();
 
     /**
-     * Whether the nodes will be automatically repaired.
+     * Whether the nodes will be automatically repaired. Enabled by default.
      * 
      */
     @Import(name="autoRepair")
     private @Nullable Output<Boolean> autoRepair;
 
     /**
-     * @return Whether the nodes will be automatically repaired.
+     * @return Whether the nodes will be automatically repaired. Enabled by default.
      * 
      */
     public Optional<Output<Boolean>> autoRepair() {
@@ -31,14 +31,14 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether the nodes will be automatically upgraded.
+     * Whether the nodes will be automatically upgraded. Enabled by default.
      * 
      */
     @Import(name="autoUpgrade")
     private @Nullable Output<Boolean> autoUpgrade;
 
     /**
-     * @return Whether the nodes will be automatically upgraded.
+     * @return Whether the nodes will be automatically upgraded. Enabled by default.
      * 
      */
     public Optional<Output<Boolean>> autoUpgrade() {
@@ -71,7 +71,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether the nodes will be automatically repaired.
+         * @param autoRepair Whether the nodes will be automatically repaired. Enabled by default.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRepair Whether the nodes will be automatically repaired.
+         * @param autoRepair Whether the nodes will be automatically repaired. Enabled by default.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoUpgrade Whether the nodes will be automatically upgraded.
+         * @param autoUpgrade Whether the nodes will be automatically upgraded. Enabled by default.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class NodePoolManagementArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoUpgrade Whether the nodes will be automatically upgraded.
+         * @param autoUpgrade Whether the nodes will be automatically upgraded. Enabled by default.
          * 
          * @return builder
          * 

@@ -54,6 +54,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly config?: string;
     readonly displayName?: string;
+    readonly effectiveLabels: {[key: string]: string};
     readonly forceDestroy: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -65,6 +66,7 @@ export interface GetInstanceResult {
     readonly processingUnits: number;
     readonly project?: string;
     readonly state: string;
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get a spanner instance from Google Cloud by its name.

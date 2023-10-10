@@ -51,6 +51,23 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
      * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
@@ -72,12 +89,18 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
     /**
      * Resource labels to represent user provided metadata.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return Resource labels to represent user provided metadata.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -151,6 +174,23 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="terraformLabels")
+    private @Nullable Output<Map<String,String>> terraformLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> terraformLabels() {
+        return Optional.ofNullable(this.terraformLabels);
+    }
+
+    /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
@@ -189,12 +229,14 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
     private AppGatewayState(AppGatewayState $) {
         this.allocatedConnections = $.allocatedConnections;
         this.displayName = $.displayName;
+        this.effectiveLabels = $.effectiveLabels;
         this.hostType = $.hostType;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
         this.state = $.state;
+        this.terraformLabels = $.terraformLabels;
         this.type = $.type;
         this.uri = $.uri;
     }
@@ -273,6 +315,29 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param hostType The type of hosting used by the AppGateway.
          * Default value is `HOST_TYPE_UNSPECIFIED`.
          * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
@@ -300,6 +365,9 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Resource labels to represent user provided metadata.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -310,6 +378,9 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Resource labels to represent user provided metadata.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 
@@ -406,6 +477,29 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(@Nullable Output<Map<String,String>> terraformLabels) {
+            $.terraformLabels = terraformLabels;
+            return this;
+        }
+
+        /**
+         * @param terraformLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terraformLabels(Map<String,String> terraformLabels) {
+            return terraformLabels(Output.of(terraformLabels));
         }
 
         /**

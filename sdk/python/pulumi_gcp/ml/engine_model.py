@@ -31,6 +31,8 @@ class EngineModelArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
                
                
@@ -113,6 +115,8 @@ class EngineModelArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         One or more labels that you can add, to organize your models.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -191,19 +195,25 @@ class _EngineModelState:
     def __init__(__self__, *,
                  default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
                  online_prediction_logging: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 regions: Optional[pulumi.Input[str]] = None):
+                 regions: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EngineModel resources.
         :param pulumi.Input['EngineModelDefaultVersionArgs'] default_version: The default version of the model. This version will be used to handle
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
                
                
@@ -214,34 +224,42 @@ class _EngineModelState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _EngineModelState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             default_version=default_version,
             description=description,
+            effective_labels=effective_labels,
             labels=labels,
             name=name,
             online_prediction_console_logging=online_prediction_console_logging,
             online_prediction_logging=online_prediction_logging,
             project=project,
             regions=regions,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              default_version: Optional[pulumi.Input['EngineModelDefaultVersionArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
              online_prediction_logging: Optional[pulumi.Input[bool]] = None,
              project: Optional[pulumi.Input[str]] = None,
              regions: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if default_version is not None:
             _setter("default_version", default_version)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if labels is not None:
             _setter("labels", labels)
         if name is not None:
@@ -254,6 +272,8 @@ class _EngineModelState:
             _setter("project", project)
         if regions is not None:
             _setter("regions", regions)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="defaultVersion")
@@ -282,10 +302,25 @@ class _EngineModelState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         One or more labels that you can add, to organize your models.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -357,6 +392,19 @@ class _EngineModelState:
     @regions.setter
     def regions(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class EngineModel(pulumi.CustomResource):
@@ -435,6 +483,8 @@ class EngineModel(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
                
                
@@ -556,6 +606,8 @@ class EngineModel(pulumi.CustomResource):
             __props__.__dict__["online_prediction_logging"] = online_prediction_logging
             __props__.__dict__["project"] = project
             __props__.__dict__["regions"] = regions
+            __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(EngineModel, __self__).__init__(
             'gcp:ml/engineModel:EngineModel',
             resource_name,
@@ -568,12 +620,14 @@ class EngineModel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             default_version: Optional[pulumi.Input[pulumi.InputType['EngineModelDefaultVersionArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
             online_prediction_logging: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            regions: Optional[pulumi.Input[str]] = None) -> 'EngineModel':
+            regions: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'EngineModel':
         """
         Get an existing EngineModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -585,7 +639,11 @@ class EngineModel(pulumi.CustomResource):
                prediction requests that do not specify a version.
                Structure is documented below.
         :param pulumi.Input[str] description: The description specified for the model when it was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the model.
                
                
@@ -596,6 +654,8 @@ class EngineModel(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] regions: The list of regions where the model is going to be deployed.
                Currently only one region per model is supported
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -603,12 +663,14 @@ class EngineModel(pulumi.CustomResource):
 
         __props__.__dict__["default_version"] = default_version
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["online_prediction_console_logging"] = online_prediction_console_logging
         __props__.__dict__["online_prediction_logging"] = online_prediction_logging
         __props__.__dict__["project"] = project
         __props__.__dict__["regions"] = regions
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return EngineModel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -630,10 +692,21 @@ class EngineModel(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         One or more labels that you can add, to organize your models.
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -681,4 +754,13 @@ class EngineModel(pulumi.CustomResource):
         Currently only one region per model is supported
         """
         return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

@@ -151,6 +151,9 @@ export class Connection extends pulumi.CustomResource {
 
     /**
      * Allows clients to store small amounts of arbitrary data.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -161,6 +164,11 @@ export class Connection extends pulumi.CustomResource {
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -218,6 +226,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["githubConfig"] = state ? state.githubConfig : undefined;
             resourceInputs["githubEnterpriseConfig"] = state ? state.githubEnterpriseConfig : undefined;
@@ -242,6 +251,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["installationStates"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -258,6 +268,9 @@ export class Connection extends pulumi.CustomResource {
 export interface ConnectionState {
     /**
      * Allows clients to store small amounts of arbitrary data.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -268,6 +281,11 @@ export interface ConnectionState {
      * If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+     * Terraform, other clients and services.
+     */
+    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -316,6 +334,9 @@ export interface ConnectionState {
 export interface ConnectionArgs {
     /**
      * Allows clients to store small amounts of arbitrary data.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+     * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

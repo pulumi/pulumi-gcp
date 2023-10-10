@@ -25,6 +25,7 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
      * 
      */
     private String publicPtrDomainName;
+    private String securityPolicy;
 
     private GetInstanceNetworkInterfaceAccessConfig() {}
     /**
@@ -49,6 +50,9 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
     public String publicPtrDomainName() {
         return this.publicPtrDomainName;
     }
+    public String securityPolicy() {
+        return this.securityPolicy;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +66,14 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
         private String natIp;
         private String networkTier;
         private String publicPtrDomainName;
+        private String securityPolicy;
         public Builder() {}
         public Builder(GetInstanceNetworkInterfaceAccessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.natIp = defaults.natIp;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
+    	      this.securityPolicy = defaults.securityPolicy;
         }
 
         @CustomType.Setter
@@ -85,11 +91,17 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
             this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
             return this;
         }
+        @CustomType.Setter
+        public Builder securityPolicy(String securityPolicy) {
+            this.securityPolicy = Objects.requireNonNull(securityPolicy);
+            return this;
+        }
         public GetInstanceNetworkInterfaceAccessConfig build() {
             final var o = new GetInstanceNetworkInterfaceAccessConfig();
             o.natIp = natIp;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
+            o.securityPolicy = securityPolicy;
             return o;
         }
     }

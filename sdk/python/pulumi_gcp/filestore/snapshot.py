@@ -29,6 +29,9 @@ class SnapshotArgs:
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the snapshot. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -113,6 +116,9 @@ class SnapshotArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -157,23 +163,30 @@ class _SnapshotState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filesystem_used_bytes: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None):
+                 state: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] filesystem_used_bytes: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
                
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the snapshot. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
@@ -185,11 +198,14 @@ class _SnapshotState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The snapshot state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         _SnapshotState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             create_time=create_time,
             description=description,
+            effective_labels=effective_labels,
             filesystem_used_bytes=filesystem_used_bytes,
             instance=instance,
             labels=labels,
@@ -197,12 +213,14 @@ class _SnapshotState:
             name=name,
             project=project,
             state=state,
+            terraform_labels=terraform_labels,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              filesystem_used_bytes: Optional[pulumi.Input[str]] = None,
              instance: Optional[pulumi.Input[str]] = None,
              labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -210,11 +228,14 @@ class _SnapshotState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:
             _setter("description", description)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if filesystem_used_bytes is not None:
             _setter("filesystem_used_bytes", filesystem_used_bytes)
         if instance is not None:
@@ -229,6 +250,8 @@ class _SnapshotState:
             _setter("project", project)
         if state is not None:
             _setter("state", state)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
 
     @property
     @pulumi.getter(name="createTime")
@@ -253,6 +276,19 @@ class _SnapshotState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
 
     @property
     @pulumi.getter(name="filesystemUsedBytes")
@@ -286,6 +322,9 @@ class _SnapshotState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -347,6 +386,19 @@ class _SnapshotState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
 
 
 class Snapshot(pulumi.CustomResource):
@@ -443,6 +495,9 @@ class Snapshot(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the snapshot. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
@@ -579,8 +634,10 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["filesystem_used_bytes"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["terraform_labels"] = None
         super(Snapshot, __self__).__init__(
             'gcp:filestore/snapshot:Snapshot',
             resource_name,
@@ -593,13 +650,15 @@ class Snapshot(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             filesystem_used_bytes: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            state: Optional[pulumi.Input[str]] = None) -> 'Snapshot':
+            state: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -609,12 +668,17 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the snapshot was created in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] filesystem_used_bytes: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
                
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the snapshot. The name must be unique within the specified instance.
                The name must be 1-63 characters long, and comply with
@@ -626,6 +690,8 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The snapshot state.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -633,6 +699,7 @@ class Snapshot(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["filesystem_used_bytes"] = filesystem_used_bytes
         __props__.__dict__["instance"] = instance
         __props__.__dict__["labels"] = labels
@@ -640,6 +707,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["terraform_labels"] = terraform_labels
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -657,6 +725,15 @@ class Snapshot(pulumi.CustomResource):
         A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter(name="filesystemUsedBytes")
@@ -682,6 +759,9 @@ class Snapshot(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Resource labels to represent user-provided metadata.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -723,4 +803,13 @@ class Snapshot(pulumi.CustomResource):
         The snapshot state.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 

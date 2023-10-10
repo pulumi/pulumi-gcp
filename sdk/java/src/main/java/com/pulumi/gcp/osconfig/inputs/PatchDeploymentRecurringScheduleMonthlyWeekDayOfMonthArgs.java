@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,6 +34,21 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
     }
 
     /**
+     * Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+     * 
+     */
+    @Import(name="dayOffset")
+    private @Nullable Output<Integer> dayOffset;
+
+    /**
+     * @return Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+     * 
+     */
+    public Optional<Output<Integer>> dayOffset() {
+        return Optional.ofNullable(this.dayOffset);
+    }
+
+    /**
      * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
      * 
      */
@@ -50,6 +67,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
 
     private PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs $) {
         this.dayOfWeek = $.dayOfWeek;
+        this.dayOffset = $.dayOffset;
         this.weekOrdinal = $.weekOrdinal;
     }
 
@@ -92,6 +110,27 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
          */
         public Builder dayOfWeek(String dayOfWeek) {
             return dayOfWeek(Output.of(dayOfWeek));
+        }
+
+        /**
+         * @param dayOffset Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dayOffset(@Nullable Output<Integer> dayOffset) {
+            $.dayOffset = dayOffset;
+            return this;
+        }
+
+        /**
+         * @param dayOffset Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dayOffset(Integer dayOffset) {
+            return dayOffset(Output.of(dayOffset));
         }
 
         /**

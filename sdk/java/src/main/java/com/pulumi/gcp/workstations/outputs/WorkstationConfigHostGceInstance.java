@@ -61,6 +61,11 @@ public final class WorkstationConfigHostGceInstance {
      */
     private @Nullable String serviceAccount;
     /**
+     * @return Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+     * 
+     */
+    private @Nullable List<String> serviceAccountScopes;
+    /**
      * @return A set of Compute Engine Shielded instance options.
      * Structure is documented below.
      * 
@@ -133,6 +138,13 @@ public final class WorkstationConfigHostGceInstance {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
+     * @return Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
+     * 
+     */
+    public List<String> serviceAccountScopes() {
+        return this.serviceAccountScopes == null ? List.of() : this.serviceAccountScopes;
+    }
+    /**
      * @return A set of Compute Engine Shielded instance options.
      * Structure is documented below.
      * 
@@ -165,6 +177,7 @@ public final class WorkstationConfigHostGceInstance {
         private @Nullable String machineType;
         private @Nullable Integer poolSize;
         private @Nullable String serviceAccount;
+        private @Nullable List<String> serviceAccountScopes;
         private @Nullable WorkstationConfigHostGceInstanceShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable List<String> tags;
         public Builder() {}
@@ -178,6 +191,7 @@ public final class WorkstationConfigHostGceInstance {
     	      this.machineType = defaults.machineType;
     	      this.poolSize = defaults.poolSize;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.serviceAccountScopes = defaults.serviceAccountScopes;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.tags = defaults.tags;
         }
@@ -226,6 +240,14 @@ public final class WorkstationConfigHostGceInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccountScopes(@Nullable List<String> serviceAccountScopes) {
+            this.serviceAccountScopes = serviceAccountScopes;
+            return this;
+        }
+        public Builder serviceAccountScopes(String... serviceAccountScopes) {
+            return serviceAccountScopes(List.of(serviceAccountScopes));
+        }
+        @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable WorkstationConfigHostGceInstanceShieldedInstanceConfig shieldedInstanceConfig) {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
@@ -248,6 +270,7 @@ public final class WorkstationConfigHostGceInstance {
             o.machineType = machineType;
             o.poolSize = poolSize;
             o.serviceAccount = serviceAccount;
+            o.serviceAccountScopes = serviceAccountScopes;
             o.shieldedInstanceConfig = shieldedInstanceConfig;
             o.tags = tags;
             return o;

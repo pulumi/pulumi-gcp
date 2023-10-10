@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CreationTimestamp;
         public readonly string Description;
         public readonly int DiskSizeGb;
+        public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -189,6 +190,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetSnapshotSourceDiskEncryptionKeyResult> SourceDiskEncryptionKeys;
         public readonly int StorageBytes;
         public readonly ImmutableArray<string> StorageLocations;
+        public readonly ImmutableDictionary<string, string> TerraformLabels;
         public readonly string Zone;
 
         [OutputConstructor]
@@ -200,6 +202,8 @@ namespace Pulumi.Gcp.Compute
             string description,
 
             int diskSizeGb,
+
+            ImmutableDictionary<string, string> effectiveLabels,
 
             string? filter,
 
@@ -231,12 +235,15 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> storageLocations,
 
+            ImmutableDictionary<string, string> terraformLabels,
+
             string zone)
         {
             ChainName = chainName;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskSizeGb = diskSizeGb;
+            EffectiveLabels = effectiveLabels;
             Filter = filter;
             Id = id;
             LabelFingerprint = labelFingerprint;
@@ -252,6 +259,7 @@ namespace Pulumi.Gcp.Compute
             SourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             StorageBytes = storageBytes;
             StorageLocations = storageLocations;
+            TerraformLabels = terraformLabels;
             Zone = zone;
         }
     }

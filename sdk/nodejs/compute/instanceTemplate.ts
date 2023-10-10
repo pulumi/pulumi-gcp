@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
+ *
  * Manages a VM instance template resource within GCE. For more information see
  * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
  * and
@@ -208,6 +210,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly disks!: pulumi.Output<outputs.compute.InstanceTemplateDisk[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
@@ -224,6 +231,9 @@ export class InstanceTemplate extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -334,6 +344,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -353,6 +367,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["instanceDescription"] = state ? state.instanceDescription : undefined;
@@ -377,6 +392,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as InstanceTemplateArgs | undefined;
             if ((!args || args.disks === undefined) && !opts.urn) {
@@ -410,10 +426,12 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkUnique"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceTemplate.__pulumiType, name, resourceInputs, opts);
@@ -448,6 +466,11 @@ export interface InstanceTemplateState {
      */
     disks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateDisk>[]>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
      */
@@ -464,6 +487,9 @@ export interface InstanceTemplateState {
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -574,6 +600,10 @@ export interface InstanceTemplateState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -620,6 +650,9 @@ export interface InstanceTemplateArgs {
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

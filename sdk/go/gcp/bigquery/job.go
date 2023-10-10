@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -88,7 +88,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -147,7 +147,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -211,8 +211,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -298,8 +298,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -421,6 +421,9 @@ type Job struct {
 	// Copies a table.
 	// Structure is documented below.
 	Copy JobCopyPtrOutput `pulumi:"copy"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Configures an extract job.
 	// Structure is documented below.
 	Extract JobExtractPtrOutput `pulumi:"extract"`
@@ -432,6 +435,9 @@ type Job struct {
 	// The type of the job.
 	JobType pulumi.StringOutput `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Configures a load job.
 	// Structure is documented below.
@@ -448,6 +454,10 @@ type Job struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// Email address of the user who ran the job.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
@@ -488,6 +498,9 @@ type jobState struct {
 	// Copies a table.
 	// Structure is documented below.
 	Copy *JobCopy `pulumi:"copy"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Configures an extract job.
 	// Structure is documented below.
 	Extract *JobExtract `pulumi:"extract"`
@@ -499,6 +512,9 @@ type jobState struct {
 	// The type of the job.
 	JobType *string `pulumi:"jobType"`
 	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configures a load job.
 	// Structure is documented below.
@@ -515,6 +531,10 @@ type jobState struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
 	Statuses []JobStatus `pulumi:"statuses"`
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// Email address of the user who ran the job.
 	UserEmail *string `pulumi:"userEmail"`
 }
@@ -523,6 +543,9 @@ type JobState struct {
 	// Copies a table.
 	// Structure is documented below.
 	Copy JobCopyPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Configures an extract job.
 	// Structure is documented below.
 	Extract JobExtractPtrInput
@@ -534,6 +557,9 @@ type JobState struct {
 	// The type of the job.
 	JobType pulumi.StringPtrInput
 	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Configures a load job.
 	// Structure is documented below.
@@ -550,6 +576,10 @@ type JobState struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
 	Statuses JobStatusArrayInput
+	// (Output)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// Email address of the user who ran the job.
 	UserEmail pulumi.StringPtrInput
 }
@@ -570,6 +600,9 @@ type jobArgs struct {
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs *string `pulumi:"jobTimeoutMs"`
 	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Configures a load job.
 	// Structure is documented below.
@@ -598,6 +631,9 @@ type JobArgs struct {
 	// Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
 	JobTimeoutMs pulumi.StringPtrInput
 	// The labels associated with this job. You can use these to organize and group your jobs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Configures a load job.
 	// Structure is documented below.
@@ -730,6 +766,12 @@ func (o JobOutput) Copy() JobCopyPtrOutput {
 	return o.ApplyT(func(v *Job) JobCopyPtrOutput { return v.Copy }).(JobCopyPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o JobOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Configures an extract job.
 // Structure is documented below.
 func (o JobOutput) Extract() JobExtractPtrOutput {
@@ -753,6 +795,9 @@ func (o JobOutput) JobType() pulumi.StringOutput {
 }
 
 // The labels associated with this job. You can use these to organize and group your jobs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -785,6 +830,13 @@ func (o JobOutput) Query() JobQueryPtrOutput {
 // Structure is documented below.
 func (o JobOutput) Statuses() JobStatusArrayOutput {
 	return o.ApplyT(func(v *Job) JobStatusArrayOutput { return v.Statuses }).(JobStatusArrayOutput)
+}
+
+// (Output)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o JobOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // Email address of the user who ran the job.

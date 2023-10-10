@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.TransferJobEventStreamArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecArgs;
@@ -31,6 +32,21 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> description() {
         return this.description;
+    }
+
+    /**
+     * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+     * 
+     */
+    @Import(name="eventStream")
+    private @Nullable Output<TransferJobEventStreamArgs> eventStream;
+
+    /**
+     * @return Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+     * 
+     */
+    public Optional<Output<TransferJobEventStreamArgs>> eventStream() {
+        return Optional.ofNullable(this.eventStream);
     }
 
     /**
@@ -66,18 +82,14 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     * 
-     * ***
+     * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<TransferJobScheduleArgs> schedule;
 
     /**
-     * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-     * 
-     * ***
+     * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
     public Optional<Output<TransferJobScheduleArgs>> schedule() {
@@ -102,12 +114,16 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Transfer specification. Structure documented below.
      * 
+     * ***
+     * 
      */
     @Import(name="transferSpec", required=true)
     private Output<TransferJobTransferSpecArgs> transferSpec;
 
     /**
      * @return Transfer specification. Structure documented below.
+     * 
+     * ***
      * 
      */
     public Output<TransferJobTransferSpecArgs> transferSpec() {
@@ -118,6 +134,7 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
 
     private TransferJobArgs(TransferJobArgs $) {
         this.description = $.description;
+        this.eventStream = $.eventStream;
         this.notificationConfig = $.notificationConfig;
         this.project = $.project;
         this.schedule = $.schedule;
@@ -165,6 +182,27 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param eventStream Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventStream(@Nullable Output<TransferJobEventStreamArgs> eventStream) {
+            $.eventStream = eventStream;
+            return this;
+        }
+
+        /**
+         * @param eventStream Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventStream(TransferJobEventStreamArgs eventStream) {
+            return eventStream(Output.of(eventStream));
+        }
+
+        /**
          * @param notificationConfig Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
          * 
          * @return builder
@@ -209,9 +247,7 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-         * 
-         * ***
+         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
          * 
          * @return builder
          * 
@@ -222,9 +258,7 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
-         * 
-         * ***
+         * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
          * 
          * @return builder
          * 
@@ -257,6 +291,8 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param transferSpec Transfer specification. Structure documented below.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -267,6 +303,8 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param transferSpec Transfer specification. Structure documented below.
+         * 
+         * ***
          * 
          * @return builder
          * 

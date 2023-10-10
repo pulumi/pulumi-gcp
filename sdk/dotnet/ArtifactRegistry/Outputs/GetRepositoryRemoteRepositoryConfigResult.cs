@@ -13,14 +13,18 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigResult
     {
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult> AptRepositories;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult> DockerRepositories;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult> MavenRepositories;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult> NpmRepositories;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> PythonRepositories;
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult> YumRepositories;
 
         [OutputConstructor]
         private GetRepositoryRemoteRepositoryConfigResult(
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult> aptRepositories,
+
             string description,
 
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult> dockerRepositories,
@@ -29,13 +33,17 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult> npmRepositories,
 
-            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> pythonRepositories)
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> pythonRepositories,
+
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult> yumRepositories)
         {
+            AptRepositories = aptRepositories;
             Description = description;
             DockerRepositories = dockerRepositories;
             MavenRepositories = mavenRepositories;
             NpmRepositories = npmRepositories;
             PythonRepositories = pythonRepositories;
+            YumRepositories = yumRepositories;
         }
     }
 }

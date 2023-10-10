@@ -127,12 +127,18 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of key/value label pairs to assign to this ManagedZone.
      * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to this ManagedZone.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -448,6 +454,9 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels A set of key/value label pairs to assign to this ManagedZone.
          * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
          * @return builder
          * 
          */
@@ -458,6 +467,9 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A set of key/value label pairs to assign to this ManagedZone.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
          * @return builder
          * 

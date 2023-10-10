@@ -15,20 +15,20 @@ namespace Pulumi.Gcp.Logging.Inputs
         /// <summary>
         /// Must be greater than 0.
         /// </summary>
-        [Input("numFiniteBuckets")]
-        public Input<int>? NumFiniteBuckets { get; set; }
+        [Input("numFiniteBuckets", required: true)]
+        public Input<int> NumFiniteBuckets { get; set; } = null!;
 
         /// <summary>
         /// Lower bound of the first bucket.
         /// </summary>
-        [Input("offset")]
-        public Input<double>? Offset { get; set; }
+        [Input("offset", required: true)]
+        public Input<double> Offset { get; set; } = null!;
 
         /// <summary>
         /// Must be greater than 0.
         /// </summary>
-        [Input("width")]
-        public Input<double>? Width { get; set; }
+        [Input("width", required: true)]
+        public Input<double> Width { get; set; } = null!;
 
         public MetricBucketOptionsLinearBucketsGetArgs()
         {

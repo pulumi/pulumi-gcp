@@ -298,6 +298,11 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly copy!: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Configures an extract job.
      * Structure is documented below.
      */
@@ -317,6 +322,9 @@ export class Job extends pulumi.CustomResource {
     public /*out*/ readonly jobType!: pulumi.Output<string>;
     /**
      * The labels associated with this job. You can use these to organize and group your jobs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -345,6 +353,12 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.bigquery.JobStatus[]>;
     /**
+     * (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Email address of the user who ran the job.
      */
     public /*out*/ readonly userEmail!: pulumi.Output<string>;
@@ -363,6 +377,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["copy"] = state ? state.copy : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["extract"] = state ? state.extract : undefined;
             resourceInputs["jobId"] = state ? state.jobId : undefined;
             resourceInputs["jobTimeoutMs"] = state ? state.jobTimeoutMs : undefined;
@@ -373,6 +388,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["query"] = state ? state.query : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
             resourceInputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
@@ -388,8 +404,10 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["query"] = args ? args.query : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["jobType"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
             resourceInputs["userEmail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -406,6 +424,11 @@ export interface JobState {
      * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures an extract job.
      * Structure is documented below.
@@ -426,6 +449,9 @@ export interface JobState {
     jobType?: pulumi.Input<string>;
     /**
      * The labels associated with this job. You can use these to organize and group your jobs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -453,6 +479,12 @@ export interface JobState {
      * Structure is documented below.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatus>[]>;
+    /**
+     * (Output)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Email address of the user who ran the job.
      */
@@ -483,6 +515,9 @@ export interface JobArgs {
     jobTimeoutMs?: pulumi.Input<string>;
     /**
      * The labels associated with this job. You can use these to organize and group your jobs.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

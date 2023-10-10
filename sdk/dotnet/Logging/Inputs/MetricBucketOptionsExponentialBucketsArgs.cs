@@ -15,20 +15,20 @@ namespace Pulumi.Gcp.Logging.Inputs
         /// <summary>
         /// Must be greater than 1.
         /// </summary>
-        [Input("growthFactor")]
-        public Input<double>? GrowthFactor { get; set; }
+        [Input("growthFactor", required: true)]
+        public Input<double> GrowthFactor { get; set; } = null!;
 
         /// <summary>
         /// Must be greater than 0.
         /// </summary>
-        [Input("numFiniteBuckets")]
-        public Input<int>? NumFiniteBuckets { get; set; }
+        [Input("numFiniteBuckets", required: true)]
+        public Input<int> NumFiniteBuckets { get; set; } = null!;
 
         /// <summary>
         /// Must be greater than 0.
         /// </summary>
-        [Input("scale")]
-        public Input<double>? Scale { get; set; }
+        [Input("scale", required: true)]
+        public Input<double> Scale { get; set; } = null!;
 
         public MetricBucketOptionsExponentialBucketsArgs()
         {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
+	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/certificatemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -144,11 +144,17 @@ type CertificateIssuanceConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringOutput `pulumi:"keyAlgorithm"`
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -166,6 +172,9 @@ type CertificateIssuanceConfig struct {
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 	// the certificate has been issued and at least 7 days before it expires.
 	RotationWindowPercentage pulumi.IntOutput `pulumi:"rotationWindowPercentage"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapOutput `pulumi:"terraformLabels"`
 	// The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -223,11 +232,17 @@ type certificateIssuanceConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -245,6 +260,9 @@ type certificateIssuanceConfigState struct {
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 	// the certificate has been issued and at least 7 days before it expires.
 	RotationWindowPercentage *int `pulumi:"rotationWindowPercentage"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels map[string]string `pulumi:"terraformLabels"`
 	// The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -261,11 +279,17 @@ type CertificateIssuanceConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+	// clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Key algorithm to use when generating the private key.
 	// Possible values are: `RSA_2048`, `ECDSA_P256`.
 	KeyAlgorithm pulumi.StringPtrInput
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -283,6 +307,9 @@ type CertificateIssuanceConfigState struct {
 	// You must set the rotation window percentage in relation to the certificate lifetime so that certificate renewal occurs at least 7 days after
 	// the certificate has been issued and at least 7 days before it expires.
 	RotationWindowPercentage pulumi.IntPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	TerraformLabels pulumi.StringMapInput
 	// The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -304,6 +331,9 @@ type certificateIssuanceConfigArgs struct {
 	KeyAlgorithm string `pulumi:"keyAlgorithm"`
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -335,6 +365,9 @@ type CertificateIssuanceConfigArgs struct {
 	KeyAlgorithm pulumi.StringInput
 	// 'Set of label tags associated with the CertificateIssuanceConfig resource.
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
 	// Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -485,6 +518,12 @@ func (o CertificateIssuanceConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+// clients and services.
+func (o CertificateIssuanceConfigOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Key algorithm to use when generating the private key.
 // Possible values are: `RSA_2048`, `ECDSA_P256`.
 func (o CertificateIssuanceConfigOutput) KeyAlgorithm() pulumi.StringOutput {
@@ -493,6 +532,9 @@ func (o CertificateIssuanceConfigOutput) KeyAlgorithm() pulumi.StringOutput {
 
 // 'Set of label tags associated with the CertificateIssuanceConfig resource.
 // An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o CertificateIssuanceConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -526,6 +568,12 @@ func (o CertificateIssuanceConfigOutput) Project() pulumi.StringOutput {
 // the certificate has been issued and at least 7 days before it expires.
 func (o CertificateIssuanceConfigOutput) RotationWindowPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.IntOutput { return v.RotationWindowPercentage }).(pulumi.IntOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o CertificateIssuanceConfigOutput) TerraformLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringMapOutput { return v.TerraformLabels }).(pulumi.StringMapOutput)
 }
 
 // The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,

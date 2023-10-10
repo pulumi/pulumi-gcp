@@ -52,6 +52,7 @@ export interface GetTopicArgs {
  * A collection of values returned by getTopic.
  */
 export interface GetTopicResult {
+    readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -63,6 +64,7 @@ export interface GetTopicResult {
     readonly name: string;
     readonly project?: string;
     readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
+    readonly terraformLabels: {[key: string]: string};
 }
 /**
  * Get information about a Google Cloud Pub/Sub Topic. For more information see

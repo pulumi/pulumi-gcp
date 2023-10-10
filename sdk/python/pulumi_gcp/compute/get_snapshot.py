@@ -22,7 +22,7 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, source_disk=None, source_disk_encryption_keys=None, storage_bytes=None, storage_locations=None, terraform_labels=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
@@ -35,6 +35,9 @@ class GetSnapshotResult:
         if disk_size_gb and not isinstance(disk_size_gb, int):
             raise TypeError("Expected argument 'disk_size_gb' to be a int")
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if effective_labels and not isinstance(effective_labels, dict):
+            raise TypeError("Expected argument 'effective_labels' to be a dict")
+        pulumi.set(__self__, "effective_labels", effective_labels)
         if filter and not isinstance(filter, str):
             raise TypeError("Expected argument 'filter' to be a str")
         pulumi.set(__self__, "filter", filter)
@@ -80,6 +83,9 @@ class GetSnapshotResult:
         if storage_locations and not isinstance(storage_locations, list):
             raise TypeError("Expected argument 'storage_locations' to be a list")
         pulumi.set(__self__, "storage_locations", storage_locations)
+        if terraform_labels and not isinstance(terraform_labels, dict):
+            raise TypeError("Expected argument 'terraform_labels' to be a dict")
+        pulumi.set(__self__, "terraform_labels", terraform_labels)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -103,6 +109,11 @@ class GetSnapshotResult:
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> int:
         return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
 
     @property
     @pulumi.getter
@@ -183,6 +194,11 @@ class GetSnapshotResult:
         return pulumi.get(self, "storage_locations")
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "terraform_labels")
+
+    @property
     @pulumi.getter
     def zone(self) -> str:
         return pulumi.get(self, "zone")
@@ -198,6 +214,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
+            effective_labels=self.effective_labels,
             filter=self.filter,
             id=self.id,
             label_fingerprint=self.label_fingerprint,
@@ -213,6 +230,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             source_disk_encryption_keys=self.source_disk_encryption_keys,
             storage_bytes=self.storage_bytes,
             storage_locations=self.storage_locations,
+            terraform_labels=self.terraform_labels,
             zone=self.zone)
 
 
@@ -263,6 +281,7 @@ def get_snapshot(filter: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_size_gb=pulumi.get(__ret__, 'disk_size_gb'),
+        effective_labels=pulumi.get(__ret__, 'effective_labels'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
@@ -278,6 +297,7 @@ def get_snapshot(filter: Optional[str] = None,
         source_disk_encryption_keys=pulumi.get(__ret__, 'source_disk_encryption_keys'),
         storage_bytes=pulumi.get(__ret__, 'storage_bytes'),
         storage_locations=pulumi.get(__ret__, 'storage_locations'),
+        terraform_labels=pulumi.get(__ret__, 'terraform_labels'),
         zone=pulumi.get(__ret__, 'zone'))
 
 

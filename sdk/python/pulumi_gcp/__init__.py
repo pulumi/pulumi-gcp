@@ -128,8 +128,6 @@ if typing.TYPE_CHECKING:
     firestore = __firestore
     import pulumi_gcp.folder as __folder
     folder = __folder
-    import pulumi_gcp.gameservices as __gameservices
-    gameservices = __gameservices
     import pulumi_gcp.gkebackup as __gkebackup
     gkebackup = __gkebackup
     import pulumi_gcp.gkehub as __gkehub
@@ -144,8 +142,6 @@ if typing.TYPE_CHECKING:
     iap = __iap
     import pulumi_gcp.identityplatform as __identityplatform
     identityplatform = __identityplatform
-    import pulumi_gcp.iot as __iot
-    iot = __iot
     import pulumi_gcp.kms as __kms
     kms = __kms
     import pulumi_gcp.logging as __logging
@@ -282,7 +278,6 @@ else:
     firebaserules = _utilities.lazy_import('pulumi_gcp.firebaserules')
     firestore = _utilities.lazy_import('pulumi_gcp.firestore')
     folder = _utilities.lazy_import('pulumi_gcp.folder')
-    gameservices = _utilities.lazy_import('pulumi_gcp.gameservices')
     gkebackup = _utilities.lazy_import('pulumi_gcp.gkebackup')
     gkehub = _utilities.lazy_import('pulumi_gcp.gkehub')
     gkeonprem = _utilities.lazy_import('pulumi_gcp.gkeonprem')
@@ -290,7 +285,6 @@ else:
     iam = _utilities.lazy_import('pulumi_gcp.iam')
     iap = _utilities.lazy_import('pulumi_gcp.iap')
     identityplatform = _utilities.lazy_import('pulumi_gcp.identityplatform')
-    iot = _utilities.lazy_import('pulumi_gcp.iot')
     kms = _utilities.lazy_import('pulumi_gcp.kms')
     logging = _utilities.lazy_import('pulumi_gcp.logging')
     looker = _utilities.lazy_import('pulumi_gcp.looker')
@@ -1859,14 +1853,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/attachedDisk:AttachedDisk": "AttachedDisk"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "compute/autoscalar",
-  "fqn": "pulumi_gcp.compute",
-  "classes": {
-   "gcp:compute/autoscalar:Autoscalar": "Autoscalar"
   }
  },
  {
@@ -4079,14 +4065,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "firebase/projectLocation",
-  "fqn": "pulumi_gcp.firebase",
-  "classes": {
-   "gcp:firebase/projectLocation:ProjectLocation": "ProjectLocation"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "firebase/storageBucket",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -4195,46 +4173,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.folder",
   "classes": {
    "gcp:folder/organizationPolicy:OrganizationPolicy": "OrganizationPolicy"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "gameservices/gameServerCluster",
-  "fqn": "pulumi_gcp.gameservices",
-  "classes": {
-   "gcp:gameservices/gameServerCluster:GameServerCluster": "GameServerCluster"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "gameservices/gameServerConfig",
-  "fqn": "pulumi_gcp.gameservices",
-  "classes": {
-   "gcp:gameservices/gameServerConfig:GameServerConfig": "GameServerConfig"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "gameservices/gameServerDeployment",
-  "fqn": "pulumi_gcp.gameservices",
-  "classes": {
-   "gcp:gameservices/gameServerDeployment:GameServerDeployment": "GameServerDeployment"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "gameservices/gameServerDeploymentRollout",
-  "fqn": "pulumi_gcp.gameservices",
-  "classes": {
-   "gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout": "GameServerDeploymentRollout"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "gameservices/realm",
-  "fqn": "pulumi_gcp.gameservices",
-  "classes": {
-   "gcp:gameservices/realm:Realm": "Realm"
   }
  },
  {
@@ -4991,46 +4929,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "iot/device",
-  "fqn": "pulumi_gcp.iot",
-  "classes": {
-   "gcp:iot/device:Device": "Device"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "iot/registry",
-  "fqn": "pulumi_gcp.iot",
-  "classes": {
-   "gcp:iot/registry:Registry": "Registry"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "iot/registryIamBinding",
-  "fqn": "pulumi_gcp.iot",
-  "classes": {
-   "gcp:iot/registryIamBinding:RegistryIamBinding": "RegistryIamBinding"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "iot/registryIamMember",
-  "fqn": "pulumi_gcp.iot",
-  "classes": {
-   "gcp:iot/registryIamMember:RegistryIamMember": "RegistryIamMember"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "iot/registryIamPolicy",
-  "fqn": "pulumi_gcp.iot",
-  "classes": {
-   "gcp:iot/registryIamPolicy:RegistryIamPolicy": "RegistryIamPolicy"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "kms/cryptoKey",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -5107,14 +5005,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.kms",
   "classes": {
    "gcp:kms/keyRingImportJob:KeyRingImportJob": "KeyRingImportJob"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "kms/registry",
-  "fqn": "pulumi_gcp.kms",
-  "classes": {
-   "gcp:kms/registry:Registry": "Registry"
   }
  },
  {
@@ -6039,6 +5929,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/folderCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/folderCustomModule:FolderCustomModule": "FolderCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/instanceIamBinding",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -6075,6 +5973,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/notificationConfig:NotificationConfig": "NotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/organizationCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule": "OrganizationCustomModule"
   }
  },
  {

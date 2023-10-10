@@ -105,6 +105,11 @@ export class ApiConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Immutable. Gateway specific configuration.
      * If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
      * Structure is documented below.
@@ -117,6 +122,9 @@ export class ApiConfig extends pulumi.CustomResource {
     public readonly grpcServices!: pulumi.Output<outputs.apigateway.ApiConfigGrpcService[] | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -143,6 +151,11 @@ export class ApiConfig extends pulumi.CustomResource {
      * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
      */
     public /*out*/ readonly serviceConfigId!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly terraformLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a ApiConfig resource with the given unique name, arguments, and options.
@@ -161,6 +174,7 @@ export class ApiConfig extends pulumi.CustomResource {
             resourceInputs["apiConfigId"] = state ? state.apiConfigId : undefined;
             resourceInputs["apiConfigIdPrefix"] = state ? state.apiConfigIdPrefix : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
             resourceInputs["grpcServices"] = state ? state.grpcServices : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -169,6 +183,7 @@ export class ApiConfig extends pulumi.CustomResource {
             resourceInputs["openapiDocuments"] = state ? state.openapiDocuments : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
+            resourceInputs["terraformLabels"] = state ? state.terraformLabels : undefined;
         } else {
             const args = argsOrState as ApiConfigArgs | undefined;
             if ((!args || args.api === undefined) && !opts.urn) {
@@ -184,8 +199,10 @@ export class ApiConfig extends pulumi.CustomResource {
             resourceInputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
             resourceInputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceConfigId"] = undefined /*out*/;
+            resourceInputs["terraformLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiConfig.__pulumiType, name, resourceInputs, opts);
@@ -217,6 +234,11 @@ export interface ApiConfigState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Immutable. Gateway specific configuration.
      * If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
      * Structure is documented below.
@@ -229,6 +251,9 @@ export interface ApiConfigState {
     grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[]>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -255,6 +280,11 @@ export interface ApiConfigState {
      * The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
      */
     serviceConfigId?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    terraformLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -294,6 +324,9 @@ export interface ApiConfigArgs {
     grpcServices?: pulumi.Input<pulumi.Input<inputs.apigateway.ApiConfigGrpcService>[]>;
     /**
      * Resource labels to represent user-provided metadata.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -54,6 +54,9 @@ class AttachedClusterArgs:
                and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
         :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
@@ -209,6 +212,9 @@ class AttachedClusterArgs:
         and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -330,6 +336,7 @@ class _AttachedClusterState:
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  errors: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]] = None,
                  fleet: Optional[pulumi.Input['AttachedClusterFleetArgs']] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
@@ -353,6 +360,9 @@ class _AttachedClusterState:
                and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
         :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
@@ -366,6 +376,8 @@ class _AttachedClusterState:
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
@@ -409,6 +421,7 @@ class _AttachedClusterState:
             deletion_policy=deletion_policy,
             description=description,
             distribution=distribution,
+            effective_annotations=effective_annotations,
             errors=errors,
             fleet=fleet,
             kubernetes_version=kubernetes_version,
@@ -436,6 +449,7 @@ class _AttachedClusterState:
              deletion_policy: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              distribution: Optional[pulumi.Input[str]] = None,
+             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              errors: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]] = None,
              fleet: Optional[pulumi.Input['AttachedClusterFleetArgs']] = None,
              kubernetes_version: Optional[pulumi.Input[str]] = None,
@@ -468,6 +482,8 @@ class _AttachedClusterState:
             _setter("description", description)
         if distribution is not None:
             _setter("distribution", distribution)
+        if effective_annotations is not None:
+            _setter("effective_annotations", effective_annotations)
         if errors is not None:
             _setter("errors", errors)
         if fleet is not None:
@@ -509,6 +525,9 @@ class _AttachedClusterState:
         and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -605,6 +624,19 @@ class _AttachedClusterState:
     @distribution.setter
     def distribution(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
+
+    @effective_annotations.setter
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_annotations", value)
 
     @property
     @pulumi.getter
@@ -905,6 +937,9 @@ class AttachedCluster(pulumi.CustomResource):
                and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
@@ -1113,6 +1148,7 @@ class AttachedCluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["cluster_region"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["errors"] = None
             __props__.__dict__["kubernetes_version"] = None
             __props__.__dict__["reconciling"] = None
@@ -1138,6 +1174,7 @@ class AttachedCluster(pulumi.CustomResource):
             deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             distribution: Optional[pulumi.Input[str]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]]] = None,
             fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
@@ -1166,6 +1203,9 @@ class AttachedCluster(pulumi.CustomResource):
                and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
                Name must be 63 characters or less, begin and end with alphanumerics,
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
@@ -1179,6 +1219,8 @@ class AttachedCluster(pulumi.CustomResource):
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+               Terraform, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]] errors: A set of errors found in the cluster.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
@@ -1224,6 +1266,7 @@ class AttachedCluster(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["distribution"] = distribution
+        __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["errors"] = errors
         __props__.__dict__["fleet"] = fleet
         __props__.__dict__["kubernetes_version"] = kubernetes_version
@@ -1251,6 +1294,9 @@ class AttachedCluster(pulumi.CustomResource):
         and name (required), separated by a slash (/). Prefix must be a DNS subdomain.
         Name must be 63 characters or less, begin and end with alphanumerics,
         with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1315,6 +1361,15 @@ class AttachedCluster(pulumi.CustomResource):
         "eks", "aks".
         """
         return pulumi.get(self, "distribution")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_annotations")
 
     @property
     @pulumi.getter

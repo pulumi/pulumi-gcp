@@ -61,6 +61,9 @@ class RegionDiskArgs:
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -280,6 +283,9 @@ class RegionDiskArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -446,6 +452,7 @@ class _RegionDiskState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -465,6 +472,7 @@ class _RegionDiskState:
                  source_disk_id: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
+                 terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -484,6 +492,8 @@ class _RegionDiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -494,6 +504,9 @@ class _RegionDiskState:
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
@@ -549,6 +562,8 @@ class _RegionDiskState:
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -560,6 +575,7 @@ class _RegionDiskState:
             creation_timestamp=creation_timestamp,
             description=description,
             disk_encryption_key=disk_encryption_key,
+            effective_labels=effective_labels,
             guest_os_features=guest_os_features,
             interface=interface,
             label_fingerprint=label_fingerprint,
@@ -579,6 +595,7 @@ class _RegionDiskState:
             source_disk_id=source_disk_id,
             source_snapshot_encryption_key=source_snapshot_encryption_key,
             source_snapshot_id=source_snapshot_id,
+            terraform_labels=terraform_labels,
             type=type,
             users=users,
         )
@@ -589,6 +606,7 @@ class _RegionDiskState:
              creation_timestamp: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
              interface: Optional[pulumi.Input[str]] = None,
              label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -608,6 +626,7 @@ class _RegionDiskState:
              source_disk_id: Optional[pulumi.Input[str]] = None,
              source_snapshot_encryption_key: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
              source_snapshot_id: Optional[pulumi.Input[str]] = None,
+             terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
@@ -619,6 +638,8 @@ class _RegionDiskState:
             _setter("description", description)
         if disk_encryption_key is not None:
             _setter("disk_encryption_key", disk_encryption_key)
+        if effective_labels is not None:
+            _setter("effective_labels", effective_labels)
         if guest_os_features is not None:
             _setter("guest_os_features", guest_os_features)
         if interface is not None:
@@ -660,6 +681,8 @@ class _RegionDiskState:
             _setter("source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_snapshot_id is not None:
             _setter("source_snapshot_id", source_snapshot_id)
+        if terraform_labels is not None:
+            _setter("terraform_labels", terraform_labels)
         if type is not None:
             _setter("type", type)
         if users is not None:
@@ -725,6 +748,19 @@ class _RegionDiskState:
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
         """
@@ -774,6 +810,9 @@ class _RegionDiskState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1002,6 +1041,19 @@ class _RegionDiskState:
         pulumi.set(self, "source_snapshot_id", value)
 
     @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
+
+    @terraform_labels.setter
+    def terraform_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "terraform_labels", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1200,6 +1252,9 @@ class RegionDisk(pulumi.CustomResource):
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1457,12 +1512,14 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["type"] = type
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["last_attach_timestamp"] = None
             __props__.__dict__["last_detach_timestamp"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["source_disk_id"] = None
             __props__.__dict__["source_snapshot_id"] = None
+            __props__.__dict__["terraform_labels"] = None
             __props__.__dict__["users"] = None
         super(RegionDisk, __self__).__init__(
             'gcp:compute/regionDisk:RegionDisk',
@@ -1478,6 +1535,7 @@ class RegionDisk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1497,6 +1555,7 @@ class RegionDisk(pulumi.CustomResource):
             source_disk_id: Optional[pulumi.Input[str]] = None,
             source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskSourceSnapshotEncryptionKeyArgs']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
+            terraform_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'RegionDisk':
         """
@@ -1521,6 +1580,8 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1531,6 +1592,9 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
@@ -1586,6 +1650,8 @@ class RegionDisk(pulumi.CustomResource):
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] terraform_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -1599,6 +1665,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["interface"] = interface
         __props__.__dict__["label_fingerprint"] = label_fingerprint
@@ -1618,6 +1685,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["source_disk_id"] = source_disk_id
         __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
         __props__.__dict__["source_snapshot_id"] = source_snapshot_id
+        __props__.__dict__["terraform_labels"] = terraform_labels
         __props__.__dict__["type"] = type
         __props__.__dict__["users"] = users
         return RegionDisk(resource_name, opts=opts, __props__=__props__)
@@ -1666,6 +1734,15 @@ class RegionDisk(pulumi.CustomResource):
         return pulumi.get(self, "disk_encryption_key")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> pulumi.Output[Sequence['outputs.RegionDiskGuestOsFeature']]:
         """
@@ -1703,6 +1780,9 @@ class RegionDisk(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1865,6 +1945,15 @@ class RegionDisk(pulumi.CustomResource):
         used.
         """
         return pulumi.get(self, "source_snapshot_id")
+
+    @property
+    @pulumi.getter(name="terraformLabels")
+    def terraform_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "terraform_labels")
 
     @property
     @pulumi.getter
