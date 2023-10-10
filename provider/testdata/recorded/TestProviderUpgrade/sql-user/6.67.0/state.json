@@ -1,0 +1,217 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2023-10-10T11:27:50.870407-04:00",
+            "magic": "cdb46f20d3397474c4b7038ce63a3c40fb0da4b95458ef275b6ce689aec88d17",
+            "version": "v3.86.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:8LiuWi4kaj0=:v1:tFSZq+cPMrai6pdc:ORBmHUOij5fqF65lVvXUZ7pdFIzecQ=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-sql-user-32bd606e",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2023-10-10T15:17:01.782795Z",
+                "modified": "2023-10-10T15:17:01.782795Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:providers:gcp::provider",
+                "custom": true,
+                "id": "3c8f6ee0-0a69-40af-a6c3-df842c68e010",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "outputs": {
+                    "project": "pulumi-development",
+                    "version": "6.67.0"
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-sql-user-32bd606e",
+                "propertyDependencies": {
+                    "project": null
+                },
+                "created": "2023-10-10T15:17:02.49064Z",
+                "modified": "2023-10-10T15:17:02.49064Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::gcp:sql/databaseInstance:DatabaseInstance::instance",
+                "custom": true,
+                "id": "instance-ef8b12a",
+                "type": "gcp:sql/databaseInstance:DatabaseInstance",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "databaseVersion": "MYSQL_8_0",
+                    "deletionProtection": false,
+                    "name": "instance-ef8b12a",
+                    "region": "us-central1",
+                    "settings": {
+                        "__defaults": [
+                            "activationPolicy",
+                            "availabilityType",
+                            "diskAutoresize",
+                            "diskAutoresizeLimit",
+                            "diskType",
+                            "pricingPlan"
+                        ],
+                        "activationPolicy": "ALWAYS",
+                        "availabilityType": "ZONAL",
+                        "diskAutoresize": true,
+                        "diskAutoresizeLimit": 0,
+                        "diskType": "PD_SSD",
+                        "pricingPlan": "PER_USE",
+                        "tier": "db-f1-micro"
+                    }
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":2400000000000,\"delete\":1800000000000,\"update\":1800000000000}}",
+                    "availableMaintenanceVersions": [],
+                    "connectionName": "pulumi-development:us-central1:instance-ef8b12a",
+                    "databaseVersion": "MYSQL_8_0",
+                    "deletionProtection": false,
+                    "dnsName": "",
+                    "firstIpAddress": "34.68.52.203",
+                    "id": "instance-ef8b12a",
+                    "instanceType": "CLOUD_SQL_INSTANCE",
+                    "ipAddresses": [
+                        {
+                            "ipAddress": "34.68.52.203",
+                            "timeToRetire": "",
+                            "type": "PRIMARY"
+                        }
+                    ],
+                    "maintenanceVersion": "MYSQL_8_0_31.R20230909.02_00",
+                    "masterInstanceName": "",
+                    "name": "instance-ef8b12a",
+                    "privateIpAddress": "",
+                    "project": "pulumi-development",
+                    "pscServiceAttachmentLink": "",
+                    "publicIpAddress": "34.68.52.203",
+                    "region": "us-central1",
+                    "replicaConfiguration": null,
+                    "selfLink": "https://sqladmin.googleapis.com/sql/v1beta4/projects/pulumi-development/instances/instance-ef8b12a",
+                    "serverCaCerts": [
+                        {
+                            "cert": "-----BEGIN CERTIFICATE-----\nMIIDfzCCAmegAwIBAgIBADANBgkqhkiG9w0BAQsFADB3MS0wKwYDVQQuEyRiMjIy\nYWM3My05ZTEzLTRhZGItYmI1OS01NjFlMmY3NWM5MzcxIzAhBgNVBAMTGkdvb2ds\nZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUsIEluYzELMAkG\nA1UEBhMCVVMwHhcNMjMxMDEwMTUxNjUyWhcNMzMxMDA3MTUxNzUyWjB3MS0wKwYD\nVQQuEyRiMjIyYWM3My05ZTEzLTRhZGItYmI1OS01NjFlMmY3NWM5MzcxIzAhBgNV\nBAMTGkdvb2dsZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUs\nIEluYzELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQCDFhZeLs/TzsSwFaHq3Hyv5H51ZsAyWb1yAVT1LsO+YClY38+zrFrf5D0CNfue\nElgv+27AdZq4sy1/cY7Rd6uL2Pe4QmHTnaf7TNAjJzU7hXtcZuTrOdlJN1ZZpljZ\n48yaCpbPfyRg/DYWQKc4d4ZyYGNBUxmHnihGrl4dp+HMVCiFzVIfcAESXdvh6Z6d\nwQRk5V94M95Wk1na1uOSPWsept0/1tInLteZJfU15pVfF7xzVXSV2HdrrNblLife\nHWi0OnNhjMlyd/0wreRv3lFwlo3AVEZNmCRE+pHcfeY2Vq4vxrIAOkIteU+xtkbD\nGQJmIuwUQkH3SiKJuVZUQdzVAgMBAAGjFjAUMBIGA1UdEwEB/wQIMAYBAf8CAQAw\nDQYJKoZIhvcNAQELBQADggEBAIIt/vOUFaGudMCapalMbkOvrd3OAdMYfLn/dcCT\ns3XSctGlqtx4rhRYiVFSxODJfY1Zkr5UK4zzhf3oDfP/PXPzqyodDTowDbKmCTHo\nB2CiCDuZdEolNSB29ri7U78b3q8v83aNQhp7btRGM8TLq6eA3T0dqwtzX5Tz6S8C\ny2w7VxL92Z6qHPVTNuhlm6fejSOgBwveqtyQPOVxduUCbQgyUZteRX9slmFcnpoL\n7rhHNLCBO1It8s9vv45r2oKcJHe0Loj/TXU2AFrJSK3oZO+UyFqWv8zizFh6QO8i\nrL7WFfMcjRlTa6w8HqoR6c3vIWW3hmYHXbcMIQFTs7cHHm4=\n-----END CERTIFICATE-----",
+                            "commonName": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=b222ac73-9e13-4adb-bb59-561e2f75c937",
+                            "createTime": "2023-10-10T15:16:52.554Z",
+                            "expirationTime": "2033-10-07T15:17:52.554Z",
+                            "sha1Fingerprint": "9293c34f277e026f63d37558edcb8bd0e297e8bf"
+                        }
+                    ],
+                    "serviceAccountEmailAddress": "p921927215178-07qjcr@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+                    "settings": {
+                        "activationPolicy": "ALWAYS",
+                        "activeDirectoryConfig": null,
+                        "advancedMachineFeatures": null,
+                        "availabilityType": "ZONAL",
+                        "backupConfiguration": {
+                            "backupRetentionSettings": {
+                                "retainedBackups": 7,
+                                "retentionUnit": "COUNT"
+                            },
+                            "binaryLogEnabled": false,
+                            "enabled": false,
+                            "location": "",
+                            "pointInTimeRecoveryEnabled": false,
+                            "startTime": "10:00",
+                            "transactionLogRetentionDays": 7
+                        },
+                        "collation": "",
+                        "connectorEnforcement": "NOT_REQUIRED",
+                        "dataCacheConfig": null,
+                        "databaseFlags": [],
+                        "deletionProtectionEnabled": false,
+                        "denyMaintenancePeriod": null,
+                        "diskAutoresize": true,
+                        "diskAutoresizeLimit": 0,
+                        "diskSize": 10,
+                        "diskType": "PD_SSD",
+                        "edition": "",
+                        "insightsConfig": null,
+                        "ipConfiguration": {
+                            "allocatedIpRange": "",
+                            "authorizedNetworks": [],
+                            "enablePrivatePathForGoogleCloudServices": false,
+                            "ipv4Enabled": true,
+                            "privateNetwork": "",
+                            "pscConfigs": [],
+                            "requireSsl": false
+                        },
+                        "locationPreference": {
+                            "followGaeApplication": "",
+                            "secondaryZone": "",
+                            "zone": "us-central1-b"
+                        },
+                        "maintenanceWindow": null,
+                        "passwordValidationPolicy": null,
+                        "pricingPlan": "PER_USE",
+                        "sqlServerAuditConfig": null,
+                        "tier": "db-f1-micro",
+                        "timeZone": "",
+                        "userLabels": {},
+                        "version": 1
+                    }
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-sql-user-32bd606e",
+                "provider": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:providers:gcp::provider::3c8f6ee0-0a69-40af-a6c3-df842c68e010",
+                "propertyDependencies": {
+                    "databaseVersion": null,
+                    "deletionProtection": null,
+                    "region": null,
+                    "settings": null
+                },
+                "created": "2023-10-10T15:27:49.854908Z",
+                "modified": "2023-10-10T15:27:49.854908Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::gcp:sql/user:User::tested-resource",
+                "custom": true,
+                "id": "MyUser//instance-ef8b12a",
+                "type": "gcp:sql/user:User",
+                "inputs": {
+                    "__defaults": [],
+                    "instance": "instance-ef8b12a",
+                    "name": "MyUser",
+                    "password": "MyPassword"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"delete\":600000000000,\"update\":600000000000},\"schema_version\":\"1\"}",
+                    "host": "",
+                    "id": "MyUser//instance-ef8b12a",
+                    "instance": "instance-ef8b12a",
+                    "name": "MyUser",
+                    "password": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "v1:4hpf4HIJA9KCT/NW:Tg+ySchBhwWytdEgLWUnz8ujPgJsNi2dDH2X1w=="
+                    },
+                    "project": "pulumi-development",
+                    "sqlServerUserDetails": [],
+                    "type": ""
+                },
+                "parent": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:pulumi:Stack::test-p-it-antons-mac-sql-user-32bd606e",
+                "dependencies": [
+                    "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::gcp:sql/databaseInstance:DatabaseInstance::instance"
+                ],
+                "provider": "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::pulumi:providers:gcp::provider::3c8f6ee0-0a69-40af-a6c3-df842c68e010",
+                "propertyDependencies": {
+                    "instance": [
+                        "urn:pulumi:p-it-antons-mac-sql-user-32bd606e::test::gcp:sql/databaseInstance:DatabaseInstance::instance"
+                    ],
+                    "name": null,
+                    "password": null
+                },
+                "created": "2023-10-10T15:27:50.870381Z",
+                "modified": "2023-10-10T15:27:50.870381Z"
+            }
+        ]
+    }
+}

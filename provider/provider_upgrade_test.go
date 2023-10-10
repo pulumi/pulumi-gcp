@@ -12,11 +12,16 @@ import (
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 
+	"encoding/json"
 	ptest "github.com/pulumi/providertest"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
+	"os"
+	"sort"
+	"strings"
 )
 
 func TestProviderUpgrade(t *testing.T) {
+	baseline := "6.67.0"
 
 	type testCase struct {
 		program string
@@ -31,7 +36,7 @@ func TestProviderUpgrade(t *testing.T) {
 		{"storage-bucket"},
 		{"storage-bucketobject"},
 		{"secretmanager-secret"},
-		{"monitoring-alertpolicy-1"},
+		{"sql-user"},
 
 		// extracted from schema examples and manually corrected
 		{"bigquery-table"},
@@ -39,6 +44,7 @@ func TestProviderUpgrade(t *testing.T) {
 		{"cloudfunctions-function"},
 
 		// extracted as-is from schema examples
+		{"monitoring-alertpolicy-1"},
 		{"bigquery-datasetaccess-3"},
 		{"bigquery-routine-1"},
 		{"bigquery-routine-2"},
@@ -53,7 +59,7 @@ func TestProviderUpgrade(t *testing.T) {
 	test := func(t *testing.T, tc testCase) {
 		ptest.VerifyUpgrade(t).
 			WithProviderName("gcp").
-			WithBaselineVersion("6.67.0").
+			WithBaselineVersion(baseline).
 			WithProgram(filepath.Join("test-programs", tc.program)).
 			WithResourceProviderServer(providerServer(t)).
 			WithConfig("gcp:project", "pulumi-development").
@@ -66,6 +72,53 @@ func TestProviderUpgrade(t *testing.T) {
 			test(t, tc)
 		})
 	}
+
+	t.Run("coverage", func(t *testing.T) {
+		// This assumes passing/unskipped tests.
+
+		covered := map[string]struct{}{}
+
+		for _, tc := range testCases {
+			tc := tc
+			s := filepath.Join("testdata", "recorded", "TestProviderUpgrade",
+				tc.program, baseline, "state.json")
+
+			type stack struct {
+				Deployment struct {
+					Resources []struct {
+						Type string `json:"type"`
+					} `json:"resources"`
+				} `json:"deployment"`
+			}
+
+			b, err := os.ReadFile(s)
+			require.NoError(t, err)
+
+			var st stack
+			require.NoError(t, json.Unmarshal(b, &st))
+
+			for _, r := range st.Deployment.Resources {
+				if strings.Contains(r.Type, "providers") {
+					continue
+				}
+				if strings.Contains(r.Type, "Stack") {
+					continue
+				}
+				covered[r.Type] = struct{}{}
+			}
+		}
+
+		t.Logf("Resources covered: %d", len(covered))
+
+		sorted := []string{}
+		for k := range covered {
+			sorted = append(sorted, k)
+		}
+		sort.Strings(sorted)
+		for _, s := range sorted {
+			t.Logf("- %s", s)
+		}
+	})
 }
 
 func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {
