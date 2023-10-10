@@ -31,6 +31,7 @@ func TestProviderUpgrade(t *testing.T) {
 		{"storage-bucket"},
 		{"storage-bucketobject"},
 		{"secretmanager-secret"},
+		{"monitoring-alertpolicy-1"},
 
 		// extracted from schema examples and manually corrected
 		{"bigquery-table"},
