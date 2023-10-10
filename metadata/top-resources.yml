@@ -1,8 +1,12 @@
 description: |
   Resources are not created equal, and some resources get a lot more usage than others. This file
-  records an unidsclosed Pulumi metric snapshot in-repo to assist building repo-local tooling that
-  is aware of the relative importance of different resources.
+  records an internal Pulumi metric snapshot in-repo to assist building repo-local tooling that is
+  aware of the relative importance of different resources.
 
+  See: https://metabase.corp.pulumi.com/question/2828-top-resources-per-provider?provider=gcp
+
+  When building tools do not rely on the metric absolute values or historical trends as that may
+  change; acceptable uses are ranking resources and computing relative weights.
 updated: "09/10/2023"
 resources:
   "gcp:projects/iAMMember:IAMMember": {"N":953872}
