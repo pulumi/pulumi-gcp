@@ -4,10 +4,10 @@ go 1.21
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.16.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.1
-	github.com/pulumi/pulumi/pkg/v3 v3.81.0
-	github.com/pulumi/pulumi/sdk/v3 v3.81.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.17.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.61.0
+	github.com/pulumi/pulumi/pkg/v3 v3.86.0
+	github.com/pulumi/pulumi/sdk/v3 v3.86.0
 )
 
 replace (
@@ -28,7 +28,7 @@ require (
 	cloud.google.com/go/longrunning v0.5.1 // indirect
 	cloud.google.com/go/storage v1.30.1 // indirect
 	dario.cat/mergo v1.0.0 // indirect
-	github.com/AlecAivazis/survey/v2 v2.0.5 // indirect
+	github.com/AlecAivazis/survey/v2 v2.3.7 // indirect
 	github.com/Azure/azure-sdk-for-go v66.0.0+incompatible // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.1.1 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.0.0 // indirect
@@ -159,7 +159,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.19.0 // indirect
 	github.com/hashicorp/terraform-json v0.17.1 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.4.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.4.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
