@@ -14,6 +14,13 @@ resources:
         properties:
             location: US
         type: gcp:storage:Bucket
+
+    # # NOTE: the invoker permission would be needed for a real-world use case and was part of the
+    # # original example, however it currently does not deploy, this may be an issue with
+    # # project/region config or else with test credentials. Leaving commented out for now as even
+    # # without the permission the goal of covering the tested-resource (Function) is accomplished
+    # # by this program.
+    #
     # invoker:
     #     options:
     #         provider: ${provider}
